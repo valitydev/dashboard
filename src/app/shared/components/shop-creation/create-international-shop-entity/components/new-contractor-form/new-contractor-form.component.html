@@ -4,6 +4,13 @@
     fxLayout="column"
     fxLayoutGap="16px"
 >
+    <ng-container *ngIf="showRegisteredNumber">
+        <mat-form-field>
+            <mat-label>{{ t('registeredNumber') }}</mat-label>
+            <input aria-label="registeredNumber" matInput formControlName="registeredNumber" required />
+        </mat-form-field>
+    </ng-container>
+
     <mat-form-field>
         <mat-label>{{ t('organizationName') }}</mat-label>
         <input aria-label="organizationName" matInput formControlName="organizationName" required />
@@ -24,5 +31,10 @@
         <input aria-label="actualAddress" matInput formControlName="actualAddress" />
     </mat-form-field>
 
-    <dsh-country-autocomplete-field [label]="t('country')" formControlName="country"></dsh-country-autocomplete-field>
+    <ng-container *ngIf="!hideCountry">
+        <dsh-country-autocomplete-field
+            [label]="t('country')"
+            formControlName="country"
+        ></dsh-country-autocomplete-field>
+    </ng-container>
 </div>
