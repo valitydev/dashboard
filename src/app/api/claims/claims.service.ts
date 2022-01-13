@@ -5,7 +5,6 @@ import { first, switchMap } from 'rxjs/operators';
 import {
     Claim,
     ClaimsService as APIClaimsService,
-    InlineResponse200,
     Modification,
     Reason,
     StatusModificationUnit,
@@ -28,20 +27,14 @@ export class ClaimsService {
         claimStatuses?: StatusModificationUnit.StatusEnum[],
         claimID?: number,
         continuationToken?: string
-    ): Observable<InlineResponse200> {
-        return this.keycloakTokenInfoService.partyID$.pipe(
-            first(),
-            switchMap((partyId) =>
-                this.claimsService.searchClaims(
-                    this.idGenerator.shortUuid(),
-                    partyId,
-                    limit,
-                    undefined,
-                    continuationToken,
-                    claimID,
-                    claimStatuses || Object.values(StatusModificationUnit.StatusEnum)
-                )
-            )
+    ) {
+        return this.claimsService.searchClaims(
+            this.idGenerator.shortUuid(),
+            limit,
+            undefined,
+            continuationToken,
+            claimID,
+            claimStatuses || Object.values(StatusModificationUnit.StatusEnum)
         );
     }
 
@@ -50,10 +43,7 @@ export class ClaimsService {
     }
 
     getClaimByID(claimID: number): Observable<Claim> {
-        return this.keycloakTokenInfoService.partyID$.pipe(
-            first(),
-            switchMap((partyId) => this.claimsService.getClaimByID(this.idGenerator.shortUuid(), partyId, claimID))
-        );
+        return this.claimsService.getClaimByID(this.idGenerator.shortUuid(), claimID);
     }
 
     createClaim(changeset: Modification[]): Observable<Claim> {
