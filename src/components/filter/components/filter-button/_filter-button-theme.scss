@@ -5,20 +5,32 @@
     $primary: map-get($theme, primary);
 
     .dsh-filter-button {
+        background-color: transparent;
         border-color: map-get($foreground, dividers);
         color: map-get($foreground, text);
 
-        &:hover:enabled,
-        &-active:enabled {
+        &:hover:enabled {
             border-color: mat.get-color-from-palette($primary, default);
         }
 
         &-active:enabled {
+            border-color: mat.get-color-from-palette($primary, default);
             color: mat.get-color-from-palette($primary, default);
+            background-color: mat.get-color-from-palette($primary, default, 0.14);
         }
 
         &:disabled {
             color: mat.get-color-from-palette($foreground, disabled-text, 0.38);
+        }
+    }
+}
+
+@mixin dsh-filter-button-typography($config) {
+    .dsh-filter-button {
+        @include mat.typography-level($config, body-1);
+
+        &-active {
+            @include mat.typography-level($config, body-2);
         }
     }
 }

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 import { concat, defer, Observable, of, ReplaySubject, throwError } from 'rxjs';
 import { catchError, first, mapTo, shareReplay, switchMap, takeLast, tap } from 'rxjs/operators';
 
@@ -13,7 +12,7 @@ import {
     OrganizationsService,
     ClaimsService,
 } from '@dsh/api';
-import { CommonError, ErrorService } from '@dsh/app/shared';
+import { CommonError, ErrorService, IdGeneratorService } from '@dsh/app/shared';
 
 @UntilDestroy()
 @Injectable()

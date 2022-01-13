@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 import { Observable } from 'rxjs';
 import { first, switchMap } from 'rxjs/operators';
 
@@ -11,7 +10,7 @@ import {
     Reason,
     StatusModificationUnit,
 } from '@dsh/api-codegen/claim-management';
-import { KeycloakTokenInfoService } from '@dsh/app/shared';
+import { IdGeneratorService, KeycloakTokenInfoService } from '@dsh/app/shared';
 import { mapResult, noContinuationToken } from '@dsh/operators';
 
 export const CLAIM_STATUS = StatusModificationUnit.StatusEnum;
@@ -30,13 +29,19 @@ export class ClaimsService {
         claimID?: number,
         continuationToken?: string
     ): Observable<InlineResponse200> {
-        return this.claimsService.searchClaims(
-            this.idGenerator.shortUuid(),
-            limit,
-            undefined,
-            continuationToken,
-            claimID,
-            claimStatuses || Object.values(StatusModificationUnit.StatusEnum)
+        return this.keycloakTokenInfoService.partyID$.pipe(
+            first(),
+            switchMap((partyId) =>
+                this.claimsService.searchClaims(
+                    this.idGenerator.shortUuid(),
+                    partyId,
+                    limit,
+                    undefined,
+                    continuationToken,
+                    claimID,
+                    claimStatuses || Object.values(StatusModificationUnit.StatusEnum)
+                )
+            )
         );
     }
 
@@ -45,7 +50,10 @@ export class ClaimsService {
     }
 
     getClaimByID(claimID: number): Observable<Claim> {
-        return this.claimsService.getClaimByID(this.idGenerator.shortUuid(), claimID);
+        return this.keycloakTokenInfoService.partyID$.pipe(
+            first(),
+            switchMap((partyId) => this.claimsService.getClaimByID(this.idGenerator.shortUuid(), partyId, claimID))
+        );
     }
 
     createClaim(changeset: Modification[]): Observable<Claim> {

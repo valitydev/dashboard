@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 
 import { ShortenerService } from '@dsh/api-codegen/url-shortener';
+import { IdGeneratorService } from '@dsh/app/shared';
 
 @Injectable()
 export class UrlShortenerService {

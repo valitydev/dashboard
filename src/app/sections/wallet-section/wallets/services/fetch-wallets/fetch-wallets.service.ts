@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { FetchResult, PartialFetcher } from '@rbkmoney/partial-fetcher';
+import { FetchResult, PartialFetcher } from '@dsh/app/shared';
 import { Observable } from 'rxjs';
 
 import { Wallet } from '@dsh/api-codegen/wallet-api';

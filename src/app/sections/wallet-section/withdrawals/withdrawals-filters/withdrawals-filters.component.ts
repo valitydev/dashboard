@@ -11,7 +11,7 @@ import pick from 'lodash-es/pick';
 import { combineLatest, defer, ReplaySubject } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
-import { Preset, createDateRangeWithPreset } from '@dsh/components/filters/date-range-filter';
+import { Preset, createDateRangeWithPreset } from '@dsh/components/date-range-filter';
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 

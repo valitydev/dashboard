@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
     selector: 'dsh-route-navbar-layout',
@@ -6,4 +6,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrls: ['route-navbar-layout.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RouteNavbarLayoutComponent {}
+export class RouteNavbarLayoutComponent {
+    @Input() routeName: string;
+}

@@ -9,6 +9,7 @@ import { LimitedListModule } from './limited-list';
 import { LinkLabelModule } from './link-label';
 import { PanelModule } from './panel';
 import { RowModule } from './row';
+import { SectionHeaderModule } from './section-header';
 import { TimelineModule } from './timeline';
 
 const EXPORTED_MODULES = [
@@ -22,6 +23,7 @@ const EXPORTED_MODULES = [
     LinkLabelModule,
     LimitedListModule,
     CollapseModule,
+    SectionHeaderModule,
 ];
 
 @NgModule({

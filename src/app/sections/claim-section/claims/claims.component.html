@@ -1,7 +1,5 @@
 <div class="container" fxLayout="column" fxLayoutGap="32px" *transloco="let t; scope: 'claims'; read: 'claims'">
-    <div class="mat-display-1">
-        {{ t('title') }}
-    </div>
+    <dsh-section-header [label]="t('title')"></dsh-section-header>
     <div
         fxLayout="column-reverse"
         fxLayout.gt-sm="row"

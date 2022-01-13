@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { InlineResponse20011, SearchService } from '@dsh/api-codegen/anapi';
+import { IdGeneratorService } from '@dsh/app/shared';
 import { KeycloakTokenInfoService } from '@dsh/app/shared/services';
 
 import { toDateLike } from '../utils';

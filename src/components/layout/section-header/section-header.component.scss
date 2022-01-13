@@ -1,0 +1,9 @@
+$dsh-section-header-spacing-padding: 32px 0;
+
+:host {
+    display: block;
+}
+
+.dsh-section-header-spacing {
+    padding: $dsh-section-header-spacing-padding;
+}

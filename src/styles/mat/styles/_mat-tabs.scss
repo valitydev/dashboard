@@ -51,7 +51,7 @@
         }
     }
 
-    .mat-tab-nav-bar.dsh-top-tab-nav-bar {
+    .mat-tab-nav-bar {
         border-color: transparent !important;
     }
 }
@@ -59,7 +59,7 @@
 @mixin mat-tabs-override-typography($config) {
     .mat-tab-links {
         .mat-tab-link {
-            @include mat.typography-level($config, body-1);
+            @include mat.typography-level($config, subheading-1);
         }
     }
 

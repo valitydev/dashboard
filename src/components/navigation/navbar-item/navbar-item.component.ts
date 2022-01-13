@@ -1,7 +1,7 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { OnChanges, ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { MatSlideToggle, MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { ComponentChanges } from '@rbkmoney/utils';
+import { ComponentChanges } from '@dsh/type-utils';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 

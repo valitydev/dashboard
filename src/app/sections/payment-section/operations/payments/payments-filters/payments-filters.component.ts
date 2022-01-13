@@ -14,7 +14,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { ApiShopsService } from '@dsh/api';
 import { Shop } from '@dsh/api-codegen/anapi';
 import { PaymentInstitution } from '@dsh/api-codegen/capi';
-import { DateRange, Preset, createDateRangeWithPreset } from '@dsh/components/filters/date-range-filter';
+import { DateRange, Preset, createDateRangeWithPreset } from '@dsh/components/date-range-filter';
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 

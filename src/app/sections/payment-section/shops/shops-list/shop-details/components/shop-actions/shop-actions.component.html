@@ -7,7 +7,7 @@
 
 <ng-template #activateButton>
     <ng-container *transloco="let p; scope: 'shops'; read: 'shops.panel'">
-        <button (click)="activate(shop.id)" color="accent" dsh-stroked-button>
+        <button (click)="activate(shop.id)" color="accent" dsh-button>
             {{ p('activate') }}
         </button>
     </ng-container>
@@ -15,7 +15,7 @@
 
 <ng-template #suspendButton>
     <ng-container *transloco="let p; scope: 'shops'; read: 'shops.panel'">
-        <button (click)="suspend(shop.id)" color="warn" dsh-stroked-button>
+        <button (click)="suspend(shop.id)" color="warn" dsh-button>
             {{ p('suspend') }}
         </button>
     </ng-container>

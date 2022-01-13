@@ -1,5 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import random from 'lodash-es/random';
+import { Component, Input } from '@angular/core';
 
 import { ThemeManager, ThemeName } from '../../../app/theme-manager';
 import { SpinnerType } from './spinner-type';
@@ -8,7 +7,7 @@ import { SpinnerType } from './spinner-type';
     selector: 'dsh-spinner',
     templateUrl: 'spinner.component.html',
 })
-export class SpinnerComponent implements OnChanges {
+export class SpinnerComponent {
     @Input() type: SpinnerType;
     @Input() animationDuration = 1000;
     @Input() size = 50;
@@ -20,16 +19,14 @@ export class SpinnerComponent implements OnChanges {
 
     constructor(private themeManager: ThemeManager) {}
 
-    get color() {
+    get color(): string {
         switch (this.themeManager.current) {
             case ThemeName.PersianGreen:
                 return '#003b8e';
             case ThemeName.Main:
                 return '#695bff';
+            case ThemeName.Eastern:
+                return '#2597a1';
         }
-    }
-
-    ngOnChanges({ type }: SimpleChanges) {
-        this.activeSpinner = type && type.currentValue ? type.currentValue : random(0, this.spinnersCount);
     }
 }

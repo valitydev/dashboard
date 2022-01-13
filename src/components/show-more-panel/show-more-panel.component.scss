@@ -1,3 +1,7 @@
-.dsh-show-more-panel {
-    padding: 10px 20px;
+:host {
+    display: block;
+}
+
+.dsh-show-more-btn {
+    width: 100%;
 }

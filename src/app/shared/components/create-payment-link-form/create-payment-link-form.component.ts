@@ -5,7 +5,7 @@ import { FormBuilder } from '@ngneat/reactive-forms';
 import { FbGroupConfig } from '@ngneat/reactive-forms/lib/formBuilder';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { ComponentChanges } from '@rbkmoney/utils';
+import { ComponentChanges } from '@dsh/type-utils';
 
 import { BankCard, PaymentMethod, PaymentTerminal } from '@dsh/api-codegen/capi';
 import { PaymentLinkParams } from '@dsh/app/shared/services/create-payment-link/types/payment-link-params';

@@ -2,22 +2,15 @@
 
 .dsh {
     &-button,
-    &-stroked-button {
+    &-text-button {
         @include dsh-button-base();
     }
 
-    &-button {
+    &-button,
+    &-text-button {
         @include dsh-button-size($dsh-size-md);
         &.dsh-size-lg {
             @include dsh-button-size($dsh-size-lg);
-        }
-    }
-
-    &-stroked-button {
-        border: $dsh-stroked-button-border-width solid currentColor;
-        @include dsh-stroked-button-size($dsh-size-md);
-        &.dsh-size-lg {
-            @include dsh-stroked-button-size($dsh-size-lg);
         }
     }
 

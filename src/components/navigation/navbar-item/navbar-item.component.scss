@@ -1,12 +1,21 @@
+$dsh-navbar-item-height: 56px;
+$dsh-navbar-item-border-radius: 100px;
+$dsh-navbar-item-padding: 0 16px;
+
 :host {
     outline: none;
+    display: block;
 }
 
 .dsh-navbar-item {
     cursor: pointer;
-}
-
-.dsh-navbar-item-content {
-    white-space: nowrap;
-    user-select: none;
+    height: $dsh-navbar-item-height;
+    &-active {
+        border-radius: $dsh-navbar-item-border-radius;
+    }
+    &-content {
+        white-space: nowrap;
+        user-select: none;
+        padding: $dsh-navbar-item-padding;
+    }
 }

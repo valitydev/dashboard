@@ -1,7 +1,16 @@
 import { BootstrapIconName } from '@dsh/components/indicators';
 
+export enum NavbarRouterLink {
+    Shops = 'shops',
+    Analytics = 'analytics',
+    Operations = 'operations',
+    Payouts = 'payouts',
+    Reports = 'reports',
+    Integrations = 'integrations',
+}
+
 export interface NavbarItemConfig {
-    routerLink: string;
+    routerLink: NavbarRouterLink;
     icon: BootstrapIconName;
     label: string;
 }
@@ -17,32 +26,32 @@ export const toNavbarItemConfig = ({
     [k: string]: string;
 }): NavbarItemConfig[] => [
     {
-        routerLink: 'shops',
+        routerLink: NavbarRouterLink.Shops,
         icon: BootstrapIconName.Shop,
         label: shops,
     },
     {
-        routerLink: 'analytics',
+        routerLink: NavbarRouterLink.Analytics,
         icon: BootstrapIconName.PieChart,
         label: analytics,
     },
     {
-        routerLink: 'operations',
+        routerLink: NavbarRouterLink.Operations,
         icon: BootstrapIconName.LayoutTextSidebarReverse,
         label: operations,
     },
     {
-        routerLink: 'payouts',
+        routerLink: NavbarRouterLink.Payouts,
         icon: BootstrapIconName.ArrowRightCircle,
         label: payouts,
     },
     {
-        routerLink: 'reports',
+        routerLink: NavbarRouterLink.Reports,
         icon: BootstrapIconName.FileText,
         label: reports,
     },
     {
-        routerLink: 'integrations',
+        routerLink: NavbarRouterLink.Integrations,
         icon: BootstrapIconName.Plug,
         label: integrations,
     },

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 import { BehaviorSubject, defer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { CategoriesService as CategoriesApiService } from '@dsh/api-codegen/capi';
+import { IdGeneratorService } from '@dsh/app/shared';
 import { publishReplayRefCount } from '@dsh/operators';
 
 @Injectable()

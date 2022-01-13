@@ -8,9 +8,9 @@ import { RouteNavbarLayoutModule } from '@dsh/app/shared/components/route-navbar
 import { NavbarItemModule } from '@dsh/components/navigation';
 
 import { BalancesModule } from './balances';
+import { NoShopsAlertModule } from './no-shops-alert';
 import { PaymentSectionRoutingModule } from './payment-section-routing.module';
 import { PaymentSectionComponent } from './payment-section.component';
-import { TestEnvAlertModule } from './test-env-alert/test-env-alert.module';
 
 @NgModule({
     imports: [
@@ -20,9 +20,9 @@ import { TestEnvAlertModule } from './test-env-alert/test-env-alert.module';
         FlexLayoutModule,
         TranslocoModule,
         BalancesModule,
-        TestEnvAlertModule,
         RouteNavbarLayoutModule,
         NavbarItemModule,
+        NoShopsAlertModule,
     ],
     declarations: [PaymentSectionComponent],
     exports: [PaymentSectionComponent],

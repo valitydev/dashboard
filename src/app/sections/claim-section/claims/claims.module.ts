@@ -13,7 +13,7 @@ import { ClaimsService } from '@dsh/api/claims';
 import { ShopCreationModule } from '@dsh/app/shared/components/shop-creation';
 import { ButtonModule } from '@dsh/components/buttons';
 import { IndicatorsModule } from '@dsh/components/indicators';
-import { LayoutModule } from '@dsh/components/layout';
+import { LayoutModule, SectionHeaderModule } from '@dsh/components/layout';
 import { StateNavModule } from '@dsh/components/navigation';
 
 import { ClaimsListModule } from './claims-list';
@@ -40,6 +40,7 @@ import { ClaimsComponent } from './claims.component';
         ClaimsListModule,
         ClaimsSearchFiltersModule,
         ShopCreationModule,
+        SectionHeaderModule,
     ],
     declarations: [ClaimsComponent],
     exports: [ClaimsComponent],

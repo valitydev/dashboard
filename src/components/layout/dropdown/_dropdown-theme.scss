@@ -1,9 +1,13 @@
 @use '~@angular/material' as mat;
+@use '../../../styles/utils/shadow';
 
 @mixin dsh-dropdown-theme($theme) {
     $background: map-get($theme, background);
+    $primary: map-get($theme, primary);
 
     .dsh-dropdown {
+        @include dsh-shadow($theme);
+
         &,
         &-triangle {
             background-color: mat.get-color-from-palette($background, card);

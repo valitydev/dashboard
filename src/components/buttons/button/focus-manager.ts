@@ -3,7 +3,7 @@ import { Renderer2 } from '@angular/core';
 export class FocusManager {
     constructor(private renderer: Renderer2) {}
 
-    register(t: HTMLButtonElement) {
+    register(t: HTMLButtonElement): void {
         this.renderer.listen(t, 'focusin', this.drawFocus.bind(this, t));
         this.renderer.listen(t, 'mousedown', this.drawFocus.bind(this, t));
         this.renderer.listen(t, 'focusout', this.hideFocus.bind(this, t));

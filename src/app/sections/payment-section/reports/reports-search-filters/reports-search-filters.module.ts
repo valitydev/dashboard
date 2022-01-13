@@ -5,9 +5,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslocoModule } from '@ngneat/transloco';
 
 import { ReportTypesFieldModule } from '@dsh/app/shared/components/inputs/report-types-field';
+import { DateRangeFilterModule } from '@dsh/components/date-range-filter';
 import { FilterModule } from '@dsh/components/filter';
 import { FiltersGroupModule } from '@dsh/components/filters-group';
-import { DateRangeFilterModule } from '@dsh/components/filters/date-range-filter';
 
 import { ReportPipesModule } from '../report-pipes';
 import { ReportTypesFilterComponent } from './report-types-filter';

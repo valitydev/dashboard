@@ -25,7 +25,7 @@ BASE_IMAGE_TAG := 68877f5853c6f3df2664b8b23f8ec8367902047a
 BUILD_IMAGE_TAG := 25c031edd46040a8745334570940a0f0b2154c5c
 
 GIT_SSH_COMMAND :=
-DOCKER_RUN_OPTS = -e GIT_SSH_COMMAND='$(GIT_SSH_COMMAND)' -e NG_CLI_ANALYTICS=ci -e NPM_TOKEN='$(GITHUB_TOKEN)' -e SENTRY_AUTH_TOKEN='$(SENTRY_AUTH_TOKEN)'
+DOCKER_RUN_OPTS = -e GIT_SSH_COMMAND='$(GIT_SSH_COMMAND)' -e NG_CLI_ANALYTICS=ci'
 
 CALL_W_CONTAINER := init test build clean submodules
 
@@ -43,13 +43,12 @@ $(SUBTARGETS): %/.git: %
 submodules: $(SUBTARGETS)
 
 init:
-	echo -e "//npm.pkg.github.com/:_authToken=$(NPM_TOKEN)" >> .npmrc
 	npm ci
 	npm run codegen
 
 build:
 	npm run ci:check
-	SENTRY_AUTH_TOKEN=$(SENTRY_AUTH_TOKEN) npm run build
+	npm run build
 
 build_pr:
 	npm run ci:check

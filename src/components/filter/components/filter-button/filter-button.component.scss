@@ -1,5 +1,6 @@
-$dsh-filter-button-height: 32px;
-$dsh-filter-button-padding-top-bottom: 16px;
+$dsh-filter-button-height: 40px;
+$dsh-filter-button-border-radius: 24px;
+$dsh-filter-button-padding: 0 24px;
 $dsh-filter-button-max-width: 250px;
 $dsh-filter-button-content-padding: 24px;
 
@@ -8,12 +9,19 @@ $dsh-filter-button-active-border-width: 2px;
 
 $dsh-filter-button-transition-time: 200ms;
 
+:host {
+    display: block;
+}
+
+:host:disabled {
+    pointer-events: none;
+}
+
 .dsh-filter-button {
     border: $dsh-filter-button-border-width solid;
-    border-radius: $dsh-filter-button-height;
+    border-radius: $dsh-filter-button-border-radius;
     height: $dsh-filter-button-height;
-    padding: 0 $dsh-filter-button-padding-top-bottom;
-    background-color: transparent;
+    padding: $dsh-filter-button-padding;
     outline: none;
     max-width: $dsh-filter-button-max-width;
     white-space: nowrap;
@@ -33,8 +41,4 @@ $dsh-filter-button-transition-time: 200ms;
     &:enabled {
         cursor: pointer;
     }
-}
-
-:host:disabled {
-    pointer-events: none;
 }

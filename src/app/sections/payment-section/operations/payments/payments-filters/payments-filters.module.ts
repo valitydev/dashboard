@@ -7,9 +7,9 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { InvoicesFilterModule } from '@dsh/app/shared/components';
 import { ShopsFilterModule } from '@dsh/app/shared/components/filters/shops-filter';
 import { DaterangeManagerModule } from '@dsh/app/shared/services/date-range-manager';
+import { DateRangeFilterModule } from '@dsh/components/date-range-filter';
+import { FilterModule } from '@dsh/components/filter/filter.module';
 import { FiltersGroupModule } from '@dsh/components/filters-group';
-import { DateRangeFilterModule } from '@dsh/components/filters/date-range-filter';
-import { FilterModule } from '@dsh/components/filters/filter';
 
 import { AdditionalFiltersModule } from './additional-filters';
 import { CardBinPanFilterModule } from './card-bin-pan-filter';

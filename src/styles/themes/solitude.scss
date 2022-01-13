@@ -5,7 +5,7 @@
 $background: (
     // Overrides
     background: #f5f5f7,
-    // Custom
+    // Custom (deprecated)
     hover: map-get(mat.$grey-palette, 200),
     selected-button: map-get(mat.$grey-palette, 100)
 );

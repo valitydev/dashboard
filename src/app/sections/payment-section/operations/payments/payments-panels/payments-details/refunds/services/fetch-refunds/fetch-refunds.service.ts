@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { DEBOUNCE_FETCHER_ACTION_TIME, FetchResult, PartialFetcher } from '@rbkmoney/partial-fetcher';
+import { DEBOUNCE_FETCHER_ACTION_TIME, FetchResult, PartialFetcher } from '@dsh/app/shared';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 

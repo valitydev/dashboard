@@ -1,6 +1,5 @@
-<div class="dsh-spacer" fxHide.lt-md></div>
-<dsh-route-navbar-layout>
-    <div fxLayout="row" fxLayout.gt-sm="column" fxLayoutGap="24px">
+<dsh-route-navbar-layout [routeName]="activeSection$ | async">
+    <div fxLayout="row" fxLayout.gt-sm="column">
         <dsh-navbar-item
             *ngFor="let item of navbarItemConfig$ | async"
             [routerLink]="item.routerLink"
@@ -8,6 +7,7 @@
             #rla="routerLinkActive"
             [active]="rla.isActive"
             [icon]="item.icon"
+            (activeChange)="setActiveSection($event, item)"
             >{{ item.label }}</dsh-navbar-item
         >
     </div>

@@ -1,5 +1,5 @@
 import { Component, Injector, Input, OnChanges } from '@angular/core';
-import { ComponentChanges } from '@rbkmoney/utils';
+import { ComponentChanges } from '@dsh/type-utils';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { defer, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
