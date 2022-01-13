@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, OnInit, OnChanges } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { ComponentChanges } from '@rbkmoney/utils';
+import { ComponentChanges } from '@dsh/type-utils';
 import { combineLatest, defer, Observable } from 'rxjs';
 import { first, map, pluck, shareReplay } from 'rxjs/operators';
 
 import { Shop } from '@dsh/api-codegen/capi';
-import { createDateRangeWithPreset, DateRangeWithPreset, Preset } from '@dsh/components/filters/date-range-filter';
+import { createDateRangeWithPreset, DateRangeWithPreset, Preset } from '@dsh/components/date-range-filter';
 import { SHARE_REPLAY_CONF } from '@dsh/operators';
 import { getFormValueChanges } from '@dsh/utils';
 

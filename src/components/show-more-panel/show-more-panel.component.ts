@@ -6,13 +6,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     styleUrls: ['show-more-panel.component.scss'],
 })
 export class ShowMorePanelComponent {
-    @Input()
-    isLoading = false;
+    @Input() isLoading = false;
 
-    @Output()
-    showMore: EventEmitter<void> = new EventEmitter();
+    @Output() showMore: EventEmitter<void> = new EventEmitter<void>();
 
-    getMore() {
+    getMore(): void {
         this.showMore.emit();
     }
 }

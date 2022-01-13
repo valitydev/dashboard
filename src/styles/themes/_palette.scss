@@ -9,6 +9,40 @@ How to create palette
    and find out recommendation when to use a dark font color and in which light
 */
 
+// base 700
+$dsh-eastern: (
+    50: #e1f7f9,
+    100: #b4ebef,
+    200: #84dee5,
+    300: #57d0db,
+    400: #3ac6d3,
+    500: #2bbccd,
+    600: #28acba,
+    700: #2597a1,
+    800: #22838a,
+    900: #1c5f60,
+    A100: #a7f4ff,
+    A200: #74eeff,
+    A400: #41e7ff,
+    A700: #27e4ff,
+    contrast: (
+        50: $dark-text,
+        100: $dark-text,
+        200: $dark-text,
+        300: $dark-text,
+        400: $light-text,
+        500: $light-text,
+        600: $light-text,
+        700: $light-text,
+        800: $light-text,
+        900: $light-text,
+        A100: $dark-text,
+        A200: $dark-text,
+        A400: $dark-text,
+        A700: $dark-text,
+    ),
+);
+
 // base 400
 $dsh-slateblue: (
     50: #ede8ff,

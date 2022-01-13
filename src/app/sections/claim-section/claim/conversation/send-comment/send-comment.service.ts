@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { progress } from '@rbkmoney/utils';
 import get from 'lodash-es/get';
 import { BehaviorSubject, forkJoin, merge, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, pluck, switchMap, tap } from 'rxjs/operators';
@@ -10,6 +9,7 @@ import { Conversation } from '@dsh/api-codegen/messages';
 import { createSingleMessageConversationParams, MessagesService } from '@dsh/api/messages';
 
 import { UiError } from '../../../../ui-error';
+import { progress } from '../../../../../custom-operators';
 
 @Injectable()
 export class SendCommentService {

@@ -1,5 +1,5 @@
 import { Component, Inject, Input, OnChanges } from '@angular/core';
-import { ComponentChanges } from '@rbkmoney/utils';
+import { ComponentChanges } from '@dsh/type-utils';
 
 import { SpinnerType } from '@dsh/components/indicators';
 

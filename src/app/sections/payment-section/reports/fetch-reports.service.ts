@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { PartialFetcher } from '@rbkmoney/partial-fetcher';
+import { PartialFetcher } from '@dsh/app/shared';
 import isEmpty from 'lodash-es/isEmpty';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';

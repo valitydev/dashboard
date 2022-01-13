@@ -3,3 +3,7 @@
 @mixin dsh-filter-theme($theme) {
     @include dsh-filter-button-theme($theme);
 }
+
+@mixin dsh-filter-typography($config) {
+    @include dsh-filter-button-typography($config);
+}

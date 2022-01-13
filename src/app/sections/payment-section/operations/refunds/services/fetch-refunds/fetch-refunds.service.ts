@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PartialFetcher } from '@rbkmoney/partial-fetcher';
+import { PartialFetcher } from '@dsh/app/shared';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 

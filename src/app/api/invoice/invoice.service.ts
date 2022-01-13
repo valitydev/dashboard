@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 import { Observable } from 'rxjs';
 import { Overwrite } from 'utility-types';
 
 import { Invoice, InvoiceParams, Reason } from '@dsh/api-codegen/capi';
 import { InvoicesService } from '@dsh/api-codegen/capi/invoices.service';
+import { IdGeneratorService } from '@dsh/app/shared';
 
 @Injectable()
 export class InvoiceService {

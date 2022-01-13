@@ -1,5 +1,5 @@
 import { PaymentInstitution } from '@dsh/api-codegen/capi';
-import { Preset } from '@dsh/components/filters/date-range-filter';
+import { Preset } from '@dsh/components/date-range-filter';
 
 import { Filters } from '../analytics-search-filters/analytics-search-filters.component';
 import { SearchParams } from '../search-params';

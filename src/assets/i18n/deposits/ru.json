@@ -1,5 +1,4 @@
 {
-    "title": "Пополнения",
     "filter": {
         "depositStatus": "Статус пополнения",
         "walletID": "Кошелек",

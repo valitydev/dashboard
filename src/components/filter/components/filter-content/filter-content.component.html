@@ -6,7 +6,7 @@
     <mat-divider></mat-divider>
 
     <dsh-actions class="actions" *transloco="let t">
-        <button *ngIf="!noClearButton" dsh-stroked-button color="accent" (click)="clear.emit($event)">
+        <button *ngIf="!noClearButton" dsh-text-button color="accent" (click)="clear.emit($event)">
             {{ t('clear') }}
         </button>
         <button dsh-button color="accent" (click)="save.emit($event)">

@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { combineLatest, Observable, Subject } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, pluck, switchMapTo, first } from 'rxjs/operators';
 
 import { PaymentInstitution } from '@dsh/api-codegen/capi';
 import { SHOPS } from '@dsh/app/shared/components/inputs/shop-field';
@@ -14,7 +14,6 @@ import { NavbarItemConfig, toNavbarItemConfig } from './utils';
 @UntilDestroy()
 @Component({
     templateUrl: 'payment-section.component.html',
-    styleUrls: ['payment-section.scss'],
     providers: [
         PaymentInstitutionRealmService,
         RealmShopsService,
@@ -31,15 +30,19 @@ export class PaymentSectionComponent implements OnInit {
     navbarItemConfig$: Observable<NavbarItemConfig[]> = this.transloco
         .selectTranslateObject<{ [k: string]: string }>('nav', {}, 'payment-section')
         .pipe(map(toNavbarItemConfig));
+    activeSection$: Observable<string>;
+    noShops$: Observable<boolean> = this.realmShopsService.shops$.pipe(map((s) => s.length === 0));
 
-    private activeSectionChange$ = new Subject<string>();
+    private activeSectionChange$ = new Subject<NavbarItemConfig>();
     private realmChange$ = new Subject<PaymentInstitution.RealmEnum>();
+    private navigateToShops$ = new Subject<void>();
 
     constructor(
         private realmService: PaymentInstitutionRealmService,
         private router: Router,
         private route: ActivatedRoute,
-        private transloco: TranslocoService
+        private transloco: TranslocoService,
+        private realmShopsService: RealmShopsService
     ) {}
 
     ngOnInit(): void {
@@ -56,23 +59,36 @@ export class PaymentSectionComponent implements OnInit {
         combineLatest([this.activeSectionChange$, this.realmChange$])
             .pipe(untilDestroyed(this))
             .subscribe(
-                ([activeSection, realm]) =>
-                    void this.router.navigate(['../../', 'realm', realm, activeSection], {
+                ([{ routerLink }, realm]) =>
+                    void this.router.navigate(['../../', 'realm', realm, routerLink], {
                         relativeTo: this.route,
                         queryParamsHandling: 'preserve',
                     })
             );
+
+        this.activeSection$ = this.activeSectionChange$.pipe(pluck('label'));
+
+        this.navigateToShops$.pipe(switchMapTo(this.realmService.realm$.pipe(first()))).subscribe(
+            (realm) =>
+                void this.router.navigate(['../../', 'realm', realm, 'shops'], {
+                    relativeTo: this.route,
+                })
+        );
     }
 
-    setActiveSection(isActive: boolean, section: string): void {
+    setActiveSection(isActive: boolean, config: NavbarItemConfig): void {
         if (!isActive) {
             return;
         }
-        this.activeSectionChange$.next(section);
+        this.activeSectionChange$.next(config);
     }
 
     testEnvToggle(isTestEnv: boolean): void {
         const realm = isTestEnv ? PaymentInstitution.RealmEnum.Test : PaymentInstitution.RealmEnum.Live;
         this.realmChange$.next(realm);
+    }
+
+    navigateToShops(): void {
+        this.navigateToShops$.next();
     }
 }

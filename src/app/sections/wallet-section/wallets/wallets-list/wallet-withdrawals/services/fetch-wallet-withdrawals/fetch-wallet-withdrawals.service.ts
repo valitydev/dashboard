@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { PartialFetcher } from '@rbkmoney/partial-fetcher';
+import { PartialFetcher } from '@dsh/app/shared';
 import { Observable } from 'rxjs';
 
 import { WithdrawalsService } from '@dsh/api';

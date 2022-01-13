@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 import { forkJoin, Observable, of } from 'rxjs';
 import { pluck, switchMap } from 'rxjs/operators';
 
@@ -13,6 +12,7 @@ import {
     createShopCreationModification,
     makeShopLocation,
 } from '@dsh/api/claims/claim-party-modification';
+import { IdGeneratorService } from '@dsh/app/shared';
 
 import { RussianShopForm } from '../../types/russian-shop-entity';
 

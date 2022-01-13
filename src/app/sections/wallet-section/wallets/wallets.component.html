@@ -1,6 +1,4 @@
-<dsh-scroll-up></dsh-scroll-up>
 <div class="dsh-wallets" fxLayout="column" fxLayoutGap="32px" *transloco="let t; scope: 'wallets'; read: 'wallets'">
-    <h1 class="dsh-display-2">{{ t('title') }}</h1>
     <dsh-wallets-list
         [wallets]="wallets$ | async"
         [expandedId]="expandedId$ | async"
@@ -18,3 +16,4 @@
         <dsh-spinner></dsh-spinner>
     </div>
 </div>
+<dsh-scroll-up></dsh-scroll-up>

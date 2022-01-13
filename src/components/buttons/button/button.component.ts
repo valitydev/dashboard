@@ -9,14 +9,14 @@ import {
     SimpleChanges,
     ViewEncapsulation,
 } from '@angular/core';
-import { CanDisableCtor, mixinDisabled } from '@angular/material/core';
+import { mixinDisabled } from '@angular/material/core';
 
 import { coerceBoolean } from '@dsh/utils';
 
 import { ColorManager } from './color-manager';
 import { FocusManager } from './focus-manager';
 
-const BUTTON_HOST_ATTRIBUTES = ['dsh-button', 'dsh-stroked-button', 'dsh-icon-button'];
+const BUTTON_HOST_ATTRIBUTES = ['dsh-button', 'dsh-icon-button', 'dsh-text-button'];
 
 // Boilerplate for applying mixins to MatButton.
 class MatButtonBase {
@@ -24,11 +24,11 @@ class MatButtonBase {
 }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-const _MatButtonMixinBase: CanDisableCtor & typeof MatButtonBase = mixinDisabled(MatButtonBase);
+const _MatButtonMixinBase: typeof MatButtonBase = mixinDisabled(MatButtonBase);
 
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
-    selector: 'button[dsh-button], button[dsh-stroked-button], button[dsh-icon-button]',
+    selector: 'button[dsh-button], button[dsh-icon-button], button[dsh-text-button]',
     exportAs: 'dshButton',
     templateUrl: 'button.component.html',
     styleUrls: ['button.component.scss'],
@@ -47,12 +47,12 @@ export class ButtonComponent extends _MatButtonMixinBase implements OnChanges {
     size: 'lg' | 'md' = 'md';
 
     @HostBinding('attr.disabled')
-    get attrDisabled() {
+    get attrDisabled(): string | null {
         return this.disabled ? 'disabled' : null;
     }
 
     @HostBinding('class.dsh-size-lg')
-    get sizeLg() {
+    get sizeLg(): boolean {
         return this.size === 'lg';
     }
 
@@ -75,7 +75,7 @@ export class ButtonComponent extends _MatButtonMixinBase implements OnChanges {
         new FocusManager(this.renderer).register(this.button);
     }
 
-    ngOnChanges({ color }: SimpleChanges) {
+    ngOnChanges({ color }: SimpleChanges): void {
         if (color && color.previousValue !== color.currentValue) {
             this.colorManager.set(color.currentValue);
             this.colorManager.remove(color.previousValue);

@@ -13,7 +13,7 @@ import { map } from 'rxjs/operators';
 
 import { ApiShopsService } from '@dsh/api';
 import { PaymentInstitution } from '@dsh/api-codegen/capi';
-import { createDateRangeWithPreset, Preset, DateRangeWithPreset } from '@dsh/components/filters/date-range-filter';
+import { createDateRangeWithPreset, Preset, DateRangeWithPreset } from '@dsh/components/date-range-filter';
 import { publishReplayRefCount } from '@dsh/operators';
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';

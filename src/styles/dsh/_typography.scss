@@ -18,12 +18,14 @@
 @import '../../components/indicators/last-updated/last-updated-theme';
 @import '../../components/navigation-link/navigation-link-theme';
 @import '../../components/link/link-theme';
+@import '../../components/filter/filter-theme';
 
 @import '../../app/home/home-theme';
 @import '../../app/home/welcome-image/welcome-image-theme';
 @import '../../app/home/mobile-grid/mobile-grid-theme';
 @import '../../app/dadata/dadata-theme';
 @import '../../app/sections/payment-section/balances/balances-theme';
+@import '../../app/sections/payment-section/no-shops-alert/no-shops-alert-theme';
 
 @mixin dsh-typography($config) {
     @include dsh-base-typography($config);
@@ -48,4 +50,6 @@
     @include dsh-link-typography($config);
     @include dsh-navbar-item-typography($config);
     @include dsh-mobile-grid-typography($config);
+    @include dsh-filter-typography($config);
+    @include dsh-no-shops-alert-typography($config);
 }

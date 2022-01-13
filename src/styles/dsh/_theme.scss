@@ -14,9 +14,8 @@
 @import '../../components/indicators/text-color/text-color-theme';
 @import '../../components/navigation/state-nav/state-nav-theme';
 @import '../../components/navigation/breadcrumb/breadcrumb-theme';
-@import '../../components/filters/filter/filter-theme';
-@import '../../components/filters/daterange-filter/daterange-filter-theme';
-@import '../../components/filters/date-range-filter/date-range-filter-theme';
+@import '../../components/filter/filter-theme';
+@import '../../components/date-range-filter/date-range-filter-theme';
 @import '../../components/navigation/navbar-item/navbar-item-theme';
 @import '../../components/layout/limited-list/limited-list-theme';
 @import '../../components/nested-table/nested-table-theme';
@@ -34,6 +33,7 @@
 @import '../../app/sections/payment-section/analytics/stat-item/stat-item-theme';
 @import '../../app/sections/payment-section/balances/balances-theme';
 @import '../../app/feedback/feedback-theme';
+@import '../../app/sections/payment-section/no-shops-alert/no-shops-alert-theme';
 
 @mixin dsh-theme($theme) {
     @include dsh-home-theme($theme);
@@ -57,7 +57,6 @@
     @include dsh-percent-difference-theme($theme);
     @include dsh-stat-item-theme($theme);
     @include dsh-filter-theme($theme);
-    @include dsh-daterange-filter-theme($theme);
     @include dsh-date-range-filter-theme($theme);
     @include dsh-row-theme($theme);
     @include dsh-accordion-theme($theme);
@@ -71,4 +70,5 @@
     @include dsh-selection-theme($theme);
     @include dsh-link-theme($theme);
     @include dsh-alert-theme($theme);
+    @include dsh-no-shops-alert-theme($theme);
 }

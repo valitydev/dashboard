@@ -5,6 +5,7 @@ import { TranslocoModule } from '@ngneat/transloco';
 
 import { BalanceModule } from '@dsh/app/shared/components/balance/balance.module';
 import { ApiModelRefsModule } from '@dsh/app/shared/pipes';
+import { ButtonModule } from '@dsh/components/buttons';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { SpinnerModule } from '@dsh/components/indicators';
 import { AccordionModule, CardModule, RowModule } from '@dsh/components/layout';
@@ -33,6 +34,7 @@ import { PaymentsPanelsComponent } from './payments-panels.component';
         BalanceModule,
         PaymentStatusModule,
         ApiModelRefsModule,
+        ButtonModule,
     ],
     declarations: [PaymentsPanelsComponent, PaymentsRowHeaderComponent, PaymentsRowComponent],
     exports: [PaymentsPanelsComponent],
