@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { coerceBoolean } from '@dsh/utils';
 
 import { BrandName } from './brand-name';
+import { ConfigService } from '../../config';
 
 interface IconConfig {
     name: string;
@@ -19,6 +20,8 @@ export class BrandComponent {
     @Input() name: BrandName;
     @Input() @coerceBoolean inverted = false;
     @Input() navigationLink = '/';
+
+    constructor(private configService: ConfigService) {}
 
     get iconConfig(): IconConfig | null {
         switch (this.name) {
@@ -38,7 +41,10 @@ export class BrandComponent {
                     width: '168px',
                 };
             default:
-                return null;
+                return {
+                    name: 'logo',
+                    width: this.configService.theme.logo.width,
+                };
         }
     }
 }
