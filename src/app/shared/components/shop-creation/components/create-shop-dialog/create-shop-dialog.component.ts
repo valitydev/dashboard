@@ -6,6 +6,8 @@ import { Shop } from '@dsh/api-codegen/capi';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { SHOPS } from '@dsh/app/shared/components/inputs/shop-field';
 
+import { IntegrationService, IntegrationsEnum } from '../../../../../integration';
+import { PaymentInstitutionConfigService } from '../../../../../payment-institution-config';
 import { ShopType } from './types/shop-type';
 
 export interface CreateShopDialogData {
@@ -29,7 +31,25 @@ export class CreateShopDialogComponent {
     selectionConfirmed = false;
     shopType = ShopType;
 
-    constructor(public dialogRef: MatDialogRef<CreateShopDialogComponent, BaseDialogResponseStatus>) {}
+    integrationsEnum = IntegrationsEnum;
+
+    get integration(): IntegrationsEnum {
+        return this.integrationService.integration;
+    }
+
+    get residentPaymentInstitution(): number {
+        return this.paymentInstitutionConfigService.residentPaymentInstitution;
+    }
+
+    get nonResidentPaymentInstitution(): number {
+        return this.paymentInstitutionConfigService.nonResidentPaymentInstitution;
+    }
+
+    constructor(
+        public dialogRef: MatDialogRef<CreateShopDialogComponent, BaseDialogResponseStatus>,
+        private integrationService: IntegrationService,
+        private paymentInstitutionConfigService: PaymentInstitutionConfigService
+    ) {}
 
     onTypeChange(type: ShopType): void {
         this.selectedShopType = type;

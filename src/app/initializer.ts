@@ -2,7 +2,9 @@ import { KeycloakService } from './auth/keycloak';
 import { ConfigService } from './config';
 import { IconsService } from './icons';
 import { initSentry } from './init-sentry';
+import { IntegrationService } from './integration';
 import { LanguageService } from './language';
+import { PaymentInstitutionConfigService } from './payment-institution-config';
 import { ThemeManager } from './theme-manager';
 
 export const initializer =
@@ -11,12 +13,19 @@ export const initializer =
         keycloakService: KeycloakService,
         languageService: LanguageService,
         themeManager: ThemeManager,
-        iconsService: IconsService
+        iconsService: IconsService,
+        integrationService: IntegrationService,
+        paymentInstitutionConfigService: PaymentInstitutionConfigService
     ) =>
     () =>
         Promise.all([
             configService.init({ configUrl: '/appConfig.json' }).then(() =>
                 Promise.all([
+                    integrationService.init(configService.integration),
+                    paymentInstitutionConfigService.init(
+                        configService.residentPaymentInstitution,
+                        configService.nonResidentPaymentInstitution
+                    ),
                     themeManager.init(),
                     initSentry(configService.sentryDsn),
                     keycloakService.init({

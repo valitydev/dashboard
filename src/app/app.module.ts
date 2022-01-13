@@ -17,6 +17,7 @@ import { TRANSLOCO_CONFIG, TRANSLOCO_LOADER, TranslocoConfig, TranslocoModule } 
 import * as Sentry from '@sentry/angular';
 
 import { ErrorModule, KeycloakTokenInfoModule } from '@dsh/app/shared/services';
+import { ContextModule } from '@dsh/app/shared/services/context';
 import { QUERY_PARAMS_SERIALIZERS } from '@dsh/app/shared/services/query-params/utils/query-params-serializers';
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
 
@@ -29,7 +30,9 @@ import { ConfigModule, ConfigService } from './config';
 import { HomeModule } from './home';
 import { IconsModule, IconsService } from './icons';
 import { initializer } from './initializer';
+import { IntegrationModule, IntegrationService } from './integration';
 import { LanguageService } from './language';
+import { PaymentInstitutionConfigModule, PaymentInstitutionConfigService } from './payment-institution-config';
 import { SectionsModule } from './sections';
 import { SentryErrorHandler } from './sentry-error-handler.service';
 import { SentryHttpInterceptor } from './sentry-http-interceptor';
@@ -59,13 +62,25 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         KeycloakTokenInfoModule,
         FlexLayoutModule,
         MatDialogModule,
+        ContextModule,
+        IntegrationModule,
+        PaymentInstitutionConfigModule,
     ],
     providers: [
         LanguageService,
         {
             provide: APP_INITIALIZER,
             useFactory: initializer,
-            deps: [ConfigService, KeycloakService, LanguageService, ThemeManager, IconsService, Sentry.TraceService],
+            deps: [
+                ConfigService,
+                KeycloakService,
+                LanguageService,
+                ThemeManager,
+                IconsService,
+                IntegrationService,
+                PaymentInstitutionConfigService,
+                Sentry.TraceService,
+            ],
             multi: true,
         },
         {

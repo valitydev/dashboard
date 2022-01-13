@@ -1,10 +1,16 @@
 import { SectionLink } from '../model';
 
 export const createLinks = (
-    { claims, payments, wallets }: { [k: string]: string },
-    hasWallets: boolean
+    { claims, main, payments, wallets }: { [k: string]: string },
+    hasWallets: boolean,
+    hideMain: boolean = false
 ): SectionLink[] =>
     [
+        !hideMain && {
+            label: main,
+            path: '/',
+            exact: true,
+        },
         {
             label: payments,
             path: `/payment-section`,

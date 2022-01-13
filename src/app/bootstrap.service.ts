@@ -13,6 +13,7 @@ import {
     ClaimsService,
 } from '@dsh/api';
 import { CommonError, ErrorService, IdGeneratorService } from '@dsh/app/shared';
+import { ContextService } from '@dsh/app/shared/services/context';
 
 @UntilDestroy()
 @Injectable()
@@ -32,7 +33,8 @@ export class BootstrapService {
         private errorService: ErrorService,
         private organizationsService: OrganizationsService,
         private transloco: TranslocoService,
-        private idGenerator: IdGeneratorService
+        private idGenerator: IdGeneratorService,
+        private contextService: ContextService
     ) {}
 
     bootstrap(): void {
@@ -40,17 +42,17 @@ export class BootstrapService {
     }
 
     private getBootstrapped(): Observable<boolean> {
-        return concat(this.initParty(), this.initShop(), this.initOrganization()).pipe(
+        return concat(
+            defer(() => this.initOrganization()),
+            defer(() => this.initContext()),
+            defer(() => this.initShop())
+        ).pipe(
             takeLast(1),
             catchError((err) => {
                 this.errorService.error(new CommonError(this.transloco.translate('errors.bootstrapAppFailed')));
                 return throwError(err);
             })
         );
-    }
-
-    private initParty(): Observable<boolean> {
-        return this.capiPartiesService.getMyParty().pipe(mapTo(true));
     }
 
     private initOrganization(): Observable<boolean> {
@@ -88,5 +90,10 @@ export class BootstrapService {
                 )
             )
             .pipe(mapTo(true));
+    }
+
+    private initContext(): Observable<boolean> {
+        this.contextService.init();
+        return this.contextService.organization$.pipe(first(), mapTo(true));
     }
 }

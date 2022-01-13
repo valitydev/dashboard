@@ -11,6 +11,7 @@ import {
     StatusModificationUnit,
 } from '@dsh/api-codegen/claim-management';
 import { IdGeneratorService, KeycloakTokenInfoService } from '@dsh/app/shared';
+import { ContextService } from '@dsh/app/shared/services/context';
 import { mapResult, noContinuationToken } from '@dsh/operators';
 
 export const CLAIM_STATUS = StatusModificationUnit.StatusEnum;
@@ -20,7 +21,7 @@ export class ClaimsService {
     constructor(
         private claimsService: APIClaimsService,
         private idGenerator: IdGeneratorService,
-        private keycloakTokenInfoService: KeycloakTokenInfoService
+        private contextService: ContextService
     ) {}
 
     searchClaims(
@@ -29,12 +30,12 @@ export class ClaimsService {
         claimID?: number,
         continuationToken?: string
     ): Observable<InlineResponse200> {
-        return this.keycloakTokenInfoService.partyID$.pipe(
+        return this.contextService.organization$.pipe(
             first(),
-            switchMap((partyId) =>
+            switchMap((organization) =>
                 this.claimsService.searchClaims(
                     this.idGenerator.shortUuid(),
-                    partyId,
+                    organization.id,
                     limit,
                     undefined,
                     continuationToken,
@@ -50,26 +51,30 @@ export class ClaimsService {
     }
 
     getClaimByID(claimID: number): Observable<Claim> {
-        return this.keycloakTokenInfoService.partyID$.pipe(
+        return this.contextService.organization$.pipe(
             first(),
-            switchMap((partyId) => this.claimsService.getClaimByID(this.idGenerator.shortUuid(), partyId, claimID))
+            switchMap((organization) =>
+                this.claimsService.getClaimByID(this.idGenerator.shortUuid(), organization.id, claimID)
+            )
         );
     }
 
     createClaim(changeset: Modification[]): Observable<Claim> {
-        return this.keycloakTokenInfoService.partyID$.pipe(
+        return this.contextService.organization$.pipe(
             first(),
-            switchMap((partyId) => this.claimsService.createClaim(this.idGenerator.shortUuid(), partyId, changeset))
+            switchMap((organization) =>
+                this.claimsService.createClaim(this.idGenerator.shortUuid(), organization.id, changeset)
+            )
         );
     }
 
     updateClaimByID(claimID: number, claimRevision: number, changeset: Modification[]): Observable<void> {
-        return this.keycloakTokenInfoService.partyID$.pipe(
+        return this.contextService.organization$.pipe(
             first(),
-            switchMap((partyId) =>
+            switchMap((organization) =>
                 this.claimsService.updateClaimByID(
                     this.idGenerator.shortUuid(),
-                    partyId,
+                    organization.id,
                     claimID,
                     claimRevision,
                     changeset
@@ -79,12 +84,12 @@ export class ClaimsService {
     }
 
     revokeClaimByID(claimID: number, claimRevision: number, reason: Reason): Observable<void> {
-        return this.keycloakTokenInfoService.partyID$.pipe(
+        return this.contextService.organization$.pipe(
             first(),
-            switchMap((partyId) =>
+            switchMap((organization) =>
                 this.claimsService.revokeClaimByID(
                     this.idGenerator.shortUuid(),
-                    partyId,
+                    organization.id,
                     claimID,
                     claimRevision,
                     undefined,
@@ -95,10 +100,15 @@ export class ClaimsService {
     }
 
     requestReviewClaimByID(claimID: number, claimRevision: number): Observable<void> {
-        return this.keycloakTokenInfoService.partyID$.pipe(
+        return this.contextService.organization$.pipe(
             first(),
-            switchMap((partyId) =>
-                this.claimsService.requestReviewClaimByID(this.idGenerator.shortUuid(), partyId, claimID, claimRevision)
+            switchMap((organization) =>
+                this.claimsService.requestReviewClaimByID(
+                    this.idGenerator.shortUuid(),
+                    organization.id,
+                    claimID,
+                    claimRevision
+                )
             )
         );
     }

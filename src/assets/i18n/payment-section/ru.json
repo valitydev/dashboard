@@ -77,5 +77,8 @@
             "payment-link": "ПЛАТЕЖНАЯ ССЫЛКА",
             "api-key": "API КЛЮЧ"
         }
+    },
+    "shops": {
+        "headline": "Магазины"
     }
 }

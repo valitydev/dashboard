@@ -11,7 +11,11 @@
     <h2 class="dsh-title">{{ t('organization') }}</h2>
 
     <dsh-created-existing-switch formGroupName="orgDetails" [form]="formControl.controls.orgDetails">
-        <dsh-new-contractor-form *dshCreatedCase formControlName="created"></dsh-new-contractor-form>
+        <dsh-new-contractor-form
+            *dshCreatedCase
+            [integration]="integration"
+            formControlName="created"
+        ></dsh-new-contractor-form>
         <dsh-existing-contract-form
             *dshExistingCase
             formControlName="existing"
@@ -21,12 +25,14 @@
 
     <mat-divider></mat-divider>
 
-    <dsh-payment-institution-field
-        [label]="t('paymentInstitution')"
-        formControlName="paymentInstitution"
-    ></dsh-payment-institution-field>
+    <ng-container *ngIf="!paymentInstitution">
+        <dsh-payment-institution-field
+            [label]="t('paymentInstitution')"
+            formControlName="paymentInstitution"
+        ></dsh-payment-institution-field>
 
-    <mat-divider></mat-divider>
+        <mat-divider></mat-divider>
+    </ng-container>
 
     <h2 class="dsh-title">{{ t('payoutToolTitle') }}</h2>
 
@@ -34,6 +40,7 @@
         <dsh-international-bank-account-form
             *dshCreatedCase
             formControlName="created"
+            [integration]="integration"
         ></dsh-international-bank-account-form>
         <dsh-existing-bank-account
             *dshExistingCase

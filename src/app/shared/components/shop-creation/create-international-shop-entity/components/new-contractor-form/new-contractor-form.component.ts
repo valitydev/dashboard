@@ -1,16 +1,15 @@
-import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
-import { FormBuilder, FormControl } from '@ngneat/reactive-forms';
+import { ChangeDetectionStrategy, Component, Injector, Input, OnInit } from '@angular/core';
+import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy } from '@ngneat/until-destroy';
 
-import { createValidatedAbstractControlProviders, ValidatedWrappedAbstractControlSuperclass } from '@dsh/utils';
+import {
+    createValidatedAbstractControlProviders,
+    ValidatedWrappedAbstractControlSuperclass,
+    RequiredSuper,
+} from '@dsh/utils';
 
-export interface NewContractorForm {
-    organizationName: string;
-    tradingName: string;
-    registeredAddress: string;
-    actualAddress: string;
-    country: string;
-}
+import { IntegrationsEnum } from '../../../../../../integration';
+import { ContractorForm } from '../../types/contractor-form';
 
 @UntilDestroy()
 @Component({
@@ -19,17 +18,37 @@ export interface NewContractorForm {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createValidatedAbstractControlProviders(NewContractorFormComponent),
 })
-export class NewContractorFormComponent extends ValidatedWrappedAbstractControlSuperclass<NewContractorForm> {
-    formControl = this.fb.group<NewContractorForm>({
+export class NewContractorFormComponent
+    extends ValidatedWrappedAbstractControlSuperclass<ContractorForm>
+    implements OnInit
+{
+    @Input() integration?: IntegrationsEnum;
+
+    formControl = this.fb.group<ContractorForm>({
+        registeredNumber: '',
         organizationName: '',
         tradingName: '',
         registeredAddress: '',
         actualAddress: '',
         country: '',
     });
-    searchControl = new FormControl<string>('');
+
+    get showRegisteredNumber(): boolean {
+        return this.integration === IntegrationsEnum.Xpay;
+    }
+
+    get hideCountry(): boolean {
+        return this.integration === IntegrationsEnum.Xpay;
+    }
 
     constructor(injector: Injector, private fb: FormBuilder) {
         super(injector);
+    }
+
+    ngOnInit(): RequiredSuper {
+        if (this.integration === IntegrationsEnum.Xpay) {
+            this.formControl.controls['country'].patchValue('BYN');
+        }
+        return super.ngOnInit();
     }
 }

@@ -14,5 +14,7 @@
     },
     "sentryDsn": null,
     "keycloakEndpoint": "https://auth.rbk.money",
-    "fileStorageEndpoint": "https://storage.rbk.money/files"
+    "fileStorageEndpoint": "https://storage.rbk.money/files",
+    "residentPaymentInstitution": null,
+    "nonResidentPaymentInstitution": null
 }
