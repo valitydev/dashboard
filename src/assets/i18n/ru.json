@@ -148,6 +148,7 @@
     },
     "claimStatus": {
         "pending": "В ожидании",
+        "pendingAcceptance": "В ожидании одобрения",
         "review": "На рассмотрении",
         "revoked": "Отозвана",
         "denied": "Отклонена",

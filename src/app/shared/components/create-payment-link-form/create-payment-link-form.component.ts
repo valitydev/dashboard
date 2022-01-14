@@ -5,10 +5,10 @@ import { FormBuilder } from '@ngneat/reactive-forms';
 import { FbGroupConfig } from '@ngneat/reactive-forms/lib/formBuilder';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { ComponentChanges } from '@dsh/type-utils';
 
 import { BankCard, PaymentMethod, PaymentTerminal } from '@dsh/api-codegen/capi';
 import { PaymentLinkParams } from '@dsh/app/shared/services/create-payment-link/types/payment-link-params';
+import { ComponentChanges } from '@dsh/type-utils';
 import { createValidatedAbstractControlProviders, ValidatedWrappedAbstractControlSuperclass } from '@dsh/utils';
 
 import { HoldExpiration } from '../../services/create-payment-link/types/hold-expiration';

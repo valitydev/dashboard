@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
-import { FetchResult, PartialFetcher } from '@dsh/app/shared';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 
 import { Claim } from '@dsh/api-codegen/claim-management/swagger-codegen';
 import { ClaimsService } from '@dsh/api/claims';
+import { FetchResult, PartialFetcher } from '@dsh/app/shared';
 import { booleanDebounceTime, mapToTimestamp } from '@dsh/operators';
 
 import { ClaimsSearchFiltersSearchParams } from '../../claims-search-filters/claims-search-filters-search-params';

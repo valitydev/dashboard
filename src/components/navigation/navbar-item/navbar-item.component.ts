@@ -1,11 +1,11 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { OnChanges, ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { MatSlideToggle, MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { ComponentChanges } from '@dsh/type-utils';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
 import { BootstrapIconSize } from '@dsh/components/indicators/bootstrap-icon';
+import { ComponentChanges } from '@dsh/type-utils';
 
 @Component({
     selector: 'dsh-navbar-item',

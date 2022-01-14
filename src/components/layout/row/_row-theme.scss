@@ -1,4 +1,4 @@
-@use '~@angular/material' as mat;
+@use '@angular/material' as mat;
 
 @mixin dsh-row-theme($theme) {
     $background: map-get($theme, background);

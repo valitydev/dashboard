@@ -11,6 +11,9 @@ import { CONFIGS, Type } from './configs';
     styleUrls: ['format-input.component.scss'],
     providers: [{ provide: MatFormFieldControl, useExisting: FormatInputComponent }],
 })
+/**
+ * @deprecated
+ */
 export class FormatInputComponent extends CustomFormControl {
     mask: TextMaskConfig;
     prefix = '';

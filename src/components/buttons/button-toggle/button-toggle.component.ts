@@ -24,7 +24,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatButtonToggleGroup } from '@angular/material/button-toggle';
-import { CanDisableRippleCtor, mixinDisableRipple } from '@angular/material/core';
+import { mixinDisableRipple } from '@angular/material/core';
 
 export type ToggleType = 'checkbox' | 'radio';
 
@@ -300,8 +300,7 @@ export class ButtonToggleGroupDirective implements ControlValueAccessor, OnInit,
 /** @docs-private */
 class MatButtonToggleBase {}
 // eslint-disable-next-line @typescript-eslint/naming-convention
-const _MatButtonToggleMixinBase: CanDisableRippleCtor & typeof MatButtonToggleBase =
-    mixinDisableRipple(MatButtonToggleBase);
+const _MatButtonToggleMixinBase = mixinDisableRipple(MatButtonToggleBase);
 
 /** Single button inside of a toggle group. */
 @Component({

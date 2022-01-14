@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
-import { DEBOUNCE_FETCHER_ACTION_TIME, DEFAULT_FETCHER_DEBOUNCE_ACTION_TIME } from '@dsh/app/shared';
 
 import { ShopModule } from '@dsh/api/shop';
 import { WalletModule } from '@dsh/api/wallet';
+import { DEBOUNCE_FETCHER_ACTION_TIME, DEFAULT_FETCHER_DEBOUNCE_ACTION_TIME } from '@dsh/app/shared';
 
 import { CHARTS_THEME } from './payment-section/analytics/charts-theme';
 import { SectionsRoutingModule } from './sections-routing.module';

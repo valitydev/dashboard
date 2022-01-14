@@ -1,9 +1,9 @@
 <dsh-card fxLayout="column" fxLayoutGap="24px">
     <dsh-create-invoice-or-invoice-template
-        *ngIf="currentStep === step.InvoiceTemplate"
+        *ngIf="(currentStep$ | async) === step.InvoiceTemplate"
         (next)="nextInvoiceOrInvoiceTemplate($event)"
     ></dsh-create-invoice-or-invoice-template>
-    <div fxLayout="column" fxLayoutGap="32px" *ngIf="currentStep === step.PaymentLink">
+    <div fxLayout="column" fxLayoutGap="32px" *ngIf="(currentStep$ | async) === step.PaymentLink">
         <ng-container *transloco="let c; scope: 'create-payment-link'; read: 'createPaymentLink'">
             <h1 class="dsh-headline">
                 {{ c('title') }}
@@ -18,7 +18,7 @@
                     <button
                         dsh-text-button
                         color="accent"
-                        (click)="currentStep = step.InvoiceTemplate"
+                        (click)="currentStep$.next(step.InvoiceTemplate)"
                         [disabled]="inProgress$ | async"
                     >
                         {{ t('back') }}

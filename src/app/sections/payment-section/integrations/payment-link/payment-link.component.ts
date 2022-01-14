@@ -28,7 +28,7 @@ enum Step {
 })
 export class PaymentLinkComponent {
     step = Step;
-    currentStep = Step.InvoiceTemplate;
+    currentStep$ = new BehaviorSubject(Step.InvoiceTemplate);
     invoiceOrInvoiceTemplate: InvoiceOrInvoiceTemplate;
 
     paymentMethods$ = new ReplaySubject<PaymentMethod[]>(1);
@@ -69,7 +69,7 @@ export class PaymentLinkComponent {
                   )
         ).subscribe((paymentMethods) => {
             this.paymentMethods$.next(paymentMethods);
-            this.currentStep = Step.PaymentLink;
+            this.currentStep$.next(Step.PaymentLink);
             this.invoiceOrInvoiceTemplate = invoiceOrInvoiceTemplate;
         });
     }

@@ -1,5 +1,4 @@
 import { Inject, Injectable } from '@angular/core';
-import { PartialFetcher } from '@dsh/app/shared';
 import isEmpty from 'lodash-es/isEmpty';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
@@ -7,6 +6,7 @@ import { shareReplay } from 'rxjs/operators';
 import { InlineResponse20013, Report } from '@dsh/api-codegen/anapi';
 import { ReportsService as ReportsApiService } from '@dsh/api/reports';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
+import { PartialFetcher } from '@dsh/app/shared';
 import { booleanDebounceTime, mapToTimestamp } from '@dsh/operators';
 
 import { SearchFiltersParams } from './reports-search-filters';

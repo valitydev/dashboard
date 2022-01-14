@@ -1,11 +1,11 @@
 import { Inject, Injectable } from '@angular/core';
-import { DEBOUNCE_FETCHER_ACTION_TIME, FetchResult, PartialFetcher } from '@dsh/app/shared';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 
 import { OrganizationsService } from '@dsh/api';
 import { Organization } from '@dsh/api-codegen/organizations';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
+import { DEBOUNCE_FETCHER_ACTION_TIME, FetchResult, PartialFetcher } from '@dsh/app/shared';
 import { mapToTimestamp } from '@dsh/operators';
 
 @Injectable()

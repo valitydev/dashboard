@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnChanges } from '@angular/core';
-import { ComponentChanges } from '@dsh/type-utils';
 
 import { SpinnerType } from '@dsh/components/indicators';
+import { ComponentChanges } from '@dsh/type-utils';
 
 import { ChartsThemeProvider, CHARTS_THEME } from '../charts-theme';
 import { SearchParams } from '../search-params';

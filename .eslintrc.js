@@ -1,4 +1,4 @@
-const rules = require('@rbkmoney/eslint-plugin/lib/rules');
+const rules = require('./tools/eslint-config/rules');
 
 const baseTsRules = {
     parserOptions: {
@@ -6,10 +6,10 @@ const baseTsRules = {
         createDefaultProgram: true,
     },
     extends: [
-        'plugin:@rbkmoney/typescript',
-        'plugin:@rbkmoney/angular',
-        'plugin:@rbkmoney/lodash',
-        'plugin:@rbkmoney/prettier',
+        './tools/eslint-config/typescript',
+        './tools/eslint-config/angular',
+        './tools/eslint-config/lodash',
+        'prettier',
     ],
     rules: {
         ...rules.createImportOrderRule({ internalPathsPattern: '@dsh/**' }),
@@ -22,6 +22,7 @@ const baseTsRules = {
         '@typescript-eslint/unbound-method': 'warn',
         '@typescript-eslint/restrict-plus-operands': 'warn',
         '@typescript-eslint/restrict-template-expressions': 'warn',
+        '@typescript-eslint/no-unsafe-argument': 'warn',
     },
 };
 
@@ -43,7 +44,7 @@ module.exports = {
         {
             ...baseTsRules,
             files: ['*.spec.ts'],
-            extends: [...baseTsRules.extends, 'plugin:@rbkmoney/jasmine'],
+            extends: [...baseTsRules.extends, './tools/eslint-config/jasmine'],
         },
         {
             files: ['*.html'],

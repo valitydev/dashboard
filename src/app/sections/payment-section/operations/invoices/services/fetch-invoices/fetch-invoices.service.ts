@@ -1,10 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
-import { FetchResult, PartialFetcher } from '@dsh/app/shared';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 
 import { Invoice } from '@dsh/api-codegen/anapi';
 import { InvoiceSearchService } from '@dsh/api/search';
+import { FetchResult, PartialFetcher } from '@dsh/app/shared';
 import { booleanDebounceTime, mapToTimestamp } from '@dsh/operators';
 
 import { SEARCH_LIMIT } from '../../../../../tokens';
