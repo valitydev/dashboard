@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 
 import {
     InvoiceTemplateCreateParams,
     InvoiceTemplatesService as InvoiceTemplatesApiService,
 } from '@dsh/api-codegen/capi';
+import { IdGeneratorService } from '@dsh/app/shared';
 
 @Injectable()
 export class InvoiceTemplatesService {

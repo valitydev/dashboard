@@ -12,7 +12,7 @@ import { combineLatest, defer, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Shop } from '@dsh/api-codegen/anapi/swagger-codegen';
-import { createDateRangeWithPreset, Preset, DateRangeWithPreset } from '@dsh/components/filters/date-range-filter';
+import { createDateRangeWithPreset, Preset, DateRangeWithPreset } from '@dsh/components/date-range-filter';
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 

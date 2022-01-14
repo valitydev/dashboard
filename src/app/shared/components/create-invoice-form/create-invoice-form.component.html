@@ -72,7 +72,7 @@
                 fxLayoutAlign.gt-sm=" end"
                 *ngIf="form.controls.cart.controls.length > 1"
             >
-                <button dsh-stroked-button color="warn" (click)="removeCartItem(idx)">
+                <button dsh-text-button color="warn" (click)="removeCartItem(idx)">
                     {{ d('remove') }}
                 </button>
             </div>
@@ -90,7 +90,7 @@
         <div>
             <h2 class="dsh-subheading-1 total-amount">{{ d('totalAmount') }} {{ totalAmount$ | async }}</h2>
         </div>
-        <button dsh-stroked-button color="accent" (click)="addCartItem()">
+        <button dsh-text-button color="accent" (click)="addCartItem()">
             {{ d('addProduct') }}
         </button>
     </div>

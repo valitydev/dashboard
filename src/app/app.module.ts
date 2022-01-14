@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { APP_INITIALIZER, ErrorHandler, LOCALE_ID, NgModule, PLATFORM_ID } from '@angular/core';
+import { APP_INITIALIZER, ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
     MAT_MOMENT_DATE_ADAPTER_OPTIONS,
@@ -8,6 +8,7 @@ import {
     MomentDateAdapter,
 } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,7 +18,7 @@ import * as Sentry from '@sentry/angular';
 
 import { ErrorModule, KeycloakTokenInfoModule } from '@dsh/app/shared/services';
 import { QUERY_PARAMS_SERIALIZERS } from '@dsh/app/shared/services/query-params/utils/query-params-serializers';
-import { createDateRangeWithPresetSerializer } from '@dsh/components/filters/date-range-filter';
+import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
 
 import { ENV, environment } from '../environments';
 import { OrganizationsModule } from './api';
@@ -25,7 +26,6 @@ import { ApiCodegenModule } from './api-codegen';
 import { AppComponent } from './app.component';
 import { AuthModule, KeycloakAngularModule, KeycloakService } from './auth';
 import { ConfigModule, ConfigService } from './config';
-import { FeedbackModule } from './feedback';
 import { HomeModule } from './home';
 import { IconsModule, IconsService } from './icons';
 import { initializer } from './initializer';
@@ -36,7 +36,6 @@ import { SentryHttpInterceptor } from './sentry-http-interceptor';
 import { SettingsModule } from './settings';
 import { ThemeManager, ThemeManagerModule } from './theme-manager';
 import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
-import { YandexMetrikaConfigService, YandexMetrikaModule } from './yandex-metrika';
 
 @NgModule({
     declarations: [AppComponent],
@@ -54,29 +53,19 @@ import { YandexMetrikaConfigService, YandexMetrikaModule } from './yandex-metrik
         KeycloakAngularModule,
         HttpClientModule,
         TranslocoModule,
-        YandexMetrikaModule,
         ErrorModule,
         OrganizationsModule,
-        FeedbackModule,
         IconsModule,
         KeycloakTokenInfoModule,
         FlexLayoutModule,
+        MatDialogModule,
     ],
     providers: [
         LanguageService,
         {
             provide: APP_INITIALIZER,
             useFactory: initializer,
-            deps: [
-                ConfigService,
-                KeycloakService,
-                LanguageService,
-                YandexMetrikaConfigService,
-                PLATFORM_ID,
-                ThemeManager,
-                IconsService,
-                Sentry.TraceService,
-            ],
+            deps: [ConfigService, KeycloakService, LanguageService, ThemeManager, IconsService, Sentry.TraceService],
             multi: true,
         },
         {

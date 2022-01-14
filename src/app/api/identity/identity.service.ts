@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 import { Observable, Subject } from 'rxjs';
 import { pluck, shareReplay, startWith, switchMapTo } from 'rxjs/operators';
 
 import { IdentitiesService, Identity } from '@dsh/api-codegen/wallet-api/swagger-codegen';
+import { IdGeneratorService } from '@dsh/app/shared';
 
 import { SHARE_REPLAY_CONF } from '../../custom-operators';
 

@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@ngneat/reactive-forms';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 import isNil from 'lodash-es/isNil';
 import { combineLatest, Observable, of, Subject, throwError } from 'rxjs';
 import { catchError, filter, map, mapTo, pluck, switchMap } from 'rxjs/operators';
@@ -21,6 +20,7 @@ import {
 } from '@dsh/api/claims';
 import { KonturFocusService } from '@dsh/api/kontur-focus';
 import { QuestionaryService } from '@dsh/api/questionary';
+import { IdGeneratorService } from '@dsh/app/shared';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 import { shareReplayRefCount } from '@dsh/operators';
 

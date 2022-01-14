@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 import { defer, Observable, Subject } from 'rxjs';
 import { startWith, switchMapTo } from 'rxjs/operators';
 
 import { Shop } from '@dsh/api-codegen/capi';
 import { ShopsService } from '@dsh/api-codegen/capi/shops.service';
+import { IdGeneratorService } from '@dsh/app/shared';
 import { shareReplayRefCount } from '@dsh/operators';
 
 @Injectable()

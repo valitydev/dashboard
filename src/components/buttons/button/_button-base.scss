@@ -1,14 +1,12 @@
-$dsh-size-md: 32px;
+$dsh-size-md: 40px;
 $dsh-size-lg: 48px;
 
 // Basic button standards
 $dsh-button-min-width: 64px !default;
 $dsh-button-margin: 0 !default;
 $dsh-button-line-height: $dsh-size-md !default;
-$dsh-button-padding: 0 16px !default;
+$dsh-button-padding: 0 24px !default;
 $dsh-button-border-radius: 24px !default;
-
-$dsh-stroked-button-border-width: 1px;
 
 // Icon Button standards
 $dsh-icon-button-size: $dsh-size-md !default;
@@ -33,11 +31,6 @@ $dsh-icon-button-line-height: 24px !default;
 
 @mixin dsh-button-size($size) {
     line-height: $size;
-}
-
-@mixin dsh-stroked-button-size($size) {
-    // Stroked button padding is 2px less horizontally than default button's padding.
-    line-height: $size - 4;
 }
 
 @mixin dsh-icon-button-size($size) {

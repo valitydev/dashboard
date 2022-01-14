@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
-import { progress } from '@rbkmoney/utils';
 import sortBy from 'lodash-es/sortBy';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, map, shareReplay, switchMap } from 'rxjs/operators';
@@ -9,7 +8,8 @@ import { catchError, filter, map, shareReplay, switchMap } from 'rxjs/operators'
 import { Webhook } from '@dsh/api-codegen/capi';
 import { WebhooksService } from '@dsh/api/webhooks';
 
-import { booleanDebounceTime, mapToTimestamp, SHARE_REPLAY_CONF } from '../../../../custom-operators';
+import { booleanDebounceTime, mapToTimestamp, SHARE_REPLAY_CONF, progress } from '../../../../custom-operators';
+
 @Injectable()
 export class ReceiveWebhooksService {
     private webhooksState$: BehaviorSubject<Webhook[]> = new BehaviorSubject(null);

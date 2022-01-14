@@ -4,7 +4,6 @@
     $primary: map-get($theme, primary);
 
     .dsh-alert {
-        background-color: mat.get-color-from-palette($primary, 50);
-        border-color: mat.get-color-from-palette($primary, 400);
+        background-color: mat.get-color-from-palette($primary, default, 0.12);
     }
 }

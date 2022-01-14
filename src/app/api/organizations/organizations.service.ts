@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 import { Observable } from 'rxjs';
 
 import {
@@ -23,6 +22,7 @@ import {
     RolesService,
     InvitationStatusName,
 } from '@dsh/api-codegen/organizations';
+import { IdGeneratorService } from '@dsh/app/shared';
 import { PickMutable } from '@dsh/type-utils';
 
 @Injectable()

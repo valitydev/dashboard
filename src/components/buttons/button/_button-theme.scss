@@ -1,13 +1,7 @@
 @use '~@angular/material' as mat;
-@import '../../../styles/utils/fill';
 
 @mixin button($text-color, $background-color) {
     background: $background-color;
-    color: $text-color;
-}
-
-@mixin stroked-button($text-color, $border-color) {
-    border: solid $border-color 2px;
     color: $text-color;
 }
 
@@ -26,7 +20,7 @@
 
     .dsh {
         &-button,
-        &-stroked-button,
+        &-text-button,
         &-icon-button {
             background: transparent;
             color: map-get($foreground, text);
@@ -37,24 +31,31 @@
         }
 
         &-button {
-            &:hover {
-                background: mat.get-color-from-palette($background, hover);
-            }
-            @include focused-background(map-get($background, selected-button));
-
             &.dsh-primary {
                 @include button(map-get($background, card), mat.get-color-from-palette($primary, default));
-                @include focused-background(mat.get-color-from-palette($primary, 300));
+                @include focused-background(mat.get-color-from-palette($primary, default, 0.88));
+
+                &:hover:not(:disabled) {
+                    background: mat.get-color-from-palette($primary, default, 0.88) !important;
+                }
             }
 
             &.dsh-accent {
                 @include button(map-get($background, card), mat.get-color-from-palette($accent, default));
-                @include focused-background(mat.get-color-from-palette($accent, 200));
+                @include focused-background(mat.get-color-from-palette($primary, default, 0.88));
+
+                &:hover:not(:disabled) {
+                    background: mat.get-color-from-palette($primary, default, 0.88) !important;
+                }
             }
 
             &.dsh-warn {
                 @include button(map-get($background, card), mat.get-color-from-palette($warn, 400));
-                @include focused-background(mat.get-color-from-palette($warn, 300));
+                @include focused-background(mat.get-color-from-palette($warn, default, 0.88));
+
+                &:hover:not(:disabled) {
+                    background: mat.get-color-from-palette($warn, default, 0.88) !important;
+                }
             }
 
             &:disabled {
@@ -62,31 +63,36 @@
             }
         }
 
-        &-stroked-button {
+        &-text-button {
             &.dsh-primary {
-                @include stroked-button(
-                    mat.get-color-from-palette($primary, default),
-                    mat.get-color-from-palette($primary, default)
-                );
-                @include focused-background(rgba(mat.get-color-from-palette($primary, 300), 0.1));
+                @include button(mat.get-color-from-palette($primary, default), transparent);
+                @include focused-background(mat.get-color-from-palette($primary, default, 0.12));
+
+                &:hover:not(:disabled) {
+                    background: mat.get-color-from-palette($primary, default, 0.2) !important;
+                }
             }
 
             &.dsh-accent {
-                @include stroked-button(
-                    mat.get-color-from-palette($accent, default),
-                    mat.get-color-from-palette($accent, default)
-                );
-                @include focused-background(rgba(mat.get-color-from-palette($accent, 200), 0.1));
+                @include button(mat.get-color-from-palette($primary, default), transparent);
+                @include focused-background(mat.get-color-from-palette($primary, default, 0.12));
+
+                &:hover:not(:disabled) {
+                    background: mat.get-color-from-palette($primary, default, 0.2) !important;
+                }
             }
 
             &.dsh-warn {
-                @include stroked-button(mat.get-color-from-palette($warn, 400), mat.get-color-from-palette($warn, 400));
-                @include focused-background(rgba(mat.get-color-from-palette($warn, 300), 0.1));
+                @include button(mat.get-color-from-palette($warn, 400), transparent);
+                @include focused-background(mat.get-color-from-palette($warn, default, 0.88));
+
+                &:hover:not(:disabled) {
+                    background: mat.get-color-from-palette($warn, default, 0.2) !important;
+                }
             }
 
             &:disabled {
-                border-color: map-get($foreground, disabled-button);
-                color: map-get($foreground, disabled-button);
+                @include button(map-get($foreground, disabled-button), transparent);
             }
         }
 
@@ -118,7 +124,7 @@
 @mixin dsh-button-typography($config) {
     .dsh {
         &-button,
-        &-stroked-button,
+        &-text-button,
         &-icon-button {
             font: {
                 family: mat.font-family($config, button);

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 import { Observable } from 'rxjs';
 import { mapTo, switchMap } from 'rxjs/operators';
 
@@ -12,6 +11,7 @@ import {
     makeShopLocation,
 } from '@dsh/api/claims/claim-party-modification';
 import { createInternationalContractPayoutToolModification } from '@dsh/api/claims/claim-party-modification/claim-contract-modification/create-international-contract-payout-tool-modification';
+import { IdGeneratorService } from '@dsh/app/shared';
 
 import { InternationalShopEntityFormValue } from '../../types/international-shop-entity-form-value';
 import {

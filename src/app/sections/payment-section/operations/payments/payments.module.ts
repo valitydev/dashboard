@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatDialogModule } from '@angular/material/dialog';
 import { TRANSLOCO_SCOPE } from '@ngneat/transloco';
 
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
@@ -22,6 +23,7 @@ import { PaymentsComponent } from './payments.component';
         PaymentsPanelsModule,
         FlexLayoutModule,
         NotificationModule,
+        MatDialogModule,
     ],
     declarations: [PaymentsComponent],
     providers: [

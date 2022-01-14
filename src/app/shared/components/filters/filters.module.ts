@@ -2,9 +2,8 @@ import { NgModule } from '@angular/core';
 
 import { CurrencyFilterModule } from './currency-filter';
 import { InvoicesFilterModule } from './invoices-filter';
-import { QueryFilterModule } from './query-filter';
 
-const EXPORTED_MODULES = [CurrencyFilterModule, InvoicesFilterModule, QueryFilterModule];
+const EXPORTED_MODULES = [CurrencyFilterModule, InvoicesFilterModule];
 
 @NgModule({
     imports: EXPORTED_MODULES,

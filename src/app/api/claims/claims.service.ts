@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 import { Observable } from 'rxjs';
 import { first, switchMap } from 'rxjs/operators';
 
 import {
     Claim,
     ClaimsService as APIClaimsService,
-    InlineResponse200,
     Modification,
     Reason,
     StatusModificationUnit,
 } from '@dsh/api-codegen/claim-management';
-import { KeycloakTokenInfoService } from '@dsh/app/shared';
+import { IdGeneratorService, KeycloakTokenInfoService } from '@dsh/app/shared';
 import { mapResult, noContinuationToken } from '@dsh/operators';
 
 export const CLAIM_STATUS = StatusModificationUnit.StatusEnum;
@@ -29,7 +27,7 @@ export class ClaimsService {
         claimStatuses?: StatusModificationUnit.StatusEnum[],
         claimID?: number,
         continuationToken?: string
-    ): Observable<InlineResponse200> {
+    ) {
         return this.claimsService.searchClaims(
             this.idGenerator.shortUuid(),
             limit,

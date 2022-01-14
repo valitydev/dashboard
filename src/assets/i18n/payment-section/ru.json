@@ -14,17 +14,15 @@
         "title": "Доступные средства"
     },
     "operations": {
-        "headline": "Операции",
         "tabs": {
-            "payments": "Платежи",
-            "refunds": "Возвраты",
-            "invoices": "Инвойсы"
+            "payments": "ПЛАТЕЖИ",
+            "refunds": "ВОЗВРАТЫ",
+            "invoices": "ИНВОЙСЫ"
         }
     },
     "analytics": {
         "allShops": "Все магазины",
         "shop": "Магазин",
-        "headline": "Аналитика",
         "paymentsCount": "Количество платежей",
         "paymentsAmount": "Оборот",
         "paymentTools": "Платежные инструменты",
@@ -74,11 +72,10 @@
         }
     },
     "integrations": {
-        "headline": "Интеграция",
         "tabs": {
-            "webhooks": "Webhooks",
-            "payment-link": "Платежная ссылка",
-            "api-key": "API ключ"
+            "webhooks": "WEBHOOKS",
+            "payment-link": "ПЛАТЕЖНАЯ ССЫЛКА",
+            "api-key": "API КЛЮЧ"
         }
     }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
-import { progress } from '@rbkmoney/utils';
+import { progress } from '../../../../../custom-operators';
 import { combineLatest, merge, Observable, Subject } from 'rxjs';
 import { map, share, shareReplay, switchMap } from 'rxjs/operators';
 

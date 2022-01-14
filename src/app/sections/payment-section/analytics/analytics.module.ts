@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@ngneat/transloco';
 
@@ -47,6 +48,7 @@ import { RefundsAmountModule } from './refunds-amount';
         PaymentSplitAmountModule,
         PaymentsErrorDistributionModule,
         AnalyticsSearchFiltersModule,
+        MatDialogModule,
     ],
     declarations: [AnalyticsComponent],
 })

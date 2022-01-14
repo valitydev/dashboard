@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 import { Observable, of } from 'rxjs';
 import { catchError, map, pluck, shareReplay } from 'rxjs/operators';
 
@@ -10,6 +9,7 @@ import {
     WalletAccount,
     InlineResponse2006,
 } from '@dsh/api-codegen/wallet-api';
+import { IdGeneratorService } from '@dsh/app/shared';
 
 import { SHARE_REPLAY_CONF } from '../../custom-operators';
 import { WalletsSearchParams } from './wallets-search-params';

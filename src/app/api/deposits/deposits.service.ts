@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 
 import { DepositsService as ApiDepositsService } from '@dsh/api-codegen/wallet-api/swagger-codegen';
+import { IdGeneratorService } from '@dsh/app/shared';
 
 import { toDateLike } from '../utils';
 import { DepositsSearchParams } from './deposits-search-params';

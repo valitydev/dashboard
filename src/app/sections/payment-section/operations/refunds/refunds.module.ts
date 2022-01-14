@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -45,6 +46,7 @@ import { RefundsComponent } from './refunds.component';
         RefundsListModule,
         RefundsSearchFiltersModule,
         ShowMorePanelModule,
+        MatDialogModule,
     ],
     declarations: [RefundsComponent],
     providers: [{ provide: TRANSLOCO_SCOPE, useValue: 'main' }],

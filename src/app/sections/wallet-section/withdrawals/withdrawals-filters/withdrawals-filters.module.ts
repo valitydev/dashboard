@@ -5,9 +5,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TranslocoModule } from '@ngneat/transloco';
 
+import { DateRangeFilterModule } from '@dsh/components/date-range-filter';
 import { FilterModule } from '@dsh/components/filter';
 import { FiltersGroupModule } from '@dsh/components/filters-group';
-import { DateRangeFilterModule } from '@dsh/components/filters/date-range-filter';
 
 import { AdditionalFiltersModule } from './additional-filters';
 import { WithdrawalsFiltersComponent } from './withdrawals-filters.component';

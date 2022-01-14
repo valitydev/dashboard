@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 import { Observable } from 'rxjs';
 
 import { Webhook, WebhooksService as ApiWebhooksService } from '@dsh/api-codegen/wallet-api';
+import { IdGeneratorService } from '@dsh/app/shared';
 
 @Injectable()
 export class WalletWebhooksService {

@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 import { forkJoin, Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
 import { FilesService as FilesApiService } from '@dsh/api-codegen/dark-api';
 import { FileData, FileDownload, FileUploadData } from '@dsh/api-codegen/dark-api/swagger-codegen';
+import { IdGeneratorService } from '@dsh/app/shared';
 
 @Injectable()
 export class FilesService {

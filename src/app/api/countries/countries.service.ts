@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 import sortBy from 'lodash-es/sortBy';
 import { Observable, of } from 'rxjs';
 import { catchError, map, shareReplay } from 'rxjs/operators';
 
 import { Country, CountriesService as CountriesAPIService } from '@dsh/api-codegen/capi/swagger-codegen';
+import { IdGeneratorService } from '@dsh/app/shared';
 import { ErrorService } from '@dsh/app/shared/services';
 import { SHARE_REPLAY_CONF } from '@dsh/operators';
 

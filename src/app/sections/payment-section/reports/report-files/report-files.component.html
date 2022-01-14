@@ -1,7 +1,7 @@
 <div gdColumns="1fr" gdGap="24px" *transloco="let t; scope: 'reports'; read: 'reports.reportFiles'">
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="8px">
         <div class="dsh-title">{{ t('title') }}</div>
-        <button dsh-stroked-button color="accent" [disabled]="isLoading$ | async" (click)="downloadAll()">
+        <button dsh-text-button color="accent" [disabled]="isLoading$ | async" (click)="downloadAll()">
             {{ t('downloadAll') }}
         </button>
     </div>

@@ -27,7 +27,7 @@
                 (contractorTypeSelected)="manualContractorTypeSelected($event)"
             ></dsh-manual-contractor-selector>
             <div fxLayout="row" fxLayoutAlign="space-between center">
-                <button fxFlex="125px" dsh-stroked-button color="accent" (click)="leaveOnboarding()">
+                <button fxFlex="125px" dsh-text-button color="accent" (click)="leaveOnboarding()">
                     {{ t('back') }}
                 </button>
                 <button fxFlex="125px" dsh-button color="accent" [disabled]="!(data$ | async)" (click)="next()">

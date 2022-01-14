@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { progress } from '@rbkmoney/utils';
 import isEqual from 'lodash-es/isEqual';
 import { combineLatest, forkJoin, merge, Subject } from 'rxjs';
 import { distinctUntilChanged, map, pluck, shareReplay, switchMap } from 'rxjs/operators';
 
 import { AnalyticsService } from '@dsh/api/analytics';
 
-import { filterError, filterPayload, replaceError, SHARE_REPLAY_CONF } from '../../../../custom-operators';
+import { filterError, filterPayload, replaceError, SHARE_REPLAY_CONF, progress } from '../../../../custom-operators';
+
 import { SearchParams } from '../search-params';
 import { amountResultToStatData, searchParamsToStatSearchParams } from '../utils';
 

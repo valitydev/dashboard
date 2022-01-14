@@ -1,0 +1,10 @@
+<dsh-alert
+    ><div
+        class="dsh-no-shops-content"
+        *transloco="let t; scope: 'no-shops-alert'; read: 'noShopsAlert'"
+        (click)="action.emit()"
+    >
+        {{ t('description') }}
+        <span class="dsh-no-shops-action">{{ t('action') }}</span>
+    </div></dsh-alert
+>

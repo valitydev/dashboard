@@ -42,14 +42,14 @@
                 fxLayout="row"
                 fxLayoutAlign="end"
             >
-                <button dsh-stroked-button color="warn" (click)="removeOwner(i)">
+                <button dsh-text-button color="warn" (click)="removeOwner(i)">
                     {{ t('removeOwner') }}
                 </button>
             </div>
             <mat-divider></mat-divider>
         </div>
         <div class="beneficial-owner-actions" fxLayout="row" fxLayoutAlign="end">
-            <button dsh-stroked-button color="accent" (click)="addOwner()">
+            <button dsh-text-button color="accent" (click)="addOwner()">
                 {{ t('addOwner') }}
             </button>
         </div>

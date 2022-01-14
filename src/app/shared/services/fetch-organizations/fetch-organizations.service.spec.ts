@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { DEBOUNCE_FETCHER_ACTION_TIME } from '@rbkmoney/partial-fetcher';
+import { DEBOUNCE_FETCHER_ACTION_TIME } from '@dsh/app/shared';
 import { of } from 'rxjs';
 import { mock, verify, when } from 'ts-mockito';
 

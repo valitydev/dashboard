@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 import { Observable } from 'rxjs';
+
+import { IdGeneratorService } from '@dsh/app/shared';
 
 import { MessagesService as ApiMessagesService } from '../../../../api-codegen/sender';
 

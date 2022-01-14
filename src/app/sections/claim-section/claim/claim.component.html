@@ -26,7 +26,7 @@
             <dsh-conversation></dsh-conversation>
             <div fxLayout="row" fxLayoutAlign="space-between">
                 <div>
-                    <button *ngIf="revokeAvailable$ | async" dsh-stroked-button color="warn" (click)="revokeClaim()">
+                    <button *ngIf="revokeAvailable$ | async" dsh-text-button color="warn" (click)="revokeClaim()">
                         {{ t('revokeClaim') }}
                     </button>
                 </div>

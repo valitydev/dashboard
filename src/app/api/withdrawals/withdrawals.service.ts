@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 
 import { WithdrawalsService as ApiWithdrawalsService } from '@dsh/api-codegen/wallet-api/swagger-codegen';
+import { IdGeneratorService } from '@dsh/app/shared';
 
 import { toDateLike } from '../utils';
 import { WithdrawalsSearchParams } from './withdrawals-search-params';

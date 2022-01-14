@@ -1,12 +1,15 @@
-<div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="32px">
+<div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="24px" fxLayoutGap.gt-sm="48px">
     <div fxFlex="1 3 fill">
-        <div class="dsh-route-navbar-container" ngClass.lt-sm="dsh-route-navbar-container-sm">
+        <div ngClass.gt-sm="dsh-route-navbar-container">
             <ng-content></ng-content>
         </div>
     </div>
     <div fxFlex="2 1 fill">
-        <div class="dsh-route-container">
-            <router-outlet></router-outlet>
+        <div class="dsh-route-container" fxLayout="column" fxLayoutGap="24px" fxLayoutGap.gt-sm="48px">
+            <dsh-section-header [label]="routeName"></dsh-section-header>
+            <div>
+                <router-outlet></router-outlet>
+            </div>
         </div>
     </div>
     <div fxFlex="1 3 fill" fxHide.lt-lg></div>

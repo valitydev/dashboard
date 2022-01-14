@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { IdGeneratorService } from '@rbkmoney/id-generator';
 import { Observable } from 'rxjs';
 
 import { Contract, ContractsService as ContractsAPIService } from '@dsh/api-codegen/capi/swagger-codegen';
+import { IdGeneratorService } from '@dsh/app/shared';
 
 @Injectable()
 export class ContractsService {

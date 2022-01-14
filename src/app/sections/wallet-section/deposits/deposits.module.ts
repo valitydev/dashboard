@@ -11,6 +11,7 @@ import { DepositsService } from '@dsh/api';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { ButtonModule } from '@dsh/components/buttons';
 import { IndicatorsModule, SpinnerModule } from '@dsh/components/indicators';
+import { ScrollUpModule } from '@dsh/components/navigation';
 import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
 
 import { DEPOSITS_UPDATE_DELAY, UPDATE_DELAY_TOKEN } from './consts';
@@ -35,6 +36,7 @@ import { DepositsComponent } from './deposits.component';
         MatInputModule,
         IndicatorsModule,
         DepositsFiltersModule,
+        ScrollUpModule,
     ],
     declarations: [DepositsComponent],
     providers: [
