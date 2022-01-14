@@ -1,11 +1,11 @@
 import { Component, Injector, Input, OnChanges } from '@angular/core';
-import { ComponentChanges } from '@dsh/type-utils';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { defer, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Shop } from '@dsh/api-codegen/capi';
 import { shareReplayRefCount } from '@dsh/operators';
+import { ComponentChanges } from '@dsh/type-utils';
 
 @Component({
     selector: 'dsh-shops-field',

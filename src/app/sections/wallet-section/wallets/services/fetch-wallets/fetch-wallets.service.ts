@@ -1,11 +1,11 @@
 import { Inject, Injectable } from '@angular/core';
-import { FetchResult, PartialFetcher } from '@dsh/app/shared';
 import { Observable } from 'rxjs';
 
 import { Wallet } from '@dsh/api-codegen/wallet-api';
 import { WalletService } from '@dsh/api/wallet';
 import { WalletsSearchParams } from '@dsh/api/wallet/wallets-search-params';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
+import { FetchResult, PartialFetcher } from '@dsh/app/shared';
 import { mapToTimestamp, publishReplayRefCount } from '@dsh/operators';
 
 @Injectable()

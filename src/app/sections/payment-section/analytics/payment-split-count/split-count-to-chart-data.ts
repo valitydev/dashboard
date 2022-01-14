@@ -4,7 +4,7 @@ import moment from 'moment';
 
 import { SplitCountResult, SplitUnit, StatusOffsetCount } from '@dsh/api-codegen/anapi/swagger-codegen';
 
-import { ChartData, splitUnitToTimeFormat } from '../utils';
+import { ChartData, splitUnitToTimeFormat, Series } from '../utils';
 
 const prepareOffsetCounts = (statusOffsetCounts: StatusOffsetCount[]): StatusOffsetCount[] =>
     statusOffsetCounts.map((statusOffsetCount): StatusOffsetCount => {
@@ -21,7 +21,7 @@ const indexToVisibility = (index: number, length: number): 'show' | 'hide' =>
 const offsetToX = (offset: number, unit: SplitUnit, index: number, length: number): string =>
     `${moment(offset).format(splitUnitToTimeFormat(unit))}#${indexToVisibility(index, length)}`;
 
-const statusOffsetCountsToSeries = (statusOffsetCounts: StatusOffsetCount[], unit: SplitUnit) => {
+const statusOffsetCountsToSeries = (statusOffsetCounts: StatusOffsetCount[], unit: SplitUnit): Series[] => {
     return statusOffsetCounts.map(({ status, offsetCount }) => ({
         name: translate(`analytics.paymentStatuses.${status.toString()}`, null, 'payment-section'),
         data: offsetCount.map((c, i) => ({

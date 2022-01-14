@@ -1,11 +1,11 @@
 import { Inject, Injectable } from '@angular/core';
-import { DEBOUNCE_FETCHER_ACTION_TIME, FetchResult, PartialFetcher } from '@dsh/app/shared';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 
 import { RefundSearchResult } from '@dsh/api-codegen/capi';
 import { RefundSearchService, RefundsSearchParams } from '@dsh/api/search';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
+import { DEBOUNCE_FETCHER_ACTION_TIME, FetchResult, PartialFetcher } from '@dsh/app/shared';
 import { booleanDebounceTime } from '@dsh/operators';
 
 @Injectable()

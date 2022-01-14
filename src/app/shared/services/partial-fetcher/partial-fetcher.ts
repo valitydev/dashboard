@@ -12,8 +12,8 @@ import {
     switchMap,
     tap,
 } from 'rxjs/operators';
-import { progress } from '../../../custom-operators';
 
+import { progress } from '../../../custom-operators';
 import { FetchAction } from './fetch-action';
 import { FetchFn } from './fetch-fn';
 import { FetchResult } from './fetch-result';

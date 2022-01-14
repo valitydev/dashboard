@@ -23,7 +23,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Subject } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 
-import { InputMixinBase } from './input-base';
+import { INPUT_MIXIN_BASE } from './input-base';
 
 /* eslint-disable @angular-eslint/no-conflicting-lifecycle */
 @UntilDestroy()
@@ -32,14 +32,16 @@ import { InputMixinBase } from './input-base';
 /**
  * @deprecated use s-libs
  */
-export class CustomFormControl<I extends any = any, P extends any = I>
-    extends InputMixinBase
+export class CustomFormControl<I = any, P = I>
+    extends INPUT_MIXIN_BASE
     implements AfterViewInit, ControlValueAccessor, MatFormFieldControl<I>, OnDestroy, DoCheck, OnChanges
 {
     /** The aria-describedby attribute on the input for improved a11y. */
     @HostBinding('attr.aria-describedby') _ariaDescribedby: string;
 
     readonly stateChanges: Subject<void> = new Subject<void>();
+
+    errorState: boolean;
 
     controlType = 'text';
 

@@ -1,13 +1,13 @@
 import { Inject, Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
-import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
 import { Observable, of } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 
 import { Deposit } from '@dsh/api-codegen/wallet-api/swagger-codegen';
 import { DepositsSearchParams, DepositsService as DepositsApiService } from '@dsh/api/deposits';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
+import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
 import { isNumber } from '@dsh/app/shared/utils';
 import { booleanDebounceTime, mapToTimestamp } from '@dsh/operators';
 import { toMinor } from '@dsh/utils';

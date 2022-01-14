@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { PartialFetcher } from '@dsh/app/shared';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 
 import { Payout } from '@dsh/api-codegen/anapi';
 import { PayoutSearchService } from '@dsh/api/search';
+import { PartialFetcher } from '@dsh/app/shared';
 import { booleanDebounceTime, mapToTimestamp } from '@dsh/operators';
 
 import { SearchParams } from './types/search-params';

@@ -6,7 +6,6 @@ import { distinctUntilChanged, map, pluck, shareReplay, switchMap } from 'rxjs/o
 import { AnalyticsService } from '@dsh/api/analytics';
 
 import { filterError, filterPayload, replaceError, SHARE_REPLAY_CONF, progress } from '../../../../custom-operators';
-
 import { SearchParams } from '../search-params';
 import { amountResultToStatData, searchParamsToStatSearchParams } from '../utils';
 
