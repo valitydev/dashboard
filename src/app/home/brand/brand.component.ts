@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { coerceBoolean } from '@dsh/utils';
 
-import { BrandName } from './brand-name';
 import { ConfigService } from '../../config';
+import { BrandName } from './brand-name';
 
 interface IconConfig {
     name: string;
