@@ -1,6 +1,7 @@
 {
   "name": "dashboard",
   "version": "0.0.0",
+  "private": true,
   "scripts": {
     "postinstall": "ngcc",
     "start": "ng serve --port 8000",
@@ -27,7 +28,6 @@
     "ci:test": "npm run test -- --configuration=ci",
     "ci:build": "npm run parallel-cmd -- --names PRETTIER,LINT,BUILD \"npm run prettier\" \"npm run lint-cmd -- --quiet\" \"npm run build\""
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~13.1.1",
     "@angular/cdk": "~13.1.1",
