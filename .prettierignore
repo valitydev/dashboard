@@ -9,3 +9,4 @@ src/app/**/openapi-codegen
 src/app/**/gen-model
 .vscode
 .swagger-codegen
+.angular

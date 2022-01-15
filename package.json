@@ -15,7 +15,7 @@
     "lint": "npm run lint-cache-cmd",
     "lint-fix": "npm run lint-cache-cmd -- --fix",
     "lint-errors": "npm run lint-cache-cmd -- --quiet",
-    "prettier-cmd": "prettier \"**/*.{html,js,ts,css,scss,md,json,prettierrc,svg}\"",
+    "prettier-cmd": "prettier \"**/*.{html,js,ts,css,scss,md,json,prettierrc,svg,yaml,yml}\"",
     "prettier": "npm run prettier-cmd -- --check",
     "prettier-fix": "npm run prettier-cmd -- --write",
     "tools-cmd": "ts-node --project tools/tsconfig.json",
