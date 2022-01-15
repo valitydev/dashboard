@@ -12,3 +12,7 @@ runs:
         - name: Install Packages
           run: npm ci
           shell: bash
+
+        - name: Generate Swagger & OpenAPI code
+          run: npm run codegen
+          shell: bash
