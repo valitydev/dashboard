@@ -17,7 +17,7 @@ jobs:
               with:
                   submodules: recursive
             - name: Init
-              uses: ../actions/init
+              uses: ./.github/actions/init
             - name: Build
               run: npm run build
             - name: Deploy image
