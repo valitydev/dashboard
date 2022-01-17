@@ -1,6 +1,7 @@
 {
   "name": "dashboard",
   "version": "0.0.0",
+  "private": true,
   "scripts": {
     "postinstall": "ngcc",
     "start": "ng serve --port 8000",
@@ -14,20 +15,19 @@
     "lint": "npm run lint-cache-cmd",
     "lint-fix": "npm run lint-cache-cmd -- --fix",
     "lint-errors": "npm run lint-cache-cmd -- --quiet",
-    "prettier-cmd": "prettier \"**/*.{html,js,ts,css,scss,md,json,prettierrc,svg}\"",
+    "prettier-cmd": "prettier \"**/*.{html,js,ts,css,scss,md,json,prettierrc,svg,yaml,yml}\"",
     "prettier": "npm run prettier-cmd -- --check",
     "prettier-fix": "npm run prettier-cmd -- --write",
     "tools-cmd": "ts-node --project tools/tsconfig.json",
-    "parallel-cmd": "concurrently --prefix-colors magenta,green",
+    "parallel-cmd": "concurrently --kill-others-on-fail --prefix-colors magenta,green,red,yellow,blue",
     "swagger-codegen": "npm run tools-cmd -- tools/swagger-codegen.ts",
     "openapi-codegen": "openapi-generator-cli version && npm run tools-cmd -- tools/openapi-codegen.ts",
     "codegen": "npm run parallel-cmd -- --names SWAG,OAPI \"npm run swagger-codegen\" \"npm run openapi-codegen\"",
     "icons-list-gen": "npm run tools-cmd -- tools/gen-icons-list.ts",
     "icons-ids-gen": "npm run tools-cmd -- tools/gen-icons-ids.ts",
-    "ci:check": "npm run parallel-cmd -- --names PRET,LINT \"npm run prettier\" \"npm run lint-cmd -- --quiet\"",
-    "ci:test": "npm run test -- --configuration=ci"
+    "ci:test": "npm run test -- --configuration=ci",
+    "ci:build": "npm run parallel-cmd -- --names PRETTIER,LINT,BUILD \"npm run prettier\" \"npm run lint-cmd -- --quiet\" \"npm run build\""
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~13.1.1",
     "@angular/cdk": "~13.1.1",
