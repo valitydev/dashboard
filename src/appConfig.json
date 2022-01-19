@@ -9,8 +9,7 @@
     },
     "theme": {
         "name": "main",
-        "isMainBackgroundImages": true,
-        "logoName": "rbkmoney"
+        "isMainBackgroundImages": true
     },
     "sentryDsn": null,
     "keycloakEndpoint": "https://auth.rbk.money",
