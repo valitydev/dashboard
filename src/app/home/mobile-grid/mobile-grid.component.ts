@@ -13,13 +13,7 @@ export class MobileGridComponent {
     @coerceBoolean
     inverted: boolean;
 
-    @Input() logoName: string;
-
     @ViewChild(MatDrawer) drawer: MatDrawer;
-
-    get menuIcon(): string {
-        return this.inverted ? 'menu_inverted' : 'menu';
-    }
 
     openSideNav(): Promise<MatDrawerToggleResult> {
         return this.drawer.open('program');

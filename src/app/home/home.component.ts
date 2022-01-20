@@ -27,10 +27,6 @@ export class HomeComponent implements OnInit {
         return this.router.url === '/' && this.themeManager.isMainBackgroundImages;
     }
 
-    get logoName(): string {
-        return this.themeManager.logoName;
-    }
-
     ngOnInit(): void {
         this.routerNavigationEnd$ = this.router.events.pipe(
             filter((event: RouterEvent) => event instanceof NavigationEnd),

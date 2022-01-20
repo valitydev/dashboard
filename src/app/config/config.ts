@@ -1,5 +1,6 @@
+import { getBaseClass } from '@dsh/utils';
+
 import type AppConfigJson from '../../appConfig.json';
-import { getBaseClass } from '../../utils';
 
 interface AppConfig {
     apiEndpoint: string;
@@ -13,11 +14,6 @@ interface AppConfig {
     theme: {
         name: string;
         isMainBackgroundImages: boolean;
-        logoName: string;
-        logo?: {
-            svg: string;
-            width: string;
-        };
     };
     sentryDsn?: string;
     keycloakEndpoint: string;

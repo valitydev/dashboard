@@ -11,6 +11,4 @@ export class LaptopGridComponent {
     @Input()
     @coerceBoolean
     inverted: boolean;
-
-    @Input() logoName: string;
 }

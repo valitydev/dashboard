@@ -12,7 +12,6 @@ const THEME_POSTFIX = 'theme';
 export class ThemeManager {
     current: ThemeName;
     isMainBackgroundImages = false;
-    logoName: string;
 
     private element: HTMLScriptElement | HTMLLinkElement;
 
@@ -27,7 +26,6 @@ export class ThemeManager {
     async init(): Promise<void> {
         const theme = this.configService?.theme;
         this.isMainBackgroundImages = theme?.isMainBackgroundImages;
-        this.logoName = theme?.logoName;
         const correctedName = this.getCorrectName(theme.name);
         this.change(correctedName);
     }

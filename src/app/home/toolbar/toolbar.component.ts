@@ -11,7 +11,6 @@ import { coerceBoolean } from '@dsh/utils';
 })
 export class ToolbarComponent {
     @Input() @coerceBoolean inverted: boolean;
-    @Input() logoName: string;
 
     sectionLinks$ = this.sectionsLinksService.sectionLinks$;
 
