@@ -44,7 +44,7 @@ export class ShopContractDetailsService {
                 filter((result) => result !== 'error'),
                 untilDestroyed(this)
             )
-            .subscribe((contract) => this.contract$.next(contract));
+            .subscribe((contract) => this.contract$.next(contract as any));
     }
 
     requestContract(contractID: string): void {

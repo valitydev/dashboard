@@ -13,7 +13,7 @@ export class CreatePayoutDialogService {
 
     private create$: Subject<any> = new Subject();
     private loading$ = new BehaviorSubject(false);
-    private error$ = new Subject();
+    private error$ = new Subject<void>();
     private created$ = new Subject();
 
     // eslint-disable-next-line @typescript-eslint/member-ordering

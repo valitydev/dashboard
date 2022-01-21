@@ -33,7 +33,7 @@ export class ReceivePaymentService {
                         catchError((e) => {
                             console.error(e);
                             this.loading$.next(false);
-                            this.error$.next();
+                            this.error$.next(true);
                             return of('error');
                         })
                     )

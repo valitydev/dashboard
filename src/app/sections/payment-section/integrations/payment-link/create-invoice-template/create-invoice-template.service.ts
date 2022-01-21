@@ -120,7 +120,7 @@ export class CreateInvoiceTemplateService {
 
     private subscribeFormChanges() {
         const templateType$ = this.form.controls.templateType.valueChanges.pipe(
-            startWith<InvoiceTemplateType, InvoiceTemplateType>(this.form.value.templateType),
+            startWith<InvoiceTemplateType>(this.form.value.templateType),
             shareReplay(SHARE_REPLAY_CONF)
         );
         const costType$ = this.form.controls.costType.valueChanges.pipe(startWith(this.form.value.costType));

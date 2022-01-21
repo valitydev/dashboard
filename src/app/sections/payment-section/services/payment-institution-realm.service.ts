@@ -10,7 +10,7 @@ import RealmEnum = PaymentInstitution.RealmEnum;
 
 @Injectable()
 export class PaymentInstitutionRealmService {
-    realm$: Observable<RealmEnum> = this.route.params.pipe(pluck<unknown, RealmEnum>('realm'), publishReplayRefCount());
+    realm$: Observable<RealmEnum> = this.route.params.pipe(pluck('realm'), publishReplayRefCount());
 
     constructor(private route: ActivatedRoute) {}
 }

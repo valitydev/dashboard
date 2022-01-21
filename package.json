@@ -65,7 +65,7 @@
     "moment": "^2.24.0",
     "ng-apexcharts": "^1.6.0",
     "ngx-mat-select-search": "^3.3.3",
-    "rxjs": "~6.6.7",
+    "rxjs": "7.5.2",
     "shelljs": "^0.8.5",
     "short-uuid": "^4.2.0",
     "ts-keycode-enum": "^1.0.6",

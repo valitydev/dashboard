@@ -13,7 +13,7 @@ import { RouteParamClaimService } from './route-param-claim.service';
 @UntilDestroy()
 @Injectable()
 export class RevokeClaimService {
-    private revokeClaim$ = new Subject();
+    private revokeClaim$ = new Subject<void>();
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     revokeAvailable$ = this.receiveClaimService.claim$.pipe(

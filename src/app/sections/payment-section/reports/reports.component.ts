@@ -29,7 +29,7 @@ export class ReportsComponent implements OnInit {
     fetchErrors$ = this.fetchReportsService.errors$;
     hasMore$ = this.fetchReportsService.hasMore$;
 
-    private createReport$ = new Subject();
+    private createReport$ = new Subject<void>();
 
     constructor(
         private fetchReportsService: FetchReportsService,

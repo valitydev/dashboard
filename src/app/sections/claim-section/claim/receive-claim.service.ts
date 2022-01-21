@@ -17,7 +17,7 @@ const POLLING_PERIOD = 5000;
 export class ReceiveClaimService {
     private claimState$ = new BehaviorSubject(null);
     private receiveClaimError$ = new BehaviorSubject(false);
-    private receiveClaim$ = new Subject();
+    private receiveClaim$ = new Subject<void>();
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     claim$: Observable<Claim> = this.claimState$.pipe(
