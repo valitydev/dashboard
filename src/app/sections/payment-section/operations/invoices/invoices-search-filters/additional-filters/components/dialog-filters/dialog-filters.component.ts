@@ -20,7 +20,7 @@ export class DialogFiltersComponent
     extends ValidatedWrappedAbstractControlSuperclass<AdditionalFilters>
     implements OnInit
 {
-    formControl: FormGroup<AdditionalFilters> = this.formBuilder.group({
+    control: FormGroup<AdditionalFilters> = this.formBuilder.group({
         invoiceIDs: null,
         shopIDs: null,
         invoiceStatus: null,
@@ -36,12 +36,12 @@ export class DialogFiltersComponent
     }
 
     ngOnInit(): RequiredSuper {
-        this.formControl.patchValue(this.data);
+        this.control.patchValue(this.data);
         return super.ngOnInit();
     }
 
     clear(): void {
-        this.formControl.reset();
+        this.control.reset();
     }
 
     close(): void {
@@ -49,6 +49,6 @@ export class DialogFiltersComponent
     }
 
     confirm(): void {
-        this.dialogRef.close(this.formControl.value);
+        this.dialogRef.close(this.control.value);
     }
 }

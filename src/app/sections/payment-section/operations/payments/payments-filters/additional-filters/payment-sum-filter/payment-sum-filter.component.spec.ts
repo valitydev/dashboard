@@ -32,7 +32,7 @@ describe('PaymentSumComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(PaymentSumFilterComponent);
         component = fixture.componentInstance;
-        component.formControl = new FormGroup<PaymentSumFilterForm>({
+        component.control = new FormGroup<PaymentSumFilterForm>({
             paymentAmountFrom: new FormControl<number>(),
             paymentAmountTo: new FormControl<number>(),
         });

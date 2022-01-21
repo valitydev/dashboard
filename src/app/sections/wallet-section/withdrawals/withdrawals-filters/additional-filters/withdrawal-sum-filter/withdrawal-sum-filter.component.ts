@@ -12,7 +12,7 @@ import { WithdrawalAmountForm } from './types';
     providers: createValidatedAbstractControlProviders(WithdrawalSumFilterComponent),
 })
 export class WithdrawalSumFilterComponent extends ValidatedWrappedAbstractControlSuperclass<WithdrawalAmountForm> {
-    formControl = this.fb.group<WithdrawalAmountForm>({
+    control = this.fb.group<WithdrawalAmountForm>({
         amountFrom: null,
         amountTo: null,
     });

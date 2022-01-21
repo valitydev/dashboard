@@ -1,6 +1,6 @@
 <div
     *transloco="let t; scope: 'create-shop'; read: 'createShop.shopDetails'"
-    [formGroup]="formControl"
+    [formGroup]="control"
     fxLayout="column"
     fxLayoutGap="16px"
 >
@@ -11,7 +11,7 @@
     <mat-form-field>
         <mat-label>{{ t('name') }}</mat-label>
         <input formControlName="name" matInput maxlength="100" required />
-        <mat-hint>{{ formControl.value.name?.length }} / 100</mat-hint>
+        <mat-hint>{{ control.value.name?.length }} / 100</mat-hint>
     </mat-form-field>
     <dsh-category-autocomplete-field
         formControlName="category"

@@ -2,7 +2,7 @@
     *transloco="let t; scope: 'create-shop'; read: 'createShop.internationalLegalEntity'"
     fxLayout="column"
     fxLayoutGap="24px"
-    [formGroup]="formControl"
+    [formGroup]="control"
 >
     <dsh-shop-details-form formControlName="shopDetails"></dsh-shop-details-form>
 
@@ -10,7 +10,7 @@
 
     <h2 class="dsh-title">{{ t('organization') }}</h2>
 
-    <dsh-created-existing-switch formGroupName="orgDetails" [form]="formControl.controls.orgDetails">
+    <dsh-created-existing-switch formGroupName="orgDetails" [form]="control.controls.orgDetails">
         <dsh-new-contractor-form *dshCreatedCase formControlName="created"></dsh-new-contractor-form>
         <dsh-existing-contract-form
             *dshExistingCase
@@ -30,7 +30,7 @@
 
     <h2 class="dsh-title">{{ t('payoutToolTitle') }}</h2>
 
-    <dsh-created-existing-switch formGroupName="bankAccount" [form]="formControl.controls.bankAccount">
+    <dsh-created-existing-switch formGroupName="bankAccount" [form]="control.controls.bankAccount">
         <dsh-international-bank-account-form
             *dshCreatedCase
             formControlName="created"

@@ -17,7 +17,7 @@ export interface ShopDetailsForm {
     providers: createValidatedAbstractControlProviders(ShopDetailsFormComponent),
 })
 export class ShopDetailsFormComponent extends ValidatedWrappedAbstractControlSuperclass<ShopDetailsForm> {
-    formControl = this.fb.group<ShopDetailsForm>({
+    control = this.fb.group<ShopDetailsForm>({
         url: '',
         name: '',
         category: null,

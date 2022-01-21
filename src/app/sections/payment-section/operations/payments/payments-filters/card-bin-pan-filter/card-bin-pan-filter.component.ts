@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
-import { FormBuilder, FormGroup } from '@ngneat/reactive-forms';
+import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { provideValueAccessor } from '@s-libs/ng-core';
 
@@ -17,7 +17,7 @@ import { CardBinPan } from './types/card-bin-pan';
     providers: [provideValueAccessor(CardBinPanFilterComponent)],
 })
 export class CardBinPanFilterComponent extends FilterSuperclass<CardBinPan> {
-    formControl: FormGroup<CardBinPan> = this.fb.group({
+    control = this.fb.group<CardBinPan>({
         bin: ['', binValidator],
         pan: ['', lastDigitsValidator],
     });
@@ -31,7 +31,7 @@ export class CardBinPanFilterComponent extends FilterSuperclass<CardBinPan> {
     }
 
     save(): void {
-        const { bin, pan } = this.formControl.controls;
+        const { bin, pan } = this.control.controls;
         this.set({ bin: bin.valid ? bin.value : '', pan: pan.valid ? pan.value : '' });
     }
 

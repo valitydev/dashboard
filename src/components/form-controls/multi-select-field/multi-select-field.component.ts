@@ -1,7 +1,7 @@
 import { Component, Injector, Input, OnChanges } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { FormControlSuperclass, provideValueAccessor } from '@s-libs/ng-core';
+import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import isNil from 'lodash-es/isNil';
 
 import { ComponentChanges } from '@dsh/type-utils';
@@ -24,7 +24,7 @@ interface OptionScore<T> {
     styleUrls: ['multi-select-field.component.scss'],
     providers: [provideValueAccessor(MultiSelectFieldComponent)],
 })
-export class MultiSelectFieldComponent<T> extends FormControlSuperclass<T[]> implements OnChanges {
+export class MultiSelectFieldComponent<T> extends WrappedFormControlSuperclass<T[]> implements OnChanges {
     @Input() options: Option<T>[];
     @Input() label?: string;
     @Input() @coerceBoolean noSearch = false;

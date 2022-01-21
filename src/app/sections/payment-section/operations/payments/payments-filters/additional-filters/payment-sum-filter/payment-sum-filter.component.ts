@@ -11,7 +11,7 @@ import { PaymentSumFilterForm } from './types/payment-sum-filter-form';
     providers: createValidatedAbstractControlProviders(PaymentSumFilterComponent),
 })
 export class PaymentSumFilterComponent extends ValidatedWrappedAbstractControlSuperclass<PaymentSumFilterForm> {
-    formControl = this.fb.group<PaymentSumFilterForm>({
+    control = this.fb.group<PaymentSumFilterForm>({
         paymentAmountFrom: null,
         paymentAmountTo: null,
     });

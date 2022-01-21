@@ -34,7 +34,7 @@ export interface NewContractorForm {
     providers: createValidatedAbstractControlProviders(NewContractorFormComponent),
 })
 export class NewContractorFormComponent extends ValidatedWrappedAbstractControlSuperclass<NewContractorForm> {
-    formControl = this.fb.group<NewContractorForm>({
+    control = this.fb.group<NewContractorForm>({
         registeredName: null,
         inn: null,
         registeredNumber: null,
@@ -51,7 +51,7 @@ export class NewContractorFormComponent extends ValidatedWrappedAbstractControlS
     }
 
     updateSuggestion(dadata: PartyContent): void {
-        if (!dadata) return this.formControl.patchValue(this.getFormByData());
+        if (!dadata) return this.control.patchValue(this.getFormByData());
         this.konturFocusService
             .request('ReqQuery', {
                 inn: [dadata.inn],
@@ -61,10 +61,10 @@ export class NewContractorFormComponent extends ValidatedWrappedAbstractControlS
                 untilDestroyed(this)
             )
             .subscribe(
-                (data) => this.formControl.patchValue(data),
+                (data) => this.control.patchValue(data),
                 (err) => {
                     console.error('Kontur.Focus API error', err);
-                    this.formControl.patchValue(this.getFormByData(dadata));
+                    this.control.patchValue(this.getFormByData(dadata));
                 }
             );
     }

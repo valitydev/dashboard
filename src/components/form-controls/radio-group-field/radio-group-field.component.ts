@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
 import { MatRadioChange } from '@angular/material/radio';
-import { FormControlSuperclass, provideValueAccessor } from '@s-libs/ng-core';
+import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { Overwrite } from 'utility-types';
 
 import { Option } from './types/option';
@@ -11,7 +11,7 @@ import { Option } from './types/option';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [provideValueAccessor(RadioGroupFieldComponent)],
 })
-export class RadioGroupFieldComponent<T> extends FormControlSuperclass<T> {
+export class RadioGroupFieldComponent<T> extends WrappedFormControlSuperclass<T> {
     @Input() options: Option<T>[];
 
     selected: T;

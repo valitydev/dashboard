@@ -15,7 +15,7 @@ import { RussianShopForm } from '../../types/russian-shop-entity';
     providers: createValidatedAbstractControlProviders(ShopFormComponent),
 })
 export class ShopFormComponent extends ValidatedWrappedAbstractControlSuperclass<RussianShopForm> {
-    formControl = this.fb.group<RussianShopForm>({
+    control = this.fb.group<RussianShopForm>({
         shopDetails: null,
         orgDetails: null,
         bankAccount: createTypeUnionDefaultForm(),

@@ -5,7 +5,7 @@
 >
     <h2 class="dsh-title">{{ p('title') }}</h2>
 
-    <dsh-created-existing-switch [formGroup]="formControl" [form]="formControl">
+    <dsh-created-existing-switch [formGroup]="control" [form]="control">
         <dsh-new-contractor-form *dshCreatedCase formControlName="created"></dsh-new-contractor-form>
         <dsh-existing-contract-form
             *dshExistingCase

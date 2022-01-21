@@ -13,7 +13,7 @@ import { ShopsFilterForm } from './types';
     providers: createValidatedAbstractControlProviders(ShopsFilterComponent),
 })
 export class ShopsFilterComponent extends ValidatedWrappedAbstractControlSuperclass<ShopsFilterForm> {
-    formControl = this.fb.group<ShopsFilterForm>({
+    control = this.fb.group<ShopsFilterForm>({
         shopIDs: null,
     });
 

@@ -12,7 +12,7 @@ import { MainInfoForm } from './types';
     providers: createValidatedAbstractControlProviders(MainInfoFiltersComponent),
 })
 export class MainInfoFiltersComponent extends ValidatedWrappedAbstractControlSuperclass<MainInfoForm> {
-    formControl = this.fb.group<MainInfoForm>({
+    control = this.fb.group<MainInfoForm>({
         withdrawalID: null,
         walletID: null,
         identityID: null,

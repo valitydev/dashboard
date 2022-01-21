@@ -20,7 +20,7 @@ export interface NewContractorForm {
     providers: createValidatedAbstractControlProviders(NewContractorFormComponent),
 })
 export class NewContractorFormComponent extends ValidatedWrappedAbstractControlSuperclass<NewContractorForm> {
-    formControl = this.fb.group<NewContractorForm>({
+    control = this.fb.group<NewContractorForm>({
         organizationName: '',
         tradingName: '',
         registeredAddress: '',

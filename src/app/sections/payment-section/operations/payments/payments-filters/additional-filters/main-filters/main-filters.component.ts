@@ -13,7 +13,7 @@ import { MainFiltersForm } from './types/main-filters-form';
     providers: createValidatedAbstractControlProviders(MainFiltersComponent),
 })
 export class MainFiltersComponent extends ValidatedWrappedAbstractControlSuperclass<MainFiltersForm> {
-    formControl = this.fb.group<MainFiltersForm>({
+    control = this.fb.group<MainFiltersForm>({
         payerEmail: ['', Validators.email],
         customerID: [''],
         rrn: ['', Validators.pattern(new RegExp(/^\d+$/))],

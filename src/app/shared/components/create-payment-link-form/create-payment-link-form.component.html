@@ -1,6 +1,6 @@
 <div *transloco="let c; scope: 'create-payment-link'; read: 'createPaymentLink'" fxLayout="column" fxLayoutGap="32px">
     <div class="dsh-body-1">{{ c('description') }}</div>
-    <form *ngIf="formControl" [formGroup]="formControl" fxLayout="column" fxLayoutGap="24px">
+    <form *ngIf="control" [formGroup]="control" fxLayout="column" fxLayoutGap="24px">
         <div fxLayout="column" fxLayoutGap="16px">
             <mat-form-field>
                 <mat-label>{{ c('form.name') }}</mat-label>
@@ -27,7 +27,7 @@
             <h2 class="dsh-subheading-2">{{ c('form.paymentMethods') }}:</h2>
             <ng-container *ngFor="let methodName of orderedPaymentMethodsNames">
                 <mat-checkbox
-                    *ngIf="formControl.get(['paymentMethods', methodName]).enabled"
+                    *ngIf="control.get(['paymentMethods', methodName]).enabled"
                     [formControlName]="methodName"
                 >
                     <span
@@ -43,7 +43,7 @@
         </ng-container>
         <mat-divider></mat-divider>
         <mat-checkbox formControlName="paymentFlowHold">{{ c('form.paymentFlowHold') }}</mat-checkbox>
-        <ng-container *ngIf="formControl.value.paymentFlowHold">
+        <ng-container *ngIf="control.value.paymentFlowHold">
             <label class="dsh-subheading-1">{{ c('form.paymentFlowHoldPolicy') }}:</label>
             <mat-radio-group
                 gdColumns="1fr"

@@ -86,17 +86,17 @@ export class DateRangeFilterComponent extends FilterSuperclass<InnerDateRange, D
         this.value = { dateRange: new MatDateRange(start, end), preset };
     }
 
-    save(value = this.formControl.value): void {
+    save(value = this.control.value): void {
         if (!value.dateRange.start || !value.dateRange.end) {
             this.clear();
-            value = this.formControl.value;
+            value = this.control.value;
         }
         this.step = Step.Presets;
         this.set(value);
     }
 
     clear(): void {
-        this.formControl.setValue(this.outerToInner(this.default));
+        this.control.setValue(this.outerToInner(this.default));
     }
 
     protected innerToOuter({ dateRange: { start, end }, preset }: InnerDateRange): DateRangeWithPreset {

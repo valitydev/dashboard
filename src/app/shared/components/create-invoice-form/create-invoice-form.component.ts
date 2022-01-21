@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Injector, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { FormControlSuperclass, provideValueAccessor } from '@s-libs/ng-core';
+import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import isEqual from 'lodash-es/isEqual';
 import isNil from 'lodash-es/isNil';
 import * as moment from 'moment';
@@ -49,7 +49,7 @@ export interface FormData {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [provideValueAccessor(CreateInvoiceFormComponent)],
 })
-export class CreateInvoiceFormComponent extends FormControlSuperclass<FormData> implements OnInit {
+export class CreateInvoiceFormComponent extends WrappedFormControlSuperclass<FormData> implements OnInit {
     @Input() shops: Shop[];
     @Output() valid = new EventEmitter<boolean>();
     @Output() empty = new EventEmitter<boolean>();
