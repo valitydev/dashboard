@@ -51,7 +51,7 @@ export class DaDataAutocompleteComponent<T extends Type = Type, R extends DaData
     @Output() errorOccurred = new EventEmitter<unknown>();
     @Output() suggestionNotFound = new EventEmitter();
 
-    suggestions$: Observable<ContentByRequestType[R][]> = this.formControl.valueChanges.pipe(
+    suggestions$: Observable<ContentByRequestType[R][]> = this.control.valueChanges.pipe(
         filter<string>(Boolean),
         debounce(() => interval(300)),
         switchMap((v) => this.loadSuggestions(v)),
@@ -61,7 +61,7 @@ export class DaDataAutocompleteComponent<T extends Type = Type, R extends DaData
         map((suggestions) => suggestions.map((s) => this.getOption(s))),
         shareReplayUntilDestroyed(this)
     );
-    isOptionsLoading$: Observable<boolean> = progress(this.formControl.valueChanges, this.suggestions$).pipe(
+    isOptionsLoading$: Observable<boolean> = progress(this.control.valueChanges, this.suggestions$).pipe(
         shareReplayUntilDestroyed(this)
     );
 
@@ -83,7 +83,7 @@ export class DaDataAutocompleteComponent<T extends Type = Type, R extends DaData
     }
 
     clear(): void {
-        this.formControl.setValue('');
+        this.control.setValue('');
         this.optionSelected.emit(null);
     }
 

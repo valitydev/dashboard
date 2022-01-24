@@ -14,7 +14,7 @@ import { getEventsByTopic } from './get-events-by-topic';
 export class CreateWebhookDialogService {
     private create$: Subject<FormParams> = new Subject();
     private loading$ = new BehaviorSubject(false);
-    private error$ = new Subject();
+    private error$ = new Subject<void>();
     private created$ = new Subject();
 
     // eslint-disable-next-line @typescript-eslint/member-ordering

@@ -13,7 +13,7 @@ import { InternationalShopEntityFormValue } from '../../types/international-shop
     providers: createValidatedAbstractControlProviders(ShopFormComponent),
 })
 export class ShopFormComponent extends ValidatedWrappedAbstractControlSuperclass<InternationalShopEntityFormValue> {
-    formControl = this.fb.group<InternationalShopEntityFormValue>({
+    control = this.fb.group<InternationalShopEntityFormValue>({
         shopDetails: null,
         orgDetails: createTypeUnionDefaultForm(),
         paymentInstitution: null,

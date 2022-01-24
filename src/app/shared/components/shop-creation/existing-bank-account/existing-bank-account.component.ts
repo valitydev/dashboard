@@ -45,7 +45,7 @@ export class ExistingBankAccountComponent extends ValidatedWrappedAbstractContro
 > {
     @Input() bankAccountType: BankAccountType;
 
-    formControl = new FormControl<Shop>(null);
+    control = new FormControl<Shop>(null);
     payoutTool: PayoutTool = null;
     progress$ = new BehaviorSubject<number>(0);
     error$ = new BehaviorSubject<unknown>(null);

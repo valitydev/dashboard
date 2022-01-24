@@ -56,6 +56,6 @@ export class KonturFocusService {
     ): Observable<ResponsesByRequestType[T]['responses']> {
         return this.konturFocusService
             .requestKonturFocus({ request: { konturFocusRequestType, ...requestParams } })
-            .pipe(pluck('responses'));
+            .pipe(pluck<ResponsesByRequestType[T], 'responses'>('responses'));
     }
 }

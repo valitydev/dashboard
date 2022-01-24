@@ -23,7 +23,7 @@ export class DialogFiltersComponent
     extends ValidatedWrappedAbstractControlSuperclass<AdditionalFiltersForm>
     implements OnInit
 {
-    formControl: FormGroup<AdditionalFiltersForm> = this.formBuilder.group({
+    control: FormGroup<AdditionalFiltersForm> = this.formBuilder.group({
         main: null,
         paymentStatus: [null, paymentStatusValidator],
         paymentSum: null,
@@ -44,13 +44,13 @@ export class DialogFiltersComponent
     }
 
     ngOnInit(): RequiredSuper {
-        this.formControl.patchValue(filtersToForm(this.data));
+        this.control.patchValue(filtersToForm(this.data));
         super.ngOnInit();
         return REQUIRED_SUPER;
     }
 
     clear(): void {
-        this.formControl.reset();
+        this.control.reset();
     }
 
     close(): void {
@@ -58,6 +58,6 @@ export class DialogFiltersComponent
     }
 
     confirm(): void {
-        this.dialogRef.close(formToFilters(this.formControl.value));
+        this.dialogRef.close(formToFilters(this.control.value));
     }
 }

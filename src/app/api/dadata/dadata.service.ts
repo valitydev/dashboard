@@ -19,6 +19,6 @@ export class DaDataService {
     ): Observable<SuggestionsByRequestType[T]> {
         const requestParams = { request: { daDataRequestType, ...params } };
         const request = this.daDataService.requestDaData(requestParams) as Observable<ResponseByRequestType[T]>;
-        return request.pipe(pluck('suggestions'));
+        return request.pipe(pluck('suggestions')) as Observable<any>;
     }
 }

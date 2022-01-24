@@ -2,19 +2,19 @@
     *transloco="let t; scope: 'create-shop'; read: 'createShop.internationalLegalEntity.internationalBankAccountForm'"
     fxLayout="column"
     fxLayoutGap="24px"
-    [formGroup]="formControl"
+    [formGroup]="control"
 >
     <div fxLayout="column" fxLayoutGap="16px">
         <dsh-payout-tool-form formControlName="payoutTool"></dsh-payout-tool-form>
         <dsh-currency-autocomplete-field formControlName="currency"></dsh-currency-autocomplete-field>
     </div>
     <mat-checkbox
-        [checked]="formControl.controls.correspondentPayoutTool.enabled"
+        [checked]="control.controls.correspondentPayoutTool.enabled"
         (change)="toggleCorrespondentPayoutTool()"
         >{{ t('correspondentAccount') }}</mat-checkbox
     >
     <dsh-payout-tool-form
-        *ngIf="formControl.controls.correspondentPayoutTool.enabled"
+        *ngIf="control.controls.correspondentPayoutTool.enabled"
         formControlName="correspondentPayoutTool"
     ></dsh-payout-tool-form>
 </div>

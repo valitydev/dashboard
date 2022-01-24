@@ -1,6 +1,6 @@
 <ng-container *transloco="let t; read: 'filters'">
     <dsh-base-dialog [title]="t('additionalFilters')" (cancel)="close()">
-        <div [formGroup]="formControl" fxLayout="column" fxLayoutGap="24px">
+        <div [formGroup]="control" fxLayout="column" fxLayoutGap="24px">
             <dsh-main-filters formControlName="main"></dsh-main-filters>
             <mat-divider></mat-divider>
             <div fxHide.gt-sm fxLayout="column" fxLayoutGap="24px">

@@ -17,7 +17,7 @@ export interface InternationalBankAccountForm {
     providers: createValidatedAbstractControlProviders(InternationalBankAccountFormComponent),
 })
 export class InternationalBankAccountFormComponent extends ValidatedWrappedAbstractControlSuperclass<InternationalBankAccountForm> {
-    formControl = this.fb.group<InternationalBankAccountForm>({
+    control = this.fb.group<InternationalBankAccountForm>({
         payoutTool: null,
         currency: '',
         correspondentPayoutTool: { value: null, disabled: true },
@@ -28,7 +28,7 @@ export class InternationalBankAccountFormComponent extends ValidatedWrappedAbstr
     }
 
     toggleCorrespondentPayoutTool(): void {
-        const { correspondentPayoutTool } = this.formControl.controls;
+        const { correspondentPayoutTool } = this.control.controls;
         if (correspondentPayoutTool.disabled) correspondentPayoutTool.enable();
         else correspondentPayoutTool.disable();
     }

@@ -12,7 +12,7 @@ import { InvoicesFilterForm } from './types';
     providers: createValidatedAbstractControlProviders(InvoicesFilterComponent),
 })
 export class InvoicesFilterComponent extends ValidatedWrappedAbstractControlSuperclass<InvoicesFilterForm> {
-    formControl = this.fb.group<InvoicesFilterForm>({
+    control = this.fb.group<InvoicesFilterForm>({
         invoiceIDs: null,
     });
 

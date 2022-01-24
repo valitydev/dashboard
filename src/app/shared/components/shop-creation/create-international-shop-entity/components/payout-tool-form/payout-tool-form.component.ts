@@ -23,7 +23,7 @@ export interface PayoutToolForm {
     providers: createValidatedAbstractControlProviders(PayoutToolFormComponent),
 })
 export class PayoutToolFormComponent extends ValidatedWrappedAbstractControlSuperclass<PayoutToolForm> {
-    formControl = this.fb.group<PayoutToolForm>(
+    control = this.fb.group<PayoutToolForm>(
         {
             number: ['', [Validators.pattern(/^[0-9A-Z]{8,40}$/)]],
             iban: ['', [Validators.pattern(/^[A-Z0-9]{14,35}$/)]],

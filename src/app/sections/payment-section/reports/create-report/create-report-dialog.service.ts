@@ -8,10 +8,10 @@ import { formValueToCreateValue } from './form-value-to-create-value';
 
 @Injectable()
 export class CreateReportDialogService {
-    private create$: Subject<any> = new Subject();
+    private create$ = new Subject();
     private loading$ = new BehaviorSubject(false);
-    private error$ = new Subject();
-    private created$ = new Subject();
+    private error$ = new Subject<void>();
+    private created$ = new Subject<void>();
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     isLoading$ = this.loading$.asObservable();

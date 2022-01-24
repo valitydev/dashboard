@@ -33,7 +33,7 @@ export class CompanySearchService {
         searchStr: '',
     });
 
-    private leaveOnboarding$ = new Subject();
+    private leaveOnboarding$ = new Subject<void>();
 
     private claimID$ = this.route.params.pipe(
         switchMap(({ claimID }) => of<number>(isNil(claimID) ? null : Number(claimID))),

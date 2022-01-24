@@ -10,7 +10,7 @@ import { multipleDownload } from '../../../../../utils';
 export class ReportFilesService {
     private download$: Subject<{ reportID: number; fileIDs: string[] }> = new Subject();
     private loading$ = new BehaviorSubject(false);
-    private error$ = new Subject();
+    private error$ = new Subject<void>();
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     isLoading$ = this.loading$.asObservable();

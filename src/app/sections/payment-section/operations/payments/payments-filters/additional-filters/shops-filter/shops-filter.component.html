@@ -1,7 +1,7 @@
 <ng-container *transloco="let t; scope: 'operations'; read: 'operations.payments.filter'">
     <div fxLayout="column" fxLayoutGap="24px">
         <div class="dsh-title" fxFlex>{{ t('shops') }}</div>
-        <form [formGroup]="formControl">
+        <form [formGroup]="control">
             <dsh-shops-field formControlName="shopIDs" [shops]="shops$ | async"></dsh-shops-field>
         </form>
     </div>

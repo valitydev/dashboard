@@ -22,7 +22,7 @@ export class CreatePayoutReportDialogService {
     private create$: Subject<Payout> = new Subject();
     private loading$ = new BehaviorSubject(false);
     private created$ = new BehaviorSubject(false);
-    private error$ = new Subject();
+    private error$ = new Subject<void>();
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     isLoading$ = this.loading$.asObservable();

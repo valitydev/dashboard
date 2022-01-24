@@ -19,7 +19,7 @@ export type OrgDetailsForm = TypeUnion<NewContractorForm, ExistingContractForm<'
     providers: createValidatedAbstractControlProviders(OrgDetailsFormComponent),
 })
 export class OrgDetailsFormComponent extends ValidatedWrappedAbstractControlSuperclass<OrgDetailsForm> {
-    formControl = createTypeUnionDefaultForm<NewContractorForm, ExistingContractForm<'RussianLegalEntity'>>();
+    control = createTypeUnionDefaultForm<NewContractorForm, ExistingContractForm<'RussianLegalEntity'>>();
 
     constructor(injector: Injector) {
         super(injector);

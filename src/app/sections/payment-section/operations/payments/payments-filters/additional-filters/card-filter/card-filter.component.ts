@@ -13,7 +13,7 @@ import { CardFilterForm } from './types';
     providers: createValidatedAbstractControlProviders(CardFilterComponent),
 })
 export class CardFilterComponent extends ValidatedWrappedAbstractControlSuperclass<CardFilterForm> {
-    formControl = this.fb.group<CardFilterForm>({
+    control = this.fb.group<CardFilterForm>({
         bin: ['', binValidator],
         pan: ['', lastDigitsValidator],
     });

@@ -35,7 +35,7 @@ export class CreatePaymentLinkFormComponent
 
     holdExpirations = Object.entries(HoldExpiration);
     orderedPaymentMethodsNames = ORDERED_PAYMENT_METHODS_NAMES;
-    formControl = this.fb.group<Controls>({
+    control = this.fb.group<Controls>({
         ...EMPTY_VALUE,
         email: [EMPTY_VALUE['email'], Validators.email],
         paymentMethods: this.fb.group<PaymentMethodControls>(
@@ -73,7 +73,7 @@ export class CreatePaymentLinkFormComponent
     }
 
     private updatePaymentMethods(paymentMethods: PaymentMethod[]) {
-        const paymentMethodsControls = this.formControl.controls.paymentMethods.controls;
+        const paymentMethodsControls = this.control.controls.paymentMethods.controls;
         Object.values(paymentMethodsControls).forEach((c) => c.disable());
         paymentMethods.forEach((item) => {
             switch (item.method) {

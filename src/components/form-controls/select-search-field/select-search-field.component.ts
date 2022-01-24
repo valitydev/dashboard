@@ -40,7 +40,7 @@ export class SelectSearchFieldComponent<Value> extends WrappedFormControlSupercl
     }
 
     clear(event: MouseEvent): void {
-        this.formControl.setValue(null);
+        this.control.setValue(null);
         event.stopPropagation();
     }
 }

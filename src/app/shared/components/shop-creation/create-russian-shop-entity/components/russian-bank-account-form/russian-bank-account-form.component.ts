@@ -13,7 +13,7 @@ import { RussianBankAccountForm } from './types/bank-account-form-data';
     providers: createValidatedAbstractControlProviders(RussianBankAccountFormComponent),
 })
 export class RussianBankAccountFormComponent extends ValidatedWrappedAbstractControlSuperclass<RussianBankAccountForm> {
-    formControl = this.fb.group<RussianBankAccountForm>({
+    control = this.fb.group<RussianBankAccountForm>({
         account: null,
         bankName: null,
         bankPostAccount: null,
@@ -26,7 +26,7 @@ export class RussianBankAccountFormComponent extends ValidatedWrappedAbstractCon
     }
 
     bankSelected(bank: BankContent): void {
-        this.formControl.patchValue({
+        this.control.patchValue({
             bankName: bank?.value || null,
             bankBik: bank?.bic || null,
             bankPostAccount: bank?.correspondentAccount || null,

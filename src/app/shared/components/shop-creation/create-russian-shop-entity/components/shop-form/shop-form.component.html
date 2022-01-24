@@ -1,4 +1,4 @@
-<div [formGroup]="formControl" fxLayout="column" fxLayoutGap="24px">
+<div [formGroup]="control" fxLayout="column" fxLayoutGap="24px">
     <dsh-shop-details-form formControlName="shopDetails"></dsh-shop-details-form>
     <mat-divider></mat-divider>
     <dsh-payment-institution-field formControlName="paymentInstitution"></dsh-payment-institution-field>
@@ -11,11 +11,11 @@
             <h2 class="dsh-title">{{ p('title') }}</h2>
             <div class="dsh-body-1">{{ p('description') }}</div>
         </div>
-        <dsh-created-existing-switch formGroupName="bankAccount" [form]="formControl.controls.bankAccount">
+        <dsh-created-existing-switch formGroupName="bankAccount" [form]="control.controls.bankAccount">
             <div *dshCreatedCase fxLayout="column" fxLayoutGap="16px">
                 <dsh-russian-bank-account-form formControlName="created"></dsh-russian-bank-account-form>
                 <dsh-currency-autocomplete-field
-                    [formControl]="formControl.controls.currency"
+                    [formControl]="control.controls.currency"
                 ></dsh-currency-autocomplete-field>
             </div>
             <dsh-existing-bank-account

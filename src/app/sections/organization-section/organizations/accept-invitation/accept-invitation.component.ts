@@ -28,7 +28,7 @@ export class AcceptInvitationComponent {
 
     @inProgressTo('isLoading$')
     accept(): Subscription {
-        return this.route.params
+        const subscription = this.route.params
             .pipe(
                 first(),
                 pluck('token'),
@@ -40,7 +40,8 @@ export class AcceptInvitationComponent {
                     this.errorService.error(err, false);
                     this.hasError = true;
                 },
-            })
-            .add(() => (this.isCompleted = true));
+            });
+        subscription.add(() => (this.isCompleted = true));
+        return subscription;
     }
 }

@@ -17,7 +17,7 @@ export class DialogFiltersComponent
     extends ValidatedWrappedAbstractControlSuperclass<WithdrawalsSearchParams, AdditionalFiltersForm>
     implements OnInit
 {
-    formControl = this.fb.group<AdditionalFiltersForm>({
+    control = this.fb.group<AdditionalFiltersForm>({
         mainInfo: null,
         status: null,
         amount: null,
@@ -33,12 +33,12 @@ export class DialogFiltersComponent
     }
 
     ngOnInit(): RequiredSuper {
-        this.formControl.patchValue(filtersToForm(this.data));
+        this.control.patchValue(filtersToForm(this.data));
         return super.ngOnInit();
     }
 
     clear(): void {
-        this.formControl.reset();
+        this.control.reset();
     }
 
     close(): void {
@@ -46,6 +46,6 @@ export class DialogFiltersComponent
     }
 
     confirm(): void {
-        this.dialogRef.close(formToFilters(this.formControl.value));
+        this.dialogRef.close(formToFilters(this.control.value));
     }
 }

@@ -5,11 +5,11 @@ export class BasicError<T = any> {
     constructor(public error: T) {}
 }
 
-export function isError<T>(value: T | BasicError<any>): value is BasicError<any> {
+export function isError<T>(value: T | BasicError): value is BasicError {
     return value instanceof BasicError;
 }
 
-export function isPayload<T>(value: T | BasicError<any>): value is T {
+export function isPayload<T>(value: T | BasicError): value is T {
     return !isError(value);
 }
 
@@ -18,9 +18,8 @@ export const replaceError = <T, E = any>(source: Observable<T>): Observable<T | 
 
 export const filterError = <E, T = any>(source: Observable<T | BasicError<E>>): Observable<E> =>
     source.pipe(
-        filter((value) => value instanceof BasicError),
+        filter<BasicError>((value) => value instanceof BasicError),
         pluck('error')
     );
 
-export const filterPayload = <T>(source: Observable<T | BasicError<any>>): Observable<T> =>
-    source.pipe(filter(isPayload));
+export const filterPayload = <T>(source: Observable<T | BasicError>): Observable<T> => source.pipe(filter(isPayload));

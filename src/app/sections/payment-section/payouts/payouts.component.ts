@@ -32,7 +32,7 @@ export class PayoutsComponent implements OnInit {
     fetchErrors$ = this.fetchPayoutsService.errors$;
     shops$ = this.realmShopsService.shops$;
 
-    private createPayout$ = new Subject();
+    private createPayout$ = new Subject<void>();
 
     constructor(
         private fetchPayoutsService: FetchPayoutsService,
