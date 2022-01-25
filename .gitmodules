@@ -1,6 +1,6 @@
 [submodule "schemes/claim-management/v0"]
 	path = schemes/claim-management/v0
-	url = https://github.com/rbkmoney/swag-claim-management.git
+	url = https://github.com/valitydev/swag-claim-management.git
 	branch = release/master
 [submodule "schemes/questionary/v0"]
 	path = schemes/questionary/v0
