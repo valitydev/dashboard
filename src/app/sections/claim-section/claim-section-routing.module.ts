@@ -16,10 +16,6 @@ const CLAIM_SECTION_ROUTES: Routes = [
                 path: 'claims/:claimId',
                 loadChildren: () => import('./claim/claim.module').then((m) => m.ClaimModule),
             },
-            {
-                path: 'onboarding',
-                loadChildren: () => import('./onboarding/onboarding.module').then((m) => m.OnboardingModule),
-            },
             { path: '', redirectTo: 'claims', pathMatch: 'full' },
         ],
     },

@@ -24,7 +24,6 @@ import invoice from '../../../assets/i18n/invoice/ru.json';
 import invoicesFilter from '../../../assets/i18n/invoices-filter/ru.json';
 import invoices from '../../../assets/i18n/invoices/ru.json';
 import main from '../../../assets/i18n/main/ru.json';
-import onboarding from '../../../assets/i18n/onboarding/ru.json';
 import operations from '../../../assets/i18n/operations/ru.json';
 import organizations from '../../../assets/i18n/organizations/ru.json';
 import paymentDetails from '../../../assets/i18n/payment-details/ru.json';
@@ -80,7 +79,6 @@ export function getTranslocoModule(config: Partial<TranslocoConfig> = {}) {
             invoices,
             'invoices-filter': invoicesFilter,
             main,
-            onboarding,
             operations,
             organizations,
             'payment-details': paymentDetails,
