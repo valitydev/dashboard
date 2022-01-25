@@ -28,13 +28,19 @@ export class ClaimsService {
         claimID?: number,
         continuationToken?: string
     ) {
-        return this.claimsService.searchClaims(
-            this.idGenerator.shortUuid(),
-            limit,
-            undefined,
-            continuationToken,
-            claimID,
-            claimStatuses || Object.values(StatusModificationUnit.StatusEnum)
+        return this.keycloakTokenInfoService.partyID$.pipe(
+            first(),
+            switchMap((partyID) =>
+                this.claimsService.searchClaims(
+                    this.idGenerator.shortUuid(),
+                    partyID,
+                    limit,
+                    undefined,
+                    continuationToken,
+                    claimID,
+                    claimStatuses || Object.values(StatusModificationUnit.StatusEnum)
+                )
+            )
         );
     }
 
@@ -43,7 +49,10 @@ export class ClaimsService {
     }
 
     getClaimByID(claimID: number): Observable<Claim> {
-        return this.claimsService.getClaimByID(this.idGenerator.shortUuid(), claimID);
+        return this.keycloakTokenInfoService.partyID$.pipe(
+            first(),
+            switchMap((partyID) => this.claimsService.getClaimByID(this.idGenerator.shortUuid(), partyID, claimID))
+        );
     }
 
     createClaim(changeset: Modification[]): Observable<Claim> {
