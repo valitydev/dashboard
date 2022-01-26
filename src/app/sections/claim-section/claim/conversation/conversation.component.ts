@@ -11,14 +11,12 @@ import {
 } from '@dsh/api/claims';
 
 import { ConversationService } from './conversation.service';
-import { EditDocumentService } from './edit-document.service';
-import { TimelineItemInfo } from './to-timeline-info';
 
 @Component({
     selector: 'dsh-conversation',
     templateUrl: 'conversation.component.html',
     styleUrls: ['conversation.component.scss'],
-    providers: [ConversationService, EditDocumentService],
+    providers: [ConversationService],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConversationComponent {
@@ -27,7 +25,7 @@ export class ConversationComponent {
 
     expandAll = false;
 
-    constructor(private conversationService: ConversationService, private editDocumentService: EditDocumentService) {}
+    constructor(private conversationService: ConversationService) {}
 
     isDocumentModificationUnit(m: Modification): boolean {
         return isClaimModification(m) && isDocumentModificationUnit(m.claimModificationType);
@@ -43,10 +41,6 @@ export class ConversationComponent {
 
     commentSaved(id: Conversation['conversationId']) {
         this.conversationService.commentSaved(id);
-    }
-
-    editDocument(info: TimelineItemInfo) {
-        this.editDocumentService.goToOnboarding(info);
     }
 
     simpleTrackBy(index: number): number {
