@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDialogModule } from '@angular/material/dialog';
-import { TRANSLOCO_SCOPE } from '@ngneat/transloco';
 
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { NotificationModule } from '@dsh/app/shared/services';
@@ -27,7 +26,6 @@ import { PaymentsComponent } from './payments.component';
     ],
     declarations: [PaymentsComponent],
     providers: [
-        { provide: TRANSLOCO_SCOPE, useValue: 'main' },
         { provide: SEARCH_LIMIT, useValue: 10 },
         { provide: PAYMENTS_UPDATE_DELAY_TOKEN, useValue: DEFAULT_PAYMENTS_UPDATE_DELAY },
     ],

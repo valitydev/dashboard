@@ -12,7 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { TranslocoModule, TRANSLOCO_SCOPE } from '@ngneat/transloco';
+import { TranslocoModule } from '@ngneat/transloco';
 
 import { InvoiceModule } from '@dsh/api/invoice';
 import { InvoiceDetailsModule } from '@dsh/app/shared/components';
@@ -65,6 +65,5 @@ import { InvoicesComponent } from './invoices.component';
         ShowMorePanelModule,
     ],
     declarations: [InvoicesComponent],
-    providers: [{ provide: TRANSLOCO_SCOPE, useValue: 'main' }],
 })
 export class InvoicesModule {}
