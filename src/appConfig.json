@@ -3,11 +3,10 @@
     "urlShortenerEndpoint": "https://rbk.mn",
     "checkoutEndpoint": "https://checkout.rbk.money",
     "docsEndpoints": {
-        "developer": "https://developer.rbk.money"
+        "payments": "https://developer.rbk.money/api"
     },
     "theme": {
-        "name": "main",
-        "isMainBackgroundImages": true
+        "name": "main"
     },
     "sentryDsn": null,
     "keycloakEndpoint": "https://auth.rbk.money",

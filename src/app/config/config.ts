@@ -7,7 +7,7 @@ interface AppConfig {
     urlShortenerEndpoint: string;
     checkoutEndpoint: string;
     docsEndpoints: {
-        developer: string;
+        payments: string;
     };
     theme: {
         name: string;
