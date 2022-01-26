@@ -8,7 +8,7 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { SectionsLinksModule } from '@dsh/app/shared/services/sections-links';
 import { BootstrapIconModule } from '@dsh/components/indicators';
 
-import { MobileMenuFeedbackItemComponent, MobileUserBarComponent, NavItemComponent } from './components';
+import { MobileUserBarComponent, NavItemComponent } from './components';
 import { MobileMenuComponent } from './mobile-menu.component';
 
 @NgModule({
@@ -21,7 +21,7 @@ import { MobileMenuComponent } from './mobile-menu.component';
         TranslocoModule,
         BootstrapIconModule,
     ],
-    declarations: [MobileMenuComponent, NavItemComponent, MobileMenuFeedbackItemComponent, MobileUserBarComponent],
+    declarations: [MobileMenuComponent, NavItemComponent, MobileUserBarComponent],
     exports: [MobileMenuComponent],
 })
 export class MobileMenuModule {}

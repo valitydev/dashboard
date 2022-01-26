@@ -30,7 +30,6 @@
 @import '../../app/sections/payment-section/analytics/percent-difference/percent-difference-theme';
 @import '../../app/sections/payment-section/analytics/stat-item/stat-item-theme';
 @import '../../app/sections/payment-section/balances/balances-theme';
-@import '../../app/feedback/feedback-theme';
 @import '../../app/sections/payment-section/no-shops-alert/no-shops-alert-theme';
 
 @mixin dsh-theme($theme) {
@@ -58,7 +57,6 @@
     @include dsh-accordion-theme($theme);
     @include dsh-last-updated-theme($theme);
     @include dsh-balances-theme($theme);
-    @include dsh-feedback-theme($theme);
     @include dsh-limited-list-theme($theme);
     @include dsh-nested-table-theme($theme);
     @include dsh-breadcrumb-theme($theme);
