@@ -3,9 +3,7 @@
     "urlShortenerEndpoint": "https://rbk.mn",
     "checkoutEndpoint": "https://checkout.rbk.money",
     "docsEndpoints": {
-        "help": "https://help.rbkmoney.com",
-        "developer": "https://developer.rbk.money",
-        "rbk": "https://rbk.money"
+        "developer": "https://developer.rbk.money"
     },
     "theme": {
         "name": "main",
