@@ -9,7 +9,6 @@ import { HomeComponent } from './home.component';
 import { LaptopGridModule } from './laptop-grid/laptop-grid.module';
 import { MobileGridModule } from './mobile-grid/mobile-grid.module';
 import { ToolbarModule } from './toolbar';
-import { WelcomeImageModule } from './welcome-image';
 
 @NgModule({
     imports: [
@@ -18,7 +17,6 @@ import { WelcomeImageModule } from './welcome-image';
         RouterModule,
         FlexLayoutModule,
         MatIconModule,
-        WelcomeImageModule,
         MobileGridModule,
         LaptopGridModule,
         ConfigModule,

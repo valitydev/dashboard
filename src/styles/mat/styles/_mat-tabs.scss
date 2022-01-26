@@ -42,15 +42,6 @@
         }
     }
 
-    .dsh-inverted-nav-bar {
-        .mat-tab-link {
-            color: map-get($foreground, contrast-text) !important;
-        }
-        .mat-ink-bar {
-            background-color: map-get($foreground, contrast-text) !important;
-        }
-    }
-
     .mat-tab-nav-bar {
         border-color: transparent !important;
     }

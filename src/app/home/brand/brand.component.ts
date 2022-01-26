@@ -1,7 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { coerceBoolean } from '@dsh/utils';
-
 @Component({
     selector: 'dsh-brand',
     templateUrl: 'brand.component.html',
@@ -9,6 +7,5 @@ import { coerceBoolean } from '@dsh/utils';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BrandComponent {
-    @Input() @coerceBoolean inverted = false;
     @Input() navigationLink = '/';
 }

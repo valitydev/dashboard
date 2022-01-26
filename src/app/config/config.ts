@@ -13,7 +13,6 @@ interface AppConfig {
     };
     theme: {
         name: string;
-        isMainBackgroundImages: boolean;
     };
     sentryDsn?: string;
     keycloakEndpoint: string;

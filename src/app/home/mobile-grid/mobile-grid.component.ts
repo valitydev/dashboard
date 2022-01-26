@@ -1,7 +1,5 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatDrawer, MatDrawerToggleResult } from '@angular/material/sidenav';
-
-import { coerceBoolean } from '@dsh/utils';
 
 @Component({
     selector: 'dsh-mobile-grid',
@@ -9,10 +7,6 @@ import { coerceBoolean } from '@dsh/utils';
     styleUrls: ['./mobile-grid.component.scss'],
 })
 export class MobileGridComponent {
-    @Input()
-    @coerceBoolean
-    inverted: boolean;
-
     @ViewChild(MatDrawer) drawer: MatDrawer;
 
     openSideNav(): Promise<MatDrawerToggleResult> {

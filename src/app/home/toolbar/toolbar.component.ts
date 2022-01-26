@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { SectionsLinksService } from '@dsh/app/shared/services/sections-links';
-import { coerceBoolean } from '@dsh/utils';
 
 @Component({
     selector: 'dsh-toolbar',
@@ -10,8 +9,6 @@ import { coerceBoolean } from '@dsh/utils';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolbarComponent {
-    @Input() @coerceBoolean inverted: boolean;
-
     sectionLinks$ = this.sectionsLinksService.sectionLinks$;
 
     constructor(private sectionsLinksService: SectionsLinksService) {}

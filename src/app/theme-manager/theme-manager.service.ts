@@ -11,7 +11,6 @@ const THEME_POSTFIX = 'theme';
 @Injectable()
 export class ThemeManager {
     current: ThemeName;
-    isMainBackgroundImages = false;
 
     private element: HTMLScriptElement | HTMLLinkElement;
 
@@ -25,7 +24,6 @@ export class ThemeManager {
     // eslint-disable-next-line @typescript-eslint/require-await
     async init(): Promise<void> {
         const theme = this.configService?.theme;
-        this.isMainBackgroundImages = theme?.isMainBackgroundImages;
         const correctedName = this.getCorrectName(theme.name);
         this.change(correctedName);
     }
