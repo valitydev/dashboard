@@ -45,11 +45,6 @@
             </dsh-timeline-item-badge>
             <dsh-timeline-item-content *ngIf="item.modifications.length !== 0">
                 <div *ngFor="let modification of item.modifications; trackBy: simpleTrackBy">
-                    <dsh-document-container
-                        *ngIf="isDocumentModificationUnit(modification)"
-                        [expandAll]="expandAll"
-                        [unit]="modification.claimModificationType"
-                    ></dsh-document-container>
                     <dsh-comment-container
                         *ngIf="isCommentModificationUnit(modification)"
                         [unit]="modification.claimModificationType"

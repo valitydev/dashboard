@@ -3,17 +3,16 @@ import { FormControl, FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { map } from 'rxjs/operators';
 
-import { KonturFocusService } from '@dsh/api/kontur-focus';
+import { PartyContent, ReqResponse, OrgType } from '@dsh/api-codegen/aggr-proxy';
+import {
+    KonturFocusService,
+    createIndividualEntityRegisteredName,
+    isReqLegalEntity,
+    isReqIndividualEntity,
+} from '@dsh/api/kontur-focus';
+import { getAddress } from '@dsh/api/kontur-focus/utils/get-address';
 import { ValidatedWrappedAbstractControlSuperclass, createValidatedAbstractControlProviders } from '@dsh/utils';
 
-import { PartyContent, ReqResponse } from '../../../../../../api-codegen/aggr-proxy';
-import { isIndividualOrg } from '../../../../../utils/to-questionary-data/dadata-data-to-questionary-data/create-individual-entity-contractor';
-import {
-    createIndividualEntityRegisteredName as createIndividualEntityRegisteredName,
-    isReqIndividualEntity,
-} from '../../../../../utils/to-questionary-data/kontur-focus-data-to-questionary-data/create-individual-entity-contractor';
-import { isReqLegalEntity } from '../../../../../utils/to-questionary-data/kontur-focus-data-to-questionary-data/create-legal-entity-contractor';
-import { getAddress } from '../../../../../utils/to-questionary-data/kontur-focus-data-to-questionary-data/get-address';
 import { RussianBankAccountForm } from '../russian-bank-account-form/types/bank-account-form-data';
 
 export interface NewContractorForm {
@@ -78,18 +77,18 @@ export class NewContractorFormComponent extends ValidatedWrappedAbstractControlS
             representativeFullName: null,
         };
         if (dadata) {
-            if (isIndividualOrg(dadata)) {
+            if (dadata.orgType === OrgType.Individual) {
                 result.actualAddress = dadata.address?.value || result.actualAddress;
                 result.representativeFullName = dadata.name?.fullName || result.representativeFullName;
             }
         }
         if (kontur) {
-            if (isReqIndividualEntity(kontur?.contractor)) {
+            if (isReqIndividualEntity(kontur.contractor)) {
                 result.registeredName =
                     createIndividualEntityRegisteredName(kontur.contractor.fio) || result.registeredName;
                 result.representativeFullName = kontur.contractor.fio || result.representativeFullName;
             }
-            if (isReqLegalEntity(kontur?.contractor)) {
+            if (isReqLegalEntity(kontur.contractor)) {
                 result.registeredName = kontur.contractor.legalName.shortName || result.registeredName;
                 result.actualAddress = getAddress(kontur.contractor.legalAddress.addressRf) || result.actualAddress;
             }

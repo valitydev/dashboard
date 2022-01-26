@@ -7,13 +7,11 @@ import { ClaimManagementModule } from './claim-management';
 import { DarkApiModule } from './dark-api';
 import { MessagesModule } from './messages';
 import { OrganizationsModule } from './organizations';
-import { QuestionaryModule } from './questionary';
 
 @NgModule({
     imports: [
         CapiModule,
         ClaimManagementModule,
-        QuestionaryModule,
         AnapiModule,
         AggrProxyModule,
         DarkApiModule,
