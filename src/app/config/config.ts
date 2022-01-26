@@ -7,13 +7,10 @@ interface AppConfig {
     urlShortenerEndpoint: string;
     checkoutEndpoint: string;
     docsEndpoints: {
-        help: string;
-        developer: string;
-        rbk: string;
+        payments: string;
     };
     theme: {
         name: string;
-        isMainBackgroundImages: boolean;
     };
     sentryDsn?: string;
     keycloakEndpoint: string;

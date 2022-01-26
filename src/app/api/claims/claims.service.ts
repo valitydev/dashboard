@@ -1,6 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { first, switchMap } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { first, switchMap, catchError } from 'rxjs/operators';
 
 import {
     Claim,
@@ -28,13 +29,19 @@ export class ClaimsService {
         claimID?: number,
         continuationToken?: string
     ) {
-        return this.claimsService.searchClaims(
-            this.idGenerator.shortUuid(),
-            limit,
-            undefined,
-            continuationToken,
-            claimID,
-            claimStatuses || Object.values(StatusModificationUnit.StatusEnum)
+        return this.keycloakTokenInfoService.partyID$.pipe(
+            first(),
+            switchMap((partyID) =>
+                this.claimsService.searchClaims(
+                    this.idGenerator.shortUuid(),
+                    partyID,
+                    limit,
+                    undefined,
+                    continuationToken,
+                    claimID,
+                    claimStatuses || Object.values(StatusModificationUnit.StatusEnum)
+                )
+            )
         );
     }
 
@@ -43,7 +50,10 @@ export class ClaimsService {
     }
 
     getClaimByID(claimID: number): Observable<Claim> {
-        return this.claimsService.getClaimByID(this.idGenerator.shortUuid(), claimID);
+        return this.keycloakTokenInfoService.partyID$.pipe(
+            first(),
+            switchMap((partyID) => this.claimsService.getClaimByID(this.idGenerator.shortUuid(), partyID, claimID))
+        );
     }
 
     createClaim(changeset: Modification[]): Observable<Claim> {
@@ -88,7 +98,24 @@ export class ClaimsService {
         return this.keycloakTokenInfoService.partyID$.pipe(
             first(),
             switchMap((partyId) =>
-                this.claimsService.requestReviewClaimByID(this.idGenerator.shortUuid(), partyId, claimID, claimRevision)
+                this.claimsService
+                    .requestReviewClaimByID(this.idGenerator.shortUuid(), partyId, claimID, claimRevision)
+                    .pipe(
+                        catchError((err) => {
+                            if (err instanceof HttpErrorResponse && err.error?.code === 'invalidClaimRevision')
+                                return this.getClaimByID(claimID).pipe(
+                                    switchMap((claim) =>
+                                        this.claimsService.requestReviewClaimByID(
+                                            this.idGenerator.shortUuid(),
+                                            partyId,
+                                            claim.id,
+                                            claim.revision
+                                        )
+                                    )
+                                );
+                            return throwError(err);
+                        })
+                    )
             )
         );
     }

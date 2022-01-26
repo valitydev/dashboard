@@ -1,7 +1,7 @@
 <div class="dsh-toolbar" fxLayout fxLayoutGap="24px">
-    <dsh-brand fxFlex fxLayoutAlign="start" [inverted]="inverted"></dsh-brand>
+    <dsh-brand fxFlex fxLayoutAlign="start"></dsh-brand>
     <div fxFlex fxLayoutAlign="center">
-        <nav class="dsh-top-tab-nav-bar" [class.dsh-inverted-nav-bar]="inverted" mat-tab-nav-bar>
+        <nav class="dsh-top-tab-nav-bar" mat-tab-nav-bar>
             <a
                 *ngFor="let link of sectionLinks$ | async"
                 mat-tab-link

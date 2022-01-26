@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { TranslocoModule, TRANSLOCO_SCOPE } from '@ngneat/transloco';
+import { TranslocoModule } from '@ngneat/transloco';
 
 import { ButtonModule } from '@dsh/components/buttons';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
@@ -49,6 +49,5 @@ import { RefundsComponent } from './refunds.component';
         MatDialogModule,
     ],
     declarations: [RefundsComponent],
-    providers: [{ provide: TRANSLOCO_SCOPE, useValue: 'main' }],
 })
 export class RefundsModule {}

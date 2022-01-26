@@ -37,7 +37,6 @@
                     ></dsh-bi>
                 </div>
                 <mat-menu #menu="matMenu" xPosition="before">
-                    <button mat-menu-item (click)="editDocument(item)">{{ t('action.edit') }}</button>
                     <button mat-menu-item (click)="expandAll = !expandAll">{{ t('action.toggleDetails') }}</button>
                 </mat-menu>
             </dsh-timeline-item-title>
@@ -46,11 +45,6 @@
             </dsh-timeline-item-badge>
             <dsh-timeline-item-content *ngIf="item.modifications.length !== 0">
                 <div *ngFor="let modification of item.modifications; trackBy: simpleTrackBy">
-                    <dsh-document-container
-                        *ngIf="isDocumentModificationUnit(modification)"
-                        [expandAll]="expandAll"
-                        [unit]="modification.claimModificationType"
-                    ></dsh-document-container>
                     <dsh-comment-container
                         *ngIf="isCommentModificationUnit(modification)"
                         [unit]="modification.claimModificationType"

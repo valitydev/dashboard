@@ -5,10 +5,14 @@ $height: 48px;
 }
 
 mat-icon {
-    height: 100%;
-    width: 100%;
     cursor: pointer;
     outline: none;
+
+    &,
+    ::ng-deep svg {
+        height: 100%;
+        width: auto;
+    }
 }
 
 .brand-wrapper {

@@ -23,10 +23,6 @@ export class HomeComponent implements OnInit {
         private breakpointObserver: BreakpointObserver
     ) {}
 
-    get hasBackground(): boolean {
-        return this.router.url === '/' && this.themeManager.isMainBackgroundImages;
-    }
-
     ngOnInit(): void {
         this.routerNavigationEnd$ = this.router.events.pipe(
             filter((event: RouterEvent) => event instanceof NavigationEnd),

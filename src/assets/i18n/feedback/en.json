@@ -1,8 +1,0 @@
-{
-    "label": "Feedback",
-    "dialog": {
-        "title": "Feedback",
-        "message": "Comment...",
-        "success": "Successfully sent"
-    }
-}

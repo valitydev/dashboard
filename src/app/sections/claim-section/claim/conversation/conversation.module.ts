@@ -16,11 +16,7 @@ import { LayoutModule } from '@dsh/components/layout';
 import { ConfirmActionDialogModule } from '@dsh/components/popups';
 
 import { HumanizeDurationModule } from '../../../../humanize-duration';
-import {
-    CommentContainerModule,
-    DocumentContainerModule,
-    FileContainerModule,
-} from '../../claim-modification-containers';
+import { CommentContainerModule, FileContainerModule } from '../../claim-modification-containers';
 import { ActionColorPipe } from './action-color.pipe';
 import { ActionIconPipe } from './action-icon.pipe';
 import { ConversationComponent } from './conversation.component';
@@ -42,7 +38,6 @@ import { SendCommentComponent } from './send-comment';
         ReactiveFormsModule,
         MessagesModule,
         FilesModule,
-        DocumentContainerModule,
         MatMenuModule,
         ConfirmActionDialogModule,
         ngfModule,
