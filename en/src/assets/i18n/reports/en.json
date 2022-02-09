@@ -1,0 +1,65 @@
+{
+    "description": "Один раз в отчетный период платформа автоматически подготавливает отчет. Отчет содержит: акт оказания услуг и реестр операций",
+    "headerRow": {
+        "createdAt": "Дата создания",
+        "status": "Статус",
+        "type": "Тип формирования",
+        "period": "Период отчетности"
+    },
+    "reportContent": {
+        "header": "Отчет"
+    },
+    "reportDetails": {
+        "status": "Статус",
+        "type": "Тип формирования",
+        "createdAt": "Дата создания",
+        "period": "Период отчетности",
+        "shop": "Магазин",
+        "actions": {
+            "title": "Действия",
+            "cancelReport": "Отменить отчет"
+        }
+    },
+    "status": {
+        "created": "Сформирован",
+        "pending": "В процессе"
+    },
+    "reportFiles": {
+        "title": "Документы",
+        "downloadAll": "Загрузить все"
+    },
+    "errors": {
+        "downloadReportError": "Не удалось загрузить документы",
+        "fetchError": "Не удалось получить отчеты",
+        "cancelError": "Не удалось отменить отчет",
+        "createError": "Не удалось создать отчет"
+    },
+    "type": {
+        "provisionOfService": "Акт об оказании услуг",
+        "paymentRegistry": "Реестр операций",
+        "paymentRegistryByPayout": "Реестр операций возмещения"
+    },
+    "searchFilters": {
+        "dateRangeDescription": "Период создания отчетов",
+        "reportTypes": {
+            "label": "Все типы формирования"
+        }
+    },
+    "createReport": {
+        "title": "Параметры формирования отчета",
+        "subtitle": "Отчет с реестром операций за выбранный период",
+        "successfullyCreated": "Отчет успешно создан",
+        "form": {
+            "from": "Начало периода",
+            "to": "Конец периода",
+            "time": "Время",
+            "shop": "Магазин"
+        },
+        "cancel": "Отмена",
+        "create": "Сформировать"
+    },
+    "cancelReport": {
+        "successfullyCanceled": "Отчет успешно отменен"
+    },
+    "openCreateReport": "Создать отчет"
+}
