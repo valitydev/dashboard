@@ -1,0 +1,106 @@
+{
+    "payments": {
+        "title": "Платежи",
+        "filter": {
+            "shopID": "Магазин",
+            "fromTime": "Начало периода",
+            "toTime": "Конец периода",
+            "payerEmail": "Email плательщика",
+            "paymentID": "Идентификатор платежа",
+            "invoiceID": "Идентификатор инвойса",
+            "paymentAmount": "Сумма платежа",
+            "paymentAmountFrom": "Мин. сумма",
+            "paymentAmountTo": "Макс. сумма",
+            "binPan": "Карта",
+            "first6": "BIN банка-эмитента карты",
+            "last4": "Последние цифры номера карты",
+            "payerFingerprint": "Fingerprint плательщика",
+            "payerIP": "IP-адрес плательщика",
+            "customerID": "Идентификатор плательщика",
+            "paymentStatus": "Статус платежа",
+            "paymentFlow": "Тип проведения платежа",
+            "bankCardTokenProvider": "Провайдер платежных токенов",
+            "bankCardPaymentSystem": "Платежная система",
+            "paymentMethod": "Метод оплаты",
+            "rrn": "RRN платежа",
+            "invoices": "Инвойсы",
+            "shops": "Магазины",
+            "card": "Карта"
+        },
+        "table": {
+            "amount": "Сумма списания",
+            "status": "Статус",
+            "statusChanged": "Статус изменен",
+            "invoice": "Инвойс",
+            "shop": "Магазин",
+            "actions": {
+                "paymentDetails": "Детали платежа"
+            }
+        },
+        "details": {
+            "name": "Платеж"
+        }
+    },
+    "invoices": {
+        "title": "Инвойсы",
+        "header": "Инвойс",
+        "shop": "Магазин",
+        "invoiceStatus": "Статус инвойса",
+        "cartInfo": {
+            "title": "Корзина с набором товаров и услуг",
+            "description": "Описание товара или услуги",
+            "price": "Цена",
+            "quantity": "Количество",
+            "tax": "Ставка налога"
+        },
+        "headerRow": {
+            "productName": "Наименование",
+            "amount": "Стоимость",
+            "status": "Статус",
+            "createdAt": "Создан",
+            "shop": "Магазин"
+        },
+        "actions": {
+            "title": "Действия",
+            "createPaymentLink": "Сформировать ссылку на оплату",
+            "invoiceCreated": "Инвойс успешно создан",
+            "cancelInvoice": "Отменить инвойс",
+            "invoiceCancelled": "Инвойс успешно отменен",
+            "fulfillInvoice": "Погасить инвойс",
+            "invoiceFulfilled": "Инвойс успешно погашен",
+            "reason": "Причина"
+        },
+        "payments": {
+            "title": "Платежи",
+            "payment": "Платеж",
+            "showMore": "Показать еще"
+        }
+    },
+    "refunds": {
+        "title": "Возвраты",
+        "header": "Возврат",
+        "shop": "Магазин",
+        "refundStatus": "Статус возврата",
+        "invoiceInfo": {
+            "title": "Инвойс",
+            "error": "Не удалось получить инвойс"
+        },
+        "paymentInfo": {
+            "title": "Платеж",
+            "error": "Не удалось получить платеж"
+        },
+        "fetchError": "Произошла ошибка при поиске возвратов",
+        "headerRow": {
+            "amount": "Сумма возврата",
+            "status": "Статус",
+            "updatedAt": "Статус изменен",
+            "shop": "Магазин"
+        },
+        "status": {
+            "succeeded": "Успешен",
+            "failed": "Неуспешен",
+            "pending": "Запущен"
+        },
+        "emptyRefunds": "Возвратов нет"
+    }
+}
