@@ -1,5 +1,4 @@
 {
-    "title": "Operations",
     "payments": {
         "title": "Payments",
         "filter": {
@@ -9,8 +8,10 @@
             "payerEmail": "Email",
             "paymentID": "Payment ID",
             "invoiceID": "Invoice ID",
+            "paymentAmount": "Сумма платежа",
             "paymentAmountFrom": "Payment amount from",
             "paymentAmountTo": "Payment amount to",
+            "binPan": "Карта",
             "first6": "Card BIN",
             "last4": "Card last digits",
             "payerFingerprint": "Payer fingerprint",
@@ -21,7 +22,10 @@
             "bankCardTokenProvider": "Bank card token provider",
             "bankCardPaymentSystem": "Payment system",
             "paymentMethod": "Payment method",
-            "rrn": "RRN"
+            "rrn": "RRN",
+            "invoices": "Инвойсы",
+            "shops": "Магазины",
+            "card": "Карта"
         },
         "table": {
             "amount": "Amount",
@@ -32,12 +36,16 @@
             "actions": {
                 "paymentDetails": "Payment details"
             }
+        },
+        "details": {
+            "name": "Платеж"
         }
     },
     "invoices": {
         "title": "Invoices",
         "header": "Invoice",
         "shop": "Shop",
+        "invoiceStatus": "Статус инвойса",
         "cartInfo": {
             "title": "Products and services cart",
             "description": "Description of a product or service",
@@ -64,6 +72,7 @@
         },
         "payments": {
             "title": "Payments",
+            "payment": "Платеж",
             "showMore": "Show more"
         }
     },
@@ -71,6 +80,7 @@
         "title": "Refunds",
         "header": "Refund",
         "shop": "Shop",
+        "refundStatus": "Статус возврата",
         "invoiceInfo": {
             "title": "Invoice",
             "error": "Invoice loading error"
@@ -90,6 +100,7 @@
             "succeeded": "Succeeded",
             "failed": "Failed",
             "pending": "Pending"
-        }
+        },
+        "emptyRefunds": "Возвратов нет"
     }
 }
