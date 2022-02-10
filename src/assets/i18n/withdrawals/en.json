@@ -1,0 +1,37 @@
+{
+    "withdrawal": "Вывод",
+    "walletName": "Название кошелька",
+    "fetchError": "Произошла ошибка при получении выводов",
+    "filters": {
+        "status": "Статус вывода",
+        "walletID": "Кошелек",
+        "identityID": "Идентификатор владельца",
+        "withdrawalID": "Идентификатор вывода",
+        "destinationID": "Идентификатор приёмника средств",
+        "amount": "Сумма вывода",
+        "amountFrom": "Мин. сумма",
+        "amountTo": "Макс. сумма",
+        "currencyID": "Валюта"
+    },
+    "headerRow": {
+        "wallet": "Кошелек",
+        "createdAt": "Дата",
+        "status": "Статус",
+        "amount": "Сумма"
+    },
+    "details": {
+        "amount": "Сумма зачисления",
+        "fee": "Коммиссия",
+        "status": "Статус",
+        "wallet": "Кошелек",
+        "error": "Ошибка",
+        "errors": {
+            "failed": "Произошла ошибка при выводе средств"
+        },
+        "statuses": {
+            "Succeeded": "Успешно",
+            "Failed": "Неуспешно",
+            "Pending": "В процессе"
+        }
+    }
+}
