@@ -2,7 +2,7 @@
     "description": "Один раз в отчетный период платформа автоматически подготавливает отчет. Отчет содержит: акт оказания услуг и реестр операций",
     "headerRow": {
         "createdAt": "Дата создания",
-        "status": "Статус",
+        "status": "Status",
         "type": "Тип формирования",
         "period": "Период отчетности"
     },
@@ -10,19 +10,19 @@
         "header": "Отчет"
     },
     "reportDetails": {
-        "status": "Статус",
+        "status": "Status",
         "type": "Тип формирования",
         "createdAt": "Дата создания",
         "period": "Период отчетности",
-        "shop": "Магазин",
+        "shop": "Shop",
         "actions": {
-            "title": "Действия",
+            "title": "Actions",
             "cancelReport": "Отменить отчет"
         }
     },
     "status": {
         "created": "Сформирован",
-        "pending": "В процессе"
+        "pending": "Pending"
     },
     "reportFiles": {
         "title": "Документы",
@@ -50,12 +50,12 @@
         "subtitle": "Отчет с реестром операций за выбранный период",
         "successfullyCreated": "Отчет успешно создан",
         "form": {
-            "from": "Начало периода",
-            "to": "Конец периода",
+            "from": "Start Date",
+            "to": "End Date",
             "time": "Время",
-            "shop": "Магазин"
+            "shop": "Shop"
         },
-        "cancel": "Отмена",
+        "cancel": "Cancel",
         "create": "Сформировать"
     },
     "cancelReport": {
