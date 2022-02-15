@@ -23,8 +23,8 @@
             "bankCardPaymentSystem": "Payment system",
             "paymentMethod": "Payment method",
             "rrn": "RRN",
-            "invoices": "Инвойсы",
-            "shops": "Магазины",
+            "invoices": "Invoices",
+            "shops": "Shops",
             "card": "Карта"
         },
         "table": {
@@ -38,7 +38,7 @@
             }
         },
         "details": {
-            "name": "Платеж"
+            "name": "Payment"
         }
     },
     "invoices": {
@@ -72,7 +72,7 @@
         },
         "payments": {
             "title": "Payments",
-            "payment": "Платеж",
+            "payment": "Payment",
             "showMore": "Show more"
         }
     },
