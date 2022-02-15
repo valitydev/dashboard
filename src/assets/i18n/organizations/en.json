@@ -24,7 +24,7 @@
     },
     "renameOrganizationDialog": {
         "title": "Переименование организации",
-        "name": "Название организации",
+        "name": "Name of the organization",
         "save": "Сохранить"
     },
     "updateOrganizationDialog": {
@@ -47,7 +47,7 @@
     },
     "organizationDetails": {
         "breadcrumb": {
-            "organizations": "Организации"
+            "organizations": "Organization"
         },
         "links": {
             "members": "Сотрудники",
@@ -76,8 +76,8 @@
             "createdAt": "Дата и время приглашения",
             "expiresAt": "Время истечения срока принятия",
             "titles": {
-                "roles": "Роли",
-                "actions": "Действия"
+                "roles": "Roles",
+                "actions": "Actions"
             },
             "actions": {
                 "repeat": "Выслать повторное приглашение",
@@ -103,13 +103,13 @@
     "changeRolesTable": {
         "add": "Добавить",
         "remove": "Удалить",
-        "shops": "Магазины"
+        "shops": "Shops"
     },
     "selectRoleDialog": {
         "title": "Выберите роль",
         "select": "Выбрать",
         "accesses": {
-            "payments": "Платежи",
+            "payments": "Payments",
             "viewAnalytics": "Просмотр аналитики",
             "viewInvoices": "Просмотр инвойсов",
             "viewPayments": "Просмотр платежей",
@@ -127,10 +127,10 @@
         }
     },
     "roles": {
-        "Administrator": "Администратор",
-        "Manager": "Менеджер",
-        "Accountant": "Бухгалтер",
-        "Integrator": "Интегратор"
+        "Administrator": "Administrator",
+        "Manager": "Manager",
+        "Accountant": "Accountant",
+        "Integrator": "Integrator"
     },
     "editRolesDialog": {
         "title": "Редактирование ролей",
