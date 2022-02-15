@@ -1,8 +1,8 @@
 {
     "nav": {
         "main": "Главная",
-        "payments": "Платежи",
-        "payments_folder": "Платежи",
+        "payments": "Payments",
+        "payments_folder": "Payments",
         "payments_analytics": "Аналитика",
         "payments_operations": "Операции",
         "payments_payouts": "Возмещения",
@@ -10,7 +10,7 @@
         "payments_integrations": "Интеграция",
         "wallets": "Кошельки",
         "wallets_folder": "Кошельки",
-        "wallets_wallet": "Кошелек",
+        "wallets_wallet": "Wallet",
         "wallets_deposits": "Пополнения",
         "wallets_withdrawals": "Выводы",
         "wallets_reports": "Отчеты",
