@@ -34,7 +34,7 @@
         }
     },
     "actions": {
-        "title": "Actions",
+        "title": "Действия",
         "delete": {
             "buttonTitle": "Удалить webhook",
             "success": "Webhook спешно удален"
