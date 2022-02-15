@@ -1,7 +1,7 @@
 {
-    "title": "Детали платежа",
+    "title": "Payment details",
     "statusDetailItem": {
-        "status": "Статус"
+        "status": "Status"
     },
     "details": {
         "chargeAmount": "Сумма зачисления",
@@ -9,14 +9,14 @@
         "approvalCode": "Authorization Approval Code",
         "spid": "SPID",
         "createdAt": "Платеж создан",
-        "amount": "Сумма списания",
+        "amount": "Amount",
         "error": "Ошибка проведения платежа",
-        "statusChangedAt": "Статус изменен",
+        "statusChangedAt": "Status changed at",
         "fee": "Комиссия"
     },
     "paymentTool": {
         "title": "Средство оплаты",
-        "card": "Банковская карта",
+        "card": "Card",
         "digitalWalletType": "Цифровой кошелек",
         "phoneNumber": "Номер телефона",
         "terminal": "Платежный терминал"
@@ -45,7 +45,7 @@
         "capturedHoldMessage": "Средства были зачислены в вашу пользу.",
         "amount": "Сумма подтверждения",
         "availableAmount": "Доступная сумма",
-        "reason": "Причина",
+        "reason": "Reason",
         "actions": {
             "deny": "Отменить",
             "accept": "Подтвердить"
@@ -57,24 +57,24 @@
         "goToParentPayment": "Перейти к родительскому платежу"
     },
     "invoiceDetails": {
-        "title": "Инвойс",
+        "title": "Invoice",
         "product": "Продукт",
         "description": "Описание предлагаемых товаров или услуг",
-        "amount": "Стоимость"
+        "amount": "Amount"
     },
     "shopDetails": {
-        "title": "Магазин",
+        "title": "Shop",
         "name": "Название",
         "url": "URL"
     },
     "refunds": {
-        "title": "Возвраты",
+        "title": "Refunds",
         "noRefunds": "Возвратов нет",
         "refundItem": {
-            "title": "Возврат",
+            "title": "Refund",
             "amount": "Сумма",
             "createdAt": "Совершен",
-            "reason": "Причина",
+            "reason": "Reason",
             "error": "Ошибка"
         },
         "createRefund": {
@@ -83,7 +83,7 @@
             "balance": "Ваш баланс",
             "availableRefund": "Доступно к возврату",
             "balanceLoading": "Данные баланса загружаются ...",
-            "amount": "Сумма возврата",
+            "amount": "Amount",
             "reason": "Причина возврата",
             "successful": "Возврат успешно произведен"
         },
