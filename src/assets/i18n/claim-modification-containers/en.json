@@ -41,7 +41,7 @@
         },
         "contactInfo": {
             "email": "Email",
-            "phoneNumber": "Телефон"
+            "phoneNumber": "Phone number"
         },
         "additionalInfo": {
             "staffCount": "Штатная численность организации",
