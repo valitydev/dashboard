@@ -1,24 +1,24 @@
 {
     "filter": {
         "depositStatus": "Статус пополнения",
-        "walletID": "Кошелек",
+        "walletID": "Wallet",
         "identityID": "Идентификатор владельца",
         "depositID": "Идентификатор пополнения",
         "sourceID": "Идентификатор источника",
         "depositAmount": "Сумма пополнения",
-        "depositAmountFrom": "Мин. сумма",
-        "depositAmountTo": "Макс. сумма"
+        "depositAmountFrom": "Payment amount from",
+        "depositAmountTo": "Payment amount to"
     },
     "headerRow": {
         "amount": "Сумма",
-        "status": "Статус",
+        "status": "Status",
         "createdAt": "Дата",
-        "walletName": "Кошелек"
+        "walletName": "Wallet"
     },
     "header": "Пополнение",
     "amount": "Сумма зачисления",
     "fee": "Комиссия",
-    "status": "Статус",
-    "wallet": "Кошелек",
+    "status": "Status",
+    "wallet": "Wallet",
     "failure": "Ошибка"
 }
