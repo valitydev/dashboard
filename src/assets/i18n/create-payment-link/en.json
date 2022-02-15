@@ -8,7 +8,7 @@
         "redirectUrl": "Redirect URL после успешного завершения платежа",
         "paymentMethods": "Методы оплаты",
         "paymentMethodsList": {
-            "bankCard": "Банковская карта",
+            "bankCard": "Card",
             "wallets": "QIWI кошелек",
             "euroset": "Терминалы “Евросеть”",
             "qps": "Система быстрых платежей (СБП)",
@@ -28,5 +28,5 @@
         "copy": "Скопировать",
         "link": "Ссылка на оплату"
     },
-    "create": "Сформировать ссылку на оплату"
+    "create": "Create payment link"
 }
