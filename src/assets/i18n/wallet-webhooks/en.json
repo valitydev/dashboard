@@ -22,7 +22,7 @@
         "inactive": "Неактивный",
         "url": "URL, на который будут поступать оповещения о произошедших событиях",
         "identity": "Владелец кошелька",
-        "wallet": "Кошелек"
+        "wallet": "Wallet"
     },
     "events": {
         "title": "Набор событий",
@@ -36,7 +36,7 @@
         }
     },
     "actions": {
-        "title": "Действия",
+        "title": "Actions",
         "buttons": {
             "delete": "Удалить webhook"
         },
