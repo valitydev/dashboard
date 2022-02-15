@@ -1,6 +1,6 @@
 {
-    "revert": "Отмена",
-    "status": "Статус",
+    "revert": "Cancel",
+    "status": "Status",
     "createdAt": "Дата",
     "amount": "Сумма отмены",
     "error": "Ошибка",
