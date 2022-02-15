@@ -1,5 +1,5 @@
 {
-    "amount": "Сумма списания",
-    "status": "Статус",
-    "statusChangedAt": "Статус изменен"
+    "amount": "Amount",
+    "status": "Status",
+    "statusChangedAt": "Status changed at"
 }
