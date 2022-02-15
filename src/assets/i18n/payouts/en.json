@@ -3,33 +3,33 @@
         "title": "Создание выплаты на кошелек",
         "createPayout": "Создать выплату",
         "noPayoutTools": "Отсутствуют доступные инструменты вывода средств",
-        "shop": "Магазин",
+        "shop": "Shop",
         "payoutTool": "Инструмент вывода средств",
-        "amount": "Сумма списания",
+        "amount": "Amount",
         "created": "Заявка на выплату успешно создана"
     },
     "filter": {
-        "shopID": "Магазин"
+        "shopID": "Shop"
     },
     "headerRow": {
         "createdAt": "Дата возмещения",
         "amount": "Сумма",
         "payoutTool": "Средство вывода",
-        "shop": "Магазин"
+        "shop": "Shop"
     },
     "panel": {
         "payoutID": "Выплата #{{num}}",
-        "shop": "Магазин",
+        "shop": "Shop",
         "count": "Количество операций",
         "amount": "Сумма",
         "fee": "Комиссия",
         "firstConfirmationTime": "Время первого подтверждения",
         "lastConfirmationTime": "Время последнего подтверждения",
-        "actions": "Действия",
+        "actions": "Actions",
         "createReport": "Сформировать реестр операций",
         "summaryTypes": {
-            "payment": "Платежи",
-            "refund": "Возвраты"
+            "payment": "Payments",
+            "refund": "Refunds"
         }
     },
     "createPayoutReport": {
@@ -38,7 +38,7 @@
         "descriptionStep2": "Отчет успешно создан и находится в процессе формирования. Загрузить отчет, и отслеживать статус формирования возможно в разделе \"Отчеты\"",
         "create": "Сформировать",
         "toReports": "Перейти в раздел \"Отчеты\"",
-        "cancel": "Отмена"
+        "cancel": "Cancel"
     },
     "errors": {
         "createReportError": "Не удалось создать отчет",
