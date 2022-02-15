@@ -2,7 +2,7 @@
     "testEnvironment": "Тестовое окружение",
     "testEnvironmentHint": "Вы находитесь в тестовом окружении. Этот раздел предназначен для тестового подключения и проверки настроек приема платежей. Здесь же вы можете проверить функции личного кабинета, например, интеграцию магазина, создание и оплата счетов или осуществление возвратов.",
     "nav": {
-        "shops": "Магазины",
+        "shops": "Shops",
         "operations": "Операции",
         "reports": "Отчеты",
         "analytics": "Аналитика",
@@ -22,7 +22,7 @@
     },
     "analytics": {
         "allShops": "Все магазины",
-        "shop": "Магазин",
+        "shop": "Shop",
         "paymentsCount": "Количество платежей",
         "paymentsAmount": "Оборот",
         "paymentTools": "Платежные инструменты",
@@ -35,25 +35,25 @@
             "paymentsCount": "Количество платежей"
         },
         "paymentToolsList": {
-            "bank_card": "Банковская карта",
-            "digital_wallet": "Кошелек",
+            "bank_card": "Card",
+            "digital_wallet": "Wallet",
             "payment_terminal": "Терминал"
         },
         "paymentStatuses": {
-            "pending": "Запущен",
+            "pending": "Pending",
             "processed": "Обработан",
             "captured": "Подтвержден",
-            "cancelled": "Отменен",
+            "cancelled": "Cancelled",
             "refunded": "Возвращен",
-            "failed": "Неуспешен"
+            "failed": "Failed"
         },
         "errorCodes": {
             "operation_timeout": "Превышено время ожидания",
             "authorization_failed": "Ошибка авторизации",
             "preauthorization_failed": "Ошибка предавторизации",
             "no_route_found": "Маршрут не найден",
-            "insufficient_funds": "Недостаточно средств",
-            "rejected_by_issuer": "Отклонено эмитентом",
+            "insufficient_funds": "Insufficient funds",
+            "rejected_by_issuer": "Rejected by issuing bank",
             "risk_score_is_too_high": "Операция с высоким риском",
             "payment_tool_rejected": "Платежный инструмент отклонен",
             "security_policy_violated": "Нарушение политики безопасности",
