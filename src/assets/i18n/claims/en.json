@@ -7,7 +7,7 @@
     "details": "Детали заявки",
     "createClaim": "Создать заявку",
     "panel": {
-        "status": "Статус",
+        "status": "Status",
         "createdAt": "Дата создания",
         "updatedAt": "Дата изменения"
     }
