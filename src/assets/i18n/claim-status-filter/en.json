@@ -1,5 +1,5 @@
 {
-    "label": "Статус",
+    "label": "Status",
     "statuses": {
         "pending": "В ожидании",
         "review": "На рассмотрении",
