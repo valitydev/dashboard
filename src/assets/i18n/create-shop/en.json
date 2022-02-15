@@ -46,7 +46,7 @@
             },
             "new": {
                 "search": "Для поиска укажите название, БИК, SWIFT или ИНН банка",
-                "name": "Product name",
+                "name": "Наименование",
                 "bik": "БИК",
                 "postAccount": "Корреспондентский счет",
                 "account": "Расчетный счет"
@@ -58,7 +58,7 @@
     "internationalLegalEntity": {
         "title": "Заявка на создание магазина",
         "organization": "Сведения об организации",
-        "organizationName": "Product name",
+        "organizationName": "Наименование",
         "tradingName": "Торговое наименование (если применимо)",
         "registeredAddress": "Адрес места регистрации",
         "actualAddress": "Адрес места нахождения (если отличается от места регистрации)",
