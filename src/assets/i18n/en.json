@@ -1,15 +1,15 @@
 {
-    "showMore": "Показать еще",
+    "showMore": "Show more",
     "collapse": "Свернуть",
     "resetSearchParams": "Сбросить параметры поиска",
     "back": "Назад",
-    "next": "Далее",
-    "create": "Создать",
+    "next": "Next",
+    "create": "Create",
     "save": "Сохранить",
     "clear": "Очистить",
     "clearForm": "Очистить форму",
     "ago": "назад",
-    "cancel": "Отмена",
+    "cancel": "Cancel",
     "done": "Готово",
     "continue": "Продолжить",
     "confirm": "Подтвердить",
@@ -21,7 +21,7 @@
     "month": "Месяц",
     "year": "Год",
     "any": "Любой",
-    "update": "Обновить",
+    "update": "Update",
     "lastUpdate": "Последнее обновление",
     "httpError": "Произошла ошибка в процессе передачи / получения данных",
     "commonError": "Что-то пошло не так",
@@ -34,8 +34,8 @@
     "copied": "Скопировано",
     "copyFailed": "Ошибка копирования",
     "period": {
-        "fromTime": "Начало периода",
-        "toTime": "Конец периода"
+        "fromTime": "Start Date",
+        "toTime": "End Date"
     },
     "filters": {
         "additionalFilters": "Другие фильтры",
@@ -45,12 +45,12 @@
         "hideAllStatuses": "Скрыть все статусы"
     },
     "paymentStatus": {
-        "pending": "Запущен",
+        "pending": "Pending",
         "processed": "Обработан",
         "captured": "Подтвержден",
-        "cancelled": "Отменен",
+        "cancelled": "Cancelled",
         "refunded": "Возвращен",
-        "failed": "Неуспешен"
+        "failed": "Failed"
     },
     "reportType": {
         "paymentRegistry": "Ручной",
@@ -60,30 +60,30 @@
         "paid": "Оплачен",
         "unpaid": "Не оплачен",
         "fulfilled": "Погашен",
-        "cancelled": "Отменен"
+        "cancelled": "Cancelled"
     },
     "refundStatus": {
-        "succeeded": "Успешно",
-        "pending": "В процессе",
+        "succeeded": "Success",
+        "pending": "Pending",
         "failed": "Неуспешно"
     },
     "reportStatus": {
-        "pending": "В процессе",
+        "pending": "Pending",
         "processed": "Готов"
     },
     "depositStatus": {
-        "Succeeded": "Успешно",
-        "Pending": "В процессе",
+        "Succeeded": "Success",
+        "Pending": "Pending",
         "Failed": "Неуспешно"
     },
     "depositRevertStatus": {
-        "Succeeded": "Успешно",
-        "Pending": "В процессе",
+        "Succeeded": "Success",
+        "Pending": "Pending",
         "Failed": "Неуспешно"
     },
     "withdrawalStatus": {
-        "Succeeded": "Успешно",
-        "Pending": "В процессе",
+        "Succeeded": "Success",
+        "Pending": "Pending",
         "Failed": "Неуспешно"
     },
     "paymentFlow": {
@@ -130,14 +130,14 @@
         "nspkmir": "MIR"
     },
     "paymentMethod": {
-        "bankCard": "Банковская карта",
+        "bankCard": "Card",
         "paymentTerminal": "Терминал"
     },
     "digitalWalletProvider": {
         "DigitalWalletDetailsQIWI": "QIWI"
     },
     "paymentTerminalProvider": {
-        "euroset": "Евросеть",
+        "euroset": "Pay with Euroset",
         "alipay": "Alipay",
         "wechat": "WeChat",
         "zotapay": "ZotaPay",
@@ -156,7 +156,7 @@
     },
     "confirmActionDialog": {
         "subheading": "Подтвердите действие",
-        "cancel": "Отмена",
+        "cancel": "Cancel",
         "confirm": "Подтвердить"
     },
     "errors": {
@@ -215,7 +215,7 @@
             },
             "security_policy_violated": "Нарушения политики безопасности",
             "temporarily_unavailable": "Временная недоступность третьих сторон",
-            "rejected_by_issuer": "Отклонено эмитентом"
+            "rejected_by_issuer": "Rejected by issuing bank"
         },
         "no_route_found": {
             "message": "Маршрут не найден",
@@ -227,13 +227,13 @@
     "notification": {
         "ok": "OK",
         "error": "Что-то пошло не так",
-        "success": "Успешно",
+        "success": "Success",
         "httpError": "Произошла ошибка в процессе передачи / получения данных",
         "unknownError": "Неизвестная ошибка"
     },
     "sectionLinks": {
         "main": "Главная",
-        "payments": "Платежи",
+        "payments": "Payments",
         "wallets": "Кошельки",
         "claims": "Заявки"
     }
