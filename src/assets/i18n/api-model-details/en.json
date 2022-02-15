@@ -40,7 +40,7 @@
             "correspondentBankAccount": "Корр. счет"
         },
         "bankCard": {
-            "cardNumberMask": "Номер карты"
+            "cardNumberMask": "Card number"
         },
         "wallet": {
             "walletName": "Наименование"
