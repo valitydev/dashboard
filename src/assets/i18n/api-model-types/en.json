@@ -2,7 +2,7 @@
     "payoutToolDetailsType": {
         "payoutToolDetailsBankAccount": "Bank account",
         "payoutToolDetailsInternationalBankAccount": "Международный банковский счет",
-        "payoutToolDetailsBankCard": "Банковская карта",
+        "payoutToolDetailsBankCard": "Card",
         "payoutToolDetailsWalletInfo": "Wallet",
         "payoutToolDetailsPaymentInstitutionAccount": "Аккаунт платежной организации"
     }
