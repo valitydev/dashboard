@@ -1,7 +1,7 @@
 {
     "title": "Создание шаблона инвойса",
     "form": {
-        "shop": "Магазин",
+        "shop": "Shop",
         "lifetime": "Окончание срока действия инвойса",
         "invoiceTemplateType": "Тип шаблона",
         "invoiceTemplateTypeCostType": "Тип ограничения стоимости",
@@ -14,8 +14,8 @@
         "cart": {
             "title": "Список товаров и услуг",
             "description": "Описание",
-            "amount": "Цена",
-            "quantity": "Количество",
+            "amount": "Price",
+            "quantity": "Quantity",
             "summary": "Итого товаров и услуг на сумму",
             "remove": "Удалить",
             "add": "Добавить товар или услугу"
