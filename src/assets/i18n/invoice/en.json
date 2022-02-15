@@ -1,12 +1,12 @@
 {
     "title": "Детали инвойса",
     "statusDetailItem": {
-        "status": "Статус"
+        "status": "Status"
     },
     "details": {
-        "amount": "Стоимость",
+        "amount": "Amount",
         "invoiceTemplate": "Идентификатор шаблона",
-        "createdAt": "Создан",
+        "createdAt": "Created at",
         "dueDate": "Окончание действия",
         "product": "Наименование предлагаемых товаров или услуг",
         "description": "Описание предлагаемых товаров или услуг",
@@ -14,17 +14,17 @@
         "cart": {
             "title": "Корзина с набором позиций товаров или услуг",
             "product": "Описание предлагаемого товара или услуги",
-            "cost": "Цена",
-            "quantity": "Количество",
-            "taxMode": "Ставка налога"
+            "cost": "Price",
+            "quantity": "Quantity",
+            "taxMode": "TAX"
         },
         "payments": {
-            "title": "Платежи",
+            "title": "Payments",
             "noPayments": "Платежей нет",
             "payment": {
-                "title": "Платеж",
-                "status": "Статус",
-                "amount": "Сумма списания",
+                "title": "Payment",
+                "status": "Status",
+                "amount": "Amount",
                 "createdAt": "Платеж создан"
             }
         },
