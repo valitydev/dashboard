@@ -20,7 +20,7 @@
         "amount": "Сумма"
     },
     "details": {
-        "amount": "Сумма зачисления",
+        "amount": "Сумма списания",
         "fee": "Коммиссия",
         "status": "Status",
         "wallet": "Wallet",
