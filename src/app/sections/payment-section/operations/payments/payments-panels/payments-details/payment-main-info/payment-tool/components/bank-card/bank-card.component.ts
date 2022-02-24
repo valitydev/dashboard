@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { TokenProvider, PaymentSystem } from '@dsh/api';
-import { BankCardDetails } from '@dsh/api-codegen/capi/swagger-codegen';
+import { BankCardDetails } from '@dsh/api-codegen/capi';
 
 interface BankCardIconConfig {
     iconName: string;
