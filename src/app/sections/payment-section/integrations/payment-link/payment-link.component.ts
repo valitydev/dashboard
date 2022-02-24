@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@ngneat/reactive-forms';
-import { BehaviorSubject, defer, merge, ReplaySubject, Subject, Subscription } from 'rxjs';
-import { mapTo, shareReplay, switchMap } from 'rxjs/operators';
+import { TranslocoService } from '@ngneat/transloco';
+import { BehaviorSubject, defer, merge, ReplaySubject, Subject, Subscription, tap, EMPTY } from 'rxjs';
+import { mapTo, shareReplay, switchMap, catchError, switchMapTo } from 'rxjs/operators';
 
 import { InvoiceService, InvoiceTemplatesService } from '@dsh/api';
 import { PaymentMethod } from '@dsh/api-codegen/capi';
+import { NotificationService, ErrorService } from '@dsh/app/shared';
 import { Controls } from '@dsh/app/shared/components/create-payment-link-form';
 import { CreatePaymentLinkService } from '@dsh/app/shared/services/create-payment-link';
-import { inProgressTo } from '@dsh/utils';
+import { progressTo } from '@dsh/utils';
 
 import {
     CreateInvoiceOrInvoiceTemplateService,
@@ -36,7 +38,7 @@ export class PaymentLinkComponent {
     paymentLink$ = merge(
         defer(() => this.create$).pipe(
             switchMap(() =>
-                this.invoiceOrInvoiceTemplate.type === Type.Invoice
+                (this.invoiceOrInvoiceTemplate.type === Type.Invoice
                     ? this.createPaymentLinkService.createPaymentLinkByInvoice(
                           this.invoiceOrInvoiceTemplate.invoiceOrInvoiceTemplate,
                           this.formControl.value
@@ -45,21 +47,35 @@ export class PaymentLinkComponent {
                           this.invoiceOrInvoiceTemplate.invoiceOrInvoiceTemplate,
                           this.formControl.value
                       )
+                ).pipe(
+                    progressTo(() => this.progress$),
+                    catchError((err) => {
+                        this.errorService.error(err, false);
+                        return this.transloco
+                            .selectTranslate('errors.createPaymentLinkError', null, 'create-payment-link')
+                            .pipe(
+                                tap((message) => this.notificationService.error(message)),
+                                switchMapTo(EMPTY)
+                            );
+                    })
+                )
             )
         ),
         this.formControl.valueChanges.pipe(mapTo(''))
     ).pipe(shareReplay(1));
-    inProgress$ = new BehaviorSubject(false);
+    progress$ = new BehaviorSubject(0);
 
     private create$ = new Subject<void>();
 
     constructor(
         private invoiceService: InvoiceService,
         private invoiceTemplatesService: InvoiceTemplatesService,
-        private createPaymentLinkService: CreatePaymentLinkService
+        private createPaymentLinkService: CreatePaymentLinkService,
+        private notificationService: NotificationService,
+        private errorService: ErrorService,
+        private transloco: TranslocoService
     ) {}
 
-    @inProgressTo('inProgress$')
     nextInvoiceOrInvoiceTemplate(invoiceOrInvoiceTemplate: InvoiceOrInvoiceTemplate): Subscription {
         return (
             invoiceOrInvoiceTemplate.type === Type.Invoice
@@ -67,11 +83,13 @@ export class PaymentLinkComponent {
                 : this.invoiceTemplatesService.getInvoicePaymentMethodsByTemplateID(
                       invoiceOrInvoiceTemplate.invoiceOrInvoiceTemplate.invoiceTemplate.id
                   )
-        ).subscribe((paymentMethods) => {
-            this.paymentMethods$.next(paymentMethods);
-            this.currentStep$.next(Step.PaymentLink);
-            this.invoiceOrInvoiceTemplate = invoiceOrInvoiceTemplate;
-        });
+        )
+            .pipe(progressTo(this.progress$))
+            .subscribe((paymentMethods) => {
+                this.paymentMethods$.next(paymentMethods);
+                this.currentStep$.next(Step.PaymentLink);
+                this.invoiceOrInvoiceTemplate = invoiceOrInvoiceTemplate;
+            });
     }
 
     create(): void {
