@@ -6,7 +6,8 @@ import { FbGroupConfig } from '@ngneat/reactive-forms/lib/formBuilder';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
 
-import { BankCard, PaymentMethod, PaymentTerminal } from '@dsh/api-codegen/capi';
+import { TokenProvider, TerminalProvider } from '@dsh/api';
+import { BankCard, PaymentMethod, PaymentTerminal, DigitalWallet } from '@dsh/api-codegen/capi';
 import { PaymentLinkParams } from '@dsh/app/shared/services/create-payment-link/types/payment-link-params';
 import { ComponentChanges } from '@dsh/type-utils';
 import { createValidatedAbstractControlProviders, ValidatedWrappedAbstractControlSuperclass } from '@dsh/utils';
@@ -16,8 +17,6 @@ import { ORDERED_PAYMENT_METHODS_NAMES } from '../../services/create-payment-lin
 import { Controls, EMPTY_VALUE, PaymentMethodControls } from './types/controls';
 
 import MethodEnum = PaymentMethod.MethodEnum;
-import TokenProvidersEnum = BankCard.TokenProvidersEnum;
-import ProvidersEnum = PaymentTerminal.ProvidersEnum;
 
 @UntilDestroy()
 @Component({
@@ -82,16 +81,16 @@ export class CreatePaymentLinkFormComponent
                     if (Array.isArray(bankCard.tokenProviders) && bankCard.tokenProviders.length) {
                         for (const provider of bankCard.tokenProviders) {
                             switch (provider) {
-                                case TokenProvidersEnum.Applepay:
+                                case TokenProvider.ApplePay:
                                     paymentMethodsControls.applePay.enable();
                                     break;
-                                case TokenProvidersEnum.Googlepay:
+                                case TokenProvider.GooglePay:
                                     paymentMethodsControls.googlePay.enable();
                                     break;
-                                case TokenProvidersEnum.Samsungpay:
+                                case TokenProvider.SamsungPay:
                                     paymentMethodsControls.samsungPay.enable();
                                     break;
-                                case TokenProvidersEnum.Yandexpay:
+                                case TokenProvider.YandexPay:
                                     paymentMethodsControls.yandexPay.enable();
                                     break;
                                 default:
@@ -105,18 +104,20 @@ export class CreatePaymentLinkFormComponent
                     break;
                 }
                 case MethodEnum.DigitalWallet:
-                    paymentMethodsControls.wallets.enable();
+                    if ((item as DigitalWallet).providers.length) {
+                        paymentMethodsControls.wallets.enable();
+                    }
                     break;
                 case MethodEnum.PaymentTerminal:
                     (item as PaymentTerminal).providers.forEach((p) => {
                         switch (p) {
-                            case ProvidersEnum.Euroset:
+                            case TerminalProvider.Euroset:
                                 paymentMethodsControls.euroset.enable();
                                 break;
-                            case ProvidersEnum.Qps:
+                            case TerminalProvider.Qps:
                                 paymentMethodsControls.qps.enable();
                                 break;
-                            case ProvidersEnum.Uzcard:
+                            case TerminalProvider.Uzcard:
                                 paymentMethodsControls.uzcard.enable();
                                 break;
                             default:

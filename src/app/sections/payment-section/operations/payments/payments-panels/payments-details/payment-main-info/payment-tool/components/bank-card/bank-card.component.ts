@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { BankCardDetails, PaymentToolDetailsBankCard } from '@dsh/api-codegen/capi/swagger-codegen';
+import { TokenProvider, PaymentSystem } from '@dsh/api';
+import { BankCardDetails } from '@dsh/api-codegen/capi/swagger-codegen';
 
 interface BankCardIconConfig {
     iconName: string;
@@ -16,28 +17,28 @@ interface BankCardIconConfig {
 export class BankCardComponent {
     @Input() bankCard: BankCardDetails;
 
-    getPaymentSystemIconConfig(paymentSystem: PaymentToolDetailsBankCard.PaymentSystemEnum): BankCardIconConfig {
+    getPaymentSystemIconConfig(paymentSystem: PaymentSystem): BankCardIconConfig {
         switch (paymentSystem) {
-            case 'visa':
+            case PaymentSystem.Visa:
                 return { iconName: 'visa', width: '32px', heigth: '24px' };
-            case 'mastercard':
+            case PaymentSystem.MasterCard:
                 return { iconName: 'mastercard', width: '24px', heigth: '24px' };
-            case 'nspkmir':
+            case PaymentSystem.Mir:
                 return { iconName: 'mir', width: '32px', heigth: '24px' };
             default:
                 return null;
         }
     }
 
-    getTokenProviderIconConfig(tokenProvider: PaymentToolDetailsBankCard.TokenProviderEnum): BankCardIconConfig {
+    getTokenProviderIconConfig(tokenProvider: TokenProvider): BankCardIconConfig {
         switch (tokenProvider) {
-            case 'samsungpay':
+            case TokenProvider.SamsungPay:
                 return { iconName: 'samsung_pay', width: '100px', heigth: '27px' };
-            case 'googlepay':
+            case TokenProvider.GooglePay:
                 return { iconName: 'google_pay', width: '40px', heigth: '26px' };
-            case 'applepay':
+            case TokenProvider.ApplePay:
                 return { iconName: 'apple_pay', width: '24px', heigth: '24px' };
-            case 'yandexpay':
+            case TokenProvider.YandexPay:
                 return { iconName: 'yandex_pay', width: '44px', heigth: '24px' };
             default:
                 return null;

@@ -9,7 +9,7 @@
         "paymentMethods": "Методы оплаты",
         "paymentMethodsList": {
             "bankCard": "Банковская карта",
-            "wallets": "QIWI кошелек",
+            "wallets": "Кошельки",
             "euroset": "Терминалы “Евросеть”",
             "qps": "Система быстрых платежей (СБП)",
             "mobileCommerce": "Номер мобильного телефона",
