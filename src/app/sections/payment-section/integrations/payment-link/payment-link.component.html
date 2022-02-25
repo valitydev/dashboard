@@ -19,13 +19,13 @@
                         dsh-text-button
                         color="accent"
                         (click)="currentStep$.next(step.InvoiceTemplate)"
-                        [disabled]="inProgress$ | async"
+                        [disabled]="!!(progress$ | async)"
                     >
                         {{ t('back') }}
                     </button>
 
                     <ng-container *ngIf="formControl.valid && !(paymentLink$ | async); else clearButton">
-                        <button dsh-button color="accent" (click)="create()" [disabled]="inProgress$ | async">
+                        <button dsh-button color="accent" (click)="create()" [disabled]="!!(progress$ | async)">
                             {{ c('create') }}
                         </button>
                     </ng-container>
@@ -34,7 +34,7 @@
                             dsh-text-button
                             color="accent"
                             (click)="formControl.reset()"
-                            [disabled]="inProgress$ | async"
+                            [disabled]="!!(progress$ | async)"
                         >
                             {{ t('clearForm') }}
                         </button>
