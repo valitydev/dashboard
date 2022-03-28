@@ -6,8 +6,8 @@ import { FormBuilder, FormControl, FormGroup } from '@ngneat/reactive-forms';
 import { TranslocoService } from '@ngneat/transloco';
 import isEmpty from 'lodash-es/isEmpty';
 import isNil from 'lodash-es/isNil';
-import { combineLatest, Observable } from 'rxjs';
-import { map, shareReplay, take, withLatestFrom } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, shareReplay, take, withLatestFrom, pluck } from 'rxjs/operators';
 
 import { Refund, RefundParams } from '@dsh/api-codegen/capi/swagger-codegen';
 import { ErrorService, NotificationService } from '@dsh/app/shared/services';
@@ -21,7 +21,6 @@ import { CreateRefundDialogData } from '../../types/create-refund-dialog-data';
 import { CreateRefundDialogResponse } from '../../types/create-refund-dialog-response';
 import { CreateRefundDialogResponseStatus } from '../../types/create-refund-dialog-response-status';
 import { CreateRefundForm } from '../../types/create-refund-form';
-import { RefundAvailableSum } from '../../types/refund-available-sum';
 import { maxAvailableAmountValidator } from '../../validators/max-available-amount-validator';
 
 const MAX_REASON_LENGTH = 100;
@@ -41,8 +40,6 @@ export class CreateRefundDialogComponent implements OnInit {
     isPartialRefund = false;
     availableRefundAmount$: Observable<Balance>;
 
-    balance$: Observable<RefundAvailableSum>;
-
     get amountControl(): FormControl<number> | null {
         return this.form.controls.amount ?? null;
     }
@@ -59,7 +56,6 @@ export class CreateRefundDialogComponent implements OnInit {
 
     ngOnInit(): void {
         this.availableRefundAmount$ = this.initAvailableRefundAmount();
-        this.balance$ = this.initBalance();
     }
 
     confirm(): void {
@@ -119,29 +115,6 @@ export class CreateRefundDialogComponent implements OnInit {
         );
     }
 
-    private initBalance(): Observable<RefundAvailableSum> {
-        // const { shopID } = this.dialogData;
-
-        // const account$: Observable<Balance> = this.accountService.getAccount(shopID).pipe(
-        //     map((account: Account) => {
-        //         return {
-        //             amount: account.availableAmount,
-        //             currency: account.currency,
-        //         };
-        //     }),
-        //     shareReplay(1)
-        // );
-
-        return combineLatest([this.availableRefundAmount$]).pipe(
-            map(([refundedAmount]: [Balance]) => {
-                return {
-                    accountBalance: refundedAmount, // TODO: add accountBalance
-                    refundedAmount,
-                };
-            })
-        );
-    }
-
     private formatRefundParams(): RefundParams {
         const { reason, amount = null } = this.form.value;
         const { currency } = this.dialogData;
@@ -163,19 +136,7 @@ export class CreateRefundDialogComponent implements OnInit {
             this.fb.control(null, {
                 validators: [Validators.required, amountValidator, Validators.min(1)],
                 asyncValidators: [
-                    maxAvailableAmountValidator(
-                        this.balance$.pipe(
-                            map(
-                                ({
-                                    refundedAmount: { amount: refundedAmount },
-                                    accountBalance: { amount: accountBalance },
-                                }: RefundAvailableSum) => {
-                                    return refundedAmount >= accountBalance ? accountBalance : refundedAmount;
-                                }
-                            ),
-                            map(toMajor)
-                        )
-                    ),
+                    maxAvailableAmountValidator(this.availableRefundAmount$.pipe(pluck('amount'), map(toMajor))),
                 ],
             })
         );
