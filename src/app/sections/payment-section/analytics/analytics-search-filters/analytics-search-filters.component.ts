@@ -35,7 +35,7 @@ export class AnalyticsSearchFiltersComponent implements OnInit, OnChanges {
     shopsByCurrency$: Observable<Shop[]> = defer(() =>
         combineLatest(getFormValueChanges(this.form).pipe(pluck('currency')), this.shops$)
     ).pipe(
-        map(([currency, shops]) => shops.filter((shop) => shop.account?.currency === currency)),
+        map(([currency, shops]) => shops.filter((shop) => shop.currency === currency)),
         shareReplay(SHARE_REPLAY_CONF)
     );
 

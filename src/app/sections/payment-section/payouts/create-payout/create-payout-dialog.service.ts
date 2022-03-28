@@ -50,7 +50,7 @@ export class CreatePayoutDialogService {
                         of(params),
                         this.shopsService.shops$.pipe(
                             take(1),
-                            map((shops) => shops.find(({ id }) => id === params.shopID)?.account?.currency)
+                            map((shops) => shops.find(({ id }) => id === params.shopID)?.currency)
                         ),
                     ])
                 ),

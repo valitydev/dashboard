@@ -9,13 +9,12 @@ import isNil from 'lodash-es/isNil';
 import { combineLatest, Observable } from 'rxjs';
 import { map, shareReplay, take, withLatestFrom } from 'rxjs/operators';
 
-import { Account, Refund, RefundParams } from '@dsh/api-codegen/capi/swagger-codegen';
+import { Refund, RefundParams } from '@dsh/api-codegen/capi/swagger-codegen';
 import { ErrorService, NotificationService } from '@dsh/app/shared/services';
 import { CommonError } from '@dsh/app/shared/services/error/models/common-error';
 import { amountValidator } from '@dsh/components/form-controls';
 import { toMajor, toMinor } from '@dsh/utils';
 
-import { AccountsService } from '../../services/accounts/accounts.service';
 import { RefundsService } from '../../services/refunds/refunds.service';
 import { Balance } from '../../types/balance';
 import { CreateRefundDialogData } from '../../types/create-refund-dialog-data';
@@ -31,7 +30,7 @@ const MAX_REASON_LENGTH = 100;
     selector: 'dsh-create-refund',
     templateUrl: 'create-refund-dialog.component.html',
     styleUrls: ['create-refund-dialog.component.scss'],
-    providers: [AccountsService, RefundsService],
+    providers: [RefundsService],
 })
 export class CreateRefundDialogComponent implements OnInit {
     maxReasonLength: number = MAX_REASON_LENGTH;
@@ -53,7 +52,6 @@ export class CreateRefundDialogComponent implements OnInit {
         private dialogRef: MatDialogRef<CreateRefundDialogComponent, CreateRefundDialogResponse>,
         private fb: FormBuilder,
         private refundsService: RefundsService,
-        private accountService: AccountsService,
         private transloco: TranslocoService,
         private notificationService: NotificationService,
         private errorService: ErrorService
@@ -122,22 +120,22 @@ export class CreateRefundDialogComponent implements OnInit {
     }
 
     private initBalance(): Observable<RefundAvailableSum> {
-        const { shopID } = this.dialogData;
+        // const { shopID } = this.dialogData;
 
-        const account$: Observable<Balance> = this.accountService.getAccount(shopID).pipe(
-            map((account: Account) => {
-                return {
-                    amount: account.availableAmount,
-                    currency: account.currency,
-                };
-            }),
-            shareReplay(1)
-        );
+        // const account$: Observable<Balance> = this.accountService.getAccount(shopID).pipe(
+        //     map((account: Account) => {
+        //         return {
+        //             amount: account.availableAmount,
+        //             currency: account.currency,
+        //         };
+        //     }),
+        //     shareReplay(1)
+        // );
 
-        return combineLatest([account$, this.availableRefundAmount$]).pipe(
-            map(([accountBalance, refundedAmount]: [Balance, Balance]) => {
+        return combineLatest([this.availableRefundAmount$]).pipe(
+            map(([refundedAmount]: [Balance]) => {
                 return {
-                    accountBalance,
+                    accountBalance: refundedAmount, // TODO: add accountBalance
                     refundedAmount,
                 };
             })

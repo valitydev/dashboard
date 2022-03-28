@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import get from 'lodash-es/get';
 import * as moment from 'moment';
 import { combineLatest, merge, Observable, Subject } from 'rxjs';
 import { distinctUntilChanged, filter, map, share, shareReplay, startWith, switchMap, take } from 'rxjs/operators';
@@ -40,7 +39,7 @@ export class CreateInvoiceTemplateService {
     // eslint-disable-next-line @typescript-eslint/member-ordering
     summary$ = this.cartForm.valueChanges.pipe(
         // TODO: add form types
-        startWith<any, any>(this.cartForm.value),
+        startWith(this.cartForm.value),
         map((v) => v.reduce((sum, c) => sum + c.price * c.quantity, 0)),
         shareReplay(1)
     );
@@ -267,9 +266,6 @@ export class CreateInvoiceTemplateService {
     }
 
     private getCurrencyByShopID(shopID: string, shops: Shop[]): string {
-        return get(
-            shops.find((s) => s.id === shopID),
-            ['account', 'currency']
-        );
+        return shops.find((s) => s.id === shopID)?.currency;
     }
 }

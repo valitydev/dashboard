@@ -97,7 +97,7 @@
     "@types/prettier": "2.4.3",
     "@typescript-eslint/eslint-plugin": "^5.8.0",
     "@typescript-eslint/parser": "~5.8.0",
-    "@vality/swag-payments": "github:valitydev/swag-payments",
+    "@vality/swag-payments": "github:valitydev/swag-payments#71087f0dfc472334b6833861c3480613fa8e79cb",
     "concurrently": "7.0.0",
     "del": "^5.1.0",
     "eslint": "^8.5.0",
