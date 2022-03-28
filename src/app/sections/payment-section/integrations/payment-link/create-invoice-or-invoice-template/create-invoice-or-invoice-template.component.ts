@@ -64,7 +64,7 @@ export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
                     this.invoiceService.createInvoice({
                         ...pick(value, ['product', 'description', 'cart', 'shopID']),
                         dueDate: moment(value.dueDate).utc().endOf('d').format(),
-                        currency: shops.find((s) => s.id === value.shopID)?.account?.currency,
+                        currency: shops.find((s) => s.id === value.shopID)?.currency,
                         metadata: {},
                     })
                 ),
