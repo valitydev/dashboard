@@ -1,8 +1,4 @@
-import {
-    ContractModification,
-    ContractPayoutToolModification,
-    PartyModification,
-} from '@dsh/api-codegen/claim-management';
+import { ContractModification, ContractPayoutToolModification, PartyModification } from '@vality/swag-claim-management';
 
 import { createBaseContractModification } from './create-base-contract-modification';
 

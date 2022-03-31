@@ -1,4 +1,4 @@
-import { CommentModificationUnit } from '@dsh/api-codegen/claim-management';
+import { CommentModificationUnit } from '@vality/swag-claim-management';
 
 import { SpecificClaimModificationUnit } from './specific-claim-modification-unit';
 

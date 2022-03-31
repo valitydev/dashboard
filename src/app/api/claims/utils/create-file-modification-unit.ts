@@ -1,4 +1,4 @@
-import { FileModification, FileModificationUnit } from '@dsh/api-codegen/claim-management/swagger-codegen';
+import { FileModification, FileModificationUnit } from '@vality/swag-claim-management';
 
 import { SpecificClaimModificationUnit } from './specific-claim-modification-unit';
 

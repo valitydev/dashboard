@@ -1,8 +1,8 @@
-import { ClaimChangeset, DocumentModificationUnit } from '@dsh/api-codegen/claim-management';
+import { ModificationUnit, DocumentModificationUnit } from '@vality/swag-claim-management';
 
 import { isClaimModification, isDocumentModificationUnit } from '../type-guards';
 
-export const takeDocumentModificationUnits = (changeset: ClaimChangeset): DocumentModificationUnit[] =>
+export const takeDocumentModificationUnits = (changeset: ModificationUnit[]): DocumentModificationUnit[] =>
     changeset.reduce(
         (acc, { modification }) =>
             isClaimModification(modification) && isDocumentModificationUnit(modification.claimModificationType)

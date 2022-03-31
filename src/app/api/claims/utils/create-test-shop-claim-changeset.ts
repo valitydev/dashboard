@@ -1,4 +1,4 @@
-import { Modification, ShopModification, ShopAccountCreationModification } from '@dsh/api-codegen/claim-management';
+import { Modification, ShopModification, ShopAccountCreationModification } from '@vality/swag-claim-management';
 
 import {
     createRussianLegalEntityModification,

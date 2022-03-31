@@ -1,4 +1,4 @@
-import { Modification } from '@dsh/api-codegen/claim-management';
+import { Modification } from '@vality/swag-claim-management';
 
 import ModificationTypeEnum = Modification.ModificationTypeEnum;
 

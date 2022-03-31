@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { FileModificationUnit } from '@vality/swag-claim-management';
 import { filter } from 'rxjs/operators';
 
-import { FileModificationUnit } from '@dsh/api-codegen/claim-management/swagger-codegen';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 
 import { coerceBoolean } from '../../../../../utils';

@@ -3,7 +3,7 @@ import {
     ContractorType,
     LegalEntityType,
     PartyModification,
-} from '@dsh/api-codegen/claim-management';
+} from '@vality/swag-claim-management';
 
 import { createBaseContractorModification } from './create-base-contractor-modification';
 

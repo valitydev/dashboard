@@ -1,4 +1,4 @@
-import { PartyModification, ShopCreationModification } from '@dsh/api-codegen/claim-management';
+import { PartyModification, ShopCreationModification } from '@vality/swag-claim-management';
 
 import { createBaseShopModification } from './create-base-shop-modification';
 

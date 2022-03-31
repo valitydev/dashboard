@@ -1,4 +1,5 @@
-import { PartyModification, PayoutToolInfo, RussianBankAccount } from '@dsh/api-codegen/claim-management';
+import { PartyModification, PayoutToolInfo, RussianBankAccount } from '@vality/swag-claim-management';
+
 import { createContractPayoutToolCreationModification } from '@dsh/api/claims/claim-party-modification';
 
 export function createRussianContractPayoutToolCreationModification(

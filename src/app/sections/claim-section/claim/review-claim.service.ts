@@ -62,7 +62,7 @@ export class ReviewClaimService {
                 ),
                 switchMap(() => this.routeParamClaimService.claim$),
                 switchMap(({ id, revision }) =>
-                    this.claimsApiService.requestReviewClaimByID(id, revision).pipe(
+                    this.claimsApiService.requestReviewClaimByID({ claimID: id, claimRevision: revision }).pipe(
                         catchError((ex) => {
                             this.progress$.next(false);
                             console.error(ex);

@@ -1,4 +1,4 @@
-import { LegalEntityType, PartyModification, RussianLegalEntity } from '@dsh/api-codegen/claim-management';
+import { LegalEntityType, PartyModification, RussianLegalEntity } from '@vality/swag-claim-management';
 
 import { createContractorLegalEntityModification } from './create-contractor-legal-entity-modification';
 

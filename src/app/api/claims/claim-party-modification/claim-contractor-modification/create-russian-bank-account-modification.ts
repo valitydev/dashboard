@@ -1,4 +1,4 @@
-import { PayoutToolInfo, RussianBankAccount } from '@dsh/api-codegen/claim-management';
+import { PayoutToolInfo, RussianBankAccount } from '@vality/swag-claim-management';
 
 export function createRussianBankAccountModification(
     params: Omit<RussianBankAccount, 'payoutToolType'>

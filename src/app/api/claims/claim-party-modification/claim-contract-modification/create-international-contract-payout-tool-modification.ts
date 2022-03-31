@@ -1,11 +1,11 @@
-import { Overwrite } from 'utility-types';
-
 import {
     CorrespondentAccount,
     InternationalBankAccount,
     PartyModification,
     PayoutToolInfo,
-} from '@dsh/api-codegen/claim-management';
+} from '@vality/swag-claim-management';
+import { Overwrite } from 'utility-types';
+
 import { createContractPayoutToolCreationModification } from '@dsh/api/claims/claim-party-modification';
 
 import PayoutToolTypeEnum = PayoutToolInfo.PayoutToolTypeEnum;

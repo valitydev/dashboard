@@ -1,4 +1,4 @@
-import { InternationalBankAccount } from '@dsh/api-codegen/claim-management';
+import { InternationalBankAccount } from '@vality/swag-claim-management';
 
 import { PayoutToolForm } from '../../../components/payout-tool-form/payout-tool-form.component';
 

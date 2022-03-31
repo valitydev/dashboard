@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+import { FileModification } from '@vality/swag-claim-management';
 import { map, pluck, shareReplay } from 'rxjs/operators';
 
-import { FileModification } from '@dsh/api-codegen/claim-management';
 import { Conversation } from '@dsh/api-codegen/messages';
 
 import { ReceiveClaimService } from '../receive-claim.service';

@@ -1,4 +1,4 @@
-import { DocumentModificationUnit } from '@dsh/api-codegen/claim-management';
+import { DocumentModificationUnit } from '@vality/swag-claim-management';
 
 import { SpecificClaimModificationUnit } from './specific-claim-modification-unit';
 

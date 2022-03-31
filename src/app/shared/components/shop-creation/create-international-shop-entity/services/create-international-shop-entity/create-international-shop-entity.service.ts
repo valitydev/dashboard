@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Claim, Modification } from '@vality/swag-claim-management';
 import { Observable } from 'rxjs';
 import { mapTo, switchMap } from 'rxjs/operators';
 
-import { Claim, Modification } from '@dsh/api-codegen/claim-management';
 import { ClaimsService } from '@dsh/api/claims';
 import {
     createContractCreationModification,
@@ -28,7 +28,9 @@ export class CreateInternationalShopEntityService {
             .createClaim(this.createClaimsModifications(creationData))
             .pipe(
                 switchMap((claim) =>
-                    this.claimsService.requestReviewClaimByID(claim.id, claim.revision).pipe(mapTo(claim))
+                    this.claimsService
+                        .requestReviewClaimByID({ claimID: claim.id, claimRevision: claim.revision })
+                        .pipe(mapTo(claim))
                 )
             );
     }

@@ -3,7 +3,8 @@ import {
     FileModification,
     FileModificationUnit,
     StatusModificationUnit,
-} from '@dsh/api-codegen/claim-management';
+} from '@vality/swag-claim-management';
+
 import {
     isCommentModificationUnit,
     isDocumentModificationUnit,

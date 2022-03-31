@@ -36,14 +36,16 @@ export class RevokeClaimDialogService {
             .pipe(
                 tap(() => this.error$.next({ hasError: false })),
                 switchMap((reason) =>
-                    this.claimsApiService.revokeClaimByID(this.data.claimId, this.data.revision, reason).pipe(
-                        catchError((ex) => {
-                            console.error(ex);
-                            const error = { hasError: true, code: 'revokeClaimByIDFailed' };
-                            this.error$.next(error);
-                            return of(error);
-                        })
-                    )
+                    this.claimsApiService
+                        .revokeClaimByID({ claimID: this.data.claimId, claimRevision: this.data.revision, reason })
+                        .pipe(
+                            catchError((ex) => {
+                                console.error(ex);
+                                const error = { hasError: true, code: 'revokeClaimByIDFailed' };
+                                this.error$.next(error);
+                                return of(error);
+                            })
+                        )
                 ),
                 filter((res) => get(res, ['hasError']) !== true)
             )

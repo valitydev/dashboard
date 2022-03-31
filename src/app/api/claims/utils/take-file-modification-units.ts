@@ -1,9 +1,9 @@
-import { ClaimChangeset, FileModification, FileModificationUnit } from '@dsh/api-codegen/claim-management';
+import { ModificationUnit, FileModification, FileModificationUnit } from '@vality/swag-claim-management';
 
 import { isClaimModification, isFileModificationUnit } from '../type-guards';
 import { sortUnitsByCreatedAtAsc } from './sort-units';
 
-export const takeFileModificationUnits = (changeset: ClaimChangeset): FileModificationUnit[] =>
+export const takeFileModificationUnits = (changeset: ModificationUnit[]): FileModificationUnit[] =>
     changeset.sort(sortUnitsByCreatedAtAsc).reduce((acc, { modification }) => {
         if (isClaimModification(modification) && isFileModificationUnit(modification.claimModificationType)) {
             const m = modification.claimModificationType;

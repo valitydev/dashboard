@@ -1,4 +1,5 @@
-import { InternationalLegalEntity, PartyModification } from '../../../../api-codegen/claim-management';
+import { InternationalLegalEntity, PartyModification } from '@vality/swag-claim-management';
+
 import { createContractorLegalEntityModification } from './create-contractor-legal-entity-modification';
 
 export function createInternationalLegalEntityModification(

@@ -5,7 +5,7 @@ import {
     ExternalInfoModificationUnit,
     FileModificationUnit,
     StatusModificationUnit,
-} from '@dsh/api-codegen/claim-management';
+} from '@vality/swag-claim-management';
 
 import { createUnionTypeGuardCreator } from '../../utils';
 
