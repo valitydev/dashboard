@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { TRANSLOCO_CONFIG, TRANSLOCO_LOADER, TranslocoConfig, TranslocoModule } from '@ngneat/transloco';
 import * as Sentry from '@sentry/angular';
+import { Configuration as AnapiConfiguration } from '@vality/swag-anapi-v2';
 
 import { ErrorModule, KeycloakTokenInfoModule } from '@dsh/app/shared/services';
 import { QUERY_PARAMS_SERIALIZERS } from '@dsh/app/shared/services/query-params/utils/query-params-serializers';
@@ -111,6 +112,12 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         {
             provide: QUERY_PARAMS_SERIALIZERS,
             useValue: [createDateRangeWithPresetSerializer()],
+        },
+        {
+            provide: AnapiConfiguration,
+            deps: [ConfigService],
+            useFactory: (configService: ConfigService) =>
+                new AnapiConfiguration({ basePath: `${configService.apiEndpoint}/anapi/v2/lk/v2` }),
         },
     ],
     bootstrap: [AppComponent],

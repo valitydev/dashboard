@@ -13,8 +13,6 @@ import {
 import { IdGeneratorService, KeycloakTokenInfoService } from '@dsh/app/shared';
 import { mapResult, noContinuationToken } from '@dsh/operators';
 
-export const CLAIM_STATUS = StatusModificationUnit.StatusEnum;
-
 @Injectable()
 export class ClaimsService {
     constructor(

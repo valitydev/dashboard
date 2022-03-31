@@ -51,6 +51,7 @@
     "@sentry/angular": "^6.11.0",
     "@sentry/integrations": "^6.11.0",
     "@sentry/tracing": "^6.11.0",
+    "@vality/swag-anapi-v2": "^2.0.1-f571365.0",
     "angular-epic-spinners": "^2.0.0",
     "angular-file": "^3.0.1",
     "angular2-text-mask": "^9.0.0",
