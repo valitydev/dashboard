@@ -1,5 +1,4 @@
 export * from './analytics';
-export * from './claim-management';
 export * from './shop';
 export * from './invoice';
 export * from './search';
