@@ -7,8 +7,8 @@ import {
     createRussianContractPayoutToolCreationModification,
     createShopCreationModification,
     makeShopLocation,
-} from '../claim-party-modification';
-import { createBaseShopModification } from '../claim-party-modification/claim-shop-modification/create-base-shop-modification';
+} from './claim-party-modification';
+import { createBaseShopModification } from './claim-party-modification/claim-shop-modification/create-base-shop-modification';
 
 import ShopModificationTypeEnum = ShopModification.ShopModificationTypeEnum;
 

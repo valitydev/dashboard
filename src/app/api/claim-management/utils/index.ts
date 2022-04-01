@@ -7,3 +7,5 @@ export * from './create-comment-modification-unit';
 export * from './take-document-modification-units';
 export * from './take-file-modification-units';
 export * from './create-test-shop-claim-changeset';
+export * from './claim-party-modification';
+export * from './type-guards';

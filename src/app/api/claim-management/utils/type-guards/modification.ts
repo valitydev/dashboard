@@ -1,6 +1,6 @@
 import { ClaimModification, Modification, PartyModification } from '@vality/swag-claim-management';
 
-import { createUnionTypeGuardCreator } from '../../utils';
+import { createUnionTypeGuardCreator } from '../../../utils';
 
 const TYPE = Modification.ModificationTypeEnum;
 const createTypeGuard = createUnionTypeGuardCreator<Modification>('modificationType');

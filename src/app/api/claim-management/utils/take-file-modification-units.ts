@@ -1,7 +1,7 @@
 import { ModificationUnit, FileModification, FileModificationUnit } from '@vality/swag-claim-management';
 
-import { isClaimModification, isFileModificationUnit } from '../type-guards';
 import { sortUnitsByCreatedAtAsc } from './sort-units';
+import { isClaimModification, isFileModificationUnit } from './type-guards';
 
 export const takeFileModificationUnits = (changeset: ModificationUnit[]): FileModificationUnit[] =>
     changeset.sort(sortUnitsByCreatedAtAsc).reduce((acc, { modification }) => {

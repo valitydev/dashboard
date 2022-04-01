@@ -7,7 +7,7 @@ import {
     StatusModificationUnit,
 } from '@vality/swag-claim-management';
 
-import { createUnionTypeGuardCreator } from '../../utils';
+import { createUnionTypeGuardCreator } from '../../../utils';
 
 import ClaimModificationTypeEnum = ClaimModificationType.ClaimModificationTypeEnum;
 

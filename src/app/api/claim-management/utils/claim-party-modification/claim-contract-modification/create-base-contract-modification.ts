@@ -1,6 +1,6 @@
 import { ContractModificationUnit, PartyModification, PartyModificationType } from '@vality/swag-claim-management';
 
-import { PARTY_MODIFICATION } from '@dsh/api/claim-management';
+import { PARTY_MODIFICATION } from '../../../index';
 
 import PartyModificationTypeEnum = PartyModificationType.PartyModificationTypeEnum;
 
