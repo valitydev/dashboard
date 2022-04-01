@@ -16,8 +16,8 @@ import { Router } from '@angular/router';
 import { TRANSLOCO_CONFIG, TRANSLOCO_LOADER, TranslocoConfig, TranslocoModule } from '@ngneat/transloco';
 import * as Sentry from '@sentry/angular';
 import { Configuration as AnapiConfiguration } from '@vality/swag-anapi-v2';
-import { Configuration as ClaimManagementConfiguration } from '@vality/swag-claim-management';
 
+import { ClaimManagementModule } from '@dsh/api/claim-management';
 import { ErrorModule, KeycloakTokenInfoModule } from '@dsh/app/shared/services';
 import { QUERY_PARAMS_SERIALIZERS } from '@dsh/app/shared/services/query-params/utils/query-params-serializers';
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
@@ -61,6 +61,7 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         KeycloakTokenInfoModule,
         FlexLayoutModule,
         MatDialogModule,
+        ClaimManagementModule,
     ],
     providers: [
         LanguageService,
@@ -119,12 +120,6 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
             deps: [ConfigService],
             useFactory: (configService: ConfigService) =>
                 new AnapiConfiguration({ basePath: `${configService.apiEndpoint}/anapi/v2` }),
-        },
-        {
-            provide: ClaimManagementConfiguration,
-            deps: [ConfigService],
-            useFactory: (configService: ConfigService) =>
-                new ClaimManagementConfiguration({ basePath: `${configService.apiEndpoint}/claim-api/v1` }),
         },
     ],
     bootstrap: [AppComponent],

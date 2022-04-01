@@ -3,18 +3,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { Claim } from '@vality/swag-claim-management';
 import { Observable } from 'rxjs';
-import { shareReplay } from 'rxjs/operators';
 
 import { ClaimsService } from '@dsh/api/claim-management';
 import { FetchResult, PartialFetcher } from '@dsh/app/shared';
-import { booleanDebounceTime, mapToTimestamp } from '@dsh/operators';
+import { mapToTimestamp } from '@dsh/operators';
 
 import { ClaimsSearchFiltersSearchParams } from '../../claims-search-filters/claims-search-filters-search-params';
 
 @Injectable()
 export class FetchClaimsService extends PartialFetcher<Claim, ClaimsSearchFiltersSearchParams> {
     lastUpdated$: Observable<string> = this.searchResult$.pipe(mapToTimestamp);
-    isLoading$: Observable<boolean> = this.doAction$.pipe(booleanDebounceTime(), shareReplay(1));
 
     private readonly searchLimit = 20;
 
