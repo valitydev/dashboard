@@ -8,7 +8,7 @@ import {
     isDocumentModificationUnit,
     isFileModificationUnit,
     SpecificClaimModificationUnit,
-} from '@dsh/api/claims';
+} from '@dsh/api/claim-management';
 
 import { ConversationService } from './conversation.service';
 

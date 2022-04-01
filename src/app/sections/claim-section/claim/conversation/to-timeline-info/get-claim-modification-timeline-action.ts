@@ -10,7 +10,7 @@ import {
     isDocumentModificationUnit,
     isFileModificationUnit,
     isStatusModificationUnit,
-} from '@dsh/api/claims';
+} from '@dsh/api/claim-management';
 
 import { TimelineAction } from './model';
 

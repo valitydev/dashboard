@@ -5,7 +5,7 @@ import get from 'lodash-es/get';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, pluck, switchMap, tap } from 'rxjs/operators';
 
-import { ClaimsService } from '@dsh/api/claims';
+import { ClaimsService } from '@dsh/api/claim-management';
 
 import { progress } from '../../../../custom-operators';
 import { UiError } from '../../../ui-error';

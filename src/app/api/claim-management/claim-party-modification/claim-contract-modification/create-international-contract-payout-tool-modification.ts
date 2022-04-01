@@ -6,7 +6,7 @@ import {
 } from '@vality/swag-claim-management';
 import { Overwrite } from 'utility-types';
 
-import { createContractPayoutToolCreationModification } from '@dsh/api/claims/claim-party-modification';
+import { createContractPayoutToolCreationModification } from './create-contract-payout-tool-creation-modification';
 
 import PayoutToolTypeEnum = PayoutToolInfo.PayoutToolTypeEnum;
 
