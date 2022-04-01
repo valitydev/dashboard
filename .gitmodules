@@ -1,7 +1,3 @@
-[submodule "schemes/claim-management/v0"]
-	path = schemes/claim-management/v0
-	url = https://github.com/valitydev/swag-claim-management.git
-	branch = release/master
 [submodule "schemes/swag-analytics/v1"]
 	path = schemes/swag-analytics/v1
 	url = https://github.com/rbkmoney/swag-analytics.git

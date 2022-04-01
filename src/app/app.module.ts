@@ -118,7 +118,7 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
             provide: AnapiConfiguration,
             deps: [ConfigService],
             useFactory: (configService: ConfigService) =>
-                new AnapiConfiguration({ basePath: `${configService.apiEndpoint}/anapi/v2/lk/v2` }),
+                new AnapiConfiguration({ basePath: `${configService.apiEndpoint}/anapi/v2` }),
         },
         {
             provide: ClaimManagementConfiguration,
