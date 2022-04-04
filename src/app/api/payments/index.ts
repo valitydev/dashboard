@@ -1,7 +1,6 @@
 export * from './parties.service';
 export * from './payments.module';
 export * from './types';
-export * from './operators';
 export * from './utils';
 export * from './categories.service';
 export * from './payment-institutions.service';
