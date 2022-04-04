@@ -4,8 +4,9 @@ import { TranslocoService } from '@ngneat/transloco';
 import { BehaviorSubject, defer, merge, ReplaySubject, Subject, Subscription, tap, EMPTY } from 'rxjs';
 import { mapTo, shareReplay, switchMap, catchError, switchMapTo } from 'rxjs/operators';
 
-import { InvoiceService, InvoiceTemplatesService } from '@dsh/api';
+import { InvoiceService } from '@dsh/api';
 import { PaymentMethod } from '@dsh/api-codegen/capi';
+import { InvoiceTemplatesService } from '@dsh/api/payments';
 import { NotificationService, ErrorService } from '@dsh/app/shared';
 import { Controls } from '@dsh/app/shared/components/create-payment-link-form';
 import { CreatePaymentLinkService } from '@dsh/app/shared/services/create-payment-link';

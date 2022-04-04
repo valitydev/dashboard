@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 import { FormArray } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { InvoiceLineTaxVAT, InvoiceTemplateAndToken, Shop } from '@vality/swag-payments';
 import moment from 'moment';
 
-import { InvoiceLineTaxVAT, InvoiceTemplateAndToken, Shop } from '@dsh/api-codegen/capi';
 import { InvoiceTemplateType, InvoiceTemplateLineCostType } from '@dsh/api/payments';
 
 import { CreateInvoiceTemplateService, WITHOUT_VAT } from './create-invoice-template.service';
