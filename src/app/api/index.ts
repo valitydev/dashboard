@@ -8,7 +8,6 @@ export * from './kontur-focus';
 export * from './messages';
 export * from './refund';
 export * from './payment';
-export * from './webhooks';
 export * from './url-shortener';
 export * from './deposits';
 export * from './withdrawals';
