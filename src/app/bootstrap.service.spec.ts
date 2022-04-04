@@ -4,7 +4,9 @@ import { cold } from 'jasmine-marbles';
 import { of, throwError } from 'rxjs';
 import { anyNumber, anything, instance, mock, verify, when } from 'ts-mockito';
 
-import { CapiPartiesService, OrganizationsService, ClaimsService } from '@dsh/api';
+import { OrganizationsService } from '@dsh/api';
+import { ClaimsService } from '@dsh/api/claim-management';
+import { PartiesService } from '@dsh/api/payments';
 import { ApiShopsService } from '@dsh/api/shop';
 import { ErrorService } from '@dsh/app/shared';
 
@@ -14,7 +16,7 @@ describe('BootstrapService', () => {
     let service: BootstrapService;
     let mockApiShopsService: ApiShopsService;
     let mockClaimsService: ClaimsService;
-    let mockCAPIPartiesService: CapiPartiesService;
+    let mockCAPIPartiesService: PartiesService;
     let mockErrorService: ErrorService;
     let mockOrganizationsService: OrganizationsService;
     let mockTranslocoService: TranslocoService;
@@ -22,7 +24,7 @@ describe('BootstrapService', () => {
     beforeEach(() => {
         mockApiShopsService = mock(ApiShopsService);
         mockClaimsService = mock(ClaimsService);
-        mockCAPIPartiesService = mock(CapiPartiesService);
+        mockCAPIPartiesService = mock(PartiesService);
         mockErrorService = mock(ErrorService);
         mockOrganizationsService = mock(OrganizationsService);
         mockTranslocoService = mock(TranslocoService);
@@ -34,7 +36,7 @@ describe('BootstrapService', () => {
                 BootstrapService,
                 { provide: ApiShopsService, useFactory: () => instance(mockApiShopsService) },
                 { provide: ClaimsService, useFactory: () => instance(mockClaimsService) },
-                { provide: CapiPartiesService, useFactory: () => instance(mockCAPIPartiesService) },
+                { provide: PartiesService, useFactory: () => instance(mockCAPIPartiesService) },
                 { provide: ErrorService, useFactory: () => instance(mockErrorService) },
                 { provide: OrganizationsService, useFactory: () => instance(mockOrganizationsService) },
                 { provide: TranslocoService, useFactory: () => instance(mockTranslocoService) },

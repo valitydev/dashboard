@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
-import { Configuration as ClaimManagementConfiguration } from '@vality/swag-claim-management';
+import { Configuration } from '@vality/swag-claim-management';
 
 import { ConfigService } from '../../config';
 
 @NgModule({
     providers: [
         {
-            provide: ClaimManagementConfiguration,
+            provide: Configuration,
             deps: [ConfigService],
             useFactory: (configService: ConfigService) =>
-                new ClaimManagementConfiguration({ basePath: `${configService.apiEndpoint}/claim-api/v1` }),
+                new Configuration({ basePath: `${configService.apiEndpoint}/claim-api/v1` }),
         },
     ],
 })

@@ -5,7 +5,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import moment from 'moment';
 
 import { InvoiceLineTaxVAT, InvoiceTemplateAndToken, Shop } from '@dsh/api-codegen/capi';
-import { InvoiceTemplateType, InvoiceTemplateLineCostType } from '@dsh/api/capi';
+import { InvoiceTemplateType, InvoiceTemplateLineCostType } from '@dsh/api/payments';
 
 import { CreateInvoiceTemplateService, WITHOUT_VAT } from './create-invoice-template.service';
 

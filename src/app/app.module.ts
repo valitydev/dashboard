@@ -16,8 +16,9 @@ import { Router } from '@angular/router';
 import { TRANSLOCO_CONFIG, TRANSLOCO_LOADER, TranslocoConfig, TranslocoModule } from '@ngneat/transloco';
 import * as Sentry from '@sentry/angular';
 
-import { AnapiModule } from '@dsh/api-codegen/anapi';
+import { AnapiModule } from '@dsh/api/anapi';
 import { ClaimManagementModule } from '@dsh/api/claim-management';
+import { PaymentsModule } from '@dsh/api/payments';
 import { ErrorModule, KeycloakTokenInfoModule } from '@dsh/app/shared/services';
 import { QUERY_PARAMS_SERIALIZERS } from '@dsh/app/shared/services/query-params/utils/query-params-serializers';
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
@@ -63,6 +64,7 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         MatDialogModule,
         ClaimManagementModule,
         AnapiModule,
+        PaymentsModule,
     ],
     providers: [
         LanguageService,

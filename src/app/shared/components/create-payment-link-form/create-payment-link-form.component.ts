@@ -6,8 +6,8 @@ import { FbGroupConfig } from '@ngneat/reactive-forms/lib/formBuilder';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
 
-import { TokenProvider, TerminalProvider } from '@dsh/api';
 import { BankCard, PaymentMethod, PaymentTerminal, DigitalWallet } from '@dsh/api-codegen/capi';
+import { TokenProvider, TerminalProvider } from '@dsh/api/payments';
 import { PaymentLinkParams } from '@dsh/app/shared/services/create-payment-link/types/payment-link-params';
 import { ComponentChanges } from '@dsh/type-utils';
 import { createValidatedAbstractControlProviders, ValidatedWrappedAbstractControlSuperclass } from '@dsh/utils';

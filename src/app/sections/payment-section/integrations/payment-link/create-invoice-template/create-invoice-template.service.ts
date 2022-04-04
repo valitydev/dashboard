@@ -20,8 +20,8 @@ import {
     LifetimeInterval,
     Shop,
 } from '@dsh/api-codegen/capi';
-import { InvoiceTemplateType, InvoiceTemplateLineCostType } from '@dsh/api/capi';
 import { InvoiceTemplatesService } from '@dsh/api/invoice-templates';
+import { InvoiceTemplateType, InvoiceTemplateLineCostType } from '@dsh/api/payments';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 
 import { toMinor } from '../../../../../../utils';
