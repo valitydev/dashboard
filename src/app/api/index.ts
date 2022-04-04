@@ -19,7 +19,6 @@ export * from './contracts';
 export * from './wallet-webhooks';
 export * from './identity';
 export * from './organizations';
-export * from './countries';
 /**
  * Do not export anything so that the names do not intersect
  */

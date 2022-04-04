@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
+import { Country, CountriesService as ApiCountriesService } from '@vality/swag-payments';
 import sortBy from 'lodash-es/sortBy';
 import { Observable, of } from 'rxjs';
 import { catchError, map, shareReplay } from 'rxjs/operators';
 
-import { Country, CountriesService as CountriesAPIService } from '@dsh/api-codegen/capi/swagger-codegen';
 import { IdGeneratorService } from '@dsh/app/shared';
 import { ErrorService } from '@dsh/app/shared/services';
 import { SHARE_REPLAY_CONF } from '@dsh/operators';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class CountriesService {
     countries$: Observable<Country[]> = this.getCountries().pipe(
         catchError((error) => {
@@ -19,14 +21,14 @@ export class CountriesService {
     );
 
     constructor(
-        private countriesService: CountriesAPIService,
+        private countriesService: ApiCountriesService,
         private idGenerator: IdGeneratorService,
         private errorService: ErrorService
     ) {}
 
     getCountries(): Observable<Country[]> {
         return this.countriesService
-            .getCountries(this.idGenerator.shortUuid())
+            .getCountries({ xRequestID: this.idGenerator.shortUuid() })
             .pipe(map((countries) => sortBy(countries, 'id')));
     }
 }
