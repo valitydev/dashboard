@@ -4,9 +4,9 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { concat, defer, Observable, of, ReplaySubject, throwError } from 'rxjs';
 import { catchError, first, mapTo, shareReplay, switchMap, takeLast, tap } from 'rxjs/operators';
 
-import { ApiShopsService, DEFAULT_ORGANIZATION_NAME, OrganizationsService } from '@dsh/api';
+import { DEFAULT_ORGANIZATION_NAME, OrganizationsService } from '@dsh/api';
 import { ClaimsService, createTestShopClaimChangeset } from '@dsh/api/claim-management';
-import { PartiesService } from '@dsh/api/payments';
+import { PartiesService, ShopsService } from '@dsh/api/payments';
 import { CommonError, ErrorService, IdGeneratorService } from '@dsh/app/shared';
 
 @UntilDestroy()
@@ -21,7 +21,7 @@ export class BootstrapService {
     private bootstrap$ = new ReplaySubject<void>(1);
 
     constructor(
-        private shopService: ApiShopsService,
+        private shopService: ShopsService,
         private claimsService: ClaimsService,
         private partiesService: PartiesService,
         private errorService: ErrorService,

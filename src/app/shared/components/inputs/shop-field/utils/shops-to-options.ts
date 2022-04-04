@@ -1,4 +1,5 @@
-import { Shop } from '@dsh/api-codegen/capi';
+import { Shop } from '@vality/swag-payments';
+
 import { Option } from '@dsh/components/form-controls/select-search-field';
 
 export const shopToOption = (shop: Shop): Option<Shop> => ({

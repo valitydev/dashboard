@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Shop } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 
-import { Shop } from '@dsh/api-codegen/capi/swagger-codegen';
 import { ExpandedIdManager } from '@dsh/app/shared/services';
 
 import { FetchShopsService } from '../../../services/fetch-shops/fetch-shops.service';

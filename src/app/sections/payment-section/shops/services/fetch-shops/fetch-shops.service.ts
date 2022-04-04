@@ -1,10 +1,10 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
+import { PaymentInstitution, Shop as ApiShop } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
 import { BehaviorSubject, combineLatest, Observable, ReplaySubject } from 'rxjs';
 import { map, mapTo, pluck, scan, shareReplay, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 
-import { PaymentInstitution, Shop as ApiShop } from '@dsh/api-codegen/capi/swagger-codegen';
-import { ApiShopsService } from '@dsh/api/shop';
+import { ShopsService } from '@dsh/api/payments';
 import { mapToTimestamp, shareReplayRefCount } from '@dsh/operators';
 
 import { filterShopsByRealm } from '../../../operations/operators';
@@ -41,7 +41,7 @@ export class FetchShopsService {
     private filteredShops$: Observable<ShopItem[]>;
 
     constructor(
-        private apiShopsService: ApiShopsService,
+        private shopsService: ShopsService,
         private shopsBalance: ShopsBalanceService,
         private filtersStore: ShopsFiltersStoreService,
         private filtersService: ShopsFiltersService,
@@ -69,7 +69,7 @@ export class FetchShopsService {
 
     refreshData(): void {
         this.startLoading();
-        this.apiShopsService.reloadShops();
+        this.shopsService.reloadShops();
     }
 
     showMore(): void {
@@ -97,7 +97,7 @@ export class FetchShopsService {
     }
 
     private initAllShopsFetching(): void {
-        this.allShops$ = this.realmData$.pipe(filterShopsByRealm(this.apiShopsService.shops$), shareReplayRefCount());
+        this.allShops$ = this.realmData$.pipe(filterShopsByRealm(this.shopsService.shops$), shareReplayRefCount());
     }
 
     private initOffsetObservable(): void {

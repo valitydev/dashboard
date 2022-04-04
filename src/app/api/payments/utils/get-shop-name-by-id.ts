@@ -1,4 +1,4 @@
-import { Shop } from '@dsh/api-codegen/capi';
+import { Shop } from '@vality/swag-payments';
 
 import { findShopById } from './find-shop-by-id';
 import { getShopName } from './get-shop-name';

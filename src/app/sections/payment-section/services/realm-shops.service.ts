@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Shop } from '@vality/swag-payments';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ApiShopsService } from '@dsh/api';
-import { Shop } from '@dsh/api-codegen/capi';
+import { ShopsService } from '@dsh/api/payments';
 import { shareReplayRefCount } from '@dsh/operators';
 
 import { getShopsByRealm } from '../operations/operators';
@@ -16,5 +16,5 @@ export class RealmShopsService {
         shareReplayRefCount()
     );
 
-    constructor(private shopsService: ApiShopsService, private realmService: PaymentInstitutionRealmService) {}
+    constructor(private shopsService: ShopsService, private realmService: PaymentInstitutionRealmService) {}
 }

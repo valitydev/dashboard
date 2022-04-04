@@ -1,7 +1,6 @@
+import { Shop } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-import { Shop } from '@dsh/api-codegen/capi';
 
 export interface ShopInfo {
     shopID: string;

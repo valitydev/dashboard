@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
-import { ShopModule } from '@dsh/api/shop';
 import { WalletModule } from '@dsh/api/wallet';
 import { DEBOUNCE_FETCHER_ACTION_TIME, DEFAULT_FETCHER_DEBOUNCE_ACTION_TIME } from '@dsh/app/shared';
 
@@ -17,7 +16,7 @@ import {
 } from './tokens';
 
 @NgModule({
-    imports: [SectionsRoutingModule, ShopModule, WalletModule],
+    imports: [SectionsRoutingModule, WalletModule],
     declarations: [SectionsComponent],
     exports: [SectionsComponent],
     providers: [

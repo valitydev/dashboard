@@ -5,7 +5,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { Observable, of } from 'rxjs';
 import { catchError, filter, map, switchMap } from 'rxjs/operators';
 
-import { ApiShopsService } from '@dsh/api/shop';
+import { ShopsService } from '@dsh/api/payments';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 
 import { ShopActionResult } from '../../types/shop-action-result';
@@ -13,7 +13,7 @@ import { ShopActionResult } from '../../types/shop-action-result';
 @Injectable()
 export class ShopActionsService {
     constructor(
-        private shopService: ApiShopsService,
+        private shopService: ShopsService,
         private dialog: MatDialog,
         private snackBar: MatSnackBar,
         private transloco: TranslocoService

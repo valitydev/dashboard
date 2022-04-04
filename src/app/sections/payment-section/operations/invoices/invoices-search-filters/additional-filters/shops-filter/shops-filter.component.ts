@@ -2,7 +2,7 @@ import { Component, Injector, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { WrappedFormControlSuperclass, provideValueAccessor } from '@s-libs/ng-core';
 
-import { ApiShopsService } from '@dsh/api';
+import { ShopsService } from '@dsh/api/payments';
 
 @Component({
     selector: 'dsh-shops-filter',
@@ -13,7 +13,7 @@ import { ApiShopsService } from '@dsh/api';
 export class ShopsFilterComponent extends WrappedFormControlSuperclass<string[]> {
     shops$ = this.shopsService.shops$;
 
-    constructor(injector: Injector, private fb: FormBuilder, private shopsService: ApiShopsService) {
+    constructor(injector: Injector, private fb: FormBuilder, private shopsService: ShopsService) {
         super(injector);
     }
 }
