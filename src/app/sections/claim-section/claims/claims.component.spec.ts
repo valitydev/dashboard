@@ -4,10 +4,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
+import { Claim } from '@vality/swag-claim-management';
 import { of } from 'rxjs';
 import { deepEqual, mock, verify, when } from 'ts-mockito';
 
-import { Claim } from '@dsh/api-codegen/claim-management';
 import { ShopCreationService } from '@dsh/app/shared/components/shop-creation';
 import { QueryParamsService } from '@dsh/app/shared/services/query-params';
 import { provideMockService } from '@dsh/app/shared/tests';

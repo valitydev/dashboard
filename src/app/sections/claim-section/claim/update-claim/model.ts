@@ -1,4 +1,5 @@
-import { FileModification } from '@dsh/api-codegen/claim-management';
+import { FileModification } from '@vality/swag-claim-management';
+
 import { Conversation } from '@dsh/api-codegen/messages';
 
 export interface UpdateParams {

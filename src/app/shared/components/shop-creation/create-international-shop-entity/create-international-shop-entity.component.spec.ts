@@ -6,11 +6,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { FormGroup } from '@ngneat/reactive-forms';
 import { TranslocoService } from '@ngneat/transloco';
+import { Claim } from '@vality/swag-claim-management';
 import { of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 
-import { Claim } from '@dsh/api-codegen/claim-management';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 import { ButtonModule } from '@dsh/components/buttons';
 

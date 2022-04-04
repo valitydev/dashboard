@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { Claim } from '@vality/swag-claim-management';
 import { Observable } from 'rxjs';
-import { shareReplay } from 'rxjs/operators';
 
-import { Claim } from '@dsh/api-codegen/claim-management/swagger-codegen';
-import { ClaimsService } from '@dsh/api/claims';
+import { ClaimsService } from '@dsh/api/claim-management';
 import { FetchResult, PartialFetcher } from '@dsh/app/shared';
-import { booleanDebounceTime, mapToTimestamp } from '@dsh/operators';
+import { mapToTimestamp } from '@dsh/operators';
 
 import { ClaimsSearchFiltersSearchParams } from '../../claims-search-filters/claims-search-filters-search-params';
 
 @Injectable()
 export class FetchClaimsService extends PartialFetcher<Claim, ClaimsSearchFiltersSearchParams> {
     lastUpdated$: Observable<string> = this.searchResult$.pipe(mapToTimestamp);
-    isLoading$: Observable<boolean> = this.doAction$.pipe(booleanDebounceTime(), shareReplay(1));
 
     private readonly searchLimit = 20;
 
@@ -34,11 +32,11 @@ export class FetchClaimsService extends PartialFetcher<Claim, ClaimsSearchFilter
         params: ClaimsSearchFiltersSearchParams,
         continuationToken: string
     ): Observable<FetchResult<Claim>> {
-        return this.claimsService.searchClaims(
-            this.searchLimit,
-            params.claimStatuses,
-            params.claimID,
-            continuationToken
-        );
+        return this.claimsService.searchClaims({
+            limit: this.searchLimit,
+            claimStatuses: params.claimStatuses,
+            claimID: params.claimID,
+            continuationToken,
+        });
     }
 }

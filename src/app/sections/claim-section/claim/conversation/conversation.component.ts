@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FileModificationUnit, Modification } from '@vality/swag-claim-management';
 
-import { FileModificationUnit, Modification } from '@dsh/api-codegen/claim-management';
 import { Conversation } from '@dsh/api-codegen/messages';
 import {
     isClaimModification,
@@ -8,7 +8,7 @@ import {
     isDocumentModificationUnit,
     isFileModificationUnit,
     SpecificClaimModificationUnit,
-} from '@dsh/api/claims';
+} from '@dsh/api/claim-management';
 
 import { ConversationService } from './conversation.service';
 

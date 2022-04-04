@@ -3,13 +3,14 @@ import {
     FileModification,
     FileModificationUnit,
     StatusModificationUnit,
-} from '@dsh/api-codegen/claim-management';
+} from '@vality/swag-claim-management';
+
 import {
     isCommentModificationUnit,
     isDocumentModificationUnit,
     isFileModificationUnit,
     isStatusModificationUnit,
-} from '@dsh/api/claims';
+} from '@dsh/api/claim-management';
 
 import { TimelineAction } from './model';
 

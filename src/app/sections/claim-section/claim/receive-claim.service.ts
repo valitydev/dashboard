@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Claim } from '@vality/swag-claim-management';
 import { BehaviorSubject, Observable, Subject, timer } from 'rxjs';
 import { filter, map, shareReplay, switchMap } from 'rxjs/operators';
-
-import { Claim } from '@dsh/api-codegen/claim-management';
 
 import { booleanDelay } from '../../../custom-operators';
 import { RouteParamClaimService } from './route-param-claim.service';

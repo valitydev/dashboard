@@ -1,8 +1,8 @@
+import { Modification } from '@vality/swag-claim-management';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Modification } from '@dsh/api-codegen/claim-management';
-import { createCommentModificationUnit, createFileModificationUnit } from '@dsh/api/claims';
+import { createCommentModificationUnit, createFileModificationUnit } from '@dsh/api/claim-management';
 
 import { UpdateParams } from './model';
 import { isUpdateConversation, isUpdateFiles } from './type-guards';

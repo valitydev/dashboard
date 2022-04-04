@@ -1,10 +1,6 @@
-import {
-    ClaimModification,
-    FileModificationUnit,
-    Modification,
-    ModificationUnit,
-} from '@dsh/api-codegen/claim-management';
-import { isClaimModification, sortUnitsByCreatedAtAsc } from '@dsh/api/claims';
+import { ClaimModification, FileModificationUnit, Modification, ModificationUnit } from '@vality/swag-claim-management';
+
+import { isClaimModification, sortUnitsByCreatedAtAsc } from '@dsh/api/claim-management';
 
 import { getClaimModificationTimelineAction } from './get-claim-modification-timeline-action';
 import { TimelineAction, TimelineItemInfo } from './model';

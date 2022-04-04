@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
+import { Claim, PartyModification } from '@vality/swag-claim-management';
 import { forkJoin, Observable, of } from 'rxjs';
 import { pluck, switchMap } from 'rxjs/operators';
 
-import { Claim, PartyModification } from '@dsh/api-codegen/claim-management';
-import { ClaimsService } from '@dsh/api/claims';
 import {
+    ClaimsService,
     createContractCreationModification,
     createRussianBankAccountModification,
     createRussianContractPayoutToolCreationModification,
     createRussianLegalEntityModification,
     createShopCreationModification,
     makeShopLocation,
-} from '@dsh/api/claims/claim-party-modification';
+} from '@dsh/api/claim-management';
 import { IdGeneratorService } from '@dsh/app/shared';
 
 import { RussianShopForm } from '../../types/russian-shop-entity';
@@ -23,7 +23,10 @@ export class CreateRussianShopEntityService {
     createShop(creationData: RussianShopForm): Observable<Claim> {
         return this.claimsService.createClaim(this.createShopCreationModifications(creationData)).pipe(
             switchMap((claim) => {
-                return forkJoin([of(claim), this.claimsService.requestReviewClaimByID(claim.id, claim.revision)]);
+                return forkJoin([
+                    of(claim),
+                    this.claimsService.requestReviewClaimByID({ claimID: claim.id, claimRevision: claim.revision }),
+                ]);
             }),
             pluck(0)
         );

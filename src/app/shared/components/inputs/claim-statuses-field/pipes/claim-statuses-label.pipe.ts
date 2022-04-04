@@ -1,8 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
+import { StatusModificationUnit } from '@vality/swag-claim-management';
 import { Observable, of } from 'rxjs';
-
-import { StatusModificationUnit } from '@dsh/api-codegen/claim-management';
 
 import { OPTION_LABELS } from '../types/option-labels';
 

@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-
-import { Claim } from '@dsh/api-codegen/claim-management/swagger-codegen';
+import { Claim } from '@vality/swag-claim-management';
 
 @Component({
     selector: 'dsh-claim-row',

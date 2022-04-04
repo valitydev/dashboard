@@ -1,4 +1,4 @@
-import { Modification, UserInfo } from '@dsh/api-codegen/claim-management';
+import { Modification, UserInfo } from '@vality/swag-claim-management';
 
 import { TimelineAction } from './timeline-action';
 

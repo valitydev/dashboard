@@ -6,7 +6,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, map, pluck, shareReplay, switchMap, tap } from 'rxjs/operators';
 
-import { ClaimsService } from '@dsh/api/claims';
+import { ClaimsService } from '@dsh/api/claim-management';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 
 import { UiError } from '../../ui-error';
@@ -62,7 +62,7 @@ export class ReviewClaimService {
                 ),
                 switchMap(() => this.routeParamClaimService.claim$),
                 switchMap(({ id, revision }) =>
-                    this.claimsApiService.requestReviewClaimByID(id, revision).pipe(
+                    this.claimsApiService.requestReviewClaimByID({ claimID: id, claimRevision: revision }).pipe(
                         catchError((ex) => {
                             this.progress$.next(false);
                             console.error(ex);

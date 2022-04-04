@@ -6,7 +6,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { ClaimsModule } from '@dsh/api/claims';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ApiModelTypesModule } from '@dsh/app/shared/pipes/api-model-types';
 import { ButtonModule } from '@dsh/components/buttons';
@@ -26,7 +25,6 @@ import { RevokeClaimDialogComponent } from './revoke-claim-dialog';
         LayoutModule,
         ButtonModule,
         FlexLayoutModule,
-        ClaimsModule,
         ClaimRoutingModule,
         ConversationModule,
         TranslocoModule,

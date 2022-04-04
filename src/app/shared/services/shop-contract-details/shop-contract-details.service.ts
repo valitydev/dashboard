@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { RussianLegalEntity } from '@vality/swag-claim-management';
 import { BehaviorSubject, defer, Observable, of, ReplaySubject, Subject } from 'rxjs';
 import { catchError, distinctUntilChanged, filter, switchMap, tap } from 'rxjs/operators';
 import { Overwrite } from 'utility-types';
 
 import { Contract } from '@dsh/api-codegen/capi';
-import { RussianLegalEntity } from '@dsh/api-codegen/claim-management';
 import { ContractsService } from '@dsh/api/contracts';
 
 @UntilDestroy()

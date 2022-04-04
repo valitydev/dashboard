@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { Claim } from '@vality/swag-claim-management';
 import isNil from 'lodash-es/isNil';
-
-import { Claim } from '@dsh/api-codegen/claim-management/swagger-codegen';
 
 @Component({
     selector: 'dsh-claims-list',

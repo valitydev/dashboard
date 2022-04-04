@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { FileModification } from '@vality/swag-claim-management';
 import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, pluck, share, switchMap, tap } from 'rxjs/operators';
 
-import { FileModification } from '@dsh/api-codegen/claim-management';
 import { Conversation } from '@dsh/api-codegen/messages';
-import { ClaimsService } from '@dsh/api/claims';
+import { ClaimsService } from '@dsh/api/claim-management';
 
 import { progress } from '../../../../custom-operators';
 import { UiError } from '../../../ui-error';
@@ -40,7 +40,7 @@ export class UpdateClaimService {
             toChangeset,
             switchMap((changeset) => combineLatest([of(changeset), this.routeParamClaimService.claim$])),
             switchMap(([changeset, { id, revision }]) =>
-                this.claimApiService.updateClaimByID(id, revision, changeset).pipe(
+                this.claimApiService.updateClaimByID({ claimID: id, claimRevision: revision, changeset }).pipe(
                     catchError((ex) => {
                         console.error(ex);
                         const error = { hasError: true, code: 'updateClaimByIDFailed' };
