@@ -3,8 +3,8 @@ import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-c
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { CategoriesService } from '@dsh/api';
 import { Category } from '@dsh/api-codegen/capi';
+import { CategoriesService } from '@dsh/api/payments';
 import { Option } from '@dsh/components/form-controls/select-search-field';
 import { shareReplayRefCount } from '@dsh/operators';
 import { coerceBoolean } from '@dsh/utils';
