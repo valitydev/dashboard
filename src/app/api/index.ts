@@ -19,7 +19,6 @@ export * from './wallet';
 export * from './contracts';
 export * from './wallet-webhooks';
 export * from './identity';
-export * from './model';
 export * from './organizations';
 export * from './countries';
 /**

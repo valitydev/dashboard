@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { PaymentInstitution } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
@@ -14,7 +15,6 @@ import {
     InlineResponse2007,
     SplitUnit,
 } from '@dsh/api-codegen/anapi';
-import { PaymentInstitution } from '@dsh/api-codegen/capi';
 import { IdGeneratorService } from '@dsh/app/shared';
 import { KeycloakTokenInfoService } from '@dsh/app/shared/services';
 
