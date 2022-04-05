@@ -42,7 +42,7 @@ export class DeleteWebhookService {
                     ])
                 ),
                 switchMap(([webhookID]) =>
-                    this.webhooksService.deleteWebhookByID(webhookID).pipe(
+                    this.webhooksService.deleteWebhookByID({ webhookID }).pipe(
                         catchError((e) => {
                             console.error(e);
                             this.snackBar.open(this.transloco.translate('errors.deleteError', null, 'webhook'), 'OK');

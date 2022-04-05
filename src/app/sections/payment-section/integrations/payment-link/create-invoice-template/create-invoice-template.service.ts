@@ -70,7 +70,9 @@ export class CreateInvoiceTemplateService {
             share()
         );
         const invoiceTemplateAndTokenWithErrors$ = createInvoiceTemplate$.pipe(
-            switchMap((p) => this.invoiceTemplatesService.createInvoiceTemplate(p).pipe(replaceError)),
+            switchMap((invoiceTemplateCreateParams) =>
+                this.invoiceTemplatesService.createInvoiceTemplate({ invoiceTemplateCreateParams }).pipe(replaceError)
+            ),
             share()
         );
         this.invoiceTemplateAndToken$ = invoiceTemplateAndTokenWithErrors$.pipe(filterPayload, shareReplay(1));

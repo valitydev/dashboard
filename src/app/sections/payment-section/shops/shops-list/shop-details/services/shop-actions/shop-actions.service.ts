@@ -25,7 +25,7 @@ export class ShopActionsService {
             .afterClosed()
             .pipe(
                 filter((r) => r === 'confirm'),
-                switchMap(() => this.shopService.suspendShop(shopID)),
+                switchMap(() => this.shopService.suspendShop({ shopID })),
                 map(() => {
                     this.snackBar.open(this.transloco.translate('suspend.success', null, 'shops'), 'OK', {
                         duration: 3000,
@@ -45,7 +45,7 @@ export class ShopActionsService {
             .afterClosed()
             .pipe(
                 filter((r) => r === 'confirm'),
-                switchMap(() => this.shopService.activateShop(shopID)),
+                switchMap(() => this.shopService.activateShop({ shopID })),
                 map(() => {
                     this.snackBar.open(this.transloco.translate('activate.success', null, 'shops'), 'OK', {
                         duration: 3000,

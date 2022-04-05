@@ -81,9 +81,9 @@ export class PaymentLinkComponent {
         return (
             invoiceOrInvoiceTemplate.type === Type.Invoice
                 ? this.invoiceService.getInvoicePaymentMethods(invoiceOrInvoiceTemplate.invoiceOrInvoiceTemplate.id)
-                : this.invoiceTemplatesService.getInvoicePaymentMethodsByTemplateID(
-                      invoiceOrInvoiceTemplate.invoiceOrInvoiceTemplate.invoiceTemplate.id
-                  )
+                : this.invoiceTemplatesService.getInvoicePaymentMethodsByTemplateID({
+                      invoiceTemplateID: invoiceOrInvoiceTemplate.invoiceOrInvoiceTemplate.invoiceTemplate.id,
+                  })
         )
             .pipe(progressTo(this.progress$))
             .subscribe((paymentMethods) => {

@@ -31,8 +31,8 @@ export class CreateWebhookDialogService {
         this.create$
             .pipe(
                 map(formValuesToWebhook),
-                switchMap((v) =>
-                    this.webhooksService.createWebhook(v).pipe(
+                switchMap((webhookParams) =>
+                    this.webhooksService.createWebhook({ webhookParams }).pipe(
                         catchError((e) => {
                             console.error(e);
                             this.loading$.next(false);
