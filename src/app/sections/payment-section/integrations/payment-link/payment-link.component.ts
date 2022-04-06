@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@ngneat/reactive-forms';
 import { TranslocoService } from '@ngneat/transloco';
+import { PaymentMethod } from '@vality/swag-payments';
 import { BehaviorSubject, defer, merge, ReplaySubject, Subject, Subscription, tap, EMPTY } from 'rxjs';
 import { mapTo, shareReplay, switchMap, catchError, switchMapTo } from 'rxjs/operators';
 
-import { InvoiceService } from '@dsh/api';
-import { PaymentMethod } from '@dsh/api-codegen/capi';
-import { InvoiceTemplatesService } from '@dsh/api/payments';
+import { InvoicesService, InvoiceTemplatesService } from '@dsh/api/payments';
 import { NotificationService, ErrorService } from '@dsh/app/shared';
 import { Controls } from '@dsh/app/shared/components/create-payment-link-form';
 import { CreatePaymentLinkService } from '@dsh/app/shared/services/create-payment-link';
@@ -69,7 +68,7 @@ export class PaymentLinkComponent {
     private create$ = new Subject<void>();
 
     constructor(
-        private invoiceService: InvoiceService,
+        private invoicesService: InvoicesService,
         private invoiceTemplatesService: InvoiceTemplatesService,
         private createPaymentLinkService: CreatePaymentLinkService,
         private notificationService: NotificationService,
@@ -80,7 +79,9 @@ export class PaymentLinkComponent {
     nextInvoiceOrInvoiceTemplate(invoiceOrInvoiceTemplate: InvoiceOrInvoiceTemplate): Subscription {
         return (
             invoiceOrInvoiceTemplate.type === Type.Invoice
-                ? this.invoiceService.getInvoicePaymentMethods(invoiceOrInvoiceTemplate.invoiceOrInvoiceTemplate.id)
+                ? this.invoicesService.getInvoicePaymentMethods({
+                      invoiceID: invoiceOrInvoiceTemplate.invoiceOrInvoiceTemplate.id,
+                  })
                 : this.invoiceTemplatesService.getInvoicePaymentMethodsByTemplateID({
                       invoiceTemplateID: invoiceOrInvoiceTemplate.invoiceOrInvoiceTemplate.invoiceTemplate.id,
                   })

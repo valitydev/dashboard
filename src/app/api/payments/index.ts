@@ -10,3 +10,4 @@ export * from './shops.service';
 export * from './webhooks.service';
 export * from './payments.service';
 export * from './payouts.service';
+export * from './invoices.service';

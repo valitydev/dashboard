@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Invoice } from '@vality/swag-payments';
 
 import { DIALOG_CONFIG, DialogConfig } from '@dsh/app/sections/tokens';
 
-import { Invoice } from '../../../../../../../../api-codegen/anapi';
 import { CancelInvoiceService } from '../../cancel-invoice';
 import {
     CreatePaymentLinkDialogData,

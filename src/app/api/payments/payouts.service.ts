@@ -3,5 +3,7 @@ import { PayoutsService as ApiPayoutsService } from '@vality/swag-payments';
 
 import { createApi } from '../utils';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class PayoutsService extends createApi(ApiPayoutsService) {}

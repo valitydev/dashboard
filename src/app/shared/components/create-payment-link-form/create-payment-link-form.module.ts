@@ -12,7 +12,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { InvoiceModule } from '@dsh/api/invoice';
 import { UrlShortenerModule } from '@dsh/api/url-shortener';
 import { ButtonModule } from '@dsh/components/buttons';
 import { FormControlsModule } from '@dsh/components/form-controls';
@@ -39,7 +38,6 @@ import { CreatePaymentLinkFormComponent } from './create-payment-link-form.compo
         ConfirmActionDialogModule,
         MatSnackBarModule,
         MatFormFieldModule,
-        InvoiceModule,
         MatIconModule,
     ],
     declarations: [CreatePaymentLinkFormComponent],

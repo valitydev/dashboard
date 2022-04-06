@@ -13,7 +13,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { InvoiceModule } from '@dsh/api/invoice';
 import { ButtonModule } from '@dsh/components/buttons';
 import { FormControlsModule } from '@dsh/components/form-controls';
 import { LayoutModule } from '@dsh/components/layout';
@@ -36,7 +35,6 @@ import { CreateInvoiceFormComponent } from './create-invoice-form.component';
         TranslocoModule,
         MatMenuModule,
         MatDialogModule,
-        InvoiceModule,
         MatDatepickerModule,
         MatMomentDateModule,
         MatDividerModule,
