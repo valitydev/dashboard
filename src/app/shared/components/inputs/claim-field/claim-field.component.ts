@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
-
-import { Claim } from '@dsh/api-codegen/capi';
+import { Claim } from '@vality/swag-payments';
 
 @Component({
     selector: 'dsh-claim-field',

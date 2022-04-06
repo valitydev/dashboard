@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { TranslocoTestingModule } from '@ngneat/transloco';
+import { PaymentSearchResult } from '@vality/swag-payments';
 
-import { PaymentSearchResult } from '@dsh/api-codegen/capi';
 import { StatusModule } from '@dsh/components/indicators';
 
 import { PaymentStatusComponent } from './payment-status.component';

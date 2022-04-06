@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { PaymentSearchResult, RefundSearchResult } from '@vality/swag-payments';
 import { of } from 'rxjs';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 
-import { PaymentSearchResult, RefundSearchResult } from '@dsh/api-codegen/capi';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 import { ButtonModule } from '@dsh/components/buttons';
 

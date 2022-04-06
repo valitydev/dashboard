@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import moment from 'moment';
 import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 
-import { InlineResponse20012, Refund, SearchService } from '@dsh/api-codegen/anapi';
+import { SearchService } from '@dsh/api-codegen/anapi';
 import { IdGeneratorService } from '@dsh/app/shared';
 import { KeycloakTokenInfoService } from '@dsh/app/shared/services';
 
 import { toDateLike } from '../utils';
 import { Duration, RefundsSearchParams } from './model';
-
-export type RefundsAndContinuationToken = InlineResponse20012;
 
 @Injectable()
 export class RefundSearchService {
@@ -28,7 +26,7 @@ export class RefundSearchService {
         params: RefundsSearchParams,
         limit: number,
         continuationToken?: string
-    ): Observable<RefundsAndContinuationToken> {
+    ) {
         return this.partyID$.pipe(
             switchMap((partyID) =>
                 this.searchService.searchRefunds(
@@ -60,13 +58,9 @@ export class RefundSearchService {
         params: RefundsSearchParams,
         limit?: number,
         continuationToken?: string
-    ): Observable<RefundsAndContinuationToken> {
+    ) {
         const from = moment().subtract(amount, unit).startOf('d').utc().format();
         const to = moment().endOf('d').utc().format();
         return this.searchRefunds(from, to, params, limit, continuationToken);
-    }
-
-    getRefundByDuration(duration: Duration, invoiceID: string, paymentID: string): Observable<Refund> {
-        return this.searchRefundsByDuration(duration, { invoiceID, paymentID }, 1).pipe(map((res) => res.result[0]));
     }
 }

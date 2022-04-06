@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { WebhookScope } from '@vality/swag-payments';
 import { BehaviorSubject } from 'rxjs';
 
-import { WebhookScope } from '@dsh/api-codegen/capi/swagger-codegen';
 import { ShopsService } from '@dsh/api/payments';
 import { oneMustBeSelected } from '@dsh/components/form-controls';
 

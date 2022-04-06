@@ -1,4 +1,4 @@
-import { Shop as ApiShop } from '@dsh/api-codegen/capi/swagger-codegen';
+import { Shop as ApiShop } from '@vality/swag-payments';
 
 import { generateMockShopId } from './generate-mock-shop-id';
 

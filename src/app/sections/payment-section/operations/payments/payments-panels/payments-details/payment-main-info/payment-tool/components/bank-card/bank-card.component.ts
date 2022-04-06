@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { BankCardDetails } from '@vality/swag-payments';
 
-import { BankCardDetails } from '@dsh/api-codegen/capi';
 import { TokenProvider, PaymentSystem } from '@dsh/api/payments';
 
 interface BankCardIconConfig {

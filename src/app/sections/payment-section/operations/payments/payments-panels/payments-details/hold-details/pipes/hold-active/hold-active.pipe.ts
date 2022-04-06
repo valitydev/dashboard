@@ -1,7 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { PaymentStatus } from '@vality/swag-payments';
 import moment from 'moment';
-
-import { PaymentStatus } from '@dsh/api-codegen/capi/swagger-codegen';
 
 @Pipe({
     name: 'holdActive',

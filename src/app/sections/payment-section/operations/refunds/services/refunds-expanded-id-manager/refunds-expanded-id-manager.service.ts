@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { RefundSearchResult } from '@dsh/api-codegen/capi';
+import { RefundSearchResult } from '@dsh/api-codegen/anapi';
 import { ExpandedIdManager, Fragment } from '@dsh/app/shared/services';
 
 import { FetchRefundsService } from '../fetch-refunds/fetch-refunds.service';

@@ -2,11 +2,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslocoTestingModule } from '@ngneat/transloco';
+import { Shop } from '@vality/swag-payments';
 import { of, throwError } from 'rxjs';
 import { anyString, anything, deepEqual, mock, verify, when } from 'ts-mockito';
 
 import { ApiShopsService, OrganizationsService } from '@dsh/api';
-import { Shop } from '@dsh/api-codegen/capi';
 import { InviteeContact } from '@dsh/api-codegen/organizations';
 import { MOCK_INVITATION } from '@dsh/api/organizations/tests/mock-invitation';
 import { MOCK_ORG } from '@dsh/api/organizations/tests/mock-org';

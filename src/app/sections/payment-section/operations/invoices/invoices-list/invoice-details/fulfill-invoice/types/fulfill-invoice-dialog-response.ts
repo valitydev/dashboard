@@ -1,3 +1,3 @@
-import { Reason } from '@dsh/api-codegen/capi';
+import { Reason } from '@vality/swag-payments';
 
 export type FulfillInvoiceDialogResponse = Reason | 'cancel';

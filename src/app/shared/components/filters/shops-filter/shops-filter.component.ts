@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
 import { provideValueAccessor } from '@s-libs/ng-core';
+import { Shop } from '@vality/swag-payments';
 import { combineLatest } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 
-import { Shop } from '@dsh/api-codegen/capi';
 import { ShopsService } from '@dsh/api/payments';
 import { FilterSuperclass } from '@dsh/components/filter';
 

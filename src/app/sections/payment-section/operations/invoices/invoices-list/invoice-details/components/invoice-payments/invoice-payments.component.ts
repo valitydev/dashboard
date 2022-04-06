@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Payment } from '@vality/swag-payments';
 
-import { Payment } from '@dsh/api-codegen/capi';
 import { FakePaginatorService } from '@dsh/app/shared/services';
 
 @Component({

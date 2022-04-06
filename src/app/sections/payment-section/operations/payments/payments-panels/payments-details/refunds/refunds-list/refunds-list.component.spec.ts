@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RefundSearchResult } from '@vality/swag-payments';
 
-import { RefundSearchResult } from '@dsh/api-codegen/capi';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 
 import { RefundsListComponent } from './refunds-list.component';

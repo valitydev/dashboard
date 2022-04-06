@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { PaymentToolDetails } from '@vality/swag-payments';
 
-import { PaymentToolDetails } from '@dsh/api-codegen/capi';
 import { PaymentToolDetailsType } from '@dsh/api/payments';
 
 @Component({

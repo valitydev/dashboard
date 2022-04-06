@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
+import { PaymentInstitution } from '@vality/swag-payments';
 import { Observable, Subject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-import { PaymentInstitution } from '@dsh/api-codegen/capi';
 
 import { PaymentInstitutionRealmService } from './payment-institution-realm.service';
 

@@ -3,11 +3,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoTestingModule } from '@ngneat/transloco';
+import { Shop } from '@vality/swag-payments';
 import cloneDeep from 'lodash-es/cloneDeep';
 import { Observable, of } from 'rxjs';
 
 import { ShopsService } from '@dsh/api-codegen/capi/shops.service';
-import { Shop } from '@dsh/api-codegen/capi/swagger-codegen';
 import { ApiShopsService } from '@dsh/api/shop';
 
 import { generateMockShopItem } from '../../../../tests/generate-shop-item';

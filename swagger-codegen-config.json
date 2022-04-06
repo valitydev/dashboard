@@ -3,7 +3,6 @@
     "outputRootDir": "src/app/api-codegen",
     "outputDir": "swagger-codegen",
     "schemes": {
-        "capi": "node_modules/@vality/swag-payments/swagger.yaml",
         "aggr-proxy": "schemes/questionary-aggr-proxy/v0/swagger.json",
         "anapi": "schemes/swag-analytics/v1/swagger.json",
         "dark-api": "schemes/dark-api/v0/swagger.json",

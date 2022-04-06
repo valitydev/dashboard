@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { TranslocoTestingModule } from '@ngneat/transloco';
+import { PaymentSearchResult } from '@vality/swag-payments';
 import moment from 'moment';
 
-import { PaymentSearchResult } from '@dsh/api-codegen/capi';
 import { BalanceModule } from '@dsh/app/shared/components/balance/balance.module';
 import { RowModule } from '@dsh/components/layout';
 

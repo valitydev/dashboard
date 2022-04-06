@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 
-import { RefundSearchResult } from '@dsh/api-codegen/capi/swagger-codegen';
+import { RefundSearchResult } from '@dsh/api-codegen/anapi';
 import { RefundSearchService } from '@dsh/api/search';
 import { PartialFetcher } from '@dsh/app/shared';
 import { booleanDebounceTime, mapToTimestamp } from '@dsh/operators';
@@ -17,7 +16,7 @@ export class FetchRefundsService extends PartialFetcher<RefundSearchResult, Sear
     isLoading$: Observable<boolean> = this.doAction$.pipe(booleanDebounceTime(), shareReplay(1));
     lastUpdated$: Observable<string> = this.searchResult$.pipe(mapToTimestamp, shareReplay(1));
 
-    constructor(private refundSearchService: RefundSearchService, private route: ActivatedRoute) {
+    constructor(private refundSearchService: RefundSearchService) {
         super();
     }
 

@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
-import { LegalEntity } from '@dsh/api-codegen/capi';
+import { LegalEntity } from '@vality/swag-payments';
 
 @Component({
     selector: 'dsh-contractor-details',

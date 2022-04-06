@@ -1,4 +1,4 @@
-import { Country } from '@dsh/api-codegen/capi';
+import { Country } from '@vality/swag-payments';
 
 export type CountryId = Country['id'];
 export type CountryName = Country['name'];

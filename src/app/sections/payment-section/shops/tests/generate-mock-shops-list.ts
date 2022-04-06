@@ -1,6 +1,5 @@
+import { Shop } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
-
-import { Shop } from '@dsh/api-codegen/capi/swagger-codegen';
 
 import { generateMockShop } from './generate-mock-shop';
 import { makeEmptyList } from './make-empty-list';

@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
+import { Contract } from '@vality/swag-payments';
 import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { instance, mock, when } from 'ts-mockito';
 
-import { Contract } from '@dsh/api-codegen/capi';
 import { ContractsService } from '@dsh/api/contracts';
 
 import { ShopContractDetailsService } from './shop-contract-details.service';

@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { RefundSearchResult } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
-
-import { RefundSearchResult } from '@dsh/api-codegen/capi';
 
 @Component({
     selector: 'dsh-refunds-list',

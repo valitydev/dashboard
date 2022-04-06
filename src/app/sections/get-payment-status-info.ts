@@ -1,4 +1,4 @@
-import { PaymentStatus } from '@dsh/api-codegen/capi/swagger-codegen';
+import { PaymentStatus } from '@vality/swag-payments';
 
 import { StatusColor as Color } from '../theme-manager';
 

@@ -1,4 +1,4 @@
-import { InvoiceCart } from '@dsh/api-codegen/capi/swagger-codegen';
+import { InvoiceCart } from '@vality/swag-payments';
 
 import { generateMockInvoiceLine } from './generate-mock-invoice-line';
 

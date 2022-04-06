@@ -5,7 +5,6 @@ import { provideValueAccessor } from '@s-libs/ng-core';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Currency } from '@dsh/api-codegen/capi';
 import { FilterSuperclass } from '@dsh/components/filter';
 
 @Component({
@@ -14,7 +13,7 @@ import { FilterSuperclass } from '@dsh/components/filter';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [provideValueAccessor(CurrencyFilterComponent)],
 })
-export class CurrencyFilterComponent extends FilterSuperclass<Currency> {
+export class CurrencyFilterComponent extends FilterSuperclass<string> {
     @Input() currencies: string[] = [];
 
     activeLabel$ = combineLatest(

@@ -2,10 +2,10 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { PaymentInstitution } from '@vality/swag-payments';
 import { combineLatest, Observable, Subject } from 'rxjs';
 import { filter, map, pluck, switchMapTo, first } from 'rxjs/operators';
 
-import { PaymentInstitution } from '@dsh/api-codegen/capi';
 import { SHOPS } from '@dsh/app/shared/components/inputs/shop-field';
 
 import { PaymentInstitutionRealmService, RealmShopsService } from './services';

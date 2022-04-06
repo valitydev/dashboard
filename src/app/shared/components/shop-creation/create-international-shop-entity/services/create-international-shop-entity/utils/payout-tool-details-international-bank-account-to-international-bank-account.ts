@@ -1,6 +1,5 @@
 import { InternationalBankAccount } from '@vality/swag-claim-management';
-
-import { PayoutToolDetailsInternationalBankAccount } from '@dsh/api-codegen/capi';
+import { PayoutToolDetailsInternationalBankAccount } from '@vality/swag-payments';
 
 export function payoutToolDetailsInternationalBankAccountToInternationalBankAccount(
     form: Omit<PayoutToolDetailsInternationalBankAccount, 'detailsType'>

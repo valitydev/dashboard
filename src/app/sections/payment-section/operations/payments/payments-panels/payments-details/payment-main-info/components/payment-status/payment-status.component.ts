@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
+import { PaymentStatus } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
 import isObject from 'lodash-es/isObject';
 
-import { PaymentStatus } from '@dsh/api-codegen/capi';
 import { ComponentChange, ComponentChanges } from '@dsh/type-utils';
 
 import { StatusColor } from '../../../../../../../../../theme-manager';

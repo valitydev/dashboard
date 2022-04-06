@@ -2,9 +2,9 @@ import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
+import { Invoice, InvoiceStatusChanged } from '@vality/swag-payments';
 import { instance, mock } from 'ts-mockito';
 
-import { Invoice, InvoiceStatusChanged } from '@dsh/api-codegen/capi';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 
 import { PaymentInvoiceInfoComponent } from './payment-invoice-info.component';

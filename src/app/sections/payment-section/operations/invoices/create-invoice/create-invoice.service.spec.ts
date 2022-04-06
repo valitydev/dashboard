@@ -2,11 +2,11 @@ import { TestBed } from '@angular/core/testing';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService, TranslocoTestingModule } from '@ngneat/transloco';
+import { Shop } from '@vality/swag-payments';
 import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 
-import { Shop } from '@dsh/api-codegen/capi';
 import { PaymentInstitutionRealm } from '@dsh/api/model';
 import { ApiShopsService } from '@dsh/api/shop';
 

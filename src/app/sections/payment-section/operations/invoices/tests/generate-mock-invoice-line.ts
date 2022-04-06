@@ -1,4 +1,4 @@
-import { InvoiceLine } from '@dsh/api-codegen/capi/swagger-codegen';
+import { InvoiceLine } from '@vality/swag-payments';
 
 export function generateMockInvoiceLine(): InvoiceLine {
     return {

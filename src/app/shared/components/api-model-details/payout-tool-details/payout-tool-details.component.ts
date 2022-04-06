@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
-import { PayoutToolDetails } from '@dsh/api-codegen/capi';
+import { PayoutToolDetails } from '@vality/swag-payments';
 
 @Component({
     selector: 'dsh-payout-tool-details',
