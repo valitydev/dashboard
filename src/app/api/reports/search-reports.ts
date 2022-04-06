@@ -1,5 +1,6 @@
+import { PaymentInstitution } from '@vality/swag-payments';
+
 import { Report } from '@dsh/api-codegen/anapi';
-import { PaymentInstitution } from '@dsh/api-codegen/capi';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 
