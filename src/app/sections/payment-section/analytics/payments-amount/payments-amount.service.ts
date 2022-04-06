@@ -3,9 +3,9 @@ import isEqual from 'lodash-es/isEqual';
 import { combineLatest, forkJoin, merge, Observable, Subject } from 'rxjs';
 import { distinctUntilChanged, map, pluck, shareReplay, switchMap } from 'rxjs/operators';
 
-import { AnalyticsService } from '@dsh/api/analytics';
+import { AnalyticsService } from '@dsh/api/anapi';
 
-import { filterError, filterPayload, replaceError, SHARE_REPLAY_CONF, progress } from '../../../../custom-operators';
+import { filterError, filterPayload, SHARE_REPLAY_CONF, progress, replaceError } from '../../../../custom-operators';
 import { SearchParams } from '../search-params';
 import { amountResultToStatData, searchParamsToStatSearchParams, StatStatSearchParams } from '../utils';
 
@@ -25,11 +25,15 @@ export class PaymentsAmountService {
     private paymentsAmountOrError$ = this.searchParams$.pipe(
         switchMap(({ current, previous, realm }) =>
             forkJoin([
-                this.analyticsService.getPaymentsAmount(current.fromTime, current.toTime, {
+                this.analyticsService.getPaymentsAmount({
+                    fromTime: current.fromTime,
+                    toTime: current.toTime,
                     shopIDs: current.shopIDs,
                     paymentInstitutionRealm: realm,
                 }),
-                this.analyticsService.getPaymentsAmount(previous.fromTime, previous.toTime, {
+                this.analyticsService.getPaymentsAmount({
+                    fromTime: previous.fromTime,
+                    toTime: previous.toTime,
                     shopIDs: previous.shopIDs,
                     paymentInstitutionRealm: realm,
                 }),

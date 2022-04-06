@@ -1,4 +1,4 @@
-import { AmountResult } from '@dsh/api-codegen/anapi/swagger-codegen';
+import { AmountResult } from '@vality/swag-anapi-v2';
 
 import { StatData } from './stat-data';
 
