@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, forkJoin, merge, of, Subject } from 'rxjs';
 import { catchError, filter, map, shareReplay, switchMap, take, tap } from 'rxjs/operators';
 
-import { ShopsService } from '@dsh/api/payments';
-import { PayoutsService } from '@dsh/api/payouts';
+import { ShopsService, PayoutsService } from '@dsh/api/payments';
 
 import { toPayoutParams } from './to-payout-params';
 
@@ -26,7 +25,7 @@ export class CreatePayoutDialogService {
     // eslint-disable-next-line @typescript-eslint/member-ordering
     payoutTools$ = this.currentShopID$.pipe(
         switchMap((shopID) => this.shopsService.shops$.pipe(map((shops) => shops.find(({ id }) => id === shopID)))),
-        switchMap(({ contractID }) => this.payoutsService.getPayoutTools(contractID)),
+        switchMap(({ contractID }) => this.payoutsService.getPayoutTools({ contractID })),
         map((tools) => tools.filter((tool) => tool.details.detailsType === 'PayoutToolDetailsWalletInfo')),
         shareReplay(1)
     );
@@ -55,8 +54,8 @@ export class CreatePayoutDialogService {
                     ])
                 ),
                 map(([params, currency]) => toPayoutParams(params, currency)),
-                switchMap((params) =>
-                    this.payoutsService.createPayout(params).pipe(
+                switchMap((payoutParams) =>
+                    this.payoutsService.createPayout({ payoutParams }).pipe(
                         catchError((e) => {
                             console.error(e);
                             this.loading$.next(false);

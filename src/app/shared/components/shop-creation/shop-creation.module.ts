@@ -5,7 +5,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { PayoutsModule } from '@dsh/api/payouts';
 import { ActionsModule } from '@dsh/app/shared/components/actions';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ShopCreationService } from '@dsh/app/shared/components/shop-creation/shop-creation.service';
@@ -26,7 +25,6 @@ import { CreateRussianShopEntityModule } from './create-russian-shop-entity';
         MatRadioModule,
         CreateRussianShopEntityModule,
         CreateInternationalShopEntityModule,
-        PayoutsModule,
         BaseDialogModule,
         ShopContractDetailsModule,
         ActionsModule,

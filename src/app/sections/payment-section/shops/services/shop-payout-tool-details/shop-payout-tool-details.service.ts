@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { PayoutTool } from '@vality/swag-payments';
 import { BehaviorSubject, defer, Observable, of, ReplaySubject, Subject } from 'rxjs';
 import { catchError, distinctUntilChanged, filter, switchMap, tap } from 'rxjs/operators';
 
-import { PayoutTool } from '@dsh/api-codegen/capi';
-import { PayoutsService } from '@dsh/api/payouts';
+import { PayoutsService } from '@dsh/api/payments';
 
 import { PayoutToolParams } from '../../shops-list/shop-details/types/payout-tool-params';
 
@@ -32,7 +32,10 @@ export class ShopPayoutToolDetailsService {
                 switchMap((payoutToolParams) =>
                     payoutToolParams
                         ? this.payoutsService
-                              .getPayoutToolByID(payoutToolParams.contractID, payoutToolParams.payoutToolID)
+                              .getPayoutToolByID({
+                                  contractID: payoutToolParams.contractID,
+                                  payoutToolID: payoutToolParams.payoutToolID,
+                              })
                               .pipe(
                                   catchError((e) => {
                                       console.error(e);

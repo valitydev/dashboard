@@ -8,7 +8,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { PayoutsModule as ApiPayoutsModule } from '@dsh/api/payouts';
 import { SearchModule } from '@dsh/api/search';
 import { ApiModelTypesModule } from '@dsh/app/shared/pipes';
 import { ButtonModule } from '@dsh/components/buttons';
@@ -45,7 +44,6 @@ import { PayoutsComponent } from './payouts.component';
         SpinnerModule,
         ScrollUpModule,
         ShowMorePanelModule,
-        ApiPayoutsModule,
         FormatInputModule,
         ApiModelTypesModule,
         PayoutsSearchFiltersModule,
