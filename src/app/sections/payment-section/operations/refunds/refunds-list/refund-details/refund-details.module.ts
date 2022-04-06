@@ -7,7 +7,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterModule } from '@angular/router';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { PaymentModule } from '@dsh/api/payment';
 import {
     InvoiceDetailsModule,
     PaymentDetailsModule,
@@ -37,7 +36,6 @@ import { RefundDetailsComponent } from './refund-details.component';
         ApiRefundDetailsModule,
         InvoiceDetailsModule,
         PaymentDetailsModule,
-        PaymentModule,
         RouterModule,
         MatIconModule,
     ],

@@ -3,10 +3,10 @@ import { Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { CaptureParams } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
 
-import { CaptureParams } from '@dsh/api-codegen/capi';
-import { PaymentService } from '@dsh/api/payment';
+import { PaymentsService } from '@dsh/api/payments';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services';
 import { amountValidator } from '@dsh/components/form-controls';
@@ -21,7 +21,6 @@ import { CreateHoldDialogData } from '../../types/create-hold-dialog-data';
     selector: 'dsh-create-hold-dialog',
     templateUrl: './create-hold-dialog.component.html',
     styleUrls: ['./create-hold-dialog.component.scss'],
-    providers: [PaymentService],
 })
 export class CreateHoldDialogComponent {
     maxReasonLength: number = MAX_REASON_LENGTH;
@@ -47,16 +46,16 @@ export class CreateHoldDialogComponent {
         @Inject(MAT_DIALOG_DATA) private dialogData: CreateHoldDialogData,
         private dialogRef: MatDialogRef<CreateHoldDialogComponent, BaseDialogResponseStatus>,
         private fb: FormBuilder,
-        private paymentService: PaymentService,
+        private paymentsService: PaymentsService,
         private errorService: ErrorService
     ) {}
 
     confirm(): void {
-        const params = this.formatParams();
+        const capturePayment = this.formatParams();
         const { invoiceID, paymentID } = this.dialogData;
 
-        this.paymentService
-            .capturePayment(invoiceID, paymentID, params)
+        this.paymentsService
+            .capturePayment({ invoiceID, paymentID, capturePayment })
             .pipe(untilDestroyed(this))
             .subscribe(
                 () => {
