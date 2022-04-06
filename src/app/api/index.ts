@@ -5,7 +5,6 @@ export * from './dadata';
 export * from './files';
 export * from './kontur-focus';
 export * from './messages';
-export * from './refund';
 export * from './url-shortener';
 export * from './deposits';
 export * from './withdrawals';
