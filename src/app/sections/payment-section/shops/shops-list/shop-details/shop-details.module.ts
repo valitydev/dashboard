@@ -7,7 +7,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { ContractsModule } from '@dsh/api/contracts';
 import { ContractDetailsModule, PayoutToolModule } from '@dsh/app/shared/components';
 import { ShopContractDetailsModule } from '@dsh/app/shared/services/shop-contract-details';
 import { ButtonModule } from '@dsh/components/buttons';
@@ -34,7 +33,6 @@ import { ShopDetailsComponent } from './shop-details.component';
         ContractDetailsModule,
         PayoutToolModule,
         ShopBalanceModule,
-        ContractsModule,
         MatSnackBarModule,
         MatDialogModule,
         ShopContractDetailsModule,

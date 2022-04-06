@@ -10,7 +10,6 @@ export * from './url-shortener';
 export * from './deposits';
 export * from './withdrawals';
 export * from './wallet';
-export * from './contracts';
 export * from './wallet-webhooks';
 export * from './identity';
 export * from './organizations';
