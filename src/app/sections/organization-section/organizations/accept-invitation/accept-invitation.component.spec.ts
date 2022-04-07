@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { anything, deepEqual, mock, verify, when } from 'ts-mockito';
 
-import { OrganizationsService } from '@dsh/api';
+import { OrganizationsService } from '@dsh/api/organizations';
 import { ErrorService } from '@dsh/app/shared';
 import { provideMockService } from '@dsh/app/shared/tests';
 

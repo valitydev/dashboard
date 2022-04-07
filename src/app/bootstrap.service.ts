@@ -4,8 +4,8 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { concat, defer, Observable, of, ReplaySubject, throwError } from 'rxjs';
 import { catchError, first, mapTo, shareReplay, switchMap, takeLast, tap } from 'rxjs/operators';
 
-import { DEFAULT_ORGANIZATION_NAME, OrganizationsService } from '@dsh/api';
 import { ClaimsService, createTestShopClaimChangeset } from '@dsh/api/claim-management';
+import { DEFAULT_ORGANIZATION_NAME, OrganizationsService } from '@dsh/api/organizations';
 import { PartiesService, ShopsService } from '@dsh/api/payments';
 import { CommonError, ErrorService, IdGeneratorService } from '@dsh/app/shared';
 

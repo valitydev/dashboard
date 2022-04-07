@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
 import { By } from '@angular/platform-browser';
 
-import { OrganizationsService } from '@dsh/api';
+import { OrganizationsService } from '@dsh/api/organizations';
 import { ErrorService, NotificationService } from '@dsh/app/shared';
 import { provideMockService } from '@dsh/app/shared/tests';
 

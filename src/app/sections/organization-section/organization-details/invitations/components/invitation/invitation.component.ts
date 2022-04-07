@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { filter, switchMap } from 'rxjs/operators';
 
-import { OrganizationsService } from '@dsh/api';
 import { InlineObject1, Invitation, Organization } from '@dsh/api-codegen/organizations';
+import { OrganizationsService } from '@dsh/api/organizations';
 import { ErrorService, NotificationService } from '@dsh/app/shared';
 import { ConfirmActionDialogComponent, ConfirmActionDialogResult } from '@dsh/components/popups';
 import { ignoreBeforeCompletion } from '@dsh/utils';

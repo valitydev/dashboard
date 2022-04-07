@@ -10,7 +10,6 @@ export * from './withdrawals';
 export * from './wallet';
 export * from './wallet-webhooks';
 export * from './identity';
-export * from './organizations';
 /**
  * Do not export anything so that the names do not intersect
  */

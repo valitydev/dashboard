@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { combineLatest, defer, Observable, of, ReplaySubject } from 'rxjs';
 import { catchError, map, pluck, shareReplay, switchMap } from 'rxjs/operators';
 
-import { OrganizationsService } from '@dsh/api';
 import { Member, Organization, RoleId } from '@dsh/api-codegen/organizations';
+import { OrganizationsService } from '@dsh/api/organizations';
 import { ErrorService, KeycloakTokenInfoService } from '@dsh/app/shared';
 import { Initializable } from '@dsh/app/shared/types';
 import { SHARE_REPLAY_CONF } from '@dsh/operators';

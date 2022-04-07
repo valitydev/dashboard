@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { OrganizationsModule as OrganizationsAPIModule } from '@dsh/api';
+import { OrganizationsModule as OrganizationsAPIModule } from '@dsh/api/organizations';
 import { ErrorModule, NotificationModule } from '@dsh/app/shared';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ButtonModule } from '@dsh/components/buttons';

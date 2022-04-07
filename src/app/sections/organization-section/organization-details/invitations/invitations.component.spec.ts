@@ -5,8 +5,8 @@ import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 import { anything, mock, verify, when, anyString } from 'ts-mockito';
 
-import { OrganizationsService } from '@dsh/api';
 import { InvitationListResult } from '@dsh/api-codegen/organizations';
+import { OrganizationsService } from '@dsh/api/organizations';
 import { MOCK_INVITATION } from '@dsh/api/organizations/tests/mock-invitation';
 import { MOCK_ORG } from '@dsh/api/organizations/tests/mock-org';
 import { DIALOG_CONFIG } from '@dsh/app/sections/tokens';

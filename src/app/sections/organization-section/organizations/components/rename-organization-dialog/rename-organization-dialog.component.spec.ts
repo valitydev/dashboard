@@ -9,7 +9,7 @@ import { TranslocoTestingModule } from '@ngneat/transloco';
 import { of, throwError } from 'rxjs';
 import { anyString, anything, instance, mock, objectContaining, verify, when } from 'ts-mockito';
 
-import { OrganizationsService } from '@dsh/api';
+import { OrganizationsService } from '@dsh/api/organizations';
 import { MOCK_ORG } from '@dsh/api/organizations/tests/mock-org';
 import { BaseDialogModule, BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services/error';

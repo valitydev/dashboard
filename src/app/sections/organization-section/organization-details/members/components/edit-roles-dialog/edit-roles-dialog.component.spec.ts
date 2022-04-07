@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { OrganizationsService } from '@dsh/api';
+import { OrganizationsService } from '@dsh/api/organizations';
 import { ErrorService } from '@dsh/app/shared';
 import { provideMockService, provideMockToken } from '@dsh/app/shared/tests';
 

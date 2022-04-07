@@ -25,8 +25,8 @@ import { QUERY_PARAMS_SERIALIZERS } from '@dsh/app/shared/services/query-params/
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
 
 import { ENV, environment } from '../environments';
-import { OrganizationsModule, NewOrganizationsModule } from './api';
 import { ApiCodegenModule } from './api-codegen';
+import { OrganizationsModule, NewOrganizationsModule } from './api/organizations';
 import { AppComponent } from './app.component';
 import { AuthModule, KeycloakAngularModule, KeycloakService } from './auth';
 import { ConfigModule, ConfigService } from './config';

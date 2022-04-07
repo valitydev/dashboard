@@ -5,7 +5,7 @@ import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 import { anyString, mock, verify, when } from 'ts-mockito';
 
-import { OrganizationsService } from '@dsh/api';
+import { OrganizationsService } from '@dsh/api/organizations';
 import { MOCK_ORG } from '@dsh/api/organizations/tests/mock-org';
 import { provideMockService } from '@dsh/app/shared/tests';
 
