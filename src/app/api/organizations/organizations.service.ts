@@ -3,10 +3,6 @@ import { Observable } from 'rxjs';
 
 import {
     InlineObject,
-    Invitation,
-    InvitationListResult,
-    InvitationRequest,
-    InvitationsService,
     Member,
     MemberOrgListResult,
     MemberRole,
@@ -17,7 +13,6 @@ import {
     OrganizationSearchResult,
     OrgsService,
     RolesService,
-    InvitationStatusName,
 } from '@dsh/api-codegen/organizations';
 import { IdGeneratorService } from '@dsh/app/shared';
 import { PickMutable } from '@dsh/type-utils';
@@ -28,8 +23,7 @@ export class OrganizationsService {
         private orgsService: OrgsService,
         private rolesService: RolesService,
         private membersService: MembersService,
-        private idGeneratorService: IdGeneratorService,
-        private invitationsService: InvitationsService
+        private idGeneratorService: IdGeneratorService
     ) {}
 
     listOrgMembership(limit?: number, continuationToken?: string): Observable<OrganizationSearchResult> {
@@ -80,13 +74,5 @@ export class OrganizationsService {
 
     cancelOrgMembership(orgId: Organization['id']): Observable<void> {
         return this.orgsService.cancelOrgMembership(this.idGeneratorService.shortUuid(), orgId);
-    }
-
-    createInvitation(orgId: Organization['id'], invitation: InvitationRequest): Observable<Invitation> {
-        return this.invitationsService.createInvitation(this.idGeneratorService.shortUuid(), orgId, invitation);
-    }
-
-    listInvitations(orgId: Organization['id'], status?: InvitationStatusName): Observable<InvitationListResult> {
-        return this.invitationsService.listInvitations(this.idGeneratorService.shortUuid(), orgId, status);
     }
 }
