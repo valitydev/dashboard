@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 
 import {
     InlineObject,
-    InlineObject1,
     Invitation,
     InvitationListResult,
     InvitationRequest,
@@ -17,8 +16,6 @@ import {
     OrganizationMembership,
     OrganizationSearchResult,
     OrgsService,
-    Role,
-    RoleId,
     RolesService,
     InvitationStatusName,
 } from '@dsh/api-codegen/organizations';
@@ -56,10 +53,6 @@ export class OrganizationsService {
         return this.orgsService.joinOrg(this.idGeneratorService.shortUuid(), request);
     }
 
-    getOrgRole(orgId: Organization['id'], roleId: RoleId): Observable<Role> {
-        return this.rolesService.getOrgRole(this.idGeneratorService.shortUuid(), orgId, roleId);
-    }
-
     getOrgMember(orgId: Organization['id'], userId: string): Observable<Member> {
         return this.membersService.getOrgMember(this.idGeneratorService.shortUuid(), orgId, userId);
     }
@@ -95,18 +88,5 @@ export class OrganizationsService {
 
     listInvitations(orgId: Organization['id'], status?: InvitationStatusName): Observable<InvitationListResult> {
         return this.invitationsService.listInvitations(this.idGeneratorService.shortUuid(), orgId, status);
-    }
-
-    revokeInvitation(
-        orgId: Organization['id'],
-        invitationId: Invitation['id'],
-        status?: InlineObject1
-    ): Observable<any> {
-        return this.invitationsService.revokeInvitation(
-            this.idGeneratorService.shortUuid(),
-            orgId,
-            invitationId,
-            status
-        );
     }
 }
