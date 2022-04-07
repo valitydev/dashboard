@@ -1,7 +1,0 @@
-{
-    "outputRootDir": "src/app/api-codegen",
-    "outputDir": "openapi-codegen",
-    "schemes": {
-        "organizations": "schemes/organizations/v0/openapi.json"
-    }
-}
