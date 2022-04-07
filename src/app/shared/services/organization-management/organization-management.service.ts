@@ -1,10 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Member, Organization, RoleId } from '@vality/swag-organizations';
 import { combineLatest, defer, Observable, of, ReplaySubject } from 'rxjs';
 import { catchError, map, pluck, shareReplay, switchMap } from 'rxjs/operators';
 
-import { Member, Organization, RoleId } from '@dsh/api-codegen/organizations';
-import { OrganizationsService } from '@dsh/api/organizations';
+import { MembersService } from '@dsh/api/organizations';
 import { ErrorService, KeycloakTokenInfoService } from '@dsh/app/shared';
 import { Initializable } from '@dsh/app/shared/types';
 import { SHARE_REPLAY_CONF } from '@dsh/operators';
@@ -15,7 +15,7 @@ export class OrganizationManagementService implements Initializable {
         combineLatest([this.organization$, this.keycloakTokenInfoService.partyID$])
     ).pipe(
         switchMap(([{ id: orgId }, userId]) =>
-            this.organizationsService.getOrgMember(orgId, userId).pipe(
+            this.membersService.getOrgMember({ orgId, userId }).pipe(
                 catchError((error) => {
                     if (!(error instanceof HttpErrorResponse && error.status === 404)) {
                         this.errorService.error(error);
@@ -27,7 +27,7 @@ export class OrganizationManagementService implements Initializable {
         shareReplay(SHARE_REPLAY_CONF)
     );
     members$: Observable<Member[]> = defer(() => this.organization$).pipe(
-        switchMap(({ id }) => this.organizationsService.listOrgMembers(id)),
+        switchMap(({ id }) => this.membersService.listOrgMembers({ orgId: id })),
         pluck('result'),
         shareReplay(SHARE_REPLAY_CONF)
     );
@@ -51,7 +51,7 @@ export class OrganizationManagementService implements Initializable {
     private organization$ = new ReplaySubject<Organization>();
 
     constructor(
-        private organizationsService: OrganizationsService,
+        private membersService: MembersService,
         private keycloakTokenInfoService: KeycloakTokenInfoService,
         private errorService: ErrorService
     ) {}

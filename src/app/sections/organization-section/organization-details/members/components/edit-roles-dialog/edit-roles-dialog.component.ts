@@ -5,7 +5,7 @@ import { BehaviorSubject, defer, forkJoin, of, Subscription } from 'rxjs';
 import { catchError, pluck, shareReplay, switchMap } from 'rxjs/operators';
 
 import { MemberRole } from '@dsh/api-codegen/organizations';
-import { OrganizationsService } from '@dsh/api/organizations';
+import { MembersService } from '@dsh/api/organizations';
 import { ErrorService } from '@dsh/app/shared';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 
@@ -19,7 +19,9 @@ import { EditRolesDialogData } from './types/edit-roles-dialog-data';
 })
 export class EditRolesDialogComponent {
     roles$ = defer(() => this.updateRoles$).pipe(
-        switchMap(() => this.organizationsService.getOrgMember(this.data.orgId, this.data.userId).pipe(pluck('roles'))),
+        switchMap(() =>
+            this.membersService.getOrgMember({ orgId: this.data.orgId, userId: this.data.userId }).pipe(pluck('roles'))
+        ),
         shareReplay(1)
     );
 
@@ -28,7 +30,7 @@ export class EditRolesDialogComponent {
     constructor(
         private dialogRef: MatDialogRef<EditRolesDialogComponent, BaseDialogResponseStatus>,
         @Inject(MAT_DIALOG_DATA) private data: EditRolesDialogData,
-        private organizationsService: OrganizationsService,
+        private membersService: MembersService,
         private errorService: ErrorService
     ) {}
 
@@ -38,7 +40,9 @@ export class EditRolesDialogComponent {
 
     addRoles(roles: MemberRole[]): Subscription {
         return forkJoin(
-            roles.map((role) => this.organizationsService.assignMemberRole(this.data.orgId, this.data.userId, role))
+            roles.map((memberRole) =>
+                this.membersService.assignMemberRole({ orgId: this.data.orgId, userId: this.data.userId, memberRole })
+            )
         )
             .pipe(
                 catchError((err) => {
@@ -51,7 +55,13 @@ export class EditRolesDialogComponent {
 
     removeRoles(roles: MemberRole[]): Subscription {
         return forkJoin(
-            roles.map((role) => this.organizationsService.removeMemberRole(this.data.orgId, this.data.userId, role.id))
+            roles.map((role) =>
+                this.membersService.removeMemberRole({
+                    orgId: this.data.orgId,
+                    userId: this.data.userId,
+                    memberRoleId: role.id,
+                })
+            )
         )
             .pipe(
                 catchError((err) => {
