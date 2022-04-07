@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UntilDestroy } from '@ngneat/until-destroy';
+import { MemberRole } from '@vality/swag-organizations';
 import { BehaviorSubject, defer, forkJoin, of, Subscription } from 'rxjs';
 import { catchError, pluck, shareReplay, switchMap } from 'rxjs/operators';
 
-import { MemberRole } from '@dsh/api-codegen/organizations';
 import { MembersService } from '@dsh/api/organizations';
 import { ErrorService } from '@dsh/app/shared';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';

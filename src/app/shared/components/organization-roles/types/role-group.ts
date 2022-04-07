@@ -1,4 +1,4 @@
-import { ResourceScopeId, RoleId } from '@dsh/api-codegen/organizations';
+import { ResourceScopeId, RoleId } from '@vality/swag-organizations';
 
 export type ResourceId = string;
 

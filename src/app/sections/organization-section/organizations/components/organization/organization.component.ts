@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Organization } from '@vality/swag-organizations';
 import isNil from 'lodash-es/isNil';
 import { filter, pluck, switchMap } from 'rxjs/operators';
 
-import { Organization } from '@dsh/api-codegen/organizations';
 import { OrgsService } from '@dsh/api/organizations';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService, NotificationService } from '@dsh/app/shared/services';

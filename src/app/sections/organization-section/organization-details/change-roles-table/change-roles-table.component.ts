@@ -1,11 +1,11 @@
 import { ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { MemberRole, ResourceScopeId, RoleId } from '@vality/swag-organizations';
 import isNil from 'lodash-es/isNil';
 import { BehaviorSubject, combineLatest, EMPTY, Observable, of } from 'rxjs';
 import { first, map, switchMap, tap } from 'rxjs/operators';
 
-import { MemberRole, ResourceScopeId, RoleId } from '@dsh/api-codegen/organizations';
 import { ShopsService } from '@dsh/api/payments';
 import { DialogConfig, DIALOG_CONFIG } from '@dsh/app/sections/tokens';
 import { sortRoleIds } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';

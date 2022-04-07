@@ -1,4 +1,4 @@
-import { Invitation, InvitationStatusName, Invitee, InviteeContact } from '@dsh/api-codegen/organizations';
+import { Invitation, InvitationStatusName, Invitee, InviteeContact } from '@vality/swag-organizations';
 
 import { MOCK_MEMBER_ROLE } from './mock-member-role';
 

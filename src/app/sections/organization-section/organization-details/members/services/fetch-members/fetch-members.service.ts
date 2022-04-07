@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Member } from '@vality/swag-organizations';
 import { BehaviorSubject, defer, of } from 'rxjs';
 import { catchError, pluck, shareReplay, switchMap, switchMapTo } from 'rxjs/operators';
 
-import { Member } from '@dsh/api-codegen/organizations';
 import { MembersService } from '@dsh/api/organizations';
 import { ErrorService } from '@dsh/app/shared';
 import { mapToTimestamp, progress } from '@dsh/operators';

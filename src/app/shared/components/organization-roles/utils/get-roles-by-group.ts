@@ -1,4 +1,5 @@
-import { MemberRole, RoleId } from '@dsh/api-codegen/organizations';
+import { MemberRole, RoleId } from '@vality/swag-organizations';
+
 import { PartialReadonly } from '@dsh/type-utils';
 
 import { RoleGroup } from '../types/role-group';

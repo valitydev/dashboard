@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { MemberRole } from '@vality/swag-organizations';
 
-import { MemberRole } from '@dsh/api-codegen/organizations';
 import { coerceBoolean } from '@dsh/utils';
 
 import { RoleGroup } from './types/role-group';

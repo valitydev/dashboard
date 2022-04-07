@@ -1,4 +1,4 @@
-import { RoleId } from '@dsh/api-codegen/organizations';
+import { RoleId } from '@vality/swag-organizations';
 
 export interface SelectRoleDialogData {
     availableRoles: RoleId[];

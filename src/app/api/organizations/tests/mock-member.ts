@@ -1,4 +1,4 @@
-import { Member, RoleId } from '@dsh/api-codegen/organizations';
+import { Member, RoleId } from '@vality/swag-organizations';
 
 import { MOCK_MEMBER_ROLE } from './mock-member-role';
 

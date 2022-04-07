@@ -1,4 +1,4 @@
-import { RoleId } from '@dsh/api-codegen/organizations';
+import { RoleId } from '@vality/swag-organizations';
 
 export const ROLE_PRIORITY_DESC: Record<RoleId, number> = {
     /* eslint-disable @typescript-eslint/naming-convention */

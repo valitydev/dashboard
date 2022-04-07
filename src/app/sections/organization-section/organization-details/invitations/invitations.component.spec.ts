@@ -1,11 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { InvitationListResult } from '@vality/swag-organizations';
 import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 import { anything, mock, verify, when, anyString } from 'ts-mockito';
 
-import { InvitationListResult } from '@dsh/api-codegen/organizations';
 import { OrgsService } from '@dsh/api/organizations';
 import { MOCK_INVITATION } from '@dsh/api/organizations/tests/mock-invitation';
 import { MOCK_ORG } from '@dsh/api/organizations/tests/mock-org';

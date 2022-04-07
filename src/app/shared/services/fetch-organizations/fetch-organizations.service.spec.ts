@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
+import { OrganizationSearchResult } from '@vality/swag-organizations';
 import { of } from 'rxjs';
 import { mock, verify, when } from 'ts-mockito';
 
-import { OrganizationSearchResult } from '@dsh/api-codegen/organizations';
 import { OrgsService } from '@dsh/api/organizations';
 import { MOCK_ORG } from '@dsh/api/organizations/tests/mock-org';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';

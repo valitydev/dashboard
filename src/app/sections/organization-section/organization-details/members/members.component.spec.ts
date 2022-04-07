@@ -2,11 +2,11 @@ import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { MemberOrgListResult } from '@vality/swag-organizations';
 import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 import { mock, verify, when } from 'ts-mockito';
 
-import { MemberOrgListResult } from '@dsh/api-codegen/organizations';
 import { OrgsService } from '@dsh/api/organizations';
 import { MOCK_MEMBER } from '@dsh/api/organizations/tests/mock-member';
 import { MOCK_ORG } from '@dsh/api/organizations/tests/mock-org';
