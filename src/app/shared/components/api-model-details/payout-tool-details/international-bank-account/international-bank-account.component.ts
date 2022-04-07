@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
 import {
     InternationalCorrespondentBankAccount,
     PayoutToolDetailsInternationalBankAccount,
-} from '@dsh/api-codegen/capi';
+} from '@vality/swag-payments';
 
 @Component({
     selector: 'dsh-international-bank-account',

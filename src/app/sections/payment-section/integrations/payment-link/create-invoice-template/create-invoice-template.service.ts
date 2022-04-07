@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormArray, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import * as moment from 'moment';
-import { combineLatest, merge, Observable, Subject } from 'rxjs';
-import { distinctUntilChanged, filter, map, share, shareReplay, startWith, switchMap, take } from 'rxjs/operators';
-
 import {
     InvoiceLineTaxMode,
     InvoiceLineTaxVAT,
@@ -19,13 +15,15 @@ import {
     InvoiceTemplateSingleLine,
     LifetimeInterval,
     Shop,
-} from '@dsh/api-codegen/capi';
-import { InvoiceTemplateType, InvoiceTemplateLineCostType } from '@dsh/api/capi';
-import { InvoiceTemplatesService } from '@dsh/api/invoice-templates';
-import { ConfirmActionDialogComponent } from '@dsh/components/popups';
+} from '@vality/swag-payments';
+import * as moment from 'moment';
+import { combineLatest, merge, Observable, Subject } from 'rxjs';
+import { distinctUntilChanged, filter, map, share, shareReplay, startWith, switchMap, take } from 'rxjs/operators';
 
-import { toMinor } from '../../../../../../utils';
-import { filterError, filterPayload, progress, replaceError, SHARE_REPLAY_CONF } from '../../../../../custom-operators';
+import { InvoiceTemplatesService, InvoiceTemplateType, InvoiceTemplateLineCostType } from '@dsh/api/payments';
+import { ConfirmActionDialogComponent } from '@dsh/components/popups';
+import { filterError, filterPayload, progress, replaceError, SHARE_REPLAY_CONF } from '@dsh/operators';
+import { toMinor } from '@dsh/utils';
 
 export const WITHOUT_VAT = Symbol('without VAT');
 
@@ -72,7 +70,9 @@ export class CreateInvoiceTemplateService {
             share()
         );
         const invoiceTemplateAndTokenWithErrors$ = createInvoiceTemplate$.pipe(
-            switchMap((p) => this.invoiceTemplatesService.createInvoiceTemplate(p).pipe(replaceError)),
+            switchMap((invoiceTemplateCreateParams) =>
+                this.invoiceTemplatesService.createInvoiceTemplate({ invoiceTemplateCreateParams }).pipe(replaceError)
+            ),
             share()
         );
         this.invoiceTemplateAndToken$ = invoiceTemplateAndTokenWithErrors$.pipe(filterPayload, shareReplay(1));
@@ -259,7 +259,7 @@ export class CreateInvoiceTemplateService {
             ? {}
             : {
                   taxMode: {
-                      type: InvoiceLineTaxMode.TypeEnum.InvoiceLineTaxVAT,
+                      type: InvoiceLineTaxMode.TypeEnum.InvoiceLineTaxVat,
                       rate,
                   },
               };

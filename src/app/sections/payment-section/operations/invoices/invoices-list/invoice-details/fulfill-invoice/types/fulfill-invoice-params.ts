@@ -1,4 +1,4 @@
-import { Reason } from '@dsh/api-codegen/capi';
+import { Reason } from '@vality/swag-payments';
 
 export interface FulfillInvoiceParams {
     invoiceID: string;

@@ -2,17 +2,17 @@ import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/co
 import { FormControl } from '@ngneat/reactive-forms';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { Observable, BehaviorSubject, of, throwError, EMPTY } from 'rxjs';
-import { switchMap, tap, share, catchError } from 'rxjs/operators';
-import { Overwrite } from 'utility-types';
-
-import { PayoutsService } from '@dsh/api';
 import {
     PayoutTool,
     PayoutToolDetailsBankAccount,
     PayoutToolDetailsInternationalBankAccount,
     Shop,
-} from '@dsh/api-codegen/capi';
+} from '@vality/swag-payments';
+import { Observable, BehaviorSubject, of, throwError, EMPTY } from 'rxjs';
+import { switchMap, tap, share, catchError } from 'rxjs/operators';
+import { Overwrite } from 'utility-types';
+
+import { PayoutsService } from '@dsh/api/payments';
 import { CommonError, ErrorService } from '@dsh/app/shared';
 import {
     ValidatedWrappedAbstractControlSuperclass,
@@ -78,22 +78,24 @@ export class ExistingBankAccountComponent extends ValidatedWrappedAbstractContro
     }
 
     private getPayoutToolByShop(shop: Shop): Observable<PayoutTool> {
-        return this.payoutsService.getPayoutToolByID(shop.contractID, shop.payoutToolID).pipe(
-            switchMap((payoutTool) => {
-                if (payoutTool.details.detailsType !== this.bankAccountType)
-                    return this.transloco
-                        .selectTranslate(
-                            `existingBankAccountForm.errors.${
-                                this.bankAccountType === 'PayoutToolDetailsInternationalBankAccount'
-                                    ? 'onlyInternationalShopCanBeSelected'
-                                    : 'onlyRussianShopCanBeSelected'
-                            }`,
-                            null,
-                            'create-shop'
-                        )
-                        .pipe(switchMap((t) => throwError(new CommonError(t))));
-                return of(payoutTool);
-            })
-        );
+        return this.payoutsService
+            .getPayoutToolByID({ contractID: shop.contractID, payoutToolID: shop.payoutToolID })
+            .pipe(
+                switchMap((payoutTool) => {
+                    if (payoutTool.details.detailsType !== this.bankAccountType)
+                        return this.transloco
+                            .selectTranslate(
+                                `existingBankAccountForm.errors.${
+                                    this.bankAccountType === 'PayoutToolDetailsInternationalBankAccount'
+                                        ? 'onlyInternationalShopCanBeSelected'
+                                        : 'onlyRussianShopCanBeSelected'
+                                }`,
+                                null,
+                                'create-shop'
+                            )
+                            .pipe(switchMap((t) => throwError(new CommonError(t))));
+                    return of(payoutTool);
+                })
+            );
     }
 }

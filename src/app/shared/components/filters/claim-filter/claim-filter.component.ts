@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { provideValueAccessor } from '@s-libs/ng-core';
+import { Claim } from '@vality/swag-payments';
 
-import { Claim } from '@dsh/api-codegen/capi';
 import { FilterSuperclass } from '@dsh/components/filter';
 
 @Component({

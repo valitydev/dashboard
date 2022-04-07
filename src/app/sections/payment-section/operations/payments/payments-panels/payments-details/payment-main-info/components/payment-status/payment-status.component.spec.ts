@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { PaymentStatus } from '@vality/swag-payments';
 
-import { PaymentStatus } from '@dsh/api-codegen/capi';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 
 import { StatusColor as Color } from '../../../../../../../../../theme-manager';

@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Invoice, InvoiceTemplateAndToken } from '@vality/swag-payments';
 import pick from 'lodash-es/pick';
 import moment from 'moment';
 import { merge, Subject } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
 
-import { InvoiceService } from '@dsh/api';
-import { Invoice, InvoiceTemplateAndToken } from '@dsh/api-codegen/capi';
+import { InvoicesService } from '@dsh/api/payments';
 
 import { CreateInvoiceOrInvoiceTemplateService } from './create-invoice-or-invoice-template.service';
 
@@ -41,7 +41,7 @@ export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
 
     constructor(
         private createInvoiceOrInvoiceTemplateService: CreateInvoiceOrInvoiceTemplateService,
-        private invoiceService: InvoiceService
+        private invoicesService: InvoicesService
     ) {}
 
     ngOnInit(): void {
@@ -61,11 +61,13 @@ export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
             .pipe(
                 take(1),
                 switchMap((shops) =>
-                    this.invoiceService.createInvoice({
-                        ...pick(value, ['product', 'description', 'cart', 'shopID']),
-                        dueDate: moment(value.dueDate).utc().endOf('d').format(),
-                        currency: shops.find((s) => s.id === value.shopID)?.currency,
-                        metadata: {},
+                    this.invoicesService.createInvoice({
+                        invoiceParams: {
+                            ...pick(value, ['product', 'description', 'cart', 'shopID']),
+                            dueDate: moment(value.dueDate).utc().endOf('d').format(),
+                            currency: shops.find((s) => s.id === value.shopID)?.currency,
+                            metadata: {},
+                        },
                     })
                 ),
                 untilDestroyed(this)

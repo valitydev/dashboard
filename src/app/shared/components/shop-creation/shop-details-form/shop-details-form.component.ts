@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
+import { Category } from '@vality/swag-payments';
 
-import { Category } from '@dsh/api-codegen/capi';
 import { createValidatedAbstractControlProviders, ValidatedWrappedAbstractControlSuperclass } from '@dsh/utils';
 
 export interface ShopDetailsForm {

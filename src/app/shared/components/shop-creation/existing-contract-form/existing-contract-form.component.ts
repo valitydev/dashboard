@@ -2,12 +2,12 @@ import { Component, Injector, Input } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
+import { Shop, Contract, InternationalLegalEntity, RussianLegalEntity, LegalEntityAllOf } from '@vality/swag-payments';
 import { BehaviorSubject, EMPTY, of, Observable, throwError } from 'rxjs';
 import { switchMap, catchError, share, tap } from 'rxjs/operators';
 import { Overwrite } from 'utility-types';
 
-import { Shop, Contract, InternationalLegalEntity, LegalEntity, RussianLegalEntity } from '@dsh/api-codegen/capi';
-import { ContractsService } from '@dsh/api/contracts';
+import { ContractsService } from '@dsh/api/payments';
 import { CommonError, ErrorService } from '@dsh/app/shared';
 import {
     ValidatedWrappedAbstractControlSuperclass,
@@ -16,7 +16,7 @@ import {
     errorTo,
 } from '@dsh/utils';
 
-import EntityTypeEnum = LegalEntity.EntityTypeEnum;
+import EntityTypeEnum = LegalEntityAllOf.EntityTypeEnum;
 
 export type ExistingContractForm<T extends EntityTypeEnum = EntityTypeEnum> = Overwrite<
     Contract,
@@ -69,7 +69,7 @@ export class ExistingContractFormComponent extends ValidatedWrappedAbstractContr
     }
 
     private getContract(contractID: Contract['id']): Observable<ExistingContractForm> {
-        return this.contractsService.getContractByID(contractID).pipe(
+        return this.contractsService.getContractByID({ contractID }).pipe(
             switchMap((contract: ExistingContractForm) => {
                 if (contract.contractor.entityType !== this.entityType)
                     return this.transloco

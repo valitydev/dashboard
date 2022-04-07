@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
+import { Category } from '@vality/swag-payments';
 import { cold, getTestScheduler } from 'jasmine-marbles';
 import { Observable, of, scheduled } from 'rxjs';
 
-import { Category } from '@dsh/api-codegen/capi/swagger-codegen';
 import { CategoriesService } from '@dsh/api/categories';
 
 import { makeEmptyList } from '../../../../tests/make-empty-list';

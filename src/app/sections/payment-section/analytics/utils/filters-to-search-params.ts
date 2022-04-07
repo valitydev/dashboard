@@ -1,4 +1,5 @@
-import { PaymentInstitution } from '@dsh/api-codegen/capi';
+import { PaymentInstitution } from '@vality/swag-payments';
+
 import { Preset } from '@dsh/components/date-range-filter';
 
 import { Filters } from '../analytics-search-filters/analytics-search-filters.component';

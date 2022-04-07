@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
 import { provideValueAccessor } from '@s-libs/ng-core';
+import { Shop } from '@vality/swag-payments';
 import { combineLatest } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 
-import { ApiShopsService } from '@dsh/api';
-import { Shop } from '@dsh/api-codegen/capi';
+import { ShopsService } from '@dsh/api/payments';
 import { FilterSuperclass } from '@dsh/components/filter';
 
 @Component({
@@ -23,7 +23,7 @@ export class ShopsFilterComponent extends FilterSuperclass<Shop['id'][]> {
         share()
     );
 
-    constructor(injector: Injector, private shopsService: ApiShopsService) {
+    constructor(injector: Injector, private shopsService: ShopsService) {
         super(injector);
     }
 }

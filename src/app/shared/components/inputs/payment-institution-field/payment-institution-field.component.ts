@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { PaymentInstitution } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 
-import { PaymentInstitution } from '@dsh/api-codegen/capi';
-import { PaymentInstitutionsService } from '@dsh/api/payment-institutions';
+import { PaymentInstitutionsService } from '@dsh/api/payments';
 import { Option } from '@dsh/components/form-controls/select-search-field';
 import { coerceBoolean } from '@dsh/utils';
 

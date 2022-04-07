@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { RussianLegalEntity } from '@vality/swag-claim-management';
+import { Contract } from '@vality/swag-payments';
 import { BehaviorSubject, defer, Observable, of, ReplaySubject, Subject } from 'rxjs';
 import { catchError, distinctUntilChanged, filter, switchMap, tap } from 'rxjs/operators';
 import { Overwrite } from 'utility-types';
 
-import { Contract } from '@dsh/api-codegen/capi';
-import { ContractsService } from '@dsh/api/contracts';
+import { ContractsService } from '@dsh/api/payments';
 
 @UntilDestroy()
 @Injectable()
@@ -31,7 +31,7 @@ export class ShopContractDetailsService {
                 tap(() => this._isLoading$.next(true)),
                 switchMap((contractID) =>
                     contractID
-                        ? this.contractsService.getContractByID(contractID).pipe(
+                        ? this.contractsService.getContractByID({ contractID }).pipe(
                               catchError((e) => {
                                   console.error(e);
                                   this.error$.next(true);

@@ -4,7 +4,7 @@ import { FormControl } from '@ngneat/reactive-forms';
 import { BehaviorSubject, defer, merge, Subject } from 'rxjs';
 import { mapTo, switchMap } from 'rxjs/operators';
 
-import { InvoiceService } from '@dsh/api';
+import { InvoicesService } from '@dsh/api/payments';
 import { Controls } from '@dsh/app/shared/components/create-payment-link-form';
 import { CreatePaymentLinkService } from '@dsh/app/shared/services/create-payment-link/create-payment-link.service';
 import { shareReplayRefCount } from '@dsh/operators';
@@ -17,7 +17,9 @@ import { CreatePaymentLinkDialogData } from './types/create-payment-link-dialog-
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreatePaymentLinkDialogComponent {
-    paymentMethods$ = this.invoiceService.getInvoicePaymentMethods(this.data.invoice.id).pipe(shareReplayRefCount());
+    paymentMethods$ = this.invoicesService
+        .getInvoicePaymentMethods({ invoiceID: this.data.invoice.id })
+        .pipe(shareReplayRefCount());
 
     formControl = new FormControl<Controls>();
     paymentLink$ = merge(
@@ -36,7 +38,7 @@ export class CreatePaymentLinkDialogComponent {
         private dialogRef: MatDialogRef<CreatePaymentLinkDialogComponent, 'cancel'>,
         @Inject(MAT_DIALOG_DATA) public data: CreatePaymentLinkDialogData,
         private createPaymentLinkService: CreatePaymentLinkService,
-        private invoiceService: InvoiceService
+        private invoicesService: InvoicesService
     ) {}
 
     cancel(): void {

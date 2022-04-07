@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Invoice } from '@vality/swag-payments';
 import { BehaviorSubject, Observable, of, ReplaySubject, Subject } from 'rxjs';
 import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
 
-import { Invoice } from '@dsh/api-codegen/capi';
-import { InvoiceService } from '@dsh/api/invoice';
+import { InvoicesService } from '@dsh/api/payments';
 
 @Injectable()
 export class ReceiveInvoiceService {
@@ -16,7 +16,7 @@ export class ReceiveInvoiceService {
     private error$ = new Subject<boolean>();
     private receivedInvoice$ = new ReplaySubject<Invoice>();
 
-    constructor(private invoiceService: InvoiceService) {
+    constructor(private invoicesService: InvoicesService) {
         this.isLoading$ = this.loading$.asObservable();
         this.errorOccurred$ = this.error$.asObservable();
         this.invoice$ = this.receivedInvoice$.asObservable();
@@ -24,7 +24,7 @@ export class ReceiveInvoiceService {
             .pipe(
                 tap(() => this.loading$.next(true)),
                 switchMap((invoiceID: string) =>
-                    this.invoiceService.getInvoiceByID(invoiceID).pipe(
+                    this.invoicesService.getInvoiceByID({ invoiceID }).pipe(
                         catchError((e) => {
                             console.error(e);
                             this.loading$.next(false);

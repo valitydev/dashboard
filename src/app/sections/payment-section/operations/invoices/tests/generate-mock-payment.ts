@@ -1,4 +1,5 @@
-import { Payment } from '@dsh/api-codegen/capi';
+import { Payment } from '@vality/swag-payments';
+
 import { PaymentFlow } from '@dsh/api-codegen/capi/swagger-codegen/model/paymentFlow';
 
 import { generateMockPayer } from './generate-mock-payer';

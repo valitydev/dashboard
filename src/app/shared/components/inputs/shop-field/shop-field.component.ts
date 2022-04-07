@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, Inject, Injector, Input, Optional } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { Shop } from '@vality/swag-payments';
 import { defer, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ApiShopsService, toLiveShops } from '@dsh/api';
-import { Shop } from '@dsh/api-codegen/capi';
+import { ShopsService, toLiveShops } from '@dsh/api/payments';
 import { shopToOption } from '@dsh/app/shared/components/inputs/shop-field/utils/shops-to-options';
 import { Option } from '@dsh/components/form-controls/select-search-field';
 import { shareReplayRefCount } from '@dsh/operators';
@@ -31,7 +31,7 @@ export class ShopFieldComponent extends WrappedFormControlSuperclass<Shop> {
 
     constructor(
         injector: Injector,
-        private shopsService: ApiShopsService,
+        private shopsService: ShopsService,
         @Inject(SHOPS)
         @Optional()
         private shops$?: Observable<Shop[]>

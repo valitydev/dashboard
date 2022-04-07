@@ -1,10 +1,11 @@
+import { PaymentInstitution } from '@vality/swag-payments';
+
 import {
     BankCardPaymentSystem,
     BankCardTokenProvider,
     PaymentStatus,
     PaymentTerminalProvider,
 } from '@dsh/api-codegen/anapi/swagger-codegen';
-import { PaymentInstitution } from '@dsh/api-codegen/capi';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 

@@ -1,11 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslocoTestingModule } from '@ngneat/transloco';
+import { Category, ShopLocationUrl } from '@vality/swag-payments';
 import { getTestScheduler } from 'jasmine-marbles';
 import { Observable, ReplaySubject } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
-import { Category, ShopLocationUrl } from '@dsh/api-codegen/capi/swagger-codegen';
 import { DetailsItemModule } from '@dsh/components/layout';
 
 import { generateMockShopItem } from '../../../../tests/generate-shop-item';

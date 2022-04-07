@@ -1,9 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
+import { PaymentError } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
 import isObject from 'lodash-es/isObject';
-
-import { PaymentError } from '@dsh/api-codegen/capi/swagger-codegen';
 
 @Pipe({
     name: 'paymentErrorMessage',

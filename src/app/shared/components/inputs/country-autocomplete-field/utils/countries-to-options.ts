@@ -1,4 +1,5 @@
-import { Country } from '@dsh/api-codegen/capi';
+import { Country } from '@vality/swag-payments';
+
 import { Option } from '@dsh/components/form-controls/select-search-field';
 
 const countryToOption = (country: Country): Option<string> => ({

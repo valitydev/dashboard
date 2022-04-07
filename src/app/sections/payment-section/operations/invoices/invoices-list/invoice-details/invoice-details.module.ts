@@ -7,7 +7,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterModule } from '@angular/router';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { PaymentModule } from '@dsh/api/payment';
 import {
     InvoiceDetailsModule as InvoiceInvoiceDetailsModule,
     PaymentDetailsModule,
@@ -42,7 +41,6 @@ import { TaxModeToTaxRatePipe } from './pipes/tax-mode-to-tax-rate/tax-mode-to-t
         ApiModelRefsModule,
         ApiRefundDetailsModule,
         PaymentDetailsModule,
-        PaymentModule,
         InvoiceInvoiceDetailsModule,
         ToMajorModule,
         CreatePaymentLinkDialogModule,

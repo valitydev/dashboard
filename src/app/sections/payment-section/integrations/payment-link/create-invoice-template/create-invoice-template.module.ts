@@ -12,7 +12,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { InvoiceTemplatesModule } from '@dsh/api/invoice-templates';
 import { ApiModelTypesModule } from '@dsh/app/shared/pipes';
 import { ButtonModule } from '@dsh/components/buttons';
 import { FormControlsModule } from '@dsh/components/form-controls';
@@ -38,7 +37,6 @@ const EXPORTED_DECLARATIONS = [CreateInvoiceTemplateComponent];
         MatSelectModule,
         MatCheckboxModule,
         MatDividerModule,
-        InvoiceTemplatesModule,
         ConfirmActionDialogModule,
         MatDialogModule,
         MatDatepickerModule,

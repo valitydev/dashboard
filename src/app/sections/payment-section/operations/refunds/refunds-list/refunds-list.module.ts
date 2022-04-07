@@ -4,7 +4,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { InvoiceModule } from '@dsh/api/invoice';
 import { RefundDetailsModule as ApiRefundDetailsModule } from '@dsh/app/shared/components';
 import { ApiModelRefsModule, ToMajorModule } from '@dsh/app/shared/pipes';
 import { IndicatorsModule } from '@dsh/components/indicators';
@@ -26,7 +25,6 @@ import { RefundsListComponent } from './refunds-list.component';
         RefundDetailsModule,
         ToMajorModule,
         ApiModelRefsModule,
-        InvoiceModule,
         ApiRefundDetailsModule,
     ],
     declarations: [RefundsListComponent, RefundRowHeaderComponent, RefundRowComponent],

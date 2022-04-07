@@ -8,12 +8,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormControl } from '@ngneat/reactive-forms';
+import { Refund } from '@vality/swag-payments';
 import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 
-import { Refund } from '@dsh/api-codegen/capi';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { MaxLengthInputModule } from '@dsh/app/shared/components/inputs/max-length-input/max-length-input.module';
 import { CommonError, ErrorService, NotificationService } from '@dsh/app/shared/services';

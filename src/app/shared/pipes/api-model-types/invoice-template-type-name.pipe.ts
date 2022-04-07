@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 
-import { InvoiceTemplateType } from '@dsh/api/capi';
+import { InvoiceTemplateType } from '@dsh/api/payments';
 
 @Pipe({
     name: 'invoiceTemplateTypeName',

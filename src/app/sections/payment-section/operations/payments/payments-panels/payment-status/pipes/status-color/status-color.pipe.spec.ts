@@ -1,4 +1,4 @@
-import { PaymentSearchResult } from '@dsh/api-codegen/capi';
+import { PaymentSearchResult } from '@vality/swag-payments';
 
 import { StatusColor } from '../../../../../../../../theme-manager';
 import { PaymentStatusColorPipe } from './status-color.pipe';

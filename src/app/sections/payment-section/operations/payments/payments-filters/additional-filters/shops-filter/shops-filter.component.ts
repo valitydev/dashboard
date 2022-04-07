@@ -1,7 +1,7 @@
 import { Component, Injector, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 
-import { ApiShopsService } from '@dsh/api';
+import { ShopsService } from '@dsh/api/payments';
 import { ValidatedWrappedAbstractControlSuperclass, createValidatedAbstractControlProviders } from '@dsh/utils';
 
 import { ShopsFilterForm } from './types';
@@ -19,7 +19,7 @@ export class ShopsFilterComponent extends ValidatedWrappedAbstractControlSupercl
 
     shops$ = this.shopsService.shops$;
 
-    constructor(injector: Injector, private fb: FormBuilder, private shopsService: ApiShopsService) {
+    constructor(injector: Injector, private fb: FormBuilder, private shopsService: ShopsService) {
         super(injector);
     }
 }

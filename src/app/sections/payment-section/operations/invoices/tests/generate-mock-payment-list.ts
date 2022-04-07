@@ -1,4 +1,4 @@
-import { Payment } from '@dsh/api-codegen/capi';
+import { Payment } from '@vality/swag-payments';
 
 import { generateMockPayment } from './generate-mock-payment';
 

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, of, Subject } from 'rxjs';
 import { catchError, filter, map, switchMap } from 'rxjs/operators';
 
-import { WebhooksService } from '@dsh/api/webhooks';
+import { WebhooksService } from '@dsh/api/payments';
 import { oneMustBeSelected } from '@dsh/components/form-controls';
 
 import { FormParams } from './form-params';
@@ -31,8 +31,8 @@ export class CreateWebhookDialogService {
         this.create$
             .pipe(
                 map(formValuesToWebhook),
-                switchMap((v) =>
-                    this.webhooksService.createWebhook(v).pipe(
+                switchMap((webhookParams) =>
+                    this.webhooksService.createWebhook({ webhookParams }).pipe(
                         catchError((e) => {
                             console.error(e);
                             this.loading$.next(false);

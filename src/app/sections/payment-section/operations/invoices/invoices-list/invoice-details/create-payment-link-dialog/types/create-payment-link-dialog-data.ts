@@ -1,4 +1,4 @@
-import { Invoice } from '@dsh/api-codegen/capi';
+import { Invoice } from '@vality/swag-payments';
 
 export interface CreatePaymentLinkDialogData {
     invoice: Invoice;

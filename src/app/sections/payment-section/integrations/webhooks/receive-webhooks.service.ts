@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { Webhook } from '@vality/swag-payments';
 import sortBy from 'lodash-es/sortBy';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, map, shareReplay, switchMap } from 'rxjs/operators';
 
-import { Webhook } from '@dsh/api-codegen/capi';
-import { WebhooksService } from '@dsh/api/webhooks';
-
-import { booleanDebounceTime, mapToTimestamp, SHARE_REPLAY_CONF, progress } from '../../../../custom-operators';
+import { WebhooksService } from '@dsh/api/payments';
+import { booleanDebounceTime, mapToTimestamp, SHARE_REPLAY_CONF, progress } from '@dsh/operators';
 
 @Injectable()
 export class ReceiveWebhooksService {

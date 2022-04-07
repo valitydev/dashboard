@@ -4,12 +4,12 @@ import { Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup } from '@ngneat/reactive-forms';
 import { TranslocoService } from '@ngneat/transloco';
+import { Refund, RefundParams } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
 import isNil from 'lodash-es/isNil';
 import { Observable } from 'rxjs';
 import { map, shareReplay, take, withLatestFrom, pluck } from 'rxjs/operators';
 
-import { Refund, RefundParams } from '@dsh/api-codegen/capi/swagger-codegen';
 import { ErrorService, NotificationService } from '@dsh/app/shared/services';
 import { CommonError } from '@dsh/app/shared/services/error/models/common-error';
 import { amountValidator } from '@dsh/components/form-controls';

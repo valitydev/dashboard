@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
-import { RefundSearchResult } from '@dsh/api-codegen/capi/swagger-codegen';
+import { RefundSearchResult } from '@vality/swag-payments';
 
 import { StatusColor } from '../../../../theme-manager';
 

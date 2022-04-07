@@ -1,4 +1,4 @@
-import { CustomersTopic, InvoicesTopic, WebhookScope } from '@dsh/api-codegen/capi/swagger-codegen';
+import { CustomersTopic, InvoicesTopic, WebhookScope } from '@vality/swag-payments';
 
 import TopicEnum = WebhookScope.TopicEnum;
 

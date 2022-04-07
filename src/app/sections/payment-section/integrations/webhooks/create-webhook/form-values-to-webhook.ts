@@ -1,4 +1,4 @@
-import { Webhook } from '@dsh/api-codegen/capi';
+import { Webhook } from '@vality/swag-payments';
 
 import { FormParams } from './form-params';
 

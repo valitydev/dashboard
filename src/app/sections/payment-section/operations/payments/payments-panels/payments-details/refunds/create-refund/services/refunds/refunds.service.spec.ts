@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
+import { Refund } from '@vality/swag-payments';
 import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 import { deepEqual, instance, mock, when } from 'ts-mockito';
 
-import { Refund } from '@dsh/api-codegen/capi';
 import { RefundService } from '@dsh/api/refund';
 
 import { RefundsService } from './refunds.service';

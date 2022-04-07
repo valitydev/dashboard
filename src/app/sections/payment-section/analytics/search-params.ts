@@ -1,4 +1,4 @@
-import { PaymentInstitution } from '@dsh/api-codegen/capi';
+import { PaymentInstitution } from '@vality/swag-payments';
 
 export interface SearchParams {
     fromTime: string;

@@ -1,4 +1,4 @@
-import { Payer } from '@dsh/api-codegen/capi';
+import { Payer } from '@vality/swag-payments';
 
 export function generateMockPayer(payerType: string): Payer {
     // TODO: implement when required

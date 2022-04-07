@@ -5,7 +5,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { combineLatest, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, switchMap, takeUntil } from 'rxjs/operators';
 
-import { WebhooksService } from '@dsh/api/webhooks';
+import { WebhooksService } from '@dsh/api/payments';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 
 @Injectable()
@@ -42,7 +42,7 @@ export class DeleteWebhookService {
                     ])
                 ),
                 switchMap(([webhookID]) =>
-                    this.webhooksService.deleteWebhookByID(webhookID).pipe(
+                    this.webhooksService.deleteWebhookByID({ webhookID }).pipe(
                         catchError((e) => {
                             console.error(e);
                             this.snackBar.open(this.transloco.translate('errors.deleteError', null, 'webhook'), 'OK');

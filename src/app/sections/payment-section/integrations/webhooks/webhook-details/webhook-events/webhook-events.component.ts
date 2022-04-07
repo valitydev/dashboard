@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
-import { CustomersTopic, InvoicesTopic, WebhookScope } from '@dsh/api-codegen/capi/swagger-codegen';
+import { CustomersTopic, InvoicesTopic, WebhookScope } from '@vality/swag-payments';
 
 @Component({
     selector: 'dsh-webhook-events',

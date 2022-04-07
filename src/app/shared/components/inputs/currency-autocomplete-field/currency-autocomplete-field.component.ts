@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 
-import { Currency } from '@dsh/api-codegen/capi';
 import { Option } from '@dsh/components/form-controls/radio-group-field';
 import { coerceBoolean } from '@dsh/utils';
 
@@ -11,7 +10,7 @@ import { coerceBoolean } from '@dsh/utils';
     providers: [provideValueAccessor(CurrencyAutocompleteFieldComponent)],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CurrencyAutocompleteFieldComponent extends WrappedFormControlSuperclass<Currency> {
+export class CurrencyAutocompleteFieldComponent extends WrappedFormControlSuperclass<string> {
     @Input() label: string;
     @Input() @coerceBoolean required = false;
 

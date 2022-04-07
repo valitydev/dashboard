@@ -5,8 +5,8 @@ import isNil from 'lodash-es/isNil';
 import { BehaviorSubject, combineLatest, EMPTY, Observable, of } from 'rxjs';
 import { first, map, switchMap, tap } from 'rxjs/operators';
 
-import { ApiShopsService } from '@dsh/api';
 import { MemberRole, ResourceScopeId, RoleId } from '@dsh/api-codegen/organizations';
+import { ShopsService } from '@dsh/api/payments';
 import { DialogConfig, DIALOG_CONFIG } from '@dsh/app/sections/tokens';
 import { sortRoleIds } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
 import { PartialReadonly } from '@dsh/type-utils';
@@ -69,7 +69,7 @@ export class ChangeRolesTableComponent implements OnInit {
     }
 
     constructor(
-        private shopsService: ApiShopsService,
+        private shopsService: ShopsService,
         private dialog: MatDialog,
         @Inject(DIALOG_CONFIG) private dialogConfig: DialogConfig,
         private cdr: ChangeDetectorRef

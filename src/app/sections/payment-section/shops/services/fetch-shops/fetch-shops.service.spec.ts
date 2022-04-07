@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
+import { Shop } from '@vality/swag-payments';
 import { cold } from 'jasmine-marbles';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { instance, mock, when } from 'ts-mockito';
 
-import { Shop } from '@dsh/api-codegen/capi/swagger-codegen';
 import { AnalyticsService } from '@dsh/api/analytics';
 import { PaymentInstitutionRealm } from '@dsh/api/model';
 import { ApiShopsService } from '@dsh/api/shop';

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
+import { PaymentSearchResult } from '@vality/swag-payments';
 import { BehaviorSubject, Observable, of, ReplaySubject, Subject } from 'rxjs';
 import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
 
-import { PaymentSearchResult } from '@dsh/api-codegen/capi/swagger-codegen';
-import { PaymentService } from '@dsh/api/payment';
+import { PaymentsService } from '@dsh/api/payments';
 
 export interface ReceivePaymentParams {
     invoiceID: string;
@@ -21,7 +21,7 @@ export class ReceivePaymentService {
     private error$ = new Subject<boolean>();
     private receivedPayment$ = new ReplaySubject<PaymentSearchResult>();
 
-    constructor(private paymentService: PaymentService) {
+    constructor(private paymentsService: PaymentsService) {
         this.isLoading$ = this.loading$.asObservable();
         this.errorOccurred$ = this.error$.asObservable();
         this.payment$ = this.receivedPayment$.asObservable();
@@ -29,7 +29,7 @@ export class ReceivePaymentService {
             .pipe(
                 tap(() => this.loading$.next(true)),
                 switchMap(({ invoiceID, paymentID }) =>
-                    this.paymentService.getPaymentByID(invoiceID, paymentID).pipe(
+                    this.paymentsService.getPaymentByID({ invoiceID, paymentID }).pipe(
                         catchError((e) => {
                             console.error(e);
                             this.loading$.next(false);

@@ -3,6 +3,7 @@ import { MediaObserver } from '@angular/flex-layout';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { PaymentInstitution } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
 import negate from 'lodash-es/negate';
 // eslint-disable-next-line you-dont-need-lodash-underscore/omit
@@ -11,8 +12,7 @@ import pick from 'lodash-es/pick';
 import { defer, ReplaySubject, BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ApiShopsService } from '@dsh/api';
-import { PaymentInstitution } from '@dsh/api-codegen/capi';
+import { ShopsService } from '@dsh/api/payments';
 import { createDateRangeWithPreset, Preset, DateRangeWithPreset } from '@dsh/components/date-range-filter';
 import { publishReplayRefCount } from '@dsh/operators';
 import { ComponentChanges } from '@dsh/type-utils';
@@ -61,7 +61,7 @@ export class InvoicesSearchFiltersComponent implements OnChanges, OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private shopService: ApiShopsService,
+        private shopService: ShopsService,
         private dialog: MatDialog,
         private mediaObserver: MediaObserver
     ) {}

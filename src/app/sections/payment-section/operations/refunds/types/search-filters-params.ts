@@ -1,4 +1,4 @@
-import { PaymentInstitution, RefundSearchResult } from '@dsh/api-codegen/capi/swagger-codegen';
+import { PaymentInstitution, RefundSearchResult } from '@vality/swag-payments';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 

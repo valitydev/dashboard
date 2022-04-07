@@ -14,7 +14,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { InvoiceModule } from '@dsh/api/invoice';
 import { InvoiceDetailsModule } from '@dsh/app/shared/components';
 import { ToMajorModule } from '@dsh/app/shared/pipes';
 import { ButtonModule } from '@dsh/components/buttons';
@@ -54,7 +53,6 @@ import { InvoicesComponent } from './invoices.component';
         MatMenuModule,
         EmptySearchResultModule,
         MatDialogModule,
-        InvoiceModule,
         MatDatepickerModule,
         MatMomentDateModule,
         MatDividerModule,

@@ -1,4 +1,4 @@
-import { PaymentInstitution } from '@dsh/api-codegen/capi';
+import { PaymentInstitution } from '@vality/swag-payments';
 
 import { Invoice } from '../../../../../api-codegen/anapi/swagger-codegen';
 

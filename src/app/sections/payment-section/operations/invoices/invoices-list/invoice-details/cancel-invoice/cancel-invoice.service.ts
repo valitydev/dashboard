@@ -5,14 +5,14 @@ import { TranslocoService } from '@ngneat/transloco';
 import { Observable, ReplaySubject } from 'rxjs';
 import { filter, switchMap, take } from 'rxjs/operators';
 
-import { InvoiceService } from '@dsh/api/invoice';
+import { InvoicesService } from '@dsh/api/payments';
 
 import { CancelInvoiceDialogComponent } from './components/cancel-invoice-dialog/cancel-invoice-dialog.component';
 
 @Injectable()
 export class CancelInvoiceService {
     constructor(
-        private invoiceService: InvoiceService,
+        private invoicesService: InvoicesService,
         private dialog: MatDialog,
         private snackBar: MatSnackBar,
         private transloco: TranslocoService
@@ -28,7 +28,7 @@ export class CancelInvoiceService {
             .pipe(
                 take(1),
                 filter((value) => value !== 'cancel'),
-                switchMap((reason) => this.invoiceService.rescindInvoice(invoiceID, reason))
+                switchMap((rescindInvoice) => this.invoicesService.rescindInvoice({ invoiceID, rescindInvoice }))
             )
             .subscribe(() => {
                 invoiceCancelled$.next();

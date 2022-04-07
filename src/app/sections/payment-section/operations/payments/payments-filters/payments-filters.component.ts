@@ -3,6 +3,7 @@ import { MediaObserver } from '@angular/flex-layout';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { PaymentInstitution } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
 import negate from 'lodash-es/negate';
 // eslint-disable-next-line you-dont-need-lodash-underscore/omit
@@ -11,9 +12,8 @@ import pick from 'lodash-es/pick';
 import { defer, ReplaySubject, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
-import { ApiShopsService } from '@dsh/api';
 import { Shop } from '@dsh/api-codegen/anapi';
-import { PaymentInstitution } from '@dsh/api-codegen/capi';
+import { ShopsService } from '@dsh/api/payments';
 import { DateRange, Preset, createDateRangeWithPreset } from '@dsh/components/date-range-filter';
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
@@ -59,7 +59,7 @@ export class PaymentsFiltersComponent implements OnInit, OnChanges {
     private realm$ = new ReplaySubject<RealmEnum>(1);
 
     constructor(
-        private shopService: ApiShopsService,
+        private shopService: ShopsService,
         private fb: FormBuilder,
         private dialog: MatDialog,
         private mediaObserver: MediaObserver

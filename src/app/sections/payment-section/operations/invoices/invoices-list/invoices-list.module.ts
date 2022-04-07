@@ -4,7 +4,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { InvoiceModule } from '@dsh/api/invoice';
 import { InvoiceDetailsModule as ApiInvoiceDetailsModule } from '@dsh/app/shared/components';
 import { ApiModelRefsModule, ToMajorModule } from '@dsh/app/shared/pipes';
 import { IndicatorsModule } from '@dsh/components/indicators';
@@ -25,7 +24,6 @@ import { InvoicesListComponent } from './invoices-list.component';
         IndicatorsModule,
         ToMajorModule,
         ApiModelRefsModule,
-        InvoiceModule,
         InvoiceDetailsModule,
         InvoiceDetailsModule,
         ApiInvoiceDetailsModule,

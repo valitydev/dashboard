@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Webhook } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 
-import { Webhook } from '@dsh/api-codegen/capi';
 import { ExpandedIdManager } from '@dsh/app/shared/services';
 
 import { ReceiveWebhooksService } from './receive-webhooks.service';

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PaymentInstitution } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 import { pluck } from 'rxjs/operators';
 
-import { PaymentInstitution } from '@dsh/api-codegen/capi';
 import { publishReplayRefCount } from '@dsh/operators';
 
 import RealmEnum = PaymentInstitution.RealmEnum;

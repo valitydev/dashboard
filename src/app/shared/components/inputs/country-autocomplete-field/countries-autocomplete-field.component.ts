@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/co
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { map } from 'rxjs/operators';
 
-import { CountriesService } from '@dsh/api';
+import { CountriesService } from '@dsh/api/payments';
 import { coerceBoolean } from '@dsh/utils';
 
 import { CountryId } from './types';

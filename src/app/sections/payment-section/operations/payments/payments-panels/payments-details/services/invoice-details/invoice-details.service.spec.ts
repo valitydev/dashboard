@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
+import { InvoiceStatus } from '@vality/swag-payments';
 import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 
-import { InvoiceStatus } from '@dsh/api-codegen/capi';
 import { InvoiceSearchService } from '@dsh/api/search';
 import { ErrorService } from '@dsh/app/shared/services';
 

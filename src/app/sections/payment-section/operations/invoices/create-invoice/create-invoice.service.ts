@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { PaymentInstitution, Shop } from '@vality/swag-payments';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { filter, pluck, switchMap, take } from 'rxjs/operators';
 
-import { PaymentInstitution, Shop } from '@dsh/api-codegen/capi';
-import { ApiShopsService } from '@dsh/api/shop';
+import { ShopsService } from '@dsh/api/payments';
 
 import { filterShopsByRealm } from '../../operators';
 import { CreateInvoiceDialogComponent } from './components/create-invoice-dialog/create-invoice-dialog.component';
@@ -16,7 +16,7 @@ import RealmEnum = PaymentInstitution.RealmEnum;
 @Injectable()
 export class CreateInvoiceService {
     constructor(
-        private apiShopsService: ApiShopsService,
+        private apiShopsService: ShopsService,
         private dialog: MatDialog,
         private transloco: TranslocoService,
         private snackBar: MatSnackBar

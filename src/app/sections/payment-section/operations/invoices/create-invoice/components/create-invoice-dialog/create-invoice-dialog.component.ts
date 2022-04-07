@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Shop } from '@vality/swag-payments';
 import pick from 'lodash-es/pick';
 import moment from 'moment';
 
-import { InvoiceService } from '@dsh/api';
-import { Shop } from '@dsh/api-codegen/capi';
+import { InvoicesService } from '@dsh/api/payments';
 import { FormData } from '@dsh/app/shared/components/create-invoice-form';
 
 import { CreateInvoiceDialogResponse } from '../../types/create-invoice-dialog-response';
@@ -25,7 +25,7 @@ export class CreateInvoiceDialogComponent {
     constructor(
         private dialogRef: MatDialogRef<CreateInvoiceDialogComponent, CreateInvoiceDialogResponse>,
         @Inject(MAT_DIALOG_DATA) public shops: Shop[],
-        private invoiceService: InvoiceService
+        private invoicesService: InvoicesService
     ) {}
 
     cancel(): void {
@@ -34,12 +34,14 @@ export class CreateInvoiceDialogComponent {
 
     create(): void {
         const { value } = this.formControl;
-        this.invoiceService
+        this.invoicesService
             .createInvoice({
-                ...pick(value, ['product', 'description', 'cart', 'shopID']),
-                dueDate: moment(value.dueDate).utc().endOf('d').format(),
-                currency: this.shops.find((s) => s.id === value.shopID)?.currency,
-                metadata: {},
+                invoiceParams: {
+                    ...pick(value, ['product', 'description', 'cart', 'shopID']),
+                    dueDate: moment(value.dueDate).utc().endOf('d').format(),
+                    currency: this.shops.find((s) => s.id === value.shopID)?.currency,
+                    metadata: {},
+                },
             })
             .pipe(untilDestroyed(this))
             .subscribe(({ invoice }) => this.dialogRef.close(invoice));

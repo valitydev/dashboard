@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Shop } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 
-import { Shop } from '@dsh/api-codegen/capi';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { SHOPS } from '@dsh/app/shared/components/inputs/shop-field';
 

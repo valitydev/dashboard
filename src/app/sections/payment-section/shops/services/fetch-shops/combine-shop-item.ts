@@ -1,6 +1,6 @@
+import { Shop as ApiShop } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
 
-import { Shop as ApiShop } from '@dsh/api-codegen/capi/swagger-codegen';
 import { Dict } from '@dsh/type-utils';
 
 import { ShopBalance } from '../../types/shop-balance';

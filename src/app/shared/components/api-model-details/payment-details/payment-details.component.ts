@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
-import { PaymentSearchResult } from '@dsh/api-codegen/capi';
+import { PaymentSearchResult } from '@vality/swag-payments';
 
 @Component({
     selector: 'dsh-payment-details',

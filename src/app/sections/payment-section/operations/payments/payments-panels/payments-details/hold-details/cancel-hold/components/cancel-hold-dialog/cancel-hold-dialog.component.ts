@@ -2,8 +2,9 @@ import { Component, Inject } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup } from '@ngneat/reactive-forms';
+import { Reason } from '@vality/swag-payments';
 
-import { PaymentService } from '@dsh/api/payment';
+import { PaymentsService } from '@dsh/api/payments';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services';
 
@@ -15,7 +16,6 @@ import { CancelHoldDialogData } from '../../types/cancel-hold-dialog-data';
     selector: 'dsh-cancel-hold-dialog',
     templateUrl: './cancel-hold-dialog.component.html',
     styleUrls: ['./cancel-hold-dialog.component.scss'],
-    providers: [PaymentService],
 })
 export class CancelHoldDialogComponent {
     maxReasonLength: number = MAX_REASON_LENGTH;
@@ -27,7 +27,7 @@ export class CancelHoldDialogComponent {
         @Inject(MAT_DIALOG_DATA) private dialogData: CancelHoldDialogData,
         private dialogRef: MatDialogRef<CancelHoldDialogComponent, BaseDialogResponseStatus>,
         private fb: FormBuilder,
-        private paymentService: PaymentService,
+        private paymentsService: PaymentsService,
         private errorService: ErrorService
     ) {}
 
@@ -35,15 +35,17 @@ export class CancelHoldDialogComponent {
         const { reason } = this.form.value;
         const { invoiceID, paymentID } = this.dialogData;
 
-        this.paymentService.cancelPayment(invoiceID, paymentID, reason).subscribe(
-            () => {
-                this.dialogRef.close(BaseDialogResponseStatus.Success);
-            },
-            (err: Error) => {
-                this.errorService.error(err);
-                this.dialogRef.close(BaseDialogResponseStatus.Error);
-            }
-        );
+        this.paymentsService
+            .cancelPayment({ invoiceID, paymentID, cancelPayment: reason as unknown as Reason })
+            .subscribe({
+                next: () => {
+                    this.dialogRef.close(BaseDialogResponseStatus.Success);
+                },
+                error: (err: Error) => {
+                    this.errorService.error(err);
+                    this.dialogRef.close(BaseDialogResponseStatus.Error);
+                },
+            });
     }
 
     decline(): void {

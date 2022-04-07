@@ -1,7 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-
-import { PaymentSearchResult } from '@dsh/api-codegen/capi/swagger-codegen';
+import { PaymentSearchResult } from '@vality/swag-payments';
 
 @Pipe({
     name: 'paymentStatusName',

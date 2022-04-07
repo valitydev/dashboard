@@ -1,4 +1,5 @@
-import { PaymentInstitution } from '@dsh/api-codegen/capi';
+import { PaymentInstitution } from '@vality/swag-payments';
+
 import { TypeUnion } from '@dsh/app/shared/components/shop-creation/created-existing-switch/created-existing-switch.component';
 import { ExistingBankAccountForm } from '@dsh/app/shared/components/shop-creation/existing-bank-account/existing-bank-account.component';
 import { ShopDetailsForm } from '@dsh/app/shared/components/shop-creation/shop-details-form/shop-details-form.component';
