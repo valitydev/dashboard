@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 import { anything, mock, verify, when, anyString } from 'ts-mockito';
 
 import { InvitationListResult } from '@dsh/api-codegen/organizations';
-import { OrganizationsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/api/organizations';
 import { MOCK_INVITATION } from '@dsh/api/organizations/tests/mock-invitation';
 import { MOCK_ORG } from '@dsh/api/organizations/tests/mock-org';
 import { DIALOG_CONFIG } from '@dsh/app/sections/tokens';
@@ -20,7 +20,7 @@ describe('InvitationsComponent', () => {
     let component: InvitationsComponent;
     let fixture: ComponentFixture<InvitationsComponent>;
     let mockRoute: ActivatedRoute;
-    let mockOrganizationsService: OrganizationsService;
+    let mockOrganizationsService: OrgsService;
     let mockDialog: MatDialog;
 
     const mockInvitationsResult: InvitationListResult = {
@@ -29,14 +29,14 @@ describe('InvitationsComponent', () => {
 
     beforeEach(async () => {
         mockRoute = mock(ActivatedRoute);
-        mockOrganizationsService = mock(OrganizationsService);
+        mockOrganizationsService = mock(OrgsService);
         mockDialog = mock(MatDialog);
 
         await TestBed.configureTestingModule({
             declarations: [InvitationsComponent],
             providers: [
                 provideMockToken(DIALOG_CONFIG, { small: {}, medium: {}, large: {} }),
-                provideMockService(OrganizationsService, mockOrganizationsService),
+                provideMockService(OrgsService, mockOrganizationsService),
                 provideMockService(ErrorService),
                 provideMockService(ActivatedRoute, mockRoute),
                 provideMockService(MatDialog, mockDialog),

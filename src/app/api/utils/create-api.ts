@@ -37,11 +37,11 @@ export function createApi<T extends Record<PropertyKey, any>>(apiClass: new (...
     }
 
     type OptionalKeys = 'xRequestID';
-    type Params<P> = RequiredKeys<Omit<P, OptionalKeys>> extends never
-        ? void
-        : P extends object
-        ? Overwrite<P, { [K in OptionalKeys]?: string }>
-        : P;
+    type Params<P> = P extends object
+        ? RequiredKeys<Omit<P, OptionalKeys>> extends never
+            ? void | Overwrite<P, { [K in OptionalKeys]?: string }>
+            : Overwrite<P, { [K in OptionalKeys]?: string }>
+        : never;
 
     return Api as unknown as new (...args: ApiArgs) => {
         [N in keyof T]: T[N] extends (...args: unknown[]) => Observable<HttpResponse<infer R>>

@@ -9,7 +9,7 @@ import { TranslocoTestingModule } from '@ngneat/transloco';
 import { of, throwError } from 'rxjs';
 import { anyString, anything, instance, mock, objectContaining, verify, when } from 'ts-mockito';
 
-import { OrganizationsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/api/organizations';
 import { MOCK_ORG } from '@dsh/api/organizations/tests/mock-org';
 import { BaseDialogModule, BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services/error';
@@ -21,13 +21,13 @@ describe('RenameOrganizationDialogComponent', () => {
     let component: RenameOrganizationDialogComponent;
     let fixture: ComponentFixture<RenameOrganizationDialogComponent>;
     let mockDialogRef: MatDialogRef<RenameOrganizationDialogComponent>;
-    let mockOrganizationsService: OrganizationsService;
+    let mockOrganizationsService: OrgsService;
     let mockErrorService: ErrorService;
     let mockNotificationsService: NotificationService;
 
     beforeEach(() => {
         mockDialogRef = mock<MatDialogRef<RenameOrganizationDialogComponent>>(MatDialogRef);
-        mockOrganizationsService = mock(OrganizationsService);
+        mockOrganizationsService = mock(OrgsService);
         mockErrorService = mock(ErrorService);
         mockNotificationsService = mock(NotificationService);
 
@@ -48,7 +48,7 @@ describe('RenameOrganizationDialogComponent', () => {
                     useFactory: () => instance(mockDialogRef),
                 },
                 {
-                    provide: OrganizationsService,
+                    provide: OrgsService,
                     useFactory: () => instance(mockOrganizationsService),
                 },
                 {

@@ -6,7 +6,7 @@ import { TranslocoTestingModule } from '@ngneat/transloco';
 import { of, throwError } from 'rxjs';
 import { anyString, anything, mock, objectContaining, verify, when } from 'ts-mockito';
 
-import { OrganizationsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/api/organizations';
 import { MOCK_ORG } from '@dsh/api/organizations/tests/mock-org';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services/error';
@@ -19,13 +19,13 @@ describe('CreateOrganizationDialogComponent', () => {
     let component: CreateOrganizationDialogComponent;
     let fixture: ComponentFixture<CreateOrganizationDialogComponent>;
     let mockDialogRef: MatDialogRef<CreateOrganizationDialogComponent>;
-    let mockOrganizationsService: OrganizationsService;
+    let mockOrganizationsService: OrgsService;
     let mockNotificationsService: NotificationService;
     let mockErrorService: ErrorService;
 
     beforeEach(() => {
         mockDialogRef = mock<MatDialogRef<CreateOrganizationDialogComponent>>(MatDialogRef);
-        mockOrganizationsService = mock(OrganizationsService);
+        mockOrganizationsService = mock(OrgsService);
         mockNotificationsService = mock(NotificationService);
         mockErrorService = mock(ErrorService);
 
@@ -38,7 +38,7 @@ describe('CreateOrganizationDialogComponent', () => {
             declarations: [CreateOrganizationDialogComponent],
             providers: [
                 provideMockService(MatDialogRef, mockDialogRef),
-                provideMockService(OrganizationsService, mockOrganizationsService),
+                provideMockService(OrgsService, mockOrganizationsService),
                 provideMockService(NotificationService, mockNotificationsService),
                 provideMockService(ErrorService, mockErrorService),
             ],

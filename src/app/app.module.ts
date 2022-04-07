@@ -26,7 +26,7 @@ import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-
 
 import { ENV, environment } from '../environments';
 import { ApiCodegenModule } from './api-codegen';
-import { OrganizationsModule, NewOrganizationsModule } from './api/organizations';
+import { OrganizationsModule } from './api/organizations';
 import { AppComponent } from './app.component';
 import { AuthModule, KeycloakAngularModule, KeycloakService } from './auth';
 import { ConfigModule, ConfigService } from './config';
@@ -58,7 +58,6 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         HttpClientModule,
         TranslocoModule,
         ErrorModule,
-        OrganizationsModule,
         IconsModule,
         KeycloakTokenInfoModule,
         FlexLayoutModule,
@@ -67,7 +66,7 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         AnapiModule,
         PaymentsModule,
         MessagesModule,
-        NewOrganizationsModule,
+        OrganizationsModule,
     ],
     providers: [
         LanguageService,

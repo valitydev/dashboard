@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { anything, deepEqual, mock, verify, when } from 'ts-mockito';
 
-import { OrganizationsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/api/organizations';
 import { ErrorService } from '@dsh/app/shared';
 import { provideMockService } from '@dsh/app/shared/tests';
 
@@ -15,20 +15,20 @@ describe('AcceptInvitationComponent', () => {
     let fixture: ComponentFixture<AcceptInvitationComponent>;
     let component: AcceptInvitationComponent;
     let mockRoute: ActivatedRoute;
-    let mockOrganizationsService: OrganizationsService;
+    let mockOrganizationsService: OrgsService;
 
     beforeEach(async () => {
         mockRoute = mock(ActivatedRoute);
         when(mockRoute.params).thenReturn(of({ token: '123' } as any));
 
-        mockOrganizationsService = mock(OrganizationsService);
+        mockOrganizationsService = mock(OrgsService);
         when(mockOrganizationsService.joinOrg(anything())).thenReturn(of({} as any));
 
         await TestBed.configureTestingModule({
             imports: [CommonModule, RouterTestingModule.withRoutes([])],
             declarations: [AcceptInvitationComponent],
             providers: [
-                provideMockService(OrganizationsService, mockOrganizationsService),
+                provideMockService(OrgsService, mockOrganizationsService),
                 provideMockService(ErrorService),
                 provideMockService(ActivatedRoute, mockRoute),
             ],

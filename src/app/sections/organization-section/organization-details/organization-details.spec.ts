@@ -5,7 +5,7 @@ import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 import { anyString, mock, verify, when } from 'ts-mockito';
 
-import { OrganizationsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/api/organizations';
 import { MOCK_ORG } from '@dsh/api/organizations/tests/mock-org';
 import { provideMockService } from '@dsh/app/shared/tests';
 
@@ -14,11 +14,11 @@ import { OrganizationDetailsComponent } from './organization-details.component';
 describe('OrganizationDetailsComponent', () => {
     let component: OrganizationDetailsComponent;
     let fixture: ComponentFixture<OrganizationDetailsComponent>;
-    let mockOrganizationsService: OrganizationsService;
+    let mockOrganizationsService: OrgsService;
     let mockActivatedRoute: ActivatedRoute;
 
     beforeEach(async () => {
-        mockOrganizationsService = mock(OrganizationsService);
+        mockOrganizationsService = mock(OrgsService);
         mockActivatedRoute = mock(ActivatedRoute);
 
         when(mockOrganizationsService.getOrg(anyString())).thenReturn(of(MOCK_ORG));
@@ -33,7 +33,7 @@ describe('OrganizationDetailsComponent', () => {
             ],
             declarations: [OrganizationDetailsComponent],
             providers: [
-                provideMockService(OrganizationsService, mockOrganizationsService),
+                provideMockService(OrgsService, mockOrganizationsService),
                 provideMockService(ActivatedRoute, mockActivatedRoute),
             ],
         }).compileComponents();

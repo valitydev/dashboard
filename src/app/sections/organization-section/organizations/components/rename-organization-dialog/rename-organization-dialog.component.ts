@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject } from 'rxjs';
 
-import { OrganizationsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/api/organizations';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService, NotificationService } from '@dsh/app/shared/services';
 import { inProgressTo } from '@dsh/utils';
@@ -23,7 +23,7 @@ export class RenameOrganizationDialogComponent {
 
     constructor(
         private dialogRef: MatDialogRef<RenameOrganizationDialogComponent, BaseDialogResponseStatus>,
-        private organizationsService: OrganizationsService,
+        private organizationsService: OrgsService,
         private notificationService: NotificationService,
         private errorService: ErrorService,
         private fb: FormBuilder,
@@ -35,8 +35,11 @@ export class RenameOrganizationDialogComponent {
     @inProgressTo('inProgress$')
     update() {
         return this.organizationsService
-            .patchOrg(this.data.organization.id, {
-                name: this.form.value.name,
+            .patchOrg({
+                orgId: this.data.organization.id,
+                inlineObject: {
+                    name: this.form.value.name,
+                },
             })
             .pipe(untilDestroyed(this))
             .subscribe(

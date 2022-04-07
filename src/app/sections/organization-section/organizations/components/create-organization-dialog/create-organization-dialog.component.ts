@@ -2,9 +2,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Organization } from '@vality/swag-organizations';
 import { BehaviorSubject } from 'rxjs';
 
-import { OrganizationsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/api/organizations';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services/error';
 import { NotificationService } from '@dsh/app/shared/services/notification';
@@ -22,7 +23,7 @@ export class CreateOrganizationDialogComponent {
 
     constructor(
         private dialogRef: MatDialogRef<CreateOrganizationDialogComponent, BaseDialogResponseStatus>,
-        private organizationsService: OrganizationsService,
+        private organizationsService: OrgsService,
         private notificationService: NotificationService,
         private errorService: ErrorService,
         private fb: FormBuilder
@@ -32,7 +33,9 @@ export class CreateOrganizationDialogComponent {
     create() {
         return this.organizationsService
             .createOrg({
-                name: this.form.value.name,
+                organization: {
+                    name: this.form.value.name,
+                } as Organization,
             })
             .pipe(untilDestroyed(this))
             .subscribe(

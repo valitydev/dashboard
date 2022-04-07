@@ -7,7 +7,7 @@ import { of } from 'rxjs';
 import { mock, verify, when } from 'ts-mockito';
 
 import { MemberOrgListResult } from '@dsh/api-codegen/organizations';
-import { OrganizationsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/api/organizations';
 import { MOCK_MEMBER } from '@dsh/api/organizations/tests/mock-member';
 import { MOCK_ORG } from '@dsh/api/organizations/tests/mock-org';
 import { ErrorService } from '@dsh/app/shared';
@@ -25,7 +25,7 @@ describe('MembersComponent', () => {
     let fixture: ComponentFixture<HostComponent>;
     let debugElement: DebugElement;
     let component: MembersComponent;
-    let mockOrganizationsService: OrganizationsService;
+    let mockOrganizationsService: OrgsService;
     let mockRoute: ActivatedRoute;
 
     const mockMembers: MemberOrgListResult = {
@@ -33,13 +33,13 @@ describe('MembersComponent', () => {
     };
 
     beforeEach(async () => {
-        mockOrganizationsService = mock(OrganizationsService);
+        mockOrganizationsService = mock(OrgsService);
         mockRoute = mock(ActivatedRoute);
 
         await TestBed.configureTestingModule({
             declarations: [HostComponent, MembersComponent],
             providers: [
-                provideMockService(OrganizationsService, mockOrganizationsService),
+                provideMockService(OrgsService, mockOrganizationsService),
                 provideMockService(ActivatedRoute, mockRoute),
                 provideMockService(ErrorService),
             ],

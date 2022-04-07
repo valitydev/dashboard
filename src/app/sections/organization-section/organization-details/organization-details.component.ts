@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { shareReplay, switchMap } from 'rxjs/operators';
 
-import { OrganizationsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/api/organizations';
 
 const LINKS: { path: string }[] = [
     {
@@ -26,5 +26,5 @@ export class OrganizationDetailsComponent {
     );
     readonly links = LINKS;
 
-    constructor(private organizationsService: OrganizationsService, private route: ActivatedRoute) {}
+    constructor(private organizationsService: OrgsService, private route: ActivatedRoute) {}
 }
