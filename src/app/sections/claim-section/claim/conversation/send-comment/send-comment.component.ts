@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Conversation } from '@vality/swag-messages';
 import { combineLatest } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-
-import { Conversation } from '@dsh/api-codegen/messages';
 
 import { SendCommentService } from './send-comment.service';
 import { UploadFilesService } from './upload-files.service';
