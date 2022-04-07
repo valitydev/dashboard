@@ -3,8 +3,7 @@ import { Subject } from 'rxjs';
 import { map, pluck, shareReplay, switchMap } from 'rxjs/operators';
 
 import { MessagesService } from '@dsh/api/messages';
-
-import { booleanDelay, takeError } from '../../../../custom-operators';
+import { booleanDelay, takeError } from '@dsh/operators';
 
 @Injectable()
 export class CommentContainerService {
@@ -12,7 +11,7 @@ export class CommentContainerService {
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     comment$ = this.receiveConversation$.pipe(
-        switchMap((conversationId) => this.messageService.getConversations([conversationId])),
+        switchMap((conversationId) => this.messageService.getConversations({ conversationId: [conversationId] })),
         map(({ conversations }) =>
             conversations.reduce((acc, { messages }) => (messages.length > 0 ? messages[0] : acc), { text: '' })
         ),

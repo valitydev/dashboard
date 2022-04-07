@@ -1,8 +1,16 @@
 import { NgModule } from '@angular/core';
+import { Configuration } from '@vality/swag-messages';
 
-import { MessagesService } from './messages.service';
+import { ConfigService } from '../../config';
 
 @NgModule({
-    providers: [MessagesService],
+    providers: [
+        {
+            provide: Configuration,
+            deps: [ConfigService],
+            useFactory: (configService: ConfigService) =>
+                new Configuration({ basePath: `${configService.apiEndpoint}/dark-api/v1` }),
+        },
+    ],
 })
 export class MessagesModule {}

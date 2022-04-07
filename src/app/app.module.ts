@@ -18,6 +18,7 @@ import * as Sentry from '@sentry/angular';
 
 import { AnapiModule } from '@dsh/api/anapi';
 import { ClaimManagementModule } from '@dsh/api/claim-management';
+import { MessagesModule } from '@dsh/api/messages';
 import { PaymentsModule } from '@dsh/api/payments';
 import { ErrorModule, KeycloakTokenInfoModule } from '@dsh/app/shared/services';
 import { QUERY_PARAMS_SERIALIZERS } from '@dsh/app/shared/services/query-params/utils/query-params-serializers';
@@ -65,6 +66,7 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         ClaimManagementModule,
         AnapiModule,
         PaymentsModule,
+        MessagesModule,
     ],
     providers: [
         LanguageService,

@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import get from 'lodash-es/get';
-import { BehaviorSubject, forkJoin, merge, Observable, of, Subject } from 'rxjs';
+import { Conversation } from '@vality/swag-messages';
+import { BehaviorSubject, forkJoin, merge, Observable, of, Subject, EMPTY } from 'rxjs';
 import { catchError, filter, pluck, switchMap, tap } from 'rxjs/operators';
 import { v4 as uuid } from 'uuid';
 
-import { Conversation } from '@dsh/api-codegen/messages';
 import { createSingleMessageConversationParams, MessagesService } from '@dsh/api/messages';
+import { progress } from '@dsh/operators';
 
-import { progress } from '../../../../../custom-operators';
 import { UiError } from '../../../../ui-error';
 
 @Injectable()
@@ -35,20 +34,19 @@ export class SendCommentService {
                 tap(() => this.error$.next({ hasError: false })),
                 switchMap((text) => {
                     const conversationId = uuid();
-                    const params = createSingleMessageConversationParams(conversationId, text);
+                    const conversationParam = createSingleMessageConversationParams(conversationId, text);
                     return forkJoin([
                         of(conversationId),
-                        this.messagesService.saveConversations(params).pipe(
+                        this.messagesService.saveConversations({ conversationParam }).pipe(
                             catchError((ex) => {
                                 console.error(ex);
                                 const error = { hasError: true, code: 'saveConversationsFailed' };
                                 this.error$.next(error);
-                                return of(error);
+                                return EMPTY;
                             })
                         ),
                     ]);
-                }),
-                filter(([, res]) => get(res, ['hasError']) !== true)
+                })
             )
             .subscribe(([conversationId]) => {
                 this.conversationId$.next(conversationId);

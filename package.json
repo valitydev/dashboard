@@ -53,6 +53,7 @@
     "@sentry/tracing": "^6.11.0",
     "@vality/swag-anapi-v2": "2.0.1-f571365.0",
     "@vality/swag-claim-management": "0.1.1-bfc2e6c.0",
+    "@vality/swag-messages": "1.0.1-03e1014.0",
     "@vality/swag-payments": "0.1.1-4550cf2.0",
     "angular-epic-spinners": "^2.0.0",
     "angular-file": "^3.0.1",
