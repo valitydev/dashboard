@@ -5,7 +5,7 @@ import { BehaviorSubject, forkJoin, merge, Observable, of, Subject, EMPTY } from
 import { catchError, filter, pluck, switchMap, tap } from 'rxjs/operators';
 import { v4 as uuid } from 'uuid';
 
-import { createSingleMessageConversationParams, MessagesService } from '@dsh/api/messages';
+import { createSingleMessageConversationParams, ConversationsService } from '@dsh/api/messages';
 import { progress } from '@dsh/operators';
 
 import { UiError } from '../../../../ui-error';
@@ -25,7 +25,7 @@ export class SendCommentService {
     // eslint-disable-next-line @typescript-eslint/member-ordering
     inProgress$: Observable<boolean> = progress(this.sendComment$, merge(this.conversationId$, this.error$));
 
-    constructor(private fb: FormBuilder, private messagesService: MessagesService) {
+    constructor(private fb: FormBuilder, private conversationsService: ConversationsService) {
         this.form = this.fb.group({
             comment: ['', [Validators.maxLength(1000)]],
         });
@@ -37,7 +37,7 @@ export class SendCommentService {
                     const conversationParam = createSingleMessageConversationParams(conversationId, text);
                     return forkJoin([
                         of(conversationId),
-                        this.messagesService.saveConversations({ conversationParam }).pipe(
+                        this.conversationsService.saveConversations({ conversationParam }).pipe(
                             catchError((ex) => {
                                 console.error(ex);
                                 const error = { hasError: true, code: 'saveConversationsFailed' };

@@ -6,4 +6,4 @@ import { createApi } from '../utils';
 @Injectable({
     providedIn: 'root',
 })
-export class MessagesService extends createApi(ApiConversationsService) {}
+export class ConversationsService extends createApi(ApiConversationsService) {}

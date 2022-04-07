@@ -1,3 +1,3 @@
 export * from './messages.module';
-export * from './messages.service';
+export * from './conversations.service';
 export * from './utils';
