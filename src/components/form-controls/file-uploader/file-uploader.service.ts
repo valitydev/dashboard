@@ -4,8 +4,8 @@ import { TranslocoService } from '@ngneat/transloco';
 import { merge, of, Subject } from 'rxjs';
 import { catchError, filter, shareReplay, switchMap } from 'rxjs/operators';
 
-import { FilesService } from '../../../app/api/files';
-import { progress } from '../../../app/custom-operators';
+import { FilesService } from '@dsh/api/dark-api';
+import { progress } from '@dsh/operators';
 
 @Injectable()
 export class FileUploaderService {

@@ -1,21 +1,18 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
+import { FilesService as ApiFilesService, FileUploadData } from '@vality/swag-dark-api';
 import { forkJoin, Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
-import { FilesService as FilesApiService } from '@dsh/api-codegen/dark-api';
-import { FileData, FileDownload, FileUploadData } from '@dsh/api-codegen/dark-api/swagger-codegen';
-import { IdGeneratorService } from '@dsh/app/shared';
+import { createApi, ApiMethodParams } from '../utils';
 
 @Injectable()
-export class FilesService {
-    constructor(
-        private filesService: FilesApiService,
-        private http: HttpClient,
-        private idGenerator: IdGeneratorService
-    ) {}
+export class FilesService extends createApi(ApiFilesService) {
+    constructor(injector: Injector, private http: HttpClient) {
+        super(injector);
+    }
 
-    uploadFiles(files: File[]): Observable<string[]> {
+    uploadFiles(files: File[]) {
         return forkJoin(
             files.map((file) =>
                 this.getUploadLink().pipe(
@@ -28,18 +25,14 @@ export class FilesService {
         );
     }
 
-    getFileInfo(fileID: string): Observable<FileData> {
-        return this.filesService.getFileInfo(this.idGenerator.shortUuid(), fileID).pipe(
+    getFileInfo = (params: ApiMethodParams<ApiFilesService['getFileInfo'], 'xRequestID'>) => {
+        return super.getFileInfo(params).pipe(
             map((file) => ({
                 ...file,
                 fileName: decodeURI(file.fileName),
             }))
         );
-    }
-
-    downloadFile(fileID: string): Observable<FileDownload> {
-        return this.filesService.downloadFile(this.idGenerator.shortUuid(), fileID);
-    }
+    };
 
     private uploadFileToUrl(file: File, url: string): Observable<any> {
         return this.http.put(url, file, {
@@ -53,6 +46,6 @@ export class FilesService {
     }
 
     private getUploadLink(): Observable<FileUploadData> {
-        return this.filesService.uploadFile(this.idGenerator.shortUuid(), { metadata: {} });
+        return this.uploadFile({ uploadFileRequest: { metadata: {} } });
     }
 }

@@ -1,7 +1,6 @@
 export * from './analytics';
 export * from './search';
 export * from './reports';
-export * from './files';
 export * from './deposits';
 export * from './withdrawals';
 export * from './wallet';

@@ -4,9 +4,9 @@ import { TranslocoService } from '@ngneat/transloco';
 import { combineLatest, merge, Observable, Subject } from 'rxjs';
 import { map, share, shareReplay, switchMap } from 'rxjs/operators';
 
-import { FilesService } from '@dsh/api/files';
+import { FilesService } from '@dsh/api/dark-api';
+import { progress, filterError, filterPayload, replaceError } from '@dsh/operators';
 
-import { progress, filterError, filterPayload, replaceError } from '../../../../../custom-operators';
 import { UpdateClaimService } from '../../update-claim';
 
 @Injectable()

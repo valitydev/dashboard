@@ -50,6 +50,7 @@
     "@sentry/tracing": "^6.11.0",
     "@vality/swag-anapi-v2": "2.0.1-f571365.0",
     "@vality/swag-claim-management": "0.1.1-bfc2e6c.0",
+    "@vality/swag-dark-api": "0.1.1-a3f1678.0",
     "@vality/swag-messages": "1.0.1-03e1014.0",
     "@vality/swag-organizations": "1.0.1-cd6cc10.0",
     "@vality/swag-payments": "0.1.1-4550cf2.0",

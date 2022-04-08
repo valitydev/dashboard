@@ -8,7 +8,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { TranslocoModule } from '@ngneat/transloco';
 import { ngfModule } from 'angular-file';
 
-import { FilesModule } from '@dsh/api/files';
 import { MessagesModule } from '@dsh/api/messages';
 import { ButtonModule } from '@dsh/components/buttons';
 import { BootstrapIconModule } from '@dsh/components/indicators';
@@ -37,7 +36,6 @@ import { SendCommentComponent } from './send-comment';
         FileContainerModule,
         ReactiveFormsModule,
         MessagesModule,
-        FilesModule,
         MatMenuModule,
         ConfirmActionDialogModule,
         ngfModule,

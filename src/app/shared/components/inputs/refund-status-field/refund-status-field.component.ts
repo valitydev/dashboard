@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { RefundStatus } from '@vality/swag-dark-api';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { RefundStatus } from '@dsh/api-codegen/dark-api';
 import { Option } from '@dsh/components/form-controls/radio-group-field';
 
 import { RefundStatusLabelPipe } from './pipes/refund-status-label.pipe';
