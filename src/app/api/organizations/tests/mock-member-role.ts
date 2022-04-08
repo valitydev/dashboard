@@ -1,4 +1,4 @@
-import { MemberRole, ResourceScopeId, RoleId } from '@dsh/api-codegen/organizations';
+import { MemberRole, ResourceScopeId, RoleId } from '@vality/swag-organizations';
 
 export const MOCK_MEMBER_ROLE: MemberRole = {
     id: '6b24fe4b-f9a4-4b2a-9895-a464c098f59b',

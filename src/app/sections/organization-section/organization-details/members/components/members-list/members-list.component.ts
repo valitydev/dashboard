@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-
-import { Member, Organization } from '@dsh/api-codegen/organizations';
+import { Member, Organization } from '@vality/swag-organizations';
 
 import { MembersExpandedIdManager } from '../../services/members-expanded-id-manager/members-expanded-id-manager.service';
 

@@ -3,7 +3,7 @@ import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 import { anyString, anything, mock, verify, when } from 'ts-mockito';
 
-import { OrganizationsService } from '@dsh/api';
+import { OrgsService } from '@dsh/api/organizations';
 import { MOCK_MEMBER } from '@dsh/api/organizations/tests/mock-member';
 import { MOCK_ORG } from '@dsh/api/organizations/tests/mock-org';
 import { ErrorService, KeycloakTokenInfoService } from '@dsh/app/shared';
@@ -12,7 +12,7 @@ import { provideMockService } from '@dsh/app/shared/tests';
 import { OrganizationManagementService } from './organization-management.service';
 
 describe('OrganizationManagementService', () => {
-    let mockOrganizationsService: OrganizationsService;
+    let mockOrganizationsService: OrgsService;
     let mockKeycloakTokenInfoService: KeycloakTokenInfoService;
 
     let service: OrganizationManagementService;
@@ -20,7 +20,7 @@ describe('OrganizationManagementService', () => {
     const someUserId = 'some_user_id';
 
     beforeEach(() => {
-        mockOrganizationsService = mock(OrganizationsService);
+        mockOrganizationsService = mock(OrgsService);
         mockKeycloakTokenInfoService = mock(KeycloakTokenInfoService);
 
         when(mockKeycloakTokenInfoService.partyID$).thenReturn(of(someUserId));
@@ -30,7 +30,7 @@ describe('OrganizationManagementService', () => {
         TestBed.configureTestingModule({
             providers: [
                 OrganizationManagementService,
-                provideMockService(OrganizationsService, mockOrganizationsService),
+                provideMockService(OrgsService, mockOrganizationsService),
                 provideMockService(KeycloakTokenInfoService, mockKeycloakTokenInfoService),
                 provideMockService(ErrorService),
             ],

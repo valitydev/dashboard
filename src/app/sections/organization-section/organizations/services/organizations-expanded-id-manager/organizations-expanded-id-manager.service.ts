@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Organization } from '@vality/swag-organizations';
 import { Observable } from 'rxjs';
 
-import { Organization } from '@dsh/api-codegen/organizations';
 import { ExpandedIdManager } from '@dsh/app/shared/services';
 import { FetchOrganizationsService } from '@dsh/app/shared/services/fetch-organizations';
 

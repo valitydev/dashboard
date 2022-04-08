@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { filter, first, shareReplay, switchMap } from 'rxjs/operators';
 
-import { OrganizationsService } from '@dsh/api';
+import { OrgsService } from '@dsh/api/organizations';
 import { DialogConfig, DIALOG_CONFIG } from '@dsh/app/sections/tokens';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ignoreBeforeCompletion } from '@dsh/utils';
@@ -33,7 +33,7 @@ export class InvitationsComponent {
     constructor(
         private dialog: MatDialog,
         @Inject(DIALOG_CONFIG) private dialogConfig: DialogConfig,
-        private organizationsService: OrganizationsService,
+        private organizationsService: OrgsService,
         private route: ActivatedRoute,
         private fetchInvitationsService: FetchInvitationsService
     ) {}

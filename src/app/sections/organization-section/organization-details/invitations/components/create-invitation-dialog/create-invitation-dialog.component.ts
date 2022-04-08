@@ -3,10 +3,10 @@ import { Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { InviteeContact, MemberRole } from '@vality/swag-organizations';
 import { BehaviorSubject } from 'rxjs';
 
-import { OrganizationsService } from '@dsh/api';
-import { InviteeContact, MemberRole } from '@dsh/api-codegen/organizations';
+import { InvitationsService } from '@dsh/api/organizations';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services/error';
 import { NotificationService } from '@dsh/app/shared/services/notification';
@@ -28,7 +28,7 @@ export class CreateInvitationDialogComponent {
     constructor(
         private dialogRef: MatDialogRef<CreateInvitationDialogComponent, BaseDialogResponseStatus>,
         @Inject(MAT_DIALOG_DATA) private data: CreateInvitationDialogData,
-        private organizationsService: OrganizationsService,
+        private invitationsService: InvitationsService,
         private errorService: ErrorService,
         private notificationService: NotificationService,
         private fb: FormBuilder
@@ -36,14 +36,17 @@ export class CreateInvitationDialogComponent {
 
     @inProgressTo('inProgress$')
     create() {
-        return this.organizationsService
-            .createInvitation(this.data.orgId, {
-                invitee: {
-                    contact: {
-                        type: InviteeContact.TypeEnum.EMail,
-                        email: this.emailControl.value,
+        return this.invitationsService
+            .createInvitation({
+                orgId: this.data.orgId,
+                invitationRequest: {
+                    invitee: {
+                        contact: {
+                            type: InviteeContact.TypeEnum.EMail,
+                            email: this.emailControl.value,
+                        },
+                        roles: this.selectedRoles,
                     },
-                    roles: this.selectedRoles,
                 },
             })
             .pipe(untilDestroyed(this))

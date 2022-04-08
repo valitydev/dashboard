@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { map, pluck, shareReplay, switchMap } from 'rxjs/operators';
 
-import { MessagesService } from '@dsh/api/messages';
-
-import { booleanDelay, takeError } from '../../../../custom-operators';
+import { ConversationsService } from '@dsh/api/messages';
+import { booleanDelay, takeError } from '@dsh/operators';
 
 @Injectable()
 export class CommentContainerService {
@@ -12,7 +11,7 @@ export class CommentContainerService {
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     comment$ = this.receiveConversation$.pipe(
-        switchMap((conversationId) => this.messageService.getConversations([conversationId])),
+        switchMap((conversationId) => this.conversationsService.getConversations({ conversationId: [conversationId] })),
         map(({ conversations }) =>
             conversations.reduce((acc, { messages }) => (messages.length > 0 ? messages[0] : acc), { text: '' })
         ),
@@ -26,7 +25,7 @@ export class CommentContainerService {
     // eslint-disable-next-line @typescript-eslint/member-ordering
     error$ = this.comment$.pipe(takeError, shareReplay(1));
 
-    constructor(private messageService: MessagesService) {
+    constructor(private conversationsService: ConversationsService) {
         this.comment$.subscribe();
     }
 

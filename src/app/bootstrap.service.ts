@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Organization } from '@vality/swag-organizations';
 import { concat, defer, Observable, of, ReplaySubject, throwError } from 'rxjs';
 import { catchError, first, mapTo, shareReplay, switchMap, takeLast, tap } from 'rxjs/operators';
 
-import { DEFAULT_ORGANIZATION_NAME, OrganizationsService } from '@dsh/api';
 import { ClaimsService, createTestShopClaimChangeset } from '@dsh/api/claim-management';
+import { DEFAULT_ORGANIZATION_NAME, OrgsService } from '@dsh/api/organizations';
 import { PartiesService, ShopsService } from '@dsh/api/payments';
 import { CommonError, ErrorService, IdGeneratorService } from '@dsh/app/shared';
 
@@ -25,7 +26,7 @@ export class BootstrapService {
         private claimsService: ClaimsService,
         private partiesService: PartiesService,
         private errorService: ErrorService,
-        private organizationsService: OrganizationsService,
+        private organizationsService: OrgsService,
         private transloco: TranslocoService,
         private idGenerator: IdGeneratorService
     ) {}
@@ -49,7 +50,7 @@ export class BootstrapService {
     }
 
     private initOrganization(): Observable<boolean> {
-        return this.organizationsService.listOrgMembership(1).pipe(
+        return this.organizationsService.listOrgMembership({ limit: 1 }).pipe(
             first(),
             switchMap((orgs) => (orgs.result.length ? of(true) : this.createOrganization())),
             catchError((err) => {
@@ -60,7 +61,9 @@ export class BootstrapService {
     }
 
     private createOrganization(): Observable<boolean> {
-        return this.organizationsService.createOrg({ name: DEFAULT_ORGANIZATION_NAME }).pipe(mapTo(true));
+        return this.organizationsService
+            .createOrg({ organization: { name: DEFAULT_ORGANIZATION_NAME } as Organization })
+            .pipe(mapTo(true));
     }
 
     private initShop(): Observable<boolean> {

@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-
-import { Invitation, Organization } from '@dsh/api-codegen/organizations';
+import { Invitation, Organization } from '@vality/swag-organizations';
 
 import { InvitationsExpandedIdManager } from '../../services/invitations-expanded-id-manager/invitations-expanded-id-manager.service';
 

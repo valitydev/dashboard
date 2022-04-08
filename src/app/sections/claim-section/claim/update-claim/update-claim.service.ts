@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { FileModification } from '@vality/swag-claim-management';
+import { Conversation } from '@vality/swag-messages';
 import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, pluck, share, switchMap, tap } from 'rxjs/operators';
 
-import { Conversation } from '@dsh/api-codegen/messages';
 import { ClaimsService } from '@dsh/api/claim-management';
 
 import { progress } from '../../../../custom-operators';

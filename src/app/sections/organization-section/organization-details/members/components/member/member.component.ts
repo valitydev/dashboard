@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, OnChanges, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Member, Organization } from '@vality/swag-organizations';
 import { filter, switchMap } from 'rxjs/operators';
 
-import { OrganizationsService } from '@dsh/api';
-import { Member, Organization } from '@dsh/api-codegen/organizations';
+import { MembersService } from '@dsh/api/organizations';
 import { DialogConfig, DIALOG_CONFIG } from '@dsh/app/sections/tokens';
 import { ErrorService, NotificationService } from '@dsh/app/shared';
 import { OrganizationManagementService } from '@dsh/app/shared/services/organization-management/organization-management.service';
@@ -31,7 +31,7 @@ export class MemberComponent implements OnChanges {
         private dialog: MatDialog,
         @Inject(DIALOG_CONFIG) private dialogConfig: DialogConfig,
         private organizationManagementService: OrganizationManagementService,
-        private organizationsService: OrganizationsService,
+        private membersService: MembersService,
         private notificationService: NotificationService,
         private errorService: ErrorService
     ) {}
@@ -49,7 +49,9 @@ export class MemberComponent implements OnChanges {
             .afterClosed()
             .pipe(
                 filter((r) => r === 'confirm'),
-                switchMap(() => this.organizationsService.expelOrgMember(this.organization.id, this.member.id)),
+                switchMap(() =>
+                    this.membersService.expelOrgMember({ orgId: this.organization.id, userId: this.member.id })
+                ),
                 untilDestroyed(this)
             )
             .subscribe(

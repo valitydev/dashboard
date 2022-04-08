@@ -1,4 +1,5 @@
-import { MemberRole } from '@dsh/api-codegen/organizations';
+import { MemberRole } from '@vality/swag-organizations';
+
 import { PartialReadonly } from '@dsh/type-utils';
 
 export function equalRoles(a: PartialReadonly<MemberRole>, b: PartialReadonly<MemberRole>) {

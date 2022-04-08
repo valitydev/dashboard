@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FileModificationUnit, Modification } from '@vality/swag-claim-management';
+import { Conversation } from '@vality/swag-messages';
 
-import { Conversation } from '@dsh/api-codegen/messages';
 import {
     isClaimModification,
     isCommentModificationUnit,

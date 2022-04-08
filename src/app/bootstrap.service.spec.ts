@@ -4,8 +4,8 @@ import { cold } from 'jasmine-marbles';
 import { of, throwError } from 'rxjs';
 import { anyNumber, anything, instance, mock, verify, when } from 'ts-mockito';
 
-import { OrganizationsService } from '@dsh/api';
 import { ClaimsService } from '@dsh/api/claim-management';
+import { OrgsService } from '@dsh/api/organizations';
 import { PartiesService } from '@dsh/api/payments';
 import { ApiShopsService } from '@dsh/api/shop';
 import { ErrorService } from '@dsh/app/shared';
@@ -18,7 +18,7 @@ describe('BootstrapService', () => {
     let mockClaimsService: ClaimsService;
     let mockCAPIPartiesService: PartiesService;
     let mockErrorService: ErrorService;
-    let mockOrganizationsService: OrganizationsService;
+    let mockOrganizationsService: OrgsService;
     let mockTranslocoService: TranslocoService;
 
     beforeEach(() => {
@@ -26,7 +26,7 @@ describe('BootstrapService', () => {
         mockClaimsService = mock(ClaimsService);
         mockCAPIPartiesService = mock(PartiesService);
         mockErrorService = mock(ErrorService);
-        mockOrganizationsService = mock(OrganizationsService);
+        mockOrganizationsService = mock(OrgsService);
         mockTranslocoService = mock(TranslocoService);
     });
 
@@ -38,7 +38,7 @@ describe('BootstrapService', () => {
                 { provide: ClaimsService, useFactory: () => instance(mockClaimsService) },
                 { provide: PartiesService, useFactory: () => instance(mockCAPIPartiesService) },
                 { provide: ErrorService, useFactory: () => instance(mockErrorService) },
-                { provide: OrganizationsService, useFactory: () => instance(mockOrganizationsService) },
+                { provide: OrgsService, useFactory: () => instance(mockOrganizationsService) },
                 { provide: TranslocoService, useFactory: () => instance(mockTranslocoService) },
             ],
         });

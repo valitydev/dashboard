@@ -1,4 +1,4 @@
-import { RoleId } from '@dsh/api-codegen/organizations';
+import { RoleId } from '@vality/swag-organizations';
 
 import { RoleAccess } from './types/role-access';
 import { RoleAccessName } from './types/role-access-name';

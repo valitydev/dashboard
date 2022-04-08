@@ -1,8 +1,16 @@
 import { NgModule } from '@angular/core';
+import { Configuration } from '@vality/swag-organizations';
 
-import { OrganizationsService } from './organizations.service';
+import { ConfigService } from '../../config';
 
 @NgModule({
-    providers: [OrganizationsService],
+    providers: [
+        {
+            provide: Configuration,
+            deps: [ConfigService],
+            useFactory: (configService: ConfigService) =>
+                new Configuration({ basePath: `${configService.apiEndpoint}/org/v1` }),
+        },
+    ],
 })
 export class OrganizationsModule {}

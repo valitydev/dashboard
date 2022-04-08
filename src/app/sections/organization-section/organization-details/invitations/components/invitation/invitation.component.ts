@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { InlineObject1, Invitation, Organization } from '@vality/swag-organizations';
 import { filter, switchMap } from 'rxjs/operators';
 
-import { OrganizationsService } from '@dsh/api';
-import { InlineObject1, Invitation, Organization } from '@dsh/api-codegen/organizations';
+import { InvitationsService } from '@dsh/api/organizations';
 import { ErrorService, NotificationService } from '@dsh/app/shared';
 import { ConfirmActionDialogComponent, ConfirmActionDialogResult } from '@dsh/components/popups';
 import { ignoreBeforeCompletion } from '@dsh/utils';
@@ -23,7 +23,7 @@ export class InvitationComponent {
 
     constructor(
         private dialog: MatDialog,
-        private organizationsService: OrganizationsService,
+        private invitationsService: InvitationsService,
         private notificationService: NotificationService,
         private errorService: ErrorService
     ) {}
@@ -36,8 +36,12 @@ export class InvitationComponent {
             .pipe(
                 filter((r) => r === 'confirm'),
                 switchMap(() =>
-                    this.organizationsService.revokeInvitation(this.orgId, this.invitation.id, {
-                        status: InlineObject1.StatusEnum.Revoked,
+                    this.invitationsService.revokeInvitation({
+                        orgId: this.orgId,
+                        invitationId: this.invitation.id,
+                        inlineObject1: {
+                            status: InlineObject1.StatusEnum.Revoked,
+                        },
                     })
                 ),
                 untilDestroyed(this)

@@ -20,13 +20,10 @@
     "prettier-fix": "npm run prettier-cmd -- --write",
     "tools-cmd": "ts-node --project tools/tsconfig.json",
     "parallel-cmd": "concurrently --kill-others-on-fail --prefix-colors magenta,green,red,yellow,blue",
-    "swagger-codegen": "npm run tools-cmd -- tools/swagger-codegen.ts",
-    "openapi-codegen": "openapi-generator-cli version && npm run tools-cmd -- tools/openapi-codegen.ts",
-    "codegen": "npm run parallel-cmd -- --names SWAG,OAPI \"npm run swagger-codegen\" \"npm run openapi-codegen\"",
+    "codegen": "npm run tools-cmd -- tools/swagger-codegen.ts",
     "icons-list-gen": "npm run tools-cmd -- tools/gen-icons-list.ts",
     "icons-ids-gen": "npm run tools-cmd -- tools/gen-icons-ids.ts",
-    "ci:test": "npm run test -- --configuration=ci",
-    "ci:check": "npm run parallel-cmd -- --names PRETTIER,LINT \"npm run prettier\" \"npm run lint-cmd -- --quiet\""
+    "ci:test": "npm run test -- --configuration=ci"
   },
   "dependencies": {
     "@angular/animations": "~13.1.1",
@@ -53,6 +50,8 @@
     "@sentry/tracing": "^6.11.0",
     "@vality/swag-anapi-v2": "2.0.1-f571365.0",
     "@vality/swag-claim-management": "0.1.1-bfc2e6c.0",
+    "@vality/swag-messages": "1.0.1-03e1014.0",
+    "@vality/swag-organizations": "1.0.1-cd6cc10.0",
     "@vality/swag-payments": "0.1.1-4550cf2.0",
     "angular-epic-spinners": "^2.0.0",
     "angular-file": "^3.0.1",
@@ -86,7 +85,6 @@
     "@angular/cli": "~13.1.2",
     "@angular/compiler-cli": "~13.1.1",
     "@angular/language-service": "~13.1.1",
-    "@openapitools/openapi-generator-cli": "^2.3.7",
     "@sentry/webpack-plugin": "^1.17.1",
     "@types/d3": "^5.7.0",
     "@types/del": "^4.0.0",

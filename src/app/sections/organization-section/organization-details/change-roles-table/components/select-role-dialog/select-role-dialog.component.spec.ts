@@ -3,8 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { By } from '@angular/platform-browser';
+import { RoleId } from '@vality/swag-organizations';
 
-import { RoleId } from '@dsh/api-codegen/organizations';
 import { provideMockService, provideMockToken } from '@dsh/app/shared/tests';
 
 import { SelectRoleDialogComponent } from './select-role-dialog.component';

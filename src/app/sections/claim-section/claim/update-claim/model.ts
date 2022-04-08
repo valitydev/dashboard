@@ -1,6 +1,5 @@
 import { FileModification } from '@vality/swag-claim-management';
-
-import { Conversation } from '@dsh/api-codegen/messages';
+import { Conversation } from '@vality/swag-messages';
 
 export interface UpdateParams {
     type: 'updateConversation' | 'updateFiles';

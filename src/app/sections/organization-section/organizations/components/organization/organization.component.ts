@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Organization } from '@vality/swag-organizations';
 import isNil from 'lodash-es/isNil';
 import { filter, pluck, switchMap } from 'rxjs/operators';
 
-import { OrganizationsService } from '@dsh/api';
-import { Organization } from '@dsh/api-codegen/organizations';
+import { OrgsService } from '@dsh/api/organizations';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService, NotificationService } from '@dsh/app/shared/services';
 import { FetchOrganizationsService } from '@dsh/app/shared/services/fetch-organizations';
@@ -36,7 +36,7 @@ export class OrganizationComponent implements OnChanges {
 
     constructor(
         private organizationManagementService: OrganizationManagementService,
-        private organizationsService: OrganizationsService,
+        private organizationsService: OrgsService,
         private dialog: MatDialog,
         private notificationService: NotificationService,
         private errorService: ErrorService,
@@ -56,7 +56,7 @@ export class OrganizationComponent implements OnChanges {
             .afterClosed()
             .pipe(
                 filter((r) => r === 'confirm'),
-                switchMap(() => this.organizationsService.cancelOrgMembership(this.organization.id)),
+                switchMap(() => this.organizationsService.cancelOrgMembership({ orgId: this.organization.id })),
                 untilDestroyed(this)
             )
             .subscribe(

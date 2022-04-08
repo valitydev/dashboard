@@ -1,4 +1,4 @@
-import { Organization } from '@dsh/api-codegen/organizations';
+import { Organization } from '@vality/swag-organizations';
 
 export type CreateInvitationDialogData = {
     orgId: Organization['id'];

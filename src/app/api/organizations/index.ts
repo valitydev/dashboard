@@ -1,3 +1,5 @@
+export * from './orgs.service';
+export * from './utils';
 export * from './organizations.module';
-export * from './organizations.service';
-export * from './default-organization-name';
+export * from './invitations.service';
+export * from './members.service';

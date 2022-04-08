@@ -1,7 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
 import { Injector, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RequiredKeys } from 'utility-types';
+import { RequiredKeys, Overwrite } from 'utility-types';
 
 import { IdGeneratorService } from '@dsh/app/shared';
 
@@ -35,13 +35,17 @@ export function createApi<T extends Record<PropertyKey, any>>(apiClass: new (...
             );
         }
     }
+
+    type OptionalKeys = 'xRequestID';
+    type Params<P> = P extends object
+        ? RequiredKeys<Omit<P, OptionalKeys>> extends never
+            ? void | Overwrite<P, { [K in OptionalKeys]?: string }>
+            : Overwrite<P, { [K in OptionalKeys]?: string }>
+        : never;
+
     return Api as unknown as new (...args: ApiArgs) => {
         [N in keyof T]: T[N] extends (...args: unknown[]) => Observable<HttpResponse<infer R>>
-            ? (
-                  params: RequiredKeys<Omit<Parameters<T[N]>[0], 'xRequestID'>> extends never
-                      ? void
-                      : Omit<Parameters<T[N]>[0], 'xRequestID'> & { xRequestID?: string }
-              ) => Observable<R>
+            ? (params: Params<Parameters<T[N]>[0]>) => Observable<R>
             : never;
     };
 }

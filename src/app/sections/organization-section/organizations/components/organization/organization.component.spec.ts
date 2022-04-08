@@ -9,7 +9,7 @@ import { TranslocoTestingModule } from '@ngneat/transloco';
 import { of } from 'rxjs';
 import { anyString, anything, mock, verify, when } from 'ts-mockito';
 
-import { OrganizationsService } from '@dsh/api';
+import { OrgsService } from '@dsh/api/organizations';
 import { MOCK_MEMBER } from '@dsh/api/organizations/tests/mock-member';
 import { MOCK_ORG } from '@dsh/api/organizations/tests/mock-org';
 import { DIALOG_CONFIG } from '@dsh/app/sections/tokens';
@@ -38,14 +38,14 @@ describe('OrganizationComponent', () => {
     let component: OrganizationComponent;
     let debugElement: DebugElement;
     let mockOrganizationManagementService: OrganizationManagementService;
-    let mockOrganizationsService: OrganizationsService;
+    let mockOrganizationsService: OrgsService;
     let mockDialog: MatDialog;
     let mockNotificationService: NotificationService;
     let mockFetchOrganizationsService: FetchOrganizationsService;
 
     beforeEach(async () => {
         mockOrganizationManagementService = mock(OrganizationManagementService);
-        mockOrganizationsService = mock(OrganizationsService);
+        mockOrganizationsService = mock(OrgsService);
         mockDialog = mock(MatDialog);
         mockNotificationService = mock(NotificationService);
         mockFetchOrganizationsService = mock(FetchOrganizationsService);
@@ -73,7 +73,7 @@ describe('OrganizationComponent', () => {
             providers: [
                 provideMockService(OrganizationManagementService, mockOrganizationManagementService),
                 provideMockToken(DIALOG_CONFIG, { small: {}, medium: {}, large: {} }),
-                provideMockService(OrganizationsService, mockOrganizationsService),
+                provideMockService(OrgsService, mockOrganizationsService),
                 provideMockService(NotificationService, mockNotificationService),
                 provideMockService(ErrorService),
                 provideMockService(FetchOrganizationsService, mockFetchOrganizationsService),
