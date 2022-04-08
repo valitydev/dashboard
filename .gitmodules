@@ -14,10 +14,6 @@
 	path = schemes/swag-wallets/v0
 	url = https://github.com/rbkmoney/swag-wallets.git
 	branch = release/v0
-[submodule "schemes/url-shortener/v0"]
-	path = schemes/url-shortener/v0
-	url = https://github.com/rbkmoney/swag-url-shortener.git
-	branch = release/master
 [submodule "schemes/organizations/v0"]
 	path = schemes/organizations/v0
 	url = https://github.com/rbkmoney/swag-organizations.git

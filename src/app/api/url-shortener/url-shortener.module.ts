@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
+import { Configuration } from '@vality/swag-url-shortener';
 
-import { UrlShortenerModule as UrlShortenerApiModule } from '@dsh/api-codegen/url-shortener';
-
-import { UrlShortenerService } from './url-shortener.service';
+import { ConfigService } from '../../config';
 
 @NgModule({
-    imports: [UrlShortenerApiModule],
-    providers: [UrlShortenerService],
+    providers: [
+        {
+            provide: Configuration,
+            deps: [ConfigService],
+            useFactory: (configService: ConfigService) =>
+                new Configuration({ basePath: `${configService.urlShortenerEndpoint}/v1` }),
+        },
+    ],
 })
 export class UrlShortenerModule {}

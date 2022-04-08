@@ -53,6 +53,7 @@
     "@vality/swag-messages": "1.0.1-03e1014.0",
     "@vality/swag-organizations": "1.0.1-cd6cc10.0",
     "@vality/swag-payments": "0.1.1-4550cf2.0",
+    "@vality/swag-url-shortener": "0.1.1-f780d07.0",
     "angular-epic-spinners": "^2.0.0",
     "angular-file": "^3.0.1",
     "angular2-text-mask": "^9.0.0",
