@@ -6,10 +6,6 @@
 	path = schemes/dark-api/v0
 	url = https://github.com/rbkmoney/swag-dark-api.git
 	branch = release/master
-[submodule "schemes/questionary-aggr-proxy/v0"]
-	path = schemes/questionary-aggr-proxy/v0
-	url = https://github.com/rbkmoney/swag-questionary-aggr-proxy.git
-	branch = release/master
 [submodule "schemes/swag-wallets/v0"]
 	path = schemes/swag-wallets/v0
 	url = https://github.com/rbkmoney/swag-wallets.git

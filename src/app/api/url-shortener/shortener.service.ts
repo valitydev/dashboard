@@ -3,5 +3,7 @@ import { ShortenerService as ApiShortenerService } from '@vality/swag-url-shorte
 
 import { createApi } from '../utils';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class ShortenerService extends createApi(ApiShortenerService) {}

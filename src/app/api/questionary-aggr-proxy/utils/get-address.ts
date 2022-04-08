@@ -1,4 +1,4 @@
-import { ParsedAddressRF, Toponim } from '@dsh/api-codegen/aggr-proxy';
+import { ParsedAddressRF, Toponim } from '@vality/swag-questionary-aggr-proxy';
 
 function getAddressPart(toponim: Toponim): string {
     return [toponim?.topoShortName, toponim?.topoValue].filter(Boolean).join(' ');

@@ -7,9 +7,9 @@ import {
     FmsUnitResponse,
     OkvedResponse,
     PartyResponse,
-} from '@dsh/api-codegen/aggr-proxy';
+} from '@vality/swag-questionary-aggr-proxy';
 
-import { Mapping } from '../../../type-utils';
+import { Mapping } from '@dsh/type-utils';
 
 type RequestType = DaDataRequest.DaDataRequestTypeEnum;
 

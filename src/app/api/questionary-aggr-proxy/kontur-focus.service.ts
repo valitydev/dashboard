@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { pluck } from 'rxjs/operators';
-
 import {
+    KonturFocusService as ApiKonturFocusService,
     BeneficialOwnerQuery,
     BeneficialOwnerResponses,
     EgrDetailsQuery,
     EgrDetailsResponses,
     KonturFocusRequest,
     KonturFocusResponse,
-    KonturFocusService as KonturFocusApiService,
     LicencesQuery,
     LicencesResponses,
     ReqQuery,
     ReqResponses,
-} from '@dsh/api-codegen/aggr-proxy';
+} from '@vality/swag-questionary-aggr-proxy';
+import { Observable } from 'rxjs';
+import { pluck } from 'rxjs/operators';
 
 import { Mapping } from '../../../type-utils';
+import { createApi } from '../utils';
 
 type RequestType = KonturFocusRequest.KonturFocusRequestTypeEnum;
 
@@ -47,15 +47,13 @@ export type ResponsesByRequestType = Mapping<
 >;
 
 @Injectable()
-export class KonturFocusService {
-    constructor(private konturFocusService: KonturFocusApiService) {}
-
+export class KonturFocusService extends createApi(ApiKonturFocusService) {
     request<T extends RequestType>(
         konturFocusRequestType: T,
         requestParams: Partial<Omit<ParamsByRequestType[T], 'konturFocusRequestType'>>
     ): Observable<ResponsesByRequestType[T]['responses']> {
-        return this.konturFocusService
-            .requestKonturFocus({ request: { konturFocusRequestType, ...requestParams } })
-            .pipe(pluck<ResponsesByRequestType[T], 'responses'>('responses'));
+        return this.requestKonturFocus({
+            konturFocusParams: { request: { konturFocusRequestType, ...requestParams } },
+        }).pipe(pluck<ResponsesByRequestType[T], 'responses'>('responses'));
     }
 }

@@ -1,16 +1,16 @@
 import { Component, Injector } from '@angular/core';
 import { FormControl, FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { PartyContent, ReqResponse, OrgType } from '@vality/swag-questionary-aggr-proxy';
 import { map } from 'rxjs/operators';
 
-import { PartyContent, ReqResponse, OrgType } from '@dsh/api-codegen/aggr-proxy';
 import {
     KonturFocusService,
     createIndividualEntityRegisteredName,
     isReqLegalEntity,
     isReqIndividualEntity,
-} from '@dsh/api/kontur-focus';
-import { getAddress } from '@dsh/api/kontur-focus/utils/get-address';
+    getAddress,
+} from '@dsh/api/questionary-aggr-proxy';
 import { ValidatedWrappedAbstractControlSuperclass, createValidatedAbstractControlProviders } from '@dsh/utils';
 
 import { RussianBankAccountForm } from '../russian-bank-account-form/types/bank-account-form-data';
