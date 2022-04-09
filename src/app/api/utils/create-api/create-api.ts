@@ -1,5 +1,5 @@
 import { HttpResponse, HttpHeaders } from '@angular/common/http';
-import { Injector, Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Observable, combineLatest, isObservable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { RequiredKeys, UnionToIntersection, Overwrite } from 'utility-types';
