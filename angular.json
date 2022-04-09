@@ -26,7 +26,8 @@
                             "css-element-queries",
                             "humanize-duration",
                             "angular2-text-mask",
-                            "apexcharts"
+                            "apexcharts",
+                            "short-uuid"
                         ],
                         "outputPath": "dist",
                         "index": "src/index.html",

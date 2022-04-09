@@ -77,14 +77,14 @@ export class BootstrapService {
 
     private createTestShop(): Observable<boolean> {
         return this.claimsService
-            .createClaim(
-                createTestShopClaimChangeset(
+            .createClaim({
+                changeset: createTestShopClaimChangeset(
                     this.idGenerator.uuid(),
                     this.idGenerator.uuid(),
                     this.idGenerator.uuid(),
                     this.idGenerator.uuid()
-                )
-            )
+                ),
+            })
             .pipe(mapTo(true));
     }
 }

@@ -25,7 +25,7 @@ export class CreateInternationalShopEntityService {
 
     createShop(creationData: InternationalShopEntityFormValue): Observable<Claim> {
         return this.claimsService
-            .createClaim(this.createClaimsModifications(creationData))
+            .createClaim({ changeset: this.createClaimsModifications(creationData) })
             .pipe(
                 switchMap((claim) =>
                     this.claimsService

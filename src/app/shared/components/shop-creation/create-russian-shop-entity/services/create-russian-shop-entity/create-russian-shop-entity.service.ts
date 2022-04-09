@@ -21,7 +21,7 @@ export class CreateRussianShopEntityService {
     constructor(private claimsService: ClaimsService, private idGenerator: IdGeneratorService) {}
 
     createShop(creationData: RussianShopForm): Observable<Claim> {
-        return this.claimsService.createClaim(this.createShopCreationModifications(creationData)).pipe(
+        return this.claimsService.createClaim({ changeset: this.createShopCreationModifications(creationData) }).pipe(
             switchMap((claim) => {
                 return forkJoin([
                     of(claim),

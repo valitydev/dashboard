@@ -3,10 +3,12 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import jwt_decode, { JwtPayload } from 'jwt-decode';
 import { KeycloakService } from 'keycloak-angular';
 import { from, Observable, defer } from 'rxjs';
-import { map, pluck, shareReplay, first } from 'rxjs/operators';
+import { map, pluck, shareReplay } from 'rxjs/operators';
 
 @UntilDestroy()
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class KeycloakTokenInfoService {
     // Party ID & User ID
     partyID$: Observable<string> = defer(() => this.decoded$).pipe(pluck('sub'));
@@ -18,8 +20,4 @@ export class KeycloakTokenInfoService {
     );
 
     constructor(private keycloakService: KeycloakService) {}
-
-    getPartyId() {
-        return this.partyID$.pipe(first());
-    }
 }
