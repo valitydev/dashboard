@@ -4,17 +4,8 @@ import { FormBuilder } from '@ngneat/reactive-forms';
 
 import { createValidatedAbstractControlProviders, ValidatedWrappedAbstractControlSuperclass } from '@dsh/utils';
 
+import { PayoutToolForm } from './types/payout-tool-form';
 import { payoutToolFormValidator } from './utils/payout-tool-form-validator';
-
-export interface PayoutToolForm {
-    number: string;
-    iban: string;
-    abaRtn: string;
-    address: string;
-    bic: string;
-    name: string;
-    country: string;
-}
 
 @Component({
     selector: 'dsh-payout-tool-form',

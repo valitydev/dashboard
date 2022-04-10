@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 
-import { PayoutToolForm } from '@dsh/app/shared/components/shop-creation/create-international-shop-entity/components/payout-tool-form/payout-tool-form.component';
 import { createValidatedAbstractControlProviders, ValidatedWrappedAbstractControlSuperclass } from '@dsh/utils';
+
+import { PayoutToolForm } from '../payout-tool-form/types/payout-tool-form';
 
 export interface InternationalBankAccountForm {
     payoutTool: PayoutToolForm;

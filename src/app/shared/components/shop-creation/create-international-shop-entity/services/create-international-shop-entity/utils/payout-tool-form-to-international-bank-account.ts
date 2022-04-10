@@ -1,6 +1,6 @@
 import { InternationalBankAccount } from '@vality/swag-claim-management';
 
-import { PayoutToolForm } from '../../../components/payout-tool-form/payout-tool-form.component';
+import { PayoutToolForm } from '../../../components/payout-tool-form/types/payout-tool-form';
 
 export function payoutToolFormToInternationalBankAccount(
     form: PayoutToolForm

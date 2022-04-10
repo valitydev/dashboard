@@ -1,7 +1,7 @@
 import { FormGroup, ValidatorFn } from '@ngneat/reactive-forms';
 import isEmpty from 'lodash-es/isEmpty';
 
-import { PayoutToolForm } from '../payout-tool-form.component';
+import { PayoutToolForm } from '../types/payout-tool-form';
 
 // bic | iban | abaRtn | country & address & name should be provided;
 export const payoutToolFormValidator: ValidatorFn = (form: FormGroup<PayoutToolForm>): { error: boolean } | null => {

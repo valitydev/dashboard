@@ -12,7 +12,7 @@ import {
     createShopCreationModification,
     makeShopLocation,
 } from '@dsh/api/claim-management';
-import { IdGeneratorService } from '@dsh/app/shared';
+import { IdGeneratorService } from '@dsh/app/shared/services/id-generator';
 
 import { RussianShopForm } from '../../types/russian-shop-entity';
 

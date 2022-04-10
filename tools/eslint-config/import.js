@@ -6,6 +6,7 @@ module.exports = {
     rules: {
         'import/no-unresolved': 'off',
         'import/namespace': 'off',
+        'import/no-cycle': 'error',
         ...require('./rules').createImportOrderRule(),
     },
 };

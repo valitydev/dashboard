@@ -11,7 +11,7 @@ import {
     makeShopLocation,
     createInternationalContractPayoutToolModification,
 } from '@dsh/api/claim-management';
-import { IdGeneratorService } from '@dsh/app/shared';
+import { IdGeneratorService } from '@dsh/app/shared/services/id-generator';
 
 import { InternationalShopEntityFormValue } from '../../types/international-shop-entity-form-value';
 import {

@@ -9,7 +9,6 @@ import { ClaimsService } from '@dsh/api/claim-management';
 
 import { progress } from '../../../../custom-operators';
 import { UiError } from '../../../ui-error';
-import { RevokeClaimDialogComponent } from './revoke-claim-dialog.component';
 
 @Injectable()
 export class RevokeClaimDialogService {
@@ -24,7 +23,7 @@ export class RevokeClaimDialogService {
     form: FormGroup;
 
     constructor(
-        private dialogRef: MatDialogRef<RevokeClaimDialogComponent, 'cancel' | 'revoked'>,
+        private dialogRef: MatDialogRef<unknown, 'cancel' | 'revoked'>,
         private claimsApiService: ClaimsService,
         private fb: FormBuilder,
         @Inject(MAT_DIALOG_DATA) private data: { claimId: number; revision: number }

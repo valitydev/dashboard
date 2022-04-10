@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { ApiExtension } from './api-extension';
-import { KeycloakTokenInfoService } from '@dsh/app/shared';
 import { first, map } from 'rxjs/operators';
+
+import { KeycloakTokenInfoService } from '@dsh/app/shared/services/keycloak-token-info';
+
+import { ApiExtension } from './api-extension';
 
 @Injectable({
     providedIn: 'root',
