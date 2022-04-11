@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
+import { Configuration } from '@vality/swag-wallet';
 
-import { WalletModule as ApiWalletModule } from '@dsh/api-codegen/wallet-api/wallet.module';
-
-import { WalletService } from './wallet.service';
+import { ConfigService } from '../../config';
 
 @NgModule({
-    imports: [ApiWalletModule],
-    providers: [WalletService],
+    providers: [
+        {
+            provide: Configuration,
+            deps: [ConfigService],
+            useFactory: (configService: ConfigService) =>
+                new Configuration({ basePath: `${configService.apiEndpoint}/wallet/v0` }),
+        },
+    ],
 })
 export class WalletModule {}

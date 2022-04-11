@@ -3,7 +3,6 @@ export * from './search';
 export * from './reports';
 export * from './deposits';
 export * from './withdrawals';
-export * from './wallet';
 export * from './wallet-webhooks';
 export * from './identity';
 /**

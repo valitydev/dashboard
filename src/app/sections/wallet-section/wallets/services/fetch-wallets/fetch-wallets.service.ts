@@ -1,22 +1,28 @@
 import { Inject, Injectable } from '@angular/core';
+import { Wallet } from '@vality/swag-wallet';
+import { ListWalletsRequestParams } from '@vality/swag-wallet/lib/api/wallets.service';
 import { Observable } from 'rxjs';
 
-import { Wallet } from '@dsh/api-codegen/wallet-api';
-import { WalletService } from '@dsh/api/wallet';
-import { WalletsSearchParams } from '@dsh/api/wallet/wallets-search-params';
+import { WalletsService } from '@dsh/api/wallet';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { FetchResult, PartialFetcher } from '@dsh/app/shared';
 import { mapToTimestamp, publishReplayRefCount } from '@dsh/operators';
 
 @Injectable()
-export class FetchWalletsService extends PartialFetcher<Wallet, WalletsSearchParams> {
+export class FetchWalletsService extends PartialFetcher<
+    Wallet,
+    Pick<ListWalletsRequestParams, 'identityID' | 'currencyID'>
+> {
     lastUpdated$: Observable<string> = this.searchResult$.pipe(mapToTimestamp, publishReplayRefCount(1));
 
-    constructor(@Inject(SEARCH_LIMIT) private searchLimit: number, private walletService: WalletService) {
+    constructor(@Inject(SEARCH_LIMIT) private searchLimit: number, private walletService: WalletsService) {
         super();
     }
 
-    protected fetch(params: WalletsSearchParams, continuationToken: string): Observable<FetchResult<Wallet>> {
-        return this.walletService.listWallets(this.searchLimit, params, continuationToken);
+    protected fetch(
+        params: Pick<ListWalletsRequestParams, 'identityID' | 'currencyID'>,
+        continuationToken: string
+    ): Observable<FetchResult<Wallet>> {
+        return this.walletService.listWallets({ limit: this.searchLimit, ...params, continuationToken });
     }
 }

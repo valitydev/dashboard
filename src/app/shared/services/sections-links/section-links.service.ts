@@ -3,7 +3,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { combineLatest, Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
-import { WalletService } from '@dsh/api/wallet';
+import { WalletsService } from '@dsh/api/wallet';
 
 import { SectionLink } from './model';
 import { createLinks } from './utils';
@@ -18,5 +18,5 @@ export class SectionsLinksService {
         first()
     );
 
-    constructor(private walletsService: WalletService, private transloco: TranslocoService) {}
+    constructor(private walletsService: WalletsService, private transloco: TranslocoService) {}
 }
