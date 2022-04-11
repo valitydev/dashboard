@@ -3,7 +3,6 @@
     "outputRootDir": "src/app/api-codegen",
     "outputDir": "swagger-codegen",
     "schemes": {
-        "anapi": "schemes/swag-analytics/v1/swagger.json",
-        "wallet-api": "schemes/swag-wallets/v0/api/wallet/swagger.json"
+        "anapi": "schemes/swag-analytics/v1/swagger.json"
     }
 }
