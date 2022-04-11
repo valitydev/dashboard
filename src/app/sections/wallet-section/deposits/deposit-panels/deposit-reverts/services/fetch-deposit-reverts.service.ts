@@ -1,21 +1,25 @@
 import { Inject, Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { DepositRevert } from '@vality/swag-wallet';
+import { ListDepositRevertsRequestParams } from '@vality/swag-wallet/lib/api/deposits.service';
 import { Observable, of } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 
-import { DepositsSearchParams, DepositsService as DepositsApiService } from '@dsh/api';
-import { DepositRevert } from '@dsh/api-codegen/wallet-api';
+import { DepositsService } from '@dsh/api/wallet';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
 import { booleanDebounceTime } from '@dsh/operators';
 
 @Injectable()
-export class FetchDepositRevertsService extends PartialFetcher<DepositRevert, DepositsSearchParams> {
+export class FetchDepositRevertsService extends PartialFetcher<
+    DepositRevert,
+    Omit<ListDepositRevertsRequestParams, 'xRequestID' | 'limit'>
+> {
     isLoading$: Observable<boolean> = this.doAction$.pipe(booleanDebounceTime(), shareReplay(1));
 
     constructor(
-        private depositsService: DepositsApiService,
+        private depositsService: DepositsService,
         private snackBar: MatSnackBar,
         private transloco: TranslocoService,
         @Inject(SEARCH_LIMIT)
@@ -26,8 +30,8 @@ export class FetchDepositRevertsService extends PartialFetcher<DepositRevert, De
         super(debounceActionTime);
     }
 
-    protected fetch(params: DepositsSearchParams, continuationToken: string) {
-        return this.depositsService.listDepositReverts({ ...params }, this.searchLimit, continuationToken).pipe(
+    protected fetch(params: Omit<ListDepositRevertsRequestParams, 'xRequestID' | 'limit'>, continuationToken: string) {
+        return this.depositsService.listDepositReverts({ ...params, limit: this.searchLimit, continuationToken }).pipe(
             catchError(() => {
                 this.snackBar.open(this.transloco.translate('httpError'), 'OK');
                 return of({ result: [] });

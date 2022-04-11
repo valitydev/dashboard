@@ -1,9 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { Observable } from 'rxjs';
+import { Deposit } from '@vality/swag-wallet';
 
-import { DepositsService } from '@dsh/api';
-import { Deposit } from '@dsh/api-codegen/wallet-api';
+import { DepositsService } from '@dsh/api/wallet';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { PartialFetcher } from '@dsh/app/shared';
 
@@ -18,7 +17,7 @@ export class FetchWalletDepositsService extends PartialFetcher<Deposit, string> 
         super();
     }
 
-    protected fetch(walletID: string, continuationToken: string): Observable<unknown> {
-        return this.depositsService.listDeposits({ walletID }, this.searchLimit, continuationToken);
+    protected fetch(walletID: string, continuationToken: string) {
+        return this.depositsService.listDeposits({ walletID, limit: this.searchLimit, continuationToken });
     }
 }
