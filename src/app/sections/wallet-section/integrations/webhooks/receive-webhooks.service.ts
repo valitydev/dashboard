@@ -7,7 +7,7 @@ import { catchError, filter, map, shareReplay, switchMap } from 'rxjs/operators'
 
 import { Webhook } from '@dsh/api-codegen/wallet-api';
 import { IdentityService } from '@dsh/api/identity';
-import { WalletWebhooksService } from '@dsh/api/wallet-webhooks';
+import { WebhooksService } from '@dsh/api/wallet';
 
 import { booleanDebounceTime, mapToTimestamp, SHARE_REPLAY_CONF, progress } from '../../../../custom-operators';
 
@@ -33,7 +33,7 @@ export class ReceiveWebhooksService {
     lastUpdated$: Observable<string> = this.webhooks$.pipe(mapToTimestamp, shareReplay(1));
 
     constructor(
-        private walletWebhooksService: WalletWebhooksService,
+        private walletWebhooksService: WebhooksService,
         private identityService: IdentityService,
         private snackBar: MatSnackBar,
         private transloco: TranslocoService
@@ -43,7 +43,7 @@ export class ReceiveWebhooksService {
                 switchMap(() => this.identityService.identities$.pipe(shareReplay(1))),
                 map((identities) => identities.map((identity) => identity.id)),
                 switchMap((ids) =>
-                    forkJoin(ids.map((id) => this.walletWebhooksService.getWebhooks(id))).pipe(
+                    forkJoin(ids.map((identityID) => this.walletWebhooksService.getWebhooks({ identityID }))).pipe(
                         catchError((err) => {
                             console.error(err);
                             this.snackBar.open(this.transloco.translate('httpError'), 'OK');

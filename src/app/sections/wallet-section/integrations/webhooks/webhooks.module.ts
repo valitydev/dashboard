@@ -4,7 +4,6 @@ import { FlexModule } from '@angular/flex-layout';
 import { TranslocoModule } from '@ngneat/transloco';
 
 import { IdentityModule } from '@dsh/api/identity';
-import { WalletWebhooksModule } from '@dsh/api/wallet-webhooks';
 import { ButtonModule } from '@dsh/components/buttons';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { SpinnerModule } from '@dsh/components/indicators';
@@ -25,7 +24,6 @@ import { WebhooksComponent } from './webhooks.component';
         SpinnerModule,
         WebhookListModule,
         EmptySearchResultModule,
-        WalletWebhooksModule,
         IdentityModule,
         CreateWebhookModule,
     ],
