@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormControl } from '@ngneat/reactive-forms';
-
-import { DepositStatus } from '@dsh/api-codegen/wallet-api/swagger-codegen/model/depositStatus';
+import { DepositStatus } from '@vality/swag-wallet';
 
 import { DEPOSIT_STATUSES_LIST } from './consts';
 import { DepositStatusFilterValue } from './types/deposit-status-filter-value';

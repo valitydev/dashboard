@@ -1,7 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-
-import { DepositRevert } from '@dsh/api-codegen/wallet-api';
+import { DepositRevert } from '@vality/swag-wallet';
 
 @Pipe({
     name: 'depositRevertStatusName',

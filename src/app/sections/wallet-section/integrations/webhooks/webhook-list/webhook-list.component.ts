@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
-
-import { Webhook } from '@dsh/api-codegen/wallet-api';
+import { Webhook } from '@vality/swag-wallet';
 
 import { DeleteWebhookService } from '../delete-webhook';
 import { DeleteWebhookParams } from '../webhook-details/webhook-actions';

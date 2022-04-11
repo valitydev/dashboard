@@ -1,7 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-
-import { Withdrawal } from '@dsh/api-codegen/wallet-api';
+import { Withdrawal } from '@vality/swag-wallet';
 
 @Pipe({
     name: 'withdrawalStatusName',

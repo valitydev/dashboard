@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
-import { DepositRevert } from '@dsh/api-codegen/wallet-api';
+import { DepositRevert } from '@vality/swag-wallet';
 
 @Component({
     selector: 'dsh-deposit-revert-details',

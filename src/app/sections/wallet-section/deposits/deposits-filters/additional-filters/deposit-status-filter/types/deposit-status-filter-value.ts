@@ -1,3 +1,3 @@
-import { DepositStatus } from '@dsh/api-codegen/wallet-api/swagger-codegen/model/depositStatus';
+import { DepositStatus } from '@vality/swag-wallet';
 
 export type DepositStatusFilterValue = DepositStatus.StatusEnum | null;

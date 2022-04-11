@@ -1,4 +1,4 @@
-import { DepositStatus } from '@dsh/api-codegen/wallet-api';
+import { DepositStatus } from '@vality/swag-wallet';
 
 import { MainInfoFilters } from '../main-info-filters';
 import { DepositAmountFilterData } from './deposit-amount-filter-data';

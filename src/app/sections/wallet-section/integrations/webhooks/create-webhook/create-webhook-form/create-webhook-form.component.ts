@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { WebhookScope } from '@vality/swag-wallet';
 import { BehaviorSubject } from 'rxjs';
 
-import { WebhookScope } from '@dsh/api-codegen/wallet-api/swagger-codegen';
 import { IdentitiesService } from '@dsh/api/wallet';
 import { oneMustBeSelected } from '@dsh/components/form-controls';
 

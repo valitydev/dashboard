@@ -1,4 +1,4 @@
-import { Wallet } from '@dsh/api-codegen/wallet-api';
+import { Wallet } from '@vality/swag-wallet';
 
 export type WalletId = Wallet['id'];
 export type WalletName = Wallet['name'];

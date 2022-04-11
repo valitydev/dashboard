@@ -1,7 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-
-import { Deposit } from '@dsh/api-codegen/wallet-api';
+import { Deposit } from '@vality/swag-wallet';
 
 @Pipe({
     name: 'depositStatusName',

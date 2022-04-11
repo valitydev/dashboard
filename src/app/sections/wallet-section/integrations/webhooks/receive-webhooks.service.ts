@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { Webhook } from '@vality/swag-wallet';
 import sortBy from 'lodash-es/sortBy';
 import { BehaviorSubject, forkJoin, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, map, shareReplay, switchMap } from 'rxjs/operators';
 
-import { Webhook } from '@dsh/api-codegen/wallet-api';
 import { IdentitiesService, WebhooksService } from '@dsh/api/wallet';
 
 import { booleanDebounceTime, mapToTimestamp, SHARE_REPLAY_CONF, progress } from '../../../../custom-operators';
