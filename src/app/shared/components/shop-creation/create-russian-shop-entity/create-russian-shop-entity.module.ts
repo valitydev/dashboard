@@ -9,7 +9,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { KonturFocusModule } from '@dsh/api';
 import { ContractorDetailsModule } from '@dsh/app/shared';
 import { PayoutToolDetailsModule } from '@dsh/app/shared/components';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
@@ -52,7 +51,6 @@ import { CreateRussianShopEntityService } from './services/create-russian-shop-e
         BaseDialogModule,
         ShopFieldModule,
         ShopDetailsFormModule,
-        KonturFocusModule,
         ContractorDetailsModule,
         PaymentInstitutionFieldModule,
         CreatedExistingSwitchModule,

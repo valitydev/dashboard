@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
+import { BankContent } from '@vality/swag-questionary-aggr-proxy';
 
-import { BankContent } from '@dsh/api-codegen/aggr-proxy';
 import { createValidatedAbstractControlProviders, ValidatedWrappedAbstractControlSuperclass } from '@dsh/utils';
 
 import { RussianBankAccountForm } from './types/bank-account-form-data';

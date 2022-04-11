@@ -2,23 +2,7 @@
 	path = schemes/swag-analytics/v1
 	url = https://github.com/rbkmoney/swag-analytics.git
 	branch = release/master
-[submodule "schemes/dark-api/v0"]
-	path = schemes/dark-api/v0
-	url = https://github.com/rbkmoney/swag-dark-api.git
-	branch = release/master
-[submodule "schemes/questionary-aggr-proxy/v0"]
-	path = schemes/questionary-aggr-proxy/v0
-	url = https://github.com/rbkmoney/swag-questionary-aggr-proxy.git
-	branch = release/master
 [submodule "schemes/swag-wallets/v0"]
 	path = schemes/swag-wallets/v0
 	url = https://github.com/rbkmoney/swag-wallets.git
 	branch = release/v0
-[submodule "schemes/url-shortener/v0"]
-	path = schemes/url-shortener/v0
-	url = https://github.com/rbkmoney/swag-url-shortener.git
-	branch = release/master
-[submodule "schemes/organizations/v0"]
-	path = schemes/organizations/v0
-	url = https://github.com/rbkmoney/swag-organizations.git
-	branch = release/master

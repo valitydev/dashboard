@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { FileData } from '@vality/swag-dark-api';
 import { Observable, Subject } from 'rxjs';
 import { shareReplay, switchMap } from 'rxjs/operators';
 
-import { FileData } from '@dsh/api-codegen/dark-api';
-import { FilesService } from '@dsh/api/files';
-
-import { download } from '../../../../../utils';
-import { booleanDelay, takeError } from '../../../../custom-operators';
+import { FilesService } from '@dsh/api/dark-api';
+import { booleanDelay, takeError } from '@dsh/operators';
+import { download } from '@dsh/utils';
 
 @Injectable()
 export class FileContainerService {
@@ -16,7 +15,7 @@ export class FileContainerService {
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     fileInfo$: Observable<FileData> = this.getFileInfo$.pipe(
-        switchMap((fileID) => this.filesService.getFileInfo(fileID)),
+        switchMap((fileID) => this.filesService.getFileInfo({ fileID })),
         shareReplay(1)
     );
 
@@ -39,7 +38,7 @@ export class FileContainerService {
     }
 
     downloadFile(fileID: string) {
-        this.filesService.downloadFile(fileID).subscribe(
+        this.filesService.downloadFile({ fileID }).subscribe(
             ({ url }) => download(url),
             () => this.snackBar.open(this.transloco.translate('commonError'), 'OK')
         );

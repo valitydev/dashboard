@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
 import { InlineResponse20010, PaymentSearchResult, SearchService } from '@dsh/api-codegen/anapi';
-import { IdGeneratorService } from '@dsh/app/shared';
 import { KeycloakTokenInfoService } from '@dsh/app/shared/services';
+import { IdGeneratorService } from '@dsh/app/shared/services/id-generator';
 
 import { toDateLike } from '../utils';
 import { Duration, PaymentsSearchParams } from './model';

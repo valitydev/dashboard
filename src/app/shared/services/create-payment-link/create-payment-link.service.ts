@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { pluck, switchMap } from 'rxjs/operators';
 
 import { InvoicesService } from '@dsh/api/payments';
-import { UrlShortenerService } from '@dsh/api/url-shortener';
+import { ShortenerService } from '@dsh/api/url-shortener';
 import { queryParamsToStr } from '@dsh/utils';
 
 import { ConfigService } from '../../../config';
@@ -17,7 +17,7 @@ import { getDueDate } from './utils/get-due-date';
 })
 export class CreatePaymentLinkService {
     constructor(
-        private urlShortenerService: UrlShortenerService,
+        private shortenerService: ShortenerService,
         private configService: ConfigService,
         private invoicesService: InvoicesService
     ) {}
@@ -26,29 +26,33 @@ export class CreatePaymentLinkService {
         { invoiceTemplate, invoiceTemplateAccessToken }: InvoiceTemplateAndToken,
         params: PaymentLinkParams
     ): Observable<string> {
-        return this.urlShortenerService
-            .shortenUrl(
-                this.buildUrl({
-                    ...params,
-                    invoiceTemplateID: invoiceTemplate.id,
-                    invoiceTemplateAccessToken: invoiceTemplateAccessToken.payload,
-                }),
-                getDueDate(invoiceTemplate.lifetime).utc().format()
-            )
+        return this.shortenerService
+            .shortenUrl({
+                shortenedUrlParams: {
+                    sourceUrl: this.buildUrl({
+                        ...params,
+                        invoiceTemplateID: invoiceTemplate.id,
+                        invoiceTemplateAccessToken: invoiceTemplateAccessToken.payload,
+                    }),
+                    expiresAt: getDueDate(invoiceTemplate.lifetime).utc().format(),
+                },
+            })
             .pipe(pluck('shortenedUrl'));
     }
 
     createPaymentLinkByInvoice(invoice: Invoice, params: PaymentLinkParams): Observable<string> {
         return this.invoicesService.createInvoiceAccessToken({ invoiceID: invoice.id }).pipe(
             switchMap(({ payload: invoiceAccessToken }) =>
-                this.urlShortenerService.shortenUrl(
-                    this.buildUrl({
-                        ...params,
-                        invoiceID: invoice.id,
-                        invoiceAccessToken,
-                    }),
-                    moment(invoice.dueDate).utc().format()
-                )
+                this.shortenerService.shortenUrl({
+                    shortenedUrlParams: {
+                        sourceUrl: this.buildUrl({
+                            ...params,
+                            invoiceID: invoice.id,
+                            invoiceAccessToken,
+                        }),
+                        expiresAt: moment(invoice.dueDate).utc().format(),
+                    },
+                })
             ),
             pluck('shortenedUrl')
         );

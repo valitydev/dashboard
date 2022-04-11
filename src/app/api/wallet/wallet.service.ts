@@ -9,7 +9,7 @@ import {
     WalletAccount,
     InlineResponse2006,
 } from '@dsh/api-codegen/wallet-api';
-import { IdGeneratorService } from '@dsh/app/shared';
+import { IdGeneratorService } from '@dsh/app/shared/services/id-generator';
 
 import { SHARE_REPLAY_CONF } from '../../custom-operators';
 import { WalletsSearchParams } from './wallets-search-params';

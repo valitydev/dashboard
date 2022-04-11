@@ -2,12 +2,18 @@ import { Component, EventEmitter, Injector, Input, OnInit, Output } from '@angul
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import {
+    BankContent,
+    DaDataRequest,
+    FmsUnitContent,
+    FmsUnitQuery,
+    PartyContent,
+} from '@vality/swag-questionary-aggr-proxy';
 import isEmpty from 'lodash-es/isEmpty';
 import { interval, Observable } from 'rxjs';
 import { debounce, filter, map, switchMap, take } from 'rxjs/operators';
 
-import { BankContent, DaDataRequest, FmsUnitContent, FmsUnitQuery, PartyContent } from '@dsh/api-codegen/aggr-proxy';
-import { ContentByRequestType, DaDataService, ParamsByRequestType, Suggestion } from '@dsh/api/dadata';
+import { ContentByRequestType, DaDataService, ParamsByRequestType, Suggestion } from '@dsh/api/questionary-aggr-proxy';
 import { progress, shareReplayUntilDestroyed, takeError } from '@dsh/operators';
 import { coerceBoolean } from '@dsh/utils';
 

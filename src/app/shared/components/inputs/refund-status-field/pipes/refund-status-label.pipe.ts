@@ -1,8 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
+import { RefundStatus } from '@vality/swag-dark-api';
 import { Observable, of } from 'rxjs';
-
-import { RefundStatus } from '@dsh/api-codegen/dark-api';
 
 @Pipe({ name: 'refundStatusLabel' })
 export class RefundStatusLabelPipe implements PipeTransform {

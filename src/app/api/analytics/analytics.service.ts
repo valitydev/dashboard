@@ -15,8 +15,8 @@ import {
     InlineResponse2007,
     SplitUnit,
 } from '@dsh/api-codegen/anapi';
-import { IdGeneratorService } from '@dsh/app/shared';
 import { KeycloakTokenInfoService } from '@dsh/app/shared/services';
+import { IdGeneratorService } from '@dsh/app/shared/services/id-generator';
 
 import { toDateLike } from '../utils';
 

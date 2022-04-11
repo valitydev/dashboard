@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { InlineResponse20011, SearchService } from '@dsh/api-codegen/anapi';
-import { IdGeneratorService } from '@dsh/app/shared';
 import { KeycloakTokenInfoService } from '@dsh/app/shared/services';
+import { IdGeneratorService } from '@dsh/app/shared/services/id-generator';
 
 import { toDateLike } from '../utils';
 import { PayoutsSearchParams } from './model';
