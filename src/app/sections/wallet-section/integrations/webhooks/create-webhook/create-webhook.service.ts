@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subject } from 'rxjs';
 import { filter, switchMap, take, takeUntil } from 'rxjs/operators';
 
-import { IdentityService } from '@dsh/api/identity';
+import { IdentitiesService } from '@dsh/api/wallet';
 
 import { CreateWebhookDialogComponent } from './create-webhook-dialog.component';
 
@@ -16,13 +16,13 @@ export class CreateWebhookService {
     // eslint-disable-next-line @typescript-eslint/member-ordering
     webhookCreated$: Observable<void> = this.created$.asObservable();
 
-    constructor(private dialog: MatDialog, private identityService: IdentityService) {}
+    constructor(private dialog: MatDialog, private identitiesService: IdentitiesService) {}
 
     init() {
         this.createWebhook$
             .pipe(
                 takeUntil(this.destroy$),
-                switchMap(() => this.identityService.identities$.pipe(take(1))),
+                switchMap(() => this.identitiesService.identities$.pipe(take(1))),
                 switchMap((identities) =>
                     this.dialog
                         .open(CreateWebhookDialogComponent, {

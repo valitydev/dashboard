@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { map, shareReplay } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
-import { IdentityService } from '@dsh/api/identity';
+import { IdentitiesService } from '@dsh/api/wallet';
 
 @Component({
     selector: 'dsh-webhook-row',
@@ -16,12 +16,9 @@ export class WebhookRowComponent {
     @Input()
     identityID: string;
 
-    constructor(private identityService: IdentityService) {}
+    constructor(private identitiesService: IdentitiesService) {}
 
     getIdentityName(identityID: string) {
-        return this.identityService.identities$.pipe(
-            shareReplay(1),
-            map((i) => i.find(({ id }) => id === identityID)?.name)
-        );
+        return this.identitiesService.identities$.pipe(map((i) => i.find(({ id }) => id === identityID)?.name));
     }
 }

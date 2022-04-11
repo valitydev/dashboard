@@ -4,7 +4,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject } from 'rxjs';
 
 import { WebhookScope } from '@dsh/api-codegen/wallet-api/swagger-codegen';
-import { IdentityService } from '@dsh/api/identity';
+import { IdentitiesService } from '@dsh/api/wallet';
 import { oneMustBeSelected } from '@dsh/components/form-controls';
 
 import { getEventsByTopic } from '../get-events-by-topic';
@@ -19,11 +19,11 @@ import TopicEnum = WebhookScope.TopicEnum;
 export class CreateWebhookFormComponent implements OnInit {
     @Input() form: FormGroup;
 
-    identities$ = this.identityService.identities$;
+    identities$ = this.identitiesService.identities$;
 
     activeTopic$ = new BehaviorSubject<TopicEnum>('WithdrawalsTopic');
 
-    constructor(private identityService: IdentityService, private fb: FormBuilder) {}
+    constructor(private identitiesService: IdentitiesService, private fb: FormBuilder) {}
 
     ngOnInit(): void {
         this.activeTopic$.pipe(untilDestroyed(this)).subscribe((activeTopic) => {

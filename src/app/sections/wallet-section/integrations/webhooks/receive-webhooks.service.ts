@@ -6,8 +6,7 @@ import { BehaviorSubject, forkJoin, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, map, shareReplay, switchMap } from 'rxjs/operators';
 
 import { Webhook } from '@dsh/api-codegen/wallet-api';
-import { IdentityService } from '@dsh/api/identity';
-import { WebhooksService } from '@dsh/api/wallet';
+import { IdentitiesService, WebhooksService } from '@dsh/api/wallet';
 
 import { booleanDebounceTime, mapToTimestamp, SHARE_REPLAY_CONF, progress } from '../../../../custom-operators';
 
@@ -34,13 +33,13 @@ export class ReceiveWebhooksService {
 
     constructor(
         private walletWebhooksService: WebhooksService,
-        private identityService: IdentityService,
+        private identitiesService: IdentitiesService,
         private snackBar: MatSnackBar,
         private transloco: TranslocoService
     ) {
         this.receiveWebhooks$
             .pipe(
-                switchMap(() => this.identityService.identities$.pipe(shareReplay(1))),
+                switchMap(() => this.identitiesService.identities$),
                 map((identities) => identities.map((identity) => identity.id)),
                 switchMap((ids) =>
                     forkJoin(ids.map((identityID) => this.walletWebhooksService.getWebhooks({ identityID }))).pipe(
