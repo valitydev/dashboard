@@ -1,4 +1,5 @@
-import { Wallet } from '@dsh/api-codegen/wallet-api';
+import { Wallet } from '@vality/swag-wallet';
+
 import { Option } from '@dsh/components/form-controls/select-search-field';
 
 const walletToOption = (wallet: Wallet): Option<string> => ({

@@ -1,4 +1,4 @@
-import { DestinationsTopic, WebhookScope, WithdrawalsTopic } from '@dsh/api-codegen/wallet-api/swagger-codegen';
+import { DestinationsTopic, WebhookScope, WithdrawalsTopic } from '@vality/swag-wallet';
 
 import TopicEnum = WebhookScope.TopicEnum;
 

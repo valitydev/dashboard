@@ -1,4 +1,4 @@
-import { DepositsSearchParams } from '@dsh/api';
+import { ListDepositsRequestParams } from '@vality/swag-wallet/lib/api/deposits.service';
 
 import { DepositsFilters } from '../deposits-filters/types/deposits-filters';
 
@@ -11,9 +11,9 @@ export const filtersToSearchParams = ({
     sourceID,
     walletID,
     identityID,
-}: DepositsFilters): DepositsSearchParams => ({
-    fromTime: dateRange.start.utc().format(),
-    toTime: dateRange.end.utc().format(),
+}: DepositsFilters): Omit<ListDepositsRequestParams, 'xRequestID' | 'limit'> => ({
+    createdAtFrom: dateRange.start.utc().format(),
+    createdAtTo: dateRange.end.utc().format(),
     walletID,
     identityID,
     sourceID,

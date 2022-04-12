@@ -7,7 +7,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { DepositsService } from '@dsh/api';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { ButtonModule } from '@dsh/components/buttons';
 import { IndicatorsModule, SpinnerModule } from '@dsh/components/indicators';
@@ -40,7 +39,6 @@ import { DepositsComponent } from './deposits.component';
     ],
     declarations: [DepositsComponent],
     providers: [
-        DepositsService,
         { provide: SEARCH_LIMIT, useValue: 10 },
         { provide: UPDATE_DELAY_TOKEN, useValue: DEPOSITS_UPDATE_DELAY },
     ],

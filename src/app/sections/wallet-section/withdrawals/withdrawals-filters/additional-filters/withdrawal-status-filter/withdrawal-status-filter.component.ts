@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { WithdrawalStatus } from '@vality/swag-wallet';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { WithdrawalStatus } from '@dsh/api-codegen/wallet-api';
 import { Option } from '@dsh/components/form-controls/radio-group-field';
 
 import { WithdrawalStatusLabelPipe } from './pipes';

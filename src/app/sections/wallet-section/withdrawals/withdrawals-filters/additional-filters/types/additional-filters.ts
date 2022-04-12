@@ -1,4 +1,4 @@
-import { WithdrawalStatus } from '@dsh/api-codegen/wallet-api';
+import { WithdrawalStatus } from '@vality/swag-wallet';
 
 import { MainInfoForm } from '../main-info-filters';
 import { WithdrawalAmountForm } from '../withdrawal-sum-filter';

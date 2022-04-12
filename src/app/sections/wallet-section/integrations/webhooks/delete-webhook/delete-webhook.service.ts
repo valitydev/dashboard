@@ -5,7 +5,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { combineLatest, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, switchMap, takeUntil } from 'rxjs/operators';
 
-import { WalletWebhooksService } from '@dsh/api/wallet-webhooks';
+import { WebhooksService } from '@dsh/api/wallet';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 
 import { DeleteWebhookParams } from '../webhook-details/webhook-actions';
@@ -21,7 +21,7 @@ export class DeleteWebhookService {
 
     constructor(
         private dialog: MatDialog,
-        private walletWebhooksService: WalletWebhooksService,
+        private walletWebhooksService: WebhooksService,
         private transloco: TranslocoService,
         private snackBar: MatSnackBar
     ) {}
@@ -44,7 +44,7 @@ export class DeleteWebhookService {
                     ])
                 ),
                 switchMap(([{ webhookID, identityID }]) =>
-                    this.walletWebhooksService.deleteWebhookByID(webhookID, identityID).pipe(
+                    this.walletWebhooksService.deleteWebhookByID({ webhookID, identityID }).pipe(
                         catchError((e) => {
                             console.error(e);
                             this.snackBar.open(

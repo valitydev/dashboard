@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
-import { Withdrawal } from '@dsh/api-codegen/wallet-api';
+import { Withdrawal } from '@vality/swag-wallet';
 
 @Component({
     selector: 'dsh-withdrawal-row',

@@ -4,7 +4,6 @@ import { FlexModule, GridModule } from '@angular/flex-layout';
 import { MatDividerModule } from '@angular/material/divider';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { DepositsModule, WithdrawalsModule } from '@dsh/api';
 import { ApiModelTypesModule, ToMajorModule } from '@dsh/app/shared';
 import { ButtonModule } from '@dsh/components/buttons';
 import { StatusModule, TextColorModule } from '@dsh/components/indicators';
@@ -23,7 +22,6 @@ import { WalletWithdrawalsComponent } from './wallet-withdrawals.component';
         AccordionModule,
         RowModule,
         CollapseModule,
-        DepositsModule,
         MatDividerModule,
         TextColorModule,
         GridModule,
@@ -32,7 +30,6 @@ import { WalletWithdrawalsComponent } from './wallet-withdrawals.component';
         ApiModelTypesModule,
         ShowMorePanelModule,
         ButtonModule,
-        WithdrawalsModule,
     ],
     declarations: [WalletWithdrawalsComponent, WalletWithdrawalDetailsComponent],
     exports: [WalletWithdrawalsComponent],

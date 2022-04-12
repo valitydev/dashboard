@@ -23,6 +23,7 @@ import { MessagesModule } from '@dsh/api/messages';
 import { PaymentsModule } from '@dsh/api/payments';
 import { QuestionaryAggrProxyModule } from '@dsh/api/questionary-aggr-proxy';
 import { UrlShortenerModule } from '@dsh/api/url-shortener';
+import { WalletModule } from '@dsh/api/wallet';
 import { ErrorModule } from '@dsh/app/shared/services';
 import { QUERY_PARAMS_SERIALIZERS } from '@dsh/app/shared/services/query-params/utils/query-params-serializers';
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
@@ -72,6 +73,7 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         UrlShortenerModule,
         QuestionaryAggrProxyModule,
         DarkApiModule,
+        WalletModule,
     ],
     providers: [
         LanguageService,

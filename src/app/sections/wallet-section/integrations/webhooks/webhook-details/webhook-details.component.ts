@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-
-import { Webhook, WebhookScope, WithdrawalsTopic } from '@dsh/api-codegen/wallet-api/swagger-codegen';
+import { Webhook, WebhookScope, WithdrawalsTopic } from '@vality/swag-wallet';
 
 import { DeleteWebhookParams } from './webhook-actions';
 

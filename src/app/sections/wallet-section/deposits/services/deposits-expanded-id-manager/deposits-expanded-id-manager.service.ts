@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Deposit } from '@vality/swag-wallet';
 import { Observable } from 'rxjs';
 
-import { Deposit } from '@dsh/api-codegen/wallet-api';
 import { ExpandedIdManager, Fragment } from '@dsh/app/shared/services';
 
 import { FetchDepositsService } from '../fetch-deposits/fetch-deposits.service';

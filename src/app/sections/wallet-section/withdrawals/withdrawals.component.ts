@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 
-import { WithdrawalsSearchParams } from '@dsh/api';
 import { QueryParamsService } from '@dsh/app/shared/services/query-params';
 import { booleanDebounceTime, publishReplayRefCount } from '@dsh/operators';
 
@@ -27,7 +26,7 @@ export class WithdrawalsComponent implements OnInit {
         private snackBar: MatSnackBar,
         private transloco: TranslocoService,
         private withdrawalsExpandedIdManager: WithdrawalsExpandedIdManager,
-        private qp: QueryParamsService<WithdrawalsSearchParams>
+        private qp: QueryParamsService<WithdrawalsFilters>
     ) {}
 
     ngOnInit(): void {
@@ -40,8 +39,8 @@ export class WithdrawalsComponent implements OnInit {
         void this.qp.set(filters);
         this.fetchWithdrawalsService.search({
             ...filters,
-            fromTime: filters.dateRange.start.utc().format(),
-            toTime: filters.dateRange.end.utc().format(),
+            createdAtFrom: filters.dateRange.start.utc().format(),
+            createdAtTo: filters.dateRange.end.utc().format(),
         });
     }
 

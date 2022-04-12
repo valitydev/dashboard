@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, of, Subject } from 'rxjs';
 import { catchError, filter, map, switchMap } from 'rxjs/operators';
 
-import { WalletWebhooksService } from '@dsh/api/wallet-webhooks';
+import { WebhooksService } from '@dsh/api/wallet';
 import { oneMustBeSelected } from '@dsh/components/form-controls';
 
 import { FormParams } from './form-params';
@@ -27,12 +27,12 @@ export class CreateWebhookDialogService {
     // eslint-disable-next-line @typescript-eslint/member-ordering
     webhookCreated$ = this.created$.asObservable();
 
-    constructor(private fb: FormBuilder, private walletWebhooksService: WalletWebhooksService) {
+    constructor(private fb: FormBuilder, private walletWebhooksService: WebhooksService) {
         this.create$
             .pipe(
                 map(formValuesToWebhook),
-                switchMap((v) =>
-                    this.walletWebhooksService.createWebhook(v).pipe(
+                switchMap((webhookParams) =>
+                    this.walletWebhooksService.createWebhook({ webhookParams }).pipe(
                         catchError((e) => {
                             console.error(e);
                             this.loading$.next(false);

@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FlexModule } from '@angular/flex-layout';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { WithdrawalsModule as WithdrawalsApiModule } from '@dsh/api';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { SpinnerModule } from '@dsh/components/indicators';
 import { ScrollUpModule } from '@dsh/components/navigation';
@@ -24,7 +23,6 @@ import { WithdrawalsComponent } from './withdrawals.component';
         WithdrawalsListModule,
         ShowMorePanelModule,
         SpinnerModule,
-        WithdrawalsApiModule,
         WithdrawalsFiltersModule,
         EmptySearchResultModule,
     ],

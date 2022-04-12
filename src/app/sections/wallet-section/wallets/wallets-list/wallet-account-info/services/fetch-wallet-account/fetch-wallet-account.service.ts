@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
+import { WalletAccount } from '@vality/swag-wallet';
 import { BehaviorSubject, defer, EMPTY, Observable, ReplaySubject } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
-import { WalletService } from '@dsh/api';
-import { WalletAccount } from '@dsh/api-codegen/wallet-api';
+import { WalletsService } from '@dsh/api/wallet';
 import { ErrorService } from '@dsh/app/shared';
 import { shareReplayUntilDestroyed } from '@dsh/operators';
 import { errorTo, progressTo } from '@dsh/utils';
@@ -14,7 +14,7 @@ import { errorTo, progressTo } from '@dsh/utils';
 export class FetchWalletAccountService {
     walletAccount$: Observable<WalletAccount> = defer(() => this.fetchWalletAccount$).pipe(
         switchMap((walletID) =>
-            this.walletService.getWalletAccount(walletID).pipe(
+            this.walletService.getWalletAccount({ walletID }).pipe(
                 progressTo(this.progress$),
                 errorTo(this.error$),
                 catchError((err) => {
@@ -34,7 +34,7 @@ export class FetchWalletAccountService {
 
     private fetchWalletAccount$ = new ReplaySubject<string>();
 
-    constructor(private walletService: WalletService, private errorService: ErrorService) {}
+    constructor(private walletService: WalletsService, private errorService: ErrorService) {}
 
     fetchWalletAccount(walletID: string): void {
         this.fetchWalletAccount$.next(walletID);

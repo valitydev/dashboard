@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/co
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { map } from 'rxjs/operators';
 
-import { WalletService } from '@dsh/api';
+import { WalletsService } from '@dsh/api/wallet';
 import { coerceBoolean } from '@dsh/utils';
 
 import { WalletId } from './types';
@@ -21,7 +21,7 @@ export class WalletAutocompleteFieldComponent extends WrappedFormControlSupercla
     wallets$ = this.walletService.wallets$;
     options$ = this.wallets$.pipe(map(walletsToOptions));
 
-    constructor(injector: Injector, private walletService: WalletService) {
+    constructor(injector: Injector, private walletService: WalletsService) {
         super(injector);
     }
 }

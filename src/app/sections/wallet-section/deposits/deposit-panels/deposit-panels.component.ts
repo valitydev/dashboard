@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Deposit } from '@vality/swag-wallet';
 import isEmpty from 'lodash-es/isEmpty';
-
-import { Deposit } from '@dsh/api-codegen/wallet-api/swagger-codegen';
 
 @Component({
     selector: 'dsh-deposit-panels',
