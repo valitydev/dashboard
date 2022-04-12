@@ -3,7 +3,7 @@ import { PaymentInstitutionsService as ApiPaymentInstitutionsService } from '@va
 import { BehaviorSubject, defer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-import { publishReplayRefCount } from '@dsh/operators';
+import { shareReplayRefCount } from '@dsh/operators';
 
 import { createApi } from '../utils';
 
@@ -13,7 +13,7 @@ import { createApi } from '../utils';
 export class PaymentInstitutionsService extends createApi(ApiPaymentInstitutionsService) {
     paymentInstitutions$ = defer(() => this.reload$).pipe(
         switchMap(() => this.getPaymentInstitutions()),
-        publishReplayRefCount()
+        shareReplayRefCount()
     );
 
     private reload$ = new BehaviorSubject<void>(undefined);

@@ -14,7 +14,7 @@ import { map } from 'rxjs/operators';
 
 import { ShopsService } from '@dsh/api/payments';
 import { createDateRangeWithPreset, Preset, DateRangeWithPreset } from '@dsh/components/date-range-filter';
-import { publishReplayRefCount } from '@dsh/operators';
+import { shareReplayRefCount } from '@dsh/operators';
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
@@ -49,7 +49,7 @@ export class InvoicesSearchFiltersComponent implements OnChanges, OnInit {
         shopIDs: null,
         invoiceStatus: null,
     });
-    shops$ = defer(() => this.realm$).pipe(filterShopsByRealm(this.shopService.shops$), publishReplayRefCount());
+    shops$ = defer(() => this.realm$).pipe(filterShopsByRealm(this.shopService.shops$), shareReplayRefCount());
     isAdditionalFilterApplied$ = defer(() => this.additionalFilters$).pipe(map(negate(isEmpty)));
 
     get keys(): string[] {
