@@ -8,7 +8,6 @@ import {
     InlineResponse200,
     InlineResponse2001,
     InlineResponse2002,
-    InlineResponse2003,
     InlineResponse2006,
     InlineResponse2007,
     SplitUnit,
@@ -29,31 +28,6 @@ export class AnalyticsService {
         private keycloakTokenInfoService: KeycloakTokenInfoService,
         private idGenerator: IdGeneratorService
     ) {}
-
-    getPaymentsCount(
-        fromTime: string,
-        toTime: string,
-        params: {
-            shopIDs?: string[];
-            excludeShopIDs?: string[];
-            paymentInstitutionRealm?: RealmEnum;
-        }
-    ): Observable<InlineResponse2003> {
-        return this.partyID$.pipe(
-            switchMap((partyID) =>
-                this.analyticsService.getPaymentsCount(
-                    this.idGenerator.shortUuid(),
-                    partyID,
-                    toDateLike(fromTime),
-                    toDateLike(toTime),
-                    undefined,
-                    params.shopIDs,
-                    params.excludeShopIDs,
-                    params.paymentInstitutionRealm
-                )
-            )
-        );
-    }
 
     getPaymentsSubErrorDistribution(
         fromTime: string,

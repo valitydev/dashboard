@@ -36,7 +36,7 @@ export class PaymentsAmountService {
     error$ = attach(() => this.errorSub$, this.paymentsAmount$);
 
     private searchParams$ = new ReplaySubject<SearchParams>(1);
-    private errorSub$ = new ReplaySubject<unknown>();
+    private errorSub$ = new ReplaySubject<unknown>(1);
     private progress$ = new BehaviorSubject<number>(0);
 
     constructor(private analyticsService: AnalyticsService) {}

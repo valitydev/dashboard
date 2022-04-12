@@ -1,63 +1,48 @@
 import { Injectable } from '@angular/core';
-import isEqual from 'lodash-es/isEqual';
-import { combineLatest, forkJoin, merge, Subject } from 'rxjs';
-import { distinctUntilChanged, map, pluck, shareReplay, switchMap } from 'rxjs/operators';
+import { forkJoin, ReplaySubject, BehaviorSubject, defer } from 'rxjs';
+import { map, switchMap, withLatestFrom } from 'rxjs/operators';
 
-import { AnalyticsService } from '@dsh/api/analytics';
+import { AnalyticsService } from '@dsh/api/anapi';
+import { shareReplayRefCount } from '@dsh/operators';
+import { progressTo, errorTo, attach, inProgressFrom, distinctUntilChangedDeep } from '@dsh/utils';
 
-import { filterError, filterPayload, replaceError, SHARE_REPLAY_CONF, progress } from '../../../../custom-operators';
 import { SearchParams } from '../search-params';
 import { searchParamsToStatSearchParams } from '../utils';
 import { countResultToStatData } from './count-result-to-stat-data';
 
 @Injectable()
 export class PaymentsCountService {
-    private initialSearchParams$ = new Subject<SearchParams>();
-    private searchParams$ = this.initialSearchParams$.pipe(
+    paymentsCount$ = defer(() => this.searchParams$).pipe(
+        distinctUntilChangedDeep(),
         map(searchParamsToStatSearchParams),
-        distinctUntilChanged(isEqual),
-        shareReplay(SHARE_REPLAY_CONF)
-    );
-    private currencyChange$ = this.initialSearchParams$.pipe(
-        pluck('currency'),
-        distinctUntilChanged(),
-        shareReplay(SHARE_REPLAY_CONF)
-    );
-    private paymentsCountOrError$ = this.searchParams$.pipe(
         switchMap(({ current, previous, realm }) =>
             forkJoin([
-                this.analyticsService.getPaymentsCount(current.fromTime, current.toTime, {
+                this.analyticsService.getPaymentsCount({
+                    ...current,
                     paymentInstitutionRealm: realm,
-                    shopIDs: current.shopIDs,
                 }),
-                this.analyticsService.getPaymentsCount(previous.fromTime, previous.toTime, {
+                this.analyticsService.getPaymentsCount({
+                    ...previous,
                     paymentInstitutionRealm: realm,
-                    shopIDs: previous.shopIDs,
                 }),
-            ]).pipe(replaceError)
-        )
-    );
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    paymentsCountResult$ = this.paymentsCountOrError$.pipe(
-        filterPayload,
+            ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$))
+        ),
         map((res) => res.map((r) => r.result)),
         map(countResultToStatData),
-        shareReplay(SHARE_REPLAY_CONF)
+        withLatestFrom(defer(() => this.searchParams$)),
+        map(([result, { currency }]) => result.find((r) => r.currency === currency)),
+        shareReplayRefCount()
     );
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    paymentsCount$ = combineLatest([this.paymentsCountResult$, this.currencyChange$]).pipe(
-        map(([result, currency]) => result.find((r) => r.currency === currency))
-    );
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    isLoading$ = progress(this.searchParams$, this.paymentsCount$).pipe(shareReplay(SHARE_REPLAY_CONF));
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    error$ = this.paymentsCountOrError$.pipe(filterError, shareReplay(SHARE_REPLAY_CONF));
+    isLoading$ = inProgressFrom(() => this.progress$, this.paymentsCount$);
+    error$ = attach(() => this.errorSub$, this.paymentsCount$);
 
-    constructor(private analyticsService: AnalyticsService) {
-        merge(this.searchParams$, this.paymentsCount$, this.isLoading$, this.error$).subscribe();
-    }
+    private searchParams$ = new ReplaySubject<SearchParams>(1);
+    private errorSub$ = new ReplaySubject<unknown>(1);
+    private progress$ = new BehaviorSubject<number>(0);
+
+    constructor(private analyticsService: AnalyticsService) {}
 
     updateSearchParams(searchParams: SearchParams) {
-        this.initialSearchParams$.next(searchParams);
+        this.searchParams$.next(searchParams);
     }
 }

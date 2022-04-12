@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { forkJoin, of, Subject, defer, ReplaySubject, BehaviorSubject } from 'rxjs';
+import { forkJoin, of, defer, ReplaySubject, BehaviorSubject } from 'rxjs';
 import { map, switchMap, withLatestFrom } from 'rxjs/operators';
 
 import { AnalyticsService } from '@dsh/api/anapi';
@@ -38,8 +38,8 @@ export class PaymentSplitAmountService {
     isLoading$ = inProgressFrom(() => this.progress$, this.splitAmount$);
     error$ = attach(() => this.errorSub$, this.splitAmount$);
 
-    private searchParams$ = new Subject<SearchParams>();
-    private errorSub$ = new ReplaySubject<unknown>();
+    private searchParams$ = new ReplaySubject<SearchParams>(1);
+    private errorSub$ = new ReplaySubject<unknown>(1);
     private progress$ = new BehaviorSubject<number>(0);
 
     constructor(private analyticsService: AnalyticsService) {}
