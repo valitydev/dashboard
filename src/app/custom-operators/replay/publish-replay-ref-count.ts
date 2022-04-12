@@ -2,6 +2,7 @@ import { MonoTypeOperatorFunction } from 'rxjs';
 import { publishReplay, refCount } from 'rxjs/operators';
 
 /**
+ * @deprecated use shareReplayRefCount()
  * Gives value even after everyone has unsubscribed
  */
 export function publishReplayRefCount<T>(bufferSize = 1): MonoTypeOperatorFunction<T> {

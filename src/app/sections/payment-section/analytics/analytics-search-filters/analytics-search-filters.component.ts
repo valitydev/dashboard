@@ -3,10 +3,10 @@ import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Shop } from '@vality/swag-payments';
 import { combineLatest, defer, Observable } from 'rxjs';
-import { first, map, pluck, shareReplay } from 'rxjs/operators';
+import { first, map, pluck } from 'rxjs/operators';
 
 import { createDateRangeWithPreset, DateRangeWithPreset, Preset } from '@dsh/components/date-range-filter';
-import { SHARE_REPLAY_CONF } from '@dsh/operators';
+import { shareReplayRefCount } from '@dsh/operators';
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
@@ -33,10 +33,10 @@ export class AnalyticsSearchFiltersComponent implements OnInit, OnChanges {
     form = this.fb.group<Filters>({ shopIDs: null, dateRange: this.defaultDateRange, currency: null });
     currencies$: Observable<string[]> = defer(() => this.shops$).pipe(map(shopsToCurrencies));
     shopsByCurrency$: Observable<Shop[]> = defer(() =>
-        combineLatest(getFormValueChanges(this.form).pipe(pluck('currency')), this.shops$)
+        combineLatest([getFormValueChanges(this.form).pipe(pluck('currency')), this.shops$])
     ).pipe(
         map(([currency, shops]) => shops.filter((shop) => shop.currency === currency)),
-        shareReplay(SHARE_REPLAY_CONF)
+        shareReplayRefCount()
     );
 
     private shops$ = this.realmShopsService.shops$;

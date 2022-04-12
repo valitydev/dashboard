@@ -1,12 +1,12 @@
 import { Injector } from '@angular/core';
 import { AbstractControl, FormControl } from '@ngneat/reactive-forms';
-import { WrappedControlSuperclass } from '@s-libs/ng-core';
+import { FormComponentSuperclass } from '@s-libs/ng-core';
 import isEqual from 'lodash-es/isEqual';
 import { BehaviorSubject, defer, Observable } from 'rxjs';
 
 import { isEmptyValue } from '@dsh/utils';
 
-export abstract class FilterSuperclass<Inner, Outer = Inner> extends WrappedControlSuperclass<Outer, Inner> {
+export abstract class FilterSuperclass<Inner, Outer = Inner> extends FormComponentSuperclass<Outer> {
     control: AbstractControl<Inner> = new FormControl<Inner>();
 
     get value(): Inner {
@@ -63,5 +63,13 @@ export abstract class FilterSuperclass<Inner, Outer = Inner> extends WrappedCont
             this._savedValue$.next(value);
             this.emitOutgoingValue(this.innerToOuter(value));
         }
+    }
+
+    protected outerToInner(outer: Outer): Inner {
+        return outer as never;
+    }
+
+    protected innerToOuter(inner: Inner): Outer {
+        return inner as never;
     }
 }

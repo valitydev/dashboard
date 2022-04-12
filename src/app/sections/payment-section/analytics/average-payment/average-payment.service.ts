@@ -1,62 +1,52 @@
 import { Injectable } from '@angular/core';
-import isEqual from 'lodash-es/isEqual';
-import { combineLatest, forkJoin, merge, Subject } from 'rxjs';
-import { distinctUntilChanged, map, pluck, shareReplay, switchMap } from 'rxjs/operators';
+import { forkJoin, Subject, defer, ReplaySubject, BehaviorSubject } from 'rxjs';
+import { map, switchMap, withLatestFrom } from 'rxjs/operators';
 
-import { AnalyticsService } from '@dsh/api/analytics';
+import { AnalyticsService } from '@dsh/api/anapi';
+import { shareReplayRefCount } from '@dsh/operators';
+import { distinctUntilChangedDeep, inProgressFrom, attach, errorTo, progressTo } from '@dsh/utils';
 
-import { filterError, filterPayload, replaceError, SHARE_REPLAY_CONF, progress } from '../../../../custom-operators';
 import { SearchParams } from '../search-params';
 import { amountResultToStatData, searchParamsToStatSearchParams } from '../utils';
 
 @Injectable()
 export class AveragePaymentService {
-    private initialSearchParams$ = new Subject<SearchParams>();
-    private searchParams$ = this.initialSearchParams$.pipe(
+    averagePayment$ = defer(() => this.searchParams$).pipe(
         map(searchParamsToStatSearchParams),
-        distinctUntilChanged(isEqual),
-        shareReplay(SHARE_REPLAY_CONF)
-    );
-    private currencyChange$ = this.initialSearchParams$.pipe(
-        pluck('currency'),
-        distinctUntilChanged(),
-        shareReplay(SHARE_REPLAY_CONF)
-    );
-    private averagePaymentOrError$ = this.searchParams$.pipe(
+        distinctUntilChangedDeep(),
         switchMap(({ current, previous, realm }) =>
             forkJoin([
-                this.analyticsService.getAveragePayment(current.fromTime, current.toTime, {
+                this.analyticsService.getAveragePayment({
+                    fromTime: current.fromTime,
+                    toTime: current.toTime,
                     shopIDs: current.shopIDs,
                     paymentInstitutionRealm: realm,
                 }),
-                this.analyticsService.getAveragePayment(previous.fromTime, previous.toTime, {
+                this.analyticsService.getAveragePayment({
+                    fromTime: previous.fromTime,
+                    toTime: previous.toTime,
                     shopIDs: previous.shopIDs,
                     paymentInstitutionRealm: realm,
                 }),
-            ]).pipe(replaceError)
-        )
-    );
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    averagePaymentResult$ = this.averagePaymentOrError$.pipe(
-        filterPayload,
+            ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$))
+        ),
         map((res) => res.map((r) => r.result)),
         map(amountResultToStatData),
-        shareReplay(SHARE_REPLAY_CONF)
+        withLatestFrom(defer(() => this.searchParams$)),
+        map(([result, { currency }]) => result.find((r) => r.currency === currency)),
+        shareReplayRefCount()
     );
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    averagePayment$ = combineLatest([this.averagePaymentResult$, this.currencyChange$]).pipe(
-        map(([result, currency]) => result.find((r) => r.currency === currency))
-    );
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    isLoading$ = progress(this.searchParams$, this.averagePayment$).pipe(shareReplay(SHARE_REPLAY_CONF));
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    error$ = this.averagePaymentOrError$.pipe(filterError, shareReplay(SHARE_REPLAY_CONF));
 
-    constructor(private analyticsService: AnalyticsService) {
-        merge(this.searchParams$, this.averagePayment$, this.isLoading$, this.error$).subscribe();
-    }
+    isLoading$ = inProgressFrom(() => this.progress$, this.averagePayment$);
+    error$ = attach(() => this.errorSub$, this.averagePayment$);
+
+    private searchParams$ = new Subject<SearchParams>();
+    private errorSub$ = new ReplaySubject<unknown>();
+    private progress$ = new BehaviorSubject<number>(0);
+
+    constructor(private analyticsService: AnalyticsService) {}
 
     updateSearchParams(searchParams: SearchParams) {
-        this.initialSearchParams$.next(searchParams);
+        this.searchParams$.next(searchParams);
     }
 }

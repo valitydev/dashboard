@@ -9,8 +9,6 @@ import {
     InlineResponse2001,
     InlineResponse2002,
     InlineResponse2003,
-    InlineResponse2004,
-    InlineResponse2005,
     InlineResponse2006,
     InlineResponse2007,
     SplitUnit,
@@ -32,56 +30,6 @@ export class AnalyticsService {
         private idGenerator: IdGeneratorService
     ) {}
 
-    getAveragePayment(
-        fromTime: string,
-        toTime: string,
-        params: {
-            shopIDs?: string[];
-            excludeShopIDs?: string[];
-            paymentInstitutionRealm?: RealmEnum;
-        }
-    ): Observable<InlineResponse2001> {
-        return this.partyID$.pipe(
-            switchMap((partyID) =>
-                this.analyticsService.getAveragePayment(
-                    this.idGenerator.shortUuid(),
-                    partyID,
-                    toDateLike(fromTime),
-                    toDateLike(toTime),
-                    undefined,
-                    params.shopIDs,
-                    params.excludeShopIDs,
-                    params.paymentInstitutionRealm
-                )
-            )
-        );
-    }
-
-    getPaymentsAmount(
-        fromTime: string,
-        toTime: string,
-        params: {
-            shopIDs?: string[];
-            excludeShopIDs?: string[];
-            paymentInstitutionRealm?: RealmEnum;
-        }
-    ): Observable<InlineResponse2001> {
-        return this.partyID$.pipe(
-            switchMap((partyID) =>
-                this.analyticsService.getPaymentsAmount(
-                    this.idGenerator.shortUuid(),
-                    partyID,
-                    toDateLike(fromTime),
-                    toDateLike(toTime),
-                    undefined,
-                    params.shopIDs,
-                    params.excludeShopIDs,
-                    params.paymentInstitutionRealm
-                )
-            )
-        );
-    }
-
     getPaymentsCount(
         fromTime: string,
         toTime: string,
@@ -94,31 +42,6 @@ export class AnalyticsService {
         return this.partyID$.pipe(
             switchMap((partyID) =>
                 this.analyticsService.getPaymentsCount(
-                    this.idGenerator.shortUuid(),
-                    partyID,
-                    toDateLike(fromTime),
-                    toDateLike(toTime),
-                    undefined,
-                    params.shopIDs,
-                    params.excludeShopIDs,
-                    params.paymentInstitutionRealm
-                )
-            )
-        );
-    }
-
-    getPaymentsErrorDistribution(
-        fromTime: string,
-        toTime: string,
-        params: {
-            shopIDs?: string[];
-            excludeShopIDs?: string[];
-            paymentInstitutionRealm?: RealmEnum;
-        }
-    ): Observable<InlineResponse2004> {
-        return this.partyID$.pipe(
-            switchMap((partyID) =>
-                this.analyticsService.getPaymentsErrorDistribution(
                     this.idGenerator.shortUuid(),
                     partyID,
                     toDateLike(fromTime),
@@ -198,33 +121,6 @@ export class AnalyticsService {
                     partyID,
                     toDateLike(fromTime),
                     toDateLike(toTime),
-                    undefined,
-                    params.shopIDs,
-                    params.excludeShopIDs,
-                    params.paymentInstitutionRealm
-                )
-            )
-        );
-    }
-
-    getPaymentsSplitAmount(
-        fromTime: string,
-        toTime: string,
-        splitUnit: SplitUnit,
-        params: {
-            shopIDs?: string[];
-            excludeShopIDs?: string[];
-            paymentInstitutionRealm?: RealmEnum;
-        }
-    ): Observable<InlineResponse2005> {
-        return this.partyID$.pipe(
-            switchMap((partyID) =>
-                this.analyticsService.getPaymentsSplitAmount(
-                    this.idGenerator.shortUuid(),
-                    partyID,
-                    toDateLike(fromTime),
-                    toDateLike(toTime),
-                    splitUnit,
                     undefined,
                     params.shopIDs,
                     params.excludeShopIDs,

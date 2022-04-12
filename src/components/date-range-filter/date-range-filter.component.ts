@@ -66,13 +66,24 @@ export class DateRangeFilterComponent extends FilterSuperclass<InnerDateRange, D
         const {
             dateRange: { start, end },
         } = this.value;
+        let newStart: Moment;
+        let newEnd: Moment;
+        if (start && !end) {
+            if (start.isBefore(date)) {
+                newStart = start;
+                newEnd = date;
+            } else {
+                newStart = date;
+                newEnd = start;
+            }
+        } else {
+            newStart = date;
+        }
         this.value = {
-            dateRange:
-                start === null || end !== null
-                    ? new MatDateRange(date, null)
-                    : start.isBefore(date)
-                    ? new MatDateRange(start.startOf('d'), date.endOf('d'))
-                    : new MatDateRange(date, start.endOf('d')),
+            dateRange: new MatDateRange(
+                newStart?.local()?.startOf('day')?.utc(true),
+                newEnd?.local()?.endOf('day')?.utc(true)
+            ),
             preset: Preset.Custom,
         };
     }

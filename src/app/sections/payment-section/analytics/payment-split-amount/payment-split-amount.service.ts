@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import isEqual from 'lodash-es/isEqual';
-import { combineLatest, forkJoin, merge, of, Subject } from 'rxjs';
-import { distinctUntilChanged, map, pluck, shareReplay, switchMap, withLatestFrom } from 'rxjs/operators';
+import { forkJoin, of, Subject, defer, ReplaySubject, BehaviorSubject } from 'rxjs';
+import { map, switchMap, withLatestFrom } from 'rxjs/operators';
 
-import { AnalyticsService } from '@dsh/api/analytics';
+import { AnalyticsService } from '@dsh/api/anapi';
+import { shareReplayRefCount } from '@dsh/operators';
+import { errorTo, progressTo, attach, inProgressFrom, distinctUntilChangedDeep } from '@dsh/utils';
 
-import { filterError, filterPayload, replaceError, SHARE_REPLAY_CONF, progress } from '../../../../custom-operators';
 import { SearchParams } from '../search-params';
 import { searchParamsToParamsWithSplitUnit } from '../utils';
 import { prepareSplitAmount } from './prepare-split-amount';
@@ -14,50 +13,38 @@ import { splitAmountToChartData } from './split-amount-to-chart-data';
 
 @Injectable()
 export class PaymentSplitAmountService {
-    private initialSearchParams$ = new Subject<SearchParams>();
-    private searchParams$ = this.initialSearchParams$.pipe(
+    splitAmount$ = defer(() => this.searchParams$).pipe(
+        distinctUntilChangedDeep(),
         map(searchParamsToParamsWithSplitUnit),
-        distinctUntilChanged(isEqual),
-        shareReplay(SHARE_REPLAY_CONF)
-    );
-    private currencyChange$ = this.initialSearchParams$.pipe(
-        pluck('currency'),
-        distinctUntilChanged(),
-        shareReplay(SHARE_REPLAY_CONF)
-    );
-    private splitAmountOrError$ = this.searchParams$.pipe(
-        withLatestFrom(this.route.params.pipe(pluck('realm'))),
-        switchMap(([{ fromTime, toTime, splitUnit, shopIDs }, paymentInstitutionRealm]) =>
+        switchMap(({ fromTime, toTime, splitUnit, shopIDs, realm }) =>
             forkJoin([
                 of(fromTime),
                 of(toTime),
-                this.analyticsService.getPaymentsSplitAmount(fromTime, toTime, splitUnit, {
-                    paymentInstitutionRealm,
+                this.analyticsService.getPaymentsSplitAmount({
+                    fromTime,
+                    toTime,
+                    splitUnit,
+                    paymentInstitutionRealm: realm,
                     shopIDs,
                 }),
-            ]).pipe(replaceError)
-        )
-    );
-    private splitAmountResult$ = this.splitAmountOrError$.pipe(
-        filterPayload,
+            ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$))
+        ),
         map(([fromTime, toTime, splitAmount]) => prepareSplitAmount(splitAmount?.result, fromTime, toTime)),
         map(splitAmountToChartData),
-        shareReplay(SHARE_REPLAY_CONF)
+        withLatestFrom(defer(() => this.searchParams$)),
+        map(([result, { currency }]) => result.find((r) => r.currency === currency)),
+        shareReplayRefCount()
     );
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    splitAmount$ = combineLatest([this.splitAmountResult$, this.currencyChange$]).pipe(
-        map(([result, currency]) => result.find((r) => r.currency === currency))
-    );
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    isLoading$ = progress(this.searchParams$, this.splitAmount$).pipe(shareReplay(SHARE_REPLAY_CONF));
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    error$ = this.splitAmountOrError$.pipe(filterError, shareReplay(SHARE_REPLAY_CONF));
+    isLoading$ = inProgressFrom(() => this.progress$, this.splitAmount$);
+    error$ = attach(() => this.errorSub$, this.splitAmount$);
 
-    constructor(private analyticsService: AnalyticsService, private route: ActivatedRoute) {
-        merge(this.splitAmount$, this.isLoading$, this.error$).subscribe();
-    }
+    private searchParams$ = new Subject<SearchParams>();
+    private errorSub$ = new ReplaySubject<unknown>();
+    private progress$ = new BehaviorSubject<number>(0);
+
+    constructor(private analyticsService: AnalyticsService) {}
 
     updateSearchParams(searchParams: SearchParams) {
-        this.initialSearchParams$.next(searchParams);
+        this.searchParams$.next(searchParams);
     }
 }
