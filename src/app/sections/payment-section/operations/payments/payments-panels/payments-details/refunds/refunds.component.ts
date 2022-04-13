@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { RefundSearchResult, PaymentSearchResult } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 
-import { RefundSearchResult, PaymentSearchResult } from '@dsh/api-codegen/anapi';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 
 import { PaymentIds } from '../../../types';

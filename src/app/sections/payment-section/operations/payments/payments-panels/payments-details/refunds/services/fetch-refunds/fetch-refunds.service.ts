@@ -1,19 +1,23 @@
 import { Inject, Injectable } from '@angular/core';
+import { SearchRefundsRequestParams, RefundSearchResult } from '@vality/swag-anapi-v2';
+import moment from 'moment';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 
-import { RefundSearchResult } from '@dsh/api-codegen/anapi';
-import { RefundSearchService, RefundsSearchParams } from '@dsh/api/search';
+import { SearchService } from '@dsh/api/anapi';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
-import { DEBOUNCE_FETCHER_ACTION_TIME, FetchResult, PartialFetcher } from '@dsh/app/shared';
+import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
 import { booleanDebounceTime } from '@dsh/operators';
 
 @Injectable()
-export class FetchRefundsService extends PartialFetcher<RefundSearchResult, RefundsSearchParams> {
+export class FetchRefundsService extends PartialFetcher<
+    RefundSearchResult,
+    Pick<SearchRefundsRequestParams, 'invoiceID' | 'paymentID'>
+> {
     isLoading$: Observable<boolean> = this.doAction$.pipe(booleanDebounceTime(), shareReplay(1));
 
     constructor(
-        private refundSearchService: RefundSearchService,
+        private searchService: SearchService,
         @Inject(SEARCH_LIMIT)
         private searchLimit: number,
         @Inject(DEBOUNCE_FETCHER_ACTION_TIME)
@@ -23,17 +27,16 @@ export class FetchRefundsService extends PartialFetcher<RefundSearchResult, Refu
     }
 
     protected fetch(
-        { invoiceID, paymentID }: RefundsSearchParams,
+        { invoiceID, paymentID }: Pick<SearchRefundsRequestParams, 'invoiceID' | 'paymentID'>,
         continuationToken: string
-    ): Observable<FetchResult<RefundSearchResult>> {
-        return this.refundSearchService.searchRefundsByDuration(
-            { amount: 3, unit: 'y' },
-            {
-                invoiceID,
-                paymentID,
-            },
-            this.searchLimit,
-            continuationToken
-        );
+    ) {
+        return this.searchService.searchRefunds({
+            fromTime: moment().subtract(3, 'y').startOf('d').utc().format(),
+            toTime: moment().endOf('d').utc().format(),
+            invoiceID,
+            paymentID,
+            limit: this.searchLimit,
+            continuationToken,
+        });
     }
 }
