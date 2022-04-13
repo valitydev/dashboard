@@ -1,6 +1,5 @@
+import { Invoice } from '@vality/swag-anapi-v2';
 import { PaymentInstitution } from '@vality/swag-payments';
-
-import { Invoice } from '../../../../../api-codegen/anapi/swagger-codegen';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 

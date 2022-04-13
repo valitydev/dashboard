@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Invoice, PaymentSearchResult } from '@vality/swag-anapi-v2';
 import isEmpty from 'lodash-es/isEmpty';
 import isNil from 'lodash-es/isNil';
 import isObject from 'lodash-es/isObject';
 import { Observable } from 'rxjs';
 
-import { Invoice, PaymentSearchResult } from '@dsh/api-codegen/anapi';
 import { ComponentChange, ComponentChanges } from '@dsh/type-utils';
 
-import { PaymentIds } from '../../types/payment-ids';
+import { PaymentIds } from '../../types';
 import { InvoiceDetailsService } from './services/invoice-details/invoice-details.service';
 import { isPaymentFlowHold } from './types/is-payment-flow-hold';
 

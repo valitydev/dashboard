@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Invoice } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';
 
 import { ExpandedIdManager } from '@dsh/app/shared/services';
 
-import { Invoice } from '../../../../../../api-codegen/anapi';
 import { FetchInvoicesService } from '../fetch-invoices/fetch-invoices.service';
 
 @Injectable()
