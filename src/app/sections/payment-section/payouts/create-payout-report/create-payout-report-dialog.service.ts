@@ -1,21 +1,9 @@
 import { Injectable } from '@angular/core';
-import moment from 'moment';
+import { Payout } from '@vality/swag-anapi-v2';
 import { BehaviorSubject, of, Subject } from 'rxjs';
-import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
+import { catchError, filter, switchMap, tap } from 'rxjs/operators';
 
-import { Payout } from '@dsh/api-codegen/anapi';
-import { ReportsService } from '@dsh/api/reports';
-import { CreateReportReq } from '@dsh/api/reports/create-reports';
-
-const daterangeReducer = (_, { fromTime, toTime }) =>
-    ({
-        fromTime,
-        toTime: moment(toTime).add(1, 'ms').utc().format('YYYY-MM-DDTHH:mm:ss.SSSS[Z]'),
-    } as any);
-export const toCreateReportParams = ({ shopID, payoutSummary }: Payout): CreateReportReq => ({
-    ...payoutSummary.reduce(daterangeReducer, null),
-    shopID,
-});
+import { ReportsService } from '@dsh/api/anapi';
 
 @Injectable()
 export class CreatePayoutReportDialogService {
@@ -38,16 +26,22 @@ export class CreatePayoutReportDialogService {
                     this.loading$.next(true);
                     this.created$.next(false);
                 }),
-                map(toCreateReportParams),
-                switchMap((params) =>
-                    this.reportsService.createReport(params).pipe(
-                        catchError((e) => {
-                            console.error(e);
-                            this.loading$.next(false);
-                            this.error$.next();
-                            return of('error');
+                switchMap((payout) =>
+                    this.reportsService
+                        .createReport({
+                            // TODO: fix
+                            fromTime: payout.createdAt,
+                            toTime: payout.createdAt,
+                            reportType: 'paymentRegistry',
                         })
-                    )
+                        .pipe(
+                            catchError((e) => {
+                                console.error(e);
+                                this.loading$.next(false);
+                                this.error$.next();
+                                return of('error');
+                            })
+                        )
                 ),
                 filter((result) => result !== 'error')
             )

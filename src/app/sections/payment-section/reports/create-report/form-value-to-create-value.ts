@@ -1,11 +1,17 @@
+import { CreateReportRequestParams } from '@vality/swag-anapi-v2';
 import moment from 'moment';
 
-import { CreateReportReq } from '@dsh/api/reports/create-reports';
-
-export const formValueToCreateValue = ({ fromDate, fromTime, toDate, toTime, shopID }): CreateReportReq => ({
+export const formValueToCreateValue = ({
+    fromDate,
+    fromTime,
+    toDate,
+    toTime,
+    shopID,
+}): Omit<CreateReportRequestParams, 'xRequestID' | 'partyID'> => ({
     fromTime: getDateWithTime(fromDate, fromTime),
     toTime: getDateWithTime(toDate, toTime),
     shopID: shopID || undefined,
+    reportType: 'paymentRegistry',
 });
 
 const getDateWithTime = (date: string, time: string): string =>

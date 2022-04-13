@@ -3,8 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
-
-import { Payout } from '@dsh/api-codegen/anapi';
+import { Payout } from '@vality/swag-anapi-v2';
 
 import { CreatePayoutReportDialogService } from './create-payout-report-dialog.service';
 
@@ -37,7 +36,7 @@ export class CreatePayoutReportDialogComponent implements OnInit {
     }
 
     toReports() {
-        this.router.navigate([...this.router.url.split('/').slice(0, -1), 'reports']);
+        void this.router.navigate([...this.router.url.split('/').slice(0, -1), 'reports']);
         this.dialogRef.close();
     }
 

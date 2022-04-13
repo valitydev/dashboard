@@ -5,7 +5,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { combineLatest, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, switchMap, takeUntil } from 'rxjs/operators';
 
-import { ReportsService } from '@dsh/api/reports';
+import { ReportsService } from '@dsh/api/anapi';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 
 @Injectable()
@@ -42,7 +42,7 @@ export class CancelReportService {
                     ])
                 ),
                 switchMap(([reportID]) =>
-                    this.reportsService.cancelReport(reportID).pipe(
+                    this.reportsService.cancelReport({ reportID }).pipe(
                         catchError((e) => {
                             console.error(e);
                             this.snackBar.open(this.transloco.translate('errors.cancelError', null, 'reports'), 'OK');

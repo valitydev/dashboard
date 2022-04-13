@@ -3,6 +3,7 @@
     <mat-divider></mat-divider>
     <div class="dsh-title">{{ payout?.payoutToolDetails?.detailsType | payoutToolDetailsType }}</div>
     <dsh-payout-tool-details [payoutToolDetails]="payout?.payoutToolDetails"></dsh-payout-tool-details>
-    <mat-divider></mat-divider>
-    <dsh-payout-actions (createReport)="createReport()"></dsh-payout-actions>
+    <!--    TODO fix create report fromTime toTime-->
+    <!--    <mat-divider></mat-divider>-->
+    <!--    <dsh-payout-actions (createReport)="createReport()"></dsh-payout-actions>-->
 </div>

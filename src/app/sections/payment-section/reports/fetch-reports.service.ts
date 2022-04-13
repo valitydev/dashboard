@@ -1,10 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
+import { Report } from '@vality/swag-anapi-v2';
 import isEmpty from 'lodash-es/isEmpty';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 
-import { InlineResponse20013, Report } from '@dsh/api-codegen/anapi';
-import { ReportsService as ReportsApiService } from '@dsh/api/reports';
+import { ReportsService as ReportsApiService } from '@dsh/api/anapi';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { PartialFetcher } from '@dsh/app/shared';
 import { booleanDebounceTime, mapToTimestamp } from '@dsh/operators';
@@ -24,7 +24,7 @@ export class FetchReportsService extends PartialFetcher<Report, SearchFiltersPar
         super();
     }
 
-    protected fetch({ realm, ...p }: SearchFiltersParams, continuationToken: string): Observable<InlineResponse20013> {
+    protected fetch({ realm, ...p }: SearchFiltersParams, continuationToken: string) {
         return this.reportsService.searchReports({
             ...p,
             reportTypes: isEmpty(p.reportTypes) ? Object.values(Report.ReportTypeEnum) : p.reportTypes,
