@@ -1,6 +1,5 @@
+import { PaymentsSubErrorsDistributionResult } from '@vality/swag-anapi-v2';
 import { SubError } from '@vality/swag-payments';
-
-import { PaymentsSubErrorsDistributionResult } from '@dsh/api-codegen/anapi/swagger-codegen';
 
 import { ErrorDistribution } from './error-distribution';
 import { KNOWN_ERRORS } from './known-errors';

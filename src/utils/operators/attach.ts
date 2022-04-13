@@ -1,10 +1,9 @@
-import { merge, Observable, MonoTypeOperatorFunction, EMPTY } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { merge, Observable, MonoTypeOperatorFunction, EMPTY, mergeMap } from 'rxjs';
 
 import { ObservableOrFn, getObservable } from './get-observable';
 
 export function attach<T>(attached: ObservableOrFn<T>, main: ObservableOrFn): Observable<T> {
-    return merge(getObservable(attached), getObservable(main).pipe(map(() => EMPTY)) as Observable<never>);
+    return merge(getObservable(attached), getObservable(main).pipe(mergeMap(() => EMPTY)));
 }
 
 export function attachTo<T>(main: ObservableOrFn): MonoTypeOperatorFunction<T> {

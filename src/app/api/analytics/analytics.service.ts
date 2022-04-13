@@ -8,7 +8,6 @@ import {
     InlineResponse200,
     InlineResponse2001,
     InlineResponse2002,
-    InlineResponse2007,
 } from '@dsh/api-codegen/anapi';
 import { KeycloakTokenInfoService } from '@dsh/app/shared/services';
 import { IdGeneratorService } from '@dsh/app/shared/services/id-generator';
@@ -26,31 +25,6 @@ export class AnalyticsService {
         private keycloakTokenInfoService: KeycloakTokenInfoService,
         private idGenerator: IdGeneratorService
     ) {}
-
-    getPaymentsSubErrorDistribution(
-        fromTime: string,
-        toTime: string,
-        params: {
-            shopIDs?: string[];
-            excludeShopIDs?: string[];
-            paymentInstitutionRealm?: RealmEnum;
-        }
-    ): Observable<InlineResponse2007> {
-        return this.partyID$.pipe(
-            switchMap((partyID) =>
-                this.analyticsService.getPaymentsSubErrorDistribution(
-                    this.idGenerator.shortUuid(),
-                    partyID,
-                    toDateLike(fromTime),
-                    toDateLike(toTime),
-                    undefined,
-                    params.shopIDs,
-                    params.excludeShopIDs,
-                    params.paymentInstitutionRealm
-                )
-            )
-        );
-    }
 
     getPaymentsToolDistribution(
         fromTime: string,
