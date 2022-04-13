@@ -1,25 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Category } from '@vality/swag-payments';
-import { combineLatest, Observable, Subject } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { combineLatest, defer, ReplaySubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { CategoriesService } from '@dsh/api/payments';
-import { SHARE_REPLAY_CONF } from '@dsh/operators';
+import { shareReplayRefCount } from '@dsh/operators';
 
 @Injectable()
 export class CategoryService {
-    category$: Observable<Category | undefined>;
+    category$ = combineLatest([defer(() => this.categoryID$), this.categoriesService.categories$]).pipe(
+        map(([categoryID, categories]) => categories.find((c: Category) => c.categoryID === categoryID)),
+        shareReplayRefCount()
+    );
 
-    private categoryID$ = new Subject<number>();
+    private categoryID$ = new ReplaySubject<number>();
 
-    constructor(private categoriesService: CategoriesService) {
-        this.category$ = combineLatest([this.categoryID$, this.categoriesService.categories$]).pipe(
-            map(([categoryID, categories]: [number, Category[]]) => {
-                return categories.find((c: Category) => c.categoryID === categoryID);
-            }),
-            shareReplay(SHARE_REPLAY_CONF)
-        );
-    }
+    constructor(private categoriesService: CategoriesService) {}
 
     updateID(categoryID: number): void {
         this.categoryID$.next(categoryID);
