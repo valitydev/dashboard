@@ -6,7 +6,6 @@ import { Claim } from '@vality/swag-claim-management';
 import { BehaviorSubject, Observable, Subject, timer } from 'rxjs';
 import { filter, map, shareReplay, switchMap } from 'rxjs/operators';
 
-import { booleanDelay } from '../../../custom-operators';
 import { RouteParamClaimService } from './route-param-claim.service';
 
 const POLLING_PERIOD = 5000;
@@ -25,10 +24,7 @@ export class ReceiveClaimService {
     );
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
-    claimReceived$ = this.claim$.pipe(
-        booleanDelay(),
-        map((r) => !r)
-    );
+    claimReceived$ = this.claim$.pipe(map((r) => !r));
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     error$: Observable<any> = this.receiveClaimError$.asObservable();
