@@ -7,8 +7,6 @@ import { AnalyticsService as APIAnalyticsService, InlineResponse200, InlineRespo
 import { KeycloakTokenInfoService } from '@dsh/app/shared/services';
 import { IdGeneratorService } from '@dsh/app/shared/services/id-generator';
 
-import { toDateLike } from '../utils';
-
 import RealmEnum = PaymentInstitution.RealmEnum;
 
 @Injectable()
@@ -20,31 +18,6 @@ export class AnalyticsService {
         private keycloakTokenInfoService: KeycloakTokenInfoService,
         private idGenerator: IdGeneratorService
     ) {}
-
-    getRefundsAmount(
-        fromTime: string,
-        toTime: string,
-        params: {
-            shopIDs?: string[];
-            excludeShopIDs?: string[];
-            paymentInstitutionRealm?: RealmEnum;
-        }
-    ): Observable<InlineResponse2001> {
-        return this.partyID$.pipe(
-            switchMap((partyID) =>
-                this.analyticsService.getRefundsAmount(
-                    this.idGenerator.shortUuid(),
-                    partyID,
-                    toDateLike(fromTime),
-                    toDateLike(toTime),
-                    undefined,
-                    params.shopIDs,
-                    params.excludeShopIDs,
-                    params.paymentInstitutionRealm
-                )
-            )
-        );
-    }
 
     getCurrentBalances(params: {
         shopIDs?: string[];
