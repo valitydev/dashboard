@@ -16,7 +16,7 @@ export class FetchWalletAccountService {
         switchMap((walletID) =>
             this.walletService.getWalletAccount({ walletID }).pipe(
                 progressTo(this.progress$),
-                errorTo(this.error$),
+                errorTo(this.error$, true),
                 catchError((err) => {
                     this.errorService.error(err, false);
                     return EMPTY;

@@ -64,7 +64,7 @@ export class ExistingBankAccountComponent extends ValidatedWrappedAbstractContro
             switchMap((shop) =>
                 (shop?.contractID && shop?.payoutToolID ? this.getPayoutToolByShop(shop) : of<PayoutTool>(null)).pipe(
                     progressTo(this.progress$),
-                    errorTo(this.error$),
+                    errorTo(this.error$, true),
                     catchError((err) => (this.errorService.error(err, false), EMPTY))
                 )
             ),

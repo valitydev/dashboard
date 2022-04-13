@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import isEqual from 'lodash-es/isEqual';
-import { combineLatest, forkJoin, merge, of, Subject } from 'rxjs';
-import { distinctUntilChanged, map, pluck, shareReplay, switchMap } from 'rxjs/operators';
+import { forkJoin, of, defer, ReplaySubject, BehaviorSubject } from 'rxjs';
+import { map, switchMap, withLatestFrom } from 'rxjs/operators';
 
-import { AnalyticsService } from '@dsh/api/analytics';
+import { AnalyticsService } from '@dsh/api/anapi';
+import { shareReplayRefCount } from '@dsh/operators';
+import { errorTo, progressTo, distinctUntilChangedDeep, inProgressFrom, attach } from '@dsh/utils';
 
-import { filterError, filterPayload, replaceError, SHARE_REPLAY_CONF, progress } from '../../../../custom-operators';
 import { SearchParams } from '../search-params';
 import { searchParamsToParamsWithSplitUnit } from '../utils';
 import { prepareSplitCount } from './prepare-split-count';
@@ -13,45 +13,38 @@ import { splitCountToChartData } from './split-count-to-chart-data';
 
 @Injectable()
 export class PaymentSplitCountService {
-    private initialSearchParams$ = new Subject<SearchParams>();
-    private searchParams$ = this.initialSearchParams$.pipe(
+    splitCount$ = defer(() => this.searchParams$).pipe(
+        distinctUntilChangedDeep(),
         map(searchParamsToParamsWithSplitUnit),
-        distinctUntilChanged(isEqual)
-    );
-    private currencyChange$ = this.initialSearchParams$.pipe(pluck('currency'), distinctUntilChanged());
-    private splitCountOrError$ = this.searchParams$.pipe(
         switchMap(({ fromTime, toTime, splitUnit, shopIDs, realm }) =>
             forkJoin([
                 of(fromTime),
                 of(toTime),
-                this.analyticsService.getPaymentsSplitCount(fromTime, toTime, splitUnit, {
+                this.analyticsService.getPaymentsSplitCount({
+                    fromTime,
+                    toTime,
+                    splitUnit,
                     paymentInstitutionRealm: realm,
                     shopIDs,
                 }),
-            ]).pipe(replaceError)
-        )
-    );
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    private splitCountResult$ = this.splitCountOrError$.pipe(
-        filterPayload,
+            ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$))
+        ),
         map(([fromTime, toTime, splitCount]) => prepareSplitCount(splitCount?.result, fromTime, toTime)),
-        map(splitCountToChartData)
+        map(splitCountToChartData),
+        withLatestFrom(defer(() => this.searchParams$)),
+        map(([result, { currency }]) => result.find((r) => r.currency === currency)),
+        shareReplayRefCount()
     );
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    splitCount$ = combineLatest([this.splitCountResult$, this.currencyChange$]).pipe(
-        map(([result, currency]) => result.find((r) => r.currency === currency)),
-        shareReplay(SHARE_REPLAY_CONF)
-    );
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    isLoading$ = progress(this.searchParams$, this.splitCount$).pipe(shareReplay(SHARE_REPLAY_CONF));
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    error$ = this.splitCountOrError$.pipe(filterError, shareReplay(SHARE_REPLAY_CONF));
+    isLoading$ = inProgressFrom(() => this.progress$, this.splitCount$);
+    error$ = attach(() => this.errorSub$, this.splitCount$);
 
-    constructor(private analyticsService: AnalyticsService) {
-        merge(this.splitCount$, this.isLoading$, this.error$).subscribe();
-    }
+    private searchParams$ = new ReplaySubject<SearchParams>(1);
+    private errorSub$ = new ReplaySubject<unknown>(1);
+    private progress$ = new BehaviorSubject<number>(0);
+
+    constructor(private analyticsService: AnalyticsService) {}
 
     updateSearchParams(searchParams: SearchParams): void {
-        this.initialSearchParams$.next(searchParams);
+        this.searchParams$.next(searchParams);
     }
 }

@@ -8,9 +8,7 @@ import {
     InlineResponse200,
     InlineResponse2001,
     InlineResponse2002,
-    InlineResponse2006,
     InlineResponse2007,
-    SplitUnit,
 } from '@dsh/api-codegen/anapi';
 import { KeycloakTokenInfoService } from '@dsh/app/shared/services';
 import { IdGeneratorService } from '@dsh/app/shared/services/id-generator';
@@ -95,33 +93,6 @@ export class AnalyticsService {
                     partyID,
                     toDateLike(fromTime),
                     toDateLike(toTime),
-                    undefined,
-                    params.shopIDs,
-                    params.excludeShopIDs,
-                    params.paymentInstitutionRealm
-                )
-            )
-        );
-    }
-
-    getPaymentsSplitCount(
-        fromTime: string,
-        toTime: string,
-        splitUnit: SplitUnit,
-        params: {
-            shopIDs?: string[];
-            excludeShopIDs?: string[];
-            paymentInstitutionRealm?: RealmEnum;
-        }
-    ): Observable<InlineResponse2006> {
-        return this.partyID$.pipe(
-            switchMap((partyID) =>
-                this.analyticsService.getPaymentsSplitCount(
-                    this.idGenerator.shortUuid(),
-                    partyID,
-                    toDateLike(fromTime),
-                    toDateLike(toTime),
-                    splitUnit,
                     undefined,
                     params.shopIDs,
                     params.excludeShopIDs,

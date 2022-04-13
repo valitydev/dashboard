@@ -59,7 +59,7 @@ export class ExistingContractFormComponent extends ValidatedWrappedAbstractContr
             switchMap((shop) =>
                 (shop ? this.getContract(shop.contractID) : of<ExistingContractForm>(null)).pipe(
                     progressTo(this.progress$),
-                    errorTo(this.error$),
+                    errorTo(this.error$, true),
                     catchError((err) => (this.errorService.error(err, false), EMPTY))
                 )
             ),
