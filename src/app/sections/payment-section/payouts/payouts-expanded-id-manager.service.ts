@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Payout } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';
 
-import { Payout } from '@dsh/api-codegen/anapi';
 import { ExpandedIdManager } from '@dsh/app/shared/services';
 
 import { FetchPayoutsService } from './fetch-payouts.service';
