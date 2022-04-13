@@ -3,12 +3,7 @@ import { PaymentInstitution } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-import {
-    AnalyticsService as APIAnalyticsService,
-    InlineResponse200,
-    InlineResponse2001,
-    InlineResponse2002,
-} from '@dsh/api-codegen/anapi';
+import { AnalyticsService as APIAnalyticsService, InlineResponse200, InlineResponse2001 } from '@dsh/api-codegen/anapi';
 import { KeycloakTokenInfoService } from '@dsh/app/shared/services';
 import { IdGeneratorService } from '@dsh/app/shared/services/id-generator';
 
@@ -25,31 +20,6 @@ export class AnalyticsService {
         private keycloakTokenInfoService: KeycloakTokenInfoService,
         private idGenerator: IdGeneratorService
     ) {}
-
-    getPaymentsToolDistribution(
-        fromTime: string,
-        toTime: string,
-        params: {
-            shopIDs?: string[];
-            excludeShopIDs?: string[];
-            paymentInstitutionRealm?: RealmEnum;
-        }
-    ): Observable<InlineResponse2002> {
-        return this.partyID$.pipe(
-            switchMap((partyID) =>
-                this.analyticsService.getPaymentsToolDistribution(
-                    this.idGenerator.shortUuid(),
-                    partyID,
-                    toDateLike(fromTime),
-                    toDateLike(toTime),
-                    undefined,
-                    params.shopIDs,
-                    params.excludeShopIDs,
-                    params.paymentInstitutionRealm
-                )
-            )
-        );
-    }
 
     getRefundsAmount(
         fromTime: string,
