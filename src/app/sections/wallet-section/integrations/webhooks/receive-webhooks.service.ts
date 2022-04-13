@@ -8,7 +8,7 @@ import { catchError, filter, map, shareReplay, switchMap } from 'rxjs/operators'
 
 import { IdentitiesService, WebhooksService } from '@dsh/api/wallet';
 
-import { booleanDebounceTime, mapToTimestamp, SHARE_REPLAY_CONF, progress } from '../../../../custom-operators';
+import { mapToTimestamp, SHARE_REPLAY_CONF, progress } from '../../../../custom-operators';
 
 @Injectable()
 export class ReceiveWebhooksService {
@@ -24,7 +24,6 @@ export class ReceiveWebhooksService {
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     isLoading$: Observable<boolean> = progress(this.receiveWebhooks$, this.webhooks$).pipe(
-        booleanDebounceTime(),
         shareReplay(SHARE_REPLAY_CONF)
     );
 

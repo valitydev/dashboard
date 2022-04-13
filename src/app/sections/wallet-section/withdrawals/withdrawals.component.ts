@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 
 import { QueryParamsService } from '@dsh/app/shared/services/query-params';
-import { booleanDebounceTime, shareReplayRefCount } from '@dsh/operators';
+import { shareReplayRefCount } from '@dsh/operators';
 
 import { FetchWithdrawalsService, WithdrawalsExpandedIdManager } from './services';
 import { WithdrawalsFilters } from './withdrawals-filters';
@@ -16,7 +16,7 @@ export class WithdrawalsComponent implements OnInit {
     withdrawals$ = this.fetchWithdrawalsService.searchResult$;
     hasMore$ = this.fetchWithdrawalsService.hasMore$;
     doAction$ = this.fetchWithdrawalsService.doAction$;
-    isLoading$ = this.doAction$.pipe(booleanDebounceTime(), shareReplayRefCount());
+    isLoading$ = this.doAction$.pipe(shareReplayRefCount());
     lastUpdated$ = this.fetchWithdrawalsService.lastUpdated$;
     expandedId$ = this.withdrawalsExpandedIdManager.expandedId$;
     initParams$ = this.qp.params$;

@@ -7,13 +7,13 @@ import { shareReplay } from 'rxjs/operators';
 import { ReportsService as ReportsApiService } from '@dsh/api/anapi';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { PartialFetcher } from '@dsh/app/shared';
-import { booleanDebounceTime, mapToTimestamp } from '@dsh/operators';
+import { mapToTimestamp } from '@dsh/operators';
 
 import { SearchFiltersParams } from './reports-search-filters';
 
 @Injectable()
 export class FetchReportsService extends PartialFetcher<Report, SearchFiltersParams> {
-    isLoading$: Observable<boolean> = this.doAction$.pipe(booleanDebounceTime(), shareReplay(1));
+    isLoading$: Observable<boolean> = this.doAction$.pipe(shareReplay(1));
     lastUpdated$: Observable<string> = this.searchResult$.pipe(mapToTimestamp, shareReplay(1));
 
     constructor(

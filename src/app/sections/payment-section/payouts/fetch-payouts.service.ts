@@ -5,13 +5,13 @@ import { shareReplay } from 'rxjs/operators';
 
 import { SearchService } from '@dsh/api/anapi';
 import { PartialFetcher } from '@dsh/app/shared';
-import { booleanDebounceTime, mapToTimestamp } from '@dsh/operators';
+import { mapToTimestamp } from '@dsh/operators';
 
 import { SearchParams } from './types/search-params';
 
 @Injectable()
 export class FetchPayoutsService extends PartialFetcher<Payout, SearchParams> {
-    isLoading$: Observable<boolean> = this.doAction$.pipe(booleanDebounceTime(), shareReplay(1));
+    isLoading$: Observable<boolean> = this.doAction$.pipe(shareReplay(1));
     lastUpdated$: Observable<string> = this.searchResult$.pipe(mapToTimestamp, shareReplay(1));
 
     constructor(private searchService: SearchService) {

@@ -5,14 +5,14 @@ import { shareReplay } from 'rxjs/operators';
 
 import { SearchService } from '@dsh/api/anapi';
 import { PartialFetcher } from '@dsh/app/shared';
-import { booleanDebounceTime, mapToTimestamp } from '@dsh/operators';
+import { mapToTimestamp } from '@dsh/operators';
 
 import { SEARCH_LIMIT } from '../../../../../tokens';
 import { SearchFiltersParams } from '../../invoices-search-filters';
 
 @Injectable()
 export class FetchInvoicesService extends PartialFetcher<Invoice, SearchFiltersParams> {
-    isLoading$: Observable<boolean> = this.doAction$.pipe(booleanDebounceTime(), shareReplay(1));
+    isLoading$: Observable<boolean> = this.doAction$.pipe(shareReplay(1));
     lastUpdated$: Observable<string> = this.searchResult$.pipe(mapToTimestamp);
 
     constructor(

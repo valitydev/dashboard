@@ -9,7 +9,7 @@ import { catchError, shareReplay } from 'rxjs/operators';
 import { WithdrawalsService } from '@dsh/api/wallet';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
-import { booleanDebounceTime, mapToTimestamp } from '@dsh/operators';
+import { mapToTimestamp } from '@dsh/operators';
 
 type WithdrawalsAndContinuationToken = InlineResponse2007;
 
@@ -18,7 +18,7 @@ export class FetchWithdrawalsService extends PartialFetcher<
     Withdrawal,
     Omit<ListWithdrawalsRequestParams, 'xRequestID' | 'limit'>
 > {
-    isLoading$: Observable<boolean> = this.doAction$.pipe(booleanDebounceTime(), shareReplay(1));
+    isLoading$: Observable<boolean> = this.doAction$.pipe(shareReplay(1));
     lastUpdated$: Observable<string> = this.searchResult$.pipe(mapToTimestamp, shareReplay(1));
 
     constructor(
