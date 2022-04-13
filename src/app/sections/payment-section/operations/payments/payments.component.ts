@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { PaymentSearchResult } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';
 
-import { PaymentSearchResult } from '@dsh/api-codegen/anapi';
 import { QueryParamsService } from '@dsh/app/shared/services';
 
 import { PaymentInstitutionRealmService, RealmMixService } from '../../services';

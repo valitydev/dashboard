@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PaymentSearchResult } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';
 
-import { PaymentSearchResult } from '@dsh/api-codegen/anapi';
 import { ExpandedIdManager, Fragment } from '@dsh/app/shared/services';
 
 import { getPaymentId } from '../../utils/get-payment-id';
