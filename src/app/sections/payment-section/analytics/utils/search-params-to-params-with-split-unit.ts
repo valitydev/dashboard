@@ -1,11 +1,8 @@
+import { GetPaymentsSplitCountRequestParams } from '@vality/swag-anapi-v2';
 import moment from 'moment';
-
-import { SplitCountResult, SplitUnit } from '@dsh/api-codegen/anapi/swagger-codegen';
 
 import { SearchParams } from '../search-params';
 import { SearchParamsWithSplitUnit } from '../search-params-with-split-unit';
-
-import SplitUnitEnum = SplitCountResult.SplitUnitEnum;
 
 export const searchParamsToParamsWithSplitUnit = ({
     fromTime,
@@ -20,16 +17,16 @@ export const searchParamsToParamsWithSplitUnit = ({
     realm,
 });
 
-const calculateSplitUnit = (fromTime: string, toTime: string): SplitUnit => {
+const calculateSplitUnit = (fromTime: string, toTime: string): GetPaymentsSplitCountRequestParams['splitUnit'] => {
     const daysCount = Math.abs(moment(fromTime).diff(toTime, 'd'));
     if (daysCount > 90) {
-        return SplitUnitEnum.Month;
+        return 'month';
     }
     if (daysCount > 35) {
-        return SplitUnitEnum.Week;
+        return 'week';
     }
     if (daysCount > 1) {
-        return SplitUnitEnum.Day;
+        return 'day';
     }
-    return SplitUnitEnum.Hour;
+    return 'hour';
 };

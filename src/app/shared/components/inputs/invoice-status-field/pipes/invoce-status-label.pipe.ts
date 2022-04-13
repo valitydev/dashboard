@@ -1,8 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
+import { InvoiceStatus } from '@vality/swag-anapi-v2';
 import { Observable, of } from 'rxjs';
-
-import { InvoiceStatus } from '@dsh/api-codegen/anapi';
 
 @Pipe({ name: 'invoiceStatusLabel' })
 export class InvoiceStatusLabelPipe implements PipeTransform {

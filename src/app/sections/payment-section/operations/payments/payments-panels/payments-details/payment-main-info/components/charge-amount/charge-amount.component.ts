@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { PaymentSearchResult } from '@vality/swag-anapi-v2';
 import isNil from 'lodash-es/isNil';
-
-import { PaymentSearchResult } from '@dsh/api-codegen/anapi';
 
 @Component({
     selector: 'dsh-charge-amount',

@@ -5,24 +5,19 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoTestingModule } from '@ngneat/transloco';
 import { Shop } from '@vality/swag-payments';
 import cloneDeep from 'lodash-es/cloneDeep';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 
-import { ShopsService } from '@dsh/api-codegen/capi/shops.service';
-import { ApiShopsService } from '@dsh/api/shop';
+import { ShopsService } from '@dsh/api/payments';
 
 import { generateMockShopItem } from '../../../../tests/generate-shop-item';
 import { ShopActionsService } from '../../services/shop-actions/shop-actions.service';
 import { ShopActionResult } from '../../types/shop-action-result';
 import { ShopActionsComponent } from './shop-actions.component';
 
-class MockShopsService {
-    getShops(): Observable<Shop[]> {
-        return of([]);
-    }
-}
+class MockShopsService {}
 
 @Injectable()
-class MockApiShopsService extends ApiShopsService {
+class MockApiShopsService extends ShopsService {
     set mockShops(shops: Shop[]) {
         this._shops = shops;
     }
@@ -33,24 +28,8 @@ class MockApiShopsService extends ApiShopsService {
     }
     private _actionResponse: any;
 
-    getShopByID(shopID: string): Observable<Shop> {
-        return of(this._shops.find(({ id }) => id === shopID));
-    }
-
-    getShops(): Observable<Shop[]> {
-        return of(this._shops);
-    }
-
     reloadShops() {
         this._shops = cloneDeep(this._shops);
-    }
-
-    suspendShop() {
-        return of(this._actionResponse);
-    }
-
-    activateShop() {
-        return of(this._actionResponse);
     }
 }
 
@@ -104,7 +83,7 @@ describe('ShopActionsComponent', () => {
             providers: [
                 ShopActionsService,
                 {
-                    provide: ApiShopsService,
+                    provide: ShopsService,
                     useClass: MockApiShopsService,
                 },
                 {

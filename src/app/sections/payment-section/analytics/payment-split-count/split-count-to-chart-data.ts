@@ -1,8 +1,7 @@
 import { translate } from '@ngneat/transloco';
+import { SplitCountResult, SplitUnit, StatusOffsetCount } from '@vality/swag-anapi-v2';
 import sortBy from 'lodash-es/sortBy';
 import moment from 'moment';
-
-import { SplitCountResult, SplitUnit, StatusOffsetCount } from '@dsh/api-codegen/anapi/swagger-codegen';
 
 import { ChartData, splitUnitToTimeFormat, Series } from '../utils';
 

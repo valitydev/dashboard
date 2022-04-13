@@ -20,7 +20,6 @@
     "prettier-fix": "npm run prettier-cmd -- --write",
     "tools-cmd": "ts-node --project tools/tsconfig.json",
     "parallel-cmd": "concurrently --kill-others-on-fail --prefix-colors magenta,green,red,yellow,blue",
-    "codegen": "npm run tools-cmd -- tools/swagger-codegen.ts",
     "icons-list-gen": "npm run tools-cmd -- tools/gen-icons-list.ts",
     "icons-ids-gen": "npm run tools-cmd -- tools/gen-icons-ids.ts",
     "ci:test": "npm run test -- --configuration=ci"

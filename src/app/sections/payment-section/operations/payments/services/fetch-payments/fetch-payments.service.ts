@@ -33,14 +33,12 @@ export class FetchPaymentsService extends PartialFetcher<PaymentSearchResult, Pa
     }
 
     protected fetch(
-        { paymentAmountFrom, paymentAmountTo, fromTime, toTime, realm, ...params }: PaymentSearchFormValue,
+        { paymentAmountFrom, paymentAmountTo, realm, ...params }: PaymentSearchFormValue,
         continuationToken?: string
     ) {
         return this.searchService
             .searchPayments({
                 ...params,
-                fromTime,
-                toTime,
                 paymentInstitutionRealm: realm,
                 paymentAmountFrom: isNumber(paymentAmountFrom) ? toMinor(paymentAmountFrom) : undefined,
                 paymentAmountTo: isNumber(paymentAmountTo) ? toMinor(paymentAmountTo) : undefined,

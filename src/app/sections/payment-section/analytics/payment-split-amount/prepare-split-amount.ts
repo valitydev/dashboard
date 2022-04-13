@@ -1,7 +1,6 @@
+import { OffsetAmount, SplitAmountResult, SplitUnit } from '@vality/swag-anapi-v2';
 import sortBy from 'lodash-es/sortBy';
 import moment from 'moment';
-
-import { OffsetAmount, SplitAmountResult, SplitUnit } from '@dsh/api-codegen/anapi/swagger-codegen';
 
 import { getOffsets } from '../utils';
 

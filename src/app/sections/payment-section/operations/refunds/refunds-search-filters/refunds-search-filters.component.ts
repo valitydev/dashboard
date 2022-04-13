@@ -3,6 +3,7 @@ import { MediaObserver } from '@angular/flex-layout';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Shop } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
 import negate from 'lodash-es/negate';
 // eslint-disable-next-line you-dont-need-lodash-underscore/omit
@@ -11,7 +12,6 @@ import pick from 'lodash-es/pick';
 import { combineLatest, defer, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Shop } from '@dsh/api-codegen/anapi/swagger-codegen';
 import { createDateRangeWithPreset, Preset, DateRangeWithPreset } from '@dsh/components/date-range-filter';
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';

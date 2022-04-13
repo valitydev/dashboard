@@ -1,8 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
+import { Report } from '@vality/swag-anapi-v2';
 import { Observable, of } from 'rxjs';
-
-import { Report } from '@dsh/api-codegen/anapi';
 
 import { OPTION_LABELS } from '../types/option-labels';
 

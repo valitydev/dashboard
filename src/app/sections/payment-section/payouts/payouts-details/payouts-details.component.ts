@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-
-import { Payout } from '@dsh/api-codegen/anapi';
+import { Payout } from '@vality/swag-anapi-v2';
 
 @Component({
     selector: 'dsh-payouts-details',

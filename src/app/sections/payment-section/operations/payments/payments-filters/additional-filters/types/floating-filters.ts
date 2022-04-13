@@ -1,9 +1,9 @@
-import { PaymentStatus } from '@dsh/api-codegen/anapi';
+import { SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 
 import { InvoicesFilterForm } from '../invoices-filter';
 import { ShopsFilterForm } from '../shops-filter';
 
 export type FloatingFilters = Partial<InvoicesFilterForm> &
     Partial<ShopsFilterForm> & {
-        paymentStatus?: PaymentStatus.StatusEnum;
+        paymentStatus?: SearchPaymentsRequestParams['paymentStatus'];
     };

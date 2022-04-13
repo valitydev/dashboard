@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Report } from '@vality/swag-anapi-v2';
 
-import { Report } from '@dsh/api-codegen/anapi';
 import { createDateRangeWithPreset, DateRangeWithPreset, Preset } from '@dsh/components/date-range-filter';
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';

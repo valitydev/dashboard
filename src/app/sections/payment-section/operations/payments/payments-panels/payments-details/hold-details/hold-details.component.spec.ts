@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { PaymentFlow, PaymentFlowHold, PaymentStatus } from '@vality/swag-anapi-v2';
 import { of } from 'rxjs';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 
-import { PaymentFlow, PaymentFlowHold, PaymentStatus } from '@dsh/api-codegen/anapi';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 import { ButtonModule } from '@dsh/components/buttons';

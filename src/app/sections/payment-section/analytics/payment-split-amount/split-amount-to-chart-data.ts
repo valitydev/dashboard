@@ -1,6 +1,5 @@
+import { OffsetAmount, SplitAmountResult, SplitUnit } from '@vality/swag-anapi-v2';
 import moment from 'moment';
-
-import { OffsetAmount, SplitAmountResult, SplitUnit } from '@dsh/api-codegen/anapi/swagger-codegen';
 
 import { toMajor } from '../../../../../utils';
 import { ChartData, Series, splitUnitToTimeFormat } from '../utils';

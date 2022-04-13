@@ -1,6 +1,5 @@
+import { SplitUnit } from '@vality/swag-anapi-v2';
 import moment, { Moment } from 'moment';
-
-import { SplitUnit } from '@dsh/api-codegen/anapi/swagger-codegen';
 
 export const getOffsets = (fromTime: string, toTime: string, splitUnit: SplitUnit): number[] => {
     let current: Moment;

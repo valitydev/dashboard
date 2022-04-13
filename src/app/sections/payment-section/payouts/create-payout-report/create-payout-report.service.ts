@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Payout } from '@vality/swag-anapi-v2';
 import { Subject } from 'rxjs';
 import { switchMap, takeUntil } from 'rxjs/operators';
-
-import { Payout } from '@dsh/api-codegen/anapi';
 
 import { CreatePayoutReportDialogComponent } from './create-payout-report-dialog.component';
 

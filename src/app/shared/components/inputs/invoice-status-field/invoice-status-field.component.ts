@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { InvoiceStatus } from '@vality/swag-anapi-v2';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { InvoiceStatus } from '@dsh/api-codegen/anapi';
 import { Option } from '@dsh/components/form-controls/radio-group-field';
 
 import { InvoiceStatusLabelPipe } from './pipes/invoce-status-label.pipe';

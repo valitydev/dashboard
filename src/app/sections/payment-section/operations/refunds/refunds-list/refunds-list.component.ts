@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-
-import { RefundSearchResult } from '@dsh/api-codegen/anapi/swagger-codegen';
+import { RefundSearchResult } from '@vality/swag-anapi-v2';
 
 @Component({
     selector: 'dsh-refunds-list',

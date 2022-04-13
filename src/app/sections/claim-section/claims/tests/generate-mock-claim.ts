@@ -1,11 +1,11 @@
-import { Claim, StatusModificationUnit } from '../../../../api-codegen/claim-management/swagger-codegen';
+import { Claim, StatusModificationUnit } from '@vality/swag-claim-management';
 
 export const generateMockClaim = (
     id: number = 1,
     status: StatusModificationUnit.StatusEnum | string = StatusModificationUnit.StatusEnum.Pending,
     revision: number = 1,
-    createdAt: Date = new Date(),
-    updatedAt: Date = new Date()
+    createdAt = new Date().toISOString(),
+    updatedAt = new Date().toISOString()
 ): Claim => ({
     id,
     status,

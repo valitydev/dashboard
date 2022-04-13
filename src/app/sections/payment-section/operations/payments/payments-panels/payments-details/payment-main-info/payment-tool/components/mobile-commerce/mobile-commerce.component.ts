@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
-import { MobileCommerceDetails } from '@dsh/api-codegen/anapi';
+import { MobileCommerceDetails } from '@vality/swag-anapi-v2';
 
 @Component({
     selector: 'dsh-mobile-commerce',

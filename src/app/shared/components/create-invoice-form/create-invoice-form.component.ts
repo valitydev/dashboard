@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Injector, Input, OnInit, Output, Ev
 import { FormArray, FormBuilder, FormGroup } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { InvoiceLineTaxVAT } from '@vality/swag-anapi-v2';
 import { Shop } from '@vality/swag-payments';
 import isEqual from 'lodash-es/isEqual';
 import isNil from 'lodash-es/isNil';
@@ -10,7 +11,6 @@ import { Moment } from 'moment';
 import { distinctUntilChanged, map, shareReplay, startWith } from 'rxjs/operators';
 import { Overwrite } from 'utility-types';
 
-import { InvoiceLineTaxVAT } from '@dsh/api-codegen/anapi';
 import { SHARE_REPLAY_CONF } from '@dsh/operators';
 import { replaceFormArrayValue, getFormValueChanges, toMinor, getFormValidationChanges, toMajor } from '@dsh/utils';
 

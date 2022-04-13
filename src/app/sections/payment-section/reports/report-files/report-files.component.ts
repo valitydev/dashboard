@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { FileMeta } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';
-
-import { FileMeta } from '@dsh/api-codegen/anapi';
 
 import { ReportFilesService } from './report-files.service';
 

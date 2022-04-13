@@ -1,11 +1,10 @@
-import { PaymentInstitution } from '@vality/swag-payments';
-
 import {
     BankCardPaymentSystem,
     BankCardTokenProvider,
-    PaymentStatus,
     PaymentTerminalProvider,
-} from '@dsh/api-codegen/anapi/swagger-codegen';
+    SearchPaymentsRequestParams,
+} from '@vality/swag-anapi-v2';
+import { PaymentInstitution } from '@vality/swag-payments';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 
@@ -14,7 +13,7 @@ export interface PaymentSearchFormValue {
     fromTime: string;
     toTime: string;
     shopIDs?: string[];
-    paymentStatus?: PaymentStatus.StatusEnum;
+    paymentStatus?: SearchPaymentsRequestParams['paymentStatus'];
     paymentFlow?: 'hold' | 'instant';
     paymentMethod?: 'bankCard' | 'paymentTerminal';
     paymentTerminalProvider?: PaymentTerminalProvider;

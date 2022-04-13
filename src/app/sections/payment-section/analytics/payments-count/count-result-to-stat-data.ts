@@ -1,4 +1,4 @@
-import { CountResult } from '@dsh/api-codegen/anapi/swagger-codegen';
+import { CountResult } from '@vality/swag-anapi-v2';
 
 import { StatData } from '../utils';
 

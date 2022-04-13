@@ -1,4 +1,4 @@
-import { RefundStatus } from '@dsh/api-codegen/anapi';
+import { RefundStatus } from '@vality/swag-anapi-v2';
 
 export interface AdditionalFilters {
     invoiceIDs?: string[];

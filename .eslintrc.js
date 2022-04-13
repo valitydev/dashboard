@@ -29,7 +29,6 @@ const baseTsRules = {
 module.exports = {
     root: true,
     parser: '@typescript-eslint/parser',
-    ignorePatterns: ['**/openapi-codegen/**/*.ts', '**/swagger-codegen/**/*.ts'],
     overrides: [
         {
             ...baseTsRules,

@@ -1,7 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-
-import { Invoice } from '@dsh/api-codegen/anapi/swagger-codegen';
+import { Invoice } from '@vality/swag-anapi-v2';
 
 @Pipe({
     name: 'invoiceStatusName',

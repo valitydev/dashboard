@@ -1,7 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-
-import { Report } from '@dsh/api-codegen/anapi';
+import { Report } from '@vality/swag-anapi-v2';
 
 @Pipe({
     name: 'reportStatusName',

@@ -1,7 +1,6 @@
+import { InlineResponse200 } from '@vality/swag-anapi-v2';
 import { getTestScheduler } from 'jasmine-marbles';
 import { Observable, of, scheduled } from 'rxjs';
-
-import { InlineResponse200 } from '@dsh/api-codegen/anapi/swagger-codegen';
 
 export class MockAnalyticsService {
     private innerResponse: InlineResponse200 = {

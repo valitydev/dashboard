@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { provideValueAccessor } from '@s-libs/ng-core';
+import { InvoiceStatus } from '@vality/swag-anapi-v2';
 
-import { InvoiceStatus } from '@dsh/api-codegen/anapi';
 import { FilterSuperclass } from '@dsh/components/filter';
 
 @Component({

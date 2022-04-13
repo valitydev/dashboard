@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { provideValueAccessor } from '@s-libs/ng-core';
+import { Report } from '@vality/swag-anapi-v2';
 import { combineLatest } from 'rxjs';
 import { share, switchMap } from 'rxjs/operators';
 
-import { Report } from '@dsh/api-codegen/anapi';
 import { ReportTypesLabelPipe } from '@dsh/app/shared/components/inputs/report-types-field';
 import { FilterSuperclass } from '@dsh/components/filter';
 

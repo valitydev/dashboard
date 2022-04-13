@@ -1,4 +1,5 @@
-import { PaymentSearchResult } from '@dsh/api-codegen/anapi';
+import { PaymentSearchResult } from '@vality/swag-anapi-v2';
+
 import { createArrayOfLength } from '@dsh/app/shared/utils';
 
 import { generateMockPayment } from './generate-mock-payment';
