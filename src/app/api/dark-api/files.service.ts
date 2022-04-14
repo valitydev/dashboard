@@ -6,7 +6,9 @@ import { map, switchMap } from 'rxjs/operators';
 
 import { createApi, ApiMethodParams } from '../utils';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class FilesService extends createApi(ApiFilesService) {
     constructor(injector: Injector, private http: HttpClient) {
         super(injector);

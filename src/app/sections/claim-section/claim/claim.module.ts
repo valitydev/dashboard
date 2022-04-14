@@ -13,6 +13,7 @@ import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
 import { BreadcrumbModule } from '@dsh/components/navigation';
 import { ConfirmActionDialogModule } from '@dsh/components/popups';
+import { DebounceModule } from '@dsh/pipes/debounce/debounce.module';
 
 import { ClaimRoutingModule } from './claim-routing.module';
 import { ClaimComponent } from './claim.component';
@@ -36,6 +37,7 @@ import { RevokeClaimDialogComponent } from './revoke-claim-dialog';
         MatSelectModule,
         BreadcrumbModule,
         ApiModelTypesModule,
+        DebounceModule,
     ],
     declarations: [ClaimComponent, RevokeClaimDialogComponent],
 })

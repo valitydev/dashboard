@@ -3,8 +3,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Claim } from '@vality/swag-claim-management';
-import { BehaviorSubject, Observable, Subject, timer } from 'rxjs';
-import { filter, map, shareReplay, switchMap } from 'rxjs/operators';
+import { BehaviorSubject, Subject, timer, defer } from 'rxjs';
+import { filter, shareReplay, switchMap } from 'rxjs/operators';
 
 import { RouteParamClaimService } from './route-param-claim.service';
 
@@ -13,21 +13,13 @@ const POLLING_PERIOD = 5000;
 @UntilDestroy()
 @Injectable()
 export class ReceiveClaimService {
-    private claimState$ = new BehaviorSubject(null);
+    claim$ = defer(() => this.claimState$).pipe(filter(Boolean), shareReplay(1));
+    error$ = defer(() => this.receiveClaimError$);
+    isLoading$ = this.routeParamClaimService.isLoading$;
+
+    private claimState$ = new BehaviorSubject<Claim>(null);
     private receiveClaimError$ = new BehaviorSubject(false);
     private receiveClaim$ = new Subject<void>();
-
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    claim$: Observable<Claim> = this.claimState$.pipe(
-        filter((s) => !!s),
-        shareReplay(1)
-    );
-
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    claimReceived$ = this.claim$.pipe(map((r) => !r));
-
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    error$: Observable<any> = this.receiveClaimError$.asObservable();
 
     constructor(
         private routeParamClaimService: RouteParamClaimService,

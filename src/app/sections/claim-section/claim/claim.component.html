@@ -1,7 +1,7 @@
 <div *transloco="let t; scope: 'claim'; read: 'claim'" class="container" fxLayout="column" fxLayoutGap="32px">
     <div fxLayout="column" fxLayoutGap="8px">
         <h1 class="dsh-display-1">
-            {{ t('headline') }} <span dshTextColor="secondary"> #{{ claimID$ | async }} </span>
+            {{ t('headline') }} <span dshTextColor="secondary">#{{ claimID$ | async }}</span>
         </h1>
         <ol dsh-breadcrumb>
             <li dsh-breadcrumb-item>
@@ -10,38 +10,49 @@
             <li dsh-breadcrumb-item>{{ t('breadcrumbs.claimDetails') }}</li>
         </ol>
     </div>
-    <div *ngIf="!(claimReceived$ | async) && !(error$ | async)" fxLayout fxLayoutAlign="center center">
-        <dsh-spinner></dsh-spinner>
-    </div>
-    <dsh-card *ngIf="(claimReceived$ | async) && !(error$ | async)">
-        <dsh-status
-            class="claim-status"
-            *transloco="let claimStatus; read: 'claimStatus'"
-            [color]="claimStatus$ | async | claimStatusColor"
-            mark="false"
-        >
-            {{ claimStatus(claimStatus$ | async) }}
-        </dsh-status>
-        <div fxLayout="column" fxLayoutGap="24px">
-            <dsh-conversation></dsh-conversation>
-            <div fxLayout="row" fxLayoutAlign="space-between">
-                <div>
-                    <button *ngIf="revokeAvailable$ | async" dsh-text-button color="warn" (click)="revokeClaim()">
-                        {{ t('revokeClaim') }}
-                    </button>
-                </div>
-                <div>
-                    <button
-                        *ngIf="reviewAvailable$ | async"
-                        [disabled]="reviewInProgress$ | async"
-                        dsh-button
-                        color="accent"
-                        (click)="reviewClaim()"
-                    >
-                        {{ t('reviewClaim') }}
-                    </button>
-                </div>
+    <ng-container *ngIf="!(error$ | async)">
+        <ng-container *ngIf="isLoading$ | async | debounce; else content">
+            <div fxLayout fxLayoutAlign="center center">
+                <dsh-spinner></dsh-spinner>
             </div>
-        </div>
-    </dsh-card>
+        </ng-container>
+        <ng-template #content>
+            <dsh-card>
+                <dsh-status
+                    class="claim-status"
+                    *transloco="let claimStatus; read: 'claimStatus'"
+                    [color]="claimStatus$ | async | claimStatusColor"
+                    mark="false"
+                >
+                    {{ claimStatus(claimStatus$ | async) }}
+                </dsh-status>
+                <div fxLayout="column" fxLayoutGap="24px">
+                    <dsh-conversation></dsh-conversation>
+                    <div fxLayout="row" fxLayoutAlign="space-between">
+                        <div>
+                            <button
+                                *ngIf="revokeAvailable$ | async"
+                                dsh-text-button
+                                color="warn"
+                                (click)="revokeClaim()"
+                            >
+                                {{ t('revokeClaim') }}
+                            </button>
+                        </div>
+                        <div>
+                            <button
+                                *ngIf="reviewAvailable$ | async"
+                                [disabled]="reviewInProgress$ | async"
+                                dsh-button
+                                color="accent"
+                                (click)="reviewClaim()"
+                            >
+                                {{ t('reviewClaim') }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </dsh-card>
+        </ng-template>
+    </ng-container>
 </div>

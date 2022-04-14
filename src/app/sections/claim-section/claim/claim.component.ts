@@ -22,7 +22,7 @@ import { UpdateClaimService } from './update-claim';
 export class ClaimComponent implements OnInit {
     claimID$ = this.receiveClaimService.claim$.pipe(pluck('id'));
     claimStatus$ = this.receiveClaimService.claim$.pipe(pluck('status'));
-    claimReceived$ = this.receiveClaimService.claimReceived$;
+    isLoading$ = this.receiveClaimService.isLoading$;
     error$ = this.receiveClaimService.error$;
     revokeAvailable$ = this.revokeClaimService.revokeAvailable$;
     reviewAvailable$ = this.reviewClaimService.reviewAvailable$;
