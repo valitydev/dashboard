@@ -48,7 +48,7 @@ export const prepareSplitCount = (
     fromTime: string,
     toTime: string
 ): SplitCountResult[] =>
-    splitCounts.map(({ splitUnit, currency, statusOffsetCounts }) => ({
+    (splitCounts ?? []).map(({ splitUnit, currency, statusOffsetCounts }) => ({
         splitUnit,
         currency,
         statusOffsetCounts: STATUSES.map((status) => ({

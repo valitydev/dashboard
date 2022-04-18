@@ -42,7 +42,7 @@ export const prepareSplitAmount = (
     fromTime: string,
     toTime: string
 ): SplitAmountResult[] =>
-    splitAmounts.map(({ splitUnit, currency, offsetAmounts }) => ({
+    (splitAmounts ?? []).map(({ splitUnit, currency, offsetAmounts }) => ({
         splitUnit,
         currency,
         offsetAmounts: fillSplitAmountByZeroValues(offsetAmounts, fromTime, toTime, splitUnit),
