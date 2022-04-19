@@ -3,7 +3,7 @@ import { CategoriesService as ApiCategoriesService } from '@vality/swag-payments
 import { BehaviorSubject, defer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-import { publishReplayRefCount } from '@dsh/operators';
+import { shareReplayRefCount } from '@dsh/operators';
 
 import { createApi } from '../utils';
 
@@ -13,7 +13,7 @@ import { createApi } from '../utils';
 export class CategoriesService extends createApi(ApiCategoriesService) {
     categories$ = defer(() => this.reloadCategories$).pipe(
         switchMap(() => this.getCategories()),
-        publishReplayRefCount()
+        shareReplayRefCount()
     );
 
     private reloadCategories$ = new BehaviorSubject<void>(undefined);

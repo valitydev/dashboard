@@ -1,41 +1,28 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable, of, Subject, timer } from 'rxjs';
-import { catchError, pluck, shareReplay, switchMap, takeUntil, withLatestFrom } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { of, timer } from 'rxjs';
+import { catchError, pluck, switchMap } from 'rxjs/operators';
 
-import { AmountResult } from '@dsh/api-codegen/anapi';
-import { AnalyticsService } from '@dsh/api/analytics';
+import { AnalyticsService } from '@dsh/api/anapi';
+import { shareReplayRefCount } from '@dsh/operators';
+
+import { PaymentInstitutionRealmService } from '../services';
 
 @Injectable()
-export class BalancesService implements OnDestroy {
-    private destroy$: Subject<void> = new Subject();
+export class BalancesService {
+    balances$ = timer(1, 10000).pipe(
+        switchMap(() => this.realmService.realm$),
+        switchMap((paymentInstitutionRealm) =>
+            this.analyticsService.getCurrentBalances({ paymentInstitutionRealm }).pipe(
+                catchError((ex) => {
+                    console.error(ex);
+                    return of({ result: [] });
+                })
+            )
+        ),
+        pluck('result'),
+        shareReplayRefCount()
+    );
+    balancesCount$ = this.balances$.pipe(pluck('length'));
 
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    balances$: Observable<AmountResult[]>;
-
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    balancesCount$: Observable<number>;
-
-    constructor(private analyticsService: AnalyticsService, private route: ActivatedRoute) {
-        this.balances$ = timer(0, 60000).pipe(
-            withLatestFrom(this.route.params),
-            pluck('1', 'realm'),
-            switchMap((paymentInstitutionRealm) =>
-                this.analyticsService.getCurrentBalances({ paymentInstitutionRealm }).pipe(
-                    catchError((ex) => {
-                        console.error(ex);
-                        return of({ result: [] });
-                    })
-                )
-            ),
-            pluck('result'),
-            takeUntil(this.destroy$),
-            shareReplay(1)
-        );
-        this.balancesCount$ = this.balances$.pipe(pluck('length'), shareReplay(1));
-    }
-
-    ngOnDestroy() {
-        this.destroy$.next();
-    }
+    constructor(private analyticsService: AnalyticsService, private realmService: PaymentInstitutionRealmService) {}
 }

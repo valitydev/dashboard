@@ -1,12 +1,12 @@
-import moment from 'moment';
-
 import {
     LegalAgreement,
     Modification,
     RussianBankAccount,
     RussianLegalEntity,
     ShopCreationModification,
-} from '../../../../api-codegen/claim-management';
+} from '@vality/swag-claim-management';
+import moment from 'moment';
+
 import {
     createContractCreationModification,
     createRussianContractPayoutToolCreationModification,

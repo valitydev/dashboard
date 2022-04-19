@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CustomerPayer, Payer, PaymentResourcePayer } from '@vality/swag-anapi-v2';
 
-import { CustomerPayer, Payer, PaymentResourcePayer } from '@dsh/api-codegen/anapi';
 import { ToMajorModule } from '@dsh/app/shared/pipes';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 import { StatusModule } from '@dsh/components/indicators';

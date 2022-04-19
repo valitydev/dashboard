@@ -10,7 +10,7 @@ import { DepositsService } from '@dsh/api/wallet';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
 import { isNumber } from '@dsh/app/shared/utils';
-import { booleanDebounceTime, mapToTimestamp } from '@dsh/operators';
+import { mapToTimestamp } from '@dsh/operators';
 import { toMinor } from '@dsh/utils';
 
 @Injectable()
@@ -18,7 +18,7 @@ export class FetchDepositsService extends PartialFetcher<
     Deposit,
     Omit<ListDepositsRequestParams, 'xRequestID' | 'limit'>
 > {
-    isLoading$: Observable<boolean> = this.doAction$.pipe(booleanDebounceTime(), shareReplay(1));
+    isLoading$: Observable<boolean> = this.doAction$.pipe(shareReplay(1));
     lastUpdated$: Observable<string> = this.searchResult$.pipe(mapToTimestamp, shareReplay(1));
 
     constructor(

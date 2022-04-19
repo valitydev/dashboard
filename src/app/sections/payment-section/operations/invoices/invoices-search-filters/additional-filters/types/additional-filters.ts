@@ -1,4 +1,4 @@
-import { InvoiceStatus } from '@dsh/api-codegen/anapi';
+import { InvoiceStatus } from '@vality/swag-anapi-v2';
 
 export interface AdditionalFilters {
     invoiceIDs?: string[];

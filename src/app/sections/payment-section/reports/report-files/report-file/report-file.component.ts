@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
-import { FileMeta } from '@dsh/api-codegen/anapi';
+import { FileMeta } from '@vality/swag-anapi-v2';
 
 import { ReportFilesService } from '../report-files.service';
 

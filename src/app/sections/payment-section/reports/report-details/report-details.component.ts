@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-
-import { Report } from '@dsh/api-codegen/anapi';
+import { Report } from '@vality/swag-anapi-v2';
 
 @Component({
     selector: 'dsh-report-details',

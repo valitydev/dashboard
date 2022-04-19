@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
-import { InvoiceLineTaxMode, InvoiceLineTaxVAT } from '../../../../../../../../api-codegen/anapi';
+import { InvoiceLineTaxMode, InvoiceLineTaxVAT } from '@vality/swag-anapi-v2';
 
 @Pipe({
     name: 'taxModeToTaxRate',
@@ -8,7 +7,7 @@ import { InvoiceLineTaxMode, InvoiceLineTaxVAT } from '../../../../../../../../a
 export class TaxModeToTaxRatePipe implements PipeTransform {
     transform(taxMode: InvoiceLineTaxMode): string {
         switch (taxMode.type) {
-            case InvoiceLineTaxMode.TypeEnum.InvoiceLineTaxVAT:
+            case 'InvoiceLineTaxVAT':
                 return (taxMode as InvoiceLineTaxVAT).rate;
         }
     }

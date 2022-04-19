@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
-import { InvoiceCart } from '@dsh/api-codegen/anapi';
+import { InvoiceLine } from '@vality/swag-anapi-v2';
 
 import { ReceiveInvoiceService } from '../../services/receive-invoice/receive-invoice.service';
 
@@ -11,6 +10,6 @@ import { ReceiveInvoiceService } from '../../services/receive-invoice/receive-in
     providers: [ReceiveInvoiceService],
 })
 export class InvoiceCartInfoComponent {
-    @Input() cart: InvoiceCart;
+    @Input() cart: InvoiceLine[];
     @Input() currency: string;
 }

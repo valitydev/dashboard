@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { WrappedFormControlSuperclass, provideValueAccessor } from '@s-libs/ng-core';
-
-import { InvoiceStatus } from '@dsh/api-codegen/anapi';
+import { InvoiceStatus } from '@vality/swag-anapi-v2';
 
 @Component({
     selector: 'dsh-invoice-status-filter',

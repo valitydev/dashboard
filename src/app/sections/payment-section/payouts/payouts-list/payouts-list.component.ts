@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-
-import { Payout } from '@dsh/api-codegen/anapi/swagger-codegen';
+import { Payout } from '@vality/swag-anapi-v2';
 
 import { CreatePayoutReportService } from '../create-payout-report';
 

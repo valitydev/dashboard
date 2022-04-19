@@ -1,7 +1,6 @@
 import { translate } from '@ngneat/transloco';
+import { PaymentsToolDistributionResult } from '@vality/swag-anapi-v2';
 import sortBy from 'lodash-es/sortBy';
-
-import { PaymentsToolDistributionResult } from '@dsh/api-codegen/anapi/swagger-codegen';
 
 import { DistributionChartData } from '../utils';
 

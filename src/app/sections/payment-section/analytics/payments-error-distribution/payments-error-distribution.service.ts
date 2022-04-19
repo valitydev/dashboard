@@ -1,66 +1,61 @@
 import { Injectable } from '@angular/core';
-import isEqual from 'lodash-es/isEqual';
-import { BehaviorSubject, merge, Subject } from 'rxjs';
-import { distinctUntilChanged, map, pluck, shareReplay, switchMap, tap } from 'rxjs/operators';
+import { BehaviorSubject, ReplaySubject, defer, combineLatest } from 'rxjs';
+import { map, pluck, switchMap } from 'rxjs/operators';
 
-import { AnalyticsService } from '@dsh/api/analytics';
+import { AnalyticsService } from '@dsh/api/anapi';
+import { shareReplayRefCount } from '@dsh/operators';
+import { errorTo, progressTo, distinctUntilChangedDeep, inProgressFrom, attach } from '@dsh/utils';
 
-import { filterError, filterPayload, replaceError, SHARE_REPLAY_CONF, progress } from '../../../../custom-operators';
 import { SearchParams } from '../search-params';
 import { searchParamsToDistributionSearchParams } from '../utils';
 import { errorsDistributionToChartData } from './errors-distribution-to-chart-data';
-import { filterSubError } from './filter-sub-error';
 import { getErrorTitle } from './get-error-title';
+import { getSelectedErrorDistribution } from './get-selected-error-distribution';
 import { subErrorsToErrorDistribution } from './sub-errors-to-error-distribution';
 
 @Injectable()
 export class PaymentsErrorDistributionService {
-    private initSearchParams$ = new Subject<SearchParams>();
-    private searchParams$ = this.initSearchParams$.pipe(
-        map(searchParamsToDistributionSearchParams),
-        distinctUntilChanged(isEqual),
-        shareReplay(SHARE_REPLAY_CONF)
+    currentErrorTitle$ = defer(() => this.errorDistribution$).pipe(map(({ errorCode }) => getErrorTitle(errorCode)));
+    chartData$ = defer(() => this.errorDistribution$).pipe(
+        map(({ subErrors }) => errorsDistributionToChartData(subErrors))
+    );
+    isLoading$ = inProgressFrom(
+        () => this.progress$,
+        () => this.errorDistribution$
+    );
+    error$ = attach(
+        () => this.errorSub$,
+        () => this.errorDistribution$
     );
 
+    private errorDistribution$ = combineLatest([
+        defer(() => this.searchParams$).pipe(
+            distinctUntilChangedDeep(),
+            map(searchParamsToDistributionSearchParams),
+            switchMap(({ fromTime, toTime, shopIDs, realm }) =>
+                this.analyticsService
+                    .getPaymentsSubErrorDistribution({ fromTime, toTime, paymentInstitutionRealm: realm, shopIDs })
+                    .pipe(errorTo(this.errorSub$), progressTo(this.progress$))
+            ),
+            pluck('result'),
+            map(subErrorsToErrorDistribution)
+        ),
+        defer(() => this.selectedSubError$),
+    ]).pipe(
+        map(([errorDistribution, selectedSubErrorPath]) =>
+            getSelectedErrorDistribution(errorDistribution, selectedSubErrorPath)
+        ),
+        shareReplayRefCount()
+    );
+    private searchParams$ = new ReplaySubject<SearchParams>(1);
     private selectedSubError$ = new BehaviorSubject<number[]>([]);
+    private errorSub$ = new ReplaySubject<unknown>(1);
+    private progress$ = new BehaviorSubject<number>(0);
 
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    currentErrorTitle$ = new Subject<string>();
-
-    private errorDistributionOrError$ = this.searchParams$.pipe(
-        switchMap(({ fromTime, toTime, shopIDs, realm }) =>
-            this.analyticsService
-                .getPaymentsSubErrorDistribution(fromTime, toTime, { paymentInstitutionRealm: realm, shopIDs })
-                .pipe(replaceError)
-        )
-    );
-
-    private errorDistribution$ = this.errorDistributionOrError$.pipe(
-        filterPayload,
-        pluck('result'),
-        map(subErrorsToErrorDistribution),
-        shareReplay(SHARE_REPLAY_CONF)
-    );
-
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    chartData$ = merge(this.errorDistribution$, this.selectedSubError$).pipe(
-        switchMap(() => this.errorDistribution$),
-        tap((d) => this.currentErrorTitle$.next(getErrorTitle(d, this.selectedSubError$.getValue()))),
-        map((d) => filterSubError(d, this.selectedSubError$.getValue())),
-        map(errorsDistributionToChartData),
-        shareReplay(SHARE_REPLAY_CONF)
-    );
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    isLoading$ = progress(this.searchParams$, this.errorDistribution$).pipe(shareReplay(SHARE_REPLAY_CONF));
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    error$ = this.errorDistributionOrError$.pipe(filterError, shareReplay(SHARE_REPLAY_CONF));
-
-    constructor(private analyticsService: AnalyticsService) {
-        merge(this.errorDistribution$, this.isLoading$, this.error$).subscribe();
-    }
+    constructor(private analyticsService: AnalyticsService) {}
 
     updateSearchParams(searchParams: SearchParams) {
-        this.initSearchParams$.next(searchParams);
+        this.searchParams$.next(searchParams);
     }
 
     updateDataSelection(value: number) {

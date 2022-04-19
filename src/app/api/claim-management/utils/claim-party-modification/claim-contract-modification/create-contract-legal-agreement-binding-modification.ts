@@ -2,7 +2,8 @@ import {
     ContractLegalAgreementBindingModification,
     ContractModification,
     LegalAgreement,
-} from '../../../../api-codegen/claim-management';
+} from '@vality/swag-claim-management';
+
 import { createBaseContractModification } from './create-base-contract-modification';
 
 export const createContractLegalAgreementBindingModification = (id: string, legalAgreement: LegalAgreement) =>

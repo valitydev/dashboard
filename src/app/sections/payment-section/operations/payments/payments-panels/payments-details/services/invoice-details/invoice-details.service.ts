@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Invoice } from '@vality/swag-anapi-v2';
+import moment from 'moment';
 import { Observable, ReplaySubject } from 'rxjs';
-import { distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
+import { distinctUntilChanged, switchMap, tap, pluck } from 'rxjs/operators';
 
-import { Invoice } from '@dsh/api-codegen/anapi/swagger-codegen';
-import { InvoiceSearchService } from '@dsh/api/search';
+import { SearchService } from '@dsh/api/anapi';
 import { ErrorService } from '@dsh/app/shared/services';
 
 @UntilDestroy()
@@ -17,7 +18,7 @@ export class InvoiceDetailsService {
     private invoiceData$ = new ReplaySubject<Invoice | null>(1);
     private innerErrors$ = new ReplaySubject<Error>(1);
 
-    constructor(private invoiceSearchService: InvoiceSearchService, private errorService: ErrorService) {
+    constructor(private searchService: SearchService, private errorService: ErrorService) {
         this.invoice$ = this.invoiceData$.asObservable();
         this.error$ = this.innerErrors$.asObservable();
 
@@ -36,18 +37,24 @@ export class InvoiceDetailsService {
                     this.resetInvoiceData();
                 }),
                 switchMap((invoiceID: string) => {
-                    return this.invoiceSearchService.getInvoiceByDuration({ amount: 3, unit: 'y' }, invoiceID);
+                    return this.searchService.searchInvoices({
+                        invoiceID,
+                        fromTime: moment().subtract(3, 'y').startOf('d').utc().format(),
+                        toTime: moment().endOf('d').utc().format(),
+                        limit: 1,
+                    });
                 }),
+                pluck('result', 0),
                 untilDestroyed(this)
             )
-            .subscribe(
-                (invoice: Invoice) => {
+            .subscribe({
+                next: (invoice) => {
                     this.updateInvoiceData(invoice);
                 },
-                (err: Error) => {
+                error: (err: Error) => {
                     this.handleError(err);
-                }
-            );
+                },
+            });
     }
 
     private updateInvoiceData(invoice: Invoice): void {

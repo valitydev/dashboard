@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
-import { Invoice } from '@dsh/api-codegen/anapi/swagger-codegen';
+import { Invoice } from '@vality/swag-anapi-v2';
 
 import { StatusColor } from '../../../../theme-manager';
 

@@ -1,4 +1,4 @@
-import { SplitUnit } from '@dsh/api-codegen/anapi/swagger-codegen';
+import { SplitUnit } from '@vality/swag-anapi-v2';
 
 export const splitUnitToTimeFormat = (unit: SplitUnit): string => {
     switch (unit) {

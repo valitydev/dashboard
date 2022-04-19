@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
-import { Invoice, InvoiceCart } from '@dsh/api-codegen/anapi';
+import { Invoice, InvoiceLine } from '@vality/swag-anapi-v2';
 
 import { ReceivePaymentsService } from './services/receive-payments/receive-payments.service';
 
@@ -26,7 +25,7 @@ export class InvoiceDetailsComponent implements OnInit {
         return ['paid', 'unpaid'].includes(status);
     }
 
-    isCartAvailable(cart: InvoiceCart): boolean {
+    isCartAvailable(cart: InvoiceLine[]): boolean {
         return Boolean(cart?.length);
     }
 }

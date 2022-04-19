@@ -3,13 +3,12 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { AnalyticsModule } from '@dsh/api/analytics';
 import { ToMajorModule } from '@dsh/app/shared/pipes';
 
 import { BalancesComponent } from './balances.component';
 
 @NgModule({
-    imports: [CommonModule, AnalyticsModule, FlexLayoutModule, TranslocoModule, ToMajorModule],
+    imports: [CommonModule, FlexLayoutModule, TranslocoModule, ToMajorModule],
     declarations: [BalancesComponent],
     exports: [BalancesComponent],
 })

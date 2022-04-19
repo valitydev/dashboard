@@ -1,7 +1,6 @@
 import { Component, Injector } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
-
-import { BankCardPaymentSystem } from '@dsh/api-codegen/anapi';
+import { BankCardPaymentSystem } from '@vality/swag-anapi-v2';
 
 @Component({
     selector: 'dsh-payment-system-filter',

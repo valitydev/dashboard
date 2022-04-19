@@ -1,7 +1,6 @@
+import { OffsetAmount, SplitAmountResult, SplitUnit } from '@vality/swag-anapi-v2';
 import sortBy from 'lodash-es/sortBy';
 import moment from 'moment';
-
-import { OffsetAmount, SplitAmountResult, SplitUnit } from '@dsh/api-codegen/anapi/swagger-codegen';
 
 import { getOffsets } from '../utils';
 
@@ -43,7 +42,7 @@ export const prepareSplitAmount = (
     fromTime: string,
     toTime: string
 ): SplitAmountResult[] =>
-    splitAmounts.map(({ splitUnit, currency, offsetAmounts }) => ({
+    (splitAmounts ?? []).map(({ splitUnit, currency, offsetAmounts }) => ({
         splitUnit,
         currency,
         offsetAmounts: fillSplitAmountByZeroValues(offsetAmounts, fromTime, toTime, splitUnit),

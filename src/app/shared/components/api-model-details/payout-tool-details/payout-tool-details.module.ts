@@ -9,7 +9,6 @@ import { LayoutModule } from '@dsh/components/layout';
 
 import { ApiModelRefsModule } from '../../../pipes';
 import { BankAccountDetailsModule } from '../bank-account-details';
-import { BankCardComponent } from './bank-card';
 import { InternationalBankAccountComponent } from './international-bank-account';
 import { PayoutToolDetailsComponent } from './payout-tool-details.component';
 import { WalletComponent } from './wallet';
@@ -25,7 +24,7 @@ import { WalletComponent } from './wallet';
         ApiModelRefsModule,
         RouterModule,
     ],
-    declarations: [PayoutToolDetailsComponent, InternationalBankAccountComponent, BankCardComponent, WalletComponent],
+    declarations: [PayoutToolDetailsComponent, InternationalBankAccountComponent, WalletComponent],
     exports: [PayoutToolDetailsComponent],
 })
 export class PayoutToolDetailsModule {}

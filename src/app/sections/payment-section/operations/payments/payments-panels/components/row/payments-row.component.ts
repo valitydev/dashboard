@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
-import { PaymentSearchResult } from '@dsh/api-codegen/anapi';
+import { PaymentSearchResult } from '@vality/swag-anapi-v2';
 
 @Component({
     selector: 'dsh-payments-row',

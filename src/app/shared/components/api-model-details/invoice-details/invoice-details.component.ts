@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
-import { Invoice } from '@dsh/api-codegen/anapi/swagger-codegen';
+import { Invoice } from '@vality/swag-anapi-v2';
 
 @Component({
     selector: 'dsh-invoice-details',

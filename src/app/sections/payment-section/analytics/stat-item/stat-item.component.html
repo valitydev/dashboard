@@ -6,7 +6,7 @@
             fxLayoutAlign="space-between"
             fxLayoutGap="10px"
         >
-            <h2 class="mat-title stat-item-title">
+            <h2 *ngIf="!isLoading" class="mat-title stat-item-title">
                 <div *ngIf="statData?.current; else noData">
                     <div *ngIf="hideCurrency; else showCurrency">
                         {{ statData.current | number }}
@@ -19,10 +19,14 @@
                     {{ t('noData') }}
                 </ng-template>
             </h2>
-            <dsh-spinner *ngIf="isLoading" [type]="spinnerType" size="20"></dsh-spinner>
+            <dsh-spinner *ngIf="isLoading" [type]="spinnerType" size="32"></dsh-spinner>
         </div>
         <div class="mat-caption dsh-stat-item-title">{{ subtitle }}</div>
-        <dsh-percent-difference [current]="statData?.current" [previous]="statData?.previous"></dsh-percent-difference>
+        <dsh-percent-difference
+            *ngIf="!isLoading"
+            [current]="statData?.current"
+            [previous]="statData?.previous"
+        ></dsh-percent-difference>
     </div>
     <ng-template #onError>
         {{ c('httpError') }}

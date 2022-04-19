@@ -4,10 +4,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivatedRoute } from '@angular/router';
+import { PaymentSearchResult } from '@vality/swag-anapi-v2';
 import { of } from 'rxjs';
 import { instance, mock, verify, when } from 'ts-mockito';
 
-import { PaymentSearchResult } from '@dsh/api-codegen/anapi';
 import { PaymentInstitutionRealm } from '@dsh/api/model';
 import { QueryParamsService } from '@dsh/app/shared/services/query-params';
 import { provideMockService } from '@dsh/app/shared/tests';

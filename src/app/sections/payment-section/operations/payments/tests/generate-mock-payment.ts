@@ -1,4 +1,4 @@
-import { PaymentSearchResult } from '@dsh/api-codegen/anapi';
+import { PaymentSearchResult } from '@vality/swag-anapi-v2';
 
 // function was made to simplify to compare test dates
 function makeCurrentDate(): Date {

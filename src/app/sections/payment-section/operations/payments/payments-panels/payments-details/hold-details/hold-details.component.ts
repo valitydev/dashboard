@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { PaymentFlowHold, PaymentSearchResult, PaymentStatus } from '@vality/swag-anapi-v2';
 import { filter } from 'rxjs/operators';
 
-import { PaymentFlowHold, PaymentSearchResult, PaymentStatus } from '@dsh/api-codegen/anapi';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 
 import { PaymentIds } from '../../../types/payment-ids';

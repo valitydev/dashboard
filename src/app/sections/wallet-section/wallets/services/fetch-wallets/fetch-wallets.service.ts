@@ -6,14 +6,14 @@ import { Observable } from 'rxjs';
 import { WalletsService } from '@dsh/api/wallet';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { FetchResult, PartialFetcher } from '@dsh/app/shared';
-import { mapToTimestamp, publishReplayRefCount } from '@dsh/operators';
+import { mapToTimestamp, shareReplayRefCount } from '@dsh/operators';
 
 @Injectable()
 export class FetchWalletsService extends PartialFetcher<
     Wallet,
     Pick<ListWalletsRequestParams, 'identityID' | 'currencyID'>
 > {
-    lastUpdated$: Observable<string> = this.searchResult$.pipe(mapToTimestamp, publishReplayRefCount(1));
+    lastUpdated$: Observable<string> = this.searchResult$.pipe(mapToTimestamp, shareReplayRefCount());
 
     constructor(@Inject(SEARCH_LIMIT) private searchLimit: number, private walletService: WalletsService) {
         super();

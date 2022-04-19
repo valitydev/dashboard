@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
-import { PaymentResourcePayer } from '@dsh/api-codegen/anapi';
+import { PaymentResourcePayer } from '@vality/swag-anapi-v2';
 
 @Component({
     selector: 'dsh-resource-payer',

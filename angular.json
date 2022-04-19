@@ -149,9 +149,7 @@
                                 "bundleName": "eastern-theme",
                                 "inject": false
                             }
-                        ],
-                        "scripts": [],
-                        "codeCoverageExclude": ["src/**/swagger-codegen/**/*", "src/**/openapi-codegen/**"]
+                        ]
                     },
                     "configurations": {
                         "ci": {

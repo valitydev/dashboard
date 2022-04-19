@@ -11,7 +11,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { ReportsModule } from '@dsh/api/reports';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ButtonModule } from '@dsh/components/buttons';
 import { BootstrapIconModule } from '@dsh/components/indicators';
@@ -24,7 +23,6 @@ import { FormatTimeInputDirective } from './create-report-form/format-time-input
     imports: [
         CommonModule,
         TranslocoModule,
-        ReportsModule,
         MatSnackBarModule,
         MatDialogModule,
         FlexLayoutModule,

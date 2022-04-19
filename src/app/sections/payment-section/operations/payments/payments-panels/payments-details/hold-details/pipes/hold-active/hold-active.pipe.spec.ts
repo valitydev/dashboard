@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-
-import { PaymentStatus } from '@dsh/api-codegen/anapi';
+import { PaymentStatus } from '@vality/swag-anapi-v2';
 
 import { HoldActivePipe } from './hold-active.pipe';
 

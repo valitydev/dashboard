@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { WrappedFormControlSuperclass, provideValueAccessor } from '@s-libs/ng-core';
-
-import { RefundStatus } from '@dsh/api-codegen/anapi';
+import { RefundStatus } from '@vality/swag-anapi-v2';
 
 @Component({
     selector: 'dsh-refund-status-filter',

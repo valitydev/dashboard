@@ -14,15 +14,12 @@ import { PaymentsErrorDistributionService } from './payments-error-distribution.
 })
 export class PaymentsErrorDistributionComponent implements OnChanges {
     @Input() spinnerType: SpinnerType;
-
     @Input() searchParams: SearchParams;
 
     errorDistribution$ = this.distributionsService.chartData$;
     isLoading$ = this.distributionsService.isLoading$;
     error$ = this.distributionsService.error$;
-
     currentErrorTitle$ = this.distributionsService.currentErrorTitle$;
-
     colors = this.theme.donutChart;
 
     constructor(

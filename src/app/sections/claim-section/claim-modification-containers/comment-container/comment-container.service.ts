@@ -3,7 +3,7 @@ import { Subject } from 'rxjs';
 import { map, pluck, shareReplay, switchMap } from 'rxjs/operators';
 
 import { ConversationsService } from '@dsh/api/messages';
-import { booleanDelay, takeError } from '@dsh/operators';
+import { takeError } from '@dsh/operators';
 
 @Injectable()
 export class CommentContainerService {
@@ -20,7 +20,7 @@ export class CommentContainerService {
     );
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
-    isLoading$ = this.comment$.pipe(booleanDelay(), shareReplay(1));
+    isLoading$ = this.comment$.pipe(shareReplay(1));
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     error$ = this.comment$.pipe(takeError, shareReplay(1));

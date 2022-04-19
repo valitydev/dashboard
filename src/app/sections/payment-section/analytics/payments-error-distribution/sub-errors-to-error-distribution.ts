@@ -1,6 +1,5 @@
+import { PaymentsSubErrorsDistributionResult } from '@vality/swag-anapi-v2';
 import { SubError } from '@vality/swag-payments';
-
-import { PaymentsSubErrorsDistributionResult } from '@dsh/api-codegen/anapi/swagger-codegen';
 
 import { ErrorDistribution } from './error-distribution';
 import { KNOWN_ERRORS } from './known-errors';
@@ -31,7 +30,7 @@ const groupDistribution = (distribution: ErrorDistribution[]): ErrorDistribution
     }, []);
 
 export const subErrorsToErrorDistribution = (errors: PaymentsSubErrorsDistributionResult[]): ErrorDistribution[] => {
-    const errorDistribution: ErrorDistribution[] = errors.map(({ error, percents }) => ({
+    const errorDistribution: ErrorDistribution[] = (errors ?? []).map(({ error, percents }) => ({
         errorCode: KNOWN_ERRORS.includes(error.code) ? error.code : 'other',
         subErrors: error.subError ? [subErrorToDistribution(error.subError, percents)] : [],
         percents,

@@ -1,4 +1,4 @@
-import { BankCardTokenProvider, BankCardPaymentSystem, PaymentStatus } from '@dsh/api-codegen/anapi';
+import { BankCardTokenProvider, BankCardPaymentSystem, PaymentStatus } from '@vality/swag-anapi-v2';
 
 import { CardFilterForm } from '../card-filter';
 import { InvoicesFilterForm } from '../invoices-filter';

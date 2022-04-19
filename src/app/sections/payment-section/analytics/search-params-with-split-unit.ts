@@ -1,6 +1,5 @@
+import { SplitUnit } from '@vality/swag-anapi-v2';
 import { PaymentInstitution } from '@vality/swag-payments';
-
-import { SplitUnit } from '@dsh/api-codegen/anapi/swagger-codegen';
 
 export interface SearchParamsWithSplitUnit {
     fromTime: string;

@@ -8,7 +8,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { SearchModule } from '@dsh/api/search';
 import { ApiModelTypesModule } from '@dsh/app/shared/pipes';
 import { ButtonModule } from '@dsh/components/buttons';
 import { DateRangeFilterModule } from '@dsh/components/date-range-filter';
@@ -39,7 +38,6 @@ import { PayoutsComponent } from './payouts.component';
         MatOptionModule,
         CommonModule,
         MatSelectModule,
-        SearchModule,
         MatInputModule,
         SpinnerModule,
         ScrollUpModule,

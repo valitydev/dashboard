@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { PaymentResourcePayer, PaymentSearchResult } from '@vality/swag-anapi-v2';
 import isObject from 'lodash-es/isObject';
-
-import { PaymentResourcePayer, PaymentSearchResult, Payer } from '@dsh/api-codegen/anapi';
 
 import { CommonPayer } from './types/common-payer';
 import { PaymentAdditionalInfo } from './types/payment-additional-info';
@@ -19,9 +18,7 @@ export class PaymentMainInfoComponent {
     }
 
     get resourcePayer(): PaymentResourcePayer | null {
-        return this.payer.payerType === Payer.PayerTypeEnum.PaymentResourcePayer
-            ? (this.payer as PaymentResourcePayer)
-            : null;
+        return this.payer.payerType === 'PaymentResourcePayer' ? (this.payer as PaymentResourcePayer) : null;
     }
 
     get additionalInfo(): PaymentAdditionalInfo | null {

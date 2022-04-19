@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RefundSearchResult } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 
 import { ExpandedIdManager, Fragment } from '@dsh/app/shared/services';
 
-import { RefundSearchResult } from '../../../../api-codegen/capi';
 import { FetchRefundsService } from './services/fetch-refunds/fetch-refunds.service';
 
 @Injectable()

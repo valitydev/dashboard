@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
-
-import { Report } from '@dsh/api-codegen/anapi/swagger-codegen';
+import { Report } from '@vality/swag-anapi-v2';
 
 import { CancelReportService } from '../cancel-report';
 

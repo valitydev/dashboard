@@ -1,27 +1,27 @@
 import { Inject, Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { PaymentSearchResult } from '@vality/swag-anapi-v2';
 import { Observable, of } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 
-import { PaymentSearchResult } from '@dsh/api-codegen/anapi';
-import { PaymentsAndContinuationToken, PaymentSearchService } from '@dsh/api/search';
+import { SearchService } from '@dsh/api/anapi';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
 import { isNumber } from '@dsh/app/shared/utils';
-import { booleanDebounceTime, mapToTimestamp } from '@dsh/operators';
+import { mapToTimestamp } from '@dsh/operators';
 import { toMinor } from '@dsh/utils';
 
 import { PaymentSearchFormValue } from '../../types';
 
 @Injectable()
 export class FetchPaymentsService extends PartialFetcher<PaymentSearchResult, PaymentSearchFormValue> {
-    isLoading$: Observable<boolean> = this.doAction$.pipe(booleanDebounceTime(), shareReplay(1));
+    isLoading$: Observable<boolean> = this.doAction$.pipe(shareReplay(1));
     lastUpdated$: Observable<string> = this.searchResult$.pipe(mapToTimestamp, shareReplay(1));
     paymentsList$: Observable<PaymentSearchResult[]> = this.searchResult$;
 
     constructor(
-        private paymentSearchService: PaymentSearchService,
+        private searchService: SearchService,
         private snackBar: MatSnackBar,
         private transloco: TranslocoService,
         @Inject(SEARCH_LIMIT)
@@ -33,22 +33,18 @@ export class FetchPaymentsService extends PartialFetcher<PaymentSearchResult, Pa
     }
 
     protected fetch(
-        { paymentAmountFrom, paymentAmountTo, fromTime, toTime, realm, ...params }: PaymentSearchFormValue,
+        { paymentAmountFrom, paymentAmountTo, realm, ...params }: PaymentSearchFormValue,
         continuationToken?: string
-    ): Observable<PaymentsAndContinuationToken> {
-        return this.paymentSearchService
-            .searchPayments(
-                fromTime,
-                toTime,
-                {
-                    ...params,
-                    paymentInstitutionRealm: realm,
-                    paymentAmountFrom: isNumber(paymentAmountFrom) ? toMinor(paymentAmountFrom) : undefined,
-                    paymentAmountTo: isNumber(paymentAmountTo) ? toMinor(paymentAmountTo) : undefined,
-                },
-                this.searchLimit,
-                continuationToken
-            )
+    ) {
+        return this.searchService
+            .searchPayments({
+                ...params,
+                paymentInstitutionRealm: realm,
+                paymentAmountFrom: isNumber(paymentAmountFrom) ? toMinor(paymentAmountFrom) : undefined,
+                paymentAmountTo: isNumber(paymentAmountTo) ? toMinor(paymentAmountTo) : undefined,
+                limit: this.searchLimit,
+                continuationToken,
+            })
             .pipe(
                 catchError(() => {
                     this.snackBar.open(this.transloco.translate('httpError'), 'OK');

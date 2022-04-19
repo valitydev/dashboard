@@ -9,14 +9,13 @@ import { catchError, shareReplay } from 'rxjs/operators';
 import { DepositsService } from '@dsh/api/wallet';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
-import { booleanDebounceTime } from '@dsh/operators';
 
 @Injectable()
 export class FetchDepositRevertsService extends PartialFetcher<
     DepositRevert,
     Omit<ListDepositRevertsRequestParams, 'xRequestID' | 'limit'>
 > {
-    isLoading$: Observable<boolean> = this.doAction$.pipe(booleanDebounceTime(), shareReplay(1));
+    isLoading$: Observable<boolean> = this.doAction$.pipe(shareReplay(1));
 
     constructor(
         private depositsService: DepositsService,

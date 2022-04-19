@@ -6,7 +6,7 @@ import { Observable, Subject } from 'rxjs';
 import { shareReplay, switchMap } from 'rxjs/operators';
 
 import { FilesService } from '@dsh/api/dark-api';
-import { booleanDelay, takeError } from '@dsh/operators';
+import { takeError } from '@dsh/operators';
 import { download } from '@dsh/utils';
 
 @Injectable()
@@ -20,7 +20,7 @@ export class FileContainerService {
     );
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
-    isLoading$ = this.fileInfo$.pipe(booleanDelay(), shareReplay(1));
+    isLoading$ = this.fileInfo$.pipe(shareReplay(1));
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     error$ = this.fileInfo$.pipe(takeError, shareReplay(1));

@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
-import { InvoiceLine } from '@dsh/api-codegen/anapi';
+import { InvoiceLine } from '@vality/swag-anapi-v2';
 
 import { ReceiveInvoiceService } from '../../../services/receive-invoice/receive-invoice.service';
 

@@ -7,13 +7,13 @@ import { ShopBalance } from '../../types/shop-balance';
 import { ShopItem } from '../../types/shop-item';
 
 export function combineShopItem(shops: ApiShop[], balances: ShopBalance[]): ShopItem[] {
-    const balancesMap = balances.reduce((acc: Dict<ShopBalance>, el: ShopBalance) => {
+    const balancesMap = balances?.reduce((acc: Dict<ShopBalance>, el: ShopBalance) => {
         acc[el.id] = el;
         return acc;
     }, {});
 
     return shops.map((shop: ApiShop) => {
-        const balance = balancesMap[shop.id];
+        const balance = balancesMap?.[shop.id];
         return {
             ...shop,
             balance: isNil(balance) ? null : balance.data,

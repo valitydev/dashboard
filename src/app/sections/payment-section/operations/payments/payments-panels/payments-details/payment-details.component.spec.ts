@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDividerModule } from '@angular/material/divider';
+import { Invoice, PaymentSearchResult } from '@vality/swag-anapi-v2';
 import { instance, mock, verify } from 'ts-mockito';
-
-import { Invoice, PaymentSearchResult } from '@dsh/api-codegen/anapi';
 
 import { generateMockPayment } from '../../tests/generate-mock-payment';
 import { PaymentIds } from '../../types/payment-ids';
