@@ -24,7 +24,7 @@ export class CountriesService extends createApi(ApiCountriesService) {
     constructor(injector: Injector, private errorService: ErrorService) {
         super(injector);
         this.getCountries = () => {
-            return super.getCountries().pipe(map((countries) => sortBy(countries, 'id')));
+            return this.getCountries().pipe(map((countries) => sortBy(countries, 'id')));
         };
     }
 }

@@ -20,6 +20,9 @@ type Method<M, P extends PropertyKey> = M extends (...args: unknown[]) => Observ
     ? (params: MethodParams<Parameters<M>[0], P>) => Observable<R>
     : never;
 
+/**
+ * Don't use super with Api class methods because they were added with the object assign
+ */
 export function createApi<
     T extends Record<PropertyKey, any> & { defaultHeaders: HttpHeaders },
     E extends (new (...args: any[]) => ApiExtension)[] = []

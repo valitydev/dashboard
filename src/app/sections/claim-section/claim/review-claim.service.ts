@@ -62,15 +62,17 @@ export class ReviewClaimService {
                 ),
                 switchMap(() => this.routeParamClaimService.claim$),
                 switchMap(({ id, revision }) =>
-                    this.claimsApiService.requestReviewClaimByID({ claimID: id, claimRevision: revision }).pipe(
-                        catchError((ex) => {
-                            this.progress$.next(false);
-                            console.error(ex);
-                            const error = { hasError: true, code: 'requestReviewClaimByIDFailed' };
-                            this.error$.next(error);
-                            return of(error);
-                        })
-                    )
+                    this.claimsApiService
+                        .requestReviewClaimByIDWithRevisionCheck({ claimID: id, claimRevision: revision })
+                        .pipe(
+                            catchError((ex) => {
+                                this.progress$.next(false);
+                                console.error(ex);
+                                const error = { hasError: true, code: 'requestReviewClaimByIDFailed' };
+                                this.error$.next(error);
+                                return of(error);
+                            })
+                        )
                 ),
                 untilDestroyed(this)
             )
