@@ -10,15 +10,15 @@ import { createApi, PartyIdExtension, ApiMethodParams } from '../utils';
     providedIn: 'root',
 })
 export class ClaimsService extends createApi(ApiClaimsService, [PartyIdExtension]) {
-    requestReviewClaimByID = (
+    requestReviewClaimByIDWithRevisionCheck = (
         params: ApiMethodParams<ApiClaimsService['requestReviewClaimByID'], 'xRequestID' | 'partyID'>
     ) => {
-        return super.requestReviewClaimByID(params).pipe(
+        return this.requestReviewClaimByID(params).pipe(
             catchError((err) => {
                 if (err instanceof HttpErrorResponse && err.error?.code === 'invalidClaimRevision')
                     return this.getClaimByID({ claimID: params.claimID }).pipe(
                         switchMap((claim) =>
-                            super.requestReviewClaimByID({
+                            this.requestReviewClaimByID({
                                 ...params,
                                 claimRevision: claim.revision,
                             })

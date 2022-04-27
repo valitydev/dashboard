@@ -29,7 +29,7 @@ export class CreateInternationalShopEntityService {
             .pipe(
                 switchMap((claim) =>
                     this.claimsService
-                        .requestReviewClaimByID({ claimID: claim.id, claimRevision: claim.revision })
+                        .requestReviewClaimByIDWithRevisionCheck({ claimID: claim.id, claimRevision: claim.revision })
                         .pipe(mapTo(claim))
                 )
             );

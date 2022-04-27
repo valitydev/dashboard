@@ -27,8 +27,8 @@ export class FilesService extends createApi(ApiFilesService) {
         );
     }
 
-    getFileInfo = (params: ApiMethodParams<ApiFilesService['getFileInfo'], 'xRequestID'>) => {
-        return super.getFileInfo(params).pipe(
+    getDecodedFileInfo = (params: ApiMethodParams<ApiFilesService['getFileInfo'], 'xRequestID'>) => {
+        return this.getFileInfo(params).pipe(
             map((file) => ({
                 ...file,
                 fileName: decodeURI(file.fileName),

@@ -25,7 +25,10 @@ export class CreateRussianShopEntityService {
             switchMap((claim) => {
                 return forkJoin([
                     of(claim),
-                    this.claimsService.requestReviewClaimByID({ claimID: claim.id, claimRevision: claim.revision }),
+                    this.claimsService.requestReviewClaimByIDWithRevisionCheck({
+                        claimID: claim.id,
+                        claimRevision: claim.revision,
+                    }),
                 ]);
             }),
             pluck(0)

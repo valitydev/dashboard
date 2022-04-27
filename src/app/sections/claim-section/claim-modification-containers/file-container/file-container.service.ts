@@ -15,7 +15,7 @@ export class FileContainerService {
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     fileInfo$: Observable<FileData> = this.getFileInfo$.pipe(
-        switchMap((fileID) => this.filesService.getFileInfo({ fileID })),
+        switchMap((fileID) => this.filesService.getDecodedFileInfo({ fileID })),
         shareReplay(1)
     );
 
