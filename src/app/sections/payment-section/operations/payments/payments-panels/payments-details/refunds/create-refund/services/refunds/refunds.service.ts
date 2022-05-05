@@ -16,9 +16,11 @@ export class RefundsService {
     getRefundedAmountSum(invoiceID: string, paymentID: string): Observable<number> {
         return this.paymentsService.getRefunds({ invoiceID, paymentID }).pipe(
             map((refunds: Refund[]) => {
-                return refunds.reduce((sumAmount: number, refund: Refund) => {
-                    return sumAmount + refund.amount;
-                }, 0);
+                return refunds
+                    .filter((refund) => refund.status !== 'failed')
+                    .reduce((sumAmount: number, refund: Refund) => {
+                        return sumAmount + refund.amount;
+                    }, 0);
             })
         );
     }
