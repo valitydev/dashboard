@@ -37,7 +37,7 @@
     "@angular/platform-browser": "13.3.2",
     "@angular/platform-browser-dynamic": "13.3.2",
     "@angular/router": "13.3.2",
-    "@ngneat/reactive-forms": "^1.5.0",
+    "@ngneat/reactive-forms": "4.1.0",
     "@ngneat/transloco": "^3.1.1",
     "@ngneat/until-destroy": "^9.0.0",
     "@s-libs/js-core": "13.1.0",
