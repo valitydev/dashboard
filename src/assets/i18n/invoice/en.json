@@ -1,0 +1,36 @@
+{
+    "title": "Детали инвойса",
+    "statusDetailItem": {
+        "status": "Status"
+    },
+    "details": {
+        "amount": "Amount",
+        "invoiceTemplate": "Идентификатор шаблона",
+        "createdAt": "Created at",
+        "dueDate": "Окончание действия",
+        "product": "Наименование предлагаемых товаров или услуг",
+        "description": "Описание предлагаемых товаров или услуг",
+        "reason": "Причина отмены или погашения инвойса",
+        "cart": {
+            "title": "Корзина с набором позиций товаров или услуг",
+            "product": "Описание предлагаемого товара или услуги",
+            "cost": "Price",
+            "quantity": "Quantity",
+            "taxMode": "TAX"
+        },
+        "payments": {
+            "title": "Payments",
+            "noPayments": "Платежей нет",
+            "payment": {
+                "title": "Payment",
+                "status": "Status",
+                "amount": "Amount",
+                "createdAt": "Платеж создан"
+            }
+        },
+        "paymentLink": {
+            "title": "Ссылка на оплату",
+            "create": "Сконфигурировать ссылку на оплату"
+        }
+    }
+}

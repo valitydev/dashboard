@@ -1,6 +1,7 @@
 {
     "header": "Organization",
     "createOrganization": "Create organization",
+    "emptyOrganizations": "Организации отсутствуют",
     "headerRow": {
         "name": "Name of the organization"
     },
@@ -19,8 +20,12 @@
     "createOrganizationDialog": {
         "title": "Organization creation",
         "name": "Name of the organization",
-        "create": "Create",
-        "cancel": "Cancel"
+        "create": "Create"
+    },
+    "renameOrganizationDialog": {
+        "title": "Переименование организации",
+        "name": "Name of the organization",
+        "save": "Сохранить"
     },
     "updateOrganizationDialog": {
         "title": "Organization update",
@@ -29,6 +34,7 @@
         "cancel": "Cancel"
     },
     "organizationRoles": {
+        "owner": "Владелец",
         "roles": {
             "Administrator": "Administrator",
             "Accountant": "Accountant",
@@ -40,10 +46,18 @@
         }
     },
     "organizationDetails": {
+        "breadcrumb": {
+            "organizations": "Organizations"
+        },
+        "links": {
+            "members": "Сотрудники",
+            "invitations": "Приглашения"
+        },
         "membersList": {
             "headerRow": {
                 "email": "Email"
-            }
+            },
+            "emptyMembers": "Участники отсутствуют"
         },
         "member": {
             "titles": {
@@ -54,6 +68,86 @@
                 "editRoles": "Edit",
                 "removeFromOrganization": "Remove from organization"
             }
+        },
+        "invitations": {
+            "createInvitation": "Сформировать приглашение"
+        },
+        "invitation": {
+            "createdAt": "Дата и время приглашения",
+            "expiresAt": "Время истечения срока принятия",
+            "titles": {
+                "roles": "Roles",
+                "actions": "Actions"
+            },
+            "actions": {
+                "repeat": "Выслать повторное приглашение",
+                "cancel": "Отменить приглашение"
+            }
+        },
+        "invitationsList": {
+            "headerRow": {
+                "email": "Email"
+            },
+            "emptyInvitations": "Приглашения отсутствуют"
+        }
+    },
+    "createInvitationDialog": {
+        "title": "Сформировать приглашение",
+        "roles": "Роли сотрудника",
+        "form": {
+            "expiresAt": "Дата истечения срока принятия",
+            "email": "Email"
+        },
+        "send": "Отправить приглашение"
+    },
+    "changeRolesTable": {
+        "add": "Добавить",
+        "remove": "Удалить",
+        "shops": "Shops"
+    },
+    "selectRoleDialog": {
+        "title": "Выберите роль",
+        "select": "Выбрать",
+        "accesses": {
+            "payments": "Payments",
+            "viewAnalytics": "Просмотр аналитики",
+            "viewInvoices": "Просмотр инвойсов",
+            "viewPayments": "Просмотр платежей",
+            "viewRefunds": "Просмотр возвратов",
+            "viewPayouts": "Просмотр возмещений",
+            "viewApiKey": "Просмотр API ключа",
+            "manageReports": "Управление отчетами",
+            "manageWebhooks": "Управление Webhooks",
+            "createInvoice": "Создать инвойс",
+            "createPaymentLink": "Создать платежную ссылку",
+            "createRefund": "Совершить возврат",
+            "wallets": "Кошельки",
+            "claims": "Заявки",
+            "manageOrganizations": "Управление организациями и сотрудниками"
+        }
+    },
+    "roles": {
+        "Administrator": "Administrator",
+        "Manager": "Manager",
+        "Accountant": "Accountant",
+        "Integrator": "Integrator"
+    },
+    "editRolesDialog": {
+        "title": "Редактирование ролей",
+        "save": "Сохранить"
+    },
+    "acceptInvitation": {
+        "confirm": {
+            "title": "Подтвердите вступление в организацию",
+            "button": "Подтвердить",
+            "refuseDescription": "Для отказа просто покиньте эту страницу"
+        },
+        "success": {
+            "title": "Вы успешно вступили в организацию",
+            "goToOrganizationsList": "Перейти к списку организаций"
+        },
+        "error": {
+            "title": "Произошла ошибка"
         }
     }
 }

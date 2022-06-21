@@ -1,0 +1,7 @@
+{
+    "status": "Status",
+    "amount": "Amount",
+    "createdAt": "Created at",
+    "name": "Product name",
+    "description": "Описание"
+}

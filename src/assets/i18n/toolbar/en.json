@@ -1,0 +1,21 @@
+{
+    "nav": {
+        "main": "Главная",
+        "payments": "Payments",
+        "payments_folder": "Payments",
+        "payments_analytics": "Аналитика",
+        "payments_operations": "Операции",
+        "payments_payouts": "Возмещения",
+        "payments_reports": "Отчеты",
+        "payments_integrations": "Интеграция",
+        "wallets": "Кошельки",
+        "wallets_folder": "Кошельки",
+        "wallets_wallet": "Wallet",
+        "wallets_deposits": "Пополнения",
+        "wallets_withdrawals": "Выводы",
+        "wallets_reports": "Отчеты",
+        "wallets_integrations": "Интеграция",
+        "claims": "Заявки",
+        "feedback": "Обратная связь"
+    }
+}

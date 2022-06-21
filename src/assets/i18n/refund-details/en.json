@@ -1,0 +1,7 @@
+{
+    "status": "Status",
+    "amount": "Сумма",
+    "createdAt": "Совершен",
+    "reason": "Reason",
+    "error": "Ошибка"
+}

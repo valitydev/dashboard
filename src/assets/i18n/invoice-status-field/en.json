@@ -1,0 +1,8 @@
+{
+    "statuses": {
+        "unpaid": "Не оплачен",
+        "cancelled": "Cancelled",
+        "paid": "Оплачен",
+        "fulfilled": "Погашен"
+    }
+}

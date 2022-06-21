@@ -1,0 +1,10 @@
+{
+    "revert": "Cancel",
+    "status": "Status",
+    "createdAt": "Дата",
+    "amount": "Сумма отмены",
+    "error": "Ошибка",
+    "errors": {
+        "failed": "Ошибка при отмене"
+    }
+}
