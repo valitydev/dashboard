@@ -65,8 +65,14 @@ export class CreateRefundDialogComponent implements OnInit {
         this.refundsService
             .createRefund(invoiceID, paymentID, params)
             .pipe(withLatestFrom(this.availableRefundAmount$), take(1))
-            .subscribe(
-                ([refund, { amount }]: [Refund, Balance]) => {
+            .subscribe({
+                next: ([refund, { amount }]: [Refund, Balance]) => {
+                    if (refund.error || refund.status === 'failed') {
+                        this.dialogRef.close({
+                            status: CreateRefundDialogResponseStatus.Error,
+                        });
+                        return;
+                    }
                     this.notificationService.success(
                         this.transloco.translate('refunds.createRefund.successful', null, 'payment-details')
                     );
@@ -75,13 +81,13 @@ export class CreateRefundDialogComponent implements OnInit {
                         availableAmount: amount - refund.amount,
                     });
                 },
-                (err: Error) => {
+                error: (err: Error) => {
                     this.handleResponseError(err);
                     this.dialogRef.close({
                         status: CreateRefundDialogResponseStatus.Error,
                     });
-                }
-            );
+                },
+            });
     }
 
     decline(): void {
