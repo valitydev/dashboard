@@ -74,7 +74,11 @@ export class CreateRefundDialogComponent implements OnInit {
                         return;
                     }
                     this.notificationService.success(
-                        this.transloco.translate('refunds.createRefund.successful', null, 'payment-details')
+                        this.transloco.translate(
+                            `refunds.createRefund.${refund.status === 'pending' ? 'pending' : 'successful'}`,
+                            null,
+                            'payment-details'
+                        )
                     );
                     this.dialogRef.close({
                         status: CreateRefundDialogResponseStatus.Success,
