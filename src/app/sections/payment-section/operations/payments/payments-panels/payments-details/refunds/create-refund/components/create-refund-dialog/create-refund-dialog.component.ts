@@ -8,7 +8,7 @@ import { Refund, RefundParams } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
 import isNil from 'lodash-es/isNil';
 import { Observable } from 'rxjs';
-import { map, shareReplay, take, withLatestFrom, pluck } from 'rxjs/operators';
+import { map, shareReplay, take, withLatestFrom } from 'rxjs/operators';
 
 import { ErrorService, NotificationService } from '@dsh/app/shared/services';
 import { CommonError } from '@dsh/app/shared/services/error/models/common-error';
@@ -146,7 +146,9 @@ export class CreateRefundDialogComponent implements OnInit {
             this.fb.control(null, {
                 validators: [Validators.required, amountValidator, Validators.min(1)],
                 asyncValidators: [
-                    maxAvailableAmountValidator(this.availableRefundAmount$.pipe(pluck('amount'), map(toMajor))),
+                    maxAvailableAmountValidator(
+                        this.availableRefundAmount$.pipe(map(({ amount, currency }) => toMajor(amount, currency)))
+                    ),
                 ],
             })
         );
