@@ -1,5 +1,5 @@
 import { isNumber } from '@dsh/app/shared/utils';
-import { removeDictEmptyFields, toMinor } from '@dsh/utils';
+import { removeDictEmptyFields } from '@dsh/utils';
 
 import { AdditionalFilters, AdditionalFiltersForm } from '../types';
 
@@ -7,6 +7,6 @@ export const formToFilters = ({ mainInfo, status, amount }: AdditionalFiltersFor
     removeDictEmptyFields({
         ...mainInfo,
         status,
-        amountFrom: isNumber(amount?.amountFrom) ? toMinor(amount.amountFrom) : null,
-        amountTo: isNumber(amount?.amountTo) ? toMinor(amount.amountTo) : null,
+        amountFrom: isNumber(amount?.amountFrom) ? amount.amountFrom : null,
+        amountTo: isNumber(amount?.amountTo) ? amount.amountTo : null,
     });

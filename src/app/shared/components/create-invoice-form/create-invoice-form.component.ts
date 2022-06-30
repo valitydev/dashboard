@@ -80,7 +80,13 @@ export class CreateInvoiceFormComponent extends WrappedFormControlSuperclass<For
         getFormValueChanges(this.form)
             .pipe(untilDestroyed(this))
             .subscribe((v) =>
-                this.emitOutgoingValue({ ...v, cart: v.cart.map((i) => ({ ...i, price: toMinor(i.price) })) })
+                this.emitOutgoingValue({
+                    ...v,
+                    cart: v.cart.map((i) => ({
+                        ...i,
+                        price: i.price && this.currency ? toMinor(i.price, this.currency) : i.price,
+                    })),
+                })
             );
         getFormValueChanges(this.form)
             .pipe(

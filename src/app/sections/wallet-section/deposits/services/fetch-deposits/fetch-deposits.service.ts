@@ -11,7 +11,6 @@ import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
 import { isNumber } from '@dsh/app/shared/utils';
 import { mapToTimestamp } from '@dsh/operators';
-import { toMinor } from '@dsh/utils';
 
 @Injectable()
 export class FetchDepositsService extends PartialFetcher<
@@ -40,8 +39,8 @@ export class FetchDepositsService extends PartialFetcher<
         return this.depositsService
             .listDeposits({
                 ...params,
-                amountFrom: isNumber(amountFrom) ? toMinor(amountFrom) : undefined,
-                amountTo: isNumber(amountTo) ? toMinor(amountTo) : undefined,
+                amountFrom: isNumber(amountFrom) ? amountFrom : undefined,
+                amountTo: isNumber(amountTo) ? amountTo : undefined,
                 limit: this.searchLimit,
                 continuationToken,
             })

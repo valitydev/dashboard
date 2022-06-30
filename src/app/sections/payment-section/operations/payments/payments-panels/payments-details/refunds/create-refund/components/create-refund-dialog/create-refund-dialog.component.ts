@@ -134,7 +134,7 @@ export class CreateRefundDialogComponent implements OnInit {
         };
 
         if (!isNil(amount) && !isNaN(amount)) {
-            params.amount = toMinor(amount);
+            params.amount = toMinor(amount, currency);
         }
 
         return params;

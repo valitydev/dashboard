@@ -10,7 +10,6 @@ import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
 import { isNumber } from '@dsh/app/shared/utils';
 import { mapToTimestamp } from '@dsh/operators';
-import { toMinor } from '@dsh/utils';
 
 import { PaymentSearchFormValue } from '../../types';
 
@@ -40,8 +39,8 @@ export class FetchPaymentsService extends PartialFetcher<PaymentSearchResult, Pa
             .searchPayments({
                 ...params,
                 paymentInstitutionRealm: realm,
-                paymentAmountFrom: isNumber(paymentAmountFrom) ? toMinor(paymentAmountFrom) : undefined,
-                paymentAmountTo: isNumber(paymentAmountTo) ? toMinor(paymentAmountTo) : undefined,
+                paymentAmountFrom: isNumber(paymentAmountFrom) ? paymentAmountFrom : undefined,
+                paymentAmountTo: isNumber(paymentAmountTo) ? paymentAmountTo : undefined,
                 limit: this.searchLimit,
                 continuationToken,
             })

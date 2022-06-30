@@ -91,7 +91,7 @@ export class CreateHoldDialogComponent {
         };
 
         if (!isNil(amount) && !isNaN(amount)) {
-            params.amount = toMinor(amount);
+            params.amount = toMinor(amount, currency);
         }
 
         return params;
