@@ -19,7 +19,7 @@ export class AmountCurrencyPipe implements PipeTransform {
     ): string {
         const locale = this._locale;
         return formatCurrency(
-            toMajor(amount),
+            toMajor(amount, currencyCode),
             locale,
             getCurrencySymbol(currencyCode, 'wide', locale),
             currencyCode,

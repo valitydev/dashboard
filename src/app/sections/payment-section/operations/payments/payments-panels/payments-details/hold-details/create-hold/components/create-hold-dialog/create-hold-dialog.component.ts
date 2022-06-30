@@ -31,7 +31,7 @@ export class CreateHoldDialogComponent {
     isPartial = false;
 
     get maxAllowedAmount(): number {
-        return toMajor(this.dialogData.maxAllowedAmount);
+        return toMajor(this.dialogData.maxAllowedAmount, this.dialogData.currency);
     }
 
     get currency(): string {
