@@ -1,8 +1,6 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ToMajorModule } from '@dsh/app/shared/pipes';
-
 import { BalanceComponent } from './balance.component';
 
 const EMPTY_BALANCE_SYMBOL = '--/--';
@@ -13,7 +11,6 @@ describe('BalanceComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [ToMajorModule],
             declarations: [BalanceComponent],
         })
             .overrideComponent(BalanceComponent, {

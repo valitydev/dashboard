@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { ApiModelRefsModule, ToMajorModule } from '@dsh/app/shared/pipes';
+import { ApiModelRefsModule, AmountCurrencyModule } from '@dsh/app/shared/pipes';
 import { StatusModule } from '@dsh/components/indicators';
 import { DetailsItemModule } from '@dsh/components/layout';
 import { CollapseModule } from '@dsh/components/layout/collapse';
@@ -25,10 +25,11 @@ import { PaymentErrorMessagePipe } from './pipes/payment-error-message/payment-e
         TranslocoModule,
         DetailsItemModule,
         StatusModule,
-        ToMajorModule,
+
         PaymentToolModule,
         CollapseModule,
         ApiModelRefsModule,
+        AmountCurrencyModule,
     ],
     declarations: [
         PaymentMainInfoComponent,

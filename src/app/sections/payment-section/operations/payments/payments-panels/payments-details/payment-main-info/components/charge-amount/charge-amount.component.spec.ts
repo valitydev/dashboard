@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ToMajorModule } from '@dsh/app/shared/pipes';
 import { getTextContent } from '@dsh/app/shared/tests/get-text-content';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 
@@ -15,7 +14,7 @@ describe('ChargeAmountComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [getTranslocoModule(), MockDetailsItemModule, ToMajorModule],
+            imports: [getTranslocoModule(), MockDetailsItemModule],
             declarations: [ChargeAmountComponent],
         })
             .overrideComponent(ChargeAmountComponent, {

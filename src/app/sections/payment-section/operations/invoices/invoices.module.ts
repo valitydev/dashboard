@@ -15,7 +15,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@ngneat/transloco';
 
 import { InvoiceDetailsModule } from '@dsh/app/shared/components';
-import { ToMajorModule } from '@dsh/app/shared/pipes';
 import { ButtonModule } from '@dsh/components/buttons';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { FormControlsModule } from '@dsh/components/form-controls';
@@ -45,7 +44,7 @@ import { InvoicesComponent } from './invoices.component';
         MatSelectModule,
         FormControlsModule,
         IndicatorsModule,
-        ToMajorModule,
+
         MatSnackBarModule,
         StateNavModule,
         TranslocoModule,

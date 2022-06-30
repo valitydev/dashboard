@@ -8,7 +8,7 @@
         {{ line.product }}
     </dsh-details-item>
     <dsh-details-item [title]="t('price')">
-        {{ line.price | toMajor | currency: currency }}
+        {{ line.price | amountCurrency: currency }}
     </dsh-details-item>
     <dsh-details-item [title]="t('quantity')">
         {{ line.quantity }}

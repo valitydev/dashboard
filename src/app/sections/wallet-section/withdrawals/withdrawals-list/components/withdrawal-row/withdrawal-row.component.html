@@ -11,6 +11,6 @@
         </dsh-status>
     </dsh-row-label>
     <dsh-row-label fxHide.lt-md>
-        {{ withdrawal.body.amount | toMajor | currency: withdrawal.body.currency }}
+        {{ withdrawal.body.amount | amountCurrency: withdrawal.body.currency }}
     </dsh-row-label>
 </dsh-row>

@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CustomerPayer, Payer, PaymentResourcePayer } from '@vality/swag-anapi-v2';
 
-import { ToMajorModule } from '@dsh/app/shared/pipes';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 import { StatusModule } from '@dsh/components/indicators';
 
@@ -25,14 +24,7 @@ describe('PaymentMainInfoComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [
-                getTranslocoModule(),
-                MockDetailsItemModule,
-                PaymentToolModule,
-                FlexLayoutModule,
-                ToMajorModule,
-                StatusModule,
-            ],
+            imports: [getTranslocoModule(), MockDetailsItemModule, PaymentToolModule, FlexLayoutModule, StatusModule],
             declarations: [
                 PaymentMainInfoComponent,
                 PaymentStatusComponent,
