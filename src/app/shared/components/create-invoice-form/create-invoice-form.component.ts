@@ -8,10 +8,10 @@ import isEqual from 'lodash-es/isEqual';
 import isNil from 'lodash-es/isNil';
 import * as moment from 'moment';
 import { Moment } from 'moment';
-import { distinctUntilChanged, map, shareReplay, startWith } from 'rxjs/operators';
+import { distinctUntilChanged, map, startWith } from 'rxjs/operators';
 import { Overwrite } from 'utility-types';
 
-import { SHARE_REPLAY_CONF } from '@dsh/operators';
+import { shareReplayUntilDestroyed } from '@dsh/operators';
 import { replaceFormArrayValue, getFormValueChanges, toMinor, getFormValidationChanges, toMajor } from '@dsh/utils';
 
 export const WITHOUT_VAT = Symbol('without VAT');
@@ -21,7 +21,6 @@ export const EMPTY_FORM_DATA: FormData = {
     dueDate: null,
     product: '',
     description: '',
-    currency: '',
     cart: [EMPTY_CART_ITEM],
 };
 
@@ -37,7 +36,6 @@ export interface FormData {
     dueDate: Moment;
     product: string;
     description: string;
-    currency: string;
     cart: CartItem[];
 }
 
@@ -60,16 +58,15 @@ export class CreateInvoiceFormComponent extends WrappedFormControlSuperclass<For
     });
     totalAmount$ = this.form.controls.cart.valueChanges.pipe(
         startWith(this.form.controls.cart.value),
-        map((v) =>
-            v
-                .map(({ price, quantity }) => price * quantity)
-                .reduce((sum, s) => sum + s, 0)
-                .toFixed(2)
-        ),
-        shareReplay(SHARE_REPLAY_CONF)
+        map((v) => v.map(({ price, quantity }) => price * quantity).reduce((sum, s) => sum + s, 0)),
+        shareReplayUntilDestroyed(this)
     );
     taxVatRates = Object.values(InvoiceLineTaxVAT.RateEnum);
     withoutVAT = WITHOUT_VAT;
+
+    get currency() {
+        return this.shops?.find((s) => s.id === this.form.value.shopID)?.currency;
+    }
 
     get minDate(): Moment {
         return moment().add('2', 'day').startOf('day');
@@ -103,7 +100,7 @@ export class CreateInvoiceFormComponent extends WrappedFormControlSuperclass<For
             ...(value || {}),
             cart: (value?.cart || [EMPTY_CART_ITEM]).map((v) => ({
                 ...v,
-                price: isNil(v.price) ? v.price : toMajor(v.price),
+                price: isNil(v.price) || isNil(this.currency) ? v.price : toMajor(v.price, this.currency),
             })),
         };
         replaceFormArrayValue(this.form.controls.cart, value.cart, (v) => this.fb.group(v));

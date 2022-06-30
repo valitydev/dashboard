@@ -29,69 +29,73 @@
         </mat-form-field>
     </div>
 
-    <h2 class="dsh-subheading-1" *ngIf="form.controls.cart.controls.length">{{ d('productsList') }}</h2>
+    <ng-container *ngIf="form.value.shopID">
+        <h2 class="dsh-subheading-1" *ngIf="form.controls.cart.controls.length">{{ d('productsList') }}</h2>
 
-    <ng-container *ngFor="let removeGroup of form.controls.cart.controls; index as idx" [formGroup]="removeGroup">
-        <div fxLayout="column" fxLayoutGap="24px">
-            <mat-form-field>
-                <mat-label>{{ d('removeFormGroup.product') }}</mat-label>
-                <input required matInput formControlName="product" autocomplete="off" />
-            </mat-form-field>
-            <div fxLayout="column" fxLayout.gt-sm fxLayoutGap="24px">
-                <mat-form-field fxFlex>
-                    <mat-label>{{ d('removeFormGroup.price') }}</mat-label>
-                    <dsh-format-input
-                        required
-                        formControlName="price"
-                        format="amount"
-                        autocomplete="off"
-                    ></dsh-format-input>
+        <ng-container *ngFor="let removeGroup of form.controls.cart.controls; index as idx" [formGroup]="removeGroup">
+            <div fxLayout="column" fxLayoutGap="24px">
+                <mat-form-field>
+                    <mat-label>{{ d('removeFormGroup.product') }}</mat-label>
+                    <input required matInput formControlName="product" autocomplete="off" />
                 </mat-form-field>
-                <mat-form-field fxFlex>
-                    <mat-label>{{ d('removeFormGroup.quantity') }}</mat-label>
-                    <dsh-format-input
-                        required
-                        formControlName="quantity"
-                        format="quantity"
-                        autocomplete="off"
-                    ></dsh-format-input>
-                </mat-form-field>
-                <mat-form-field fxFlex>
-                    <mat-label>{{ d('removeFormGroup.taxMode') }}</mat-label>
-                    <mat-select formControlName="taxVatRate" required>
-                        <mat-option [value]="withoutVAT">{{ d('removeFormGroup.withoutVAT') }}</mat-option>
-                        <mat-option *ngFor="let taxVatRate of taxVatRates" [value]="taxVatRate">
-                            {{ taxVatRate }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+                <div fxLayout="column" fxLayout.gt-sm fxLayoutGap="24px">
+                    <mat-form-field fxFlex>
+                        <mat-label>{{ d('removeFormGroup.price') }}</mat-label>
+                        <dsh-format-input
+                            required
+                            formControlName="price"
+                            format="amount"
+                            autocomplete="off"
+                        ></dsh-format-input>
+                    </mat-form-field>
+                    <mat-form-field fxFlex>
+                        <mat-label>{{ d('removeFormGroup.quantity') }}</mat-label>
+                        <dsh-format-input
+                            required
+                            formControlName="quantity"
+                            format="quantity"
+                            autocomplete="off"
+                        ></dsh-format-input>
+                    </mat-form-field>
+                    <mat-form-field fxFlex>
+                        <mat-label>{{ d('removeFormGroup.taxMode') }}</mat-label>
+                        <mat-select formControlName="taxVatRate" required>
+                            <mat-option [value]="withoutVAT">{{ d('removeFormGroup.withoutVAT') }}</mat-option>
+                            <mat-option *ngFor="let taxVatRate of taxVatRates" [value]="taxVatRate">
+                                {{ taxVatRate }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div
+                    fxLayout="column"
+                    fxLayoutAlign="stretch"
+                    fxLayoutAlign.gt-sm=" end"
+                    *ngIf="form.controls.cart.controls.length > 1"
+                >
+                    <button dsh-text-button color="warn" (click)="removeCartItem(idx)">
+                        {{ d('remove') }}
+                    </button>
+                </div>
             </div>
-            <div
-                fxLayout="column"
-                fxLayoutAlign="stretch"
-                fxLayoutAlign.gt-sm=" end"
-                *ngIf="form.controls.cart.controls.length > 1"
-            >
-                <button dsh-text-button color="warn" (click)="removeCartItem(idx)">
-                    {{ d('remove') }}
-                </button>
+            <mat-divider></mat-divider>
+        </ng-container>
+
+        <div
+            fxLayout="column"
+            fxLayout.gt-sm="row"
+            fxLayoutAlign="center stretch"
+            fxLayoutAlign.gt-sm="space-between center"
+            fxLayoutGap="24px"
+        >
+            <div>
+                <h2 class="dsh-subheading-1 total-amount">
+                    {{ d('totalAmount') }} {{ totalAmount$ | async | currency: currency }}
+                </h2>
             </div>
+            <button dsh-text-button color="accent" (click)="addCartItem()">
+                {{ d('addProduct') }}
+            </button>
         </div>
-        <mat-divider></mat-divider>
     </ng-container>
-
-    <div
-        fxLayout="column"
-        fxLayout.gt-sm="row"
-        fxLayoutAlign="center stretch"
-        fxLayoutAlign.gt-sm="space-between center"
-        fxLayoutGap="24px"
-    >
-        <div>
-            <h2 class="dsh-subheading-1 total-amount">{{ d('totalAmount') }} {{ totalAmount$ | async }}</h2>
-        </div>
-        <button dsh-text-button color="accent" (click)="addCartItem()">
-            {{ d('addProduct') }}
-        </button>
-    </div>
 </div>
