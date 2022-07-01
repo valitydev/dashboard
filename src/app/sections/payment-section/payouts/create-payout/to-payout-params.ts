@@ -8,7 +8,7 @@ export const toPayoutParams = ({ shopID, payoutToolID, amount }: any, currency: 
         id: uuid(),
         shopID,
         payoutToolID,
-        amount: toMinor(amount),
+        amount: toMinor(amount, currency),
         currency,
     };
 };

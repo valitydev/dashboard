@@ -13,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@ngneat/transloco';
 
+import { AmountCurrencyModule } from '@dsh/app/shared';
 import { ButtonModule } from '@dsh/components/buttons';
 import { FormControlsModule } from '@dsh/components/form-controls';
 import { LayoutModule } from '@dsh/components/layout';
@@ -40,6 +41,7 @@ import { CreateInvoiceFormComponent } from './create-invoice-form.component';
         MatDividerModule,
         MatDialogModule,
         ConfirmActionDialogModule,
+        AmountCurrencyModule,
     ],
     declarations: [CreateInvoiceFormComponent],
     exports: [CreateInvoiceFormComponent],

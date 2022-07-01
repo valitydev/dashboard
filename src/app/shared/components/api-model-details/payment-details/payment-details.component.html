@@ -5,7 +5,7 @@
     fxLayoutGap="24px"
 >
     <dsh-details-item fxFlex [title]="t('amount')">{{
-        payment.amount | toMajor | currency: payment.currency
+        payment.amount | amountCurrency: payment.currency
     }}</dsh-details-item>
     <dsh-details-item fxFlex [title]="t('status')">
         <dsh-status [color]="payment.status | paymentStatusColor">{{ payment.status | paymentStatusName }}</dsh-status>

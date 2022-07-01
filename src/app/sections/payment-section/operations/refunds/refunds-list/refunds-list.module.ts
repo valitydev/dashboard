@@ -5,7 +5,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@ngneat/transloco';
 
 import { RefundDetailsModule as ApiRefundDetailsModule } from '@dsh/app/shared/components';
-import { ApiModelRefsModule, ToMajorModule } from '@dsh/app/shared/pipes';
+import { ApiModelRefsModule, AmountCurrencyModule } from '@dsh/app/shared/pipes';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
 
@@ -23,9 +23,10 @@ import { RefundsListComponent } from './refunds-list.component';
         CommonModule,
         IndicatorsModule,
         RefundDetailsModule,
-        ToMajorModule,
+
         ApiModelRefsModule,
         ApiRefundDetailsModule,
+        AmountCurrencyModule,
     ],
     declarations: [RefundsListComponent, RefundRowHeaderComponent, RefundRowComponent],
     exports: [RefundsListComponent],

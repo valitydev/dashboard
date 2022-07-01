@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { ToMajorModule } from '@dsh/app/shared/pipes';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { SpinnerModule } from '@dsh/components/indicators';
 import { LastUpdatedModule } from '@dsh/components/indicators/last-updated/last-updated.module';
@@ -23,7 +22,7 @@ import { ShopsListComponent } from './shops-list.component';
         AccordionModule,
         CardModule,
         RowModule,
-        ToMajorModule,
+
         ShowMorePanelModule,
         EmptySearchResultModule,
         SpinnerModule,

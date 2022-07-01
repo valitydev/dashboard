@@ -4,7 +4,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDividerModule } from '@angular/material/divider';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { ApiModelRefsModule, ApiModelTypesModule, ToMajorModule } from '@dsh/app/shared';
+import { ApiModelRefsModule, ApiModelTypesModule, AmountCurrencyModule } from '@dsh/app/shared';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
@@ -22,7 +22,7 @@ import { DepositRevertsModule } from './deposit-reverts/deposit-reverts.module';
         LayoutModule,
         FlexLayoutModule,
         CommonModule,
-        ToMajorModule,
+
         ApiModelRefsModule,
         EmptySearchResultModule,
         ShowMorePanelModule,
@@ -31,6 +31,7 @@ import { DepositRevertsModule } from './deposit-reverts/deposit-reverts.module';
         ApiModelTypesModule,
         DepositDetailsModule,
         MatDividerModule,
+        AmountCurrencyModule,
     ],
     declarations: [DepositPanelsComponent, DepositRowHeaderComponent, DepositRowComponent],
     exports: [DepositPanelsComponent],

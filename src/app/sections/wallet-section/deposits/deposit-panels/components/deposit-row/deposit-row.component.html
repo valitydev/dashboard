@@ -1,6 +1,6 @@
 <dsh-row fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="24px">
     <dsh-row-label fxFlex="25">
-        {{ deposit.body.amount | toMajor | currency: deposit.body.currency }}
+        {{ deposit.body.amount | amountCurrency: deposit.body.currency }}
     </dsh-row-label>
     <dsh-row-label fxFlex="25">
         <dsh-status [color]="deposit.status | depositStatusColor">{{ deposit.status | depositStatusName }}</dsh-status>

@@ -1,5 +1,4 @@
 import { isNumber } from '@dsh/app/shared/utils';
-import { toMajor } from '@dsh/utils';
 
 import { AdditionalFilters, AdditionalFiltersForm } from '../types';
 
@@ -20,7 +19,7 @@ export const filtersToForm = ({
     },
     status,
     amount: {
-        amountFrom: isNumber(amountFrom) ? toMajor(amountFrom) : null,
-        amountTo: isNumber(amountTo) ? toMajor(amountTo) : null,
+        amountFrom: isNumber(amountFrom) ? amountFrom : null,
+        amountTo: isNumber(amountTo) ? amountTo : null,
     },
 });

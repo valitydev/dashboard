@@ -10,11 +10,11 @@ const indexToVisibility = (index: number, length: number): 'show' | 'hide' =>
 const offsetToX = (offset: number, unit: SplitUnit, index: number, length: number): string =>
     `${moment(offset).format(splitUnitToTimeFormat(unit))}#${indexToVisibility(index, length)}`;
 
-const offsetAmountsToSeries = (offsetAmounts: OffsetAmount[], unit: SplitUnit): Series[] => [
+const offsetAmountsToSeries = (offsetAmounts: OffsetAmount[], currency: string, unit: SplitUnit): Series[] => [
     {
         data: offsetAmounts.map((offsetAmount, i) => ({
             x: offsetToX(offsetAmount.offset, unit, i, offsetAmounts.length),
-            y: toMajor(offsetAmount.amount),
+            y: toMajor(offsetAmount.amount, currency),
         })),
     },
 ];
@@ -22,5 +22,5 @@ const offsetAmountsToSeries = (offsetAmounts: OffsetAmount[], unit: SplitUnit): 
 export const splitAmountToChartData = (paymentsSplitAmount: Array<SplitAmountResult>): ChartData[] =>
     paymentsSplitAmount.map(({ currency, offsetAmounts, splitUnit }) => ({
         currency,
-        series: offsetAmountsToSeries(offsetAmounts, splitUnit),
+        series: offsetAmountsToSeries(offsetAmounts, currency, splitUnit),
     }));

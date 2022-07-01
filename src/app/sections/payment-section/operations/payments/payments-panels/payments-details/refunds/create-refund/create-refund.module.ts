@@ -9,7 +9,7 @@ import { TranslocoModule } from '@ngneat/transloco';
 
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { MaxLengthInputModule } from '@dsh/app/shared/components/inputs/max-length-input/max-length-input.module';
-import { ToMajorModule } from '@dsh/app/shared/pipes';
+import { AmountCurrencyModule } from '@dsh/app/shared/pipes';
 import { ButtonModule } from '@dsh/components/buttons';
 import { FormatInputModule } from '@dsh/components/form-controls';
 
@@ -26,10 +26,11 @@ import { CreateRefundService } from './create-refund.service';
         MatCheckboxModule,
         ButtonModule,
         TranslocoModule,
-        ToMajorModule,
+
         FormatInputModule,
         MaxLengthInputModule,
         BaseDialogModule,
+        AmountCurrencyModule,
     ],
     declarations: [CreateRefundDialogComponent],
     providers: [CreateRefundService],

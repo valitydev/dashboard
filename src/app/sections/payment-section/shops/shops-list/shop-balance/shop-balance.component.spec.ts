@@ -1,8 +1,6 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ToMajorModule } from '@dsh/app/shared/pipes';
-
 import { generateMockBalance } from '../../tests/generate-mock-balance';
 import { generateMockShop } from '../../tests/generate-mock-shop';
 import { ShopBalanceComponent } from './shop-balance.component';
@@ -15,7 +13,6 @@ describe('ShopBalanceComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [ToMajorModule],
             declarations: [ShopBalanceComponent],
         })
             .overrideComponent(ShopBalanceComponent, {

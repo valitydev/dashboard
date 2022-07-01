@@ -7,7 +7,7 @@
     <dsh-details-item [title]="t('status')">
         <dsh-status [color]="refund.status | refundStatusColor">{{ refund.status | refundStatusName }}</dsh-status>
     </dsh-details-item>
-    <dsh-details-item [title]="t('amount')">{{ refund.amount | toMajor | currency: refund.currency }}</dsh-details-item>
+    <dsh-details-item [title]="t('amount')">{{ refund.amount | amountCurrency: refund.currency }}</dsh-details-item>
     <dsh-details-item [title]="t('createdAt')">{{ refund.createdAt | date: 'dd MMMM yyyy, HH:mm' }}</dsh-details-item>
     <dsh-details-item gdColumn="1/-1" *ngIf="refund?.reason" [title]="t('reason')">{{
         refund.reason

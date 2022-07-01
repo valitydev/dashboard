@@ -1,7 +1,7 @@
 <ng-container *transloco="let t; scope: 'payment-details'; read: 'paymentDetails.details'">
     <div gdColumns="1fr" gdColumns.gt-sm="1fr 1fr 1fr" gdGap="24px">
         <div class="payment-main-info-amount mat-body-1">
-            {{ payment.amount | toMajor | currency: payment.currency }}
+            {{ payment.amount | amountCurrency: payment.currency }}
         </div>
         <dsh-charge-amount [payment]="payment"></dsh-charge-amount>
         <dsh-payment-fee *ngIf="payment.fee" [payment]="payment"></dsh-payment-fee>

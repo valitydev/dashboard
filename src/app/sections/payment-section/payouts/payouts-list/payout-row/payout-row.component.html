@@ -3,7 +3,7 @@
         {{ payout.createdAt | date: 'dd MMMM yyyy, HH:mm' }}
     </dsh-row-label>
     <dsh-row-label fxHide.lt-md>
-        {{ payout.amount | toMajor | currency: payout.currency }}
+        {{ payout.amount | amountCurrency: payout.currency }}
     </dsh-row-label>
     <dsh-row-label>{{ payout?.payoutToolDetails?.detailsType | payoutToolDetailsType }}</dsh-row-label>
     <dsh-row-label fxHide.lt-md>

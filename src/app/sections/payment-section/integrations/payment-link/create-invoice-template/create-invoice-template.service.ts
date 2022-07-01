@@ -222,7 +222,7 @@ export class CreateInvoiceTemplateService {
                     cart: cart.map((c) => ({
                         product: c.product,
                         quantity: c.quantity,
-                        price: toMinor(c.price),
+                        price: toMinor(c.price, c.currency),
                         ...this.getInvoiceLineTaxMode(c.taxMode),
                     })),
                     currency,
@@ -240,15 +240,15 @@ export class CreateInvoiceTemplateService {
                 return {
                     costType,
                     currency,
-                    amount: toMinor(amount),
+                    amount: toMinor(amount, currency),
                 } as InvoiceTemplateLineCostFixed;
             case InvoiceTemplateLineCostType.InvoiceTemplateLineCostRange:
                 return {
                     costType,
                     currency,
                     range: {
-                        lowerBound: toMinor(range.lowerBound),
-                        upperBound: toMinor(range.upperBound),
+                        lowerBound: toMinor(range.lowerBound, currency),
+                        upperBound: toMinor(range.upperBound, currency),
                     },
                 } as InvoiceTemplateLineCostRange;
         }

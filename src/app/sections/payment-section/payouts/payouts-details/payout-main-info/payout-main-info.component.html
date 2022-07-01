@@ -5,7 +5,7 @@
     gdGap="24px"
 >
     <div class="dsh-headline">
-        {{ payout?.amount | toMajor | currency: payout?.currency }}
+        {{ payout?.amount | amountCurrency: payout?.currency }}
     </div>
     <dsh-details-item gdRow="2fr" [title]="p('shop')">
         {{ payout?.shopID | shopDetails }}

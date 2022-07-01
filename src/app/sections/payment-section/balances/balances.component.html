@@ -10,7 +10,7 @@
             *ngFor="let balance of balances$ | async"
             [ngClass]="(balancesCount$ | async) <= 3 ? 'dsh-balances-balance-lg' : 'dsh-balances-balance-md'"
         >
-            {{ balance.amount | toMajor | currency: balance.currency:'symbol':'0.0-0' }}
+            {{ balance.amount | amountCurrency: balance.currency:'short' }}
         </div>
     </ng-container>
     <ng-template #elseBlock><div class="dsh-balances-balance-lg">--/--</div></ng-template>

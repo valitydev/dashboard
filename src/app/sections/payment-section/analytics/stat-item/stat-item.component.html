@@ -12,7 +12,7 @@
                         {{ statData.current | number }}
                     </div>
                     <ng-template #showCurrency>
-                        {{ statData.current | toMajor | currency: statData.currency:'symbol':'1.0-2' }}
+                        {{ statData.current | amountCurrency: statData.currency:'short' }}
                     </ng-template>
                 </div>
                 <ng-template #noData>
