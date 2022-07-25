@@ -23,6 +23,7 @@ const OPERATIONS_ROUTES: Routes = [
             {
                 path: '',
                 redirectTo: 'payments',
+                pathMatch: 'full',
             },
         ],
     },

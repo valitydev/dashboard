@@ -23,6 +23,7 @@ const ROUTES: Routes = [
             {
                 path: '',
                 redirectTo: 'payment-link',
+                pathMatch: 'full',
             },
         ],
     },
