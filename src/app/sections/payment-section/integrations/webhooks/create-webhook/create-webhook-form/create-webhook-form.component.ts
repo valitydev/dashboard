@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { WebhookScope } from '@vality/swag-payments';
 import { BehaviorSubject } from 'rxjs';
 
@@ -16,13 +16,13 @@ import TopicEnum = WebhookScope.TopicEnum;
 })
 export class CreateWebhookFormComponent implements OnInit {
     @Input()
-    form: FormGroup;
+    form: UntypedFormGroup;
 
     shops$ = this.shopService.shops$;
 
     activeTopic$ = new BehaviorSubject<TopicEnum>('InvoicesTopic');
 
-    constructor(private shopService: ShopsService, private fb: FormBuilder) {}
+    constructor(private shopService: ShopsService, private fb: UntypedFormBuilder) {}
 
     ngOnInit() {
         this.activeTopic$.subscribe((activeTopic) => {
@@ -47,6 +47,6 @@ export class CreateWebhookFormComponent implements OnInit {
     }
 
     get eventTypes() {
-        return this.form.get('eventTypes') as FormArray;
+        return this.form.get('eventTypes') as UntypedFormArray;
     }
 }

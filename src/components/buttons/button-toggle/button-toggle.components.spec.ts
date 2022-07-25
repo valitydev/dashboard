@@ -1,5 +1,5 @@
 import { Component, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 import { ButtonToggleComponent, ButtonToggleGroupDirective, DshButtonToggleChange } from './button-toggle.component';
 
@@ -95,7 +95,7 @@ export class ButtonToggleGroupWithInitialValueComponent {
     `,
 })
 export class ButtonToggleGroupWithFormControlComponent {
-    control = new FormControl();
+    control = new UntypedFormControl();
 }
 
 /** Simple test component with an aria-label set. */

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormArray } from '@angular/forms';
+import { UntypedFormArray } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { InvoiceLineTaxVAT, InvoiceTemplateAndToken, Shop } from '@vality/swag-payments';
@@ -44,7 +44,7 @@ export class CreateInvoiceTemplateComponent implements OnInit {
     summary$ = this.invoiceTemplateFormService.summary$;
     isLoading$ = this.invoiceTemplateFormService.isLoading$;
 
-    get cartForm(): FormArray {
+    get cartForm(): UntypedFormArray {
         return this.invoiceTemplateFormService.cartForm;
     }
 

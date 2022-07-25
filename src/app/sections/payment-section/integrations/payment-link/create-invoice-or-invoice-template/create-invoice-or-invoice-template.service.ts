@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl } from '@ngneat/reactive-forms';
 import { pluck, shareReplay } from 'rxjs/operators';
@@ -21,5 +21,5 @@ export class CreateInvoiceOrInvoiceTemplateService {
         shareReplay(SHARE_REPLAY_CONF)
     );
 
-    constructor(private fb: FormBuilder, private route: ActivatedRoute, private shopService: ShopsService) {}
+    constructor(private fb: UntypedFormBuilder, private route: ActivatedRoute, private shopService: ShopsService) {}
 }

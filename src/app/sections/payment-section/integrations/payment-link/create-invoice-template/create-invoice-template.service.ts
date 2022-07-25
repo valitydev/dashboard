@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormArray, FormBuilder } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import {
     InvoiceLineTaxMode,
@@ -53,11 +53,11 @@ export class CreateInvoiceTemplateService {
     nextInvoiceTemplateAndToken$: Observable<InvoiceTemplateAndToken>;
 
     get cartForm() {
-        return this.form.controls.cart as FormArray;
+        return this.form.controls.cart as UntypedFormArray;
     }
 
     constructor(
-        private fb: FormBuilder,
+        private fb: UntypedFormBuilder,
         private invoiceTemplatesService: InvoiceTemplatesService,
         private dialog: MatDialog
     ) {

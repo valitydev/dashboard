@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Conversation } from '@vality/swag-messages';
 import { combineLatest } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -17,7 +17,7 @@ import { UploadFilesService } from './upload-files.service';
 export class SendCommentComponent {
     @Output() conversationSaved: EventEmitter<Conversation['conversationId']> = new EventEmitter();
 
-    form: FormGroup = this.sendCommentService.form;
+    form: UntypedFormGroup = this.sendCommentService.form;
     errorCode$ = this.sendCommentService.errorCode$;
     inProgress$ = combineLatest([this.sendCommentService.inProgress$, this.fileUploaderService.isUploading$]).pipe(
         map((v) => v.includes(true)),
