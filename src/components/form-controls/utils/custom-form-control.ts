@@ -149,7 +149,7 @@ export class CustomFormControl<I = any, P = I>
         @Optional() parentForm: NgForm,
         @Optional() parentFormGroup: FormGroupDirective
     ) {
-        super(defaultErrorStateMatcher, parentForm, parentFormGroup, ngControl);
+        super(defaultErrorStateMatcher, parentForm, parentFormGroup, ngControl, new Subject());
         if (this.ngControl !== null) {
             // Set the value accessor directly
             // (instead of providing NG_VALUE_ACCESSOR)
