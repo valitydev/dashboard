@@ -1,9 +1,10 @@
 import { Directive, OnInit } from '@angular/core';
-import { ValidationErrors, Validator } from '@angular/forms';
+import { FormGroup, ValidationErrors, Validator } from '@angular/forms';
 import { WrappedControlSuperclass } from '@s-libs/ng-core';
+import { EMPTY, Observable } from 'rxjs';
 
-import { RequiredSuper, REQUIRED_SUPER } from '../../required-super';
 import { getValue } from '../get-value';
+import { getErrorsTree } from './utils/get-errors-tree';
 
 @Directive()
 export abstract class ValidatedControlSuperclass<OuterType, InnerType = OuterType>
@@ -12,21 +13,35 @@ export abstract class ValidatedControlSuperclass<OuterType, InnerType = OuterTyp
 {
     protected emptyValue: InnerType;
 
-    ngOnInit(): RequiredSuper {
+    ngOnInit() {
         this.emptyValue = getValue(this.control) as InnerType;
         super.ngOnInit();
-        return REQUIRED_SUPER;
     }
 
     validate(): ValidationErrors | null {
-        return this.control.invalid ? { invalid: true } : null;
+        return getErrorsTree(this.control);
     }
 
-    protected outerToInner(outer: OuterType): InnerType {
-        if (typeof this.emptyValue === 'object') {
+    protected setUpOuterToInnerErrors$(
+        _outer$: Observable<ValidationErrors>
+    ): Observable<ValidationErrors> {
+        return EMPTY;
+    }
+
+    protected setUpInnerToOuterErrors$(
+        _inner$: Observable<ValidationErrors>
+    ): Observable<ValidationErrors> {
+        return EMPTY;
+    }
+
+    protected outerToInnerValue(outer: OuterType): InnerType {
+        if ('controls' in this.control) {
             if (!outer) return this.emptyValue;
-            return { ...this.emptyValue, ...outer };
+            if (
+                Object.keys(outer).length < Object.keys((this.control as FormGroup).controls).length
+            )
+                return Object.assign({}, this.emptyValue, outer);
         }
-        return outer as unknown as InnerType;
+        return outer as never;
     }
 }

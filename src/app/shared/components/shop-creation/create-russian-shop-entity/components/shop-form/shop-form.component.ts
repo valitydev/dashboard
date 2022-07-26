@@ -2,7 +2,7 @@ import { Component, Injector, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy } from '@ngneat/until-destroy';
 
-import { createValidatedAbstractControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
+import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
 
 import { createTypeUnionDefaultForm } from '../../../created-existing-switch/created-existing-switch.component';
 import { RussianShopForm } from '../../types/russian-shop-entity';
@@ -12,7 +12,7 @@ import { RussianShopForm } from '../../types/russian-shop-entity';
     selector: 'dsh-shop-form',
     templateUrl: 'shop-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createValidatedAbstractControlProviders(ShopFormComponent),
+    providers: createControlProviders(ShopFormComponent),
 })
 export class ShopFormComponent extends ValidatedControlSuperclass<RussianShopForm> {
     control = this.fb.group<RussianShopForm>({

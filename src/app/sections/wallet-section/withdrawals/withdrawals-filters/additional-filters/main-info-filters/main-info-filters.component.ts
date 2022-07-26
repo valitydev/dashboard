@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 
-import { createValidatedAbstractControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
+import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
 
 import { MainInfoForm } from './types';
 
@@ -9,7 +9,7 @@ import { MainInfoForm } from './types';
     selector: 'dsh-main-info-filters',
     templateUrl: './main-info-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createValidatedAbstractControlProviders(MainInfoFiltersComponent),
+    providers: createControlProviders(MainInfoFiltersComponent),
 })
 export class MainInfoFiltersComponent extends ValidatedControlSuperclass<MainInfoForm> {
     control = this.fb.group<MainInfoForm>({
