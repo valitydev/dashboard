@@ -19,6 +19,7 @@ const ORGANIZATION_SECTION_ROUTES: Routes = [
             {
                 path: '',
                 redirectTo: 'organizations',
+                pathMatch: 'full',
             },
         ],
     },

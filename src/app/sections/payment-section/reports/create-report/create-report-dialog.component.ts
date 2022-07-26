@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
@@ -33,7 +33,7 @@ export class CreateReportDialogComponent implements OnInit {
     constructor(
         private dialogRef: MatDialogRef<CreateReportDialogComponent, 'cancel' | 'created'>,
         private shopService: ShopsService,
-        private fb: FormBuilder,
+        private fb: UntypedFormBuilder,
         private createReportDialogService: CreateReportDialogService,
         private transloco: TranslocoService,
         private snackBar: MatSnackBar,

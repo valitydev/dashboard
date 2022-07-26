@@ -9,7 +9,6 @@ import { AnalyticsService } from '@dsh/api/analytics';
 import { PaymentInstitutionRealm } from '@dsh/api/model';
 import { ApiShopsService } from '@dsh/api/shop';
 
-import { ShopBalanceModule } from '../../shops-list/shop-balance';
 import { generateMockShopsList } from '../../tests/generate-mock-shops-list';
 import { MockAnalyticsService } from '../../tests/mock-analytics-service';
 import { ShopsBalanceService } from '../shops-balance/shops-balance.service';
@@ -40,7 +39,6 @@ describe('FetchShopsService', () => {
     let service: FetchShopsService;
     let apiShopsService: MockApiShopsService;
     let analyticsService: MockAnalyticsService;
-    let balancesService: ShopBalanceModule;
     let mockShopsFiltersStoreService: ShopsFiltersStoreService;
 
     beforeEach(() => {

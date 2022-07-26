@@ -15,6 +15,7 @@ const ROUTES: Routes = [
             {
                 path: '',
                 redirectTo: 'webhooks',
+                pathMatch: 'full',
             },
         ],
     },

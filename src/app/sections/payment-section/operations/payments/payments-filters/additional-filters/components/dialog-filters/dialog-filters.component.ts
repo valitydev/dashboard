@@ -2,12 +2,7 @@ import { ChangeDetectionStrategy, Component, Inject, OnInit, Injector } from '@a
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup } from '@ngneat/reactive-forms';
 
-import {
-    ValidatedWrappedAbstractControlSuperclass,
-    RequiredSuper,
-    REQUIRED_SUPER,
-    createValidatedAbstractControlProviders,
-} from '@dsh/utils';
+import { ValidatedControlSuperclass, createControlProviders } from '@dsh/utils';
 
 import { paymentStatusValidator } from '../../payment-status-filter';
 import { AdditionalFilters, AdditionalFiltersForm } from '../../types';
@@ -17,12 +12,9 @@ import { formToFilters, filtersToForm } from '../../utils';
     selector: 'dsh-dialog-filters',
     templateUrl: 'dialog-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createValidatedAbstractControlProviders(DialogFiltersComponent),
+    providers: createControlProviders(DialogFiltersComponent),
 })
-export class DialogFiltersComponent
-    extends ValidatedWrappedAbstractControlSuperclass<AdditionalFiltersForm>
-    implements OnInit
-{
+export class DialogFiltersComponent extends ValidatedControlSuperclass<AdditionalFiltersForm> implements OnInit {
     control: FormGroup<AdditionalFiltersForm> = this.formBuilder.group({
         main: null,
         paymentStatus: [null, paymentStatusValidator],
@@ -43,10 +35,9 @@ export class DialogFiltersComponent
         super(injector);
     }
 
-    ngOnInit(): RequiredSuper {
+    ngOnInit() {
         this.control.patchValue(filtersToForm(this.data));
         super.ngOnInit();
-        return REQUIRED_SUPER;
     }
 
     clear(): void {

@@ -11,6 +11,7 @@ const ROUTES: Routes = [
             {
                 path: '',
                 redirectTo: 'members',
+                pathMatch: 'full',
             },
             {
                 path: 'members',

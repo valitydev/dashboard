@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Conversation } from '@vality/swag-messages';
 import { BehaviorSubject, forkJoin, merge, Observable, of, Subject, EMPTY } from 'rxjs';
 import { catchError, filter, pluck, switchMap, tap } from 'rxjs/operators';
@@ -17,7 +17,7 @@ export class SendCommentService {
     private sendComment$: Subject<string> = new Subject();
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
-    form: FormGroup;
+    form: UntypedFormGroup;
     // eslint-disable-next-line @typescript-eslint/member-ordering
     conversationSaved$: Observable<Conversation['conversationId']> = this.conversationId$.pipe(filter((id) => !!id));
     // eslint-disable-next-line @typescript-eslint/member-ordering
@@ -25,7 +25,7 @@ export class SendCommentService {
     // eslint-disable-next-line @typescript-eslint/member-ordering
     inProgress$: Observable<boolean> = progress(this.sendComment$, merge(this.conversationId$, this.error$));
 
-    constructor(private fb: FormBuilder, private conversationsService: ConversationsService) {
+    constructor(private fb: UntypedFormBuilder, private conversationsService: ConversationsService) {
         this.form = this.fb.group({
             comment: ['', [Validators.maxLength(1000)]],
         });

@@ -16,7 +16,7 @@ import {
     Self,
     SimpleChanges,
 } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import { ControlValueAccessor, UntypedFormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
@@ -133,7 +133,7 @@ export class CustomFormControl<I = any, P = I>
     }
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
-    formControl = new FormControl();
+    formControl = new UntypedFormControl();
     // eslint-disable-next-line @typescript-eslint/member-ordering
     monitorsRegistered = false;
 
@@ -149,7 +149,7 @@ export class CustomFormControl<I = any, P = I>
         @Optional() parentForm: NgForm,
         @Optional() parentFormGroup: FormGroupDirective
     ) {
-        super(defaultErrorStateMatcher, parentForm, parentFormGroup, ngControl);
+        super(defaultErrorStateMatcher, parentForm, parentFormGroup, ngControl, new Subject());
         if (this.ngControl !== null) {
             // Set the value accessor directly
             // (instead of providing NG_VALUE_ACCESSOR)

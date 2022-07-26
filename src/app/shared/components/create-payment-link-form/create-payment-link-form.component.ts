@@ -10,7 +10,7 @@ import { BankCard, PaymentMethod, PaymentTerminal, DigitalWallet } from '@vality
 import { TokenProvider, TerminalProvider } from '@dsh/api/payments';
 import { PaymentLinkParams } from '@dsh/app/shared/services/create-payment-link/types/payment-link-params';
 import { ComponentChanges } from '@dsh/type-utils';
-import { createValidatedAbstractControlProviders, ValidatedWrappedAbstractControlSuperclass } from '@dsh/utils';
+import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
 
 import { HoldExpiration } from '../../services/create-payment-link/types/hold-expiration';
 import { ORDERED_PAYMENT_METHODS_NAMES } from '../../services/create-payment-link/types/ordered-payment-methods-names';
@@ -23,10 +23,10 @@ import MethodEnum = PaymentMethod.MethodEnum;
     selector: 'dsh-create-payment-link-form',
     templateUrl: 'create-payment-link-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createValidatedAbstractControlProviders(CreatePaymentLinkFormComponent),
+    providers: createControlProviders(CreatePaymentLinkFormComponent),
 })
 export class CreatePaymentLinkFormComponent
-    extends ValidatedWrappedAbstractControlSuperclass<PaymentLinkParams, Controls>
+    extends ValidatedControlSuperclass<PaymentLinkParams, Controls>
     implements OnChanges
 {
     @Input() paymentMethods: PaymentMethod[];

@@ -27,7 +27,12 @@
                             "humanize-duration",
                             "angular2-text-mask",
                             "apexcharts",
-                            "short-uuid"
+                            "short-uuid",
+                            "moment",
+                            "flat",
+                            "base64-js",
+                            "js-sha256",
+                            "ts-keycode-enum"
                         ],
                         "outputPath": "dist",
                         "index": "src/index.html",
@@ -160,7 +165,6 @@
             }
         }
     },
-    "defaultProject": "dashboard",
     "cli": {
         "analytics": false
     }

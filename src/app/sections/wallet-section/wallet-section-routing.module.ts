@@ -27,6 +27,7 @@ const WALLET_SECTION_ROUTES: Routes = [
             {
                 path: '',
                 redirectTo: 'wallets',
+                pathMatch: 'full',
             },
         ],
     },

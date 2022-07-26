@@ -14,12 +14,7 @@ import { Overwrite } from 'utility-types';
 
 import { PayoutsService } from '@dsh/api/payments';
 import { CommonError, ErrorService } from '@dsh/app/shared';
-import {
-    ValidatedWrappedAbstractControlSuperclass,
-    createValidatedAbstractControlProviders,
-    progressTo,
-    errorTo,
-} from '@dsh/utils';
+import { ValidatedControlSuperclass, createControlProviders, progressTo, errorTo } from '@dsh/utils';
 
 type BankAccountType = 'PayoutToolDetailsInternationalBankAccount' | 'PayoutToolDetailsBankAccount';
 
@@ -37,12 +32,9 @@ export type ExistingBankAccountForm<T extends BankAccountType = BankAccountType>
     selector: 'dsh-existing-bank-account',
     templateUrl: 'existing-bank-account.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createValidatedAbstractControlProviders(ExistingBankAccountComponent),
+    providers: createControlProviders(ExistingBankAccountComponent),
 })
-export class ExistingBankAccountComponent extends ValidatedWrappedAbstractControlSuperclass<
-    ExistingBankAccountForm,
-    Shop
-> {
+export class ExistingBankAccountComponent extends ValidatedControlSuperclass<ExistingBankAccountForm, Shop> {
     @Input() bankAccountType: BankAccountType;
 
     control = new FormControl<Shop>(null);

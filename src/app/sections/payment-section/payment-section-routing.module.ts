@@ -13,6 +13,11 @@ const PAYMENT_SECTION_ROUTES: Routes = [
         component: PaymentSectionComponent,
         children: [
             {
+                path: '',
+                redirectTo: 'shops',
+                pathMatch: 'full',
+            },
+            {
                 path: 'shops',
                 loadChildren: () => import('./shops/shops.module').then((m) => m.ShopsModule),
             },
@@ -35,10 +40,6 @@ const PAYMENT_SECTION_ROUTES: Routes = [
             {
                 path: 'integrations',
                 loadChildren: () => import('./integrations/integrations.module').then((m) => m.IntegrationsModule),
-            },
-            {
-                path: '',
-                redirectTo: 'shops',
             },
         ],
     },

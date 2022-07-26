@@ -2,7 +2,7 @@ import { Component, Injector, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 
 import { ShopsService } from '@dsh/api/payments';
-import { ValidatedWrappedAbstractControlSuperclass, createValidatedAbstractControlProviders } from '@dsh/utils';
+import { ValidatedControlSuperclass, createControlProviders } from '@dsh/utils';
 
 import { ShopsFilterForm } from './types';
 
@@ -10,9 +10,9 @@ import { ShopsFilterForm } from './types';
     selector: 'dsh-shops-filter',
     templateUrl: './shops-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createValidatedAbstractControlProviders(ShopsFilterComponent),
+    providers: createControlProviders(ShopsFilterComponent),
 })
-export class ShopsFilterComponent extends ValidatedWrappedAbstractControlSuperclass<ShopsFilterForm> {
+export class ShopsFilterComponent extends ValidatedControlSuperclass<ShopsFilterForm> {
     control = this.fb.group<ShopsFilterForm>({
         shopIDs: null,
     });

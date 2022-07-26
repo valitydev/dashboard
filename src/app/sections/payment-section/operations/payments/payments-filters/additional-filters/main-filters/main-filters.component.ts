@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormBuilder } from '@ngneat/reactive-forms';
 
-import { ValidatedWrappedAbstractControlSuperclass, createValidatedAbstractControlProviders } from '@dsh/utils';
+import { ValidatedControlSuperclass, createControlProviders } from '@dsh/utils';
 
 import { MainFiltersForm } from './types/main-filters-form';
 
@@ -10,9 +10,9 @@ import { MainFiltersForm } from './types/main-filters-form';
     selector: 'dsh-main-filters',
     templateUrl: './main-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createValidatedAbstractControlProviders(MainFiltersComponent),
+    providers: createControlProviders(MainFiltersComponent),
 })
-export class MainFiltersComponent extends ValidatedWrappedAbstractControlSuperclass<MainFiltersForm> {
+export class MainFiltersComponent extends ValidatedControlSuperclass<MainFiltersForm> {
     control = this.fb.group<MainFiltersForm>({
         payerEmail: ['', Validators.email],
         customerID: [''],

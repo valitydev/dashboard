@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import get from 'lodash-es/get';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
@@ -20,12 +20,12 @@ export class RevokeClaimDialogService {
     // eslint-disable-next-line @typescript-eslint/member-ordering
     inProgress$: Observable<boolean> = progress(this.revoke$, this.error$);
     // eslint-disable-next-line @typescript-eslint/member-ordering
-    form: FormGroup;
+    form: UntypedFormGroup;
 
     constructor(
         private dialogRef: MatDialogRef<unknown, 'cancel' | 'revoked'>,
         private claimsApiService: ClaimsService,
-        private fb: FormBuilder,
+        private fb: UntypedFormBuilder,
         @Inject(MAT_DIALOG_DATA) private data: { claimId: number; revision: number }
     ) {
         this.form = this.fb.group({

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { WebhookScope } from '@vality/swag-wallet';
 import { BehaviorSubject } from 'rxjs';
@@ -17,13 +17,13 @@ import TopicEnum = WebhookScope.TopicEnum;
     templateUrl: 'create-webhook-form.component.html',
 })
 export class CreateWebhookFormComponent implements OnInit {
-    @Input() form: FormGroup;
+    @Input() form: UntypedFormGroup;
 
     identities$ = this.identitiesService.identities$;
 
     activeTopic$ = new BehaviorSubject<TopicEnum>('WithdrawalsTopic');
 
-    constructor(private identitiesService: IdentitiesService, private fb: FormBuilder) {}
+    constructor(private identitiesService: IdentitiesService, private fb: UntypedFormBuilder) {}
 
     ngOnInit(): void {
         this.activeTopic$.pipe(untilDestroyed(this)).subscribe((activeTopic) => {
@@ -52,7 +52,7 @@ export class CreateWebhookFormComponent implements OnInit {
         this.activeTopic$.next(topic);
     }
 
-    get eventTypes(): FormArray {
-        return this.form.get('eventTypes') as FormArray;
+    get eventTypes(): UntypedFormArray {
+        return this.form.get('eventTypes') as UntypedFormArray;
     }
 }

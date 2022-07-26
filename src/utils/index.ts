@@ -11,5 +11,4 @@ export * from './extract-error';
 export * from './form';
 export * from './query-params-to-str';
 export * from './is-empty-value';
-export * from './required-super';
 export * from './operators';

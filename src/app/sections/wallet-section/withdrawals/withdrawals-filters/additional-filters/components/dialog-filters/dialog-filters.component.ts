@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { ListWithdrawalsRequestParams } from '@vality/swag-wallet/lib/api/withdrawals.service';
 
-import { RequiredSuper, ValidatedWrappedAbstractControlSuperclass } from '@dsh/utils';
+import { ValidatedControlSuperclass } from '@dsh/utils';
 
 import { AdditionalFilters, AdditionalFiltersForm } from '../../types';
 import { filtersToForm, formToFilters } from '../../utils';
@@ -14,7 +14,7 @@ import { filtersToForm, formToFilters } from '../../utils';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DialogFiltersComponent
-    extends ValidatedWrappedAbstractControlSuperclass<ListWithdrawalsRequestParams, AdditionalFiltersForm>
+    extends ValidatedControlSuperclass<ListWithdrawalsRequestParams, AdditionalFiltersForm>
     implements OnInit
 {
     control = this.fb.group<AdditionalFiltersForm>({
@@ -32,9 +32,9 @@ export class DialogFiltersComponent
         super(injector);
     }
 
-    ngOnInit(): RequiredSuper {
+    ngOnInit() {
         this.control.patchValue(filtersToForm(this.data));
-        return super.ngOnInit();
+        super.ngOnInit();
     }
 
     clear(): void {

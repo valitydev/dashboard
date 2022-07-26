@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { cold } from 'jasmine-marbles';
 import { of, throwError } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -13,12 +12,9 @@ import { ReceiveInvoiceService } from './receive-invoice.service';
 describe('ReceiveInvoiceService', () => {
     let service: ReceiveInvoiceService;
     let mockInvoiceService: InvoiceService;
-    let mockSnackbar: MatSnackBar;
 
     beforeEach(() => {
         mockInvoiceService = mock(InvoiceService);
-        // eslint-disable-next-line unused-imports/no-unused-vars
-        mockSnackbar = mock(MatSnackBar);
     });
 
     beforeEach(() => {

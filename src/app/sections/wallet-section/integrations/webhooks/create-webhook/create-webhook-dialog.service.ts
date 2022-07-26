@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, of, Subject } from 'rxjs';
 import { catchError, filter, map, switchMap } from 'rxjs/operators';
 
@@ -27,7 +27,7 @@ export class CreateWebhookDialogService {
     // eslint-disable-next-line @typescript-eslint/member-ordering
     webhookCreated$ = this.created$.asObservable();
 
-    constructor(private fb: FormBuilder, private walletWebhooksService: WebhooksService) {
+    constructor(private fb: UntypedFormBuilder, private walletWebhooksService: WebhooksService) {
         this.create$
             .pipe(
                 map(formValuesToWebhook),
@@ -50,7 +50,7 @@ export class CreateWebhookDialogService {
         this.create$.next(this.form.value);
     }
 
-    private initForm(): FormGroup {
+    private initForm(): UntypedFormGroup {
         return this.fb.group({
             identityID: ['', Validators.required],
             url: ['', Validators.required],
