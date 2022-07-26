@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { FormBuilder, FormControl } from '@ngneat/reactive-forms';
 import { UntilDestroy } from '@ngneat/until-destroy';
 
-import { createValidatedAbstractControlProviders, ValidatedWrappedAbstractControlSuperclass } from '@dsh/utils';
+import { createValidatedAbstractControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
 
 export interface NewContractorForm {
     organizationName: string;
@@ -19,7 +19,7 @@ export interface NewContractorForm {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createValidatedAbstractControlProviders(NewContractorFormComponent),
 })
-export class NewContractorFormComponent extends ValidatedWrappedAbstractControlSuperclass<NewContractorForm> {
+export class NewContractorFormComponent extends ValidatedControlSuperclass<NewContractorForm> {
     control = this.fb.group<NewContractorForm>({
         organizationName: '',
         tradingName: '',

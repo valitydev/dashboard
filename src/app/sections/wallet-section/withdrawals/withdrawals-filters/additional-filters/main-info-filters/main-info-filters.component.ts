@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 
-import { createValidatedAbstractControlProviders, ValidatedWrappedAbstractControlSuperclass } from '@dsh/utils';
+import { createValidatedAbstractControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
 
 import { MainInfoForm } from './types';
 
@@ -11,7 +11,7 @@ import { MainInfoForm } from './types';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createValidatedAbstractControlProviders(MainInfoFiltersComponent),
 })
-export class MainInfoFiltersComponent extends ValidatedWrappedAbstractControlSuperclass<MainInfoForm> {
+export class MainInfoFiltersComponent extends ValidatedControlSuperclass<MainInfoForm> {
     control = this.fb.group<MainInfoForm>({
         withdrawalID: null,
         walletID: null,

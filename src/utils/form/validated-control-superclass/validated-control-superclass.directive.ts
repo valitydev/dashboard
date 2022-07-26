@@ -6,7 +6,7 @@ import { RequiredSuper, REQUIRED_SUPER } from '../../required-super';
 import { getValue } from '../get-value';
 
 @Directive()
-export abstract class ValidatedWrappedAbstractControlSuperclass<OuterType, InnerType = OuterType>
+export abstract class ValidatedControlSuperclass<OuterType, InnerType = OuterType>
     extends WrappedControlSuperclass<OuterType, InnerType>
     implements OnInit, Validator
 {

@@ -1,7 +1,7 @@
 import { Component, Injector, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 
-import { ValidatedWrappedAbstractControlSuperclass, createValidatedAbstractControlProviders } from '@dsh/utils';
+import { ValidatedControlSuperclass, createValidatedAbstractControlProviders } from '@dsh/utils';
 
 import { InvoicesFilterForm } from './types';
 
@@ -11,7 +11,7 @@ import { InvoicesFilterForm } from './types';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createValidatedAbstractControlProviders(InvoicesFilterComponent),
 })
-export class InvoicesFilterComponent extends ValidatedWrappedAbstractControlSuperclass<InvoicesFilterForm> {
+export class InvoicesFilterComponent extends ValidatedControlSuperclass<InvoicesFilterForm> {
     control = this.fb.group<InvoicesFilterForm>({
         invoiceIDs: null,
     });

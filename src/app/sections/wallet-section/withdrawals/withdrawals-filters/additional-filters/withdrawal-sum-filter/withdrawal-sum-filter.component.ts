@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 
-import { createValidatedAbstractControlProviders, ValidatedWrappedAbstractControlSuperclass } from '@dsh/utils';
+import { createValidatedAbstractControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
 
 import { WithdrawalAmountForm } from './types';
 
@@ -11,7 +11,7 @@ import { WithdrawalAmountForm } from './types';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createValidatedAbstractControlProviders(WithdrawalSumFilterComponent),
 })
-export class WithdrawalSumFilterComponent extends ValidatedWrappedAbstractControlSuperclass<WithdrawalAmountForm> {
+export class WithdrawalSumFilterComponent extends ValidatedControlSuperclass<WithdrawalAmountForm> {
     control = this.fb.group<WithdrawalAmountForm>({
         amountFrom: null,
         amountTo: null,

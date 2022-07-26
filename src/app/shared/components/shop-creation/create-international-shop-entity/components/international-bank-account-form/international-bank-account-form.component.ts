@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 
-import { createValidatedAbstractControlProviders, ValidatedWrappedAbstractControlSuperclass } from '@dsh/utils';
+import { createValidatedAbstractControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
 
 import { PayoutToolForm } from '../payout-tool-form/types/payout-tool-form';
 
@@ -17,7 +17,7 @@ export interface InternationalBankAccountForm {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createValidatedAbstractControlProviders(InternationalBankAccountFormComponent),
 })
-export class InternationalBankAccountFormComponent extends ValidatedWrappedAbstractControlSuperclass<InternationalBankAccountForm> {
+export class InternationalBankAccountFormComponent extends ValidatedControlSuperclass<InternationalBankAccountForm> {
     control = this.fb.group<InternationalBankAccountForm>({
         payoutTool: null,
         currency: '',

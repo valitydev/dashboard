@@ -2,11 +2,7 @@ import { ChangeDetectionStrategy, Component, Inject, OnInit, Injector } from '@a
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup } from '@ngneat/reactive-forms';
 
-import {
-    ValidatedWrappedAbstractControlSuperclass,
-    RequiredSuper,
-    createValidatedAbstractControlProviders,
-} from '@dsh/utils';
+import { ValidatedControlSuperclass, RequiredSuper, createValidatedAbstractControlProviders } from '@dsh/utils';
 
 import { AdditionalFilters } from '../../types';
 
@@ -16,10 +12,7 @@ import { AdditionalFilters } from '../../types';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createValidatedAbstractControlProviders(DialogFiltersComponent),
 })
-export class DialogFiltersComponent
-    extends ValidatedWrappedAbstractControlSuperclass<AdditionalFilters>
-    implements OnInit
-{
+export class DialogFiltersComponent extends ValidatedControlSuperclass<AdditionalFilters> implements OnInit {
     control: FormGroup<AdditionalFilters> = this.formBuilder.group({
         invoiceIDs: null,
         shopIDs: null,

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { BankContent } from '@vality/swag-questionary-aggr-proxy';
 
-import { createValidatedAbstractControlProviders, ValidatedWrappedAbstractControlSuperclass } from '@dsh/utils';
+import { createValidatedAbstractControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
 
 import { RussianBankAccountForm } from './types/bank-account-form-data';
 
@@ -12,7 +12,7 @@ import { RussianBankAccountForm } from './types/bank-account-form-data';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createValidatedAbstractControlProviders(RussianBankAccountFormComponent),
 })
-export class RussianBankAccountFormComponent extends ValidatedWrappedAbstractControlSuperclass<RussianBankAccountForm> {
+export class RussianBankAccountFormComponent extends ValidatedControlSuperclass<RussianBankAccountForm> {
     control = this.fb.group<RussianBankAccountForm>({
         account: null,
         bankName: null,

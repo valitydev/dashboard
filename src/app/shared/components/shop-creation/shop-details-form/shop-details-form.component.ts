@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { Category } from '@vality/swag-payments';
 
-import { createValidatedAbstractControlProviders, ValidatedWrappedAbstractControlSuperclass } from '@dsh/utils';
+import { createValidatedAbstractControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
 
 export interface ShopDetailsForm {
     name: string;
@@ -16,7 +16,7 @@ export interface ShopDetailsForm {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createValidatedAbstractControlProviders(ShopDetailsFormComponent),
 })
-export class ShopDetailsFormComponent extends ValidatedWrappedAbstractControlSuperclass<ShopDetailsForm> {
+export class ShopDetailsFormComponent extends ValidatedControlSuperclass<ShopDetailsForm> {
     control = this.fb.group<ShopDetailsForm>({
         url: '',
         name: '',

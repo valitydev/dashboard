@@ -11,7 +11,7 @@ import {
     isReqIndividualEntity,
     getAddress,
 } from '@dsh/api/questionary-aggr-proxy';
-import { ValidatedWrappedAbstractControlSuperclass, createValidatedAbstractControlProviders } from '@dsh/utils';
+import { ValidatedControlSuperclass, createValidatedAbstractControlProviders } from '@dsh/utils';
 
 import { RussianBankAccountForm } from '../russian-bank-account-form/types/bank-account-form-data';
 
@@ -32,7 +32,7 @@ export interface NewContractorForm {
     templateUrl: 'new-contractor-form.component.html',
     providers: createValidatedAbstractControlProviders(NewContractorFormComponent),
 })
-export class NewContractorFormComponent extends ValidatedWrappedAbstractControlSuperclass<NewContractorForm> {
+export class NewContractorFormComponent extends ValidatedControlSuperclass<NewContractorForm> {
     control = this.fb.group<NewContractorForm>({
         registeredName: null,
         inn: null,

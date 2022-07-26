@@ -9,12 +9,7 @@ import { Overwrite } from 'utility-types';
 
 import { ContractsService } from '@dsh/api/payments';
 import { CommonError, ErrorService } from '@dsh/app/shared';
-import {
-    ValidatedWrappedAbstractControlSuperclass,
-    createValidatedAbstractControlProviders,
-    progressTo,
-    errorTo,
-} from '@dsh/utils';
+import { ValidatedControlSuperclass, createValidatedAbstractControlProviders, progressTo, errorTo } from '@dsh/utils';
 
 import EntityTypeEnum = LegalEntityAllOf.EntityTypeEnum;
 
@@ -29,10 +24,7 @@ export type ExistingContractForm<T extends EntityTypeEnum = EntityTypeEnum> = Ov
     templateUrl: 'existing-contract-form.component.html',
     providers: createValidatedAbstractControlProviders(ExistingContractFormComponent),
 })
-export class ExistingContractFormComponent extends ValidatedWrappedAbstractControlSuperclass<
-    ExistingContractForm,
-    Shop
-> {
+export class ExistingContractFormComponent extends ValidatedControlSuperclass<ExistingContractForm, Shop> {
     @Input() entityType: EntityTypeEnum;
 
     control = this.fb.control<Shop>(null);
