@@ -1,7 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Component } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
-import { MatIcon, MatIconRegistry } from '@angular/material/icon';
+import { MatIconRegistry } from '@angular/material/icon';
 import { By, DomSanitizer } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -21,13 +21,11 @@ describe('CollapseComponent', () => {
         selectCollapse = () => this._fixture.debugElement.query(By.directive(CollapseComponent));
         selectCollapseInstance = (): CollapseComponent => this.selectCollapse().componentInstance;
         selectHeader = () => this.selectCollapse().query(By.css('.dsh-collapse-header'));
-        selectIndicator = () => this.selectCollapse().query(By.directive(MatIcon));
         selectBody = () => this.selectCollapse().query(By.css('.dsh-collapse-body'));
         selectWrapper = () => this.selectCollapse().query(By.css('.dsh-collapse'));
         selectChildren = () => Array.from((this.selectWrapper().nativeElement as HTMLElement).children);
     }
 
-    let component: MockCollapseComponent;
     let fixture: ComponentFixture<MockCollapseComponent>;
     let selector: Selector;
 
@@ -52,7 +50,6 @@ describe('CollapseComponent', () => {
     describe('collapse down', () => {
         beforeEach(() => {
             fixture = TestBed.createComponent(MockCollapseComponent);
-            component = fixture.componentInstance;
             selector = new Selector(fixture);
             fixture.detectChanges();
         });
@@ -104,8 +101,6 @@ describe('CollapseComponent', () => {
     describe('collapse up', () => {
         beforeEach(() => {
             fixture = TestBed.createComponent(MockCollapseUpComponent);
-            // eslint-disable-next-line unused-imports/no-unused-vars
-            component = fixture.componentInstance;
             selector = new Selector(fixture);
             fixture.detectChanges();
         });

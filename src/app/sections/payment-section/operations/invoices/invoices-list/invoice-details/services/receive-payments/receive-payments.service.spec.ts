@@ -13,7 +13,6 @@ import { ReceivePaymentsService } from './receive-payments.service';
 describe('ReceivePaymentsService', () => {
     let service: ReceivePaymentsService;
     let mockPaymentService: PaymentService;
-    let mockSnackbar: MatSnackBar;
 
     beforeEach(() => {
         mockPaymentService = mock(PaymentService);
