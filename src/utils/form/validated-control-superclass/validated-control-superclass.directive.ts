@@ -22,24 +22,18 @@ export abstract class ValidatedControlSuperclass<OuterType, InnerType = OuterTyp
         return getErrorsTree(this.control);
     }
 
-    protected setUpOuterToInnerErrors$(
-        _outer$: Observable<ValidationErrors>
-    ): Observable<ValidationErrors> {
+    protected setUpOuterToInnerErrors$(_outer$: Observable<ValidationErrors>): Observable<ValidationErrors> {
         return EMPTY;
     }
 
-    protected setUpInnerToOuterErrors$(
-        _inner$: Observable<ValidationErrors>
-    ): Observable<ValidationErrors> {
+    protected setUpInnerToOuterErrors$(_inner$: Observable<ValidationErrors>): Observable<ValidationErrors> {
         return EMPTY;
     }
 
     protected outerToInnerValue(outer: OuterType): InnerType {
         if ('controls' in this.control) {
             if (!outer) return this.emptyValue;
-            if (
-                Object.keys(outer).length < Object.keys((this.control as FormGroup).controls).length
-            )
+            if (Object.keys(outer).length < Object.keys((this.control as FormGroup).controls).length)
                 return Object.assign({}, this.emptyValue, outer);
         }
         return outer as never;

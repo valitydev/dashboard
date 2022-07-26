@@ -5,10 +5,10 @@ import { WrappedControlSuperclass } from '@s-libs/ng-core';
 import { EMPTY, Observable } from 'rxjs';
 
 @Directive()
-export class ValidatedFormControlSuperclass<
+export class ValidatedFormControlSuperclass<OuterType, InnerType = OuterType> extends WrappedControlSuperclass<
     OuterType,
-    InnerType = OuterType
-> extends WrappedControlSuperclass<OuterType, InnerType> {
+    InnerType
+> {
     // TODO: Validation sometimes doesn't work (is not forwarded higher by nesting) with Angular FormControl
     control = new FormControl<InnerType>();
 
@@ -16,15 +16,11 @@ export class ValidatedFormControlSuperclass<
         return this.control.errors;
     }
 
-    protected setUpOuterToInnerErrors$(
-        _outer$: Observable<ValidationErrors>
-    ): Observable<ValidationErrors> {
+    protected setUpOuterToInnerErrors$(_outer$: Observable<ValidationErrors>): Observable<ValidationErrors> {
         return EMPTY;
     }
 
-    protected setUpInnerToOuterErrors$(
-        _inner$: Observable<ValidationErrors>
-    ): Observable<ValidationErrors> {
+    protected setUpInnerToOuterErrors$(_inner$: Observable<ValidationErrors>): Observable<ValidationErrors> {
         return EMPTY;
     }
 }
