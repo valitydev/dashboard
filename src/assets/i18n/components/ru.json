@@ -58,5 +58,8 @@
     },
     "claimField": {
         "label": "Идентификатор заявки"
+    },
+    "claimFilter": {
+        "label": "Заявка"
     }
 }
