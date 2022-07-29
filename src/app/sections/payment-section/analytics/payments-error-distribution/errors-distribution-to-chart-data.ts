@@ -1,5 +1,3 @@
-import { translate } from '@ngneat/transloco';
-
 import { DistributionChartData } from '../utils';
 import { ErrorDistribution } from './error-distribution';
 
@@ -9,10 +7,10 @@ const errorsToSeries = (errors: ErrorDistribution[]): number[] => {
     return errors.map((d) => d.percents * multiplier);
 };
 
-const errorsToLabels = (errors: ErrorDistribution[]): string[] =>
-    errors.map((d) => translate(`analytics.errorCodes.${d.errorCode}`, null, 'payment-section'));
-
-export const errorsDistributionToChartData = (distribution: ErrorDistribution[]): DistributionChartData => {
+export const errorsDistributionToChartData = (
+    distribution: ErrorDistribution[],
+    errorLabels: Record<string, string>
+): DistributionChartData => {
     const filtered = distribution.filter((e) => e.percents > 0);
-    return { series: errorsToSeries(filtered), labels: errorsToLabels(filtered) };
+    return { series: errorsToSeries(filtered), labels: filtered.map(({ errorCode }) => errorLabels[errorCode]) };
 };
