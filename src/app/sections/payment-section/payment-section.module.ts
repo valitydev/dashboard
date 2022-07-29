@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
-import { TranslocoModule } from '@ngneat/transloco';
+import { TranslocoModule, TRANSLOCO_SCOPE } from '@ngneat/transloco';
 
 import { RouteNavbarLayoutModule } from '@dsh/app/shared/components/route-navbar-layout';
 import { NavbarItemModule } from '@dsh/components/navigation';
@@ -26,5 +26,6 @@ import { PaymentSectionComponent } from './payment-section.component';
     ],
     declarations: [PaymentSectionComponent],
     exports: [PaymentSectionComponent],
+    providers: [{ provide: TRANSLOCO_SCOPE, useValue: 'payment-section' }],
 })
 export class PaymentSectionModule {}

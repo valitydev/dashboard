@@ -1,81 +1,81 @@
 {
-    "testEnvironment": "Тестовое окружение",
-    "testEnvironmentHint": "Вы находитесь в тестовом окружении. Этот раздел предназначен для тестового подключения и проверки настроек приема платежей. Здесь же вы можете проверить функции личного кабинета, например, интеграцию магазина, создание и оплата счетов или осуществление возвратов.",
-    "nav": {
-        "shops": "Магазины",
-        "operations": "Операции",
-        "reports": "Отчеты",
-        "analytics": "Аналитика",
-        "payouts": "Возмещения",
-        "integrations": "Интеграция",
-        "testEnv": "Тест. окружение"
-    },
-    "balances": {
-        "title": "Доступные средства"
-    },
-    "operations": {
-        "tabs": {
-            "payments": "ПЛАТЕЖИ",
-            "refunds": "ВОЗВРАТЫ",
-            "invoices": "ИНВОЙСЫ"
-        }
-    },
     "analytics": {
         "allShops": "Все магазины",
-        "shop": "Магазин",
-        "paymentsCount": "Количество платежей",
-        "paymentsAmount": "Оборот",
-        "paymentTools": "Платежные инструменты",
-        "unsuccessfulPaymentReasons": "Причины неуспешных платежей",
-        "noData": "Нет данных",
-        "stats": {
-            "paymentsAmount": "Оборот за период",
-            "refundsAmount": "Возвратов за период",
-            "averagePayment": "Средняя сумма платежа",
-            "paymentsCount": "Количество платежей"
+        "errorCodes": {
+            "account_limit_exceeded": "Превышен лимит счёта",
+            "account_not_found": "Счёт не найден",
+            "amount": "Лимит суммы превышен",
+            "authorization_failed": "Ошибка авторизации",
+            "bank_card_rejected": "Банковская карта отклонена",
+            "card_expired": "Срок действия карты истёк",
+            "card_number_invalid": "Неверный номер карты",
+            "insufficient_funds": "Недостаточно средств",
+            "no_route_found": "Маршрут не найден",
+            "number": "Лимит количества операций превышен",
+            "operation_blocked": "Операция заблокирована",
+            "operation_timeout": "Превышено время ожидания",
+            "other": "Прочее",
+            "payment_tool_rejected": "Платежный инструмент отклонен",
+            "preauthorization_failed": "Ошибка предавторизации",
+            "processing_deadline_reached": "Время проведения платежа истекло",
+            "rejected_by_issuer": "Отклонено эмитентом",
+            "risk_score_is_too_high": "Операция с высоким риском",
+            "security_policy_violated": "Нарушение политики безопасности",
+            "three_ds_failed": "Ошибка 3DS",
+            "three_ds_not_finished": "Не завершена проверка 3DS"
         },
+        "noData": "Нет данных",
+        "paymentStatuses": {
+            "cancelled": "Отменен",
+            "captured": "Подтвержден",
+            "failed": "Неуспешен",
+            "pending": "Запущен",
+            "processed": "Обработан",
+            "refunded": "Возвращен"
+        },
+        "paymentTools": "Платежные инструменты",
         "paymentToolsList": {
             "bank_card": "Банковская карта",
             "digital_wallet": "Кошелек",
             "payment_terminal": "Терминал"
         },
-        "paymentStatuses": {
-            "pending": "Запущен",
-            "processed": "Обработан",
-            "captured": "Подтвержден",
-            "cancelled": "Отменен",
-            "refunded": "Возвращен",
-            "failed": "Неуспешен"
+        "paymentsAmount": "Оборот",
+        "paymentsCount": "Количество платежей",
+        "shop": "Магазин",
+        "stats": {
+            "averagePayment": "Средняя сумма платежа",
+            "paymentsAmount": "Оборот за период",
+            "paymentsCount": "Количество платежей",
+            "refundsAmount": "Возвратов за период"
         },
-        "errorCodes": {
-            "operation_timeout": "Превышено время ожидания",
-            "authorization_failed": "Ошибка авторизации",
-            "preauthorization_failed": "Ошибка предавторизации",
-            "no_route_found": "Маршрут не найден",
-            "insufficient_funds": "Недостаточно средств",
-            "rejected_by_issuer": "Отклонено эмитентом",
-            "risk_score_is_too_high": "Операция с высоким риском",
-            "payment_tool_rejected": "Платежный инструмент отклонен",
-            "security_policy_violated": "Нарушение политики безопасности",
-            "three_ds_not_finished": "Не завершена проверка 3DS",
-            "operation_blocked": "Операция заблокирована",
-            "account_limit_exceeded": "Превышен лимит счёта",
-            "three_ds_failed": "Ошибка 3DS",
-            "processing_deadline_reached": "Время проведения платежа истекло",
-            "account_not_found": "Счёт не найден",
-            "bank_card_rejected": "Банковская карта отклонена",
-            "amount": "Лимит суммы превышен",
-            "number": "Лимит количества операций превышен",
-            "card_number_invalid": "Неверный номер карты",
-            "card_expired": "Срок действия карты истёк",
-            "other": "Прочее"
-        }
+        "unsuccessfulPaymentReasons": "Причины неуспешных платежей"
+    },
+    "balances": {
+        "title": "Доступные средства"
     },
     "integrations": {
         "tabs": {
-            "webhooks": "WEBHOOKS",
+            "api-key": "API КЛЮЧ",
             "payment-link": "ПЛАТЕЖНАЯ ССЫЛКА",
-            "api-key": "API КЛЮЧ"
+            "webhooks": "WEBHOOKS"
         }
-    }
+    },
+    "nav": {
+        "analytics": "Аналитика",
+        "integrations": "Интеграция",
+        "operations": "Операции",
+        "payouts": "Возмещения",
+        "reports": "Отчеты",
+        "shops": "Магазины",
+        "testEnv": "Тест. окружение"
+    },
+    "operations": {
+        "tabs": {
+            "invoices": "ИНВОЙСЫ",
+            "payments": "ПЛАТЕЖИ",
+            "refunds": "ВОЗВРАТЫ"
+        }
+    },
+    "testEnvironment": "Тестовое окружение",
+    "testEnvironmentHint": "Вы находитесь в тестовом окружении. Этот раздел предназначен для тестового подключения и проверки настроек приема платежей. Здесь же вы можете проверить функции личного кабинета, например, интеграцию магазина, создание и оплата счетов или осуществление возвратов."
 }
