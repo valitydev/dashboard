@@ -1,0 +1,9 @@
+{
+    "analytics": {
+        "paymentTool": {
+            "bank_card": "Банковская карта",
+            "digital_wallet": "Кошелек",
+            "payment_terminal": "Терминал"
+        }
+    }
+}

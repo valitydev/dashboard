@@ -8,4 +8,4 @@ import { TRANSLOCO_SCOPE } from '@ngneat/transloco';
  * Used only to create a transloco-keys-manager scope file -
  * no need to import anywhere (yet the library doesn't need it)
  */
-export class ComponentsModule {}
+export class ComponentsTranslocoScopeModule {}

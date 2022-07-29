@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject, BehaviorSubject, defer } from 'rxjs';
-import { map, pluck, switchMap } from 'rxjs/operators';
+import { ReplaySubject, BehaviorSubject } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
-import { AnalyticsService } from '@dsh/api/anapi';
+import { AnalyticsService, AnapiDictionaryService } from '@dsh/api/anapi';
+import { DictionaryService } from '@dsh/api/utils';
 import { shareReplayRefCount } from '@dsh/operators';
 import { errorTo, progressTo, distinctUntilChangedDeep, inProgressFrom, attach } from '@dsh/utils';
 
@@ -12,7 +13,8 @@ import { paymentsToolDistributionToChartData } from './payments-tool-distributio
 
 @Injectable()
 export class PaymentsToolDistributionService {
-    toolDistribution$ = defer(() => this.searchParams$).pipe(
+    toolDistribution$ = this.dictionaryService.init$.pipe(
+        switchMap(() => this.searchParams$),
         distinctUntilChangedDeep(),
         map(searchParamsToDistributionSearchParams),
         switchMap(({ fromTime, toTime, shopIDs, realm }) =>
@@ -20,8 +22,9 @@ export class PaymentsToolDistributionService {
                 .getPaymentsToolDistribution({ fromTime, toTime, paymentInstitutionRealm: realm, shopIDs })
                 .pipe(errorTo(this.errorSub$), progressTo(this.progress$))
         ),
-        pluck('result'),
-        map(paymentsToolDistributionToChartData),
+        map(({ result }) =>
+            paymentsToolDistributionToChartData(result, this.analyticsDictionaryService.getPaymentToolLabels())
+        ),
         shareReplayRefCount()
     );
     isLoading$ = inProgressFrom(() => this.progress$, this.toolDistribution$);
@@ -31,7 +34,11 @@ export class PaymentsToolDistributionService {
     private errorSub$ = new ReplaySubject<unknown>(1);
     private progress$ = new BehaviorSubject<number>(0);
 
-    constructor(private analyticsService: AnalyticsService) {}
+    constructor(
+        private analyticsService: AnalyticsService,
+        private analyticsDictionaryService: AnapiDictionaryService,
+        private dictionaryService: DictionaryService
+    ) {}
 
     updateSearchParams(searchParams: SearchParams) {
         this.searchParams$.next(searchParams);

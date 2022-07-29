@@ -33,11 +33,6 @@
             "refunded": "Возвращен"
         },
         "paymentTools": "Платежные инструменты",
-        "paymentToolsList": {
-            "bank_card": "Банковская карта",
-            "digital_wallet": "Кошелек",
-            "payment_terminal": "Терминал"
-        },
         "paymentsAmount": "Оборот",
         "paymentsCount": "Количество платежей",
         "shop": "Магазин",

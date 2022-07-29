@@ -1,4 +1,3 @@
-import { translate } from '@ngneat/transloco';
 import { PaymentsToolDistributionResult } from '@vality/swag-anapi-v2';
 import sortBy from 'lodash-es/sortBy';
 
@@ -8,19 +7,13 @@ const sortByPercents = (distribution: PaymentsToolDistributionResult[]) => sortB
 
 const getSeries = (distribution: PaymentsToolDistributionResult[]): number[] => distribution.map((d) => d.percents);
 
-const getLabels = (distribution: PaymentsToolDistributionResult[]): string[] =>
-    translate(
-        distribution.map((d) => `analytics.paymentToolsList.${d.name}`),
-        null,
-        'payment-section'
-    );
-
 export const paymentsToolDistributionToChartData = (
-    distribution: PaymentsToolDistributionResult[]
+    distribution: PaymentsToolDistributionResult[],
+    paymentToolLabels: Record<PaymentsToolDistributionResult['name'], string>
 ): DistributionChartData => {
     const sorted = sortByPercents(distribution);
     return {
         series: getSeries(sorted),
-        labels: getLabels(sorted),
+        labels: distribution.map((d) => paymentToolLabels[d.name]),
     };
 };
