@@ -1,0 +1,46 @@
+{
+    "claim": {
+        "breadcrumbs": {
+            "claimDetails": "Детали заявки",
+            "claims": "Заявки"
+        },
+        "conversation": {
+            "action": {
+                "edit": "Изменить сведения",
+                "toggleDetails": "Раскрыть / скрыть детали"
+            },
+            "filesUploaded": "Файл успешно загружен",
+            "label": "Обсуждение",
+            "sendComment": "Оставьте комментарий",
+            "timeline": {
+                "action": {
+                    "changesAdded": "добавлены следующие сведения",
+                    "commentAdded": "добавлены комментарии",
+                    "filesAdded": "добавлены документы",
+                    "statusAccepted": "одобрена заявка",
+                    "statusDenied": "отклонена заявка",
+                    "statusPending": "рассмотрена заявка",
+                    "statusReview": "заявка отправлена на рассмотрение",
+                    "statusRevoked": "отозвана заявка"
+                },
+                "claimCreated": "Заявка создана",
+                "userInfo": {
+                    "external_user": "Вами",
+                    "internal_user": "Менеджером"
+                }
+            }
+        },
+        "headline": "Детали заявки",
+        "request": "Заявка на подключение",
+        "reviewClaim": "Отправить на рассмотрение",
+        "reviewed": "Заявка успешно отправлена на рассмотрение",
+        "revokeClaim": "Отозвать",
+        "revokeClaimDialog": {
+            "back": "Назад",
+            "reason": "Укажите причину",
+            "revoke": "Отозвать",
+            "subheading": "Отзыв заявки"
+        },
+        "revoked": "Заявка успешно отозвана"
+    }
+}

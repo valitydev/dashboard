@@ -1,4 +1,8 @@
-<div *transloco="let t; scope: 'claim'; read: 'claim.conversation'" fxLayout="column" fxLayoutGap="20px">
+<div
+    *transloco="let t; scope: 'claim-section'; read: 'claimSection.claim.conversation'"
+    fxLayout="column"
+    fxLayoutGap="20px"
+>
     <dsh-timeline>
         <dsh-timeline-item>
             <dsh-timeline-item-title>
@@ -17,12 +21,20 @@
                     <div>
                         <span
                             class="dsh-body-2"
-                            *transloco="let userInfo; scope: 'claim'; read: 'claim.conversation.timeline.userInfo'"
+                            *transloco="
+                                let userInfo;
+                                scope: 'claim-section';
+                                read: 'claimSection.claim.conversation.timeline.userInfo'
+                            "
                             >{{ userInfo(item.userInfo.userType) }}
                         </span>
                         <span
                             class="mat-body-2"
-                            *transloco="let action; scope: 'claim'; read: 'claim.conversation.timeline.action'"
+                            *transloco="
+                                let action;
+                                scope: 'claim-section';
+                                read: 'claimSection.claim.conversation.timeline.action'
+                            "
                             >{{ action(item.action) }}
                         </span>
                         <span *transloco="let c"
