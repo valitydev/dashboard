@@ -19,7 +19,7 @@
     </dsh-row-label>
     <dsh-row-label fxFlex.gt-sm="30" fxFlex fxLayout="row" fxLayoutAlign="end center"
         ><dsh-navigation-link
-            *transloco="let claims; scope: 'claims'; read: 'claims'"
+            *transloco="let claims; scope: 'claim-section'; read: 'claimSection.claimRow'"
             [text]="claims('details')"
             (click)="goToClaimDetails.emit(claim.id)"
         ></dsh-navigation-link

@@ -1,4 +1,8 @@
-<div fxLayout="column" fxLayoutGap="16px" *transloco="let claims; scope: 'claims'; read: 'claims'">
+<div
+    fxLayout="column"
+    fxLayoutGap="16px"
+    *transloco="let claims; scope: 'claim-section'; read: 'claimSection.claimsList'"
+>
     <dsh-last-updated (update)="refreshList()" [lastUpdated]="lastUpdated"></dsh-last-updated>
     <dsh-claim-row-header></dsh-claim-row-header>
     <ng-container *ngFor="let claim of claimList">
