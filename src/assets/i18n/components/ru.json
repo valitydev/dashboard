@@ -9,5 +9,54 @@
             "sessions": "Управление сессиями",
             "twoFactorAuth": "Двухэтапная аутентификация"
         }
+    },
+    "apiModelDetails": {
+        "bankAccount": {
+            "account": "Расчетный счет",
+            "bankBik": "БИК",
+            "bankName": "Наименование банка",
+            "bankPostAccount": "Корр. счет"
+        },
+        "contract": {
+            "createdAt": "Дата и время создания"
+        },
+        "internationalLegalEntity": {
+            "legalName": "Наименование",
+            "registeredNumber": "Регистрационный номер",
+            "registeredOffice": "Адрес места регистрации",
+            "tradingName": "Торговое наименование"
+        },
+        "payoutTool": {
+            "currency": "Валюта"
+        },
+        "payoutToolDetails": {
+            "bankCard": {
+                "cardNumberMask": "Номер карты"
+            },
+            "internationalBankAccount": {
+                "bankDetails": {
+                    "abartn": "ABA Routing Transit Number",
+                    "address": "Адрес юр. лица",
+                    "bic": "BIC",
+                    "countryCode": "Страна резиденции",
+                    "name": "Наименование юр. лица"
+                },
+                "correspondentBankAccount": "Корр. счет",
+                "iban": "IBAN",
+                "number": "Номер счета"
+            },
+            "wallet": {
+                "walletName": "Наименование"
+            }
+        },
+        "russianLegalEntity": {
+            "actualAddress": "Почтовый адрес места нахождения",
+            "inn": "ИНН",
+            "registeredName": "Наименование юр. лица",
+            "registeredNumber": "ОГРН/ОГРНИП",
+            "representativeDocument": "Документ ЕИО/представителя",
+            "representativeFullName": "ФИО ЕИО/представителя",
+            "representativePosition": "Должность ЕИО/представителя"
+        }
     }
 }

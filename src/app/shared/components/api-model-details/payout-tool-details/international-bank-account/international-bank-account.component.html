@@ -1,5 +1,9 @@
 <div
-    *transloco="let t; scope: 'api-model-details'; read: 'apiModelDetails.payoutToolDetails.internationalBankAccount'"
+    *transloco="
+        let t;
+        scope: 'components';
+        read: 'components.apiModelDetails.payoutToolDetails.internationalBankAccount'
+    "
     fxLayout="column"
     fxLayoutGap="24px"
 >
@@ -13,8 +17,8 @@
         <ng-container
             *transloco="
                 let d;
-                scope: 'api-model-details';
-                read: 'apiModelDetails.payoutToolDetails.internationalBankAccount.bankDetails'
+                scope: 'components';
+                read: 'components.apiModelDetails.payoutToolDetails.internationalBankAccount.bankDetails'
             "
             gdColumns="1fr"
             gdColumns.gt-sm="1fr 1fr 1fr"
