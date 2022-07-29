@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { TranslocoService } from '@ngneat/transloco';
+import { StatusOffsetCount } from '@vality/swag-anapi-v2';
 import { forkJoin, of, defer, ReplaySubject, BehaviorSubject } from 'rxjs';
 import { map, switchMap, withLatestFrom } from 'rxjs/operators';
 
@@ -11,9 +13,12 @@ import { searchParamsToParamsWithSplitUnit } from '../utils';
 import { prepareSplitCount } from './prepare-split-count';
 import { splitCountToChartData } from './split-count-to-chart-data';
 
+import StatusEnum = StatusOffsetCount.StatusEnum;
+
 @Injectable()
 export class PaymentSplitCountService {
-    splitCount$ = defer(() => this.searchParams$).pipe(
+    splitCount$ = this.transloco.selectTranslation('payment-section').pipe(
+        switchMap(() => this.searchParams$),
         distinctUntilChangedDeep(),
         map(searchParamsToParamsWithSplitUnit),
         switchMap(({ fromTime, toTime, splitUnit, shopIDs, realm }) =>
@@ -30,7 +35,7 @@ export class PaymentSplitCountService {
             ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$))
         ),
         map(([fromTime, toTime, splitCount]) => prepareSplitCount(splitCount?.result, fromTime, toTime)),
-        map(splitCountToChartData),
+        map((res) => splitCountToChartData(res, this.getPaymentStatusLabels())),
         withLatestFrom(defer(() => this.searchParams$)),
         map(([result, { currency }]) => result.find((r) => r.currency === currency)),
         shareReplayRefCount()
@@ -42,9 +47,20 @@ export class PaymentSplitCountService {
     private errorSub$ = new ReplaySubject<unknown>(1);
     private progress$ = new BehaviorSubject<number>(0);
 
-    constructor(private analyticsService: AnalyticsService) {}
+    constructor(private analyticsService: AnalyticsService, private transloco: TranslocoService) {}
 
     updateSearchParams(searchParams: SearchParams): void {
         this.searchParams$.next(searchParams);
+    }
+
+    private getPaymentStatusLabels(): Record<StatusEnum, string> {
+        return {
+            pending: this.transloco.translate('analytics.paymentStatuses.pending', null, 'payment-section'),
+            processed: this.transloco.translate('analytics.paymentStatuses.processed', null, 'payment-section'),
+            captured: this.transloco.translate('analytics.paymentStatuses.captured', null, 'payment-section'),
+            cancelled: this.transloco.translate('analytics.paymentStatuses.cancelled', null, 'payment-section'),
+            refunded: this.transloco.translate('analytics.paymentStatuses.refunded', null, 'payment-section'),
+            failed: this.transloco.translate('analytics.paymentStatuses.failed', null, 'payment-section'),
+        };
     }
 }
