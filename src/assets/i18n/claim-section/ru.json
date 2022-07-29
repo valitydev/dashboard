@@ -5,16 +5,9 @@
             "claims": "Заявки"
         },
         "headline": "Детали заявки",
-        "request": "Заявка на подключение",
         "reviewClaim": "Отправить на рассмотрение",
         "reviewed": "Заявка успешно отправлена на рассмотрение",
         "revokeClaim": "Отозвать",
-        "revokeClaimDialog": {
-            "back": "Назад",
-            "reason": "Укажите причину",
-            "revoke": "Отозвать",
-            "subheading": "Отзыв заявки"
-        },
         "revoked": "Заявка успешно отозвана"
     },
     "conversation": {
@@ -40,5 +33,10 @@
             "external_user": "Вами",
             "internal_user": "Менеджером"
         }
+    },
+    "revokeClaimDialog": {
+        "reason": "Укажите причину",
+        "revoke": "Отозвать",
+        "subheading": "Отзыв заявки"
     }
 }
