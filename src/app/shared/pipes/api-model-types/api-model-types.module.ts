@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { TranslocoModule, TRANSLOCO_SCOPE } from '@ngneat/transloco';
+import { TranslocoModule } from '@ngneat/transloco';
 
 import { ClaimStatusColorPipe } from './claim-status-color.pipe';
 import { DepositStatusColorPipe } from './deposit-status-color.pipe';
@@ -23,7 +23,6 @@ const DECLARATIONS = [
 
 @NgModule({
     imports: [TranslocoModule],
-    providers: [{ provide: TRANSLOCO_SCOPE, useValue: 'api-model-types' }],
     declarations: DECLARATIONS,
     exports: DECLARATIONS,
 })

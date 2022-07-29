@@ -8,24 +8,26 @@ export class PayoutToolDetailsTypePipe implements PipeTransform {
     constructor(private transloco: TranslocoService) {}
 
     transform(value: string): string {
-        let path: string;
         switch (value) {
             case 'PayoutToolDetailsBankAccount':
-                path = 'payoutToolDetailsBankAccount';
-                break;
+                return this.transloco.translate('payoutToolDetailsType.payoutToolDetailsBankAccount', null, 'pipes');
             case 'PayoutToolDetailsInternationalBankAccount':
-                path = 'payoutToolDetailsInternationalBankAccount';
-                break;
+                return this.transloco.translate(
+                    'payoutToolDetailsType.payoutToolDetailsInternationalBankAccount',
+                    null,
+                    'pipes'
+                );
             case 'PayoutToolDetailsBankCard':
-                path = 'payoutToolDetailsBankCard';
-                break;
+                return this.transloco.translate('payoutToolDetailsType.payoutToolDetailsBankCard', null, 'pipes');
             case 'PayoutToolDetailsWalletInfo':
-                path = 'payoutToolDetailsWalletInfo';
-                break;
+                return this.transloco.translate('payoutToolDetailsType.payoutToolDetailsWalletInfo', null, 'pipes');
             case 'PayoutToolDetailsPaymentInstitutionAccount':
-                path = 'payoutToolDetailsPaymentInstitutionAccount';
-                break;
+                return this.transloco.translate(
+                    'payoutToolDetailsType.payoutToolDetailsPaymentInstitutionAccount',
+                    null,
+                    'pipes'
+                );
         }
-        return path ? this.transloco.translate(`apiModelTypes.payoutToolDetailsType.${path}`) : path;
+        return '';
     }
 }
