@@ -1,4 +1,4 @@
-<ng-container *transloco="let t; scope: 'actionbar'; read: 'actionbar'">
+<ng-container *transloco="let t; scope: 'component-actionbar'; read: 'componentActionbar'">
     <div *ngIf="(orgs$ | async)?.length" fxLayout="column" fxLayoutGap="16px">
         <dsh-menu-item header routerLink="/organization-section/organizations" (click)="selected.emit()">
             {{ t('organizations.title') }}

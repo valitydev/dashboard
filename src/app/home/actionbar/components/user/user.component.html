@@ -1,9 +1,13 @@
-<dsh-dropdown-actions *transloco="let t; scope: 'actionbar'; read: 'actionbar'" fxLayout="column" fxLayoutGap="24px">
+<dsh-dropdown-actions
+    *transloco="let t; scope: 'component-actionbar'; read: 'componentActionbar.user'"
+    fxLayout="column"
+    fxLayoutGap="24px"
+>
     <dsh-organizations-list (selected)="selected.emit()"></dsh-organizations-list>
     <mat-divider></mat-divider>
     <span class="dsh-body-2">{{ username }}</span>
-    <dsh-menu-item *ngFor="let linkConfig of userLinksConfig" (click)="openBlank(linkConfig.href)">
-        {{ t(linkConfig.translocoPath) }}
+    <dsh-menu-item *ngFor="let linkConfig of userLinksConfig$ | async" (click)="openBlank(linkConfig.href)">
+        {{ linkConfig.title }}
     </dsh-menu-item>
-    <dsh-menu-item (click)="logout()">{{ t('user.logout') }}</dsh-menu-item>
+    <dsh-menu-item (click)="logout()">{{ t('logout') }}</dsh-menu-item>
 </dsh-dropdown-actions>

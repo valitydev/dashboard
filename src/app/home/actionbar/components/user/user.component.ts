@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { TranslocoService } from '@ngneat/transloco';
+import { map } from 'rxjs/operators';
 
 import { KeycloakService } from '../../../../auth';
 import { ConfigService } from '../../../../config';
@@ -13,22 +15,28 @@ export class UserComponent {
 
     username = this.keycloakService.getUsername();
     keycloakAccountEndpoint = `${this.config.keycloakEndpoint}/auth/realms/external/account/`;
-    userLinksConfig = [
-        {
-            translocoPath: 'user.changePassword',
-            href: `${this.keycloakAccountEndpoint}/password`,
-        },
-        {
-            translocoPath: 'user.sessions',
-            href: `${this.keycloakAccountEndpoint}/sessions`,
-        },
-        {
-            translocoPath: 'user.twoFactorAuth',
-            href: `${this.keycloakAccountEndpoint}/totp`,
-        },
-    ];
+    userLinksConfig$ = this.transloco.selectTranslation('component-actionbar').pipe(
+        map(() => [
+            {
+                title: this.transloco.translate('user.changePassword', {}, 'component-actionbar'),
+                href: `${this.keycloakAccountEndpoint}/password`,
+            },
+            {
+                title: this.transloco.translate('user.sessions', {}, 'component-actionbar'),
+                href: `${this.keycloakAccountEndpoint}/sessions`,
+            },
+            {
+                title: this.transloco.translate('user.twoFactorAuth', {}, 'component-actionbar'),
+                href: `${this.keycloakAccountEndpoint}/totp`,
+            },
+        ])
+    );
 
-    constructor(private keycloakService: KeycloakService, private config: ConfigService) {}
+    constructor(
+        private keycloakService: KeycloakService,
+        private config: ConfigService,
+        private transloco: TranslocoService
+    ) {}
 
     openBlank(href: string): void {
         window.open(href, '_blank');
