@@ -22,9 +22,10 @@ export const toNavbarItemConfig = ({
     operations,
     payouts,
     reports,
-}: {
-    [k: string]: string;
-}): NavbarItemConfig[] => [
+}: Record<
+    'shops' | 'analytics' | 'integrations' | 'operations' | 'payouts' | 'reports',
+    string
+>): NavbarItemConfig[] => [
     {
         routerLink: NavbarRouterLink.Shops,
         icon: BootstrapIconName.Shop,

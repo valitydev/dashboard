@@ -60,20 +60,22 @@
             "webhooks": "WEBHOOKS"
         }
     },
-    "nav": {
-        "analytics": "Аналитика",
-        "integrations": "Интеграция",
-        "operations": "Операции",
-        "payouts": "Возмещения",
-        "reports": "Отчеты",
-        "shops": "Магазины",
-        "testEnv": "Тест. окружение"
-    },
     "operations": {
         "tabs": {
             "invoices": "ИНВОЙСЫ",
             "payments": "ПЛАТЕЖИ",
             "refunds": "ВОЗВРАТЫ"
+        }
+    },
+    "paymentSection": {
+        "nav": {
+            "analytics": "Аналитика",
+            "integrations": "Интеграция",
+            "operations": "Операции",
+            "payouts": "Возмещения",
+            "reports": "Отчеты",
+            "shops": "Магазины",
+            "testEnv": "Тест. окружение"
         }
     },
     "testEnvironment": "Тестовое окружение",
