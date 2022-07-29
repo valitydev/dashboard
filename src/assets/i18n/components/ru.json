@@ -61,5 +61,15 @@
     },
     "claimFilter": {
         "label": "Заявка"
+    },
+    "claimStatusesField": {
+        "statuses": {
+            "accepted": "Одобрена",
+            "denied": "Отклонена",
+            "pending": "В ожидании",
+            "pendingAcceptance": "В ожидании одобрения",
+            "review": "На рассмотрении",
+            "revoked": "Отозвана"
+        }
     }
 }

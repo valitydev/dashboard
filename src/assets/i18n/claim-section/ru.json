@@ -10,6 +10,9 @@
         "revokeClaim": "Отозвать",
         "revoked": "Заявка успешно отозвана"
     },
+    "claimStatusesFilter": {
+        "label": "Статус"
+    },
     "conversation": {
         "action": {
             "toggleDetails": "Раскрыть / скрыть детали"

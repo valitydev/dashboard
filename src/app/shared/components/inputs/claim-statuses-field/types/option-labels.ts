@@ -1,4 +1,4 @@
-import { ClaimStatusesEnum } from '@dsh/app/shared/components/inputs/claim-statuses-field/types/claim-statuses-enum';
+import { ClaimStatusesEnum } from './claim-statuses-enum';
 
 export const OPTION_LABELS: { [N in ClaimStatusesEnum]: string } = {
     pending: 'pending',
