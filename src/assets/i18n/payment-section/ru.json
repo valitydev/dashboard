@@ -1,6 +1,5 @@
 {
     "analytics": {
-        "allShops": "Все магазины",
         "errorCodes": {
             "account_limit_exceeded": "Превышен лимит счёта",
             "account_not_found": "Счёт не найден",
@@ -49,6 +48,12 @@
             "refundsAmount": "Возвратов за период"
         },
         "unsuccessfulPaymentReasons": "Причины неуспешных платежей"
+    },
+    "apiKey": {
+        "api": "API",
+        "copy": "Скопировать",
+        "description": "Ваш приватный ключ для доступа к",
+        "title": "API ключ"
     },
     "balances": {
         "title": "Доступные средства"
