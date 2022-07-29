@@ -28,15 +28,7 @@
                             "
                             >{{ userInfo(item.userInfo.userType) }}
                         </span>
-                        <span
-                            class="mat-body-2"
-                            *transloco="
-                                let action;
-                                scope: 'claim-section';
-                                read: 'claimSection.claim.conversation.timeline.action'
-                            "
-                            >{{ action(item.action) }}
-                        </span>
+                        <span class="mat-body-2">{{ timelineActionLabels[item.action] | async }} </span>
                         <span *transloco="let c"
                             >{{ item.createdAt | humanizedDuration: { largest: 1 } }} {{ c('ago') }}</span
                         >

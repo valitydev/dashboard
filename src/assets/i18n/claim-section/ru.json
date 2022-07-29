@@ -13,16 +13,6 @@
             "label": "Обсуждение",
             "sendComment": "Оставьте комментарий",
             "timeline": {
-                "action": {
-                    "changesAdded": "добавлены следующие сведения",
-                    "commentAdded": "добавлены комментарии",
-                    "filesAdded": "добавлены документы",
-                    "statusAccepted": "одобрена заявка",
-                    "statusDenied": "отклонена заявка",
-                    "statusPending": "рассмотрена заявка",
-                    "statusReview": "заявка отправлена на рассмотрение",
-                    "statusRevoked": "отозвана заявка"
-                },
                 "claimCreated": "Заявка создана",
                 "userInfo": {
                     "external_user": "Вами",
@@ -42,5 +32,17 @@
             "subheading": "Отзыв заявки"
         },
         "revoked": "Заявка успешно отозвана"
+    },
+    "conversation": {
+        "timelineActions": {
+            "changesAdded": "добавлены следующие сведения",
+            "commentAdded": "добавлены комментарии",
+            "filesAdded": "добавлены документы",
+            "statusAccepted": "одобрена заявка",
+            "statusDenied": "отклонена заявка",
+            "statusPending": "рассмотрена заявка",
+            "statusReview": "заявка отправлена на рассмотрение",
+            "statusRevoked": "отозвана заявка"
+        }
     }
 }
