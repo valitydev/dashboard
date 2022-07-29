@@ -40,13 +40,9 @@ export class UploadFilesService {
 
         this.errors$.subscribe(() => this.snackBar.open(this.transloco.translate('commonError'), 'OK'));
         this.uploadedFiles$.subscribe(() =>
-            this.snackBar.open(
-                this.transloco.translate('claim.conversation.filesUploaded', null, 'claim-section'),
-                'OK',
-                {
-                    duration: 5000,
-                }
-            )
+            this.snackBar.open(this.transloco.translate('conversation.filesUploaded', null, 'claim-section'), 'OK', {
+                duration: 5000,
+            })
         );
         this.uploadedFiles$.subscribe((fileIds) => this.updateClaimService.updateByFiles(fileIds));
     }

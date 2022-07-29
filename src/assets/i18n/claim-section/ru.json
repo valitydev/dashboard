@@ -4,18 +4,6 @@
             "claimDetails": "Детали заявки",
             "claims": "Заявки"
         },
-        "conversation": {
-            "action": {
-                "edit": "Изменить сведения",
-                "toggleDetails": "Раскрыть / скрыть детали"
-            },
-            "filesUploaded": "Файл успешно загружен",
-            "label": "Обсуждение",
-            "sendComment": "Оставьте комментарий",
-            "timeline": {
-                "claimCreated": "Заявка создана"
-            }
-        },
         "headline": "Детали заявки",
         "request": "Заявка на подключение",
         "reviewClaim": "Отправить на рассмотрение",
@@ -30,6 +18,14 @@
         "revoked": "Заявка успешно отозвана"
     },
     "conversation": {
+        "action": {
+            "toggleDetails": "Раскрыть / скрыть детали"
+        },
+        "filesUploaded": "Файл успешно загружен",
+        "sendComment": "Оставьте комментарий",
+        "timeline": {
+            "claimCreated": "Заявка создана"
+        },
         "timelineActions": {
             "changesAdded": "добавлены следующие сведения",
             "commentAdded": "добавлены комментарии",
