@@ -22,7 +22,7 @@
             <div
                 fxLayout="column"
                 fxLayoutGap="24px"
-                *transloco="let d; scope: 'create-invoice'; read: 'createInvoice'"
+                *transloco="let d; scope: 'payment-section'; read: 'paymentSection.createInvoiceOrInvoiceTemplate'"
             >
                 <h1 class="dsh-headline">{{ d('title') }}</h1>
                 <dsh-create-invoice-form

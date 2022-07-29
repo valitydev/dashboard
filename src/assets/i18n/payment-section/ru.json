@@ -21,6 +21,12 @@
     "balances": {
         "title": "Доступные средства"
     },
+    "createInvoiceDialog": {
+        "title": "Создание инвойса"
+    },
+    "createInvoiceOrInvoiceTemplate": {
+        "title": "Создание инвойса"
+    },
     "integrations": {
         "tabs": {
             "api-key": "API КЛЮЧ",
