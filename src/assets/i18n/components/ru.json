@@ -1,0 +1,13 @@
+{
+    "actionbar": {
+        "organizations": {
+            "title": "Ваши организации"
+        },
+        "user": {
+            "changePassword": "Сменить пароль",
+            "logout": "Выход",
+            "sessions": "Управление сессиями",
+            "twoFactorAuth": "Двухэтапная аутентификация"
+        }
+    }
+}

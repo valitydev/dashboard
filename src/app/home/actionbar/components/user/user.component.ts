@@ -15,18 +15,18 @@ export class UserComponent {
 
     username = this.keycloakService.getUsername();
     keycloakAccountEndpoint = `${this.config.keycloakEndpoint}/auth/realms/external/account/`;
-    userLinksConfig$ = this.transloco.selectTranslation('component-actionbar').pipe(
+    userLinksConfig$ = this.transloco.selectTranslation('components').pipe(
         map(() => [
             {
-                title: this.transloco.translate('user.changePassword', {}, 'component-actionbar'),
+                title: this.transloco.translate('actionbar.user.changePassword', {}, 'components'),
                 href: `${this.keycloakAccountEndpoint}/password`,
             },
             {
-                title: this.transloco.translate('user.sessions', {}, 'component-actionbar'),
+                title: this.transloco.translate('actionbar.user.sessions', {}, 'components'),
                 href: `${this.keycloakAccountEndpoint}/sessions`,
             },
             {
-                title: this.transloco.translate('user.twoFactorAuth', {}, 'component-actionbar'),
+                title: this.transloco.translate('actionbar.user.twoFactorAuth', {}, 'components'),
                 href: `${this.keycloakAccountEndpoint}/totp`,
             },
         ])
