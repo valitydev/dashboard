@@ -1,28 +1,5 @@
 {
     "analytics": {
-        "errorCodes": {
-            "account_limit_exceeded": "Превышен лимит счёта",
-            "account_not_found": "Счёт не найден",
-            "amount": "Лимит суммы превышен",
-            "authorization_failed": "Ошибка авторизации",
-            "bank_card_rejected": "Банковская карта отклонена",
-            "card_expired": "Срок действия карты истёк",
-            "card_number_invalid": "Неверный номер карты",
-            "insufficient_funds": "Недостаточно средств",
-            "no_route_found": "Маршрут не найден",
-            "number": "Лимит количества операций превышен",
-            "operation_blocked": "Операция заблокирована",
-            "operation_timeout": "Превышено время ожидания",
-            "other": "Прочее",
-            "payment_tool_rejected": "Платежный инструмент отклонен",
-            "preauthorization_failed": "Ошибка предавторизации",
-            "processing_deadline_reached": "Время проведения платежа истекло",
-            "rejected_by_issuer": "Отклонено эмитентом",
-            "risk_score_is_too_high": "Операция с высоким риском",
-            "security_policy_violated": "Нарушение политики безопасности",
-            "three_ds_failed": "Ошибка 3DS",
-            "three_ds_not_finished": "Не завершена проверка 3DS"
-        },
         "noData": "Нет данных",
         "paymentStatuses": {
             "cancelled": "Отменен",
