@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-import { FileModificationUnit, Modification } from '@vality/swag-claim-management';
+import { FileModificationUnit, Modification, UserInfo } from '@vality/swag-claim-management';
 import { Conversation } from '@vality/swag-messages';
+import { Observable } from 'rxjs';
 
 import {
     isClaimModification,
@@ -11,6 +12,8 @@ import {
 } from '@dsh/api/claim-management';
 
 import { ConversationService } from './conversation.service';
+
+import UserTypeEnum = UserInfo.UserTypeEnum;
 
 @Component({
     selector: 'dsh-conversation',
@@ -23,6 +26,7 @@ export class ConversationComponent {
     timelineInfo$ = this.conversationService.timelineInfo$;
     claimCreatedAt$ = this.conversationService.claimCreatedAt$;
     timelineActionLabels = this.getTimelineActionLabels();
+    userTypeLabels = this.getUserTypeLabels();
 
     expandAll = false;
 
@@ -87,6 +91,21 @@ export class ConversationComponent {
             ),
             statusRevoked: this.transloco.selectTranslate(
                 'conversation.timelineActions.statusRevoked',
+                null,
+                'claim-section'
+            ),
+        };
+    }
+
+    private getUserTypeLabels(): Record<UserTypeEnum, Observable<string>> {
+        return {
+            internal_user: this.transloco.selectTranslate(
+                'conversation.userTypes.internal_user',
+                null,
+                'claim-section'
+            ),
+            external_user: this.transloco.selectTranslate(
+                'conversation.userTypes.external_user',
                 null,
                 'claim-section'
             ),

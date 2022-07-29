@@ -19,15 +19,7 @@
             <dsh-timeline-item-title>
                 <div fxFlex fxLayout="row" fxLayoutAlign="space-between end">
                     <div>
-                        <span
-                            class="dsh-body-2"
-                            *transloco="
-                                let userInfo;
-                                scope: 'claim-section';
-                                read: 'claimSection.claim.conversation.timeline.userInfo'
-                            "
-                            >{{ userInfo(item.userInfo.userType) }}
-                        </span>
+                        <span class="dsh-body-2">{{ userTypeLabels[item.userInfo.userType] | async }} </span>
                         <span class="mat-body-2">{{ timelineActionLabels[item.action] | async }} </span>
                         <span *transloco="let c"
                             >{{ item.createdAt | humanizedDuration: { largest: 1 } }} {{ c('ago') }}</span

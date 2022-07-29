@@ -13,11 +13,7 @@
             "label": "Обсуждение",
             "sendComment": "Оставьте комментарий",
             "timeline": {
-                "claimCreated": "Заявка создана",
-                "userInfo": {
-                    "external_user": "Вами",
-                    "internal_user": "Менеджером"
-                }
+                "claimCreated": "Заявка создана"
             }
         },
         "headline": "Детали заявки",
@@ -43,6 +39,10 @@
             "statusPending": "рассмотрена заявка",
             "statusReview": "заявка отправлена на рассмотрение",
             "statusRevoked": "отозвана заявка"
+        },
+        "userTypes": {
+            "external_user": "Вами",
+            "internal_user": "Менеджером"
         }
     }
 }
