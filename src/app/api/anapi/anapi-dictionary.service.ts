@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
+import { StatusOffsetCount } from '@vality/swag-anapi-v2';
+
+import StatusEnum = StatusOffsetCount.StatusEnum;
 
 @Injectable({
     providedIn: 'root',
@@ -50,6 +53,17 @@ export class AnapiDictionaryService {
             three_ds_failed: this.t.translate('analytics.errorCodes.three_ds_failed', null, 'dictionary'),
             three_ds_not_finished: this.t.translate('analytics.errorCodes.three_ds_not_finished', null, 'dictionary'),
             other: this.t.translate('analytics.errorCodes.other', null, 'dictionary'),
+        };
+    }
+
+    getPaymentStatusLabels(): Record<StatusEnum, string> {
+        return {
+            pending: this.t.translate('analytics.paymentStatuses.pending', null, 'dictionary'),
+            processed: this.t.translate('analytics.paymentStatuses.processed', null, 'dictionary'),
+            captured: this.t.translate('analytics.paymentStatuses.captured', null, 'dictionary'),
+            cancelled: this.t.translate('analytics.paymentStatuses.cancelled', null, 'dictionary'),
+            refunded: this.t.translate('analytics.paymentStatuses.refunded', null, 'dictionary'),
+            failed: this.t.translate('analytics.paymentStatuses.failed', null, 'dictionary'),
         };
     }
 }

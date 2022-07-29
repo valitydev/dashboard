@@ -1,14 +1,6 @@
 {
     "analytics": {
         "noData": "Нет данных",
-        "paymentStatuses": {
-            "cancelled": "Отменен",
-            "captured": "Подтвержден",
-            "failed": "Неуспешен",
-            "pending": "Запущен",
-            "processed": "Обработан",
-            "refunded": "Возвращен"
-        },
         "paymentTools": "Платежные инструменты",
         "paymentsAmount": "Оборот",
         "paymentsCount": "Количество платежей",

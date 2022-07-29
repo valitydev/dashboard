@@ -23,6 +23,14 @@
             "three_ds_failed": "Ошибка 3DS",
             "three_ds_not_finished": "Не завершена проверка 3DS"
         },
+        "paymentStatuses": {
+            "cancelled": "Отменен",
+            "captured": "Подтвержден",
+            "failed": "Неуспешен",
+            "pending": "Запущен",
+            "processed": "Обработан",
+            "refunded": "Возвращен"
+        },
         "paymentTools": {
             "bank_card": "Банковская карта",
             "digital_wallet": "Кошелек",
