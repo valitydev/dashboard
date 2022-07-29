@@ -55,5 +55,8 @@
             "representativeFullName": "ФИО ЕИО/представителя",
             "representativePosition": "Должность ЕИО/представителя"
         }
+    },
+    "claimField": {
+        "label": "Идентификатор заявки"
     }
 }
