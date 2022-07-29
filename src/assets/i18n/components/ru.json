@@ -30,9 +30,6 @@
             "currency": "Валюта"
         },
         "payoutToolDetails": {
-            "bankCard": {
-                "cardNumberMask": "Номер карты"
-            },
             "internationalBankAccount": {
                 "bankDetails": {
                     "abartn": "ABA Routing Transit Number",
