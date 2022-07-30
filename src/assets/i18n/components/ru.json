@@ -91,6 +91,9 @@
         },
         "totalAmount": "Итого товаров и услуг на сумму:"
     },
+    "currencyAutocompleteField": {
+        "label": "Валюта"
+    },
     "currencyFilter": {
         "label": "Валюта"
     },
@@ -98,8 +101,8 @@
         "label": "Идентификатор инвойса"
     },
     "invoicesFilter": {
-        "label": "Инвойсы",
-        "activeLabel": "Выбранные инвойсы"
+        "activeLabel": "Выбранные инвойсы",
+        "label": "Инвойсы"
     },
     "shopsField": {
         "label": "Магазин"
