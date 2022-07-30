@@ -24,10 +24,10 @@ export class SelectSearchFieldComponent<Value> extends WrappedFormControlSupercl
     @Input() hint: string | null;
 
     selectSearchControl = new FormControl<string>('');
-    filteredOptions$: Observable<Option<Value>[]> = combineLatest(
+    filteredOptions$: Observable<Option<Value>[]> = combineLatest([
         getFormValueChanges(this.selectSearchControl),
-        defer(() => this.options$)
-    ).pipe(map(([value, options]) => filterOptions(options, value)));
+        defer(() => this.options$),
+    ]).pipe(map(([value, options]) => filterOptions(options, value)));
 
     private options$ = new BehaviorSubject<Option<Value>[]>([]);
 

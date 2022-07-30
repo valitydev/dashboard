@@ -3,5 +3,9 @@
         "choose": "выберите",
         "forUpload": "Для загрузки переместите файлы в область, или",
         "uploading": "Загрузка..."
+    },
+    "selectSearchField": {
+        "noEntriesFoundLabel": "Ничего не найдено",
+        "searchPlaceholder": "Поиск..."
     }
 }
