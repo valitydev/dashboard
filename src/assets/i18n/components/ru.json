@@ -104,6 +104,13 @@
         "activeLabel": "Выбранные инвойсы",
         "label": "Инвойсы"
     },
+    "refundDetails": {
+        "amount": "Сумма",
+        "createdAt": "Совершен",
+        "error": "Ошибка",
+        "reason": "Причина",
+        "status": "Статус"
+    },
     "shopsField": {
         "label": "Магазин"
     },
