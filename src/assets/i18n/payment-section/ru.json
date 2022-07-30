@@ -58,6 +58,10 @@
             "webhooks": "WEBHOOKS"
         }
     },
+    "noShopsAlert": {
+        "action": "Перейти в раздел",
+        "description": "Магазины отсутствуют. Создать новый магазин возможно в разделе \"Магазины\"."
+    },
     "operations": {
         "tabs": {
             "invoices": "ИНВОЙСЫ",
