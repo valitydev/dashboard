@@ -1,4 +1,9 @@
 {
+    "depositDetails": {
+        "errors": {
+            "failed": "Ошибка при пополнении"
+        }
+    },
     "integrations": {
         "tabs": {
             "webhooks": "WEBHOOKS"

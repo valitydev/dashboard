@@ -24,8 +24,9 @@
         <dsh-details-item
             fxFlex="33"
             [title]="t('error')"
-            *transloco="let errors; scope: 'deposit-info'; read: 'depositInfo.errors'"
+            *transloco="let errors; scope: 'wallet-section'; read: 'walletSection.depositDetails.errors'"
         >
+            <!-- t(failed) -->
             {{ errors(deposit.failure.code) }}
         </dsh-details-item>
     </div>
