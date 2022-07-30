@@ -93,5 +93,9 @@
     },
     "shopsField": {
         "label": "Магазин"
+    },
+    "shopsFilter": {
+        "activeLabel": "Выбранные магазины",
+        "label": "Магазины"
     }
 }
