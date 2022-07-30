@@ -16,10 +16,10 @@ import { FilterSuperclass } from '@dsh/components/filter';
 export class CurrencyFilterComponent extends FilterSuperclass<string> {
     @Input() currencies: string[] = [];
 
-    activeLabel$ = combineLatest(
+    activeLabel$ = combineLatest([
         this.savedValue$,
-        this.transloco.selectTranslate<string>('label', null, 'currency-filter')
-    ).pipe(map(([v, label]) => `${label} · ${getCurrencySymbol(v, 'narrow')}`));
+        this.transloco.selectTranslate<string>('currencyFilter.label', null, 'components'),
+    ]).pipe(map(([v, label]) => `${label} · ${getCurrencySymbol(v, 'narrow')}`));
 
     constructor(injector: Injector, private transloco: TranslocoService) {
         super(injector);

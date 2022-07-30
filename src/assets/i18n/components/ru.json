@@ -91,6 +91,9 @@
         },
         "totalAmount": "Итого товаров и услуг на сумму:"
     },
+    "currencyFilter": {
+        "label": "Валюта"
+    },
     "shopsField": {
         "label": "Магазин"
     },
