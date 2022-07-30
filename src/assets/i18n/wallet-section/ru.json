@@ -1,14 +1,14 @@
 {
-    "nav": {
-        "wallets": "Кошельки",
-        "deposits": "Пополнения",
-        "withdrawals": "Выводы",
-        "reports": "Отчеты",
-        "integrations": "Интеграция"
-    },
     "integrations": {
         "tabs": {
             "webhooks": "WEBHOOKS"
         }
+    },
+    "nav": {
+        "deposits": "Пополнения",
+        "integrations": "Интеграция",
+        "reports": "Отчеты",
+        "wallets": "Кошельки",
+        "withdrawals": "Выводы"
     }
 }

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
-import { TranslocoModule } from '@ngneat/transloco';
+import { TranslocoModule, TRANSLOCO_SCOPE } from '@ngneat/transloco';
 
 import { RouteNavbarLayoutModule } from '@dsh/app/shared/components/route-navbar-layout';
 import { NavbarItemModule } from '@dsh/components/navigation';
@@ -23,5 +23,6 @@ import { WalletSectionComponent } from './wallet-section.component';
     ],
     declarations: [WalletSectionComponent, StatusToColorPipe],
     exports: [StatusToColorPipe],
+    providers: [{ provide: TRANSLOCO_SCOPE, useValue: 'wallet-section' }],
 })
 export class WalletSectionModule {}
