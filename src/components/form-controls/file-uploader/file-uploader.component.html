@@ -8,7 +8,7 @@
     fxFlex
     fxLayoutAlign="center"
 >
-    <div *transloco="let t; scope: 'file-uploader'; read: 'fileUploader'">
+    <div *transloco="let t; scope: 'core-components'; read: 'coreComponents.fileUploader'">
         <div *ngIf="!(isUploading$ | async); else uploading">
             {{ t('forUpload') }}
             <span ngfSelect (filesChange)="startUploading($event)" class="dsh-file-uploader-choose-files">{{
