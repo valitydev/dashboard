@@ -94,6 +94,13 @@
     "currencyFilter": {
         "label": "Валюта"
     },
+    "invoicesField": {
+        "label": "Идентификатор инвойса"
+    },
+    "invoicesFilter": {
+        "label": "Инвойсы",
+        "activeLabel": "Выбранные инвойсы"
+    },
     "shopsField": {
         "label": "Магазин"
     },
