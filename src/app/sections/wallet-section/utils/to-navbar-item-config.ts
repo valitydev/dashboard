@@ -18,9 +18,7 @@ export const toNavbarItemConfig = ({
     deposits,
     withdrawals,
     integrations,
-}: {
-    [k: string]: string;
-}): NavbarItemConfig[] => [
+}: Record<'wallets' | 'deposits' | 'withdrawals' | 'integrations', string>): NavbarItemConfig[] => [
     {
         routerLink: NavbarRouterLink.Wallets,
         icon: BootstrapIconName.Wallet2,

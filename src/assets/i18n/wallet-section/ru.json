@@ -9,11 +9,12 @@
             "webhooks": "WEBHOOKS"
         }
     },
-    "nav": {
-        "deposits": "Пополнения",
-        "integrations": "Интеграция",
-        "reports": "Отчеты",
-        "wallets": "Кошельки",
-        "withdrawals": "Выводы"
+    "walletSection": {
+        "nav": {
+            "deposits": "Пополнения",
+            "integrations": "Интеграция",
+            "wallets": "Кошельки",
+            "withdrawals": "Выводы"
+        }
     }
 }
