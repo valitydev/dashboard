@@ -90,5 +90,8 @@
             "withoutVAT": "без НДС"
         },
         "totalAmount": "Итого товаров и услуг на сумму:"
+    },
+    "shopsField": {
+        "label": "Магазин"
     }
 }
