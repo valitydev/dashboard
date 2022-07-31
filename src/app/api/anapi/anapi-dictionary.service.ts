@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-import { StatusOffsetCount } from '@vality/swag-anapi-v2';
+import { StatusOffsetCount, InvoiceStatus } from '@vality/swag-anapi-v2';
 
 import { DictionaryService } from '../utils';
 
@@ -49,6 +49,13 @@ export class AnapiDictionaryService {
         cancelled: this.t.translate('anapi.paymentStatus.cancelled', null, 'dictionary'),
         refunded: this.t.translate('anapi.paymentStatus.refunded', null, 'dictionary'),
         failed: this.t.translate('anapi.paymentStatus.failed', null, 'dictionary'),
+    }));
+
+    invoiceStatus$ = this.dictionaryService.create<InvoiceStatus.StatusEnum>(() => ({
+        unpaid: this.t.translate('anapi.invoiceStatus.unpaid', null, 'dictionary'),
+        cancelled: this.t.translate('anapi.invoiceStatus.cancelled', null, 'dictionary'),
+        paid: this.t.translate('anapi.invoiceStatus.paid', null, 'dictionary'),
+        fulfilled: this.t.translate('anapi.invoiceStatus.fulfilled', null, 'dictionary'),
     }));
 
     constructor(private t: TranslocoService, private dictionaryService: DictionaryService) {}

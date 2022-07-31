@@ -23,6 +23,12 @@
             "three_ds_failed": "Ошибка 3DS",
             "three_ds_not_finished": "Не завершена проверка 3DS"
         },
+        "invoiceStatus": {
+            "cancelled": "Отменен",
+            "fulfilled": "Погашен",
+            "paid": "Оплачен",
+            "unpaid": "Не оплачен"
+        },
         "paymentStatus": {
             "cancelled": "Отменен",
             "captured": "Подтвержден",
