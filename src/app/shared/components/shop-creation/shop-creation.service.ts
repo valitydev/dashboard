@@ -26,7 +26,7 @@ export class ShopCreationService {
             .afterClosed()
             .pipe(filter((response) => response === BaseDialogResponseStatus.Success))
             .subscribe(() => {
-                this.snackBar.open(this.transloco.translate('russianLegalEntity.created', null, 'create-shop'), 'OK');
+                this.snackBar.open(this.transloco.translate('shopCreation.created', null, 'components'), 'OK');
             });
     }
 }
