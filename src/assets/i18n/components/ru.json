@@ -131,6 +131,13 @@
     "currencyFilter": {
         "label": "Валюта"
     },
+    "existingBankAccount": {
+        "errors": {
+            "onlyInternationalShopCanBeSelected": "Можно выбрать только международный магазин",
+            "onlyRussianShopCanBeSelected": "Можно выбрать только российский магазин"
+        },
+        "shopLabel": "Использовать реквизиты на основе магазина"
+    },
     "existingContractForm": {
         "errors": {
             "onlyInternationalShopCanBeSelected": "Можно выбрать только международный магазин",
