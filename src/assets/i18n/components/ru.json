@@ -129,6 +129,12 @@
         "send": "Отправить на рассмотрение",
         "title": "Заявка на создание магазина"
     },
+    "createShopDialog": {
+        "internationalLegalEntityType": "Международное ЮЛ",
+        "russianLegalEntityType": "Российское ЮЛ",
+        "title": "Новая заявка",
+        "type": "Создание магазина"
+    },
     "createdExistingSwitch": {
         "created": "Указать новые",
         "existing": "Использовать существующие"
