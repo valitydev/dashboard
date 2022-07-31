@@ -36,5 +36,12 @@
             "digital_wallet": "Кошелек",
             "payment_terminal": "Терминал"
         }
+    },
+    "darkApi": {
+        "refundStatus": {
+            "failed": "Неуспешен",
+            "pending": "Запущен",
+            "succeeded": "Успешен"
+        }
     }
 }
