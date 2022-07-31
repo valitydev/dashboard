@@ -1,4 +1,22 @@
 {
+    "dateRangeFilter": {
+        "label": "Выбрать период",
+        "part": {
+            "currentWeek": "Текущая неделя",
+            "from": "С",
+            "fromStartWith2": "Со",
+            "to": "по",
+            "today": "Сегодня",
+            "year": "год"
+        },
+        "preset": {
+            "custom": "Указать вручную...",
+            "last24hour": "Последние 24 часа",
+            "last30days": "Последние 30 дней",
+            "last365days": "Последние 365 дней",
+            "last90days": "Последние 90 дней"
+        }
+    },
     "fileUploader": {
         "choose": "выберите",
         "forUpload": "Для загрузки переместите файлы в область, или",
