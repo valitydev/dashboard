@@ -1,6 +1,6 @@
 {
-    "analytics": {
-        "errorCodes": {
+    "anapi": {
+        "errorCode": {
             "account_limit_exceeded": "Превышен лимит счёта",
             "account_not_found": "Счёт не найден",
             "amount": "Лимит суммы превышен",
@@ -23,7 +23,7 @@
             "three_ds_failed": "Ошибка 3DS",
             "three_ds_not_finished": "Не завершена проверка 3DS"
         },
-        "paymentStatuses": {
+        "paymentStatus": {
             "cancelled": "Отменен",
             "captured": "Подтвержден",
             "failed": "Неуспешен",
@@ -31,7 +31,7 @@
             "processed": "Обработан",
             "refunded": "Возвращен"
         },
-        "paymentTools": {
+        "paymentTool": {
             "bank_card": "Банковская карта",
             "digital_wallet": "Кошелек",
             "payment_terminal": "Терминал"

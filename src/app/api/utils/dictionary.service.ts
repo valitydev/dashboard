@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { shareReplayRefCount } from '@dsh/operators';
@@ -12,7 +13,7 @@ export class DictionaryService {
 
     constructor(private readonly transloco: TranslocoService) {}
 
-    create<T extends Record<string, string>>(getTranslations: () => T) {
+    create<T extends PropertyKey>(getTranslations: () => Record<T, string>): Observable<Record<T, string>> {
         return this.init$.pipe(
             map(() => getTranslations()),
             shareReplayRefCount()

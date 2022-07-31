@@ -3,7 +3,6 @@ import { BehaviorSubject, ReplaySubject, defer, combineLatest } from 'rxjs';
 import { map, pluck, switchMap } from 'rxjs/operators';
 
 import { AnalyticsService, AnapiDictionaryService } from '@dsh/api/anapi';
-import { DictionaryService } from '@dsh/api/utils';
 import { shareReplayRefCount } from '@dsh/operators';
 import { errorTo, progressTo, distinctUntilChangedDeep, inProgressFrom, attach } from '@dsh/utils';
 
@@ -53,15 +52,9 @@ export class PaymentsErrorDistributionService {
     private selectedSubError$ = new BehaviorSubject<number[]>([]);
     private errorSub$ = new ReplaySubject<unknown>(1);
     private progress$ = new BehaviorSubject<number>(0);
-    private errorLabels$ = this.dictionaryService.init$.pipe(
-        map(() => this.anapiDictionaryService.getErrorCodeLabels())
-    );
+    private errorLabels$ = this.anapiDictionaryService.errorCode$;
 
-    constructor(
-        private analyticsService: AnalyticsService,
-        private anapiDictionaryService: AnapiDictionaryService,
-        private dictionaryService: DictionaryService
-    ) {}
+    constructor(private analyticsService: AnalyticsService, private anapiDictionaryService: AnapiDictionaryService) {}
 
     updateSearchParams(searchParams: SearchParams) {
         this.searchParams$.next(searchParams);

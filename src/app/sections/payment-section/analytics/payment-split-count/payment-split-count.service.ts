@@ -3,7 +3,6 @@ import { forkJoin, of, defer, ReplaySubject, BehaviorSubject } from 'rxjs';
 import { map, switchMap, withLatestFrom } from 'rxjs/operators';
 
 import { AnalyticsService, AnapiDictionaryService } from '@dsh/api/anapi';
-import { DictionaryService } from '@dsh/api/utils';
 import { shareReplayRefCount } from '@dsh/operators';
 import { errorTo, progressTo, distinctUntilChangedDeep, inProgressFrom, attach } from '@dsh/utils';
 
@@ -14,8 +13,7 @@ import { splitCountToChartData } from './split-count-to-chart-data';
 
 @Injectable()
 export class PaymentSplitCountService {
-    splitCount$ = this.dictionaryService.init$.pipe(
-        switchMap(() => this.searchParams$),
+    splitCount$ = defer(() => this.searchParams$).pipe(
         distinctUntilChangedDeep(),
         map(searchParamsToParamsWithSplitUnit),
         switchMap(({ fromTime, toTime, splitUnit, shopIDs, realm }) =>
@@ -32,7 +30,8 @@ export class PaymentSplitCountService {
             ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$))
         ),
         map(([fromTime, toTime, splitCount]) => prepareSplitCount(splitCount?.result, fromTime, toTime)),
-        map((res) => splitCountToChartData(res, this.anapiDictionaryService.getPaymentStatusLabels())),
+        withLatestFrom(this.anapiDictionaryService.paymentStatus$),
+        map(([res, paymentStatusDict]) => splitCountToChartData(res, paymentStatusDict)),
         withLatestFrom(defer(() => this.searchParams$)),
         map(([result, { currency }]) => result.find((r) => r.currency === currency)),
         shareReplayRefCount()
@@ -44,11 +43,7 @@ export class PaymentSplitCountService {
     private errorSub$ = new ReplaySubject<unknown>(1);
     private progress$ = new BehaviorSubject<number>(0);
 
-    constructor(
-        private analyticsService: AnalyticsService,
-        private anapiDictionaryService: AnapiDictionaryService,
-        private dictionaryService: DictionaryService
-    ) {}
+    constructor(private analyticsService: AnalyticsService, private anapiDictionaryService: AnapiDictionaryService) {}
 
     updateSearchParams(searchParams: SearchParams): void {
         this.searchParams$.next(searchParams);
