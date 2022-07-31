@@ -1,7 +1,0 @@
-{
-    "types": {
-        "provisionOfService": "Акт об оказании услуг",
-        "paymentRegistry": "Реестр операций",
-        "paymentRegistryByPayout": "Реестр операций возмещения"
-    }
-}
