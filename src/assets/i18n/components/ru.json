@@ -121,6 +121,10 @@
             "yandexPay": "Yandex Pay"
         }
     },
+    "createdExistingSwitch": {
+        "created": "Указать новые",
+        "existing": "Использовать существующие"
+    },
     "currencyAutocompleteField": {
         "label": "Валюта"
     },
