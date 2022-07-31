@@ -6,6 +6,7 @@ import { FbGroupConfig } from '@ngneat/reactive-forms/lib/formBuilder';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { BankCard, PaymentMethod, PaymentTerminal, DigitalWallet } from '@vality/swag-payments';
+import { Observable } from 'rxjs';
 
 import { TokenProvider, TerminalProvider } from '@dsh/api/payments';
 import { PaymentLinkParams } from '@dsh/app/shared/services/create-payment-link/types/payment-link-params';
@@ -32,8 +33,10 @@ export class CreatePaymentLinkFormComponent
     @Input() paymentMethods: PaymentMethod[];
     @Input() paymentLink: string;
 
-    holdExpirations = Object.entries(HoldExpiration);
+    holdExpirations = Object.values(HoldExpiration);
     orderedPaymentMethodsNames = ORDERED_PAYMENT_METHODS_NAMES;
+    paymentMethodLabels = this.getPaymentMethodLabels();
+    holdExpirationLabels = this.getHoldExpirationLabels();
     control = this.fb.group<Controls>({
         ...EMPTY_VALUE,
         email: [EMPTY_VALUE['email'], Validators.email],
@@ -134,5 +137,59 @@ export class CreatePaymentLinkFormComponent
                     break;
             }
         });
+    }
+
+    private getPaymentMethodLabels(): Record<typeof ORDERED_PAYMENT_METHODS_NAMES[number], Observable<string>> {
+        return {
+            bankCard: this.transloco.selectTranslate(
+                'createPaymentLinkForm.paymentMethod.bankCard',
+                null,
+                'components'
+            ),
+            yandexPay: this.transloco.selectTranslate(
+                'createPaymentLinkForm.paymentMethod.yandexPay',
+                null,
+                'components'
+            ),
+            applePay: this.transloco.selectTranslate(
+                'createPaymentLinkForm.paymentMethod.applePay',
+                null,
+                'components'
+            ),
+            googlePay: this.transloco.selectTranslate(
+                'createPaymentLinkForm.paymentMethod.googlePay',
+                null,
+                'components'
+            ),
+            samsungPay: this.transloco.selectTranslate(
+                'createPaymentLinkForm.paymentMethod.samsungPay',
+                null,
+                'components'
+            ),
+            uzcard: this.transloco.selectTranslate('createPaymentLinkForm.paymentMethod.uzcard', null, 'components'),
+            wallets: this.transloco.selectTranslate('createPaymentLinkForm.paymentMethod.wallets', null, 'components'),
+            euroset: this.transloco.selectTranslate('createPaymentLinkForm.paymentMethod.euroset', null, 'components'),
+            qps: this.transloco.selectTranslate('createPaymentLinkForm.paymentMethod.qps', null, 'components'),
+            mobileCommerce: this.transloco.selectTranslate(
+                'createPaymentLinkForm.paymentMethod.mobileCommerce',
+                null,
+                'components'
+            ),
+        };
+    }
+
+    private getHoldExpirationLabels(): Record<HoldExpiration, Observable<string>> {
+        return {
+            [HoldExpiration.Cancel]: this.transloco.selectTranslate(
+                'createPaymentLinkForm.holdExpiration.cancel',
+                null,
+                'components'
+            ),
+            [HoldExpiration.Capture]: this.transloco.selectTranslate(
+                'createPaymentLinkForm.holdExpiration.capture',
+                null,
+                'components'
+            ),
+        };
     }
 }

@@ -1,5 +1,5 @@
 <div
-    *transloco="let c; scope: 'payment-section'; read: 'paymentSection.createPaymentLinkForm'"
+    *transloco="let c; scope: 'components'; read: 'components.createPaymentLinkForm'"
     fxLayout="column"
     fxLayoutGap="32px"
 >
@@ -34,14 +34,7 @@
                     *ngIf="control.get(['paymentMethods', methodName]).enabled"
                     [formControlName]="methodName"
                 >
-                    <span
-                        *transloco="
-                            let m;
-                            scope: 'payment-section';
-                            read: 'paymentSection.createPaymentLinkForm.form.paymentMethodsList'
-                        "
-                        >{{ m(methodName) }}</span
-                    >
+                    <span>{{ paymentMethodLabels[methodName] | async }}</span>
                 </mat-checkbox>
             </ng-container>
         </ng-container>
@@ -55,15 +48,8 @@
                 gdGap="24px"
                 formControlName="holdExpiration"
             >
-                <mat-radio-button *ngFor="let holdExpiration of holdExpirations" [value]="holdExpiration[1]">
-                    <span
-                        *transloco="
-                            let hold;
-                            scope: 'payment-section';
-                            read: 'paymentSection.createPaymentLinkForm.form.holdExpiration'
-                        "
-                        >{{ hold(holdExpiration[0]) }}</span
-                    >
+                <mat-radio-button *ngFor="let holdExpiration of holdExpirations" [value]="holdExpiration">
+                    <span>{{ holdExpirationLabels[holdExpiration] }}</span>
                 </mat-radio-button>
             </mat-radio-group>
         </ng-container>
