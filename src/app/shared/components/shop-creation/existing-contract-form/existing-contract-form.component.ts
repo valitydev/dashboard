@@ -42,11 +42,11 @@ export class ExistingContractFormComponent extends ValidatedControlSuperclass<Ex
         super(injector);
     }
 
-    protected outerToInner(): Shop {
+    protected outerToInnerValue(): Shop {
         return null;
     }
 
-    protected setUpInnerToOuter$(value$: Observable<Shop>): Observable<ExistingContractForm> {
+    protected setUpInnerToOuterValue$(value$: Observable<Shop>): Observable<ExistingContractForm> {
         return value$.pipe(
             switchMap((shop) =>
                 (shop ? this.getContract(shop.contractID) : of<ExistingContractForm>(null)).pipe(

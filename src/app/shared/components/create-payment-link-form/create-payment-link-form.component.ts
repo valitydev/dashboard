@@ -63,7 +63,7 @@ export class CreatePaymentLinkFormComponent
         this.snackBar.open(this.transloco.translate(isCopied ? 'copied' : 'copyFailed'), 'OK', { duration: 1000 });
     }
 
-    protected innerToOuter({ holdExpiration, paymentMethods, ...value }: Controls): PaymentLinkParams {
+    protected innerToOuterValue({ holdExpiration, paymentMethods, ...value }: Controls): PaymentLinkParams {
         return {
             ...(value.paymentFlowHold ? { holdExpiration } : {}),
             ...value,

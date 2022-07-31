@@ -4,7 +4,7 @@
         (next)="nextInvoiceOrInvoiceTemplate($event)"
     ></dsh-create-invoice-or-invoice-template>
     <div fxLayout="column" fxLayoutGap="32px" *ngIf="(currentStep$ | async) === step.PaymentLink">
-        <ng-container *transloco="let c; scope: 'create-payment-link'; read: 'createPaymentLink'">
+        <ng-container *transloco="let c; scope: 'payment-section'; read: 'paymentSection.paymentLink'">
             <h1 class="dsh-headline">
                 {{ c('title') }}
             </h1>

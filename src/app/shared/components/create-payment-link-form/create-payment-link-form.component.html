@@ -1,4 +1,8 @@
-<div *transloco="let c; scope: 'create-payment-link'; read: 'createPaymentLink'" fxLayout="column" fxLayoutGap="32px">
+<div
+    *transloco="let c; scope: 'payment-section'; read: 'paymentSection.createPaymentLinkForm'"
+    fxLayout="column"
+    fxLayoutGap="32px"
+>
     <div class="dsh-body-1">{{ c('description') }}</div>
     <form *ngIf="control" [formGroup]="control" fxLayout="column" fxLayoutGap="24px">
         <div fxLayout="column" fxLayoutGap="16px">
@@ -33,8 +37,8 @@
                     <span
                         *transloco="
                             let m;
-                            scope: 'create-payment-link';
-                            read: 'createPaymentLink.form.paymentMethodsList'
+                            scope: 'payment-section';
+                            read: 'paymentSection.createPaymentLinkForm.form.paymentMethodsList'
                         "
                         >{{ m(methodName) }}</span
                     >
@@ -55,8 +59,8 @@
                     <span
                         *transloco="
                             let hold;
-                            scope: 'create-payment-link';
-                            read: 'createPaymentLink.form.holdExpiration'
+                            scope: 'payment-section';
+                            read: 'paymentSection.createPaymentLinkForm.form.holdExpiration'
                         "
                         >{{ hold(holdExpiration[0]) }}</span
                     >

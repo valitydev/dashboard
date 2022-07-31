@@ -51,6 +51,40 @@
         },
         "title": "Создание шаблона инвойса"
     },
+    "createPaymentLinkDialog": {
+        "create": "Сформировать ссылку на оплату",
+        "title": "Создание платежной ссылки"
+    },
+    "createPaymentLinkForm": {
+        "description": "Информация для отображения на платежной странице",
+        "form": {
+            "copy": "Скопировать",
+            "description": "Наименование вашего продукта или сервиса",
+            "email": "Email плательщика (если известен)",
+            "holdExpiration": {
+                "Cancel": "Вернуть покупателю",
+                "Capture": "Списать с покупателя"
+            },
+            "link": "Ссылка на оплату",
+            "name": "Наименование вашей компании или сайта",
+            "paymentFlowHold": "Предварительно заблокировать сумму платежа у покупателя",
+            "paymentFlowHoldPolicy": "По истечении срока удержания (72 часа)",
+            "paymentMethods": "Методы оплаты",
+            "paymentMethodsList": {
+                "applePay": "Apple Pay",
+                "bankCard": "Банковская карта",
+                "euroset": "Терминалы “Евросеть”",
+                "googlePay": "Google Pay",
+                "mobileCommerce": "Номер мобильного телефона",
+                "qps": "Система быстрых платежей (СБП)",
+                "samsungPay": "Samsung Pay",
+                "uzcard": "Uzcard",
+                "wallets": "Кошельки",
+                "yandexPay": "Yandex Pay"
+            },
+            "redirectUrl": "Redirect URL после успешного завершения платежа"
+        }
+    },
     "integrations": {
         "tabs": {
             "api-key": "API КЛЮЧ",
@@ -68,6 +102,13 @@
             "payments": "ПЛАТЕЖИ",
             "refunds": "ВОЗВРАТЫ"
         }
+    },
+    "paymentLink": {
+        "create": "Сформировать ссылку на оплату",
+        "errors": {
+            "createPaymentLinkError": "Не удалось создать платежную ссылку"
+        },
+        "title": "Создание платежной ссылки"
     },
     "paymentSection": {
         "nav": {

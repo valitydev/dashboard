@@ -51,7 +51,7 @@ export class ExistingBankAccountComponent extends ValidatedControlSuperclass<Exi
         super(injector);
     }
 
-    protected setUpInnerToOuter$(value$: Observable<Shop>): Observable<PayoutTool> {
+    protected setUpInnerToOuterValue$(value$: Observable<Shop>): Observable<PayoutTool> {
         return value$.pipe(
             switchMap((shop) =>
                 (shop?.contractID && shop?.payoutToolID ? this.getPayoutToolByShop(shop) : of<PayoutTool>(null)).pipe(
@@ -65,7 +65,7 @@ export class ExistingBankAccountComponent extends ValidatedControlSuperclass<Exi
         );
     }
 
-    protected outerToInner(): Shop {
+    protected outerToInnerValue(): Shop {
         return null;
     }
 
