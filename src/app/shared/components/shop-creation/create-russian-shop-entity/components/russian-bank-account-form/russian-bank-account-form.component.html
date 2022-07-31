@@ -1,5 +1,5 @@
 <div
-    *transloco="let p; scope: 'create-shop'; read: 'createShop.russianLegalEntity.payoutTool'"
+    *transloco="let p; scope: 'components'; read: 'components.russianBankAccountForm'"
     fxLayout="column"
     fxLayoutGap="16px"
     [formGroup]="control"
@@ -7,25 +7,25 @@
     <dsh-dadata-autocomplete
         [formControl]="searchControl"
         type="bank"
-        [label]="p('new.search')"
+        [label]="p('search')"
         (optionSelected)="bankSelected($event)"
     ></dsh-dadata-autocomplete>
 
     <div gdColumns="1fr" gdColumns.gt-sm="1fr 1fr" gdGap="24px">
         <mat-form-field gdColumn="1/-1">
-            <mat-label>{{ p('new.name') }}</mat-label>
+            <mat-label>{{ p('name') }}</mat-label>
             <input aria-label="bankName" formControlName="bankName" matInput required />
         </mat-form-field>
         <mat-form-field>
-            <mat-label>{{ p('new.bik') }}</mat-label>
+            <mat-label>{{ p('bik') }}</mat-label>
             <dsh-format-input formControlName="bankBik" format="bik" required></dsh-format-input>
         </mat-form-field>
         <mat-form-field>
-            <mat-label>{{ p('new.postAccount') }}</mat-label>
+            <mat-label>{{ p('postAccount') }}</mat-label>
             <dsh-format-input formControlName="bankPostAccount" format="bankPostAccount" required></dsh-format-input>
         </mat-form-field>
         <mat-form-field gdColumn="1/-1">
-            <mat-label>{{ p('new.account') }}</mat-label>
+            <mat-label>{{ p('account') }}</mat-label>
             <dsh-format-input formControlName="account" format="bankAccount" required></dsh-format-input>
         </mat-form-field>
     </div>
