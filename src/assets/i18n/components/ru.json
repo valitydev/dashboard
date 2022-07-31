@@ -162,6 +162,21 @@
         "activeLabel": "Выбранные инвойсы",
         "label": "Инвойсы"
     },
+    "newContractorForm": {
+        "form": {
+            "actualAddress": "Почтовый адрес места нахождения",
+            "inn": "ИНН",
+            "registeredName": "Наименование юр. лица",
+            "registeredNumber": "ОГРН/ОГРНИП",
+            "representativeDocument": "Документ ЕИО/представителя",
+            "representativeFullName": "ФИО ЕИО/представителя",
+            "representativePosition": "Должность ЕИО/представителя",
+            "search": "Для поиска укажите название юр. лица, ИНН, ОГРН/ОГРНИП"
+        }
+    },
+    "orgDetailsForm": {
+        "title": "Сведения об организации"
+    },
     "paymentInstitutionField": {
         "label": "Платежная организация"
     },
