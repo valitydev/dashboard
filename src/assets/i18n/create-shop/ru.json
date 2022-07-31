@@ -2,33 +2,5 @@
     "title": "Новая заявка",
     "type": "Создание магазина",
     "russianLegalEntityType": "Российское ЮЛ",
-    "internationalLegalEntityType": "Международное ЮЛ",
-    "internationalLegalEntity": {
-        "title": "Заявка на создание магазина",
-        "organization": "Сведения об организации",
-        "organizationName": "Наименование",
-        "tradingName": "Торговое наименование (если применимо)",
-        "registeredAddress": "Адрес места регистрации",
-        "actualAddress": "Адрес места нахождения (если отличается от места регистрации)",
-        "country": "Страна резиденции",
-        "paymentInstitution": "Платежная организация",
-        "payoutToolTitle": "Вывод средств",
-        "send": "Отправить на рассмотрение",
-        "internationalBankAccountForm": {
-            "correspondentAccount": "Корреспондентский счет"
-        },
-        "payoutTool": {
-            "accountNumber": "Номер счета",
-            "description": "Необходимо заполнить либо IBAN, либо BIC, либо ABA RTN, либо наименование, страну и адрес",
-            "iban": "IBAN",
-            "bic": "BIC",
-            "abaRtn": "ABA RTN",
-            "bankName": "Наименование юридического лица банковской организации",
-            "bankCountry": "Страна резиденции банковской организации",
-            "bankAddress": "Адрес юридического лица банковской организации"
-        },
-        "orgDetails": {
-            "useShop": "Использовать контракт на основе магазина"
-        }
-    }
+    "internationalLegalEntityType": "Международное ЮЛ"
 }

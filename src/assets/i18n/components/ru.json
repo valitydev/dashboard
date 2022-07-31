@@ -72,6 +72,10 @@
             "revoked": "Отозвана"
         }
     },
+    "createInternationalShopEntity": {
+        "send": "Отправить на рассмотрение",
+        "title": "Заявка на создание магазина"
+    },
     "createInvoiceForm": {
         "addProduct": "Добавить товар или услугу",
         "form": {
@@ -149,6 +153,14 @@
         },
         "useShop": "Использовать контракт на основе магазина"
     },
+    "internationalBankAccountForm": {
+        "correspondentAccount": "Корреспондентский счет"
+    },
+    "internationalShopForm": {
+        "organization": "Сведения об организации",
+        "paymentInstitution": "Платежная организация",
+        "payoutToolTitle": "Вывод средств"
+    },
     "invoiceDetails": {
         "amount": "Стоимость",
         "createdAt": "Создан",
@@ -178,11 +190,28 @@
             "search": "Для поиска укажите название юр. лица, ИНН, ОГРН/ОГРНИП"
         }
     },
+    "newInternationalContractorForm": {
+        "actualAddress": "Адрес места нахождения (если отличается от места регистрации)",
+        "country": "Страна резиденции",
+        "organizationName": "Наименование",
+        "registeredAddress": "Адрес места регистрации",
+        "tradingName": "Торговое наименование (если применимо)"
+    },
     "orgDetailsForm": {
         "title": "Сведения об организации"
     },
     "paymentInstitutionField": {
         "label": "Платежная организация"
+    },
+    "payoutToolForm": {
+        "abaRtn": "ABA RTN",
+        "accountNumber": "Номер счета",
+        "bankAddress": "Адрес юридического лица банковской организации",
+        "bankCountry": "Страна резиденции банковской организации",
+        "bankName": "Наименование юридического лица банковской организации",
+        "bic": "BIC",
+        "description": "Необходимо заполнить либо IBAN, либо BIC, либо ABA RTN, либо наименование, страну и адрес",
+        "iban": "IBAN"
     },
     "refundDetails": {
         "amount": "Сумма",
