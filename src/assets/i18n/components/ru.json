@@ -145,6 +145,15 @@
     "currencyFilter": {
         "label": "Валюта"
     },
+    "depositRevertDetails": {
+        "amount": "Сумма отмены",
+        "createdAt": "Дата",
+        "error": "Ошибка",
+        "errors": {
+            "failed": "Ошибка при отмене"
+        },
+        "status": "Статус"
+    },
     "existingBankAccount": {
         "errors": {
             "onlyInternationalShopCanBeSelected": "Можно выбрать только международный магазин",

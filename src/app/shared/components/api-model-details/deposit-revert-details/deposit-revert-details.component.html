@@ -1,4 +1,8 @@
-<div fxLayout="column" fxLayoutGap="24px" *transloco="let t; scope: 'deposit-revert-info'; read: 'depositRevertInfo'">
+<div
+    fxLayout="column"
+    fxLayoutGap="24px"
+    *transloco="let t; scope: 'components'; read: 'components.depositRevertDetails'"
+>
     <div fxLayout="row" fxLayoutAlign="start center">
         <dsh-details-item fxFlex="33" [title]="t('amount')">
             {{ revert.body.amount | amountCurrency: revert.body.currency }}
@@ -16,8 +20,9 @@
         <dsh-details-item
             fxFlex="33"
             [title]="t('error')"
-            *transloco="let errors; scope: 'deposit-revert-info'; read: 'depositRevertInfo.errors'"
+            *transloco="let errors; scope: 'components'; read: 'components.depositRevertDetails.errors'"
         >
+            <!-- t(failed) -->
             {{ errors(revert.failure.code) }}
         </dsh-details-item>
     </div>
