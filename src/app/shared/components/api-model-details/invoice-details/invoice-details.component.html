@@ -2,7 +2,7 @@
     gdColumns="1fr"
     gdColumns.gt-sm="1fr 1fr 1fr"
     gdGap="24px"
-    *transloco="let t; scope: 'invoice-details'; read: 'invoiceDetails'"
+    *transloco="let t; scope: 'components'; read: 'components.invoiceDetails'"
 >
     <dsh-details-item [title]="t('status')">
         <dsh-status [color]="invoice.status | invoiceStatusColor">{{ invoice.status | invoiceStatusName }}</dsh-status>

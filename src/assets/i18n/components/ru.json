@@ -131,6 +131,13 @@
     "currencyFilter": {
         "label": "Валюта"
     },
+    "invoiceDetails": {
+        "amount": "Стоимость",
+        "createdAt": "Создан",
+        "description": "Описание",
+        "name": "Наименование",
+        "status": "Статус"
+    },
     "invoiceStatusFilter": {
         "label": "Статус инвойса"
     },
