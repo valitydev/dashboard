@@ -6,8 +6,13 @@
         gdAlignRows="space-between start"
         gdGap="32px"
     >
-        <button *transloco="let i; scope: 'invoices'; read: 'invoices'" dsh-button color="accent" (click)="create()">
-            {{ i('create.button') }}
+        <button
+            *transloco="let i; scope: 'payment-section'; read: 'paymentSection.invoices'"
+            dsh-button
+            color="accent"
+            (click)="create()"
+        >
+            {{ i('createButton') }}
         </button>
         <dsh-invoices-search-filters
             gdRow.gt-sm="1"
