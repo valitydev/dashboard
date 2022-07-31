@@ -107,6 +107,9 @@
         "activeLabel": "Выбранные инвойсы",
         "label": "Инвойсы"
     },
+    "paymentInstitutionField": {
+        "label": "Платежная организация"
+    },
     "refundDetails": {
         "amount": "Сумма",
         "createdAt": "Совершен",
