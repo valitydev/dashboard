@@ -1,8 +1,17 @@
 {
     "depositDetails": {
+        "amount": "Сумма зачисления",
+        "error": "Ошибка",
         "errors": {
             "failed": "Ошибка при пополнении"
-        }
+        },
+        "failure": "Ошибка",
+        "fee": "Комиссия",
+        "status": "Статус",
+        "wallet": "Кошелек"
+    },
+    "depositPanels": {
+        "header": "Пополнение"
     },
     "depositReverts": {
         "loading": "Загрузка...",
@@ -10,10 +19,30 @@
         "revert": "Отмена",
         "reverts": "Отмены"
     },
+    "depositRowHeader": {
+        "amount": "Сумма",
+        "createdAt": "Дата",
+        "status": "Статус",
+        "walletName": "Кошелек"
+    },
+    "depositStatusFilter": {
+        "depositStatus": "Статус пополнения"
+    },
+    "depositSumFilter": {
+        "depositAmount": "Сумма пополнения",
+        "depositAmountFrom": "Мин. сумма",
+        "depositAmountTo": "Макс. сумма"
+    },
     "integrations": {
         "tabs": {
             "webhooks": "WEBHOOKS"
         }
+    },
+    "mainInfoFilters": {
+        "depositID": "Идентификатор пополнения",
+        "identityID": "Идентификатор владельца",
+        "sourceID": "Идентификатор источника",
+        "walletID": "Кошелек"
     },
     "walletSection": {
         "nav": {
