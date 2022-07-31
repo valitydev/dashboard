@@ -3,18 +3,6 @@
     "type": "Создание магазина",
     "russianLegalEntityType": "Российское ЮЛ",
     "internationalLegalEntityType": "Международное ЮЛ",
-    "russianLegalEntity": {
-        "title": "Заявка на создание магазина",
-        "payoutTool": {
-            "title": "Вывод средств",
-            "description": "Для получения выплат по принятым платежам на ваш банковский счет необходимо указать реквизиты",
-            "bankAccountType": {
-                "new": "Указать новые",
-                "existing": "Использовать существующие"
-            }
-        },
-        "send": "Отправить на рассмотрение"
-    },
     "internationalLegalEntity": {
         "title": "Заявка на создание магазина",
         "organization": "Сведения об организации",
