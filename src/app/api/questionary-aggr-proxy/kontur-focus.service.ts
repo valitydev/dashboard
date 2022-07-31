@@ -46,7 +46,9 @@ export type ResponsesByRequestType = Mapping<
     }
 >;
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class KonturFocusService extends createApi(ApiKonturFocusService) {
     request<T extends RequestType>(
         konturFocusRequestType: T,
