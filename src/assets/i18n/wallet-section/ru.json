@@ -4,6 +4,12 @@
             "failed": "Ошибка при пополнении"
         }
     },
+    "depositReverts": {
+        "loading": "Загрузка...",
+        "noReverts": "Отмены отсутствуют",
+        "revert": "Отмена",
+        "reverts": "Отмены"
+    },
     "integrations": {
         "tabs": {
             "webhooks": "WEBHOOKS"
