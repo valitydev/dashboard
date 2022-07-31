@@ -97,6 +97,9 @@
     "currencyFilter": {
         "label": "Валюта"
     },
+    "invoiceStatusFilter": {
+        "label": "Статус инвойса"
+    },
     "invoicesField": {
         "label": "Идентификатор инвойса"
     },
