@@ -38,7 +38,7 @@ export class RefundsComponent implements OnInit {
 
     ngOnInit(): void {
         this.fetchRefundsService.errors$.subscribe(() =>
-            this.snackBar.open(this.transloco.translate('refunds.fetchError', null, 'operations'), 'OK')
+            this.snackBar.open(this.transloco.translate('operations.refunds.fetchError', null, 'payment-section'), 'OK')
         );
         this.realmMixinService.mixedValue$
             .pipe(untilDestroyed(this))

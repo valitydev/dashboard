@@ -1,4 +1,4 @@
-<ng-container *transloco="let t; scope: 'operations'; read: 'operations.refunds'">
+<ng-container *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.refunds'">
     <div fxLayout="column" fxLayoutGap="24px">
         <div class="dsh-title" fxFlex>{{ t('refundStatus') }}</div>
         <dsh-expandable-radio-group fxFlex [control]="control" [choices]="statuses" anyResponse>

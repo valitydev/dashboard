@@ -70,6 +70,89 @@
         "description": "Магазины отсутствуют. Создать новый магазин возможно в разделе \"Магазины\"."
     },
     "operations": {
+        "invoices": {
+            "actions": {
+                "cancelInvoice": "Отменить инвойс",
+                "createPaymentLink": "Сформировать ссылку на оплату",
+                "fulfillInvoice": "Погасить инвойс",
+                "invoiceCancelled": "Инвойс успешно отменен",
+                "invoiceCreated": "Инвойс успешно создан",
+                "invoiceFulfilled": "Инвойс успешно погашен",
+                "reason": "Причина",
+                "title": "Действия"
+            },
+            "cartInfo": {
+                "description": "Описание товара или услуги",
+                "price": "Цена",
+                "quantity": "Количество",
+                "tax": "Ставка налога",
+                "title": "Корзина с набором товаров и услуг"
+            },
+            "header": "Инвойс",
+            "headerRow": {
+                "amount": "Стоимость",
+                "createdAt": "Создан",
+                "productName": "Наименование",
+                "shop": "Магазин",
+                "status": "Статус"
+            },
+            "invoiceStatus": "Статус инвойса",
+            "payments": {
+                "payment": "Платеж",
+                "showMore": "Показать еще",
+                "title": "Платежи"
+            },
+            "shop": "Магазин"
+        },
+        "payments": {
+            "details": {
+                "name": "Платеж"
+            },
+            "filter": {
+                "bankCardPaymentSystem": "Платежная система",
+                "bankCardTokenProvider": "Провайдер платежных токенов",
+                "binPan": "Карта",
+                "card": "Карта",
+                "customerID": "Идентификатор плательщика",
+                "first6": "BIN банка-эмитента карты",
+                "invoices": "Инвойсы",
+                "last4": "Последние цифры номера карты",
+                "payerEmail": "Email плательщика",
+                "paymentAmount": "Сумма платежа",
+                "paymentAmountFrom": "Мин. сумма",
+                "paymentAmountTo": "Макс. сумма",
+                "paymentStatus": "Статус платежа",
+                "rrn": "RRN платежа",
+                "shops": "Магазины"
+            },
+            "table": {
+                "amount": "Сумма списания",
+                "shop": "Магазин",
+                "status": "Статус",
+                "statusChanged": "Статус изменен"
+            }
+        },
+        "refunds": {
+            "emptyRefunds": "Возвратов нет",
+            "fetchError": "Произошла ошибка при поиске возвратов",
+            "header": "Возврат",
+            "headerRow": {
+                "amount": "Сумма возврата",
+                "shop": "Магазин",
+                "status": "Статус",
+                "updatedAt": "Статус изменен"
+            },
+            "invoiceInfo": {
+                "error": "Не удалось получить инвойс",
+                "title": "Инвойс"
+            },
+            "paymentInfo": {
+                "error": "Не удалось получить платеж",
+                "title": "Платеж"
+            },
+            "refundStatus": "Статус возврата",
+            "shop": "Магазин"
+        },
         "tabs": {
             "invoices": "ИНВОЙСЫ",
             "payments": "ПЛАТЕЖИ",
