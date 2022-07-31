@@ -131,6 +131,13 @@
     "currencyFilter": {
         "label": "Валюта"
     },
+    "existingContractForm": {
+        "errors": {
+            "onlyInternationalShopCanBeSelected": "Можно выбрать только международный магазин",
+            "onlyRussianShopCanBeSelected": "Можно выбрать только российский магазин"
+        },
+        "useShop": "Использовать контракт на основе магазина"
+    },
     "invoiceDetails": {
         "amount": "Стоимость",
         "createdAt": "Создан",

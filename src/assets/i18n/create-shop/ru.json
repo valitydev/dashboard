@@ -3,13 +3,6 @@
     "type": "Создание магазина",
     "russianLegalEntityType": "Российское ЮЛ",
     "internationalLegalEntityType": "Международное ЮЛ",
-    "existingContractForm": {
-        "useShop": "Использовать контракт на основе магазина",
-        "errors": {
-            "onlyInternationalShopCanBeSelected": "Можно выбрать только международный магазин",
-            "onlyRussianShopCanBeSelected": "Можно выбрать только российский магазин"
-        }
-    },
     "existingBankAccountForm": {
         "shopLabel": "Использовать реквизиты на основе магазина",
         "errors": {
