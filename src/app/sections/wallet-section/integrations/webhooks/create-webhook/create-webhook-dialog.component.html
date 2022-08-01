@@ -1,4 +1,4 @@
-<ng-container *transloco="let t; scope: 'wallet-webhooks'; read: 'walletWebhooks'">
+<ng-container *transloco="let t; scope: 'wallet-section'; read: 'walletSection.webhooks'">
     <dsh-base-dialog [title]="t('createWebhook.title')" (cancel)="cancel()">
         <dsh-create-webhook-form [form]="form"></dsh-create-webhook-form>
         <div dshBaseDialogActions fxLayout="row" fxLayoutAlign="space-between center" *transloco="let c">

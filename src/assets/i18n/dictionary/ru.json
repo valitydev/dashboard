@@ -70,5 +70,17 @@
             "Integrator": "Интегратор",
             "Manager": "Менеджер"
         }
+    },
+    "wallet": {
+        "destinationsTopicEventType": {
+            "DestinationAuthorized": "DestinationAuthorized (Приемник средств успешно авторизован)",
+            "DestinationCreated": "DestinationCreated (Приемник средств создан)",
+            "DestinationUnauthorized": "DestinationUnauthorized (Попытка авторизации приемника средств завершилась неудачей)"
+        },
+        "withdrawalsTopicEventType": {
+            "WithdrawalFailed": "WithdrawalFailed (Выплата завершилась неудачей)",
+            "WithdrawalStarted": "WithdrawalStarted (Выплата создана)",
+            "WithdrawalSucceeded": "WithdrawalSucceeded (Выплата совершена успешно)"
+        }
     }
 }

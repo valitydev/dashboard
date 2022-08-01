@@ -48,7 +48,7 @@ export class DeleteWebhookService {
                         catchError((e) => {
                             console.error(e);
                             this.snackBar.open(
-                                this.transloco.translate('errors.deleteError', null, 'wallet-webhooks'),
+                                this.transloco.translate('webhooks.errors.deleteError', null, 'wallet-section'),
                                 'OK'
                             );
                             return of('error');

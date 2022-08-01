@@ -50,5 +50,47 @@
             "wallets": "Кошельки",
             "withdrawals": "Выводы"
         }
+    },
+    "webhooks": {
+        "actions": {
+            "buttons": {
+                "delete": "Удалить webhook"
+            },
+            "title": "Действия",
+            "webhookDeleted": "Webhook спешно удален"
+        },
+        "create": "Установить webhook",
+        "createWebhook": {
+            "create": "Установить",
+            "eventType": "Предмет оповещений",
+            "eventTypes": {
+                "destination": "События приемника средств",
+                "withdrawal": "События выплаты"
+            },
+            "events": "События",
+            "identity": "Владелец кошелька",
+            "successfullyCreated": "Webhook успешно создан",
+            "title": "Установить новый webhook",
+            "types": "Набор типов событий, о которых следует оповещать",
+            "url": "URL, на который будут поступать оповещения о произошедших событиях",
+            "wallet": "Кошелек (не обязательно)"
+        },
+        "details": {
+            "identity": "Владелец кошелька",
+            "url": "URL, на который будут поступать оповещения о произошедших событиях",
+            "wallet": "Кошелек"
+        },
+        "emptyResult": "Webhook’и отсутствуют",
+        "errors": {
+            "deleteError": "Произошла ошибка при удалении"
+        },
+        "events": {
+            "title": "Набор событий"
+        },
+        "headerRow": {
+            "identity": "Владелец кошелька",
+            "url": "URL"
+        },
+        "webhook": "Webhook"
     }
 }
