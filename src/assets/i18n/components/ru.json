@@ -215,6 +215,11 @@
     "orgDetailsForm": {
         "title": "Сведения об организации"
     },
+    "paymentDetails": {
+        "amount": "Сумма списания",
+        "status": "Статус",
+        "statusChangedAt": "Статус изменен"
+    },
     "paymentInstitutionField": {
         "label": "Платежная организация"
     },
