@@ -1,113 +1,21 @@
 {
-    "showMore": "Показать еще",
-    "collapse": "Свернуть",
-    "resetSearchParams": "Сбросить параметры поиска",
-    "back": "Назад",
-    "next": "Далее",
-    "create": "Создать",
-    "save": "Сохранить",
-    "clear": "Очистить",
-    "clearForm": "Очистить форму",
     "ago": "назад",
-    "cancel": "Отмена",
-    "done": "Готово",
-    "continue": "Продолжить",
-    "confirm": "Подтвердить",
-    "return": "Вернуться",
-    "send": "Отправить",
-    "justNow": "только что",
-    "today": "Сегодня",
-    "week": "Неделя",
-    "month": "Месяц",
-    "year": "Год",
     "any": "Любой",
-    "update": "Обновить",
-    "lastUpdate": "Последнее обновление",
-    "httpError": "Произошла ошибка в процессе передачи / получения данных",
-    "commonError": "Что-то пошло не так",
-    "errorOccurred": "Произошла ошибка",
-    "unknownError": "Неизвестная ошибка",
-    "loading": "Загрузка...",
-    "ok": "OK",
-    "noDocs": "Нет прикрепленных документов",
     "availableFunds": "Доступные средства",
-    "copied": "Скопировано",
-    "copyFailed": "Ошибка копирования",
-    "period": {
-        "fromTime": "Начало периода",
-        "toTime": "Конец периода"
-    },
-    "filters": {
-        "additionalFilters": "Другие фильтры",
-        "save": "Сохранить",
-        "clearParams": "Сбросить параметры",
-        "showAllStatuses": "Показать все статусы",
-        "hideAllStatuses": "Скрыть все статусы"
-    },
-    "paymentStatus": {
-        "pending": "Запущен",
-        "processed": "Обработан",
-        "captured": "Подтвержден",
-        "cancelled": "Отменен",
-        "refunded": "Возвращен",
-        "failed": "Неуспешен"
-    },
-    "reportType": {
-        "paymentRegistry": "Ручной",
-        "provisionOfService": "Автоматический"
-    },
-    "invoiceStatus": {
-        "paid": "Оплачен",
-        "unpaid": "Не оплачен",
-        "fulfilled": "Погашен",
-        "cancelled": "Отменен"
-    },
-    "refundStatus": {
-        "succeeded": "Успешно",
-        "pending": "В процессе",
-        "failed": "Неуспешно"
-    },
-    "reportStatus": {
-        "pending": "В процессе",
-        "processed": "Готов"
-    },
-    "depositStatus": {
-        "Succeeded": "Успешно",
-        "Pending": "В процессе",
-        "Failed": "Неуспешно"
-    },
-    "depositRevertStatus": {
-        "Succeeded": "Успешно",
-        "Pending": "В процессе",
-        "Failed": "Неуспешно"
-    },
-    "withdrawalStatus": {
-        "Succeeded": "Успешно",
-        "Pending": "В процессе",
-        "Failed": "Неуспешно"
-    },
-    "paymentFlow": {
-        "instant": "Мгновенный",
-        "hold": "С удержанием"
-    },
-    "invoiceTemplateType": {
-        "InvoiceTemplateMultiLine": "Корзина товаров",
-        "InvoiceTemplateSingleLine": "Одиночная позиция"
-    },
-    "invoiceTemplateCostType": {
-        "InvoiceTemplateLineCostFixed": "Фиксированная",
-        "InvoiceTemplateLineCostRange": "Диапазон",
-        "InvoiceTemplateLineCostUnlim": "Без ограничений"
-    },
-    "shortTimeUnits": {
-        "year": "г.",
-        "week": "нед.",
-        "month": "мес.",
-        "day": "д.",
-        "hour": "ч.",
-        "minute": "мин.",
-        "second": "сек.",
-        "millisecond": "мсек."
+    "back": "Назад",
+    "bankCardPaymentSystem": {
+        "amex": "American Express",
+        "dankort": "Dankort",
+        "dinersclub": "Diners Club International",
+        "discover": "Discover Card",
+        "forbrugsforeningen": "Forbrugsforeningen",
+        "jcb": "JCB",
+        "maestro": "Maestro",
+        "mastercard": "Mastercard",
+        "nspkmir": "MIR",
+        "unionpay": "UnionPay",
+        "visa": "Visa",
+        "visaelectron": "Visa Electron"
     },
     "bankCardTokenProvider": {
         "applepay": "Apple Pay",
@@ -115,126 +23,218 @@
         "samsungpay": "Samsung Pay",
         "yandexpay": "Yandex Pay"
     },
-    "bankCardPaymentSystem": {
-        "visa": "Visa",
-        "mastercard": "Mastercard",
-        "visaelectron": "Visa Electron",
-        "maestro": "Maestro",
-        "forbrugsforeningen": "Forbrugsforeningen",
-        "dankort": "Dankort",
-        "amex": "American Express",
-        "dinersclub": "Diners Club International",
-        "discover": "Discover Card",
-        "unionpay": "UnionPay",
-        "jcb": "JCB",
-        "nspkmir": "MIR"
+    "cancel": "Отмена",
+    "claimStatus": {
+        "accepted": "Одобрена",
+        "denied": "Отклонена",
+        "pending": "В ожидании",
+        "pendingAcceptance": "В ожидании одобрения",
+        "review": "На рассмотрении",
+        "revoked": "Отозвана"
+    },
+    "claimType": {
+        "questionary": "Заявка на подключение"
+    },
+    "clear": "Очистить",
+    "clearForm": "Очистить форму",
+    "collapse": "Свернуть",
+    "commonError": "Что-то пошло не так",
+    "confirm": "Подтвердить",
+    "confirmActionDialog": {
+        "cancel": "Отмена",
+        "confirm": "Подтвердить",
+        "subheading": "Подтвердите действие"
+    },
+    "continue": "Продолжить",
+    "copied": "Скопировано",
+    "copyFailed": "Ошибка копирования",
+    "create": "Создать",
+    "depositRevertStatus": {
+        "Failed": "Неуспешно",
+        "Pending": "В процессе",
+        "Succeeded": "Успешно"
+    },
+    "depositStatus": {
+        "Failed": "Неуспешно",
+        "Pending": "В процессе",
+        "Succeeded": "Успешно"
+    },
+    "digitalWalletProvider": {
+        "DigitalWalletDetailsQIWI": "QIWI"
+    },
+    "done": "Готово",
+    "emptyData": "Данные отсутствуют",
+    "emptySearchResult": "Данные за указанный период отсутствуют",
+    "errorOccurred": "Произошла ошибка",
+    "errors": {
+        "bootstrapAppFailed": "Ошибка инициализации",
+        "common": "Произошла ошибка",
+        "requestReviewClaimByIDFailed": "Не удалось отправить заявку на рассмотрение",
+        "revokeClaimByIDFailed": "Не удалось отозвать заявку",
+        "saveConversationsFailed": "Не удалось сохранить комментарий",
+        "updateClaimByIDFailed": " Не удалось обновить заявку"
+    },
+    "filters": {
+        "additionalFilters": "Другие фильтры",
+        "clearParams": "Сбросить параметры",
+        "hideAllStatuses": "Скрыть все статусы",
+        "save": "Сохранить",
+        "showAllStatuses": "Показать все статусы"
+    },
+    "httpError": "Произошла ошибка в процессе передачи / получения данных",
+    "invoiceStatus": {
+        "cancelled": "Отменен",
+        "fulfilled": "Погашен",
+        "paid": "Оплачен",
+        "unpaid": "Не оплачен"
+    },
+    "invoiceTemplateCostType": {
+        "InvoiceTemplateLineCostFixed": "Фиксированная",
+        "InvoiceTemplateLineCostRange": "Диапазон",
+        "InvoiceTemplateLineCostUnlim": "Без ограничений"
+    },
+    "invoiceTemplateType": {
+        "InvoiceTemplateMultiLine": "Корзина товаров",
+        "InvoiceTemplateSingleLine": "Одиночная позиция"
+    },
+    "justNow": "только что",
+    "lastUpdate": "Последнее обновление",
+    "loading": "Загрузка...",
+    "month": "Месяц",
+    "next": "Далее",
+    "no": "Нет",
+    "noDocs": "Нет прикрепленных документов",
+    "notification": {
+        "error": "Что-то пошло не так",
+        "httpError": "Произошла ошибка в процессе передачи / получения данных",
+        "ok": "OK",
+        "success": "Успешно",
+        "unknownError": "Неизвестная ошибка"
+    },
+    "ok": "OK",
+    "paymentErrors": {
+        "authorization_failed": {
+            "account_blocked": "Аккаунт заблокирован",
+            "account_limit_exceeded": {
+                "amount": "Лимит на сумму",
+                "message": "Превышен лимит на счете плательщика",
+                "number": "Лимит на количество попыток",
+                "unknown": "Объект лимита неизвестен"
+            },
+            "account_not_found": "Аккаунт не найден",
+            "account_stolen": "Аккаунт украден",
+            "insufficient_funds": "Не хватает средств",
+            "merchant_blocked": "Мерчант заблокирован",
+            "message": "Ошибка авторизации платежа у провайдера",
+            "operation_blocked": "Операция платежа заблокирована",
+            "payment_tool_rejected": {
+                "bank_card_rejected": {
+                    "card_expired": "Истёк срок действия карты",
+                    "card_holder_invalid": "Неверный владелец карты",
+                    "card_number_invalid": "Неверный номер карты",
+                    "cvv_invalid": "Неверный CVV код",
+                    "issuer_not_found": "Эмитент не найден",
+                    "message": "Банковская карта отклонена",
+                    "unknown": "Причина неизвестна"
+                },
+                "message": "Платёжный интрумент отклонён",
+                "unknown": "Неизвестный платёжный интрумент"
+            },
+            "provider_limit_exceeded": {
+                "amount": "Лимит на сумму",
+                "message": "Превышен лимит на мерчанта у провайдера (вас или платформы RBKmoney)",
+                "number": "Лимит на количество попыток",
+                "unknown": "Объект лимита неизвестен"
+            },
+            "rejected_by_issuer": "Отклонено эмитентом",
+            "security_policy_violated": "Нарушения политики безопасности",
+            "temporarily_unavailable": "Временная недоступность третьих сторон",
+            "unknown": "Неизвестная ошибка авторизации"
+        },
+        "no_route_found": {
+            "message": "Маршрут не найден",
+            "risk_score_is_too_high": "Операция с высоким риском",
+            "unknown": "Неизвестная ошибка при поиске маршрута"
+        },
+        "preauthorization_failed": {
+            "message": "Ошибка предавторизации (3DS)",
+            "three_ds_failed": "Предавторизация закончилась неудачей",
+            "three_ds_not_finished": "Предавторизация не закончена",
+            "unknown": "Неизвестная ошибка предавторизации"
+        },
+        "rejected_by_inspector": "Отклонено сервисом противодействия мошенничеству",
+        "timeout": "Превышен лимит ожидания"
+    },
+    "paymentFlow": {
+        "hold": "С удержанием",
+        "instant": "Мгновенный"
     },
     "paymentMethod": {
         "bankCard": "Банковская карта",
         "paymentTerminal": "Терминал"
     },
-    "digitalWalletProvider": {
-        "DigitalWalletDetailsQIWI": "QIWI"
+    "paymentStatus": {
+        "cancelled": "Отменен",
+        "captured": "Подтвержден",
+        "failed": "Неуспешен",
+        "pending": "Запущен",
+        "processed": "Обработан",
+        "refunded": "Возвращен"
     },
     "paymentTerminalProvider": {
-        "euroset": "Евросеть",
         "alipay": "Alipay",
+        "euroset": "Евросеть",
+        "qps": "Система быстрых платежей (СБП)",
         "wechat": "WeChat",
-        "zotapay": "ZotaPay",
-        "qps": "Система быстрых платежей (СБП)"
+        "zotapay": "ZotaPay"
     },
-    "claimType": {
-        "questionary": "Заявка на подключение"
+    "period": {
+        "fromTime": "Начало периода",
+        "toTime": "Конец периода"
     },
-    "claimStatus": {
-        "pending": "В ожидании",
-        "pendingAcceptance": "В ожидании одобрения",
-        "review": "На рассмотрении",
-        "revoked": "Отозвана",
-        "denied": "Отклонена",
-        "accepted": "Одобрена"
+    "refundStatus": {
+        "failed": "Неуспешно",
+        "pending": "В процессе",
+        "succeeded": "Успешно"
     },
-    "confirmActionDialog": {
-        "subheading": "Подтвердите действие",
-        "cancel": "Отмена",
-        "confirm": "Подтвердить"
+    "reportStatus": {
+        "pending": "В процессе",
+        "processed": "Готов"
     },
-    "errors": {
-        "common": "Произошла ошибка",
-        "saveConversationsFailed": "Не удалось сохранить комментарий",
-        "revokeClaimByIDFailed": "Не удалось отозвать заявку",
-        "requestReviewClaimByIDFailed": "Не удалось отправить заявку на рассмотрение",
-        "updateClaimByIDFailed": " Не удалось обновить заявку",
-        "bootstrapAppFailed": "Ошибка инициализации"
+    "reportType": {
+        "paymentRegistry": "Ручной",
+        "provisionOfService": "Автоматический"
     },
-    "yes": "Да",
-    "no": "Нет",
-    "emptySearchResult": "Данные за указанный период отсутствуют",
-    "emptyData": "Данные отсутствуют",
-    "paymentErrors": {
-        "rejected_by_inspector": "Отклонено сервисом противодействия мошенничеству",
-        "preauthorization_failed": {
-            "message": "Ошибка предавторизации (3DS)",
-            "unknown": "Неизвестная ошибка предавторизации",
-            "three_ds_failed": "Предавторизация закончилась неудачей",
-            "three_ds_not_finished": "Предавторизация не закончена"
-        },
-        "authorization_failed": {
-            "message": "Ошибка авторизации платежа у провайдера",
-            "unknown": "Неизвестная ошибка авторизации",
-            "merchant_blocked": "Мерчант заблокирован",
-            "operation_blocked": "Операция платежа заблокирована",
-            "account_not_found": "Аккаунт не найден",
-            "account_blocked": "Аккаунт заблокирован",
-            "account_stolen": "Аккаунт украден",
-            "insufficient_funds": "Не хватает средств",
-            "account_limit_exceeded": {
-                "message": "Превышен лимит на счете плательщика",
-                "unknown": "Объект лимита неизвестен",
-                "amount": "Лимит на сумму",
-                "number": "Лимит на количество попыток"
-            },
-            "provider_limit_exceeded": {
-                "message": "Превышен лимит на мерчанта у провайдера (вас или платформы RBKmoney)",
-                "unknown": "Объект лимита неизвестен",
-                "amount": "Лимит на сумму",
-                "number": "Лимит на количество попыток"
-            },
-            "payment_tool_rejected": {
-                "message": "Платёжный интрумент отклонён",
-                "unknown": "Неизвестный платёжный интрумент",
-                "bank_card_rejected": {
-                    "message": "Банковская карта отклонена",
-                    "unknown": "Причина неизвестна",
-                    "card_number_invalid": "Неверный номер карты",
-                    "card_expired": "Истёк срок действия карты",
-                    "card_holder_invalid": "Неверный владелец карты",
-                    "cvv_invalid": "Неверный CVV код",
-                    "issuer_not_found": "Эмитент не найден"
-                }
-            },
-            "security_policy_violated": "Нарушения политики безопасности",
-            "temporarily_unavailable": "Временная недоступность третьих сторон",
-            "rejected_by_issuer": "Отклонено эмитентом"
-        },
-        "no_route_found": {
-            "message": "Маршрут не найден",
-            "unknown": "Неизвестная ошибка при поиске маршрута",
-            "risk_score_is_too_high": "Операция с высоким риском"
-        },
-        "timeout": "Превышен лимит ожидания"
-    },
-    "notification": {
-        "ok": "OK",
-        "error": "Что-то пошло не так",
-        "success": "Успешно",
-        "httpError": "Произошла ошибка в процессе передачи / получения данных",
-        "unknownError": "Неизвестная ошибка"
-    },
+    "resetSearchParams": "Сбросить параметры поиска",
+    "return": "Вернуться",
+    "save": "Сохранить",
     "sectionLinks": {
+        "claims": "Заявки",
         "main": "Главная",
         "payments": "Платежи",
-        "wallets": "Кошельки",
-        "claims": "Заявки"
-    }
+        "wallets": "Кошельки"
+    },
+    "send": "Отправить",
+    "shortTimeUnits": {
+        "day": "д.",
+        "hour": "ч.",
+        "millisecond": "мсек.",
+        "minute": "мин.",
+        "month": "мес.",
+        "second": "сек.",
+        "week": "нед.",
+        "year": "г."
+    },
+    "showMore": "Показать еще",
+    "today": "Сегодня",
+    "unknownError": "Неизвестная ошибка",
+    "update": "Обновить",
+    "week": "Неделя",
+    "withdrawalStatus": {
+        "Failed": "Неуспешно",
+        "Pending": "В процессе",
+        "Succeeded": "Успешно"
+    },
+    "year": "Год",
+    "yes": "Да"
 }
