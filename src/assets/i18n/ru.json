@@ -2,12 +2,6 @@
     "ago": "назад",
     "any": "Любой",
     "back": "Назад",
-    "bankCardTokenProvider": {
-        "applepay": "Apple Pay",
-        "googlepay": "Google Pay",
-        "samsungpay": "Samsung Pay",
-        "yandexpay": "Yandex Pay"
-    },
     "cancel": "Отмена",
     "claimStatus": {
         "accepted": "Одобрена",

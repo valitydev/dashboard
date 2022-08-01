@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { StatusOffsetCount, InvoiceStatus, Report } from '@vality/swag-anapi-v2';
 import { BankCardPaymentSystem } from '@vality/swag-anapi-v2/lib/model/bankCardPaymentSystem';
+import { BankCardTokenProvider } from '@vality/swag-anapi-v2/lib/model/bankCardTokenProvider';
 
 import { DictionaryService } from '../utils';
 
@@ -88,6 +89,13 @@ export class AnapiDictionaryService {
         rupay: this.t.translate('anapi.bankCardPaymentSystem.rupay', null, 'dictionary'),
         dummy: this.t.translate('anapi.bankCardPaymentSystem.dummy', null, 'dictionary'),
         uzcard: this.t.translate('anapi.bankCardPaymentSystem.uzcard', null, 'dictionary'),
+    }));
+
+    bankCardTokenProvider$ = this.dictionaryService.create<BankCardTokenProvider>(() => ({
+        applepay: this.t.translate('anapi.bankCardTokenProvider.applepay', null, 'dictionary'),
+        googlepay: this.t.translate('anapi.bankCardTokenProvider.googlepay', null, 'dictionary'),
+        samsungpay: this.t.translate('anapi.bankCardTokenProvider.samsungpay', null, 'dictionary'),
+        yandexpay: this.t.translate('anapi.bankCardTokenProvider.yandexpay', null, 'dictionary'),
     }));
 
     constructor(private t: TranslocoService, private dictionaryService: DictionaryService) {}

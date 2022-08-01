@@ -18,6 +18,12 @@
             "visa": "Visa",
             "visaelectron": "Visa Electron"
         },
+        "bankCardTokenProvider": {
+            "applepay": "Apple Pay",
+            "googlepay": "Google Pay",
+            "samsungpay": "Samsung Pay",
+            "yandexpay": "Yandex Pay"
+        },
         "errorCode": {
             "account_limit_exceeded": "Превышен лимит счёта",
             "account_not_found": "Счёт не найден",
