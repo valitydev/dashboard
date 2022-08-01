@@ -54,5 +54,16 @@
             "pending": "Запущен",
             "succeeded": "Успешен"
         }
+    },
+    "organizations": {
+        "resourceScopeId": {
+            "Shop": "Магазины"
+        },
+        "roleId": {
+            "Accountant": "Бухгалтер",
+            "Administrator": "Администратор",
+            "Integrator": "Интегратор",
+            "Manager": "Менеджер"
+        }
     }
 }

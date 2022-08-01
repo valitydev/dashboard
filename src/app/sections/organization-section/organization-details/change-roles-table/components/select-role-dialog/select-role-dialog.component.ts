@@ -4,10 +4,12 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { RoleId } from '@vality/swag-organizations';
 
+import { OrganizationsDictionaryService } from '@dsh/api/organizations';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ROLE_PRIORITY_DESC } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
 
 import { ROLES_ACCESSES } from './roles-accesses';
+import { RoleAccessesDictionaryService } from './services/role-accesses-dictionary.service';
 import { SelectRoleDialogResult } from './types/select-role-dialog-result';
 import { SelectRoleDialogData } from './types/selected-role-dialog-data';
 
@@ -20,6 +22,8 @@ import { SelectRoleDialogData } from './types/selected-role-dialog-data';
 export class SelectRoleDialogComponent {
     roleControl = this.fb.control<RoleId>(null, Validators.required);
     accesses = ROLES_ACCESSES;
+    roleIdDict$ = this.organizationsDictionaryService.roleId$;
+    roleAccessDict$ = this.roleAccessesDictionaryService.roleAccessDict$;
     get rowsGridTemplateColumns() {
         return `2fr ${'1fr '.repeat(this.data.availableRoles.length)}`;
     }
@@ -30,7 +34,9 @@ export class SelectRoleDialogComponent {
     constructor(
         @Inject(MAT_DIALOG_DATA) private data: SelectRoleDialogData,
         private dialogRef: MatDialogRef<SelectRoleDialogComponent, SelectRoleDialogResult>,
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private organizationsDictionaryService: OrganizationsDictionaryService,
+        private roleAccessesDictionaryService: RoleAccessesDictionaryService
     ) {}
 
     cancel() {

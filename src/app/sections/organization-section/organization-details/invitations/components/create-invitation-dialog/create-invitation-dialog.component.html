@@ -1,5 +1,5 @@
 <dsh-base-dialog
-    *transloco="let t; scope: 'organizations'; read: 'organizations.createInvitationDialog'"
+    *transloco="let t; scope: 'organization-section'; read: 'organizationSection.createInvitationDialog'"
     [title]="t('title')"
     (cancel)="cancel()"
     [disabled]="inProgress$ | async"

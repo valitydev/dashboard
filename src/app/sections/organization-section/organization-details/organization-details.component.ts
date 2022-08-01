@@ -1,17 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslocoService } from '@ngneat/transloco';
+import { Observable } from 'rxjs';
 import { shareReplay, switchMap } from 'rxjs/operators';
 
 import { OrgsService } from '@dsh/api/organizations';
-
-const LINKS: { path: string }[] = [
-    {
-        path: 'members',
-    },
-    {
-        path: 'invitations',
-    },
-];
 
 @Component({
     selector: 'dsh-organization-details',
@@ -24,7 +17,24 @@ export class OrganizationDetailsComponent {
         switchMap(({ orgId }) => this.organizationsService.getOrg(orgId)),
         shareReplay(1)
     );
-    readonly links = LINKS;
+    readonly links: { path: string; label$: Observable<string> }[] = [
+        {
+            path: 'members',
+            label$: this.transloco.selectTranslate('organizationDetails.links.members', null, 'organization-section'),
+        },
+        {
+            path: 'invitations',
+            label$: this.transloco.selectTranslate(
+                'organizationDetails.links.invitations',
+                null,
+                'organization-section'
+            ),
+        },
+    ];
 
-    constructor(private organizationsService: OrgsService, private route: ActivatedRoute) {}
+    constructor(
+        private organizationsService: OrgsService,
+        private route: ActivatedRoute,
+        private transloco: TranslocoService
+    ) {}
 }
