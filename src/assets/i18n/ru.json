@@ -3,12 +3,8 @@
     "any": "Любой",
     "back": "Назад",
     "cancel": "Отмена",
-    "claimType": {
-        "questionary": "Заявка на подключение"
-    },
     "clear": "Очистить",
     "clearForm": "Очистить форму",
-    "collapse": "Свернуть",
     "commonError": "Что-то пошло не так",
     "confirm": "Подтвердить",
     "confirmActionDialog": {
@@ -16,7 +12,6 @@
         "confirm": "Подтвердить",
         "subheading": "Подтвердите действие"
     },
-    "continue": "Продолжить",
     "copied": "Скопировано",
     "copyFailed": "Ошибка копирования",
     "create": "Создать",
@@ -33,7 +28,6 @@
     "digitalWalletProvider": {
         "DigitalWalletDetailsQIWI": "QIWI"
     },
-    "done": "Готово",
     "emptyData": "Данные отсутствуют",
     "emptySearchResult": "Данные за указанный период отсутствуют",
     "errorOccurred": "Произошла ошибка",
@@ -71,7 +65,6 @@
     "justNow": "только что",
     "lastUpdate": "Последнее обновление",
     "loading": "Загрузка...",
-    "month": "Месяц",
     "next": "Далее",
     "notification": {
         "error": "Что-то пошло не так",
@@ -80,7 +73,6 @@
         "success": "Успешно",
         "unknownError": "Неизвестная ошибка"
     },
-    "ok": "OK",
     "paymentFlow": {
         "hold": "С удержанием",
         "instant": "Мгновенный"
@@ -104,10 +96,6 @@
         "wechat": "WeChat",
         "zotapay": "ZotaPay"
     },
-    "period": {
-        "fromTime": "Начало периода",
-        "toTime": "Конец периода"
-    },
     "refundStatus": {
         "failed": "Неуспешно",
         "pending": "В процессе",
@@ -122,7 +110,6 @@
         "provisionOfService": "Автоматический"
     },
     "resetSearchParams": "Сбросить параметры поиска",
-    "return": "Вернуться",
     "save": "Сохранить",
     "sectionLinks": {
         "claims": "Заявки",
@@ -130,16 +117,12 @@
         "payments": "Платежи",
         "wallets": "Кошельки"
     },
-    "send": "Отправить",
     "showMore": "Показать еще",
-    "today": "Сегодня",
     "unknownError": "Неизвестная ошибка",
     "update": "Обновить",
-    "week": "Неделя",
     "withdrawalStatus": {
         "Failed": "Неуспешно",
         "Pending": "В процессе",
         "Succeeded": "Успешно"
-    },
-    "year": "Год"
+    }
 }
