@@ -1,5 +1,5 @@
 <ng-container *transloco="let t">
-    <ng-container *transloco="let p; scope: 'payouts'; read: 'payouts.payouts'">
+    <ng-container *transloco="let p; scope: 'payment-section'; read: 'paymentSection.payouts.payouts'">
         <dsh-base-dialog [title]="p('title')" (cancel)="cancel()">
             <div [formGroup]="form" fxLayout="column" fxLayoutGap="32px">
                 <div fxLayout="column" fxLayoutGap="20px">

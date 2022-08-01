@@ -12,7 +12,7 @@
             <dsh-accordion-item-content>
                 <dsh-card fxLayout="column" fxLayoutGap="32px">
                     <dsh-accordion-item-content-header
-                        *transloco="let t; scope: 'payouts'; read: 'payouts.panel'"
+                        *transloco="let t; scope: 'payment-section'; read: 'paymentSection.payouts.panel'"
                         (collapse)="accordionItem.collapse($event)"
                         >{{ t('payoutID', { num: payout.id }) }}</dsh-accordion-item-content-header
                     >
