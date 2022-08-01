@@ -132,5 +132,34 @@
             "url": "URL"
         },
         "webhook": "Webhook"
+    },
+    "withdrawals": {
+        "details": {
+            "amount": "Сумма списания",
+            "error": "Ошибка",
+            "errors": {
+                "failed": "Произошла ошибка при выводе средств"
+            },
+            "fee": "Комиссия",
+            "status": "Статус",
+            "wallet": "Кошелек"
+        },
+        "filters": {
+            "amount": "Сумма вывода",
+            "amountFrom": "Мин. сумма",
+            "amountTo": "Макс. сумма",
+            "destinationID": "Идентификатор приёмника средств",
+            "identityID": "Идентификатор владельца",
+            "status": "Статус вывода",
+            "walletID": "Кошелек",
+            "withdrawalID": "Идентификатор вывода"
+        },
+        "headerRow": {
+            "amount": "Сумма",
+            "createdAt": "Дата",
+            "status": "Статус",
+            "wallet": "Кошелек"
+        },
+        "withdrawal": "Вывод"
     }
 }

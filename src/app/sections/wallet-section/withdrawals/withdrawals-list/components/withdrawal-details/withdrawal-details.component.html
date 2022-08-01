@@ -1,5 +1,5 @@
 <div
-    *transloco="let t; scope: 'withdrawals'; read: 'withdrawals.details'"
+    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.withdrawals.details'"
     gdColumns="1fr"
     gdColumns.gt-sm="1fr 1fr 1fr"
     gdGap="24px"
@@ -24,7 +24,11 @@
         {{ withdrawal.wallet | walletDetails }}
     </dsh-details-item>
     <dsh-details-item *ngIf="withdrawal.failure" gdColumn="1/-1" [title]="t('error')">
-        <div *transloco="let errors; scope: 'withdrawals'; read: 'withdrawals.details.errors'" class="mat-body-1">
+        <div
+            *transloco="let errors; scope: 'wallet-section'; read: 'walletSection.withdrawals.details.errors'"
+            class="mat-body-1"
+        >
+            <!-- t(failed) -->
             {{ errors(withdrawal.failure.code) }}
         </div>
     </dsh-details-item>
