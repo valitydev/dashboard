@@ -44,7 +44,7 @@ export class ReportsComponent implements OnInit {
 
     ngOnInit(): void {
         this.fetchReportsService.errors$.subscribe(() =>
-            this.snackBar.open(this.transloco.translate('errors.fetchError', null, 'reports'), 'OK')
+            this.snackBar.open(this.transloco.translate('reports.errors.fetchError', null, 'payment-section'), 'OK')
         );
         this.realmMixinService.mixedValue$
             .pipe(untilDestroyed(this))
@@ -62,7 +62,7 @@ export class ReportsComponent implements OnInit {
             )
             .subscribe(() => {
                 this.snackBar.open(
-                    this.transloco.translate('createReport.successfullyCreated', null, 'reports'),
+                    this.transloco.translate('reports.createReport.successfullyCreated', null, 'payment-section'),
                     'OK',
                     { duration: 2000 }
                 );

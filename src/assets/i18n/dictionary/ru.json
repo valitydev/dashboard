@@ -42,6 +42,11 @@
             "digital_wallet": "Кошелек",
             "payment_terminal": "Терминал"
         },
+        "reportStatus": {
+            "canceled": "Отменен",
+            "created": "Сформирован",
+            "pending": "В процессе"
+        },
         "reportType": {
             "paymentRegistry": "Реестр операций",
             "paymentRegistryByPayout": "Реестр операций возмещения",

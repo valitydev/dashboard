@@ -285,5 +285,56 @@
     "reportTypesFilter": {
         "activeLabel": "Типы формирования",
         "label": "Все типы формирования"
+    },
+    "reports": {
+        "cancelReport": {
+            "successfullyCanceled": "Отчет успешно отменен"
+        },
+        "createReport": {
+            "create": "Сформировать",
+            "form": {
+                "from": "Начало периода",
+                "shop": "Магазин",
+                "time": "Время",
+                "to": "Конец периода"
+            },
+            "subtitle": "Отчет с реестром операций за выбранный период",
+            "successfullyCreated": "Отчет успешно создан",
+            "title": "Параметры формирования отчета"
+        },
+        "errors": {
+            "cancelError": "Не удалось отменить отчет",
+            "createError": "Не удалось создать отчет",
+            "downloadReportError": "Не удалось загрузить документы",
+            "fetchError": "Не удалось получить отчеты"
+        },
+        "headerRow": {
+            "createdAt": "Дата создания",
+            "period": "Период отчетности",
+            "status": "Статус",
+            "type": "Тип формирования"
+        },
+        "openCreateReport": "Создать отчет",
+        "reportContent": {
+            "header": "Отчет"
+        },
+        "reportDetails": {
+            "actions": {
+                "cancelReport": "Отменить отчет",
+                "title": "Действия"
+            },
+            "createdAt": "Дата создания",
+            "period": "Период отчетности",
+            "shop": "Магазин",
+            "status": "Статус",
+            "type": "Тип формирования"
+        },
+        "reportFiles": {
+            "downloadAll": "Загрузить все",
+            "title": "Документы"
+        },
+        "searchFilters": {
+            "dateRangeDescription": "Период создания отчетов"
+        }
     }
 }

@@ -64,5 +64,11 @@ export class AnapiDictionaryService {
         paymentRegistryByPayout: this.t.translate('anapi.reportType.paymentRegistryByPayout', null, 'dictionary'),
     }));
 
+    reportStatus$ = this.dictionaryService.create<Report.StatusEnum>(() => ({
+        created: this.t.translate('anapi.reportStatus.created', null, 'dictionary'),
+        canceled: this.t.translate('anapi.reportStatus.canceled', null, 'dictionary'),
+        pending: this.t.translate('anapi.reportStatus.pending', null, 'dictionary'),
+    }));
+
     constructor(private t: TranslocoService, private dictionaryService: DictionaryService) {}
 }
