@@ -368,5 +368,53 @@
             "error": "Произошла ошибка при заморозке магазина",
             "success": "Магазин заморожен"
         }
+    },
+    "webhook": {
+        "actions": {
+            "delete": {
+                "buttonTitle": "Удалить webhook",
+                "success": "Webhook спешно удален"
+            },
+            "title": "Действия"
+        },
+        "create": "Установить webhook",
+        "createWebhook": {
+            "create": "Установить",
+            "eventType": "Предмет оповещений",
+            "eventTypes": {
+                "customers": "События плательщика",
+                "invoices": "События инвойса"
+            },
+            "events": "События",
+            "shop": "Магазин",
+            "successfullyCreated": "Webhook успешно создан",
+            "title": "Установить новый webhook",
+            "types": "Набор типов событий, о которых следует оповещать",
+            "url": "URL, на который будут поступать оповещения о произошедших событиях"
+        },
+        "details": {
+            "shop": "Магазин",
+            "url": "URL, на который будут поступать оповещения о произошедших событиях"
+        },
+        "emptyResult": "Webhook’и отсутствуют",
+        "errors": {
+            "createError": "Произошла ошибка при попытке создать webhook",
+            "deleteError": "Произошла ошибка при удалении"
+        },
+        "events": {
+            "title": "Набор событий"
+        },
+        "headerRow": {
+            "shop": "Магазин",
+            "url": "URL"
+        },
+        "key": {
+            "buttons": {
+                "copy": "Скопировать ключ"
+            },
+            "publicKey": "Содержимое публичного ключа, служащего для проверки авторитативности приходящих на url оповещений",
+            "title": "Публичный ключ"
+        },
+        "webhook": "Missing value for 'paymentSection.webhook.webhook'"
     }
 }

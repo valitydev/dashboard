@@ -1,4 +1,9 @@
-<form *transloco="let t; scope: 'webhook'; read: 'webhook'" [formGroup]="form" fxLayout="column" fxLayoutGap="24px">
+<form
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.webhook'"
+    [formGroup]="form"
+    fxLayout="column"
+    fxLayoutGap="24px"
+>
     <div fxLayout="column" fxLayoutGap="16px">
         <mat-form-field fxFlex>
             <mat-label>{{ t('createWebhook.shop') }}</mat-label>
@@ -37,8 +42,8 @@
     <div formArrayName="eventTypes" fxLayout="column" fxLayoutGap="16px">
         <div *ngFor="let eventType of eventTypes.controls; let i = index" [formGroupName]="i">
             <mat-checkbox formControlName="selected" class="dsh-body-1"
-                ><span *transloco="let types; scope: 'webhook'; read: 'webhook.events.types'">{{
-                    types(eventType.controls.eventName.value)
+                ><span>{{
+                (eventType$ | async)?.[eventType.controls.eventName.value]
                 }}</span></mat-checkbox
             >
         </div>

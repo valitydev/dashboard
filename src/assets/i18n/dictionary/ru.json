@@ -71,6 +71,31 @@
             "Manager": "Менеджер"
         }
     },
+    "payments": {
+        "customersTopicEventType": {
+            "CustomerBindingFailed": "CustomerBindingFailed (привязка к плательщику завершена с неудачей)",
+            "CustomerBindingStarted": "CustomerBindingStarted (привязка к плательщику запущена)",
+            "CustomerBindingSucceeded": "CustomerBindingSucceeded (привязка к плательщику успешно завершена)",
+            "CustomerCreated": "CustomerCreated (плательщик создан)",
+            "CustomerDeleted": "CustomerDeleted (плательщик удален)",
+            "CustomerReady": "CustomerReady (плательщик готов)"
+        },
+        "invoicesTopicEventType": {
+            "InvoiceCancelled": "InvoiceCancelled (инвойс отменен по истечению срока давности)",
+            "InvoiceCreated": "InvoiceCreated (создан новый инвойс)",
+            "InvoiceFulfilled": "InvoiceFulfilled (инвойс успешно погашен)",
+            "InvoicePaid": "InvoicePaid (инвойс перешел в состояние \"Оплачен\")",
+            "PaymentCancelled": "PaymentCancelled (платеж успешно отменен)",
+            "PaymentCaptured": "PaymentCaptured (платеж успешно завершен)",
+            "PaymentFailed": "PaymentFailed (при проведении платежа возникла ошибка)",
+            "PaymentProcessed": "PaymentProcessed (платеж в обработке)",
+            "PaymentRefundCreated": "PaymentRefundCreated (возврат платежа успешно создан)",
+            "PaymentRefundFailed": "PaymentRefundFailed (возврат платежа завершился неудачей)",
+            "PaymentRefundSucceeded": "PaymentRefundSucceeded (возврат платежа прошел успешно)",
+            "PaymentRefunded": "PaymentRefunded (платеж успешно возвращен)",
+            "PaymentStarted": "PaymentStarted (создан платеж)"
+        }
+    },
     "wallet": {
         "destinationsTopicEventType": {
             "DestinationAuthorized": "DestinationAuthorized (Приемник средств успешно авторизован)",
