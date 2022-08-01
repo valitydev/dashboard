@@ -111,12 +111,6 @@
     },
     "resetSearchParams": "Сбросить параметры поиска",
     "save": "Сохранить",
-    "sectionLinks": {
-        "claims": "Заявки",
-        "main": "Главная",
-        "payments": "Платежи",
-        "wallets": "Кошельки"
-    },
     "showMore": "Показать еще",
     "unknownError": "Неизвестная ошибка",
     "update": "Обновить",
