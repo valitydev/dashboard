@@ -89,59 +89,6 @@
         "unknownError": "Неизвестная ошибка"
     },
     "ok": "OK",
-    "paymentErrors": {
-        "authorization_failed": {
-            "account_blocked": "Аккаунт заблокирован",
-            "account_limit_exceeded": {
-                "amount": "Лимит на сумму",
-                "message": "Превышен лимит на счете плательщика",
-                "number": "Лимит на количество попыток",
-                "unknown": "Объект лимита неизвестен"
-            },
-            "account_not_found": "Аккаунт не найден",
-            "account_stolen": "Аккаунт украден",
-            "insufficient_funds": "Не хватает средств",
-            "merchant_blocked": "Мерчант заблокирован",
-            "message": "Ошибка авторизации платежа у провайдера",
-            "operation_blocked": "Операция платежа заблокирована",
-            "payment_tool_rejected": {
-                "bank_card_rejected": {
-                    "card_expired": "Истёк срок действия карты",
-                    "card_holder_invalid": "Неверный владелец карты",
-                    "card_number_invalid": "Неверный номер карты",
-                    "cvv_invalid": "Неверный CVV код",
-                    "issuer_not_found": "Эмитент не найден",
-                    "message": "Банковская карта отклонена",
-                    "unknown": "Причина неизвестна"
-                },
-                "message": "Платёжный интрумент отклонён",
-                "unknown": "Неизвестный платёжный интрумент"
-            },
-            "provider_limit_exceeded": {
-                "amount": "Лимит на сумму",
-                "message": "Превышен лимит на мерчанта у провайдера (вас или платформы RBKmoney)",
-                "number": "Лимит на количество попыток",
-                "unknown": "Объект лимита неизвестен"
-            },
-            "rejected_by_issuer": "Отклонено эмитентом",
-            "security_policy_violated": "Нарушения политики безопасности",
-            "temporarily_unavailable": "Временная недоступность третьих сторон",
-            "unknown": "Неизвестная ошибка авторизации"
-        },
-        "no_route_found": {
-            "message": "Маршрут не найден",
-            "risk_score_is_too_high": "Операция с высоким риском",
-            "unknown": "Неизвестная ошибка при поиске маршрута"
-        },
-        "preauthorization_failed": {
-            "message": "Ошибка предавторизации (3DS)",
-            "three_ds_failed": "Предавторизация закончилась неудачей",
-            "three_ds_not_finished": "Предавторизация не закончена",
-            "unknown": "Неизвестная ошибка предавторизации"
-        },
-        "rejected_by_inspector": "Отклонено сервисом противодействия мошенничеству",
-        "timeout": "Превышен лимит ожидания"
-    },
     "paymentFlow": {
         "hold": "С удержанием",
         "instant": "Мгновенный"
