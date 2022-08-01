@@ -139,16 +139,6 @@
         "wallets": "Кошельки"
     },
     "send": "Отправить",
-    "shortTimeUnits": {
-        "day": "д.",
-        "hour": "ч.",
-        "millisecond": "мсек.",
-        "minute": "мин.",
-        "month": "мес.",
-        "second": "сек.",
-        "week": "нед.",
-        "year": "г."
-    },
     "showMore": "Показать еще",
     "today": "Сегодня",
     "unknownError": "Неизвестная ошибка",

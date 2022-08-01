@@ -22,6 +22,18 @@
         "forUpload": "Для загрузки переместите файлы в область, или",
         "uploading": "Загрузка..."
     },
+    "humanizeDuration": {
+        "shortUnit": {
+            "day": "д.",
+            "hour": "ч.",
+            "millisecond": "мсек.",
+            "minute": "мин.",
+            "month": "мес.",
+            "second": "сек.",
+            "week": "нед.",
+            "year": "г."
+        }
+    },
     "selectSearchField": {
         "noEntriesFoundLabel": "Ничего не найдено",
         "searchPlaceholder": "Поиск..."

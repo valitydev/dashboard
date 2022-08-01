@@ -31,7 +31,8 @@ export class HumanizeDurationService {
     }
 
     get shortEnglishHumanizer(): humanizeDuration.HumanizerOptions {
-        const getLocalizedUnitFn = (unit: string) => () => this.transloco.translate(`shortTimeUnits.${unit}`);
+        const getLocalizedUnitFn = (unit: keyof ReturnType<HumanizeDurationService['getUnitLabels']>) => () =>
+            this.getUnitLabels()[unit];
         return {
             language: 'short',
             languages: {
@@ -87,5 +88,18 @@ export class HumanizeDurationService {
 
     isDiff(value: Value): value is number {
         return typeof value === 'number';
+    }
+
+    private getUnitLabels() {
+        return {
+            day: this.transloco.translate('humanizeDuration.shortUnit.day', null, 'core-components'),
+            hour: this.transloco.translate('humanizeDuration.shortUnit.hour', null, 'core-components'),
+            millisecond: this.transloco.translate('humanizeDuration.shortUnit.millisecond', null, 'core-components'),
+            minute: this.transloco.translate('humanizeDuration.shortUnit.minute', null, 'core-components'),
+            month: this.transloco.translate('humanizeDuration.shortUnit.month', null, 'core-components'),
+            second: this.transloco.translate('humanizeDuration.shortUnit.second', null, 'core-components'),
+            week: this.transloco.translate('humanizeDuration.shortUnit.week', null, 'core-components'),
+            year: this.transloco.translate('humanizeDuration.shortUnit.year', null, 'core-components'),
+        };
     }
 }
