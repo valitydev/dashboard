@@ -1,4 +1,8 @@
-<div *transloco="let t; scope: 'wallets'; read: 'wallets.walletWithdrawals'" fxLayout="column" fxLayoutGap="16px">
+<div
+    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.wallets.walletWithdrawals'"
+    fxLayout="column"
+    fxLayoutGap="16px"
+>
     <div class="dsh-subheading-1">
         {{ t('withdrawal') }} <span dshTextColor="secondary">#{{ withdrawal.id }}</span>
     </div>

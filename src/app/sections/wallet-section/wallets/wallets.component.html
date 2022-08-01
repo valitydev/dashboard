@@ -1,4 +1,9 @@
-<div class="dsh-wallets" fxLayout="column" fxLayoutGap="32px" *transloco="let t; scope: 'wallets'; read: 'wallets'">
+<div
+    class="dsh-wallets"
+    fxLayout="column"
+    fxLayoutGap="32px"
+    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.wallets'"
+>
     <dsh-wallets-list
         [wallets]="wallets$ | async"
         [expandedId]="expandedId$ | async"

@@ -1,4 +1,8 @@
-<div *transloco="let t; scope: 'wallets'; read: 'wallets.walletDeposits'" fxLayout="column" fxLayoutGap="24px">
+<div
+    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.wallets.walletDeposits'"
+    fxLayout="column"
+    fxLayoutGap="24px"
+>
     <div class="dsh-title">{{ t('title') }}</div>
     <ng-container *ngFor="let deposit of deposits$ | async as deposits; index as i">
         <dsh-wallet-deposit-details [deposit]="deposit"></dsh-wallet-deposit-details>
