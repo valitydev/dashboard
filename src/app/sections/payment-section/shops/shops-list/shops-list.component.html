@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayoutGap="16px" *transloco="let s; scope: 'shops'; read: 'shops'">
+<div fxLayout="column" fxLayoutGap="16px" *transloco="let s; scope: 'payment-section'; read: 'paymentSection.shops'">
     <dsh-last-updated (update)="refreshList()" [lastUpdated]="lastUpdated"></dsh-last-updated>
     <dsh-shop-row-header></dsh-shop-row-header>
     <ng-container *ngIf="isLoading && !isListExist; else shopsPanelsList">
@@ -21,7 +21,7 @@
                 <dsh-card fxFlexFill fxLayout="column" fxLayoutGap="32px">
                     <dsh-accordion-item-content-header
                         (collapse)="accordionItem.collapse($event)"
-                        *transloco="let s; scope: 'shops'; read: 'shops'"
+                        *transloco="let s; scope: 'payment-section'; read: 'paymentSection.shops'"
                         >{{ s('panel.details') }}</dsh-accordion-item-content-header
                     >
                     <dsh-shop-details [shop]="shop" (updateData)="refreshList()"></dsh-shop-details>
@@ -32,7 +32,7 @@
     <dsh-show-more-panel *ngIf="hasMore" (showMore)="showMoreElements()"></dsh-show-more-panel>
     <ng-container *ngIf="isEmptyList">
         <dsh-empty-search-result
-            *transloco="let s; scope: 'shops'; read: 'shops'"
+            *transloco="let s; scope: 'payment-section'; read: 'paymentSection.shops'"
             [text]="s('emptySearchResult')"
         ></dsh-empty-search-result>
     </ng-container>
