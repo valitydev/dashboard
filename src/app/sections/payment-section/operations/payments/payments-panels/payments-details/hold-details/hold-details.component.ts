@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { PaymentFlowHold, PaymentSearchResult, PaymentStatus } from '@vality/swag-anapi-v2';
+import { PaymentFlowHold, PaymentSearchResult } from '@vality/swag-anapi-v2';
 import { filter } from 'rxjs/operators';
 
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
@@ -20,32 +20,15 @@ export class HoldDetailsComponent {
 
     @Output() statusChanged = new EventEmitter<PaymentIds>();
 
+    onHoldExpirationEnum = PaymentFlowHold.OnHoldExpirationEnum;
+    statusEnum = PaymentSearchResult.StatusEnum;
+
     get flowHold(): PaymentFlowHold {
         return this.payment.flow as PaymentFlowHold;
     }
 
     get holdDate(): string {
         return this.flowHold.heldUntil?.toString() ?? '';
-    }
-
-    get activeHoldText(): string {
-        switch (this.flowHold.onHoldExpiration) {
-            case PaymentFlowHold.OnHoldExpirationEnum.Capture:
-                return 'holdWithCapture';
-            case PaymentFlowHold.OnHoldExpirationEnum.Cancel:
-                return 'holdWithCancel';
-        }
-    }
-
-    get expiredHoldText(): string {
-        switch (this.payment.status) {
-            case PaymentStatus.StatusEnum.Captured:
-                return 'capturedHoldMessage';
-            case PaymentStatus.StatusEnum.Cancelled:
-                return 'cancelledHoldMessage';
-            default:
-                return '';
-        }
     }
 
     constructor(private cancelHoldService: CancelHoldService, private createHoldService: CreateHoldService) {}

@@ -1,4 +1,4 @@
-<ng-container *transloco="let t; scope: 'payment-details'; read: 'paymentDetails.details'">
+<ng-container *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentDetails.details'">
     <div gdColumns="1fr" gdColumns.gt-sm="1fr 1fr 1fr" gdGap="24px">
         <div class="payment-main-info-amount mat-body-1">
             {{ payment.amount | amountCurrency: payment.currency }}

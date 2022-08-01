@@ -1,4 +1,4 @@
-<ng-container *transloco="let t; scope: 'payment-details'; read: 'paymentDetails.holdDetails'">
+<ng-container *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentDetails.holdDetails'">
     <dsh-base-dialog [title]="t('cancelTitle')" (cancel)="decline()">
         <form [formGroup]="form">
             <dsh-max-length-input

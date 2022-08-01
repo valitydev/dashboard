@@ -159,6 +159,70 @@
             "refunds": "ВОЗВРАТЫ"
         }
     },
+    "paymentDetails": {
+        "additionalInfo": {
+            "approvalCode": "Authorization Approval Code",
+            "externalId": "External ID",
+            "rrn": "Retrieval Reference Number",
+            "title": "Дополнительная информация"
+        },
+        "details": {
+            "chargeAmount": "Сумма зачисления",
+            "error": "Ошибка проведения платежа",
+            "fee": "Комиссия"
+        },
+        "holdDetails": {
+            "acceptTitle": "Подтверждение удержания",
+            "actions": {
+                "accept": "Подтвердить",
+                "deny": "Отменить"
+            },
+            "activeHoldTutorial": "Вы можете подтвердить (зачисление в вашу пользу) или отменить удержание (возврат плательщику).",
+            "amount": "Сумма подтверждения",
+            "availableAmount": "Доступная сумма",
+            "cancelTitle": "Отмена удержания",
+            "cancelledHoldMessage": "Средства были возвращены плательщику.",
+            "capturedHoldMessage": "Средства были зачислены в вашу пользу.",
+            "holdDate": "Срок удержания до",
+            "holdWithCancel": "После истечения срока удержания, средства будут возвращены плательщику.",
+            "holdWithCapture": "После истечения срока удержания, средства будут зачислены в вашу пользу.",
+            "partialAccept": "Частичное подтверждение",
+            "reason": "Причина",
+            "title": "Платеж совершен с удержанием денежных средств"
+        },
+        "invoiceDetails": {
+            "title": "Инвойс"
+        },
+        "payerDetails": {
+            "title": "Плательщик"
+        },
+        "paymentTool": {
+            "title": "Средство оплаты"
+        },
+        "refunds": {
+            "createRefund": {
+                "amount": "Сумма возврата",
+                "availableRefund": "Доступно к возврату",
+                "balanceLoading": "Данные баланса загружаются ...",
+                "partialRefund": "Частичный возврат",
+                "pending": "Запрос на возврат отправлен",
+                "reason": "Причина возврата",
+                "successful": "Возврат успешно произведен",
+                "title": "Совершить возврат"
+            },
+            "errors": {
+                "invalidRequest": "Входные параметры неверные",
+                "invoicePaymentAmountExceeded": "Превышена доступная к возврату сумма"
+            },
+            "title": "Возвраты"
+        },
+        "shopDetails": {
+            "title": "Магазин"
+        },
+        "statusDetailItem": {
+            "status": "Статус"
+        }
+    },
     "paymentLink": {
         "create": "Сформировать ссылку на оплату",
         "errors": {
