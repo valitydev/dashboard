@@ -1,4 +1,4 @@
-<div *transloco="let t; scope: 'withdrawal-info'; read: 'withdrawalInfo'" fxLayout="column" fxLayoutGap="20px">
+<div *transloco="let t; scope: 'components'; read: 'components.withdrawalInfo'" fxLayout="column" fxLayoutGap="20px">
     <div fxLayout fxLayout.sm="column" fxLayoutGap="10px">
         <dsh-details-item fxFlex [title]="t('status')">
             {{ withdrawal.status }}
@@ -22,7 +22,8 @@
         }}</dsh-details-item>
     </div>
     <dsh-details-item *ngIf="withdrawal.failure" fxFlex [title]="t('error')">
-        <div *transloco="let errors; scope: 'withdrawal-info'; read: 'withdrawalInfo.errors'" class="mat-body-1">
+        <div *transloco="let errors; scope: 'components'; read: 'components.withdrawalInfo.errors'" class="mat-body-1">
+            <!-- t(failed) -->
             {{ errors(withdrawal.failure.code) }}
         </div>
     </dsh-details-item>
