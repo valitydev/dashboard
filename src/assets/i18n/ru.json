@@ -3,14 +3,6 @@
     "any": "Любой",
     "back": "Назад",
     "cancel": "Отмена",
-    "claimStatus": {
-        "accepted": "Одобрена",
-        "denied": "Отклонена",
-        "pending": "В ожидании",
-        "pendingAcceptance": "В ожидании одобрения",
-        "review": "На рассмотрении",
-        "revoked": "Отозвана"
-    },
     "claimType": {
         "questionary": "Заявка на подключение"
     },

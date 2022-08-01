@@ -77,6 +77,16 @@
             "provisionOfService": "Акт об оказании услуг"
         }
     },
+    "claimManagement": {
+        "claimStatus": {
+            "accepted": "Одобрена",
+            "denied": "Отклонена",
+            "pending": "В ожидании",
+            "pendingAcceptance": "В ожидании одобрения",
+            "review": "На рассмотрении",
+            "revoked": "Отозвана"
+        }
+    },
     "darkApi": {
         "refundStatus": {
             "failed": "Неуспешен",
