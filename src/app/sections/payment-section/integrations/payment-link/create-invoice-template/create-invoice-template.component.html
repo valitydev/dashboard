@@ -131,13 +131,7 @@
     </div>
 
     <div fxLayout fxLayoutGap="24px" fxLayoutAlign="space-between" *transloco="let t">
-        <button
-            *transloco="let l; scope: 'payment-link'; read: 'paymentLink'"
-            dsh-text-button
-            color="accent"
-            (click)="clear()"
-            [disabled]="(isLoading$ | async) || form.pristine"
-        >
+        <button dsh-text-button color="accent" (click)="clear()" [disabled]="(isLoading$ | async) || form.pristine">
             {{ t('clearForm') }}
         </button>
         <button
