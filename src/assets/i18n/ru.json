@@ -2,20 +2,6 @@
     "ago": "назад",
     "any": "Любой",
     "back": "Назад",
-    "bankCardPaymentSystem": {
-        "amex": "American Express",
-        "dankort": "Dankort",
-        "dinersclub": "Diners Club International",
-        "discover": "Discover Card",
-        "forbrugsforeningen": "Forbrugsforeningen",
-        "jcb": "JCB",
-        "maestro": "Maestro",
-        "mastercard": "Mastercard",
-        "nspkmir": "MIR",
-        "unionpay": "UnionPay",
-        "visa": "Visa",
-        "visaelectron": "Visa Electron"
-    },
     "bankCardTokenProvider": {
         "applepay": "Apple Pay",
         "googlepay": "Google Pay",

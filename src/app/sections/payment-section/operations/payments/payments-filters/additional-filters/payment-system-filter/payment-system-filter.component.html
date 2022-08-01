@@ -10,9 +10,7 @@
         >
             <ng-container *ngFor="let system of paymentSystems">
                 <ng-template [dshExpandableRadioGroupItem]="system">
-                    <span *transloco="let bankCardPaymentSystem; read: 'bankCardPaymentSystem'">{{
-                        bankCardPaymentSystem(system)
-                    }}</span>
+                    <span>{{ (bankCardPaymentSystemDict$ | async)?.[system] }}</span>
                 </ng-template>
             </ng-container>
         </dsh-expandable-radio-group>

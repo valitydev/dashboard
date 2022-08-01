@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { StatusOffsetCount, InvoiceStatus, Report } from '@vality/swag-anapi-v2';
+import { BankCardPaymentSystem } from '@vality/swag-anapi-v2/lib/model/bankCardPaymentSystem';
 
 import { DictionaryService } from '../utils';
 
@@ -68,6 +69,25 @@ export class AnapiDictionaryService {
         created: this.t.translate('anapi.reportStatus.created', null, 'dictionary'),
         canceled: this.t.translate('anapi.reportStatus.canceled', null, 'dictionary'),
         pending: this.t.translate('anapi.reportStatus.pending', null, 'dictionary'),
+    }));
+
+    bankCardPaymentSystem$ = this.dictionaryService.create<BankCardPaymentSystem>(() => ({
+        amex: this.t.translate('anapi.bankCardPaymentSystem.amex', null, 'dictionary'),
+        dankort: this.t.translate('anapi.bankCardPaymentSystem.dankort', null, 'dictionary'),
+        dinersclub: this.t.translate('anapi.bankCardPaymentSystem.dinersclub', null, 'dictionary'),
+        discover: this.t.translate('anapi.bankCardPaymentSystem.discover', null, 'dictionary'),
+        forbrugsforeningen: this.t.translate('anapi.bankCardPaymentSystem.forbrugsforeningen', null, 'dictionary'),
+        jcb: this.t.translate('anapi.bankCardPaymentSystem.jcb', null, 'dictionary'),
+        maestro: this.t.translate('anapi.bankCardPaymentSystem.maestro', null, 'dictionary'),
+        mastercard: this.t.translate('anapi.bankCardPaymentSystem.mastercard', null, 'dictionary'),
+        nspkmir: this.t.translate('anapi.bankCardPaymentSystem.nspkmir', null, 'dictionary'),
+        unionpay: this.t.translate('anapi.bankCardPaymentSystem.unionpay', null, 'dictionary'),
+        visa: this.t.translate('anapi.bankCardPaymentSystem.visa', null, 'dictionary'),
+        visaelectron: this.t.translate('anapi.bankCardPaymentSystem.visaelectron', null, 'dictionary'),
+        elo: this.t.translate('anapi.bankCardPaymentSystem.elo', null, 'dictionary'),
+        rupay: this.t.translate('anapi.bankCardPaymentSystem.rupay', null, 'dictionary'),
+        dummy: this.t.translate('anapi.bankCardPaymentSystem.dummy', null, 'dictionary'),
+        uzcard: this.t.translate('anapi.bankCardPaymentSystem.uzcard', null, 'dictionary'),
     }));
 
     constructor(private t: TranslocoService, private dictionaryService: DictionaryService) {}
