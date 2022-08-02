@@ -4,7 +4,6 @@ module.exports = {
         input: './',
         fileFormat: 'json',
         unflat: true,
-        addMissingKeys: true,
         sort: true,
     },
 };
