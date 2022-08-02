@@ -139,6 +139,11 @@
         }
     },
     "wallet": {
+        "depositRevertStatus": {
+            "Failed": "Неуспешно",
+            "Pending": "В процессе",
+            "Succeeded": "Успешно"
+        },
         "destinationsTopicEventType": {
             "DestinationAuthorized": "DestinationAuthorized (Приемник средств успешно авторизован)",
             "DestinationCreated": "DestinationCreated (Приемник средств создан)",

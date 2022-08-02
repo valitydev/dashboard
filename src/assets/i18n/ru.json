@@ -15,11 +15,6 @@
     "copied": "Скопировано",
     "copyFailed": "Ошибка копирования",
     "create": "Создать",
-    "depositRevertStatus": {
-        "Failed": "Неуспешно",
-        "Pending": "В процессе",
-        "Succeeded": "Успешно"
-    },
     "depositStatus": {
         "Failed": "Неуспешно",
         "Pending": "В процессе",

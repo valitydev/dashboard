@@ -8,7 +8,7 @@ import { LayoutModule } from '@dsh/components/layout';
 
 import { ApiModelRefsModule, AmountCurrencyModule } from '../../../pipes';
 import { DepositRevertDetailsComponent } from './deposit-revert-details.component';
-import { DepositRevertStatusColorPipe, DepositRevertStatusNamePipe } from './pipes';
+import { DepositRevertStatusColorPipe } from './pipes';
 
 @NgModule({
     imports: [
@@ -21,7 +21,7 @@ import { DepositRevertStatusColorPipe, DepositRevertStatusNamePipe } from './pip
         LayoutModule,
         AmountCurrencyModule,
     ],
-    declarations: [DepositRevertDetailsComponent, DepositRevertStatusColorPipe, DepositRevertStatusNamePipe],
-    exports: [DepositRevertDetailsComponent, DepositRevertStatusColorPipe, DepositRevertStatusNamePipe],
+    declarations: [DepositRevertDetailsComponent, DepositRevertStatusColorPipe],
+    exports: [DepositRevertDetailsComponent, DepositRevertStatusColorPipe],
 })
 export class DepositRevertDetailsModule {}

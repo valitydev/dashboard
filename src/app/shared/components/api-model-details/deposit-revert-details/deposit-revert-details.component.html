@@ -9,7 +9,7 @@
         </dsh-details-item>
         <dsh-details-item fxFlex="33" [title]="t('status')">
             <dsh-status [color]="revert.status | depositRevertStatusColor">{{
-                revert.status | depositRevertStatusName
+                (depositRevertStatusDict$ | async)?.[revert.status]
             }}</dsh-status>
         </dsh-details-item>
         <dsh-details-item fxFlex="33" [title]="t('createdAt')">
