@@ -7,7 +7,7 @@
     <dsh-invoices-filter fxHide.lt-md formControlName="invoiceIDs"></dsh-invoices-filter>
     <dsh-shops-filter fxHide.lt-md formControlName="shopIDs" [shops]="shops$ | async"></dsh-shops-filter>
     <dsh-card-bin-pan-filter fxHide.lt-md formControlName="binPan"></dsh-card-bin-pan-filter>
-    <ng-container *transloco="let t; read: 'filters'">
+    <ng-container *transloco="let t; scope: 'core-components'; read: 'coreComponents.additionalFilters'">
         <dsh-filter-button [active]="isAdditionalFilterApplied$ | async" (click)="openFiltersDialog()">
             {{ t('additionalFilters') }}
         </dsh-filter-button>

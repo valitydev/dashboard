@@ -1,4 +1,8 @@
-<dsh-base-dialog *transloco="let t; read: 'filters'" [title]="t('additionalFilters')" (cancel)="close()">
+<dsh-base-dialog
+    *transloco="let t; scope: 'core-components'; read: 'coreComponents.additionalFilters'"
+    [title]="t('additionalFilters')"
+    (cancel)="close()"
+>
     <div [formGroup]="control" fxLayout="column" fxLayoutGap="24px">
         <dsh-main-info-filters formControlName="mainInfo"></dsh-main-info-filters>
         <mat-divider></mat-divider>

@@ -1,4 +1,9 @@
 {
+    "additionalFilters": {
+        "additionalFilters": "Другие фильтры",
+        "clearParams": "Сбросить параметры",
+        "save": "Сохранить"
+    },
     "confirmActionDialog": {
         "cancel": "Отмена",
         "confirm": "Подтвердить",
