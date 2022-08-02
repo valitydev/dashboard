@@ -61,6 +61,9 @@
         "create": "Сформировать ссылку на оплату",
         "title": "Создание платежной ссылки"
     },
+    "digitalWallet": {
+        "DigitalWalletDetailsQIWI": "QIWI"
+    },
     "integrations": {
         "tabs": {
             "api-key": "API КЛЮЧ",
