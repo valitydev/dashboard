@@ -31,8 +31,8 @@
         </div>
     </form>
     <ng-container dshBaseDialogActions>
-        <button *transloco="let c" dsh-button color="accent" [disabled]="form.invalid" (click)="confirm()">
-            {{ c('confirm') }}
+        <button dsh-button color="accent" [disabled]="form.invalid" (click)="confirm()">
+            {{ t('confirm') }}
         </button>
     </ng-container>
 </dsh-base-dialog>
