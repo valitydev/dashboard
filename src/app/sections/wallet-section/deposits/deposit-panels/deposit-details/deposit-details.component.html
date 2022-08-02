@@ -17,7 +17,7 @@
     <div fxLayout="row">
         <dsh-details-item fxFlex="33" [title]="t('status')">
             <dsh-status [color]="deposit.status | depositStatusColor">{{
-                deposit.status | depositStatusName
+                (depositStatusDict$ | async)?.[deposit.status]
             }}</dsh-status>
         </dsh-details-item>
         <dsh-details-item fxFlex="33" [title]="t('wallet')">

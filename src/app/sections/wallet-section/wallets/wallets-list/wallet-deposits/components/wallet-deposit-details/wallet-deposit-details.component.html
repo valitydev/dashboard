@@ -18,7 +18,7 @@
         }}</dsh-details-item>
         <dsh-details-item [title]="t('status')"
             ><dsh-status [color]="deposit.status | depositStatusColor">{{
-                deposit.status | depositStatusName
+            (depositStatusDict$ | async)?.[deposit.status]
             }}</dsh-status></dsh-details-item
         >
         <dsh-details-item [title]="t('createdAt')">{{

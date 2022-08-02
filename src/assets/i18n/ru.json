@@ -15,11 +15,6 @@
     "copied": "Скопировано",
     "copyFailed": "Ошибка копирования",
     "create": "Создать",
-    "depositStatus": {
-        "Failed": "Неуспешно",
-        "Pending": "В процессе",
-        "Succeeded": "Успешно"
-    },
     "emptyData": "Данные отсутствуют",
     "errorOccurred": "Произошла ошибка",
     "errors": {
