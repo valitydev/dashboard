@@ -203,6 +203,10 @@
         "activeLabel": "Выбранные инвойсы",
         "label": "Инвойсы"
     },
+    "lastUpdated": {
+        "lastUpdate": "Последнее обновление",
+        "update": "Обновить"
+    },
     "newContractorForm": {
         "form": {
             "actualAddress": "Почтовый адрес места нахождения",
