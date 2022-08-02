@@ -128,6 +128,14 @@
             "PaymentRefundSucceeded": "PaymentRefundSucceeded (возврат платежа прошел успешно)",
             "PaymentRefunded": "PaymentRefunded (платеж успешно возвращен)",
             "PaymentStarted": "PaymentStarted (создан платеж)"
+        },
+        "paymentStatus": {
+            "cancelled": "Отменен",
+            "captured": "Подтвержден",
+            "failed": "Неуспешен",
+            "pending": "Запущен",
+            "processed": "Обработан",
+            "refunded": "Возвращен"
         }
     },
     "wallet": {

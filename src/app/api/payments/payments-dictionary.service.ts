@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
+import { PaymentStatus } from '@vality/swag-payments';
 import { CustomersTopic } from '@vality/swag-payments/lib/model/customers-topic';
 import { InvoicesTopic } from '@vality/swag-payments/lib/model/invoices-topic';
 
@@ -60,6 +61,15 @@ export class PaymentsDictionaryService {
             'dictionary'
         ),
         /* eslint-enable @typescript-eslint/naming-convention */
+    }));
+
+    paymentStatus$ = this.dictionaryService.create<PaymentStatus.StatusEnum>(() => ({
+        pending: this.t.translate('payments.paymentStatus.pending', null, 'dictionary'),
+        processed: this.t.translate('payments.paymentStatus.processed', null, 'dictionary'),
+        captured: this.t.translate('payments.paymentStatus.captured', null, 'dictionary'),
+        cancelled: this.t.translate('payments.paymentStatus.cancelled', null, 'dictionary'),
+        refunded: this.t.translate('payments.paymentStatus.refunded', null, 'dictionary'),
+        failed: this.t.translate('payments.paymentStatus.failed', null, 'dictionary'),
     }));
 
     constructor(private t: TranslocoService, private dictionaryService: DictionaryService) {}

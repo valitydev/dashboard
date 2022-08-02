@@ -3,6 +3,7 @@ import { PaymentStatus } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
 import isObject from 'lodash-es/isObject';
 
+import { PaymentsDictionaryService } from '@dsh/api/payments';
 import { ComponentChange, ComponentChanges } from '@dsh/type-utils';
 
 import { StatusColor } from '../../../../../../../../../theme-manager';
@@ -18,6 +19,9 @@ export class PaymentStatusComponent implements OnChanges {
 
     paymentColor: StatusColor;
     paymentStatus: string;
+    paymentStatusDict$ = this.paymentsDictionaryService.paymentStatus$;
+
+    constructor(private paymentsDictionaryService: PaymentsDictionaryService) {}
 
     ngOnChanges(changes: ComponentChanges<PaymentStatusComponent>): void {
         if (isObject(changes.status)) {

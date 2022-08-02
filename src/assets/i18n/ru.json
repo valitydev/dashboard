@@ -81,14 +81,6 @@
         "bankCard": "Банковская карта",
         "paymentTerminal": "Терминал"
     },
-    "paymentStatus": {
-        "cancelled": "Отменен",
-        "captured": "Подтвержден",
-        "failed": "Неуспешен",
-        "pending": "Запущен",
-        "processed": "Обработан",
-        "refunded": "Возвращен"
-    },
     "paymentTerminalProvider": {
         "alipay": "Alipay",
         "euroset": "Евросеть",
