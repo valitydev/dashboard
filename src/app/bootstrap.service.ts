@@ -39,7 +39,9 @@ export class BootstrapService {
         return concat(this.initParty(), this.initShop(), this.initOrganization()).pipe(
             takeLast(1),
             catchError((err) => {
-                this.errorService.error(new CommonError(this.transloco.translate('errors.bootstrapAppFailed')));
+                this.errorService.error(
+                    new CommonError(this.transloco.translate('app.errors.bootstrapAppFailed', null, 'components'))
+                );
                 return throwError(err);
             })
         );

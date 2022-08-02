@@ -56,6 +56,11 @@
             "representativePosition": "Должность ЕИО/представителя"
         }
     },
+    "app": {
+        "errors": {
+            "bootstrapAppFailed": "Ошибка инициализации"
+        }
+    },
     "claimField": {
         "label": "Идентификатор заявки"
     },

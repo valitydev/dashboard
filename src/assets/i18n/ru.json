@@ -13,7 +13,6 @@
     "emptyData": "Данные отсутствуют",
     "errorOccurred": "Произошла ошибка",
     "errors": {
-        "bootstrapAppFailed": "Ошибка инициализации",
         "common": "Произошла ошибка",
         "requestReviewClaimByIDFailed": "Не удалось отправить заявку на рассмотрение",
         "revokeClaimByIDFailed": "Не удалось отозвать заявку",
