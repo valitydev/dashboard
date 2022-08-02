@@ -287,6 +287,8 @@
         "unknownError": "Неизвестная ошибка"
     },
     "paymentLink": {
+        "back": "Назад",
+        "clearForm": "Очистить форму",
         "create": "Сформировать ссылку на оплату",
         "errors": {
             "createPaymentLinkError": "Не удалось создать платежную ссылку"

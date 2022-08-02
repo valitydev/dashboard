@@ -225,6 +225,9 @@
     "orgDetailsForm": {
         "title": "Сведения об организации"
     },
+    "pageNotFound": {
+        "back": "Назад"
+    },
     "paymentDetails": {
         "amount": "Сумма списания",
         "status": "Статус",
