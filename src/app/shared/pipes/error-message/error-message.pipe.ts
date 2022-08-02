@@ -10,6 +10,6 @@ export class ErrorMessagePipe implements PipeTransform {
     transform(err: unknown): string {
         if (!err) return '';
         if (err instanceof CommonError) return err.message;
-        return this.transloco.translate('errorOccurred');
+        return this.transloco.translate('errorMessage.errorOccurred', null, 'pipes');
     }
 }

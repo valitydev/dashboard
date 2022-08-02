@@ -1,4 +1,7 @@
 {
+    "errorMessage": {
+        "errorOccurred": "Произошла ошибка"
+    },
     "invoiceTemplateCostTypeName": {
         "InvoiceTemplateLineCostFixed": "Фиксированная",
         "InvoiceTemplateLineCostRange": "Диапазон",
