@@ -27,13 +27,16 @@ export class PaymentErrorMessagePipe implements PipeTransform {
             if (isObject(subError)) {
                 curError = subError;
                 const curMessage = translationPath?.['message'];
-                message = curMessage && typeof curMessage !== 'object' ? curMessage : this.t.translate('unknownError');
+                message =
+                    curMessage && typeof curMessage !== 'object'
+                        ? curMessage
+                        : this.t.translate('paymentErrorMessage.unknownError', null, 'payment-section');
             } else {
                 curError = null;
                 message =
                     translationPath && typeof translationPath !== 'object'
                         ? translationPath
-                        : this.t.translate('unknownError');
+                        : this.t.translate('paymentErrorMessage.unknownError', null, 'payment-section');
             }
 
             errorsMessage = isEmpty(errorsMessage) ? message : `${errorsMessage} -> ${message}`;
