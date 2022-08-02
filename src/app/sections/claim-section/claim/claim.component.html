@@ -23,13 +23,8 @@
         </ng-container>
         <ng-template #content>
             <dsh-card>
-                <dsh-status
-                    class="claim-status"
-                    *transloco="let claimStatus; read: 'claimStatus'"
-                    [color]="claimStatus$ | async | claimStatusColor"
-                    mark="false"
-                >
-                    {{ claimStatus(claimStatus$ | async) }}
+                <dsh-status class="claim-status" [color]="claimStatus$ | async | claimStatusColor" mark="false">
+                    {{ (claimStatusDict$ | async)?.[claimStatus$ | async] }}
                 </dsh-status>
                 <div fxLayout="column" fxLayoutGap="24px">
                     <dsh-conversation></dsh-conversation>

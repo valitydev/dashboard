@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { pluck } from 'rxjs/operators';
 
+import { ClaimManagementDictionaryService } from '@dsh/api/claim-management';
+
 import { ReceiveClaimService } from './receive-claim.service';
 import { ReviewClaimService } from './review-claim.service';
 import { RevokeClaimService } from './revoke-claim.service';
@@ -27,11 +29,13 @@ export class ClaimComponent implements OnInit {
     revokeAvailable$ = this.revokeClaimService.revokeAvailable$;
     reviewAvailable$ = this.reviewClaimService.reviewAvailable$;
     reviewInProgress$ = this.reviewClaimService.inProgress$;
+    claimStatusDict$ = this.claimManagementDictionaryService.claimStatus$;
 
     constructor(
         private receiveClaimService: ReceiveClaimService,
         private revokeClaimService: RevokeClaimService,
-        private reviewClaimService: ReviewClaimService
+        private reviewClaimService: ReviewClaimService,
+        private claimManagementDictionaryService: ClaimManagementDictionaryService
     ) {}
 
     ngOnInit() {
