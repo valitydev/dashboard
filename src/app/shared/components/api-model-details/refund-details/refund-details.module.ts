@@ -9,11 +9,10 @@ import { LayoutModule } from '@dsh/components/layout';
 
 import { RefundDetailsComponent } from './refund-details.component';
 import { RefundStatusColorPipe } from './refund-status-color.pipe';
-import { RefundStatusNamePipe } from './refund-status-name.pipe';
 
 @NgModule({
     imports: [TranslocoModule, LayoutModule, FlexLayoutModule, CommonModule, StatusModule, AmountCurrencyModule],
-    declarations: [RefundDetailsComponent, RefundStatusColorPipe, RefundStatusNamePipe],
-    exports: [RefundDetailsComponent, RefundStatusColorPipe, RefundStatusNamePipe],
+    declarations: [RefundDetailsComponent, RefundStatusColorPipe],
+    exports: [RefundDetailsComponent, RefundStatusColorPipe],
 })
 export class RefundDetailsModule {}

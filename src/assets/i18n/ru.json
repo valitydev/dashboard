@@ -71,11 +71,6 @@
         "bankCard": "Банковская карта",
         "paymentTerminal": "Терминал"
     },
-    "refundStatus": {
-        "failed": "Неуспешно",
-        "pending": "В процессе",
-        "succeeded": "Успешно"
-    },
     "reportStatus": {
         "pending": "В процессе",
         "processed": "Готов"

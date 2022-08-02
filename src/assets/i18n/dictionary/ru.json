@@ -66,6 +66,11 @@
             "digital_wallet": "Кошелек",
             "payment_terminal": "Терминал"
         },
+        "refundStatus": {
+            "failed": "Неуспешно",
+            "pending": "В процессе",
+            "succeeded": "Успешно"
+        },
         "reportStatus": {
             "canceled": "Отменен",
             "created": "Сформирован",

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-import { StatusOffsetCount, InvoiceStatus, Report } from '@vality/swag-anapi-v2';
+import { StatusOffsetCount, InvoiceStatus, Report, RefundStatus } from '@vality/swag-anapi-v2';
 import { BankCardPaymentSystem } from '@vality/swag-anapi-v2/lib/model/bankCardPaymentSystem';
 import { BankCardTokenProvider } from '@vality/swag-anapi-v2/lib/model/bankCardTokenProvider';
 
@@ -96,6 +96,12 @@ export class AnapiDictionaryService {
         googlepay: this.t.translate('anapi.bankCardTokenProvider.googlepay', null, 'dictionary'),
         samsungpay: this.t.translate('anapi.bankCardTokenProvider.samsungpay', null, 'dictionary'),
         yandexpay: this.t.translate('anapi.bankCardTokenProvider.yandexpay', null, 'dictionary'),
+    }));
+
+    refundStatus$ = this.dictionaryService.create<RefundStatus.StatusEnum>(() => ({
+        pending: this.t.translate('anapi.refundStatus.pending', null, 'dictionary'),
+        succeeded: this.t.translate('anapi.refundStatus.succeeded', null, 'dictionary'),
+        failed: this.t.translate('anapi.refundStatus.failed', null, 'dictionary'),
     }));
 
     constructor(private t: TranslocoService, private dictionaryService: DictionaryService) {}
