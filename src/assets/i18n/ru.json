@@ -7,11 +7,6 @@
     "clearForm": "Очистить форму",
     "commonError": "Что-то пошло не так",
     "confirm": "Подтвердить",
-    "confirmActionDialog": {
-        "cancel": "Отмена",
-        "confirm": "Подтвердить",
-        "subheading": "Подтвердите действие"
-    },
     "copied": "Скопировано",
     "copyFailed": "Ошибка копирования",
     "create": "Создать",

@@ -1,4 +1,9 @@
 {
+    "confirmActionDialog": {
+        "cancel": "Отмена",
+        "confirm": "Подтвердить",
+        "subheading": "Подтвердите действие"
+    },
     "dateRangeFilter": {
         "label": "Выбрать период",
         "part": {
