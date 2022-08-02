@@ -4,6 +4,10 @@
         "InvoiceTemplateLineCostRange": "Диапазон",
         "InvoiceTemplateLineCostUnlim": "Без ограничений"
     },
+    "invoiceTemplateTypeName": {
+        "InvoiceTemplateMultiLine": "Корзина товаров",
+        "InvoiceTemplateSingleLine": "Одиночная позиция"
+    },
     "payoutToolDetailsType": {
         "payoutToolDetailsBankAccount": "Банковский счет",
         "payoutToolDetailsBankCard": "Банковская карта",
