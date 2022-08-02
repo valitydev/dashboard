@@ -102,7 +102,6 @@ export class HumanizeDurationService {
             second: this.transloco.translate('humanizeDuration.shortUnit.second', null, 'core-components'),
             week: this.transloco.translate('humanizeDuration.shortUnit.week', null, 'core-components'),
             year: this.transloco.translate('humanizeDuration.shortUnit.year', null, 'core-components'),
-            test: this.transloco.translate('humanizeDuration.shortUnit.test', null, 'core-components'),
         };
     }
 }
