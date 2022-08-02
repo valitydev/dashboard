@@ -23,6 +23,8 @@
         "uploading": "Загрузка..."
     },
     "humanizeDuration": {
+        "ago": "назад",
+        "justNow": "только что",
         "shortUnit": {
             "day": "д.",
             "hour": "ч.",

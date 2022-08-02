@@ -62,14 +62,16 @@ export class HumanizeDurationService {
         if (isNaN(diffMs)) {
             return null;
         } else if (diffMs < HumanizeDurationService.LESS_THAN_FEW_SECONDS) {
-            return this.transloco.translate('justNow');
+            return this.transloco.translate('humanizeDuration.justNow', null, 'core-components');
         } else if (config.isShort) {
             duration = this.duration(diffMs, { ...config, ...this.shortEnglishHumanizer });
         } else if (config.largest === 1) {
             duration = moment.duration(diffMs).humanize();
         }
         duration = duration === 'минута' ? 'минуту' : duration;
-        return config.hasAgoEnding ? `${duration} ${this.transloco.translate('ago')}` : duration;
+        return config.hasAgoEnding
+            ? `${duration} ${this.transloco.translate('humanizeDuration.ago', null, 'core-components')}`
+            : duration;
     }
 
     getOptimalUpdateInterval(value: Value, { largest }: HumanizeConfig): number {

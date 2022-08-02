@@ -29,7 +29,7 @@
         "requestReviewClaimByIDFailed": "Не удалось отправить заявку на рассмотрение",
         "revokeClaimByIDFailed": "Не удалось отозвать заявку",
         "saveConversationsFailed": "Не удалось сохранить комментарий",
-        "updateClaimByIDFailed": " Не удалось обновить заявку"
+        "updateClaimByIDFailed": "Не удалось обновить заявку"
     },
     "filters": {
         "additionalFilters": "Другие фильтры",
@@ -49,7 +49,6 @@
         "InvoiceTemplateMultiLine": "Корзина товаров",
         "InvoiceTemplateSingleLine": "Одиночная позиция"
     },
-    "justNow": "только что",
     "lastUpdate": "Последнее обновление",
     "loading": "Загрузка...",
     "next": "Далее",
