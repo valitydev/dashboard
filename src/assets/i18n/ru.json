@@ -21,7 +21,6 @@
         "Succeeded": "Успешно"
     },
     "emptyData": "Данные отсутствуют",
-    "emptySearchResult": "Данные за указанный период отсутствуют",
     "errorOccurred": "Произошла ошибка",
     "errors": {
         "bootstrapAppFailed": "Ошибка инициализации",
