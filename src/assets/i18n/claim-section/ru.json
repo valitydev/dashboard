@@ -31,6 +31,7 @@
         "action": {
             "toggleDetails": "Раскрыть / скрыть детали"
         },
+        "ago": "назад",
         "filesUploaded": "Файл успешно загружен",
         "sendComment": "Оставьте комментарий",
         "timeline": {

@@ -3,9 +3,7 @@
         <dsh-timeline-item>
             <dsh-timeline-item-title>
                 <span>{{ t('timeline.claimCreated') }}&nbsp;</span>
-                <span *transloco="let c"
-                    >{{ claimCreatedAt$ | async | humanizedDuration: { largest: 1 } }} {{ c('ago') }}</span
-                >
+                <span>{{ claimCreatedAt$ | async | humanizedDuration: { largest: 1 } }} {{ t('ago') }}</span>
             </dsh-timeline-item-title>
             <dsh-timeline-item-badge>
                 <dsh-bi icon="pencil" size="sm"></dsh-bi>
@@ -17,9 +15,7 @@
                     <div>
                         <span class="dsh-body-2">{{ userTypeLabels[item.userInfo.userType] | async }} </span>
                         <span class="mat-body-2">{{ timelineActionLabels[item.action] | async }} </span>
-                        <span *transloco="let c"
-                            >{{ item.createdAt | humanizedDuration: { largest: 1 } }} {{ c('ago') }}</span
-                        >
+                        <span>{{ item.createdAt | humanizedDuration: { largest: 1 } }} {{ t('ago') }}</span>
                     </div>
                     <dsh-bi
                         *ngIf="item.action === 'changesAdded'"
