@@ -7,7 +7,6 @@ import { InvoiceTemplateCostTypeNamePipe } from './invoice-template-cost-type-na
 import { InvoiceTemplateTypeNamePipe } from './invoice-template-type-name.pipe';
 import { PayoutToolDetailsTypePipe } from './payout-tool-details-type.pipe';
 import { WithdrawalStatusColorPipe } from './withdrawal-status-color.pipe';
-import { WithdrawalStatusNamePipe } from './withdrawal-status-name.pipe';
 
 const DECLARATIONS = [
     ClaimStatusColorPipe,
@@ -15,7 +14,6 @@ const DECLARATIONS = [
     DepositStatusColorPipe,
     InvoiceTemplateTypeNamePipe,
     InvoiceTemplateCostTypeNamePipe,
-    WithdrawalStatusNamePipe,
     WithdrawalStatusColorPipe,
 ];
 

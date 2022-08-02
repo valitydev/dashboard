@@ -17,7 +17,7 @@
     </dsh-details-item>
     <dsh-details-item [title]="t('status')">
         <dsh-status [color]="withdrawal.status | withdrawalStatusColor">
-            {{ withdrawal.status | withdrawalStatusName }}
+            {{ (withdrawalStatusDict$ | async)?.[withdrawal.status] }}
         </dsh-status>
     </dsh-details-item>
     <dsh-details-item [title]="t('wallet')">

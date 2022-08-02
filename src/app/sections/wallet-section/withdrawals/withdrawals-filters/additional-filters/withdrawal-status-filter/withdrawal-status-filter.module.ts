@@ -9,7 +9,6 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { ExpandableRadioGroupModule } from '@dsh/app/shared/components/radio-buttons/expandable-radio-group';
 import { RadioGroupFieldModule } from '@dsh/components/form-controls/radio-group-field';
 
-import { WithdrawalStatusLabelPipe } from './pipes';
 import { WithdrawalStatusFilterComponent } from './withdrawal-status-filter.component';
 
 @NgModule({
@@ -23,7 +22,7 @@ import { WithdrawalStatusFilterComponent } from './withdrawal-status-filter.comp
         MatDialogModule,
         RadioGroupFieldModule,
     ],
-    declarations: [WithdrawalStatusFilterComponent, WithdrawalStatusLabelPipe],
+    declarations: [WithdrawalStatusFilterComponent],
     exports: [WithdrawalStatusFilterComponent],
 })
 export class WithdrawalStatusFilterModule {}

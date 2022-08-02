@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Withdrawal } from '@vality/swag-wallet';
 
+import { WalletDictionaryService } from '@dsh/api/wallet';
+
 @Component({
     selector: 'dsh-wallet-withdrawal-details',
     templateUrl: 'wallet-withdrawal-details.component.html',
@@ -8,4 +10,8 @@ import { Withdrawal } from '@vality/swag-wallet';
 })
 export class WalletWithdrawalDetailsComponent {
     @Input() withdrawal: Withdrawal;
+
+    withdrawalStatusDict$ = this.walletDictionaryService.withdrawalStatus$;
+
+    constructor(private walletDictionaryService: WalletDictionaryService) {}
 }

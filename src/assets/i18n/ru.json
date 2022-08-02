@@ -65,10 +65,5 @@
     "save": "Сохранить",
     "showMore": "Показать еще",
     "unknownError": "Неизвестная ошибка",
-    "update": "Обновить",
-    "withdrawalStatus": {
-        "Failed": "Неуспешно",
-        "Pending": "В процессе",
-        "Succeeded": "Успешно"
-    }
+    "update": "Обновить"
 }

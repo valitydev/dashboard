@@ -159,6 +159,11 @@
             "DestinationCreated": "DestinationCreated (Приемник средств создан)",
             "DestinationUnauthorized": "DestinationUnauthorized (Попытка авторизации приемника средств завершилась неудачей)"
         },
+        "withdrawalStatus": {
+            "Failed": "Неуспешно",
+            "Pending": "В процессе",
+            "Succeeded": "Успешно"
+        },
         "withdrawalsTopicEventType": {
             "WithdrawalFailed": "WithdrawalFailed (Выплата завершилась неудачей)",
             "WithdrawalStarted": "WithdrawalStarted (Выплата создана)",

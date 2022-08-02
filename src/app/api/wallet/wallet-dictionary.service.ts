@@ -3,6 +3,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { DepositRevert } from '@vality/swag-wallet';
 import { Deposit } from '@vality/swag-wallet/lib/model/deposit';
 import { DestinationsTopic } from '@vality/swag-wallet/lib/model/destinationsTopic';
+import { Withdrawal } from '@vality/swag-wallet/lib/model/withdrawal';
 import { WithdrawalsTopic } from '@vality/swag-wallet/lib/model/withdrawalsTopic';
 
 import { DictionaryService } from '../utils';
@@ -56,6 +57,14 @@ export class WalletDictionaryService {
         Pending: this.t.translate('wallet.depositStatus.Pending', null, 'dictionary'),
         Succeeded: this.t.translate('wallet.depositStatus.Succeeded', null, 'dictionary'),
         Failed: this.t.translate('wallet.depositStatus.Failed', null, 'dictionary'),
+        /* eslint-enable @typescript-eslint/naming-convention */
+    }));
+
+    withdrawalStatus$ = this.dictionaryService.create<Withdrawal.StatusEnum>(() => ({
+        /* eslint-disable @typescript-eslint/naming-convention */
+        Pending: this.t.translate('wallet.withdrawalStatus.Pending', null, 'dictionary'),
+        Succeeded: this.t.translate('wallet.withdrawalStatus.Succeeded', null, 'dictionary'),
+        Failed: this.t.translate('wallet.withdrawalStatus.Failed', null, 'dictionary'),
         /* eslint-enable @typescript-eslint/naming-convention */
     }));
 
