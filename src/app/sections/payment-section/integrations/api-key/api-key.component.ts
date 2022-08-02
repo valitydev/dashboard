@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { KeycloakService } from 'keycloak-angular';
 import { from } from 'rxjs';
+
+import { NotificationService } from '@dsh/app/shared';
 
 import { ConfigService } from '../../../../config';
 
@@ -17,11 +18,12 @@ export class ApiKeyComponent {
     constructor(
         private keycloakService: KeycloakService,
         private configService: ConfigService,
-        private snackBar: MatSnackBar,
+        private notificationService: NotificationService,
         private transloco: TranslocoService
     ) {}
 
     copied(isCopied: boolean): void {
-        this.snackBar.open(this.transloco.translate(isCopied ? 'copied' : 'copyFailed'), 'OK', { duration: 1000 });
+        if (isCopied) this.notificationService.success(this.transloco.translate('copied'));
+        else this.notificationService.success(this.transloco.translate('copyFailed'));
     }
 }

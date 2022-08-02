@@ -1,6 +1,5 @@
 import { Component, Injector, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { FbGroupConfig } from '@ngneat/reactive-forms/lib/formBuilder';
 import { TranslocoService } from '@ngneat/transloco';
@@ -9,6 +8,7 @@ import { BankCard, PaymentMethod, PaymentTerminal, DigitalWallet } from '@vality
 import { Observable } from 'rxjs';
 
 import { TokenProvider, TerminalProvider } from '@dsh/api/payments';
+import { NotificationService } from '@dsh/app/shared';
 import { PaymentLinkParams } from '@dsh/app/shared/services/create-payment-link/types/payment-link-params';
 import { ComponentChanges } from '@dsh/type-utils';
 import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
@@ -48,7 +48,7 @@ export class CreatePaymentLinkFormComponent
     });
 
     constructor(
-        private snackBar: MatSnackBar,
+        private notificationService: NotificationService,
         private transloco: TranslocoService,
         private fb: FormBuilder,
         injector: Injector
@@ -63,7 +63,8 @@ export class CreatePaymentLinkFormComponent
     }
 
     copied(isCopied: boolean): void {
-        this.snackBar.open(this.transloco.translate(isCopied ? 'copied' : 'copyFailed'), 'OK', { duration: 1000 });
+        if (isCopied) this.notificationService.success(this.transloco.translate('copied'));
+        else this.notificationService.success(this.transloco.translate('copyFailed'));
     }
 
     protected innerToOuterValue({ holdExpiration, paymentMethods, ...value }: Controls): PaymentLinkParams {

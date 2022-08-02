@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+
+import { NotificationService } from '@dsh/app/shared';
 
 @Component({
     selector: 'dsh-webhook-api-key',
@@ -11,9 +12,10 @@ export class WebhookApiKeyComponent {
     @Input()
     key: string;
 
-    constructor(private snackBar: MatSnackBar, private transloco: TranslocoService) {}
+    constructor(private notificationService: NotificationService, private transloco: TranslocoService) {}
 
     copied(isCopied: boolean): void {
-        this.snackBar.open(this.transloco.translate(isCopied ? 'copied' : 'copyFailed'), 'OK', { duration: 1000 });
+        if (isCopied) this.notificationService.success(this.transloco.translate('copied'));
+        else this.notificationService.success(this.transloco.translate('copyFailed'));
     }
 }
