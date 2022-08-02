@@ -53,11 +53,6 @@
         "paid": "Оплачен",
         "unpaid": "Не оплачен"
     },
-    "invoiceTemplateCostType": {
-        "InvoiceTemplateLineCostFixed": "Фиксированная",
-        "InvoiceTemplateLineCostRange": "Диапазон",
-        "InvoiceTemplateLineCostUnlim": "Без ограничений"
-    },
     "invoiceTemplateType": {
         "InvoiceTemplateMultiLine": "Корзина товаров",
         "InvoiceTemplateSingleLine": "Одиночная позиция"

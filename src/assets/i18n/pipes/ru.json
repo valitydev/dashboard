@@ -1,4 +1,9 @@
 {
+    "invoiceTemplateCostTypeName": {
+        "InvoiceTemplateLineCostFixed": "Фиксированная",
+        "InvoiceTemplateLineCostRange": "Диапазон",
+        "InvoiceTemplateLineCostUnlim": "Без ограничений"
+    },
     "payoutToolDetailsType": {
         "payoutToolDetailsBankAccount": "Банковский счет",
         "payoutToolDetailsBankCard": "Банковская карта",
