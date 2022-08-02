@@ -1,6 +1,11 @@
-<mat-radio-group fxLayout="column" fxLayoutGap="24px" [formControl]="control">
+<mat-radio-group
+    *transloco="let t; scope: 'components'; read: 'components.expandableRadioGroup'"
+    fxLayout="column"
+    fxLayoutGap="24px"
+    [formControl]="control"
+>
     <mat-radio-button *ngIf="anyResponse" fxFlex [value]="null">
-        <ng-container *transloco="let c">{{ c('any') }}</ng-container>
+        <ng-container>{{ t('any') }}</ng-container>
     </mat-radio-button>
     <div gdColumns.gt-sm="1fr 1fr" gdColumns="1fr" gdGap="24px">
         <mat-radio-button *ngFor="let choiceItem of displayedChoices" [value]="getChoiceId(choiceItem)">
@@ -10,12 +15,10 @@
             <ng-template #label>{{ getChoiceLabel(choiceItem) }}</ng-template>
         </mat-radio-button>
     </div>
-    <ng-container *transloco="let t; read: 'filters'">
-        <dsh-inline-show-all-toggle
-            *ngIf="isValidPreviewCount"
-            [opened]="isAllChoicesVisible"
-            (click)="toggleStatusesVisibility()"
-            >{{ isAllChoicesVisible ? t('hideAllStatuses') : t('showAllStatuses') }}</dsh-inline-show-all-toggle
-        >
-    </ng-container>
+    <dsh-inline-show-all-toggle
+        *ngIf="isValidPreviewCount"
+        [opened]="isAllChoicesVisible"
+        (click)="toggleStatusesVisibility()"
+        >{{ isAllChoicesVisible ? t('hideAllStatuses') : t('showAllStatuses') }}</dsh-inline-show-all-toggle
+    >
 </mat-radio-group>

@@ -173,6 +173,11 @@
         },
         "useShop": "Использовать контракт на основе магазина"
     },
+    "expandableRadioGroup": {
+        "any": "Любой",
+        "hideAllStatuses": "Скрыть все статусы",
+        "showAllStatuses": "Показать все статусы"
+    },
     "internationalBankAccountForm": {
         "correspondentAccount": "Корреспондентский счет"
     },
