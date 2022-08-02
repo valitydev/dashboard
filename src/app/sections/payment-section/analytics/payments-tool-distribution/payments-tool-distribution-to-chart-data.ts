@@ -14,6 +14,6 @@ export const paymentsToolDistributionToChartData = (
     const sorted = sortByPercents(distribution);
     return {
         series: getSeries(sorted),
-        labels: distribution.map((d) => paymentToolLabels[d.name]),
+        labels: distribution?.map((d) => paymentToolLabels[d.name]),
     };
 };
