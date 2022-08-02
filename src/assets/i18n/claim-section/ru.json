@@ -5,6 +5,7 @@
             "claims": "Заявки"
         },
         "headline": "Детали заявки",
+        "requestReviewClaimByIDFailed": "Не удалось отправить заявку на рассмотрение",
         "reviewClaim": "Отправить на рассмотрение",
         "reviewed": "Заявка успешно отправлена на рассмотрение",
         "revokeClaim": "Отозвать",
@@ -51,8 +52,19 @@
         }
     },
     "revokeClaimDialog": {
+        "errors": {
+            "revokeClaimByIDFailed": "Не удалось отозвать заявку"
+        },
         "reason": "Укажите причину",
         "revoke": "Отозвать",
         "subheading": "Отзыв заявки"
+    },
+    "sendComment": {
+        "errors": {
+            "saveConversationsFailed": "Не удалось сохранить комментарий"
+        }
+    },
+    "updateClaim": {
+        "updateClaimByIDFailed": "Не удалось обновить заявку"
     }
 }

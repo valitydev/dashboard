@@ -12,13 +12,6 @@
     "create": "Создать",
     "emptyData": "Данные отсутствуют",
     "errorOccurred": "Произошла ошибка",
-    "errors": {
-        "common": "Произошла ошибка",
-        "requestReviewClaimByIDFailed": "Не удалось отправить заявку на рассмотрение",
-        "revokeClaimByIDFailed": "Не удалось отозвать заявку",
-        "saveConversationsFailed": "Не удалось сохранить комментарий",
-        "updateClaimByIDFailed": "Не удалось обновить заявку"
-    },
     "filters": {
         "additionalFilters": "Другие фильтры",
         "clearParams": "Сбросить параметры",

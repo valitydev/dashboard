@@ -11,7 +11,11 @@
             </mat-form-field>
         </form>
         <div *ngIf="errorCode$ | async">
-            <div *transloco="let errors; read: 'errors'" class="mat-caption">
+            <div
+                *transloco="let errors; scope: 'claim-section'; read: 'claimSection.revokeClaimDialog.errors'"
+                class="mat-caption"
+            >
+                <!-- t(revokeClaimByIDFailed) -->
                 {{ errors(errorCode$ | async) }}
             </div>
         </div>

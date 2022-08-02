@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { FileModification } from '@vality/swag-claim-management';
 import { Conversation } from '@vality/swag-messages';
 import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
-import { catchError, filter, pluck, share, switchMap, tap } from 'rxjs/operators';
+import { catchError, share, switchMap, tap } from 'rxjs/operators';
 
 import { ClaimsService } from '@dsh/api/claim-management';
+import { NotificationService } from '@dsh/app/shared';
 
 import { progress } from '../../../../custom-operators';
 import { UiError } from '../../../ui-error';
@@ -17,22 +17,16 @@ import { toChangeset } from './to-changeset';
 
 @Injectable()
 export class UpdateClaimService {
+    inProgress$: Observable<boolean>;
+
     private updateBy$ = new Subject<UpdateParams>();
     private error$ = new BehaviorSubject<UiError>({ hasError: false });
-
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    errorCode$: Observable<string> = this.error$.pipe(
-        filter((err) => err.hasError),
-        pluck('code')
-    );
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    inProgress$: Observable<boolean>;
 
     constructor(
         private receiveClaimService: ReceiveClaimService,
         private routeParamClaimService: RouteParamClaimService,
         private claimApiService: ClaimsService,
-        private snackBar: MatSnackBar,
+        private notificationService: NotificationService,
         private transloco: TranslocoService
     ) {
         const updated$ = this.updateBy$.pipe(
@@ -44,6 +38,9 @@ export class UpdateClaimService {
                     catchError((ex) => {
                         console.error(ex);
                         const error = { hasError: true, code: 'updateClaimByIDFailed' };
+                        this.notificationService.error(
+                            this.transloco.translate(`updateClaim.updateClaimByIDFailed`, null, 'claim-section')
+                        );
                         this.error$.next(error);
                         return of(error);
                     })
@@ -54,11 +51,6 @@ export class UpdateClaimService {
 
         this.inProgress$ = progress(this.updateBy$, updated$);
         updated$.subscribe(() => this.receiveClaimService.receiveClaim());
-        this.errorCode$.subscribe((code) =>
-            this.snackBar.open(this.transloco.translate(`errors.${code}`), 'OK', {
-                duration: 5000,
-            })
-        );
     }
 
     updateByConversation(conversationId: Conversation['conversationId']) {
