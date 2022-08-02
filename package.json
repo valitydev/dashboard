@@ -14,7 +14,7 @@
     "i18n:prettify": "prettier \"src/assets/i18n/**/*.json\" --write",
     "i18n:ci": "transloco-keys-manager find --emit-error-on-extra-keys",
     "coverage": "npx http-server -c-1 -o -p 9875 ./coverage",
-    "lint-cmd": "eslint \"src/**/*.{ts,js,html}\" --max-warnings 1107",
+    "lint-cmd": "eslint \"src/**/*.{ts,js,html}\" --max-warnings 1128",
     "lint-cache-cmd": "npm run lint-cmd -- --cache",
     "lint": "npm run lint-cache-cmd",
     "lint-fix": "npm run lint-cache-cmd -- --fix",
