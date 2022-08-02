@@ -5,7 +5,10 @@
     *transloco="let t; scope: 'components'; read: 'components.invoiceDetails'"
 >
     <dsh-details-item [title]="t('status')">
-        <dsh-status [color]="invoice.status | invoiceStatusColor">{{ invoice.status | invoiceStatusName }}</dsh-status>
+        <dsh-status
+            [color]="invoice.status | invoiceStatusColor"
+            >{{ (invoiceStatusDict$ | async)?.[invoice.status] }}</dsh-status
+        >
     </dsh-details-item>
     <dsh-details-item [title]="t('amount')">{{ invoice.amount | amountCurrency: invoice.currency }}</dsh-details-item>
     <dsh-details-item [title]="t('createdAt')">{{ invoice.createdAt | date: 'dd MMMM yyyy, HH:mm' }}</dsh-details-item>
