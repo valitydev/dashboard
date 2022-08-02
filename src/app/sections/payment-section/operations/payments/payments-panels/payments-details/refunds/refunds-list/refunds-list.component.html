@@ -18,7 +18,14 @@
             <div class="dsh-body-1">{{ t('emptyRefunds') }}</div>
         </div>
         <div *ngIf="hasMore">
-            <button *transloco="let s" dsh-button fxFlex (click)="showMoreElements()">{{ s('showMore') }}</button>
+            <button
+                *transloco="let c; scope: 'components'; read: 'components.shared'"
+                dsh-button
+                fxFlex
+                (click)="showMoreElements()"
+            >
+                {{ c('showMore') }}
+            </button>
         </div>
     </ng-container>
 </div>
