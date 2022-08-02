@@ -56,7 +56,7 @@ export class CreateInvoiceTemplateComponent implements OnInit {
 
     ngOnInit(): void {
         this.invoiceTemplateFormService.errors$.subscribe(() =>
-            this.snackBar.open(this.transloco.translate('commonError'), 'OK')
+            this.snackBar.open(this.transloco.translate('shared.commonError', null, 'components'), 'OK')
         );
         this.invoiceTemplateFormService.nextInvoiceTemplateAndToken$.subscribe((template) => this.next.emit(template));
     }

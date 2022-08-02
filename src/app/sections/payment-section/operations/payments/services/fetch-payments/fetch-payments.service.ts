@@ -46,7 +46,7 @@ export class FetchPaymentsService extends PartialFetcher<PaymentSearchResult, Pa
             })
             .pipe(
                 catchError(() => {
-                    this.snackBar.open(this.transloco.translate('httpError'), 'OK');
+                    this.snackBar.open(this.transloco.translate('shared.httpError', null, 'components'), 'OK');
                     return of({ result: [] });
                 })
             );

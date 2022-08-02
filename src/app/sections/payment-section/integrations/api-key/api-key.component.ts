@@ -23,7 +23,7 @@ export class ApiKeyComponent {
     ) {}
 
     copied(isCopied: boolean): void {
-        if (isCopied) this.notificationService.success(this.transloco.translate('copied'));
-        else this.notificationService.success(this.transloco.translate('copyFailed'));
+        if (isCopied) this.notificationService.success(this.transloco.translate('shared.copied', null, 'components'));
+        else this.notificationService.success(this.transloco.translate('shared.copyFailed', null, 'components'));
     }
 }

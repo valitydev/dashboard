@@ -44,7 +44,9 @@ export class InvoicesComponent implements OnInit {
     ngOnInit(): void {
         this.invoicesService.errors$
             .pipe(untilDestroyed(this))
-            .subscribe(() => this.snackBar.open(this.transloco.translate('commonError'), 'OK'));
+            .subscribe(() =>
+                this.snackBar.open(this.transloco.translate('shared.commonError', null, 'components'), 'OK')
+            );
         this.realmMixService.mixedValue$.pipe(untilDestroyed(this)).subscribe((v) => this.invoicesService.search(v));
     }
 

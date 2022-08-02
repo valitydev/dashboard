@@ -130,7 +130,12 @@
         </ng-template>
     </div>
 
-    <div fxLayout fxLayoutGap="24px" fxLayoutAlign="space-between" *transloco="let t">
+    <div
+        fxLayout
+        fxLayoutGap="24px"
+        fxLayoutAlign="space-between"
+        *transloco="let t; scope: 'components'; read: 'components.shared'"
+    >
         <button dsh-text-button color="accent" (click)="clear()" [disabled]="(isLoading$ | async) || form.pristine">
             {{ t('clearForm') }}
         </button>

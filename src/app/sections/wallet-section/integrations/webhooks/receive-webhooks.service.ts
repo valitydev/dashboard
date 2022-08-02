@@ -44,7 +44,7 @@ export class ReceiveWebhooksService {
                     forkJoin(ids.map((identityID) => this.walletWebhooksService.getWebhooks({ identityID }))).pipe(
                         catchError((err) => {
                             console.error(err);
-                            this.snackBar.open(this.transloco.translate('httpError'), 'OK');
+                            this.snackBar.open(this.transloco.translate('shared.httpError', null, 'components'), 'OK');
                             return of([]);
                         })
                     )

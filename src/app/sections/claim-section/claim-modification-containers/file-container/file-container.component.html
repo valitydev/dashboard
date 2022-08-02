@@ -1,4 +1,4 @@
-<dsh-panel *transloco="let c" color="accent">
+<dsh-panel *transloco="let c; scope: 'components'; read: 'components.shared'" color="accent">
     <dsh-panel-header>
         <div *ngIf="isLoading$ | async">{{ c('loading') }}</div>
         <div *ngIf="error$ | async">{{ c('httpError') }}</div>

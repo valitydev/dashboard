@@ -24,7 +24,7 @@
 </div>
 
 <ng-template #loader>
-    <div *transloco="let c">
+    <div *transloco="let c; scope: 'components'; read: 'components.shared'">
         <div class="dsh-body-1">{{ c('loading') }}</div>
     </div>
 </ng-template>

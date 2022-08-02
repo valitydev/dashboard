@@ -22,7 +22,7 @@
         </ng-container>
     </ng-container>
     <button *ngIf="(hasMore$ | async) && !(isLoading$ | async)" dsh-button (click)="fetchMore()">
-        <ng-container *transloco="let c">
+        <ng-container *transloco="let c; scope: 'components'; read: 'components.shared'">
             {{ c('showMore') }}
         </ng-container>
     </button>

@@ -19,7 +19,9 @@
         }}</dsh-details-item>
     </div>
     <ng-template #loading>
-        <div *transloco="let c" class="dsh-body-1">{{ c('loading') }}</div>
+        <div *transloco="let c; scope: 'components'; read: 'components.shared'" class="dsh-body-1">
+            {{ c('loading') }}
+        </div>
     </ng-template>
     <ng-template #error>
         <div class="dsh-body-1">{{ t('fetchWalletAccountError') }}</div>

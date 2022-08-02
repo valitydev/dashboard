@@ -23,7 +23,7 @@ export class FetchClaimsService extends PartialFetcher<Claim, ClaimsSearchFilter
     ) {
         super();
         this.errors$.subscribe(() => {
-            this.snackBar.open(this.transloco.translate('httpError'), 'OK');
+            this.snackBar.open(this.transloco.translate('shared.httpError', null, 'components'), 'OK');
             return [];
         });
     }

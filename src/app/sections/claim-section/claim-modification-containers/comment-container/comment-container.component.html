@@ -1,7 +1,7 @@
 <dsh-panel>
     <dsh-panel-header>
         {{ comment$ | async }}
-        <div *transloco="let c">
+        <div *transloco="let c; scope: 'components'; read: 'components.shared'">
             <div *ngIf="isLoading$ | async">{{ c('loading') }}</div>
             <div *ngIf="error$ | async">{{ c('httpError') }}</div>
         </div>

@@ -8,7 +8,7 @@
         [paymentMethods]="paymentMethods$ | async"
         [paymentLink]="paymentLink$ | async"
     ></dsh-create-payment-link-form>
-    <ng-container dshBaseDialogActions *transloco="let t">
+    <ng-container dshBaseDialogActions *transloco="let t; scope: 'components'; read: 'components.shared'">
         <button dsh-text-button color="accent" [disabled]="inProgress$ | async" (click)="formControl.reset()">
             {{ t('clearForm') }}
         </button>

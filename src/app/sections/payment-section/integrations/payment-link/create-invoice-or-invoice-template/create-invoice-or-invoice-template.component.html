@@ -27,7 +27,7 @@
                     (valid)="createInvoiceFormControlValid = $event"
                     (empty)="createInvoiceFormControlEmpty = $event"
                 ></dsh-create-invoice-form>
-                <dsh-actions *transloco="let t">
+                <dsh-actions *transloco="let t; scope: 'components'; read: 'components.shared'">
                     <button
                         dsh-text-button
                         color="accent"

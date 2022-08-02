@@ -38,7 +38,9 @@ export class UploadFilesService {
             shareReplay(1)
         );
 
-        this.errors$.subscribe(() => this.snackBar.open(this.transloco.translate('commonError'), 'OK'));
+        this.errors$.subscribe(() =>
+            this.snackBar.open(this.transloco.translate('shared.commonError', null, 'components'), 'OK')
+        );
         this.uploadedFiles$.subscribe(() =>
             this.snackBar.open(this.transloco.translate('conversation.filesUploaded', null, 'claim-section'), 'OK', {
                 duration: 5000,
