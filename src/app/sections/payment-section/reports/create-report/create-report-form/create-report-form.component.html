@@ -31,8 +31,8 @@
     <mat-form-field fxFill>
         <mat-label>{{ t('shop') }}</mat-label>
         <mat-select formControlName="shopID">
-            <mat-option *transloco="let c">
-                {{ c('any') }}
+            <mat-option>
+                {{ t('any') }}
             </mat-option>
             <mat-option *ngFor="let item of shopsInfo" [value]="item.shopID">
                 {{ item.name }}
