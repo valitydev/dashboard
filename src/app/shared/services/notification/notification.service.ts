@@ -8,16 +8,20 @@ const DEFAULT_DURATION_MS = 3000;
 export class NotificationService {
     constructor(private snackBar: MatSnackBar, private transloco: TranslocoService) {}
 
-    success(message: string = this.transloco.translate('notification.success')): MatSnackBarRef<SimpleSnackBar> {
+    success(
+        message: string = this.transloco.translate('notification.success', null, 'services')
+    ): MatSnackBarRef<SimpleSnackBar> {
         return this.openSnackBar(message);
     }
 
-    error(message: string = this.transloco.translate('notification.error')): MatSnackBarRef<SimpleSnackBar> {
+    error(
+        message: string = this.transloco.translate('notification.error', null, 'services')
+    ): MatSnackBarRef<SimpleSnackBar> {
         return this.openSnackBar(message);
     }
 
     private openSnackBar(message: string, config: MatSnackBarConfig<unknown> = {}): MatSnackBarRef<SimpleSnackBar> {
-        return this.snackBar.open(message, this.transloco.translate('notification.ok'), {
+        return this.snackBar.open(message, this.transloco.translate('notification.ok', null, 'services'), {
             duration: DEFAULT_DURATION_MS,
             ...config,
         });
