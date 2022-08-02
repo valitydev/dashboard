@@ -76,13 +76,6 @@
         "bankCard": "Банковская карта",
         "paymentTerminal": "Терминал"
     },
-    "paymentTerminalProvider": {
-        "alipay": "Alipay",
-        "euroset": "Евросеть",
-        "qps": "Система быстрых платежей (СБП)",
-        "wechat": "WeChat",
-        "zotapay": "ZotaPay"
-    },
     "refundStatus": {
         "failed": "Неуспешно",
         "pending": "В процессе",

@@ -1,3 +1,4 @@
-<span *transloco="let provider; read: 'paymentTerminalProvider'">
+<span *transloco="let provider; scope: 'payment-section'; read: 'paymentSection.paymentTerminal.provider'">
+    <!-- t(alipay, euroset, qps, wechat, zotapay) -->
     {{ provider(paymentTerminal.provider) || paymentTerminal.provider }}
 </span>

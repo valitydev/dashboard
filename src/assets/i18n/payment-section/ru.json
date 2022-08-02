@@ -300,6 +300,15 @@
             "testEnv": "Тест. окружение"
         }
     },
+    "paymentTerminal": {
+        "provider": {
+            "alipay": "Alipay",
+            "euroset": "Евросеть",
+            "qps": "Система быстрых платежей (СБП)",
+            "wechat": "WeChat",
+            "zotapay": "ZotaPay"
+        }
+    },
     "payouts": {
         "createPayoutReport": {
             "cancel": "Отмена",
