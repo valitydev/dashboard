@@ -7,7 +7,7 @@
     </dsh-row-label>
     <dsh-row-label>
         <dsh-status [color]="withdrawal.status | withdrawalStatusColor">
-            {{ withdrawal.status | withdrawalStatusName }}
+            {{ (withdrawalStatusDict$ | async)?.[withdrawal.status] }}
         </dsh-status>
     </dsh-row-label>
     <dsh-row-label fxHide.lt-md>

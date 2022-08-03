@@ -11,12 +11,20 @@ import { createLinks } from './utils';
 @Injectable()
 export class SectionsLinksService {
     sectionLinks$: Observable<SectionLink[]> = combineLatest([
-        this.transloco.selectTranslateObject<{ [k: string]: string }>('sectionLinks'),
         this.walletsService.hasWallets$,
+        this.transloco.selectTranslation('services'),
     ]).pipe(
-        map((v) => createLinks(...v)),
+        map(([hasWallets]) => createLinks(this.getLabels(), hasWallets)),
         first()
     );
 
     constructor(private walletsService: WalletsService, private transloco: TranslocoService) {}
+
+    getLabels() {
+        return {
+            claims: this.transloco.translate('sectionsLinks.links.claims', null, 'services'),
+            payments: this.transloco.translate('sectionsLinks.links.payments', null, 'services'),
+            wallets: this.transloco.translate('sectionsLinks.links.wallets', null, 'services'),
+        };
+    }
 }

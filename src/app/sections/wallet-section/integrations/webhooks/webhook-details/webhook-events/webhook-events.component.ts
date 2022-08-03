@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { DestinationsTopic, WebhookScope, WithdrawalsTopic } from '@vality/swag-wallet';
+import { combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { WalletDictionaryService } from '@dsh/api/wallet';
 
 @Component({
     selector: 'dsh-webhook-events',
@@ -11,6 +15,11 @@ export class WebhookEventsComponent {
     @Input()
     scope: WebhookScope;
 
+    eventType$ = combineLatest([
+        this.walletDictionaryService.withdrawalsTopicEventType$,
+        this.walletDictionaryService.destinationsTopicEventType$,
+    ]).pipe(map(([w, d]) => ({ ...w, ...d })));
+
     get events(): WithdrawalsTopic.EventTypesEnum[] | DestinationsTopic.EventTypesEnum[] {
         switch (this.scope.topic) {
             case 'WithdrawalsTopic':
@@ -19,4 +28,6 @@ export class WebhookEventsComponent {
                 return (this.scope as any as DestinationsTopic).eventTypes;
         }
     }
+
+    constructor(private walletDictionaryService: WalletDictionaryService) {}
 }

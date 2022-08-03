@@ -39,7 +39,7 @@ export class FetchWithdrawalsService extends PartialFetcher<
     ): Observable<WithdrawalsAndContinuationToken> {
         return this.withdrawalsService.listWithdrawals({ ...params, limit: this.searchLimit, continuationToken }).pipe(
             catchError(() => {
-                this.snackBar.open(this.transloco.translate('httpError'), 'OK');
+                this.snackBar.open(this.transloco.translate('shared.httpError', null, 'components'), 'OK');
                 return of({ result: [] });
             })
         );

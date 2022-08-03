@@ -1,10 +1,10 @@
 <div
-    *transloco="let p; scope: 'create-shop'; read: 'createShop.existingContractForm'"
+    *transloco="let p; scope: 'components'; read: 'components.existingContractForm'"
     fxLayout="column"
     fxLayoutGap="16px"
 >
     <dsh-shop-field required [label]="p('useShop')" [formControl]="control"></dsh-shop-field>
-    <ng-container class="dsh-body-1" *transloco="let t">
+    <ng-container class="dsh-body-1" *transloco="let t; scope: 'components'; read: 'components.shared'">
         <div *ngIf="progress$ | async; else (error$ | async) ? error : contract && loaded" class="dsh-body-1">
             {{ t('loading') }}
         </div>

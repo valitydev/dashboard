@@ -1,0 +1,313 @@
+{
+    "actionbar": {
+        "organizations": {
+            "title": "Ваши организации"
+        },
+        "user": {
+            "changePassword": "Сменить пароль",
+            "logout": "Выход",
+            "sessions": "Управление сессиями",
+            "twoFactorAuth": "Двухэтапная аутентификация"
+        }
+    },
+    "apiModelDetails": {
+        "bankAccount": {
+            "account": "Расчетный счет",
+            "bankBik": "БИК",
+            "bankName": "Наименование банка",
+            "bankPostAccount": "Корр. счет"
+        },
+        "contract": {
+            "createdAt": "Дата и время создания"
+        },
+        "internationalLegalEntity": {
+            "legalName": "Наименование",
+            "registeredNumber": "Регистрационный номер",
+            "registeredOffice": "Адрес места регистрации",
+            "tradingName": "Торговое наименование"
+        },
+        "payoutTool": {
+            "currency": "Валюта"
+        },
+        "payoutToolDetails": {
+            "internationalBankAccount": {
+                "bankDetails": {
+                    "abartn": "ABA Routing Transit Number",
+                    "address": "Адрес юр. лица",
+                    "bic": "BIC",
+                    "countryCode": "Страна резиденции",
+                    "name": "Наименование юр. лица"
+                },
+                "correspondentBankAccount": "Корр. счет",
+                "iban": "IBAN",
+                "number": "Номер счета"
+            },
+            "wallet": {
+                "walletName": "Наименование"
+            }
+        },
+        "russianLegalEntity": {
+            "actualAddress": "Почтовый адрес места нахождения",
+            "inn": "ИНН",
+            "registeredName": "Наименование юр. лица",
+            "registeredNumber": "ОГРН/ОГРНИП",
+            "representativeDocument": "Документ ЕИО/представителя",
+            "representativeFullName": "ФИО ЕИО/представителя",
+            "representativePosition": "Должность ЕИО/представителя"
+        }
+    },
+    "app": {
+        "errors": {
+            "bootstrapAppFailed": "Ошибка инициализации"
+        }
+    },
+    "claimField": {
+        "label": "Идентификатор заявки"
+    },
+    "claimFilter": {
+        "label": "Заявка"
+    },
+    "claimStatusesField": {
+        "statuses": {
+            "accepted": "Одобрена",
+            "denied": "Отклонена",
+            "pending": "В ожидании",
+            "pendingAcceptance": "В ожидании одобрения",
+            "review": "На рассмотрении",
+            "revoked": "Отозвана"
+        }
+    },
+    "createInternationalShopEntity": {
+        "send": "Отправить на рассмотрение",
+        "title": "Заявка на создание магазина"
+    },
+    "createInvoiceForm": {
+        "addProduct": "Добавить товар или услугу",
+        "form": {
+            "description": "Описание предлагаемых товаров или услуг",
+            "dueDate": "Окончание срока действия инвойса",
+            "product": "Наименование предлагаемых товаров или услуг",
+            "shop": "Магазин"
+        },
+        "productsList": "Список товаров и услуг:",
+        "remove": "Удалить",
+        "removeFormGroup": {
+            "price": "Стоимость",
+            "product": "Описание",
+            "quantity": "Количество",
+            "taxMode": "Схема налогообложения",
+            "withoutVAT": "без НДС"
+        },
+        "totalAmount": "Итого товаров и услуг на сумму:"
+    },
+    "createPaymentLinkForm": {
+        "description": "Информация для отображения на платежной странице",
+        "form": {
+            "copy": "Скопировать",
+            "description": "Наименование вашего продукта или сервиса",
+            "email": "Email плательщика (если известен)",
+            "link": "Ссылка на оплату",
+            "name": "Наименование вашей компании или сайта",
+            "paymentFlowHold": "Предварительно заблокировать сумму платежа у покупателя",
+            "paymentFlowHoldPolicy": "По истечении срока удержания (72 часа)",
+            "paymentMethods": "Методы оплаты",
+            "redirectUrl": "Redirect URL после успешного завершения платежа"
+        },
+        "holdExpiration": {
+            "cancel": "Вернуть покупателю",
+            "capture": "Списать с покупателя"
+        },
+        "paymentMethod": {
+            "applePay": "Apple Pay",
+            "bankCard": "Банковская карта",
+            "euroset": "Терминалы “Евросеть”",
+            "googlePay": "Google Pay",
+            "mobileCommerce": "Номер мобильного телефона",
+            "qps": "Система быстрых платежей (СБП)",
+            "samsungPay": "Samsung Pay",
+            "uzcard": "Uzcard",
+            "wallets": "Кошельки",
+            "yandexPay": "Yandex Pay"
+        }
+    },
+    "createRussianShopEntity": {
+        "send": "Отправить на рассмотрение",
+        "title": "Заявка на создание магазина"
+    },
+    "createShopDialog": {
+        "internationalLegalEntityType": "Международное ЮЛ",
+        "russianLegalEntityType": "Российское ЮЛ",
+        "title": "Новая заявка",
+        "type": "Создание магазина"
+    },
+    "createdExistingSwitch": {
+        "created": "Указать новые",
+        "existing": "Использовать существующие"
+    },
+    "currencyAutocompleteField": {
+        "label": "Валюта"
+    },
+    "currencyFilter": {
+        "label": "Валюта"
+    },
+    "depositRevertDetails": {
+        "amount": "Сумма отмены",
+        "createdAt": "Дата",
+        "error": "Ошибка",
+        "errors": {
+            "failed": "Ошибка при отмене"
+        },
+        "status": "Статус"
+    },
+    "existingBankAccount": {
+        "errors": {
+            "onlyInternationalShopCanBeSelected": "Можно выбрать только международный магазин",
+            "onlyRussianShopCanBeSelected": "Можно выбрать только российский магазин"
+        },
+        "shopLabel": "Использовать реквизиты на основе магазина"
+    },
+    "existingContractForm": {
+        "errors": {
+            "onlyInternationalShopCanBeSelected": "Можно выбрать только международный магазин",
+            "onlyRussianShopCanBeSelected": "Можно выбрать только российский магазин"
+        },
+        "useShop": "Использовать контракт на основе магазина"
+    },
+    "expandableRadioGroup": {
+        "any": "Любой",
+        "hideAllStatuses": "Скрыть все статусы",
+        "showAllStatuses": "Показать все статусы"
+    },
+    "internationalBankAccountForm": {
+        "correspondentAccount": "Корреспондентский счет"
+    },
+    "internationalShopForm": {
+        "organization": "Сведения об организации",
+        "paymentInstitution": "Платежная организация",
+        "payoutToolTitle": "Вывод средств"
+    },
+    "invoiceDetails": {
+        "amount": "Стоимость",
+        "createdAt": "Создан",
+        "description": "Описание",
+        "name": "Наименование",
+        "status": "Статус"
+    },
+    "invoiceStatusFilter": {
+        "label": "Статус инвойса"
+    },
+    "invoicesField": {
+        "label": "Идентификатор инвойса"
+    },
+    "invoicesFilter": {
+        "activeLabel": "Выбранные инвойсы",
+        "label": "Инвойсы"
+    },
+    "lastUpdated": {
+        "lastUpdate": "Последнее обновление",
+        "update": "Обновить"
+    },
+    "newContractorForm": {
+        "form": {
+            "actualAddress": "Почтовый адрес места нахождения",
+            "inn": "ИНН",
+            "registeredName": "Наименование юр. лица",
+            "registeredNumber": "ОГРН/ОГРНИП",
+            "representativeDocument": "Документ ЕИО/представителя",
+            "representativeFullName": "ФИО ЕИО/представителя",
+            "representativePosition": "Должность ЕИО/представителя",
+            "search": "Для поиска укажите название юр. лица, ИНН, ОГРН/ОГРНИП"
+        }
+    },
+    "newInternationalContractorForm": {
+        "actualAddress": "Адрес места нахождения (если отличается от места регистрации)",
+        "country": "Страна резиденции",
+        "organizationName": "Наименование",
+        "registeredAddress": "Адрес места регистрации",
+        "tradingName": "Торговое наименование (если применимо)"
+    },
+    "orgDetailsForm": {
+        "title": "Сведения об организации"
+    },
+    "pageNotFound": {
+        "back": "Назад"
+    },
+    "paymentDetails": {
+        "amount": "Сумма списания",
+        "status": "Статус",
+        "statusChangedAt": "Статус изменен"
+    },
+    "paymentInstitutionField": {
+        "label": "Платежная организация"
+    },
+    "payoutToolForm": {
+        "abaRtn": "ABA RTN",
+        "accountNumber": "Номер счета",
+        "bankAddress": "Адрес юридического лица банковской организации",
+        "bankCountry": "Страна резиденции банковской организации",
+        "bankName": "Наименование юридического лица банковской организации",
+        "bic": "BIC",
+        "description": "Необходимо заполнить либо IBAN, либо BIC, либо ABA RTN, либо наименование, страну и адрес",
+        "iban": "IBAN"
+    },
+    "refundDetails": {
+        "amount": "Сумма",
+        "createdAt": "Совершен",
+        "error": "Ошибка",
+        "reason": "Причина",
+        "status": "Статус"
+    },
+    "refundStatusFilter": {
+        "label": "Статус возврата"
+    },
+    "russianBankAccountForm": {
+        "account": "Расчетный счет",
+        "bik": "БИК",
+        "name": "Наименование",
+        "postAccount": "Корреспондентский счет",
+        "search": "Для поиска укажите название, БИК, SWIFT или ИНН банка"
+    },
+    "shared": {
+        "clear": "Очистить",
+        "clearForm": "Очистить форму",
+        "commonError": "Что-то пошло не так",
+        "copied": "Скопировано",
+        "copyFailed": "Ошибка копирования",
+        "create": "Создать",
+        "httpError": "Произошла ошибка в процессе передачи / получения данных",
+        "loading": "Загрузка...",
+        "next": "Далее",
+        "save": "Сохранить",
+        "showMore": "Показать еще"
+    },
+    "shopCreation": {
+        "created": "Заявка на создание магазина успешно создана"
+    },
+    "shopDetailsForm": {
+        "category": "Категория магазина",
+        "name": "Наименование магазина",
+        "url": "URL адрес магазина"
+    },
+    "shopForm": {
+        "description": "Для получения выплат по принятым платежам на ваш банковский счет необходимо указать реквизиты",
+        "title": "Вывод средств"
+    },
+    "shopsField": {
+        "label": "Магазин"
+    },
+    "shopsFilter": {
+        "activeLabel": "Выбранные магазины",
+        "label": "Магазины"
+    },
+    "withdrawalInfo": {
+        "amount": "Объем средств для вывода",
+        "createdAt": "Время запуска вывода",
+        "error": "Ошибка",
+        "errors": {
+            "failed": "Ошибка вывода средств"
+        },
+        "fee": "Комиссия",
+        "status": "Статус",
+        "total": "Итого"
+    }
+}

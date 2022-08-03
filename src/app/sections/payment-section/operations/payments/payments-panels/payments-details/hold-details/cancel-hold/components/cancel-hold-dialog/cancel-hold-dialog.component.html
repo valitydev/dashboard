@@ -1,4 +1,4 @@
-<ng-container *transloco="let t; scope: 'payment-details'; read: 'paymentDetails.holdDetails'">
+<ng-container *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentDetails.holdDetails'">
     <dsh-base-dialog [title]="t('cancelTitle')" (cancel)="decline()">
         <form [formGroup]="form">
             <dsh-max-length-input
@@ -10,14 +10,8 @@
             ></dsh-max-length-input>
         </form>
         <ng-container dshBaseDialogActions>
-            <button
-                *transloco="let c"
-                dsh-button
-                color="accent"
-                [disabled]="form.pristine || form.invalid"
-                (click)="confirm()"
-            >
-                {{ c('confirm') }}
+            <button dsh-button color="accent" [disabled]="form.pristine || form.invalid" (click)="confirm()">
+                {{ t('confirm') }}
             </button>
         </ng-container>
     </dsh-base-dialog>

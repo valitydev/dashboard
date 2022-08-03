@@ -1,3 +1,7 @@
-<dsh-row *transloco="let t; scope: 'wallets'; read: 'wallets.headerRow'" fxLayout fxLayoutAlign="start center">
+<dsh-row
+    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.wallets.headerRow'"
+    fxLayout
+    fxLayoutAlign="start center"
+>
     <dsh-row-header-label>{{ t('name') }}</dsh-row-header-label>
 </dsh-row>

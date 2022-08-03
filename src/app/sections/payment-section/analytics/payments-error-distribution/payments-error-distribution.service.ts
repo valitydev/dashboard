@@ -2,22 +2,23 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject, defer, combineLatest } from 'rxjs';
 import { map, pluck, switchMap } from 'rxjs/operators';
 
-import { AnalyticsService } from '@dsh/api/anapi';
+import { AnalyticsService, AnapiDictionaryService } from '@dsh/api/anapi';
 import { shareReplayRefCount } from '@dsh/operators';
 import { errorTo, progressTo, distinctUntilChangedDeep, inProgressFrom, attach } from '@dsh/utils';
 
 import { SearchParams } from '../search-params';
 import { searchParamsToDistributionSearchParams } from '../utils';
 import { errorsDistributionToChartData } from './errors-distribution-to-chart-data';
-import { getErrorTitle } from './get-error-title';
 import { getSelectedErrorDistribution } from './get-selected-error-distribution';
 import { subErrorsToErrorDistribution } from './sub-errors-to-error-distribution';
 
 @Injectable()
 export class PaymentsErrorDistributionService {
-    currentErrorTitle$ = defer(() => this.errorDistribution$).pipe(map(({ errorCode }) => getErrorTitle(errorCode)));
-    chartData$ = defer(() => this.errorDistribution$).pipe(
-        map(({ subErrors }) => errorsDistributionToChartData(subErrors))
+    currentErrorTitle$ = defer(() => combineLatest([this.errorDistribution$, this.errorLabels$])).pipe(
+        map(([{ errorCode }, errorLabels]) => errorLabels[errorCode])
+    );
+    chartData$ = defer(() => combineLatest([this.errorDistribution$, this.errorLabels$])).pipe(
+        map(([{ subErrors }, errorLabels]) => errorsDistributionToChartData(subErrors, errorLabels))
     );
     isLoading$ = inProgressFrom(
         () => this.progress$,
@@ -51,8 +52,9 @@ export class PaymentsErrorDistributionService {
     private selectedSubError$ = new BehaviorSubject<number[]>([]);
     private errorSub$ = new ReplaySubject<unknown>(1);
     private progress$ = new BehaviorSubject<number>(0);
+    private errorLabels$ = this.anapiDictionaryService.errorCode$;
 
-    constructor(private analyticsService: AnalyticsService) {}
+    constructor(private analyticsService: AnalyticsService, private anapiDictionaryService: AnapiDictionaryService) {}
 
     updateSearchParams(searchParams: SearchParams) {
         this.searchParams$.next(searchParams);

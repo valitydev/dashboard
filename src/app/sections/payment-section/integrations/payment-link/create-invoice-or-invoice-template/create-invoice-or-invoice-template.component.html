@@ -1,13 +1,13 @@
-<div fxLayout="column" fxLayoutGap="24px">
-    <div
-        *transloco="let c; scope: 'payment-link'; read: 'paymentLink.createInvoiceOrInvoiceTemplate.paymentLinkType'"
-        fxLayout="column"
-        fxLayoutGap="32px"
-    >
+<div
+    fxLayout="column"
+    fxLayoutGap="24px"
+    *transloco="let c; scope: 'payment-section'; read: 'paymentSection.createInvoiceOrInvoiceTemplate'"
+>
+    <div fxLayout="column" fxLayoutGap="32px">
         <h1 class="dsh-headline">{{ c('title') }}</h1>
         <form [formGroup]="form" fxLayout="column" fxLayoutGap="24px">
-            <div *transloco="let t; scope: 'payment-link'; read: 'paymentLink'" class="dsh-body-1">
-                {{ t('description') }}
+            <div class="dsh-body-1">
+                {{ c('description') }}
             </div>
             <mat-radio-group fxLayout="column" fxLayoutGap="24px" formControlName="type">
                 <mat-radio-button [value]="type.Invoice">{{ c('types.personal') }}</mat-radio-button>
@@ -19,19 +19,15 @@
     <ng-container *ngIf="form.value.type">
         <mat-divider></mat-divider>
         <ng-container *ngIf="form.value.type === type.Invoice">
-            <div
-                fxLayout="column"
-                fxLayoutGap="24px"
-                *transloco="let d; scope: 'create-invoice'; read: 'createInvoice'"
-            >
-                <h1 class="dsh-headline">{{ d('title') }}</h1>
+            <div fxLayout="column" fxLayoutGap="24px">
+                <h1 class="dsh-headline">{{ c('invoiceTitle') }}</h1>
                 <dsh-create-invoice-form
                     [shops]="shops$ | async"
                     [formControl]="createInvoiceFormControl"
                     (valid)="createInvoiceFormControlValid = $event"
                     (empty)="createInvoiceFormControlEmpty = $event"
                 ></dsh-create-invoice-form>
-                <dsh-actions *transloco="let t">
+                <dsh-actions *transloco="let t; scope: 'components'; read: 'components.shared'">
                     <button
                         dsh-text-button
                         color="accent"

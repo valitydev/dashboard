@@ -39,7 +39,7 @@ export class CardBinPanFilterComponent extends FilterSuperclass<CardBinPan> {
         return super.isEmpty(value) || (!value.bin && !value.pan);
     }
 
-    protected innerToOuter(inner: CardBinPan): CardBinPan {
+    protected innerToOuterValue(inner: CardBinPan): CardBinPan {
         const result: CardBinPan = {};
         if (inner.bin) result.bin = inner.bin;
         if (inner.pan) result.pan = inner.pan;

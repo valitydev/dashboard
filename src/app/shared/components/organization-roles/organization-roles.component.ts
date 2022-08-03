@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MemberRole } from '@vality/swag-organizations';
 
+import { OrganizationsDictionaryService } from '@dsh/api/organizations';
 import { coerceBoolean } from '@dsh/utils';
 
 import { RoleGroup } from './types/role-group';
@@ -19,4 +20,8 @@ export class OrganizationRolesComponent {
     }
 
     rolesByGroup: RoleGroup[] = [];
+    roleIdDict$ = this.organizationsDictionaryService.roleId$;
+    resourceScopeIdDict$ = this.organizationsDictionaryService.resourceScopeId$;
+
+    constructor(private organizationsDictionaryService: OrganizationsDictionaryService) {}
 }

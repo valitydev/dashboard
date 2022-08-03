@@ -5,7 +5,7 @@
         [maxDate]="defaultDateRange.end"
     ></dsh-date-range-filter>
     <dsh-filter-button
-        *transloco="let t; read: 'filters'"
+        *transloco="let t; scope: 'core-components'; read: 'coreComponents.additionalFilters'"
         [active]="isAdditionalFilterApplied$ | async"
         (click)="openAdditionalFiltersDialog()"
     >

@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CustomersTopic, InvoicesTopic, WebhookScope } from '@vality/swag-payments';
+import { combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { PaymentsDictionaryService } from '@dsh/api/payments';
 
 @Component({
     selector: 'dsh-webhook-events',
@@ -11,6 +15,11 @@ export class WebhookEventsComponent {
     @Input()
     scope: WebhookScope;
 
+    eventType$ = combineLatest([
+        this.paymentsDictionaryService.invoicesTopicEventType$,
+        this.paymentsDictionaryService.customersTopicEventType$,
+    ]).pipe(map(([i, c]) => ({ ...i, ...c })));
+
     get events(): InvoicesTopic.EventTypesEnum[] | CustomersTopic.EventTypesEnum[] {
         switch (this.scope.topic) {
             case 'InvoicesTopic':
@@ -19,4 +28,6 @@ export class WebhookEventsComponent {
                 return (this.scope as any as CustomersTopic).eventTypes;
         }
     }
+
+    constructor(private paymentsDictionaryService: PaymentsDictionaryService) {}
 }

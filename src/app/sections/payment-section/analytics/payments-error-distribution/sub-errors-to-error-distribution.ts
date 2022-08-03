@@ -4,8 +4,14 @@ import { SubError } from '@vality/swag-payments';
 import { ErrorDistribution } from './error-distribution';
 import { KNOWN_ERRORS } from './known-errors';
 
+function getDistributionErrorCode(errorCode: string): ErrorDistribution['errorCode'] {
+    return KNOWN_ERRORS.includes(errorCode as typeof KNOWN_ERRORS[number])
+        ? (errorCode as typeof KNOWN_ERRORS[number])
+        : 'other';
+}
+
 const subErrorToDistribution = (error: SubError, percents: number): ErrorDistribution => ({
-    errorCode: KNOWN_ERRORS.includes(error.code) ? error.code : 'other',
+    errorCode: getDistributionErrorCode(error.code),
     subErrors: error.subError ? [subErrorToDistribution(error.subError, percents)] : [],
     percents,
 });
@@ -31,7 +37,7 @@ const groupDistribution = (distribution: ErrorDistribution[]): ErrorDistribution
 
 export const subErrorsToErrorDistribution = (errors: PaymentsSubErrorsDistributionResult[]): ErrorDistribution[] => {
     const errorDistribution: ErrorDistribution[] = (errors ?? []).map(({ error, percents }) => ({
-        errorCode: KNOWN_ERRORS.includes(error.code) ? error.code : 'other',
+        errorCode: getDistributionErrorCode(error.code),
         subErrors: error.subError ? [subErrorToDistribution(error.subError, percents)] : [],
         percents,
     }));

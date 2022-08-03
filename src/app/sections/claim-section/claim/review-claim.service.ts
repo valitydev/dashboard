@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
-import { catchError, filter, map, pluck, shareReplay, switchMap, tap } from 'rxjs/operators';
+import { catchError, filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 
 import { ClaimsService } from '@dsh/api/claim-management';
+import { NotificationService } from '@dsh/app/shared';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 
 import { UiError } from '../../ui-error';
@@ -26,11 +26,6 @@ export class ReviewClaimService {
         shareReplay(1)
     );
     // eslint-disable-next-line @typescript-eslint/member-ordering
-    errorCode$: Observable<string> = this.error$.pipe(
-        filter((err) => err.hasError),
-        pluck('code')
-    );
-    // eslint-disable-next-line @typescript-eslint/member-ordering
     inProgress$: Observable<boolean> = this.progress$.asObservable();
 
     constructor(
@@ -38,8 +33,8 @@ export class ReviewClaimService {
         private routeParamClaimService: RouteParamClaimService,
         private receiveClaimService: ReceiveClaimService,
         private dialog: MatDialog,
-        private snackBar: MatSnackBar,
-        private transloco: TranslocoService
+        private transloco: TranslocoService,
+        private notificationService: NotificationService
     ) {
         this.reviewClaim$
             .pipe(
@@ -69,6 +64,13 @@ export class ReviewClaimService {
                                 this.progress$.next(false);
                                 console.error(ex);
                                 const error = { hasError: true, code: 'requestReviewClaimByIDFailed' };
+                                this.notificationService.error(
+                                    this.transloco.translate(
+                                        'claim.requestReviewClaimByIDFailed',
+                                        null,
+                                        'claim-section'
+                                    )
+                                );
                                 this.error$.next(error);
                                 return of(error);
                             })
@@ -78,15 +80,8 @@ export class ReviewClaimService {
             )
             .subscribe(() => {
                 this.receiveClaimService.receiveClaim();
-                this.snackBar.open(this.transloco.translate('reviewed', null, 'claim'), 'OK', {
-                    duration: 2000,
-                });
+                this.notificationService.success(this.transloco.translate('claim.reviewed', null, 'claim-section'));
             });
-        this.errorCode$.subscribe((code) =>
-            this.snackBar.open(this.transloco.translate(`errors.${code}`), 'OK', {
-                duration: 5000,
-            })
-        );
     }
 
     reviewClaim() {

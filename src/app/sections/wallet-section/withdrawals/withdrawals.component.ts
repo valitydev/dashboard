@@ -31,7 +31,7 @@ export class WithdrawalsComponent implements OnInit {
 
     ngOnInit(): void {
         this.fetchWithdrawalsService.errors$.subscribe(() =>
-            this.snackBar.open(this.transloco.translate('fetchError', null, 'withdrawals'), 'OK')
+            this.snackBar.open(this.transloco.translate('withdrawals.fetchError', null, 'wallet-section'), 'OK')
         );
     }
 

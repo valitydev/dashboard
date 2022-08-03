@@ -42,7 +42,7 @@ export class ReceiveWebhooksService {
                     this.webhooksService.getWebhooks().pipe(
                         catchError((err) => {
                             console.error(err);
-                            this.snackBar.open(this.transloco.translate('httpError'), 'OK');
+                            this.snackBar.open(this.transloco.translate('shared.httpError', null, 'components'), 'OK');
                             return of([]);
                         })
                     )

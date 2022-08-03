@@ -1,4 +1,8 @@
-<div fxLayout="column" fxLayoutGap="24px" *transloco="let t; scope: 'operations'; read: 'operations.refunds'">
+<div
+    fxLayout="column"
+    fxLayoutGap="24px"
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.refunds'"
+>
     <div *ngFor="let item of list; index as i" fxLayout="column" fxLayoutGap="24px">
         <div fxLayout fxLayoutGap="16px" fxLayoutAlign="space-between">
             <div>
@@ -14,13 +18,20 @@
             <div class="dsh-body-1">{{ t('emptyRefunds') }}</div>
         </div>
         <div *ngIf="hasMore">
-            <button *transloco="let s" dsh-button fxFlex (click)="showMoreElements()">{{ s('showMore') }}</button>
+            <button
+                *transloco="let c; scope: 'components'; read: 'components.shared'"
+                dsh-button
+                fxFlex
+                (click)="showMoreElements()"
+            >
+                {{ c('showMore') }}
+            </button>
         </div>
     </ng-container>
 </div>
 
 <ng-template #loader>
-    <div *transloco="let c">
+    <div *transloco="let c; scope: 'components'; read: 'components.shared'">
         <div class="dsh-body-1">{{ c('loading') }}</div>
     </div>
 </ng-template>

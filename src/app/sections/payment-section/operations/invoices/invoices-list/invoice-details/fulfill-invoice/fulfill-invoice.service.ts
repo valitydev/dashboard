@@ -33,7 +33,7 @@ export class FulfillInvoiceService {
             .subscribe(() => {
                 invoiceFulfilled$.next();
                 this.snackBar.open(
-                    this.transloco.translate('invoices.actions.invoiceFulfilled', null, 'operations'),
+                    this.transloco.translate('operations.invoices.actions.invoiceFulfilled', null, 'payment-section'),
                     'OK',
                     { duration: 2000 }
                 );

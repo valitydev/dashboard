@@ -43,7 +43,7 @@ export class CreateReportDialogComponent implements OnInit {
     ngOnInit() {
         this.createReportDialogService.reportCreated$.subscribe(() => this.dialogRef.close('created'));
         this.createReportDialogService.errorOccurred$.subscribe(() =>
-            this.snackBar.open(this.transloco.translate('errors.createError', null, 'reports'), 'OK')
+            this.snackBar.open(this.transloco.translate('reports.errors.createError', null, 'payment-section'), 'OK')
         );
     }
 

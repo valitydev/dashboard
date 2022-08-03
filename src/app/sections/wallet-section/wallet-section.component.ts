@@ -11,8 +11,8 @@ import { NavbarItemConfig, toNavbarItemConfig } from './utils';
 })
 export class WalletSectionComponent implements OnInit {
     navbarItemConfig$: Observable<NavbarItemConfig[]> = this.transloco
-        .selectTranslateObject<{ [k: string]: string }>('nav', {}, 'wallet-section')
-        .pipe(map(toNavbarItemConfig));
+        .selectTranslation('wallet-section')
+        .pipe(map(() => toNavbarItemConfig(this.getNavbarLabels())));
     activeSection$: Observable<string>;
 
     private activeSectionChange$ = new Subject<NavbarItemConfig>();
@@ -28,5 +28,14 @@ export class WalletSectionComponent implements OnInit {
             return;
         }
         this.activeSectionChange$.next(config);
+    }
+
+    private getNavbarLabels() {
+        return {
+            wallets: this.transloco.translate('walletSection.nav.wallets', null, 'wallet-section'),
+            deposits: this.transloco.translate('walletSection.nav.deposits', null, 'wallet-section'),
+            withdrawals: this.transloco.translate('walletSection.nav.withdrawals', null, 'wallet-section'),
+            integrations: this.transloco.translate('walletSection.nav.integrations', null, 'wallet-section'),
+        };
     }
 }

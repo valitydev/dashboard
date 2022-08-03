@@ -1,5 +1,8 @@
 <!-- TODO: use ngxd/core or alternatives for dynamic components here. ngSwitch has problems in cycles -->
-<dsh-details-item *transloco="let t; scope: 'payment-details'; read: 'paymentDetails.paymentTool'" [title]="t('title')">
+<dsh-details-item
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentDetails.paymentTool'"
+    [title]="t('title')"
+>
     <ng-container [ngSwitch]="paymentToolDetails.detailsType">
         <dsh-bank-card *ngSwitchCase="Type.BankCard" [bankCard]="paymentToolDetails"></dsh-bank-card>
         <dsh-digital-wallet *ngSwitchCase="Type.Wallet" [digitalWallet]="paymentToolDetails"></dsh-digital-wallet>

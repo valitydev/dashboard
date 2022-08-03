@@ -52,7 +52,7 @@ export class PaymentLinkComponent {
                     catchError((err) => {
                         this.errorService.error(err, false);
                         return this.transloco
-                            .selectTranslate('errors.createPaymentLinkError', null, 'create-payment-link')
+                            .selectTranslate('paymentLink.errors.createPaymentLinkError', null, 'payment-section')
                             .pipe(
                                 tap((message) => this.notificationService.error(message)),
                                 switchMapTo(EMPTY)

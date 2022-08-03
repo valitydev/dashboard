@@ -74,11 +74,17 @@ export class CreateRefundDialogComponent implements OnInit {
                         return;
                     }
                     this.notificationService.success(
-                        this.transloco.translate(
-                            `refunds.createRefund.${refund.status === 'pending' ? 'pending' : 'successful'}`,
-                            null,
-                            'payment-details'
-                        )
+                        refund.status === 'pending'
+                            ? this.transloco.translate(
+                                  `paymentDetails.refunds.createRefund.pending`,
+                                  null,
+                                  'payment-section'
+                              )
+                            : this.transloco.translate(
+                                  `paymentDetails.refunds.createRefund.successful`,
+                                  null,
+                                  'payment-section'
+                              )
                     );
                     this.dialogRef.close({
                         status: CreateRefundDialogResponseStatus.Success,
@@ -162,7 +168,15 @@ export class CreateRefundDialogComponent implements OnInit {
         let handledError: Error = err;
         if (err instanceof HttpErrorResponse && !isEmpty(err.error?.code)) {
             handledError = new CommonError(
-                this.transloco.translate(`refunds.errors.${err.error.code}`, null, 'payment-details')
+                err.error.code === 'invalidRequest'
+                    ? this.transloco.translate(`paymentDetails.refunds.errors.invalidRequest`, null, 'payment-section')
+                    : err.error.code === 'invoicePaymentAmountExceeded'
+                    ? this.transloco.translate(
+                          `paymentDetails.refunds.errors.invoicePaymentAmountExceeded`,
+                          null,
+                          'payment-section'
+                      )
+                    : err.error.code
             );
         }
         this.errorService.error(handledError);

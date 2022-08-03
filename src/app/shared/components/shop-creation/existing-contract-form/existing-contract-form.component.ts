@@ -42,11 +42,11 @@ export class ExistingContractFormComponent extends ValidatedControlSuperclass<Ex
         super(injector);
     }
 
-    protected outerToInner(): Shop {
+    protected outerToInnerValue(): Shop {
         return null;
     }
 
-    protected setUpInnerToOuter$(value$: Observable<Shop>): Observable<ExistingContractForm> {
+    protected setUpInnerToOuterValue$(value$: Observable<Shop>): Observable<ExistingContractForm> {
         return value$.pipe(
             switchMap((shop) =>
                 (shop ? this.getContract(shop.contractID) : of<ExistingContractForm>(null)).pipe(
@@ -64,17 +64,19 @@ export class ExistingContractFormComponent extends ValidatedControlSuperclass<Ex
         return this.contractsService.getContractByID({ contractID }).pipe(
             switchMap((contract: ExistingContractForm) => {
                 if (contract.contractor.entityType !== this.entityType)
-                    return this.transloco
-                        .selectTranslate(
-                            `existingContractForm.errors.${
-                                this.entityType === EntityTypeEnum.InternationalLegalEntity
-                                    ? 'onlyInternationalShopCanBeSelected'
-                                    : 'onlyRussianShopCanBeSelected'
-                            }`,
-                            null,
-                            'create-shop'
-                        )
-                        .pipe(switchMap((t) => throwError(new CommonError(t))));
+                    return (
+                        this.entityType === EntityTypeEnum.InternationalLegalEntity
+                            ? this.transloco.selectTranslate<string>(
+                                  'existingContractForm.errors.onlyInternationalShopCanBeSelected',
+                                  null,
+                                  'components'
+                              )
+                            : this.transloco.selectTranslate<string>(
+                                  'existingContractForm.errors.onlyRussianShopCanBeSelected',
+                                  null,
+                                  'components'
+                              )
+                    ).pipe(switchMap((t) => throwError(new CommonError(t))));
                 return of(contract);
             })
         );

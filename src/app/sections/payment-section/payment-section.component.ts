@@ -28,8 +28,8 @@ import { NavbarItemConfig, toNavbarItemConfig } from './utils';
 export class PaymentSectionComponent implements OnInit {
     isTestRealm$ = this.realmService.realm$.pipe(map((realm) => realm === PaymentInstitution.RealmEnum.Test));
     navbarItemConfig$: Observable<NavbarItemConfig[]> = this.transloco
-        .selectTranslateObject<{ [k: string]: string }>('nav', {}, 'payment-section')
-        .pipe(map(toNavbarItemConfig));
+        .selectTranslation('payment-section')
+        .pipe(map(() => toNavbarItemConfig(this.getNavbarItemLabels())));
     activeSection$: Observable<string>;
     noShops$: Observable<boolean> = this.realmShopsService.shops$.pipe(map((s) => s.length === 0));
 
@@ -90,5 +90,16 @@ export class PaymentSectionComponent implements OnInit {
 
     navigateToShops(): void {
         this.navigateToShops$.next();
+    }
+
+    private getNavbarItemLabels() {
+        return {
+            shops: this.transloco.translate('paymentSection.nav.shops', null, 'payment-section'),
+            analytics: this.transloco.translate('paymentSection.nav.analytics', null, 'payment-section'),
+            integrations: this.transloco.translate('paymentSection.nav.integrations', null, 'payment-section'),
+            operations: this.transloco.translate('paymentSection.nav.operations', null, 'payment-section'),
+            payouts: this.transloco.translate('paymentSection.nav.payouts', null, 'payment-section'),
+            reports: this.transloco.translate('paymentSection.nav.reports', null, 'payment-section'),
+        };
     }
 }

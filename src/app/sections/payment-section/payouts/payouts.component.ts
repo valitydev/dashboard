@@ -49,7 +49,9 @@ export class PayoutsComponent implements OnInit {
     ngOnInit(): void {
         this.fetchPayoutsService.errors$
             .pipe(untilDestroyed(this))
-            .subscribe(() => this.snackBar.open(this.transloco.translate('httpError'), 'OK'));
+            .subscribe(() =>
+                this.snackBar.open(this.transloco.translate('shared.httpError', null, 'components'), 'OK')
+            );
         this.realmMixService.mixedValue$
             .pipe(untilDestroyed(this))
             .subscribe((v) => this.fetchPayoutsService.search(v));
@@ -65,7 +67,7 @@ export class PayoutsComponent implements OnInit {
                 untilDestroyed(this)
             )
             .subscribe(() => {
-                this.snackBar.open(this.transloco.translate('payouts.created', null, 'payouts'), 'OK', {
+                this.snackBar.open(this.transloco.translate('payouts.payouts.created', null, 'payment-section'), 'OK', {
                     duration: 2000,
                 });
                 this.refresh();

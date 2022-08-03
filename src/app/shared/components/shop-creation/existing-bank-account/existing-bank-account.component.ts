@@ -51,7 +51,7 @@ export class ExistingBankAccountComponent extends ValidatedControlSuperclass<Exi
         super(injector);
     }
 
-    protected setUpInnerToOuter$(value$: Observable<Shop>): Observable<PayoutTool> {
+    protected setUpInnerToOuterValue$(value$: Observable<Shop>): Observable<PayoutTool> {
         return value$.pipe(
             switchMap((shop) =>
                 (shop?.contractID && shop?.payoutToolID ? this.getPayoutToolByShop(shop) : of<PayoutTool>(null)).pipe(
@@ -65,7 +65,7 @@ export class ExistingBankAccountComponent extends ValidatedControlSuperclass<Exi
         );
     }
 
-    protected outerToInner(): Shop {
+    protected outerToInnerValue(): Shop {
         return null;
     }
 
@@ -75,17 +75,19 @@ export class ExistingBankAccountComponent extends ValidatedControlSuperclass<Exi
             .pipe(
                 switchMap((payoutTool) => {
                     if (payoutTool.details.detailsType !== this.bankAccountType)
-                        return this.transloco
-                            .selectTranslate(
-                                `existingBankAccountForm.errors.${
-                                    this.bankAccountType === 'PayoutToolDetailsInternationalBankAccount'
-                                        ? 'onlyInternationalShopCanBeSelected'
-                                        : 'onlyRussianShopCanBeSelected'
-                                }`,
-                                null,
-                                'create-shop'
-                            )
-                            .pipe(switchMap((t) => throwError(new CommonError(t))));
+                        return (
+                            this.bankAccountType === 'PayoutToolDetailsInternationalBankAccount'
+                                ? this.transloco.selectTranslate(
+                                      'existingBankAccount.errors.onlyInternationalShopCanBeSelected',
+                                      null,
+                                      'components'
+                                  )
+                                : this.transloco.selectTranslate(
+                                      'existingBankAccount.errors.onlyRussianShopCanBeSelected',
+                                      null,
+                                      'components'
+                                  )
+                        ).pipe(switchMap((t) => throwError(new CommonError(t))));
                     return of(payoutTool);
                 })
             );

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { TRANSLOCO_SCOPE } from '@ngneat/transloco';
 
 import { ClaimSectionRoutingModule } from './claim-section-routing.module';
 import { ClaimSectionComponent } from './claim-section.component';
@@ -7,5 +8,6 @@ import { ClaimSectionComponent } from './claim-section.component';
     imports: [ClaimSectionRoutingModule],
     declarations: [ClaimSectionComponent],
     exports: [ClaimSectionComponent],
+    providers: [{ provide: TRANSLOCO_SCOPE, useValue: 'claim-section' }],
 })
 export class ClaimSectionModule {}

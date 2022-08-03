@@ -9,11 +9,10 @@ import { LayoutModule } from '@dsh/components/layout';
 
 import { InvoiceDetailsComponent } from './invoice-details.component';
 import { InvoiceStatusColorPipe } from './invoice-status-color.pipe';
-import { InvoiceStatusNamePipe } from './invoice-status-name.pipe';
 
 @NgModule({
     imports: [TranslocoModule, LayoutModule, FlexLayoutModule, CommonModule, StatusModule, AmountCurrencyModule],
-    declarations: [InvoiceDetailsComponent, InvoiceStatusColorPipe, InvoiceStatusNamePipe],
-    exports: [InvoiceDetailsComponent, InvoiceStatusColorPipe, InvoiceStatusNamePipe],
+    declarations: [InvoiceDetailsComponent, InvoiceStatusColorPipe],
+    exports: [InvoiceDetailsComponent, InvoiceStatusColorPipe],
 })
 export class InvoiceDetailsModule {}

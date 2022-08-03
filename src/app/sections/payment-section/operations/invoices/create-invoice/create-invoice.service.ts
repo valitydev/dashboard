@@ -42,7 +42,7 @@ export class CreateInvoiceService {
             .subscribe((id) => {
                 invoiceCreated$.next(id);
                 this.snackBar.open(
-                    this.transloco.translate('invoices.actions.invoiceCreated', null, 'operations'),
+                    this.transloco.translate('operations.invoices.actions.invoiceCreated', null, 'payment-section'),
                     'OK',
                     {
                         duration: 2000,

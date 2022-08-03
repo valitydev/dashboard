@@ -12,7 +12,7 @@
             <ng-template dshLazyPanelContent>
                 <dsh-card fxFlexFill fxLayout="column" fxLayoutGap="32px">
                     <dsh-accordion-item-content-header
-                        *transloco="let t; scope: 'withdrawals'; read: 'withdrawals'"
+                        *transloco="let t; scope: 'wallet-section'; read: 'walletSection.withdrawals'"
                         (collapse)="accordionItem.collapse($event)"
                     >
                         <div fxLayout fxLayoutAlign="space-between">

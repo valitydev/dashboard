@@ -1,4 +1,8 @@
-<div *transloco="let t; scope: 'deposit-reverts'; read: 'depositReverts'" fxLayout="column" fxLayoutGap="24px">
+<div
+    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.depositReverts'"
+    fxLayout="column"
+    fxLayoutGap="24px"
+>
     <div class="mat-title">
         {{ t('reverts') }}
     </div>
@@ -12,18 +16,13 @@
         <ng-container *ngIf="reverts.length > 0">
             <div *ngFor="let revert of reverts; let i = index" fxLayout="column" fxLayoutGap="24px">
                 <mat-divider *ngIf="i > 0"></mat-divider>
-                <div
-                    class="mat-subheading-2"
-                    *transloco="let t; scope: 'deposit-revert-info'; read: 'depositRevertInfo'"
-                >
-                    {{ t('revert') }} #{{ revert.id }}
-                </div>
+                <div class="mat-subheading-2">{{ t('revert') }} #{{ revert.id }}</div>
                 <dsh-deposit-revert-details [revert]="revert"></dsh-deposit-revert-details>
             </div>
         </ng-container>
     </ng-container>
     <button *ngIf="(hasMore$ | async) && !(isLoading$ | async)" dsh-button (click)="fetchMore()">
-        <ng-container *transloco="let c">
+        <ng-container *transloco="let c; scope: 'components'; read: 'components.shared'">
             {{ c('showMore') }}
         </ng-container>
     </button>

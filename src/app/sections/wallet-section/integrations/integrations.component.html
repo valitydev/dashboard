@@ -13,7 +13,7 @@
             [active]="rla.isActive"
         >
             <span *transloco="let tabs; scope: 'wallet-section'; read: 'walletSection.integrations.tabs'">{{
-                tabs(link.path)
+                link.label$ | async
             }}</span>
         </a>
     </nav>

@@ -35,7 +35,7 @@ export class RevokeClaimService {
             )
             .subscribe(() => {
                 this.receiveClaimService.receiveClaim();
-                this.snackBar.open(this.transloco.translate('revoked', null, 'claim'), 'OK', {
+                this.snackBar.open(this.transloco.translate('claim.revoked', null, 'claim-section'), 'OK', {
                     duration: 2000,
                 });
             });

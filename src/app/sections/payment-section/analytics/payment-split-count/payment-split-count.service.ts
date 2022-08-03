@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { forkJoin, of, defer, ReplaySubject, BehaviorSubject } from 'rxjs';
 import { map, switchMap, withLatestFrom } from 'rxjs/operators';
 
-import { AnalyticsService } from '@dsh/api/anapi';
+import { AnalyticsService, AnapiDictionaryService } from '@dsh/api/anapi';
 import { shareReplayRefCount } from '@dsh/operators';
 import { errorTo, progressTo, distinctUntilChangedDeep, inProgressFrom, attach } from '@dsh/utils';
 
@@ -30,7 +30,8 @@ export class PaymentSplitCountService {
             ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$))
         ),
         map(([fromTime, toTime, splitCount]) => prepareSplitCount(splitCount?.result, fromTime, toTime)),
-        map(splitCountToChartData),
+        withLatestFrom(this.anapiDictionaryService.paymentStatus$),
+        map(([res, paymentStatusDict]) => splitCountToChartData(res, paymentStatusDict)),
         withLatestFrom(defer(() => this.searchParams$)),
         map(([result, { currency }]) => result.find((r) => r.currency === currency)),
         shareReplayRefCount()
@@ -42,7 +43,7 @@ export class PaymentSplitCountService {
     private errorSub$ = new ReplaySubject<unknown>(1);
     private progress$ = new BehaviorSubject<number>(0);
 
-    constructor(private analyticsService: AnalyticsService) {}
+    constructor(private analyticsService: AnalyticsService, private anapiDictionaryService: AnapiDictionaryService) {}
 
     updateSearchParams(searchParams: SearchParams): void {
         this.searchParams$.next(searchParams);

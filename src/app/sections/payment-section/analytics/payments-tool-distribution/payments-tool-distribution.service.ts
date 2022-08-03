@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ReplaySubject, BehaviorSubject, defer } from 'rxjs';
-import { map, pluck, switchMap } from 'rxjs/operators';
+import { map, switchMap, withLatestFrom } from 'rxjs/operators';
 
-import { AnalyticsService } from '@dsh/api/anapi';
+import { AnalyticsService, AnapiDictionaryService } from '@dsh/api/anapi';
 import { shareReplayRefCount } from '@dsh/operators';
 import { errorTo, progressTo, distinctUntilChangedDeep, inProgressFrom, attach } from '@dsh/utils';
 
@@ -20,8 +20,8 @@ export class PaymentsToolDistributionService {
                 .getPaymentsToolDistribution({ fromTime, toTime, paymentInstitutionRealm: realm, shopIDs })
                 .pipe(errorTo(this.errorSub$), progressTo(this.progress$))
         ),
-        pluck('result'),
-        map(paymentsToolDistributionToChartData),
+        withLatestFrom(this.analyticsDictionaryService.paymentTool$),
+        map(([{ result }, paymentToolDict]) => paymentsToolDistributionToChartData(result, paymentToolDict)),
         shareReplayRefCount()
     );
     isLoading$ = inProgressFrom(() => this.progress$, this.toolDistribution$);
@@ -31,7 +31,10 @@ export class PaymentsToolDistributionService {
     private errorSub$ = new ReplaySubject<unknown>(1);
     private progress$ = new BehaviorSubject<number>(0);
 
-    constructor(private analyticsService: AnalyticsService) {}
+    constructor(
+        private analyticsService: AnalyticsService,
+        private analyticsDictionaryService: AnapiDictionaryService
+    ) {}
 
     updateSearchParams(searchParams: SearchParams) {
         this.searchParams$.next(searchParams);

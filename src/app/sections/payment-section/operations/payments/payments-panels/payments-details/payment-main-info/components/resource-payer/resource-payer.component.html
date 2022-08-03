@@ -1,4 +1,6 @@
-<ng-container *transloco="let payerDetails; scope: 'payment-details'; read: 'paymentDetails.payerDetails'">
+<ng-container
+    *transloco="let payerDetails; scope: 'payment-section'; read: 'paymentSection.paymentDetails.payerDetails'"
+>
     <dsh-details-item *ngIf="payer.contactInfo.email || payer.contactInfo.phoneNumber" [title]="payerDetails('title')">
         <div class="mat-body-1">
             {{ payer.contactInfo.email || payer.contactInfo.phoneNumber }}

@@ -33,6 +33,8 @@ export class FileUploaderService {
         private snackBar: MatSnackBar,
         private transloco: TranslocoService
     ) {
-        this.filesUploadingError$.subscribe(() => this.snackBar.open(this.transloco.translate('commonError'), 'OK'));
+        this.filesUploadingError$.subscribe(() =>
+            this.snackBar.open(this.transloco.translate('shared.commonError', null, 'components'), 'OK')
+        );
     }
 }

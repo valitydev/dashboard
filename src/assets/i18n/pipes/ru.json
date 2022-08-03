@@ -1,0 +1,21 @@
+{
+    "errorMessage": {
+        "errorOccurred": "Произошла ошибка"
+    },
+    "invoiceTemplateCostTypeName": {
+        "InvoiceTemplateLineCostFixed": "Фиксированная",
+        "InvoiceTemplateLineCostRange": "Диапазон",
+        "InvoiceTemplateLineCostUnlim": "Без ограничений"
+    },
+    "invoiceTemplateTypeName": {
+        "InvoiceTemplateMultiLine": "Корзина товаров",
+        "InvoiceTemplateSingleLine": "Одиночная позиция"
+    },
+    "payoutToolDetailsType": {
+        "payoutToolDetailsBankAccount": "Банковский счет",
+        "payoutToolDetailsBankCard": "Банковская карта",
+        "payoutToolDetailsInternationalBankAccount": "Международный банковский счет",
+        "payoutToolDetailsPaymentInstitutionAccount": "Аккаунт платежной организации",
+        "payoutToolDetailsWalletInfo": "Кошелек"
+    }
+}

@@ -1,16 +1,20 @@
-<div *transloco="let t; scope: 'wallets'; read: 'wallets.walletWithdrawals'" fxLayout="column" fxLayoutGap="24px">
+<div
+    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.wallets.walletWithdrawals'"
+    fxLayout="column"
+    fxLayoutGap="24px"
+>
     <div class="dsh-title">{{ t('title') }}</div>
     <ng-container *ngFor="let withdrawal of withdrawals$ | async as withdrawals; index as i">
         <dsh-wallet-withdrawal-details [withdrawal]="withdrawal"></dsh-wallet-withdrawal-details>
         <mat-divider *ngIf="i < withdrawals.length - 1"></mat-divider>
     </ng-container>
     <div *ngIf="isLoading$ | async">
-        <ng-container *transloco="let c">
+        <ng-container *transloco="let c; scope: 'components'; read: 'components.shared'">
             {{ c('loading') }}
         </ng-container>
     </div>
     <div *ngIf="errors$ | async">
-        <ng-container *transloco="let c">
+        <ng-container *transloco="let c; scope: 'components'; read: 'components.shared'">
             {{ t('fetchError') }}
         </ng-container>
     </div>
@@ -19,7 +23,7 @@
         dsh-button
         (click)="fetchMore()"
     >
-        <ng-container *transloco="let c">
+        <ng-container *transloco="let c; scope: 'components'; read: 'components.shared'">
             {{ c('showMore') }}
         </ng-container>
     </button>

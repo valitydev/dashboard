@@ -28,11 +28,11 @@ export class ErrorService {
             return error;
         }
         if (error instanceof TypeError) {
-            return new CommonError(this.transloco.translate('notification.error'));
+            return new CommonError(this.transloco.translate('error.error', null, 'services'));
         }
         if (error instanceof HttpErrorResponse) {
-            return new CommonError(this.transloco.translate('notification.httpError'));
+            return new CommonError(this.transloco.translate('error.httpError', null, 'services'));
         }
-        return new CommonError(this.transloco.translate('notification.error'));
+        return new CommonError(this.transloco.translate('error.error', null, 'services'));
     }
 }

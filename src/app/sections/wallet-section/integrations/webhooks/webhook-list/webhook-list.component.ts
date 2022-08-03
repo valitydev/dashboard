@@ -26,9 +26,13 @@ export class WebhookListComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.deleteWebhookService.init();
         this.deleteWebhookService.webhookDeleted$.subscribe(() => {
-            this.snackBar.open(this.transloco.translate('actions.webhookDeleted', null, 'wallet-webhooks'), 'OK', {
-                duration: 2000,
-            });
+            this.snackBar.open(
+                this.transloco.translate('webhooks.actions.webhookDeleted', null, 'wallet-section'),
+                'OK',
+                {
+                    duration: 2000,
+                }
+            );
             this.refreshData.emit();
         });
     }

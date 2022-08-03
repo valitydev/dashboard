@@ -2,7 +2,7 @@
     [formGroup]="form"
     fxLayout="column"
     fxLayoutGap="32px"
-    *transloco="let c; scope: 'create-invoice-template'; read: 'createInvoiceTemplate'"
+    *transloco="let c; scope: 'payment-section'; read: 'paymentSection.createInvoiceTemplate'"
 >
     <h1 class="dsh-headline">{{ c('title') }}</h1>
     <div fxLayout="column" fxLayoutGap="16px">
@@ -130,14 +130,13 @@
         </ng-template>
     </div>
 
-    <div fxLayout fxLayoutGap="24px" fxLayoutAlign="space-between" *transloco="let t">
-        <button
-            *transloco="let l; scope: 'payment-link'; read: 'paymentLink'"
-            dsh-text-button
-            color="accent"
-            (click)="clear()"
-            [disabled]="(isLoading$ | async) || form.pristine"
-        >
+    <div
+        fxLayout
+        fxLayoutGap="24px"
+        fxLayoutAlign="space-between"
+        *transloco="let t; scope: 'components'; read: 'components.shared'"
+    >
+        <button dsh-text-button color="accent" (click)="clear()" [disabled]="(isLoading$ | async) || form.pristine">
             {{ t('clearForm') }}
         </button>
         <button

@@ -1,11 +1,9 @@
-<div *transloco="let t; scope: 'claim'; read: 'claim.conversation'" fxLayout="column" fxLayoutGap="20px">
+<div *transloco="let t; scope: 'claim-section'; read: 'claimSection.conversation'" fxLayout="column" fxLayoutGap="20px">
     <dsh-timeline>
         <dsh-timeline-item>
             <dsh-timeline-item-title>
                 <span>{{ t('timeline.claimCreated') }}&nbsp;</span>
-                <span *transloco="let c"
-                    >{{ claimCreatedAt$ | async | humanizedDuration: { largest: 1 } }} {{ c('ago') }}</span
-                >
+                <span>{{ claimCreatedAt$ | async | humanizedDuration: { largest: 1 } }} {{ t('ago') }}</span>
             </dsh-timeline-item-title>
             <dsh-timeline-item-badge>
                 <dsh-bi icon="pencil" size="sm"></dsh-bi>
@@ -15,19 +13,9 @@
             <dsh-timeline-item-title>
                 <div fxFlex fxLayout="row" fxLayoutAlign="space-between end">
                     <div>
-                        <span
-                            class="dsh-body-2"
-                            *transloco="let userInfo; scope: 'claim'; read: 'claim.conversation.timeline.userInfo'"
-                            >{{ userInfo(item.userInfo.userType) }}
-                        </span>
-                        <span
-                            class="mat-body-2"
-                            *transloco="let action; scope: 'claim'; read: 'claim.conversation.timeline.action'"
-                            >{{ action(item.action) }}
-                        </span>
-                        <span *transloco="let c"
-                            >{{ item.createdAt | humanizedDuration: { largest: 1 } }} {{ c('ago') }}</span
-                        >
+                        <span class="dsh-body-2">{{ userTypeLabels[item.userInfo.userType] | async }} </span>
+                        <span class="mat-body-2">{{ timelineActionLabels[item.action] | async }} </span>
+                        <span>{{ item.createdAt | humanizedDuration: { largest: 1 } }} {{ t('ago') }}</span>
                     </div>
                     <dsh-bi
                         *ngIf="item.action === 'changesAdded'"

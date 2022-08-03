@@ -8,7 +8,11 @@
         <h2 class="dsh-display-1">{{ organization.name }}</h2>
         <ol
             dsh-breadcrumb
-            *transloco="let b; scope: 'organizations'; read: 'organizations.organizationDetails.breadcrumb'"
+            *transloco="
+                let b;
+                scope: 'organization-section';
+                read: 'organizationSection.organizationDetails.breadcrumb'
+            "
         >
             <li dsh-breadcrumb-item>
                 <a routerLink="/organization-section/organizations" dshTextColor="secondary">{{
@@ -29,10 +33,7 @@
                 #rla="routerLinkActive"
                 [active]="rla.isActive"
             >
-                <ng-container
-                    *transloco="let links; scope: 'organizations'; read: 'organizations.organizationDetails.links'"
-                    >{{ links(link.path) }}</ng-container
-                >
+                <ng-container>{{ link.label$ | async }}</ng-container>
             </a>
         </nav>
         <div>

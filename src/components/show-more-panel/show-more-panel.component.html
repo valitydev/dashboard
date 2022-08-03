@@ -1,5 +1,5 @@
 <button
-    *transloco="let t"
+    *transloco="let t; scope: 'components'; read: 'components.shared'"
     [disabled]="isLoading"
     dsh-text-button
     color="accent"

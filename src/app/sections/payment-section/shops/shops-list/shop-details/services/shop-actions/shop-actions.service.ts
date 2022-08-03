@@ -27,13 +27,17 @@ export class ShopActionsService {
                 filter((r) => r === 'confirm'),
                 switchMap(() => this.shopService.suspendShop({ shopID })),
                 map(() => {
-                    this.snackBar.open(this.transloco.translate('suspend.success', null, 'shops'), 'OK', {
-                        duration: 3000,
-                    });
+                    this.snackBar.open(
+                        this.transloco.translate('shops.suspend.success', null, 'payment-section'),
+                        'OK',
+                        {
+                            duration: 3000,
+                        }
+                    );
                     return ShopActionResult.Success;
                 }),
                 catchError(() => {
-                    this.snackBar.open(this.transloco.translate('suspend.error', null, 'shops'), 'OK');
+                    this.snackBar.open(this.transloco.translate('shops.suspend.error', null, 'payment-section'), 'OK');
                     return of(ShopActionResult.Error);
                 })
             );
@@ -47,13 +51,17 @@ export class ShopActionsService {
                 filter((r) => r === 'confirm'),
                 switchMap(() => this.shopService.activateShop({ shopID })),
                 map(() => {
-                    this.snackBar.open(this.transloco.translate('activate.success', null, 'shops'), 'OK', {
-                        duration: 3000,
-                    });
+                    this.snackBar.open(
+                        this.transloco.translate('shops.activate.success', null, 'payment-section'),
+                        'OK',
+                        {
+                            duration: 3000,
+                        }
+                    );
                     return ShopActionResult.Success;
                 }),
                 catchError(() => {
-                    this.snackBar.open(this.transloco.translate('activate.error', null, 'shops'), 'OK');
+                    this.snackBar.open(this.transloco.translate('shops.activate.error', null, 'payment-section'), 'OK');
                     return of(ShopActionResult.Error);
                 })
             );

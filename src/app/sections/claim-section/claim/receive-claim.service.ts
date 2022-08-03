@@ -36,7 +36,7 @@ export class ReceiveClaimService {
                 (claim) => this.claimState$.next(claim),
                 (err) => {
                     console.error(err);
-                    this.snackBar.open(this.transloco.translate('commonError'), 'OK');
+                    this.snackBar.open(this.transloco.translate('shared.commonError', null, 'components'), 'OK');
                     this.receiveClaimError$.next(true);
                 }
             );

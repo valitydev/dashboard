@@ -1,5 +1,5 @@
 <div
-    *transloco="let t; scope: 'payment-details'; read: 'paymentDetails.holdDetails'"
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentDetails.holdDetails'"
     fxLayout="column"
     fxLayoutGap="24px"
 >
@@ -13,11 +13,23 @@
                     : ''
             }}.
             <ng-container *ngIf="holdDate | holdActive: payment?.status; else expiredHold">
-                {{ t(activeHoldText) }}
+                {{
+                    flowHold.onHoldExpiration === onHoldExpirationEnum.Capture
+                        ? t('holdWithCapture')
+                        : flowHold.onHoldExpiration === onHoldExpirationEnum.Cancel
+                        ? t('holdWithCancel')
+                        : ''
+                }}
                 {{ t('activeHoldTutorial') }}
             </ng-container>
             <ng-template #expiredHold>
-                {{ t(expiredHoldText) }}
+                {{
+                    payment.status === statusEnum.Captured
+                        ? t('capturedHoldMessage')
+                        : payment.status === statusEnum.Cancelled
+                        ? t('cancelledHoldMessage')
+                        : ''
+                }}
             </ng-template>
         </div>
         <div

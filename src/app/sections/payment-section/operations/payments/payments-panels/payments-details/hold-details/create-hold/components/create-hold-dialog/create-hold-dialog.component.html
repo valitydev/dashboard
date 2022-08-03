@@ -1,5 +1,5 @@
 <dsh-base-dialog
-    *transloco="let t; scope: 'payment-details'; read: 'paymentDetails.holdDetails'"
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentDetails.holdDetails'"
     [title]="t('acceptTitle')"
     (cancel)="decline()"
 >
@@ -23,14 +23,8 @@
         </div>
     </form>
     <ng-container dshBaseDialogActions>
-        <button
-            *transloco="let c"
-            dsh-button
-            color="accent"
-            [disabled]="form.pristine || form.invalid"
-            (click)="confirm()"
-        >
-            {{ c('confirm') }}
+        <button dsh-button color="accent" [disabled]="form.pristine || form.invalid" (click)="confirm()">
+            {{ t('confirm') }}
         </button>
     </ng-container>
 </dsh-base-dialog>

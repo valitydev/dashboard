@@ -10,7 +10,7 @@ import { ComponentChanges } from '@dsh/type-utils';
 export class EmptyDirective implements OnChanges {
     @Input() dshEmpty: any;
 
-    @Input() dshEmptyText = this.translocoService.translate('emptyData');
+    @Input() dshEmptyText = this.translocoService.translate('empty.emptyData', null, 'core-components');
 
     constructor(
         private templateRef: TemplateRef<any>,

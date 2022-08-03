@@ -1,7 +1,13 @@
-<ng-container *transloco="let t; scope: 'webhook'; read: 'webhook'">
+<ng-container *transloco="let t; scope: 'payment-section'; read: 'paymentSection.webhook'">
     <dsh-base-dialog [title]="t('createWebhook.title')" (cancel)="cancel()">
         <dsh-create-webhook-form [form]="form"></dsh-create-webhook-form>
-        <div dshBaseDialogActions fxLayout="row" fxLayoutAlign.gt-sm="end" fxLayoutAlign="stretch" *transloco="let c">
+        <div
+            dshBaseDialogActions
+            fxLayout="row"
+            fxLayoutAlign.gt-sm="end"
+            fxLayoutAlign="stretch"
+            *transloco="let c; scope: 'components'; read: 'components.shared'"
+        >
             <button
                 fxFlex
                 fxFlex.gt-sm="none"

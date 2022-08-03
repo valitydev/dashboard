@@ -1,0 +1,173 @@
+{
+    "anapi": {
+        "bankCardPaymentSystem": {
+            "amex": "American Express",
+            "dankort": "Dankort",
+            "dinersclub": "Diners Club International",
+            "discover": "Discover Card",
+            "dummy": "Dummy",
+            "elo": "Elo",
+            "forbrugsforeningen": "Forbrugsforeningen",
+            "jcb": "JCB",
+            "maestro": "Maestro",
+            "mastercard": "Mastercard",
+            "nspkmir": "МИР",
+            "rupay": "RuPay'",
+            "unionpay": "UnionPay",
+            "uzcard": "Uzcard'",
+            "visa": "Visa",
+            "visaelectron": "Visa Electron"
+        },
+        "bankCardTokenProvider": {
+            "applepay": "Apple Pay",
+            "googlepay": "Google Pay",
+            "samsungpay": "Samsung Pay",
+            "yandexpay": "Yandex Pay"
+        },
+        "errorCode": {
+            "account_limit_exceeded": "Превышен лимит счёта",
+            "account_not_found": "Счёт не найден",
+            "amount": "Лимит суммы превышен",
+            "authorization_failed": "Ошибка авторизации",
+            "bank_card_rejected": "Банковская карта отклонена",
+            "card_expired": "Срок действия карты истёк",
+            "card_number_invalid": "Неверный номер карты",
+            "insufficient_funds": "Недостаточно средств",
+            "no_route_found": "Маршрут не найден",
+            "number": "Лимит количества операций превышен",
+            "operation_blocked": "Операция заблокирована",
+            "operation_timeout": "Превышено время ожидания",
+            "other": "Прочее",
+            "payment_tool_rejected": "Платежный инструмент отклонен",
+            "preauthorization_failed": "Ошибка предавторизации",
+            "processing_deadline_reached": "Время проведения платежа истекло",
+            "rejected_by_issuer": "Отклонено эмитентом",
+            "risk_score_is_too_high": "Операция с высоким риском",
+            "security_policy_violated": "Нарушение политики безопасности",
+            "three_ds_failed": "Ошибка 3DS",
+            "three_ds_not_finished": "Не завершена проверка 3DS"
+        },
+        "invoiceStatus": {
+            "cancelled": "Отменен",
+            "fulfilled": "Погашен",
+            "paid": "Оплачен",
+            "unpaid": "Не оплачен"
+        },
+        "paymentStatus": {
+            "cancelled": "Отменен",
+            "captured": "Подтвержден",
+            "failed": "Неуспешен",
+            "pending": "Запущен",
+            "processed": "Обработан",
+            "refunded": "Возвращен"
+        },
+        "paymentTool": {
+            "bank_card": "Банковская карта",
+            "digital_wallet": "Кошелек",
+            "payment_terminal": "Терминал"
+        },
+        "refundStatus": {
+            "failed": "Неуспешно",
+            "pending": "В процессе",
+            "succeeded": "Успешно"
+        },
+        "reportStatus": {
+            "canceled": "Отменен",
+            "created": "Сформирован",
+            "pending": "В процессе"
+        },
+        "reportType": {
+            "paymentRegistry": "Реестр операций",
+            "paymentRegistryByPayout": "Реестр операций возмещения",
+            "provisionOfService": "Акт об оказании услуг"
+        }
+    },
+    "claimManagement": {
+        "claimStatus": {
+            "accepted": "Одобрена",
+            "denied": "Отклонена",
+            "pending": "В ожидании",
+            "pendingAcceptance": "В ожидании одобрения",
+            "review": "На рассмотрении",
+            "revoked": "Отозвана"
+        }
+    },
+    "darkApi": {
+        "refundStatus": {
+            "failed": "Неуспешен",
+            "pending": "Запущен",
+            "succeeded": "Успешен"
+        }
+    },
+    "organizations": {
+        "resourceScopeId": {
+            "Shop": "Магазины"
+        },
+        "roleId": {
+            "Accountant": "Бухгалтер",
+            "Administrator": "Администратор",
+            "Integrator": "Интегратор",
+            "Manager": "Менеджер"
+        }
+    },
+    "payments": {
+        "customersTopicEventType": {
+            "CustomerBindingFailed": "CustomerBindingFailed (привязка к плательщику завершена с неудачей)",
+            "CustomerBindingStarted": "CustomerBindingStarted (привязка к плательщику запущена)",
+            "CustomerBindingSucceeded": "CustomerBindingSucceeded (привязка к плательщику успешно завершена)",
+            "CustomerCreated": "CustomerCreated (плательщик создан)",
+            "CustomerDeleted": "CustomerDeleted (плательщик удален)",
+            "CustomerReady": "CustomerReady (плательщик готов)"
+        },
+        "invoicesTopicEventType": {
+            "InvoiceCancelled": "InvoiceCancelled (инвойс отменен по истечению срока давности)",
+            "InvoiceCreated": "InvoiceCreated (создан новый инвойс)",
+            "InvoiceFulfilled": "InvoiceFulfilled (инвойс успешно погашен)",
+            "InvoicePaid": "InvoicePaid (инвойс перешел в состояние \"Оплачен\")",
+            "PaymentCancelled": "PaymentCancelled (платеж успешно отменен)",
+            "PaymentCaptured": "PaymentCaptured (платеж успешно завершен)",
+            "PaymentFailed": "PaymentFailed (при проведении платежа возникла ошибка)",
+            "PaymentProcessed": "PaymentProcessed (платеж в обработке)",
+            "PaymentRefundCreated": "PaymentRefundCreated (возврат платежа успешно создан)",
+            "PaymentRefundFailed": "PaymentRefundFailed (возврат платежа завершился неудачей)",
+            "PaymentRefundSucceeded": "PaymentRefundSucceeded (возврат платежа прошел успешно)",
+            "PaymentRefunded": "PaymentRefunded (платеж успешно возвращен)",
+            "PaymentStarted": "PaymentStarted (создан платеж)"
+        },
+        "paymentStatus": {
+            "cancelled": "Отменен",
+            "captured": "Подтвержден",
+            "failed": "Неуспешен",
+            "pending": "Запущен",
+            "processed": "Обработан",
+            "refunded": "Возвращен"
+        }
+    },
+    "wallet": {
+        "depositRevertStatus": {
+            "Failed": "Неуспешно",
+            "Pending": "В процессе",
+            "Succeeded": "Успешно"
+        },
+        "depositStatus": {
+            "Failed": "Неуспешно",
+            "Pending": "В процессе",
+            "Succeeded": "Успешно"
+        },
+        "destinationsTopicEventType": {
+            "DestinationAuthorized": "DestinationAuthorized (Приемник средств успешно авторизован)",
+            "DestinationCreated": "DestinationCreated (Приемник средств создан)",
+            "DestinationUnauthorized": "DestinationUnauthorized (Попытка авторизации приемника средств завершилась неудачей)"
+        },
+        "withdrawalStatus": {
+            "Failed": "Неуспешно",
+            "Pending": "В процессе",
+            "Succeeded": "Успешно"
+        },
+        "withdrawalsTopicEventType": {
+            "WithdrawalFailed": "WithdrawalFailed (Выплата завершилась неудачей)",
+            "WithdrawalStarted": "WithdrawalStarted (Выплата создана)",
+            "WithdrawalSucceeded": "WithdrawalSucceeded (Выплата совершена успешно)"
+        }
+    }
+}

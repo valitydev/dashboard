@@ -2,10 +2,13 @@
     gdColumns="1fr"
     gdColumns.gt-sm="1fr 1fr 1fr"
     gdGap="24px"
-    *transloco="let t; scope: 'refund-details'; read: 'refundDetails'"
+    *transloco="let t; scope: 'components'; read: 'components.refundDetails'"
 >
     <dsh-details-item [title]="t('status')">
-        <dsh-status [color]="refund.status | refundStatusColor">{{ refund.status | refundStatusName }}</dsh-status>
+        <dsh-status
+            [color]="refund.status | refundStatusColor"
+            >{{ (refundStatusDict$ | async)?.[refund.status] }}</dsh-status
+        >
     </dsh-details-item>
     <dsh-details-item [title]="t('amount')">{{ refund.amount | amountCurrency: refund.currency }}</dsh-details-item>
     <dsh-details-item [title]="t('createdAt')">{{ refund.createdAt | date: 'dd MMMM yyyy, HH:mm' }}</dsh-details-item>

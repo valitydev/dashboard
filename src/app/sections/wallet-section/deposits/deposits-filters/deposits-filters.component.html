@@ -4,7 +4,7 @@
         [default]="defaultDateRange"
         [maxDate]="defaultDateRange.end"
     ></dsh-date-range-filter>
-    <ng-container *transloco="let t; read: 'filters'">
+    <ng-container *transloco="let t; scope: 'core-components'; read: 'coreComponents.additionalFilters'">
         <dsh-filter-button [active]="isAdditionalFilterApplied$ | async" (click)="openAdditionalFiltersDialog()">
             {{ t('additionalFilters') }}
         </dsh-filter-button>

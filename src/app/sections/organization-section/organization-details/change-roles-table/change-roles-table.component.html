@@ -1,8 +1,8 @@
-<dsh-nested-table *transloco="let t; scope: 'organizations'; read: 'organizations.changeRolesTable'">
-    <dsh-nested-table-row *transloco="let r; scope: 'organizations'; read: 'organizations.roles'">
+<dsh-nested-table *transloco="let t; scope: 'organization-section'; read: 'organizationSection.changeRolesTable'">
+    <dsh-nested-table-row>
         <dsh-nested-table-col class="dsh-body-2"></dsh-nested-table-col>
         <dsh-nested-table-col *ngFor="let roleId of roleIds" class="dsh-body-2" fxLayoutAlign="center center">{{
-            r(roleId)
+            (roleIdDict$ | async)?.[roleId]
         }}</dsh-nested-table-col>
         <dsh-nested-table-col *ngIf="isAllowAdd">
             <button dsh-button color="accent" (click)="add()">{{ t('add') }}</button>

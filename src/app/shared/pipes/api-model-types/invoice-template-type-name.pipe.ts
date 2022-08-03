@@ -12,8 +12,9 @@ export class InvoiceTemplateTypeNamePipe implements PipeTransform {
     transform(type: InvoiceTemplateType): string {
         switch (type) {
             case InvoiceTemplateType.InvoiceTemplateMultiLine:
+                return this.transloco.translate(`invoiceTemplateTypeName.InvoiceTemplateMultiLine`, null, 'pipes');
             case InvoiceTemplateType.InvoiceTemplateSingleLine:
-                return this.transloco.translate(`invoiceTemplateType.${type}`);
+                return this.transloco.translate(`invoiceTemplateTypeName.InvoiceTemplateSingleLine`, null, 'pipes');
             default:
                 return type;
         }

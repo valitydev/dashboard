@@ -1,4 +1,7 @@
-<dsh-filters-group *transloco="let t; scope: 'reports'; read: 'reports.searchFilters'" [formGroup]="form">
+<dsh-filters-group
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.reports.searchFilters'"
+    [formGroup]="form"
+>
     <div class="dsh-body-1" fxHide.lt-md>{{ t('dateRangeDescription') }}:</div>
     <dsh-date-range-filter
         formControlName="dateRange"

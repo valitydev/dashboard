@@ -1,14 +1,14 @@
 <dsh-base-dialog
-    *transloco="let t; scope: 'organizations'; read: 'organizations.selectRoleDialog'"
+    *transloco="let t; scope: 'organization-section'; read: 'organizationSection.selectRoleDialog'"
     [title]="t('title')"
     (cancel)="cancel()"
 >
     <mat-radio-group [formControl]="roleControl">
         <dsh-nested-table [rowsGridTemplateColumns]="rowsGridTemplateColumns">
-            <dsh-nested-table-row *transloco="let r; scope: 'organizations'; read: 'organizations.roles'">
+            <dsh-nested-table-row>
                 <dsh-nested-table-col></dsh-nested-table-col>
                 <dsh-nested-table-col *ngFor="let role of roles" fxLayoutAlign="center center">
-                    <span class="dsh-body-2 header">{{ r(role) }}</span>
+                    <span class="dsh-body-2 header">{{ (roleIdDict$ | async)?.[role] }}</span>
                 </dsh-nested-table-col>
             </dsh-nested-table-row>
             <dsh-nested-table-row>
@@ -20,7 +20,7 @@
 
             <dsh-nested-table-row *ngFor="let access of accesses">
                 <dsh-nested-table-col>
-                    <span [class.dsh-body-2]="access.isHeader">{{ t('accesses.' + access.name) }}</span>
+                    <span [class.dsh-body-2]="access.isHeader">{{ (roleAccessDict$ | async)?.[access.name] }}</span>
                 </dsh-nested-table-col>
                 <dsh-nested-table-col *ngFor="let role of roles" fxLayoutAlign="center center">
                     <dsh-selection

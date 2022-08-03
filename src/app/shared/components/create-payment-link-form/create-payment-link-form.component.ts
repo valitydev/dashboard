@@ -1,13 +1,14 @@
 import { Component, Injector, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { FbGroupConfig } from '@ngneat/reactive-forms/lib/formBuilder';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { BankCard, PaymentMethod, PaymentTerminal, DigitalWallet } from '@vality/swag-payments';
+import { Observable } from 'rxjs';
 
 import { TokenProvider, TerminalProvider } from '@dsh/api/payments';
+import { NotificationService } from '@dsh/app/shared';
 import { PaymentLinkParams } from '@dsh/app/shared/services/create-payment-link/types/payment-link-params';
 import { ComponentChanges } from '@dsh/type-utils';
 import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
@@ -32,8 +33,10 @@ export class CreatePaymentLinkFormComponent
     @Input() paymentMethods: PaymentMethod[];
     @Input() paymentLink: string;
 
-    holdExpirations = Object.entries(HoldExpiration);
+    holdExpirations = Object.values(HoldExpiration);
     orderedPaymentMethodsNames = ORDERED_PAYMENT_METHODS_NAMES;
+    paymentMethodLabels = this.getPaymentMethodLabels();
+    holdExpirationLabels = this.getHoldExpirationLabels();
     control = this.fb.group<Controls>({
         ...EMPTY_VALUE,
         email: [EMPTY_VALUE['email'], Validators.email],
@@ -45,7 +48,7 @@ export class CreatePaymentLinkFormComponent
     });
 
     constructor(
-        private snackBar: MatSnackBar,
+        private notificationService: NotificationService,
         private transloco: TranslocoService,
         private fb: FormBuilder,
         injector: Injector
@@ -60,10 +63,11 @@ export class CreatePaymentLinkFormComponent
     }
 
     copied(isCopied: boolean): void {
-        this.snackBar.open(this.transloco.translate(isCopied ? 'copied' : 'copyFailed'), 'OK', { duration: 1000 });
+        if (isCopied) this.notificationService.success(this.transloco.translate('shared.copied', null, 'components'));
+        else this.notificationService.success(this.transloco.translate('shared.copyFailed', null, 'components'));
     }
 
-    protected innerToOuter({ holdExpiration, paymentMethods, ...value }: Controls): PaymentLinkParams {
+    protected innerToOuterValue({ holdExpiration, paymentMethods, ...value }: Controls): PaymentLinkParams {
         return {
             ...(value.paymentFlowHold ? { holdExpiration } : {}),
             ...value,
@@ -134,5 +138,59 @@ export class CreatePaymentLinkFormComponent
                     break;
             }
         });
+    }
+
+    private getPaymentMethodLabels(): Record<typeof ORDERED_PAYMENT_METHODS_NAMES[number], Observable<string>> {
+        return {
+            bankCard: this.transloco.selectTranslate(
+                'createPaymentLinkForm.paymentMethod.bankCard',
+                null,
+                'components'
+            ),
+            yandexPay: this.transloco.selectTranslate(
+                'createPaymentLinkForm.paymentMethod.yandexPay',
+                null,
+                'components'
+            ),
+            applePay: this.transloco.selectTranslate(
+                'createPaymentLinkForm.paymentMethod.applePay',
+                null,
+                'components'
+            ),
+            googlePay: this.transloco.selectTranslate(
+                'createPaymentLinkForm.paymentMethod.googlePay',
+                null,
+                'components'
+            ),
+            samsungPay: this.transloco.selectTranslate(
+                'createPaymentLinkForm.paymentMethod.samsungPay',
+                null,
+                'components'
+            ),
+            uzcard: this.transloco.selectTranslate('createPaymentLinkForm.paymentMethod.uzcard', null, 'components'),
+            wallets: this.transloco.selectTranslate('createPaymentLinkForm.paymentMethod.wallets', null, 'components'),
+            euroset: this.transloco.selectTranslate('createPaymentLinkForm.paymentMethod.euroset', null, 'components'),
+            qps: this.transloco.selectTranslate('createPaymentLinkForm.paymentMethod.qps', null, 'components'),
+            mobileCommerce: this.transloco.selectTranslate(
+                'createPaymentLinkForm.paymentMethod.mobileCommerce',
+                null,
+                'components'
+            ),
+        };
+    }
+
+    private getHoldExpirationLabels(): Record<HoldExpiration, Observable<string>> {
+        return {
+            [HoldExpiration.Cancel]: this.transloco.selectTranslate(
+                'createPaymentLinkForm.holdExpiration.cancel',
+                null,
+                'components'
+            ),
+            [HoldExpiration.Capture]: this.transloco.selectTranslate(
+                'createPaymentLinkForm.holdExpiration.capture',
+                null,
+                'components'
+            ),
+        };
     }
 }

@@ -19,4 +19,4 @@ export const KNOWN_ERRORS = [
     'number',
     'card_number_invalid',
     'card_expired',
-];
+] as const;

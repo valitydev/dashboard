@@ -18,7 +18,7 @@ export abstract class FilterSuperclass<Inner, Outer = Inner> extends FormCompone
 
     savedValue$: Observable<Inner> = defer(() => this._savedValue$.asObservable());
     get savedValue(): Outer {
-        return this.innerToOuter(this._savedValue$.getValue());
+        return this.innerToOuterValue(this._savedValue$.getValue());
     }
 
     get isActive(): boolean {
@@ -36,7 +36,7 @@ export abstract class FilterSuperclass<Inner, Outer = Inner> extends FormCompone
     }
 
     handleIncomingValue(value: Outer): void {
-        this.set(this.outerToInner(value));
+        this.set(this.outerToInnerValue(value));
     }
 
     // TODO: add validation support
@@ -61,15 +61,15 @@ export abstract class FilterSuperclass<Inner, Outer = Inner> extends FormCompone
         this.control.patchValue(value);
         if (!this.isEqual(value, this._savedValue$.getValue())) {
             this._savedValue$.next(value);
-            this.emitOutgoingValue(this.innerToOuter(value));
+            this.emitOutgoingValue(this.innerToOuterValue(value));
         }
     }
 
-    protected outerToInner(outer: Outer): Inner {
+    protected outerToInnerValue(outer: Outer): Inner {
         return outer as never;
     }
 
-    protected innerToOuter(inner: Inner): Outer {
+    protected innerToOuterValue(inner: Inner): Outer {
         return inner as never;
     }
 }

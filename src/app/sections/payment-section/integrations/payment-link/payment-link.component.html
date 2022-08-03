@@ -1,12 +1,16 @@
-<dsh-card fxLayout="column" fxLayoutGap="24px">
+<dsh-card
+    fxLayout="column"
+    fxLayoutGap="24px"
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentLink'"
+>
     <dsh-create-invoice-or-invoice-template
         *ngIf="(currentStep$ | async) === step.InvoiceTemplate"
         (next)="nextInvoiceOrInvoiceTemplate($event)"
     ></dsh-create-invoice-or-invoice-template>
     <div fxLayout="column" fxLayoutGap="32px" *ngIf="(currentStep$ | async) === step.PaymentLink">
-        <ng-container *transloco="let c; scope: 'create-payment-link'; read: 'createPaymentLink'">
+        <ng-container>
             <h1 class="dsh-headline">
-                {{ c('title') }}
+                {{ t('title') }}
             </h1>
             <div fxLayout="column" fxLayoutGap="24px">
                 <dsh-create-payment-link-form
@@ -14,7 +18,7 @@
                     [paymentMethods]="paymentMethods$ | async"
                     [paymentLink]="paymentLink$ | async"
                 ></dsh-create-payment-link-form>
-                <dsh-actions *transloco="let t">
+                <dsh-actions>
                     <button
                         dsh-text-button
                         color="accent"
@@ -26,7 +30,7 @@
 
                     <ng-container *ngIf="formControl.valid && !(paymentLink$ | async); else clearButton">
                         <button dsh-button color="accent" (click)="create()" [disabled]="!!(progress$ | async)">
-                            {{ c('create') }}
+                            {{ t('create') }}
                         </button>
                     </ng-container>
                     <ng-template #clearButton>

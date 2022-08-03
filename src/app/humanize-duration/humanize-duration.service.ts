@@ -31,7 +31,8 @@ export class HumanizeDurationService {
     }
 
     get shortEnglishHumanizer(): humanizeDuration.HumanizerOptions {
-        const getLocalizedUnitFn = (unit: string) => () => this.transloco.translate(`shortTimeUnits.${unit}`);
+        const getLocalizedUnitFn = (unit: keyof ReturnType<HumanizeDurationService['getUnitLabels']>) => () =>
+            this.getUnitLabels()[unit];
         return {
             language: 'short',
             languages: {
@@ -61,14 +62,16 @@ export class HumanizeDurationService {
         if (isNaN(diffMs)) {
             return null;
         } else if (diffMs < HumanizeDurationService.LESS_THAN_FEW_SECONDS) {
-            return this.transloco.translate('justNow');
+            return this.transloco.translate('humanizeDuration.justNow', null, 'core-components');
         } else if (config.isShort) {
             duration = this.duration(diffMs, { ...config, ...this.shortEnglishHumanizer });
         } else if (config.largest === 1) {
             duration = moment.duration(diffMs).humanize();
         }
         duration = duration === 'минута' ? 'минуту' : duration;
-        return config.hasAgoEnding ? `${duration} ${this.transloco.translate('ago')}` : duration;
+        return config.hasAgoEnding
+            ? `${duration} ${this.transloco.translate('humanizeDuration.ago', null, 'core-components')}`
+            : duration;
     }
 
     getOptimalUpdateInterval(value: Value, { largest }: HumanizeConfig): number {
@@ -87,5 +90,18 @@ export class HumanizeDurationService {
 
     isDiff(value: Value): value is number {
         return typeof value === 'number';
+    }
+
+    private getUnitLabels() {
+        return {
+            day: this.transloco.translate('humanizeDuration.shortUnit.day', null, 'core-components'),
+            hour: this.transloco.translate('humanizeDuration.shortUnit.hour', null, 'core-components'),
+            millisecond: this.transloco.translate('humanizeDuration.shortUnit.millisecond', null, 'core-components'),
+            minute: this.transloco.translate('humanizeDuration.shortUnit.minute', null, 'core-components'),
+            month: this.transloco.translate('humanizeDuration.shortUnit.month', null, 'core-components'),
+            second: this.transloco.translate('humanizeDuration.shortUnit.second', null, 'core-components'),
+            week: this.transloco.translate('humanizeDuration.shortUnit.week', null, 'core-components'),
+            year: this.transloco.translate('humanizeDuration.shortUnit.year', null, 'core-components'),
+        };
     }
 }

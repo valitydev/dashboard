@@ -1,2 +1,4 @@
 <div>404</div>
-<button *transloco="let t" (click)="back()">{{ t('back') }}</button>
+<button *transloco="let t; scope: 'components'; read: 'components.pageNotFound'" (click)="back()">
+    {{ t('back') }}
+</button>

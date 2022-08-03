@@ -6,6 +6,7 @@ import isNil from 'lodash-es/isNil';
 import { BehaviorSubject, combineLatest, EMPTY, Observable, of } from 'rxjs';
 import { first, map, switchMap, tap } from 'rxjs/operators';
 
+import { OrganizationsDictionaryService } from '@dsh/api/organizations';
 import { ShopsService } from '@dsh/api/payments';
 import { DialogConfig, DIALOG_CONFIG } from '@dsh/app/sections/tokens';
 import { sortRoleIds } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
@@ -49,6 +50,7 @@ export class ChangeRolesTableComponent implements OnInit {
 
     roleIds: RoleId[] = [];
     shops$ = this.shopsService.shops$;
+    roleIdDict$ = this.organizationsDictionaryService.roleId$;
 
     get availableRoles(): RoleId[] {
         return Object.values(RoleId).filter((r) => !this.roleIds.includes(r));
@@ -72,7 +74,8 @@ export class ChangeRolesTableComponent implements OnInit {
         private shopsService: ShopsService,
         private dialog: MatDialog,
         @Inject(DIALOG_CONFIG) private dialogConfig: DialogConfig,
-        private cdr: ChangeDetectorRef
+        private cdr: ChangeDetectorRef,
+        private organizationsDictionaryService: OrganizationsDictionaryService
     ) {}
 
     ngOnInit(): void {

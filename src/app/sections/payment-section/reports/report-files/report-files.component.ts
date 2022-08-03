@@ -26,9 +26,13 @@ export class ReportFilesComponent implements OnInit {
 
     ngOnInit() {
         this.reportFilesService.errorOccurred$.subscribe(() =>
-            this.snackBar.open(this.transloco.translate('errors.downloadReportError', null, 'reports'), 'OK', {
-                duration: 2000,
-            })
+            this.snackBar.open(
+                this.transloco.translate('reports.errors.downloadReportError', null, 'payment-section'),
+                'OK',
+                {
+                    duration: 2000,
+                }
+            )
         );
     }
 

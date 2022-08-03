@@ -33,7 +33,7 @@ export class CancelInvoiceService {
             .subscribe(() => {
                 invoiceCancelled$.next();
                 this.snackBar.open(
-                    this.transloco.translate('invoices.actions.invoiceCancelled', null, 'operations'),
+                    this.transloco.translate('operations.invoices.actions.invoiceCancelled', null, 'payment-section'),
                     'OK',
                     { duration: 2000 }
                 );

@@ -1,4 +1,8 @@
-<div *transloco="let t; scope: 'wallets'; read: 'wallets.walletDeposits'" fxLayout="column" fxLayoutGap="16px">
+<div
+    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.wallets.walletDeposits'"
+    fxLayout="column"
+    fxLayoutGap="16px"
+>
     <div class="dsh-subheading-1">
         {{ t('deposit') }} <span dshTextColor="secondary">#{{ deposit.id }}</span>
     </div>
@@ -14,7 +18,7 @@
         }}</dsh-details-item>
         <dsh-details-item [title]="t('status')"
             ><dsh-status [color]="deposit.status | depositStatusColor">{{
-                deposit.status | depositStatusName
+            (depositStatusDict$ | async)?.[deposit.status]
             }}</dsh-status></dsh-details-item
         >
         <dsh-details-item [title]="t('createdAt')">{{

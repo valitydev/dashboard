@@ -1,14 +1,14 @@
 <div
     class="dsh-webhook-panel-events-section"
-    *transloco="let t; scope: 'wallet-webhooks'; read: 'walletWebhooks.events'"
+    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.webhooks.events'"
     fxLayout="column"
     fxLayoutGap="24px"
 >
     <div class="dsh-title">{{ t('title') }}</div>
     <ul fxLayout="column" fxLayoutGap="24px" class="dsh-webhooks-event-list">
         <li class="dsh-body-1" *ngFor="let event of events">
-            <span *transloco="let types; scope: 'wallet-webhooks'; read: 'walletWebhooks.events.types'">{{
-                types(event)
+            <span>{{
+                (eventType$ | async)?.[event]
             }}</span>
         </li>
     </ul>

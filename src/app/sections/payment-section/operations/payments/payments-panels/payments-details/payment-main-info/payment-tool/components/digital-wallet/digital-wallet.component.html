@@ -1,4 +1,5 @@
-<div *transloco="let provider; read: 'digitalWalletProvider'" class="mat-body-1">
+<div *transloco="let provider; scope: 'payment-section'; read: 'paymentSection.digitalWallet'" class="mat-body-1">
+    <!-- t(DigitalWalletDetailsQIWI) -->
     {{ digitalWallet.provider }}
 </div>
 <!--TODO: add other info-->

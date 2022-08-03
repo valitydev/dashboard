@@ -1,8 +1,4 @@
-<div
-    *transloco="let p; scope: 'create-shop'; read: 'createShop.russianLegalEntity.orgDetails'"
-    fxLayout="column"
-    fxLayoutGap="24px"
->
+<div *transloco="let p; scope: 'components'; read: 'components.orgDetailsForm'" fxLayout="column" fxLayoutGap="24px">
     <h2 class="dsh-title">{{ p('title') }}</h2>
 
     <dsh-created-existing-switch [formGroup]="control" [form]="control">

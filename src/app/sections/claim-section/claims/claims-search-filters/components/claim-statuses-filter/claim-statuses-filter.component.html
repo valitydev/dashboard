@@ -1,5 +1,5 @@
 <dsh-filter
-    *transloco="let t; scope: 'claim-status-filter'; read: 'claimStatusFilter'"
+    *transloco="let t; scope: 'claim-section'; read: 'claimSection.claimStatusesFilter'"
     [active]="isActive"
     [label]="t('label')"
     [activeLabel]="t('label') | listLabel: (labels$ | async)"

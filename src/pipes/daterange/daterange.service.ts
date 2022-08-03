@@ -2,16 +2,18 @@ import { formatDate } from '@angular/common';
 import { Inject, Injectable, LOCALE_ID } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { Moment } from 'moment';
-import { merge, Observable, of } from 'rxjs';
-import { map, pluck, scan, shareReplay, switchMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { map, pluck } from 'rxjs/operators';
 
 import { Daterange, isDaterange } from './daterange';
 import { isCurrentWeek, isCurrentYear, isToday } from './daterange-current-type';
 import { isMonth, isMonthsRange, isYearsRange } from './daterange-type';
 
+const WORDS = ['from', 'fromStartWith2', 'to', 'today', 'currentWeek', 'year'] as const;
+
 @Injectable()
 export class DaterangeService {
-    private translations$ = this.loadTranslations();
+    private translations$ = this.transloco.selectTranslation('core-pipes').pipe(map(() => this.wordTranslates()));
 
     constructor(@Inject(LOCALE_ID) private locale: string, private transloco: TranslocoService) {}
 
@@ -100,16 +102,14 @@ export class DaterangeService {
         return formatDate(date.toDate(), [d && 'd', m && 'LLLL', y && 'y'].filter((v) => v).join(' '), this.locale);
     }
 
-    private translate(key: string) {
-        return this.transloco.selectTranslate(key, null, 'daterange');
-    }
-
-    private loadTranslations() {
-        const words = ['from', 'fromStartWith2', 'to', 'today', 'currentWeek', 'year'] as const;
-        return of(words).pipe(
-            switchMap((w) => merge(...w.map((word) => this.translate(word).pipe(map((t: string) => ({ [word]: t })))))),
-            scan((acc, t) => ({ ...acc, ...t }), {} as { [N in typeof words[number]]: string }),
-            shareReplay(1)
-        );
+    private wordTranslates(): Record<typeof WORDS[number], string> {
+        return {
+            from: this.transloco.translate('daterange.from', null, 'core-pipes'),
+            fromStartWith2: this.transloco.translate('daterange.fromStartWith2', null, 'core-pipes'),
+            to: this.transloco.translate('daterange.to', null, 'core-pipes'),
+            today: this.transloco.translate('daterange.today', null, 'core-pipes'),
+            currentWeek: this.transloco.translate('daterange.currentWeek', null, 'core-pipes'),
+            year: this.transloco.translate('daterange.year', null, 'core-pipes'),
+        };
     }
 }

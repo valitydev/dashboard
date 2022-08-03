@@ -40,7 +40,7 @@ export class FileContainerService {
     downloadFile(fileID: string) {
         this.filesService.downloadFile({ fileID }).subscribe(
             ({ url }) => download(url),
-            () => this.snackBar.open(this.transloco.translate('commonError'), 'OK')
+            () => this.snackBar.open(this.transloco.translate('shared.commonError', null, 'components'), 'OK')
         );
     }
 }

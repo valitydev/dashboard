@@ -1,4 +1,4 @@
-<ng-container *transloco="let t; scope: 'claim'; read: 'claim.revokeClaimDialog'">
+<ng-container *transloco="let t; scope: 'claim-section'; read: 'claimSection.revokeClaimDialog'">
     <dsh-base-dialog [title]="t('subheading')" (cancel)="cancel()">
         <form [formGroup]="form">
             <mat-form-field fxFlex>
@@ -11,7 +11,11 @@
             </mat-form-field>
         </form>
         <div *ngIf="errorCode$ | async">
-            <div *transloco="let errors; read: 'errors'" class="mat-caption">
+            <div
+                *transloco="let errors; scope: 'claim-section'; read: 'claimSection.revokeClaimDialog.errors'"
+                class="mat-caption"
+            >
+                <!-- t(revokeClaimByIDFailed) -->
                 {{ errors(errorCode$ | async) }}
             </div>
         </div>

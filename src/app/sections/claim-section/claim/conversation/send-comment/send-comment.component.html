@@ -1,5 +1,5 @@
-<div *transloco="let t; scope: 'claim'; read: 'claim.conversation'">
-    <form [formGroup]="form" fxLayout="row" fxLayoutGap="10px" xLayoutAlign="space-between center">
+<div *transloco="let t; scope: 'claim-section'; read: 'claimSection.conversation'">
+    <form [formGroup]="form" fxLayout="row" fxLayoutGap="10px">
         <mat-form-field fxFlex>
             <mat-label>{{ t('sendComment') }}</mat-label>
             <input formControlName="comment" matInput type="text" autocomplete="off" />
@@ -27,7 +27,11 @@
         </div>
     </form>
     <div *ngIf="errorCode$ | async">
-        <div *transloco="let errors; read: 'errors'" class="mat-caption">
+        <div
+            *transloco="let errors; scope: 'claim-section'; read: 'claimSection.sendComment.errors'"
+            class="mat-caption"
+        >
+            <!-- t(saveConversationsFailed) -->
             {{ errors(errorCode$ | async) }}
         </div>
     </div>

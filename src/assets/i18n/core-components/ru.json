@@ -1,0 +1,59 @@
+{
+    "additionalFilters": {
+        "additionalFilters": "Другие фильтры",
+        "clearParams": "Сбросить параметры",
+        "save": "Сохранить"
+    },
+    "confirmActionDialog": {
+        "cancel": "Отмена",
+        "confirm": "Подтвердить",
+        "subheading": "Подтвердите действие"
+    },
+    "dateRangeFilter": {
+        "label": "Выбрать период",
+        "part": {
+            "currentWeek": "Текущая неделя",
+            "from": "С",
+            "fromStartWith2": "Со",
+            "to": "по",
+            "today": "Сегодня",
+            "year": "год"
+        },
+        "preset": {
+            "custom": "Указать вручную...",
+            "last24hour": "Последние 24 часа",
+            "last30days": "Последние 30 дней",
+            "last365days": "Последние 365 дней",
+            "last90days": "Последние 90 дней"
+        }
+    },
+    "empty": {
+        "emptyData": "Данные отсутствуют"
+    },
+    "emptySearchResult": {
+        "empty": "Данные за указанный период отсутствуют"
+    },
+    "fileUploader": {
+        "choose": "выберите",
+        "forUpload": "Для загрузки переместите файлы в область, или",
+        "uploading": "Загрузка..."
+    },
+    "humanizeDuration": {
+        "ago": "назад",
+        "justNow": "только что",
+        "shortUnit": {
+            "day": "д.",
+            "hour": "ч.",
+            "millisecond": "мсек.",
+            "minute": "мин.",
+            "month": "мес.",
+            "second": "сек.",
+            "week": "нед.",
+            "year": "г."
+        }
+    },
+    "selectSearchField": {
+        "noEntriesFoundLabel": "Ничего не найдено",
+        "searchPlaceholder": "Поиск..."
+    }
+}

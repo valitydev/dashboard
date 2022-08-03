@@ -1,81 +1,494 @@
 {
-    "testEnvironment": "Тестовое окружение",
-    "testEnvironmentHint": "Вы находитесь в тестовом окружении. Этот раздел предназначен для тестового подключения и проверки настроек приема платежей. Здесь же вы можете проверить функции личного кабинета, например, интеграцию магазина, создание и оплата счетов или осуществление возвратов.",
-    "nav": {
-        "shops": "Магазины",
-        "operations": "Операции",
-        "reports": "Отчеты",
-        "analytics": "Аналитика",
-        "payouts": "Возмещения",
-        "integrations": "Интеграция",
-        "testEnv": "Тест. окружение"
+    "analytics": {
+        "noData": "Нет данных",
+        "paymentTools": "Платежные инструменты",
+        "paymentsAmount": "Оборот",
+        "paymentsCount": "Количество платежей",
+        "stats": {
+            "averagePayment": "Средняя сумма платежа",
+            "paymentsAmount": "Оборот за период",
+            "paymentsCount": "Количество платежей",
+            "refundsAmount": "Возвратов за период"
+        },
+        "unsuccessfulPaymentReasons": "Причины неуспешных платежей"
+    },
+    "apiKey": {
+        "api": "API",
+        "copy": "Скопировать",
+        "description": "Ваш приватный ключ для доступа к",
+        "title": "API ключ"
     },
     "balances": {
         "title": "Доступные средства"
     },
-    "operations": {
-        "tabs": {
-            "payments": "ПЛАТЕЖИ",
-            "refunds": "ВОЗВРАТЫ",
-            "invoices": "ИНВОЙСЫ"
+    "createInvoiceDialog": {
+        "title": "Создание инвойса"
+    },
+    "createInvoiceOrInvoiceTemplate": {
+        "description": "Платежная ссылка — это инструмент приема платежей по установленному шаблону инвойса. Здесь вы можете сформировать шаблон инвойса с нужными параметрами и далее сгенерировать платежную ссылку для оплаты. Ссылку можно размещать как на сайте, так и в соцсетях, она позволяет вносить оплату многократно, каждый раз создавая уникальный инвойс для клиента. Данный инструмент предназначен для оплаты одного товара или услуги.",
+        "invoiceTitle": "Создание инвойса",
+        "title": "Платежная ссылка",
+        "types": {
+            "personal": "Создать персональную платежную ссылку для оплаты конкретного заказа",
+            "reusable": "Создать многоразовую платежную ссылку для оплаты заказов нескольких клиентов"
         }
     },
-    "analytics": {
-        "allShops": "Все магазины",
-        "shop": "Магазин",
-        "paymentsCount": "Количество платежей",
-        "paymentsAmount": "Оборот",
-        "paymentTools": "Платежные инструменты",
-        "unsuccessfulPaymentReasons": "Причины неуспешных платежей",
-        "noData": "Нет данных",
-        "stats": {
-            "paymentsAmount": "Оборот за период",
-            "refundsAmount": "Возвратов за период",
-            "averagePayment": "Средняя сумма платежа",
-            "paymentsCount": "Количество платежей"
+    "createInvoiceTemplate": {
+        "form": {
+            "cart": {
+                "add": "Добавить товар или услугу",
+                "amount": "Цена",
+                "description": "Описание",
+                "quantity": "Количество",
+                "remove": "Удалить",
+                "summary": "Итого товаров и услуг на сумму",
+                "title": "Список товаров и услуг"
+            },
+            "cost": "Стоимость предлагаемых товаров или услуг",
+            "invoiceTemplateType": "Тип шаблона",
+            "invoiceTemplateTypeCostType": "Тип ограничения стоимости",
+            "lifetime": "Окончание срока действия инвойса",
+            "lowerBound": "Нижняя граница стоимости",
+            "product": "Наименование предлагаемых товаров или услуг",
+            "shop": "Магазин",
+            "taxMode": "Схема налогообложения",
+            "upperBound": "Верхняя граница стоимости",
+            "withoutVAT": "без НДС"
         },
-        "paymentToolsList": {
-            "bank_card": "Банковская карта",
-            "digital_wallet": "Кошелек",
-            "payment_terminal": "Терминал"
-        },
-        "paymentStatuses": {
-            "pending": "Запущен",
-            "processed": "Обработан",
-            "captured": "Подтвержден",
-            "cancelled": "Отменен",
-            "refunded": "Возвращен",
-            "failed": "Неуспешен"
-        },
-        "errorCodes": {
-            "operation_timeout": "Превышено время ожидания",
-            "authorization_failed": "Ошибка авторизации",
-            "preauthorization_failed": "Ошибка предавторизации",
-            "no_route_found": "Маршрут не найден",
-            "insufficient_funds": "Недостаточно средств",
-            "rejected_by_issuer": "Отклонено эмитентом",
-            "risk_score_is_too_high": "Операция с высоким риском",
-            "payment_tool_rejected": "Платежный инструмент отклонен",
-            "security_policy_violated": "Нарушение политики безопасности",
-            "three_ds_not_finished": "Не завершена проверка 3DS",
-            "operation_blocked": "Операция заблокирована",
-            "account_limit_exceeded": "Превышен лимит счёта",
-            "three_ds_failed": "Ошибка 3DS",
-            "processing_deadline_reached": "Время проведения платежа истекло",
-            "account_not_found": "Счёт не найден",
-            "bank_card_rejected": "Банковская карта отклонена",
-            "amount": "Лимит суммы превышен",
-            "number": "Лимит количества операций превышен",
-            "card_number_invalid": "Неверный номер карты",
-            "card_expired": "Срок действия карты истёк",
-            "other": "Прочее"
-        }
+        "title": "Создание шаблона инвойса"
+    },
+    "createPaymentLinkDialog": {
+        "create": "Сформировать ссылку на оплату",
+        "title": "Создание платежной ссылки"
+    },
+    "digitalWallet": {
+        "DigitalWalletDetailsQIWI": "QIWI"
     },
     "integrations": {
         "tabs": {
-            "webhooks": "WEBHOOKS",
+            "api-key": "API КЛЮЧ",
             "payment-link": "ПЛАТЕЖНАЯ ССЫЛКА",
-            "api-key": "API КЛЮЧ"
+            "webhooks": "WEBHOOKS"
         }
+    },
+    "invoices": {
+        "createButton": "Создать инвойс"
+    },
+    "noShopsAlert": {
+        "action": "Перейти в раздел",
+        "description": "Магазины отсутствуют. Создать новый магазин возможно в разделе \"Магазины\"."
+    },
+    "operations": {
+        "invoices": {
+            "actions": {
+                "cancel": "Отмена",
+                "cancelInvoice": "Отменить инвойс",
+                "confirm": "Подтвердить",
+                "createPaymentLink": "Сформировать ссылку на оплату",
+                "fulfillInvoice": "Погасить инвойс",
+                "invoiceCancelled": "Инвойс успешно отменен",
+                "invoiceCreated": "Инвойс успешно создан",
+                "invoiceFulfilled": "Инвойс успешно погашен",
+                "reason": "Причина",
+                "title": "Действия"
+            },
+            "cartInfo": {
+                "description": "Описание товара или услуги",
+                "price": "Цена",
+                "quantity": "Количество",
+                "tax": "Ставка налога",
+                "title": "Корзина с набором товаров и услуг"
+            },
+            "header": "Инвойс",
+            "headerRow": {
+                "amount": "Стоимость",
+                "createdAt": "Создан",
+                "productName": "Наименование",
+                "shop": "Магазин",
+                "status": "Статус"
+            },
+            "invoiceStatus": "Статус инвойса",
+            "payments": {
+                "payment": "Платеж",
+                "showMore": "Показать еще",
+                "title": "Платежи"
+            },
+            "shop": "Магазин"
+        },
+        "payments": {
+            "details": {
+                "name": "Платеж"
+            },
+            "filter": {
+                "bankCardPaymentSystem": "Платежная система",
+                "bankCardTokenProvider": "Провайдер платежных токенов",
+                "binPan": "Карта",
+                "card": "Карта",
+                "customerID": "Идентификатор плательщика",
+                "first6": "BIN банка-эмитента карты",
+                "invoices": "Инвойсы",
+                "last4": "Последние цифры номера карты",
+                "payerEmail": "Email плательщика",
+                "paymentAmount": "Сумма платежа",
+                "paymentAmountFrom": "Мин. сумма",
+                "paymentAmountTo": "Макс. сумма",
+                "paymentStatus": "Статус платежа",
+                "rrn": "RRN платежа",
+                "shops": "Магазины"
+            },
+            "table": {
+                "amount": "Сумма списания",
+                "shop": "Магазин",
+                "status": "Статус",
+                "statusChanged": "Статус изменен"
+            }
+        },
+        "refunds": {
+            "emptyRefunds": "Возвратов нет",
+            "fetchError": "Произошла ошибка при поиске возвратов",
+            "header": "Возврат",
+            "headerRow": {
+                "amount": "Сумма возврата",
+                "shop": "Магазин",
+                "status": "Статус",
+                "updatedAt": "Статус изменен"
+            },
+            "invoiceInfo": {
+                "error": "Не удалось получить инвойс",
+                "title": "Инвойс"
+            },
+            "paymentInfo": {
+                "error": "Не удалось получить платеж",
+                "title": "Платеж"
+            },
+            "refundStatus": "Статус возврата",
+            "shop": "Магазин"
+        },
+        "tabs": {
+            "invoices": "ИНВОЙСЫ",
+            "payments": "ПЛАТЕЖИ",
+            "refunds": "ВОЗВРАТЫ"
+        }
+    },
+    "paymentDetails": {
+        "additionalInfo": {
+            "approvalCode": "Authorization Approval Code",
+            "externalId": "External ID",
+            "rrn": "Retrieval Reference Number",
+            "title": "Дополнительная информация"
+        },
+        "details": {
+            "chargeAmount": "Сумма зачисления",
+            "error": "Ошибка проведения платежа",
+            "fee": "Комиссия"
+        },
+        "holdDetails": {
+            "acceptTitle": "Подтверждение удержания",
+            "actions": {
+                "accept": "Подтвердить",
+                "deny": "Отменить"
+            },
+            "activeHoldTutorial": "Вы можете подтвердить (зачисление в вашу пользу) или отменить удержание (возврат плательщику).",
+            "amount": "Сумма подтверждения",
+            "availableAmount": "Доступная сумма",
+            "cancelTitle": "Отмена удержания",
+            "cancelledHoldMessage": "Средства были возвращены плательщику.",
+            "capturedHoldMessage": "Средства были зачислены в вашу пользу.",
+            "confirm": "Подтвердить",
+            "holdDate": "Срок удержания до",
+            "holdWithCancel": "После истечения срока удержания, средства будут возвращены плательщику.",
+            "holdWithCapture": "После истечения срока удержания, средства будут зачислены в вашу пользу.",
+            "partialAccept": "Частичное подтверждение",
+            "reason": "Причина",
+            "title": "Платеж совершен с удержанием денежных средств"
+        },
+        "invoiceDetails": {
+            "title": "Инвойс"
+        },
+        "payerDetails": {
+            "title": "Плательщик"
+        },
+        "paymentTool": {
+            "title": "Средство оплаты"
+        },
+        "refunds": {
+            "createRefund": {
+                "amount": "Сумма возврата",
+                "availableRefund": "Доступно к возврату",
+                "balanceLoading": "Данные баланса загружаются ...",
+                "confirm": "Подтвердить",
+                "partialRefund": "Частичный возврат",
+                "pending": "Запрос на возврат отправлен",
+                "reason": "Причина возврата",
+                "successful": "Возврат успешно произведен",
+                "title": "Совершить возврат"
+            },
+            "errors": {
+                "invalidRequest": "Входные параметры неверные",
+                "invoicePaymentAmountExceeded": "Превышена доступная к возврату сумма"
+            },
+            "title": "Возвраты"
+        },
+        "shopDetails": {
+            "title": "Магазин"
+        },
+        "statusDetailItem": {
+            "status": "Статус"
+        }
+    },
+    "paymentErrorMessage": {
+        "authorization_failed": {
+            "account_blocked": "Аккаунт заблокирован",
+            "account_limit_exceeded": {
+                "amount": "Лимит на сумму",
+                "message": "Превышен лимит на счете плательщика",
+                "number": "Лимит на количество попыток",
+                "unknown": "Объект лимита неизвестен"
+            },
+            "account_not_found": "Аккаунт не найден",
+            "account_stolen": "Аккаунт украден",
+            "insufficient_funds": "Не хватает средств",
+            "merchant_blocked": "Мерчант заблокирован",
+            "message": "Ошибка авторизации платежа у провайдера",
+            "operation_blocked": "Операция платежа заблокирована",
+            "payment_tool_rejected": {
+                "bank_card_rejected": {
+                    "card_expired": "Истёк срок действия карты",
+                    "card_holder_invalid": "Неверный владелец карты",
+                    "card_number_invalid": "Неверный номер карты",
+                    "cvv_invalid": "Неверный CVV код",
+                    "issuer_not_found": "Эмитент не найден",
+                    "message": "Банковская карта отклонена",
+                    "unknown": "Причина неизвестна"
+                },
+                "message": "Платёжный интрумент отклонён",
+                "unknown": "Неизвестный платёжный интрумент"
+            },
+            "provider_limit_exceeded": {
+                "amount": "Лимит на сумму",
+                "message": "Превышен лимит на мерчанта у провайдера (вас или платформы RBKmoney)",
+                "number": "Лимит на количество попыток",
+                "unknown": "Объект лимита неизвестен"
+            },
+            "rejected_by_issuer": "Отклонено эмитентом",
+            "security_policy_violated": "Нарушения политики безопасности",
+            "temporarily_unavailable": "Временная недоступность третьих сторон",
+            "unknown": "Неизвестная ошибка авторизации"
+        },
+        "no_route_found": {
+            "message": "Маршрут не найден",
+            "risk_score_is_too_high": "Операция с высоким риском",
+            "unknown": "Неизвестная ошибка при поиске маршрута"
+        },
+        "preauthorization_failed": {
+            "message": "Ошибка предавторизации (3DS)",
+            "three_ds_failed": "Предавторизация закончилась неудачей",
+            "three_ds_not_finished": "Предавторизация не закончена",
+            "unknown": "Неизвестная ошибка предавторизации"
+        },
+        "rejected_by_inspector": "Отклонено сервисом противодействия мошенничеству",
+        "timeout": "Превышен лимит ожидания",
+        "unknownError": "Неизвестная ошибка"
+    },
+    "paymentLink": {
+        "back": "Назад",
+        "clearForm": "Очистить форму",
+        "create": "Сформировать ссылку на оплату",
+        "errors": {
+            "createPaymentLinkError": "Не удалось создать платежную ссылку"
+        },
+        "title": "Создание платежной ссылки"
+    },
+    "paymentSection": {
+        "nav": {
+            "analytics": "Аналитика",
+            "integrations": "Интеграция",
+            "operations": "Операции",
+            "payouts": "Возмещения",
+            "reports": "Отчеты",
+            "shops": "Магазины",
+            "testEnv": "Тест. окружение"
+        }
+    },
+    "paymentTerminal": {
+        "provider": {
+            "alipay": "Alipay",
+            "euroset": "Евросеть",
+            "qps": "Система быстрых платежей (СБП)",
+            "wechat": "WeChat",
+            "zotapay": "ZotaPay"
+        }
+    },
+    "payouts": {
+        "createPayoutReport": {
+            "cancel": "Отмена",
+            "create": "Сформировать",
+            "descriptionStep1": "Будет сформирован отчет с реестром операций. Для этого потребуется некоторое время. Загрузить отчет, и отслеживать статус формирования возможно в разделе \"Отчеты\"",
+            "descriptionStep2": "Отчет успешно создан и находится в процессе формирования. Загрузить отчет, и отслеживать статус формирования возможно в разделе \"Отчеты\"",
+            "title": "Формирование отчета с реестром операций",
+            "toReports": "Перейти в раздел \"Отчеты\""
+        },
+        "errors": {
+            "createError": "Произошла ошибка при попытке создания возмещения",
+            "createReportError": "Не удалось создать отчет"
+        },
+        "headerRow": {
+            "amount": "Сумма",
+            "createdAt": "Дата возмещения",
+            "payoutTool": "Средство вывода",
+            "shop": "Магазин"
+        },
+        "panel": {
+            "actions": "Действия",
+            "createReport": "Сформировать реестр операций",
+            "payoutID": "Выплата #{{num}}",
+            "shop": "Магазин"
+        },
+        "payouts": {
+            "amount": "Сумма списания",
+            "any": "Любой",
+            "createPayout": "Создать выплату",
+            "created": "Заявка на выплату успешно создана",
+            "noPayoutTools": "Отсутствуют доступные инструменты вывода средств",
+            "payoutTool": "Инструмент вывода средств",
+            "shop": "Магазин",
+            "title": "Создание выплаты на кошелек"
+        }
+    },
+    "reportTypesFilter": {
+        "activeLabel": "Типы формирования",
+        "label": "Все типы формирования"
+    },
+    "reports": {
+        "cancelReport": {
+            "successfullyCanceled": "Отчет успешно отменен"
+        },
+        "createReport": {
+            "create": "Сформировать",
+            "form": {
+                "any": "Любой",
+                "from": "Начало периода",
+                "shop": "Магазин",
+                "time": "Время",
+                "to": "Конец периода"
+            },
+            "subtitle": "Отчет с реестром операций за выбранный период",
+            "successfullyCreated": "Отчет успешно создан",
+            "title": "Параметры формирования отчета"
+        },
+        "errors": {
+            "cancelError": "Не удалось отменить отчет",
+            "createError": "Не удалось создать отчет",
+            "downloadReportError": "Не удалось загрузить документы",
+            "fetchError": "Не удалось получить отчеты"
+        },
+        "headerRow": {
+            "createdAt": "Дата создания",
+            "period": "Период отчетности",
+            "status": "Статус",
+            "type": "Тип формирования"
+        },
+        "openCreateReport": "Создать отчет",
+        "reportContent": {
+            "header": "Отчет"
+        },
+        "reportDetails": {
+            "actions": {
+                "cancelReport": "Отменить отчет",
+                "title": "Действия"
+            },
+            "createdAt": "Дата создания",
+            "period": "Период отчетности",
+            "shop": "Магазин",
+            "status": "Статус",
+            "type": "Тип формирования"
+        },
+        "reportFiles": {
+            "downloadAll": "Загрузить все",
+            "title": "Документы"
+        },
+        "searchFilters": {
+            "dateRangeDescription": "Период создания отчетов"
+        }
+    },
+    "shops": {
+        "activate": {
+            "error": "Произошла ошибка при активации магазина",
+            "success": "Магазин активирован"
+        },
+        "createShop": "Создать магазин",
+        "emptySearchResult": "Магазины отсутствуют",
+        "panel": {
+            "actions": "Действия",
+            "activate": "Активировать магазин",
+            "category": "Категория магазина",
+            "copy": "Скопировать",
+            "createdAt": "Дата и время создания",
+            "details": "Детали магазина",
+            "id": "Идентификатор магазина",
+            "name": "Название магазина",
+            "suspend": "Заморозить магазин",
+            "url": "URL адрес сайта"
+        },
+        "shopContract": {
+            "error": "Не удалось получить данные контракта",
+            "title": "Данные контракта"
+        },
+        "shopPayoutTool": {
+            "error": "Не удалось получить данные средства вывода",
+            "title": "Средство вывода"
+        },
+        "suspend": {
+            "error": "Произошла ошибка при заморозке магазина",
+            "success": "Магазин заморожен"
+        }
+    },
+    "webhook": {
+        "actions": {
+            "delete": {
+                "buttonTitle": "Удалить webhook",
+                "success": "Webhook спешно удален"
+            },
+            "title": "Действия"
+        },
+        "create": "Установить webhook",
+        "createWebhook": {
+            "create": "Установить",
+            "eventType": "Предмет оповещений",
+            "eventTypes": {
+                "customers": "События плательщика",
+                "invoices": "События инвойса"
+            },
+            "events": "События",
+            "shop": "Магазин",
+            "successfullyCreated": "Webhook успешно создан",
+            "title": "Установить новый webhook",
+            "types": "Набор типов событий, о которых следует оповещать",
+            "url": "URL, на который будут поступать оповещения о произошедших событиях"
+        },
+        "details": {
+            "shop": "Магазин",
+            "url": "URL, на который будут поступать оповещения о произошедших событиях"
+        },
+        "emptyResult": "Webhook’и отсутствуют",
+        "errors": {
+            "createError": "Произошла ошибка при попытке создать webhook",
+            "deleteError": "Произошла ошибка при удалении"
+        },
+        "events": {
+            "title": "Набор событий"
+        },
+        "headerRow": {
+            "shop": "Магазин",
+            "url": "URL"
+        },
+        "key": {
+            "buttons": {
+                "copy": "Скопировать ключ"
+            },
+            "publicKey": "Содержимое публичного ключа, служащего для проверки авторитативности приходящих на url оповещений",
+            "title": "Публичный ключ"
+        },
+        "webhook": "Missing value for 'paymentSection.webhook.webhook'"
     }
 }

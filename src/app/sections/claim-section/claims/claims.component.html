@@ -1,4 +1,9 @@
-<div class="container" fxLayout="column" fxLayoutGap="32px" *transloco="let t; scope: 'claims'; read: 'claims'">
+<div
+    class="container"
+    fxLayout="column"
+    fxLayoutGap="32px"
+    *transloco="let t; scope: 'claim-section'; read: 'claimSection.claims'"
+>
     <dsh-section-header [label]="t('title')"></dsh-section-header>
     <div
         fxLayout="column-reverse"

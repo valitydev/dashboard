@@ -1,4 +1,4 @@
-<ng-container *transloco="let t; scope: 'payment-details'; read: 'paymentDetails.invoiceDetails'">
+<ng-container *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentDetails.invoiceDetails'">
     <div *ngIf="invoice; else loading" fxLayout="column" fxLayoutGap="24px">
         <div class="payment-invoice-info-title mat-title" fxLayout fxLayoutAlign="space-between center">
             <div>
@@ -14,7 +14,7 @@
                 {{ t('title') }}
             </div>
         </div>
-        <div *transloco="let c">
+        <div *transloco="let c; scope: 'components'; read: 'components.shared'">
             <div class="dsh-body-1">{{ c('loading') }}</div>
         </div>
     </ng-template>

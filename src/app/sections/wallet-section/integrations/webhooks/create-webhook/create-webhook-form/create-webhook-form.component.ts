@@ -2,9 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { WebhookScope } from '@vality/swag-wallet';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { IdentitiesService } from '@dsh/api/wallet';
+import { IdentitiesService, WalletDictionaryService } from '@dsh/api/wallet';
 import { oneMustBeSelected } from '@dsh/components/form-controls';
 
 import { getEventsByTopic } from '../get-events-by-topic';
@@ -20,10 +21,18 @@ export class CreateWebhookFormComponent implements OnInit {
     @Input() form: UntypedFormGroup;
 
     identities$ = this.identitiesService.identities$;
-
     activeTopic$ = new BehaviorSubject<TopicEnum>('WithdrawalsTopic');
 
-    constructor(private identitiesService: IdentitiesService, private fb: UntypedFormBuilder) {}
+    eventType$ = combineLatest([
+        this.walletDictionaryService.withdrawalsTopicEventType$,
+        this.walletDictionaryService.destinationsTopicEventType$,
+    ]).pipe(map(([w, d]) => ({ ...w, ...d })));
+
+    constructor(
+        private identitiesService: IdentitiesService,
+        private fb: UntypedFormBuilder,
+        private walletDictionaryService: WalletDictionaryService
+    ) {}
 
     ngOnInit(): void {
         this.activeTopic$.pipe(untilDestroyed(this)).subscribe((activeTopic) => {
