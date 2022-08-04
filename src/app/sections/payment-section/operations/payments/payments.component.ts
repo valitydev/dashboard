@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 
 import { QueryParamsService } from '@dsh/app/shared/services';
 
-import { PaymentInstitutionRealmService, RealmMixService } from '../../services';
+import { RealmMixService } from '../../services';
+import { PaymentInstitutionRealmService } from '../../services/payment-institution-realm.service';
 import { Filters } from './payments-filters';
 import { PaymentsExpandedIdManager, FetchPaymentsService } from './services';
 import { PaymentSearchFormValue } from './types';
@@ -14,7 +15,7 @@ import { PaymentSearchFormValue } from './types';
 @Component({
     selector: 'dsh-payments',
     templateUrl: 'payments.component.html',
-    providers: [FetchPaymentsService, PaymentsExpandedIdManager, RealmMixService],
+    providers: [FetchPaymentsService, PaymentsExpandedIdManager, RealmMixService, PaymentInstitutionRealmService],
 })
 export class PaymentsComponent implements OnInit {
     realm$ = this.paymentInstitutionRealmService.realm$;

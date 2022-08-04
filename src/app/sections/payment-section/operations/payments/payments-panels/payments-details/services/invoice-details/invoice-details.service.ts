@@ -3,7 +3,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Invoice } from '@vality/swag-anapi-v2';
 import moment from 'moment';
 import { Observable, ReplaySubject } from 'rxjs';
-import { distinctUntilChanged, switchMap, tap, pluck } from 'rxjs/operators';
+import { distinctUntilChanged, switchMap, tap, map } from 'rxjs/operators';
 
 import { SearchService } from '@dsh/api/anapi';
 import { ErrorService } from '@dsh/app/shared/services';
@@ -36,7 +36,7 @@ export class InvoiceDetailsService {
                 tap(() => {
                     this.resetInvoiceData();
                 }),
-                switchMap((invoiceID: string) => {
+                switchMap((invoiceID) => {
                     return this.searchService.searchInvoices({
                         invoiceID,
                         fromTime: moment().subtract(3, 'y').startOf('d').utc().format(),
@@ -44,7 +44,7 @@ export class InvoiceDetailsService {
                         limit: 1,
                     });
                 }),
-                pluck('result', 0),
+                map(({ result }) => result?.[0] ?? null),
                 untilDestroyed(this)
             )
             .subscribe({
