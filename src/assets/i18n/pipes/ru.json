@@ -2,11 +2,6 @@
     "errorMessage": {
         "errorOccurred": "Произошла ошибка"
     },
-    "invoiceTemplateCostTypeName": {
-        "InvoiceTemplateLineCostFixed": "Фиксированная",
-        "InvoiceTemplateLineCostRange": "Диапазон",
-        "InvoiceTemplateLineCostUnlim": "Без ограничений"
-    },
     "invoiceTemplateTypeName": {
         "InvoiceTemplateMultiLine": "Корзина товаров",
         "InvoiceTemplateSingleLine": "Одиночная позиция"
