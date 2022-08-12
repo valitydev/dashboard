@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
-import { HumanizerOptions } from 'humanize-duration';
-import { interval, Subscription } from 'rxjs';
+import { UntilDestroy } from '@ngneat/until-destroy';
+import { interval, Subscription, switchMap } from 'rxjs';
+import { startWith } from 'rxjs/operators';
 
 import { HumanizeConfig, HumanizeDurationService, Value } from './humanize-duration.service';
 
@@ -8,9 +9,10 @@ export interface HumanizeDurationConfig extends HumanizeConfig {
     interval?: number;
 }
 
+@UntilDestroy()
 @Pipe({ name: 'humanizedDuration', pure: false })
 export class HumanizedDurationPipe implements OnDestroy, PipeTransform {
-    private latestValue: string;
+    private latestValue: string = '';
     private subscription: Subscription;
     private inputValue: Value;
 
@@ -19,12 +21,21 @@ export class HumanizedDurationPipe implements OnDestroy, PipeTransform {
     transform(value: Value, { interval: inpIntervalMs, ...config }: HumanizeDurationConfig = {}) {
         if (value !== this.inputValue) {
             this.inputValue = value;
-            this.latestValue = this.humanizeDurationService.getDuration(value, config);
-            this.dispose();
             if (!this.humanizeDurationService.isDiff(value)) {
+                this.dispose();
                 this.subscription = interval(
                     inpIntervalMs || this.humanizeDurationService.getOptimalUpdateInterval(value, config)
-                ).subscribe(() => this.updateValue(value, config));
+                )
+                    .pipe(
+                        startWith(0),
+                        switchMap(() => this.humanizeDurationService.getDuration(value, config))
+                    )
+                    .subscribe((duration) => {
+                        if (duration !== this.latestValue) {
+                            this.ref.markForCheck();
+                            this.latestValue = duration;
+                        }
+                    });
             }
         }
         return this.latestValue;
@@ -37,14 +48,6 @@ export class HumanizedDurationPipe implements OnDestroy, PipeTransform {
     private dispose(): void {
         if (this.subscription) {
             this.subscription.unsubscribe();
-        }
-    }
-
-    private updateValue(value: Value, config: HumanizerOptions): void {
-        const duration = this.humanizeDurationService.getDuration(value, config);
-        if (duration !== this.latestValue) {
-            this.ref.markForCheck();
-            this.latestValue = duration;
         }
     }
 }
