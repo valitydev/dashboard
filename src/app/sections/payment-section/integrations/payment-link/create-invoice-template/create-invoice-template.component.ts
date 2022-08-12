@@ -44,8 +44,6 @@ export class CreateInvoiceTemplateComponent implements OnInit {
     summary$ = this.invoiceTemplateFormService.summary$;
     isLoading$ = this.invoiceTemplateFormService.isLoading$;
 
-    invoiceTemplateCostTypeName = this.getInvoiceTemplateCostTypeName();
-
     get cartForm(): UntypedFormArray {
         return this.invoiceTemplateFormService.cartForm;
     }
@@ -77,25 +75,5 @@ export class CreateInvoiceTemplateComponent implements OnInit {
 
     removeProduct(idx: number): void {
         this.invoiceTemplateFormService.removeProduct(idx);
-    }
-
-    private getInvoiceTemplateCostTypeName() {
-        return {
-            [InvoiceTemplateLineCostType.InvoiceTemplateLineCostFixed]: this.transloco.selectTranslate(
-                `createInvoiceTemplate.invoiceTemplateCostType.InvoiceTemplateLineCostFixed`,
-                null,
-                'payment-section'
-            ),
-            [InvoiceTemplateLineCostType.InvoiceTemplateLineCostRange]: this.transloco.selectTranslate(
-                `createInvoiceTemplate.invoiceTemplateCostType.InvoiceTemplateLineCostRange`,
-                null,
-                'payment-section'
-            ),
-            [InvoiceTemplateLineCostType.InvoiceTemplateLineCostUnlim]: this.transloco.selectTranslate(
-                `createInvoiceTemplate.invoiceTemplateCostType.InvoiceTemplateLineCostUnlim`,
-                null,
-                'payment-section'
-            ),
-        };
     }
 }
