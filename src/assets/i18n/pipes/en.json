@@ -1,0 +1,12 @@
+{
+    "errorMessage": {
+        "errorOccurred": "Произошла ошибка"
+    },
+    "payoutToolDetailsType": {
+        "payoutToolDetailsBankAccount": "Банковский счет",
+        "payoutToolDetailsBankCard": "Банковская карта",
+        "payoutToolDetailsInternationalBankAccount": "Международный банковский счет",
+        "payoutToolDetailsPaymentInstitutionAccount": "Аккаунт платежной организации",
+        "payoutToolDetailsWalletInfo": "Кошелек"
+    }
+}
