@@ -29,7 +29,21 @@
                 fxFlex="0 1 calc((100% - 24px * 2)/3)"
                 [value]="selectedInvoiceTemplateType"
             >
-                {{ selectedInvoiceTemplateType | invoiceTemplateTypeName }}
+                <ng-container
+                    *transloco="
+                        let t;
+                        scope: 'payment-section';
+                        read: 'paymentSection.createInvoiceTemplate.invoiceTemplateType'
+                    "
+                    [ngSwitch]="selectedInvoiceTemplateType"
+                >
+                    <ng-container *ngSwitchCase="'InvoiceTemplateMultiLine'">{{
+                        t('InvoiceTemplateMultiLine')
+                    }}</ng-container>
+                    <ng-container *ngSwitchCase="'InvoiceTemplateSingleLine'">{{
+                        t('InvoiceTemplateSingleLine')
+                    }}</ng-container>
+                </ng-container>
             </mat-radio-button>
         </mat-radio-group>
 
@@ -103,7 +117,24 @@
                     fxFlex
                     [value]="selectedInvoiceTemplateCostType"
                 >
-                    {{ invoiceTemplateCostTypeName[selectedInvoiceTemplateCostType] | async }}
+                    <ng-container
+                        *transloco="
+                            let t;
+                            scope: 'payment-section';
+                            read: 'paymentSection.createInvoiceTemplate.invoiceTemplateCostType'
+                        "
+                        [ngSwitch]="selectedInvoiceTemplateCostType"
+                    >
+                        <ng-container *ngSwitchCase="'InvoiceTemplateLineCostFixed'">{{
+                            t('InvoiceTemplateLineCostFixed')
+                        }}</ng-container>
+                        <ng-container *ngSwitchCase="'InvoiceTemplateLineCostRange'">{{
+                            t('InvoiceTemplateLineCostRange')
+                        }}</ng-container>
+                        <ng-container *ngSwitchCase="'InvoiceTemplateLineCostUnlim'">{{
+                            t('InvoiceTemplateLineCostUnlim')
+                        }}</ng-container>
+                    </ng-container>
                 </mat-radio-button>
             </mat-radio-group>
 
