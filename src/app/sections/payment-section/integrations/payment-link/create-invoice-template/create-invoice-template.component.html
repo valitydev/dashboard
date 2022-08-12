@@ -103,7 +103,7 @@
                     fxFlex
                     [value]="selectedInvoiceTemplateCostType"
                 >
-                    {{ selectedInvoiceTemplateCostType | invoiceTemplateCostTypeName }}
+                    {{ invoiceTemplateCostTypeName[selectedInvoiceTemplateCostType] | async }}
                 </mat-radio-button>
             </mat-radio-group>
 
