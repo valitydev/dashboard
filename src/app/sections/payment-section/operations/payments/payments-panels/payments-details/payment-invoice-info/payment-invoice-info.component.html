@@ -6,7 +6,7 @@
                 <span *ngIf="invoice">#{{ invoice.id }}</span>
             </div>
         </div>
-        <ng-container *ngIf="!invoice">
+        <ng-container *ngIf="!invoice; else details">
             <div *ngIf="!isLoading; else loading" class="dsh-body-1">
                 {{ t('notFound') }}
             </div>
@@ -16,7 +16,7 @@
                 </div>
             </ng-template>
         </ng-container>
-        <ng-template>
+        <ng-template #details>
             <dsh-invoice-details [invoice]="invoice"></dsh-invoice-details>
         </ng-template>
     </div>

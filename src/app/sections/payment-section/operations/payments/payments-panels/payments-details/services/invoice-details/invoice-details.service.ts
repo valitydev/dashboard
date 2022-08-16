@@ -3,10 +3,12 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Invoice } from '@vality/swag-anapi-v2';
 import moment from 'moment';
 import { Observable, ReplaySubject } from 'rxjs';
-import { distinctUntilChanged, switchMap, tap, map } from 'rxjs/operators';
+import { distinctUntilChanged, switchMap, tap, map, withLatestFrom } from 'rxjs/operators';
 
 import { SearchService } from '@dsh/api/anapi';
 import { ErrorService } from '@dsh/app/shared/services';
+
+import { PaymentInstitutionRealmService } from '../../../../../../services';
 
 @UntilDestroy()
 @Injectable()
@@ -18,7 +20,11 @@ export class InvoiceDetailsService {
     private invoiceData$ = new ReplaySubject<Invoice | null>(1);
     private innerErrors$ = new ReplaySubject<Error>(1);
 
-    constructor(private searchService: SearchService, private errorService: ErrorService) {
+    constructor(
+        private searchService: SearchService,
+        private errorService: ErrorService,
+        private paymentInstitutionRealmService: PaymentInstitutionRealmService
+    ) {
         this.invoice$ = this.invoiceData$.asObservable();
         this.error$ = this.innerErrors$.asObservable();
 
@@ -36,12 +42,14 @@ export class InvoiceDetailsService {
                 tap(() => {
                     this.resetInvoiceData();
                 }),
-                switchMap((invoiceID) => {
+                withLatestFrom(this.paymentInstitutionRealmService.realm$),
+                switchMap(([invoiceID, paymentInstitutionRealm]) => {
                     return this.searchService.searchInvoices({
                         invoiceID,
                         fromTime: moment().subtract(3, 'y').startOf('d').utc().format(),
                         toTime: moment().endOf('d').utc().format(),
                         limit: 1,
+                        paymentInstitutionRealm,
                     });
                 }),
                 map(({ result }) => result?.[0] ?? null),

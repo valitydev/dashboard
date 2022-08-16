@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { Invoice, PaymentSearchResult } from '@vality/swag-anapi-v2';
 import isEmpty from 'lodash-es/isEmpty';
-import isNil from 'lodash-es/isNil';
-import isObject from 'lodash-es/isObject';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
-import { ComponentChange, ComponentChanges } from '@dsh/type-utils';
+import { ComponentChanges } from '@dsh/type-utils';
 
 import { PaymentIds } from '../../types';
 import { InvoiceDetailsService } from './services/invoice-details/invoice-details.service';
@@ -15,10 +14,11 @@ import { isPaymentFlowHold } from './types/is-payment-flow-hold';
     selector: 'dsh-payment-details',
     templateUrl: 'payment-details.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [InvoiceDetailsService],
 })
 export class PaymentDetailsComponent implements OnChanges {
     @Input() payment: PaymentSearchResult;
-    @Output() refreshPayment: EventEmitter<PaymentIds> = new EventEmitter();
+    @Output() refreshPayment = new EventEmitter<PaymentIds>();
 
     get isHoldShown(): boolean {
         if (isPaymentFlowHold(this.payment.flow)) {
@@ -27,13 +27,13 @@ export class PaymentDetailsComponent implements OnChanges {
         return false;
     }
 
-    invoiceInfo$: Observable<Invoice> = this.invoiceDetails.invoice$;
+    invoiceInfo$: Observable<Invoice> = this.invoiceDetails.invoice$.pipe(tap(console.log));
 
     constructor(private invoiceDetails: InvoiceDetailsService) {}
 
-    ngOnChanges(changes: ComponentChanges<PaymentDetailsComponent>): void {
-        if (isObject(changes.payment)) {
-            this.changeInvoiceID(changes.payment);
+    ngOnChanges({ payment }: ComponentChanges<PaymentDetailsComponent>): void {
+        if (payment && payment.currentValue) {
+            this.changeInvoiceID(payment.currentValue);
         }
     }
 
@@ -41,10 +41,7 @@ export class PaymentDetailsComponent implements OnChanges {
         this.refreshPayment.emit(ids);
     }
 
-    private changeInvoiceID({ currentValue: payment }: ComponentChange<PaymentDetailsComponent, 'payment'>): void {
-        if (isNil(payment)) {
-            return;
-        }
+    private changeInvoiceID(payment: PaymentSearchResult): void {
         this.invoiceDetails.setInvoiceID(payment.invoiceID);
     }
 }
