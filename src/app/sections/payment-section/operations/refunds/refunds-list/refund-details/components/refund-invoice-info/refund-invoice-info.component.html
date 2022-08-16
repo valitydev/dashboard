@@ -5,7 +5,7 @@
 >
     <div fxLayout fxLayoutGap="16px" fxLayoutAlign="space-between">
         <div class="mat-title">
-            {{ t('title') }} <span dshSecondaryTitle>#{{ (invoice$ | async)?.id }}</span>
+            {{ t('title') }} <span>#{{ (invoice$ | async)?.id }}</span>
         </div>
     </div>
     <ng-container *ngIf="isLoading$ | async; else afterLoading">

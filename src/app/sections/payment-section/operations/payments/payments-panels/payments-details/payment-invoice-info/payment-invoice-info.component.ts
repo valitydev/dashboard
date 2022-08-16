@@ -10,4 +10,8 @@ import { Invoice } from '@vality/swag-payments';
 // TODO: implement dump component for this + shared one for operations
 export class PaymentInvoiceInfoComponent {
     @Input() invoice: Invoice;
+
+    get isLoading() {
+        return this.invoice === undefined;
+    }
 }
