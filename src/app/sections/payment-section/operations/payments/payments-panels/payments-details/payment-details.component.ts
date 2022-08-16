@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Out
 import { Invoice, PaymentSearchResult } from '@vality/swag-anapi-v2';
 import isEmpty from 'lodash-es/isEmpty';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 import { ComponentChanges } from '@dsh/type-utils';
 
@@ -27,7 +26,7 @@ export class PaymentDetailsComponent implements OnChanges {
         return false;
     }
 
-    invoiceInfo$: Observable<Invoice> = this.invoiceDetails.invoice$.pipe(tap(console.log));
+    invoiceInfo$: Observable<Invoice> = this.invoiceDetails.invoice$;
 
     constructor(private invoiceDetails: InvoiceDetailsService) {}
 
