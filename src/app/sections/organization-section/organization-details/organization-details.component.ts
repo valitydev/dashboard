@@ -14,7 +14,7 @@ import { OrgsService } from '@dsh/api/organizations';
 })
 export class OrganizationDetailsComponent {
     organization$ = this.route.params.pipe(
-        switchMap(({ orgId }) => this.organizationsService.getOrg(orgId)),
+        switchMap(({ orgId }) => this.organizationsService.getOrg({ orgId })),
         shareReplay(1)
     );
     readonly links: { path: string; label$: Observable<string> }[] = [
