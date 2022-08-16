@@ -17,7 +17,7 @@ import { MembersExpandedIdManager } from './services/members-expanded-id-manager
 })
 export class MembersComponent {
     organization$ = this.route.params.pipe(
-        switchMap(({ orgId }) => this.organizationsService.getOrg(orgId)),
+        switchMap(({ orgId }) => this.organizationsService.getOrg({ orgId })),
         untilDestroyed(this),
         shareReplay(1)
     );

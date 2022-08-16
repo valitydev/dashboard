@@ -22,7 +22,7 @@ import { InvitationsExpandedIdManager } from './services/invitations-expanded-id
 })
 export class InvitationsComponent {
     organization$ = this.route.params.pipe(
-        switchMap(({ orgId }) => this.organizationsService.getOrg(orgId)),
+        switchMap(({ orgId }) => this.organizationsService.getOrg({ orgId })),
         untilDestroyed(this),
         shareReplay(1)
     );

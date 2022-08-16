@@ -12,6 +12,7 @@ export class OrganizationsListComponent implements OnInit {
     @Output() selected = new EventEmitter<void>();
 
     orgs$ = this.fetchOrganizationsService.searchResult$.pipe(map((orgs) => orgs.slice(0, 3)));
+    isLoading$ = this.fetchOrganizationsService.doAction$;
 
     constructor(private fetchOrganizationsService: FetchOrganizationsService) {}
 

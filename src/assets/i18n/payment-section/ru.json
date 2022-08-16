@@ -55,6 +55,15 @@
             "upperBound": "Верхняя граница стоимости",
             "withoutVAT": "без НДС"
         },
+        "invoiceTemplateCostType": {
+            "InvoiceTemplateLineCostFixed": "Фиксированная",
+            "InvoiceTemplateLineCostRange": "Диапазон",
+            "InvoiceTemplateLineCostUnlim": "Без ограничений"
+        },
+        "invoiceTemplateType": {
+            "InvoiceTemplateMultiLine": "Корзина товаров",
+            "InvoiceTemplateSingleLine": "Одиночная позиция"
+        },
         "title": "Создание шаблона инвойса"
     },
     "createPaymentLinkDialog": {

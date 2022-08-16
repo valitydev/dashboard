@@ -1,35 +1,56 @@
-import { ComponentFactoryResolver, Directive, Input, OnChanges, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, Input, OnChanges, TemplateRef, ViewContainerRef, OnInit, ChangeDetectorRef } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
-import { TextComponent } from '@dsh/components/empty/components/text/text.component';
 import { ComponentChanges } from '@dsh/type-utils';
 
+import { TextComponent } from './components/text/text.component';
+
+@UntilDestroy()
 @Directive({
     selector: '[dsh-empty],[dshEmpty]',
 })
-export class EmptyDirective implements OnChanges {
-    @Input() dshEmpty: any;
+export class EmptyDirective implements OnChanges, OnInit {
+    @Input() dshEmpty: boolean;
+    @Input() dshEmptyText: string;
 
-    @Input() dshEmptyText = this.translocoService.translate('empty.emptyData', null, 'core-components');
+    private defaultEmptyText: string;
 
     constructor(
-        private templateRef: TemplateRef<any>,
+        private templateRef: TemplateRef<unknown>,
         private viewContainer: ViewContainerRef,
-        private resolver: ComponentFactoryResolver,
-        private translocoService: TranslocoService
+        private translocoService: TranslocoService,
+        private cdr: ChangeDetectorRef
     ) {}
 
+    ngOnInit() {
+        this.translocoService
+            .selectTranslate<string>('empty.emptyData', null, 'core-components')
+            .pipe(untilDestroyed(this))
+            .subscribe((text) => {
+                this.defaultEmptyText = text;
+                this.update();
+            });
+    }
+
     ngOnChanges({ dshEmpty }: ComponentChanges<EmptyDirective>) {
-        if (dshEmpty && (dshEmpty.currentValue !== dshEmpty.previousValue || dshEmpty.firstChange)) {
-            if (dshEmpty.currentValue) {
-                this.viewContainer.clear();
-                const factory = this.resolver.resolveComponentFactory(TextComponent);
-                const textComponent = this.viewContainer.createComponent(factory);
-                textComponent.instance.text = this.dshEmptyText;
-            } else {
-                this.viewContainer.clear();
-                this.viewContainer.createEmbeddedView(this.templateRef);
-            }
+        if (
+            this.defaultEmptyText &&
+            dshEmpty &&
+            (dshEmpty.currentValue !== dshEmpty.previousValue || dshEmpty.firstChange)
+        ) {
+            this.update();
         }
+    }
+
+    private update() {
+        this.viewContainer.clear();
+        if (this.dshEmpty) {
+            const textComponent = this.viewContainer.createComponent(TextComponent);
+            textComponent.instance.text = this.dshEmptyText;
+        } else {
+            this.viewContainer.createEmbeddedView(this.templateRef);
+        }
+        this.cdr.detectChanges();
     }
 }

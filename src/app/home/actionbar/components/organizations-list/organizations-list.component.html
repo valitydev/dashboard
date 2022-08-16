@@ -1,16 +1,25 @@
-<ng-container *transloco="let t; scope: 'components'; read: 'components.actionbar.organizations'">
-    <div *ngIf="(orgs$ | async)?.length" fxLayout="column" fxLayoutGap="16px">
-        <dsh-menu-item header routerLink="/organization-section/organizations" (click)="selected.emit()">
-            {{ t('title') }}
-        </dsh-menu-item>
-        <dsh-menu-item
-            *ngFor="let org of orgs$ | async"
-            class="dsh-user-link"
-            routerLink="/organization-section/organizations"
-            [fragment]="org.id"
-            (click)="selected.emit()"
-        >
-            {{ org.name }}
-        </dsh-menu-item>
-    </div>
-</ng-container>
+<div
+    fxLayout="column"
+    fxLayoutGap="16px"
+    *transloco="let t; scope: 'components'; read: 'components.actionbar.organizations'"
+>
+    <dsh-menu-item header routerLink="/organization-section/organizations" (click)="selected.emit()">
+        {{ t('title') }}
+    </dsh-menu-item>
+    <dsh-menu-item
+        *ngFor="let org of orgs$ | async"
+        class="dsh-user-link"
+        routerLink="/organization-section/organizations"
+        [fragment]="org.id"
+        (click)="selected.emit()"
+    >
+        {{ org.name }}
+    </dsh-menu-item>
+    <dsh-menu-item
+        *ngIf="!(orgs$ | async)?.length && (isLoading$ | async)"
+        class="dsh-user-link"
+        fxLayoutAlign="center"
+    >
+        <dsh-spinner size="24"></dsh-spinner>
+    </dsh-menu-item>
+</div>

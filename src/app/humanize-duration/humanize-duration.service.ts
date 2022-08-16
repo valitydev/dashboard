@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import * as humanizeDuration from 'humanize-duration';
 import moment from 'moment';
+import { Observable, of } from 'rxjs';
 
 import { Language, LanguageService } from '../language';
 
@@ -56,22 +57,24 @@ export class HumanizeDurationService {
         return Math.abs(this.isDiff(value) ? value : moment().diff(moment(value)));
     }
 
-    getDuration(value: Value, config: HumanizeConfig = {}): string {
+    getDuration(value: Value, config: HumanizeConfig = {}): Observable<string> {
         const diffMs = this.getDiffMs(value);
         let duration = this.duration(diffMs, config);
         if (isNaN(diffMs)) {
             return null;
         } else if (diffMs < HumanizeDurationService.LESS_THAN_FEW_SECONDS) {
-            return this.transloco.translate('humanizeDuration.justNow', null, 'core-components');
+            return this.transloco.selectTranslate('humanizeDuration.justNow', null, 'core-components');
         } else if (config.isShort) {
             duration = this.duration(diffMs, { ...config, ...this.shortEnglishHumanizer });
         } else if (config.largest === 1) {
             duration = moment.duration(diffMs).humanize();
         }
         duration = duration === 'минута' ? 'минуту' : duration;
-        return config.hasAgoEnding
-            ? `${duration} ${this.transloco.translate('humanizeDuration.ago', null, 'core-components')}`
-            : duration;
+        return of(
+            config.hasAgoEnding
+                ? `${duration} ${this.transloco.translate('humanizeDuration.ago', null, 'core-components')}`
+                : duration
+        );
     }
 
     getOptimalUpdateInterval(value: Value, { largest }: HumanizeConfig): number {

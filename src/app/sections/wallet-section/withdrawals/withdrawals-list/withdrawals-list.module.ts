@@ -19,7 +19,6 @@ import { WithdrawalsListComponent } from './withdrawals-list.component';
         LayoutModule,
         FlexLayoutModule,
         CommonModule,
-
         LastUpdatedModule,
         ApiModelRefsModule,
         StatusModule,
