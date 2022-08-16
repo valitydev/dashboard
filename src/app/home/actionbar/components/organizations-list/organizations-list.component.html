@@ -15,7 +15,11 @@
     >
         {{ org.name }}
     </dsh-menu-item>
-    <dsh-menu-item *ngIf="!(orgs$ | async)?.length" class="dsh-user-link" fxLayoutAlign="center">
+    <dsh-menu-item
+        *ngIf="!(orgs$ | async)?.length && (isLoading$ | async)"
+        class="dsh-user-link"
+        fxLayoutAlign="center"
+    >
         <dsh-spinner size="24"></dsh-spinner>
     </dsh-menu-item>
 </div>
