@@ -2,7 +2,7 @@ import { HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 import { Observable, combineLatest, isObservable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { RequiredKeys, UnionToIntersection, Overwrite } from 'utility-types';
+import { RequiredKeys, UnionToIntersection, Overwrite, ReadonlyKeys } from 'utility-types';
 
 import { ApiExtension } from './utils/api-extension';
 import { getMethods } from './utils/get-methods';
@@ -11,13 +11,19 @@ import { XrequestIdExtension } from './utils/x-request-id-extension';
 
 const DEFAULT_HEADERS = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' });
 
+// Exclude readonly keys
+type DeepOnlyMutable<T> = T extends object
+    ? {
+          [P in keyof T]: T[P] extends object ? Omit<T[P], ReadonlyKeys<T[P]>> : T[P];
+      }
+    : T;
 type ApiArgs = [Injector];
 
 type MethodParams<P extends Record<PropertyKey, any>, K extends PropertyKey> = RequiredKeys<Omit<P, K>> extends never
     ? void | Overwrite<P, { [N in K]?: P[N] }>
     : Overwrite<P, { [N in K]?: P[N] }>;
 type Method<M, P extends PropertyKey> = M extends (...args: unknown[]) => Observable<HttpResponse<infer R>>
-    ? (params: MethodParams<Parameters<M>[0], P>) => Observable<R>
+    ? (params: DeepOnlyMutable<MethodParams<Parameters<M>[0], P>>) => Observable<R>
     : never;
 
 /**
