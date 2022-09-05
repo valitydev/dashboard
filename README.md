@@ -6,31 +6,53 @@
 -   [Angular Material](https://material.angular.io/)
 -   [Prettier](https://prettier.io/)
 
-## Initialization
+## Guides
 
-### Install packages
+-   [Using typography](https://material.angular.io/guide/typography)
+-   [Theming your components](https://material.angular.io/guide/theming-your-components)
 
-```sh
-npm ci
-```
+## Installation
+
+1. Add environment and configurations:
+
+    - `src/appConfig.json`:
+
+        ```json
+        {
+            "apiEndpoint": "https://api.xample.com",
+            "urlShortenerEndpoint": "https://shrt.example.com",
+            "checkoutEndpoint": "https://checkout.example.com",
+            "docsEndpoints": {
+                "payments": "https://example.com/docs"
+            },
+            "theme": {
+                "name": "main"
+            },
+            "sentryDsn": "https://public@sentry.example.com/1",
+            "keycloakEndpoint": "https://auth.example.com",
+            "fileStorageEndpoint": "https://fs.example.com"
+        }
+        ```
+
+    - `src/authConfig.json`:
+        ```json
+        {
+            "realm": "external",
+            "auth-server-url": "https://auth.example.com/auth/",
+            "ssl-required": "external",
+            "resource": "koffing",
+            "public-client": true
+        }
+        ```
+
+2. Install packages
+    ```sh
+    npm ci
+    ```
 
 ## Development server
 
--   API (Production API default)
-
-    -   With mocks:
-
-        Change `./src/appConfig.json` API endpoints
-
-1. Start
-
-    - Real Keycloak: `npm start`
-
-    - Stub Keycloak
-
-        1. Change `./src/authConfig.json` / `"auth-server-url"`:
-
-        1. `npm run stub`
+1. `npm start`
 
 1. Navigate to `http://localhost:8000/`
 
@@ -51,8 +73,3 @@ npm ci
 npm run build -- --prod --stats-json --extraWebpackConfig webpack.extra.js
 npx webpack-bundle-analyzer dist/stats.json
 ```
-
-## Guides
-
--   [Using typography](https://material.angular.io/guide/typography)
--   [Theming your components](https://material.angular.io/guide/theming-your-components)
