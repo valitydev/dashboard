@@ -2,10 +2,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { Organization } from '@vality/swag-organizations';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, switchMap } from 'rxjs';
 
 import { OrgsService } from '@dsh/api/organizations';
+import { KeycloakTokenInfoService } from '@dsh/app/shared';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services/error';
 import { NotificationService } from '@dsh/app/shared/services/notification';
@@ -26,18 +26,24 @@ export class CreateOrganizationDialogComponent {
         private organizationsService: OrgsService,
         private notificationService: NotificationService,
         private errorService: ErrorService,
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private keycloakTokenInfoService: KeycloakTokenInfoService
     ) {}
 
     @inProgressTo('inProgress$')
     create() {
-        return this.organizationsService
-            .createOrg({
-                organization: {
-                    name: this.form.value.name,
-                } as Organization,
-            })
-            .pipe(untilDestroyed(this))
+        return this.keycloakTokenInfoService.partyID$
+            .pipe(
+                switchMap((owner) =>
+                    this.organizationsService.createOrg({
+                        organization: {
+                            name: this.form.value.name,
+                            owner,
+                        },
+                    })
+                ),
+                untilDestroyed(this)
+            )
             .subscribe(
                 () => {
                     this.notificationService.success();

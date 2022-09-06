@@ -17,6 +17,10 @@ const ORGANIZATION_SECTION_ROUTES: Routes = [
                 loadChildren: () => import('./organization-details').then((m) => m.OrganizationDetailsModule),
             },
             {
+                path: 'accept-invitation',
+                loadChildren: () => import('./accept-invitation').then((m) => m.AcceptInvitationModule),
+            },
+            {
                 path: '',
                 redirectTo: 'organizations',
                 pathMatch: 'full',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-import { StatusOffsetCount, InvoiceStatus, Report, RefundStatus } from '@vality/swag-anapi-v2';
+import { InvoiceStatus, Report, RefundStatus, PaymentSearchResult } from '@vality/swag-anapi-v2';
 import { BankCardPaymentSystem } from '@vality/swag-anapi-v2/lib/model/bankCardPaymentSystem';
 import { BankCardTokenProvider } from '@vality/swag-anapi-v2/lib/model/bankCardTokenProvider';
 
@@ -44,13 +44,14 @@ export class AnapiDictionaryService {
         other: this.t.translate('anapi.errorCode.other', null, 'dictionary'),
     }));
 
-    paymentStatus$ = this.dictionaryService.create<StatusOffsetCount.StatusEnum>(() => ({
+    paymentStatus$ = this.dictionaryService.create<PaymentSearchResult.StatusEnum>(() => ({
         pending: this.t.translate('anapi.paymentStatus.pending', null, 'dictionary'),
         processed: this.t.translate('anapi.paymentStatus.processed', null, 'dictionary'),
         captured: this.t.translate('anapi.paymentStatus.captured', null, 'dictionary'),
         cancelled: this.t.translate('anapi.paymentStatus.cancelled', null, 'dictionary'),
         refunded: this.t.translate('anapi.paymentStatus.refunded', null, 'dictionary'),
         failed: this.t.translate('anapi.paymentStatus.failed', null, 'dictionary'),
+        chargedback: this.t.translate('anapi.paymentStatus.chargedback', null, 'dictionary'),
     }));
 
     invoiceStatus$ = this.dictionaryService.create<InvoiceStatus.StatusEnum>(() => ({
