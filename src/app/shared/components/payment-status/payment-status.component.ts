@@ -11,7 +11,6 @@ import { PAYMENT_STATUS_COLOR } from './payment-status-color';
     standalone: true,
     selector: 'dsh-payment-status',
     templateUrl: './payment-status.component.html',
-    styleUrls: ['./payment-status.component.scss'],
     imports: [CommonModule, StatusModule],
 })
 export class PaymentStatusComponent {
