@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
-import { PaymentStatus } from '@vality/swag-payments';
+import { PaymentSearchResult } from '@vality/swag-anapi-v2';
 import isNil from 'lodash-es/isNil';
 import isObject from 'lodash-es/isObject';
 
@@ -7,7 +7,7 @@ import { AnapiDictionaryService } from '@dsh/api/anapi';
 import { ComponentChange, ComponentChanges } from '@dsh/type-utils';
 
 import { StatusColor } from '../../../../../../../../../theme-manager';
-import { getPaymentStatusInfo } from '../../../../../../../../get-payment-status-info';
+import { getPaymentStatusColor } from '../../../../../../../../get-payment-status-color';
 
 @Component({
     selector: 'dsh-payment-status',
@@ -15,10 +15,9 @@ import { getPaymentStatusInfo } from '../../../../../../../../get-payment-status
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaymentStatusComponent implements OnChanges {
-    @Input() status: PaymentStatus.StatusEnum;
+    @Input() status: PaymentSearchResult.StatusEnum;
 
     paymentColor: StatusColor;
-    paymentStatus: string;
     paymentStatusDict$ = this.anapiDictionaryService.paymentStatus$;
 
     constructor(private anapiDictionaryService: AnapiDictionaryService) {}
@@ -33,8 +32,6 @@ export class PaymentStatusComponent implements OnChanges {
         if (isNil(paymentStatus)) {
             return;
         }
-        const { status, color } = getPaymentStatusInfo(paymentStatus);
-        this.paymentColor = color;
-        this.paymentStatus = status;
+        this.paymentColor = getPaymentStatusColor(paymentStatus);
     }
 }
