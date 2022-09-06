@@ -56,6 +56,7 @@
         "paymentStatus": {
             "cancelled": "Отменен",
             "captured": "Подтвержден",
+            "chargedback": "Chargeback",
             "failed": "Неуспешен",
             "pending": "Запущен",
             "processed": "Обработан",

@@ -1,4 +1,4 @@
-import { PaymentStatus } from '@vality/swag-payments';
+import { PaymentSearchResult } from '@vality/swag-anapi-v2';
 
 import { StatusColor as Color } from '../theme-manager';
 
@@ -7,8 +7,8 @@ export interface PaymentStatusInfo {
     status: string;
 }
 
-export const getPaymentStatusInfo = (status: PaymentStatus.StatusEnum): PaymentStatusInfo => {
-    const statusEnum = PaymentStatus.StatusEnum;
+export const getPaymentStatusInfo = (status: PaymentSearchResult.StatusEnum): PaymentStatusInfo => {
+    const statusEnum = PaymentSearchResult.StatusEnum;
     switch (status) {
         case statusEnum.Processed:
             return { color: Color.Success, status: 'processed' };
@@ -22,5 +22,7 @@ export const getPaymentStatusInfo = (status: PaymentStatus.StatusEnum): PaymentS
             return { color: Color.Success, status: 'captured' };
         case statusEnum.Pending:
             return { color: Color.Pending, status: 'pending' };
+        case statusEnum.Chargedback:
+            return { color: Color.Neutral, status: 'pending' };
     }
 };
