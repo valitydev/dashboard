@@ -1,8 +1,6 @@
 import { getBaseClass } from '@dsh/utils';
 
-import type AppConfigJson from '../../appConfig.json';
-
-interface AppConfig {
+export interface Config {
     apiEndpoint: string;
     urlShortenerEndpoint: string;
     checkoutEndpoint: string;
@@ -16,6 +14,4 @@ interface AppConfig {
     keycloakEndpoint: string;
     fileStorageEndpoint: string;
 }
-
-export type Config = typeof AppConfigJson extends AppConfig ? AppConfig : never;
 export const BASE_CONFIG = getBaseClass<Config>();
