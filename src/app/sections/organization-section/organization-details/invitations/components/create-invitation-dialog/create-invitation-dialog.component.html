@@ -17,7 +17,12 @@
         </div>
     </div>
     <ng-container dshBaseDialogActions>
-        <button dsh-button color="accent" [disabled]="emailControl.invalid || !selectedRoles.length" (click)="create()">
+        <button
+            dsh-button
+            color="accent"
+            [disabled]="emailControl.invalid || !selectedRoles.length || (inProgress$ | async)"
+            (click)="create()"
+        >
             {{ t('send') }}
         </button>
     </ng-container>
