@@ -8,10 +8,7 @@
         payment.amount | amountCurrency: payment.currency
     }}</dsh-details-item>
     <dsh-details-item fxFlex [title]="t('status')">
-        <dsh-status
-            [color]="payment.status | paymentStatusColor"
-            >{{ (paymentStatusDict$ | async)?.[payment.status] }}</dsh-status
-        >
+        <dsh-payment-status [status]="payment.status"></dsh-payment-status>
     </dsh-details-item>
     <dsh-details-item fxFlex [title]="t('statusChangedAt')">{{
         payment.statusChangedAt || payment.createdAt | date: 'dd MMMM yyyy, HH:mm'

@@ -4,6 +4,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslocoModule } from '@ngneat/transloco';
 
 import { BalanceModule } from '@dsh/app/shared/components/balance/balance.module';
+import { PaymentStatusComponent } from '@dsh/app/shared/components/payment-status';
 import { ApiModelRefsModule } from '@dsh/app/shared/pipes';
 import { ButtonModule } from '@dsh/components/buttons';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
@@ -14,7 +15,6 @@ import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
 import { PaymentsRowHeaderComponent } from './components/row-header/payments-row-header.component';
 import { PaymentsRowComponent } from './components/row/payments-row.component';
 import { PaymentDetailHeaderModule } from './payment-detail-header';
-import { PaymentStatusModule } from './payment-status';
 import { PaymentsDetailsModule } from './payments-details';
 import { PaymentsPanelsComponent } from './payments-panels.component';
 
@@ -32,9 +32,9 @@ import { PaymentsPanelsComponent } from './payments-panels.component';
         PaymentDetailHeaderModule,
         PaymentsDetailsModule,
         BalanceModule,
-        PaymentStatusModule,
         ApiModelRefsModule,
         ButtonModule,
+        PaymentStatusComponent,
     ],
     declarations: [PaymentsPanelsComponent, PaymentsRowHeaderComponent, PaymentsRowComponent],
     exports: [PaymentsPanelsComponent],

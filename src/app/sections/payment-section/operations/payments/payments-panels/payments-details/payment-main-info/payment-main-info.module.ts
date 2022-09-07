@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslocoModule } from '@ngneat/transloco';
 
+import { PaymentStatusComponent } from '@dsh/app/shared/components/payment-status';
 import { ApiModelRefsModule, AmountCurrencyModule } from '@dsh/app/shared/pipes';
 import { StatusModule } from '@dsh/components/indicators';
 import { DetailsItemModule } from '@dsh/components/layout';
@@ -11,7 +12,7 @@ import { CollapseModule } from '@dsh/components/layout/collapse';
 import { AdditionalInfoComponent } from './components/additional-info/additional-info.component';
 import { ChargeAmountComponent } from './components/charge-amount/charge-amount.component';
 import { PaymentFeeComponent } from './components/payment-fee/payment-fee.component';
-import { PaymentStatusComponent } from './components/payment-status/payment-status.component';
+import { PaymentStatusDetailsItemComponent } from './components/payment-status-details-item/payment-status-details-item.component';
 import { ResourcePayerComponent } from './components/resource-payer/resource-payer.component';
 import { ShopNameComponent } from './components/shop-name/shop-name.component';
 import { PaymentMainInfoComponent } from './payment-main-info.component';
@@ -25,22 +26,22 @@ import { PaymentErrorMessagePipe } from './pipes/payment-error-message/payment-e
         TranslocoModule,
         DetailsItemModule,
         StatusModule,
-
         PaymentToolModule,
         CollapseModule,
         ApiModelRefsModule,
         AmountCurrencyModule,
+        PaymentStatusComponent,
     ],
     declarations: [
         PaymentMainInfoComponent,
-        PaymentStatusComponent,
         PaymentErrorMessagePipe,
         ChargeAmountComponent,
         PaymentFeeComponent,
         ResourcePayerComponent,
         ShopNameComponent,
         AdditionalInfoComponent,
+        PaymentStatusDetailsItemComponent,
     ],
-    exports: [PaymentMainInfoComponent],
+    exports: [PaymentMainInfoComponent, PaymentStatusDetailsItemComponent],
 })
 export class PaymentMainInfoModule {}
