@@ -3,11 +3,11 @@ import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Organization } from '@vality/swag-organizations';
 import { concat, defer, Observable, of, ReplaySubject, throwError } from 'rxjs';
-import { catchError, first, mapTo, shareReplay, switchMap, takeLast, tap } from 'rxjs/operators';
+import { catchError, first, mapTo, shareReplay, switchMap, takeLast, tap, map } from 'rxjs/operators';
 
 import { ClaimsService, createTestShopClaimChangeset } from '@dsh/api/claim-management';
 import { DEFAULT_ORGANIZATION_NAME, OrgsService } from '@dsh/api/organizations';
-import { PartiesService, ShopsService } from '@dsh/api/payments';
+import { ShopsService } from '@dsh/api/payments';
 import { CommonError, ErrorService, IdGeneratorService } from '@dsh/app/shared';
 
 @UntilDestroy()
@@ -24,7 +24,6 @@ export class BootstrapService {
     constructor(
         private shopService: ShopsService,
         private claimsService: ClaimsService,
-        private partiesService: PartiesService,
         private errorService: ErrorService,
         private organizationsService: OrgsService,
         private transloco: TranslocoService,
@@ -36,7 +35,7 @@ export class BootstrapService {
     }
 
     private getBootstrapped(): Observable<boolean> {
-        return concat(this.initParty(), this.initShop(), this.initOrganization()).pipe(
+        return concat(this.initOrganization(), this.initShop()).pipe(
             takeLast(1),
             catchError((err) => {
                 this.errorService.error(
@@ -45,10 +44,6 @@ export class BootstrapService {
                 return throwError(err);
             })
         );
-    }
-
-    private initParty(): Observable<boolean> {
-        return this.partiesService.getMyParty().pipe(mapTo(true));
     }
 
     private initOrganization(): Observable<boolean> {
@@ -87,6 +82,6 @@ export class BootstrapService {
                     this.idGenerator.uuid()
                 ),
             })
-            .pipe(mapTo(true));
+            .pipe(map(() => true));
     }
 }
