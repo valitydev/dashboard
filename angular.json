@@ -31,8 +31,7 @@
                             "moment",
                             "flat",
                             "base64-js",
-                            "js-sha256",
-                            "ts-keycode-enum"
+                            "js-sha256"
                         ],
                         "outputPath": "dist",
                         "index": "src/index.html",

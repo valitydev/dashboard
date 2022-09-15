@@ -6,6 +6,7 @@ import { CollapseModule } from './collapse';
 import { DetailsItemModule } from './details-item';
 import { DropdownModule } from './dropdown';
 import { LimitedListModule } from './limited-list';
+import { LimitedPanelComponent } from './limited-panel/limited-panel.component';
 import { LinkLabelModule } from './link-label';
 import { PanelModule } from './panel';
 import { RowModule } from './row';
@@ -24,6 +25,7 @@ const EXPORTED_MODULES = [
     LimitedListModule,
     CollapseModule,
     SectionHeaderModule,
+    LimitedPanelComponent,
 ];
 
 @NgModule({

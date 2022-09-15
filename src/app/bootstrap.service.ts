@@ -36,7 +36,7 @@ export class BootstrapService {
     }
 
     private getBootstrapped(): Observable<boolean> {
-        return concat(this.initParty(), this.initShop(), this.initOrganization()).pipe(
+        return concat(this.initParty(), this.initOrganization(), this.initShop()).pipe(
             takeLast(1),
             catchError((err) => {
                 this.errorService.error(
