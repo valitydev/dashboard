@@ -1,9 +1,17 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, Inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
-import { map } from 'rxjs/operators';
+import { Organization } from '@vality/swag-organizations';
+import { map, filter } from 'rxjs/operators';
+
+import { DIALOG_CONFIG, DialogConfig } from '@dsh/app/sections/tokens';
+import { ContextService } from '@dsh/app/shared';
+import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 
 import { KeycloakService } from '../../../../auth';
 import { ConfigService } from '../../../../config';
+import { SelectActiveOrganizationDialogComponent } from '../select-active-organization-dialog/select-active-organization-dialog.component';
 
 @Component({
     selector: 'dsh-user',
@@ -14,6 +22,7 @@ export class UserComponent {
     @Output() selected = new EventEmitter<void>();
 
     username = this.keycloakService.getUsername();
+    activeOrg$ = this.contextService.organization$;
     keycloakAccountEndpoint = `${this.config.keycloakEndpoint}/auth/realms/external/account/`;
     userLinksConfig$ = this.transloco.selectTranslation('components').pipe(
         map(() => [
@@ -35,7 +44,11 @@ export class UserComponent {
     constructor(
         private keycloakService: KeycloakService,
         private config: ConfigService,
-        private transloco: TranslocoService
+        private contextService: ContextService,
+        private router: Router,
+        private dialog: MatDialog,
+        private transloco: TranslocoService,
+        @Inject(DIALOG_CONFIG) private dialogConfig: DialogConfig
     ) {}
 
     openBlank(href: string): void {
@@ -44,5 +57,24 @@ export class UserComponent {
 
     async logout(): Promise<void> {
         await this.keycloakService.logout();
+    }
+
+    selectActiveOrg(): void {
+        this.selected.emit();
+        this.dialog
+            .open<SelectActiveOrganizationDialogComponent, void, BaseDialogResponseStatus | Organization>(
+                SelectActiveOrganizationDialogComponent,
+                this.dialogConfig.medium
+            )
+            .afterClosed()
+            .pipe(filter((res) => !Object.values(BaseDialogResponseStatus).includes(res as BaseDialogResponseStatus)))
+            .subscribe((org: Organization) => {
+                this.contextService.switchOrganization(org.id);
+            });
+    }
+
+    openOrgList(): void {
+        void this.router.navigate(['organization-section', 'organizations']);
+        this.selected.emit();
     }
 }

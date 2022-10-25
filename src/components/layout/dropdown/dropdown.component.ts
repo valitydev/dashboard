@@ -12,7 +12,8 @@ import {
 import { BehaviorSubject, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
-import { coerceBoolean } from '../../../utils';
+import { coerceBoolean } from '@dsh/utils';
+
 import { OPEN_CLOSE_ANIMATION, State } from './open-close-animation';
 
 /**
@@ -28,6 +29,9 @@ const FULL_WIDTH = '99.99%';
     exportAs: 'dshDropdown',
 })
 export class DropdownComponent implements OnInit, OnDestroy {
+    /**
+     * This is the outer width, together with the offset
+     */
     @Input() width?: number | string;
     @Input() disableClose = false;
     @Input() @coerceBoolean hasArrow = true;

@@ -7,7 +7,6 @@ import {
 } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Directive, ElementRef, HostListener, Input, OnDestroy, Renderer2, ViewContainerRef } from '@angular/core';
-import { Key } from 'ts-keycode-enum';
 
 import { DropdownComponent } from './dropdown.component';
 import { State } from './open-close-animation';
@@ -188,8 +187,8 @@ export class DropdownTriggerDirective implements OnDestroy {
     };
 
     private keypressHandler = (event: KeyboardEvent) => {
-        switch (event.keyCode) {
-            case Key.Escape:
+        switch (event.key) {
+            case 'Escape':
                 this.conditionalClose();
                 return;
         }
