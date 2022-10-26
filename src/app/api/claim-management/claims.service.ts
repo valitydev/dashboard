@@ -4,7 +4,8 @@ import { ClaimsService as ApiClaimsService } from '@vality/swag-claim-management
 import { throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 
-import { createApi, PartyIdExtension, ApiMethodParams } from '../utils';
+import { createApi, ApiMethodParams } from '../utils';
+import { PartyIdExtension } from '../utils/extensions';
 
 @Injectable({
     providedIn: 'root',
