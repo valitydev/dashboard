@@ -2,7 +2,6 @@ import { Component, Inject } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup } from '@ngneat/reactive-forms';
-import { Reason } from '@vality/swag-payments';
 
 import { PaymentsService } from '@dsh/api/payments';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
@@ -35,17 +34,15 @@ export class CancelHoldDialogComponent {
         const { reason } = this.form.value;
         const { invoiceID, paymentID } = this.dialogData;
 
-        this.paymentsService
-            .cancelPayment({ invoiceID, paymentID, cancelPayment: reason as unknown as Reason })
-            .subscribe({
-                next: () => {
-                    this.dialogRef.close(BaseDialogResponseStatus.Success);
-                },
-                error: (err: Error) => {
-                    this.errorService.error(err);
-                    this.dialogRef.close(BaseDialogResponseStatus.Error);
-                },
-            });
+        this.paymentsService.cancelPayment({ invoiceID, paymentID, cancelPayment: { reason } }).subscribe({
+            next: () => {
+                this.dialogRef.close(BaseDialogResponseStatus.Success);
+            },
+            error: (err: Error) => {
+                this.errorService.error(err);
+                this.dialogRef.close(BaseDialogResponseStatus.Error);
+            },
+        });
     }
 
     decline(): void {
