@@ -3,7 +3,7 @@ import { first, map } from 'rxjs/operators';
 
 import { KeycloakTokenInfoService } from '@dsh/app/shared/services/keycloak-token-info';
 
-import { ApiExtension } from './api-extension';
+import { ApiExtension } from '../create-api';
 
 @Injectable({
     providedIn: 'root',
