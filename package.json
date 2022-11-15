@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall": "ngcc",
     "start": "ng serve --port 8000",
-    "start-stub": "npm start -- --configuration=stub-keycloak",
+    "stage": "ng serve --port 8001 --configuration=stage",
     "fix": "npm run lint-fix && npm run prettier-fix",
     "build": "ng build --extra-webpack-config webpack.extra.js && npm run transloco:optimize",
     "test": "ng test",

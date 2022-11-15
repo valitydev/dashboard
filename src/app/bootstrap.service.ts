@@ -37,12 +37,12 @@ export class BootstrapService {
     private getBootstrapped(): Observable<boolean> {
         return concat(this.initOrganization(), this.initShop()).pipe(
             takeLast(1),
-            catchError((err) => {
-                this.errorService.error(
-                    new CommonError(this.transloco.translate('app.errors.bootstrapAppFailed', null, 'components'))
-                );
-                return throwError(err);
-            })
+            catchError((err) =>
+                this.transloco.selectTranslate<string>('app.errors.bootstrapAppFailed', null, 'components').pipe(
+                    tap((msg) => this.errorService.error(new CommonError(msg))),
+                    switchMap(() => throwError(err))
+                )
+            )
         );
     }
 
