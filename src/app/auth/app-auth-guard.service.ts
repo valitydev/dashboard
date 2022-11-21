@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, UrlTree } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 
 import { ContextService, ErrorService } from '@dsh/app/shared';
@@ -24,13 +24,16 @@ export class AppAuthGuardService extends KeycloakAuthGuard {
         super(router, keycloakAngular);
     }
 
-    async isAccessAllowed(route: ActivatedRouteSnapshot): Promise<boolean> {
+    async isAccessAllowed(route: ActivatedRouteSnapshot): Promise<boolean | UrlTree> {
         const routeAccesses = (route.data.roles as RoleAccessName[]) || [];
         const memberRoles = (await firstValueFrom(this.contextService.member$)).roles.map((r) => r.roleId);
         const isAccessAllowed = routeAccesses.every((access) =>
-            ROLE_ACCESSES_OBJECT[access].some((role) => memberRoles.includes(role))
+            ROLE_ACCESSES_OBJECT[access]?.some((role) => memberRoles.includes(role))
         );
-        if (!isAccessAllowed) this.errorService.error('Access is denied');
+        if (!isAccessAllowed) {
+            this.errorService.error('Access is denied', false);
+            return this.router.createUrlTree(['404']);
+        }
         return isAccessAllowed;
     }
 }
