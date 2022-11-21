@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { map } from 'rxjs/operators';
 
-import { RoleAccessName } from '../types/role-access-name';
+import { RoleAccessName } from '@dsh/app/auth';
 
 @Injectable({
     providedIn: 'root',

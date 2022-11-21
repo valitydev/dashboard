@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { first, map } from 'rxjs/operators';
 
-import { KeycloakTokenInfoService } from '@dsh/app/shared/services/keycloak-token-info';
+import { ContextService } from '@dsh/app/shared';
 
 import { ApiExtension } from '../create-api';
 
@@ -9,10 +9,10 @@ import { ApiExtension } from '../create-api';
     providedIn: 'root',
 })
 export class PartyIdExtension implements ApiExtension {
-    constructor(private keycloakTokenInfoService: KeycloakTokenInfoService) {}
+    constructor(private contextService: ContextService) {}
 
     selector() {
-        return this.keycloakTokenInfoService.partyID$.pipe(
+        return this.contextService.organization$.pipe(map(({ party }) => party)).pipe(
             first(),
             map((partyID) => ({ partyID }))
         );

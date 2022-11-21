@@ -1,10 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Organization } from '@vality/swag-organizations';
-import { Observable, ReplaySubject, EMPTY, concat, defer } from 'rxjs';
+import { Organization, Member } from '@vality/swag-organizations';
+import { Observable, ReplaySubject, EMPTY, concat, defer, combineLatest, of, throwError } from 'rxjs';
 import { distinctUntilChanged, switchMap, shareReplay, catchError, map } from 'rxjs/operators';
 
-import { OrgsService } from '@dsh/api/organizations';
+import { OrgsService, MembersService } from '@dsh/api/organizations';
+
+import { ErrorService } from '../error';
+import { KeycloakTokenInfoService } from '../keycloak-token-info';
 
 @Injectable({
     providedIn: 'root',
@@ -33,10 +36,33 @@ export class ContextService {
         switchMap((orgId) => this.organizationsService.getOrg({ orgId })),
         shareReplay({ refCount: true, bufferSize: 1 })
     );
+    member$ = combineLatest([this.organization$, this.keycloakTokenInfoService.userID$]).pipe(
+        switchMap(([{ id: orgId }, userId]) =>
+            this.membersService.getOrgMember({ orgId, userId }).pipe(
+                catchError((error) => {
+                    if (error instanceof HttpErrorResponse && error.status === 404) {
+                        return of<Member>({
+                            id: userId,
+                            userEmail: '',
+                            roles: [],
+                        });
+                    }
+                    this.errorService.error(error);
+                    return throwError(error);
+                })
+            )
+        ),
+        shareReplay({ refCount: true, bufferSize: 1 })
+    );
 
     private switchOrganization$ = new ReplaySubject<string>(1);
 
-    constructor(private organizationsService: OrgsService) {}
+    constructor(
+        private organizationsService: OrgsService,
+        private membersService: MembersService,
+        private keycloakTokenInfoService: KeycloakTokenInfoService,
+        private errorService: ErrorService
+    ) {}
 
     switchOrganization(organizationId: string): void {
         this.switchOrganization$.next(organizationId);
