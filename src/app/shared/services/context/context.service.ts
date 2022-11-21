@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Organization, Member } from '@vality/swag-organizations';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Organization, Member, RoleId } from '@vality/swag-organizations';
 import { Observable, ReplaySubject, EMPTY, concat, defer, combineLatest, of, throwError } from 'rxjs';
 import { distinctUntilChanged, switchMap, shareReplay, catchError, map } from 'rxjs/operators';
 
@@ -9,6 +10,7 @@ import { OrgsService, MembersService } from '@dsh/api/organizations';
 import { ErrorService } from '../error';
 import { KeycloakTokenInfoService } from '../keycloak-token-info';
 
+@UntilDestroy()
 @Injectable({
     providedIn: 'root',
 })
@@ -34,7 +36,8 @@ export class ContextService {
                 .pipe(map(() => organizationId))
         ),
         switchMap((orgId) => this.organizationsService.getOrg({ orgId })),
-        shareReplay({ refCount: true, bufferSize: 1 })
+        untilDestroyed(this),
+        shareReplay(1)
     );
     member$ = combineLatest([this.organization$, this.keycloakTokenInfoService.userID$]).pipe(
         switchMap(([{ id: orgId }, userId]) =>
@@ -44,7 +47,7 @@ export class ContextService {
                         return of<Member>({
                             id: userId,
                             userEmail: '',
-                            roles: [],
+                            roles: [{ id: null, roleId: RoleId.Administrator }],
                         });
                     }
                     this.errorService.error(error);
@@ -52,7 +55,8 @@ export class ContextService {
                 })
             )
         ),
-        shareReplay({ refCount: true, bufferSize: 1 })
+        untilDestroyed(this),
+        shareReplay(1)
     );
 
     private switchOrganization$ = new ReplaySubject<string>(1);
