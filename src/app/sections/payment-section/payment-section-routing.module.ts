@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { createPrivateRoute, RoleAccessName } from '@dsh/app/auth';
+
 import { PaymentSectionComponent } from './payment-section.component';
 
 const PAYMENT_SECTION_ROUTES: Routes = [
@@ -21,22 +23,31 @@ const PAYMENT_SECTION_ROUTES: Routes = [
                 path: 'shops',
                 loadChildren: () => import('./shops/shops.module').then((m) => m.ShopsModule),
             },
-            {
-                path: 'analytics',
-                loadChildren: () => import('./analytics/analytics.module').then((m) => m.AnalyticsModule),
-            },
+            createPrivateRoute(
+                {
+                    path: 'analytics',
+                    loadChildren: () => import('./analytics/analytics.module').then((m) => m.AnalyticsModule),
+                },
+                [RoleAccessName.ViewAnalytics]
+            ),
             {
                 path: 'operations',
                 loadChildren: () => import('./operations/operations.module').then((m) => m.OperationsModule),
             },
-            {
-                path: 'reports',
-                loadChildren: () => import('./reports/reports.module').then((m) => m.ReportsModule),
-            },
-            {
-                path: 'payouts',
-                loadChildren: () => import('./payouts/payouts.module').then((m) => m.PayoutsModule),
-            },
+            createPrivateRoute(
+                {
+                    path: 'reports',
+                    loadChildren: () => import('./reports/reports.module').then((m) => m.ReportsModule),
+                },
+                [RoleAccessName.ManageReports]
+            ),
+            createPrivateRoute(
+                {
+                    path: 'payouts',
+                    loadChildren: () => import('./payouts/payouts.module').then((m) => m.PayoutsModule),
+                },
+                [RoleAccessName.ViewPayouts]
+            ),
             {
                 path: 'integrations',
                 loadChildren: () => import('./integrations/integrations.module').then((m) => m.IntegrationsModule),
