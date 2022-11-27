@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@ngneat/transloco';
 
+import { AuthModule } from '@dsh/app/auth';
 import { InvoiceDetailsModule } from '@dsh/app/shared/components';
 import { ButtonModule } from '@dsh/components/buttons';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
@@ -60,6 +61,7 @@ import { InvoicesComponent } from './invoices.component';
         InvoiceDetailsModule,
         InvoicesListModule,
         ShowMorePanelModule,
+        AuthModule,
     ],
     declarations: [InvoicesComponent],
 })

@@ -6,14 +6,16 @@
         gdAlignRows="space-between start"
         gdGap="32px"
     >
-        <button
-            *transloco="let i; scope: 'payment-section'; read: 'paymentSection.invoices'"
-            dsh-button
-            color="accent"
-            (click)="create()"
-        >
-            {{ i('createButton') }}
-        </button>
+        <ng-container *ngIf="'CreateInvoice' | isAccessAllowed">
+            <button
+                *transloco="let i; scope: 'payment-section'; read: 'paymentSection.invoices'"
+                dsh-button
+                color="accent"
+                (click)="create()"
+            >
+                {{ i('createButton') }}
+            </button>
+        </ng-container>
         <dsh-invoices-search-filters
             gdRow.gt-sm="1"
             [initParams]="params$ | async"

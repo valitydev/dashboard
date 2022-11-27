@@ -8,7 +8,14 @@
     </div>
     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="24px">
         <ng-container *ngIf="invoice.status === 'unpaid'">
-            <button dsh-button color="accent" (click)="createPaymentLink()">{{ t('createPaymentLink') }}</button>
+            <button
+                dsh-button
+                color="accent"
+                *ngIf="'CreatePaymentLink' | isAccessAllowed"
+                (click)="createPaymentLink()"
+            >
+                {{ t('createPaymentLink') }}
+            </button>
             <button dsh-button color="warn" (click)="cancelInvoice()">{{ t('cancelInvoice') }}</button>
         </ng-container>
         <ng-container *ngIf="invoice.status === 'paid'">

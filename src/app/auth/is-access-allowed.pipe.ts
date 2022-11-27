@@ -18,7 +18,15 @@ export class IsAccessAllowedPipe implements PipeTransform, OnDestroy {
         this.asyncPipe.ngOnDestroy();
     }
 
-    transform(roleAccessNames: RoleAccessName[], type: 'every' | 'some' = 'every'): boolean {
-        return this.asyncPipe.transform(this.roleAccessService.isAccessAllowed(roleAccessNames, type));
+    transform(
+        roleAccessNames: RoleAccessName[] | keyof typeof RoleAccessName,
+        type: 'every' | 'some' = 'every'
+    ): boolean {
+        return this.asyncPipe.transform(
+            this.roleAccessService.isAccessAllowed(
+                Array.isArray(roleAccessNames) ? roleAccessNames : [RoleAccessName[roleAccessNames]],
+                type
+            )
+        );
     }
 }

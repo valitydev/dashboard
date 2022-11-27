@@ -22,7 +22,6 @@ import { FulfillInvoiceService } from '../../fulfill-invoice';
 })
 export class InvoiceActionsComponent {
     @Input() invoice: Invoice;
-
     @Output() refreshData = new EventEmitter<void>();
 
     constructor(
