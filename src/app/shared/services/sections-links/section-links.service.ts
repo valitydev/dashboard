@@ -12,19 +12,21 @@ import { SectionLink } from './types';
 export class SectionsLinksService {
     sectionLinks$: Observable<SectionLink[]> = combineLatest([
         this.walletsService.hasWallets$,
+        this.roleAccessService.isAccessAllowed([RoleAccessName.Wallets]),
         this.roleAccessService.isAccessAllowed([RoleAccessName.Claims]),
         this.transloco.selectTranslation('services'),
     ]).pipe(
-        map(([allowWallets, allowClaims]) =>
+        map(([hasWallets, allowWallets, allowClaims]) =>
             [
                 {
                     label: this.transloco.translate('sectionsLinks.links.payments', null, 'services'),
                     path: `/payment-section`,
                 },
-                allowWallets && {
-                    label: this.transloco.translate('sectionsLinks.links.wallets', null, 'services'),
-                    path: '/wallet-section',
-                },
+                hasWallets &&
+                    allowWallets && {
+                        label: this.transloco.translate('sectionsLinks.links.wallets', null, 'services'),
+                        path: '/wallet-section',
+                    },
                 allowClaims && {
                     label: this.transloco.translate('sectionsLinks.links.claims', null, 'services'),
                     path: '/claim-section',
