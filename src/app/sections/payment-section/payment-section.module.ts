@@ -4,6 +4,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslocoModule, TRANSLOCO_SCOPE } from '@ngneat/transloco';
 
+import { AuthModule } from '@dsh/app/auth';
 import { RouteNavbarLayoutModule } from '@dsh/app/shared/components/route-navbar-layout';
 import { NavbarItemModule } from '@dsh/components/navigation';
 
@@ -23,6 +24,7 @@ import { PaymentSectionComponent } from './payment-section.component';
         RouteNavbarLayoutModule,
         NavbarItemModule,
         NoShopsAlertModule,
+        AuthModule,
     ],
     declarations: [PaymentSectionComponent],
     exports: [PaymentSectionComponent],

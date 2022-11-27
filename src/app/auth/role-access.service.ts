@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
 import { ContextService } from '@dsh/app/shared';
@@ -18,12 +18,13 @@ const ROLE_ACCESSES_OBJECT = Object.fromEntries(
 export class RoleAccessService {
     constructor(private contextService: ContextService) {}
 
-    isAccessAllowed(...roleAccessNames: RoleAccessName[]): Observable<boolean> {
+    isAccessAllowed(roleAccessNames: RoleAccessName[], type: 'every' | 'some' = 'every'): Observable<boolean> {
+        if (!roleAccessNames.length) return of(true);
         return this.contextService.member$.pipe(
             first(),
             map((member) => {
                 const memberRoles = member.roles.map((r) => r.roleId);
-                return roleAccessNames.every((access) =>
+                return roleAccessNames[type]((access) =>
                     ROLE_ACCESSES_OBJECT[access]?.some((role) => memberRoles.includes(role))
                 );
             })
