@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslocoModule } from '@ngneat/transloco';
 
+import { AuthModule } from '@dsh/app/auth';
 import { ButtonModule } from '@dsh/components/buttons';
 
 import { CreateRefundModule } from './create-refund';
@@ -10,7 +11,15 @@ import { RefundsListModule } from './refunds-list';
 import { RefundsComponent } from './refunds.component';
 
 @NgModule({
-    imports: [CommonModule, TranslocoModule, FlexLayoutModule, ButtonModule, CreateRefundModule, RefundsListModule],
+    imports: [
+        CommonModule,
+        TranslocoModule,
+        FlexLayoutModule,
+        ButtonModule,
+        CreateRefundModule,
+        RefundsListModule,
+        AuthModule,
+    ],
     declarations: [RefundsComponent],
     exports: [RefundsComponent],
 })
