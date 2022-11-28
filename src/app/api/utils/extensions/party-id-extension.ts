@@ -12,9 +12,9 @@ export class PartyIdExtension implements ApiExtension {
     constructor(private contextService: ContextService) {}
 
     selector() {
-        return this.contextService.organization$.pipe(map(({ party }) => party)).pipe(
+        return this.contextService.organization$.pipe(
             first(),
-            map((partyID) => ({ partyID }))
+            map(({ party }) => ({ partyID: party }))
         );
     }
 }
