@@ -11,29 +11,81 @@ export class RoleAccessesDictionaryService {
     roleAccessDict$ = this.t.selectTranslation('organization-section').pipe(
         map(
             (): Record<RoleAccessName, string> => ({
-                claims: this.t.translate('roleAccessesDictionary.claims', null, 'organization-section'),
-                createInvoice: this.t.translate('roleAccessesDictionary.createInvoice', null, 'organization-section'),
-                createPaymentLink: this.t.translate(
+                [RoleAccessName.Claims]: this.t.translate(
+                    'roleAccessesDictionary.claims',
+                    null,
+                    'organization-section'
+                ),
+                [RoleAccessName.CreateInvoice]: this.t.translate(
+                    'roleAccessesDictionary.createInvoice',
+                    null,
+                    'organization-section'
+                ),
+                [RoleAccessName.PaymentLinks]: this.t.translate(
                     'roleAccessesDictionary.createPaymentLink',
                     null,
                     'organization-section'
                 ),
-                createRefund: this.t.translate('roleAccessesDictionary.createRefund', null, 'organization-section'),
-                manageOrganizations: this.t.translate(
+                [RoleAccessName.CreateRefund]: this.t.translate(
+                    'roleAccessesDictionary.createRefund',
+                    null,
+                    'organization-section'
+                ),
+                [RoleAccessName.ManageOrganizations]: this.t.translate(
                     'roleAccessesDictionary.manageOrganizations',
                     null,
                     'organization-section'
                 ),
-                manageReports: this.t.translate('roleAccessesDictionary.manageReports', null, 'organization-section'),
-                manageWebhooks: this.t.translate('roleAccessesDictionary.manageWebhooks', null, 'organization-section'),
-                payments: this.t.translate('roleAccessesDictionary.payments', null, 'organization-section'),
-                viewAnalytics: this.t.translate('roleAccessesDictionary.viewAnalytics', null, 'organization-section'),
-                viewApiKey: this.t.translate('roleAccessesDictionary.viewApiKey', null, 'organization-section'),
-                viewInvoices: this.t.translate('roleAccessesDictionary.viewInvoices', null, 'organization-section'),
-                viewPayments: this.t.translate('roleAccessesDictionary.viewPayments', null, 'organization-section'),
-                viewPayouts: this.t.translate('roleAccessesDictionary.viewPayouts', null, 'organization-section'),
-                viewRefunds: this.t.translate('roleAccessesDictionary.viewRefunds', null, 'organization-section'),
-                wallets: this.t.translate('roleAccessesDictionary.wallets', null, 'organization-section'),
+                [RoleAccessName.Reports]: this.t.translate(
+                    'roleAccessesDictionary.manageReports',
+                    null,
+                    'organization-section'
+                ),
+                [RoleAccessName.Webhooks]: this.t.translate(
+                    'roleAccessesDictionary.manageWebhooks',
+                    null,
+                    'organization-section'
+                ),
+                [RoleAccessName.Payments]: this.t.translate(
+                    'roleAccessesDictionary.payments',
+                    null,
+                    'organization-section'
+                ),
+                [RoleAccessName.ViewAnalytics]: this.t.translate(
+                    'roleAccessesDictionary.viewAnalytics',
+                    null,
+                    'organization-section'
+                ),
+                [RoleAccessName.ApiKeys]: this.t.translate(
+                    'roleAccessesDictionary.viewApiKey',
+                    null,
+                    'organization-section'
+                ),
+                [RoleAccessName.ViewInvoices]: this.t.translate(
+                    'roleAccessesDictionary.viewInvoices',
+                    null,
+                    'organization-section'
+                ),
+                [RoleAccessName.ViewPayments]: this.t.translate(
+                    'roleAccessesDictionary.viewPayments',
+                    null,
+                    'organization-section'
+                ),
+                [RoleAccessName.ViewPayouts]: this.t.translate(
+                    'roleAccessesDictionary.viewPayouts',
+                    null,
+                    'organization-section'
+                ),
+                [RoleAccessName.ViewRefunds]: this.t.translate(
+                    'roleAccessesDictionary.viewRefunds',
+                    null,
+                    'organization-section'
+                ),
+                [RoleAccessName.Wallets]: this.t.translate(
+                    'roleAccessesDictionary.wallets',
+                    null,
+                    'organization-section'
+                ),
             })
         )
     );

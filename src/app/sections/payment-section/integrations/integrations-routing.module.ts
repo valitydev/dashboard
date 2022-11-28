@@ -15,21 +15,21 @@ const ROUTES: Routes = [
                     path: 'webhooks',
                     loadChildren: () => import('./webhooks').then((m) => m.WebhooksModule),
                 },
-                [RoleAccessName.ManageWebhooks]
+                [RoleAccessName.Webhooks]
             ),
             createPrivateRoute(
                 {
                     path: 'payment-link',
                     loadChildren: () => import('./payment-link').then((m) => m.PaymentLinkModule),
                 },
-                [RoleAccessName.CreatePaymentLink]
+                [RoleAccessName.PaymentLinks]
             ),
             createPrivateRoute(
                 {
                     path: 'api-key',
                     loadChildren: () => import('./api-key').then((m) => m.ApiKeyModule),
                 },
-                [RoleAccessName.ViewApiKey]
+                [RoleAccessName.ApiKeys]
             ),
             {
                 path: '',

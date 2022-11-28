@@ -28,15 +28,15 @@ export const ROLE_ACCESS_GROUPS: RoleAccessGroup[] = [
                 availableRoles: [RoleId.Administrator, RoleId.Manager, RoleId.Accountant],
             },
             {
-                name: RoleAccessName.ViewApiKey,
+                name: RoleAccessName.ApiKeys,
                 availableRoles: [RoleId.Administrator, RoleId.Integrator],
             },
             {
-                name: RoleAccessName.ManageReports,
+                name: RoleAccessName.Reports,
                 availableRoles: [RoleId.Administrator, RoleId.Accountant],
             },
             {
-                name: RoleAccessName.ManageWebhooks,
+                name: RoleAccessName.Webhooks,
                 availableRoles: [RoleId.Administrator, RoleId.Integrator],
             },
             {
@@ -44,7 +44,7 @@ export const ROLE_ACCESS_GROUPS: RoleAccessGroup[] = [
                 availableRoles: [RoleId.Administrator, RoleId.Manager],
             },
             {
-                name: RoleAccessName.CreatePaymentLink,
+                name: RoleAccessName.PaymentLinks,
                 availableRoles: [RoleId.Administrator, RoleId.Manager],
             },
             {

@@ -39,7 +39,7 @@ const PAYMENT_SECTION_ROUTES: Routes = [
                     path: 'reports',
                     loadChildren: () => import('./reports/reports.module').then((m) => m.ReportsModule),
                 },
-                [RoleAccessName.ManageReports]
+                [RoleAccessName.Reports]
             ),
             createPrivateRoute(
                 {

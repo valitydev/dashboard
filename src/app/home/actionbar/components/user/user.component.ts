@@ -77,4 +77,9 @@ export class UserComponent {
         void this.router.navigate(['organization-section', 'organizations']);
         this.selected.emit();
     }
+
+    toActiveOrg(activeOrg: string): void {
+        void this.router.navigate(['organization-section', 'organizations'], { fragment: activeOrg });
+        this.selected.emit();
+    }
 }
