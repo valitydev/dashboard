@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Organization, Member, RoleId } from '@vality/swag-organizations';
 import { Observable, ReplaySubject, EMPTY, concat, defer, combineLatest, of, throwError } from 'rxjs';
-import { distinctUntilChanged, switchMap, shareReplay, catchError, map } from 'rxjs/operators';
+import { switchMap, shareReplay, catchError, map, tap } from 'rxjs/operators';
 
 import { OrgsService, MembersService } from '@dsh/api/organizations';
 
@@ -20,21 +20,23 @@ export class ContextService {
             map(({ organizationId }) => organizationId),
             catchError((err) => {
                 if (err instanceof HttpErrorResponse && err.status === 404)
-                    return this.organizationsService
-                        .listOrgMembership({ limit: 1 })
-                        .pipe(map(({ result }) => result[0].id));
+                    return this.organizationsService.listOrgMembership({ limit: 1 }).pipe(
+                        map(({ result }) => result[0].id),
+                        tap((id) => this.switchOrganization(id)),
+                        switchMap(() => EMPTY)
+                    );
                 console.error(err);
                 return EMPTY;
             })
         ),
-        defer(() => this.switchOrganization$)
+        defer(() => this.switchOrganization$).pipe(
+            switchMap((organizationId) =>
+                this.organizationsService
+                    .switchContext({ organizationSwitchRequest: { organizationId } })
+                    .pipe(map(() => organizationId))
+            )
+        )
     ).pipe(
-        distinctUntilChanged(),
-        switchMap((organizationId) =>
-            this.organizationsService
-                .switchContext({ organizationSwitchRequest: { organizationId } })
-                .pipe(map(() => organizationId))
-        ),
         switchMap((orgId) => this.organizationsService.getOrg({ orgId })),
         untilDestroyed(this),
         shareReplay(1)
