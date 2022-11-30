@@ -4,7 +4,9 @@
     fxLayoutGap="24px"
 >
     <ng-container>
-        <span class="dsh-body-2" *ngIf="activeOrg$ | async">{{ (activeOrg$ | async)?.name }}</span>
+        <dsh-menu-item class="dsh-body-2" *ngIf="activeOrg$ | async as activeOrg" (click)="toActiveOrg(activeOrg.id)">{{
+            activeOrg.name
+        }}</dsh-menu-item>
         <dsh-menu-item (click)="selectActiveOrg()">{{ t('selectActiveOrg') }}</dsh-menu-item>
         <dsh-menu-item (click)="openOrgList()">{{ t('orgList') }}</dsh-menu-item>
     </ng-container>

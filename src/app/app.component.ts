@@ -1,11 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import * as Sentry from '@sentry/angular';
-import { first } from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
 
 import { ENV, Env } from '../environments';
 import { BootstrapService } from './bootstrap.service';
-import { KeycloakTokenInfoService } from './shared';
+import { ContextService } from './shared';
 
 @UntilDestroy()
 @Component({
@@ -19,12 +19,13 @@ export class AppComponent implements OnInit {
     constructor(
         private bootstrapService: BootstrapService,
         @Inject(ENV) public env: Env,
-        private keycloakTokenInfoService: KeycloakTokenInfoService
+        private contextService: ContextService
     ) {}
 
     ngOnInit(): void {
         this.bootstrapService.bootstrap();
-        this.keycloakTokenInfoService.partyID$
+        this.contextService.organization$
+            .pipe(map(({ party }) => party))
             .pipe(first(), untilDestroyed(this))
             .subscribe((partyID) => Sentry.setUser({ id: partyID }));
     }

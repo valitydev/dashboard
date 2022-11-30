@@ -49,4 +49,4 @@ Thumbs.db
 .angular
 
 # Configs
-src/*Config.json
+src/*Config*.json

@@ -1,3 +1,4 @@
+import { environment } from '../environments';
 import { KeycloakService } from './auth/keycloak';
 import { ConfigService } from './config';
 import { IconsService } from './icons';
@@ -15,12 +16,12 @@ export const initializer =
     ) =>
     () =>
         Promise.all([
-            configService.init({ configUrl: '/appConfig.json' }).then(() =>
+            configService.init({ configUrl: environment.appConfigPath }).then(() =>
                 Promise.all([
                     themeManager.init(),
                     initSentry(configService.sentryDsn),
                     keycloakService.init({
-                        config: '/authConfig.json',
+                        config: environment.authConfigPath,
                         initOptions: {
                             onLoad: 'login-required',
                             checkLoginIframe: true,

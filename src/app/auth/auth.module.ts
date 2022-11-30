@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 
 import { AppAuthGuardService } from './app-auth-guard.service';
-import { KeycloakAngularModule } from './keycloak';
+import { IsAccessAllowedPipe } from './is-access-allowed.pipe';
 
 @NgModule({
-    imports: [KeycloakAngularModule],
     providers: [AppAuthGuardService],
+    declarations: [IsAccessAllowedPipe],
+    exports: [IsAccessAllowedPipe],
 })
 export class AuthModule {}

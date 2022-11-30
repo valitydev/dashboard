@@ -1,19 +1,31 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, UrlTree } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
+
+import { ErrorService } from '@dsh/app/shared';
 
 import { KeycloakAuthGuard, KeycloakService } from './keycloak';
+import { RoleAccessService } from './role-access.service';
+import { RoleAccessName } from './types/role-access-name';
 
 @Injectable()
 export class AppAuthGuardService extends KeycloakAuthGuard {
-    constructor(protected router: Router, protected keycloakAngular: KeycloakService) {
+    constructor(
+        protected router: Router,
+        protected keycloakAngular: KeycloakService,
+        private errorService: ErrorService,
+        private roleAccessService: RoleAccessService
+    ) {
         super(router, keycloakAngular);
     }
 
-    // eslint-disable-next-line @typescript-eslint/require-await
-    async isAccessAllowed(route: ActivatedRouteSnapshot): Promise<boolean> {
-        const isAccessAllowed = Array.isArray(this.roles) && route.data.roles.every((v) => this.roles.includes(v));
+    async isAccessAllowed(route: ActivatedRouteSnapshot): Promise<boolean | UrlTree> {
+        const isAccessAllowed = await firstValueFrom(
+            this.roleAccessService.isAccessAllowed(route.data.roles as RoleAccessName[])
+        );
         if (!isAccessAllowed) {
-            console.error('Access is denied');
+            this.errorService.error('Access is denied', false);
+            return this.router.createUrlTree(['404']);
         }
         return isAccessAllowed;
     }

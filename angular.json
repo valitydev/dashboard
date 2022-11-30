@@ -39,7 +39,14 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.app.json",
                         "inlineStyleLanguage": "scss",
-                        "assets": ["src/favicon.ico", "src/assets", "src/appConfig.json", "src/authConfig.json"],
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets",
+                            "src/appConfig.json",
+                            "src/authConfig.json",
+                            "src/appConfig.stage.json",
+                            "src/authConfig.stage.json"
+                        ],
                         "styles": [
                             "src/styles/core.scss",
                             {
@@ -88,14 +95,6 @@
                             "outputHashing": "all",
                             "sourceMap": true
                         },
-                        "stub-keycloak": {
-                            "fileReplacements": [
-                                {
-                                    "replace": "src/app/auth/keycloak/index.ts",
-                                    "with": "src/app/auth/keycloak/index.stub.ts"
-                                }
-                            ]
-                        },
                         "development": {
                             "buildOptimizer": false,
                             "optimization": false,
@@ -103,6 +102,14 @@
                             "extractLicenses": false,
                             "sourceMap": true,
                             "namedChunks": true
+                        },
+                        "stage": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.stage.ts"
+                                }
+                            ]
                         }
                     },
                     "defaultConfiguration": "production"
@@ -116,8 +123,8 @@
                         "development": {
                             "browserTarget": "dashboard:build:development"
                         },
-                        "stub-keycloak": {
-                            "browserTarget": "dashboard:build:stub-keycloak"
+                        "stage": {
+                            "browserTarget": "dashboard:build:development,stage"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -130,7 +137,14 @@
                         "tsConfig": "tsconfig.spec.json",
                         "karmaConfig": "karma.conf.js",
                         "inlineStyleLanguage": "scss",
-                        "assets": ["src/favicon.ico", "src/assets", "src/appConfig.json", "src/authConfig.json"],
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets",
+                            "src/appConfig.json",
+                            "src/authConfig.json",
+                            "src/appConfig.stage.json",
+                            "src/authConfig.stage.json"
+                        ],
                         "styles": [
                             "src/styles/core.scss",
                             {

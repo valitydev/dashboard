@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { RoleAccessName, createPrivateRoute } from '@dsh/app/auth';
+
 import { AnalyticsComponent } from './analytics.component';
 
 const OPERATIONS_ROUTES: Routes = [
-    {
-        path: '',
-        component: AnalyticsComponent,
-    },
+    createPrivateRoute(
+        {
+            path: '',
+            component: AnalyticsComponent,
+        },
+        [RoleAccessName.ViewAnalytics]
+    ),
 ];
 
 @NgModule({

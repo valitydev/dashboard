@@ -1,4 +1,11 @@
-<div>404</div>
-<button *transloco="let t; scope: 'components'; read: 'components.pageNotFound'" (click)="back()">
-    {{ t('back') }}
-</button>
+<div fxLayout="column" fxLayoutGap="16px" fxLayoutAlign="center center">
+    <div class="dsh-display-1">404</div>
+    <button
+        dsh-button
+        color="primary"
+        *transloco="let t; scope: 'components'; read: 'components.pageNotFound'"
+        (click)="back()"
+    >
+        {{ t('back') }}
+    </button>
+</div>

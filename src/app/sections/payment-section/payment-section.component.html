@@ -2,16 +2,19 @@
     <dsh-no-shops-alert *ngIf="noShops$ | async" (action)="navigateToShops()"></dsh-no-shops-alert>
     <dsh-route-navbar-layout [routeName]="activeSection$ | async">
         <div fxLayout="row" fxLayout.gt-sm="column">
-            <dsh-navbar-item
-                *ngFor="let item of navbarItemConfig$ | async"
-                [routerLink]="item.routerLink"
-                routerLinkActive
-                #rla="routerLinkActive"
-                [active]="rla.isActive"
-                [icon]="item.icon"
-                (activeChange)="setActiveSection($event, item)"
-                >{{ item.label }}</dsh-navbar-item
-            >
+            <ng-container *ngFor="let item of navbarItemConfig$ | async">
+                <dsh-navbar-item
+                    *ngIf="item.roles | isAccessAllowed: 'some'"
+                    [routerLink]="item.routerLink"
+                    routerLinkActive
+                    #rla="routerLinkActive"
+                    [active]="rla.isActive"
+                    [icon]="item.icon"
+                    (activeChange)="setActiveSection($event, item)"
+                >
+                    {{ item.label }}
+                </dsh-navbar-item>
+            </ng-container>
             <dsh-navbar-item
                 *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentSection.nav'"
                 withToggle="true"
