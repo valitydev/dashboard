@@ -175,8 +175,8 @@
         },
         "tabs": {
             "invoices": "INVOICES",
-            "payments": "ПЛАТЕЖИ",
-            "refunds": "ВОЗВРАТЫ"
+            "payments": "PAYMENTS",
+            "refunds": "REFUNDS"
         }
     },
     "paymentDetails": {
@@ -184,79 +184,79 @@
             "approvalCode": "Authorization Approval Code",
             "externalId": "External ID",
             "rrn": "Retrieval Reference Number",
-            "title": "Дополнительная информация"
+            "title": "Additional Information"
         },
         "details": {
-            "chargeAmount": "Сумма зачисления",
-            "error": "Ошибка проведения платежа",
-            "fee": "Комиссия"
+            "chargeAmount": "Crediting amount",
+            "error": "Payment processing error",
+            "fee": "Commission"
         },
         "holdDetails": {
-            "acceptTitle": "Подтверждение удержания",
+            "acceptTitle": "Confirmation of withholding",
             "actions": {
-                "accept": "Подтвердить",
-                "deny": "Отменить"
+                "accept": "Confirm",
+                "deny": "Cancel"
             },
-            "activeHoldTutorial": "Вы можете подтвердить (зачисление в вашу пользу) или отменить удержание (возврат плательщику).",
-            "amount": "Сумма подтверждения",
-            "availableAmount": "Доступная сумма",
-            "cancelTitle": "Отмена удержания",
-            "cancelledHoldMessage": "Средства были возвращены плательщику.",
-            "capturedHoldMessage": "Средства были зачислены в вашу пользу.",
-            "confirm": "Подтвердить",
-            "holdDate": "Срок удержания до",
-            "holdWithCancel": "После истечения срока удержания, средства будут возвращены плательщику.",
-            "holdWithCapture": "После истечения срока удержания, средства будут зачислены в вашу пользу.",
-            "partialAccept": "Частичное подтверждение",
-            "reason": "Причина",
-            "title": "Платеж совершен с удержанием денежных средств"
+            "activeHoldTutorial": "You can confirm (credit to you) or cancel the withholding (refund to the payer).",
+            "amount": "Confirmation amount",
+            "availableAmount": "Available amount",
+            "cancelTitle": "Canceling the withholding",
+            "cancelledHoldMessage": "The funds were returned to the payer.",
+            "capturedHoldMessage": "The funds have been credited to you.",
+            "confirm": "Confirm",
+            "holdDate": "The withholding period is up to",
+            "holdWithCancel": "After the withholding period expires, the funds will be returned to the payer.",
+            "holdWithCapture": "After the withholding period expires, the funds will be credited to you.",
+            "partialAccept": "Partial confirmation",
+            "reason": "Reason",
+            "title": "Payment was made with withholding"
         },
         "invoiceDetails": {
-            "notFound": "Инвойс не найден",
-            "title": "Инвойс"
+            "notFound": "No Invoice Found",
+            "title": "Invoice"
         },
         "payerDetails": {
-            "title": "Плательщик"
+            "title": "Payer"
         },
         "paymentTool": {
-            "title": "Средство оплаты"
+            "title": "Means of payment"
         },
         "refunds": {
             "createRefund": {
-                "amount": "Сумма возврата",
-                "availableRefund": "Доступно к возврату",
-                "balanceLoading": "Данные баланса загружаются ...",
-                "confirm": "Подтвердить",
-                "partialRefund": "Частичный возврат",
-                "pending": "Запрос на возврат отправлен",
-                "reason": "Причина возврата",
-                "successful": "Возврат успешно произведен",
-                "title": "Совершить возврат"
+                "amount": "Refund amount",
+                "availableRefund": "Available for return",
+                "balanceLoading": "The balance data is downloaded ...",
+                "confirm": "Confirm",
+                "partialRefund": "Partial refund",
+                "pending": "Return request sent",
+                "reason": "Return reason",
+                "successful": "The refund has been successfully completed",
+                "title": "Make a refund"
             },
             "errors": {
-                "invalidRequest": "Входные параметры неверные",
-                "invoicePaymentAmountExceeded": "Превышена доступная к возврату сумма"
+                "invalidRequest": "Input parameters are incorrect",
+                "invoicePaymentAmountExceeded": "Amount available for refund is exceeded"
             },
-            "title": "Возвраты"
+            "title": "Refunds"
         },
         "shopDetails": {
-            "title": "Магазин"
+            "title": "Store"
         },
         "statusDetailItem": {
-            "status": "Статус"
+            "status": "Status"
         }
     },
     "paymentErrorMessage": {
         "authorization_failed": {
-            "account_blocked": "Аккаунт заблокирован",
+            "account_blocked": "Account suspended",
             "account_limit_exceeded": {
-                "amount": "Лимит на сумму",
-                "message": "Превышен лимит на счете плательщика",
-                "number": "Лимит на количество попыток",
-                "unknown": "Объект лимита неизвестен"
+                "amount": "Limit on the amount of",
+                "message": "Limit on the payer's account is exceeded",
+                "number": "Limit on the number of attempts",
+                "unknown": "Limit object is unknown"
             },
-            "account_not_found": "Аккаунт не найден",
-            "account_stolen": "Аккаунт украден",
+            "account_not_found": "Account not found",
+            "account_stolen": "Account stolen",
             "insufficient_funds": "Не хватает средств",
             "merchant_blocked": "Мерчант заблокирован",
             "message": "Ошибка авторизации платежа у провайдера",
@@ -333,54 +333,54 @@
         "createPayoutReport": {
             "cancel": "Отмена",
             "create": "Сформировать",
-            "descriptionStep1": "Будет сформирован отчет с реестром операций. Для этого потребуется некоторое время. Загрузить отчет, и отслеживать статус формирования возможно в разделе \"Отчеты\"",
-            "descriptionStep2": "Отчет успешно создан и находится в процессе формирования. Загрузить отчет, и отслеживать статус формирования возможно в разделе \"Отчеты\"",
-            "title": "Формирование отчета с реестром операций",
-            "toReports": "Перейти в раздел \"Отчеты\""
+            "descriptionStep1": "A report with the transactions register will be generated. This will take some time. Downloading the report and tracking the formation status is possible in the \"Reports\" section",
+            "descriptionStep2": "The report was successfully created and is in the process of forming. You can download the report and track its status in the \"Reports\" section",
+            "title": "Forming a report with the register of operations",
+            "toReports": "Go to \"Reports\" section"
         },
         "errors": {
-            "createError": "Произошла ошибка при попытке создания возмещения",
-            "createReportError": "Не удалось создать отчет"
+            "createError": "An error occurred while trying to create a refund",
+            "createReportError": "Failed to create report"
         },
         "headerRow": {
-            "amount": "Сумма",
-            "createdAt": "Дата возмещения",
-            "payoutTool": "Средство вывода",
-            "shop": "Магазин"
+            "amount": "Amount",
+            "createdAt": "Date of refund",
+            "payoutTool": "Output facility",
+            "shop": "Store"
         },
         "panel": {
-            "actions": "Действия",
-            "createReport": "Сформировать реестр операций",
-            "payoutID": "Выплата #{{num}}",
-            "shop": "Магазин"
+            "actions": "Actions",
+            "createReport": "Generate a register of operations",
+            "payoutID": "Payout #{{num}}",
+            "shop": "Store"
         },
         "payouts": {
-            "amount": "Сумма списания",
-            "any": "Любой",
-            "createPayout": "Создать выплату",
-            "created": "Заявка на выплату успешно создана",
-            "noPayoutTools": "Отсутствуют доступные инструменты вывода средств",
-            "payoutTool": "Инструмент вывода средств",
-            "shop": "Магазин",
-            "title": "Создание выплаты на кошелек"
+            "amount": "Write-off amount",
+            "any": "Any",
+            "createPayout": "Create a payout",
+            "created": "A request for payment has been successfully created",
+            "noPayoutTools": "There are no withdrawal tools available",
+            "payoutTool": "Withdrawal tool",
+            "shop": "Store",
+            "title": "Creating a payout to a wallet"
         }
     },
     "reportTypesFilter": {
-        "activeLabel": "Типы формирования",
-        "label": "Все типы формирования"
+        "activeLabel": "Types of formation",
+        "label": "All types of formation"
     },
     "reports": {
         "cancelReport": {
-            "successfullyCanceled": "Отчет успешно отменен"
+            "successfullyCanceled": "Report successfully cancelled"
         },
         "createReport": {
-            "create": "Сформировать",
+            "create": "Generate",
             "form": {
-                "any": "Любой",
-                "from": "Начало периода",
-                "shop": "Магазин",
-                "time": "Время",
-                "to": "Конец периода"
+                "any": "Any",
+                "from": "Start of the period",
+                "shop": "Store",
+                "time": "Time",
+                "to": "End of the period"
             },
             "subtitle": "Отчет с реестром операций за выбранный период",
             "successfullyCreated": "Отчет успешно создан",
