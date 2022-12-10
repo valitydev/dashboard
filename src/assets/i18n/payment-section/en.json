@@ -1,51 +1,51 @@
 {
     "analytics": {
-        "noData": "Нет данных",
-        "paymentTools": "Платежные инструменты",
-        "paymentsAmount": "Оборот",
-        "paymentsCount": "Количество платежей",
+        "noData": "No data",
+        "paymentTools": "Payment instruments",
+        "paymentsAmount": "Turnover",
+        "paymentsCount": "Number of payments",
         "stats": {
-            "averagePayment": "Средняя сумма платежа",
-            "paymentsAmount": "Оборот за период",
-            "paymentsCount": "Количество платежей",
-            "refundsAmount": "Возвратов за период"
+            "averagePayment": "Average payment amount",
+            "paymentsAmount": "Turnover for a period",
+            "paymentsCount": "Number of payments",
+            "refundsAmount": "Returns for the period"
         },
-        "unsuccessfulPaymentReasons": "Причины неуспешных платежей"
+        "unsuccessfulPaymentReasons": "Reasons for unsuccessful payments"
     },
     "apiKey": {
         "api": "API",
-        "copy": "Скопировать",
-        "description": "Ваш приватный ключ для доступа к",
-        "title": "API ключ"
+        "copy": "Copy",
+        "description": "Your private key to access",
+        "title": "API key"
     },
     "balances": {
-        "title": "Доступные средства"
+        "title": "Available funds"
     },
     "createInvoiceDialog": {
-        "title": "Создание инвойса"
+        "title": "Creating an invoice"
     },
     "createInvoiceOrInvoiceTemplate": {
-        "description": "Платежная ссылка — это инструмент приема платежей по установленному шаблону инвойса. Здесь вы можете сформировать шаблон инвойса с нужными параметрами и далее сгенерировать платежную ссылку для оплаты. Ссылку можно размещать как на сайте, так и в соцсетях, она позволяет вносить оплату многократно, каждый раз создавая уникальный инвойс для клиента. Данный инструмент предназначен для оплаты одного товара или услуги.",
-        "invoiceTitle": "Создание инвойса",
-        "title": "Платежная ссылка",
+        "description": "Payment link is a tool for accepting payments according to a set invoice template. Here you can generate an invoice template with the required parameters and then generate a payment link for payment. The link can be placed both on the website and in social networks and allows you to make multiple payments, each time creating a unique invoice for the client. This tool is designed to pay for a single item or service.",
+        "invoiceTitle": "Create invoice",
+        "title": "Payment link",
         "types": {
-            "personal": "Создать персональную платежную ссылку для оплаты конкретного заказа",
-            "reusable": "Создать многоразовую платежную ссылку для оплаты заказов нескольких клиентов"
+            "personal": "Create a personal payment link to pay for a specific order",
+            "reusable": "Create a reusable payment link to pay for multiple customer orders"
         }
     },
     "createInvoiceTemplate": {
         "form": {
             "cart": {
-                "add": "Добавить товар или услугу",
-                "amount": "Цена",
-                "description": "Описание",
-                "quantity": "Количество",
-                "remove": "Удалить",
-                "summary": "Итого товаров и услуг на сумму",
-                "title": "Список товаров и услуг"
+                "add": "+ Add product or service",
+                "amount": "Price",
+                "description": "Description",
+                "quantity": "Quantity",
+                "remove": "Delete",
+                "summary": "Total goods and services amounting to",
+                "title": "Products and services list"
             },
-            "cost": "Стоимость предлагаемых товаров или услуг",
-            "invoiceTemplateType": "Тип шаблона",
+            "cost": "Cost of the offered goods or services",
+            "invoiceTemplateType": "Template type",
             "invoiceTemplateTypeCostType": "Тип ограничения стоимости",
             "lifetime": "Окончание срока действия инвойса",
             "lowerBound": "Нижняя граница стоимости",
@@ -129,52 +129,52 @@
                 "name": "Платеж"
             },
             "filter": {
-                "bankCardPaymentSystem": "Платежная система",
-                "bankCardTokenProvider": "Провайдер платежных токенов",
-                "binPan": "Карта",
-                "card": "Карта",
-                "customerID": "Идентификатор плательщика",
-                "first6": "BIN банка-эмитента карты",
-                "invoices": "Инвойсы",
-                "last4": "Последние цифры номера карты",
-                "payerEmail": "Email плательщика",
-                "paymentAmount": "Сумма платежа",
-                "paymentAmountFrom": "Мин. сумма",
-                "paymentAmountTo": "Макс. сумма",
-                "paymentStatus": "Статус платежа",
-                "rrn": "RRN платежа",
-                "shops": "Магазины"
+                "bankCardPaymentSystem": "Payment system",
+                "bankCardTokenProvider": "Payment token provider",
+                "binPan": "Card",
+                "card": "Card",
+                "customerID": "Payer Id",
+                "first6": "Card issuing bank BIN",
+                "invoices": "Invoices",
+                "last4": "Card last digits",
+                "payerEmail": "Payer email",
+                "paymentAmount": "Payment amount",
+                "paymentAmountFrom": "Min. amount",
+                "paymentAmountTo": "Max. amount",
+                "paymentStatus": "Payment status",
+                "rrn": "Payment RRN",
+                "shops": "Stores"
             },
             "table": {
-                "amount": "Сумма списания",
-                "shop": "Магазин",
-                "status": "Статус",
-                "statusChanged": "Статус изменен"
+                "amount": "Write-off amount",
+                "shop": "Store",
+                "status": "Status",
+                "statusChanged": "Status updated"
             }
         },
         "refunds": {
-            "emptyRefunds": "Возвратов нет",
-            "fetchError": "Произошла ошибка при поиске возвратов",
-            "header": "Возврат",
+            "emptyRefunds": "There are no refunds",
+            "fetchError": "An error occurred while searching for refunds",
+            "header": "Refund",
             "headerRow": {
-                "amount": "Сумма возврата",
-                "shop": "Магазин",
-                "status": "Статус",
-                "updatedAt": "Статус изменен"
+                "amount": "Refund amount",
+                "shop": "Store",
+                "status": "Status",
+                "updatedAt": "Status updated"
             },
             "invoiceInfo": {
-                "error": "Не удалось получить инвойс",
-                "title": "Инвойс"
+                "error": "Failed to get an invoice",
+                "title": "Invoice"
             },
             "paymentInfo": {
-                "error": "Не удалось получить платеж",
-                "title": "Платеж"
+                "error": "Failed to get an invoice",
+                "title": "Payment"
             },
-            "refundStatus": "Статус возврата",
-            "shop": "Магазин"
+            "refundStatus": "Refund status",
+            "shop": "Store"
         },
         "tabs": {
-            "invoices": "ИНВОЙСЫ",
+            "invoices": "INVOICES",
             "payments": "ПЛАТЕЖИ",
             "refunds": "ВОЗВРАТЫ"
         }
