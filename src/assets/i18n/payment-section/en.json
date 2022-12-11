@@ -276,48 +276,48 @@
             },
             "provider_limit_exceeded": {
                 "amount": "Limit on the amount",
-                "message": "Превышен лимит на мерчанта у провайдера (вас или платформы RBKmoney)",
-                "number": "Лимит на количество попыток",
-                "unknown": "Объект лимита неизвестен"
+                "message": "Merchant limit exceeded at the provider (you or RBKmoney platform)",
+                "number": "Limit on the number of attempts",
+                "unknown": "Object of the limit is unknown"
             },
-            "rejected_by_issuer": "Отклонено эмитентом",
-            "security_policy_violated": "Нарушения политики безопасности",
-            "temporarily_unavailable": "Временная недоступность третьих сторон",
-            "unknown": "Неизвестная ошибка авторизации"
+            "rejected_by_issuer": "Declined by the issuer",
+            "security_policy_violated": "Security policy violations",
+            "temporarily_unavailable": "Temporary unavailability of third parties",
+            "unknown": "Unknown error logging in"
         },
         "no_route_found": {
-            "message": "Маршрут не найден",
-            "risk_score_is_too_high": "Операция с высоким риском",
-            "unknown": "Неизвестная ошибка при поиске маршрута"
+            "message": "No route found",
+            "risk_score_is_too_high": "High-risk operation",
+            "unknown": "Unknown error during route search"
         },
         "preauthorization_failed": {
-            "message": "Ошибка предавторизации (3DS)",
-            "three_ds_failed": "Предавторизация закончилась неудачей",
-            "three_ds_not_finished": "Предавторизация не закончена",
-            "unknown": "Неизвестная ошибка предавторизации"
+            "message": "Preauthorization (3DS) error",
+            "three_ds_failed": "Preauthorization has failed",
+            "three_ds_not_finished": "Preauthorization is not complete",
+            "unknown": "Unknown preauthorization error"
         },
-        "rejected_by_inspector": "Отклонено сервисом противодействия мошенничеству",
-        "timeout": "Превышен лимит ожидания",
-        "unknownError": "Неизвестная ошибка"
+        "rejected_by_inspector": "Rejected by the anti-fraud service",
+        "timeout": "Exceeded waiting limit",
+        "unknownError": "Unknown error"
     },
     "paymentLink": {
-        "back": "Назад",
-        "clearForm": "Очистить форму",
-        "create": "Сформировать ссылку на оплату",
+        "back": "Back",
+        "clearForm": "Clear form",
+        "create": "Configure the payment link",
         "errors": {
-            "createPaymentLinkError": "Не удалось создать платежную ссылку"
+            "createPaymentLinkError": "Failed to create a payment link"
         },
-        "title": "Создание платежной ссылки"
+        "title": "Creating payment link"
     },
     "paymentSection": {
         "nav": {
-            "analytics": "Аналитика",
-            "integrations": "Интеграция",
-            "operations": "Операции",
-            "payouts": "Возмещения",
-            "reports": "Отчеты",
-            "shops": "Магазины",
-            "testEnv": "Тест. окружение"
+            "analytics": "Analytics",
+            "integrations": "Integration",
+            "operations": "Transactions",
+            "payouts": "Refunds",
+            "reports": "Reports",
+            "shops": "Stores",
+            "testEnv": "Test environment"
         }
     },
     "paymentTerminal": {
