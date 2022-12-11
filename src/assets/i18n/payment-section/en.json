@@ -46,54 +46,54 @@
             },
             "cost": "Cost of the offered goods or services",
             "invoiceTemplateType": "Template type",
-            "invoiceTemplateTypeCostType": "Тип ограничения стоимости",
-            "lifetime": "Окончание срока действия инвойса",
-            "lowerBound": "Нижняя граница стоимости",
-            "product": "Наименование предлагаемых товаров или услуг",
-            "shop": "Магазин",
-            "taxMode": "Схема налогообложения",
-            "upperBound": "Верхняя граница стоимости",
-            "withoutVAT": "без НДС"
+            "invoiceTemplateTypeCostType": "Type of cost limitation",
+            "lifetime": "End of validity of the invoice",
+            "lowerBound": "Lower cost cap",
+            "product": "Name of the offered goods or services",
+            "shop": "Store",
+            "taxMode": "Taxation system",
+            "upperBound": "Upper cost cap",
+            "withoutVAT": "VAT excl"
         },
         "invoiceTemplateCostType": {
-            "InvoiceTemplateLineCostFixed": "Фиксированная",
-            "InvoiceTemplateLineCostRange": "Диапазон",
-            "InvoiceTemplateLineCostUnlim": "Без ограничений"
+            "InvoiceTemplateLineCostFixed": "Fixed",
+            "InvoiceTemplateLineCostRange": "Range",
+            "InvoiceTemplateLineCostUnlim": "No restrictions"
         },
         "invoiceTemplateType": {
-            "InvoiceTemplateMultiLine": "Корзина товаров",
-            "InvoiceTemplateSingleLine": "Одиночная позиция"
+            "InvoiceTemplateMultiLine": "Shopping Cart Items",
+            "InvoiceTemplateSingleLine": "Single item"
         },
-        "title": "Создание шаблона инвойса"
+        "title": "Creating an invoice template"
     },
     "createPaymentLinkDialog": {
-        "create": "Сформировать ссылку на оплату",
-        "title": "Создание платежной ссылки"
+        "create": "Create payment link",
+        "title": "Creating payment link"
     },
     "digitalWallet": {
         "DigitalWalletDetailsQIWI": "QIWI"
     },
     "integrations": {
         "tabs": {
-            "api-key": "API КЛЮЧ",
-            "payment-link": "ПЛАТЕЖНАЯ ССЫЛКА",
+            "api-key": "API KEY",
+            "payment-link": "PAYMENT LINK",
             "webhooks": "WEBHOOKS"
         }
     },
     "invoices": {
-        "createButton": "Создать инвойс"
+        "createButton": "Create invoice"
     },
     "noShopsAlert": {
-        "action": "Перейти в раздел",
-        "description": "Магазины отсутствуют. Создать новый магазин возможно в разделе \"Магазины\"."
+        "action": "Jump to section",
+        "description": "There are no stores. You can create a new store in the \"Stores\" section."
     },
     "operations": {
         "invoices": {
             "actions": {
-                "cancel": "Отмена",
-                "cancelInvoice": "Отменить инвойс",
-                "confirm": "Подтвердить",
-                "createPaymentLink": "Сформировать ссылку на оплату",
+                "cancel": "Cancel",
+                "cancelInvoice": "Cancel invoice",
+                "confirm": "Confirm",
+                "createPaymentLink": "Create payment link",
                 "fulfillInvoice": "Погасить инвойс",
                 "invoiceCancelled": "Инвойс успешно отменен",
                 "invoiceCreated": "Инвойс успешно создан",
