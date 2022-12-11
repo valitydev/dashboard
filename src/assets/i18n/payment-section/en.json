@@ -264,18 +264,18 @@
             "payment_tool_rejected": {
                 "bank_card_rejected": {
                     "card_expired": "Card has expired",
-                    "card_holder_invalid": "Неверный владелец карты",
-                    "card_number_invalid": "Неверный номер карты",
-                    "cvv_invalid": "Неверный CVV код",
-                    "issuer_not_found": "Эмитент не найден",
-                    "message": "Банковская карта отклонена",
-                    "unknown": "Причина неизвестна"
+                    "card_holder_invalid": "Invalid cardholder",
+                    "card_number_invalid": "Invalid card number",
+                    "cvv_invalid": "Invalid CVV code",
+                    "issuer_not_found": "Issuer not found",
+                    "message": "Bank card declined",
+                    "unknown": "Reason unknown"
                 },
-                "message": "Платёжный интрумент отклонён",
-                "unknown": "Неизвестный платёжный интрумент"
+                "message": "Payment instrument declined",
+                "unknown": "Unknown payment instrument"
             },
             "provider_limit_exceeded": {
-                "amount": "Лимит на сумму",
+                "amount": "Limit on the amount",
                 "message": "Превышен лимит на мерчанта у провайдера (вас или платформы RBKmoney)",
                 "number": "Лимит на количество попыток",
                 "unknown": "Объект лимита неизвестен"
