@@ -116,17 +116,17 @@
                 "shop": "Store",
                 "status": "Status"
             },
-            "invoiceStatus": "Статус инвойса",
+            "invoiceStatus": "Invoice status",
             "payments": {
-                "payment": "Платеж",
-                "showMore": "Показать еще",
-                "title": "Платежи"
+                "payment": "Payment",
+                "showMore": "Show more",
+                "title": "Payments"
             },
-            "shop": "Магазин"
+            "shop": "Store"
         },
         "payments": {
             "details": {
-                "name": "Платеж"
+                "name": "Payment"
             },
             "filter": {
                 "bankCardPaymentSystem": "Payment system",
@@ -257,13 +257,13 @@
             },
             "account_not_found": "Account not found",
             "account_stolen": "Account stolen",
-            "insufficient_funds": "Не хватает средств",
-            "merchant_blocked": "Мерчант заблокирован",
-            "message": "Ошибка авторизации платежа у провайдера",
-            "operation_blocked": "Операция платежа заблокирована",
+            "insufficient_funds": "Insufficient funds",
+            "merchant_blocked": "Merchant is suspended",
+            "message": "Payment authorization error at the provider",
+            "operation_blocked": "Payment transaction is blocked",
             "payment_tool_rejected": {
                 "bank_card_rejected": {
-                    "card_expired": "Истёк срок действия карты",
+                    "card_expired": "Card has expired",
                     "card_holder_invalid": "Неверный владелец карты",
                     "card_number_invalid": "Неверный номер карты",
                     "cvv_invalid": "Неверный CVV код",
