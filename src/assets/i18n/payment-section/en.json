@@ -94,27 +94,27 @@
                 "cancelInvoice": "Cancel invoice",
                 "confirm": "Confirm",
                 "createPaymentLink": "Create payment link",
-                "fulfillInvoice": "Погасить инвойс",
-                "invoiceCancelled": "Инвойс успешно отменен",
-                "invoiceCreated": "Инвойс успешно создан",
-                "invoiceFulfilled": "Инвойс успешно погашен",
-                "reason": "Причина",
-                "title": "Действия"
+                "fulfillInvoice": "Redeem the invoice",
+                "invoiceCancelled": "Invoice was cancelled successfully",
+                "invoiceCreated": "Invoice was created successfully",
+                "invoiceFulfilled": "The invoice was successfully redeemed",
+                "reason": "Reason",
+                "title": "Actions"
             },
             "cartInfo": {
-                "description": "Описание товара или услуги",
-                "price": "Цена",
-                "quantity": "Количество",
-                "tax": "Ставка налога",
-                "title": "Корзина с набором товаров и услуг"
+                "description": "Description of a product or service",
+                "price": "Price",
+                "quantity": "Quantity",
+                "tax": "Tax rate",
+                "title": "Products and services cart"
             },
-            "header": "Инвойс",
+            "header": "Invoice",
             "headerRow": {
-                "amount": "Стоимость",
-                "createdAt": "Создан",
-                "productName": "Наименование",
-                "shop": "Магазин",
-                "status": "Статус"
+                "amount": "Cost",
+                "createdAt": "Created",
+                "productName": "Name",
+                "shop": "Store",
+                "status": "Status"
             },
             "invoiceStatus": "Статус инвойса",
             "payments": {
@@ -323,16 +323,16 @@
     "paymentTerminal": {
         "provider": {
             "alipay": "Alipay",
-            "euroset": "Евросеть",
-            "qps": "Система быстрых платежей (СБП)",
+            "euroset": "Euroset",
+            "qps": "Faster payments system (FPS)",
             "wechat": "WeChat",
             "zotapay": "ZotaPay"
         }
     },
     "payouts": {
         "createPayoutReport": {
-            "cancel": "Отмена",
-            "create": "Сформировать",
+            "cancel": "Cancel",
+            "create": "Generate",
             "descriptionStep1": "A report with the transactions register will be generated. This will take some time. Downloading the report and tracking the formation status is possible in the \"Reports\" section",
             "descriptionStep2": "The report was successfully created and is in the process of forming. You can download the report and track its status in the \"Reports\" section",
             "title": "Forming a report with the register of operations",
@@ -382,55 +382,55 @@
                 "time": "Time",
                 "to": "End of the period"
             },
-            "subtitle": "Отчет с реестром операций за выбранный период",
-            "successfullyCreated": "Отчет успешно создан",
-            "title": "Параметры формирования отчета"
+            "subtitle": "Report with the register of operations for the selected period",
+            "successfullyCreated": "The report has been created successfully",
+            "title": "Report generation status"
         },
         "errors": {
-            "cancelError": "Не удалось отменить отчет",
-            "createError": "Не удалось создать отчет",
-            "downloadReportError": "Не удалось загрузить документы",
-            "fetchError": "Не удалось получить отчеты"
+            "cancelError": "Failed to cancel report",
+            "createError": "Failed to create report",
+            "downloadReportError": "Failed to load documents",
+            "fetchError": "Failed to get reports"
         },
         "headerRow": {
-            "createdAt": "Дата создания",
-            "period": "Период отчетности",
-            "status": "Статус",
-            "type": "Тип формирования"
+            "createdAt": "Creation date",
+            "period": "Reporting period",
+            "status": "Status",
+            "type": "Type of formation"
         },
-        "openCreateReport": "Создать отчет",
+        "openCreateReport": "Create report",
         "reportContent": {
-            "header": "Отчет"
+            "header": "Report"
         },
         "reportDetails": {
             "actions": {
-                "cancelReport": "Отменить отчет",
-                "title": "Действия"
+                "cancelReport": "Cancel report",
+                "title": "Actions"
             },
-            "createdAt": "Дата создания",
-            "period": "Период отчетности",
-            "shop": "Магазин",
-            "status": "Статус",
-            "type": "Тип формирования"
+            "createdAt": "Creation date",
+            "period": "Reporting period",
+            "shop": "Store",
+            "status": "Status",
+            "type": "Type of formation"
         },
         "reportFiles": {
-            "downloadAll": "Загрузить все",
-            "title": "Документы"
+            "downloadAll": "Upload all",
+            "title": "Documents"
         },
         "searchFilters": {
-            "dateRangeDescription": "Период создания отчетов"
+            "dateRangeDescription": "Period of report creation"
         }
     },
     "shops": {
         "activate": {
-            "error": "Произошла ошибка при активации магазина",
-            "success": "Магазин активирован"
+            "error": "Error during store activation",
+            "success": "The store is activated"
         },
-        "createShop": "Создать магазин",
-        "emptySearchResult": "Магазины отсутствуют",
+        "createShop": "Create a store",
+        "emptySearchResult": "There are no stores",
         "panel": {
-            "actions": "Действия",
-            "activate": "Активировать магазин",
+            "actions": "Actions",
+            "activate": "Activate the store",
             "category": "Категория магазина",
             "copy": "Скопировать",
             "createdAt": "Дата и время создания",
