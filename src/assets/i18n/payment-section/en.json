@@ -431,17 +431,17 @@
         "panel": {
             "actions": "Actions",
             "activate": "Activate the store",
-            "category": "Категория магазина",
-            "copy": "Скопировать",
-            "createdAt": "Дата и время создания",
-            "details": "Детали магазина",
-            "id": "Идентификатор магазина",
-            "name": "Название магазина",
-            "suspend": "Заморозить магазин",
-            "url": "URL адрес сайта"
+            "category": "Store category",
+            "copy": "Copy",
+            "createdAt": "Date and time of creation",
+            "details": "Shop details",
+            "id": "Store ID",
+            "name": "Store Name",
+            "suspend": "Freeze the store",
+            "url": "Website URL"
         },
         "shopContract": {
-            "error": "Не удалось получить данные контракта",
+            "error": "Failed to retrieve contract data",
             "title": "Данные контракта"
         },
         "shopPayoutTool": {
