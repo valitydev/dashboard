@@ -133,7 +133,7 @@
                 "bankCardTokenProvider": "Payment token provider",
                 "binPan": "Card",
                 "card": "Card",
-                "customerID": "Payer Id",
+                "customerID": "Customer ID",
                 "first6": "Card issuing bank BIN",
                 "invoices": "Invoices",
                 "last4": "Card last digits",
@@ -276,7 +276,7 @@
             },
             "provider_limit_exceeded": {
                 "amount": "Limit on the amount",
-                "message": "Merchant limit exceeded at the provider (you or RBKmoney platform)",
+                "message": "Merchant limit exceeded on provider side (your side or RBKmoney platform side)",
                 "number": "Limit on the number of attempts",
                 "unknown": "Object of the limit is unknown"
             },
@@ -435,7 +435,7 @@
             "copy": "Copy",
             "createdAt": "Date and time of creation",
             "details": "Shop details",
-            "id": "Store ID",
+            "id": "Panel ID",
             "name": "Store Name",
             "suspend": "Freeze the store",
             "url": "Website URL"
