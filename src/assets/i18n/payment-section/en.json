@@ -442,37 +442,37 @@
         },
         "shopContract": {
             "error": "Failed to retrieve contract data",
-            "title": "Данные контракта"
+            "title": "Contract details"
         },
         "shopPayoutTool": {
-            "error": "Не удалось получить данные средства вывода",
-            "title": "Средство вывода"
+            "error": "Failed to receive the payout tool details",
+            "title": "Payout tool"
         },
         "suspend": {
-            "error": "Произошла ошибка при заморозке магазина",
-            "success": "Магазин заморожен"
+            "error": "An error occurred while freezing the store",
+            "success": "The store is frozen"
         }
     },
     "webhook": {
         "actions": {
             "delete": {
-                "buttonTitle": "Удалить webhook",
-                "success": "Webhook спешно удален"
+                "buttonTitle": "Delete webhook",
+                "success": "Webhook is hastily deleted"
             },
-            "title": "Действия"
+            "title": "Actions"
         },
-        "create": "Установить webhook",
+        "create": "Set up a webhook",
         "createWebhook": {
-            "create": "Установить",
-            "eventType": "Предмет оповещений",
+            "create": "Set up",
+            "eventType": "Subject of notifications",
             "eventTypes": {
-                "customers": "События плательщика",
-                "invoices": "События инвойса"
+                "customers": "Payer events",
+                "invoices": "Invoice events"
             },
-            "events": "События",
-            "shop": "Магазин",
-            "successfullyCreated": "Webhook успешно создан",
-            "title": "Установить новый webhook",
+            "events": "Events",
+            "shop": "Store",
+            "successfullyCreated": "Webhook successfully created",
+            "title": "Set up a new webhook",
             "types": "Набор типов событий, о которых следует оповещать",
             "url": "URL, на который будут поступать оповещения о произошедших событиях"
         },
