@@ -48,5 +48,6 @@ Thumbs.db
 # Angular
 .angular
 
-# Configs
+# Env and configs
+.env*
 src/*Config*.json
