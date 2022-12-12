@@ -49,7 +49,7 @@
         "processed": "Обработан",
         "captured": "Подтвержден",
         "cancelled": "Cancelled",
-        "refunded": "Возвращен",
+        "refunded": "Refunded",
         "failed": "Failed"
     },
     "reportType": {
