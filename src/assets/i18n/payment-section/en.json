@@ -473,31 +473,31 @@
             "shop": "Store",
             "successfullyCreated": "Webhook successfully created",
             "title": "Set up a new webhook",
-            "types": "Набор типов событий, о которых следует оповещать",
-            "url": "URL, на который будут поступать оповещения о произошедших событиях"
+            "types": "Set of event types to be notified about",
+            "url": "The URL that will receive notifications of events that have occurred"
         },
         "details": {
-            "shop": "Магазин",
-            "url": "URL, на который будут поступать оповещения о произошедших событиях"
+            "shop": "Store",
+            "url": "The URL that will receive notifications of events that have occurred"
         },
-        "emptyResult": "Webhook’и отсутствуют",
+        "emptyResult": "No Webhooks",
         "errors": {
-            "createError": "Произошла ошибка при попытке создать webhook",
-            "deleteError": "Произошла ошибка при удалении"
+            "createError": "An error occurred while trying to create a webhook",
+            "deleteError": "An error occurred while deleting"
         },
         "events": {
-            "title": "Набор событий"
+            "title": "A set of events"
         },
         "headerRow": {
-            "shop": "Магазин",
+            "shop": "Store",
             "url": "URL"
         },
         "key": {
             "buttons": {
-                "copy": "Скопировать ключ"
+                "copy": "Copy the key"
             },
-            "publicKey": "Содержимое публичного ключа, служащего для проверки авторитативности приходящих на url оповещений",
-            "title": "Публичный ключ"
+            "publicKey": "Content of the public key used to check the authoritativeness of\nnotifications coming to `url`",
+            "title": "Public Key"
         },
         "webhook": "Missing value for 'paymentSection.webhook.webhook'"
     }
