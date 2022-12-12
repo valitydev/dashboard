@@ -118,7 +118,7 @@
     "bankCardPaymentSystem": {
         "visa": "Visa",
         "mastercard": "Mastercard",
-        "visaelectron": "Vusa Electron",
+        "visaelectron": "Visa Electron",
         "maestro": "Maestro",
         "forbrugsforeningen": "Consumer association",
         "dankort": "Debit card",
