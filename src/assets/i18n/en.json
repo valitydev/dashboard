@@ -53,61 +53,61 @@
         "failed": "Failed"
     },
     "reportType": {
-        "paymentRegistry": "Ручной",
-        "provisionOfService": "Автоматический"
+        "paymentRegistry": "Manual",
+        "provisionOfService": "Automatic"
     },
     "invoiceStatus": {
-        "paid": "Оплачен",
-        "unpaid": "Не оплачен",
-        "fulfilled": "Погашен",
+        "paid": "Paid",
+        "unpaid": "Not paid",
+        "fulfilled": "Redeemed",
         "cancelled": "Cancelled"
     },
     "refundStatus": {
         "succeeded": "Success",
         "pending": "Pending",
-        "failed": "Неуспешно"
+        "failed": "Unsuccessful"
     },
     "reportStatus": {
         "pending": "Pending",
-        "processed": "Готов"
+        "processed": "Ready"
     },
     "depositStatus": {
         "Succeeded": "Success",
         "Pending": "Pending",
-        "Failed": "Неуспешно"
+        "Failed": "Failed"
     },
     "depositRevertStatus": {
         "Succeeded": "Success",
         "Pending": "Pending",
-        "Failed": "Неуспешно"
+        "Failed": "Failed"
     },
     "withdrawalStatus": {
         "Succeeded": "Success",
         "Pending": "Pending",
-        "Failed": "Неуспешно"
+        "Failed": "Failed"
     },
     "paymentFlow": {
-        "instant": "Мгновенный",
-        "hold": "С удержанием"
+        "instant": "Instant",
+        "hold": "On hold"
     },
     "invoiceTemplateType": {
-        "InvoiceTemplateMultiLine": "Корзина товаров",
-        "InvoiceTemplateSingleLine": "Одиночная позиция"
+        "InvoiceTemplateMultiLine": "Shopping Cart Items",
+        "InvoiceTemplateSingleLine": "Single item"
     },
     "invoiceTemplateCostType": {
-        "InvoiceTemplateLineCostFixed": "Фиксированная",
-        "InvoiceTemplateLineCostRange": "Диапазон",
-        "InvoiceTemplateLineCostUnlim": "Без ограничений"
+        "InvoiceTemplateLineCostFixed": "Fixed",
+        "InvoiceTemplateLineCostRange": "Range",
+        "InvoiceTemplateLineCostUnlim": "No restrictions"
     },
     "shortTimeUnits": {
-        "year": "г.",
-        "week": "нед.",
-        "month": "мес.",
-        "day": "д.",
-        "hour": "ч.",
-        "minute": "мин.",
-        "second": "сек.",
-        "millisecond": "мсек."
+        "year": "y.",
+        "week": "wk.",
+        "month": "mo.",
+        "day": "d.",
+        "hour": "h.",
+        "minute": "min.",
+        "second": "sec.",
+        "millisecond": "ms."
     },
     "bankCardTokenProvider": {
         "applepay": "Apple Pay",
@@ -118,10 +118,10 @@
     "bankCardPaymentSystem": {
         "visa": "Visa",
         "mastercard": "Mastercard",
-        "visaelectron": "Visa Electron",
+        "visaelectron": "Vusa Electron",
         "maestro": "Maestro",
-        "forbrugsforeningen": "Forbrugsforeningen",
-        "dankort": "Dankort",
+        "forbrugsforeningen": "Consumer association",
+        "dankort": "Debit card",
         "amex": "American Express",
         "dinersclub": "Diners Club International",
         "discover": "Discover Card",
@@ -131,7 +131,7 @@
     },
     "paymentMethod": {
         "bankCard": "Card",
-        "paymentTerminal": "Терминал"
+        "paymentTerminal": "Terminal"
     },
     "digitalWalletProvider": {
         "DigitalWalletDetailsQIWI": "QIWI"
@@ -141,17 +141,17 @@
         "alipay": "Alipay",
         "wechat": "WeChat",
         "zotapay": "ZotaPay",
-        "qps": "Система быстрых платежей (СБП)"
+        "qps": "Faster payments system (FPS)"
     },
     "claimType": {
-        "questionary": "Заявка на подключение"
+        "questionary": "Connectivity request"
     },
     "claimStatus": {
-        "pending": "В ожидании",
-        "pendingAcceptance": "В ожидании одобрения",
-        "review": "На рассмотрении",
-        "revoked": "Отозвана",
-        "denied": "Отклонена",
+        "pending": "Pending",
+        "pendingAcceptance": "Pending Approval",
+        "review": "In review",
+        "revoked": "Revoked",
+        "denied": "Rejected",
         "accepted": "Одобрена"
     },
     "confirmActionDialog": {
@@ -226,15 +226,15 @@
     },
     "notification": {
         "ok": "OK",
-        "error": "Что-то пошло не так",
+        "error": "Something's gone wrong",
         "success": "Success",
-        "httpError": "Произошла ошибка в процессе передачи / получения данных",
-        "unknownError": "Неизвестная ошибка"
+        "httpError": "An error occurred in the process of transmitting/receiving data",
+        "unknownError": "Unknown error"
     },
     "sectionLinks": {
-        "main": "Главная",
+        "main": "Home",
         "payments": "Payments",
-        "wallets": "Кошельки",
-        "claims": "Заявки"
+        "wallets": "Wallets",
+        "claims": "Claims"
     }
 }
