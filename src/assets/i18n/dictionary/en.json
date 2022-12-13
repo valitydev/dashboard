@@ -132,43 +132,43 @@
             "PaymentRefundCreated": "PaymentRefundCreated (возврат платежа успешно создан)",
             "PaymentRefundFailed": "PaymentRefundFailed (возврат платежа завершился неудачей)",
             "PaymentRefundSucceeded": "PaymentRefundSucceeded (payment refund was successful)",
-            "PaymentRefunded": "PaymentRefunded (платеж успешно возвращен)",
-            "PaymentStarted": "PaymentStarted (создан платеж)"
+            "PaymentRefunded": "PaymentRefundSucceeded (payment refund was successful)",
+            "PaymentStarted": "PaymentStarted (payment created)"
         },
         "paymentStatus": {
-            "cancelled": "Отменен",
-            "captured": "Подтвержден",
-            "failed": "Неуспешен",
-            "pending": "Запущен",
-            "processed": "Обработан",
-            "refunded": "Возвращен"
+            "cancelled": "Cancelled",
+            "captured": "Verified",
+            "failed": "Failed",
+            "pending": "Running",
+            "processed": "Processed",
+            "refunded": "Refunded"
         }
     },
     "wallet": {
         "depositRevertStatus": {
-            "Failed": "Неуспешно",
-            "Pending": "В процессе",
-            "Succeeded": "Успешно"
+            "Failed": "Failed",
+            "Pending": "In Progress",
+            "Succeeded": "Successful"
         },
         "depositStatus": {
-            "Failed": "Неуспешно",
-            "Pending": "В процессе",
-            "Succeeded": "Успешно"
+            "Failed": "Unsuccessful",
+            "Pending": "In process",
+            "Succeeded": "Successful"
         },
         "destinationsTopicEventType": {
-            "DestinationAuthorized": "DestinationAuthorized (Приемник средств успешно авторизован)",
-            "DestinationCreated": "DestinationCreated (Приемник средств создан)",
-            "DestinationUnauthorized": "DestinationUnauthorized (Попытка авторизации приемника средств завершилась неудачей)"
+            "DestinationAuthorized": "DestinationAuthorized (Receiver of funds successfully authorized)",
+            "DestinationCreated": "DestinationCreated (Receiver of funds is created)",
+            "DestinationUnauthorized": "DestinationUnauthorized (An attempt to authorize the funds receiver failed)"
         },
         "withdrawalStatus": {
-            "Failed": "Неуспешно",
-            "Pending": "В процессе",
-            "Succeeded": "Успешно"
+            "Failed": "Unsuccessful",
+            "Pending": "In process",
+            "Succeeded": "Successful"
         },
         "withdrawalsTopicEventType": {
-            "WithdrawalFailed": "WithdrawalFailed (Выплата завершилась неудачей)",
-            "WithdrawalStarted": "WithdrawalStarted (Выплата создана)",
-            "WithdrawalSucceeded": "WithdrawalSucceeded (Выплата совершена успешно)"
+            "WithdrawalFailed": "WithdrawalFailed (Withdrawal ended in failure)",
+            "WithdrawalStarted": "WithdrawalStarted (Withdrawal is created)",
+            "WithdrawalSucceeded": "WithdrawalSucceeded (Withdrawal was successful)"
         }
     }
 }
