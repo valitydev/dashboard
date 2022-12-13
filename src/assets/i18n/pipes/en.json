@@ -6,7 +6,7 @@
         "payoutToolDetailsBankAccount": "Bank account",
         "payoutToolDetailsBankCard": "Bank card",
         "payoutToolDetailsInternationalBankAccount": "International bank account",
-        "payoutToolDetailsPaymentInstitutionAccount": "Аккаунт платежной организации",
-        "payoutToolDetailsWalletInfo": "Кошелек"
+        "payoutToolDetailsPaymentInstitutionAccount": "Payment organization's account",
+        "payoutToolDetailsWalletInfo": "Wallet"
     }
 }
