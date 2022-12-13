@@ -1,10 +1,10 @@
 {
     "nav": {
-        "wallets": "Кошельки",
-        "deposits": "Пополнения",
-        "withdrawals": "Выводы",
-        "reports": "Отчеты",
-        "integrations": "Интеграция"
+        "wallets": "Wallets",
+        "deposits": "Deposits",
+        "withdrawals": "Withdrawals",
+        "reports": "Reports",
+        "integrations": "Integration"
     },
     "integrations": {
         "tabs": {
