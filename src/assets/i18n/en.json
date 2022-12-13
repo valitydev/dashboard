@@ -175,14 +175,14 @@
         "rejected_by_inspector": "Rejected by the anti-fraud service",
         "preauthorization_failed": {
             "message": "Preauthorization (3DS) error",
-            "unknown": "Неизвестная ошибка предавторизации",
-            "three_ds_failed": "Предавторизация закончилась неудачей",
-            "three_ds_not_finished": "Предавторизация не закончена"
+            "unknown": "Unknown preauthorization error",
+            "three_ds_failed": "Preauthorization has failed",
+            "three_ds_not_finished": "Preauthorization is not complete"
         },
         "authorization_failed": {
-            "message": "Ошибка авторизации платежа у провайдера",
-            "unknown": "Неизвестная ошибка авторизации",
-            "merchant_blocked": "Мерчант заблокирован",
+            "message": "Payment authorization error at the provider",
+            "unknown": "Unknown authorization error",
+            "merchant_blocked": "Merchant is suspended",
             "operation_blocked": "Операция платежа заблокирована",
             "account_not_found": "Аккаунт не найден",
             "account_blocked": "Аккаунт заблокирован",
