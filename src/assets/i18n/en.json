@@ -183,46 +183,46 @@
             "message": "Payment authorization error at the provider",
             "unknown": "Unknown authorization error",
             "merchant_blocked": "Merchant is suspended",
-            "operation_blocked": "Операция платежа заблокирована",
-            "account_not_found": "Аккаунт не найден",
-            "account_blocked": "Аккаунт заблокирован",
-            "account_stolen": "Аккаунт украден",
-            "insufficient_funds": "Не хватает средств",
+            "operation_blocked": "Payment transaction is blocked",
+            "account_not_found": "Account not found",
+            "account_blocked": "Account suspended",
+            "account_stolen": "Account stolen",
+            "insufficient_funds": "Insufficient funds",
             "account_limit_exceeded": {
-                "message": "Превышен лимит на счете плательщика",
-                "unknown": "Объект лимита неизвестен",
-                "amount": "Лимит на сумму",
-                "number": "Лимит на количество попыток"
+                "message": "Limit on the payer's account is exceeded",
+                "unknown": "Limit object is unknown",
+                "amount": "Limit on the amount",
+                "number": "Limit on the number of attempts"
             },
             "provider_limit_exceeded": {
-                "message": "Превышен лимит на мерчанта у провайдера (вас или платформы RBKmoney)",
-                "unknown": "Объект лимита неизвестен",
-                "amount": "Лимит на сумму",
-                "number": "Лимит на количество попыток"
+                "message": "Merchant limit exceeded on provider side (your side or RBKmoney platform side)",
+                "unknown": "Object of the limit is unknown",
+                "amount": "Limit on the amount",
+                "number": "Limit on the number of attempts"
             },
             "payment_tool_rejected": {
-                "message": "Платёжный интрумент отклонён",
-                "unknown": "Неизвестный платёжный интрумент",
+                "message": "Payment instrument declined",
+                "unknown": "Unknown payment instrument",
                 "bank_card_rejected": {
-                    "message": "Банковская карта отклонена",
-                    "unknown": "Причина неизвестна",
-                    "card_number_invalid": "Неверный номер карты",
-                    "card_expired": "Истёк срок действия карты",
-                    "card_holder_invalid": "Неверный владелец карты",
-                    "cvv_invalid": "Неверный CVV код",
-                    "issuer_not_found": "Эмитент не найден"
+                    "message": "Bank card is rejected",
+                    "unknown": "Reason unknown",
+                    "card_number_invalid": "Invalid card number",
+                    "card_expired": "Card has expired",
+                    "card_holder_invalid": "Invalid card holder",
+                    "cvv_invalid": "Invalid CVV code",
+                    "issuer_not_found": "Issuer not found"
                 }
             },
-            "security_policy_violated": "Нарушения политики безопасности",
-            "temporarily_unavailable": "Временная недоступность третьих сторон",
+            "security_policy_violated": "Security policy violations",
+            "temporarily_unavailable": "Temporary unavailability of third parties",
             "rejected_by_issuer": "Rejected by issuing bank"
         },
         "no_route_found": {
-            "message": "Маршрут не найден",
-            "unknown": "Неизвестная ошибка при поиске маршрута",
-            "risk_score_is_too_high": "Операция с высоким риском"
+            "message": "No route found",
+            "unknown": "Unknown error during route search",
+            "risk_score_is_too_high": "High-risk operation"
         },
-        "timeout": "Превышен лимит ожидания"
+        "timeout": "Exceeded timeout"
     },
     "notification": {
         "ok": "OK",
