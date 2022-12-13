@@ -1,51 +1,51 @@
 {
     "actionbar": {
         "organizations": {
-            "title": "Ваши организации"
+            "title": "Your organizations"
         },
         "user": {
-            "changePassword": "Сменить пароль",
-            "logout": "Выход",
-            "orgList": "Список организаций",
-            "selectActiveOrg": "Выбрать активную организацию",
-            "sessions": "Управление сессиями",
-            "twoFactorAuth": "Двухэтапная аутентификация"
+            "changePassword": "Change password",
+            "logout": "Logout",
+            "orgList": "Organization List",
+            "selectActiveOrg": "Choose an active organization",
+            "sessions": "Session management",
+            "twoFactorAuth": "Two-step authentication"
         }
     },
     "apiModelDetails": {
         "bankAccount": {
-            "account": "Расчетный счет",
-            "bankBik": "БИК",
-            "bankName": "Наименование банка",
-            "bankPostAccount": "Корр. счет"
+            "account": "Operating account",
+            "bankBik": "BIC",
+            "bankName": "Bank name",
+            "bankPostAccount": "Corr. account"
         },
         "contract": {
-            "createdAt": "Дата и время создания"
+            "createdAt": "Date and time of creation"
         },
         "internationalLegalEntity": {
-            "legalName": "Наименование",
-            "registeredNumber": "Регистрационный номер",
-            "registeredOffice": "Адрес места регистрации",
-            "tradingName": "Торговое наименование"
+            "legalName": "Name",
+            "registeredNumber": "Registration number",
+            "registeredOffice": "Address of the place of registration",
+            "tradingName": "Trade name"
         },
         "payoutTool": {
-            "currency": "Валюта"
+            "currency": "Currency"
         },
         "payoutToolDetails": {
             "internationalBankAccount": {
                 "bankDetails": {
                     "abartn": "ABA Routing Transit Number",
-                    "address": "Адрес юр. лица",
+                    "address": "Address of legal entity",
                     "bic": "BIC",
-                    "countryCode": "Страна резиденции",
-                    "name": "Наименование юр. лица"
+                    "countryCode": "Country of residence",
+                    "name": "Name of legal entity"
                 },
-                "correspondentBankAccount": "Корр. счет",
+                "correspondentBankAccount": "Corr. account",
                 "iban": "IBAN",
-                "number": "Номер счета"
+                "number": "Account number"
             },
             "wallet": {
-                "walletName": "Наименование"
+                "walletName": "Name"
             }
         },
         "russianLegalEntity": {
@@ -128,97 +128,97 @@
             "qps": "Система быстрых платежей (СБП)",
             "samsungPay": "Samsung Pay",
             "uzcard": "Uzcard",
-            "wallets": "Кошельки",
+            "wallets": "Wallets",
             "yandexPay": "Yandex Pay"
         }
     },
     "createRussianShopEntity": {
-        "send": "Отправить на рассмотрение",
-        "title": "Заявка на создание магазина"
+        "send": "Submit for review",
+        "title": "Request to create a store"
     },
     "createShopDialog": {
-        "internationalLegalEntityType": "Международное ЮЛ",
-        "russianLegalEntityType": "Российское ЮЛ",
-        "title": "Новая заявка",
-        "type": "Создание магазина"
+        "internationalLegalEntityType": "International Legal Entity",
+        "russianLegalEntityType": "Russian legal entity",
+        "title": "New ticket",
+        "type": "Create a shop"
     },
     "createdExistingSwitch": {
-        "created": "Указать новые",
-        "existing": "Использовать существующие"
+        "created": "Specify new",
+        "existing": "Use existing"
     },
     "currencyAutocompleteField": {
-        "label": "Валюта"
+        "label": "Currency"
     },
     "currencyFilter": {
-        "label": "Валюта"
+        "label": "Currency"
     },
     "depositRevertDetails": {
-        "amount": "Сумма отмены",
-        "createdAt": "Дата",
-        "error": "Ошибка",
+        "amount": "Cancellation amount",
+        "createdAt": "Date",
+        "error": "Error",
         "errors": {
-            "failed": "Ошибка при отмене"
+            "failed": "Error when cancelling"
         },
-        "status": "Статус"
+        "status": "Status"
     },
     "existingBankAccount": {
         "errors": {
-            "onlyInternationalShopCanBeSelected": "Можно выбрать только международный магазин",
-            "onlyRussianShopCanBeSelected": "Можно выбрать только российский магазин"
+            "onlyInternationalShopCanBeSelected": "You can only choose an international store",
+            "onlyRussianShopCanBeSelected": "You can only choose a Russian store"
         },
-        "shopLabel": "Использовать реквизиты на основе магазина"
+        "shopLabel": "Use store-based props"
     },
     "existingContractForm": {
         "errors": {
-            "onlyInternationalShopCanBeSelected": "Можно выбрать только международный магазин",
-            "onlyRussianShopCanBeSelected": "Можно выбрать только российский магазин"
+            "onlyInternationalShopCanBeSelected": "You can only choose an international store",
+            "onlyRussianShopCanBeSelected": "You can only choose a Russian store"
         },
-        "useShop": "Использовать контракт на основе магазина"
+        "useShop": "Use a store-based contract"
     },
     "expandableRadioGroup": {
-        "any": "Любой",
-        "hideAllStatuses": "Скрыть все статусы",
-        "showAllStatuses": "Показать все статусы"
+        "any": "Any",
+        "hideAllStatuses": "Hide all statuses",
+        "showAllStatuses": "Show all statuses"
     },
     "internationalBankAccountForm": {
-        "correspondentAccount": "Корреспондентский счет"
+        "correspondentAccount": "Correspondent account"
     },
     "internationalShopForm": {
-        "organization": "Сведения об организации",
-        "paymentInstitution": "Платежная организация",
-        "payoutToolTitle": "Вывод средств"
+        "organization": "Details of the organization",
+        "paymentInstitution": "Payment Institution",
+        "payoutToolTitle": "Withdrawal of funds"
     },
     "invoiceDetails": {
-        "amount": "Стоимость",
-        "createdAt": "Создан",
-        "description": "Описание",
-        "name": "Наименование",
-        "status": "Статус"
+        "amount": "Amount",
+        "createdAt": "Created",
+        "description": "Description",
+        "name": "Name",
+        "status": "Status"
     },
     "invoiceStatusFilter": {
-        "label": "Статус инвойса"
+        "label": "Invoice status"
     },
     "invoicesField": {
-        "label": "Идентификатор инвойса"
+        "label": "Invoice ID"
     },
     "invoicesFilter": {
-        "activeLabel": "Выбранные инвойсы",
-        "label": "Инвойсы"
+        "activeLabel": "Selected invoices",
+        "label": "Invoices"
     },
     "lastUpdated": {
-        "lastUpdate": "Последнее обновление",
-        "update": "Обновить"
+        "lastUpdate": "Last Update",
+        "update": "Update"
     },
     "newContractorForm": {
         "form": {
-            "actualAddress": "Почтовый адрес места нахождения",
-            "inn": "ИНН",
-            "registeredName": "Наименование юр. лица",
-            "registeredNumber": "ОГРН/ОГРНИП",
-            "representativeDocument": "Документ ЕИО/представителя",
-            "representativeFullName": "ФИО ЕИО/представителя",
-            "representativePosition": "Должность ЕИО/представителя",
-            "search": "Для поиска укажите название юр. лица, ИНН, ОГРН/ОГРНИП"
+            "actualAddress": "Postal address of the location",
+            "inn": "TIN",
+            "registeredName": "Name of legal entity",
+            "registeredNumber": "OGRN/OGRNIP",
+            "representativeDocument": "EEC/representative document",
+            "representativeFullName": "Full name of EEC/representative",
+            "representativePosition": "Position of EEC/representative",
+            "search": "To search, enter the name of the legal entity, INN, OGRN/OGRNIP"
         }
     },
     "newInternationalContractorForm": {
@@ -302,8 +302,8 @@
         "label": "Магазин"
     },
     "shopsFilter": {
-        "activeLabel": "Выбранные магазины",
-        "label": "Магазины"
+        "activeLabel": "Selected shops",
+        "label": "Shops"
     },
     "withdrawalInfo": {
         "amount": "Объем средств для вывода",
