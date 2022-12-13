@@ -1,11 +1,11 @@
 {
     "errorMessage": {
-        "errorOccurred": "Произошла ошибка"
+        "errorOccurred": "Error occurred"
     },
     "payoutToolDetailsType": {
-        "payoutToolDetailsBankAccount": "Банковский счет",
-        "payoutToolDetailsBankCard": "Банковская карта",
-        "payoutToolDetailsInternationalBankAccount": "Международный банковский счет",
+        "payoutToolDetailsBankAccount": "Bank account",
+        "payoutToolDetailsBankCard": "Bank card",
+        "payoutToolDetailsInternationalBankAccount": "International bank account",
         "payoutToolDetailsPaymentInstitutionAccount": "Аккаунт платежной организации",
         "payoutToolDetailsWalletInfo": "Кошелек"
     }
