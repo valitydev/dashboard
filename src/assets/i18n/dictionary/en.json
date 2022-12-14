@@ -14,7 +14,7 @@
             "nspkmir": "MIR",
             "rupay": "RuPay",
             "unionpay": "UnionPay",
-            "uzcard": "Uzcard'",
+            "uzcard": "Uzcard",
             "visa": "Visa",
             "visaelectron": "Visa Electron"
         },
@@ -166,8 +166,8 @@
             "Succeeded": "Successful"
         },
         "withdrawalsTopicEventType": {
-            "WithdrawalFailed": "WithdrawalFailed (Withdrawal ended in failure)",
-            "WithdrawalStarted": "WithdrawalStarted (Withdrawal is created)",
+            "WithdrawalFailed": "WithdrawalFailed (Withdrawal failed)",
+            "WithdrawalStarted": "WithdrawalStarted (Withdrawal request is created)",
             "WithdrawalSucceeded": "WithdrawalSucceeded (Withdrawal was successful)"
         }
     }
