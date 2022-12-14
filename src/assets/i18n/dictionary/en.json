@@ -132,7 +132,7 @@
             "PaymentRefundCreated": "PaymentRefundCreated (возврат платежа успешно создан)",
             "PaymentRefundFailed": "PaymentRefundFailed (возврат платежа завершился неудачей)",
             "PaymentRefundSucceeded": "PaymentRefundSucceeded (payment refund was successful)",
-            "PaymentRefunded": "PaymentRefundSucceeded (payment refund was successful)",
+            "PaymentRefunded": "PaymentRefundSucceeded (payment successfully refunded)",
             "PaymentStarted": "PaymentStarted (payment created)"
         },
         "paymentStatus": {
