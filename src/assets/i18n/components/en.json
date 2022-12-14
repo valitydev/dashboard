@@ -98,7 +98,7 @@
             "product": "Description",
             "quantity": "Quantity",
             "taxMode": "Taxation mode",
-            "withoutVAT": "Tax excluded"
+            "withoutVAT": "VAT excl."
         },
         "totalAmount": "Total goods and services amounting to:"
     },
