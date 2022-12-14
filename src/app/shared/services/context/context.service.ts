@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Organization, Member, RoleId } from '@vality/swag-organizations';
 import { Observable, ReplaySubject, EMPTY, concat, defer, combineLatest, of, throwError } from 'rxjs';
-import { switchMap, shareReplay, catchError, map, tap } from 'rxjs/operators';
+import { switchMap, shareReplay, catchError, map, tap, withLatestFrom } from 'rxjs/operators';
 
 import { OrgsService, MembersService } from '@dsh/api/organizations';
 
@@ -38,6 +38,9 @@ export class ContextService {
         )
     ).pipe(
         switchMap((orgId) => this.organizationsService.getOrg({ orgId })),
+        withLatestFrom(this.keycloakTokenInfoService.userID$),
+        // TODO: temporary replace party with user id
+        map(([org, party]) => ({ ...org, party })),
         untilDestroyed(this),
         shareReplay(1)
     );
