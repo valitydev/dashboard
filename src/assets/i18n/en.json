@@ -195,7 +195,7 @@
                 "number": "Limit on the number of attempts"
             },
             "provider_limit_exceeded": {
-                "message": "Merchant limit exceeded on provider side (your side or RBKmoney platform side)",
+                "message": "Merchant limit exceeded on provider side",
                 "unknown": "Object of the limit is unknown",
                 "amount": "Limit on the amount",
                 "number": "Limit on the number of attempts"
