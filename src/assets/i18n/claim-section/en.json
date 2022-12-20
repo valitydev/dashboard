@@ -1,0 +1,71 @@
+{
+    "claim": {
+        "breadcrumbs": {
+            "claimDetails": "Детали заявки",
+            "claims": "Заявки"
+        },
+        "headline": "Детали заявки",
+        "requestReviewClaimByIDFailed": "Не удалось отправить заявку на рассмотрение",
+        "reviewClaim": "Отправить на рассмотрение",
+        "reviewed": "Заявка успешно отправлена на рассмотрение",
+        "revokeClaim": "Отозвать",
+        "revoked": "Заявка успешно отозвана"
+    },
+    "claimRow": {
+        "details": "Детали заявки"
+    },
+    "claimRowHeader": {
+        "panel": {
+            "status": "Статус",
+            "updatedAt": "Дата изменения"
+        }
+    },
+    "claimStatusesFilter": {
+        "label": "Статус"
+    },
+    "claims": {
+        "createClaim": "Создать заявку",
+        "title": "Заявки"
+    },
+    "conversation": {
+        "action": {
+            "toggleDetails": "Раскрыть / скрыть детали"
+        },
+        "ago": "назад",
+        "filesUploaded": "Файл успешно загружен",
+        "sendComment": "Оставьте комментарий",
+        "timeline": {
+            "claimCreated": "Заявка создана"
+        },
+        "timelineActions": {
+            "changesAdded": "добавлены следующие сведения",
+            "commentAdded": "добавлены комментарии",
+            "filesAdded": "добавлены документы",
+            "statusAccepted": "одобрена заявка",
+            "statusDenied": "отклонена заявка",
+            "statusPending": "рассмотрена заявка",
+            "statusReview": "заявка отправлена на рассмотрение",
+            "statusRevoked": "отозвана заявка"
+        },
+        "userTypes": {
+            "external_user": "Вами",
+            "internal_user": "Менеджером"
+        }
+    },
+    "revokeClaimDialog": {
+        "errors": {
+            "revokeClaimByIDFailed": "Не удалось отозвать заявку"
+        },
+        "reason": "Укажите причину",
+        "revoke": "Отозвать",
+        "subheading": "Отзыв заявки"
+    },
+    "sendComment": {
+        "errors": {
+            "saveConversationsFailed": "Не удалось сохранить комментарий"
+        }
+    },
+    "updateClaim": {
+        "updateClaimByIDFailed": "Не удалось обновить заявку"
+    }
+}
