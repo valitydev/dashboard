@@ -1,0 +1,129 @@
+{
+    "acceptInvitation": {
+        "confirm": {
+            "button": "Confirm",
+            "refuseDescription": "To opt out, simply leave this page",
+            "title": "Confirm your membership in the organization"
+        },
+        "error": {
+            "title": "Error occurred"
+        },
+        "success": {
+            "goToOrganizationsList": "Go to the list of organizations",
+            "title": "You have successfully joined the organization"
+        }
+    },
+    "changeRolesTable": {
+        "add": "Add",
+        "remove": "Delete",
+        "shops": "Shops"
+    },
+    "createInvitationDialog": {
+        "form": {
+            "email": "Email"
+        },
+        "roles": "Member roles",
+        "send": "Send an invitation",
+        "title": "Create an invitation"
+    },
+    "createOrganization": "Create organization",
+    "createOrganizationDialog": {
+        "create": "Create",
+        "name": "Name of the organization",
+        "title": "Organization creation"
+    },
+    "editRolesDialog": {
+        "title": "Edit roles"
+    },
+    "emptyOrganizations": "There are no organizations",
+    "header": "Organization",
+    "headerRow": {
+        "name": "Name of the organization"
+    },
+    "organization": {
+        "actions": {
+            "leave": "Leave the organization",
+            "rename": "Rename organization"
+        },
+        "management": "Employee and organization management",
+        "numberOfEmployees": "The number of employees",
+        "titles": {
+            "actions": "Actions",
+            "roles": "Your roles"
+        }
+    },
+    "organizationDetails": {
+        "breadcrumb": {
+            "organizations": "Organizations"
+        },
+        "invitation": {
+            "actions": {
+                "cancel": "Cancel invitation"
+            },
+            "createdAt": "Date and time of invitation",
+            "expiresAt": "Time of expiry of acceptance",
+            "titles": {
+                "actions": "Actions",
+                "roles": "Roles"
+            }
+        },
+        "invitations": {
+            "createInvitation": "Create an invitation"
+        },
+        "invitationsList": {
+            "emptyInvitations": "No invitations are available",
+            "headerRow": {
+                "email": "Email"
+            }
+        },
+        "links": {
+            "invitations": "Invitations",
+            "members": "Members"
+        },
+        "member": {
+            "actions": {
+                "editRoles": "Edit",
+                "removeFromOrganization": "Remove from organization"
+            },
+            "titles": {
+                "actions": "Actions",
+                "roles": "Roles"
+            }
+        },
+        "membersList": {
+            "emptyMembers": "No participants",
+            "headerRow": {
+                "email": "Email"
+            }
+        }
+    },
+    "organizationRoles": {
+        "owner": "Owner"
+    },
+    "renameOrganizationDialog": {
+        "name": "Name of the organization",
+        "save": "Save",
+        "title": "Rename organization"
+    },
+    "roleAccessesDictionary": {
+        "claims": "Claims",
+        "createInvoice": "Create invoice",
+        "createPaymentLink": "Create a payment link",
+        "createRefund": "Make a refund",
+        "manageOrganizations": "Managing organizations and members",
+        "manageReports": "Manage reports",
+        "manageWebhooks": "Manage webhooks",
+        "payments": "Payments",
+        "viewAnalytics": "View analytics",
+        "viewApiKey": "View the API key",
+        "viewInvoices": "View invoices",
+        "viewPayments": "View payments",
+        "viewPayouts": "View payouts",
+        "viewRefunds": "View refunds",
+        "wallets": "Wallets"
+    },
+    "selectRoleDialog": {
+        "select": "Select",
+        "title": "Select role"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "daterange": {
+        "currentWeek": "Current week",
+        "from": "From",
+        "fromStartWith2": "From",
+        "to": "to",
+        "today": "Today",
+        "year": "year"
+    }
+}

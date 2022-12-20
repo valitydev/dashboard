@@ -1,0 +1,12 @@
+{
+    "errorMessage": {
+        "errorOccurred": "An error occurred"
+    },
+    "payoutToolDetailsType": {
+        "payoutToolDetailsBankAccount": "Bank account",
+        "payoutToolDetailsBankCard": "Card",
+        "payoutToolDetailsInternationalBankAccount": "International bank account",
+        "payoutToolDetailsPaymentInstitutionAccount": "Payment institution's account",
+        "payoutToolDetailsWalletInfo": "Wallet"
+    }
+}

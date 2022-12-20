@@ -1,0 +1,71 @@
+{
+    "claim": {
+        "breadcrumbs": {
+            "claimDetails": "Claim details",
+            "claims": "Claims"
+        },
+        "headline": "Claim details",
+        "requestReviewClaimByIDFailed": "Failed to send the claim for review",
+        "reviewClaim": "Send for review",
+        "reviewed": "The claim has been successfully submitted for review",
+        "revokeClaim": "Revoke",
+        "revoked": "Claim successfully revoked"
+    },
+    "claimRow": {
+        "details": "Claim details"
+    },
+    "claimRowHeader": {
+        "panel": {
+            "status": "Status",
+            "updatedAt": "Last modified"
+        }
+    },
+    "claimStatusesFilter": {
+        "label": "Status"
+    },
+    "claims": {
+        "createClaim": "Create claim",
+        "title": "Claims"
+    },
+    "conversation": {
+        "action": {
+            "toggleDetails": "Disclose / hide the details"
+        },
+        "ago": "back",
+        "filesUploaded": "File uploaded successfully",
+        "sendComment": "Add comment",
+        "timeline": {
+            "claimCreated": "An claim has been created"
+        },
+        "timelineActions": {
+            "changesAdded": "the following information has been added",
+            "commentAdded": "a comment has been added",
+            "filesAdded": "documents added",
+            "statusAccepted": "claim has been approved",
+            "statusDenied": "claim was rejected",
+            "statusPending": "claim has been reviewed",
+            "statusReview": "the claim has been sent for review",
+            "statusRevoked": "claim has been revoked"
+        },
+        "userTypes": {
+            "external_user": "By you",
+            "internal_user": "By Manager"
+        }
+    },
+    "revokeClaimDialog": {
+        "errors": {
+            "revokeClaimByIDFailed": "Failed to revoke the claim"
+        },
+        "reason": "Specify the reason",
+        "revoke": "Revoke",
+        "subheading": "Withdrawal of claim"
+    },
+    "sendComment": {
+        "errors": {
+            "saveConversationsFailed": "Failed to save comment"
+        }
+    },
+    "updateClaim": {
+        "updateClaimByIDFailed": "Failed to update the claim"
+    }
+}

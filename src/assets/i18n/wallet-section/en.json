@@ -1,0 +1,167 @@
+{
+    "depositDetails": {
+        "amount": "Amount",
+        "error": "Error",
+        "errors": {
+            "failed": "Deposit operation failed"
+        },
+        "fee": "Fee",
+        "status": "Status",
+        "wallet": "Wallet"
+    },
+    "depositPanels": {
+        "header": "Deposit"
+    },
+    "depositReverts": {
+        "loading": "Loading...",
+        "noReverts": "No reverts",
+        "revert": "Cancel",
+        "reverts": "Reverts"
+    },
+    "depositRowHeader": {
+        "amount": "Amount",
+        "createdAt": "Date",
+        "status": "Status",
+        "walletName": "Wallet"
+    },
+    "depositStatusFilter": {
+        "depositStatus": "Deposit status"
+    },
+    "depositSumFilter": {
+        "depositAmount": "Deposit amount",
+        "depositAmountFrom": "Deposit amount from",
+        "depositAmountTo": "Deposit amount to"
+    },
+    "integrations": {
+        "tabs": {
+            "webhooks": "WEBHOOKS"
+        }
+    },
+    "mainInfoFilters": {
+        "depositID": "Deposit ID",
+        "identityID": "Identity ID",
+        "sourceID": "Source identifier",
+        "walletID": "Wallet"
+    },
+    "walletSection": {
+        "nav": {
+            "deposits": "Deposits",
+            "integrations": "Integration",
+            "wallets": "Wallets",
+            "withdrawals": "Withdrawals"
+        }
+    },
+    "wallets": {
+        "accountInfo": {
+            "amount": "Available amount",
+            "description": "Available funds are equal to equity less the amounts of all outstanding transactions",
+            "fetchWalletAccountError": "An error occurred while loading the account",
+            "own": "Equity",
+            "title": "Account status"
+        },
+        "emptyResult": "There are no wallets",
+        "headerRow": {
+            "name": "Name"
+        },
+        "mainInfo": {
+            "createdAt": "Date and time of creation",
+            "name": "Name"
+        },
+        "wallet": "Wallet",
+        "walletDeposits": {
+            "amount": "Deposits amount",
+            "createdAt": "Created at",
+            "deposit": "Deposit",
+            "error": "Error",
+            "fee": "Fee",
+            "fetchError": "There was an error when receiving the deposits list",
+            "status": "Status",
+            "title": "Deposits",
+            "total": "Total amount"
+        },
+        "walletWithdrawals": {
+            "amount": "Deposits amount",
+            "createdAt": "Created at",
+            "error": "Error",
+            "fee": "Fee",
+            "fetchError": "An error occurred while getting the withdrawals list",
+            "status": "Status",
+            "title": "Withdrawals",
+            "total": "Total amount",
+            "withdrawal": "Withdrawal"
+        }
+    },
+    "webhooks": {
+        "actions": {
+            "buttons": {
+                "delete": "Delete webhook"
+            },
+            "title": "Actions",
+            "webhookDeleted": "Webhook deleted successfully"
+        },
+        "cancel": "Cancel",
+        "create": "Set up a webhook",
+        "createWebhook": {
+            "create": "Create",
+            "eventType": "Subject of notifications",
+            "eventTypes": {
+                "destination": "Funds receiver events",
+                "withdrawal": "Withdrawal events"
+            },
+            "events": "Events",
+            "identity": "Wallet holder",
+            "successfullyCreated": "Webhook created successfully",
+            "title": "Set up a new webhook",
+            "types": "Set of event types to be notified about",
+            "url": "The URL that will receive notifications of events that have occurred",
+            "wallet": "Wallet (optional)"
+        },
+        "details": {
+            "identity": "Wallet holder",
+            "url": "The URL that will receive notifications of events that have occurred",
+            "wallet": "Wallet"
+        },
+        "emptyResult": "No Webhooks",
+        "errors": {
+            "deleteError": "An error occurred while deleting"
+        },
+        "events": {
+            "title": "A set of events"
+        },
+        "headerRow": {
+            "identity": "Wallet holder",
+            "url": "URL"
+        },
+        "webhook": "Webhook"
+    },
+    "withdrawals": {
+        "details": {
+            "amount": "Payout amount",
+            "error": "Error",
+            "errors": {
+                "failed": "An error occurred when withdrawing funds"
+            },
+            "fee": "Fee",
+            "status": "Status",
+            "wallet": "Wallet"
+        },
+        "fetchError": "An error occurred while getting the withdrawals",
+        "filters": {
+            "amount": "Withdrawal amount",
+            "amountFrom": "Deposit amount from",
+            "amountTo": "Deposit amount to",
+            "destinationID": "Identifier of the funds recipient",
+            "identityID": "Identity ID",
+            "status": "Withdrawal status",
+            "walletID": "Wallet",
+            "withdrawalID": "Withdrawal ID"
+        },
+        "headerRow": {
+            "amount": "Amount",
+            "createdAt": "Date",
+            "status": "Status",
+            "wallet": "Wallet"
+        },
+        "withdrawal": "Withdrawal"
+    }
+}

@@ -1,0 +1,174 @@
+{
+    "anapi": {
+        "bankCardPaymentSystem": {
+            "amex": "American Express",
+            "dankort": "Dankort",
+            "dinersclub": "Diners Club International",
+            "discover": "Discover Card",
+            "dummy": "Dummy",
+            "elo": "Elo",
+            "forbrugsforeningen": "Forbrugsforeningen",
+            "jcb": "JCB",
+            "maestro": "Maestro",
+            "mastercard": "Mastercard",
+            "nspkmir": "MIR",
+            "rupay": "RuPay",
+            "unionpay": "UnionPay",
+            "uzcard": "Uzcard",
+            "visa": "Visa",
+            "visaelectron": "Visa Electron"
+        },
+        "bankCardTokenProvider": {
+            "applepay": "Apple Pay",
+            "googlepay": "Google Pay",
+            "samsungpay": "Samsung Pay",
+            "yandexpay": "Yandex Pay"
+        },
+        "errorCode": {
+            "account_limit_exceeded": "Account limit exceeded",
+            "account_not_found": "No account found",
+            "amount": "Amount limit exceeded",
+            "authorization_failed": "Authorization error",
+            "bank_card_rejected": "Bank card is rejected",
+            "card_expired": "The card has expired",
+            "card_number_invalid": "Invalid card number",
+            "insufficient_funds": "Insufficient funds",
+            "no_route_found": "No route found",
+            "number": "The number of operations exceeds the limit",
+            "operation_blocked": "Transaction is blocked",
+            "operation_timeout": "Timeout exceeded",
+            "other": "Other",
+            "payment_tool_rejected": "Payment instrument declined",
+            "preauthorization_failed": "Preauthorization error",
+            "processing_deadline_reached": "The time of payment has expired",
+            "rejected_by_issuer": "Rejected by issuing bank",
+            "risk_score_is_too_high": "High-risk operation",
+            "security_policy_violated": "Security policy violations",
+            "three_ds_failed": "3DS Error",
+            "three_ds_not_finished": "3DS check is incomplete"
+        },
+        "invoiceStatus": {
+            "cancelled": "Cancelled",
+            "fulfilled": "Fulfilled",
+            "paid": "Paid",
+            "unpaid": "Not paid"
+        },
+        "paymentStatus": {
+            "cancelled": "Cancelled",
+            "captured": "Captured",
+            "chargedback": "Chargedback",
+            "failed": "Failed",
+            "pending": "Pending",
+            "processed": "Processed",
+            "refunded": "Refunded"
+        },
+        "paymentTool": {
+            "bank_card": "Card",
+            "digital_wallet": "Wallet",
+            "payment_terminal": "Terminal"
+        },
+        "refundStatus": {
+            "failed": "Failed",
+            "pending": "Pending",
+            "succeeded": "Succeeded"
+        },
+        "reportStatus": {
+            "canceled": "Cancelled",
+            "created": "Created",
+            "pending": "Pending"
+        },
+        "reportType": {
+            "paymentRegistry": "Operations register",
+            "paymentRegistryByPayout": "Register of reimbursement transactions",
+            "provisionOfService": "Certificate of rendered services"
+        }
+    },
+    "claimManagement": {
+        "claimStatus": {
+            "accepted": "Accepted",
+            "denied": "Denied",
+            "pending": "Pending",
+            "pendingAcceptance": "Waiting for approval",
+            "review": "In review",
+            "revoked": "Revoked"
+        }
+    },
+    "darkApi": {
+        "refundStatus": {
+            "failed": "Failed",
+            "pending": "Pending",
+            "succeeded": "Succeeded"
+        }
+    },
+    "organizations": {
+        "resourceScopeId": {
+            "Shop": "Shops"
+        },
+        "roleId": {
+            "Accountant": "Accountant",
+            "Administrator": "Administrator",
+            "Integrator": "Integrator",
+            "Manager": "Manager"
+        }
+    },
+    "payments": {
+        "customersTopicEventType": {
+            "CustomerBindingFailed": "CustomerBindingFailed (customer binding failed)",
+            "CustomerBindingStarted": "CustomerBindingStarted (customer binding started)",
+            "CustomerBindingSucceeded": "CustomerBindingSucceeded (customer binding successfully completed)",
+            "CustomerCreated": "CustomerCreated (customer created)",
+            "CustomerDeleted": "CustomerDeleted (customer deleted)",
+            "CustomerReady": "CustomerReady (customer ready)"
+        },
+        "invoicesTopicEventType": {
+            "InvoiceCancelled": "InvoiceCancelled (invoice cancelled upon expiration of validity period)",
+            "InvoiceCreated": "InvoiceCreated (new invoice created)",
+            "InvoiceFulfilled": "InvoiceFulfilled (invoice fulfilled)",
+            "InvoicePaid": "InvoicePaid (invoice successfully paid)",
+            "PaymentCancelled": "PaymentCancelled (payment successfully cancelled)",
+            "PaymentCaptured": "PaymentCaptured (payment captured)",
+            "PaymentFailed": "PaymentFailed (an error occurred while making a payment)",
+            "PaymentProcessed": "PaymentProcessed (payment processed)",
+            "PaymentRefundCreated": "PaymentRefundCreated (payment refund successfully created)",
+            "PaymentRefundFailed": "PaymentRefundFailed (payment refund failed)",
+            "PaymentRefundSucceeded": "PaymentRefundSucceeded (payment refund was successful)",
+            "PaymentRefunded": "PaymentRefundSucceeded (payment successfully refunded)",
+            "PaymentStarted": "PaymentStarted (payment created)"
+        },
+        "paymentStatus": {
+            "cancelled": "Cancelled",
+            "captured": "Captured",
+            "failed": "Failed",
+            "pending": "Pending",
+            "processed": "Processed",
+            "refunded": "Refunded"
+        }
+    },
+    "wallet": {
+        "depositRevertStatus": {
+            "Failed": "Failed",
+            "Pending": "Pending",
+            "Succeeded": "Succeeded"
+        },
+        "depositStatus": {
+            "Failed": "Failed",
+            "Pending": "Pending",
+            "Succeeded": "Succeeded"
+        },
+        "destinationsTopicEventType": {
+            "DestinationAuthorized": "DestinationAuthorized (Receiver of funds successfully authorized)",
+            "DestinationCreated": "DestinationCreated (Receiver of funds is created)",
+            "DestinationUnauthorized": "DestinationUnauthorized (An attempt to authorize the funds receiver failed)"
+        },
+        "withdrawalStatus": {
+            "Failed": "Failed",
+            "Pending": "Pending",
+            "Succeeded": "Succeeded"
+        },
+        "withdrawalsTopicEventType": {
+            "WithdrawalFailed": "WithdrawalFailed (Withdrawal failed)",
+            "WithdrawalStarted": "WithdrawalStarted (Withdrawal request is created)",
+            "WithdrawalSucceeded": "WithdrawalSucceeded (Withdrawal was successful)"
+        }
+    }
+}
