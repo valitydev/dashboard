@@ -1,0 +1,504 @@
+{
+    "analytics": {
+        "noData": "No data",
+        "paymentTools": "Payment tools",
+        "paymentsAmount": "Turnover",
+        "paymentsCount": "Number of payments",
+        "stats": {
+            "averagePayment": "Average payment amount",
+            "paymentsAmount": "Turnover for a period",
+            "paymentsCount": "Number of payments",
+            "refundsAmount": "Refunds for the period"
+        },
+        "unsuccessfulPaymentReasons": "Reasons for unsuccessful payments"
+    },
+    "apiKey": {
+        "api": "API",
+        "copy": "Copy",
+        "description": "Your private key to access",
+        "title": "API key"
+    },
+    "balances": {
+        "title": "Available amount"
+    },
+    "createInvoiceDialog": {
+        "title": "Creating an invoice"
+    },
+    "createInvoiceOrInvoiceTemplate": {
+        "description": "Payment link is a tool for accepting payments according to a set invoice template. Here you can generate an invoice template with the required parameters and then generate a payment link for payment. The link can be placed both on the website and in social networks and allows you to make multiple payments, each time creating a unique invoice for the client. This tool is designed to pay for a single item or service.",
+        "invoiceTitle": "Creating an invoice",
+        "title": "Payment link",
+        "types": {
+            "personal": "Create a personal payment link to pay for a specific order",
+            "reusable": "Create a reusable payment link to pay for multiple customer orders"
+        }
+    },
+    "createInvoiceTemplate": {
+        "form": {
+            "cart": {
+                "add": "Add product or service",
+                "amount": "Price",
+                "description": "Description",
+                "quantity": "Quantity",
+                "remove": "Delete",
+                "summary": "Total goods and services amounting to",
+                "title": "Products and services list"
+            },
+            "cost": "Cost of the offered goods or services",
+            "invoiceTemplateType": "Template type",
+            "invoiceTemplateTypeCostType": "Type of cost limitation",
+            "lifetime": "End of validity of the invoice",
+            "lowerBound": "Lower cost cap",
+            "product": "Name of the offered goods or services",
+            "shop": "Shop",
+            "taxMode": "Tax mode",
+            "upperBound": "Upper cost cap",
+            "withoutVAT": "VAT excl"
+        },
+        "invoiceTemplateCostType": {
+            "InvoiceTemplateLineCostFixed": "Fixed",
+            "InvoiceTemplateLineCostRange": "Range",
+            "InvoiceTemplateLineCostUnlim": "No restrictions"
+        },
+        "invoiceTemplateType": {
+            "InvoiceTemplateMultiLine": "Shopping cart items",
+            "InvoiceTemplateSingleLine": "Single item"
+        },
+        "title": "Creating an invoice template"
+    },
+    "createPaymentLinkDialog": {
+        "create": "Create payment link",
+        "title": "Creating payment link"
+    },
+    "digitalWallet": {
+        "DigitalWalletDetailsQIWI": "QIWI"
+    },
+    "integrations": {
+        "tabs": {
+            "api-key": "API KEY",
+            "payment-link": "PAYMENT LINK",
+            "webhooks": "WEBHOOKS"
+        }
+    },
+    "invoices": {
+        "createButton": "Create invoice"
+    },
+    "noShopsAlert": {
+        "action": "Jump to section",
+        "description": "There are no shops. You can create a new shop in the \"Shops\" section."
+    },
+    "operations": {
+        "invoices": {
+            "actions": {
+                "cancel": "Cancel",
+                "cancelInvoice": "Cancel invoice",
+                "confirm": "Confirm",
+                "createPaymentLink": "Create payment link",
+                "fulfillInvoice": "Redeem the invoice",
+                "invoiceCancelled": "Invoice was cancelled successfully",
+                "invoiceCreated": "Invoice was created successfully",
+                "invoiceFulfilled": "The invoice was successfully redeemed",
+                "reason": "Reason",
+                "title": "Actions"
+            },
+            "cartInfo": {
+                "description": "Description of a product or service",
+                "price": "Price",
+                "quantity": "Quantity",
+                "tax": "Tax rate",
+                "title": "Products and services cart"
+            },
+            "header": "Invoice",
+            "headerRow": {
+                "amount": "Cost",
+                "createdAt": "Created",
+                "productName": "Name",
+                "shop": "Shop",
+                "status": "Status"
+            },
+            "invoiceStatus": "Invoice status",
+            "payments": {
+                "payment": "Payment",
+                "showMore": "Show more",
+                "title": "Payments"
+            },
+            "shop": "Shop"
+        },
+        "payments": {
+            "details": {
+                "name": "Payment"
+            },
+            "filter": {
+                "bankCardPaymentSystem": "Payment system",
+                "bankCardTokenProvider": "Payment token provider",
+                "binPan": "Card",
+                "card": "Card",
+                "customerID": "Customer ID",
+                "first6": "Card issuing bank BIN",
+                "invoices": "Invoices",
+                "last4": "Card last digits",
+                "payerEmail": "Payer email",
+                "paymentAmount": "Payment amount",
+                "paymentAmountFrom": "Min. amount",
+                "paymentAmountTo": "Max. amount",
+                "paymentStatus": "Payment status",
+                "rrn": "RRN",
+                "shops": "Shops"
+            },
+            "table": {
+                "amount": "Amount",
+                "shop": "Shop",
+                "status": "Status",
+                "statusChanged": "Status updated"
+            }
+        },
+        "refunds": {
+            "emptyRefunds": "There are no refunds",
+            "fetchError": "An error occurred while searching for refunds",
+            "header": "Refund",
+            "headerRow": {
+                "amount": "Refund amount",
+                "shop": "Shop",
+                "status": "Status",
+                "updatedAt": "Status updated"
+            },
+            "invoiceInfo": {
+                "error": "Failed to get an invoice",
+                "title": "Invoice"
+            },
+            "paymentInfo": {
+                "error": "Failed to get an payment",
+                "title": "Payment"
+            },
+            "refundStatus": "Refund status",
+            "shop": "Shop"
+        },
+        "tabs": {
+            "invoices": "INVOICES",
+            "payments": "PAYMENTS",
+            "refunds": "REFUNDS"
+        }
+    },
+    "paymentDetails": {
+        "additionalInfo": {
+            "approvalCode": "Authorization Approval Code",
+            "externalId": "External ID",
+            "rrn": "Retrieval Reference Number",
+            "title": "Additional Information"
+        },
+        "details": {
+            "chargeAmount": "Charge amount",
+            "error": "Payment processing error",
+            "fee": "Fee"
+        },
+        "holdDetails": {
+            "acceptTitle": "Confirmation of withholding",
+            "actions": {
+                "accept": "Confirm",
+                "deny": "Cancel"
+            },
+            "activeHoldTutorial": "You can confirm (credit to you) or cancel the withholding (refund to the payer).",
+            "amount": "Confirmation amount",
+            "availableAmount": "Available amount",
+            "cancelTitle": "Canceling the withholding",
+            "cancelledHoldMessage": "The funds were returned to the payer.",
+            "capturedHoldMessage": "The funds have been credited to you.",
+            "confirm": "Confirm",
+            "holdDate": "The withholding period is up to",
+            "holdWithCancel": "After the withholding period expires, the funds will be returned to the payer.",
+            "holdWithCapture": "After the withholding period expires, the funds will be credited to you.",
+            "partialAccept": "Partial confirmation",
+            "reason": "Reason",
+            "title": "Payment was made with withholding"
+        },
+        "invoiceDetails": {
+            "notFound": "No invoice found",
+            "title": "Invoice"
+        },
+        "payerDetails": {
+            "title": "Payer"
+        },
+        "paymentTool": {
+            "title": "Payment tool"
+        },
+        "refunds": {
+            "createRefund": {
+                "amount": "Refund amount",
+                "availableRefund": "Available for refund",
+                "balanceLoading": "The balance data is downloaded ...",
+                "confirm": "Confirm",
+                "partialRefund": "Partial refund",
+                "pending": "Refund request sent",
+                "reason": "Refund reason",
+                "successful": "The refund has been successfully completed",
+                "title": "Make a refund"
+            },
+            "errors": {
+                "invalidRequest": "Input parameters are incorrect",
+                "invoicePaymentAmountExceeded": "Amount available for refund is exceeded"
+            },
+            "title": "Refunds"
+        },
+        "shopDetails": {
+            "title": "Shop"
+        },
+        "statusDetailItem": {
+            "status": "Status"
+        }
+    },
+    "paymentErrorMessage": {
+        "authorization_failed": {
+            "account_blocked": "Account blocked",
+            "account_limit_exceeded": {
+                "amount": "Limit on the amount of",
+                "message": "Limit on the payer's account is exceeded",
+                "number": "Limit on the number of attempts",
+                "unknown": "Limit object is unknown"
+            },
+            "account_not_found": "Account not found",
+            "account_stolen": "Account stolen",
+            "insufficient_funds": "Insufficient funds",
+            "merchant_blocked": "Merchant is blocked",
+            "message": "Payment authorization error at the provider",
+            "operation_blocked": "Payment transaction is blocked",
+            "payment_tool_rejected": {
+                "bank_card_rejected": {
+                    "card_expired": "Card has expired",
+                    "card_holder_invalid": "Invalid cardholder",
+                    "card_number_invalid": "Invalid card number",
+                    "cvv_invalid": "Invalid CVV code",
+                    "issuer_not_found": "Issuer not found",
+                    "message": "Bank card declined",
+                    "unknown": "Reason unknown"
+                },
+                "message": "Payment instrument declined",
+                "unknown": "Unknown payment instrument"
+            },
+            "provider_limit_exceeded": {
+                "amount": "Limit on the amount",
+                "message": "Merchant limit exceeded on provider side",
+                "number": "Limit on the number of attempts",
+                "unknown": "Object of the limit is unknown"
+            },
+            "rejected_by_issuer": "Rejected by issuing bank",
+            "security_policy_violated": "Security policy violations",
+            "temporarily_unavailable": "Temporary unavailability of third parties",
+            "unknown": "Unknown authorization error"
+        },
+        "no_route_found": {
+            "message": "No route found",
+            "risk_score_is_too_high": "High-risk operation",
+            "unknown": "Unknown error during route search"
+        },
+        "preauthorization_failed": {
+            "message": "Preauthorization (3DS) error",
+            "three_ds_failed": "Preauthorization has failed",
+            "three_ds_not_finished": "Preauthorization is not complete",
+            "unknown": "Unknown preauthorization error"
+        },
+        "rejected_by_inspector": "Rejected by the anti-fraud service",
+        "timeout": "Exceeded timeout",
+        "unknownError": "Unknown error"
+    },
+    "paymentLink": {
+        "back": "Back",
+        "clearForm": "Clear form",
+        "create": "Create payment link",
+        "errors": {
+            "createPaymentLinkError": "Failed to create a payment link"
+        },
+        "title": "Creating payment link"
+    },
+    "paymentSection": {
+        "nav": {
+            "analytics": "Analytics",
+            "integrations": "Integration",
+            "operations": "Transactions",
+            "payouts": "Payouts",
+            "reports": "Reports",
+            "shops": "Shops",
+            "testEnv": "Test environment"
+        }
+    },
+    "paymentTerminal": {
+        "provider": {
+            "alipay": "Alipay",
+            "euroset": "Euroset",
+            "qps": "Faster payments system (FPS)",
+            "wechat": "WeChat",
+            "zotapay": "ZotaPay"
+        }
+    },
+    "payouts": {
+        "createPayoutReport": {
+            "cancel": "Cancel",
+            "create": "Generate",
+            "descriptionStep1": "A report with the transactions register will be generated. This will take some time. Downloading the report and tracking the formation status is possible in the \"Reports\" section",
+            "descriptionStep2": "The report was successfully created and is in the process of forming. You can download the report and track its status in the \"Reports\" section",
+            "title": "Forming a report with the register of operations",
+            "toReports": "Go to \"Reports\" section"
+        },
+        "errors": {
+            "createError": "An error occurred while trying to create a payout",
+            "createReportError": "Failed to create report"
+        },
+        "headerRow": {
+            "amount": "Amount",
+            "createdAt": "Date of payout",
+            "payoutTool": "Payout tool",
+            "shop": "Store"
+        },
+        "panel": {
+            "actions": "Actions",
+            "createReport": "Generate a register of operations",
+            "payoutID": "Payout #{{num}}",
+            "shop": "Shop"
+        },
+        "payouts": {
+            "amount": "Payout amount",
+            "any": "Any",
+            "createPayout": "Create a payout",
+            "created": "A request for payout has been successfully created",
+            "noPayoutTools": "There are no payout tools available",
+            "payoutTool": "Payout tool",
+            "shop": "Shop",
+            "title": "Creating a payout to a wallet"
+        }
+    },
+    "reportTypesFilter": {
+        "activeLabel": "Types of formation",
+        "label": "All types of formation"
+    },
+    "reports": {
+        "cancelReport": {
+            "successfullyCanceled": "Report successfully cancelled"
+        },
+        "createReport": {
+            "create": "Generate",
+            "form": {
+                "any": "Any",
+                "from": "Start of the period",
+                "shop": "Shop",
+                "time": "Time",
+                "to": "End of the period"
+            },
+            "subtitle": "Report with the register of operations for the selected period",
+            "successfullyCreated": "The report has been created successfully",
+            "title": "Report generation status"
+        },
+        "errors": {
+            "cancelError": "Failed to cancel report",
+            "createError": "Failed to create report",
+            "downloadReportError": "Failed to load documents",
+            "fetchError": "Failed to get reports"
+        },
+        "headerRow": {
+            "createdAt": "Creation date",
+            "period": "Reporting period",
+            "status": "Status",
+            "type": "Type of formation"
+        },
+        "openCreateReport": "Create report",
+        "reportContent": {
+            "header": "Report"
+        },
+        "reportDetails": {
+            "actions": {
+                "cancelReport": "Cancel report",
+                "title": "Actions"
+            },
+            "createdAt": "Creation date",
+            "period": "Reporting period",
+            "shop": "Store",
+            "status": "Status",
+            "type": "Type of formation"
+        },
+        "reportFiles": {
+            "downloadAll": "Download all",
+            "title": "Documents"
+        },
+        "searchFilters": {
+            "dateRangeDescription": "Period of report creation"
+        }
+    },
+    "shops": {
+        "activate": {
+            "error": "Error during shop activation",
+            "success": "The shop is activated"
+        },
+        "createShop": "Create a shop",
+        "emptySearchResult": "There are no shops",
+        "panel": {
+            "actions": "Actions",
+            "activate": "Activate the shop",
+            "category": "Shop category",
+            "copy": "Copy",
+            "createdAt": "Date and time of creation",
+            "details": "Shop details",
+            "id": "Panel ID",
+            "name": "Shop name",
+            "suspend": "Freeze the shop",
+            "url": "Website URL"
+        },
+        "shopContract": {
+            "error": "Failed to retrieve contract data",
+            "title": "Contract details"
+        },
+        "shopPayoutTool": {
+            "error": "Failed to receive the payout tool details",
+            "title": "Payout tool"
+        },
+        "suspend": {
+            "error": "An error occurred while freezing the shop",
+            "success": "The shop is frozen"
+        }
+    },
+    "webhook": {
+        "actions": {
+            "delete": {
+                "buttonTitle": "Delete webhook",
+                "success": "Webhook deleted successfully"
+            },
+            "title": "Actions"
+        },
+        "create": "Set up a webhook",
+        "createWebhook": {
+            "create": "Create",
+            "eventType": "Subject of notifications",
+            "eventTypes": {
+                "customers": "Customer events",
+                "invoices": "Invoice events"
+            },
+            "events": "Events",
+            "shop": "Shop",
+            "successfullyCreated": "Webhook created successfully",
+            "title": "Set up a new webhook",
+            "types": "Set of event types to be notified about",
+            "url": "The URL that will receive notifications of events that have occurred"
+        },
+        "details": {
+            "shop": "Shop",
+            "url": "The URL that will receive notifications of events that have occurred"
+        },
+        "emptyResult": "No Webhooks",
+        "errors": {
+            "createError": "An error occurred while trying to create a webhook",
+            "deleteError": "An error occurred while deleting"
+        },
+        "events": {
+            "title": "A set of events"
+        },
+        "headerRow": {
+            "shop": "Shop",
+            "url": "URL"
+        },
+        "key": {
+            "buttons": {
+                "copy": "Copy the key"
+            },
+            "publicKey": "Content of the public key used to check the authoritativeness of\nnotifications coming to `url`",
+            "title": "Public key"
+        },
+        "webhook": "Missing value for 'paymentSection.webhook.webhook'"
+    }
+}
