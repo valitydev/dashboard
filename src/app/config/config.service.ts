@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 
 import { BASE_CONFIG, Config } from './config';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ConfigService extends BASE_CONFIG {
     isInit$ = new BehaviorSubject(false);
 

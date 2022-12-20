@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class SettingsService {
     setLocalStorageItem(key: string, value: string) {
         localStorage.setItem(this.getKeyName(key), value);

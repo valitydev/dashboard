@@ -24,7 +24,6 @@ import { LayoutModule } from '@dsh/components/layout';
 import { StateNavModule } from '@dsh/components/navigation';
 import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
 
-import { LanguageModule } from '../../../../language';
 import { CreateInvoiceModule } from './create-invoice';
 import { InvoicesListModule } from './invoices-list';
 import { InvoicesRoutingModule } from './invoices-routing.module';
@@ -49,7 +48,6 @@ import { InvoicesComponent } from './invoices.component';
         MatSnackBarModule,
         StateNavModule,
         TranslocoModule,
-        LanguageModule,
         MatMenuModule,
         EmptySearchResultModule,
         MatDialogModule,

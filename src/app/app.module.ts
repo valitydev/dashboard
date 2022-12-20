@@ -13,7 +13,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
-import { TRANSLOCO_CONFIG, TRANSLOCO_LOADER, TranslocoConfig, TranslocoModule } from '@ngneat/transloco';
+import { TRANSLOCO_CONFIG, TRANSLOCO_LOADER, TranslocoModule, translocoConfig } from '@ngneat/transloco';
 import * as Sentry from '@sentry/angular';
 
 import { AnapiModule } from '@dsh/api/anapi';
@@ -32,7 +32,7 @@ import { ENV, environment } from '../environments';
 import { OrganizationsModule } from './api/organizations';
 import { AppComponent } from './app.component';
 import { AuthModule, KeycloakAngularModule, KeycloakService } from './auth';
-import { ConfigModule, ConfigService } from './config';
+import { ConfigService } from './config';
 import { HomeModule } from './home';
 import { IconsModule, IconsService } from './icons';
 import { initializer } from './initializer';
@@ -40,8 +40,7 @@ import { LanguageService } from './language';
 import { SectionsModule } from './sections';
 import { SentryErrorHandler } from './sentry-error-handler.service';
 import { SentryHttpInterceptor } from './sentry-http-interceptor';
-import { SettingsModule } from './settings';
-import { ThemeManager, ThemeManagerModule } from './theme-manager';
+import { ThemeManager } from './theme-manager';
 import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
 
 @NgModule({
@@ -52,10 +51,7 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         BrowserAnimationsModule,
         SectionsModule,
         AuthModule,
-        ThemeManagerModule,
-        ConfigModule,
         HomeModule,
-        SettingsModule,
         KeycloakAngularModule,
         HttpClientModule,
         TranslocoModule,
@@ -98,13 +94,13 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
         {
             provide: TRANSLOCO_CONFIG,
-            useValue: {
-                reRenderOnLangChange: false,
-                defaultLang: 'ru',
-                availableLangs: ['ru'],
+            useValue: translocoConfig({
+                availableLangs: ['en', 'ru'],
+                defaultLang: 'en',
                 fallbackLang: 'ru',
+                reRenderOnLangChange: true,
                 prodMode: environment.production,
-            } as TranslocoConfig,
+            }),
         },
         { provide: TRANSLOCO_LOADER, useClass: TranslocoHttpLoaderService },
         { provide: ENV, useValue: environment },
