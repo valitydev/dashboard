@@ -1,10 +1,10 @@
 {
     "daterange": {
-        "currentWeek": "Текущая неделя",
-        "from": "С",
-        "fromStartWith2": "Со",
-        "to": "по",
-        "today": "Сегодня",
-        "year": "год"
+        "currentWeek": "Current week",
+        "from": "From",
+        "fromStartWith2": "From",
+        "to": "to",
+        "today": "Today",
+        "year": "year"
     }
 }
