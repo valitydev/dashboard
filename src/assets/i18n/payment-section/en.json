@@ -19,14 +19,14 @@
         "title": "API key"
     },
     "balances": {
-        "title": "Available funds"
+        "title": "Available amount"
     },
     "createInvoiceDialog": {
         "title": "Creating an invoice"
     },
     "createInvoiceOrInvoiceTemplate": {
         "description": "Payment link is a tool for accepting payments according to a set invoice template. Here you can generate an invoice template with the required parameters and then generate a payment link for payment. The link can be placed both on the website and in social networks and allows you to make multiple payments, each time creating a unique invoice for the client. This tool is designed to pay for a single item or service.",
-        "invoiceTitle": "Create invoice",
+        "invoiceTitle": "Creating an invoice",
         "title": "Payment link",
         "types": {
             "personal": "Create a personal payment link to pay for a specific order",
@@ -36,7 +36,7 @@
     "createInvoiceTemplate": {
         "form": {
             "cart": {
-                "add": "+ Add product or service",
+                "add": "Add product or service",
                 "amount": "Price",
                 "description": "Description",
                 "quantity": "Quantity",
@@ -50,8 +50,8 @@
             "lifetime": "End of validity of the invoice",
             "lowerBound": "Lower cost cap",
             "product": "Name of the offered goods or services",
-            "shop": "Store",
-            "taxMode": "Taxation system",
+            "shop": "Shop",
+            "taxMode": "Taxation mode",
             "upperBound": "Upper cost cap",
             "withoutVAT": "VAT excl"
         },
@@ -61,7 +61,7 @@
             "InvoiceTemplateLineCostUnlim": "No restrictions"
         },
         "invoiceTemplateType": {
-            "InvoiceTemplateMultiLine": "Shopping Cart Items",
+            "InvoiceTemplateMultiLine": "Shopping cart items",
             "InvoiceTemplateSingleLine": "Single item"
         },
         "title": "Creating an invoice template"
@@ -85,7 +85,7 @@
     },
     "noShopsAlert": {
         "action": "Jump to section",
-        "description": "There are no stores. You can create a new store in the \"Stores\" section."
+        "description": "There are no shops. You can create a new shop in the \"Shops\" section."
     },
     "operations": {
         "invoices": {
@@ -113,7 +113,7 @@
                 "amount": "Cost",
                 "createdAt": "Created",
                 "productName": "Name",
-                "shop": "Store",
+                "shop": "Shop",
                 "status": "Status"
             },
             "invoiceStatus": "Invoice status",
@@ -122,7 +122,7 @@
                 "showMore": "Show more",
                 "title": "Payments"
             },
-            "shop": "Store"
+            "shop": "Shop"
         },
         "payments": {
             "details": {
@@ -130,24 +130,24 @@
             },
             "filter": {
                 "bankCardPaymentSystem": "Payment system",
-                "bankCardTokenProvider": "Payment token provider",
+                "bankCardTokenProvider": "Bank card token provider",
                 "binPan": "Card",
                 "card": "Card",
                 "customerID": "Customer ID",
-                "first6": "Card issuing bank BIN",
+                "first6": "Card BIN",
                 "invoices": "Invoices",
                 "last4": "Card last digits",
-                "payerEmail": "Payer email",
+                "payerEmail": "Email",
                 "paymentAmount": "Payment amount",
-                "paymentAmountFrom": "Min. amount",
-                "paymentAmountTo": "Max. amount",
+                "paymentAmountFrom": "Deposit amount from",
+                "paymentAmountTo": "Deposit amount to",
                 "paymentStatus": "Payment status",
-                "rrn": "Payment RRN",
-                "shops": "Stores"
+                "rrn": "RRN",
+                "shops": "Shops"
             },
             "table": {
-                "amount": "Write-off amount",
-                "shop": "Store",
+                "amount": "Payout amount",
+                "shop": "Shop",
                 "status": "Status",
                 "statusChanged": "Status updated"
             }
@@ -158,7 +158,7 @@
             "header": "Refund",
             "headerRow": {
                 "amount": "Refund amount",
-                "shop": "Store",
+                "shop": "Shop",
                 "status": "Status",
                 "updatedAt": "Status updated"
             },
@@ -167,11 +167,11 @@
                 "title": "Invoice"
             },
             "paymentInfo": {
-                "error": "Failed to get an invoice",
+                "error": "Failed to get an payment",
                 "title": "Payment"
             },
             "refundStatus": "Refund status",
-            "shop": "Store"
+            "shop": "Shop"
         },
         "tabs": {
             "invoices": "INVOICES",
@@ -187,9 +187,9 @@
             "title": "Additional Information"
         },
         "details": {
-            "chargeAmount": "Crediting amount",
+            "chargeAmount": "Charge amount",
             "error": "Payment processing error",
-            "fee": "Commission"
+            "fee": "Fee"
         },
         "holdDetails": {
             "acceptTitle": "Confirmation of withholding",
@@ -212,24 +212,24 @@
             "title": "Payment was made with withholding"
         },
         "invoiceDetails": {
-            "notFound": "No Invoice Found",
+            "notFound": "No invoice found",
             "title": "Invoice"
         },
         "payerDetails": {
             "title": "Payer"
         },
         "paymentTool": {
-            "title": "Means of payment"
+            "title": "Payment tool"
         },
         "refunds": {
             "createRefund": {
                 "amount": "Refund amount",
-                "availableRefund": "Available for return",
+                "availableRefund": "Available for refund",
                 "balanceLoading": "The balance data is downloaded ...",
                 "confirm": "Confirm",
                 "partialRefund": "Partial refund",
-                "pending": "Return request sent",
-                "reason": "Return reason",
+                "pending": "Refund request sent",
+                "reason": "Refund reason",
                 "successful": "The refund has been successfully completed",
                 "title": "Make a refund"
             },
@@ -240,7 +240,7 @@
             "title": "Refunds"
         },
         "shopDetails": {
-            "title": "Store"
+            "title": "Shop"
         },
         "statusDetailItem": {
             "status": "Status"
@@ -248,7 +248,7 @@
     },
     "paymentErrorMessage": {
         "authorization_failed": {
-            "account_blocked": "Account suspended",
+            "account_blocked": "Account blocked",
             "account_limit_exceeded": {
                 "amount": "Limit on the amount of",
                 "message": "Limit on the payer's account is exceeded",
@@ -258,7 +258,7 @@
             "account_not_found": "Account not found",
             "account_stolen": "Account stolen",
             "insufficient_funds": "Insufficient funds",
-            "merchant_blocked": "Merchant is suspended",
+            "merchant_blocked": "Merchant is blocked",
             "message": "Payment authorization error at the provider",
             "operation_blocked": "Payment transaction is blocked",
             "payment_tool_rejected": {
@@ -280,10 +280,10 @@
                 "number": "Limit on the number of attempts",
                 "unknown": "Object of the limit is unknown"
             },
-            "rejected_by_issuer": "Declined by the issuer",
+            "rejected_by_issuer": "Rejected by issuing bank",
             "security_policy_violated": "Security policy violations",
             "temporarily_unavailable": "Temporary unavailability of third parties",
-            "unknown": "Unknown error logging in"
+            "unknown": "Unknown authorization error"
         },
         "no_route_found": {
             "message": "No route found",
@@ -297,15 +297,15 @@
             "unknown": "Unknown preauthorization error"
         },
         "rejected_by_inspector": "Rejected by the anti-fraud service",
-        "timeout": "Exceeded waiting limit",
+        "timeout": "Exceeded timeout",
         "unknownError": "Unknown error"
     },
     "paymentLink": {
         "back": "Back",
-        "clearForm": "Clear form",
-        "create": "Configure the payment link",
+        "clearForm": "Reset form",
+        "create": "Create payment link",
         "errors": {
-            "createPaymentLinkError": "Failed to create a payment link"
+            "createPaymentLinkError": "Could not create a payment link"
         },
         "title": "Creating payment link"
     },
@@ -314,9 +314,9 @@
             "analytics": "Analytics",
             "integrations": "Integration",
             "operations": "Transactions",
-            "payouts": "Refunds",
+            "payouts": "Payouts",
             "reports": "Reports",
-            "shops": "Stores",
+            "shops": "Shops",
             "testEnv": "Test environment"
         }
     },
@@ -339,29 +339,29 @@
             "toReports": "Go to \"Reports\" section"
         },
         "errors": {
-            "createError": "An error occurred while trying to create a refund",
+            "createError": "An error occurred while trying to create a payout",
             "createReportError": "Failed to create report"
         },
         "headerRow": {
             "amount": "Amount",
-            "createdAt": "Date of refund",
-            "payoutTool": "Output facility",
+            "createdAt": "Date of payout",
+            "payoutTool": "Payout tool",
             "shop": "Store"
         },
         "panel": {
             "actions": "Actions",
             "createReport": "Generate a register of operations",
             "payoutID": "Payout #{{num}}",
-            "shop": "Store"
+            "shop": "Shop"
         },
         "payouts": {
-            "amount": "Write-off amount",
+            "amount": "Payout amount",
             "any": "Any",
             "createPayout": "Create a payout",
-            "created": "A request for payment has been successfully created",
-            "noPayoutTools": "There are no withdrawal tools available",
-            "payoutTool": "Withdrawal tool",
-            "shop": "Store",
+            "created": "A request for payout has been successfully created",
+            "noPayoutTools": "There are no payout tools available",
+            "payoutTool": "Payout tool",
+            "shop": "Shop",
             "title": "Creating a payout to a wallet"
         }
     },
@@ -378,7 +378,7 @@
             "form": {
                 "any": "Any",
                 "from": "Start of the period",
-                "shop": "Store",
+                "shop": "Shop",
                 "time": "Time",
                 "to": "End of the period"
             },
@@ -423,21 +423,21 @@
     },
     "shops": {
         "activate": {
-            "error": "Error during store activation",
-            "success": "The store is activated"
+            "error": "Error during shop activation",
+            "success": "The shop is activated"
         },
-        "createShop": "Create a store",
-        "emptySearchResult": "There are no stores",
+        "createShop": "Create a shop",
+        "emptySearchResult": "There are no shops",
         "panel": {
             "actions": "Actions",
-            "activate": "Activate the store",
-            "category": "Store category",
+            "activate": "Activate the shop",
+            "category": "Shop category",
             "copy": "Copy",
             "createdAt": "Date and time of creation",
             "details": "Shop details",
             "id": "Panel ID",
-            "name": "Store Name",
-            "suspend": "Freeze the store",
+            "name": "Shop name",
+            "suspend": "Freeze the shop",
             "url": "Website URL"
         },
         "shopContract": {
@@ -449,35 +449,35 @@
             "title": "Payout tool"
         },
         "suspend": {
-            "error": "An error occurred while freezing the store",
-            "success": "The store is frozen"
+            "error": "An error occurred while freezing the shop",
+            "success": "The shop is frozen"
         }
     },
     "webhook": {
         "actions": {
             "delete": {
                 "buttonTitle": "Delete webhook",
-                "success": "Webhook is hastily deleted"
+                "success": "Webhook deleted successfully"
             },
             "title": "Actions"
         },
         "create": "Set up a webhook",
         "createWebhook": {
-            "create": "Set up",
+            "create": "Create",
             "eventType": "Subject of notifications",
             "eventTypes": {
                 "customers": "Payer events",
                 "invoices": "Invoice events"
             },
             "events": "Events",
-            "shop": "Store",
-            "successfullyCreated": "Webhook successfully created",
+            "shop": "Shop",
+            "successfullyCreated": "Webhook created successfully",
             "title": "Set up a new webhook",
             "types": "Set of event types to be notified about",
             "url": "The URL that will receive notifications of events that have occurred"
         },
         "details": {
-            "shop": "Store",
+            "shop": "Shop",
             "url": "The URL that will receive notifications of events that have occurred"
         },
         "emptyResult": "No Webhooks",
@@ -489,7 +489,7 @@
             "title": "A set of events"
         },
         "headerRow": {
-            "shop": "Store",
+            "shop": "Shop",
             "url": "URL"
         },
         "key": {
@@ -497,7 +497,7 @@
                 "copy": "Copy the key"
             },
             "publicKey": "Content of the public key used to check the authoritativeness of\nnotifications coming to `url`",
-            "title": "Public Key"
+            "title": "Public key"
         },
         "webhook": "Missing value for 'paymentSection.webhook.webhook'"
     }
