@@ -55,27 +55,27 @@
         },
         "paymentStatus": {
             "cancelled": "Cancelled",
-            "captured": "Verified",
+            "captured": "Captured",
             "chargedback": "Chargedback",
             "failed": "Failed",
-            "pending": "Running",
+            "pending": "Pending",
             "processed": "Processed",
             "refunded": "Refunded"
         },
         "paymentTool": {
-            "bank_card": "Bank card",
+            "bank_card": "Card",
             "digital_wallet": "Wallet",
             "payment_terminal": "Terminal"
         },
         "refundStatus": {
             "failed": "Failed",
-            "pending": "In process",
-            "succeeded": "Success"
+            "pending": "Pending",
+            "succeeded": "Succeeded"
         },
         "reportStatus": {
             "canceled": "Cancelled",
-            "created": "Generated",
-            "pending": "In process"
+            "created": "Created",
+            "pending": "Pending"
         },
         "reportType": {
             "paymentRegistry": "Operations register",
@@ -96,7 +96,7 @@
     "darkApi": {
         "refundStatus": {
             "failed": "Failed",
-            "pending": "Running",
+            "pending": "Pending",
             "succeeded": "Succeeded"
         }
     },
@@ -137,7 +137,7 @@
         },
         "paymentStatus": {
             "cancelled": "Cancelled",
-            "captured": "Verified",
+            "captured": "Captured",
             "failed": "Failed",
             "pending": "Pending",
             "processed": "Processed",
@@ -147,13 +147,13 @@
     "wallet": {
         "depositRevertStatus": {
             "Failed": "Failed",
-            "Pending": "In process",
-            "Succeeded": "Success"
+            "Pending": "Pending",
+            "Succeeded": "Succeeded"
         },
         "depositStatus": {
             "Failed": "Failed",
-            "Pending": "In process",
-            "Succeeded": "Success"
+            "Pending": "Pending",
+            "Succeeded": "Succeeded"
         },
         "destinationsTopicEventType": {
             "DestinationAuthorized": "DestinationAuthorized (Receiver of funds successfully authorized)",
@@ -162,8 +162,8 @@
         },
         "withdrawalStatus": {
             "Failed": "Failed",
-            "Pending": "In process",
-            "Succeeded": "Success"
+            "Pending": "Pending",
+            "Succeeded": "Succeeded"
         },
         "withdrawalsTopicEventType": {
             "WithdrawalFailed": "WithdrawalFailed (Withdrawal failed)",
