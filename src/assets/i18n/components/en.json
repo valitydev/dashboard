@@ -189,7 +189,7 @@
         "payoutToolTitle": "Withdrawal of funds"
     },
     "invoiceDetails": {
-        "amount": "Cost",
+        "amount": "Amount",
         "createdAt": "Created",
         "description": "Description",
         "name": "Name",
