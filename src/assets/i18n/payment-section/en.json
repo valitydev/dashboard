@@ -1,14 +1,14 @@
 {
     "analytics": {
         "noData": "No data",
-        "paymentTools": "Payment instruments",
+        "paymentTools": "Payment tools",
         "paymentsAmount": "Turnover",
         "paymentsCount": "Number of payments",
         "stats": {
             "averagePayment": "Average payment amount",
             "paymentsAmount": "Turnover for a period",
             "paymentsCount": "Number of payments",
-            "refundsAmount": "Returns for the period"
+            "refundsAmount": "Refunds for the period"
         },
         "unsuccessfulPaymentReasons": "Reasons for unsuccessful payments"
     },
@@ -51,7 +51,7 @@
             "lowerBound": "Lower cost cap",
             "product": "Name of the offered goods or services",
             "shop": "Shop",
-            "taxMode": "Taxation mode",
+            "taxMode": "Tax mode",
             "upperBound": "Upper cost cap",
             "withoutVAT": "VAT excl"
         },
@@ -130,23 +130,23 @@
             },
             "filter": {
                 "bankCardPaymentSystem": "Payment system",
-                "bankCardTokenProvider": "Bank card token provider",
+                "bankCardTokenProvider": "Payment token provider",
                 "binPan": "Card",
                 "card": "Card",
                 "customerID": "Customer ID",
-                "first6": "Card BIN",
+                "first6": "Card issuing bank BIN",
                 "invoices": "Invoices",
                 "last4": "Card last digits",
-                "payerEmail": "Email",
+                "payerEmail": "Payer email",
                 "paymentAmount": "Payment amount",
-                "paymentAmountFrom": "Deposit amount from",
-                "paymentAmountTo": "Deposit amount to",
+                "paymentAmountFrom": "Min. amount",
+                "paymentAmountTo": "Max. amount",
                 "paymentStatus": "Payment status",
                 "rrn": "RRN",
                 "shops": "Shops"
             },
             "table": {
-                "amount": "Payout amount",
+                "amount": "Amount",
                 "shop": "Shop",
                 "status": "Status",
                 "statusChanged": "Status updated"
@@ -302,10 +302,10 @@
     },
     "paymentLink": {
         "back": "Back",
-        "clearForm": "Reset form",
+        "clearForm": "Clear form",
         "create": "Create payment link",
         "errors": {
-            "createPaymentLinkError": "Could not create a payment link"
+            "createPaymentLinkError": "Failed to create a payment link"
         },
         "title": "Creating payment link"
     },
@@ -414,7 +414,7 @@
             "type": "Type of formation"
         },
         "reportFiles": {
-            "downloadAll": "Upload all",
+            "downloadAll": "Download all",
             "title": "Documents"
         },
         "searchFilters": {
@@ -466,7 +466,7 @@
             "create": "Create",
             "eventType": "Subject of notifications",
             "eventTypes": {
-                "customers": "Payer events",
+                "customers": "Customer events",
                 "invoices": "Invoice events"
             },
             "events": "Events",
