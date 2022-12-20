@@ -4,9 +4,9 @@
             "title": "Your organizations"
         },
         "user": {
-            "changePassword": "Change Password",
+            "changePassword": "Change password",
             "logout": "Logout",
-            "orgList": "Organization List",
+            "orgList": "Organization list",
             "selectActiveOrg": "Choose an active organization",
             "sessions": "Session management",
             "twoFactorAuth": "Two-step authentication"
@@ -71,8 +71,8 @@
     },
     "claimStatusesField": {
         "statuses": {
-            "accepted": "Approved",
-            "denied": "Rejected",
+            "accepted": "Accepted",
+            "denied": "Denied",
             "pending": "Pending",
             "pendingAcceptance": "Waiting for approval",
             "review": "In review",
@@ -80,7 +80,7 @@
         }
     },
     "createInternationalShopEntity": {
-        "send": "Submit for review",
+        "send": "Send for review",
         "title": "Request to create a shop"
     },
     "createInvoiceForm": {
@@ -89,7 +89,7 @@
             "description": "Description of the goods or services offered",
             "dueDate": "End of validity of the invoice",
             "product": "Name of the offered goods or services",
-            "shop": "Store"
+            "shop": "Shop"
         },
         "productsList": "Products and services list:",
         "remove": "Delete",
@@ -110,18 +110,18 @@
             "email": "Payer's Email (if known)",
             "link": "Link to payment",
             "name": "The name of your company or website",
-            "paymentFlowHold": "Preliminarily block the amount of payment from the buyer",
+            "paymentFlowHold": "Preliminarily hold the amount of payment from the payer",
             "paymentFlowHoldPolicy": "After the retention period (72 hours)",
             "paymentMethods": "Payment method",
             "redirectUrl": "Redirect URL after successful payment completion"
         },
         "holdExpiration": {
-            "cancel": "Return to buyer",
-            "capture": "Write off from the buyer"
+            "cancel": "Return to payer",
+            "capture": "Write off from the payer"
         },
         "paymentMethod": {
             "applePay": "Apple Pay",
-            "bankCard": "Bank card",
+            "bankCard": "Card",
             "euroset": "Euroset terminals",
             "googlePay": "Google Pay",
             "mobileCommerce": "Phone number",
@@ -137,9 +137,9 @@
         "title": "Request to create a shop"
     },
     "createShopDialog": {
-        "internationalLegalEntityType": "International Legal Entity",
+        "internationalLegalEntityType": "International legal entity",
         "russianLegalEntityType": "Russian legal entity",
-        "title": "New ticket",
+        "title": "New claim",
         "type": "Create shop"
     },
     "createdExistingSwitch": {
@@ -206,7 +206,7 @@
         "label": "Invoices"
     },
     "lastUpdated": {
-        "lastUpdate": "Latest update",
+        "lastUpdate": "Last update",
         "update": "Update"
     },
     "newContractorForm": {
@@ -235,7 +235,7 @@
         "back": "Back"
     },
     "paymentDetails": {
-        "amount": "Payout amount",
+        "amount": "Amount",
         "status": "Status",
         "statusChangedAt": "Status updated"
     },
@@ -254,7 +254,7 @@
     },
     "refundDetails": {
         "amount": "Amount",
-        "createdAt": "Completed",
+        "createdAt": "Created at",
         "error": "Error",
         "reason": "Reason",
         "status": "Status"
@@ -271,12 +271,12 @@
     },
     "select-active-organization-dialog": {
         "confirm": "Confirm",
-        "title": "Выбор активной организации"
+        "title": "Choose an active organization"
     },
     "shared": {
-        "clear": "Empty",
-        "clearForm": "Reset form",
-        "commonError": "Something’s gone wrong",
+        "clear": "Clear",
+        "clearForm": "Clear form",
+        "commonError": "Something went wrong",
         "copied": "Copied",
         "copyFailed": "Error copying",
         "create": "Create",
@@ -295,11 +295,11 @@
         "url": "Shop URL"
     },
     "shopForm": {
-        "description": "To receive payments on accepted payments to your bank account you need to specify the details",
+        "description": "To receive payouts on accepted payments to your bank account you need to specify the details",
         "title": "Withdrawal of funds"
     },
     "shopsField": {
-        "label": "Store"
+        "label": "Shop"
     },
     "shopsFilter": {
         "activeLabel": "Selected shops",
@@ -307,10 +307,10 @@
     },
     "withdrawalInfo": {
         "amount": "Amount of funds to withdraw",
-        "createdAt": "Withdrawal startup time",
+        "createdAt": "Created at",
         "error": "Error",
         "errors": {
-            "failed": "Failed to withdraw"
+            "failed": "Withdrawal error"
         },
         "fee": "Fee",
         "status": "Status",
