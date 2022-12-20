@@ -1,0 +1,319 @@
+{
+    "actionbar": {
+        "organizations": {
+            "title": "Your organizations"
+        },
+        "user": {
+            "changePassword": "Change password",
+            "logout": "Logout",
+            "orgList": "Organization list",
+            "selectActiveOrg": "Choose an active organization",
+            "sessions": "Session management",
+            "twoFactorAuth": "Two-step authentication"
+        }
+    },
+    "apiModelDetails": {
+        "bankAccount": {
+            "account": "Operating account",
+            "bankBik": "BIC",
+            "bankName": "Bank name",
+            "bankPostAccount": "Corr. account"
+        },
+        "contract": {
+            "createdAt": "Date and time of creation"
+        },
+        "internationalLegalEntity": {
+            "legalName": "Name",
+            "registeredNumber": "Registration number",
+            "registeredOffice": "Address of the place of registration",
+            "tradingName": "Trade name"
+        },
+        "payoutTool": {
+            "currency": "Currency"
+        },
+        "payoutToolDetails": {
+            "internationalBankAccount": {
+                "bankDetails": {
+                    "abartn": "ABA Routing Transit Number",
+                    "address": "Address of legal entity",
+                    "bic": "BIC",
+                    "countryCode": "Country of residence",
+                    "name": "Name of legal entity"
+                },
+                "correspondentBankAccount": "Corr. account",
+                "iban": "IBAN",
+                "number": "Account number"
+            },
+            "wallet": {
+                "walletName": "Name"
+            }
+        },
+        "russianLegalEntity": {
+            "actualAddress": "Postal address of the location",
+            "inn": "TIN",
+            "registeredName": "Name of legal entity",
+            "registeredNumber": "OGRN/OGRNIP",
+            "representativeDocument": "EEC/representative document",
+            "representativeFullName": "Full name of EEC/representative",
+            "representativePosition": "Position of EEC/representative"
+        }
+    },
+    "app": {
+        "errors": {
+            "bootstrapAppFailed": "Initialization error"
+        }
+    },
+    "claimField": {
+        "label": "Claim identifier"
+    },
+    "claimFilter": {
+        "label": "Claim"
+    },
+    "claimStatusesField": {
+        "statuses": {
+            "accepted": "Accepted",
+            "denied": "Denied",
+            "pending": "Pending",
+            "pendingAcceptance": "Waiting for approval",
+            "review": "In review",
+            "revoked": "Revoked"
+        }
+    },
+    "createInternationalShopEntity": {
+        "send": "Send for review",
+        "title": "Request to create a shop"
+    },
+    "createInvoiceForm": {
+        "addProduct": "Add product or service",
+        "form": {
+            "description": "Description of the goods or services offered",
+            "dueDate": "End of validity of the invoice",
+            "product": "Name of the offered goods or services",
+            "shop": "Shop"
+        },
+        "productsList": "Products and services list:",
+        "remove": "Delete",
+        "removeFormGroup": {
+            "price": "Cost",
+            "product": "Description",
+            "quantity": "Quantity",
+            "taxMode": "Tax mode",
+            "withoutVAT": "VAT excl."
+        },
+        "totalAmount": "Total goods and services amounting to:"
+    },
+    "createPaymentLinkForm": {
+        "description": "Information to be displayed on the payment page",
+        "form": {
+            "copy": "Copy",
+            "description": "The name of your product or service",
+            "email": "Payer's Email (if known)",
+            "link": "Link to payment",
+            "name": "The name of your company or website",
+            "paymentFlowHold": "Preliminarily hold the amount of payment from the payer",
+            "paymentFlowHoldPolicy": "After the retention period (72 hours)",
+            "paymentMethods": "Payment method",
+            "redirectUrl": "Redirect URL after successful payment completion"
+        },
+        "holdExpiration": {
+            "cancel": "Return to payer",
+            "capture": "Write off from the payer"
+        },
+        "paymentMethod": {
+            "applePay": "Apple Pay",
+            "bankCard": "Card",
+            "euroset": "Euroset terminals",
+            "googlePay": "Google Pay",
+            "mobileCommerce": "Phone number",
+            "qps": "Faster payments system (FPS)",
+            "samsungPay": "Samsung Pay",
+            "uzcard": "Uzcard",
+            "wallets": "Wallets",
+            "yandexPay": "Yandex Pay"
+        }
+    },
+    "createRussianShopEntity": {
+        "send": "Send for review",
+        "title": "Request to create a shop"
+    },
+    "createShopDialog": {
+        "internationalLegalEntityType": "International legal entity",
+        "russianLegalEntityType": "Russian legal entity",
+        "title": "New claim",
+        "type": "Create shop"
+    },
+    "createdExistingSwitch": {
+        "created": "Specify new",
+        "existing": "Use existing"
+    },
+    "currencyAutocompleteField": {
+        "label": "Currency"
+    },
+    "currencyFilter": {
+        "label": "Currency"
+    },
+    "depositRevertDetails": {
+        "amount": "Cancellation amount",
+        "createdAt": "Date",
+        "error": "Error",
+        "errors": {
+            "failed": "Error when cancelling"
+        },
+        "status": "Status"
+    },
+    "existingBankAccount": {
+        "errors": {
+            "onlyInternationalShopCanBeSelected": "You can only choose an international shop",
+            "onlyRussianShopCanBeSelected": "You can only choose a Russian shop"
+        },
+        "shopLabel": "Use shop-based props"
+    },
+    "existingContractForm": {
+        "errors": {
+            "onlyInternationalShopCanBeSelected": "You can only choose an international shop",
+            "onlyRussianShopCanBeSelected": "You can only choose a Russian shop"
+        },
+        "useShop": "Use a store-based contract"
+    },
+    "expandableRadioGroup": {
+        "any": "Any",
+        "hideAllStatuses": "Hide all statuses",
+        "showAllStatuses": "Show all statuses"
+    },
+    "internationalBankAccountForm": {
+        "correspondentAccount": "Correspondent account"
+    },
+    "internationalShopForm": {
+        "organization": "Details of the organization",
+        "paymentInstitution": "Payment organization",
+        "payoutToolTitle": "Withdrawal of funds"
+    },
+    "invoiceDetails": {
+        "amount": "Cost",
+        "createdAt": "Created",
+        "description": "Description",
+        "name": "Name",
+        "status": "Status"
+    },
+    "invoiceStatusFilter": {
+        "label": "Invoice status"
+    },
+    "invoicesField": {
+        "label": "Invoice ID"
+    },
+    "invoicesFilter": {
+        "activeLabel": "Selected invoices",
+        "label": "Invoices"
+    },
+    "lastUpdated": {
+        "lastUpdate": "Last update",
+        "update": "Update"
+    },
+    "newContractorForm": {
+        "form": {
+            "actualAddress": "Postal address of the location",
+            "inn": "TIN",
+            "registeredName": "Name of legal entity",
+            "registeredNumber": "OGRN/OGRNIP",
+            "representativeDocument": "EEC/representative document",
+            "representativeFullName": "Full name of EEC/representative",
+            "representativePosition": "Position of EEC/representative",
+            "search": "To search, enter the name of the legal entity, INN, OGRN/OGRNIP"
+        }
+    },
+    "newInternationalContractorForm": {
+        "actualAddress": "Address of location (if different from the place of registration)",
+        "country": "Country of residence",
+        "organizationName": "Name",
+        "registeredAddress": "Address of the place of registration",
+        "tradingName": "Trade name (if applicable)"
+    },
+    "orgDetailsForm": {
+        "title": "Details of the organization"
+    },
+    "pageNotFound": {
+        "back": "Back"
+    },
+    "paymentDetails": {
+        "amount": "Amount",
+        "status": "Status",
+        "statusChangedAt": "Status updated"
+    },
+    "paymentInstitutionField": {
+        "label": "Payment Institution"
+    },
+    "payoutToolForm": {
+        "abaRtn": "ABA RTN",
+        "accountNumber": "Account number",
+        "bankAddress": "Address of the legal entity of the banking organization",
+        "bankCountry": "Country of residence of the banking organization",
+        "bankName": "Name of the legal entity of the banking organization",
+        "bic": "BIC",
+        "description": "Either IBAN, BIC, ABA RTN, or the name, country, and address must be filled in",
+        "iban": "IBAN"
+    },
+    "refundDetails": {
+        "amount": "Amount",
+        "createdAt": "Created at",
+        "error": "Error",
+        "reason": "Reason",
+        "status": "Status"
+    },
+    "refundStatusFilter": {
+        "label": "Refund status"
+    },
+    "russianBankAccountForm": {
+        "account": "Operating account",
+        "bik": "BIC",
+        "name": "Name",
+        "postAccount": "Correspondent account",
+        "search": "For search, specify the name, BIC, SWIFT or TIN of the bank"
+    },
+    "select-active-organization-dialog": {
+        "confirm": "Confirm",
+        "title": "Choose an active organization"
+    },
+    "shared": {
+        "clear": "Clear",
+        "clearForm": "Clear form",
+        "commonError": "Something went wrong",
+        "copied": "Copied",
+        "copyFailed": "Error copying",
+        "create": "Create",
+        "httpError": "An error occurred in the process of transmitting/receiving data",
+        "loading": "Loading...",
+        "next": "Next",
+        "save": "Save",
+        "showMore": "Show more"
+    },
+    "shopCreation": {
+        "created": "The claim for the creation of the shop has been successfully created"
+    },
+    "shopDetailsForm": {
+        "category": "Shop category",
+        "name": "Name of the shop",
+        "url": "Shop URL"
+    },
+    "shopForm": {
+        "description": "To receive payouts on accepted payments to your bank account you need to specify the details",
+        "title": "Withdrawal of funds"
+    },
+    "shopsField": {
+        "label": "Shop"
+    },
+    "shopsFilter": {
+        "activeLabel": "Selected shops",
+        "label": "Shops"
+    },
+    "withdrawalInfo": {
+        "amount": "Amount of funds to withdraw",
+        "createdAt": "Created at",
+        "error": "Error",
+        "errors": {
+            "failed": "Withdrawal error"
+        },
+        "fee": "Fee",
+        "status": "Status",
+        "total": "Total"
+    }
+}
