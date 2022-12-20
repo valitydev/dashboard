@@ -7,7 +7,7 @@
     "create": "Create",
     "save": "Save",
     "clear": "Empty",
-    "clearForm": "Reset form",
+    "clearForm": "Clear form",
     "ago": "back",
     "cancel": "Cancel",
     "done": "Done",
@@ -22,20 +22,20 @@
     "year": "Year",
     "any": "Any",
     "update": "Update",
-    "lastUpdate": "Latest update",
+    "lastUpdate": "Last Update",
     "httpError": "An error occurred in the process of transmitting/receiving data",
-    "commonError": "Something’s gone wrong",
+    "commonError": "Something's gone wrong",
     "errorOccurred": "An error occurred",
     "unknownError": "Unknown error",
     "loading": "Loading...",
     "ok": "OK",
     "noDocs": "No documents attached",
-    "availableFunds": "Available balance",
+    "availableFunds": "Available amount",
     "copied": "Copied",
     "copyFailed": "Error copying",
     "period": {
-        "fromTime": "Start Date",
-        "toTime": "End Date"
+        "fromTime": "Start of the period",
+        "toTime": "End of the period"
     },
     "filters": {
         "additionalFilters": "Other filters",
@@ -59,7 +59,7 @@
     "invoiceStatus": {
         "paid": "Paid",
         "unpaid": "Not paid",
-        "fulfilled": "Redeemed",
+        "fulfilled": "Fulfilled",
         "cancelled": "Cancelled"
     },
     "refundStatus": {
@@ -91,7 +91,7 @@
         "hold": "On hold"
     },
     "invoiceTemplateType": {
-        "InvoiceTemplateMultiLine": "Shopping Cart Items",
+        "InvoiceTemplateMultiLine": "Shopping cart items",
         "InvoiceTemplateSingleLine": "Single item"
     },
     "invoiceTemplateCostType": {
@@ -120,8 +120,8 @@
         "mastercard": "Mastercard",
         "visaelectron": "Visa Electron",
         "maestro": "Maestro",
-        "forbrugsforeningen": "Consumer association",
-        "dankort": "Debit card",
+        "forbrugsforeningen": "Forbrugsforeningen",
+        "dankort": "Dankort",
         "amex": "American Express",
         "dinersclub": "Diners Club International",
         "discover": "Discover Card",
@@ -148,11 +148,11 @@
     },
     "claimStatus": {
         "pending": "Pending",
-        "pendingAcceptance": "Pending Approval",
+        "pendingAcceptance": "Waiting for approval",
         "review": "In review",
         "revoked": "Revoked",
-        "denied": "Rejected",
-        "accepted": "Approved"
+        "denied": "Denied",
+        "accepted": "Accepted"
     },
     "confirmActionDialog": {
         "subheading": "Please confirm your action",
@@ -181,16 +181,16 @@
         },
         "authorization_failed": {
             "message": "Payment authorization error at the provider",
-            "unknown": "Unknown authorization error",
-            "merchant_blocked": "Merchant is suspended",
+            "unknown": "Unknown error logging in",
+            "merchant_blocked": "Merchant is blocked",
             "operation_blocked": "Payment transaction is blocked",
             "account_not_found": "Account not found",
-            "account_blocked": "Account suspended",
+            "account_blocked": "Account blocked",
             "account_stolen": "Account stolen",
             "insufficient_funds": "Insufficient funds",
             "account_limit_exceeded": {
                 "message": "Limit on the payer's account is exceeded",
-                "unknown": "Limit object is unknown",
+                "unknown": "Object of the limit is unknown",
                 "amount": "Limit on the amount",
                 "number": "Limit on the number of attempts"
             },
@@ -204,7 +204,7 @@
                 "message": "Payment instrument declined",
                 "unknown": "Unknown payment instrument",
                 "bank_card_rejected": {
-                    "message": "Bank card is rejected",
+                    "message": "Bank card declined",
                     "unknown": "Reason unknown",
                     "card_number_invalid": "Invalid card number",
                     "card_expired": "Card has expired",
@@ -232,7 +232,7 @@
         "unknownError": "Unknown error"
     },
     "sectionLinks": {
-        "main": "Home",
+        "main": "Main",
         "payments": "Payments",
         "wallets": "Wallets",
         "claims": "Claims"
