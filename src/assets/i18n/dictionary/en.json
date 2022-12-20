@@ -7,7 +7,7 @@
             "discover": "Discover Card",
             "dummy": "Dummy",
             "elo": "Elo",
-            "forbrugsforeningen": "Consumer association",
+            "forbrugsforeningen": "Forbrugsforeningen",
             "jcb": "JCB",
             "maestro": "Maestro",
             "mastercard": "Mastercard",
@@ -29,7 +29,7 @@
             "account_not_found": "No account found",
             "amount": "Amount limit exceeded",
             "authorization_failed": "Authorization error",
-            "bank_card_rejected": "Bank card declined",
+            "bank_card_rejected": "Bank card is rejected",
             "card_expired": "The card has expired",
             "card_number_invalid": "Invalid card number",
             "insufficient_funds": "Insufficient funds",
@@ -41,7 +41,7 @@
             "payment_tool_rejected": "Payment instrument declined",
             "preauthorization_failed": "Preauthorization error",
             "processing_deadline_reached": "The time of payment has expired",
-            "rejected_by_issuer": "Declined by the issuer",
+            "rejected_by_issuer": "Rejected by issuing bank",
             "risk_score_is_too_high": "High-risk operation",
             "security_policy_violated": "Security policy violations",
             "three_ds_failed": "3DS Error",
@@ -49,88 +49,88 @@
         },
         "invoiceStatus": {
             "cancelled": "Cancelled",
-            "fulfilled": "Redeemed",
+            "fulfilled": "Fulfilled",
             "paid": "Paid",
-            "unpaid": "Не оплачен"
+            "unpaid": "Not paid"
         },
         "paymentStatus": {
-            "cancelled": "Отменен",
-            "captured": "Подтвержден",
+            "cancelled": "Cancelled",
+            "captured": "Verified",
             "chargedback": "Chargedback",
-            "failed": "Неуспешен",
-            "pending": "Запущен",
-            "processed": "Обработан",
-            "refunded": "Возвращен"
+            "failed": "Failed",
+            "pending": "Running",
+            "processed": "Processed",
+            "refunded": "Refunded"
         },
         "paymentTool": {
-            "bank_card": "Банковская карта",
-            "digital_wallet": "Кошелек",
-            "payment_terminal": "Терминал"
+            "bank_card": "Bank card",
+            "digital_wallet": "Wallet",
+            "payment_terminal": "Terminal"
         },
         "refundStatus": {
-            "failed": "Неуспешно",
-            "pending": "В процессе",
-            "succeeded": "Успешно"
+            "failed": "Failed",
+            "pending": "In process",
+            "succeeded": "Success"
         },
         "reportStatus": {
-            "canceled": "Отменен",
-            "created": "Сформирован",
-            "pending": "В процессе"
+            "canceled": "Cancelled",
+            "created": "Generated",
+            "pending": "In process"
         },
         "reportType": {
-            "paymentRegistry": "Реестр операций",
-            "paymentRegistryByPayout": "Реестр операций возмещения",
-            "provisionOfService": "Акт об оказании услуг"
+            "paymentRegistry": "Operations register",
+            "paymentRegistryByPayout": "Register of reimbursement transactions",
+            "provisionOfService": "Certificate of rendered services"
         }
     },
     "claimManagement": {
         "claimStatus": {
-            "accepted": "Одобрена",
-            "denied": "Отклонена",
-            "pending": "В ожидании",
-            "pendingAcceptance": "В ожидании одобрения",
-            "review": "На рассмотрении",
-            "revoked": "Отозвана"
+            "accepted": "Accepted",
+            "denied": "Denied",
+            "pending": "Pending",
+            "pendingAcceptance": "Waiting for approval",
+            "review": "In review",
+            "revoked": "Revoked"
         }
     },
     "darkApi": {
         "refundStatus": {
-            "failed": "Неуспешен",
-            "pending": "Запущен",
-            "succeeded": "Успешен"
+            "failed": "Failed",
+            "pending": "Running",
+            "succeeded": "Succeeded"
         }
     },
     "organizations": {
         "resourceScopeId": {
-            "Shop": "Магазины"
+            "Shop": "Shops"
         },
         "roleId": {
-            "Accountant": "Бухгалтер",
-            "Administrator": "Администратор",
-            "Integrator": "Интегратор",
-            "Manager": "Менеджер"
+            "Accountant": "Accountant",
+            "Administrator": "Administrator",
+            "Integrator": "Integrator",
+            "Manager": "Manager"
         }
     },
     "payments": {
         "customersTopicEventType": {
-            "CustomerBindingFailed": "CustomerBindingFailed (привязка к плательщику завершена с неудачей)",
-            "CustomerBindingStarted": "CustomerBindingStarted (привязка к плательщику запущена)",
-            "CustomerBindingSucceeded": "CustomerBindingSucceeded (привязка к плательщику успешно завершена)",
-            "CustomerCreated": "CustomerCreated (плательщик создан)",
-            "CustomerDeleted": "CustomerDeleted (плательщик удален)",
-            "CustomerReady": "CustomerReady (плательщик готов)"
+            "CustomerBindingFailed": "CustomerBindingFailed (customer binding failed)",
+            "CustomerBindingStarted": "CustomerBindingStarted (customer binding started)",
+            "CustomerBindingSucceeded": "CustomerBindingSucceeded (customer binding successfully completed)",
+            "CustomerCreated": "CustomerCreated (customer created)",
+            "CustomerDeleted": "CustomerDeleted (customer deleted)",
+            "CustomerReady": "CustomerReady (customer ready)"
         },
         "invoicesTopicEventType": {
-            "InvoiceCancelled": "InvoiceCancelled (инвойс отменен по истечению срока давности)",
-            "InvoiceCreated": "InvoiceCreated (создан новый инвойс)",
-            "InvoiceFulfilled": "InvoiceFulfilled (инвойс успешно погашен)",
-            "InvoicePaid": "InvoicePaid (инвойс перешел в состояние \"Оплачен\")",
-            "PaymentCancelled": "PaymentCancelled (платеж успешно отменен)",
-            "PaymentCaptured": "PaymentCaptured (платеж успешно завершен)",
-            "PaymentFailed": "PaymentFailed (при проведении платежа возникла ошибка)",
-            "PaymentProcessed": "PaymentProcessed (платеж в обработке)",
-            "PaymentRefundCreated": "PaymentRefundCreated (возврат платежа успешно создан)",
-            "PaymentRefundFailed": "PaymentRefundFailed (возврат платежа завершился неудачей)",
+            "InvoiceCancelled": "InvoiceCancelled (invoice cancelled upon expiration of validity period)",
+            "InvoiceCreated": "InvoiceCreated (new invoice created)",
+            "InvoiceFulfilled": "InvoiceFulfilled (invoice fulfilled)",
+            "InvoicePaid": "InvoicePaid (invoice successfully paid)",
+            "PaymentCancelled": "PaymentCancelled (payment successfully cancelled)",
+            "PaymentCaptured": "PaymentCaptured (payment captured)",
+            "PaymentFailed": "PaymentFailed (an error occurred while making a payment)",
+            "PaymentProcessed": "PaymentProcessed (payment processed)",
+            "PaymentRefundCreated": "PaymentRefundCreated (payment refund successfully created)",
+            "PaymentRefundFailed": "PaymentRefundFailed (payment refund failed)",
             "PaymentRefundSucceeded": "PaymentRefundSucceeded (payment refund was successful)",
             "PaymentRefunded": "PaymentRefundSucceeded (payment successfully refunded)",
             "PaymentStarted": "PaymentStarted (payment created)"
@@ -139,7 +139,7 @@
             "cancelled": "Cancelled",
             "captured": "Verified",
             "failed": "Failed",
-            "pending": "Running",
+            "pending": "Pending",
             "processed": "Processed",
             "refunded": "Refunded"
         }
@@ -147,13 +147,13 @@
     "wallet": {
         "depositRevertStatus": {
             "Failed": "Failed",
-            "Pending": "In Progress",
-            "Succeeded": "Successful"
+            "Pending": "In process",
+            "Succeeded": "Success"
         },
         "depositStatus": {
-            "Failed": "Unsuccessful",
+            "Failed": "Failed",
             "Pending": "In process",
-            "Succeeded": "Successful"
+            "Succeeded": "Success"
         },
         "destinationsTopicEventType": {
             "DestinationAuthorized": "DestinationAuthorized (Receiver of funds successfully authorized)",
@@ -161,9 +161,9 @@
             "DestinationUnauthorized": "DestinationUnauthorized (An attempt to authorize the funds receiver failed)"
         },
         "withdrawalStatus": {
-            "Failed": "Unsuccessful",
+            "Failed": "Failed",
             "Pending": "In process",
-            "Succeeded": "Successful"
+            "Succeeded": "Success"
         },
         "withdrawalsTopicEventType": {
             "WithdrawalFailed": "WithdrawalFailed (Withdrawal failed)",
