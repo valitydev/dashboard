@@ -1,0 +1,129 @@
+{
+    "acceptInvitation": {
+        "confirm": {
+            "button": "Подтвердить",
+            "refuseDescription": "Для отказа просто покиньте эту страницу",
+            "title": "Подтвердите вступление в организацию"
+        },
+        "error": {
+            "title": "Произошла ошибка"
+        },
+        "success": {
+            "goToOrganizationsList": "Перейти к списку организаций",
+            "title": "Вы успешно вступили в организацию"
+        }
+    },
+    "changeRolesTable": {
+        "add": "Добавить",
+        "remove": "Удалить",
+        "shops": "Магазины"
+    },
+    "createInvitationDialog": {
+        "form": {
+            "email": "Email"
+        },
+        "roles": "Роли сотрудника",
+        "send": "Отправить приглашение",
+        "title": "Сформировать приглашение"
+    },
+    "createOrganization": "Создать организацию",
+    "createOrganizationDialog": {
+        "create": "Создать",
+        "name": "Название организации",
+        "title": "Создание организации"
+    },
+    "editRolesDialog": {
+        "title": "Редактирование ролей"
+    },
+    "emptyOrganizations": "Организации отсутствуют",
+    "header": "Организации",
+    "headerRow": {
+        "name": "Наименование организации"
+    },
+    "organization": {
+        "actions": {
+            "leave": "Покинуть организацию",
+            "rename": "Переименовать организацию"
+        },
+        "management": "Управление сотрудниками и организациями",
+        "numberOfEmployees": "Количество сотрудников",
+        "titles": {
+            "actions": "Действия",
+            "roles": "Ваши роли"
+        }
+    },
+    "organizationDetails": {
+        "breadcrumb": {
+            "organizations": "Организации"
+        },
+        "invitation": {
+            "actions": {
+                "cancel": "Отменить приглашение"
+            },
+            "createdAt": "Дата и время приглашения",
+            "expiresAt": "Время истечения срока принятия",
+            "titles": {
+                "actions": "Действия",
+                "roles": "Роли"
+            }
+        },
+        "invitations": {
+            "createInvitation": "Сформировать приглашение"
+        },
+        "invitationsList": {
+            "emptyInvitations": "Приглашения отсутствуют",
+            "headerRow": {
+                "email": "Email"
+            }
+        },
+        "links": {
+            "invitations": "Приглашения",
+            "members": "Сотрудники"
+        },
+        "member": {
+            "actions": {
+                "editRoles": "Редактировать",
+                "removeFromOrganization": "Исключить из организации"
+            },
+            "titles": {
+                "actions": "Действия",
+                "roles": "Роли"
+            }
+        },
+        "membersList": {
+            "emptyMembers": "Участники отсутствуют",
+            "headerRow": {
+                "email": "Email"
+            }
+        }
+    },
+    "organizationRoles": {
+        "owner": "Владелец"
+    },
+    "renameOrganizationDialog": {
+        "name": "Название организации",
+        "save": "Сохранить",
+        "title": "Переименование организации"
+    },
+    "roleAccessesDictionary": {
+        "claims": "Заявки",
+        "createInvoice": "Создать инвойс",
+        "createPaymentLink": "Создать платежную ссылку",
+        "createRefund": "Совершить возврат",
+        "manageOrganizations": "Управление организациями и сотрудниками",
+        "manageReports": "Управление отчетами",
+        "manageWebhooks": "Управление Webhooks",
+        "payments": "Платежи",
+        "viewAnalytics": "Просмотр аналитики",
+        "viewApiKey": "Просмотр API ключа",
+        "viewInvoices": "Просмотр инвойсов",
+        "viewPayments": "Просмотр платежей",
+        "viewPayouts": "Просмотр возмещений",
+        "viewRefunds": "Просмотр возвратов",
+        "wallets": "Кошельки"
+    },
+    "selectRoleDialog": {
+        "select": "Выбрать",
+        "title": "Выберите роль"
+    }
+}
