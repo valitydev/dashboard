@@ -1,36 +1,36 @@
 {
     "depositDetails": {
-        "amount": "Сумма зачисления",
-        "error": "Ошибка",
+        "amount": "Amount",
+        "error": "Error",
         "errors": {
-            "failed": "Ошибка при пополнении"
+            "failed": "Deposit operation failed"
         },
-        "fee": "Комиссия",
-        "status": "Статус",
-        "wallet": "Кошелек"
+        "fee": "Fee",
+        "status": "Status",
+        "wallet": "Wallet"
     },
     "depositPanels": {
-        "header": "Пополнение"
+        "header": "Deposit"
     },
     "depositReverts": {
-        "loading": "Загрузка...",
-        "noReverts": "Отмены отсутствуют",
-        "revert": "Отмена",
-        "reverts": "Отмены"
+        "loading": "Loading...",
+        "noReverts": "No reverts",
+        "revert": "Cancel",
+        "reverts": "Reverts"
     },
     "depositRowHeader": {
-        "amount": "Сумма",
-        "createdAt": "Дата",
-        "status": "Статус",
-        "walletName": "Кошелек"
+        "amount": "Amount",
+        "createdAt": "Date",
+        "status": "Status",
+        "walletName": "Wallet"
     },
     "depositStatusFilter": {
-        "depositStatus": "Статус пополнения"
+        "depositStatus": "Deposit status"
     },
     "depositSumFilter": {
-        "depositAmount": "Сумма пополнения",
-        "depositAmountFrom": "Мин. сумма",
-        "depositAmountTo": "Макс. сумма"
+        "depositAmount": "Deposit amount",
+        "depositAmountFrom": "Deposit amount from",
+        "depositAmountTo": "Deposit amount to"
     },
     "integrations": {
         "tabs": {
@@ -38,130 +38,130 @@
         }
     },
     "mainInfoFilters": {
-        "depositID": "Идентификатор пополнения",
-        "identityID": "Идентификатор владельца",
-        "sourceID": "Идентификатор источника",
-        "walletID": "Кошелек"
+        "depositID": "Deposit ID",
+        "identityID": "Identity ID",
+        "sourceID": "Source identifier",
+        "walletID": "Wallet"
     },
     "walletSection": {
         "nav": {
-            "deposits": "Пополнения",
-            "integrations": "Интеграция",
-            "wallets": "Кошельки",
-            "withdrawals": "Выводы"
+            "deposits": "Deposits",
+            "integrations": "Integration",
+            "wallets": "Wallets",
+            "withdrawals": "Withdrawals"
         }
     },
     "wallets": {
         "accountInfo": {
-            "amount": "Доступные средства",
-            "description": "Доступные средства равны собственным средствам за вычетом сумм всех незавершенных операций",
-            "fetchWalletAccountError": "Произошла ошибка при загрузке счета",
-            "own": "Собственные средства",
-            "title": "Состояние счета"
+            "amount": "Available amount",
+            "description": "Available funds are equal to equity less the amounts of all outstanding transactions",
+            "fetchWalletAccountError": "An error occurred while loading the account",
+            "own": "Equity",
+            "title": "Account status"
         },
-        "emptyResult": "Кошельки отсутствуют",
+        "emptyResult": "There are no wallets",
         "headerRow": {
-            "name": "Название"
+            "name": "Name"
         },
         "mainInfo": {
-            "createdAt": "Дата и время создания",
-            "name": "Название"
+            "createdAt": "Date and time of creation",
+            "name": "Name"
         },
-        "wallet": "Кошелек",
+        "wallet": "Wallet",
         "walletDeposits": {
-            "amount": "Объем средств",
-            "createdAt": "Время запуска выполнения",
-            "deposit": "Пополнение",
-            "error": "Ошибка",
-            "fee": "Комиссия",
-            "fetchError": "Произошла ошибка при получении списка пополнений",
-            "status": "Статус",
-            "title": "Пополнения",
-            "total": "Сумма зачисления"
+            "amount": "Deposits amount",
+            "createdAt": "Created at",
+            "deposit": "Deposit",
+            "error": "Error",
+            "fee": "Fee",
+            "fetchError": "There was an error when receiving the deposits list",
+            "status": "Status",
+            "title": "Deposits",
+            "total": "Total amount"
         },
         "walletWithdrawals": {
-            "amount": "Объем средств",
-            "createdAt": "Время запуска вывода",
-            "error": "Ошибка",
-            "fee": "Комиссия",
-            "fetchError": "Произошла ошибка при получении списка выводов",
-            "status": "Статус",
-            "title": "Выводы",
-            "total": "Сумма зачисления",
-            "withdrawal": "Вывод"
+            "amount": "Deposits amount",
+            "createdAt": "Created at",
+            "error": "Error",
+            "fee": "Fee",
+            "fetchError": "An error occurred while getting the withdrawals list",
+            "status": "Status",
+            "title": "Withdrawals",
+            "total": "Total amount",
+            "withdrawal": "Withdrawal"
         }
     },
     "webhooks": {
         "actions": {
             "buttons": {
-                "delete": "Удалить webhook"
+                "delete": "Delete webhook"
             },
-            "title": "Действия",
-            "webhookDeleted": "Webhook спешно удален"
+            "title": "Actions",
+            "webhookDeleted": "Webhook deleted successfully"
         },
-        "cancel": "Отмена",
-        "create": "Установить webhook",
+        "cancel": "Cancel",
+        "create": "Set up a webhook",
         "createWebhook": {
-            "create": "Установить",
-            "eventType": "Предмет оповещений",
+            "create": "Create",
+            "eventType": "Subject of notifications",
             "eventTypes": {
-                "destination": "События приемника средств",
-                "withdrawal": "События выплаты"
+                "destination": "Funds receiver events",
+                "withdrawal": "Withdrawal events"
             },
-            "events": "События",
-            "identity": "Владелец кошелька",
-            "successfullyCreated": "Webhook успешно создан",
-            "title": "Установить новый webhook",
-            "types": "Набор типов событий, о которых следует оповещать",
-            "url": "URL, на который будут поступать оповещения о произошедших событиях",
-            "wallet": "Кошелек (не обязательно)"
+            "events": "Events",
+            "identity": "Wallet holder",
+            "successfullyCreated": "Webhook created successfully",
+            "title": "Set up a new webhook",
+            "types": "Set of event types to be notified about",
+            "url": "The URL that will receive notifications of events that have occurred",
+            "wallet": "Wallet (optional)"
         },
         "details": {
-            "identity": "Владелец кошелька",
-            "url": "URL, на который будут поступать оповещения о произошедших событиях",
-            "wallet": "Кошелек"
+            "identity": "Wallet holder",
+            "url": "The URL that will receive notifications of events that have occurred",
+            "wallet": "Wallet"
         },
-        "emptyResult": "Webhook’и отсутствуют",
+        "emptyResult": "No Webhooks",
         "errors": {
-            "deleteError": "Произошла ошибка при удалении"
+            "deleteError": "An error occurred while deleting"
         },
         "events": {
-            "title": "Набор событий"
+            "title": "A set of events"
         },
         "headerRow": {
-            "identity": "Владелец кошелька",
+            "identity": "Wallet holder",
             "url": "URL"
         },
         "webhook": "Webhook"
     },
     "withdrawals": {
         "details": {
-            "amount": "Сумма списания",
-            "error": "Ошибка",
+            "amount": "Payout amount",
+            "error": "Error",
             "errors": {
-                "failed": "Произошла ошибка при выводе средств"
+                "failed": "An error occurred when withdrawing funds"
             },
-            "fee": "Комиссия",
-            "status": "Статус",
-            "wallet": "Кошелек"
+            "fee": "Fee",
+            "status": "Status",
+            "wallet": "Wallet"
         },
-        "fetchError": "Произошла ошибка при получении выводов",
+        "fetchError": "An error occurred while getting the withdrawals",
         "filters": {
-            "amount": "Сумма вывода",
-            "amountFrom": "Мин. сумма",
-            "amountTo": "Макс. сумма",
-            "destinationID": "Идентификатор приёмника средств",
-            "identityID": "Идентификатор владельца",
-            "status": "Статус вывода",
-            "walletID": "Кошелек",
-            "withdrawalID": "Идентификатор вывода"
+            "amount": "Withdrawal amount",
+            "amountFrom": "Deposit amount from",
+            "amountTo": "Deposit amount to",
+            "destinationID": "Identifier of the funds recipient",
+            "identityID": "Identity ID",
+            "status": "Withdrawal status",
+            "walletID": "Wallet",
+            "withdrawalID": "Withdrawal ID"
         },
         "headerRow": {
-            "amount": "Сумма",
-            "createdAt": "Дата",
-            "status": "Статус",
-            "wallet": "Кошелек"
+            "amount": "Amount",
+            "createdAt": "Date",
+            "status": "Status",
+            "wallet": "Wallet"
         },
-        "withdrawal": "Вывод"
+        "withdrawal": "Withdrawal"
     }
 }
