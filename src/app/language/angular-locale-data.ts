@@ -1,9 +1,9 @@
 import localeEn from '@angular/common/locales/en';
 import localeRu from '@angular/common/locales/ru';
 
-import { Language } from './language';
+import { Language } from './languages';
 
 export const ANGULAR_LOCALE_DATA: { [language in Language]: any } = {
-    [Language.Ru]: localeRu,
-    [Language.En]: localeEn,
+    ru: localeRu,
+    en: localeEn,
 };

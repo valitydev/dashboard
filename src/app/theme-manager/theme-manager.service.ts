@@ -8,7 +8,7 @@ import { isTheme } from './utils/is-theme';
 
 const THEME_POSTFIX = 'theme';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ThemeManager {
     current: ThemeName;
 

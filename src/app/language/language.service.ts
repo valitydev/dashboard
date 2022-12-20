@@ -5,44 +5,40 @@ import * as moment from 'moment';
 
 import { SettingsService } from '../settings';
 import { ANGULAR_LOCALE_DATA } from './angular-locale-data';
-import { Language } from './language';
+import { LANGUAGES, Language } from './languages';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class LanguageService {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    private static readonly KEY = 'language';
-
-    // eslint-disable-next-line @typescript-eslint/member-ordering
     active: Language;
+
+    private static readonly key = 'language';
 
     constructor(private settingsService: SettingsService, private transloco: TranslocoService) {}
 
     async init() {
-        const language = this.settingsService.getLocalStorageItem(LanguageService.KEY);
-        const correctedLanguage = this.getCorrectLanguage(language);
-        await this.change(correctedLanguage);
+        // TODO: Use after language change support starts
+        // const storageLang = this.settingsService.getLocalStorageItem(LanguageService.key);
+        const storageLang = null;
+        let language: Language;
+        if (Array.from<string>(LANGUAGES).includes(storageLang)) {
+            language = storageLang as Language;
+        } else {
+            const browserLang: string =
+                navigator.language || (navigator as never as Record<PropertyKey, string>).userLanguage;
+            language = Array.from<string>(LANGUAGES).includes(browserLang)
+                ? (browserLang as Language)
+                : this.active || 'en';
+        }
+        await this.set(language);
     }
 
-    async change(language: Language) {
-        registerLocaleData(ANGULAR_LOCALE_DATA[language], language);
-        if (language !== Language.En) {
-            await import(`moment/locale/${language}`);
-        }
-        moment.locale(language);
-        this.settingsService.setLocalStorageItem(LanguageService.KEY, language);
-        this.transloco.setActiveLang(language);
+    // TODO: Make it public after language change support starts
+    private async set(language: Language) {
         this.active = language;
-    }
-
-    private getCorrectLanguage(language: Language | string): Language {
-        if (!Object.values<string>(Language).includes(language)) {
-            return this.getRecommended();
-        }
-        return language as Language;
-    }
-
-    private getRecommended(): Language {
-        const language = navigator.language || (navigator as any).userLanguage;
-        return Object.values(Language).includes(language) ? language : this.active || Language.Ru;
+        registerLocaleData(ANGULAR_LOCALE_DATA[language], language);
+        if (language !== 'en') await import(`moment/locale/${language}`);
+        moment.locale(language);
+        this.settingsService.setLocalStorageItem(LanguageService.key, language);
+        this.transloco.setActiveLang(language);
     }
 }

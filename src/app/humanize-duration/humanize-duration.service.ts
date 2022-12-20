@@ -4,7 +4,7 @@ import * as humanizeDuration from 'humanize-duration';
 import moment from 'moment';
 import { Observable, of } from 'rxjs';
 
-import { Language, LanguageService } from '../language';
+import { LanguageService } from '../language';
 
 export type Value = number | string | moment.Moment | Date;
 
@@ -25,7 +25,7 @@ export class HumanizeDurationService {
 
     private get duration() {
         return humanizeDuration.humanizer({
-            language: this.languageService.active || Language.En,
+            language: this.languageService.active || 'en',
             round: true,
             delimiter: ' ',
         });

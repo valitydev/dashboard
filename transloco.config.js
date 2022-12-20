@@ -1,5 +1,5 @@
 module.exports = {
-    langs: ['ru'],
+    langs: ['en', 'ru'],
     keysManager: {
         input: './',
         fileFormat: 'json',
