@@ -1,59 +1,59 @@
 {
     "additionalFilters": {
-        "additionalFilters": "Другие фильтры",
-        "clearParams": "Сбросить параметры",
-        "save": "Сохранить"
+        "additionalFilters": "Other filters",
+        "clearParams": "Reset parameters",
+        "save": "Save"
     },
     "confirmActionDialog": {
-        "cancel": "Отмена",
-        "confirm": "Подтвердить",
-        "subheading": "Подтвердите действие"
+        "cancel": "Cancel",
+        "confirm": "Confirm",
+        "subheading": "Please confirm your action"
     },
     "dateRangeFilter": {
-        "label": "Выбрать период",
+        "label": "Select period",
         "part": {
-            "currentWeek": "Текущая неделя",
-            "from": "С",
-            "fromStartWith2": "Со",
-            "to": "по",
-            "today": "Сегодня",
-            "year": "год"
+            "currentWeek": "Current week",
+            "from": "From",
+            "fromStartWith2": "From",
+            "to": "to",
+            "today": "Today",
+            "year": "year"
         },
         "preset": {
-            "custom": "Указать вручную...",
-            "last24hour": "Последние 24 часа",
-            "last30days": "Последние 30 дней",
-            "last365days": "Последние 365 дней",
-            "last90days": "Последние 90 дней"
+            "custom": "Specify manually...",
+            "last24hour": "Last 24 hours",
+            "last30days": "Last 30 days",
+            "last365days": "Last 365 days",
+            "last90days": "Last 90 days"
         }
     },
     "empty": {
-        "emptyData": "Данные отсутствуют"
+        "emptyData": "No data available"
     },
     "emptySearchResult": {
-        "empty": "Данные за указанный период отсутствуют"
+        "empty": "No data for this period are available"
     },
     "fileUploader": {
-        "choose": "выберите",
-        "forUpload": "Для загрузки переместите файлы в область, или",
-        "uploading": "Загрузка..."
+        "choose": "select",
+        "forUpload": "To download, move the files to the area, or",
+        "uploading": "Loading..."
     },
     "humanizeDuration": {
-        "ago": "назад",
-        "justNow": "только что",
+        "ago": "back",
+        "justNow": "just now",
         "shortUnit": {
-            "day": "д.",
-            "hour": "ч.",
-            "millisecond": "мсек.",
-            "minute": "мин.",
-            "month": "мес.",
-            "second": "сек.",
-            "week": "нед.",
-            "year": "г."
+            "day": "d.",
+            "hour": "h.",
+            "millisecond": "ms.",
+            "minute": "min.",
+            "month": "mo.",
+            "second": "sec.",
+            "week": "wk.",
+            "year": "y."
         }
     },
     "selectSearchField": {
-        "noEntriesFoundLabel": "Ничего не найдено",
-        "searchPlaceholder": "Поиск..."
+        "noEntriesFoundLabel": "Nothing found",
+        "searchPlaceholder": "Search..."
     }
 }
