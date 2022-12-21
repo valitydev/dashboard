@@ -35,7 +35,7 @@
     "editRolesDialog": {
         "title": "Edit roles"
     },
-    "emptyOrganizations": "There are no organizations",
+    "emptyOrganizations": "There are no organizations yet",
     "header": "Organization",
     "headerRow": {
         "name": "Organization name"
@@ -46,7 +46,7 @@
             "rename": "Rename organization"
         },
         "management": "Employee and organization management",
-        "numberOfEmployees": "The number of employees",
+        "numberOfEmployees": "Members number",
         "titles": {
             "actions": "Actions",
             "roles": "Your roles"
