@@ -38,7 +38,7 @@
                     "address": "Address of legal entity",
                     "bic": "BIC",
                     "countryCode": "Country of residence",
-                    "name": "Name of legal entity"
+                    "name": "Legal entity name"
                 },
                 "correspondentBankAccount": "Corr. account",
                 "iban": "IBAN",
@@ -50,8 +50,8 @@
         },
         "russianLegalEntity": {
             "actualAddress": "Postal address of the location",
-            "inn": "TIN",
-            "registeredName": "Name of legal entity",
+            "inn": "INN",
+            "registeredName": "Legal entity name",
             "registeredNumber": "OGRN/OGRNIP",
             "representativeDocument": "EEC/representative document",
             "representativeFullName": "Full name of EEC/representative",
@@ -212,8 +212,8 @@
     "newContractorForm": {
         "form": {
             "actualAddress": "Postal address of the location",
-            "inn": "TIN",
-            "registeredName": "Name of legal entity",
+            "inn": "INN",
+            "registeredName": "Legal entity name",
             "registeredNumber": "OGRN/OGRNIP",
             "representativeDocument": "EEC/representative document",
             "representativeFullName": "Full name of EEC/representative",
