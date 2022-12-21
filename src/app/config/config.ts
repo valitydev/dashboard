@@ -12,6 +12,5 @@ export interface Config {
     };
     sentryDsn?: string;
     keycloakEndpoint: string;
-    fileStorageEndpoint: string;
 }
 export const BASE_CONFIG = getBaseClass<Config>();

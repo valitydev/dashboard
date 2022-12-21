@@ -1,19 +1,4 @@
 {
-    "claim": {
-        "breadcrumbs": {
-            "claimDetails": "Claim details",
-            "claims": "Claims"
-        },
-        "headline": "Claim details",
-        "requestReviewClaimByIDFailed": "Failed to send the claim for review",
-        "reviewClaim": "Send for review",
-        "reviewed": "The claim has been successfully submitted for review",
-        "revokeClaim": "Revoke",
-        "revoked": "The claim has been successfully revoked"
-    },
-    "claimRow": {
-        "details": "Claim details"
-    },
     "claimRowHeader": {
         "panel": {
             "status": "Status",
@@ -26,46 +11,5 @@
     "claims": {
         "createClaim": "Create claim",
         "title": "Claims"
-    },
-    "conversation": {
-        "action": {
-            "toggleDetails": "Disclose / hide the details"
-        },
-        "ago": "ago",
-        "filesUploaded": "The file has been successfully uploaded",
-        "sendComment": "Add a comment",
-        "timeline": {
-            "claimCreated": "The claim has been created"
-        },
-        "timelineActions": {
-            "changesAdded": "have added the following information",
-            "commentAdded": "have added comments",
-            "filesAdded": "have added documents",
-            "statusAccepted": "approved the claim",
-            "statusDenied": "denied the claim",
-            "statusPending": "reviewed the claim",
-            "statusReview": "have submitted a claim for review",
-            "statusRevoked": "revoked the claim"
-        },
-        "userTypes": {
-            "external_user": "You",
-            "internal_user": "Manager"
-        }
-    },
-    "revokeClaimDialog": {
-        "errors": {
-            "revokeClaimByIDFailed": "Failed to revoke the claim"
-        },
-        "reason": "Specify the reason",
-        "revoke": "Revoke",
-        "subheading": "Withdrawal of claim"
-    },
-    "sendComment": {
-        "errors": {
-            "saveConversationsFailed": "Failed to save comment"
-        }
-    },
-    "updateClaim": {
-        "updateClaimByIDFailed": "Failed to update the claim"
     }
 }
