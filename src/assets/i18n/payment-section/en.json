@@ -437,7 +437,7 @@
             "details": "Shop details",
             "id": "Shop ID",
             "name": "Shop name",
-            "suspend": "Freeze the shop",
+            "suspend": "Suspend the shop",
             "url": "Website URL"
         },
         "shopContract": {
