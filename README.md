@@ -29,8 +29,7 @@
                 "name": "main"
             },
             "sentryDsn": "https://public@sentry.example.com/1",
-            "keycloakEndpoint": "https://auth.example.com",
-            "fileStorageEndpoint": "https://fs.example.com"
+            "keycloakEndpoint": "https://auth.example.com"
         }
         ```
 

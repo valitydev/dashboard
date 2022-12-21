@@ -19,7 +19,6 @@ import * as Sentry from '@sentry/angular';
 import { AnapiModule } from '@dsh/api/anapi';
 import { ClaimManagementModule } from '@dsh/api/claim-management';
 import { DarkApiModule } from '@dsh/api/dark-api';
-import { MessagesModule } from '@dsh/api/messages';
 import { PaymentsModule } from '@dsh/api/payments';
 import { QuestionaryAggrProxyModule } from '@dsh/api/questionary-aggr-proxy';
 import { UrlShortenerModule } from '@dsh/api/url-shortener';
@@ -62,7 +61,6 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         ClaimManagementModule,
         AnapiModule,
         PaymentsModule,
-        MessagesModule,
         OrganizationsModule,
         UrlShortenerModule,
         QuestionaryAggrProxyModule,
