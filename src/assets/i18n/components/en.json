@@ -237,7 +237,7 @@
     "paymentDetails": {
         "amount": "Amount",
         "status": "Status",
-        "statusChangedAt": "Status updated"
+        "statusChangedAt": "Last modified"
     },
     "paymentInstitutionField": {
         "label": "Payment Institution"
