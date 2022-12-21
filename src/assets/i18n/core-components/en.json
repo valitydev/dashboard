@@ -39,7 +39,7 @@
         "uploading": "Loading..."
     },
     "humanizeDuration": {
-        "ago": "back",
+        "ago": "ago",
         "justNow": "just now",
         "shortUnit": {
             "day": "d.",
