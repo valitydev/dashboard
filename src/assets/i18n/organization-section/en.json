@@ -29,16 +29,16 @@
     "createOrganization": "Create organization",
     "createOrganizationDialog": {
         "create": "Create",
-        "name": "Organization name",
+        "name": "Name of the organization",
         "title": "Organization creation"
     },
     "editRolesDialog": {
         "title": "Edit roles"
     },
-    "emptyOrganizations": "There are no organizations yet",
+    "emptyOrganizations": "There are no organizations",
     "header": "Organization",
     "headerRow": {
-        "name": "Organization name"
+        "name": "Name of the organization"
     },
     "organization": {
         "actions": {
@@ -101,7 +101,7 @@
         "owner": "Owner"
     },
     "renameOrganizationDialog": {
-        "name": "Organization name",
+        "name": "Name of the organization",
         "save": "Save",
         "title": "Rename organization"
     },
