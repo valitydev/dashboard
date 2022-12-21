@@ -149,7 +149,7 @@
                 "amount": "Amount",
                 "shop": "Shop",
                 "status": "Status",
-                "statusChanged": "Status updated"
+                "statusChanged": "Last modified"
             }
         },
         "refunds": {
@@ -160,7 +160,7 @@
                 "amount": "Amount",
                 "shop": "Shop",
                 "status": "Status",
-                "updatedAt": "Status updated"
+                "updatedAt": "Last modified"
             },
             "invoiceInfo": {
                 "error": "Failed to get an invoice",
