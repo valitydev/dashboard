@@ -3,19 +3,19 @@
         "noData": "No data",
         "paymentTools": "Payment tools",
         "paymentsAmount": "Turnover",
-        "paymentsCount": "Number of payments",
+        "paymentsCount": "Payments number",
         "stats": {
             "averagePayment": "Average payment amount",
-            "paymentsAmount": "Turnover for a period",
-            "paymentsCount": "Number of payments",
+            "paymentsAmount": "Turnover for the period",
+            "paymentsCount": "Payments number",
             "refundsAmount": "Refunds for the period"
         },
-        "unsuccessfulPaymentReasons": "Reasons for unsuccessful payments"
+        "unsuccessfulPaymentReasons": "Unsuccessful payments reasons"
     },
     "apiKey": {
         "api": "API",
         "copy": "Copy",
-        "description": "Your private key to access",
+        "description": "Your private key to access the",
         "title": "API key"
     },
     "balances": {
@@ -153,7 +153,7 @@
             }
         },
         "refunds": {
-            "emptyRefunds": "There are no refunds",
+            "emptyRefunds": "There are no refunds yet",
             "fetchError": "An error occurred while searching for refunds",
             "header": "Refund",
             "headerRow": {
@@ -302,7 +302,7 @@
     },
     "paymentLink": {
         "back": "Back",
-        "clearForm": "Clear form",
+        "clearForm": "Clear",
         "create": "Create payment link",
         "errors": {
             "createPaymentLinkError": "Failed to create a payment link"
