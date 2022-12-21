@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { QueryParamsService } from '@dsh/app/shared';
 import { ShopCreationService } from '@dsh/app/shared/components/shop-creation';
@@ -25,7 +24,6 @@ export class ClaimsComponent {
 
     constructor(
         private fetchClaimsService: FetchClaimsService,
-        private router: Router,
         private qp: QueryParamsService<Filters>,
         private shopCreationService: ShopCreationService
     ) {}
@@ -41,10 +39,6 @@ export class ClaimsComponent {
 
     refresh(): void {
         this.fetchClaimsService.refresh();
-    }
-
-    goToClaimDetails(id: number): void {
-        void this.router.navigate(['claim-section', 'claims', id]);
     }
 
     createShop(): void {
