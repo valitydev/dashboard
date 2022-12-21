@@ -20,7 +20,7 @@
     },
     "depositRowHeader": {
         "amount": "Amount",
-        "createdAt": "Date",
+        "createdAt": "Created at",
         "status": "Status",
         "walletName": "Wallet"
     },
@@ -64,7 +64,7 @@
             "name": "Name"
         },
         "mainInfo": {
-            "createdAt": "Date and time of creation",
+            "createdAt": "Created at",
             "name": "Name"
         },
         "wallet": "Wallet",
@@ -158,7 +158,7 @@
         },
         "headerRow": {
             "amount": "Amount",
-            "createdAt": "Date",
+            "createdAt": "Created at",
             "status": "Status",
             "wallet": "Wallet"
         },
