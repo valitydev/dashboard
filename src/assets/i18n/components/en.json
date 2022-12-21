@@ -20,12 +20,12 @@
             "bankPostAccount": "Corr. account"
         },
         "contract": {
-            "createdAt": "Date and time of creation"
+            "createdAt": "Created at"
         },
         "internationalLegalEntity": {
             "legalName": "Name",
             "registeredNumber": "Registration number",
-            "registeredOffice": "Address of the place of registration",
+            "registeredOffice": "Registration postal address",
             "tradingName": "Trade name"
         },
         "payoutTool": {
@@ -35,10 +35,10 @@
             "internationalBankAccount": {
                 "bankDetails": {
                     "abartn": "ABA Routing Transit Number",
-                    "address": "Address of legal entity",
+                    "address": "Legal entity address",
                     "bic": "BIC",
                     "countryCode": "Country of residence",
-                    "name": "Name of legal entity"
+                    "name": "Legal entity name"
                 },
                 "correspondentBankAccount": "Corr. account",
                 "iban": "IBAN",
@@ -49,12 +49,12 @@
             }
         },
         "russianLegalEntity": {
-            "actualAddress": "Postal address of the location",
-            "inn": "TIN",
-            "registeredName": "Name of legal entity",
+            "actualAddress": "Location postal address",
+            "inn": "INN",
+            "registeredName": "Legal entity name",
             "registeredNumber": "OGRN/OGRNIP",
             "representativeDocument": "EEC/representative document",
-            "representativeFullName": "Full name of EEC/representative",
+            "representativeFullName": "EEC/representative full name",
             "representativePosition": "Position of EEC/representative"
         }
     },
@@ -154,7 +154,7 @@
     },
     "depositRevertDetails": {
         "amount": "Cancellation amount",
-        "createdAt": "Date",
+        "createdAt": "Created at",
         "error": "Error",
         "errors": {
             "failed": "Error when cancelling"
@@ -184,13 +184,13 @@
         "correspondentAccount": "Correspondent account"
     },
     "internationalShopForm": {
-        "organization": "Details of the organization",
+        "organization": "Organization details",
         "paymentInstitution": "Payment organization",
         "payoutToolTitle": "Withdrawal of funds"
     },
     "invoiceDetails": {
         "amount": "Amount",
-        "createdAt": "Created",
+        "createdAt": "Created at",
         "description": "Description",
         "name": "Name",
         "status": "Status"
@@ -211,12 +211,12 @@
     },
     "newContractorForm": {
         "form": {
-            "actualAddress": "Postal address of the location",
-            "inn": "TIN",
-            "registeredName": "Name of legal entity",
+            "actualAddress": "Location postal address",
+            "inn": "INN",
+            "registeredName": "Legal entity name",
             "registeredNumber": "OGRN/OGRNIP",
             "representativeDocument": "EEC/representative document",
-            "representativeFullName": "Full name of EEC/representative",
+            "representativeFullName": "EEC/representative full name",
             "representativePosition": "Position of EEC/representative",
             "search": "To search, enter the name of the legal entity, INN, OGRN/OGRNIP"
         }
@@ -229,7 +229,7 @@
         "tradingName": "Trade name (if applicable)"
     },
     "orgDetailsForm": {
-        "title": "Details of the organization"
+        "title": "Organization details"
     },
     "pageNotFound": {
         "back": "Back"
@@ -237,7 +237,7 @@
     "paymentDetails": {
         "amount": "Amount",
         "status": "Status",
-        "statusChangedAt": "Status updated"
+        "statusChangedAt": "Last modified"
     },
     "paymentInstitutionField": {
         "label": "Payment Institution"
@@ -275,7 +275,7 @@
     },
     "shared": {
         "clear": "Clear",
-        "clearForm": "Clear form",
+        "clearForm": "Clear",
         "commonError": "Something went wrong",
         "copied": "Copied",
         "copyFailed": "Error copying",

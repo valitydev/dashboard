@@ -3,19 +3,19 @@
         "noData": "No data",
         "paymentTools": "Payment tools",
         "paymentsAmount": "Turnover",
-        "paymentsCount": "Number of payments",
+        "paymentsCount": "Payments number",
         "stats": {
             "averagePayment": "Average payment amount",
-            "paymentsAmount": "Turnover for a period",
-            "paymentsCount": "Number of payments",
+            "paymentsAmount": "Turnover for the period",
+            "paymentsCount": "Payments number",
             "refundsAmount": "Refunds for the period"
         },
-        "unsuccessfulPaymentReasons": "Reasons for unsuccessful payments"
+        "unsuccessfulPaymentReasons": "Unsuccessful payments reasons"
     },
     "apiKey": {
         "api": "API",
         "copy": "Copy",
-        "description": "Your private key to access",
+        "description": "Your private key to access the",
         "title": "API key"
     },
     "balances": {
@@ -85,7 +85,7 @@
     },
     "noShopsAlert": {
         "action": "Jump to section",
-        "description": "There are no shops. You can create a new shop in the \"Shops\" section."
+        "description": "There are no shops yet. You can create a new shop in the \"Shops\" section."
     },
     "operations": {
         "invoices": {
@@ -111,7 +111,7 @@
             "header": "Invoice",
             "headerRow": {
                 "amount": "Amount",
-                "createdAt": "Created",
+                "createdAt": "Created at",
                 "productName": "Name",
                 "shop": "Shop",
                 "status": "Status"
@@ -149,18 +149,18 @@
                 "amount": "Amount",
                 "shop": "Shop",
                 "status": "Status",
-                "statusChanged": "Status updated"
+                "statusChanged": "Last modified"
             }
         },
         "refunds": {
-            "emptyRefunds": "There are no refunds",
+            "emptyRefunds": "There are no refunds yet",
             "fetchError": "An error occurred while searching for refunds",
             "header": "Refund",
             "headerRow": {
                 "amount": "Amount",
                 "shop": "Shop",
                 "status": "Status",
-                "updatedAt": "Status updated"
+                "updatedAt": "Last modified"
             },
             "invoiceInfo": {
                 "error": "Failed to get an invoice",
@@ -302,7 +302,7 @@
     },
     "paymentLink": {
         "back": "Back",
-        "clearForm": "Clear form",
+        "clearForm": "Clear",
         "create": "Create payment link",
         "errors": {
             "createPaymentLinkError": "Failed to create a payment link"
@@ -344,9 +344,9 @@
         },
         "headerRow": {
             "amount": "Amount",
-            "createdAt": "Date of payout",
+            "createdAt": "Created at",
             "payoutTool": "Payout tool",
-            "shop": "Store"
+            "shop": "Shop"
         },
         "panel": {
             "actions": "Actions",
@@ -366,8 +366,8 @@
         }
     },
     "reportTypesFilter": {
-        "activeLabel": "Types of formation",
-        "label": "All types of formation"
+        "activeLabel": "Report type",
+        "label": "All report types"
     },
     "reports": {
         "cancelReport": {
@@ -393,10 +393,10 @@
             "fetchError": "Failed to get reports"
         },
         "headerRow": {
-            "createdAt": "Creation date",
+            "createdAt": "Created at",
             "period": "Reporting period",
             "status": "Status",
-            "type": "Type of formation"
+            "type": "Report type"
         },
         "openCreateReport": "Create report",
         "reportContent": {
@@ -407,18 +407,18 @@
                 "cancelReport": "Cancel report",
                 "title": "Actions"
             },
-            "createdAt": "Creation date",
+            "createdAt": "Created at",
             "period": "Reporting period",
-            "shop": "Store",
+            "shop": "Shop",
             "status": "Status",
-            "type": "Type of formation"
+            "type": "Report type"
         },
         "reportFiles": {
             "downloadAll": "Download all",
             "title": "Documents"
         },
         "searchFilters": {
-            "dateRangeDescription": "Period of report creation"
+            "dateRangeDescription": "Reporting period"
         }
     },
     "shops": {
@@ -427,13 +427,13 @@
             "success": "The shop is activated"
         },
         "createShop": "Create a shop",
-        "emptySearchResult": "There are no shops",
+        "emptySearchResult": "There are no shops yet",
         "panel": {
             "actions": "Actions",
             "activate": "Activate the shop",
             "category": "Shop category",
             "copy": "Copy",
-            "createdAt": "Date and time of creation",
+            "createdAt": "Created at",
             "details": "Shop details",
             "id": "Shop ID",
             "name": "Shop name",

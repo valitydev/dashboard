@@ -1,7 +1,7 @@
 {
     "additionalFilters": {
         "additionalFilters": "Other filters",
-        "clearParams": "Reset parameters",
+        "clearParams": "Clear",
         "save": "Save"
     },
     "confirmActionDialog": {
@@ -31,7 +31,7 @@
         "emptyData": "No data available"
     },
     "emptySearchResult": {
-        "empty": "No data for this period are available"
+        "empty": "No data available for this period"
     },
     "fileUploader": {
         "choose": "select",
