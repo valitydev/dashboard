@@ -275,7 +275,7 @@
     },
     "shared": {
         "clear": "Clear",
-        "clearForm": "Clear form",
+        "clearForm": "Clear",
         "commonError": "Something went wrong",
         "copied": "Copied",
         "copyFailed": "Error copying",
