@@ -20,7 +20,7 @@
             "bankPostAccount": "Corr. account"
         },
         "contract": {
-            "createdAt": "Date and time of creation"
+            "createdAt": "Created at"
         },
         "internationalLegalEntity": {
             "legalName": "Name",
@@ -154,7 +154,7 @@
     },
     "depositRevertDetails": {
         "amount": "Cancellation amount",
-        "createdAt": "Date",
+        "createdAt": "Created at",
         "error": "Error",
         "errors": {
             "failed": "Error when cancelling"
@@ -190,7 +190,7 @@
     },
     "invoiceDetails": {
         "amount": "Amount",
-        "createdAt": "Created",
+        "createdAt": "Created at",
         "description": "Description",
         "name": "Name",
         "status": "Status"
