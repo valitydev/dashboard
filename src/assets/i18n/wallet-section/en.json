@@ -59,7 +59,7 @@
             "own": "Equity",
             "title": "Account status"
         },
-        "emptyResult": "There are no wallets",
+        "emptyResult": "There are no wallets yet",
         "headerRow": {
             "name": "Name"
         },
