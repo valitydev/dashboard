@@ -35,7 +35,7 @@
         "filesUploaded": "File uploaded successfully",
         "sendComment": "Add comment",
         "timeline": {
-            "claimCreated": "An claim has been created"
+            "claimCreated": "The claim has been created"
         },
         "timelineActions": {
             "changesAdded": "the following information has been added",
