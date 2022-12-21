@@ -9,7 +9,7 @@
         "reviewClaim": "Send for review",
         "reviewed": "The claim has been successfully submitted for review",
         "revokeClaim": "Revoke",
-        "revoked": "Claim successfully revoked"
+        "revoked": "The claim has been successfully revoked"
     },
     "claimRow": {
         "details": "Claim details"
@@ -32,15 +32,15 @@
             "toggleDetails": "Disclose / hide the details"
         },
         "ago": "ago",
-        "filesUploaded": "File uploaded successfully",
-        "sendComment": "Add comment",
+        "filesUploaded": "The file has been successfully uploaded",
+        "sendComment": "Add a comment",
         "timeline": {
             "claimCreated": "The claim has been created"
         },
         "timelineActions": {
             "changesAdded": "have added the following information",
-            "commentAdded": "added a comment",
-            "filesAdded": "added a documents",
+            "commentAdded": "have added comments",
+            "filesAdded": "have added documents ",
             "statusAccepted": "approved the claim",
             "statusDenied": "denied the claim",
             "statusPending": "reviewed the claim",
