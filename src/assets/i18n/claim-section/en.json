@@ -40,7 +40,7 @@
         "timelineActions": {
             "changesAdded": "have added the following information",
             "commentAdded": "have added comments",
-            "filesAdded": "have added documents ",
+            "filesAdded": "have added documents",
             "statusAccepted": "approved the claim",
             "statusDenied": "denied the claim",
             "statusPending": "reviewed the claim",
