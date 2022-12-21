@@ -110,7 +110,7 @@
             },
             "header": "Invoice",
             "headerRow": {
-                "amount": "Cost",
+                "amount": "Amount",
                 "createdAt": "Created",
                 "productName": "Name",
                 "shop": "Shop",
@@ -157,7 +157,7 @@
             "fetchError": "An error occurred while searching for refunds",
             "header": "Refund",
             "headerRow": {
-                "amount": "Refund amount",
+                "amount": "Amount",
                 "shop": "Shop",
                 "status": "Status",
                 "updatedAt": "Status updated"
@@ -223,7 +223,7 @@
         },
         "refunds": {
             "createRefund": {
-                "amount": "Refund amount",
+                "amount": "Amount",
                 "availableRefund": "Available for refund",
                 "balanceLoading": "The balance data is downloaded ...",
                 "confirm": "Confirm",
@@ -250,7 +250,7 @@
         "authorization_failed": {
             "account_blocked": "Account blocked",
             "account_limit_exceeded": {
-                "amount": "Limit on the amount of",
+                "amount": "Limit on the amount",
                 "message": "Limit on the payer's account is exceeded",
                 "number": "Limit on the number of attempts",
                 "unknown": "Limit object is unknown"
@@ -435,7 +435,7 @@
             "copy": "Copy",
             "createdAt": "Date and time of creation",
             "details": "Shop details",
-            "id": "Panel ID",
+            "id": "Shop ID",
             "name": "Shop name",
             "suspend": "Freeze the shop",
             "url": "Website URL"
