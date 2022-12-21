@@ -25,7 +25,7 @@
         "internationalLegalEntity": {
             "legalName": "Name",
             "registeredNumber": "Registration number",
-            "registeredOffice": "Address of the place of registration",
+            "registeredOffice": "Registration postal address",
             "tradingName": "Trade name"
         },
         "payoutTool": {
@@ -35,7 +35,7 @@
             "internationalBankAccount": {
                 "bankDetails": {
                     "abartn": "ABA Routing Transit Number",
-                    "address": "Address of legal entity",
+                    "address": "Legal entity address",
                     "bic": "BIC",
                     "countryCode": "Country of residence",
                     "name": "Legal entity name"
@@ -49,12 +49,12 @@
             }
         },
         "russianLegalEntity": {
-            "actualAddress": "Postal address of the location",
+            "actualAddress": "Location postal address",
             "inn": "INN",
             "registeredName": "Legal entity name",
             "registeredNumber": "OGRN/OGRNIP",
             "representativeDocument": "EEC/representative document",
-            "representativeFullName": "Full name of EEC/representative",
+            "representativeFullName": "EEC/representative full name",
             "representativePosition": "Position of EEC/representative"
         }
     },
@@ -184,7 +184,7 @@
         "correspondentAccount": "Correspondent account"
     },
     "internationalShopForm": {
-        "organization": "Details of the organization",
+        "organization": "Organization details",
         "paymentInstitution": "Payment organization",
         "payoutToolTitle": "Withdrawal of funds"
     },
@@ -211,12 +211,12 @@
     },
     "newContractorForm": {
         "form": {
-            "actualAddress": "Postal address of the location",
+            "actualAddress": "Location postal address",
             "inn": "INN",
             "registeredName": "Legal entity name",
             "registeredNumber": "OGRN/OGRNIP",
             "representativeDocument": "EEC/representative document",
-            "representativeFullName": "Full name of EEC/representative",
+            "representativeFullName": "EEC/representative full name",
             "representativePosition": "Position of EEC/representative",
             "search": "To search, enter the name of the legal entity, INN, OGRN/OGRNIP"
         }
@@ -229,7 +229,7 @@
         "tradingName": "Trade name (if applicable)"
     },
     "orgDetailsForm": {
-        "title": "Details of the organization"
+        "title": "Organization details"
     },
     "pageNotFound": {
         "back": "Back"
