@@ -111,7 +111,7 @@
             "header": "Invoice",
             "headerRow": {
                 "amount": "Amount",
-                "createdAt": "Created",
+                "createdAt": "Created at",
                 "productName": "Name",
                 "shop": "Shop",
                 "status": "Status"
@@ -344,9 +344,9 @@
         },
         "headerRow": {
             "amount": "Amount",
-            "createdAt": "Date of payout",
+            "createdAt": "Created at",
             "payoutTool": "Payout tool",
-            "shop": "Store"
+            "shop": "Shop"
         },
         "panel": {
             "actions": "Actions",
@@ -393,7 +393,7 @@
             "fetchError": "Failed to get reports"
         },
         "headerRow": {
-            "createdAt": "Creation date",
+            "createdAt": "Created at",
             "period": "Reporting period",
             "status": "Status",
             "type": "Type of formation"
@@ -407,9 +407,9 @@
                 "cancelReport": "Cancel report",
                 "title": "Actions"
             },
-            "createdAt": "Creation date",
+            "createdAt": "Created at",
             "period": "Reporting period",
-            "shop": "Store",
+            "shop": "Shop",
             "status": "Status",
             "type": "Type of formation"
         },
@@ -433,7 +433,7 @@
             "activate": "Activate the shop",
             "category": "Shop category",
             "copy": "Copy",
-            "createdAt": "Date and time of creation",
+            "createdAt": "Created at",
             "details": "Shop details",
             "id": "Shop ID",
             "name": "Shop name",
