@@ -85,7 +85,7 @@
     },
     "noShopsAlert": {
         "action": "Jump to section",
-        "description": "There are no shops. You can create a new shop in the \"Shops\" section."
+        "description": "There are no shops yet. You can create a new shop in the \"Shops\" section."
     },
     "operations": {
         "invoices": {
@@ -366,8 +366,8 @@
         }
     },
     "reportTypesFilter": {
-        "activeLabel": "Types of formation",
-        "label": "All types of formation"
+        "activeLabel": "Report type",
+        "label": "All report types"
     },
     "reports": {
         "cancelReport": {
@@ -396,7 +396,7 @@
             "createdAt": "Created at",
             "period": "Reporting period",
             "status": "Status",
-            "type": "Type of formation"
+            "type": "Report type"
         },
         "openCreateReport": "Create report",
         "reportContent": {
@@ -411,14 +411,14 @@
             "period": "Reporting period",
             "shop": "Shop",
             "status": "Status",
-            "type": "Type of formation"
+            "type": "Report type"
         },
         "reportFiles": {
             "downloadAll": "Download all",
             "title": "Documents"
         },
         "searchFilters": {
-            "dateRangeDescription": "Period of report creation"
+            "dateRangeDescription": "Reporting period"
         }
     },
     "shops": {
@@ -427,7 +427,7 @@
             "success": "The shop is activated"
         },
         "createShop": "Create a shop",
-        "emptySearchResult": "There are no shops",
+        "emptySearchResult": "There are no shops yet",
         "panel": {
             "actions": "Actions",
             "activate": "Activate the shop",
