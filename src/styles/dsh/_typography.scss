@@ -3,7 +3,6 @@
 @import '../../components/buttons/button/button-theme';
 @import '../../components/buttons/button-toggle/button-toggle-theme';
 @import '../../components/layout/card/card-theme';
-@import '../../components/layout/timeline/timeline-theme';
 @import '../../components/layout/panel/panel-theme';
 @import '../../components/layout/dropdown/dropdown-theme';
 @import '../../components/layout/row/row-theme';
@@ -33,7 +32,6 @@
     @include dsh-card-typography($config);
     @include dsh-button-toggle-typography($config);
     @include dsh-dropdown-typography($config);
-    @include dsh-timeline-typography($config);
     @include dsh-dadata-autocomplete-typography($config);
     @include dsh-panel-typography($config);
     @include dsh-charts-typography($config);

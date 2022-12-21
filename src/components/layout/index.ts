@@ -1,7 +1,6 @@
 export * from './layout.module';
 export * from './card';
 export * from './panel';
-export * from './timeline';
 export * from './dropdown';
 export * from './details-item';
 export * from './row';

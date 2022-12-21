@@ -11,13 +11,11 @@ import { LinkLabelModule } from './link-label';
 import { PanelModule } from './panel';
 import { RowModule } from './row';
 import { SectionHeaderModule } from './section-header';
-import { TimelineModule } from './timeline';
 
 const EXPORTED_MODULES = [
     CardModule,
     DropdownModule,
     PanelModule,
-    TimelineModule,
     DetailsItemModule,
     RowModule,
     AccordionModule,
