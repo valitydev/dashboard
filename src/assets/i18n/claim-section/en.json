@@ -38,7 +38,7 @@
             "claimCreated": "The claim has been created"
         },
         "timelineActions": {
-            "changesAdded": "the following information has been added",
+            "changesAdded": "have added the following information",
             "commentAdded": "added a comment",
             "filesAdded": "added a documents",
             "statusAccepted": "approved the claim",
