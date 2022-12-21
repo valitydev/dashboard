@@ -31,7 +31,7 @@
         "action": {
             "toggleDetails": "Disclose / hide the details"
         },
-        "ago": "back",
+        "ago": "ago",
         "filesUploaded": "File uploaded successfully",
         "sendComment": "Add comment",
         "timeline": {
@@ -39,17 +39,17 @@
         },
         "timelineActions": {
             "changesAdded": "the following information has been added",
-            "commentAdded": "a comment has been added",
-            "filesAdded": "documents added",
-            "statusAccepted": "claim has been approved",
-            "statusDenied": "claim was rejected",
-            "statusPending": "claim has been reviewed",
-            "statusReview": "the claim has been sent for review",
-            "statusRevoked": "claim has been revoked"
+            "commentAdded": "added a comment",
+            "filesAdded": "added a documents",
+            "statusAccepted": "approved the claim",
+            "statusDenied": "denied the claim",
+            "statusPending": "reviewed the claim",
+            "statusReview": "have submitted a claim for review",
+            "statusRevoked": "revoked the claim"
         },
         "userTypes": {
-            "external_user": "By you",
-            "internal_user": "By Manager"
+            "external_user": "You",
+            "internal_user": "Manager"
         }
     },
     "revokeClaimDialog": {

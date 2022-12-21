@@ -35,11 +35,11 @@
     },
     "fileUploader": {
         "choose": "select",
-        "forUpload": "To download, move the files to the area, or",
+        "forUpload": "To upload, move the files to the area, or",
         "uploading": "Loading..."
     },
     "humanizeDuration": {
-        "ago": "back",
+        "ago": "ago",
         "justNow": "just now",
         "shortUnit": {
             "day": "d.",
