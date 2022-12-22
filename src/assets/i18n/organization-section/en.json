@@ -9,7 +9,7 @@
             "title": "Error occurred"
         },
         "success": {
-            "goToOrganizationsList": "Go to the list of organizations",
+            "goToOrganizationsList": "Go to the organizations list",
             "title": "You have successfully joined the organization"
         }
     },
