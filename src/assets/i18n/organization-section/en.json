@@ -91,7 +91,7 @@
             }
         },
         "membersList": {
-            "emptyMembers": "No participants",
+            "emptyMembers": "No members",
             "headerRow": {
                 "email": "Email"
             }
