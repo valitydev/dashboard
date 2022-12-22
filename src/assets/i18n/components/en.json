@@ -75,7 +75,7 @@
             "denied": "Denied",
             "pending": "Pending",
             "pendingAcceptance": "Waiting for approval",
-            "review": "In review",
+            "review": "On review",
             "revoked": "Revoked"
         }
     },
