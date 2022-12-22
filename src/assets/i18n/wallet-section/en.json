@@ -54,7 +54,7 @@
     "wallets": {
         "accountInfo": {
             "amount": "Available amount",
-            "description": "Available funds are equal to equity less the amounts of all outstanding transactions",
+            "description": "Available funds are equal to equity minus the amounts of all pending transactions",
             "fetchWalletAccountError": "An error occurred while loading the account",
             "own": "Equity",
             "title": "Account status"
