@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall": "ngcc",
     "start": "ng serve --proxy-config proxy.conf.js --port 8000",
-    "stage": "ng serve --proxy-config proxy.conf.js --port 8001 --configuration=stage",
+    "stage": "cross-env NODE_ENV=stage ng serve --proxy-config proxy.conf.js --port 8001 --configuration=stage",
     "fix": "npm run lint-fix && npm run prettier-fix",
     "build": "ng build --extra-webpack-config webpack.extra.js && npm run transloco:optimize",
     "test": "ng test",
@@ -103,6 +103,7 @@
     "@typescript-eslint/eslint-plugin": "5.31.0",
     "@typescript-eslint/parser": "5.31.0",
     "concurrently": "7.0.0",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
     "eslint": "8.20.0",
     "eslint-config-prettier": "8.5.0",
