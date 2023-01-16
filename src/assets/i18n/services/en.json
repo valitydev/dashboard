@@ -1,6 +1,6 @@
 {
     "error": {
-        "error": "Something went wrong",
+        "error": "Something's gone wrong",
         "httpError": "An error occurred in the process of transmitting/receiving data"
     },
     "notification": {

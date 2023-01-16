@@ -75,7 +75,7 @@
             "denied": "Denied",
             "pending": "Pending",
             "pendingAcceptance": "Waiting for approval",
-            "review": "In review",
+            "review": "On review",
             "revoked": "Revoked"
         }
     },
@@ -173,7 +173,7 @@
             "onlyInternationalShopCanBeSelected": "You can only choose an international shop",
             "onlyRussianShopCanBeSelected": "You can only choose a Russian shop"
         },
-        "useShop": "Use a store-based contract"
+        "useShop": "Use a shop-based contract"
     },
     "expandableRadioGroup": {
         "any": "Any",
