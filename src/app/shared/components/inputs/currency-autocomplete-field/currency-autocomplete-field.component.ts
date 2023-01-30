@@ -28,6 +28,8 @@ export class CurrencyAutocompleteFieldComponent extends WrappedFormControlSuperc
         'BDT',
         'TRY',
         'PHP',
+        'KRW',
+        'PKR',
     ]
         .sort()
         .map((currency) => ({ label: currency, value: currency }));
