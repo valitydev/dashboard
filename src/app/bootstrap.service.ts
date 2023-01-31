@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Organization } from '@vality/swag-organizations';
-import { concat, defer, Observable, of, ReplaySubject, throwError, retry } from 'rxjs';
-import { catchError, first, shareReplay, switchMap, takeLast, tap, map, delay } from 'rxjs/operators';
+import { concat, defer, Observable, of, ReplaySubject, throwError, retry, timer } from 'rxjs';
+import { catchError, first, shareReplay, switchMap, takeLast, tap, map } from 'rxjs/operators';
 
 import { ClaimsService, createTestShopClaimChangeset } from '@dsh/api/claim-management';
 import { DEFAULT_ORGANIZATION_NAME, OrgsService } from '@dsh/api/organizations';
@@ -70,35 +70,39 @@ export class BootstrapService {
                 shops.length
                     ? of(true)
                     : this.createTestShop().pipe(
-                          delay(1000),
                           switchMap(() =>
-                              this.shopService.reloadShops().pipe(
+                              timer(1000).pipe(
+                                  switchMap(() => this.shopService.reloadShops()),
                                   switchMap((shops) => {
                                       if (!shops.length) return throwError(() => 'Shops are not initialized');
                                       return of(shops);
-                                  })
+                                  }),
+                                  retry(3)
                               )
                           ),
-                          retry(3),
                           map(() => true),
-                          catchError(() => {
-                              return of(true);
-                          })
+                          catchError(() => of(true))
                       )
             )
         );
     }
 
     private createTestShop(): Observable<boolean> {
-        return this.claimsService
-            .createClaim({
-                changeset: createTestShopClaimChangeset(
-                    this.idGenerator.uuid(),
-                    this.idGenerator.uuid(),
-                    this.idGenerator.uuid(),
-                    this.idGenerator.uuid()
-                ),
-            })
-            .pipe(map(() => true));
+        return this.claimsService.searchClaims({ limit: 1 }).pipe(
+            switchMap((claims) =>
+                claims.result.length
+                    ? of(true)
+                    : this.claimsService
+                          .createClaim({
+                              changeset: createTestShopClaimChangeset(
+                                  this.idGenerator.uuid(),
+                                  this.idGenerator.uuid(),
+                                  this.idGenerator.uuid(),
+                                  this.idGenerator.uuid()
+                              ),
+                          })
+                          .pipe(map(() => true))
+            )
+        );
     }
 }

@@ -26,6 +26,7 @@ import { WalletModule } from '@dsh/api/wallet';
 import { ErrorModule } from '@dsh/app/shared/services';
 import { QUERY_PARAMS_SERIALIZERS } from '@dsh/app/shared/services/query-params/utils/query-params-serializers';
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
+import { SpinnerModule } from '@dsh/components/indicators';
 
 import { ENV, environment } from '../environments';
 import { OrganizationsModule } from './api/organizations';
@@ -66,6 +67,7 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         QuestionaryAggrProxyModule,
         DarkApiModule,
         WalletModule,
+        SpinnerModule,
     ],
     providers: [
         LanguageService,
