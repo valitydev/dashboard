@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Organization } from '@vality/swag-organizations';
-import { concat, defer, Observable, of, ReplaySubject, throwError } from 'rxjs';
-import { catchError, first, mapTo, shareReplay, switchMap, takeLast, tap, map } from 'rxjs/operators';
+import { concat, defer, Observable, of, ReplaySubject, throwError, retry } from 'rxjs';
+import { catchError, first, shareReplay, switchMap, takeLast, tap, map, delay } from 'rxjs/operators';
 
 import { ClaimsService, createTestShopClaimChangeset } from '@dsh/api/claim-management';
 import { DEFAULT_ORGANIZATION_NAME, OrgsService } from '@dsh/api/organizations';
@@ -60,14 +60,31 @@ export class BootstrapService {
     private createOrganization(): Observable<boolean> {
         return this.organizationsService
             .createOrg({ organization: { name: DEFAULT_ORGANIZATION_NAME } as Organization })
-            .pipe(mapTo(true));
+            .pipe(map(() => true));
     }
 
     private initShop(): Observable<boolean> {
         return this.shopService.shops$.pipe(
             first(),
             switchMap((shops) =>
-                shops.length ? of(true) : this.createTestShop().pipe(tap(() => this.shopService.reloadShops()))
+                shops.length
+                    ? of(true)
+                    : this.createTestShop().pipe(
+                          delay(1000),
+                          switchMap(() =>
+                              this.shopService.reloadShops().pipe(
+                                  switchMap((shops) => {
+                                      if (!shops.length) return throwError(() => 'Shops are not initialized');
+                                      return of(shops);
+                                  })
+                              )
+                          ),
+                          retry(3),
+                          map(() => true),
+                          catchError(() => {
+                              return of(true);
+                          })
+                      )
             )
         );
     }
