@@ -3,7 +3,7 @@ import { InvoicesService as ApiInvoicesService } from '@vality/swag-payments';
 import { switchMap } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
-import { ContextService } from '@dsh/app/shared';
+import { ContextOrganizationService } from '@dsh/app/shared';
 
 import { createApi } from '../utils';
 
@@ -11,7 +11,7 @@ import { createApi } from '../utils';
     providedIn: 'root',
 })
 export class InvoicesService extends createApi(ApiInvoicesService) {
-    constructor(injector: Injector, private contextService: ContextService) {
+    constructor(injector: Injector, private contextOrganizationService: ContextOrganizationService) {
         super(injector);
         const createInvoice = this.createInvoice;
         this.createInvoice = (p) => {
@@ -22,7 +22,7 @@ export class InvoicesService extends createApi(ApiInvoicesService) {
     }
 
     private getPartyId() {
-        return this.contextService.organization$.pipe(
+        return this.contextOrganizationService.organization$.pipe(
             first(),
             map(({ party }) => party)
         );

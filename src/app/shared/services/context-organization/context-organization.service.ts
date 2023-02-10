@@ -2,10 +2,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Organization, Member, RoleId } from '@vality/swag-organizations';
+import isNil from 'lodash-es/isNil';
 import { Observable, ReplaySubject, EMPTY, concat, defer, combineLatest, of, throwError } from 'rxjs';
-import { switchMap, shareReplay, catchError, map, tap } from 'rxjs/operators';
+import { switchMap, shareReplay, catchError, map, tap, filter } from 'rxjs/operators';
 
-import { OrgsService, MembersService } from '@dsh/api/organizations';
+import { OrgsService, MembersService, DEFAULT_ORGANIZATION_NAME } from '@dsh/api/organizations';
 
 import { ErrorService } from '../error';
 import { KeycloakTokenInfoService } from '../keycloak-token-info';
@@ -14,15 +15,15 @@ import { KeycloakTokenInfoService } from '../keycloak-token-info';
 @Injectable({
     providedIn: 'root',
 })
-export class ContextService {
+export class ContextOrganizationService {
     organization$: Observable<Organization> = concat(
         this.organizationsService.getContext().pipe(
             map(({ organizationId }) => organizationId),
             catchError((err) => {
                 if (err instanceof HttpErrorResponse && err.status === 404)
                     return this.organizationsService.listOrgMembership({ limit: 1 }).pipe(
-                        map(({ result }) => result[0].id),
-                        tap((id) => this.switchOrganization(id)),
+                        switchMap(({ result }) => (result[0] ? of(result[0]) : this.createOrganization())),
+                        tap(({ id }) => this.switchOrganization(id)),
                         switchMap(() => EMPTY)
                     );
                 console.error(err);
@@ -42,6 +43,7 @@ export class ContextService {
         shareReplay(1)
     );
     member$ = combineLatest([this.organization$, this.keycloakTokenInfoService.userID$]).pipe(
+        filter(([org, userId]) => !isNil(org) && !isNil(userId)),
         switchMap(([{ id: orgId }, userId]) =>
             this.membersService.getOrgMember({ orgId, userId }).pipe(
                 catchError((error) => {
@@ -72,5 +74,11 @@ export class ContextService {
 
     switchOrganization(organizationId: string): void {
         this.switchOrganization$.next(organizationId);
+    }
+
+    private createOrganization(): Observable<Organization> {
+        return this.organizationsService.createOrg({
+            organization: { name: DEFAULT_ORGANIZATION_NAME } as Organization,
+        });
     }
 }

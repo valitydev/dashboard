@@ -2,7 +2,7 @@ import { Injectable, Injector } from '@angular/core';
 import { InvoiceTemplatesService as ApiInvoiceTemplatesService } from '@vality/swag-payments';
 import { switchMap, first, map } from 'rxjs/operators';
 
-import { ContextService } from '@dsh/app/shared';
+import { ContextOrganizationService } from '@dsh/app/shared';
 
 import { createApi } from '../utils';
 
@@ -10,7 +10,7 @@ import { createApi } from '../utils';
     providedIn: 'root',
 })
 export class InvoiceTemplatesService extends createApi(ApiInvoiceTemplatesService) {
-    constructor(injector: Injector, private contextService: ContextService) {
+    constructor(injector: Injector, private contextOrganizationService: ContextOrganizationService) {
         super(injector);
         const createInvoiceTemplate = this.createInvoiceTemplate;
         this.createInvoiceTemplate = (p) =>
@@ -25,7 +25,7 @@ export class InvoiceTemplatesService extends createApi(ApiInvoiceTemplatesServic
     }
 
     private getPartyId() {
-        return this.contextService.organization$.pipe(
+        return this.contextOrganizationService.organization$.pipe(
             first(),
             map(({ party }) => party)
         );

@@ -3,7 +3,7 @@ import { ShopsService as ApiShopsService, Shop } from '@vality/swag-payments';
 import { defer, Observable, Subject } from 'rxjs';
 import { startWith, switchMap, first, share } from 'rxjs/operators';
 
-import { ContextService } from '@dsh/app/shared';
+import { ContextOrganizationService } from '@dsh/app/shared';
 import { shareReplayRefCount } from '@dsh/operators';
 
 import { createApi } from '../utils';
@@ -20,7 +20,7 @@ export class ShopsService extends createApi(ApiShopsService) {
 
     private reloadShops$ = new Subject<Observable<Shop[]>>();
 
-    constructor(injector: Injector, private contextService: ContextService) {
+    constructor(injector: Injector, private contextOrganizationService: ContextOrganizationService) {
         super(injector);
     }
 
@@ -31,7 +31,7 @@ export class ShopsService extends createApi(ApiShopsService) {
     }
 
     private fetchShops() {
-        return this.contextService.organization$.pipe(
+        return this.contextOrganizationService.organization$.pipe(
             first(),
             switchMap(({ party }) => this.getShopsForParty({ partyID: party })),
             share()

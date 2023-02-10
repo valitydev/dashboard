@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { Organization } from '@vality/swag-organizations';
 import { concat, defer, Observable, of, ReplaySubject, throwError, retry, timer } from 'rxjs';
 import { catchError, first, shareReplay, switchMap, takeLast, tap, map } from 'rxjs/operators';
 
 import { ClaimsService, createTestShopClaimChangeset } from '@dsh/api/claim-management';
-import { DEFAULT_ORGANIZATION_NAME, OrgsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/api/organizations';
 import { ShopsService } from '@dsh/api/payments';
-import { CommonError, ErrorService, IdGeneratorService } from '@dsh/app/shared';
+import { CommonError, ErrorService, IdGeneratorService, ContextOrganizationService } from '@dsh/app/shared';
 
 @UntilDestroy()
 @Injectable()
@@ -27,7 +26,8 @@ export class BootstrapService {
         private errorService: ErrorService,
         private organizationsService: OrgsService,
         private transloco: TranslocoService,
-        private idGenerator: IdGeneratorService
+        private idGenerator: IdGeneratorService,
+        private contextOrganizationService: ContextOrganizationService
     ) {}
 
     bootstrap(): void {
@@ -35,7 +35,13 @@ export class BootstrapService {
     }
 
     private getBootstrapped(): Observable<boolean> {
-        return concat(this.initOrganization(), this.initShop()).pipe(
+        return concat(
+            this.contextOrganizationService.organization$.pipe(
+                first(),
+                map(() => true)
+            ),
+            this.initShop()
+        ).pipe(
             takeLast(1),
             catchError((err) =>
                 this.transloco.selectTranslate<string>('app.errors.bootstrapAppFailed', null, 'components').pipe(
@@ -44,23 +50,6 @@ export class BootstrapService {
                 )
             )
         );
-    }
-
-    private initOrganization(): Observable<boolean> {
-        return this.organizationsService.listOrgMembership({ limit: 1 }).pipe(
-            first(),
-            switchMap((orgs) => (orgs.result.length ? of(true) : this.createOrganization())),
-            catchError((err) => {
-                this.errorService.error(err, false);
-                return of(true);
-            })
-        );
-    }
-
-    private createOrganization(): Observable<boolean> {
-        return this.organizationsService
-            .createOrg({ organization: { name: DEFAULT_ORGANIZATION_NAME } as Organization })
-            .pipe(map(() => true));
     }
 
     private initShop(): Observable<boolean> {

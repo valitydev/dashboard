@@ -5,7 +5,7 @@ import { first, map } from 'rxjs/operators';
 
 import { ENV, Env } from '../environments';
 import { BootstrapService } from './bootstrap.service';
-import { ContextService } from './shared';
+import { ContextOrganizationService } from './shared';
 
 @UntilDestroy()
 @Component({
@@ -19,12 +19,12 @@ export class AppComponent implements OnInit {
     constructor(
         private bootstrapService: BootstrapService,
         @Inject(ENV) public env: Env,
-        private contextService: ContextService
+        private contextOrganizationService: ContextOrganizationService
     ) {}
 
     ngOnInit(): void {
         this.bootstrapService.bootstrap();
-        this.contextService.organization$
+        this.contextOrganizationService.organization$
             .pipe(map(({ party }) => party))
             .pipe(first(), untilDestroyed(this))
             .subscribe((partyID) => Sentry.setUser({ id: partyID }));

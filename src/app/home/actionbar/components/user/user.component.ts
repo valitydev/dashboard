@@ -6,7 +6,7 @@ import { Organization } from '@vality/swag-organizations';
 import { map, filter } from 'rxjs/operators';
 
 import { DIALOG_CONFIG, DialogConfig } from '@dsh/app/sections/tokens';
-import { ContextService } from '@dsh/app/shared';
+import { ContextOrganizationService } from '@dsh/app/shared';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 
 import { KeycloakService } from '../../../../auth';
@@ -22,7 +22,7 @@ export class UserComponent {
     @Output() selected = new EventEmitter<void>();
 
     username = this.keycloakService.getUsername();
-    activeOrg$ = this.contextService.organization$;
+    activeOrg$ = this.contextOrganizationService.organization$;
     keycloakAccountEndpoint = `${this.config.keycloakEndpoint}/auth/realms/external/account/`;
     userLinksConfig$ = this.transloco.selectTranslation('components').pipe(
         map(() => [
@@ -44,7 +44,7 @@ export class UserComponent {
     constructor(
         private keycloakService: KeycloakService,
         private config: ConfigService,
-        private contextService: ContextService,
+        private contextOrganizationService: ContextOrganizationService,
         private router: Router,
         private dialog: MatDialog,
         private transloco: TranslocoService,
@@ -69,7 +69,7 @@ export class UserComponent {
             .afterClosed()
             .pipe(filter((res) => !Object.values(BaseDialogResponseStatus).includes(res as BaseDialogResponseStatus)))
             .subscribe((org: Organization) => {
-                this.contextService.switchOrganization(org.id);
+                this.contextOrganizationService.switchOrganization(org.id);
             });
     }
 
