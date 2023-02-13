@@ -7,9 +7,9 @@ import { Observable, ReplaySubject, EMPTY, concat, defer, combineLatest, of, thr
 import { switchMap, shareReplay, catchError, map, tap, filter } from 'rxjs/operators';
 
 import { OrgsService, MembersService, DEFAULT_ORGANIZATION_NAME } from '@dsh/api/organizations';
+import { KeycloakTokenInfoService } from '@dsh/app/shared/services/keycloak-token-info';
 
 import { ErrorService } from '../error';
-import { KeycloakTokenInfoService } from '../keycloak-token-info';
 
 @UntilDestroy()
 @Injectable({

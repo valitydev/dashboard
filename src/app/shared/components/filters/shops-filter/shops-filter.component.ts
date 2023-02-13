@@ -4,7 +4,7 @@ import { Shop } from '@vality/swag-payments';
 import { combineLatest } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 
-import { ShopsService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/api/payments';
 import { FilterSuperclass } from '@dsh/components/filter';
 
 @Component({
@@ -16,14 +16,14 @@ import { FilterSuperclass } from '@dsh/components/filter';
 export class ShopsFilterComponent extends FilterSuperclass<Shop['id'][]> {
     @Input() shops: Shop[];
 
-    labels$ = combineLatest([this.savedValue$, this.shopsService.shops$]).pipe(
+    labels$ = combineLatest([this.savedValue$, this.shopsDataService.shops$]).pipe(
         map(([selectedShopIds, shops]) =>
             (selectedShopIds || []).map((id) => shops.find((s) => s.id === id)?.details?.name || id)
         ),
         share()
     );
 
-    constructor(injector: Injector, private shopsService: ShopsService) {
+    constructor(injector: Injector, private shopsDataService: ShopsDataService) {
         super(injector);
     }
 }

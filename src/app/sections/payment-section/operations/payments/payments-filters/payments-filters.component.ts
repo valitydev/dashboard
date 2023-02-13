@@ -12,7 +12,7 @@ import pick from 'lodash-es/pick';
 import { defer, ReplaySubject, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
-import { ShopsService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/api/payments';
 import { DateRange, Preset, createDateRangeWithPreset } from '@dsh/components/date-range-filter';
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
@@ -40,7 +40,7 @@ export class PaymentsFiltersComponent implements OnInit, OnChanges {
     @Input() initParams: Filters;
     @Output() filtersChanged = new EventEmitter<MainFilters>();
 
-    shops$ = defer(() => this.realm$).pipe(filterShopsByRealm(this.shopService.shops$), shareReplay(1));
+    shops$ = defer(() => this.realm$).pipe(filterShopsByRealm(this.shopsDataService.shops$), shareReplay(1));
     isAdditionalFilterApplied$ = defer(() => this.additionalFilters$).pipe(map(negate(isEmpty)));
     defaultDateRange = createDateRangeWithPreset(Preset.Last90days);
     form = this.fb.group<MainFilters>({
@@ -58,7 +58,7 @@ export class PaymentsFiltersComponent implements OnInit, OnChanges {
     private realm$ = new ReplaySubject<RealmEnum>(1);
 
     constructor(
-        private shopService: ShopsService,
+        private shopsDataService: ShopsDataService,
         private fb: FormBuilder,
         private dialog: MatDialog,
         private mediaObserver: MediaObserver

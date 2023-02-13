@@ -7,7 +7,7 @@ import { Shop } from '@vality/swag-payments';
 import cloneDeep from 'lodash-es/cloneDeep';
 import { of } from 'rxjs';
 
-import { ShopsService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/api/payments';
 
 import { generateMockShopItem } from '../../../../tests/generate-shop-item';
 import { ShopActionsService } from '../../services/shop-actions/shop-actions.service';
@@ -17,7 +17,7 @@ import { ShopActionsComponent } from './shop-actions.component';
 class MockShopsService {}
 
 @Injectable()
-class MockApiShopsService extends ShopsService {
+class MockApiShopsService extends ShopsDataService {
     set mockShops(shops: Shop[]) {
         this._shops = shops;
     }
@@ -83,11 +83,11 @@ describe('ShopActionsComponent', () => {
             providers: [
                 ShopActionsService,
                 {
-                    provide: ShopsService,
+                    provide: ShopsDataService,
                     useClass: MockApiShopsService,
                 },
                 {
-                    provide: ShopsService,
+                    provide: ShopsDataService,
                     useClass: MockShopsService,
                 },
                 {

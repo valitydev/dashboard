@@ -6,7 +6,7 @@ import { catchError, first, shareReplay, switchMap, takeLast, tap, map } from 'r
 
 import { ClaimsService, createTestShopClaimChangeset } from '@dsh/api/claim-management';
 import { OrgsService } from '@dsh/api/organizations';
-import { ShopsService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/api/payments';
 import { CommonError, ErrorService, IdGeneratorService, ContextOrganizationService } from '@dsh/app/shared';
 
 @UntilDestroy()
@@ -21,7 +21,7 @@ export class BootstrapService {
     private bootstrap$ = new ReplaySubject<void>(1);
 
     constructor(
-        private shopService: ShopsService,
+        private shopsDataService: ShopsDataService,
         private claimsService: ClaimsService,
         private errorService: ErrorService,
         private organizationsService: OrgsService,
@@ -53,7 +53,7 @@ export class BootstrapService {
     }
 
     private initShop(): Observable<boolean> {
-        return this.shopService.shops$.pipe(
+        return this.shopsDataService.shops$.pipe(
             first(),
             switchMap((shops) =>
                 shops.length
@@ -61,7 +61,7 @@ export class BootstrapService {
                     : this.createTestShop().pipe(
                           switchMap(() =>
                               timer(1000).pipe(
-                                  switchMap(() => this.shopService.reloadShops()),
+                                  switchMap(() => this.shopsDataService.reloadShops()),
                                   switchMap((shops) => {
                                       if (!shops.length) return throwError(() => 'Shops are not initialized');
                                       return of(shops);

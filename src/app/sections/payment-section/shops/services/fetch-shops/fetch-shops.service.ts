@@ -4,7 +4,7 @@ import isNil from 'lodash-es/isNil';
 import { BehaviorSubject, combineLatest, Observable, ReplaySubject } from 'rxjs';
 import { map, mapTo, pluck, scan, shareReplay, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 
-import { ShopsService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/api/payments';
 import { mapToTimestamp, shareReplayRefCount } from '@dsh/operators';
 
 import { filterShopsByRealm } from '../../../operations/operators';
@@ -41,7 +41,7 @@ export class FetchShopsService {
     private filteredShops$: Observable<ShopItem[]>;
 
     constructor(
-        private shopsService: ShopsService,
+        private shopsDataService: ShopsDataService,
         private shopsBalance: ShopsBalanceService,
         private filtersStore: ShopsFiltersStoreService,
         private filtersService: ShopsFiltersService,
@@ -69,7 +69,7 @@ export class FetchShopsService {
 
     refreshData(): void {
         this.startLoading();
-        this.shopsService.reloadShops();
+        this.shopsDataService.reloadShops();
     }
 
     showMore(): void {
@@ -97,7 +97,7 @@ export class FetchShopsService {
     }
 
     private initAllShopsFetching(): void {
-        this.allShops$ = this.realmData$.pipe(filterShopsByRealm(this.shopsService.shops$), shareReplayRefCount());
+        this.allShops$ = this.realmData$.pipe(filterShopsByRealm(this.shopsDataService.shops$), shareReplayRefCount());
     }
 
     private initOffsetObservable(): void {

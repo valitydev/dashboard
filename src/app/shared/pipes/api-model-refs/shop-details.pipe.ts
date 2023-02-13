@@ -2,7 +2,7 @@ import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core
 import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
 import { distinctUntilChanged, map, takeUntil } from 'rxjs/operators';
 
-import { ShopsService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/api/payments';
 
 @Pipe({
     name: 'shopDetails',
@@ -13,8 +13,8 @@ export class ShopDetailsPipe implements PipeTransform, OnDestroy {
     private shopIDChange$: Subject<string> = new Subject();
     private destroy$: Subject<void> = new Subject();
 
-    constructor(private shopService: ShopsService, private ref: ChangeDetectorRef) {
-        combineLatest([this.shopService.shops$, this.shopIDChange$.pipe(distinctUntilChanged())])
+    constructor(private shopsDataService: ShopsDataService, private ref: ChangeDetectorRef) {
+        combineLatest([this.shopsDataService.shops$, this.shopIDChange$.pipe(distinctUntilChanged())])
             .pipe(
                 takeUntil(this.destroy$),
                 map(([shops, shopID]) => shops.find((s) => s.id === shopID)?.details?.name || shopID)

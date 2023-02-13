@@ -6,7 +6,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import moment from 'moment';
 import { of } from 'rxjs';
 
-import { ShopsService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/api/payments';
 
 import { filterShopsByRealm, mapToShopInfo } from '../../operations/operators';
 import { CreateReportDialogService } from './create-report-dialog.service';
@@ -21,7 +21,7 @@ const TIME_PATTERN = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
 })
 export class CreateReportDialogComponent implements OnInit {
     isLoading$ = this.createReportDialogService.isLoading$;
-    shopsInfo$ = of(this.data.realm).pipe(filterShopsByRealm(this.shopService.shops$), mapToShopInfo);
+    shopsInfo$ = of(this.data.realm).pipe(filterShopsByRealm(this.shopsDataService.shops$), mapToShopInfo);
     form = this.fb.group({
         fromDate: [moment().startOf('month').format(), Validators.required],
         fromTime: ['00:00:00', Validators.pattern(TIME_PATTERN)],
@@ -32,7 +32,7 @@ export class CreateReportDialogComponent implements OnInit {
 
     constructor(
         private dialogRef: MatDialogRef<CreateReportDialogComponent, 'cancel' | 'created'>,
-        private shopService: ShopsService,
+        private shopsDataService: ShopsDataService,
         private fb: UntypedFormBuilder,
         private createReportDialogService: CreateReportDialogService,
         private transloco: TranslocoService,
