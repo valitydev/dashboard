@@ -3,9 +3,8 @@ import { Shop } from '@vality/swag-payments';
 import { defer, Observable, Subject } from 'rxjs';
 import { startWith, switchMap } from 'rxjs/operators';
 
+import { ShopsService } from '@dsh/api/payments';
 import { shareReplayRefCount } from '@dsh/operators';
-
-import { ShopsService } from './shops.service';
 
 @Injectable({
     providedIn: 'root',

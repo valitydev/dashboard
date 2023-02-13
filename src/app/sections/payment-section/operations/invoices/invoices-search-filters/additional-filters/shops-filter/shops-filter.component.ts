@@ -2,7 +2,7 @@ import { Component, Injector, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { WrappedFormControlSuperclass, provideValueAccessor } from '@s-libs/ng-core';
 
-import { ShopsDataService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/app/shared';
 
 @Component({
     selector: 'dsh-shops-filter',

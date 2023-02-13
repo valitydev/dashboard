@@ -7,7 +7,7 @@ import { Shop } from '@vality/swag-payments';
 import cloneDeep from 'lodash-es/cloneDeep';
 import { of } from 'rxjs';
 
-import { ShopsDataService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/app/shared';
 
 import { generateMockShopItem } from '../../../../tests/generate-shop-item';
 import { ShopActionsService } from '../../services/shop-actions/shop-actions.service';

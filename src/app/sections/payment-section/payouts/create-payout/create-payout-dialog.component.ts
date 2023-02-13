@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { of } from 'rxjs';
 
-import { ShopsDataService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/app/shared';
 import { amountValidator } from '@dsh/components/form-controls';
 
 import { filterShopsByRealm, mapToShopInfo } from '../../operations/operators';

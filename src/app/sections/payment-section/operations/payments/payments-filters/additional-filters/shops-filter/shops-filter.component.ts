@@ -1,7 +1,7 @@
 import { Component, Injector, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 
-import { ShopsDataService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/app/shared';
 import { ValidatedControlSuperclass, createControlProviders } from '@dsh/utils';
 
 import { ShopsFilterForm } from './types';

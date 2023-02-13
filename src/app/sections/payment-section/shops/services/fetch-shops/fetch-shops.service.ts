@@ -4,7 +4,7 @@ import isNil from 'lodash-es/isNil';
 import { BehaviorSubject, combineLatest, Observable, ReplaySubject } from 'rxjs';
 import { map, mapTo, pluck, scan, shareReplay, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 
-import { ShopsDataService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/app/shared';
 import { mapToTimestamp, shareReplayRefCount } from '@dsh/operators';
 
 import { filterShopsByRealm } from '../../../operations/operators';

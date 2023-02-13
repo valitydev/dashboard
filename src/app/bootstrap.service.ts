@@ -6,8 +6,13 @@ import { catchError, first, shareReplay, switchMap, takeLast, tap, map } from 'r
 
 import { ClaimsService, createTestShopClaimChangeset } from '@dsh/api/claim-management';
 import { OrgsService } from '@dsh/api/organizations';
-import { ShopsDataService } from '@dsh/api/payments';
-import { CommonError, ErrorService, IdGeneratorService, ContextOrganizationService } from '@dsh/app/shared';
+import {
+    ShopsDataService,
+    CommonError,
+    ErrorService,
+    IdGeneratorService,
+    ContextOrganizationService,
+} from '@dsh/app/shared';
 
 @UntilDestroy()
 @Injectable()

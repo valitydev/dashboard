@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, forkJoin, merge, of, Subject } from 'rxjs';
 import { catchError, filter, map, shareReplay, switchMap, take, tap } from 'rxjs/operators';
 
-import { ShopsDataService, PayoutsService } from '@dsh/api/payments';
+import { PayoutsService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/app/shared';
 
 import { toPayoutParams } from './to-payout-params';
 

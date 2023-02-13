@@ -4,7 +4,8 @@ import { Shop } from '@vality/swag-payments';
 import { defer, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ShopsDataService, toLiveShops } from '@dsh/api/payments';
+import { toLiveShops } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/app/shared';
 import { shopToOption } from '@dsh/app/shared/components/inputs/shop-field/utils/shops-to-options';
 import { Option } from '@dsh/components/form-controls/select-search-field';
 import { shareReplayRefCount } from '@dsh/operators';

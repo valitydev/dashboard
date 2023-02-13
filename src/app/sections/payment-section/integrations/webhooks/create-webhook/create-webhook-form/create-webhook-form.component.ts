@@ -4,7 +4,8 @@ import { WebhookScope } from '@vality/swag-payments';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ShopsDataService, PaymentsDictionaryService } from '@dsh/api/payments';
+import { PaymentsDictionaryService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/app/shared';
 import { oneMustBeSelected } from '@dsh/components/form-controls';
 
 import { getEventsByTopic } from '../get-events-by-topic';

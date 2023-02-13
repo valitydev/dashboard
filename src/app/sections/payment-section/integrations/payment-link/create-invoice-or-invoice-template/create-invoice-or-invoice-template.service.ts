@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormControl } from '@ngneat/reactive-forms';
 import { pluck, shareReplay } from 'rxjs/operators';
 
-import { ShopsDataService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/app/shared';
 import { FormData } from '@dsh/app/shared/components/create-invoice-form';
 import { SHARE_REPLAY_CONF } from '@dsh/operators';
 
