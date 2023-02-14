@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 
-import { FileUploaderModule } from './file-uploader';
 import { FormatInputModule } from './format-input';
 import { SelectSearchFieldModule } from './select-search-field';
 
-const EXPORTED_DECLARATIONS = [FormatInputModule, FileUploaderModule, SelectSearchFieldModule];
+const EXPORTED_DECLARATIONS = [FormatInputModule, SelectSearchFieldModule];
 
 @NgModule({
     imports: EXPORTED_DECLARATIONS,
