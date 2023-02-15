@@ -1,8 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { InvoiceTemplatesService as ApiInvoiceTemplatesService } from '@vality/swag-payments';
-import { switchMap, first, map } from 'rxjs/operators';
 
-import { ContextOrganizationService } from '@dsh/app/shared';
+import { PartyIdPatchMethodService } from '@dsh/api/utils/extensions';
 
 import { createApi } from '../utils';
 
@@ -10,24 +9,11 @@ import { createApi } from '../utils';
     providedIn: 'root',
 })
 export class InvoiceTemplatesService extends createApi(ApiInvoiceTemplatesService) {
-    constructor(injector: Injector, private contextOrganizationService: ContextOrganizationService) {
+    constructor(injector: Injector, private partyIdPatchMethodService: PartyIdPatchMethodService) {
         super(injector);
-        const createInvoiceTemplate = this.createInvoiceTemplate;
-        this.createInvoiceTemplate = (p) =>
-            this.getPartyId().pipe(
-                switchMap((partyID) =>
-                    createInvoiceTemplate({
-                        ...p,
-                        invoiceTemplateCreateParams: { ...p.invoiceTemplateCreateParams, partyID },
-                    })
-                )
-            );
-    }
-
-    private getPartyId() {
-        return this.contextOrganizationService.organization$.pipe(
-            first(),
-            map(({ party }) => party)
+        this.createInvoiceTemplate = this.partyIdPatchMethodService.patch(
+            this.createInvoiceTemplate,
+            (params, partyId) => (params.invoiceTemplateCreateParams.partyID = partyId)
         );
     }
 }
