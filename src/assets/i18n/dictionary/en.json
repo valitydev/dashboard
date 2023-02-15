@@ -93,13 +93,6 @@
             "revoked": "Revoked"
         }
     },
-    "darkApi": {
-        "refundStatus": {
-            "failed": "Failed",
-            "pending": "Pending",
-            "succeeded": "Succeeded"
-        }
-    },
     "organizations": {
         "resourceScopeId": {
             "Shop": "Shops"

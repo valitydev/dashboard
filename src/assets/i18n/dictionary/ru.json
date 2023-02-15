@@ -93,13 +93,6 @@
             "revoked": "Отозвана"
         }
     },
-    "darkApi": {
-        "refundStatus": {
-            "failed": "Неуспешен",
-            "pending": "Запущен",
-            "succeeded": "Успешен"
-        }
-    },
     "organizations": {
         "resourceScopeId": {
             "Shop": "Магазины"
