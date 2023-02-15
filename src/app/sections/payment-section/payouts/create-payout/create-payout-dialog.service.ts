@@ -26,7 +26,7 @@ export class CreatePayoutDialogService {
     // eslint-disable-next-line @typescript-eslint/member-ordering
     payoutTools$ = this.currentShopID$.pipe(
         switchMap((shopID) => this.shopsDataService.shops$.pipe(map((shops) => shops.find(({ id }) => id === shopID)))),
-        switchMap(({ contractID }) => this.payoutsService.getPayoutTools({ contractID })),
+        switchMap(({ contractID }) => this.payoutsService.getPayoutToolsForParty({ contractID })),
         map((tools) => tools.filter((tool) => tool.details.detailsType === 'PayoutToolDetailsWalletInfo')),
         shareReplay(1)
     );

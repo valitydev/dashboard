@@ -32,7 +32,7 @@ export class ShopPayoutToolDetailsService {
                 switchMap((payoutToolParams) =>
                     payoutToolParams
                         ? this.payoutsService
-                              .getPayoutToolByID({
+                              .getPayoutToolByIDForParty({
                                   contractID: payoutToolParams.contractID,
                                   payoutToolID: payoutToolParams.payoutToolID,
                               })
