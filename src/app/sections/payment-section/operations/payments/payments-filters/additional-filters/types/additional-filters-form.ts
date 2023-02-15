@@ -1,4 +1,4 @@
-import { BankCardTokenProvider, BankCardPaymentSystem, PaymentStatus } from '@vality/swag-anapi-v2';
+import { PaymentStatus, SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 
 import { CardFilterForm } from '../card-filter';
 import { InvoicesFilterForm } from '../invoices-filter';
@@ -10,8 +10,8 @@ export interface AdditionalFiltersForm {
     main: MainFiltersForm;
     paymentStatus: PaymentStatus.StatusEnum;
     paymentSum: PaymentSumFilterForm;
-    tokenProvider: BankCardTokenProvider;
-    paymentSystem: BankCardPaymentSystem;
+    tokenProvider: SearchPaymentsRequestParams['bankCardTokenProvider'];
+    paymentSystem: SearchPaymentsRequestParams['bankCardPaymentSystem'];
     invoices: InvoicesFilterForm;
     shops: ShopsFilterForm;
     binPan: CardFilterForm;

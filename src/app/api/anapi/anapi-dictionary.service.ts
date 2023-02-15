@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { InvoiceStatus, Report, RefundStatus, PaymentSearchResult } from '@vality/swag-anapi-v2';
-import { BankCardPaymentSystem } from '@vality/swag-anapi-v2/lib/model/bankCardPaymentSystem';
-import { BankCardTokenProvider } from '@vality/swag-anapi-v2/lib/model/bankCardTokenProvider';
+
+import { PaymentSystem, TokenProvider } from '@dsh/api/payments';
 
 import { DictionaryService } from '../utils';
 
@@ -73,7 +73,7 @@ export class AnapiDictionaryService {
         pending: this.t.translate('anapi.reportStatus.pending', null, 'dictionary'),
     }));
 
-    bankCardPaymentSystem$ = this.dictionaryService.create<BankCardPaymentSystem>(() => ({
+    bankCardPaymentSystem$ = this.dictionaryService.create<PaymentSystem>(() => ({
         amex: this.t.translate('anapi.bankCardPaymentSystem.amex', null, 'dictionary'),
         dankort: this.t.translate('anapi.bankCardPaymentSystem.dankort', null, 'dictionary'),
         dinersclub: this.t.translate('anapi.bankCardPaymentSystem.dinersclub', null, 'dictionary'),
@@ -92,7 +92,7 @@ export class AnapiDictionaryService {
         uzcard: this.t.translate('anapi.bankCardPaymentSystem.uzcard', null, 'dictionary'),
     }));
 
-    bankCardTokenProvider$ = this.dictionaryService.create<BankCardTokenProvider>(() => ({
+    bankCardTokenProvider$ = this.dictionaryService.create<TokenProvider>(() => ({
         applepay: this.t.translate('anapi.bankCardTokenProvider.applepay', null, 'dictionary'),
         googlepay: this.t.translate('anapi.bankCardTokenProvider.googlepay', null, 'dictionary'),
         samsungpay: this.t.translate('anapi.bankCardTokenProvider.samsungpay', null, 'dictionary'),

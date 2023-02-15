@@ -1,8 +1,9 @@
 import { Component, Injector } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
-import { BankCardPaymentSystem } from '@vality/swag-anapi-v2';
+import { SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 
 import { AnapiDictionaryService } from '@dsh/api/anapi';
+import { PaymentSystem } from '@dsh/api/payments';
 
 @Component({
     selector: 'dsh-payment-system-filter',
@@ -10,8 +11,10 @@ import { AnapiDictionaryService } from '@dsh/api/anapi';
     styleUrls: ['./payment-system-filter.component.scss'],
     providers: [provideValueAccessor(PaymentSystemFilterComponent)],
 })
-export class PaymentSystemFilterComponent extends WrappedFormControlSuperclass<BankCardPaymentSystem> {
-    paymentSystems = Object.values(BankCardPaymentSystem);
+export class PaymentSystemFilterComponent extends WrappedFormControlSuperclass<
+    SearchPaymentsRequestParams['bankCardPaymentSystem']
+> {
+    paymentSystems = Object.values(PaymentSystem);
     bankCardPaymentSystemDict$ = this.anapiDictionaryService.bankCardPaymentSystem$;
 
     constructor(injector: Injector, private anapiDictionaryService: AnapiDictionaryService) {

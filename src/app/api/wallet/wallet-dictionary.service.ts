@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-import { DepositRevert } from '@vality/swag-wallet';
-import { Deposit } from '@vality/swag-wallet/lib/model/deposit';
-import { DestinationsTopic } from '@vality/swag-wallet/lib/model/destinationsTopic';
-import { Withdrawal } from '@vality/swag-wallet/lib/model/withdrawal';
-import { WithdrawalsTopic } from '@vality/swag-wallet/lib/model/withdrawalsTopic';
+import { DepositRevert, WithdrawalsTopic, DestinationsTopic, Deposit, Withdrawal } from '@vality/swag-wallet';
 
 import { DictionaryService } from '../utils';
 
