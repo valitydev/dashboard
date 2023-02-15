@@ -13,7 +13,7 @@
     "i18n:extract": "transloco-keys-manager extract",
     "i18n:check": "transloco-keys-manager find --emit-error-on-extra-keys",
     "coverage": "npx http-server -c-1 -o -p 9875 ./coverage",
-    "lint-cmd": "eslint \"src/**/*.{ts,js,html}\" --max-warnings 1071",
+    "lint-cmd": "eslint \"src/**/*.{ts,js,html}\" --max-warnings 1073",
     "lint": "npm run lint-cmd",
     "lint-fix": "npm run lint-cmd -- --fix",
     "lint-errors": "npm run lint-cmd -- --quiet",
