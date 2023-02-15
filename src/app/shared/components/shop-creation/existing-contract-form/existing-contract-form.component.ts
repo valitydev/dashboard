@@ -61,7 +61,7 @@ export class ExistingContractFormComponent extends ValidatedControlSuperclass<Ex
     }
 
     private getContract(contractID: Contract['id']): Observable<ExistingContractForm> {
-        return this.contractsService.getContractByID({ contractID }).pipe(
+        return this.contractsService.getContractByIDForParty({ contractID }).pipe(
             switchMap((contract: ExistingContractForm) => {
                 if (contract.contractor.entityType !== this.entityType)
                     return (
