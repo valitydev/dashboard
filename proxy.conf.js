@@ -26,6 +26,9 @@ function createSubdomainByPathProxy(target, subdomainPathPrefix = '__') {
         secure: false,
         logLevel: 'debug',
         changeOrigin: true,
+        onProxyReq: (req) => {
+            req.setHeader('origin', `https://dashboard.${host}${port ? `:${port}` : ''}`);
+        },
     };
 }
 

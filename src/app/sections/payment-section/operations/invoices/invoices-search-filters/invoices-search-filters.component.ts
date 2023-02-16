@@ -12,7 +12,7 @@ import pick from 'lodash-es/pick';
 import { defer, ReplaySubject, BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ShopsService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/app/shared';
 import { createDateRangeWithPreset, Preset, DateRangeWithPreset } from '@dsh/components/date-range-filter';
 import { shareReplayRefCount } from '@dsh/operators';
 import { ComponentChanges } from '@dsh/type-utils';
@@ -49,7 +49,7 @@ export class InvoicesSearchFiltersComponent implements OnChanges, OnInit {
         shopIDs: null,
         invoiceStatus: null,
     });
-    shops$ = defer(() => this.realm$).pipe(filterShopsByRealm(this.shopService.shops$), shareReplayRefCount());
+    shops$ = defer(() => this.realm$).pipe(filterShopsByRealm(this.shopsDataService.shops$), shareReplayRefCount());
     isAdditionalFilterApplied$ = defer(() => this.additionalFilters$).pipe(map(negate(isEmpty)));
 
     get keys(): string[] {
@@ -61,7 +61,7 @@ export class InvoicesSearchFiltersComponent implements OnChanges, OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private shopService: ShopsService,
+        private shopsDataService: ShopsDataService,
         private dialog: MatDialog,
         private mediaObserver: MediaObserver
     ) {}

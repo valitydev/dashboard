@@ -7,8 +7,8 @@ import { BehaviorSubject, combineLatest, EMPTY, Observable, of } from 'rxjs';
 import { first, map, switchMap, tap } from 'rxjs/operators';
 
 import { OrganizationsDictionaryService } from '@dsh/api/organizations';
-import { ShopsService } from '@dsh/api/payments';
 import { DialogConfig, DIALOG_CONFIG } from '@dsh/app/sections/tokens';
+import { ShopsDataService } from '@dsh/app/shared';
 import { sortRoleIds } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
 import { PartialReadonly } from '@dsh/type-utils';
 import { coerceBoolean } from '@dsh/utils';
@@ -49,7 +49,7 @@ export class ChangeRolesTableComponent implements OnInit {
     @Output() removedRoles = new EventEmitter<PartialReadonly<MemberRole>[]>();
 
     roleIds: RoleId[] = [];
-    shops$ = this.shopsService.shops$;
+    shops$ = this.shopsDataService.shops$;
     roleIdDict$ = this.organizationsDictionaryService.roleId$;
 
     get availableRoles(): RoleId[] {
@@ -71,7 +71,7 @@ export class ChangeRolesTableComponent implements OnInit {
     }
 
     constructor(
-        private shopsService: ShopsService,
+        private shopsDataService: ShopsDataService,
         private dialog: MatDialog,
         @Inject(DIALOG_CONFIG) private dialogConfig: DialogConfig,
         private cdr: ChangeDetectorRef,

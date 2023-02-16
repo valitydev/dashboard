@@ -7,7 +7,7 @@ import { filter, pluck, switchMap } from 'rxjs/operators';
 
 import { OrgsService } from '@dsh/api/organizations';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
-import { ErrorService, NotificationService, ContextService } from '@dsh/app/shared/services';
+import { ErrorService, NotificationService, ContextOrganizationService } from '@dsh/app/shared/services';
 import { FetchOrganizationsService } from '@dsh/app/shared/services/fetch-organizations';
 import { OrganizationManagementService } from '@dsh/app/shared/services/organization-management/organization-management.service';
 import { ConfirmActionDialogComponent, ConfirmActionDialogResult } from '@dsh/components/popups';
@@ -29,7 +29,7 @@ export class OrganizationComponent implements OnChanges {
 
     @Output() changed = new EventEmitter<void>();
 
-    member$ = this.contextService.member$;
+    member$ = this.contextOrganizationService.member$;
     membersCount$ = this.organizationManagementService.members$.pipe(pluck('length'));
     hasAdminAccess$ = this.organizationManagementService.hasAdminAccess$;
     isOwner$ = this.organizationManagementService.isOrganizationOwner$;
@@ -41,7 +41,7 @@ export class OrganizationComponent implements OnChanges {
         private notificationService: NotificationService,
         private errorService: ErrorService,
         private fetchOrganizationsService: FetchOrganizationsService,
-        private contextService: ContextService
+        private contextOrganizationService: ContextOrganizationService
     ) {}
 
     ngOnChanges({ organization }: ComponentChanges<OrganizationComponent>) {

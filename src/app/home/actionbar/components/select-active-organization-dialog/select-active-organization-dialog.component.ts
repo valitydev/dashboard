@@ -8,7 +8,7 @@ import { first, map } from 'rxjs/operators';
 
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
-import { ContextService } from '@dsh/app/shared/services/context';
+import { ContextOrganizationService } from '@dsh/app/shared/services';
 import { FetchOrganizationsService } from '@dsh/app/shared/services/fetch-organizations';
 
 const DISPLAYED_COUNT = 5;
@@ -25,7 +25,7 @@ export class SelectActiveOrganizationDialogComponent implements OnInit {
     hasMore$ = this.fetchOrganizationsService.hasMore$;
     selectedOrganization: Organization;
     isLoading$ = this.fetchOrganizationsService.doAction$;
-    contextOrganization$ = this.contextService.organization$;
+    contextOrganization$ = this.contextOrganizationService.organization$;
 
     constructor(
         private dialogRef: MatDialogRef<
@@ -34,12 +34,12 @@ export class SelectActiveOrganizationDialogComponent implements OnInit {
         >,
         private fetchOrganizationsService: FetchOrganizationsService,
         private router: Router,
-        private contextService: ContextService
+        private contextOrganizationService: ContextOrganizationService
     ) {}
 
     ngOnInit(): void {
         this.fetchOrganizationsService.search();
-        combineLatest([this.organizations$, this.contextService.organization$])
+        combineLatest([this.organizations$, this.contextOrganizationService.organization$])
             .pipe(
                 first(),
                 map(([orgs, activeOrg]) => orgs.find((org) => org.id === activeOrg.id)),

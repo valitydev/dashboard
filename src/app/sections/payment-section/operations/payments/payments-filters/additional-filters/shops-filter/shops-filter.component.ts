@@ -1,7 +1,7 @@
 import { Component, Injector, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 
-import { ShopsService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/app/shared';
 import { ValidatedControlSuperclass, createControlProviders } from '@dsh/utils';
 
 import { ShopsFilterForm } from './types';
@@ -17,9 +17,9 @@ export class ShopsFilterComponent extends ValidatedControlSuperclass<ShopsFilter
         shopIDs: null,
     });
 
-    shops$ = this.shopsService.shops$;
+    shops$ = this.shopsDataService.shops$;
 
-    constructor(injector: Injector, private fb: FormBuilder, private shopsService: ShopsService) {
+    constructor(injector: Injector, private fb: FormBuilder, private shopsDataService: ShopsDataService) {
         super(injector);
     }
 }

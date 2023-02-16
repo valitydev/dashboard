@@ -18,7 +18,6 @@ import * as Sentry from '@sentry/angular';
 
 import { AnapiModule } from '@dsh/api/anapi';
 import { ClaimManagementModule } from '@dsh/api/claim-management';
-import { DarkApiModule } from '@dsh/api/dark-api';
 import { PaymentsModule } from '@dsh/api/payments';
 import { QuestionaryAggrProxyModule } from '@dsh/api/questionary-aggr-proxy';
 import { UrlShortenerModule } from '@dsh/api/url-shortener';
@@ -26,6 +25,7 @@ import { WalletModule } from '@dsh/api/wallet';
 import { ErrorModule } from '@dsh/app/shared/services';
 import { QUERY_PARAMS_SERIALIZERS } from '@dsh/app/shared/services/query-params/utils/query-params-serializers';
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
+import { SpinnerModule } from '@dsh/components/indicators';
 
 import { ENV, environment } from '../environments';
 import { OrganizationsModule } from './api/organizations';
@@ -64,8 +64,8 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         OrganizationsModule,
         UrlShortenerModule,
         QuestionaryAggrProxyModule,
-        DarkApiModule,
         WalletModule,
+        SpinnerModule,
     ],
     providers: [
         LanguageService,

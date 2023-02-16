@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { provideValueAccessor } from '@s-libs/ng-core';
-import { RefundStatus } from '@vality/swag-dark-api';
+import { RefundStatus } from '@vality/swag-anapi-v2';
 
 import { FilterSuperclass } from '@dsh/components/filter';
 

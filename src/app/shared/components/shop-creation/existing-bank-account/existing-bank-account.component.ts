@@ -71,7 +71,7 @@ export class ExistingBankAccountComponent extends ValidatedControlSuperclass<Exi
 
     private getPayoutToolByShop(shop: Shop): Observable<PayoutTool> {
         return this.payoutsService
-            .getPayoutToolByID({ contractID: shop.contractID, payoutToolID: shop.payoutToolID })
+            .getPayoutToolByIDForParty({ contractID: shop.contractID, payoutToolID: shop.payoutToolID })
             .pipe(
                 switchMap((payoutTool) => {
                     if (payoutTool.details.detailsType !== this.bankAccountType)

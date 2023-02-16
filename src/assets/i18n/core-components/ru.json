@@ -33,11 +33,6 @@
     "emptySearchResult": {
         "empty": "Данные за указанный период отсутствуют"
     },
-    "fileUploader": {
-        "choose": "выберите",
-        "forUpload": "Для загрузки переместите файлы в область, или",
-        "uploading": "Загрузка..."
-    },
     "humanizeDuration": {
         "ago": "назад",
         "justNow": "только что",

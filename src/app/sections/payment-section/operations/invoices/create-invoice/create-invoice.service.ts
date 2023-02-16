@@ -6,7 +6,7 @@ import { PaymentInstitution, Shop } from '@vality/swag-payments';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { filter, pluck, switchMap, take } from 'rxjs/operators';
 
-import { ShopsService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/app/shared';
 
 import { filterShopsByRealm } from '../../operators';
 import { CreateInvoiceDialogComponent } from './components/create-invoice-dialog/create-invoice-dialog.component';
@@ -16,7 +16,7 @@ import RealmEnum = PaymentInstitution.RealmEnum;
 @Injectable()
 export class CreateInvoiceService {
     constructor(
-        private apiShopsService: ShopsService,
+        private shopsDataService: ShopsDataService,
         private dialog: MatDialog,
         private transloco: TranslocoService,
         private snackBar: MatSnackBar
@@ -26,7 +26,7 @@ export class CreateInvoiceService {
         const invoiceCreated$ = new ReplaySubject<string>(1);
         of(realm)
             .pipe(
-                filterShopsByRealm(this.apiShopsService.shops$),
+                filterShopsByRealm(this.shopsDataService.shops$),
                 switchMap((shops) =>
                     this.dialog
                         .open<CreateInvoiceDialogComponent, Shop[]>(CreateInvoiceDialogComponent, {

@@ -4,7 +4,8 @@ import { Shop } from '@vality/swag-payments';
 import { defer, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ShopsService, toLiveShops } from '@dsh/api/payments';
+import { toLiveShops } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/app/shared';
 import { shopToOption } from '@dsh/app/shared/components/inputs/shop-field/utils/shops-to-options';
 import { Option } from '@dsh/components/form-controls/select-search-field';
 import { shareReplayRefCount } from '@dsh/operators';
@@ -23,7 +24,7 @@ export class ShopFieldComponent extends WrappedFormControlSuperclass<Shop> {
     @Input() @coerceBoolean required = false;
 
     options$: Observable<Option<Shop>[]> = defer(
-        () => this.shops$ || this.shopsService.shops$.pipe(map(toLiveShops))
+        () => this.shops$ || this.shopsDataService.shops$.pipe(map(toLiveShops))
     ).pipe(
         map((shops) => shops.map(shopToOption)),
         shareReplayRefCount()
@@ -31,7 +32,7 @@ export class ShopFieldComponent extends WrappedFormControlSuperclass<Shop> {
 
     constructor(
         injector: Injector,
-        private shopsService: ShopsService,
+        private shopsDataService: ShopsDataService,
         @Inject(SHOPS)
         @Optional()
         private shops$?: Observable<Shop[]>

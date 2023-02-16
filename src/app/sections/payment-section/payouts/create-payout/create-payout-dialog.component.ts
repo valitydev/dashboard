@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { of } from 'rxjs';
 
-import { ShopsService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/app/shared';
 import { amountValidator } from '@dsh/components/form-controls';
 
 import { filterShopsByRealm, mapToShopInfo } from '../../operations/operators';
@@ -25,7 +25,7 @@ export class CreatePayoutDialogComponent implements OnInit {
 
     currentPayoutToolCurrency: string;
 
-    shopsInfo$ = of(this.data.realm).pipe(filterShopsByRealm(this.shopsService.shops$), mapToShopInfo);
+    shopsInfo$ = of(this.data.realm).pipe(filterShopsByRealm(this.shopsDataService.shops$), mapToShopInfo);
 
     isPayoutToolsLoading$ = this.createPayoutDialogService.isLoading$;
     payoutTools$ = this.createPayoutDialogService.payoutTools$;
@@ -37,7 +37,7 @@ export class CreatePayoutDialogComponent implements OnInit {
         private createPayoutDialogService: CreatePayoutDialogService,
         private snackBar: MatSnackBar,
         private transloco: TranslocoService,
-        private shopsService: ShopsService,
+        private shopsDataService: ShopsDataService,
         @Inject(MAT_DIALOG_DATA) private data: { realm: string }
     ) {}
 

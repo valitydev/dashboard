@@ -9,4 +9,5 @@ export * from './sections-links';
 export * from './query-params';
 export * from './id-generator';
 export * from './partial-fetcher';
-export * from './context';
+export * from './context-organization';
+export * from './shops-data';

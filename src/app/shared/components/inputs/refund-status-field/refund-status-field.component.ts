@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
-import { RefundStatus } from '@vality/swag-dark-api';
+import { RefundStatus } from '@vality/swag-anapi-v2';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 

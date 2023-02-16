@@ -31,7 +31,7 @@ export class ShopContractDetailsService {
                 tap(() => this._isLoading$.next(true)),
                 switchMap((contractID) =>
                     contractID
-                        ? this.contractsService.getContractByID({ contractID }).pipe(
+                        ? this.contractsService.getContractByIDForParty({ contractID }).pipe(
                               catchError((e) => {
                                   console.error(e);
                                   this.error$.next(true);
