@@ -1,6 +1,6 @@
 {
   "name": "dashboard",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "postinstall": "ngcc",
@@ -78,13 +78,13 @@
     "zone.js": "0.11.7"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "14.1.0",
+    "@angular-devkit/build-angular": "15.2.4",
     "@angular-eslint/builder": "14.0.2",
     "@angular-eslint/eslint-plugin": "14.0.2",
     "@angular-eslint/eslint-plugin-template": "14.0.2",
     "@angular-eslint/schematics": "14.0.2",
     "@angular-eslint/template-parser": "14.0.2",
-    "@angular/cli": "14.1.0",
+    "@angular/cli": "15.2.4",
     "@angular/compiler-cli": "14.1.0",
     "@angular/language-service": "14.1.0",
     "@ngneat/transloco-keys-manager": "^3.4.1",
