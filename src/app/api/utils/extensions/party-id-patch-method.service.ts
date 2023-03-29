@@ -17,8 +17,8 @@ export class PartyIdPatchMethodService extends PartyIdExtension {
             this.selector().pipe(
                 switchMap(({ partyID }) => {
                     const newParams = cloneDeep(params);
-                    patch(newParams as P, partyID);
-                    return method(newParams as P);
+                    patch(newParams as any, partyID);
+                    return method(newParams as any);
                 })
             );
     }
