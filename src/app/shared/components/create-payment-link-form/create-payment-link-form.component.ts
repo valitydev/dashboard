@@ -24,7 +24,7 @@ import MethodEnum = PaymentMethod.MethodEnum;
     selector: 'dsh-create-payment-link-form',
     templateUrl: 'create-payment-link-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createControlProviders(CreatePaymentLinkFormComponent),
+    providers: createControlProviders(() => CreatePaymentLinkFormComponent),
 })
 export class CreatePaymentLinkFormComponent
     extends ValidatedControlSuperclass<PaymentLinkParams, Controls>

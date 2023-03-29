@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Injector, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatLegacyAutocompleteSelectedEvent as MatAutocompleteSelectedEvent } from '@angular/material/legacy-autocomplete';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
@@ -71,8 +71,8 @@ export class DaDataAutocompleteComponent<T extends Type = Type, R extends DaData
         shareReplayUntilDestroyed(this)
     );
 
-    constructor(injector: Injector, private daDataService: DaDataService) {
-        super(injector);
+    constructor(private daDataService: DaDataService) {
+        super();
     }
 
     ngOnInit(): void {

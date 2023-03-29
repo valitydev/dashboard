@@ -1,4 +1,4 @@
-import { Component, Injector } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 
 import { ValidatedControlSuperclass, createControlProviders } from '@dsh/utils';
@@ -8,7 +8,7 @@ import { PaymentSumFilterForm } from './types/payment-sum-filter-form';
 @Component({
     selector: 'dsh-payment-sum-filter',
     templateUrl: './payment-sum-filter.component.html',
-    providers: createControlProviders(PaymentSumFilterComponent),
+    providers: createControlProviders(() => PaymentSumFilterComponent),
 })
 export class PaymentSumFilterComponent extends ValidatedControlSuperclass<PaymentSumFilterForm> {
     control = this.fb.group<PaymentSumFilterForm>({
@@ -16,7 +16,7 @@ export class PaymentSumFilterComponent extends ValidatedControlSuperclass<Paymen
         paymentAmountTo: null,
     });
 
-    constructor(injector: Injector, private fb: FormBuilder) {
-        super(injector);
+    constructor(private fb: FormBuilder) {
+        super();
     }
 }

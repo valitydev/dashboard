@@ -1,5 +1,8 @@
-import { ChangeDetectionStrategy, Component, Inject, OnInit, Injector } from '@angular/core';
-import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import {
+    MatLegacyDialogRef as MatDialogRef,
+    MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA,
+} from '@angular/material/legacy-dialog';
 import { FormBuilder, FormGroup } from '@ngneat/reactive-forms';
 
 import { ValidatedControlSuperclass, createControlProviders } from '@dsh/utils';
@@ -12,7 +15,7 @@ import { formToFilters, filtersToForm } from '../../utils';
     selector: 'dsh-dialog-filters',
     templateUrl: 'dialog-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createControlProviders(DialogFiltersComponent),
+    providers: createControlProviders(() => DialogFiltersComponent),
 })
 export class DialogFiltersComponent extends ValidatedControlSuperclass<AdditionalFiltersForm> implements OnInit {
     control: FormGroup<AdditionalFiltersForm> = this.formBuilder.group({
@@ -27,12 +30,11 @@ export class DialogFiltersComponent extends ValidatedControlSuperclass<Additiona
     });
 
     constructor(
-        injector: Injector,
         @Inject(MAT_DIALOG_DATA) private data: AdditionalFilters,
         private dialogRef: MatDialogRef<DialogFiltersComponent, AdditionalFilters>,
         private formBuilder: FormBuilder
     ) {
-        super(injector);
+        super();
     }
 
     ngOnInit() {

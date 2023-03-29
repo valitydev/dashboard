@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { WrappedFormControlSuperclass, provideValueAccessor } from '@s-libs/ng-core';
 import { InvoiceStatus } from '@vality/swag-anapi-v2';
 
@@ -14,7 +14,7 @@ export class InvoiceStatusFilterComponent extends WrappedFormControlSuperclass<I
     statuses = Object.values(InvoiceStatus.StatusEnum);
     invoiceStatusDict$ = this.anapiDictionaryService.invoiceStatus$;
 
-    constructor(injector: Injector, private anapiDictionaryService: AnapiDictionaryService) {
-        super(injector);
+    constructor(private anapiDictionaryService: AnapiDictionaryService) {
+        super();
     }
 }

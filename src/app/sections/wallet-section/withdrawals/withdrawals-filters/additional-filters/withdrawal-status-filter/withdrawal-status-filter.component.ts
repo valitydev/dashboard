@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { WithdrawalStatus } from '@vality/swag-wallet';
 import { Observable } from 'rxjs';
@@ -23,7 +23,7 @@ export class WithdrawalStatusFilterComponent extends WrappedFormControlSuperclas
     statuses = Object.values(WithdrawalStatus.StatusEnum);
     withdrawalStatusDict$ = this.walletDictionaryService.withdrawalStatus$;
 
-    constructor(injector: Injector, private walletDictionaryService: WalletDictionaryService) {
-        super(injector);
+    constructor(private walletDictionaryService: WalletDictionaryService) {
+        super();
     }
 }

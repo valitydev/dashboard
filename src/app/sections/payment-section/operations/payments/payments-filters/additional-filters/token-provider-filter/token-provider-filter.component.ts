@@ -1,4 +1,4 @@
-import { Component, Injector } from '@angular/core';
+import { Component } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 
@@ -17,7 +17,7 @@ export class TokenProviderFilterComponent extends WrappedFormControlSuperclass<
     providers: TokenProvider[] = Object.values(TokenProvider);
     bankCardTokenProviderDict$ = this.anapiDictionaryService.bankCardTokenProvider$;
 
-    constructor(injector: Injector, private anapiDictionaryService: AnapiDictionaryService) {
-        super(injector);
+    constructor(private anapiDictionaryService: AnapiDictionaryService) {
+        super();
     }
 }

@@ -1,5 +1,4 @@
-import { Component, Injector, ChangeDetectionStrategy } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { WrappedFormControlSuperclass, provideValueAccessor } from '@s-libs/ng-core';
 
 @Component({
@@ -8,8 +7,4 @@ import { WrappedFormControlSuperclass, provideValueAccessor } from '@s-libs/ng-c
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [provideValueAccessor(InvoicesFilterComponent)],
 })
-export class InvoicesFilterComponent extends WrappedFormControlSuperclass<string[]> {
-    constructor(injector: Injector, private fb: FormBuilder) {
-        super(injector);
-    }
-}
+export class InvoicesFilterComponent extends WrappedFormControlSuperclass<string[]> {}

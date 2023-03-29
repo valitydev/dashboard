@@ -1,4 +1,4 @@
-import { Component, Injector, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { WrappedFormControlSuperclass, provideValueAccessor } from '@s-libs/ng-core';
 
@@ -13,7 +13,7 @@ import { ShopsDataService } from '@dsh/app/shared';
 export class ShopsFilterComponent extends WrappedFormControlSuperclass<string[]> {
     shops$ = this.shopsDataService.shops$;
 
-    constructor(injector: Injector, private fb: FormBuilder, private shopsDataService: ShopsDataService) {
-        super(injector);
+    constructor(private fb: FormBuilder, private shopsDataService: ShopsDataService) {
+        super();
     }
 }
