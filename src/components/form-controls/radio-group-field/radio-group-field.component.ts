@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
-import { MatRadioChange } from '@angular/material/radio';
+import { MatLegacyRadioChange as MatRadioChange } from '@angular/material/legacy-radio';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { Overwrite } from 'utility-types';
 

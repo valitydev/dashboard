@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { TranslocoService, TranslocoTestingModule } from '@ngneat/transloco';
 import { deepEqual, instance, mock, verify } from 'ts-mockito';
 

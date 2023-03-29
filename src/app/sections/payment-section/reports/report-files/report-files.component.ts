@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { FileMeta } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';

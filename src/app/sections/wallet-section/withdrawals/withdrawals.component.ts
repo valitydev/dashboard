@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 
 import { QueryParamsService } from '@dsh/app/shared/services/query-params';

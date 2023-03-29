@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { DepositRevert } from '@vality/swag-wallet';
 import { ListDepositRevertsRequestParams } from '@vality/swag-wallet/lib/api/deposits.service';

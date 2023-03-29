@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { Webhook } from '@vality/swag-wallet';
 import sortBy from 'lodash-es/sortBy';

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Injector, Input, OnInit, Output } from '@angular/core';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatLegacyAutocompleteSelectedEvent as MatAutocompleteSelectedEvent } from '@angular/material/legacy-autocomplete';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import {

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FlexModule } from '@angular/flex-layout';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { TranslocoModule } from '@ngneat/transloco';
 

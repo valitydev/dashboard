@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 
 import { CancelHoldDialogComponent } from '../cancel-hold/components/cancel-hold-dialog/cancel-hold-dialog.component';

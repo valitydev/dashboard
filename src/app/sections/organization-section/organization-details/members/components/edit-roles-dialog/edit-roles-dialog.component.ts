@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { MemberRole } from '@vality/swag-organizations';
 import { BehaviorSubject, defer, forkJoin, of, Subscription } from 'rxjs';
