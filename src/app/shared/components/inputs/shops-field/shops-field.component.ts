@@ -1,16 +1,17 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { Shop } from '@vality/swag-payments';
 import { defer, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { shareReplayRefCount } from '@dsh/operators';
 import { ComponentChanges } from '@dsh/type-utils';
+import { provideValueAccessor } from '@dsh/utils';
 
 @Component({
     selector: 'dsh-shops-field',
     templateUrl: 'shops-field.component.html',
-    providers: [provideValueAccessor(ShopsFieldComponent)],
+    providers: [provideValueAccessor(() => ShopsFieldComponent)],
 })
 export class ShopsFieldComponent extends WrappedFormControlSuperclass<Shop['id'][]> implements OnChanges {
     @Input() shops: Shop[];

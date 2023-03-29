@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatLegacyAutocompleteSelectedEvent as MatAutocompleteSelectedEvent } from '@angular/material/legacy-autocomplete';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import {
     BankContent,
     DaDataRequest,
@@ -15,7 +15,7 @@ import { debounce, filter, map, switchMap, take } from 'rxjs/operators';
 
 import { ContentByRequestType, DaDataService, ParamsByRequestType, Suggestion } from '@dsh/api/questionary-aggr-proxy';
 import { progress, shareReplayUntilDestroyed, takeError } from '@dsh/operators';
-import { coerceBoolean } from '@dsh/utils';
+import { coerceBoolean, provideValueAccessor } from '@dsh/utils';
 
 import { Type } from './type';
 
@@ -42,7 +42,7 @@ const REQUEST_TYPE_BY_TYPE: RequestTypeByType = {
     selector: 'dsh-dadata-autocomplete',
     styleUrls: ['dadata.component.scss'],
     templateUrl: 'dadata.component.html',
-    providers: [provideValueAccessor(DaDataAutocompleteComponent)],
+    providers: [provideValueAccessor(() => DaDataAutocompleteComponent)],
 })
 export class DaDataAutocompleteComponent<T extends Type = Type, R extends DaDataRequestType = RequestTypeByType[T]>
     extends WrappedFormControlSuperclass<string>

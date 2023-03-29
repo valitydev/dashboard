@@ -1,17 +1,17 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { PaymentInstitution } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 
 import { PaymentInstitutionsService } from '@dsh/api/payments';
 import { Option } from '@dsh/components/form-controls/select-search-field';
-import { coerceBoolean } from '@dsh/utils';
+import { provideValueAccessor, coerceBoolean } from '@dsh/utils';
 
 @Component({
     selector: 'dsh-payment-institution-field',
     templateUrl: 'payment-institution-field.component.html',
-    providers: [provideValueAccessor(PaymentInstitutionFieldComponent)],
+    providers: [provideValueAccessor(() => PaymentInstitutionFieldComponent)],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaymentInstitutionFieldComponent extends WrappedFormControlSuperclass<PaymentInstitution> {

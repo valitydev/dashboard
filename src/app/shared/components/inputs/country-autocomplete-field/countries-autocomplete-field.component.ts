@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { map } from 'rxjs/operators';
 
 import { CountriesService } from '@dsh/api/payments';
-import { coerceBoolean } from '@dsh/utils';
+import { provideValueAccessor, coerceBoolean } from '@dsh/utils';
 
 import { CountryId } from './types';
 import { countriesToOptions } from './utils';
@@ -11,7 +11,7 @@ import { countriesToOptions } from './utils';
 @Component({
     selector: 'dsh-country-autocomplete-field',
     templateUrl: 'country-autocomplete-field.component.html',
-    providers: [provideValueAccessor(CountryAutocompleteFieldComponent)],
+    providers: [provideValueAccessor(() => CountryAutocompleteFieldComponent)],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CountryAutocompleteFieldComponent extends WrappedFormControlSuperclass<CountryId> {

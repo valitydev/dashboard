@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { map } from 'rxjs/operators';
 
 import { WalletsService } from '@dsh/api/wallet';
-import { coerceBoolean } from '@dsh/utils';
+import { coerceBoolean, provideValueAccessor } from '@dsh/utils';
 
 import { WalletId } from './types';
 import { walletsToOptions } from './utils';
@@ -11,7 +11,7 @@ import { walletsToOptions } from './utils';
 @Component({
     selector: 'dsh-wallet-autocomplete-field',
     templateUrl: 'wallet-autocomplete-field.component.html',
-    providers: [provideValueAccessor(WalletAutocompleteFieldComponent)],
+    providers: [provideValueAccessor(() => WalletAutocompleteFieldComponent)],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WalletAutocompleteFieldComponent extends WrappedFormControlSuperclass<WalletId> {

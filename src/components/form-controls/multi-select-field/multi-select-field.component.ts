@@ -1,10 +1,10 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import isNil from 'lodash-es/isNil';
 
 import { ComponentChanges } from '@dsh/type-utils';
-import { coerceBoolean } from '@dsh/utils';
+import { provideValueAccessor, coerceBoolean } from '@dsh/utils';
 
 export interface Option<T> {
     value: T;
@@ -21,7 +21,7 @@ interface OptionScore<T> {
     selector: 'dsh-multi-select-field',
     templateUrl: 'multi-select-field.component.html',
     styleUrls: ['multi-select-field.component.scss'],
-    providers: [provideValueAccessor(MultiSelectFieldComponent)],
+    providers: [provideValueAccessor(() => MultiSelectFieldComponent)],
 })
 export class MultiSelectFieldComponent<T> extends WrappedFormControlSuperclass<T[]> implements OnChanges {
     @Input() options: Option<T>[];
