@@ -1,4 +1,4 @@
-import { Component, Injector } from '@angular/core';
+import { Component } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 
 @Component({
@@ -6,8 +6,4 @@ import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-c
     templateUrl: 'invoices-field.component.html',
     providers: [provideValueAccessor(InvoicesFieldComponent)],
 })
-export class InvoicesFieldComponent extends WrappedFormControlSuperclass<string[]> {
-    constructor(injector: Injector) {
-        super(injector);
-    }
-}
+export class InvoicesFieldComponent extends WrappedFormControlSuperclass<string[]> {}

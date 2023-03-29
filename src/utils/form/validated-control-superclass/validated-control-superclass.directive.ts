@@ -3,8 +3,8 @@ import { FormGroup, ValidationErrors, Validator } from '@angular/forms';
 import { WrappedControlSuperclass } from '@s-libs/ng-core';
 import { EMPTY, Observable } from 'rxjs';
 
-import { getValue } from '../get-value';
 import { getErrorsTree } from './utils/get-errors-tree';
+import { getValue } from '../get-value';
 
 @Directive()
 export abstract class ValidatedControlSuperclass<OuterType, InnerType = OuterType>

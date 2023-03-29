@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
@@ -72,8 +72,8 @@ export class CreateInvoiceFormComponent extends WrappedFormControlSuperclass<For
         return moment().add('2', 'day').startOf('day');
     }
 
-    constructor(private fb: FormBuilder, injector: Injector) {
-        super(injector);
+    constructor(private fb: FormBuilder) {
+        super();
     }
 
     ngOnInit(): void {

@@ -1,4 +1,4 @@
-import { Component, Injector, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
@@ -22,7 +22,7 @@ export type ExistingContractForm<T extends EntityTypeEnum = EntityTypeEnum> = Ov
 @Component({
     selector: 'dsh-existing-contract-form',
     templateUrl: 'existing-contract-form.component.html',
-    providers: createControlProviders(ExistingContractFormComponent),
+    providers: createControlProviders(() => ExistingContractFormComponent),
 })
 export class ExistingContractFormComponent extends ValidatedControlSuperclass<ExistingContractForm, Shop> {
     @Input() entityType: EntityTypeEnum;
@@ -33,13 +33,12 @@ export class ExistingContractFormComponent extends ValidatedControlSuperclass<Ex
     contract: Contract = null;
 
     constructor(
-        injector: Injector,
         private contractsService: ContractsService,
         private fb: FormBuilder,
         private transloco: TranslocoService,
         private errorService: ErrorService
     ) {
-        super(injector);
+        super();
     }
 
     protected outerToInnerValue(): Shop {

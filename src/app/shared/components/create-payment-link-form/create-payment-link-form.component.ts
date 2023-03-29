@@ -1,4 +1,4 @@
-import { Component, Injector, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { FbGroupConfig } from '@ngneat/reactive-forms/lib/formBuilder';
@@ -13,9 +13,9 @@ import { PaymentLinkParams } from '@dsh/app/shared/services/create-payment-link/
 import { ComponentChanges } from '@dsh/type-utils';
 import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
 
+import { Controls, EMPTY_VALUE, PaymentMethodControls } from './types/controls';
 import { HoldExpiration } from '../../services/create-payment-link/types/hold-expiration';
 import { ORDERED_PAYMENT_METHODS_NAMES } from '../../services/create-payment-link/types/ordered-payment-methods-names';
-import { Controls, EMPTY_VALUE, PaymentMethodControls } from './types/controls';
 
 import MethodEnum = PaymentMethod.MethodEnum;
 
@@ -50,10 +50,9 @@ export class CreatePaymentLinkFormComponent
     constructor(
         private notificationService: NotificationService,
         private transloco: TranslocoService,
-        private fb: FormBuilder,
-        injector: Injector
+        private fb: FormBuilder
     ) {
-        super(injector);
+        super();
     }
 
     ngOnChanges({ paymentMethods }: ComponentChanges<CreatePaymentLinkFormComponent>): void {

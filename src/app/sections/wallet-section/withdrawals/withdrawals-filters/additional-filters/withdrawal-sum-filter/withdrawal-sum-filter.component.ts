@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 
 import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
@@ -9,7 +9,7 @@ import { WithdrawalAmountForm } from './types';
     selector: 'dsh-withdrawal-sum-filter',
     templateUrl: './withdrawal-sum-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createControlProviders(WithdrawalSumFilterComponent),
+    providers: createControlProviders(() => WithdrawalSumFilterComponent),
 })
 export class WithdrawalSumFilterComponent extends ValidatedControlSuperclass<WithdrawalAmountForm> {
     control = this.fb.group<WithdrawalAmountForm>({
@@ -17,7 +17,7 @@ export class WithdrawalSumFilterComponent extends ValidatedControlSuperclass<Wit
         amountTo: null,
     });
 
-    constructor(injector: Injector, private fb: FormBuilder) {
-        super(injector);
+    constructor(private fb: FormBuilder) {
+        super();
     }
 }

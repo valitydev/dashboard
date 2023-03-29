@@ -1,4 +1,4 @@
-import { Component, Injector, OnChanges } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { Report } from '@vality/swag-anapi-v2';
 
@@ -16,7 +16,7 @@ import ReportTypeEnum = Report.ReportTypeEnum;
 export class ReportTypesFieldComponent extends WrappedFormControlSuperclass<ReportTypeEnum[]> implements OnChanges {
     options$ = valuesToOptions(Object.values(ReportTypeEnum), (v) => this.reportTypesLabelPipe.transform(v));
 
-    constructor(injector: Injector, private reportTypesLabelPipe: ReportTypesLabelPipe) {
-        super(injector);
+    constructor(private reportTypesLabelPipe: ReportTypesLabelPipe) {
+        super();
     }
 }

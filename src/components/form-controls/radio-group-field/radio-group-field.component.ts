@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatLegacyRadioChange as MatRadioChange } from '@angular/material/legacy-radio';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { Overwrite } from 'utility-types';
@@ -16,8 +16,8 @@ export class RadioGroupFieldComponent<T> extends WrappedFormControlSuperclass<T>
 
     selected: T;
 
-    constructor(injector: Injector) {
-        super(injector);
+    constructor() {
+        super();
     }
 
     handleIncomingValue(value: T): void {

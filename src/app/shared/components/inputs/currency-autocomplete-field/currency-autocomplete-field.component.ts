@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 
 import { Option } from '@dsh/components/form-controls/radio-group-field';
@@ -33,8 +33,4 @@ export class CurrencyAutocompleteFieldComponent extends WrappedFormControlSuperc
     ]
         .sort()
         .map((currency) => ({ label: currency, value: currency }));
-
-    constructor(injector: Injector) {
-        super(injector);
-    }
 }

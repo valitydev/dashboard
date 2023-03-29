@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { Category } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
@@ -26,7 +26,7 @@ export class CategoryAutocompleteFieldComponent extends WrappedFormControlSuperc
         shareReplayRefCount()
     );
 
-    constructor(injector: Injector, private categoriesService: CategoriesService) {
-        super(injector);
+    constructor(private categoriesService: CategoriesService) {
+        super();
     }
 }

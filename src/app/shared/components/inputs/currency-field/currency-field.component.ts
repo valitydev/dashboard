@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 
 import { Option } from '@dsh/components/form-controls/radio-group-field';
@@ -16,7 +16,7 @@ export class CurrencyFieldComponent extends WrappedFormControlSuperclass<string>
 
     options: Option<string>[] = [];
 
-    constructor(injector: Injector) {
-        super(injector);
+    constructor() {
+        super();
     }
 }

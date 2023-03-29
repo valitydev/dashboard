@@ -1,5 +1,4 @@
-import { Component, Injector, Input, OnChanges } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { Component, Input, OnChanges } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import isNil from 'lodash-es/isNil';
@@ -32,10 +31,6 @@ export class MultiSelectFieldComponent<T> extends WrappedFormControlSuperclass<T
     selected = new Set<T>();
     filtered: Option<T>[] = [];
     searchStr: string = '';
-
-    constructor(private fb: FormBuilder, injector: Injector) {
-        super(injector);
-    }
 
     @Input() searchPredicate?: (option: Option<T>, searchStr: string) => number = (option) =>
         option?.label?.includes(this.searchStr) || JSON.stringify(option.value).includes(this.searchStr) ? 1 : 0;

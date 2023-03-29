@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { PaymentInstitution } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
@@ -28,7 +28,7 @@ export class PaymentInstitutionFieldComponent extends WrappedFormControlSupercla
         share()
     );
 
-    constructor(injector: Injector, private paymentInstitutionsService: PaymentInstitutionsService) {
-        super(injector);
+    constructor(private paymentInstitutionsService: PaymentInstitutionsService) {
+        super();
     }
 }

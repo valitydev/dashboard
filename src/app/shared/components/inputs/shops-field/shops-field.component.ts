@@ -1,4 +1,4 @@
-import { Component, Injector, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { Shop } from '@vality/swag-payments';
 import { defer, ReplaySubject } from 'rxjs';
@@ -22,8 +22,8 @@ export class ShopsFieldComponent extends WrappedFormControlSuperclass<Shop['id']
 
     private shops$ = new ReplaySubject<Shop[]>();
 
-    constructor(injector: Injector) {
-        super(injector);
+    constructor() {
+        super();
     }
 
     ngOnChanges({ shops }: ComponentChanges<ShopsFieldComponent>): void {

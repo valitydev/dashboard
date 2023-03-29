@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormControl } from '@ngneat/reactive-forms';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
@@ -32,7 +32,7 @@ export type ExistingBankAccountForm<T extends BankAccountType = BankAccountType>
     selector: 'dsh-existing-bank-account',
     templateUrl: 'existing-bank-account.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createControlProviders(ExistingBankAccountComponent),
+    providers: createControlProviders(() => ExistingBankAccountComponent),
 })
 export class ExistingBankAccountComponent extends ValidatedControlSuperclass<ExistingBankAccountForm, Shop> {
     @Input() bankAccountType: BankAccountType;
@@ -43,12 +43,11 @@ export class ExistingBankAccountComponent extends ValidatedControlSuperclass<Exi
     error$ = new BehaviorSubject<unknown>(null);
 
     constructor(
-        injector: Injector,
         private payoutsService: PayoutsService,
         private transloco: TranslocoService,
         private errorService: ErrorService
     ) {
-        super(injector);
+        super();
     }
 
     protected setUpInnerToOuterValue$(value$: Observable<Shop>): Observable<PayoutTool> {

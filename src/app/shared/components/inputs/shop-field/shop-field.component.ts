@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject, Injector, Input, Optional } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Input, Optional } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { Shop } from '@vality/swag-payments';
 import { defer, Observable } from 'rxjs';
@@ -31,12 +31,11 @@ export class ShopFieldComponent extends WrappedFormControlSuperclass<Shop> {
     );
 
     constructor(
-        injector: Injector,
         private shopsDataService: ShopsDataService,
         @Inject(SHOPS)
         @Optional()
         private shops$?: Observable<Shop[]>
     ) {
-        super(injector);
+        super();
     }
 }

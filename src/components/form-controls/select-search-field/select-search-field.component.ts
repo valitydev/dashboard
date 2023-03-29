@@ -1,11 +1,11 @@
-import { ChangeDetectionStrategy, Component, Injector, Input, OnChanges } from '@angular/core';
+import { OnChanges, ChangeDetectionStrategy, Input, Component } from '@angular/core';
 import { FormControl } from '@ngneat/reactive-forms';
-import { WrappedFormControlSuperclass, provideValueAccessor } from '@s-libs/ng-core';
+import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { BehaviorSubject, combineLatest, defer, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { ComponentChanges } from '@dsh/type-utils';
-import { coerceBoolean, getFormValueChanges } from '@dsh/utils';
+import { getFormValueChanges, provideValueAccessor, coerceBoolean } from '@dsh/utils';
 
 import { Option } from './types';
 import { filterOptions } from './utils';
@@ -14,7 +14,7 @@ import { filterOptions } from './utils';
     selector: 'dsh-select-search-field',
     templateUrl: 'select-search-field.component.html',
     styleUrls: ['select-search-field.component.scss'],
-    providers: [provideValueAccessor(SelectSearchFieldComponent)],
+    providers: [provideValueAccessor(() => SelectSearchFieldComponent)],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectSearchFieldComponent<Value> extends WrappedFormControlSuperclass<Value> implements OnChanges {
@@ -31,8 +31,8 @@ export class SelectSearchFieldComponent<Value> extends WrappedFormControlSupercl
 
     private options$ = new BehaviorSubject<Option<Value>[]>([]);
 
-    constructor(injector: Injector) {
-        super(injector);
+    constructor() {
+        super();
     }
 
     ngOnChanges({ options }: ComponentChanges<SelectSearchFieldComponent<Value>>): void {

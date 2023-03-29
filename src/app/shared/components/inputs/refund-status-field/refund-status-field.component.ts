@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { RefundStatus } from '@vality/swag-anapi-v2';
 import { combineLatest, Observable } from 'rxjs';
@@ -24,7 +24,7 @@ export class RefundStatusFieldComponent extends WrappedFormControlSuperclass<Sta
         )
     );
 
-    constructor(injector: Injector, private refundStatusLabelPipe: RefundStatusLabelPipe) {
-        super(injector);
+    constructor(private refundStatusLabelPipe: RefundStatusLabelPipe) {
+        super();
     }
 }

@@ -1,4 +1,4 @@
-import { Component, Injector, OnChanges } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
 
 import { valuesToOptions } from '@dsh/components/form-controls/utils/values-to-options';
@@ -17,7 +17,7 @@ export class ClaimStatusesFieldComponent
 {
     options$ = valuesToOptions(Object.values(ClaimStatusesEnum), (v) => this.claimStatusesLabelPipe.transform(v));
 
-    constructor(injector: Injector, private claimStatusesLabelPipe: ClaimStatusesLabelPipe) {
-        super(injector);
+    constructor(private claimStatusesLabelPipe: ClaimStatusesLabelPipe) {
+        super();
     }
 }
