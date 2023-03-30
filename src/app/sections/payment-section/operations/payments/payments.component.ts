@@ -5,11 +5,11 @@ import { Observable } from 'rxjs';
 
 import { QueryParamsService } from '@dsh/app/shared/services';
 
-import { RealmMixService } from '../../services';
-import { PaymentInstitutionRealmService } from '../../services/payment-institution-realm.service';
 import { Filters } from './payments-filters';
 import { PaymentsExpandedIdManager, FetchPaymentsService } from './services';
 import { PaymentSearchFormValue } from './types';
+import { RealmMixService } from '../../services';
+import { PaymentInstitutionRealmService } from '../../services/payment-institution-realm.service';
 
 @UntilDestroy()
 @Component({

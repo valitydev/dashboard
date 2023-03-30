@@ -7,12 +7,12 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
 
-import { CancelReportModule } from '../cancel-report';
-import { ReportDetailsModule } from '../report-details';
-import { ReportPipesModule } from '../report-pipes';
 import { ReportRowComponent } from './report-row';
 import { ReportRowHeaderComponent } from './report-row-header';
 import { ReportsListComponent } from './reports-list.component';
+import { CancelReportModule } from '../cancel-report';
+import { ReportDetailsModule } from '../report-details';
+import { ReportPipesModule } from '../report-pipes';
 
 @NgModule({
     imports: [

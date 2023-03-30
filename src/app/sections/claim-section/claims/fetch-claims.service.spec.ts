@@ -2,9 +2,9 @@ import { TestBed } from '@angular/core/testing';
 import { MatLegacySnackBarModule as MatSnackBarModule } from '@angular/material/legacy-snack-bar';
 import { TranslocoTestingModule } from '@ngneat/transloco';
 
+import { FetchClaimsService } from './services/fetch-claims/fetch-claims.service';
 import * as ru from '../../../../assets/i18n/ru.json';
 import { ClaimsService } from '../../../api/claims';
-import { FetchClaimsService } from './services/fetch-claims/fetch-claims.service';
 
 class MockApiClaimsService {}
 

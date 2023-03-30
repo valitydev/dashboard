@@ -12,9 +12,9 @@ import { getTextContent } from '@dsh/app/shared/tests/get-text-content';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 import { createArrayOfLength } from '@dsh/app/shared/utils';
 
-import { InlineShowAllToggleModule } from '../../buttons/inline-show-all-toggle';
 import { ExpandableRadioGroupItemDirective } from './directives/expandable-radio-group-item/expandable-radio-group-item.directive';
 import { ExpandableRadioGroupComponent } from './expandable-radio-group.component';
+import { InlineShowAllToggleModule } from '../../buttons/inline-show-all-toggle';
 
 describe('ExpandableRadioGroupComponent', () => {
     let component: ExpandableRadioGroupComponent;

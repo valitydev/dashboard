@@ -1,6 +1,9 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { OnChanges, ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { MatLegacySlideToggle as MatSlideToggle, MatLegacySlideToggleChange as MatSlideToggleChange } from '@angular/material/legacy-slide-toggle';
+import {
+    MatLegacySlideToggle as MatSlideToggle,
+    MatLegacySlideToggleChange as MatSlideToggleChange,
+} from '@angular/material/legacy-slide-toggle';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 

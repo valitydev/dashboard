@@ -18,8 +18,8 @@ import { shareReplayRefCount } from '@dsh/operators';
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
-import { filterShopsByRealm } from '../../operators';
 import { AdditionalFilters, DialogFiltersComponent } from './additional-filters';
+import { filterShopsByRealm } from '../../operators';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 

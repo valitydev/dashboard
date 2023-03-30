@@ -8,12 +8,12 @@ import { filter, first, switchMap, switchMapTo } from 'rxjs/operators';
 
 import { QueryParamsService } from '@dsh/app/shared/services/query-params';
 
-import { RealmMixService, PaymentInstitutionRealmService, RealmShopsService } from '../services';
 import { CreatePayoutDialogComponent } from './create-payout/create-payout-dialog.component';
 import { FetchPayoutsService } from './fetch-payouts.service';
 import { PayoutsExpandedIdManager } from './payouts-expanded-id-manager.service';
 import { Filters } from './payouts-search-filters/payouts-search-filters.component';
 import { SearchParams } from './types/search-params';
+import { RealmMixService, PaymentInstitutionRealmService, RealmShopsService } from '../services';
 
 @UntilDestroy()
 @Component({

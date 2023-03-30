@@ -2,12 +2,12 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexModule, GridModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { MatLegacyCheckboxModule as MatCheckboxModule } from '@angular/material/legacy-checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatLegacyCheckboxModule as MatCheckboxModule } from '@angular/material/legacy-checkbox';
 import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
 import { MatLegacyRadioModule as MatRadioModule } from '@angular/material/legacy-radio';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { TranslocoModule } from '@ngneat/transloco';
 
 import { DialogModule } from '@dsh/app/shared/components/dialog';
@@ -21,12 +21,12 @@ import { ScrollUpModule } from '@dsh/components/navigation';
 import { NestedTableModule } from '@dsh/components/nested-table';
 import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
 
-import { ChangeRolesTableModule } from '../change-roles-table';
 import { CreateInvitationDialogComponent } from './components/create-invitation-dialog/create-invitation-dialog.component';
 import { InvitationComponent } from './components/invitation/invitation.component';
 import { InvitationsListComponent } from './components/invitations-list/invitations-list.component';
 import { InvitationsRoutingModule } from './invitations-routing.module';
 import { InvitationsComponent } from './invitations.component';
+import { ChangeRolesTableModule } from '../change-roles-table';
 
 @NgModule({
     imports: [

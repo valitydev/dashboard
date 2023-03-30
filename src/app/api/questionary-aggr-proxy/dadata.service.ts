@@ -3,8 +3,8 @@ import { DaDataService as ApiDaDataService, DaDataRequest } from '@vality/swag-q
 import { Observable } from 'rxjs';
 import { pluck } from 'rxjs/operators';
 
-import { createApi } from '../utils';
 import { ParamsByRequestType, ResponseByRequestType, SuggestionsByRequestType } from './utils';
+import { createApi } from '../utils';
 
 type RequestType = DaDataRequest.DaDataRequestTypeEnum;
 

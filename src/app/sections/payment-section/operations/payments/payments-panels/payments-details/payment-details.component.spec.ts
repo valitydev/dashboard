@@ -4,10 +4,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { Invoice, PaymentSearchResult } from '@vality/swag-anapi-v2';
 import { instance, mock, verify } from 'ts-mockito';
 
-import { generateMockPayment } from '../../tests/generate-mock-payment';
-import { PaymentIds } from '../../types/payment-ids';
 import { PaymentDetailsComponent } from './payment-details.component';
 import { InvoiceDetailsService } from './services/invoice-details/invoice-details.service';
+import { generateMockPayment } from '../../tests/generate-mock-payment';
+import { PaymentIds } from '../../types/payment-ids';
 
 @Component({
     selector: 'dsh-payment-main-info',

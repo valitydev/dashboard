@@ -5,9 +5,9 @@ import { filter, take } from 'rxjs/operators';
 
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 
-import { PaymentIds } from '../../../types';
 import { CreateRefundDialogResponse, CreateRefundDialogResponseStatus, CreateRefundService } from './create-refund';
 import { FetchRefundsService } from './services/fetch-refunds/fetch-refunds.service';
+import { PaymentIds } from '../../../types';
 
 @Component({
     selector: 'dsh-refunds',

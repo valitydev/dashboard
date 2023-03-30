@@ -7,11 +7,11 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
 
-import { DeleteWebhookModule } from '../delete-webhook';
-import { WebhookDetailsModule } from '../webhook-details';
 import { WebhookListComponent } from './webhook-list.component';
 import { WebhookRowComponent } from './webhook-row';
 import { WebhookRowHeaderComponent } from './webhook-row-header';
+import { DeleteWebhookModule } from '../delete-webhook';
+import { WebhookDetailsModule } from '../webhook-details';
 
 @NgModule({
     imports: [

@@ -2,8 +2,8 @@ import { Component, Input } from '@angular/core';
 import { MatLegacyFormFieldControl as MatFormFieldControl } from '@angular/material/legacy-form-field';
 import { TextMaskConfig } from 'angular2-text-mask';
 
-import { CustomFormControl } from '../utils';
 import { CONFIGS, Type } from './configs';
+import { CustomFormControl } from '../utils';
 
 @Component({
     selector: 'dsh-format-input',

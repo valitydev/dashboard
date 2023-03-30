@@ -6,9 +6,9 @@ import { AnalyticsService, AnapiDictionaryService } from '@dsh/api/anapi';
 import { shareReplayRefCount } from '@dsh/operators';
 import { errorTo, progressTo, distinctUntilChangedDeep, inProgressFrom, attach } from '@dsh/utils';
 
+import { paymentsToolDistributionToChartData } from './payments-tool-distribution-to-chart-data';
 import { SearchParams } from '../search-params';
 import { searchParamsToDistributionSearchParams } from '../utils';
-import { paymentsToolDistributionToChartData } from './payments-tool-distribution-to-chart-data';
 
 @Injectable()
 export class PaymentsToolDistributionService {

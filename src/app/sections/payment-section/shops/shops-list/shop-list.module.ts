@@ -9,8 +9,8 @@ import { LastUpdatedModule } from '@dsh/components/indicators/last-updated/last-
 import { AccordionModule, CardModule, RowModule } from '@dsh/components/layout';
 import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
 
-import { ShopRowHeaderComponent } from './components/shop-row-header/shop-row-header.component';
 import { ShopRowComponent } from './components/shop-row/shop-row.component';
+import { ShopRowHeaderComponent } from './components/shop-row-header/shop-row-header.component';
 import { ShopBalanceModule } from './shop-balance';
 import { ShopDetailsModule } from './shop-details';
 import { ShopsListComponent } from './shops-list.component';

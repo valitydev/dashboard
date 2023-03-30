@@ -6,8 +6,8 @@ import * as Sentry from '@sentry/angular';
 import { ErrorResult } from '@dsh/app/shared/services/error/models/error-result';
 import { extractError } from '@dsh/utils';
 
-import { NotificationService } from '../notification';
 import { CommonError } from './models/common-error';
+import { NotificationService } from '../notification';
 
 @Injectable()
 export class ErrorService {

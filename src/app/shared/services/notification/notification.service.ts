@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { MatLegacySnackBar as MatSnackBar, MatLegacySnackBarConfig as MatSnackBarConfig, MatLegacySnackBarRef as MatSnackBarRef, LegacySimpleSnackBar as SimpleSnackBar } from '@angular/material/legacy-snack-bar';
+import {
+    MatLegacySnackBar as MatSnackBar,
+    MatLegacySnackBarConfig as MatSnackBarConfig,
+    MatLegacySnackBarRef as MatSnackBarRef,
+    LegacySimpleSnackBar as SimpleSnackBar,
+} from '@angular/material/legacy-snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 
 const DEFAULT_DURATION_MS = 3000;

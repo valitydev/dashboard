@@ -1,8 +1,8 @@
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
 import { MatLegacySnackBarModule as MatSnackBarModule } from '@angular/material/legacy-snack-bar';
 import { TranslocoTestingModule } from '@ngneat/transloco';
 import { of } from 'rxjs';
@@ -15,9 +15,6 @@ import { ShopContractDetailsService } from '@dsh/app/shared/services/shop-contra
 import { ButtonModule } from '@dsh/components/buttons';
 import { DetailsItemModule } from '@dsh/components/layout';
 
-import { ShopPayoutToolDetailsService } from '../../services/shop-payout-tool-details/shop-payout-tool-details.service';
-import { generateMockShopItem } from '../../tests/generate-shop-item';
-import { ShopBalanceModule } from '../shop-balance';
 import { ShopActionsComponent } from './components/shop-actions/shop-actions.component';
 import { ShopContractDetailsComponent } from './components/shop-contract-details/shop-contract-details.component';
 import { ShopIdComponent } from './components/shop-id/shop-id.component';
@@ -27,6 +24,9 @@ import { CategoryService } from './services/category/category.service';
 import { ShopActionsService } from './services/shop-actions/shop-actions.service';
 import { ShopDetailsComponent } from './shop-details.component';
 import { ShopActionResult } from './types/shop-action-result';
+import { ShopPayoutToolDetailsService } from '../../services/shop-payout-tool-details/shop-payout-tool-details.service';
+import { generateMockShopItem } from '../../tests/generate-shop-item';
+import { ShopBalanceModule } from '../shop-balance';
 
 describe('ShopDetailsComponent', () => {
     let component: ShopDetailsComponent;

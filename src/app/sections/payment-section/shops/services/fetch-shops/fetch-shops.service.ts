@@ -7,14 +7,14 @@ import { map, mapTo, pluck, scan, shareReplay, switchMap, tap, withLatestFrom } 
 import { ShopsDataService } from '@dsh/app/shared';
 import { mapToTimestamp, shareReplayRefCount } from '@dsh/operators';
 
+import { combineShopItem } from './combine-shop-item';
 import { filterShopsByRealm } from '../../../operations/operators';
 import { ShopBalance } from '../../types/shop-balance';
 import { ShopFiltersData } from '../../types/shop-filters-data';
 import { ShopItem } from '../../types/shop-item';
 import { ShopsBalanceService } from '../shops-balance/shops-balance.service';
-import { ShopsFiltersStoreService } from '../shops-filters-store/shops-filters-store.service';
 import { ShopsFiltersService } from '../shops-filters/shops-filters.service';
-import { combineShopItem } from './combine-shop-item';
+import { ShopsFiltersStoreService } from '../shops-filters-store/shops-filters-store.service';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 

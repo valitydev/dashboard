@@ -2,9 +2,9 @@ import { Component, Inject, Input, OnChanges, SimpleChanges } from '@angular/cor
 
 import { SpinnerType } from '@dsh/components/indicators';
 
+import { PaymentSplitAmountService } from './payment-split-amount.service';
 import { ChartsThemeProvider, CHARTS_THEME } from '../charts-theme';
 import { SearchParams } from '../search-params';
-import { PaymentSplitAmountService } from './payment-split-amount.service';
 
 @Component({
     selector: 'dsh-payment-split-amount',

@@ -10,9 +10,9 @@ import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 import { PaymentInstitutionRealm } from '@dsh/api/model';
 import { ApiShopsService } from '@dsh/api/shop';
 
-import { generateMockInvoice } from '../tests/generate-mock-invoice';
 import { CreateInvoiceDialogComponent } from './components/create-invoice-dialog/create-invoice-dialog.component';
 import { CreateInvoiceService } from './create-invoice.service';
+import { generateMockInvoice } from '../tests/generate-mock-invoice';
 
 describe('CreateInvoiceService', () => {
     let service: CreateInvoiceService;

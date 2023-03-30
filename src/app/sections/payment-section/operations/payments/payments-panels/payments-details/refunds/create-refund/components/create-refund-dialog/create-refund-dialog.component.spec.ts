@@ -3,7 +3,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatLegacyCheckboxModule as MatCheckboxModule } from '@angular/material/legacy-checkbox';
-import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
+import {
+    MatLegacyDialogRef as MatDialogRef,
+    MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA,
+} from '@angular/material/legacy-dialog';
 import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
 import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,12 +23,12 @@ import { CommonError, ErrorService, NotificationService } from '@dsh/app/shared/
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 import { ButtonModule } from '@dsh/components/buttons';
 
+import { CreateRefundDialogComponent } from './create-refund-dialog.component';
 import { AccountsService } from '../../services/accounts/accounts.service';
 import { RefundsService } from '../../services/refunds/refunds.service';
 import { CreateRefundDialogData } from '../../types/create-refund-dialog-data';
 import { CreateRefundDialogResponse } from '../../types/create-refund-dialog-response';
 import { CreateRefundDialogResponseStatus } from '../../types/create-refund-dialog-response-status';
-import { CreateRefundDialogComponent } from './create-refund-dialog.component';
 
 describe('CreateRefundDialogComponent', () => {
     let fixture: ComponentFixture<CreateRefundDialogComponent>;

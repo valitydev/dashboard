@@ -2,8 +2,8 @@ import { Component, Input } from '@angular/core';
 
 import { SpinnerType } from '@dsh/components/indicators';
 
-import { SearchParams } from '../search-params';
 import { PaymentsAmountService } from './payments-amount.service';
+import { SearchParams } from '../search-params';
 
 @Component({
     selector: 'dsh-payments-amount',

@@ -13,7 +13,7 @@ export function getValue<T extends AbstractControl>(control: T): T['value'] {
     if (Array.isArray(control.controls)) {
         const result: ControlsValue<T>[] = [];
         for (const v of control.controls) {
-            result.push(getValue(v as any));
+            result.push(getValue(v));
         }
         return result;
     }

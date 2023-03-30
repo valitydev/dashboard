@@ -8,10 +8,10 @@ import { ApiModelRefsModule, ApiModelTypesModule, AmountCurrencyModule } from '@
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
 
-import { PayoutsDetailsModule } from '../payouts-details';
 import { PayoutRowComponent } from './payout-row';
 import { PayoutRowHeaderComponent } from './payout-row-header';
 import { PayoutsListComponent } from './payouts-list.component';
+import { PayoutsDetailsModule } from '../payouts-details';
 
 @NgModule({
     imports: [

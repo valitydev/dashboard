@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { ToolbarModule } from '../toolbar';
 import { LaptopGridComponent } from './laptop-grid.component';
+import { ToolbarModule } from '../toolbar';
 
 @NgModule({
     imports: [CommonModule, ToolbarModule, FlexLayoutModule],

@@ -12,8 +12,8 @@ import {
 import { combineLatest, merge, of } from 'rxjs';
 import { delay, distinctUntilChanged, filter, map, startWith, switchMap, take } from 'rxjs/operators';
 
-import { coerce, smoothChangeTo } from '../../../utils';
 import { AccordionItemComponent } from './accordion-item';
+import { coerce, smoothChangeTo } from '../../../utils';
 
 const INIT_DELAY_MS = 350;
 const SCROLL_TO_Y_OFFSET_PX = 80;

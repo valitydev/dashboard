@@ -7,8 +7,8 @@ import { instance, mock, when } from 'ts-mockito';
 
 import { PaymentService } from '@dsh/api/payment';
 
-import { generateMockPaymentList } from '../../../../tests/generate-mock-payment-list';
 import { ReceivePaymentsService } from './receive-payments.service';
+import { generateMockPaymentList } from '../../../../tests/generate-mock-payment-list';
 
 describe('ReceivePaymentsService', () => {
     let service: ReceivePaymentsService;

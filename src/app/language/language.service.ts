@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import * as moment from 'moment';
 
-import { SettingsService } from '../settings';
 import { ANGULAR_LOCALE_DATA } from './angular-locale-data';
 import { LANGUAGES, Language } from './languages';
+import { SettingsService } from '../settings';
 
 @Injectable({ providedIn: 'root' })
 export class LanguageService {

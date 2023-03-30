@@ -22,15 +22,15 @@ import { ButtonModule } from '@dsh/components/buttons';
 import { FormatInputModule } from '@dsh/components/form-controls';
 import { DetailsItemModule } from '@dsh/components/layout';
 
-import { DaDataModule } from '../../../../dadata';
-import { ShopPayoutToolDetailsService } from '../../../../sections/payment-section/shops/services/shop-payout-tool-details/shop-payout-tool-details.service';
-import { CurrencyAutocompleteFieldModule } from '../../inputs/currency-autocomplete-field';
 import { NewContractorFormComponent } from './components/new-contractor-form/new-contractor-form.component';
 import { OrgDetailsFormComponent } from './components/org-details-form/org-details-form.component';
 import { RussianBankAccountFormComponent } from './components/russian-bank-account-form/russian-bank-account-form.component';
 import { ShopFormComponent } from './components/shop-form/shop-form.component';
 import { CreateRussianShopEntityComponent } from './create-russian-shop-entity.component';
 import { CreateRussianShopEntityService } from './services/create-russian-shop-entity/create-russian-shop-entity.service';
+import { DaDataModule } from '../../../../dadata';
+import { ShopPayoutToolDetailsService } from '../../../../sections/payment-section/shops/services/shop-payout-tool-details/shop-payout-tool-details.service';
+import { CurrencyAutocompleteFieldModule } from '../../inputs/currency-autocomplete-field';
 
 @NgModule({
     imports: [

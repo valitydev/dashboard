@@ -9,10 +9,10 @@ import { of } from 'rxjs';
 
 import { ShopsDataService } from '@dsh/app/shared';
 
+import { ShopActionsComponent } from './shop-actions.component';
 import { generateMockShopItem } from '../../../../tests/generate-shop-item';
 import { ShopActionsService } from '../../services/shop-actions/shop-actions.service';
 import { ShopActionResult } from '../../types/shop-action-result';
-import { ShopActionsComponent } from './shop-actions.component';
 
 class MockShopsService {}
 

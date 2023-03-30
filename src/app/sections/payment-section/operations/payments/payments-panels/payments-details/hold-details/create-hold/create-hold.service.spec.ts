@@ -2,10 +2,10 @@ import { TestBed } from '@angular/core/testing';
 import { MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 
-import { CancelHoldDialogComponent } from '../cancel-hold/components/cancel-hold-dialog/cancel-hold-dialog.component';
 import { CreateHoldDialogComponent } from './components/create-hold-dialog/create-hold-dialog.component';
 import { CreateHoldService } from './create-hold.service';
 import { CreateHoldDialogData } from './types/create-hold-dialog-data';
+import { CancelHoldDialogComponent } from '../cancel-hold/components/cancel-hold-dialog/cancel-hold-dialog.component';
 
 describe('CreateHoldService', () => {
     let service: CreateHoldService;

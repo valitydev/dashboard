@@ -4,9 +4,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { getTextContent } from '@dsh/app/shared/tests/get-text-content';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 
+import { PaymentFeeComponent } from './payment-fee.component';
 import { generateMockPayment } from '../../../../../tests/generate-mock-payment';
 import { MockDetailsItemModule } from '../../../../../tests/mock-details-item-component';
-import { PaymentFeeComponent } from './payment-fee.component';
 
 describe('PaymentFeeComponent', () => {
     let component: PaymentFeeComponent;

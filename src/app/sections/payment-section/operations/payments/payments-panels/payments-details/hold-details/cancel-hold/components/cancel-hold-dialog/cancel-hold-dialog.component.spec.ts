@@ -1,7 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FlexModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatLegacyDialogRef as MatDialogRef, MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
+import {
+    MatLegacyDialogRef as MatDialogRef,
+    MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA,
+} from '@angular/material/legacy-dialog';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { cold, getTestScheduler, hot } from 'jasmine-marbles';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
@@ -12,8 +15,8 @@ import { MaxLengthInputModule } from '@dsh/app/shared/components/inputs/max-leng
 import { ErrorService } from '@dsh/app/shared/services';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 
-import { CancelHoldDialogData } from '../../types/cancel-hold-dialog-data';
 import { CancelHoldDialogComponent } from './cancel-hold-dialog.component';
+import { CancelHoldDialogData } from '../../types/cancel-hold-dialog-data';
 
 describe('CancelHoldDialogComponent', () => {
     let component: CancelHoldDialogComponent;

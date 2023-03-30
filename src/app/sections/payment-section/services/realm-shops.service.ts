@@ -6,8 +6,8 @@ import { map } from 'rxjs/operators';
 import { ShopsDataService } from '@dsh/app/shared';
 import { shareReplayRefCount } from '@dsh/operators';
 
-import { getShopsByRealm } from '../operations/operators';
 import { PaymentInstitutionRealmService } from './payment-institution-realm.service';
+import { getShopsByRealm } from '../operations/operators';
 
 @Injectable()
 export class RealmShopsService {

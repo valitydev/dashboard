@@ -7,8 +7,8 @@ import { TranslocoModule } from '@ngneat/transloco';
 
 import { FormatInputModule } from '@dsh/components/form-controls';
 
-import { CardBinPanFilterModule } from '../../card-bin-pan-filter';
 import { CardFilterComponent } from './card-filter.component';
+import { CardBinPanFilterModule } from '../../card-bin-pan-filter';
 
 @NgModule({
     imports: [
