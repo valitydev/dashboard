@@ -6,11 +6,11 @@ import { TranslocoModule } from '@ngneat/transloco';
 
 import { LayoutModule } from '@dsh/components/layout';
 
-import { BankAccountDetailsModule } from '../bank-account-details';
 import { ContractorDetailsComponent } from './contractor-details.component';
 import { InternationalLegalEntityComponent } from './international-legal-entity';
 import { LegalEntityComponent } from './legal-entity';
 import { RussianLegalEntityComponent } from './russian-legal-entity';
+import { BankAccountDetailsModule } from '../bank-account-details';
 
 @NgModule({
     imports: [

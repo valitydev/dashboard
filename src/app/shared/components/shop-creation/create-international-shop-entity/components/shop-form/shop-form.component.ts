@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 
 import { createTypeUnionDefaultForm } from '@dsh/app/shared/components/shop-creation/created-existing-switch/created-existing-switch.component';
@@ -10,7 +10,7 @@ import { InternationalShopEntityFormValue } from '../../types/international-shop
     selector: 'dsh-shop-form',
     templateUrl: 'shop-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createControlProviders(ShopFormComponent),
+    providers: createControlProviders(() => ShopFormComponent),
 })
 export class ShopFormComponent extends ValidatedControlSuperclass<InternationalShopEntityFormValue> {
     control = this.fb.group<InternationalShopEntityFormValue>({
@@ -20,7 +20,7 @@ export class ShopFormComponent extends ValidatedControlSuperclass<InternationalS
         bankAccount: createTypeUnionDefaultForm(),
     });
 
-    constructor(injector: Injector, private fb: FormBuilder) {
-        super(injector);
+    constructor(private fb: FormBuilder) {
+        super();
     }
 }

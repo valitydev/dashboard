@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatLegacyTabsModule as MatTabsModule } from '@angular/material/legacy-tabs';
 import { RouterModule } from '@angular/router';
 
 import { SectionsLinksModule } from '@dsh/app/shared/services/sections-links';
 
+import { ToolbarComponent } from './toolbar.component';
 import { ActionbarModule } from '../actionbar';
 import { BrandModule } from '../brand';
-import { ToolbarComponent } from './toolbar.component';
 
 @NgModule({
     imports: [

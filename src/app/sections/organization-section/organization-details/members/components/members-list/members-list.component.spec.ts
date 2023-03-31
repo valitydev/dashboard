@@ -4,8 +4,8 @@ import { By } from '@angular/platform-browser';
 
 import { provideMockService } from '@dsh/app/shared/tests';
 
-import { MembersExpandedIdManager } from '../../services/members-expanded-id-manager/members-expanded-id-manager.service';
 import { MembersListComponent } from './members-list.component';
+import { MembersExpandedIdManager } from '../../services/members-expanded-id-manager/members-expanded-id-manager.service';
 
 @Component({
     selector: 'dsh-host',

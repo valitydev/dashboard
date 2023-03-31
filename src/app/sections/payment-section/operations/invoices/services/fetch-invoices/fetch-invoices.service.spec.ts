@@ -9,8 +9,8 @@ import { PaymentInstitutionRealm } from '@dsh/api/model';
 import { InvoiceSearchService } from '@dsh/api/search';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 
-import { generateMockInvoiceList } from '../../tests/generate-mock-invoice-list';
 import { FetchInvoicesService } from './fetch-invoices.service';
+import { generateMockInvoiceList } from '../../tests/generate-mock-invoice-list';
 
 describe('FetchInvoicesService', () => {
     let service: FetchInvoicesService;

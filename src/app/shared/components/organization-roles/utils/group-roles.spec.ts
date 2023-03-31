@@ -3,8 +3,8 @@ import { ResourceScopeId, RoleId } from '@vality/swag-organizations';
 import { MOCK_MEMBER } from '@dsh/api/organizations/tests/mock-member';
 import { MOCK_MEMBER_ROLE } from '@dsh/api/organizations/tests/mock-member-role';
 
-import { RoleGroup } from '../types/role-group';
 import { groupRoles } from './group-roles';
+import { RoleGroup } from '../types/role-group';
 
 describe('getRolesByGroup', () => {
     const expected: RoleGroup[] = [

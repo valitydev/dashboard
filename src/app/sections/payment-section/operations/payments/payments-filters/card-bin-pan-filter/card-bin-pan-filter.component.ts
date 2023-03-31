@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { provideValueAccessor } from '@s-libs/ng-core';
 
 import { FilterSuperclass } from '@dsh/components/filter';
 import { binValidator, lastDigitsValidator } from '@dsh/components/form-controls';
+import { provideValueAccessor } from '@dsh/utils';
 
 import { CardBinPan } from './types/card-bin-pan';
 
@@ -14,7 +14,7 @@ import { CardBinPan } from './types/card-bin-pan';
     templateUrl: './card-bin-pan-filter.component.html',
     styleUrls: ['./card-bin-pan-filter.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideValueAccessor(CardBinPanFilterComponent)],
+    providers: [provideValueAccessor(() => CardBinPanFilterComponent)],
 })
 export class CardBinPanFilterComponent extends FilterSuperclass<CardBinPan> {
     control = this.fb.group<CardBinPan>({

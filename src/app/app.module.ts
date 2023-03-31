@@ -2,14 +2,14 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { APP_INITIALIZER, ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core';
+import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
+import { MAT_LEGACY_FORM_FIELD_DEFAULT_OPTIONS as MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/legacy-form-field';
 import {
     MAT_MOMENT_DATE_ADAPTER_OPTIONS,
     MAT_MOMENT_DATE_FORMATS,
     MomentDateAdapter,
 } from '@angular/material-moment-adapter';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
@@ -27,7 +27,6 @@ import { QUERY_PARAMS_SERIALIZERS } from '@dsh/app/shared/services/query-params/
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
 import { SpinnerModule } from '@dsh/components/indicators';
 
-import { ENV, environment } from '../environments';
 import { OrganizationsModule } from './api/organizations';
 import { AppComponent } from './app.component';
 import { AuthModule, KeycloakAngularModule, KeycloakService } from './auth';
@@ -41,6 +40,7 @@ import { SentryErrorHandler } from './sentry-error-handler.service';
 import { SentryHttpInterceptor } from './sentry-http-interceptor';
 import { ThemeManager } from './theme-manager';
 import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
+import { ENV, environment } from '../environments';
 
 @NgModule({
     declarations: [AppComponent],

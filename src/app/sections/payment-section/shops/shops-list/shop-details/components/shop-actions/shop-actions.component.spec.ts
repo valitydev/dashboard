@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
+import { MatLegacySnackBarModule as MatSnackBarModule } from '@angular/material/legacy-snack-bar';
 import { TranslocoTestingModule } from '@ngneat/transloco';
 import { Shop } from '@vality/swag-payments';
 import cloneDeep from 'lodash-es/cloneDeep';
@@ -9,10 +9,10 @@ import { of } from 'rxjs';
 
 import { ShopsDataService } from '@dsh/app/shared';
 
+import { ShopActionsComponent } from './shop-actions.component';
 import { generateMockShopItem } from '../../../../tests/generate-shop-item';
 import { ShopActionsService } from '../../services/shop-actions/shop-actions.service';
 import { ShopActionResult } from '../../types/shop-action-result';
-import { ShopActionsComponent } from './shop-actions.component';
 
 class MockShopsService {}
 

@@ -1,15 +1,18 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import {
+    MatLegacyDialogRef as MatDialogRef,
+    MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA,
+} from '@angular/material/legacy-dialog';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import moment from 'moment';
 import { of } from 'rxjs';
 
 import { ShopsDataService } from '@dsh/app/shared';
 
-import { filterShopsByRealm, mapToShopInfo } from '../../operations/operators';
 import { CreateReportDialogService } from './create-report-dialog.service';
+import { filterShopsByRealm, mapToShopInfo } from '../../operations/operators';
 
 const TIME_PATTERN = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
 

@@ -1,4 +1,4 @@
-import { Component, Injector } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { PartyContent, ReqResponse, OrgType } from '@vality/swag-questionary-aggr-proxy';
@@ -30,7 +30,7 @@ export interface NewContractorForm {
 @Component({
     selector: 'dsh-new-contractor-form',
     templateUrl: 'new-contractor-form.component.html',
-    providers: createControlProviders(NewContractorFormComponent),
+    providers: createControlProviders(() => NewContractorFormComponent),
 })
 export class NewContractorFormComponent extends ValidatedControlSuperclass<NewContractorForm> {
     control = this.fb.group<NewContractorForm>({
@@ -45,8 +45,8 @@ export class NewContractorFormComponent extends ValidatedControlSuperclass<NewCo
     });
     searchControl = new FormControl<string>('');
 
-    constructor(injector: Injector, private fb: FormBuilder, private konturFocusService: KonturFocusService) {
-        super(injector);
+    constructor(private fb: FormBuilder, private konturFocusService: KonturFocusService) {
+        super();
     }
 
     updateSuggestion(dadata: PartyContent): void {

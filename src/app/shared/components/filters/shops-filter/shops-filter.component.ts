@@ -1,17 +1,17 @@
 import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
-import { provideValueAccessor } from '@s-libs/ng-core';
 import { Shop } from '@vality/swag-payments';
 import { combineLatest } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 
 import { ShopsDataService } from '@dsh/app/shared';
 import { FilterSuperclass } from '@dsh/components/filter';
+import { provideValueAccessor } from '@dsh/utils';
 
 @Component({
     selector: 'dsh-shops-filter',
     templateUrl: 'shops-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideValueAccessor(ShopsFilterComponent)],
+    providers: [provideValueAccessor(() => ShopsFilterComponent)],
 })
 export class ShopsFilterComponent extends FilterSuperclass<Shop['id'][]> {
     @Input() shops: Shop[];

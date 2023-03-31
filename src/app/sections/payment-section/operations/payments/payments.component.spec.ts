@@ -14,11 +14,11 @@ import { provideMockService } from '@dsh/app/shared/tests';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 import { LastUpdatedModule } from '@dsh/components/indicators/last-updated/last-updated.module';
 
-import { PaymentInstitutionRealmService, RealmMixService } from '../../services';
 import { PaymentsComponent } from './payments.component';
 import { FetchPaymentsService } from './services/fetch-payments/fetch-payments.service';
 import { PaymentsExpandedIdManager } from './services/payments-expanded-id-manager/payments-expanded-id-manager.service';
 import { generateMockPayment } from './tests/generate-mock-payment';
+import { PaymentInstitutionRealmService, RealmMixService } from '../../services';
 
 @Component({
     selector: 'dsh-payments-filters',

@@ -8,12 +8,12 @@ import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 import { ButtonModule } from '@dsh/components/buttons';
 
-import { HumanizeDurationModule } from '../../../../../../../humanize-duration';
-import { generateMockPayment } from '../../../tests/generate-mock-payment';
 import { CancelHoldService } from './cancel-hold';
 import { CreateHoldService } from './create-hold';
 import { HoldDetailsComponent } from './hold-details.component';
 import { HoldActivePipe } from './pipes/hold-active/hold-active.pipe';
+import { HumanizeDurationModule } from '../../../../../../../humanize-duration';
+import { generateMockPayment } from '../../../tests/generate-mock-payment';
 
 describe('HoldComponent', () => {
     let component: HoldDetailsComponent;

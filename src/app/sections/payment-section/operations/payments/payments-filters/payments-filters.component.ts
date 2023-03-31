@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Shop, PaymentInstitution } from '@vality/swag-payments';
@@ -17,10 +17,10 @@ import { DateRange, Preset, createDateRangeWithPreset } from '@dsh/components/da
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
-import { filterShopsByRealm } from '../../operators';
 import { AdditionalFilters, FloatingFilters } from './additional-filters';
 import { DialogFiltersComponent } from './additional-filters/components/dialog-filters/dialog-filters.component';
 import { CardBinPan } from './card-bin-pan-filter';
+import { filterShopsByRealm } from '../../operators';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 

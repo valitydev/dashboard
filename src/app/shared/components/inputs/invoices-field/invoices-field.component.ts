@@ -1,13 +1,11 @@
-import { Component, Injector } from '@angular/core';
-import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { Component } from '@angular/core';
+import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
+
+import { provideValueAccessor } from '@dsh/utils';
 
 @Component({
     selector: 'dsh-invoices-field',
     templateUrl: 'invoices-field.component.html',
-    providers: [provideValueAccessor(InvoicesFieldComponent)],
+    providers: [provideValueAccessor(() => InvoicesFieldComponent)],
 })
-export class InvoicesFieldComponent extends WrappedFormControlSuperclass<string[]> {
-    constructor(injector: Injector) {
-        super(injector);
-    }
-}
+export class InvoicesFieldComponent extends WrappedFormControlSuperclass<string[]> {}

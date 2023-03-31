@@ -3,9 +3,9 @@ import moment from 'moment';
 
 import { Serializer } from '@dsh/app/shared/services/query-params/types/serializer';
 
+import { createDateRangeWithPreset } from './create-date-range-with-preset';
 import { DateRangeWithPreset } from '../types/date-range-with-preset';
 import { Preset } from '../types/preset';
-import { createDateRangeWithPreset } from './create-date-range-with-preset';
 
 export function createDateRangeWithPresetSerializer(id = 'dr'): Serializer<DateRangeWithPreset> {
     return {

@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
-import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { InvoiceStatus } from '@vality/swag-anapi-v2';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Option } from '@dsh/components/form-controls/radio-group-field';
+import { provideValueAccessor } from '@dsh/utils';
 
 import { InvoiceStatusLabelPipe } from './pipes/invoce-status-label.pipe';
 import { OPTION_LABELS } from './types/option-labels';
@@ -14,7 +15,7 @@ import StatusEnum = InvoiceStatus.StatusEnum;
 @Component({
     selector: 'dsh-invoice-status-field',
     templateUrl: 'invoice-status-field.component.html',
-    providers: [provideValueAccessor(InvoiceStatusFieldComponent), InvoiceStatusLabelPipe],
+    providers: [provideValueAccessor(() => InvoiceStatusFieldComponent), InvoiceStatusLabelPipe],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InvoiceStatusFieldComponent extends WrappedFormControlSuperclass<StatusEnum> {
@@ -24,7 +25,7 @@ export class InvoiceStatusFieldComponent extends WrappedFormControlSuperclass<St
         )
     );
 
-    constructor(injector: Injector, private invoiceStatusLabelPipe: InvoiceStatusLabelPipe) {
-        super(injector);
+    constructor(private invoiceStatusLabelPipe: InvoiceStatusLabelPipe) {
+        super();
     }
 }

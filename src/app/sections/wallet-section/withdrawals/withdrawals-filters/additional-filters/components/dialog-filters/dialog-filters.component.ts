@@ -1,5 +1,8 @@
-import { ChangeDetectionStrategy, Component, Inject, Injector, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import {
+    MatLegacyDialogRef as MatDialogRef,
+    MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA,
+} from '@angular/material/legacy-dialog';
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { ListWithdrawalsRequestParams } from '@vality/swag-wallet/lib/api/withdrawals.service';
 
@@ -24,12 +27,11 @@ export class DialogFiltersComponent
     });
 
     constructor(
-        injector: Injector,
         @Inject(MAT_DIALOG_DATA) private data: AdditionalFilters,
         private dialogRef: MatDialogRef<DialogFiltersComponent, AdditionalFiltersForm>,
         private fb: FormBuilder
     ) {
-        super(injector);
+        super();
     }
 
     ngOnInit() {

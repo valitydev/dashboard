@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Subject } from 'rxjs';
@@ -8,11 +8,11 @@ import { filter, first, switchMap, switchMapTo } from 'rxjs/operators';
 
 import { QueryParamsService } from '@dsh/app/shared/services/query-params';
 
-import { RealmMixService, PaymentInstitutionRealmService } from '../services';
 import { CreateReportDialogComponent } from './create-report/create-report-dialog.component';
 import { FetchReportsService } from './fetch-reports.service';
 import { ReportsExpandedIdManager } from './reports-expanded-id-manager.service';
 import { Filters, SearchFiltersParams } from './reports-search-filters';
+import { RealmMixService, PaymentInstitutionRealmService } from '../services';
 
 @UntilDestroy()
 @Component({

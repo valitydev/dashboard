@@ -1,5 +1,5 @@
-import { DistributionChartData } from '../utils';
 import { ErrorDistribution } from './error-distribution';
+import { DistributionChartData } from '../utils';
 
 const errorsToSeries = (errors: ErrorDistribution[]): number[] => {
     const sum = errors.reduce((acc, curr) => acc + curr.percents, 0);

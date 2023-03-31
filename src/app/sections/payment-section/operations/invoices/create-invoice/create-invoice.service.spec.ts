@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { TranslocoService, TranslocoTestingModule } from '@ngneat/transloco';
 import { Shop } from '@vality/swag-payments';
 import { cold } from 'jasmine-marbles';
@@ -10,9 +10,9 @@ import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 import { PaymentInstitutionRealm } from '@dsh/api/model';
 import { ApiShopsService } from '@dsh/api/shop';
 
-import { generateMockInvoice } from '../tests/generate-mock-invoice';
 import { CreateInvoiceDialogComponent } from './components/create-invoice-dialog/create-invoice-dialog.component';
 import { CreateInvoiceService } from './create-invoice.service';
+import { generateMockInvoice } from '../tests/generate-mock-invoice';
 
 describe('CreateInvoiceService', () => {
     let service: CreateInvoiceService;

@@ -1,11 +1,12 @@
-import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
-import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { WithdrawalStatus } from '@vality/swag-wallet';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { WalletDictionaryService } from '@dsh/api/wallet';
 import { Option } from '@dsh/components/form-controls/radio-group-field';
+import { provideValueAccessor } from '@dsh/utils';
 
 import StatusEnum = WithdrawalStatus.StatusEnum;
 
@@ -13,7 +14,7 @@ import StatusEnum = WithdrawalStatus.StatusEnum;
     selector: 'dsh-withdrawal-status-filter',
     templateUrl: './withdrawal-status-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideValueAccessor(WithdrawalStatusFilterComponent)],
+    providers: [provideValueAccessor(() => WithdrawalStatusFilterComponent)],
 })
 export class WithdrawalStatusFilterComponent extends WrappedFormControlSuperclass<StatusEnum> {
     options$: Observable<Option<string>[]> = this.walletDictionaryService.withdrawalStatus$.pipe(
@@ -23,7 +24,7 @@ export class WithdrawalStatusFilterComponent extends WrappedFormControlSuperclas
     statuses = Object.values(WithdrawalStatus.StatusEnum);
     withdrawalStatusDict$ = this.walletDictionaryService.withdrawalStatus$;
 
-    constructor(injector: Injector, private walletDictionaryService: WalletDictionaryService) {
-        super(injector);
+    constructor(private walletDictionaryService: WalletDictionaryService) {
+        super();
     }
 }

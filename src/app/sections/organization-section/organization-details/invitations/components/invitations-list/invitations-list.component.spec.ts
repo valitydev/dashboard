@@ -4,8 +4,8 @@ import { By } from '@angular/platform-browser';
 
 import { provideMockService } from '@dsh/app/shared/tests';
 
-import { InvitationsExpandedIdManager } from '../../services/invitations-expanded-id-manager/invitations-expanded-id-manager.service';
 import { InvitationsListComponent } from './invitations-list.component';
+import { InvitationsExpandedIdManager } from '../../services/invitations-expanded-id-manager/invitations-expanded-id-manager.service';
 
 @Component({
     selector: 'dsh-host',

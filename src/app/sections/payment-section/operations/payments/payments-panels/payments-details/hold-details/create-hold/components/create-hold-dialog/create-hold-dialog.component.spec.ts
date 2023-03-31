@@ -1,9 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatLegacyCheckboxModule as MatCheckboxModule } from '@angular/material/legacy-checkbox';
+import {
+    MatLegacyDialogRef as MatDialogRef,
+    MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA,
+} from '@angular/material/legacy-dialog';
+import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormControl } from '@ngneat/reactive-forms';
 import { cold, getTestScheduler, hot } from 'jasmine-marbles';
@@ -16,8 +19,8 @@ import { ErrorService } from '@dsh/app/shared/services';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 import { FormatInputModule } from '@dsh/components/form-controls';
 
-import { CreateHoldDialogData } from '../../types/create-hold-dialog-data';
 import { CreateHoldDialogComponent } from './create-hold-dialog.component';
+import { CreateHoldDialogData } from '../../types/create-hold-dialog-data';
 
 describe('CreateHoldDialogComponent', () => {
     let component: CreateHoldDialogComponent;

@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, Injector, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { InvoiceLineTaxVAT } from '@vality/swag-anapi-v2';
 import { Shop } from '@vality/swag-payments';
 import isEqual from 'lodash-es/isEqual';
@@ -12,7 +12,14 @@ import { distinctUntilChanged, map, startWith } from 'rxjs/operators';
 import { Overwrite } from 'utility-types';
 
 import { shareReplayUntilDestroyed } from '@dsh/operators';
-import { replaceFormArrayValue, getFormValueChanges, toMinor, getFormValidationChanges, toMajor } from '@dsh/utils';
+import {
+    provideValueAccessor,
+    replaceFormArrayValue,
+    getFormValueChanges,
+    toMinor,
+    getFormValidationChanges,
+    toMajor,
+} from '@dsh/utils';
 
 export const WITHOUT_VAT = Symbol('without VAT');
 export const EMPTY_CART_ITEM: CartItem = { product: '', quantity: null, price: null, taxVatRate: WITHOUT_VAT };
@@ -45,7 +52,7 @@ export interface FormData {
     templateUrl: 'create-invoice-form.component.html',
     styleUrls: ['create-invoice-form.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideValueAccessor(CreateInvoiceFormComponent)],
+    providers: [provideValueAccessor(() => CreateInvoiceFormComponent)],
 })
 export class CreateInvoiceFormComponent extends WrappedFormControlSuperclass<FormData> implements OnInit {
     @Input() shops: Shop[];
@@ -72,8 +79,8 @@ export class CreateInvoiceFormComponent extends WrappedFormControlSuperclass<For
         return moment().add('2', 'day').startOf('day');
     }
 
-    constructor(private fb: FormBuilder, injector: Injector) {
-        super(injector);
+    constructor(private fb: FormBuilder) {
+        super();
     }
 
     ngOnInit(): void {

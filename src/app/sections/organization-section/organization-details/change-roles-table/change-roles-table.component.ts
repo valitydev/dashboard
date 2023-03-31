@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { MemberRole, ResourceScopeId, RoleId } from '@vality/swag-organizations';
 import isNil from 'lodash-es/isNil';
@@ -13,11 +13,11 @@ import { sortRoleIds } from '@dsh/app/shared/components/organization-roles/utils
 import { PartialReadonly } from '@dsh/type-utils';
 import { coerceBoolean } from '@dsh/utils';
 
-import { addDialogsClass } from '../../../../../utils/add-dialogs-class';
-import { equalRoles } from '../members/components/edit-roles-dialog/utils/equal-roles';
 import { SelectRoleDialogComponent } from './components/select-role-dialog/select-role-dialog.component';
 import { SelectRoleDialogResult } from './components/select-role-dialog/types/select-role-dialog-result';
 import { SelectRoleDialogData } from './components/select-role-dialog/types/selected-role-dialog-data';
+import { addDialogsClass } from '../../../../../utils/add-dialogs-class';
+import { equalRoles } from '../members/components/edit-roles-dialog/utils/equal-roles';
 
 @UntilDestroy()
 @Component({

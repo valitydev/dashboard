@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { PaymentInstitution, Shop } from '@vality/swag-payments';
 import { Observable, of, ReplaySubject } from 'rxjs';
@@ -8,8 +8,8 @@ import { filter, pluck, switchMap, take } from 'rxjs/operators';
 
 import { ShopsDataService } from '@dsh/app/shared';
 
-import { filterShopsByRealm } from '../../operators';
 import { CreateInvoiceDialogComponent } from './components/create-invoice-dialog/create-invoice-dialog.component';
+import { filterShopsByRealm } from '../../operators';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 

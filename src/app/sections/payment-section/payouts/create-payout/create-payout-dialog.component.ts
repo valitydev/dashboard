@@ -1,15 +1,18 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import {
+    MatLegacyDialogRef as MatDialogRef,
+    MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA,
+} from '@angular/material/legacy-dialog';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { of } from 'rxjs';
 
 import { ShopsDataService } from '@dsh/app/shared';
 import { amountValidator } from '@dsh/components/form-controls';
 
-import { filterShopsByRealm, mapToShopInfo } from '../../operations/operators';
 import { CreatePayoutDialogService } from './create-payout-dialog.service';
+import { filterShopsByRealm, mapToShopInfo } from '../../operations/operators';
 
 @Component({
     selector: 'dsh-create-payout-dialog',

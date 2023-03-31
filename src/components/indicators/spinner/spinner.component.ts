@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
-import { ThemeManager, ThemeName } from '../../../app/theme-manager';
 import { SpinnerType } from './spinner-type';
+import { ThemeManager, ThemeName } from '../../../app/theme-manager';
 
 @Component({
     selector: 'dsh-spinner',

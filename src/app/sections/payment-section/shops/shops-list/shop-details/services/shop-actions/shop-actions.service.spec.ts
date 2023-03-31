@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { TranslocoTestingModule } from '@ngneat/transloco';
 import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
@@ -10,8 +10,8 @@ import { instance, mock, verify, when } from 'ts-mockito';
 import { ApiShopsService } from '@dsh/api/shop';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 
-import { ShopActionResult } from '../../types/shop-action-result';
 import { ShopActionsService } from './shop-actions.service';
+import { ShopActionResult } from '../../types/shop-action-result';
 
 describe('ShopActionsService', () => {
     let service: ShopActionsService;

@@ -5,8 +5,8 @@ import { By } from '@angular/platform-browser';
 import { getTextContent } from '@dsh/app/shared/tests/get-text-content';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 
-import { MockDetailsItemModule } from '../../../../../tests/mock-details-item-component';
 import { ShopNameComponent } from './shop-name.component';
+import { MockDetailsItemModule } from '../../../../../tests/mock-details-item-component';
 
 describe('ShopNameComponent', () => {
     let component: ShopNameComponent;

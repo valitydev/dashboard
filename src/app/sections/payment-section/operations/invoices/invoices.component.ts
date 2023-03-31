@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { take } from 'rxjs/operators';
@@ -7,11 +7,11 @@ import { take } from 'rxjs/operators';
 import { QueryParamsService } from '@dsh/app/shared/services/query-params/query-params.service';
 import { SpinnerType } from '@dsh/components/indicators';
 
-import { RealmMixService, PaymentInstitutionRealmService } from '../../services';
 import { CreateInvoiceService } from './create-invoice';
 import { Filters, SearchFiltersParams } from './invoices-search-filters';
 import { FetchInvoicesService } from './services/fetch-invoices/fetch-invoices.service';
 import { InvoicesExpandedIdManager } from './services/invoices-expanded-id-manager/invoices-expanded-id-manager.service';
+import { RealmMixService, PaymentInstitutionRealmService } from '../../services';
 
 @UntilDestroy()
 @Component({

@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { cold } from 'jasmine-marbles';
 import { of, throwError } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -7,8 +7,8 @@ import { instance, mock, when } from 'ts-mockito';
 
 import { PaymentService } from '@dsh/api/payment';
 
-import { generateMockPaymentList } from '../../../../tests/generate-mock-payment-list';
 import { ReceivePaymentsService } from './receive-payments.service';
+import { generateMockPaymentList } from '../../../../tests/generate-mock-payment-list';
 
 describe('ReceivePaymentsService', () => {
     let service: ReceivePaymentsService;

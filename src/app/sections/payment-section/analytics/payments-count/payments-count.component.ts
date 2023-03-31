@@ -2,8 +2,8 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { SpinnerType } from '@dsh/components/indicators';
 
-import { SearchParams } from '../search-params';
 import { PaymentsCountService } from './payments-count.service';
+import { SearchParams } from '../search-params';
 
 @Component({
     selector: 'dsh-payments-count',

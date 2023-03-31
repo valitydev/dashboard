@@ -5,9 +5,9 @@ import { Observable } from 'rxjs';
 
 import { ComponentChanges } from '@dsh/type-utils';
 
-import { PaymentIds } from '../../types';
 import { InvoiceDetailsService } from './services/invoice-details/invoice-details.service';
 import { isPaymentFlowHold } from './types/is-payment-flow-hold';
+import { PaymentIds } from '../../types';
 
 @Component({
     selector: 'dsh-payment-details',

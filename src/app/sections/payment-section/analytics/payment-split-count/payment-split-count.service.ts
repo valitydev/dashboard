@@ -6,10 +6,10 @@ import { AnalyticsService, AnapiDictionaryService } from '@dsh/api/anapi';
 import { shareReplayRefCount } from '@dsh/operators';
 import { errorTo, progressTo, distinctUntilChangedDeep, inProgressFrom, attach } from '@dsh/utils';
 
-import { SearchParams } from '../search-params';
-import { searchParamsToParamsWithSplitUnit } from '../utils';
 import { prepareSplitCount } from './prepare-split-count';
 import { splitCountToChartData } from './split-count-to-chart-data';
+import { SearchParams } from '../search-params';
+import { searchParamsToParamsWithSplitUnit } from '../utils';
 
 @Injectable()
 export class PaymentSplitCountService {

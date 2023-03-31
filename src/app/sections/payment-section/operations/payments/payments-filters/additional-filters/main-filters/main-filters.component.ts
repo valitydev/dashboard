@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormBuilder } from '@ngneat/reactive-forms';
 
@@ -10,7 +10,7 @@ import { MainFiltersForm } from './types/main-filters-form';
     selector: 'dsh-main-filters',
     templateUrl: './main-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createControlProviders(MainFiltersComponent),
+    providers: createControlProviders(() => MainFiltersComponent),
 })
 export class MainFiltersComponent extends ValidatedControlSuperclass<MainFiltersForm> {
     control = this.fb.group<MainFiltersForm>({
@@ -19,7 +19,7 @@ export class MainFiltersComponent extends ValidatedControlSuperclass<MainFilters
         rrn: ['', Validators.pattern(new RegExp(/^\d+$/))],
     });
 
-    constructor(injector: Injector, private fb: FormBuilder) {
-        super(injector);
+    constructor(private fb: FormBuilder) {
+        super();
     }
 }

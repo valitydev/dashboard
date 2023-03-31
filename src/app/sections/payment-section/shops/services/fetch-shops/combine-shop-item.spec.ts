@@ -1,6 +1,6 @@
+import { combineShopItem } from './combine-shop-item';
 import { generateMockBalance } from '../../tests/generate-mock-balance';
 import { generateMockShopsList } from '../../tests/generate-mock-shops-list';
-import { combineShopItem } from './combine-shop-item';
 
 describe('combineShopItem', () => {
     it('should combine shops elements and balance elements', () => {

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormBuilder } from '@ngneat/reactive-forms';
 
@@ -11,7 +11,7 @@ import { payoutToolFormValidator } from './utils/payout-tool-form-validator';
     selector: 'dsh-payout-tool-form',
     templateUrl: 'payout-tool-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createControlProviders(PayoutToolFormComponent),
+    providers: createControlProviders(() => PayoutToolFormComponent),
 })
 export class PayoutToolFormComponent extends ValidatedControlSuperclass<PayoutToolForm> {
     control = this.fb.group<PayoutToolForm>(
@@ -27,7 +27,7 @@ export class PayoutToolFormComponent extends ValidatedControlSuperclass<PayoutTo
         { validator: payoutToolFormValidator }
     );
 
-    constructor(injector: Injector, private fb: FormBuilder) {
-        super(injector);
+    constructor(private fb: FormBuilder) {
+        super();
     }
 }

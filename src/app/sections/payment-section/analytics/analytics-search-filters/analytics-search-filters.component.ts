@@ -10,8 +10,8 @@ import { shareReplayRefCount } from '@dsh/operators';
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
-import { RealmShopsService } from '../../services';
 import { shopsToCurrencies } from './shops-to-currencies';
+import { RealmShopsService } from '../../services';
 
 export interface Filters {
     shopIDs: Shop['id'][];

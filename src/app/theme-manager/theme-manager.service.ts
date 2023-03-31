@@ -1,10 +1,10 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 
-import { ConfigService } from '../config';
 import { ThemeName } from './types/theme-name';
 import { createStyleElement } from './utils/create-style-element';
 import { isTheme } from './utils/is-theme';
+import { ConfigService } from '../config';
 
 const THEME_POSTFIX = 'theme';
 

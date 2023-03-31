@@ -56,7 +56,7 @@
     );
 
     body.#{map-get($theme, name)} {
-        @include mat.all-component-themes($theme);
+        @include mat.all-legacy-component-themes($theme);
         @include mat-theme($theme);
         @include dsh-theme($theme);
     }

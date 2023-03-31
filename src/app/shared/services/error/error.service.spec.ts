@@ -4,9 +4,9 @@ import { instance, mock, verify } from 'ts-mockito';
 
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 
-import { NotificationService } from '../notification';
 import { ErrorService } from './error.service';
 import { CommonError } from './models/common-error';
+import { NotificationService } from '../notification';
 
 describe('ErrorService', () => {
     let mockNotificationService: NotificationService;

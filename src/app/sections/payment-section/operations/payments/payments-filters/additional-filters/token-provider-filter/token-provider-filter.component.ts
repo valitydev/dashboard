@@ -1,15 +1,16 @@
-import { Component, Injector } from '@angular/core';
-import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { Component } from '@angular/core';
+import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 
 import { AnapiDictionaryService } from '@dsh/api/anapi';
 import { TokenProvider } from '@dsh/api/payments';
+import { provideValueAccessor } from '@dsh/utils';
 
 @Component({
     selector: 'dsh-token-provider-filter',
     templateUrl: './token-provider-filter.component.html',
     styleUrls: ['./token-provider-filter.component.scss'],
-    providers: [provideValueAccessor(TokenProviderFilterComponent)],
+    providers: [provideValueAccessor(() => TokenProviderFilterComponent)],
 })
 export class TokenProviderFilterComponent extends WrappedFormControlSuperclass<
     SearchPaymentsRequestParams['bankCardTokenProvider']
@@ -17,7 +18,7 @@ export class TokenProviderFilterComponent extends WrappedFormControlSuperclass<
     providers: TokenProvider[] = Object.values(TokenProvider);
     bankCardTokenProviderDict$ = this.anapiDictionaryService.bankCardTokenProvider$;
 
-    constructor(injector: Injector, private anapiDictionaryService: AnapiDictionaryService) {
-        super(injector);
+    constructor(private anapiDictionaryService: AnapiDictionaryService) {
+        super();
     }
 }

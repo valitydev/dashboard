@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { QueryParamsService } from '@dsh/app/shared/services/query-params';
 
-import { RealmMixService, RealmShopsService } from '../../services';
 import { Filters, SearchFiltersParams } from './refunds-search-filters';
 import { FetchRefundsService } from './services/fetch-refunds/fetch-refunds.service';
 import { RefundsExpandedIdManager } from './services/refunds-expanded-id-manager/refunds-expanded-id-manager.service';
+import { RealmMixService, RealmShopsService } from '../../services';
 
 @UntilDestroy()
 @Component({

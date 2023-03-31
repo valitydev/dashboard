@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
+import { MatLegacyCheckboxModule as MatCheckboxModule } from '@angular/material/legacy-checkbox';
+import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
+import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
+import { MatLegacySelectModule as MatSelectModule } from '@angular/material/legacy-select';
 import { TranslocoModule } from '@ngneat/transloco';
 
 import { ContractorDetailsModule, ErrorMessageModule } from '@dsh/app/shared';
@@ -24,11 +24,11 @@ import { ShopDetailsFormModule } from '@dsh/app/shared/components/shop-creation/
 import { CountryCodesModule } from '@dsh/app/shared/services';
 import { ButtonModule } from '@dsh/components/buttons';
 
-import { CurrencyAutocompleteFieldModule } from '../../inputs/currency-autocomplete-field';
 import { PayoutToolFormComponent } from './components/payout-tool-form/payout-tool-form.component';
 import { ShopFormComponent } from './components/shop-form/shop-form.component';
 import { CreateInternationalShopEntityComponent } from './create-international-shop-entity.component';
 import { CreateInternationalShopEntityService } from './services/create-international-shop-entity/create-international-shop-entity.service';
+import { CurrencyAutocompleteFieldModule } from '../../inputs/currency-autocomplete-field';
 
 @NgModule({
     imports: [

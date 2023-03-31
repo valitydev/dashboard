@@ -4,8 +4,8 @@ import { By } from '@angular/platform-browser';
 import { TranslocoTestingModule } from '@ngneat/transloco';
 import { instance, mock } from 'ts-mockito';
 
-import { OrganizationsExpandedIdManager } from '../../services/organizations-expanded-id-manager/organizations-expanded-id-manager.service';
 import { OrganizationsListComponent } from './organizations-list.component';
+import { OrganizationsExpandedIdManager } from '../../services/organizations-expanded-id-manager/organizations-expanded-id-manager.service';
 
 @Component({
     selector: 'dsh-host',

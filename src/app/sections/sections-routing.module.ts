@@ -30,7 +30,7 @@ const ROUTES: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(ROUTES, { paramsInheritanceStrategy: 'always', relativeLinkResolution: 'legacy' })],
+    imports: [RouterModule.forRoot(ROUTES, { paramsInheritanceStrategy: 'always' })],
     exports: [RouterModule],
 })
 export class SectionsRoutingModule {}

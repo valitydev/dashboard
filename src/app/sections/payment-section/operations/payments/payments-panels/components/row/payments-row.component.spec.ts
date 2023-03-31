@@ -8,10 +8,10 @@ import moment from 'moment';
 import { BalanceModule } from '@dsh/app/shared/components/balance/balance.module';
 import { RowModule } from '@dsh/components/layout';
 
+import { PaymentsRowComponent } from './payments-row.component';
 import { generateMockPayment } from '../../../tests/generate-mock-payment';
 import { MockShopDetailsPipe } from '../../../tests/mock-shop-details-pipe';
 import { PaymentStatusModule } from '../../payment-status';
-import { PaymentsRowComponent } from './payments-row.component';
 
 describe('PaymentsRowComponent', () => {
     let fixture: ComponentFixture<PaymentsRowComponent>;

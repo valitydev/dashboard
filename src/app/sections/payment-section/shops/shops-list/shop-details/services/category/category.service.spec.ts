@@ -5,8 +5,8 @@ import { Observable, of, scheduled } from 'rxjs';
 
 import { CategoriesService } from '@dsh/api/categories';
 
-import { makeEmptyList } from '../../../../tests/make-empty-list';
 import { CategoryService } from './category.service';
+import { makeEmptyList } from '../../../../tests/make-empty-list';
 
 class MockCategoriesService {
     categories$: Observable<Category[]>;

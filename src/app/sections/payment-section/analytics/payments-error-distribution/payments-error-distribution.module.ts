@@ -8,8 +8,8 @@ import { DonutChartModule } from '@dsh/components/charts/donut-chart';
 import { SpinnerModule } from '@dsh/components/indicators';
 import { CardModule } from '@dsh/components/layout';
 
-import { DonutChartItemModule } from '../donut-chart-item/donut-chart-item.module';
 import { PaymentsErrorDistributionComponent } from './payments-error-distribution.component';
+import { DonutChartItemModule } from '../donut-chart-item/donut-chart-item.module';
 
 @NgModule({
     imports: [

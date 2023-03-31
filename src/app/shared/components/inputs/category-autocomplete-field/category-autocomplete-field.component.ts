@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
-import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { Category } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -7,12 +7,12 @@ import { map } from 'rxjs/operators';
 import { CategoriesService } from '@dsh/api/payments';
 import { Option } from '@dsh/components/form-controls/select-search-field';
 import { shareReplayRefCount } from '@dsh/operators';
-import { coerceBoolean } from '@dsh/utils';
+import { provideValueAccessor, coerceBoolean } from '@dsh/utils';
 
 @Component({
     selector: 'dsh-category-autocomplete-field',
     templateUrl: 'category-autocomplete-field.component.html',
-    providers: [provideValueAccessor(CategoryAutocompleteFieldComponent)],
+    providers: [provideValueAccessor(() => CategoryAutocompleteFieldComponent)],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CategoryAutocompleteFieldComponent extends WrappedFormControlSuperclass<Category> {
@@ -26,7 +26,7 @@ export class CategoryAutocompleteFieldComponent extends WrappedFormControlSuperc
         shareReplayRefCount()
     );
 
-    constructor(injector: Injector, private categoriesService: CategoriesService) {
-        super(injector);
+    constructor(private categoriesService: CategoriesService) {
+        super();
     }
 }
