@@ -52,7 +52,7 @@
     "@vality/swag-anapi-v2": "2.0.1-38f360b.0",
     "@vality/swag-claim-management": "0.1.1-bfc2e6c.0",
     "@vality/swag-organizations": "1.0.1-cd6cc10.0",
-    "@vality/swag-payments": "0.1.1-d71aebc.0",
+    "@vality/swag-payments": "0.1.1-01da4bb.0",
     "@vality/swag-questionary-aggr-proxy": "0.1.1-ed41741.0",
     "@vality/swag-url-shortener": "0.1.1-f780d07.0",
     "@vality/swag-wallet": "0.1.2-21b69d2.0",
