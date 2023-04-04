@@ -3,6 +3,7 @@ import { WalletsService as ApiWalletsService } from '@vality/swag-wallet';
 import { of } from 'rxjs';
 import { catchError, map, pluck, shareReplay } from 'rxjs/operators';
 
+import { PartyIdExtension } from '@dsh/api/utils/extensions';
 import { SHARE_REPLAY_CONF } from '@dsh/operators';
 
 import { createApi } from '../utils';
@@ -10,7 +11,7 @@ import { createApi } from '../utils';
 @Injectable({
     providedIn: 'root',
 })
-export class WalletsService extends createApi(ApiWalletsService) {
+export class WalletsService extends createApi(ApiWalletsService, [PartyIdExtension]) {
     wallets$ = this.listWallets({ limit: 1000 }).pipe(
         catchError(() => of({ result: [] })),
         pluck('result'),
