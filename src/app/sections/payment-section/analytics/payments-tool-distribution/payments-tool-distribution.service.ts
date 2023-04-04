@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject, BehaviorSubject, defer, combineLatest } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { ReplaySubject, BehaviorSubject, defer } from 'rxjs';
+import { map, switchMap, withLatestFrom } from 'rxjs/operators';
 
 import { AnalyticsService, AnapiDictionaryService } from '@dsh/api/anapi';
 import { shareReplayRefCount } from '@dsh/operators';
@@ -12,18 +12,15 @@ import { searchParamsToDistributionSearchParams } from '../utils';
 
 @Injectable()
 export class PaymentsToolDistributionService {
-    toolDistribution$ = combineLatest([
-        defer(() => this.searchParams$).pipe(
-            map(searchParamsToDistributionSearchParams),
-            distinctUntilChangedDeep(),
-            switchMap(({ fromTime, toTime, shopIDs, realm }) =>
-                this.analyticsService
-                    .getPaymentsToolDistribution({ fromTime, toTime, paymentInstitutionRealm: realm, shopIDs })
-                    .pipe(errorTo(this.errorSub$), progressTo(this.progress$))
-            )
+    toolDistribution$ = defer(() => this.searchParams$).pipe(
+        map(searchParamsToDistributionSearchParams),
+        distinctUntilChangedDeep(),
+        switchMap(({ fromTime, toTime, shopIDs, realm }) =>
+            this.analyticsService
+                .getPaymentsToolDistribution({ fromTime, toTime, paymentInstitutionRealm: realm, shopIDs })
+                .pipe(errorTo(this.errorSub$), progressTo(this.progress$))
         ),
-        this.analyticsDictionaryService.paymentTool$,
-    ]).pipe(
+        withLatestFrom(this.analyticsDictionaryService.paymentTool$),
         map(([{ result }, paymentToolDict]) => paymentsToolDistributionToChartData(result, paymentToolDict)),
         shareReplayRefCount()
     );
