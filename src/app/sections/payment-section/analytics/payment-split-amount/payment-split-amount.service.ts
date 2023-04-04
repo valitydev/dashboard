@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { forkJoin, of, defer, ReplaySubject, BehaviorSubject } from 'rxjs';
-import { map, switchMap, withLatestFrom } from 'rxjs/operators';
+import { forkJoin, of, defer, ReplaySubject, BehaviorSubject, combineLatest } from 'rxjs';
+import { map, switchMap, distinctUntilChanged } from 'rxjs/operators';
 
 import { AnalyticsService } from '@dsh/api/anapi';
 import { shareReplayRefCount } from '@dsh/operators';
@@ -13,26 +13,32 @@ import { searchParamsToParamsWithSplitUnit } from '../utils';
 
 @Injectable()
 export class PaymentSplitAmountService {
-    splitAmount$ = defer(() => this.searchParams$).pipe(
-        distinctUntilChangedDeep(),
-        map(searchParamsToParamsWithSplitUnit),
-        switchMap(({ fromTime, toTime, splitUnit, shopIDs, realm }) =>
-            forkJoin([
-                of(fromTime),
-                of(toTime),
-                this.analyticsService.getPaymentsSplitAmount({
-                    fromTime,
-                    toTime,
-                    splitUnit,
-                    paymentInstitutionRealm: realm,
-                    shopIDs,
-                }),
-            ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$))
+    splitAmount$ = combineLatest([
+        defer(() => this.searchParams$).pipe(
+            map(searchParamsToParamsWithSplitUnit),
+            distinctUntilChangedDeep(),
+            switchMap(({ fromTime, toTime, splitUnit, shopIDs, realm }) =>
+                forkJoin([
+                    of(fromTime),
+                    of(toTime),
+                    this.analyticsService.getPaymentsSplitAmount({
+                        fromTime,
+                        toTime,
+                        splitUnit,
+                        paymentInstitutionRealm: realm,
+                        shopIDs,
+                    }),
+                ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$))
+            ),
+            map(([fromTime, toTime, splitAmount]) => prepareSplitAmount(splitAmount?.result, fromTime, toTime)),
+            map(splitAmountToChartData)
         ),
-        map(([fromTime, toTime, splitAmount]) => prepareSplitAmount(splitAmount?.result, fromTime, toTime)),
-        map(splitAmountToChartData),
-        withLatestFrom(defer(() => this.searchParams$)),
-        map(([result, { currency }]) => result.find((r) => r.currency === currency)),
+        defer(() => this.searchParams$).pipe(
+            map(({ currency }) => currency),
+            distinctUntilChanged()
+        ),
+    ]).pipe(
+        map(([result, currency]) => result.find((r) => r.currency === currency)),
         shareReplayRefCount()
     );
     isLoading$ = inProgressFrom(() => this.progress$, this.splitAmount$);

@@ -8,7 +8,7 @@ export const getOffsets = (fromTime: string, toTime: string, splitUnit: SplitUni
             current = moment(fromTime).subtract(moment(fromTime).date() - 1, 'd');
             break;
         case 'week':
-            current = moment(fromTime).subtract(moment(fromTime).weekday(), 'd');
+            current = moment(fromTime).weekday(1);
             break;
         default:
             current = moment(fromTime);

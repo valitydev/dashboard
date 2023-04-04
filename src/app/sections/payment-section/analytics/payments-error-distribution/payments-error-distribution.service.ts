@@ -31,8 +31,8 @@ export class PaymentsErrorDistributionService {
 
     private errorDistribution$ = combineLatest([
         defer(() => this.searchParams$).pipe(
-            distinctUntilChangedDeep(),
             map(searchParamsToDistributionSearchParams),
+            distinctUntilChangedDeep(),
             switchMap(({ fromTime, toTime, shopIDs, realm }) =>
                 this.analyticsService
                     .getPaymentsSubErrorDistribution({ fromTime, toTime, paymentInstitutionRealm: realm, shopIDs })
