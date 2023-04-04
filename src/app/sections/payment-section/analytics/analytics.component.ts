@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { combineLatest, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -10,7 +9,6 @@ import { Filters } from './analytics-search-filters/analytics-search-filters.com
 import { filtersToSearchParams } from './utils/filters-to-search-params';
 import { PaymentInstitutionRealmService } from '../services';
 
-@UntilDestroy()
 @Component({
     templateUrl: 'analytics.component.html',
 })
@@ -20,8 +18,7 @@ export class AnalyticsComponent {
     filters$ = new ReplaySubject<Filters>();
 
     searchParams$ = combineLatest([this.filters$, this.realmService.realm$]).pipe(
-        map(([filters, realm]) => filtersToSearchParams(filters, realm)),
-        untilDestroyed(this)
+        map(([filters, realm]) => filtersToSearchParams(filters, realm))
     );
 
     params$ = this.qp.params$;
