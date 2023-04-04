@@ -9,7 +9,7 @@
         <button dsh-button color="accent" (click)="createWebhook()">{{ t('create') }}</button>
     </div>
 
-    <ng-container *ngIf="(isLoading$ | async) || !(webhooks$ | async); else webhooksList">
+    <ng-container *ngIf="isLoading$ | async; else webhooksList">
         <div fxLayout fxFlexAlign="center">
             <dsh-spinner></dsh-spinner>
         </div>
@@ -23,7 +23,7 @@
             (refreshData)="receiveWebhooks()"
         ></dsh-webhooks-list>
         <dsh-empty-search-result
-            *ngIf="(webhooks$ | async)?.length === 0"
+            *ngIf="!(webhooks$ | async)?.length"
             [text]="t('emptyResult')"
         ></dsh-empty-search-result>
     </ng-template>
