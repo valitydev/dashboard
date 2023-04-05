@@ -320,15 +320,6 @@
             "testEnv": "Test environment"
         }
     },
-    "paymentTerminal": {
-        "provider": {
-            "alipay": "Alipay",
-            "euroset": "Euroset",
-            "qps": "Faster payments system (FPS)",
-            "wechat": "WeChat",
-            "zotapay": "ZotaPay"
-        }
-    },
     "payouts": {
         "createPayoutReport": {
             "cancel": "Cancel",
