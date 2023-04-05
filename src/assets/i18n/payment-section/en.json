@@ -146,6 +146,7 @@
                 "shops": "Shops"
             },
             "table": {
+                "id": "ID",
                 "amount": "Amount",
                 "shop": "Shop",
                 "status": "Status",
@@ -318,15 +319,6 @@
             "reports": "Reports",
             "shops": "Shops",
             "testEnv": "Test environment"
-        }
-    },
-    "paymentTerminal": {
-        "provider": {
-            "alipay": "Alipay",
-            "euroset": "Euroset",
-            "qps": "Faster payments system (FPS)",
-            "wechat": "WeChat",
-            "zotapay": "ZotaPay"
         }
     },
     "payouts": {

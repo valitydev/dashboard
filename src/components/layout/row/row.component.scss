@@ -8,3 +8,9 @@ $dsh-row-height: 56px !default;
     border-radius: $dsh-row-border-radius;
     height: $dsh-row-height;
 }
+
+.dsh-row-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

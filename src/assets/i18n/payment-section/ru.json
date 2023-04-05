@@ -146,6 +146,7 @@
                 "shops": "Магазины"
             },
             "table": {
+                "id": "ID",
                 "amount": "Сумма списания",
                 "shop": "Магазин",
                 "status": "Статус",
@@ -318,15 +319,6 @@
             "reports": "Отчеты",
             "shops": "Магазины",
             "testEnv": "Тест. окружение"
-        }
-    },
-    "paymentTerminal": {
-        "provider": {
-            "alipay": "Alipay",
-            "euroset": "Евросеть",
-            "qps": "Система быстрых платежей (СБП)",
-            "wechat": "WeChat",
-            "zotapay": "ZotaPay"
         }
     },
     "payouts": {

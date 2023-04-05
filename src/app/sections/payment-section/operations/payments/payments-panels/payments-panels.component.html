@@ -26,7 +26,7 @@
                 <dsh-card fxFlexFill fxLayout="column" fxLayoutGap="32px">
                     <dsh-accordion-item-content-header (collapse)="accordionItem.collapse($event)">
                         <dsh-payment-detail-header
-                            [id]="item.id"
+                            id="{{ item.invoiceID }}.{{ item.id }}"
                             [changedDate]="item.statusChangedAt"
                         ></dsh-payment-detail-header>
                     </dsh-accordion-item-content-header>
