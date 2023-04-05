@@ -146,6 +146,7 @@
                 "shops": "Shops"
             },
             "table": {
+                "id": "ID",
                 "amount": "Amount",
                 "shop": "Shop",
                 "status": "Status",
