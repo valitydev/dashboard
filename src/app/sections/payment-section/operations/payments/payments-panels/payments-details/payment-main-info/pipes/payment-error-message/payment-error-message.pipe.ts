@@ -1,8 +1,20 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { PaymentError } from '@vality/swag-payments';
-import isEmpty from 'lodash-es/isEmpty';
 import isObject from 'lodash-es/isObject';
+import lowerCase from 'lodash-es/lowerCase';
+import upperFirst from 'lodash-es/upperFirst';
+
+function renderSubErrorMessage(error?: string, sub?: string) {
+    if (!error) return sub;
+    if (!sub) return error;
+    return `${error} -> ${sub}`;
+}
+
+function getErrorLabel(error: PaymentError) {
+    const label = upperFirst(lowerCase(error.code));
+    return renderSubErrorMessage(label, error.subError?.code && getErrorLabel(error.subError));
+}
 
 @Pipe({
     name: 'paymentErrorMessage',
@@ -21,25 +33,18 @@ export class PaymentErrorMessagePipe implements PipeTransform {
 
         while (isObject(curError)) {
             const { code, subError } = curError;
-            let message: string;
             translationPath = translationPath?.[code];
 
-            if (isObject(subError)) {
-                curError = subError;
-                const curMessage = translationPath?.['message'];
-                message =
-                    curMessage && typeof curMessage !== 'object'
-                        ? curMessage
-                        : this.t.translate('paymentErrorMessage.unknownError', null, 'payment-section');
-            } else {
-                curError = null;
-                message =
-                    translationPath && typeof translationPath !== 'object'
-                        ? translationPath
-                        : this.t.translate('paymentErrorMessage.unknownError', null, 'payment-section');
-            }
+            const currMessage = subError ? translationPath?.['message'] : translationPath;
+            const message: string =
+                currMessage && typeof currMessage !== 'object'
+                    ? currMessage
+                    : error.code === 'authorization_failed'
+                    ? getErrorLabel(curError)
+                    : this.t.translate('paymentErrorMessage.unknownError', null, 'payment-section');
+            errorsMessage = renderSubErrorMessage(errorsMessage, message);
 
-            errorsMessage = isEmpty(errorsMessage) ? message : `${errorsMessage} -> ${message}`;
+            curError = subError;
         }
 
         return errorsMessage;

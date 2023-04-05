@@ -21,7 +21,7 @@ export class AmountCurrencyPipe implements PipeTransform {
         return formatCurrency(
             toMajor(amount, currencyCode),
             locale,
-            getCurrencySymbol(currencyCode, 'wide', locale),
+            getCurrencySymbol(currencyCode, 'narrow', locale),
             currencyCode,
             format === 'short' ? '0.0-2' : undefined
         );

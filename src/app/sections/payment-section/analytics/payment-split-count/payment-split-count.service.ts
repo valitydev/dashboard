@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { forkJoin, of, defer, ReplaySubject, BehaviorSubject } from 'rxjs';
-import { map, switchMap, withLatestFrom } from 'rxjs/operators';
+import { forkJoin, of, defer, ReplaySubject, BehaviorSubject, combineLatest } from 'rxjs';
+import { map, switchMap, withLatestFrom, distinctUntilChanged } from 'rxjs/operators';
 
 import { AnalyticsService, AnapiDictionaryService } from '@dsh/api/anapi';
 import { shareReplayRefCount } from '@dsh/operators';
@@ -13,27 +13,33 @@ import { searchParamsToParamsWithSplitUnit } from '../utils';
 
 @Injectable()
 export class PaymentSplitCountService {
-    splitCount$ = defer(() => this.searchParams$).pipe(
-        distinctUntilChangedDeep(),
-        map(searchParamsToParamsWithSplitUnit),
-        switchMap(({ fromTime, toTime, splitUnit, shopIDs, realm }) =>
-            forkJoin([
-                of(fromTime),
-                of(toTime),
-                this.analyticsService.getPaymentsSplitCount({
-                    fromTime,
-                    toTime,
-                    splitUnit,
-                    paymentInstitutionRealm: realm,
-                    shopIDs,
-                }),
-            ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$))
+    splitCount$ = combineLatest([
+        defer(() => this.searchParams$).pipe(
+            map(searchParamsToParamsWithSplitUnit),
+            distinctUntilChangedDeep(),
+            switchMap(({ fromTime, toTime, splitUnit, shopIDs, realm }) =>
+                forkJoin([
+                    of(fromTime),
+                    of(toTime),
+                    this.analyticsService.getPaymentsSplitCount({
+                        fromTime,
+                        toTime,
+                        splitUnit,
+                        paymentInstitutionRealm: realm,
+                        shopIDs,
+                    }),
+                ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$))
+            ),
+            map(([fromTime, toTime, splitCount]) => prepareSplitCount(splitCount?.result, fromTime, toTime)),
+            withLatestFrom(this.anapiDictionaryService.paymentStatus$),
+            map(([res, paymentStatusDict]) => splitCountToChartData(res, paymentStatusDict))
         ),
-        map(([fromTime, toTime, splitCount]) => prepareSplitCount(splitCount?.result, fromTime, toTime)),
-        withLatestFrom(this.anapiDictionaryService.paymentStatus$),
-        map(([res, paymentStatusDict]) => splitCountToChartData(res, paymentStatusDict)),
-        withLatestFrom(defer(() => this.searchParams$)),
-        map(([result, { currency }]) => result.find((r) => r.currency === currency)),
+        defer(() => this.searchParams$).pipe(
+            map(({ currency }) => currency),
+            distinctUntilChanged()
+        ),
+    ]).pipe(
+        map(([result, currency]) => result.find((r) => r.currency === currency)),
         shareReplayRefCount()
     );
     isLoading$ = inProgressFrom(() => this.progress$, this.splitCount$);

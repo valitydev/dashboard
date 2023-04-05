@@ -13,8 +13,8 @@ import { searchParamsToDistributionSearchParams } from '../utils';
 @Injectable()
 export class PaymentsToolDistributionService {
     toolDistribution$ = defer(() => this.searchParams$).pipe(
-        distinctUntilChangedDeep(),
         map(searchParamsToDistributionSearchParams),
+        distinctUntilChangedDeep(),
         switchMap(({ fromTime, toTime, shopIDs, realm }) =>
             this.analyticsService
                 .getPaymentsToolDistribution({ fromTime, toTime, paymentInstitutionRealm: realm, shopIDs })
