@@ -9,5 +9,6 @@
     },
     "apiEndpoint": "http://localhost:8000/__api",
     "urlShortenerEndpoint": "https://shrt.vality.dev",
-    "checkoutEndpoint": "https://checkout.vality.dev"
+    "checkoutEndpoint": "https://checkout.vality.dev",
+    "currencies": ["RUB", "USD", "EUR"]
 }
