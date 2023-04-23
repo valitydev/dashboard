@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { coerceBoolean } from 'coerce-property';
 import { map } from 'rxjs/operators';
 
 import { ContextOrganizationService } from '@dsh/app/shared/services';
-import { coerceBoolean } from 'coerce-property';
 
 import { ROTATE } from './utils/rotate-animation';
 import { KeycloakService } from '../../../../auth';

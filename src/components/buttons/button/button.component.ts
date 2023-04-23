@@ -10,7 +10,6 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import { mixinDisabled } from '@angular/material/core';
-
 import { coerceBoolean } from 'coerce-property';
 
 import { ColorManager } from './color-manager';

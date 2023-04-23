@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-
 import { coerceBoolean } from 'coerce-property';
 
 // TODO: add unit test for template with new ng-content
