@@ -60,6 +60,7 @@
     "angular-file": "^3.0.1",
     "angular2-text-mask": "^9.0.0",
     "apexcharts": "^3.19.2",
+    "coerce-property": "^15.0.1",
     "css-element-queries": "1.2.3",
     "dinero.js": "2.0.0-alpha.8",
     "humanize-duration": "^3.19.0",

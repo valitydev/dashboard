@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { coerceBoolean } from '@dsh/utils';
+import { coerceBoolean } from 'coerce-property';
 
 @Component({
     selector: 'dsh-filter-content',

@@ -9,7 +9,7 @@ import { skip } from 'rxjs/operators';
 import { ComponentInputError } from '@dsh/app/shared/services/error/models/component-input-error';
 import { ErrorMatcher } from '@dsh/app/shared/utils';
 import { ComponentChanges } from '@dsh/type-utils';
-import { coerceBoolean } from '@dsh/utils';
+import { coerceBoolean } from 'coerce-property';
 @UntilDestroy()
 @Component({
     selector: 'dsh-max-length-input',

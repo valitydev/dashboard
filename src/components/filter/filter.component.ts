@@ -4,7 +4,7 @@ import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { map, pluck } from 'rxjs/operators';
 
-import { coerceBoolean } from '@dsh/utils';
+import { coerceBoolean } from 'coerce-property';
 
 import { FilterDialogComponent } from './components/filter-dialog/filter-dialog.component';
 

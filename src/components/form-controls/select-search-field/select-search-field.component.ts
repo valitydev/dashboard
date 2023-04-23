@@ -1,11 +1,12 @@
 import { OnChanges, ChangeDetectionStrategy, Input, Component } from '@angular/core';
 import { FormControl } from '@ngneat/reactive-forms';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { coerceBoolean } from 'coerce-property';
 import { BehaviorSubject, combineLatest, defer, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { ComponentChanges } from '@dsh/type-utils';
-import { getFormValueChanges, provideValueAccessor, coerceBoolean } from '@dsh/utils';
+import { getFormValueChanges, provideValueAccessor } from '@dsh/utils';
 
 import { Option } from './types';
 import { filterOptions } from './utils';

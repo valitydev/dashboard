@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { SpinnerType } from '@dsh/components/indicators';
-import { coerceBoolean } from '@dsh/utils';
+import { coerceBoolean } from 'coerce-property';
 
 import { StatData } from '../utils';
 

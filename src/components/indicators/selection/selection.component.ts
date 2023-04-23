@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { coerceBoolean } from '@dsh/utils';
+import { coerceBoolean } from 'coerce-property';
 
 @Component({
     selector: 'dsh-selection',

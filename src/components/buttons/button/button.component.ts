@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { mixinDisabled } from '@angular/material/core';
 
-import { coerceBoolean } from '@dsh/utils';
+import { coerceBoolean } from 'coerce-property';
 
 import { ColorManager } from './color-manager';
 import { FocusManager } from './focus-manager';

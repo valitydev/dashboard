@@ -1,10 +1,11 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { coerceBoolean } from 'coerce-property';
 import isNil from 'lodash-es/isNil';
 
 import { ComponentChanges } from '@dsh/type-utils';
-import { provideValueAccessor, coerceBoolean } from '@dsh/utils';
+import { provideValueAccessor } from '@dsh/utils';
 
 export interface Option<T> {
     value: T;

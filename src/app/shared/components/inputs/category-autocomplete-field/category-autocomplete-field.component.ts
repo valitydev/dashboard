@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { Category } from '@vality/swag-payments';
+import { coerceBoolean } from 'coerce-property';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { CategoriesService } from '@dsh/api/payments';
 import { Option } from '@dsh/components/form-controls/select-search-field';
 import { shareReplayRefCount } from '@dsh/operators';
-import { provideValueAccessor, coerceBoolean } from '@dsh/utils';
+import { provideValueAccessor } from '@dsh/utils';
 
 @Component({
     selector: 'dsh-category-autocomplete-field',

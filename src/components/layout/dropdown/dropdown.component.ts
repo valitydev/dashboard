@@ -12,7 +12,7 @@ import {
 import { BehaviorSubject, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
-import { coerceBoolean } from '@dsh/utils';
+import { coerceBoolean } from 'coerce-property';
 
 import { OPEN_CLOSE_ANIMATION, State } from './open-close-animation';
 

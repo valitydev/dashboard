@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { coerceBoolean } from 'coerce-property';
 
 import { Option } from '@dsh/components/form-controls/radio-group-field';
-import { provideValueAccessor, coerceBoolean } from '@dsh/utils';
+import { provideValueAccessor } from '@dsh/utils';
 
 @Component({
     selector: 'dsh-currency-autocomplete-field',

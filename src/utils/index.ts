@@ -1,4 +1,3 @@
-export * from './coerce';
 export * from './get-base-class';
 export * from './download';
 export * from './smooth-change-to';
