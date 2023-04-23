@@ -1,0 +1,13 @@
+{
+    "keycloakEndpoint": "https://auth.vality.dev",
+    "theme": {
+        "name": "eastern"
+    },
+    "sentryDsn": null,
+    "docsEndpoints": {
+        "payments": "https://valitydev.github.io/swag-payments"
+    },
+    "apiEndpoint": "http://localhost:8000/__api",
+    "urlShortenerEndpoint": "https://shrt.vality.dev",
+    "checkoutEndpoint": "https://checkout.vality.dev"
+}
