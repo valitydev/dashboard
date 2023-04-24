@@ -9,13 +9,14 @@ import {
     FmsUnitQuery,
     PartyContent,
 } from '@vality/swag-questionary-aggr-proxy';
+import { coerceBoolean } from 'coerce-property';
 import isEmpty from 'lodash-es/isEmpty';
 import { interval, Observable } from 'rxjs';
 import { debounce, filter, map, switchMap, take } from 'rxjs/operators';
 
 import { ContentByRequestType, DaDataService, ParamsByRequestType, Suggestion } from '@dsh/api/questionary-aggr-proxy';
 import { progress, shareReplayUntilDestroyed, takeError } from '@dsh/operators';
-import { coerceBoolean, provideValueAccessor } from '@dsh/utils';
+import { provideValueAccessor } from '@dsh/utils';
 
 import { Type } from './type';
 

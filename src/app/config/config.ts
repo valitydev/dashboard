@@ -12,5 +12,6 @@ export interface Config {
     };
     sentryDsn?: string;
     keycloakEndpoint: string;
+    currencies: string[];
 }
 export const BASE_CONFIG = getBaseClass<Config>();

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Inject, Input, Optional } from '@angular/core';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { Shop } from '@vality/swag-payments';
+import { coerceBoolean } from 'coerce-property';
 import { defer, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -9,7 +10,7 @@ import { ShopsDataService } from '@dsh/app/shared';
 import { shopToOption } from '@dsh/app/shared/components/inputs/shop-field/utils/shops-to-options';
 import { Option } from '@dsh/components/form-controls/select-search-field';
 import { shareReplayRefCount } from '@dsh/operators';
-import { coerceBoolean, provideValueAccessor } from '@dsh/utils';
+import { provideValueAccessor } from '@dsh/utils';
 
 import { SHOPS } from './shops-token';
 

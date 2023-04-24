@@ -9,10 +9,9 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
+import { coerceBoolean } from 'coerce-property';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-
-import { coerceBoolean } from '@dsh/utils';
 
 import { OPEN_CLOSE_ANIMATION, State } from './open-close-animation';
 

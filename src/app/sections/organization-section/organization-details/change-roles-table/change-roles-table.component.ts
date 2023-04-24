@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnInit, Outp
 import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { MemberRole, ResourceScopeId, RoleId } from '@vality/swag-organizations';
+import { coerceBoolean } from 'coerce-property';
 import isNil from 'lodash-es/isNil';
 import { BehaviorSubject, combineLatest, EMPTY, Observable, of } from 'rxjs';
 import { first, map, switchMap, tap } from 'rxjs/operators';
@@ -11,7 +12,6 @@ import { DialogConfig, DIALOG_CONFIG } from '@dsh/app/sections/tokens';
 import { ShopsDataService } from '@dsh/app/shared';
 import { sortRoleIds } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
 import { PartialReadonly } from '@dsh/type-utils';
-import { coerceBoolean } from '@dsh/utils';
 
 import { SelectRoleDialogComponent } from './components/select-role-dialog/select-role-dialog.component';
 import { SelectRoleDialogResult } from './components/select-role-dialog/types/select-role-dialog-result';

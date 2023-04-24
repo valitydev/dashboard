@@ -1,0 +1,7 @@
+{
+    "realm": "external",
+    "auth-server-url": "https://auth.vality.dev/auth/",
+    "ssl-required": "external",
+    "resource": "dashboard",
+    "public-client": true
+}

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { coerceBoolean } from 'coerce-property';
 import { map } from 'rxjs/operators';
 
 import { CountriesService } from '@dsh/api/payments';
-import { provideValueAccessor, coerceBoolean } from '@dsh/utils';
+import { provideValueAccessor } from '@dsh/utils';
 
 import { CountryId } from './types';
 import { countriesToOptions } from './utils';

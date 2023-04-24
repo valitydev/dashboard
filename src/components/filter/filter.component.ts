@@ -2,9 +2,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
 import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { coerceBoolean } from 'coerce-property';
 import { map, pluck } from 'rxjs/operators';
-
-import { coerceBoolean } from '@dsh/utils';
 
 import { FilterDialogComponent } from './components/filter-dialog/filter-dialog.component';
 

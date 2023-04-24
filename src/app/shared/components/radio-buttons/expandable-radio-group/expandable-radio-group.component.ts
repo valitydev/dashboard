@@ -11,10 +11,10 @@ import {
     TemplateRef,
 } from '@angular/core';
 import { FormControl } from '@ngneat/reactive-forms';
+import { coerceBoolean } from 'coerce-property';
 
 import { isNumber } from '@dsh/app/shared/utils';
 import { Dict } from '@dsh/type-utils';
-import { coerceBoolean } from '@dsh/utils';
 
 import { ExpandableRadioGroupItemDirective } from './directives/expandable-radio-group-item/expandable-radio-group-item.directive';
 import { ExpandableRadioChoice, isExpandableRadioObjectChoice } from './types/expandable-radio-choice';

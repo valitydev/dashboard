@@ -9,11 +9,12 @@ import {
     QueryList,
     ViewContainerRef,
 } from '@angular/core';
+import { coerce } from 'coerce-property';
 import { combineLatest, merge, of } from 'rxjs';
 import { delay, distinctUntilChanged, filter, map, startWith, switchMap, take } from 'rxjs/operators';
 
 import { AccordionItemComponent } from './accordion-item';
-import { coerce, smoothChangeTo } from '../../../utils';
+import { smoothChangeTo } from '../../../utils';
 
 const INIT_DELAY_MS = 350;
 const SCROLL_TO_Y_OFFSET_PX = 80;
@@ -26,7 +27,7 @@ const SCROLL_TIME_MS = 500;
 })
 export class AccordionComponent implements AfterViewInit {
     @Input()
-    @coerce((v) => v, (v: number, self: AccordionComponent) => self.expandedChange.emit(v))
+    @coerce<AccordionComponent>((v) => v, (v: number, self) => self.expandedChange.emit(v))
     expanded: number;
 
     @Output() expandedChange = new EventEmitter<number>();

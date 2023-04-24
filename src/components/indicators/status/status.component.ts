@@ -1,7 +1,7 @@
 import { Component, HostBinding, Input } from '@angular/core';
+import { coerceBoolean } from 'coerce-property';
 
 import { StatusColor } from '../../../app/theme-manager';
-import { coerceBoolean } from '../../../utils';
 
 @Component({
     selector: 'dsh-status',

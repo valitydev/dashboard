@@ -8,10 +8,10 @@ import {
     QueryList,
     ViewEncapsulation,
 } from '@angular/core';
+import { coerceBoolean } from 'coerce-property';
 import { Subscription } from 'rxjs';
 
 import { StateNavItemComponent } from './state-nav-item';
-import { coerceBoolean } from '../../../utils';
 
 @Component({
     selector: 'dsh-state-nav',
