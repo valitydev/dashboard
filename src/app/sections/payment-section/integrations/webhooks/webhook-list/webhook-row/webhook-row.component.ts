@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'dsh-webhook-row',
+    selector: 'dsh-api-keys-row',
     templateUrl: 'webhook-row.component.html',
     styleUrls: ['webhook-row.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,

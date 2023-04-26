@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ApiKeyComponent } from './api-key.component';
+import { ApiKeysComponent } from './api-keys.component';
 
 const ROUTES: Routes = [
     {
         path: '',
-        component: ApiKeyComponent,
+        component: ApiKeysComponent,
     },
 ];
 
 @NgModule({
     imports: [RouterModule.forChild(ROUTES)],
 })
-export class ApiKeyRoutingModule {}
+export class ApiKeysRoutingModule {}

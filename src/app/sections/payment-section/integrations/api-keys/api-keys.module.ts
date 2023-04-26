@@ -2,18 +2,21 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexModule } from '@angular/flex-layout';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
+import { MatInputModule } from '@angular/material/input';
 import { TranslocoModule } from '@ngneat/transloco';
 
 import { ButtonModule } from '@dsh/components/buttons';
+import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
+import { SpinnerModule } from '@dsh/components/indicators';
 import { CardModule } from '@dsh/components/layout';
 
-import { ApiKeyRoutingModule } from './api-key-routing.module';
-import { ApiKeyComponent } from './api-key.component';
+import { ApiKeysRoutingModule } from './api-keys-routing.module';
+import { ApiKeysComponent } from './api-keys.component';
 
 @NgModule({
+    declarations: [ApiKeysComponent],
     imports: [
-        ApiKeyRoutingModule,
+        ApiKeysRoutingModule,
         FlexModule,
         TranslocoModule,
         CardModule,
@@ -21,7 +24,8 @@ import { ApiKeyComponent } from './api-key.component';
         CommonModule,
         ButtonModule,
         ClipboardModule,
+        EmptySearchResultModule,
+        SpinnerModule,
     ],
-    declarations: [ApiKeyComponent],
 })
-export class ApiKeyModule {}
+export class ApiKeysModule {}

@@ -26,8 +26,8 @@ const ROUTES: Routes = [
             ),
             createPrivateRoute(
                 {
-                    path: 'api-key',
-                    loadChildren: () => import('./api-key').then((m) => m.ApiKeyModule),
+                    path: 'api-keys',
+                    loadChildren: () => import('./api-keys').then((m) => m.ApiKeysModule),
                 },
                 [RoleAccessName.ApiKeys]
             ),

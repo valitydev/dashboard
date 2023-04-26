@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import { IdentitiesService } from '@dsh/api/wallet';
 
 @Component({
-    selector: 'dsh-webhook-row',
+    selector: 'dsh-api-keys-row',
     templateUrl: 'webhook-row.component.html',
     styleUrls: ['webhook-row.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,

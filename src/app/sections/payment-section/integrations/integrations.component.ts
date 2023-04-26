@@ -11,8 +11,8 @@ export class IntegrationsComponent {
             label$: this.transloco.selectTranslate('integrations.tabs.payment-link', null, 'payment-section'),
         },
         {
-            path: 'api-key',
-            label$: this.transloco.selectTranslate('integrations.tabs.api-key', null, 'payment-section'),
+            path: 'api-keys',
+            label$: this.transloco.selectTranslate('integrations.tabs.api-keys', null, 'payment-section'),
         },
         {
             path: 'webhooks',

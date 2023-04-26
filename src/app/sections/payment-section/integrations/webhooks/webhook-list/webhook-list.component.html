@@ -1,6 +1,6 @@
 <div fxLayout="column" fxLayoutGap="16px">
     <dsh-last-updated [lastUpdated]="lastUpdated" (update)="refreshData.emit()"></dsh-last-updated>
-    <dsh-webhook-row-header></dsh-webhook-row-header>
+    <dsh-api-keys-row-header></dsh-api-keys-row-header>
     <dsh-accordion
         fxLayout="column"
         fxLayoutGap="16px"
@@ -8,7 +8,7 @@
         [expanded]="expandedId"
     >
         <dsh-accordion-item *ngFor="let webhook of webhooks" #accordionItem>
-            <dsh-webhook-row [url]="webhook.url" [shopID]="getShopID(webhook.scope)"></dsh-webhook-row>
+            <dsh-api-keys-row [url]="webhook.url" [shopID]="getShopID(webhook.scope)"></dsh-api-keys-row>
             <dsh-accordion-item-content>
                 <dsh-card fxLayout="column" fxLayoutGap="32px">
                     <dsh-accordion-item-content-header
