@@ -46,6 +46,5 @@
         "инвойса"
     ],
     "cSpell.language": "en,ru",
-    "prettier.prettierPath": "node_modules/prettier",
-    "tasksStatusbar.taskLabelFilter": "Start",
+    "prettier.prettierPath": "node_modules/prettier"
 }
