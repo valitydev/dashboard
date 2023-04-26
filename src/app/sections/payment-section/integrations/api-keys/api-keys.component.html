@@ -9,14 +9,14 @@
         <button dsh-button color="accent" (click)="create()">{{ t('create') }}</button>
     </div>
 
-    <ng-container *ngIf="(isLoading$ | async) || !(keys$ | async); else keysList">
+    <ng-container *ngIf="(isLoading$ | async) || !(apiKeys$ | async); else keysList">
         <div fxLayout fxFlexAlign="center">
             <dsh-spinner></dsh-spinner>
         </div>
     </ng-container>
     <ng-template #keysList>
         <dsh-empty-search-result
-            *ngIf="(keys$ | async)?.length === 0"
+            *ngIf="(apiKeys$ | async)?.length === 0"
             [text]="t('emptyResult')"
         ></dsh-empty-search-result>
     </ng-template>
