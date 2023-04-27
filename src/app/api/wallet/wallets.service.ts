@@ -6,11 +6,12 @@ import { catchError, map, pluck, shareReplay } from 'rxjs/operators';
 import { SHARE_REPLAY_CONF } from '@dsh/operators';
 
 import { createApi } from '../utils';
+import { PartyIdExtension } from '../utils/extensions';
 
 @Injectable({
     providedIn: 'root',
 })
-export class WalletsService extends createApi(ApiWalletsService) {
+export class WalletsService extends createApi(ApiWalletsService, [PartyIdExtension]) {
     wallets$ = this.listWallets({ limit: 1000 }).pipe(
         catchError(() => of({ result: [] })),
         pluck('result'),
