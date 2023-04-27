@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexModule } from '@angular/flex-layout';
 import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { TranslocoModule } from '@ngneat/transloco';
 
 import { ButtonModule } from '@dsh/components/buttons';
@@ -26,6 +27,7 @@ import { ApiKeysComponent } from './api-keys.component';
         ClipboardModule,
         EmptySearchResultModule,
         SpinnerModule,
+        MatSlideToggleModule,
     ],
 })
 export class ApiKeysModule {}

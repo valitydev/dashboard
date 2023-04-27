@@ -13,7 +13,9 @@
         "unsuccessfulPaymentReasons": "Unsuccessful payments reasons"
     },
     "apiKeys": {
-        "create": "Release key"
+        "create": "Release key",
+        "emptyResult": "No keys released",
+        "showInactive": "Show inactive"
     },
     "balances": {
         "title": "Available amount"

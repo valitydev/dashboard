@@ -12,8 +12,10 @@
         },
         "unsuccessfulPaymentReasons": "Причины неуспешных платежей"
     },
-    "apiKey": {
-        "create": "Выпустить ключ"
+    "apiKeys": {
+        "create": "Выпустить ключ",
+        "emptyResult": "Не выпущено ни одного ключа",
+        "showInactive": "Показывать неактивные"
     },
     "balances": {
         "title": "Доступные средства"
