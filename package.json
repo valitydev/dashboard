@@ -49,6 +49,7 @@
     "@sentry/angular": "7.7.0",
     "@sentry/integrations": "7.7.0",
     "@sentry/tracing": "7.7.0",
+    "@vality/ng-core": "^0.3.0",
     "@vality/swag-anapi-v2": "2.0.1-38f360b.0",
     "@vality/swag-api-keys": "^1.0.0",
     "@vality/swag-claim-management": "0.1.1-bfc2e6c.0",

@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { DialogService } from '@vality/ng-core';
 import { ApiKey } from '@vality/swag-api-keys';
+
+import { ApiKeyDeleteDialogComponent } from './components/api-key-delete-dialog/api-key-delete-dialog.component';
 
 @Component({
     selector: 'dsh-api-keys-list',
@@ -12,7 +15,9 @@ export class ApiKeysListComponent {
     @Output() expandedIdChange = new EventEmitter<number>();
     @Output() refreshData = new EventEmitter<void>();
 
-    delete() {
-        throw new Error('Method not implemented.');
+    constructor(private dialogService: DialogService) {}
+
+    delete(apiKey: ApiKey) {
+        this.dialogService.open(ApiKeyDeleteDialogComponent, { apiKeyId: apiKey.id });
     }
 }

@@ -22,6 +22,11 @@
             "status": "Status",
             "details": "Key data",
             "delete": "Revoke key"
+        },
+        "deleteDialog": {
+            "title": "Key revocation request",
+            "desc": "You will receive an email with a confirmation link. Please follow the link to confirm the operation. After revoking the key, it will no longer be valid, and if you need access to the API in the future, you will have to create a new one.",
+            "confirm": "Request key revocation"
         }
     },
     "balances": {
