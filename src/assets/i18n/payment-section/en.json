@@ -15,7 +15,14 @@
     "apiKeys": {
         "create": "Release key",
         "emptyResult": "No keys released",
-        "showInactive": "Show inactive"
+        "showInactive": "Show inactive",
+        "list": {
+            "name": "Name",
+            "createdAt": "Created at",
+            "status": "Status",
+            "details": "Key data",
+            "delete": "Revoke key"
+        }
     },
     "balances": {
         "title": "Available amount"

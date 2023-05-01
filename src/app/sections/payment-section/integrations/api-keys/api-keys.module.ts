@@ -11,6 +11,7 @@ import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { SpinnerModule } from '@dsh/components/indicators';
 import { CardModule } from '@dsh/components/layout';
 
+import { ApiKeysListModule } from './api-keys-list/api-keys-list.module';
 import { ApiKeysRoutingModule } from './api-keys-routing.module';
 import { ApiKeysComponent } from './api-keys.component';
 
@@ -28,6 +29,7 @@ import { ApiKeysComponent } from './api-keys.component';
         EmptySearchResultModule,
         SpinnerModule,
         MatSlideToggleModule,
+        ApiKeysListModule,
     ],
 })
 export class ApiKeysModule {}

@@ -21,6 +21,13 @@
         </div>
     </ng-container>
     <ng-template #keysList>
+        <dsh-api-keys-list
+            [apiKeys]="apiKeys$ | async"
+            [expandedId]="expandedId$ | async"
+            (expandedIdChange)="expandedIdChange($event)"
+            [lastUpdated]="lastUpdated$ | async"
+            (refreshData)="update()"
+        ></dsh-api-keys-list>
         <dsh-empty-search-result
             *ngIf="(apiKeys$ | async)?.length === 0"
             [text]="t('emptyResult')"
