@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { DialogService } from '@vality/ng-core';
 import { ApiKeyStatus, ListApiKeysRequestParams } from '@vality/swag-api-keys';
+
+import { ApiKeyCreateDialogComponent } from '@dsh/app/sections/payment-section/integrations/api-keys/components/api-key-create-dialog/api-key-create-dialog.component';
 
 import { ApiKeysExpandedIdManager } from './api-keys-expanded-id-manager.service';
 import { FetchApiKeysService } from './fetch-api-keys.service';
@@ -20,7 +23,8 @@ export class ApiKeysComponent {
     constructor(
         private qp: QueryParamsService<{ showInactive: boolean }>,
         private apiKeysExpandedIdManager: ApiKeysExpandedIdManager,
-        private fetchApiKeysService: FetchApiKeysService
+        private fetchApiKeysService: FetchApiKeysService,
+        private dialogService: DialogService
     ) {}
 
     update(params: Omit<ListApiKeysRequestParams, 'partyId'> = {}) {
@@ -28,7 +32,7 @@ export class ApiKeysComponent {
     }
 
     create() {
-        throw new Error('Method not implemented.');
+        this.dialogService.open(ApiKeyCreateDialogComponent);
     }
 
     toggle() {

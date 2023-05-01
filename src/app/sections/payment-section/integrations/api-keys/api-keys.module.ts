@@ -14,6 +14,7 @@ import { CardModule } from '@dsh/components/layout';
 import { ApiKeysListModule } from './api-keys-list/api-keys-list.module';
 import { ApiKeysRoutingModule } from './api-keys-routing.module';
 import { ApiKeysComponent } from './api-keys.component';
+import { ApiKeyCreateDialogComponent } from './components/api-key-create-dialog/api-key-create-dialog.component';
 
 @NgModule({
     declarations: [ApiKeysComponent],
@@ -30,6 +31,7 @@ import { ApiKeysComponent } from './api-keys.component';
         SpinnerModule,
         MatSlideToggleModule,
         ApiKeysListModule,
+        ApiKeyCreateDialogComponent,
     ],
 })
 export class ApiKeysModule {}

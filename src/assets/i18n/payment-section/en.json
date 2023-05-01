@@ -27,6 +27,14 @@
             "title": "Key revocation request",
             "desc": "You will receive an email with a confirmation link. Please follow the link to confirm the operation. After revoking the key, it will no longer be valid, and if you need access to the API in the future, you will have to create a new one.",
             "confirm": "Request key revocation"
+        },
+        "createDialog": {
+            "title": "Release a new key",
+            "desc": "Private API key will be available only once, at the moment of its issuance. Therefore, it is necessary to copy the key and save it in a secure location after receiving it.",
+            "confirm": "Release key",
+            "keyName": "Key name",
+            "copy": "Copy",
+            "apiKey": "Private API key"
         }
     },
     "balances": {
