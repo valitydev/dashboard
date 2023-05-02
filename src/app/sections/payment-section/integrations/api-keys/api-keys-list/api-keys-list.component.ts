@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import { DialogService } from '@vality/ng-core';
 import { ApiKey } from '@vality/swag-api-keys';
 
@@ -20,12 +20,6 @@ export class ApiKeysListComponent {
     constructor(private dialogService: DialogService) {}
 
     delete(apiKey: ApiKey) {
-        this.dialogService
-            .open(ApiKeyDeleteDialogComponent, { apiKeyId: apiKey.id })
-            .afterClosed()
-            .pipe(untilDestroyed(this))
-            .subscribe(() => {
-                this.refreshData.emit();
-            });
+        this.dialogService.open(ApiKeyDeleteDialogComponent, { apiKeyId: apiKey.id });
     }
 }

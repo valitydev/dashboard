@@ -15,9 +15,10 @@ import { ApiKeysListModule } from './api-keys-list/api-keys-list.module';
 import { ApiKeysRoutingModule } from './api-keys-routing.module';
 import { ApiKeysComponent } from './api-keys.component';
 import { ApiKeyCreateDialogComponent } from './components/api-key-create-dialog/api-key-create-dialog.component';
+import { ApiKeyRevokeComponent } from './components/api-key-revoke/api-key-revoke.component';
 
 @NgModule({
-    declarations: [ApiKeysComponent],
+    declarations: [ApiKeysComponent, ApiKeyRevokeComponent],
     imports: [
         ApiKeysRoutingModule,
         FlexModule,

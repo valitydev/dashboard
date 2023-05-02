@@ -16,6 +16,10 @@
         "create": "Release key",
         "emptyResult": "No keys released",
         "showInactive": "Show inactive",
+        "copy": {
+            "error": "An error occurred while copying",
+            "success": "Successfully copied"
+        },
         "list": {
             "name": "Name",
             "createdAt": "Created at",
@@ -35,6 +39,9 @@
             "keyName": "Key name",
             "copy": "Copy",
             "apiKey": "Private API key"
+        },
+        "revoke": {
+            "success": "Key successfully revoked"
         }
     },
     "balances": {
