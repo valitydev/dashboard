@@ -34,7 +34,7 @@ import { SpinnerModule } from '@dsh/components/indicators';
 })
 export class ApiKeyCreateDialogComponent extends DialogSuperclass<ApiKeyCreateDialogComponent> {
     form = this.fb.group({ name: '' });
-    apiKey: string = 'test';
+    apiKey: string;
 
     constructor(
         injector: Injector,

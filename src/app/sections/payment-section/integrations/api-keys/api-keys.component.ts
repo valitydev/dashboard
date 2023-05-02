@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { DialogService } from '@vality/ng-core';
 import { ApiKeyStatus, ListApiKeysRequestParams } from '@vality/swag-api-keys';
 
@@ -8,6 +9,7 @@ import { ApiKeysExpandedIdManager } from './api-keys-expanded-id-manager.service
 import { FetchApiKeysService } from './fetch-api-keys.service';
 import { QueryParamsService } from '../../../../shared';
 
+@UntilDestroy()
 @Component({
     templateUrl: 'api-keys.component.html',
     styleUrls: ['api-keys.component.scss'],
@@ -32,7 +34,13 @@ export class ApiKeysComponent {
     }
 
     create() {
-        this.dialogService.open(ApiKeyCreateDialogComponent);
+        this.dialogService
+            .open(ApiKeyCreateDialogComponent)
+            .afterClosed()
+            .pipe(untilDestroyed(this))
+            .subscribe(() => {
+                this.update();
+            });
     }
 
     toggle() {

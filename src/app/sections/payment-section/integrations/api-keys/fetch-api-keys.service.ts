@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApiKey, ApiKeyStatus, ListApiKeysRequestParams } from '@vality/swag-api-keys';
+import { ListApiKeysRequestParams } from '@vality/swag-api-keys';
 import { BehaviorSubject, Observable, defer, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
@@ -17,14 +17,7 @@ export class FetchApiKeysService {
                 progressTo(() => this.progress$),
                 catchError((err) => {
                     this.errorService.error(err);
-                    return of([
-                        {
-                            id: '11',
-                            createdAt: new Date().toISOString(),
-                            name: 'Test',
-                            status: ApiKeyStatus.Revoked,
-                        },
-                    ] as ApiKey[]);
+                    return of([]);
                 })
             )
         ),

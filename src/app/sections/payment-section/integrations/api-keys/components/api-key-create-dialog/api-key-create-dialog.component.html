@@ -3,13 +3,13 @@
     [title]="t('title')"
     (cancel)="closeWithCancellation()"
 >
-    <div *ngIf="apiKey; else init">
+    <div *ngIf="apiKey; else releaseApiKey">
         <mat-form-field style="width: 100%">
             <mat-label>{{ t('apiKey') }}</mat-label>
             <textarea matInput [value]="apiKey" readonly rows="5"></textarea>
         </mat-form-field>
     </div>
-    <ng-template #init>
+    <ng-template #releaseApiKey>
         <div fxLayout="column" fxLayoutGap="24px" [formGroup]="form">
             <mat-form-field style="width: 100%">
                 <mat-label>{{ t('keyName') }}</mat-label>
@@ -21,18 +21,11 @@
         </div>
     </ng-template>
     <ng-container dshBaseDialogActions>
-        <button
-            *ngIf="apiKey; else init"
-            dsh-button
-            [cdkCopyToClipboard]="apiKey"
-            (click)="copy()"
-            color="primary"
-            [disabled]="form.invalid"
-        >
+        <button *ngIf="apiKey; else confirmActions" dsh-button (click)="copy()" color="primary">
             {{ t('copy') }}
         </button>
-        <ng-template>
-            <button *ngIf="apiKey; else init" dsh-button (click)="confirm()" color="primary" [disabled]="form.invalid">
+        <ng-template #confirmActions>
+            <button dsh-button (click)="confirm()" color="primary" [disabled]="form.invalid">
                 {{ t('confirm') }}
             </button>
         </ng-template>
