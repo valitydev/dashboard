@@ -13,36 +13,36 @@
         "unsuccessfulPaymentReasons": "Unsuccessful payments reasons"
     },
     "apiKeys": {
-        "create": "Release key",
-        "emptyResult": "No keys released",
-        "showInactive": "Show inactive",
         "copy": {
             "error": "An error occurred while copying",
             "success": "Successfully copied"
         },
-        "list": {
-            "name": "Name",
-            "createdAt": "Created at",
-            "status": "Status",
-            "details": "Key data",
-            "delete": "Revoke key"
+        "create": "Release key",
+        "createDialog": {
+            "apiKey": "Private API key",
+            "confirm": "Release key",
+            "copy": "Copy",
+            "desc": "Private API key will be available only once, at the moment of its issuance. Therefore, it is necessary to copy the key and save it in a secure location after receiving it.",
+            "keyName": "Key name",
+            "title": "Release a new key"
         },
         "deleteDialog": {
-            "title": "Key revocation request",
+            "confirm": "Request key revocation",
             "desc": "You will receive an email with a confirmation link. Please follow the link to confirm the operation. After revoking the key, it will no longer be valid, and if you need access to the API in the future, you will have to create a new one.",
-            "confirm": "Request key revocation"
+            "title": "Key revocation request"
         },
-        "createDialog": {
-            "title": "Release a new key",
-            "desc": "Private API key will be available only once, at the moment of its issuance. Therefore, it is necessary to copy the key and save it in a secure location after receiving it.",
-            "confirm": "Release key",
-            "keyName": "Key name",
-            "copy": "Copy",
-            "apiKey": "Private API key"
+        "emptyResult": "No keys released",
+        "list": {
+            "createdAt": "Created at",
+            "delete": "Revoke key",
+            "details": "Key data",
+            "name": "Name",
+            "status": "Status"
         },
         "revoke": {
             "success": "Key successfully revoked"
-        }
+        },
+        "showInactive": "Show inactive"
     },
     "balances": {
         "title": "Available amount"
@@ -172,8 +172,8 @@
                 "shops": "Shops"
             },
             "table": {
-                "id": "ID",
                 "amount": "Amount",
+                "id": "ID",
                 "shop": "Shop",
                 "status": "Status",
                 "statusChanged": "Last modified"
