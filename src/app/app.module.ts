@@ -27,6 +27,7 @@ import { QUERY_PARAMS_SERIALIZERS } from '@dsh/app/shared/services/query-params/
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
 import { SpinnerModule } from '@dsh/components/indicators';
 
+import { ApiKeysModule } from './api/api-keys';
 import { OrganizationsModule } from './api/organizations';
 import { AppComponent } from './app.component';
 import { AuthModule, KeycloakAngularModule, KeycloakService } from './auth';
@@ -66,6 +67,7 @@ import { ENV, environment } from '../environments';
         QuestionaryAggrProxyModule,
         WalletModule,
         SpinnerModule,
+        ApiKeysModule,
     ],
     providers: [
         LanguageService,

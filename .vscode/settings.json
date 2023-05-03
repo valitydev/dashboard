@@ -1,10 +1,4 @@
 {
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.tslint": true
-    },
-    "javascript.preferences.importModuleSpecifier": "relative",
-    "typescript.preferences.importModuleSpecifier": "relative",
     "typescript.tsdk": "node_modules/typescript/lib",
     "cSpell.words": [
         "CAPI",
@@ -46,6 +40,5 @@
         "инвойса"
     ],
     "cSpell.language": "en,ru",
-    "prettier.prettierPath": "node_modules/prettier",
-    "tasksStatusbar.taskLabelFilter": "Start",
+    "prettier.prettierPath": "node_modules/prettier"
 }

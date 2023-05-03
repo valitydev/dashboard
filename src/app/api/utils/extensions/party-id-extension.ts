@@ -14,7 +14,7 @@ export class PartyIdExtension implements ApiExtension {
     selector() {
         return this.contextOrganizationService.organization$.pipe(
             first(),
-            map(({ party }) => ({ partyID: party }))
+            map(({ party }) => ({ partyID: party, partyId: party }))
         );
     }
 }

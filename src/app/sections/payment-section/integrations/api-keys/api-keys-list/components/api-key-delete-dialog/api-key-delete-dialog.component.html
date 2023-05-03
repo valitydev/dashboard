@@ -1,0 +1,14 @@
+<dsh-base-dialog
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.apiKeys.deleteDialog'"
+    [title]="t('title')"
+    (cancel)="closeWithCancellation()"
+>
+    <div class="dsh-body-1">
+        {{ t('desc') }}
+    </div>
+    <ng-container dshBaseDialogActions>
+        <button dsh-button (click)="confirm()" color="warn">
+            {{ t('confirm') }}
+        </button>
+    </ng-container>
+</dsh-base-dialog>
