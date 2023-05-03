@@ -1,4 +1,4 @@
-import { environment as devEnvironment } from './environment.dev';
+import { DEFAULT_ENVIRONMENT } from './default-environment';
 import { Environment } from './types/environment';
 
 // This file can be replaced during build by using the `fileReplacements` array.
@@ -6,7 +6,7 @@ import { Environment } from './types/environment';
 // The list of file replacements can be found in `angular.json`.
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const environment: Environment = devEnvironment;
+export const environment: Environment = DEFAULT_ENVIRONMENT;
 
 /*
  * For easier debugging in development mode, you can import the following file

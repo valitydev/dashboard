@@ -12,6 +12,12 @@
         },
         "unsuccessfulPaymentReasons": "Unsuccessful payments reasons"
     },
+    "apiKey": {
+        "api": "API",
+        "copy": "Copy",
+        "description": "Your private key to access the",
+        "title": "API key"
+    },
     "apiKeys": {
         "copy": {
             "error": "An error occurred while copying",
@@ -101,6 +107,7 @@
     },
     "integrations": {
         "tabs": {
+            "api-key": "API KEY",
             "api-keys": "API KEYS",
             "payment-link": "PAYMENT LINK",
             "webhooks": "WEBHOOKS"

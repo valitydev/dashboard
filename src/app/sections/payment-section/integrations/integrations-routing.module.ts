@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { environment } from 'src/environments';
 
 import { createPrivateRoute, RoleAccessName } from '@dsh/app/auth';
 
@@ -27,7 +28,9 @@ const ROUTES: Routes = [
             createPrivateRoute(
                 {
                     path: 'api-keys',
-                    loadChildren: () => import('./api-keys').then((m) => m.ApiKeysModule),
+                    loadChildren: environment.stage
+                        ? () => import('./api-keys').then((m) => m.ApiKeysModule)
+                        : () => import('./api-key').then((m) => m.ApiKeyModule),
                 },
                 [RoleAccessName.ApiKeys]
             ),
