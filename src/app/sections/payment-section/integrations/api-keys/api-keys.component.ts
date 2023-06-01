@@ -29,7 +29,7 @@ export class ApiKeysComponent {
         private dialogService: DialogService
     ) {}
 
-    update(params: Omit<ListApiKeysRequestParams, 'partyId'> = {}) {
+    update(params: Omit<ListApiKeysRequestParams, 'partyId' | 'xRequestID'> = {}) {
         this.fetchApiKeysService.update(Object.assign(params, !this.showInactive && { status: ApiKeyStatus.Active }));
     }
 
