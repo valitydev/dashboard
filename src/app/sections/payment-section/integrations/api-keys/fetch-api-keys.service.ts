@@ -27,11 +27,11 @@ export class FetchApiKeysService {
     lastUpdated$: Observable<string> = this.apiKeys$.pipe(mapToTimestamp, shareReplayRefCount());
 
     private progress$ = new BehaviorSubject(0);
-    private fetchApiKeys$ = new BehaviorSubject<Omit<ListApiKeysRequestParams, 'partyId'>>({});
+    private fetchApiKeys$ = new BehaviorSubject<Omit<ListApiKeysRequestParams, 'partyId' | 'xRequestID'>>({});
 
     constructor(private apiKeysService: ApiKeysService, private errorService: ErrorService) {}
 
-    update(params: Omit<ListApiKeysRequestParams, 'partyId'> = {}) {
+    update(params: Omit<ListApiKeysRequestParams, 'partyId' | 'xRequestID'> = {}) {
         this.fetchApiKeys$.next(params);
     }
 }
