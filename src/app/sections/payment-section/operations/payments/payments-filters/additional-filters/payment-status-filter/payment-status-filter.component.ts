@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { PaymentStatus } from '@vality/swag-anapi-v2';
 
-import { PaymentsDictionaryService } from '@dsh/api/payments';
+import { AnapiDictionaryService } from '@dsh/api/anapi';
 import { provideValueAccessor } from '@dsh/utils';
 
 @Component({
@@ -13,9 +13,9 @@ import { provideValueAccessor } from '@dsh/utils';
 })
 export class PaymentStatusFilterComponent extends WrappedFormControlSuperclass<PaymentStatus.StatusEnum> {
     statuses = Object.values(PaymentStatus.StatusEnum);
-    paymentStatusDict$ = this.paymentsDictionaryService.paymentStatus$;
+    paymentStatusDict$ = this.anapiDictionaryService.paymentStatus$;
 
-    constructor(private paymentsDictionaryService: PaymentsDictionaryService) {
+    constructor(private anapiDictionaryService: AnapiDictionaryService) {
         super();
     }
 }
