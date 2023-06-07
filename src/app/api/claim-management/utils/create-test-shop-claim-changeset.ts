@@ -53,7 +53,7 @@ export const createTestShopClaimChangeset = (
             id: testShopID,
             modification: {
                 shopModificationType: ShopModificationTypeEnum.ShopAccountCreationModification,
-                currency: { symbolicCode: 'RUB' },
+                currency: { symbolicCode: 'USD' },
             } as ShopAccountCreationModification,
         }),
     ];
