@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
 import { By } from '@angular/platform-browser';
 
-import { OrgsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/app/api/organizations';
 import { DIALOG_CONFIG } from '@dsh/app/sections/tokens';
 import { ErrorService, NotificationService } from '@dsh/app/shared';
 import { OrganizationManagementService } from '@dsh/app/shared/services/organization-management/organization-management.service';

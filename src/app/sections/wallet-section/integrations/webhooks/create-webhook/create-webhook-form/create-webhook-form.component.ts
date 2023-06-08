@@ -5,7 +5,7 @@ import { WebhookScope } from '@vality/swag-wallet';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { IdentitiesService, WalletDictionaryService } from '@dsh/api/wallet';
+import { IdentitiesService, WalletDictionaryService } from '@dsh/app/api/wallet';
 import { oneMustBeSelected } from '@dsh/components/form-controls';
 
 import { getEventsByTopic } from '../get-events-by-topic';

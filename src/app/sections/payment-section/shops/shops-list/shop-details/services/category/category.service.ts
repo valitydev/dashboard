@@ -3,8 +3,8 @@ import { Category } from '@vality/swag-payments';
 import { combineLatest, defer, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { CategoriesService } from '@dsh/api/payments';
-import { shareReplayRefCount } from '@dsh/operators';
+import { CategoriesService } from '@dsh/app/api/payments';
+import { shareReplayRefCount } from '@dsh/app/custom-operators';
 
 @Injectable()
 export class CategoryService {

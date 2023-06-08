@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BankCardDetails } from '@vality/swag-payments';
 
-import { TokenProvider, PaymentSystem } from '@dsh/api/payments';
+import { TokenProvider, PaymentSystem } from '@dsh/app/api/payments';
 
 interface BankCardIconConfig {
     iconName: string;

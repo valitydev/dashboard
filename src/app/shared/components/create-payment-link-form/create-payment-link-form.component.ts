@@ -7,7 +7,7 @@ import { UntilDestroy } from '@ngneat/until-destroy';
 import { BankCard, PaymentMethod, PaymentTerminal, DigitalWallet } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 
-import { TokenProvider, TerminalProvider } from '@dsh/api/payments';
+import { TokenProvider, TerminalProvider } from '@dsh/app/api/payments';
 import { NotificationService } from '@dsh/app/shared';
 import { PaymentLinkParams } from '@dsh/app/shared/services/create-payment-link/types/payment-link-params';
 import { ComponentChanges } from '@dsh/type-utils';

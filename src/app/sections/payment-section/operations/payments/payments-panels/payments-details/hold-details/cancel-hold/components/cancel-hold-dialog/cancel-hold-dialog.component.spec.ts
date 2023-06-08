@@ -9,7 +9,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { cold, getTestScheduler, hot } from 'jasmine-marbles';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 
-import { PaymentService } from '@dsh/api/payment';
+import { PaymentService } from '@dsh/app/api/payment';
 import { BaseDialogModule, BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { MaxLengthInputModule } from '@dsh/app/shared/components/inputs/max-length-input/max-length-input.module';
 import { ErrorService } from '@dsh/app/shared/services';

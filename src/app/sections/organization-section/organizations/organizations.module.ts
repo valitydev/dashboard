@@ -9,7 +9,7 @@ import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy
 import { MatLegacySnackBarModule as MatSnackBarModule } from '@angular/material/legacy-snack-bar';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { OrganizationsModule as OrganizationsAPIModule } from '@dsh/api/organizations';
+import { OrganizationsModule as OrganizationsAPIModule } from '@dsh/app/api/organizations';
 import { ErrorModule, NotificationModule } from '@dsh/app/shared';
 import { DialogModule } from '@dsh/app/shared/components/dialog';
 import { OrganizationRolesModule } from '@dsh/app/shared/components/organization-roles';

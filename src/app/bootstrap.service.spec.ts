@@ -4,10 +4,10 @@ import { cold } from 'jasmine-marbles';
 import { of, throwError } from 'rxjs';
 import { anyNumber, anything, instance, mock, verify, when } from 'ts-mockito';
 
-import { ClaimsService } from '@dsh/api/claim-management';
-import { OrgsService } from '@dsh/api/organizations';
-import { PartiesService } from '@dsh/api/payments';
-import { ApiShopsService } from '@dsh/api/shop';
+import { ClaimsService } from '@dsh/app/api/claim-management';
+import { OrgsService } from '@dsh/app/api/organizations';
+import { PartiesService } from '@dsh/app/api/payments';
+import { ApiShopsService } from '@dsh/app/api/shop';
 import { ErrorService } from '@dsh/app/shared';
 
 import { BootstrapService } from './bootstrap.service';

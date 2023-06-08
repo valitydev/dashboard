@@ -4,7 +4,7 @@ import { PayoutTool } from '@vality/swag-payments';
 import { BehaviorSubject, defer, Observable, of, ReplaySubject, Subject } from 'rxjs';
 import { catchError, distinctUntilChanged, filter, switchMap, tap } from 'rxjs/operators';
 
-import { PayoutsService } from '@dsh/api/payments';
+import { PayoutsService } from '@dsh/app/api/payments';
 
 import { PayoutToolParams } from '../../shops-list/shop-details/types/payout-tool-params';
 

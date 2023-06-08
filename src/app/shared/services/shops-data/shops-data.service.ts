@@ -3,10 +3,10 @@ import { Shop } from '@vality/swag-payments';
 import { Observable, Subject, of, repeat } from 'rxjs';
 import { startWith, switchMap, takeWhile } from 'rxjs/operators';
 
-import { createTestShopClaimChangeset, ClaimsService } from '@dsh/api/claim-management';
-import { ShopsService } from '@dsh/api/payments';
+import { createTestShopClaimChangeset, ClaimsService } from '@dsh/app/api/claim-management';
+import { ShopsService } from '@dsh/app/api/payments';
+import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { ContextOrganizationService } from '@dsh/app/shared';
-import { shareReplayRefCount } from '@dsh/operators';
 
 import { IdGeneratorService } from '../id-generator';
 

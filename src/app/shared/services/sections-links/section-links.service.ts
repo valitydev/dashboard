@@ -3,7 +3,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { combineLatest, Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
-import { WalletsService } from '@dsh/api/wallet';
+import { WalletsService } from '@dsh/app/api/wallet';
 import { RoleAccessName, RoleAccessService } from '@dsh/app/auth';
 
 import { SectionLink } from './types';

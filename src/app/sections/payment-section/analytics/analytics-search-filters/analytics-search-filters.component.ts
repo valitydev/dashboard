@@ -5,8 +5,8 @@ import { Shop } from '@vality/swag-payments';
 import { combineLatest, defer, Observable } from 'rxjs';
 import { first, map, pluck } from 'rxjs/operators';
 
+import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { createDateRangeWithPreset, DateRangeWithPreset, Preset } from '@dsh/components/date-range-filter';
-import { shareReplayRefCount } from '@dsh/operators';
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 

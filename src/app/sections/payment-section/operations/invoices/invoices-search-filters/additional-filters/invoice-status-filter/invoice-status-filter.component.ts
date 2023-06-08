@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { InvoiceStatus } from '@vality/swag-anapi-v2';
 
-import { AnapiDictionaryService } from '@dsh/api/anapi';
+import { AnapiDictionaryService } from '@dsh/app/api/anapi';
 import { provideValueAccessor } from '@dsh/utils';
 
 @Component({

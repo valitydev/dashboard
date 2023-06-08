@@ -4,7 +4,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Member, Organization } from '@vality/swag-organizations';
 import { filter, switchMap } from 'rxjs/operators';
 
-import { MembersService } from '@dsh/api/organizations';
+import { MembersService } from '@dsh/app/api/organizations';
 import { DialogConfig, DIALOG_CONFIG } from '@dsh/app/sections/tokens';
 import { ErrorService, NotificationService } from '@dsh/app/shared';
 import { OrganizationManagementService } from '@dsh/app/shared/services/organization-management/organization-management.service';

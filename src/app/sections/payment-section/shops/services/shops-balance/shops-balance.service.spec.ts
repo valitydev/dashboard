@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 // import { of, scheduled } from 'rxjs';
 // import { map } from 'rxjs/operators';
 
-import { AnalyticsService } from '@dsh/api/analytics';
+import { AnalyticsService } from '@dsh/app/api/analytics';
 
 // import { generateMockBalance } from '../../tests/generate-mock-balance';
 // import { generateMockShopId } from '../../tests/generate-mock-shop-id';

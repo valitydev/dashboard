@@ -5,11 +5,11 @@ import { PaymentSearchResult } from '@vality/swag-anapi-v2';
 import { Observable, of } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 
-import { SearchService } from '@dsh/api/anapi';
+import { SearchService } from '@dsh/app/api/anapi';
+import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
 import { isNumber } from '@dsh/app/shared/utils';
-import { mapToTimestamp } from '@dsh/operators';
 
 import { PaymentSearchFormValue } from '../../types';
 

@@ -6,7 +6,7 @@ import { BehaviorSubject, defer, Observable, of, ReplaySubject, Subject } from '
 import { catchError, distinctUntilChanged, filter, switchMap, tap } from 'rxjs/operators';
 import { Overwrite } from 'utility-types';
 
-import { ContractsService } from '@dsh/api/payments';
+import { ContractsService } from '@dsh/app/api/payments';
 
 @UntilDestroy()
 @Injectable()

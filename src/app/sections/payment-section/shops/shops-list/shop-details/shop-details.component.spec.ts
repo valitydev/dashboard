@@ -8,8 +8,8 @@ import { TranslocoTestingModule } from '@ngneat/transloco';
 import { of } from 'rxjs';
 import { instance, mock, when } from 'ts-mockito';
 
-import { CategoriesModule } from '@dsh/api/categories';
-import { ContractsModule } from '@dsh/api/contracts';
+import { CategoriesModule } from '@dsh/app/api/categories';
+import { ContractsModule } from '@dsh/app/api/contracts';
 import { ContractDetailsModule, PayoutToolModule } from '@dsh/app/shared/components';
 import { ShopContractDetailsService } from '@dsh/app/shared/services/shop-contract-details';
 import { ButtonModule } from '@dsh/components/buttons';

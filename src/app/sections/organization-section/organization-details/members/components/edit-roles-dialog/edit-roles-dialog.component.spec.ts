@@ -4,7 +4,7 @@ import {
     MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA,
 } from '@angular/material/legacy-dialog';
 
-import { OrgsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/app/api/organizations';
 import { ErrorService } from '@dsh/app/shared';
 import { provideMockService, provideMockToken } from '@dsh/app/shared/tests';
 

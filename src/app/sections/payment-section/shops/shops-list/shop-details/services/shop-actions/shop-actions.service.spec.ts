@@ -7,7 +7,7 @@ import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { instance, mock, verify, when } from 'ts-mockito';
 
-import { ApiShopsService } from '@dsh/api/shop';
+import { ApiShopsService } from '@dsh/app/api/shop';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 
 import { ShopActionsService } from './shop-actions.service';

@@ -6,10 +6,10 @@ import { ListWithdrawalsRequestParams } from '@vality/swag-wallet/lib/api/withdr
 import { Observable, of } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 
-import { WithdrawalsService } from '@dsh/api/wallet';
+import { WithdrawalsService } from '@dsh/app/api/wallet';
+import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
-import { mapToTimestamp } from '@dsh/operators';
 
 type WithdrawalsAndContinuationToken = InlineResponse2007;
 

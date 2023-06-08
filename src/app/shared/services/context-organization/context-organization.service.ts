@@ -6,7 +6,7 @@ import isNil from 'lodash-es/isNil';
 import { Observable, ReplaySubject, EMPTY, concat, defer, combineLatest, of, throwError } from 'rxjs';
 import { switchMap, shareReplay, catchError, map, tap, filter } from 'rxjs/operators';
 
-import { OrgsService, MembersService, DEFAULT_ORGANIZATION_NAME } from '@dsh/api/organizations';
+import { OrgsService, MembersService, DEFAULT_ORGANIZATION_NAME } from '@dsh/app/api/organizations';
 import { KeycloakTokenInfoService } from '@dsh/app/shared/services/keycloak-token-info';
 
 import { ErrorService } from '../error';

@@ -3,7 +3,7 @@ import { InvoiceStatus } from '@vality/swag-anapi-v2';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AnapiDictionaryService } from '@dsh/api/anapi';
+import { AnapiDictionaryService } from '@dsh/app/api/anapi';
 
 @Pipe({ name: 'invoiceStatusLabel' })
 export class InvoiceStatusLabelPipe implements PipeTransform {

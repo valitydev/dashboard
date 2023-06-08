@@ -6,7 +6,7 @@ import { ListDepositRevertsRequestParams } from '@vality/swag-wallet/lib/api/dep
 import { Observable, of } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 
-import { DepositsService } from '@dsh/api/wallet';
+import { DepositsService } from '@dsh/app/api/wallet';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
 

@@ -5,7 +5,7 @@ import { of, throwError } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { instance, mock, when } from 'ts-mockito';
 
-import { PaymentService } from '@dsh/api/payment';
+import { PaymentService } from '@dsh/app/api/payment';
 
 import { ReceivePaymentsService } from './receive-payments.service';
 import { generateMockPaymentList } from '../../../../tests/generate-mock-payment-list';

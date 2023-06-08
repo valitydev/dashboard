@@ -3,9 +3,9 @@ import { ListApiKeysRequestParams } from '@vality/swag-api-keys';
 import { BehaviorSubject, Observable, defer, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
-import { ApiKeysService } from '@dsh/api/api-keys';
+import { ApiKeysService } from '@dsh/app/api/api-keys';
+import { mapToTimestamp, shareReplayRefCount } from '@dsh/app/custom-operators';
 import { ErrorService } from '@dsh/app/shared/services';
-import { mapToTimestamp, shareReplayRefCount } from '@dsh/operators';
 import { inProgressFrom, progressTo } from '@dsh/utils';
 
 @Injectable()

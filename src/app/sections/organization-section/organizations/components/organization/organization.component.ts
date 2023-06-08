@@ -5,7 +5,7 @@ import { Organization } from '@vality/swag-organizations';
 import isNil from 'lodash-es/isNil';
 import { filter, pluck, switchMap } from 'rxjs/operators';
 
-import { OrgsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/app/api/organizations';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService, NotificationService, ContextOrganizationService } from '@dsh/app/shared/services';
 import { FetchOrganizationsService } from '@dsh/app/shared/services/fetch-organizations';

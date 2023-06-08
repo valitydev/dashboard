@@ -10,7 +10,7 @@ import {
     createShopCreationModification,
     makeShopLocation,
     createInternationalContractPayoutToolModification,
-} from '@dsh/api/claim-management';
+} from '@dsh/app/api/claim-management';
 import { IdGeneratorService } from '@dsh/app/shared/services/id-generator';
 
 import {

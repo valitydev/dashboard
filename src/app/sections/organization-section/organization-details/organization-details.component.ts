@@ -4,7 +4,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { Observable } from 'rxjs';
 import { shareReplay, switchMap } from 'rxjs/operators';
 
-import { OrgsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/app/api/organizations';
 
 @Component({
     selector: 'dsh-organization-details',

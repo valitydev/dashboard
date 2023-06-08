@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { instance, mock, when } from 'ts-mockito';
 
-import { PayoutsService } from '@dsh/api/payouts';
+import { PayoutsService } from '@dsh/app/api/payouts';
 
 import { ShopPayoutToolDetailsService } from './shop-payout-tool-details.service';
 

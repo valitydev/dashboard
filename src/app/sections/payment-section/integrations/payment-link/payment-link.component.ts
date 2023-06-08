@@ -5,7 +5,7 @@ import { PaymentMethod } from '@vality/swag-payments';
 import { BehaviorSubject, defer, merge, ReplaySubject, Subject, Subscription, tap, EMPTY } from 'rxjs';
 import { mapTo, shareReplay, switchMap, catchError, switchMapTo } from 'rxjs/operators';
 
-import { InvoicesService, InvoiceTemplatesService } from '@dsh/api/payments';
+import { InvoicesService, InvoiceTemplatesService } from '@dsh/app/api/payments';
 import { NotificationService, ErrorService } from '@dsh/app/shared';
 import { Controls } from '@dsh/app/shared/components/create-payment-link-form';
 import { CreatePaymentLinkService } from '@dsh/app/shared/services/create-payment-link';

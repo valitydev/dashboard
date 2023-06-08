@@ -5,9 +5,9 @@ import { Observable, of, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { instance, mock, when } from 'ts-mockito';
 
-import { AnalyticsService } from '@dsh/api/analytics';
-import { PaymentInstitutionRealm } from '@dsh/api/model';
-import { ApiShopsService } from '@dsh/api/shop';
+import { AnalyticsService } from '@dsh/app/api/analytics';
+import { PaymentInstitutionRealm } from '@dsh/app/api/model';
+import { ApiShopsService } from '@dsh/app/api/shop';
 
 import { FetchShopsService, SHOPS_LIST_PAGINATION_OFFSET } from './fetch-shops.service';
 import { generateMockShopsList } from '../../tests/generate-mock-shops-list';

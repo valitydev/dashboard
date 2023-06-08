@@ -8,7 +8,7 @@ import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { DialogSuperclass } from '@vality/ng-core';
 
-import { ApiKeysService } from '@dsh/api/api-keys';
+import { ApiKeysService } from '@dsh/app/api/api-keys';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService, NotificationService } from '@dsh/app/shared/services';
 import { ButtonModule } from '@dsh/components/buttons';

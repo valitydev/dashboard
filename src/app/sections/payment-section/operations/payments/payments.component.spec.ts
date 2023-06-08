@@ -8,7 +8,7 @@ import { PaymentSearchResult } from '@vality/swag-anapi-v2';
 import { of } from 'rxjs';
 import { instance, mock, verify, when } from 'ts-mockito';
 
-import { PaymentInstitutionRealm } from '@dsh/api/model';
+import { PaymentInstitutionRealm } from '@dsh/app/api/model';
 import { QueryParamsService } from '@dsh/app/shared/services/query-params';
 import { provideMockService } from '@dsh/app/shared/tests';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';

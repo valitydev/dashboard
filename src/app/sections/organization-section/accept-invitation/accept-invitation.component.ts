@@ -4,7 +4,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { first, pluck, switchMap } from 'rxjs/operators';
 
-import { OrgsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/app/api/organizations';
 import { ErrorService } from '@dsh/app/shared';
 import { inProgressTo } from '@dsh/utils';
 

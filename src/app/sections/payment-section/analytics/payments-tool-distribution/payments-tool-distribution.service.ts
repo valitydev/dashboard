@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { ReplaySubject, BehaviorSubject, defer } from 'rxjs';
 import { map, switchMap, withLatestFrom } from 'rxjs/operators';
 
-import { AnalyticsService, AnapiDictionaryService } from '@dsh/api/anapi';
-import { shareReplayRefCount } from '@dsh/operators';
+import { AnalyticsService, AnapiDictionaryService } from '@dsh/app/api/anapi';
+import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { errorTo, progressTo, distinctUntilChangedDeep, inProgressFrom, attach } from '@dsh/utils';
 
 import { paymentsToolDistributionToChartData } from './payments-tool-distribution-to-chart-data';

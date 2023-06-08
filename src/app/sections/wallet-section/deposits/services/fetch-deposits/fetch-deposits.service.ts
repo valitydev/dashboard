@@ -6,11 +6,11 @@ import { ListDepositsRequestParams } from '@vality/swag-wallet/lib/api/deposits.
 import { Observable, of } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 
-import { DepositsService } from '@dsh/api/wallet';
+import { DepositsService } from '@dsh/app/api/wallet';
+import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
 import { isNumber } from '@dsh/app/shared/utils';
-import { mapToTimestamp } from '@dsh/operators';
 
 @Injectable()
 export class FetchDepositsService extends PartialFetcher<

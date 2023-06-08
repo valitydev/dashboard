@@ -3,7 +3,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { shareReplayRefCount } from '@dsh/operators';
+import { shareReplayRefCount } from '@dsh/app/custom-operators';
 
 @Injectable({
     providedIn: 'root',

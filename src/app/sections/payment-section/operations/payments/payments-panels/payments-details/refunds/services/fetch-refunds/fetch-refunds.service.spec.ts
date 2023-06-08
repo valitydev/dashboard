@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { instance, mock } from 'ts-mockito';
 
-import { RefundSearchService } from '@dsh/api/search';
+import { RefundSearchService } from '@dsh/app/api/search';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME } from '@dsh/app/shared';
 

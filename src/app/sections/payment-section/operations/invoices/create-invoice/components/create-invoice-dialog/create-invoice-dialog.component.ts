@@ -9,7 +9,7 @@ import { Shop } from '@vality/swag-payments';
 import pick from 'lodash-es/pick';
 import moment from 'moment';
 
-import { InvoicesService } from '@dsh/api/payments';
+import { InvoicesService } from '@dsh/app/api/payments';
 import { FormData } from '@dsh/app/shared/components/create-invoice-form';
 
 import { CreateInvoiceDialogResponse } from '../../types/create-invoice-dialog-response';

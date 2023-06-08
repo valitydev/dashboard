@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { shareReplay, switchMap } from 'rxjs/operators';
 
-import { OrgsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/app/api/organizations';
 
 import { FetchMembersService } from './services/fetch-members/fetch-members.service';
 import { MembersExpandedIdManager } from './services/members-expanded-id-manager/members-expanded-id-manager.service';

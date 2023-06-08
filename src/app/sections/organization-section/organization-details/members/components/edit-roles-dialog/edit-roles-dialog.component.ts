@@ -8,7 +8,7 @@ import { MemberRole } from '@vality/swag-organizations';
 import { BehaviorSubject, defer, forkJoin, of, Subscription } from 'rxjs';
 import { catchError, pluck, shareReplay, switchMap } from 'rxjs/operators';
 
-import { MembersService } from '@dsh/api/organizations';
+import { MembersService } from '@dsh/app/api/organizations';
 import { ErrorService } from '@dsh/app/shared';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 

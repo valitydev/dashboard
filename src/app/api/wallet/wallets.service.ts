@@ -3,7 +3,7 @@ import { WalletsService as ApiWalletsService } from '@vality/swag-wallet';
 import { of } from 'rxjs';
 import { catchError, map, pluck, shareReplay } from 'rxjs/operators';
 
-import { SHARE_REPLAY_CONF } from '@dsh/operators';
+import { SHARE_REPLAY_CONF } from '@dsh/app/custom-operators';
 
 import { createApi } from '../utils';
 import { PartyIdExtension } from '../utils/extensions';

@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { filter, first, shareReplay, switchMap } from 'rxjs/operators';
 
-import { OrgsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/app/api/organizations';
 import { DialogConfig, DIALOG_CONFIG } from '@dsh/app/sections/tokens';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ignoreBeforeCompletion } from '@dsh/utils';

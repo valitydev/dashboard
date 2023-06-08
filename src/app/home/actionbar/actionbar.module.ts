@@ -9,7 +9,7 @@ import { MatLegacyRadioModule as MatRadioModule } from '@angular/material/legacy
 import { RouterModule } from '@angular/router';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { ClaimsService } from '@dsh/api/claim-management';
+import { ClaimsService } from '@dsh/app/api/claim-management';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { FetchOrganizationsModule } from '@dsh/app/shared/services/fetch-organizations';
 import { ButtonModule } from '@dsh/components/buttons';
