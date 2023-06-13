@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Shop } from '@vality/swag-payments';
-import { Observable, Subject, of, repeat } from 'rxjs';
-import { startWith, switchMap, takeWhile } from 'rxjs/operators';
+import { Observable, Subject, of, repeat, merge, defer, first } from 'rxjs';
+import { switchMap, filter, catchError } from 'rxjs/operators';
 
 import { createTestShopClaimChangeset, ClaimsService } from '@dsh/app/api/claim-management';
 import { ShopsService } from '@dsh/app/api/payments';
@@ -14,15 +14,16 @@ import { IdGeneratorService } from '../id-generator';
     providedIn: 'root',
 })
 export class ShopsDataService {
-    shops$: Observable<Shop[]> = this.contextOrganizationService.organization$.pipe(
-        switchMap(() => this.reloadShops$),
-        startWith(this.shopsService.getShopsForParty()),
-        switchMap((shops$) => shops$),
+    shops$: Observable<Shop[]> = merge(
+        this.contextOrganizationService.organization$,
+        defer(() => this.reloadShops$)
+    ).pipe(
+        switchMap(() => this.shopsService.getShopsForParty()),
         switchMap((shops) => (shops.length ? of(shops) : this.createTestShop())),
         shareReplayRefCount()
     );
 
-    private reloadShops$ = new Subject<Observable<Shop[]>>();
+    private reloadShops$ = new Subject<void>();
 
     constructor(
         private shopsService: ShopsService,
@@ -31,33 +32,28 @@ export class ShopsDataService {
         private claimsService: ClaimsService
     ) {}
 
-    reloadShops(): Observable<Shop[]> {
-        const shop$ = this.shopsService.getShopsForParty();
-        this.reloadShops$.next(shop$);
-        return shop$;
+    reloadShops() {
+        this.reloadShops$.next();
     }
 
     private createTestShop(): Observable<Shop[]> {
-        return this.claimsService
-            .searchClaims({ limit: 1 })
-            .pipe(
-                switchMap((claims) =>
-                    claims.result.length
-                        ? of(claims.result[0])
-                        : this.claimsService.createClaim({
-                              changeset: createTestShopClaimChangeset(
-                                  this.idGenerator.uuid(),
-                                  this.idGenerator.uuid(),
-                                  this.idGenerator.uuid(),
-                                  this.idGenerator.uuid()
-                              ),
-                          })
-                )
-            )
-            .pipe(
-                switchMap(() => this.shopsService.getShopsForParty()),
-                repeat({ count: 2, delay: 1000 }),
-                takeWhile((shops) => !shops.length)
-            );
+        return this.claimsService.searchClaims({ limit: 1 }).pipe(
+            switchMap((claims) =>
+                claims.result.length
+                    ? of(claims.result[0])
+                    : this.claimsService.createClaim({
+                          changeset: createTestShopClaimChangeset(
+                              this.idGenerator.uuid(),
+                              this.idGenerator.uuid(),
+                              this.idGenerator.uuid(),
+                              this.idGenerator.uuid()
+                          ),
+                      })
+            ),
+            switchMap(() => this.shopsService.getShopsForParty().pipe(repeat({ count: 5, delay: 1000 }))),
+            filter((shops) => !!shops.length),
+            first(),
+            catchError(() => of([]))
+        );
     }
 }

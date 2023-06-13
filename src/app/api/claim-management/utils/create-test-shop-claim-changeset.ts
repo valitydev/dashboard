@@ -43,6 +43,9 @@ export const createTestShopClaimChangeset = (
             currency: CURRENCY,
             toolInfo: {
                 payoutToolType: PayoutToolInfo.PayoutToolTypeEnum.InternationalBankAccount,
+                iban: '00000000000000',
+                bic: '00000000',
+                number: '00000000000000',
             } as InternationalBankAccount,
         }),
         createShopCreationModification(testShopID, {

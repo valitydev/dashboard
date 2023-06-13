@@ -1,14 +1,14 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
 import { PaymentInstitution, Shop as ApiShop } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
-import { BehaviorSubject, combineLatest, Observable, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, ReplaySubject, defer } from 'rxjs';
 import { map, mapTo, pluck, scan, shareReplay, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 
 import { mapToTimestamp, shareReplayRefCount } from '@dsh/app/custom-operators';
 import { ShopsDataService } from '@dsh/app/shared';
 
 import { combineShopItem } from './combine-shop-item';
-import { filterShopsByRealm } from '../../../operations/operators';
+import { getShopsByRealm } from '../../../operations/operators';
 import { ShopBalance } from '../../types/shop-balance';
 import { ShopFiltersData } from '../../types/shop-filters-data';
 import { ShopItem } from '../../types/shop-item';
@@ -24,7 +24,10 @@ export const SHOPS_LIST_PAGINATION_OFFSET = new InjectionToken('shops-list-pagin
 
 @Injectable()
 export class FetchShopsService {
-    allShops$: Observable<ApiShop[]>;
+    allShops$ = defer(() => combineLatest([this.realmData$, this.shopsDataService.shops$])).pipe(
+        map(([realm, shops]) => getShopsByRealm(shops, realm)),
+        shareReplayRefCount()
+    );
     shownShops$: Observable<ShopItem[]>;
     lastUpdated$: Observable<string>;
     isLoading$: Observable<boolean>;
@@ -50,7 +53,6 @@ export class FetchShopsService {
         private paginationOffset: number = DEFAULT_LIST_PAGINATION_OFFSET
     ) {
         this.initPaginationOffset();
-        this.initAllShopsFetching();
         this.initOffsetObservable();
         this.initFilteredShopsObservable();
         this.initShownShopsObservable();
@@ -94,10 +96,6 @@ export class FetchShopsService {
         if (isNil(this.paginationOffset)) {
             this.paginationOffset = DEFAULT_LIST_PAGINATION_OFFSET;
         }
-    }
-
-    private initAllShopsFetching(): void {
-        this.allShops$ = this.realmData$.pipe(filterShopsByRealm(this.shopsDataService.shops$), shareReplayRefCount());
     }
 
     private initOffsetObservable(): void {
