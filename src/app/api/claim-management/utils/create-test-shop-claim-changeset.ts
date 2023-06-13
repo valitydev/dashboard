@@ -1,22 +1,24 @@
-import { Modification, ShopModification, ShopAccountCreationModification } from '@vality/swag-claim-management';
+import {
+    Modification,
+    ShopModification,
+    ShopAccountCreationModification,
+    PayoutToolInfo,
+    InternationalBankAccount,
+} from '@vality/swag-claim-management';
 
 import {
-    createRussianLegalEntityModification,
-    createRussianBankAccountModification,
     createContractCreationModification,
-    createRussianContractPayoutToolCreationModification,
     createShopCreationModification,
     makeShopLocation,
+    createInternationalLegalEntityModification,
+    createContractPayoutToolCreationModification,
 } from './claim-party-modification';
 import { createBaseShopModification } from './claim-party-modification/claim-shop-modification/create-base-shop-modification';
 
 import ShopModificationTypeEnum = ShopModification.ShopModificationTypeEnum;
 
-const RUSSIAN_BANK_ACCOUNT = {
-    account: '00000000000000000000',
-    bankName: 'Test bank name',
-    bankPostAccount: '00000000000000000000',
-    bankBik: '000000000',
+const CURRENCY = {
+    symbolicCode: 'USD',
 };
 
 export const createTestShopClaimChangeset = (
@@ -26,25 +28,26 @@ export const createTestShopClaimChangeset = (
     testContractorID: string
 ): Modification[] => {
     return [
-        createRussianLegalEntityModification(testContractorID, {
+        createInternationalLegalEntityModification(testContractorID, {
+            legalName: 'Test legal name',
             actualAddress: 'Test actual address',
-            russianBankAccount: createRussianBankAccountModification(RUSSIAN_BANK_ACCOUNT),
-            inn: '0000000000',
-            postAddress: 'Test post address',
-            registeredName: 'Test registered name',
+            registeredAddress: 'Test registered address',
             registeredNumber: '0000000000000',
-            representativeDocument: 'Test representative document',
-            representativeFullName: 'Test representative full name',
-            representativePosition: 'Test representative position',
+            tradingName: 'Test trading name',
         }),
         createContractCreationModification(testContractID, {
             contractorID: testContractorID,
             paymentInstitution: { id: 1 },
         }),
-        createRussianContractPayoutToolCreationModification(testContractID, testPayoutToolID, RUSSIAN_BANK_ACCOUNT),
+        createContractPayoutToolCreationModification(testContractID, testPayoutToolID, {
+            currency: CURRENCY,
+            toolInfo: {
+                payoutToolType: PayoutToolInfo.PayoutToolTypeEnum.InternationalBankAccount,
+            } as InternationalBankAccount,
+        }),
         createShopCreationModification(testShopID, {
             category: { categoryID: 1 },
-            location: makeShopLocation({ url: 'http://test.url' }),
+            location: makeShopLocation({ url: 'https://test-url.local' }),
             details: { name: 'Test shop' },
             contractID: testContractID,
             payoutToolID: testPayoutToolID,
@@ -53,7 +56,7 @@ export const createTestShopClaimChangeset = (
             id: testShopID,
             modification: {
                 shopModificationType: ShopModificationTypeEnum.ShopAccountCreationModification,
-                currency: { symbolicCode: 'USD' },
+                currency: CURRENCY,
             } as ShopAccountCreationModification,
         }),
     ];
