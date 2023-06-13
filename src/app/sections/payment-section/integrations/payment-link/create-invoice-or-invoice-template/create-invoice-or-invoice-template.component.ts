@@ -6,7 +6,7 @@ import moment from 'moment';
 import { merge, Subject } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
 
-import { InvoicesService } from '@dsh/api/payments';
+import { InvoicesService } from '@dsh/app/api/payments';
 
 import { CreateInvoiceOrInvoiceTemplateService } from './create-invoice-or-invoice-template.service';
 

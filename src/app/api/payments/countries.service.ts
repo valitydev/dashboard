@@ -4,8 +4,8 @@ import sortBy from 'lodash-es/sortBy';
 import { Observable, of } from 'rxjs';
 import { catchError, map, shareReplay } from 'rxjs/operators';
 
+import { SHARE_REPLAY_CONF } from '@dsh/app/custom-operators';
 import { ErrorService } from '@dsh/app/shared/services';
-import { SHARE_REPLAY_CONF } from '@dsh/operators';
 
 import { createApi } from '../utils';
 

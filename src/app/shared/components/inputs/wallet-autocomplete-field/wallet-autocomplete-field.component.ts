@@ -3,7 +3,7 @@ import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { coerceBoolean } from 'coerce-property';
 import { map } from 'rxjs/operators';
 
-import { WalletsService } from '@dsh/api/wallet';
+import { WalletsService } from '@dsh/app/api/wallet';
 import { provideValueAccessor } from '@dsh/utils';
 
 import { WalletId } from './types';

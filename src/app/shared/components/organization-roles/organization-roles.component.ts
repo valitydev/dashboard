@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MemberRole } from '@vality/swag-organizations';
 import { coerceBoolean } from 'coerce-property';
 
-import { OrganizationsDictionaryService } from '@dsh/api/organizations';
+import { OrganizationsDictionaryService } from '@dsh/app/api/organizations';
 
 import { RoleGroup } from './types/role-group';
 import { groupRoles } from './utils/group-roles';

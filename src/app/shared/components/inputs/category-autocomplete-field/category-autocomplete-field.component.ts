@@ -5,9 +5,9 @@ import { coerceBoolean } from 'coerce-property';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { CategoriesService } from '@dsh/api/payments';
+import { CategoriesService } from '@dsh/app/api/payments';
+import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { Option } from '@dsh/components/form-controls/select-search-field';
-import { shareReplayRefCount } from '@dsh/operators';
 import { provideValueAccessor } from '@dsh/utils';
 
 @Component({

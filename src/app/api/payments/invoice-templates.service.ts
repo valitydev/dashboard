@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { InvoiceTemplatesService as ApiInvoiceTemplatesService } from '@vality/swag-payments';
 
-import { PartyIdPatchMethodService } from '@dsh/api/utils/extensions';
+import { PartyIdPatchMethodService } from '@dsh/app/api/utils/extensions';
 
 import { createApi } from '../utils';
 

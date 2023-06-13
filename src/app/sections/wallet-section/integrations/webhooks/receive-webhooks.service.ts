@@ -6,7 +6,7 @@ import sortBy from 'lodash-es/sortBy';
 import { BehaviorSubject, forkJoin, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, map, shareReplay, switchMap } from 'rxjs/operators';
 
-import { IdentitiesService, WebhooksService } from '@dsh/api/wallet';
+import { IdentitiesService, WebhooksService } from '@dsh/app/api/wallet';
 
 import { mapToTimestamp, SHARE_REPLAY_CONF, progress } from '../../../../custom-operators';
 

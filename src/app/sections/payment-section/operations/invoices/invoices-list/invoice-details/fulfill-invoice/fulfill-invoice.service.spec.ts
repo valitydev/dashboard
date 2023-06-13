@@ -6,7 +6,7 @@ import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 
-import { InvoiceService } from '@dsh/api/invoice';
+import { InvoiceService } from '@dsh/app/api/invoice';
 
 import { FulfillInvoiceDialogComponent } from './components/cancel-invoice-dialog/fulfill-invoice-dialog.component';
 import { FulfillInvoiceService } from './fulfill-invoice.service';

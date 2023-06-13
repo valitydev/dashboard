@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
-import { AnalyticsService } from '@dsh/api/anapi';
+import { AnalyticsService } from '@dsh/app/api/anapi';
 
 import { ShopBalance } from '../../types/shop-balance';
 

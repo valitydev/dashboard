@@ -5,7 +5,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { Observable, ReplaySubject } from 'rxjs';
 import { filter, switchMap, take } from 'rxjs/operators';
 
-import { InvoicesService } from '@dsh/api/payments';
+import { InvoicesService } from '@dsh/app/api/payments';
 
 import { CancelInvoiceDialogComponent } from './components/cancel-invoice-dialog/cancel-invoice-dialog.component';
 

@@ -4,8 +4,8 @@ import moment from 'moment';
 import { Observable } from 'rxjs';
 import { pluck, switchMap } from 'rxjs/operators';
 
-import { InvoicesService } from '@dsh/api/payments';
-import { ShortenerService } from '@dsh/api/url-shortener';
+import { InvoicesService } from '@dsh/app/api/payments';
+import { ShortenerService } from '@dsh/app/api/url-shortener';
 import { queryParamsToStr } from '@dsh/utils';
 
 import { PaymentLinkParams } from './types/payment-link-params';

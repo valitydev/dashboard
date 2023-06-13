@@ -3,7 +3,7 @@ import { CustomersTopic, InvoicesTopic, WebhookScope } from '@vality/swag-paymen
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { PaymentsDictionaryService } from '@dsh/api/payments';
+import { PaymentsDictionaryService } from '@dsh/app/api/payments';
 
 @Component({
     selector: 'dsh-webhook-events',

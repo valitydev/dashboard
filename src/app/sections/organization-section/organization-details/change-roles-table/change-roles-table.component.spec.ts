@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { By } from '@angular/platform-browser';
 
-import { ApiShopsService } from '@dsh/api';
+import { ApiShopsService } from '@dsh/app/api';
 import { DialogConfig, DIALOG_CONFIG } from '@dsh/app/sections/tokens';
 import { provideMockService, provideMockToken } from '@dsh/app/shared/tests';
 

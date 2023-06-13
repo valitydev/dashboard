@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Deposit } from '@vality/swag-wallet';
 
-import { WalletDictionaryService } from '@dsh/api/wallet';
+import { WalletDictionaryService } from '@dsh/app/api/wallet';
 
 @Component({
     selector: 'dsh-deposit-row',

@@ -9,7 +9,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { InviteeContact, MemberRole } from '@vality/swag-organizations';
 import { BehaviorSubject } from 'rxjs';
 
-import { InvitationsService } from '@dsh/api/organizations';
+import { InvitationsService } from '@dsh/app/api/organizations';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services/error';
 import { NotificationService } from '@dsh/app/shared/services/notification';

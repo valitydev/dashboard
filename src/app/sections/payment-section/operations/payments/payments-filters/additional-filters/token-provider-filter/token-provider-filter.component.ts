@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 
-import { AnapiDictionaryService } from '@dsh/api/anapi';
-import { TokenProvider } from '@dsh/api/payments';
+import { AnapiDictionaryService } from '@dsh/app/api/anapi';
+import { TokenProvider } from '@dsh/app/api/payments';
 import { provideValueAccessor } from '@dsh/utils';
 
 @Component({

@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { instance, mock, when } from 'ts-mockito';
 
-import { ContractsService } from '@dsh/api/contracts';
+import { ContractsService } from '@dsh/app/api/contracts';
 
 import { ShopContractDetailsService } from './shop-contract-details.service';
 

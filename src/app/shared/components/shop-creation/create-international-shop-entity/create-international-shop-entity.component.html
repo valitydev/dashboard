@@ -2,7 +2,7 @@
     <dsh-base-dialog [title]="t('title')" (cancel)="cancelCreation()">
         <dsh-shop-form [formControl]="form"></dsh-shop-form>
         <ng-container dshBaseDialogActions>
-            <button dsh-button color="accent" [disabled]="form.invalid" (click)="createShop()">
+            <button dsh-button color="accent" [disabled]="form.invalid || !!(progress$ | async)" (click)="createShop()">
                 {{ t('send') }}
             </button>
         </ng-container>

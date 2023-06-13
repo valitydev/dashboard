@@ -4,7 +4,7 @@ import { WithdrawalStatus } from '@vality/swag-wallet';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { WalletDictionaryService } from '@dsh/api/wallet';
+import { WalletDictionaryService } from '@dsh/app/api/wallet';
 import { Option } from '@dsh/components/form-controls/radio-group-field';
 import { provideValueAccessor } from '@dsh/utils';
 

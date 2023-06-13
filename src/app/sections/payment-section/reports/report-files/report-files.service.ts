@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, forkJoin, of, Subject } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 
-import { ReportsService } from '@dsh/api/anapi';
+import { ReportsService } from '@dsh/app/api/anapi';
 import { multipleDownload } from '@dsh/utils';
 
 @Injectable()

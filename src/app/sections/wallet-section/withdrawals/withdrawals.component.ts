@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 
+import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { QueryParamsService } from '@dsh/app/shared/services/query-params';
-import { shareReplayRefCount } from '@dsh/operators';
 
 import { FetchWithdrawalsService, WithdrawalsExpandedIdManager } from './services';
 import { WithdrawalsFilters } from './withdrawals-filters';

@@ -5,8 +5,8 @@ import { of } from 'rxjs';
 import { delay, take } from 'rxjs/operators';
 import { deepEqual, instance, mock, when } from 'ts-mockito';
 
-import { PaymentInstitutionRealm } from '@dsh/api/model';
-import { InvoiceSearchService } from '@dsh/api/search';
+import { PaymentInstitutionRealm } from '@dsh/app/api/model';
+import { InvoiceSearchService } from '@dsh/app/api/search';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 
 import { FetchInvoicesService } from './fetch-invoices.service';

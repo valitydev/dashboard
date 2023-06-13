@@ -4,7 +4,7 @@ import { Invoice } from '@vality/swag-payments';
 import { BehaviorSubject, Observable, of, ReplaySubject, Subject } from 'rxjs';
 import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
 
-import { InvoicesService } from '@dsh/api/payments';
+import { InvoicesService } from '@dsh/app/api/payments';
 
 @UntilDestroy()
 @Injectable()

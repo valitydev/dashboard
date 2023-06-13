@@ -4,7 +4,7 @@ import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 import { deepEqual, instance, mock, when } from 'ts-mockito';
 
-import { RefundService } from '@dsh/api/refund';
+import { RefundService } from '@dsh/app/api/refund';
 
 import { RefundsService } from './refunds.service';
 

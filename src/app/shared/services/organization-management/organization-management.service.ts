@@ -3,10 +3,10 @@ import { Member, Organization, RoleId } from '@vality/swag-organizations';
 import { combineLatest, defer, Observable, ReplaySubject } from 'rxjs';
 import { map, pluck, shareReplay, switchMap } from 'rxjs/operators';
 
-import { MembersService } from '@dsh/api/organizations';
+import { MembersService } from '@dsh/app/api/organizations';
+import { SHARE_REPLAY_CONF } from '@dsh/app/custom-operators';
 import { ContextOrganizationService } from '@dsh/app/shared';
 import { Initializable } from '@dsh/app/shared/types';
-import { SHARE_REPLAY_CONF } from '@dsh/operators';
 
 @Injectable()
 export class OrganizationManagementService implements Initializable {

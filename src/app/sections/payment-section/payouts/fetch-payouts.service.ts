@@ -3,9 +3,9 @@ import { Payout } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 
-import { SearchService } from '@dsh/api/anapi';
+import { SearchService } from '@dsh/app/api/anapi';
+import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { PartialFetcher } from '@dsh/app/shared';
-import { mapToTimestamp } from '@dsh/operators';
 
 import { SearchParams } from './types/search-params';
 

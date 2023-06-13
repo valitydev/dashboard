@@ -3,7 +3,7 @@ import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { Observable, Subject } from 'rxjs';
 import { filter, switchMap, take, takeUntil } from 'rxjs/operators';
 
-import { IdentitiesService } from '@dsh/api/wallet';
+import { IdentitiesService } from '@dsh/app/api/wallet';
 
 import { CreateWebhookDialogComponent } from './create-webhook-dialog.component';
 

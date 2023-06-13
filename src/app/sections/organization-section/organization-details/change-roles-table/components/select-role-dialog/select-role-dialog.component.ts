@@ -7,7 +7,7 @@ import {
 import { FormBuilder } from '@ngneat/reactive-forms';
 import { RoleId } from '@vality/swag-organizations';
 
-import { OrganizationsDictionaryService } from '@dsh/api/organizations';
+import { OrganizationsDictionaryService } from '@dsh/app/api/organizations';
 import { RoleAccess, ROLE_ACCESS_GROUPS } from '@dsh/app/auth';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ROLE_PRIORITY_DESC } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';

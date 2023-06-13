@@ -1,7 +1,7 @@
 import { ResourceScopeId, RoleId } from '@vality/swag-organizations';
 
-import { MOCK_MEMBER } from '@dsh/api/organizations/tests/mock-member';
-import { MOCK_MEMBER_ROLE } from '@dsh/api/organizations/tests/mock-member-role';
+import { MOCK_MEMBER } from '@dsh/app/api/organizations/tests/mock-member';
+import { MOCK_MEMBER_ROLE } from '@dsh/app/api/organizations/tests/mock-member-role';
 
 import { groupRoles } from './group-roles';
 import { RoleGroup } from '../types/role-group';

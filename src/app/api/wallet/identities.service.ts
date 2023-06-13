@@ -3,7 +3,7 @@ import { IdentitiesService as ApiIdentitiesService, Identity } from '@vality/swa
 import { Subject, defer, switchMap } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 
-import { shareReplayRefCount } from '@dsh/operators';
+import { shareReplayRefCount } from '@dsh/app/custom-operators';
 
 import { createApi } from '../utils';
 

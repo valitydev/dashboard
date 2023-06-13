@@ -6,9 +6,9 @@ import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 import { anything, mock, verify, when, anyString } from 'ts-mockito';
 
-import { OrgsService } from '@dsh/api/organizations';
-import { MOCK_INVITATION } from '@dsh/api/organizations/tests/mock-invitation';
-import { MOCK_ORG } from '@dsh/api/organizations/tests/mock-org';
+import { OrgsService } from '@dsh/app/api/organizations';
+import { MOCK_INVITATION } from '@dsh/app/api/organizations/tests/mock-invitation';
+import { MOCK_ORG } from '@dsh/app/api/organizations/tests/mock-org';
 import { DIALOG_CONFIG } from '@dsh/app/sections/tokens';
 import { ErrorService } from '@dsh/app/shared';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';

@@ -3,7 +3,7 @@ import { Refund, RefundParams } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { PaymentsService } from '@dsh/api/payments';
+import { PaymentsService } from '@dsh/app/api/payments';
 
 @Injectable()
 export class RefundsService {

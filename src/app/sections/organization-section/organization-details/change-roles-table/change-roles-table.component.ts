@@ -7,7 +7,7 @@ import isNil from 'lodash-es/isNil';
 import { BehaviorSubject, combineLatest, EMPTY, Observable, of } from 'rxjs';
 import { first, map, switchMap, tap } from 'rxjs/operators';
 
-import { OrganizationsDictionaryService } from '@dsh/api/organizations';
+import { OrganizationsDictionaryService } from '@dsh/app/api/organizations';
 import { DialogConfig, DIALOG_CONFIG } from '@dsh/app/sections/tokens';
 import { ShopsDataService } from '@dsh/app/shared';
 import { sortRoleIds } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';

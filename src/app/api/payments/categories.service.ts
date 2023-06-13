@@ -3,7 +3,7 @@ import { CategoriesService as ApiCategoriesService } from '@vality/swag-payments
 import { BehaviorSubject, defer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-import { shareReplayRefCount } from '@dsh/operators';
+import { shareReplayRefCount } from '@dsh/app/custom-operators';
 
 import { createApi } from '../utils';
 

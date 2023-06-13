@@ -2,7 +2,7 @@ import { Invoice, Shop } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { getShopNameById } from '@dsh/api/shop/utils';
+import { getShopNameById } from '@dsh/app/api/shop/utils';
 
 import { InvoicesTableData } from './table';
 

@@ -3,7 +3,7 @@ import { PaymentSearchResult } from '@vality/swag-payments';
 import { BehaviorSubject, Observable, of, ReplaySubject, Subject } from 'rxjs';
 import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
 
-import { PaymentsService } from '@dsh/api/payments';
+import { PaymentsService } from '@dsh/app/api/payments';
 
 export interface ReceivePaymentParams {
     invoiceID: string;

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { of, timer } from 'rxjs';
 import { catchError, pluck, switchMap } from 'rxjs/operators';
 
-import { AnalyticsService } from '@dsh/api/anapi';
-import { shareReplayRefCount } from '@dsh/operators';
+import { AnalyticsService } from '@dsh/app/api/anapi';
+import { shareReplayRefCount } from '@dsh/app/custom-operators';
 
 import { PaymentInstitutionRealmService } from '../services';
 

@@ -10,9 +10,9 @@ import { Shop } from '@vality/swag-payments';
 import { of, throwError } from 'rxjs';
 import { anyString, anything, deepEqual, mock, verify, when } from 'ts-mockito';
 
-import { ApiShopsService, OrganizationsService } from '@dsh/api';
-import { MOCK_INVITATION } from '@dsh/api/organizations/tests/mock-invitation';
-import { MOCK_ORG } from '@dsh/api/organizations/tests/mock-org';
+import { ApiShopsService, OrganizationsService } from '@dsh/app/api';
+import { MOCK_INVITATION } from '@dsh/app/api/organizations/tests/mock-invitation';
+import { MOCK_ORG } from '@dsh/app/api/organizations/tests/mock-org';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services/error';
 import { NotificationService } from '@dsh/app/shared/services/notification';

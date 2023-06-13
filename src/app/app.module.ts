@@ -16,12 +16,12 @@ import { Router } from '@angular/router';
 import { TRANSLOCO_CONFIG, TRANSLOCO_LOADER, TranslocoModule, translocoConfig } from '@ngneat/transloco';
 import * as Sentry from '@sentry/angular';
 
-import { AnapiModule } from '@dsh/api/anapi';
-import { ClaimManagementModule } from '@dsh/api/claim-management';
-import { PaymentsModule } from '@dsh/api/payments';
-import { QuestionaryAggrProxyModule } from '@dsh/api/questionary-aggr-proxy';
-import { UrlShortenerModule } from '@dsh/api/url-shortener';
-import { WalletModule } from '@dsh/api/wallet';
+import { AnapiModule } from '@dsh/app/api/anapi';
+import { ClaimManagementModule } from '@dsh/app/api/claim-management';
+import { PaymentsModule } from '@dsh/app/api/payments';
+import { QuestionaryAggrProxyModule } from '@dsh/app/api/questionary-aggr-proxy';
+import { UrlShortenerModule } from '@dsh/app/api/url-shortener';
+import { WalletModule } from '@dsh/app/api/wallet';
 import { ErrorModule } from '@dsh/app/shared/services';
 import { QUERY_PARAMS_SERIALIZERS } from '@dsh/app/shared/services/query-params/utils/query-params-serializers';
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';

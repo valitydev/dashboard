@@ -6,8 +6,8 @@ import sortBy from 'lodash-es/sortBy';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, map, shareReplay, switchMap } from 'rxjs/operators';
 
-import { WebhooksService } from '@dsh/api/payments';
-import { mapToTimestamp, SHARE_REPLAY_CONF, progress } from '@dsh/operators';
+import { WebhooksService } from '@dsh/app/api/payments';
+import { mapToTimestamp, SHARE_REPLAY_CONF, progress } from '@dsh/app/custom-operators';
 
 @Injectable()
 export class ReceiveWebhooksService {

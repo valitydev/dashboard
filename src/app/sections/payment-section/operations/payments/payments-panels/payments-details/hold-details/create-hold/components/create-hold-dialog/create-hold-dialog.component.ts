@@ -9,7 +9,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CaptureParams } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
 
-import { PaymentsService } from '@dsh/api/payments';
+import { PaymentsService } from '@dsh/app/api/payments';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services';
 import { amountValidator } from '@dsh/components/form-controls';

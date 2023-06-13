@@ -10,7 +10,7 @@ import {
     isReqLegalEntity,
     isReqIndividualEntity,
     getAddress,
-} from '@dsh/api/questionary-aggr-proxy';
+} from '@dsh/app/api/questionary-aggr-proxy';
 import { ValidatedControlSuperclass, createControlProviders } from '@dsh/utils';
 
 import { RussianBankAccountForm } from '../russian-bank-account-form/types/bank-account-form-data';

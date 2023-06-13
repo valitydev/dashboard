@@ -11,7 +11,7 @@ import { Moment } from 'moment';
 import { distinctUntilChanged, map, startWith } from 'rxjs/operators';
 import { Overwrite } from 'utility-types';
 
-import { shareReplayUntilDestroyed } from '@dsh/operators';
+import { shareReplayUntilDestroyed } from '@dsh/app/custom-operators';
 import {
     provideValueAccessor,
     replaceFormArrayValue,

@@ -3,7 +3,7 @@ import { DestinationsTopic, WebhookScope, WithdrawalsTopic } from '@vality/swag-
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { WalletDictionaryService } from '@dsh/api/wallet';
+import { WalletDictionaryService } from '@dsh/app/api/wallet';
 
 @Component({
     selector: 'dsh-webhook-events',

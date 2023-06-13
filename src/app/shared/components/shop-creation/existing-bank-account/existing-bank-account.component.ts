@@ -12,7 +12,7 @@ import { Observable, BehaviorSubject, of, throwError, EMPTY } from 'rxjs';
 import { switchMap, tap, share, catchError } from 'rxjs/operators';
 import { Overwrite } from 'utility-types';
 
-import { PayoutsService } from '@dsh/api/payments';
+import { PayoutsService } from '@dsh/app/api/payments';
 import { CommonError, ErrorService } from '@dsh/app/shared';
 import { ValidatedControlSuperclass, createControlProviders, progressTo, errorTo } from '@dsh/utils';
 

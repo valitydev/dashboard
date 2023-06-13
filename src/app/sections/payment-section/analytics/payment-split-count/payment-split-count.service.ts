@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { forkJoin, of, defer, ReplaySubject, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, switchMap, withLatestFrom, distinctUntilChanged } from 'rxjs/operators';
 
-import { AnalyticsService, AnapiDictionaryService } from '@dsh/api/anapi';
-import { shareReplayRefCount } from '@dsh/operators';
+import { AnalyticsService, AnapiDictionaryService } from '@dsh/app/api/anapi';
+import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { errorTo, progressTo, distinctUntilChangedDeep, inProgressFrom, attach } from '@dsh/utils';
 
 import { prepareSplitCount } from './prepare-split-count';

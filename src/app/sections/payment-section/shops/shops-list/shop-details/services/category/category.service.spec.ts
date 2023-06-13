@@ -3,7 +3,7 @@ import { Category } from '@vality/swag-payments';
 import { cold, getTestScheduler } from 'jasmine-marbles';
 import { Observable, of, scheduled } from 'rxjs';
 
-import { CategoriesService } from '@dsh/api/categories';
+import { CategoriesService } from '@dsh/app/api/categories';
 
 import { CategoryService } from './category.service';
 import { makeEmptyList } from '../../../../tests/make-empty-list';

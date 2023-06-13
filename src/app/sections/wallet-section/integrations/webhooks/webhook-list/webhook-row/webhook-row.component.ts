@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { map } from 'rxjs/operators';
 
-import { IdentitiesService } from '@dsh/api/wallet';
+import { IdentitiesService } from '@dsh/app/api/wallet';
 
 @Component({
     selector: 'dsh-webhook-row',

@@ -4,7 +4,7 @@ import moment from 'moment';
 import { Observable, switchMap } from 'rxjs';
 import { shareReplay, first } from 'rxjs/operators';
 
-import { SearchService } from '@dsh/api/anapi';
+import { SearchService } from '@dsh/app/api/anapi';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
 

@@ -5,7 +5,7 @@ import moment from 'moment';
 import { Observable, ReplaySubject } from 'rxjs';
 import { distinctUntilChanged, switchMap, tap, map, withLatestFrom } from 'rxjs/operators';
 
-import { SearchService } from '@dsh/api/anapi';
+import { SearchService } from '@dsh/app/api/anapi';
 import { ErrorService } from '@dsh/app/shared/services';
 
 import { PaymentInstitutionRealmService } from '../../../../../../services';

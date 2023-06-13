@@ -3,7 +3,7 @@ import { Report } from '@vality/swag-anapi-v2';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { AnapiDictionaryService } from '@dsh/api/anapi';
+import { AnapiDictionaryService } from '@dsh/app/api/anapi';
 
 @Pipe({ name: 'reportTypesLabelPipe' })
 export class ReportTypesLabelPipe implements PipeTransform {

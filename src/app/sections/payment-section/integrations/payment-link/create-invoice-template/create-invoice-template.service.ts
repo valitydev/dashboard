@@ -20,9 +20,9 @@ import * as moment from 'moment';
 import { combineLatest, merge, Observable, Subject } from 'rxjs';
 import { distinctUntilChanged, filter, map, share, shareReplay, startWith, switchMap, take } from 'rxjs/operators';
 
-import { InvoiceTemplatesService, InvoiceTemplateType, InvoiceTemplateLineCostType } from '@dsh/api/payments';
+import { InvoiceTemplatesService, InvoiceTemplateType, InvoiceTemplateLineCostType } from '@dsh/app/api/payments';
+import { filterError, filterPayload, progress, replaceError, SHARE_REPLAY_CONF } from '@dsh/app/custom-operators';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
-import { filterError, filterPayload, progress, replaceError, SHARE_REPLAY_CONF } from '@dsh/operators';
 import { toMinor } from '@dsh/utils';
 
 export const WITHOUT_VAT = Symbol('without VAT');

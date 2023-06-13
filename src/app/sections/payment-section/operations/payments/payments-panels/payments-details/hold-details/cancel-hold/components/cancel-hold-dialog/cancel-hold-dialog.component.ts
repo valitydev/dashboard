@@ -6,7 +6,7 @@ import {
 } from '@angular/material/legacy-dialog';
 import { FormBuilder, FormGroup } from '@ngneat/reactive-forms';
 
-import { PaymentsService } from '@dsh/api/payments';
+import { PaymentsService } from '@dsh/app/api/payments';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services';
 

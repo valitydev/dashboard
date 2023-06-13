@@ -4,7 +4,7 @@ import { PaymentInstitution } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { shareReplayRefCount } from '@dsh/operators';
+import { shareReplayRefCount } from '@dsh/app/custom-operators';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 

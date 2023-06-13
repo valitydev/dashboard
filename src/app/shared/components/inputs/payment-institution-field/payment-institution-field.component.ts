@@ -5,7 +5,7 @@ import { coerceBoolean } from 'coerce-property';
 import { Observable } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 
-import { PaymentInstitutionsService } from '@dsh/api/payments';
+import { PaymentInstitutionsService } from '@dsh/app/api/payments';
 import { Option } from '@dsh/components/form-controls/select-search-field';
 import { provideValueAccessor } from '@dsh/utils';
 

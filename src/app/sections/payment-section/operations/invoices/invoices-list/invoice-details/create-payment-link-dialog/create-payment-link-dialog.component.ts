@@ -7,10 +7,10 @@ import { FormControl } from '@ngneat/reactive-forms';
 import { BehaviorSubject, defer, merge, Subject } from 'rxjs';
 import { mapTo, switchMap } from 'rxjs/operators';
 
-import { InvoicesService } from '@dsh/api/payments';
+import { InvoicesService } from '@dsh/app/api/payments';
+import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { Controls } from '@dsh/app/shared/components/create-payment-link-form';
 import { CreatePaymentLinkService } from '@dsh/app/shared/services/create-payment-link/create-payment-link.service';
-import { shareReplayRefCount } from '@dsh/operators';
 
 import { CreatePaymentLinkDialogData } from './types/create-payment-link-dialog-data';
 

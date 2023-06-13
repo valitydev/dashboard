@@ -4,7 +4,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { InlineObject1, Invitation, Organization } from '@vality/swag-organizations';
 import { filter, switchMap } from 'rxjs/operators';
 
-import { InvitationsService } from '@dsh/api/organizations';
+import { InvitationsService } from '@dsh/app/api/organizations';
 import { ErrorService, NotificationService } from '@dsh/app/shared';
 import { ConfirmActionDialogComponent, ConfirmActionDialogResult } from '@dsh/components/popups';
 import { ignoreBeforeCompletion } from '@dsh/utils';

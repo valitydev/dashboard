@@ -4,9 +4,9 @@ import { TranslocoService } from '@ngneat/transloco';
 import { Claim } from '@vality/swag-claim-management';
 import { Observable } from 'rxjs';
 
-import { ClaimsService } from '@dsh/api/claim-management';
+import { ClaimsService } from '@dsh/app/api/claim-management';
+import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { FetchResult, PartialFetcher } from '@dsh/app/shared';
-import { mapToTimestamp } from '@dsh/operators';
 
 import { ClaimsSearchFiltersSearchParams } from '../../claims-search-filters/claims-search-filters-search-params';
 

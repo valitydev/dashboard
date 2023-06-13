@@ -5,7 +5,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { combineLatest, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, switchMap, takeUntil } from 'rxjs/operators';
 
-import { ReportsService } from '@dsh/api/anapi';
+import { ReportsService } from '@dsh/app/api/anapi';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 
 @Injectable()

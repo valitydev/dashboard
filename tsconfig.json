@@ -18,19 +18,7 @@
         "resolveJsonModule": true,
         "skipLibCheck": true,
         "paths": {
-            "@dsh/components/*": ["src/components/*"],
-            "@dsh/components": ["src/components"],
-            "@dsh/pipes/*": ["src/pipes/*"],
-            "@dsh/pipes": ["src/pipes"],
-            "@dsh/app/shared/*": ["src/app/shared/*"],
-            "@dsh/app/shared": ["src/app/shared"],
-            "@dsh/api/*": ["src/app/api/*"],
-            "@dsh/api": ["src/app/api"],
-            "@dsh/app/sections/tokens": ["src/app/sections/tokens.ts"],
-            "@dsh/type-utils": ["src/type-utils/index.ts"],
-            "@dsh/utils": ["src/utils/index.ts"],
-            "@dsh/operators": ["src/app/custom-operators/index.ts"],
-            "@dsh/app/*": ["src/app/*"]
+            "@dsh/*": ["src/*"]
         }
     },
     "angularCompilerOptions": {

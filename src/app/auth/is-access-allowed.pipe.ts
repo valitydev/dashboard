@@ -6,6 +6,7 @@ import { RoleAccessName } from './types/role-access-name';
 
 @Pipe({
     name: 'isAccessAllowed',
+    pure: false,
 })
 export class IsAccessAllowedPipe implements PipeTransform, OnDestroy {
     private asyncPipe: AsyncPipe;

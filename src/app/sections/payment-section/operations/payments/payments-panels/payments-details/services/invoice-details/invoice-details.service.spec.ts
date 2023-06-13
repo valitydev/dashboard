@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 
-import { InvoiceSearchService } from '@dsh/api/search';
+import { InvoiceSearchService } from '@dsh/app/api/search';
 import { ErrorService } from '@dsh/app/shared/services';
 
 import { InvoiceDetailsService } from './invoice-details.service';

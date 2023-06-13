@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, combineLatest, defer, Observable, of, ReplaySubject } from 'rxjs';
 import { distinctUntilChanged, map, shareReplay, switchMap } from 'rxjs/operators';
 
-import { SHARE_REPLAY_CONF } from '@dsh/operators';
+import { SHARE_REPLAY_CONF } from '@dsh/app/custom-operators';
 
 @Injectable()
 export class LayoutManagementService {

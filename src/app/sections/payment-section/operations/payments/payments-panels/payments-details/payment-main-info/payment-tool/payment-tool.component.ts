@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { PaymentToolDetails } from '@vality/swag-payments';
 
-import { PaymentToolDetailsType } from '@dsh/api/payments';
+import { PaymentToolDetailsType } from '@dsh/app/api/payments';
 
 @Component({
     selector: 'dsh-payment-tool',
