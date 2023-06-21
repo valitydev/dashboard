@@ -4,7 +4,7 @@ import { APP_INITIALIZER, ErrorHandler, LOCALE_ID, NgModule } from '@angular/cor
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MAT_LEGACY_FORM_FIELD_DEFAULT_OPTIONS as MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/legacy-form-field';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import {
     MAT_MOMENT_DATE_ADAPTER_OPTIONS,
     MAT_MOMENT_DATE_FORMATS,

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MatLegacyFormFieldControl as MatFormFieldControl } from '@angular/material/legacy-form-field';
+import { MatFormFieldControl } from '@angular/material/form-field';
 import { TextMaskConfig } from 'angular2-text-mask';
 
 import { CONFIGS, Type } from './configs';
