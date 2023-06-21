@@ -7,6 +7,7 @@ import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy
 import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { DialogSuperclass } from '@vality/ng-core';
+import { ApiKey } from '@vality/swag-api-keys';
 
 import { ApiKeysService } from '@dsh/app/api/api-keys';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
@@ -50,7 +51,7 @@ export class ApiKeyCreateDialogComponent extends DialogSuperclass<ApiKeyCreateDi
 
     confirm() {
         this.apiKeysService
-            .issueApiKey()
+            .issueApiKey({ apiKey: { name: this.form.value.name } as ApiKey })
             .pipe(untilDestroyed(this))
             .subscribe({
                 next: (res) => {

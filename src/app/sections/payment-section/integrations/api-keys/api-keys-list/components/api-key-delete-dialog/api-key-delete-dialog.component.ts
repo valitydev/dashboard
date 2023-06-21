@@ -34,7 +34,7 @@ export class ApiKeyDeleteDialogComponent extends DialogSuperclass<
 
     confirm() {
         this.apiKeysService
-            .requestRevokeApiKey(this.dialogData)
+            .requestRevokeApiKey({ ...this.dialogData, body: 'Revoked' })
             .pipe(untilDestroyed(this))
             .subscribe({
                 next: () => {
