@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { MatLegacySnackBarModule as MatSnackBarModule } from '@angular/material/legacy-snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoTestingModule } from '@ngneat/transloco';
 
 import { FetchClaimsService } from './services/fetch-claims/fetch-claims.service';
