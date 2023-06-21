@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder } from '@angular/forms';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import {
     InvoiceLineTaxMode,
     InvoiceLineTaxVAT,

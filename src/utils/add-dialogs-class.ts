@@ -1,4 +1,4 @@
-import { MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 
 export function addDialogsClass(dialogs: MatDialogRef<any>[], className: string) {
     dialogs.forEach((d) => d.addPanelClass(className));

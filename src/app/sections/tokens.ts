@@ -1,5 +1,5 @@
 import { InjectionToken } from '@angular/core';
-import { MatLegacyDialogConfig as MatDialogConfig } from '@angular/material/legacy-dialog';
+import { MatDialogConfig } from '@angular/material/dialog';
 
 import { ChartsThemeProvider } from './payment-section/analytics/charts-theme';
 
