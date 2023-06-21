@@ -1,7 +1,7 @@
 <div class="dsh-toolbar" fxLayout fxLayoutGap="24px" fxLayoutAlign="center center">
     <dsh-brand fxFlex fxLayoutAlign="start"></dsh-brand>
     <div fxFlex fxLayoutAlign="center">
-        <nav class="dsh-top-tab-nav-bar" mat-tab-nav-bar>
+        <nav class="dsh-top-tab-nav-bar" mat-tab-nav-bar [tabPanel]="tabPanel">
             <a
                 *ngFor="let link of sectionLinks$ | async"
                 mat-tab-link
@@ -14,6 +14,7 @@
                 {{ link.label }}
             </a>
         </nav>
+        <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
     </div>
     <dsh-actionbar fxFlex fxLayoutAlign="end"></dsh-actionbar>
 </div>

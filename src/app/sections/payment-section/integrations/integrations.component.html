@@ -3,7 +3,7 @@
     fxLayout="column"
     fxLayoutGap="32px"
 >
-    <nav mat-tab-nav-bar>
+    <nav mat-tab-nav-bar [tabPanel]="tabPanel">
         <a
             mat-tab-link
             *ngFor="let link of links"
@@ -15,8 +15,8 @@
             <span>{{ link.label$ | async }}</span>
         </a>
     </nav>
-    <div>
+    <mat-tab-nav-panel #tabPanel>
         <router-outlet></router-outlet>
-    </div>
+    </mat-tab-nav-panel>
 </div>
 <dsh-scroll-up></dsh-scroll-up>
