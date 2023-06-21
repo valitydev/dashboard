@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService, TranslocoTestingModule } from '@ngneat/transloco';
 import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
