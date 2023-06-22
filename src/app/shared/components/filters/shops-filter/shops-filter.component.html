@@ -2,7 +2,7 @@
     *transloco="let t; scope: 'components'; read: 'components.shopsFilter'"
     [active]="isActive"
     [label]="t('label')"
-    [activeLabel]="t('activeLabel') | listLabel: (labels$ | async)"
+    [activeLabel]="t('activeLabel') | listLabel : (labels$ | async)"
     [content]="content"
     (save)="save()"
     (clear)="clear()"

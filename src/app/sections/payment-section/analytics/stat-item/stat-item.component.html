@@ -12,7 +12,7 @@
                         {{ statData.current | number }}
                     </div>
                     <ng-template #showCurrency>
-                        {{ statData.current | amountCurrency: statData.currency:'short' }}
+                        {{ statData.current | amountCurrency : statData.currency : 'short' }}
                     </ng-template>
                 </div>
                 <ng-template #noData>

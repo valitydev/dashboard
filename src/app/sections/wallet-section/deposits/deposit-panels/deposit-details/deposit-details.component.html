@@ -5,13 +5,13 @@
 >
     <div fxLayout="row" fxLayoutAlign="start center">
         <div fxFlex="33" class="dsh-headline">
-            {{ deposit.body.amount | amountCurrency: deposit.body.currency }}
+            {{ deposit.body.amount | amountCurrency : deposit.body.currency }}
         </div>
         <dsh-details-item fxFlex="33" [title]="t('amount')">
-            {{ deposit.body.amount | amountCurrency: deposit.body.currency }}
+            {{ deposit.body.amount | amountCurrency : deposit.body.currency }}
         </dsh-details-item>
         <dsh-details-item fxFlex="33" [title]="t('fee')">
-            {{ deposit.fee.amount | amountCurrency: deposit.fee.currency }}
+            {{ deposit.fee.amount | amountCurrency : deposit.fee.currency }}
         </dsh-details-item>
     </div>
     <div fxLayout="row">

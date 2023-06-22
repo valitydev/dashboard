@@ -5,8 +5,8 @@ import { ErrorDistribution } from './error-distribution';
 import { KNOWN_ERRORS } from './known-errors';
 
 function getDistributionErrorCode(errorCode: string): ErrorDistribution['errorCode'] {
-    return KNOWN_ERRORS.includes(errorCode as typeof KNOWN_ERRORS[number])
-        ? (errorCode as typeof KNOWN_ERRORS[number])
+    return KNOWN_ERRORS.includes(errorCode as (typeof KNOWN_ERRORS)[number])
+        ? (errorCode as (typeof KNOWN_ERRORS)[number])
         : 'other';
 }
 

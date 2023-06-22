@@ -2,7 +2,7 @@
     *transloco="let t; scope: 'components'; read: 'components.invoicesFilter'"
     [active]="isActive"
     [label]="t('label')"
-    [activeLabel]="t('activeLabel') | listLabel: savedValue:0"
+    [activeLabel]="t('activeLabel') | listLabel : savedValue : 0"
     [content]="content"
     (save)="save()"
     (clear)="clear()"

@@ -19,7 +19,7 @@
                 <dsh-format-input [formControl]="amountControl" format="amount" required></dsh-format-input>
                 <mat-hint *ngIf="availableRefundAmount$ | async as availableRefundAmount; else loadingBalanceHint">
                     {{ t('availableRefund') }}
-                    : {{ availableRefundAmount.amount | amountCurrency: availableRefundAmount.currency }}
+                    : {{ availableRefundAmount.amount | amountCurrency : availableRefundAmount.currency }}
                     <!--                        <br />-->
                     <!--                        {{ t('balance') }}-->
                     <!--                        : {{ balance.accountBalance.amount | amountCurrency: balance.accountBalance.currency }}-->

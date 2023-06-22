@@ -12,10 +12,10 @@
         gdGap="24px"
     >
         <dsh-details-item [title]="t('own')">{{
-            account.own.amount | amountCurrency: account.own.currency
+            account.own.amount | amountCurrency : account.own.currency
         }}</dsh-details-item>
         <dsh-details-item [title]="t('amount')">{{
-            account.available.amount | amountCurrency: account.available.currency
+            account.available.amount | amountCurrency : account.available.currency
         }}</dsh-details-item>
     </div>
     <ng-template #loading>

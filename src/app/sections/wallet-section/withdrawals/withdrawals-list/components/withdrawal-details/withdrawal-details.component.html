@@ -5,14 +5,14 @@
     gdGap="24px"
 >
     <div class="dsh-headline">
-        {{ withdrawal.body.amount | amountCurrency: withdrawal.body.currency }}
+        {{ withdrawal.body.amount | amountCurrency : withdrawal.body.currency }}
     </div>
     <dsh-details-item [title]="t('amount')">
-        {{ withdrawal.body.amount + withdrawal.fee.amount | amountCurrency: withdrawal.body.currency }}
+        {{ withdrawal.body.amount + withdrawal.fee.amount | amountCurrency : withdrawal.body.currency }}
     </dsh-details-item>
     <dsh-details-item [title]="t('fee')">
-        {{ withdrawal.fee.amount | amountCurrency: withdrawal.fee.currency }} ({{
-            withdrawal.fee.amount / withdrawal.body.amount | percent: '1.0-2':'en'
+        {{ withdrawal.fee.amount | amountCurrency : withdrawal.fee.currency }} ({{
+            withdrawal.fee.amount / withdrawal.body.amount | percent : '1.0-2' : 'en'
         }})
     </dsh-details-item>
     <dsh-details-item [title]="t('status')">

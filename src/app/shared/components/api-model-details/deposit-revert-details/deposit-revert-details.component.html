@@ -5,7 +5,7 @@
 >
     <div fxLayout="row" fxLayoutAlign="start center">
         <dsh-details-item fxFlex="33" [title]="t('amount')">
-            {{ revert.body.amount | amountCurrency: revert.body.currency }}
+            {{ revert.body.amount | amountCurrency : revert.body.currency }}
         </dsh-details-item>
         <dsh-details-item fxFlex="33" [title]="t('status')">
             <dsh-status [color]="revert.status | depositRevertStatusColor">{{
@@ -13,7 +13,7 @@
             }}</dsh-status>
         </dsh-details-item>
         <dsh-details-item fxFlex="33" [title]="t('createdAt')">
-            {{ revert.createdAt | date: 'dd MMMM yyyy, HH:mm' }}
+            {{ revert.createdAt | date : 'dd MMMM yyyy, HH:mm' }}
         </dsh-details-item>
     </div>
     <div *ngIf="revert.failure" fxLayout="row">

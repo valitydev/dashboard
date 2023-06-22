@@ -139,7 +139,7 @@ export class CreatePaymentLinkFormComponent
         });
     }
 
-    private getPaymentMethodLabels(): Record<typeof ORDERED_PAYMENT_METHODS_NAMES[number], Observable<string>> {
+    private getPaymentMethodLabels(): Record<(typeof ORDERED_PAYMENT_METHODS_NAMES)[number], Observable<string>> {
         return {
             bankCard: this.transloco.selectTranslate(
                 'createPaymentLinkForm.paymentMethod.bankCard',

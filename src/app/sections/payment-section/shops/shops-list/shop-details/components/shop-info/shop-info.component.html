@@ -9,6 +9,6 @@
     <!--    <dsh-details-item [title]="p('balance')">-->
     <!--        <dsh-shop-balance [shop]="shop"></dsh-shop-balance>-->
     <!--    </dsh-details-item>-->
-    <dsh-details-item [title]="p('createdAt')">{{ shop.createdAt | date: 'dd MMMM yyyy, HH:mm:ss' }}</dsh-details-item>
+    <dsh-details-item [title]="p('createdAt')">{{ shop.createdAt | date : 'dd MMMM yyyy, HH:mm:ss' }}</dsh-details-item>
     <dsh-details-item [title]="p('category')">{{ (category$ | async)?.name }}</dsh-details-item>
 </div>

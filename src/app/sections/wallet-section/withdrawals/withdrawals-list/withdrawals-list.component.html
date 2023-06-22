@@ -17,7 +17,7 @@
                     >
                         <div fxLayout fxLayoutAlign="space-between">
                             <div>{{ t('withdrawal') }} #{{ withdrawal.id }}</div>
-                            <div>{{ withdrawal.createdAt | date: 'dd MMMM yyyy, HH:mm' }}</div>
+                            <div>{{ withdrawal.createdAt | date : 'dd MMMM yyyy, HH:mm' }}</div>
                         </div>
                     </dsh-accordion-item-content-header>
                     <dsh-withdrawal-details [withdrawal]="withdrawal"></dsh-withdrawal-details>
