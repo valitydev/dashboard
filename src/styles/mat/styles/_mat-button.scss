@@ -3,7 +3,9 @@
 @mixin mat-button-override() {
     .mat-mdc-icon-button {
         &#{&}#{&}#{&} {
-            padding: 0;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 
