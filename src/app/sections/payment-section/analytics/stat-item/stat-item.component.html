@@ -6,7 +6,7 @@
             fxLayoutAlign="space-between"
             fxLayoutGap="10px"
         >
-            <h2 *ngIf="!isLoading" class="mat-title stat-item-title">
+            <h2 *ngIf="!isLoading" class="mat-h2 stat-item-title">
                 <div *ngIf="statData?.current; else noData">
                     <div *ngIf="hideCurrency; else showCurrency">
                         {{ statData.current | number }}

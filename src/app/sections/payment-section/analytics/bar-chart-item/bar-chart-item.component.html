@@ -1,6 +1,6 @@
 <dsh-card class="bar-chart" *transloco="let c; scope: 'components'; read: 'components.shared'">
     <dsh-card-title fxLayoutAlign="space-between">
-        <h1 class="mat-title">{{ title }}</h1>
+        <h1 class="mat-h2">{{ title }}</h1>
         <dsh-spinner *ngIf="isLoading" size="30" [type]="spinnerType"></dsh-spinner>
     </dsh-card-title>
     <dsh-card-content *transloco="let t; scope: 'payment-section'; read: 'paymentSection.analytics'">

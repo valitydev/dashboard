@@ -4,7 +4,7 @@
     *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.refunds.paymentInfo'"
 >
     <div fxLayout fxLayoutGap="16px" fxLayoutAlign="space-between">
-        <div class="mat-title">{{ t('title') }}</div>
+        <div class="mat-h2">{{ t('title') }}</div>
     </div>
     <ng-container *ngIf="isLoading$ | async; else afterLoading">
         <div *transloco="let c; scope: 'components'; read: 'components.shared'" class="dsh-body-1">
