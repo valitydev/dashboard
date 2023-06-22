@@ -7,6 +7,7 @@
 @import 'styles/mat-drawer-container';
 @import 'styles/mat-radio-button';
 @import 'styles/mat-tabs';
+@import 'styles/mat-button';
 
 @mixin mat-style() {
     @include mat-menu-override();
@@ -18,4 +19,5 @@
     @include mat-drawer-container-override();
     @include mat-radio-button-override();
     @include mat-tabs-override();
+    @include mat-button-override();
 }

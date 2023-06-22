@@ -1,0 +1,15 @@
+@import '../../utils/shadow';
+
+@mixin mat-button-override() {
+    .mat-mdc-icon-button {
+        &#{&}#{&}#{&} {
+            padding: 0;
+        }
+    }
+
+    .mdc-icon-button__ripple {
+        &#{&}#{&}#{&} {
+            display: none;
+        }
+    }
+}
