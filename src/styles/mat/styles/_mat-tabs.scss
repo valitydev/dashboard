@@ -1,19 +1,23 @@
 @use '@angular/material' as mat;
 
 @mixin mat-tabs-override() {
-    .mat-tab-header-pagination {
+    .mat-mdc-tab-header-pagination {
         box-shadow: none !important;
     }
 
-    .mat-tab-links {
-        .mat-tab-link {
+    .mat-mdc-tab-links {
+        .mat-mdc-tab-link {
             padding: 0;
-            min-width: 0;
+            min-width: 0 !important;
             opacity: 1;
             margin-right: 24px;
 
             &:last-child {
                 margin-right: 0;
+            }
+
+            .mdc-tab__ripple {
+                display: none;
             }
         }
     }
@@ -24,7 +28,11 @@
     $background: map-get($theme, background);
     $foreground: map-get($theme, foreground);
 
-    .mat {
+    .mat-mdc {
+        &-tab-link-container {
+            flex-grow: initial;
+        }
+
         &-tab-links {
             border-color: map-get($foreground, divider);
         }
@@ -40,23 +48,23 @@
                 color: map-get($foreground, disabled-text);
             }
         }
-    }
 
-    .mat-tab-nav-bar {
-        border-color: transparent !important;
+        &-tab-nav-bar {
+            border-color: transparent !important;
+        }
     }
 }
 
 @mixin mat-tabs-override-typography($config) {
-    .mat-tab-links {
-        .mat-tab-link {
+    .mat-mdc-tab-links {
+        .mat-mdc-tab-link {
             @include mat.typography-level($config, subheading-1);
         }
     }
 
     .dsh-top-tab-nav-bar {
-        .mat-tab-links {
-            .mat-tab-link {
+        .mat-mdc-tab-links {
+            .mat-mdc-tab-link {
                 @include mat.typography-level($config, subheading-2);
             }
         }

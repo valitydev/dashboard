@@ -1,25 +1,22 @@
 @use '@angular/material' as mat;
+@use '@vality/ng-core' as v;
+
 @import '../utils/map-get-strict';
 
 @import '../dsh/theme';
 @import '../mat/theme';
+@import '../mat/typography';
+@import '../dsh/typography';
 
 @mixin theme($config, $background, $foreground) {
-    $basic-theme: ();
-
-    @if map-get($config, is-dark) == true {
-        $basic-theme: mat.define-dark-theme(
-            map-get($config, primary),
-            map-get($config, accent),
-            map-get($config, warn)
-        );
-    } @else {
-        $basic-theme: mat.define-light-theme(
-            map-get($config, primary),
-            map-get($config, accent),
-            map-get($config, warn)
-        );
-    }
+    $basic-theme: v.create-light-theme(
+        map-merge(
+            $config,
+            (
+                typography: dsh-typography-config(),
+            )
+        )
+    );
 
     $background: map-merge(
         map-merge(map-get($basic-theme, background), $background),
@@ -54,9 +51,16 @@
             warn-base: map-get-strict($config, warn-base),
         )
     );
+    $typography: map-get($theme, typography);
 
     body.#{map-get($theme, name)} {
-        @include mat.all-legacy-component-themes($theme);
+        @include v.all-component-themes($theme);
+        @include v.typography-hierarchy($theme);
+        @include v.app($theme);
+
+        @include mat-typography($typography);
+        @include dsh-typography($typography);
+
         @include mat-theme($theme);
         @include dsh-theme($theme);
     }

@@ -12,11 +12,11 @@ $icon-padding: 10px;
     #{$selector} {
         border-radius: $border-radius;
 
-        .mat-menu-content {
+        .mat-mdc-menu-content {
             padding: $content-padding;
         }
 
-        .mat-menu-item {
+        .mat-mdc-menu-item {
             border-radius: $border-radius;
             height: $height;
             line-height: $height;
@@ -27,7 +27,7 @@ $icon-padding: 10px;
                 margin-bottom: 0;
             }
 
-            .mat-icon {
+            .mat-mdc-icon {
                 margin-right: $icon-padding;
             }
         }
@@ -40,7 +40,7 @@ $icon-padding: 10px;
     #{$selector} {
         @include dsh-shadow($theme);
 
-        .mat-menu-item:hover:enabled {
+        .mat-mdc-menu-item:hover:enabled {
             background: map-get($background, hover);
         }
     }

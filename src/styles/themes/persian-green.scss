@@ -20,9 +20,12 @@ $foreground: (
 
 $config: (
     // Overrides
-    primary: mat.define-palette($dsh-smalt, 900),
-    accent: mat.define-palette($dsh-persian-green, 400),
-    warn: mat.define-palette($dsh-warn, 300),
+    color:
+        (
+            primary: mat.define-palette($dsh-smalt, 900),
+            accent: mat.define-palette($dsh-persian-green, 400),
+            warn: mat.define-palette($dsh-warn, 300),
+        ),
     is-dark: false,
     // Custom
     name: 'persian-green',
