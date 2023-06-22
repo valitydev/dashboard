@@ -37,16 +37,8 @@
             border-color: map-get($foreground, divider);
         }
 
-        &-tab-label {
+        &-tab-link .mdc-tab__text-label {
             color: map-get($foreground, text);
-
-            &-active {
-                color: mat.get-color-from-palette($primary, default);
-            }
-
-            &-disabled {
-                color: map-get($foreground, disabled-text);
-            }
         }
 
         &-tab-nav-bar {
