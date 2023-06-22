@@ -102,7 +102,7 @@ export class DaterangeService {
         return formatDate(date.toDate(), [d && 'd', m && 'LLLL', y && 'y'].filter((v) => v).join(' '), this.locale);
     }
 
-    private wordTranslates(): Record<typeof WORDS[number], string> {
+    private wordTranslates(): Record<(typeof WORDS)[number], string> {
         return {
             from: this.transloco.translate('daterange.from', null, 'core-pipes'),
             fromStartWith2: this.transloco.translate('daterange.fromStartWith2', null, 'core-pipes'),

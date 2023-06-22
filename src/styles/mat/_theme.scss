@@ -5,7 +5,7 @@
 @import 'styles/mat-divider';
 @import 'styles/mat-tabs';
 
-@mixin mat-theme($theme) {
+@mixin mat-override-theme($theme) {
     @include mat-menu-override-theme($theme);
     @include mat-autocomplete-panel-override-theme($theme);
     @include mat-select-panel-override-theme($theme);

@@ -6,11 +6,11 @@
             <mat-option *ngFor="let option of options$ | async" [value]="option.label" class="option">
                 <div
                     class="dsh-dadata-autocomplete-option-header"
-                    [innerHTML]="option.label | highlight: control.value"
+                    [innerHTML]="option.label | highlight : control.value"
                 ></div>
                 <div
                     class="dsh-dadata-autocomplete-option-description"
-                    [innerHTML]="option.description | highlight: control.value"
+                    [innerHTML]="option.description | highlight : control.value"
                 ></div>
             </mat-option>
         </ng-container>

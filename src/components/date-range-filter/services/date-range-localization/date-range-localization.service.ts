@@ -18,7 +18,7 @@ export class DateRangeLocalizationService {
         return this.translations$.pipe(map((t) => getLocalizedDateRange(dateRange, t, this.locale)));
     }
 
-    private getPartLabels(): Record<typeof DATE_RANGE_WORDS[number], string> {
+    private getPartLabels(): Record<(typeof DATE_RANGE_WORDS)[number], string> {
         return {
             today: this.transloco.translate('dateRangeFilter.part.today', null, 'core-components'),
             from: this.transloco.translate('dateRangeFilter.part.from', null, 'core-components'),

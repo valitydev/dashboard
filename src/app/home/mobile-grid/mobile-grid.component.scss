@@ -9,6 +9,7 @@
 .dsh-mobile-grid {
     height: 100%;
     width: 100%;
+    background-color: transparent !important;
 
     &-drawer {
         width: 75vw;
@@ -28,7 +29,7 @@
 
     &-toggle-button {
         cursor: pointer;
-        &.mat-icon {
+        &.mat-mdc-icon {
             width: 32px;
             height: 32px;
         }

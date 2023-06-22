@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { PaymentSearchResult } from '@vality/swag-anapi-v2';
 import { Observable, of } from 'rxjs';

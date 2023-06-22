@@ -1,8 +1,8 @@
 @mixin mat-checkbox-override() {
-    .mat-checkbox-layout {
+    .mat-mdc-checkbox-layout {
         white-space: normal !important;
     }
-    .mat-checkbox-inner-container.mat-checkbox-inner-container {
+    .mat-mdc-checkbox-inner-container.mat-mdc-checkbox-inner-container {
         margin-top: 4px;
     }
 }

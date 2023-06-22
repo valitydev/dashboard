@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { FormControl } from '@ngneat/reactive-forms';
 
 import { FulfillInvoiceDialogResponse } from '../../types/fulfill-invoice-dialog-response';

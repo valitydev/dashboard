@@ -1,6 +1,6 @@
 <ng-container *transloco="let p; scope: 'payment-section'; read: 'paymentSection.shops.panel'">
     <ng-container>
-        <div class="mat-title">{{ p('actions') }}</div>
+        <div class="mat-h2">{{ p('actions') }}</div>
         <div>
             <ng-container *ngTemplateOutlet="shop.isSuspended ? activateButton : suspendButton"></ng-container>
         </div>

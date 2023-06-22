@@ -8,13 +8,13 @@
     </div>
     <div gdColumns="1fr" gdColumns.gt-sm="1fr 1fr 1fr" gdGap="24px">
         <dsh-details-item [title]="t('amount')">{{
-            withdrawal.body.amount | amountCurrency: withdrawal.body.currency
+            withdrawal.body.amount | amountCurrency : withdrawal.body.currency
         }}</dsh-details-item>
         <dsh-details-item [title]="t('fee')">{{
-            withdrawal.fee.amount | amountCurrency: withdrawal.fee.currency
+            withdrawal.fee.amount | amountCurrency : withdrawal.fee.currency
         }}</dsh-details-item>
         <dsh-details-item [title]="t('total')">{{
-            withdrawal.body.amount - withdrawal.fee.amount | amountCurrency: withdrawal.body.currency
+            withdrawal.body.amount - withdrawal.fee.amount | amountCurrency : withdrawal.body.currency
         }}</dsh-details-item>
         <dsh-details-item [title]="t('status')"
             ><dsh-status [color]="withdrawal.status | withdrawalStatusColor">{{
@@ -22,7 +22,7 @@
             }}</dsh-status></dsh-details-item
         >
         <dsh-details-item [title]="t('createdAt')">{{
-            withdrawal.createdAt | date: 'dd MMMM yyyy, HH:mm'
+            withdrawal.createdAt | date : 'dd MMMM yyyy, HH:mm'
         }}</dsh-details-item>
         <dsh-details-item gdColumn.gt-sm="1/-1" *ngIf="withdrawal.failure" [title]="t('error')">{{
             withdrawal.failure.code

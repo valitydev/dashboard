@@ -54,7 +54,7 @@
 
     // Add the base font family to the config.
     @return map-merge(
-        $config,
+        map-merge(mat.define-typography-config(), $config),
         (
             font-family: $font-family,
         )

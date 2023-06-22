@@ -1,7 +1,4 @@
-import {
-    MatLegacySnackBarRef as MatSnackBarRef,
-    LegacySimpleSnackBar as SimpleSnackBar,
-} from '@angular/material/legacy-snack-bar';
+import { MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 
 import { CommonError } from '@dsh/app/shared';
 

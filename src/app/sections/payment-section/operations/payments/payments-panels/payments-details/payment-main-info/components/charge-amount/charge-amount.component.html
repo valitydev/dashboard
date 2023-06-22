@@ -1,7 +1,7 @@
 <ng-container *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentDetails.details'">
     <dsh-details-item [title]="t('chargeAmount')">
         <div class="mat-body-1">
-            {{ chargeAmount | amountCurrency: currency }}
+            {{ chargeAmount | amountCurrency : currency }}
         </div>
     </dsh-details-item>
 </ng-container>

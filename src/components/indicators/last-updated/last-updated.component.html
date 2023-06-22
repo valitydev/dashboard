@@ -7,6 +7,6 @@
 >
     <ng-container *ngIf="lastUpdated">
         <a (click)="update.emit()" class="dsh-last-updated-update-link">{{ t('update') }}</a>
-        <span> {{ t('lastUpdate') }}: {{ lastUpdated | humanizedDuration: { largest: 1, hasAgoEnding: true } }} </span>
+        <span> {{ t('lastUpdate') }}: {{ lastUpdated | humanizedDuration : { largest: 1, hasAgoEnding: true } }} </span>
     </ng-container>
 </div>

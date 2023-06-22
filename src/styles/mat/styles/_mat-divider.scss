@@ -1,7 +1,7 @@
 @mixin mat-divider-override-theme($theme) {
     $foreground: map-get($theme, foreground);
 
-    .mat-divider {
+    .mat-mdc-divider {
         border-top-color: map-get($foreground, border) !important;
     }
 }

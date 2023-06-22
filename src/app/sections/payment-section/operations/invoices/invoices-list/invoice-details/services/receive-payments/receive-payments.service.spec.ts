@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { cold } from 'jasmine-marbles';
 import { of, throwError } from 'rxjs';
 import { take } from 'rxjs/operators';

@@ -18,7 +18,7 @@
             <mat-form-field *ngIf="isPartial">
                 <mat-label>{{ t('amount') }}</mat-label>
                 <dsh-format-input [formControl]="amountControl" format="amount" required></dsh-format-input>
-                <mat-hint>{{ t('availableAmount') }} {{ maxAllowedAmount | currency: currency }}</mat-hint>
+                <mat-hint>{{ t('availableAmount') }} {{ maxAllowedAmount | currency : currency }}</mat-hint>
             </mat-form-field>
         </div>
     </form>

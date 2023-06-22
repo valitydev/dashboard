@@ -6,13 +6,13 @@
     <div class="dsh-title">{{ t('title') }}</div>
     <div class="dsh-body-1" fxLayout="column" fxLayoutGap="32px">
         <div class="hold-details-info">
-            {{ t('holdDate') }} {{ holdDate | date: 'd MMMM yyyy, HH:mm'
+            {{ t('holdDate') }} {{ holdDate | date : 'd MMMM yyyy, HH:mm'
             }}{{
-                (holdDate | holdActive: payment?.status)
-                    ? ' (' + (holdDate | humanizedDuration: { isShort: true }) + ')'
+                (holdDate | holdActive : payment?.status)
+                    ? ' (' + (holdDate | humanizedDuration : { isShort: true }) + ')'
                     : ''
             }}.
-            <ng-container *ngIf="holdDate | holdActive: payment?.status; else expiredHold">
+            <ng-container *ngIf="holdDate | holdActive : payment?.status; else expiredHold">
                 {{
                     flowHold.onHoldExpiration === onHoldExpirationEnum.Capture
                         ? t('holdWithCapture')
@@ -33,7 +33,7 @@
             </ng-template>
         </div>
         <div
-            *ngIf="holdDate | holdActive: payment?.status"
+            *ngIf="holdDate | holdActive : payment?.status"
             fxLayout="column"
             fxLayout.gt-sm="row"
             fxLayoutGap="16px"

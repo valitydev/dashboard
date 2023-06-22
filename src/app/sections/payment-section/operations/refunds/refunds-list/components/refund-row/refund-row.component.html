@@ -1,6 +1,6 @@
 <dsh-row fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="24px">
     <dsh-row-label fxFlex>
-        <span class="dsh-body-2">{{ refund.amount | amountCurrency: refund.currency }}</span>
+        <span class="dsh-body-2">{{ refund.amount | amountCurrency : refund.currency }}</span>
     </dsh-row-label>
     <dsh-row-label fxFlex fxHide.lt-md>
         <dsh-status
@@ -8,7 +8,7 @@
             >{{ (refundStatusDict$ | async)?.[refund.status] }}</dsh-status
         >
     </dsh-row-label>
-    <dsh-row-label fxFlex>{{ refund.createdAt | date: 'dd MMMM yyyy, HH:mm' }}</dsh-row-label>
+    <dsh-row-label fxFlex>{{ refund.createdAt | date : 'dd MMMM yyyy, HH:mm' }}</dsh-row-label>
     <dsh-row-label fxFlex fxHide.lt-md>
         {{ refund.shopID | shopDetails }}
     </dsh-row-label>

@@ -43,7 +43,7 @@
     </ng-container>
     <div *ngIf="internationalBankAccount?.correspondentBankAccount" fxLayout="column" fxLayoutGap="24px">
         <mat-divider></mat-divider>
-        <div class="mat-title">{{ t('correspondentBankAccount') }}</div>
+        <div class="mat-h2">{{ t('correspondentBankAccount') }}</div>
         <dsh-international-bank-account
             [internationalBankAccount]="internationalBankAccount?.correspondentBankAccount"
         ></dsh-international-bank-account>

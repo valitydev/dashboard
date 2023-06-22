@@ -21,7 +21,7 @@
                     {{ apiKey.name }}
                 </dsh-row-label>
                 <dsh-row-label fxFlex="25" fxHide.lt-md>{{
-                    apiKey.createdAt | date: 'dd MMMM yyyy, HH:mm'
+                    apiKey.createdAt | date : 'dd MMMM yyyy, HH:mm'
                 }}</dsh-row-label>
                 <dsh-row-label fxFlex="25" fxHide.lt-md>{{ apiKey.status }}</dsh-row-label>
             </dsh-row>
@@ -30,7 +30,7 @@
                     <dsh-accordion-item-content-header (collapse)="accordionItem.collapse($event)">
                         <div fxLayout="row" fxLayoutAlign="space-between center">
                             <div>{{ t('details') }} #{{ apiKey.id }}</div>
-                            <div>{{ apiKey.createdAt | date: 'dd MMMM yyyy, HH:mm' }}</div>
+                            <div>{{ apiKey.createdAt | date : 'dd MMMM yyyy, HH:mm' }}</div>
                         </div>
                     </dsh-accordion-item-content-header>
                     <div fxLayout="column" fxLayoutGap="24px">
@@ -44,7 +44,7 @@
                                 <div class="dsh-body-1">{{ apiKey.status }}</div>
                             </dsh-details-item>
                             <dsh-details-item [title]="t('createdAt')">
-                                <div class="dsh-body-1">{{ apiKey.createdAt | date: 'dd MMMM yyyy, HH:mm' }}</div>
+                                <div class="dsh-body-1">{{ apiKey.createdAt | date : 'dd MMMM yyyy, HH:mm' }}</div>
                             </dsh-details-item>
                         </div>
                         <mat-divider></mat-divider>

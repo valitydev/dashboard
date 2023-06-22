@@ -89,7 +89,7 @@
             </ng-container>
             <mat-divider></mat-divider>
             <div fxLayout fxLayoutGap="24px" fxLayoutAlign="space-between center">
-                <div>{{ c('form.cart.summary') }}: {{ summary$ | async | currency: form.value.currency }}</div>
+                <div>{{ c('form.cart.summary') }}: {{ summary$ | async | currency : form.value.currency }}</div>
                 <button dsh-text-button color="accent" (click)="addProduct()">
                     {{ c('form.cart.add') }}
                 </button>

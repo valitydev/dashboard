@@ -90,7 +90,7 @@
         >
             <div>
                 <h2 class="dsh-subheading-1 total-amount">
-                    {{ d('totalAmount') }} {{ totalAmount$ | async | currency: currency }}
+                    {{ d('totalAmount') }} {{ totalAmount$ | async | currency : currency }}
                 </h2>
             </div>
             <button dsh-text-button color="accent" (click)="addCartItem()">

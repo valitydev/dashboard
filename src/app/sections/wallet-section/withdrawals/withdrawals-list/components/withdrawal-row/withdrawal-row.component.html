@@ -3,7 +3,7 @@
         {{ withdrawal.wallet | walletDetails }}
     </dsh-row-label>
     <dsh-row-label fxHide.lt-md>
-        {{ withdrawal.createdAt | date: 'dd MMMM yyyy, HH:mm' }}
+        {{ withdrawal.createdAt | date : 'dd MMMM yyyy, HH:mm' }}
     </dsh-row-label>
     <dsh-row-label>
         <dsh-status [color]="withdrawal.status | withdrawalStatusColor">
@@ -11,6 +11,6 @@
         </dsh-status>
     </dsh-row-label>
     <dsh-row-label fxHide.lt-md>
-        {{ withdrawal.body.amount | amountCurrency: withdrawal.body.currency }}
+        {{ withdrawal.body.amount | amountCurrency : withdrawal.body.currency }}
     </dsh-row-label>
 </dsh-row>

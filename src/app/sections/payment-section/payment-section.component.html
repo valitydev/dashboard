@@ -4,7 +4,7 @@
         <div fxLayout="row" fxLayout.gt-sm="column">
             <ng-container *ngFor="let item of navbarItemConfig$ | async">
                 <dsh-navbar-item
-                    *ngIf="item.roles | isAccessAllowed: 'some'"
+                    *ngIf="item.roles | isAccessAllowed : 'some'"
                     [routerLink]="item.routerLink"
                     routerLinkActive
                     #rla="routerLinkActive"
