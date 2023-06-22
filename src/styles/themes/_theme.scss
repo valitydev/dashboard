@@ -58,10 +58,10 @@
         @include v.typography-hierarchy($theme);
         @include v.app($theme);
 
-        @include mat-typography($typography);
+        @include mat-override-typography($typography);
         @include dsh-typography($typography);
 
-        @include mat-theme($theme);
+        @include mat-override-theme($theme);
         @include dsh-theme($theme);
     }
 }
