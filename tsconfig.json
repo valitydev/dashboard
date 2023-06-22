@@ -1,28 +1,38 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
     "compileOnSave": false,
     "compilerOptions": {
         "baseUrl": "./",
-        "downlevelIteration": true,
         "outDir": "./dist/out-tsc",
+        "forceConsistentCasingInFileNames": true,
+        "strict": false,
+        "noImplicitOverride": false,
+        "noPropertyAccessFromIndexSignature": false,
+        "noImplicitReturns": false,
+        "noFallthroughCasesInSwitch": false,
         "sourceMap": true,
         "declaration": false,
-        "module": "es2020",
-        "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
+        "downlevelIteration": true,
         "experimentalDecorators": true,
+        "moduleResolution": "node",
         "importHelpers": true,
-        "target": "es2020",
-        "typeRoots": ["node_modules/@types"],
-        "lib": ["esnext", "dom"],
+        "target": "ES2022",
+        "module": "ES2022",
+        "useDefineForClassFields": false,
+        "lib": ["ESNext", "DOM"],
         "allowSyntheticDefaultImports": true,
         "resolveJsonModule": true,
         "skipLibCheck": true,
         "paths": {
-            "@dsh/*": ["src/*"]
+            "@dsh/*": ["src/*"],
+            // necessary for local work with the library (ng-core), so that the node does not use the second angular from the local library node_modules
+            "@angular/*": ["./node_modules/@angular/*"]
         }
     },
     "angularCompilerOptions": {
-        "fullTemplateTypeCheck": true,
-        "strictInjectionParameters": true
+        "enableI18nLegacyMessageIdFormat": false,
+        "strictInjectionParameters": true,
+        "strictInputAccessModifiers": false,
+        "strictTemplates": false
     }
 }
