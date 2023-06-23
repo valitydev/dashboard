@@ -19,6 +19,7 @@ type DeepOnlyMutable<T> = T extends object
     : T;
 type ApiArgs = [Injector];
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type MethodParams<P extends Record<PropertyKey, any>, K extends PropertyKey> = RequiredKeys<Omit<P, K>> extends never
     ? void | Overwrite<P, { [N in K]?: P[N] }>
     : Overwrite<P, { [N in K]?: P[N] }>;
@@ -30,9 +31,10 @@ type Method<M, P extends PropertyKey> = M extends (...args: unknown[]) => Observ
  * Don't use super with Api class methods because they were added with the object assign
  */
 export function createApi<
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     T extends Record<PropertyKey, any> & { defaultHeaders: HttpHeaders },
-    E extends (new (...args: any[]) => ApiExtension)[] = []
->(apiClass: new (...args: any[]) => T, extensions: E = [] as E) {
+    E extends (new (...args: unknown[]) => ApiExtension)[] = []
+>(apiClass: new (...args: unknown[]) => T, extensions: E = [] as E) {
     @Injectable()
     class Api {
         private api = this.injector.get<T>(apiClass);

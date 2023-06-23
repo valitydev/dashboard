@@ -1,3 +1,4 @@
 export interface ApiExtension {
-    selector: (...args: any[]) => Record<PropertyKey, any>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    selector: (...args: unknown[]) => Record<PropertyKey, any>;
 }
