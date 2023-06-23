@@ -14,13 +14,11 @@ import { CustomFormControl } from '../utils';
 /**
  * @deprecated
  */
-export class FormatInputComponent extends CustomFormControl {
+export class FormatInputComponent extends CustomFormControl<unknown> {
     mask: TextMaskConfig;
     prefix = '';
     postfix = '';
     size: string = null;
-    toInternalValue: (v: any) => any;
-    toPublicValue: (v: any) => any;
 
     private _format: Type;
     @Input()
