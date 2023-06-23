@@ -4,7 +4,7 @@ import { TestScheduler } from 'rxjs/testing';
 import { FetchResult } from './fetch-result';
 import { PartialFetcher } from './partial-fetcher';
 
-function assertDeepEqual(actual: any, expected: any) {
+function assertDeepEqual(actual: unknown, expected: unknown) {
     expect(actual).toEqual(expected);
 }
 
@@ -13,19 +13,22 @@ function createScheduler() {
 }
 
 describe('PartialFetch', () => {
-    class PartialFetched extends PartialFetcher<any, any> {
-        constructor(private fetchFn: (params?: any, continuationToken?: string) => Observable<any>, debounce?: number) {
+    class PartialFetched extends PartialFetcher<unknown, unknown> {
+        constructor(
+            private fetchFn: (params?: unknown, continuationToken?: string) => Observable<unknown>,
+            debounce?: number
+        ) {
             super(debounce);
         }
 
-        protected fetch(params: any, continuationToken: string) {
+        protected fetch(params: unknown, continuationToken: string) {
             return this.fetchFn(params, continuationToken);
         }
     }
 
     it('should init', () => {
         createScheduler().run(({ cold, expectObservable }) => {
-            const result: FetchResult<any> = { result: ['test'] };
+            const result: FetchResult<unknown> = { result: ['test'] };
             const partialFetched = new PartialFetched(() => cold('--x|', { x: result }), 100);
             expectObservable(partialFetched.searchResult$).toBe('');
             expectObservable(partialFetched.errors$).toBe('');
@@ -36,7 +39,7 @@ describe('PartialFetch', () => {
 
     it('should search with debounce', () => {
         createScheduler().run(({ cold, expectObservable }) => {
-            const result: FetchResult<any> = { result: ['test'] };
+            const result: FetchResult<unknown> = { result: ['test'] };
             const partialFetched = new PartialFetched(() => cold('--x|', { x: result }), 100);
             partialFetched.search(null);
             expectObservable(partialFetched.searchResult$).toBe('100ms --0', [['test']]);
@@ -52,7 +55,7 @@ describe('PartialFetch', () => {
                 (_params, token) =>
                     cold('--x|', {
                         x: { result: [token], continuationToken: token ? token + '0' : 'token' },
-                    } as FetchResult<any>),
+                    }),
                 0
             );
             partialFetched.search('token');
@@ -74,7 +77,8 @@ describe('PartialFetch', () => {
     it('should reload with old params', () => {
         createScheduler().run(({ cold, expectObservable }) => {
             const partialFetched = new PartialFetched(
-                (params) => cold('--x|', { x: { result: [params], continuationToken: 'token' } as FetchResult<any> }),
+                (params) =>
+                    cold('--x|', { x: { result: [params], continuationToken: 'token' } as FetchResult<unknown> }),
                 0
             );
             partialFetched.search('params');

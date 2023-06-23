@@ -9,7 +9,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormControl } from '@ngneat/reactive-forms';
 
 import { getTextContent } from '@dsh/app/shared/tests/get-text-content';
-import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 import { createArrayOfLength } from '@dsh/app/shared/utils';
 
 import { ExpandableRadioGroupItemDirective } from './directives/expandable-radio-group-item/expandable-radio-group-item.directive';
@@ -20,11 +19,10 @@ describe('ExpandableRadioGroupComponent', () => {
     let component: ExpandableRadioGroupComponent;
     let fixture: ComponentFixture<ExpandableRadioGroupComponent>;
 
-    async function createComponent(components: any[] = []) {
+    async function createComponent(components: unknown[] = []) {
         await TestBed.configureTestingModule({
             imports: [
                 NoopAnimationsModule,
-                getTranslocoModule(),
                 MatRadioModule,
                 InlineShowAllToggleModule,
                 ReactiveFormsModule,

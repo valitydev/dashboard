@@ -43,7 +43,7 @@ export class CreateReportDialogService {
             });
     }
 
-    create(formValue: any) {
+    create(formValue: unknown) {
         this.create$.next(formValue);
     }
 }

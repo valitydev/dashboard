@@ -68,7 +68,7 @@ export class MaxLengthInputComponent implements OnChanges, ControlValueAccessor 
         this.innerOnTouched();
     }
 
-    registerOnChange(onChange: (value: any) => void): void {
+    registerOnChange(onChange: (value: unknown) => void): void {
         this.formControl.valueChanges.pipe(skip(1), untilDestroyed(this)).subscribe((value: string) => {
             onChange(value);
         });

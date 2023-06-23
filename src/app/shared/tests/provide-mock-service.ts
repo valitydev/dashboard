@@ -1,6 +1,6 @@
 import { instance, mock } from 'ts-mockito';
 
-export function provideMockService<T extends new (...args: any) => any>(
+export function provideMockService<T extends new (...args: unknown[]) => unknown>(
     service: T,
     mockedService?: InstanceType<T>
 ): {

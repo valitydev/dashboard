@@ -20,8 +20,8 @@ export type TypeUnion<C, E> = {
 export function createTypeUnionDefaultForm<C, E>(): FormGroup<TypeUnion<C, E>> {
     return new FormGroup<TypeUnion<C, E>>({
         type: new FormControl<Type>(null),
-        created: new FormControl<C>({ value: null, disabled: true }) as any,
-        existing: new FormControl<E>({ value: null, disabled: true }) as any,
+        created: new FormControl<C>({ value: null, disabled: true }) as never,
+        existing: new FormControl<E>({ value: null, disabled: true }) as never,
     });
 }
 

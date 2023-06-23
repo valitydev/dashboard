@@ -2,7 +2,7 @@ import { PaymentSearchResult } from '@vality/swag-anapi-v2';
 
 // function was made to simplify to compare test dates
 function makeCurrentDate(): Date {
-    return new Date().toDateString() as any;
+    return new Date().toDateString() as unknown as Date;
 }
 
 export function generateMockPayment(data: Partial<PaymentSearchResult> = {}): PaymentSearchResult {

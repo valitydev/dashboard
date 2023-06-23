@@ -44,7 +44,9 @@ export class ShopContractDetailsService {
                 filter((result) => result !== 'error'),
                 untilDestroyed(this)
             )
-            .subscribe((contract) => this.contract$.next(contract as any));
+            .subscribe((contract) =>
+                this.contract$.next(contract as unknown as Overwrite<Contract, { contractor: RussianLegalEntity }>)
+            );
     }
 
     requestContract(contractID: string): void {

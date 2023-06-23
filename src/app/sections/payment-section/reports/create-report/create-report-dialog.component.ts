@@ -47,7 +47,7 @@ export class CreateReportDialogComponent implements OnInit {
         );
     }
 
-    create(formValue: any) {
+    create(formValue: unknown) {
         this.createReportDialogService.create(formValue);
     }
 

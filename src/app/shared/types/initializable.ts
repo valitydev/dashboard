@@ -1,3 +1,3 @@
 export interface Initializable {
-    init(...args: any[]): void;
+    init(...args: unknown[]): void;
 }

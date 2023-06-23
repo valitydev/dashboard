@@ -7,7 +7,7 @@ import { ShopItem } from '../../types/shop-item';
 export class ShopsFiltersService {
     filterShops(shops: ShopItem[], filters: Partial<ShopFiltersData>): ShopItem[] {
         return Object.entries(filters).reduce(
-            (acc: ShopItem[], [filterName, filterData]: [keyof ShopFiltersData, any]) => {
+            (acc: ShopItem[], [filterName, filterData]: [keyof ShopFiltersData, string]) => {
                 switch (filterName) {
                     case 'query':
                         return this.filterQuery(shops, filterData);
