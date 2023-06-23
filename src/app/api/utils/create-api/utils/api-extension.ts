@@ -1,3 +1,3 @@
 export interface ApiExtension {
-    selector: (...args: any[]) => Record<PropertyKey, any>;
+    selector: (...args: unknown[]) => Record<PropertyKey, unknown>;
 }
