@@ -29,5 +29,6 @@ export class DonutChartComponent implements OnInit {
     }
 
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    updateDataPointSelection = (_: any, __: any, options?: any) => this.dataSelect.emit(options.dataPointIndex);
+    updateDataPointSelection = (_: unknown, __: unknown, options?: { dataPointIndex?: number }) =>
+        this.dataSelect.emit(options.dataPointIndex);
 }

@@ -45,7 +45,7 @@ describe('ShopContractDetailsService', () => {
                     status: Contract.StatusEnum.Active,
                     contractor: {
                         contractorType: 'LegalEntity',
-                    } as any,
+                    } as never,
                     paymentInstitutionID: 2,
                 });
             });

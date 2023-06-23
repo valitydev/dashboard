@@ -52,7 +52,7 @@ export class CreatePayoutDialogComponent implements OnInit {
         this.dialogRef.close();
     }
 
-    create(formValue: any) {
+    create(formValue: { shopID: string; payoutToolID: string; amount: number }) {
         this.createPayoutDialogService.createPayout(formValue);
     }
 

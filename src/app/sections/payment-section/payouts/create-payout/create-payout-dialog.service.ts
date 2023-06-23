@@ -11,7 +11,7 @@ import { toPayoutParams } from './to-payout-params';
 export class CreatePayoutDialogService {
     private currentShopID$ = new Subject<string>();
 
-    private create$: Subject<any> = new Subject();
+    private create$ = new Subject<{ shopID: string; payoutToolID: string; amount: number }>();
     private loading$ = new BehaviorSubject(false);
     private error$ = new Subject<void>();
     private created$ = new Subject();
@@ -77,7 +77,7 @@ export class CreatePayoutDialogService {
         this.currentShopID$.next(id);
     }
 
-    createPayout(formValue: any) {
+    createPayout(formValue: { shopID: string; payoutToolID: string; amount: number }) {
         this.create$.next(formValue);
     }
 }

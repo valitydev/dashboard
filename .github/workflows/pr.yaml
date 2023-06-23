@@ -40,7 +40,7 @@ jobs:
                   path: ./*
                   key: ${{ github.sha }}
             - name: Check
-              run: npm run lint-cmd
+              run: npm run lint
     i18n:
         name: Translation keys check
         runs-on: ubuntu-latest

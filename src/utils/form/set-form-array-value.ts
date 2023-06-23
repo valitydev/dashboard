@@ -4,12 +4,12 @@ import { AbstractControlOf } from '@ngneat/reactive-forms/lib/types';
 export function replaceFormArrayValue<T, C extends AbstractControlOf<T>>(
     formArray: FormArray<C>,
     value: T[],
-    createControl: (v: T) => C
+    createControl: (v: T) => AbstractControlOf<C>
 ): FormArray<C> {
     formArray.clear();
     if (Array.isArray(value)) {
         for (const item of value) {
-            formArray.push(createControl(item) as any);
+            formArray.push(createControl(item));
         }
     }
     return formArray;

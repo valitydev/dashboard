@@ -13,7 +13,7 @@ const toInvoiceTableData = (
     amount,
     currency,
     status,
-    createdAt: createdAt as any,
+    createdAt,
     invoiceID: id,
     shopName: getShopNameById(s, shopID),
     product,

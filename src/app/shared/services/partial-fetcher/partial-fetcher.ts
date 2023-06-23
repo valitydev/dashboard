@@ -31,7 +31,7 @@ export abstract class PartialFetcher<R, P> {
     readonly hasMore$: Observable<boolean>;
     readonly doAction$: Observable<boolean>;
     readonly doSearchAction$: Observable<boolean>;
-    readonly errors$: Observable<any>;
+    readonly errors$: Observable<unknown>;
 
     private action$ = new Subject<FetchAction<P>>();
 

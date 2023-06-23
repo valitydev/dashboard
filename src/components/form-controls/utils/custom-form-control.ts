@@ -32,7 +32,7 @@ import { INPUT_MIXIN_BASE } from './input-base';
 /**
  * @deprecated use s-libs
  */
-export class CustomFormControl<I = any, P = I>
+export class CustomFormControl<I, P = I>
     extends INPUT_MIXIN_BASE
     implements AfterViewInit, ControlValueAccessor, MatFormFieldControl<I>, OnDestroy, DoCheck, OnChanges
 {
@@ -232,15 +232,15 @@ export class CustomFormControl<I = any, P = I>
     }
 
     protected getDetails(value: P): string {
-        return value as any;
+        return value as string;
     }
 
     protected toInternalValue(value: P): I {
-        return value as any;
+        return value as unknown as I;
     }
 
     protected toPublicValue(value: I): P {
-        return value as any;
+        return value as unknown as P;
     }
 
     private registerMonitors() {

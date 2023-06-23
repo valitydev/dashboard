@@ -42,8 +42,8 @@ export class DropdownComponent implements OnInit, OnDestroy {
     @Output() closed = new EventEmitter<void>();
     @Output() destroy = new EventEmitter<void>();
 
-    @ViewChild(TemplateRef, { static: true }) templateRef: TemplateRef<any>;
-    @ContentChild(TemplateRef, { static: true }) contentTemplateRef: TemplateRef<any>;
+    @ViewChild(TemplateRef, { static: true }) templateRef: TemplateRef<unknown>;
+    @ContentChild(TemplateRef, { static: true }) contentTemplateRef: TemplateRef<unknown>;
 
     state$ = new BehaviorSubject(State.Closed);
     triangleLeftOffset: string;

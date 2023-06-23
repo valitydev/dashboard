@@ -27,7 +27,7 @@ describe('MemberComponent', () => {
             imports: [MatDialogModule],
             declarations: [HostComponent, MemberComponent],
             providers: [
-                provideMockToken(DIALOG_CONFIG, {} as any),
+                provideMockToken(DIALOG_CONFIG, {} as unknown),
                 provideMockService(OrganizationManagementService),
                 provideMockService(OrgsService),
                 provideMockService(NotificationService),
