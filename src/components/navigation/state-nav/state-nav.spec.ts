@@ -28,7 +28,7 @@ describe('DshStateNav', () => {
     function createComponent<T>(
         component: Type<T>,
         providers: Provider[] = [],
-        declarations: any[] = []
+        declarations: unknown[] = []
     ): ComponentFixture<T> {
         TestBed.configureTestingModule({
             imports: [StateNavModule],

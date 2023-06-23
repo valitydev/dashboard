@@ -3,7 +3,7 @@ import { Dict } from '@dsh/type-utils';
 import { removeDictEmptyFields } from './remove-dict-empty-fields';
 
 describe('removeDictEmptyFields', () => {
-    let data: Dict<any>;
+    let data: Dict;
 
     it('should remove fields with empty strings', () => {
         data = {

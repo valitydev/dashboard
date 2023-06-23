@@ -18,7 +18,7 @@ import {
  */
 export class NoContentDirective implements AfterContentChecked {
     @Input()
-    dshNoContent: TemplateRef<any>;
+    dshNoContent: TemplateRef<unknown>;
 
     private get element(): HTMLElement {
         return this.elementRef.nativeElement;

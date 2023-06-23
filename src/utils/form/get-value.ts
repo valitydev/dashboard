@@ -3,7 +3,7 @@ import { FormGroup, FormArray } from '@ngneat/reactive-forms';
 import { ControlsValue } from '@ngneat/reactive-forms/lib/types';
 
 function hasControls<T>(control: AbstractControl): control is FormGroup<T> | FormArray<T> {
-    return !!(control as any)?.controls;
+    return !!(control as FormGroup<T> | FormArray<T>)?.controls;
 }
 
 export function getValue<T extends AbstractControl>(control: T): T['value'] {
@@ -19,7 +19,7 @@ export function getValue<T extends AbstractControl>(control: T): T['value'] {
     }
     const result: Partial<ControlsValue<T>> = {};
     for (const [k, v] of Object.entries(control.controls)) {
-        result[k] = getValue(v as any);
+        result[k] = getValue(v as AbstractControl);
     }
     return result;
 }

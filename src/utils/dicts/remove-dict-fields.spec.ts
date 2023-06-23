@@ -3,7 +3,7 @@ import { Dict } from '@dsh/type-utils';
 import { removeDictFields } from './remove-dict-fields';
 
 describe('removeDictFields', () => {
-    let data: Dict<any>;
+    let data: Dict;
 
     it('should remove fields if predicate returned false on its value', () => {
         data = {

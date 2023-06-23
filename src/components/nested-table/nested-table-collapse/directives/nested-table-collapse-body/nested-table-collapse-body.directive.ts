@@ -9,7 +9,7 @@ import { ExpansionService } from '../../services/expansion/expansion.service';
 })
 export class NestedTableCollapseBodyDirective implements OnInit {
     constructor(
-        private templateRef: TemplateRef<any>,
+        private templateRef: TemplateRef<unknown>,
         private viewContainer: ViewContainerRef,
         private expansionService: ExpansionService
     ) {}

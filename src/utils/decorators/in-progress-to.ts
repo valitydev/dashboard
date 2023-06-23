@@ -6,7 +6,7 @@ import { Subject, Subscription } from 'rxjs';
 export function inProgressTo<T extends PropertyKey>(observableKey: T) {
     return function <
         P extends PropertyKey,
-        C extends { [N in P]: (...args: any[]) => Subscription } & { [N in T]: Subject<boolean> }
+        C extends { [N in P]: (...args: unknown[]) => Subscription } & { [N in T]: Subject<boolean> }
     >(target: C, propertyKey: P, descriptor: PropertyDescriptor) {
         const original = descriptor.value;
         let count = 0;
