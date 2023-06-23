@@ -45,7 +45,7 @@ export class CreateInvoiceTemplateService {
     // eslint-disable-next-line @typescript-eslint/member-ordering
     invoiceTemplateAndToken$: Observable<InvoiceTemplateAndToken>;
     // eslint-disable-next-line @typescript-eslint/member-ordering
-    errors$: Observable<any>;
+    errors$: Observable<unknown>;
     // eslint-disable-next-line @typescript-eslint/member-ordering
     isLoading$: Observable<boolean>;
 

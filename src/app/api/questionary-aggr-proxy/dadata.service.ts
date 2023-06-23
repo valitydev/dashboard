@@ -18,6 +18,6 @@ export class DaDataService extends createApi(ApiDaDataService) {
     ): Observable<SuggestionsByRequestType[T]> {
         const requestParams = { request: { daDataRequestType, ...params } };
         const request = this.requestDaData({ daDataParams: requestParams }) as Observable<ResponseByRequestType[T]>;
-        return request.pipe(pluck('suggestions')) as Observable<any>;
+        return request.pipe(pluck('suggestions')) as Observable<SuggestionsByRequestType[T]>;
     }
 }
