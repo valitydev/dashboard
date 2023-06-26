@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder } from '@ngneat/reactive-forms';
 import { RoleId } from '@vality/swag-organizations';
 
 import { OrganizationsDictionaryService } from '@dsh/app/api/organizations';

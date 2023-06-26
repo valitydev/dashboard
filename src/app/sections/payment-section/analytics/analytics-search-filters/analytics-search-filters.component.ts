@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, OnInit, OnChanges } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { FormBuilder } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Shop } from '@vality/swag-payments';
 import { combineLatest, defer, Observable } from 'rxjs';
@@ -30,7 +30,7 @@ export class AnalyticsSearchFiltersComponent implements OnInit, OnChanges {
     @Output() filterValuesChanged = new EventEmitter<Filters>();
 
     defaultDateRange = createDateRangeWithPreset(Preset.Last90days);
-    form = this.fb.group({ shopIDs: null, dateRange: this.defaultDateRange, currency: null } as unknown);
+    form = this.fb.group<Filters>({ shopIDs: null, dateRange: this.defaultDateRange, currency: null });
     currencies$: Observable<string[]> = defer(() => this.shops$).pipe(map(shopsToCurrencies));
     shopsByCurrency$: Observable<Shop[]> = defer(() =>
         combineLatest([getFormValueChanges(this.form).pipe(pluck('currency')), this.shops$])
@@ -56,6 +56,7 @@ export class AnalyticsSearchFiltersComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges({ initParams }: ComponentChanges<AnalyticsSearchFiltersComponent>): void {
-        if (initParams?.firstChange && initParams.currentValue) this.form.patchValue(initParams.currentValue);
+        if (initParams?.firstChange && initParams.currentValue)
+            this.form.patchValue(initParams.currentValue as unknown);
     }
 }

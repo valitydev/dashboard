@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { FormGroupSuperclass, createControlProviders } from '@vality/ng-core';
 
 import { createTypeUnionDefaultForm } from '../../../created-existing-switch/created-existing-switch.component';

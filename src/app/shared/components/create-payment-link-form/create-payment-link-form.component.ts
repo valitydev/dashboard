@@ -1,6 +1,5 @@
 import { Component, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
-import { Validators, FormGroup } from '@angular/forms';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { BankCard, PaymentMethod, PaymentTerminal, DigitalWallet } from '@vality/swag-payments';

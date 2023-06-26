@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { FormBuilder } from '@angular/forms';
 
 import { binValidator, lastDigitsValidator } from '@dsh/components/form-controls';
 import { ValidatedControlSuperclass, createControlProviders } from '@dsh/utils';

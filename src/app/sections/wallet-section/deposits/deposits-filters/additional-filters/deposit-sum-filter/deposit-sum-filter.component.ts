@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup } from '@ngneat/reactive-forms';
+import { FormGroupByValue } from '@vality/ng-core';
 
 import { DepositSumFilter } from './types/deposit-sum-filter';
 
@@ -9,5 +9,5 @@ import { DepositSumFilter } from './types/deposit-sum-filter';
     styleUrls: ['./deposit-sum-filter.component.scss'],
 })
 export class DepositSumFilterComponent {
-    @Input() form: FormGroup<DepositSumFilter>;
+    @Input() form: FormGroupByValue<DepositSumFilter>;
 }

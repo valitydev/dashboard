@@ -1,6 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { UntilDestroy } from '@ngneat/until-destroy';
 
 import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';

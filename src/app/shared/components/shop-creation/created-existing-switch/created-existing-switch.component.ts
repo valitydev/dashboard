@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ContentChild, Input, OnChanges } from '@angular/core';
-import { FormControl, FormGroup } from '@ngneat/reactive-forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 import { CreatedCaseDirective } from '@dsh/app/shared/components/shop-creation/created-existing-switch/directives/created-case.directive';
 import { ExistingCaseDirective } from '@dsh/app/shared/components/shop-creation/created-existing-switch/directives/existing-case.directive';

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormControl } from '@ngneat/reactive-forms';
+import { FormArray, FormControl } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import isEqual from 'lodash-es/isEqual';
@@ -17,7 +17,7 @@ import { provideValueAccessor } from '@dsh/utils';
 export class MultiInputFieldComponent extends WrappedFormControlSuperclass<string[]> implements OnInit {
     @Input() label: string;
 
-    formControl = new FormArray<string>([new FormControl('')]);
+    formControl = new FormArray([new FormControl('')]);
 
     ngOnInit(): void {
         this.formControl.valueChanges

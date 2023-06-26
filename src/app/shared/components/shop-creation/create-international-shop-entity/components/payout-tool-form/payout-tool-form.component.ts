@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Validators } from '@angular/forms';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { Validators, FormBuilder } from '@angular/forms';
 
 import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
 

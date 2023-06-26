@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormBuilder } from '@ngneat/reactive-forms';
+import { FormControl, FormBuilder } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { PartyContent, ReqResponse, OrgType } from '@vality/swag-questionary-aggr-proxy';
 import { map } from 'rxjs/operators';
@@ -32,7 +32,7 @@ export interface NewContractorForm {
     templateUrl: 'new-contractor-form.component.html',
     providers: createControlProviders(() => NewContractorFormComponent),
 })
-export class NewContractorFormComponent extends ValidatedControlSuperclass<NewContractorForm> {
+export class NewContractorFormComponent extends ValidatedControlSuperclass<Partial<NewContractorForm>> {
     control = this.fb.group<NewContractorForm>({
         registeredName: null,
         inn: null,

@@ -1,5 +1,5 @@
 import { OnChanges, ChangeDetectionStrategy, Input, Component } from '@angular/core';
-import { FormControl } from '@ngneat/reactive-forms';
+import { FormControl } from '@angular/forms';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { coerceBoolean } from 'coerce-property';
 import { BehaviorSubject, combineLatest, defer, Observable } from 'rxjs';

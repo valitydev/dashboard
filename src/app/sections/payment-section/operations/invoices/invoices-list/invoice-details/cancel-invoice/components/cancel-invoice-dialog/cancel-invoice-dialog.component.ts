@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FormControl } from '@ngneat/reactive-forms';
 
 import { CancelInvoiceDialogResponse } from '../../types/cancel-invoice-dialog-response';
 
@@ -10,7 +10,7 @@ import { CancelInvoiceDialogResponse } from '../../types/cancel-invoice-dialog-r
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CancelInvoiceDialogComponent {
-    reason = new FormControl<string>();
+    reason = new FormControl();
 
     constructor(private dialogRef: MatDialogRef<CancelInvoiceDialogComponent, CancelInvoiceDialogResponse>) {}
 

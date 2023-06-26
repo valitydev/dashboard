@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormGroupByValue } from '@vality/ng-core';
 import { BehaviorSubject } from 'rxjs';
@@ -30,7 +30,7 @@ export class RenameOrganizationDialogComponent {
         private fb: FormBuilder,
         @Inject(MAT_DIALOG_DATA) private data: RenameOrganizationDialogData
     ) {
-        this.form = this.fb.group({ name: data.organization.name });
+        this.form = this.fb.group<{ name: string }>({ name: data.organization.name });
     }
 
     @inProgressTo('inProgress$')
