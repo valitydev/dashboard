@@ -1,6 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router, RouterEvent } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Observable } from 'rxjs';
 import { filter, map, pluck, take } from 'rxjs/operators';
@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
     ngOnInit(): void {
         this.routerNavigationEnd$ = this.router.events.pipe(
-            filter((event: RouterEvent) => event instanceof NavigationEnd),
+            filter((event) => event instanceof NavigationEnd),
             map(() => true),
             take(1),
             untilDestroyed(this)

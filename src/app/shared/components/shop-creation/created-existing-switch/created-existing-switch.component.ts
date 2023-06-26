@@ -17,11 +17,11 @@ export type TypeUnion<C, E> = {
     existing?: E;
 };
 
-export function createTypeUnionDefaultForm<C, E>(): FormGroup<TypeUnion<C, E>> {
-    return new FormGroup<TypeUnion<C, E>>({
+export function createTypeUnionDefaultForm<C, E>() {
+    return new FormGroup({
         type: new FormControl<Type>(null),
-        created: new FormControl<C>({ value: null, disabled: true }) as never,
-        existing: new FormControl<E>({ value: null, disabled: true }) as never,
+        created: new FormControl<C>({ value: null, disabled: true }),
+        existing: new FormControl<E>({ value: null, disabled: true }),
     });
 }
 
@@ -31,7 +31,7 @@ export function createTypeUnionDefaultForm<C, E>(): FormGroup<TypeUnion<C, E>> {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreatedExistingSwitchComponent<N, E> implements OnChanges {
-    @Input() form: FormGroup<TypeUnion<N, E>>;
+    @Input() form: FormGroup<{ type: FormControl<Type>; created: FormControl<N>; existing: FormControl<E> }>;
     type = Type;
 
     @ContentChild(CreatedCaseDirective) createdCase!: CreatedCaseDirective;

@@ -9,7 +9,6 @@
     [attr.size]="size"
     [placeholder]="placeholder"
     [formControl]="formControl"
-    [textMask]="mask"
     (change)="writeValue($event.target.value)"
 />
 <span *ngIf="mask && postfix" class="dsh-format-input-spacer">{{ postfix }}</span>

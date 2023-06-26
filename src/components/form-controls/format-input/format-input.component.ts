@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { MatFormFieldControl } from '@angular/material/form-field';
-import { TextMaskConfig } from 'angular2-text-mask';
 
 import { CONFIGS, Type } from './configs';
+import { TextMaskConfig } from './types/text-mask-config';
 import { CustomFormControl } from '../utils';
 
 @Component({

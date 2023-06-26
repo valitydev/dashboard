@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
 
@@ -17,12 +17,14 @@ export interface InternationalBankAccountForm {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => InternationalBankAccountFormComponent),
 })
-export class InternationalBankAccountFormComponent extends ValidatedControlSuperclass<InternationalBankAccountForm> {
-    control = this.fb.group<InternationalBankAccountForm>({
+export class InternationalBankAccountFormComponent extends ValidatedControlSuperclass<
+    Partial<InternationalBankAccountForm>
+> {
+    control = this.fb.group({
         payoutTool: null,
         currency: '',
         correspondentPayoutTool: { value: null, disabled: true },
-    });
+    }) as FormGroup;
 
     constructor(private fb: FormBuilder) {
         super();

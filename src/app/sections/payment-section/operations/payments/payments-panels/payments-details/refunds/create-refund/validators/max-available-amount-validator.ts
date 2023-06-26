@@ -1,8 +1,8 @@
-import { FormControl, ValidatorFn } from '@ngneat/reactive-forms';
+import { FormControl, AsyncValidatorFn } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
-export const maxAvailableAmountValidator = (availableAmount$: Observable<number>): ValidatorFn => {
+export const maxAvailableAmountValidator = (availableAmount$: Observable<number>): AsyncValidatorFn => {
     return (control: FormControl<number>) => {
         return availableAmount$.pipe(
             filter((amount: number) => amount >= 0),

@@ -28,10 +28,11 @@ export class ClaimsSearchFiltersComponent implements OnInit, OnChanges {
     ngOnInit(): void {
         getFormValueChanges(this.form)
             .pipe(untilDestroyed(this))
-            .subscribe((filters) => this.searchParamsChanges.next(filters));
+            .subscribe((filters) => this.searchParamsChanges.next(filters as unknown as Filters));
     }
 
     ngOnChanges({ initParams }: ComponentChanges<ClaimsSearchFiltersComponent>): void {
-        if (initParams?.firstChange && initParams.currentValue) this.form.patchValue(initParams.currentValue);
+        if (initParams?.firstChange && initParams.currentValue)
+            this.form.patchValue(initParams.currentValue as unknown);
     }
 }

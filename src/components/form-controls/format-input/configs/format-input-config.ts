@@ -1,4 +1,4 @@
-import { TextMaskConfig } from 'angular2-text-mask';
+import { TextMaskConfig } from '../types/text-mask-config';
 
 export interface FormatInputConfig<I = string, E = string> {
     mask: TextMaskConfig;

@@ -17,7 +17,7 @@ import { CardBinPan } from './types/card-bin-pan';
     providers: [provideValueAccessor(() => CardBinPanFilterComponent)],
 })
 export class CardBinPanFilterComponent extends FilterSuperclass<CardBinPan> {
-    control = this.fb.group<CardBinPan>({
+    control = this.fb.group({
         bin: ['', binValidator],
         pan: ['', lastDigitsValidator],
     });

@@ -1,4 +1,4 @@
-import { TextMaskConfig } from 'angular2-text-mask';
+import { TextMaskConfig } from '@dsh/components/form-controls/format-input/types/text-mask-config';
 
 const NON_DIGITS_REG_EXP = /\D+/g;
 const DIGIT_REG_EXP = /\d/;

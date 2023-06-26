@@ -28,7 +28,6 @@
                             "keycloak-js",
                             "css-element-queries",
                             "humanize-duration",
-                            "angular2-text-mask",
                             "apexcharts",
                             "short-uuid",
                             "moment",

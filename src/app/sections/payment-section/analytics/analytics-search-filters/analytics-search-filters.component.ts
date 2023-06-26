@@ -30,7 +30,7 @@ export class AnalyticsSearchFiltersComponent implements OnInit, OnChanges {
     @Output() filterValuesChanged = new EventEmitter<Filters>();
 
     defaultDateRange = createDateRangeWithPreset(Preset.Last90days);
-    form = this.fb.group<Filters>({ shopIDs: null, dateRange: this.defaultDateRange, currency: null });
+    form = this.fb.group({ shopIDs: null, dateRange: this.defaultDateRange, currency: null } as unknown);
     currencies$: Observable<string[]> = defer(() => this.shops$).pipe(map(shopsToCurrencies));
     shopsByCurrency$: Observable<Shop[]> = defer(() =>
         combineLatest([getFormValueChanges(this.form).pipe(pluck('currency')), this.shops$])
@@ -46,7 +46,7 @@ export class AnalyticsSearchFiltersComponent implements OnInit, OnChanges {
     ngOnInit(): void {
         getFormValueChanges(this.form)
             .pipe(untilDestroyed(this))
-            .subscribe((filters) => this.filterValuesChanged.next(filters));
+            .subscribe((filters) => this.filterValuesChanged.next(filters as unknown as Filters));
         this.currencies$.pipe(first(), untilDestroyed(this)).subscribe((currencies) => {
             if (!this.form.value.currency)
                 this.form.patchValue({

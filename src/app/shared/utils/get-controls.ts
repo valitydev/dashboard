@@ -1,9 +1,10 @@
-import { AbstractControl, FormGroup } from '@ngneat/reactive-forms';
+import { AbstractControl } from '@angular/forms';
+import { FormGroupByValue } from '@vality/ng-core';
 import isEmpty from 'lodash-es/isEmpty';
 import isNil from 'lodash-es/isNil';
 
 export function getAbstractControl<Control extends AbstractControl, GroupType = unknown>(
-    form: FormGroup<GroupType>,
+    form: FormGroupByValue<GroupType>,
     path: string
 ) {
     if (isEmpty(path)) {

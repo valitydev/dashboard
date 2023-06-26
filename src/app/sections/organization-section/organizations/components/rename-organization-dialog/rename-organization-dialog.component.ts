@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormGroup } from '@ngneat/reactive-forms';
+import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { FormGroupByValue } from '@vality/ng-core';
 import { BehaviorSubject } from 'rxjs';
 
 import { OrgsService } from '@dsh/app/api/organizations';
@@ -18,7 +19,7 @@ import { RenameOrganizationDialogData } from './types/rename-organization-dialog
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RenameOrganizationDialogComponent {
-    form: FormGroup<{ name: string }>;
+    form: FormGroupByValue<{ name: string }>;
     inProgress$ = new BehaviorSubject<boolean>(false);
 
     constructor(

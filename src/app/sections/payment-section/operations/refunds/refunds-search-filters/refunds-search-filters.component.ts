@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
+import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Shop } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
@@ -65,7 +65,7 @@ export class RefundsSearchFiltersComponent implements OnInit, OnChanges {
 
     ngOnChanges({ initParams }: ComponentChanges<RefundsSearchFiltersComponent>): void {
         if (initParams?.firstChange && initParams.currentValue) {
-            this.form.patchValue(pick(initParams.currentValue, this.keys));
+            this.form.patchValue(pick(initParams.currentValue, this.keys) as unknown);
             this.additionalFilters$.next(omit(initParams.currentValue, this.keys));
         }
     }
