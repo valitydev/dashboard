@@ -14,13 +14,13 @@ export const payoutToolFormValidator: ValidatorFn = (
         !isEmpty(bic.value) && bic.valid,
         !isEmpty(iban.value) && iban.valid,
         !isEmpty(abaRtn.value) && abaRtn.valid,
-    ].some((valid: boolean) => valid); // multi "or" alternative
+    ].some(Boolean);
 
     const isValidGeo = [
         !isEmpty(country.value) && country.valid,
         !isEmpty(address.value) && address.valid,
         !isEmpty(name.value) && name.valid,
-    ].every((valid: boolean) => valid); // multi "and" alternative
+    ].every(Boolean);
 
     return isValidNumbers || isValidGeo ? null : { error: true };
 };
