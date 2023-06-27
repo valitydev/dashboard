@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { ShopsDataService } from '@dsh/app/shared';
 import { ValidatedControlSuperclass, createControlProviders } from '@dsh/utils';
@@ -13,9 +13,9 @@ import { ShopsFilterForm } from './types';
     providers: createControlProviders(() => ShopsFilterComponent),
 })
 export class ShopsFilterComponent extends ValidatedControlSuperclass<ShopsFilterForm> {
-    control = this.fb.group<ShopsFilterForm>({
+    control = this.fb.group({
         shopIDs: null,
-    });
+    }) as unknown as FormGroup;
 
     shops$ = this.shopsDataService.shops$;
 

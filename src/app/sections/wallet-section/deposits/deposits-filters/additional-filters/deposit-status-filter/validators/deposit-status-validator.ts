@@ -1,4 +1,4 @@
-import { FormControl, ValidatorFn } from '@ngneat/reactive-forms';
+import { FormControl, ValidatorFn } from '@angular/forms';
 import isNil from 'lodash-es/isNil';
 
 import { DEPOSIT_STATUSES_LIST } from '../consts';

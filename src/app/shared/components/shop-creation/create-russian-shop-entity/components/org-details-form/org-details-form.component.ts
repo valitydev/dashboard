@@ -18,6 +18,6 @@ export type OrgDetailsForm = TypeUnion<NewContractorForm, ExistingContractForm<'
     templateUrl: 'org-details-form.component.html',
     providers: createControlProviders(() => OrgDetailsFormComponent),
 })
-export class OrgDetailsFormComponent extends ValidatedControlSuperclass<OrgDetailsForm> {
+export class OrgDetailsFormComponent extends ValidatedControlSuperclass<Partial<OrgDetailsForm>> {
     control = createTypeUnionDefaultForm<NewContractorForm, ExistingContractForm<'RussianLegalEntity'>>();
 }

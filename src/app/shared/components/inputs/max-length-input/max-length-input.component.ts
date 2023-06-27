@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, forwardRef, Input, OnChanges } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
-import { FormControl, ValidatorFn } from '@ngneat/reactive-forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, Validators, ValidatorFn, FormControl } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { coerceBoolean } from 'coerce-property';
 import isNil from 'lodash-es/isNil';
@@ -40,7 +39,7 @@ export class MaxLengthInputComponent implements OnChanges, ControlValueAccessor 
         this.formControl.setValue(value);
     }
 
-    formControl = new FormControl<string>();
+    formControl = new FormControl();
     isDisabled = false;
     // material needs this to work with error state properly
     matcher = new ErrorMatcher();

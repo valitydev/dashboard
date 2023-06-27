@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, OnInit, OnChanges } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { FormBuilder } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Shop } from '@vality/swag-payments';
 import { combineLatest, defer, Observable } from 'rxjs';
@@ -46,7 +46,7 @@ export class AnalyticsSearchFiltersComponent implements OnInit, OnChanges {
     ngOnInit(): void {
         getFormValueChanges(this.form)
             .pipe(untilDestroyed(this))
-            .subscribe((filters) => this.filterValuesChanged.next(filters));
+            .subscribe((filters) => this.filterValuesChanged.next(filters as unknown as Filters));
         this.currencies$.pipe(first(), untilDestroyed(this)).subscribe((currencies) => {
             if (!this.form.value.currency)
                 this.form.patchValue({
@@ -56,6 +56,7 @@ export class AnalyticsSearchFiltersComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges({ initParams }: ComponentChanges<AnalyticsSearchFiltersComponent>): void {
-        if (initParams?.firstChange && initParams.currentValue) this.form.patchValue(initParams.currentValue);
+        if (initParams?.firstChange && initParams.currentValue)
+            this.form.patchValue(initParams.currentValue as unknown);
     }
 }

@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Validators } from '@angular/forms';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { Validators, FormBuilder } from '@angular/forms';
 
 import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
 
@@ -13,8 +12,8 @@ import { payoutToolFormValidator } from './utils/payout-tool-form-validator';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => PayoutToolFormComponent),
 })
-export class PayoutToolFormComponent extends ValidatedControlSuperclass<PayoutToolForm> {
-    control = this.fb.group<PayoutToolForm>(
+export class PayoutToolFormComponent extends ValidatedControlSuperclass<Partial<PayoutToolForm>> {
+    control = this.fb.group(
         {
             number: ['', [Validators.pattern(/^[0-9A-Z]{8,40}$/)]],
             iban: ['', [Validators.pattern(/^[A-Z0-9]{14,35}$/)]],
@@ -24,7 +23,7 @@ export class PayoutToolFormComponent extends ValidatedControlSuperclass<PayoutTo
             country: '',
             address: ['', [Validators.maxLength(1000)]],
         },
-        { validator: payoutToolFormValidator }
+        { validators: payoutToolFormValidator }
     );
 
     constructor(private fb: FormBuilder) {

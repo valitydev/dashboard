@@ -1,4 +1,4 @@
-import { AbstractControl } from '@ngneat/reactive-forms';
+import { AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, map, startWith } from 'rxjs/operators';
 

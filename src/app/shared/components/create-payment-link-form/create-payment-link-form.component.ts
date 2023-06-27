@@ -1,7 +1,5 @@
 import { Component, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
-import { Validators } from '@angular/forms';
-import { FormBuilder } from '@ngneat/reactive-forms';
-import { FbGroupConfig } from '@ngneat/reactive-forms/lib/formBuilder';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { BankCard, PaymentMethod, PaymentTerminal, DigitalWallet } from '@vality/swag-payments';
@@ -13,7 +11,7 @@ import { PaymentLinkParams } from '@dsh/app/shared/services/create-payment-link/
 import { ComponentChanges } from '@dsh/type-utils';
 import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
 
-import { Controls, EMPTY_VALUE, PaymentMethodControls } from './types/controls';
+import { Controls, EMPTY_VALUE } from './types/controls';
 import { HoldExpiration } from '../../services/create-payment-link/types/hold-expiration';
 import { ORDERED_PAYMENT_METHODS_NAMES } from '../../services/create-payment-link/types/ordered-payment-methods-names';
 
@@ -27,7 +25,7 @@ import MethodEnum = PaymentMethod.MethodEnum;
     providers: createControlProviders(() => CreatePaymentLinkFormComponent),
 })
 export class CreatePaymentLinkFormComponent
-    extends ValidatedControlSuperclass<PaymentLinkParams, Controls>
+    extends ValidatedControlSuperclass<Partial<PaymentLinkParams>, Controls>
     implements OnChanges
 {
     @Input() paymentMethods: PaymentMethod[];
@@ -37,15 +35,15 @@ export class CreatePaymentLinkFormComponent
     orderedPaymentMethodsNames = ORDERED_PAYMENT_METHODS_NAMES;
     paymentMethodLabels = this.getPaymentMethodLabels();
     holdExpirationLabels = this.getHoldExpirationLabels();
-    control = this.fb.group<Controls>({
+    control = this.fb.group({
         ...EMPTY_VALUE,
         email: [EMPTY_VALUE['email'], Validators.email],
-        paymentMethods: this.fb.group<PaymentMethodControls>(
+        paymentMethods: this.fb.group(
             Object.fromEntries(
                 Object.entries(EMPTY_VALUE.paymentMethods).map(([name, value]) => [name, { value, disabled: true }])
-            ) as FbGroupConfig<PaymentMethodControls>
+            ) as unknown
         ),
-    });
+    }) as FormGroup;
 
     constructor(
         private notificationService: NotificationService,
@@ -75,7 +73,7 @@ export class CreatePaymentLinkFormComponent
     }
 
     private updatePaymentMethods(paymentMethods: PaymentMethod[]) {
-        const paymentMethodsControls = this.control.controls.paymentMethods.controls;
+        const paymentMethodsControls: FormGroup['controls'] = this.control.controls.paymentMethods['controls'];
         Object.values(paymentMethodsControls).forEach((c) => c.disable());
         paymentMethods.forEach((item) => {
             switch (item.method) {

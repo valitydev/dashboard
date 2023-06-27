@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { FormBuilder } from '@angular/forms';
 
 import { binValidator, lastDigitsValidator } from '@dsh/components/form-controls';
 import { ValidatedControlSuperclass, createControlProviders } from '@dsh/utils';
@@ -13,7 +13,7 @@ import { CardFilterForm } from './types';
     providers: createControlProviders(() => CardFilterComponent),
 })
 export class CardFilterComponent extends ValidatedControlSuperclass<CardFilterForm> {
-    control = this.fb.group<CardFilterForm>({
+    control = this.fb.group({
         bin: ['', binValidator],
         pan: ['', lastDigitsValidator],
     });

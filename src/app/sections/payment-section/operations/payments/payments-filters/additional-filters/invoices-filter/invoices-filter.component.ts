@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { ValidatedControlSuperclass, createControlProviders } from '@dsh/utils';
 
@@ -12,9 +12,9 @@ import { InvoicesFilterForm } from './types';
     providers: createControlProviders(() => InvoicesFilterComponent),
 })
 export class InvoicesFilterComponent extends ValidatedControlSuperclass<InvoicesFilterForm> {
-    control = this.fb.group<InvoicesFilterForm>({
+    control = this.fb.group({
         invoiceIDs: null,
-    });
+    }) as FormGroup;
 
     constructor(private fb: FormBuilder) {
         super();

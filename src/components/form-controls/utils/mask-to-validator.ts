@@ -1,5 +1,6 @@
 import { ValidatorFn } from '@angular/forms';
-import { TextMaskConfig } from 'angular2-text-mask';
+
+import { TextMaskConfig } from '@dsh/components/form-controls/format-input';
 
 import { regExpToValidator } from './regexp-to-validator';
 

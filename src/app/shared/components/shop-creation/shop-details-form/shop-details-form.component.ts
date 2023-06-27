@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { FormBuilder } from '@angular/forms';
 import { Category } from '@vality/swag-payments';
 
 import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
@@ -16,7 +16,7 @@ export interface ShopDetailsForm {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => ShopDetailsFormComponent),
 })
-export class ShopDetailsFormComponent extends ValidatedControlSuperclass<ShopDetailsForm> {
+export class ShopDetailsFormComponent extends ValidatedControlSuperclass<Partial<ShopDetailsForm>> {
     control = this.fb.group<ShopDetailsForm>({
         url: '',
         name: '',

@@ -10,7 +10,7 @@ import {
     QueryList,
     TemplateRef,
 } from '@angular/core';
-import { FormControl } from '@ngneat/reactive-forms';
+import { FormControl } from '@angular/forms';
 import { coerceBoolean } from 'coerce-property';
 
 import { isNumber } from '@dsh/app/shared/utils';

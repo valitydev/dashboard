@@ -1,9 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormControl, FormGroup } from '@ngneat/reactive-forms';
 import { TranslocoService } from '@ngneat/transloco';
+import { FormGroupByValue } from '@vality/ng-core';
 import { Refund, RefundParams } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
 import isNil from 'lodash-es/isNil';
@@ -33,14 +33,14 @@ const MAX_REASON_LENGTH = 100;
 })
 export class CreateRefundDialogComponent implements OnInit {
     maxReasonLength: number = MAX_REASON_LENGTH;
-    form: FormGroup<CreateRefundForm> = this.fb.group({
+    form = this.fb.group({
         reason: ['', Validators.maxLength(this.maxReasonLength)],
-    });
+    }) as unknown as FormGroupByValue<CreateRefundForm>;
 
     isPartialRefund = false;
     availableRefundAmount$: Observable<Balance>;
 
-    get amountControl(): FormControl<number> | null {
+    get amountControl() {
         return this.form.controls.amount ?? null;
     }
 

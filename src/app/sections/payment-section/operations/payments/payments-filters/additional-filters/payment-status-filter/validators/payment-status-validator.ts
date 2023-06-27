@@ -1,4 +1,4 @@
-import { FormControl, ValidatorFn } from '@ngneat/reactive-forms';
+import { FormControl, ValidatorFn } from '@angular/forms';
 import { PaymentStatus } from '@vality/swag-anapi-v2';
 import isNil from 'lodash-es/isNil';
 

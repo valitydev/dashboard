@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@ngneat/reactive-forms';
+import { FormBuilder, FormArray } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 import { InvoiceLineTaxVAT } from '@vality/swag-anapi-v2';
@@ -9,7 +9,6 @@ import isNil from 'lodash-es/isNil';
 import * as moment from 'moment';
 import { Moment } from 'moment';
 import { distinctUntilChanged, map, startWith } from 'rxjs/operators';
-import { Overwrite } from 'utility-types';
 
 import { shareReplayUntilDestroyed } from '@dsh/app/custom-operators';
 import {
@@ -54,14 +53,14 @@ export interface FormData {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [provideValueAccessor(() => CreateInvoiceFormComponent)],
 })
-export class CreateInvoiceFormComponent extends WrappedFormControlSuperclass<FormData> implements OnInit {
+export class CreateInvoiceFormComponent extends WrappedFormControlSuperclass<Partial<FormData>> implements OnInit {
     @Input() shops: Shop[];
     @Output() valid = new EventEmitter<boolean>();
     @Output() empty = new EventEmitter<boolean>();
 
-    form = this.fb.group<Overwrite<FormData, { cart: FormArray<FormGroup<CartItem>> }>>({
+    form = this.fb.group({
         ...EMPTY_FORM_DATA,
-        cart: this.fb.array<FormGroup<CartItem>>([this.fb.group(EMPTY_CART_ITEM)]),
+        cart: this.fb.array([this.fb.group(EMPTY_CART_ITEM)]),
     });
     totalAmount$ = this.form.controls.cart.valueChanges.pipe(
         startWith(this.form.controls.cart.value),
@@ -92,7 +91,7 @@ export class CreateInvoiceFormComponent extends WrappedFormControlSuperclass<For
                     cart: v.cart.map((i) => ({
                         ...i,
                         price: i.price && this.currency ? toMinor(i.price, this.currency) : i.price,
-                    })),
+                    })) as CartItem[],
                 })
             );
         getFormValueChanges(this.form)
@@ -116,7 +115,9 @@ export class CreateInvoiceFormComponent extends WrappedFormControlSuperclass<For
                 price: isNil(v.price) || isNil(this.currency) ? v.price : toMajor(v.price, this.currency),
             })),
         };
-        replaceFormArrayValue(this.form.controls.cart, value.cart, (v) => this.fb.group(v));
+        replaceFormArrayValue<Partial<CartItem>>(this.form.controls.cart as FormArray, value.cart, (v) =>
+            this.fb.group(v)
+        );
         this.form.setValue(value);
     }
 

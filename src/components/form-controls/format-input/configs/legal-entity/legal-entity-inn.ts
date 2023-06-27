@@ -1,6 +1,5 @@
-import { TextMaskConfig } from 'angular2-text-mask';
-
 import { maskToValidator } from '../../../utils';
+import { TextMaskConfig } from '../../types/text-mask-config';
 import { FormatInputConfig } from '../format-input-config';
 
 const LEGAL_ENTITY_INN_LENGTH = 10;

@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { FormGroupSuperclass, createControlProviders } from '@vality/ng-core';
 
-import { createTypeUnionDefaultForm } from '@dsh/app/shared/components/shop-creation/created-existing-switch/created-existing-switch.component';
-
+import { createTypeUnionDefaultForm } from '../../../created-existing-switch/created-existing-switch.component';
 import { InternationalShopEntityFormValue } from '../../types/international-shop-entity-form-value';
 
 @Component({
@@ -12,13 +11,13 @@ import { InternationalShopEntityFormValue } from '../../types/international-shop
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => ShopFormComponent),
 })
-export class ShopFormComponent extends FormGroupSuperclass<InternationalShopEntityFormValue> {
-    control = this.fb.group<InternationalShopEntityFormValue>({
+export class ShopFormComponent extends FormGroupSuperclass<Partial<InternationalShopEntityFormValue>> {
+    control = this.fb.group({
         shopDetails: null,
         orgDetails: createTypeUnionDefaultForm(),
         paymentInstitution: null,
         bankAccount: createTypeUnionDefaultForm(),
-    });
+    }) as FormGroup;
 
     constructor(private fb: FormBuilder) {
         super();

@@ -1,13 +1,12 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormControl } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Shop } from '@vality/swag-payments';
 import pick from 'lodash-es/pick';
 import moment from 'moment';
 
 import { InvoicesService } from '@dsh/app/api/payments';
-import { FormData } from '@dsh/app/shared/components/create-invoice-form';
 
 import { CreateInvoiceDialogResponse } from '../../types/create-invoice-dialog-response';
 
@@ -18,7 +17,7 @@ import { CreateInvoiceDialogResponse } from '../../types/create-invoice-dialog-r
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateInvoiceDialogComponent {
-    formControl = new FormControl<FormData>();
+    formControl = new FormControl();
     valid: boolean;
     empty: boolean;
 

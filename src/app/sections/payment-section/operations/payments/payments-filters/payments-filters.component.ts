@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
+import { AbstractControl, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Shop, PaymentInstitution } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
@@ -42,11 +42,11 @@ export class PaymentsFiltersComponent implements OnInit, OnChanges {
     shops$ = defer(() => this.realm$).pipe(filterShopsByRealm(this.shopsDataService.shops$), shareReplay(1));
     isAdditionalFilterApplied$ = defer(() => this.additionalFilters$).pipe(map(negate(isEmpty)));
     defaultDateRange = createDateRangeWithPreset(Preset.Last90days);
-    form = this.fb.group<MainFilters>({
+    form = this.fb.group({
         invoiceIDs: null,
         shopIDs: null,
         binPan: null,
-        dateRange: this.defaultDateRange,
+        dateRange: this.defaultDateRange as unknown as AbstractControl,
     });
 
     get keys(): string[] {
@@ -75,7 +75,7 @@ export class PaymentsFiltersComponent implements OnInit, OnChanges {
     ngOnChanges({ realm, initParams }: ComponentChanges<PaymentsFiltersComponent>): void {
         if (realm) this.realm$.next(realm.currentValue);
         if (initParams?.firstChange && initParams.currentValue) {
-            this.form.patchValue(pick(initParams.currentValue, this.keys));
+            this.form.patchValue(pick(initParams.currentValue, this.keys) as unknown);
             this.additionalFilters$.next(omit(initParams.currentValue, this.keys));
         }
     }

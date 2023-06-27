@@ -1,5 +1,5 @@
 import { Injector } from '@angular/core';
-import { AbstractControl, FormControl } from '@ngneat/reactive-forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 import { FormComponentSuperclass } from '@s-libs/ng-core';
 import isEqual from 'lodash-es/isEqual';
 import { BehaviorSubject, defer, Observable } from 'rxjs';
@@ -7,7 +7,7 @@ import { BehaviorSubject, defer, Observable } from 'rxjs';
 import { isEmptyValue } from '@dsh/utils';
 
 export abstract class FilterSuperclass<Inner, Outer = Inner> extends FormComponentSuperclass<Outer> {
-    control: AbstractControl<Inner> = new FormControl<Inner>();
+    control: AbstractControl<Inner> = new FormControl();
 
     get value(): Inner {
         return this.control.value;

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@ngneat/reactive-forms';
+import { FormGroupByValue } from '@vality/ng-core';
 
 import { getAbstractControl } from '@dsh/app/shared/utils';
 import { formatMajorAmountToStr, getAmountNum } from '@dsh/app/shared/utils/amount-formatters';
@@ -20,36 +21,36 @@ import { AdditionalFiltersForm } from '../../types/additional-filters-form';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DialogFiltersComponent implements OnInit {
-    form: FormGroup<AdditionalFiltersForm> = this.formBuilder.group({
-        main: this.formBuilder.group<MainInfoFilters>({
+    form = this.fb.group({
+        main: this.fb.group({
             depositID: [''],
             walletID: [''],
             identityID: [''],
             sourceID: [''],
         }),
         depositStatus: [null, depositStatusValidator],
-        depositSum: this.formBuilder.group<DepositSumFilter>({
+        depositSum: this.fb.group({
             min: [''],
             max: [''],
         }),
-    });
+    }) as FormGroup;
 
-    get mainFiltersGroup(): FormGroup<MainInfoFilters> {
-        return getAbstractControl<FormGroup<MainInfoFilters>>(this.form, 'main');
+    get mainFiltersGroup(): FormGroupByValue<MainInfoFilters> {
+        return getAbstractControl(this.form, 'main');
     }
 
     get statusFilterControl(): FormControl<DepositStatusFilterValue> {
-        return getAbstractControl<FormControl<DepositStatusFilterValue>>(this.form, 'depositStatus');
+        return getAbstractControl(this.form, 'depositStatus');
     }
 
-    get depositSumFiltersGroup(): FormGroup<DepositSumFilter> {
-        return getAbstractControl<FormGroup<DepositSumFilter>>(this.form, 'depositSum');
+    get depositSumFiltersGroup(): FormGroupByValue<DepositSumFilter> {
+        return getAbstractControl(this.form, 'depositSum');
     }
 
     constructor(
         @Inject(MAT_DIALOG_DATA) private data: AdditionalFilters,
         private dialogRef: MatDialogRef<DialogFiltersComponent, AdditionalFilters>,
-        private formBuilder: FormBuilder
+        private fb: FormBuilder
     ) {}
 
     ngOnInit(): void {
@@ -107,10 +108,10 @@ export class DialogFiltersComponent implements OnInit {
                 depositAmountTo: getAmountNum(String(max)),
             }),
             depositStatus: this.statusFilterControl.value,
-        });
+        }) as unknown;
     }
 
-    private extractGroupValidFields<T>(group: FormGroup<T>): Partial<T> {
+    private extractGroupValidFields<T>(group: FormGroupByValue<T>): Partial<T> {
         return Object.entries(group.controls).reduce((acc: Partial<T>, [key, control]: [string, AbstractControl]) => {
             if (control.valid) {
                 acc[key] = control.value;

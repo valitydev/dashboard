@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormGroup } from '@ngneat/reactive-forms';
+import { FormGroupByValue } from '@vality/ng-core';
 
 import { PaymentsService } from '@dsh/app/api/payments';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
@@ -18,9 +18,9 @@ import { CancelHoldDialogData } from '../../types/cancel-hold-dialog-data';
 })
 export class CancelHoldDialogComponent {
     maxReasonLength: number = MAX_REASON_LENGTH;
-    form: FormGroup<CreateRefundForm> = this.fb.group({
+    form = this.fb.group({
         reason: ['', Validators.maxLength(this.maxReasonLength)],
-    });
+    }) as unknown as FormGroupByValue<CreateRefundForm>;
 
     constructor(
         @Inject(MAT_DIALOG_DATA) private dialogData: CancelHoldDialogData,

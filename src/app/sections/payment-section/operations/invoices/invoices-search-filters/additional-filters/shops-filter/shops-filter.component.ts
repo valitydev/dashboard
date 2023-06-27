@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { FormBuilder } from '@angular/forms';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
 
 import { ShopsDataService } from '@dsh/app/shared';

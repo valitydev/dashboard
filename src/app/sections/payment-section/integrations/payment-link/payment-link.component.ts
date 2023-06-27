@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@ngneat/reactive-forms';
+import { FormControl } from '@angular/forms';
 import { TranslocoService } from '@ngneat/transloco';
 import { PaymentMethod } from '@vality/swag-payments';
 import { BehaviorSubject, defer, merge, ReplaySubject, Subject, Subscription, tap, EMPTY } from 'rxjs';
@@ -7,7 +7,6 @@ import { mapTo, shareReplay, switchMap, catchError, switchMapTo } from 'rxjs/ope
 
 import { InvoicesService, InvoiceTemplatesService } from '@dsh/app/api/payments';
 import { NotificationService, ErrorService } from '@dsh/app/shared';
-import { Controls } from '@dsh/app/shared/components/create-payment-link-form';
 import { CreatePaymentLinkService } from '@dsh/app/shared/services/create-payment-link';
 import { progressTo } from '@dsh/utils';
 
@@ -34,7 +33,7 @@ export class PaymentLinkComponent {
     invoiceOrInvoiceTemplate: InvoiceOrInvoiceTemplate;
 
     paymentMethods$ = new ReplaySubject<PaymentMethod[]>(1);
-    formControl = new FormControl<Controls>();
+    formControl = new FormControl();
     paymentLink$ = merge(
         defer(() => this.create$).pipe(
             switchMap(() =>
