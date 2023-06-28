@@ -1,6 +1,6 @@
 {
   "name": "dashboard",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "ng serve --proxy-config proxy.conf.js --port 8000",
@@ -61,7 +61,7 @@
     "humanize-duration": "^3.19.0",
     "jwt-decode": "^3.1.2",
     "keycloak-angular": "14.0.0",
-    "keycloak-js": "18.0.1",
+    "keycloak-js": "21.1.2",
     "libphonenumber-js": "^1.7.27",
     "lodash-es": "4.17.21",
     "moment": "2.29.4",
