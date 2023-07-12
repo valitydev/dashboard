@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { provideValueAccessor } from '@vality/ng-core';
 import { RefundStatus } from '@vality/swag-anapi-v2';
 
 import { AnapiDictionaryService } from '@dsh/app/api/anapi';
-import { provideValueAccessor } from '@dsh/utils';
 
 @Component({
     selector: 'dsh-refund-status-filter',

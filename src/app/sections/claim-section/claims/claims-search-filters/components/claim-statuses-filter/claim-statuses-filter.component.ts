@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
+import { provideValueAccessor } from '@vality/ng-core';
 import { combineLatest } from 'rxjs';
 import { share, switchMap } from 'rxjs/operators';
 
 import { ClaimStatusesLabelPipe } from '@dsh/app/shared/components/inputs/claim-statuses-field';
 import { ClaimStatusesEnum } from '@dsh/app/shared/components/inputs/claim-statuses-field/types/claim-statuses-enum';
 import { FilterSuperclass } from '@dsh/components/filter';
-import { provideValueAccessor } from '@dsh/utils';
 
 @Component({
     selector: 'dsh-claim-statuses-filter',

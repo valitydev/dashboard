@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ListWithdrawalsRequestParams } from '@vality/swag-wallet/lib/api/withdrawals.service';
-
-import { ValidatedControlSuperclass } from '@dsh/utils';
+import { FormGroupSuperclass } from '@vality/ng-core';
+import { ListWithdrawalsRequestParams } from '@vality/swag-wallet';
 
 import { AdditionalFilters, AdditionalFiltersForm } from '../../types';
 import { filtersToForm, formToFilters } from '../../utils';
@@ -14,7 +13,7 @@ import { filtersToForm, formToFilters } from '../../utils';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DialogFiltersComponent
-    extends ValidatedControlSuperclass<ListWithdrawalsRequestParams, AdditionalFiltersForm>
+    extends FormGroupSuperclass<ListWithdrawalsRequestParams, AdditionalFiltersForm>
     implements OnInit
 {
     control = this.fb.group<AdditionalFiltersForm>({

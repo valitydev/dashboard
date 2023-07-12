@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { FormGroupSuperclass, createControlProviders } from '@vality/ng-core';
 
 import { binValidator, lastDigitsValidator } from '@dsh/components/form-controls';
-import { ValidatedControlSuperclass, createControlProviders } from '@dsh/utils';
 
 import { CardFilterForm } from './types';
 
@@ -12,7 +12,7 @@ import { CardFilterForm } from './types';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => CardFilterComponent),
 })
-export class CardFilterComponent extends ValidatedControlSuperclass<CardFilterForm> {
+export class CardFilterComponent extends FormGroupSuperclass<CardFilterForm> {
     control = this.fb.group({
         bin: ['', binValidator],
         pan: ['', lastDigitsValidator],

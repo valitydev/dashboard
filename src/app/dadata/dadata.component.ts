@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { provideValueAccessor } from '@vality/ng-core';
 import {
     BankContent,
     DaDataRequest,
@@ -21,7 +22,6 @@ import {
     Suggestion,
 } from '@dsh/app/api/questionary-aggr-proxy';
 import { progress, shareReplayUntilDestroyed, takeError } from '@dsh/app/custom-operators';
-import { provideValueAccessor } from '@dsh/utils';
 
 import { Type } from './type';
 

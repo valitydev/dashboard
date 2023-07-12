@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { UntilDestroy } from '@ngneat/until-destroy';
+import { provideValueAccessor } from '@vality/ng-core';
 
 import { FilterSuperclass } from '@dsh/components/filter';
 import { binValidator, lastDigitsValidator } from '@dsh/components/form-controls';
-import { provideValueAccessor } from '@dsh/utils';
 
 import { CardBinPan } from './types/card-bin-pan';
 

@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
+import { provideValueAccessor } from '@vality/ng-core';
 import { Shop } from '@vality/swag-payments';
 import { combineLatest } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 
 import { ShopsDataService } from '@dsh/app/shared';
 import { FilterSuperclass } from '@dsh/components/filter';
-import { provideValueAccessor } from '@dsh/utils';
 
 @Component({
     selector: 'dsh-shops-filter',

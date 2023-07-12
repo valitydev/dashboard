@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
+import { provideValueAccessor } from '@vality/ng-core';
 import { InvoiceStatus } from '@vality/swag-anapi-v2';
 
 import { FilterSuperclass } from '@dsh/components/filter';
-import { provideValueAccessor } from '@dsh/utils';
 
 @Component({
     selector: 'dsh-invoice-status-filter',

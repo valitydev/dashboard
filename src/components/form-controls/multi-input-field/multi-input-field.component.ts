@@ -2,10 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormControl } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { provideValueAccessor } from '@vality/ng-core';
 import isEqual from 'lodash-es/isEqual';
 import { distinctUntilChanged, map } from 'rxjs/operators';
-
-import { provideValueAccessor } from '@dsh/utils';
 
 @UntilDestroy()
 @Component({

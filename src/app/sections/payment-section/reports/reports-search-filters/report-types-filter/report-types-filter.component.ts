@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
+import { provideValueAccessor } from '@vality/ng-core';
 import { Report } from '@vality/swag-anapi-v2';
 import { combineLatest } from 'rxjs';
 import { share, switchMap } from 'rxjs/operators';
 
 import { ReportTypesLabelPipe } from '@dsh/app/shared/components/inputs/report-types-field';
 import { FilterSuperclass } from '@dsh/components/filter';
-import { provideValueAccessor } from '@dsh/utils';
 
 @Component({
     selector: 'dsh-report-types-filter',

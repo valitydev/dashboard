@@ -1,8 +1,8 @@
 import { Component, OnChanges } from '@angular/core';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { provideValueAccessor } from '@vality/ng-core';
 
 import { valuesToOptions } from '@dsh/components/form-controls/utils/values-to-options';
-import { provideValueAccessor } from '@dsh/utils';
 
 import { ClaimStatusesLabelPipe } from './pipes/claim-statuses-label.pipe';
 import { ClaimStatusesEnum } from './types/claim-statuses-enum';

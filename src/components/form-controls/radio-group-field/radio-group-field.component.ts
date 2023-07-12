@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatRadioChange } from '@angular/material/radio';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { provideValueAccessor } from '@vality/ng-core';
 import { Overwrite } from 'utility-types';
-
-import { provideValueAccessor } from '@dsh/utils';
 
 import { Option } from './types/option';
 

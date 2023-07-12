@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, ChangeDetectionStrategy } from '@angular/c
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
+import { createControlProviders, FormGroupSuperclass } from '@vality/ng-core';
 import { BankCard, PaymentMethod, PaymentTerminal, DigitalWallet } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 
@@ -9,7 +10,6 @@ import { TokenProvider, TerminalProvider } from '@dsh/app/api/payments';
 import { NotificationService } from '@dsh/app/shared';
 import { PaymentLinkParams } from '@dsh/app/shared/services/create-payment-link/types/payment-link-params';
 import { ComponentChanges } from '@dsh/type-utils';
-import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
 
 import { Controls, EMPTY_VALUE } from './types/controls';
 import { HoldExpiration } from '../../services/create-payment-link/types/hold-expiration';
@@ -25,7 +25,7 @@ import MethodEnum = PaymentMethod.MethodEnum;
     providers: createControlProviders(() => CreatePaymentLinkFormComponent),
 })
 export class CreatePaymentLinkFormComponent
-    extends ValidatedControlSuperclass<Partial<PaymentLinkParams>, Controls>
+    extends FormGroupSuperclass<Partial<PaymentLinkParams>, Controls>
     implements OnChanges
 {
     @Input() paymentMethods: PaymentMethod[];
@@ -53,9 +53,10 @@ export class CreatePaymentLinkFormComponent
         super();
     }
 
-    ngOnChanges({ paymentMethods }: ComponentChanges<CreatePaymentLinkFormComponent>): void {
-        if (paymentMethods) {
-            this.updatePaymentMethods(paymentMethods.currentValue || []);
+    ngOnChanges(changes: ComponentChanges<CreatePaymentLinkFormComponent>): void {
+        super.ngOnChanges(changes);
+        if (changes.paymentMethods) {
+            this.updatePaymentMethods(changes.paymentMethods.currentValue || []);
         }
     }
 

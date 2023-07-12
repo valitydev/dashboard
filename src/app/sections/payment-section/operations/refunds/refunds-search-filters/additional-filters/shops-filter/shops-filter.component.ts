@@ -1,9 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { provideValueAccessor } from '@vality/ng-core';
 
 import { ShopsDataService } from '@dsh/app/shared';
-import { provideValueAccessor } from '@dsh/utils';
 
 @Component({
     selector: 'dsh-shops-filter',

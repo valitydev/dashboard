@@ -1,9 +1,9 @@
 import { Component, OnChanges } from '@angular/core';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { provideValueAccessor } from '@vality/ng-core';
 import { Report } from '@vality/swag-anapi-v2';
 
 import { valuesToOptions } from '@dsh/components/form-controls/utils/values-to-options';
-import { provideValueAccessor } from '@dsh/utils';
 
 import { ReportTypesLabelPipe } from './pipes/report-types-label.pipe';
 

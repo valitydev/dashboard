@@ -1,11 +1,11 @@
 import { getCurrencySymbol } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
+import { provideValueAccessor } from '@vality/ng-core';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { FilterSuperclass } from '@dsh/components/filter';
-import { provideValueAccessor } from '@dsh/utils';
 
 @Component({
     selector: 'dsh-currency-filter',

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
+import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
 import {
     PayoutTool,
     PayoutToolDetailsBankAccount,
@@ -14,7 +14,7 @@ import { Overwrite } from 'utility-types';
 
 import { PayoutsService } from '@dsh/app/api/payments';
 import { CommonError, ErrorService } from '@dsh/app/shared';
-import { ValidatedControlSuperclass, createControlProviders, progressTo, errorTo } from '@dsh/utils';
+import { progressTo, errorTo } from '@dsh/utils';
 
 type BankAccountType = 'PayoutToolDetailsInternationalBankAccount' | 'PayoutToolDetailsBankAccount';
 
@@ -34,10 +34,9 @@ export type ExistingBankAccountForm<T extends BankAccountType = BankAccountType>
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => ExistingBankAccountComponent),
 })
-export class ExistingBankAccountComponent extends ValidatedControlSuperclass<ExistingBankAccountForm, Shop> {
+export class ExistingBankAccountComponent extends FormControlSuperclass<ExistingBankAccountForm, Shop> {
     @Input() bankAccountType: BankAccountType;
 
-    control = new FormControl<Shop>(null);
     payoutTool: PayoutTool = null;
     progress$ = new BehaviorSubject<number>(0);
     error$ = new BehaviorSubject<unknown>(null);

@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/co
 import { DateRange as MatDateRange } from '@angular/material/datepicker';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
+import { provideValueAccessor } from '@vality/ng-core';
 import { Moment } from 'moment';
 import { switchMap, map } from 'rxjs/operators';
 
 import { FilterSuperclass } from '@dsh/components/filter';
-import { provideValueAccessor } from '@dsh/utils';
 
 import { DateRangeLocalizationService } from './services/date-range-localization/date-range-localization.service';
 import { DateRangeWithPreset } from './types/date-range-with-preset';

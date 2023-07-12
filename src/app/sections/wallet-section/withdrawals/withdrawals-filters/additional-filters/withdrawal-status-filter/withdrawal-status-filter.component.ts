@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { provideValueAccessor } from '@vality/ng-core';
 import { WithdrawalStatus } from '@vality/swag-wallet';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { WalletDictionaryService } from '@dsh/app/api/wallet';
 import { Option } from '@dsh/components/form-controls/radio-group-field';
-import { provideValueAccessor } from '@dsh/utils';
 
 import StatusEnum = WithdrawalStatus.StatusEnum;
 

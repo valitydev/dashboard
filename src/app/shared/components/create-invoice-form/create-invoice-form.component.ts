@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit, Output, EventEmitter
 import { FormBuilder, FormArray } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { provideValueAccessor } from '@vality/ng-core';
 import { InvoiceLineTaxVAT } from '@vality/swag-anapi-v2';
 import { Shop } from '@vality/swag-payments';
 import isEqual from 'lodash-es/isEqual';
@@ -11,14 +12,7 @@ import { Moment } from 'moment';
 import { distinctUntilChanged, map, startWith } from 'rxjs/operators';
 
 import { shareReplayUntilDestroyed } from '@dsh/app/custom-operators';
-import {
-    provideValueAccessor,
-    replaceFormArrayValue,
-    getFormValueChanges,
-    toMinor,
-    getFormValidationChanges,
-    toMajor,
-} from '@dsh/utils';
+import { replaceFormArrayValue, getFormValueChanges, toMinor, getFormValidationChanges, toMajor } from '@dsh/utils';
 
 export const WITHOUT_VAT = Symbol('without VAT');
 export const EMPTY_CART_ITEM: CartItem = { product: '', quantity: null, price: null, taxVatRate: WITHOUT_VAT };

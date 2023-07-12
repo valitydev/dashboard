@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { createControlProviders, FormGroupSuperclass } from '@vality/ng-core';
 import { BankContent } from '@vality/swag-questionary-aggr-proxy';
-
-import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
 
 import { RussianBankAccountForm } from './types/bank-account-form-data';
 
@@ -12,7 +11,7 @@ import { RussianBankAccountForm } from './types/bank-account-form-data';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => RussianBankAccountFormComponent),
 })
-export class RussianBankAccountFormComponent extends ValidatedControlSuperclass<Partial<RussianBankAccountForm>> {
+export class RussianBankAccountFormComponent extends FormGroupSuperclass<Partial<RussianBankAccountForm>> {
     control = this.fb.group<RussianBankAccountForm>({
         account: null,
         bankName: null,
