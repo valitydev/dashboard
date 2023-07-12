@@ -1,10 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatRadioChange } from '@angular/material/radio';
-import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
-import { provideValueAccessor } from '@vality/ng-core';
+import { provideValueAccessor, Option, FormControlSuperclass } from '@vality/ng-core';
 import { Overwrite } from 'utility-types';
-
-import { Option } from './types/option';
 
 @Component({
     selector: 'dsh-radio-group-field',
@@ -12,14 +9,10 @@ import { Option } from './types/option';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [provideValueAccessor(() => RadioGroupFieldComponent)],
 })
-export class RadioGroupFieldComponent<T> extends WrappedFormControlSuperclass<T> {
+export class RadioGroupFieldComponent<T> extends FormControlSuperclass<T> {
     @Input() options: Option<T>[];
 
     selected: T;
-
-    constructor() {
-        super();
-    }
 
     handleIncomingValue(value: T): void {
         this.selected = value;

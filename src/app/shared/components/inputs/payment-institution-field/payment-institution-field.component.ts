@@ -1,13 +1,12 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { Option, provideValueAccessor } from '@vality/ng-core';
 import { PaymentInstitution } from '@vality/swag-payments';
 import { coerceBoolean } from 'coerce-property';
 import { Observable } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 
 import { PaymentInstitutionsService } from '@dsh/app/api/payments';
-import { Option } from '@dsh/components/form-controls/select-search-field';
-import { provideValueAccessor } from '@dsh/utils';
 
 @Component({
     selector: 'dsh-payment-institution-field',

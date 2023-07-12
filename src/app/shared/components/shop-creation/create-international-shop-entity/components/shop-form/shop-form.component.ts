@@ -21,5 +21,8 @@ export class ShopFormComponent extends FormGroupSuperclass<Partial<International
 
     constructor(private fb: FormBuilder) {
         super();
+        this.control.statusChanges.subscribe(() => {
+            console.log(this.control.errors, this.control.value, this.control.status);
+        });
     }
 }

@@ -19,7 +19,7 @@ export class PayoutToolFormComponent extends FormGroupSuperclass<Partial<PayoutT
             bic: ['', [Validators.pattern(/^([A-Z0-9]{8}|[A-Z0-9]{11})$/)]],
             abaRtn: ['', [Validators.pattern(/^[0-9]{9}$/)]],
             name: ['', [Validators.maxLength(100)]],
-            country: '',
+            country: [null],
             address: ['', [Validators.maxLength(1000)]],
         },
         { validators: payoutToolFormValidator }

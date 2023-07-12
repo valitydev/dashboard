@@ -1,11 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
-import { provideValueAccessor } from '@vality/ng-core';
+import { provideValueAccessor, Option } from '@vality/ng-core';
 import { RefundStatus } from '@vality/swag-anapi-v2';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-import { Option } from '@dsh/components/form-controls/radio-group-field';
 
 import { RefundStatusLabelPipe } from './pipes/refund-status-label.pipe';
 import { OPTION_LABELS } from './types/option-labels';

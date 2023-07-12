@@ -1,28 +1,24 @@
-import { ChangeDetectionStrategy, Component, Inject, Input, Optional } from '@angular/core';
-import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { Component, Inject, Input, Optional, booleanAttribute } from '@angular/core';
+import { createControlProviders, FormControlSuperclass, Option } from '@vality/ng-core';
 import { Shop } from '@vality/swag-payments';
-import { coerceBoolean } from 'coerce-property';
 import { defer, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { toLiveShops } from '@dsh/app/api/payments';
 import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { ShopsDataService } from '@dsh/app/shared';
-import { shopToOption } from '@dsh/app/shared/components/inputs/shop-field/utils/shops-to-options';
-import { Option } from '@dsh/components/form-controls/select-search-field';
-import { provideValueAccessor } from '@dsh/utils';
 
 import { SHOPS } from './shops-token';
+import { shopToOption } from './utils/shops-to-options';
 
 @Component({
     selector: 'dsh-shop-field',
     templateUrl: 'shop-field.component.html',
-    providers: [provideValueAccessor(() => ShopFieldComponent)],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: createControlProviders(() => ShopFieldComponent),
 })
-export class ShopFieldComponent extends WrappedFormControlSuperclass<Shop> {
+export class ShopFieldComponent extends FormControlSuperclass<Shop> {
     @Input() label: string;
-    @Input() @coerceBoolean required = false;
+    @Input({ transform: booleanAttribute }) required = false;
 
     options$: Observable<Option<Shop>[]> = defer(
         () => this.shops$ || this.shopsDataService.shops$.pipe(map(toLiveShops))
@@ -38,5 +34,8 @@ export class ShopFieldComponent extends WrappedFormControlSuperclass<Shop> {
         private shops$?: Observable<Shop[]>
     ) {
         super();
+        this.control.statusChanges.subscribe(() => {
+            console.log(this.control.errors, this.control.value, this.control.status);
+        });
     }
 }
