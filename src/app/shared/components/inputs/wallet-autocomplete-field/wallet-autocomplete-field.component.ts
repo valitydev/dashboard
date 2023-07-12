@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
-import { provideValueAccessor } from '@vality/ng-core';
+import { FormControlSuperclass, provideValueAccessor } from '@vality/ng-core';
 import { coerceBoolean } from 'coerce-property';
 import { map } from 'rxjs/operators';
 
@@ -15,7 +14,7 @@ import { walletsToOptions } from './utils';
     providers: [provideValueAccessor(() => WalletAutocompleteFieldComponent)],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WalletAutocompleteFieldComponent extends WrappedFormControlSuperclass<WalletId> {
+export class WalletAutocompleteFieldComponent extends FormControlSuperclass<WalletId> {
     @Input() label: string;
     @Input() @coerceBoolean required = false;
 

@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
-import { provideValueAccessor } from '@vality/ng-core';
+import { FormControlSuperclass, provideValueAccessor } from '@vality/ng-core';
 import { Claim } from '@vality/swag-claim-management';
 
 @Component({
@@ -10,4 +9,4 @@ import { Claim } from '@vality/swag-claim-management';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [provideValueAccessor(() => ClaimFieldComponent)],
 })
-export class ClaimFieldComponent extends WrappedFormControlSuperclass<Claim['id']> {}
+export class ClaimFieldComponent extends FormControlSuperclass<Claim['id']> {}

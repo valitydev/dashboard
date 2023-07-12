@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
-import { provideValueAccessor } from '@vality/ng-core';
+import { FormControlSuperclass, provideValueAccessor } from '@vality/ng-core';
 import { InvoiceStatus } from '@vality/swag-anapi-v2';
 
 import { AnapiDictionaryService } from '@dsh/app/api/anapi';
@@ -11,7 +10,7 @@ import { AnapiDictionaryService } from '@dsh/app/api/anapi';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [provideValueAccessor(() => InvoiceStatusFilterComponent)],
 })
-export class InvoiceStatusFilterComponent extends WrappedFormControlSuperclass<InvoiceStatus.StatusEnum> {
+export class InvoiceStatusFilterComponent extends FormControlSuperclass<InvoiceStatus.StatusEnum> {
     statuses = Object.values(InvoiceStatus.StatusEnum);
     invoiceStatusDict$ = this.anapiDictionaryService.invoiceStatus$;
 

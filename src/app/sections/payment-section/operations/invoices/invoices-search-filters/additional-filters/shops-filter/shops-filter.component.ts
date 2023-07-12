@@ -1,7 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
-import { provideValueAccessor } from '@vality/ng-core';
+import { FormControlSuperclass, provideValueAccessor } from '@vality/ng-core';
 
 import { ShopsDataService } from '@dsh/app/shared';
 
@@ -11,7 +10,7 @@ import { ShopsDataService } from '@dsh/app/shared';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [provideValueAccessor(() => ShopsFilterComponent)],
 })
-export class ShopsFilterComponent extends WrappedFormControlSuperclass<string[]> {
+export class ShopsFilterComponent extends FormControlSuperclass<string[]> {
     shops$ = this.shopsDataService.shops$;
 
     constructor(private fb: FormBuilder, private shopsDataService: ShopsDataService) {

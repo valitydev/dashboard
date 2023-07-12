@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
-import { Option, provideValueAccessor } from '@vality/ng-core';
+import { FormControlSuperclass, Option, provideValueAccessor } from '@vality/ng-core';
 import { Category } from '@vality/swag-payments';
 import { coerceBoolean } from 'coerce-property';
 import { Observable } from 'rxjs';
@@ -15,7 +14,7 @@ import { shareReplayRefCount } from '@dsh/app/custom-operators';
     providers: [provideValueAccessor(() => CategoryAutocompleteFieldComponent)],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CategoryAutocompleteFieldComponent extends WrappedFormControlSuperclass<Category> {
+export class CategoryAutocompleteFieldComponent extends FormControlSuperclass<Category> {
     @Input() label: string;
     @Input() @coerceBoolean required = false;
 

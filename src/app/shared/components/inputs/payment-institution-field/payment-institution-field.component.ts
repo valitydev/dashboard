@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
-import { Option, provideValueAccessor } from '@vality/ng-core';
+import { FormControlSuperclass, Option, provideValueAccessor } from '@vality/ng-core';
 import { PaymentInstitution } from '@vality/swag-payments';
 import { coerceBoolean } from 'coerce-property';
 import { Observable } from 'rxjs';
@@ -14,7 +13,7 @@ import { PaymentInstitutionsService } from '@dsh/app/api/payments';
     providers: [provideValueAccessor(() => PaymentInstitutionFieldComponent)],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PaymentInstitutionFieldComponent extends WrappedFormControlSuperclass<PaymentInstitution> {
+export class PaymentInstitutionFieldComponent extends FormControlSuperclass<PaymentInstitution> {
     @Input() label: string;
     @Input() @coerceBoolean required = false;
 

@@ -1,6 +1,5 @@
 import { Component, OnChanges } from '@angular/core';
-import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
-import { provideValueAccessor } from '@vality/ng-core';
+import { FormControlSuperclass, provideValueAccessor } from '@vality/ng-core';
 
 import { valuesToOptions } from '@dsh/components/form-controls/utils/values-to-options';
 
@@ -12,10 +11,7 @@ import { ClaimStatusesEnum } from './types/claim-statuses-enum';
     templateUrl: 'claim-statuses-field.component.html',
     providers: [provideValueAccessor(() => ClaimStatusesFieldComponent), ClaimStatusesLabelPipe],
 })
-export class ClaimStatusesFieldComponent
-    extends WrappedFormControlSuperclass<ClaimStatusesEnum[]>
-    implements OnChanges
-{
+export class ClaimStatusesFieldComponent extends FormControlSuperclass<ClaimStatusesEnum[]> implements OnChanges {
     options$ = valuesToOptions(Object.values(ClaimStatusesEnum), (v) => this.claimStatusesLabelPipe.transform(v));
 
     constructor(private claimStatusesLabelPipe: ClaimStatusesLabelPipe) {

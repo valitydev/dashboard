@@ -1,6 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
-import { provideValueAccessor } from '@vality/ng-core';
+import { FormControlSuperclass, provideValueAccessor } from '@vality/ng-core';
 import { Shop } from '@vality/swag-payments';
 import { defer, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -13,7 +12,7 @@ import { ComponentChanges } from '@dsh/type-utils';
     templateUrl: 'shops-field.component.html',
     providers: [provideValueAccessor(() => ShopsFieldComponent)],
 })
-export class ShopsFieldComponent extends WrappedFormControlSuperclass<Shop['id'][]> implements OnChanges {
+export class ShopsFieldComponent extends FormControlSuperclass<Shop['id'][]> implements OnChanges {
     @Input() shops: Shop[];
 
     options$ = defer(() => this.shops$).pipe(

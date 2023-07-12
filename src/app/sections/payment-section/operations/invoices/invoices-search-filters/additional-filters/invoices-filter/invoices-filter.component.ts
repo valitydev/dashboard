@@ -1,6 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
-import { provideValueAccessor } from '@vality/ng-core';
+import { FormControlSuperclass, provideValueAccessor } from '@vality/ng-core';
 
 @Component({
     selector: 'dsh-invoices-filter',
@@ -8,4 +7,4 @@ import { provideValueAccessor } from '@vality/ng-core';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [provideValueAccessor(() => InvoicesFilterComponent)],
 })
-export class InvoicesFilterComponent extends WrappedFormControlSuperclass<string[]> {}
+export class InvoicesFilterComponent extends FormControlSuperclass<string[]> {}

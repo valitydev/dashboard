@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
-import { provideValueAccessor, Option } from '@vality/ng-core';
+import { FormControlSuperclass, provideValueAccessor, Option } from '@vality/ng-core';
 import { RefundStatus } from '@vality/swag-anapi-v2';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -16,7 +15,7 @@ import StatusEnum = RefundStatus.StatusEnum;
     providers: [provideValueAccessor(() => RefundStatusFieldComponent), RefundStatusLabelPipe],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RefundStatusFieldComponent extends WrappedFormControlSuperclass<StatusEnum> {
+export class RefundStatusFieldComponent extends FormControlSuperclass<StatusEnum> {
     options$: Observable<Option<string>[]> = combineLatest(
         Object.keys(OPTION_LABELS).map((value: StatusEnum) =>
             this.refundStatusLabelPipe.transform(value).pipe(map((label) => ({ value, label })))

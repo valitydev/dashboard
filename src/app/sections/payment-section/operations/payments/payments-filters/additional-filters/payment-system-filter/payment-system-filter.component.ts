@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
-import { provideValueAccessor } from '@vality/ng-core';
+import { FormControlSuperclass, provideValueAccessor } from '@vality/ng-core';
 import { SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 
 import { AnapiDictionaryService } from '@dsh/app/api/anapi';
@@ -12,7 +11,7 @@ import { PaymentSystem } from '@dsh/app/api/payments';
     styleUrls: ['./payment-system-filter.component.scss'],
     providers: [provideValueAccessor(() => PaymentSystemFilterComponent)],
 })
-export class PaymentSystemFilterComponent extends WrappedFormControlSuperclass<
+export class PaymentSystemFilterComponent extends FormControlSuperclass<
     SearchPaymentsRequestParams['bankCardPaymentSystem']
 > {
     paymentSystems = Object.values(PaymentSystem);

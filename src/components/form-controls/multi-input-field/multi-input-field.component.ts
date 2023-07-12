@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormControl } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
-import { provideValueAccessor } from '@vality/ng-core';
+import { FormControlSuperclass, provideValueAccessor } from '@vality/ng-core';
 import isEqual from 'lodash-es/isEqual';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 
@@ -13,7 +12,7 @@ import { distinctUntilChanged, map } from 'rxjs/operators';
     styleUrls: ['multi-input-field.component.scss'],
     providers: [provideValueAccessor(() => MultiInputFieldComponent)],
 })
-export class MultiInputFieldComponent extends WrappedFormControlSuperclass<string[]> implements OnInit {
+export class MultiInputFieldComponent extends FormControlSuperclass<string[]> implements OnInit {
     @Input() label: string;
 
     formControl = new FormArray([new FormControl('')]);
