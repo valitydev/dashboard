@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { FormControlSuperclass, Option, provideValueAccessor } from '@vality/ng-core';
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/ng-core';
 import { PaymentInstitution } from '@vality/swag-payments';
 import { coerceBoolean } from 'coerce-property';
 import { Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import { PaymentInstitutionsService } from '@dsh/app/api/payments';
 @Component({
     selector: 'dsh-payment-institution-field',
     templateUrl: 'payment-institution-field.component.html',
-    providers: [provideValueAccessor(() => PaymentInstitutionFieldComponent)],
+    providers: createControlProviders(() => PaymentInstitutionFieldComponent),
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaymentInstitutionFieldComponent extends FormControlSuperclass<PaymentInstitution> {

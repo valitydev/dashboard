@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/co
 import { DateRange as MatDateRange } from '@angular/material/datepicker';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { provideValueAccessor } from '@vality/ng-core';
+import { createControlProviders } from '@vality/ng-core';
 import { Moment } from 'moment';
 import { switchMap, map } from 'rxjs/operators';
 
@@ -27,7 +27,7 @@ type InnerDateRange = {
     templateUrl: 'date-range-filter.component.html',
     styleUrls: ['date-range-filter.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideValueAccessor(() => DateRangeFilterComponent), DateRangeLocalizationService],
+    providers: [...createControlProviders(() => DateRangeFilterComponent), DateRangeLocalizationService],
 })
 export class DateRangeFilterComponent extends FilterSuperclass<InnerDateRange, DateRangeWithPreset> {
     @Input() default: Partial<DateRangeWithPreset> = { start: null, end: null };

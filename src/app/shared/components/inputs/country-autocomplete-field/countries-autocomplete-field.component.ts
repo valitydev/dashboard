@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { FormControlSuperclass, provideValueAccessor } from '@vality/ng-core';
+import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
 import { coerceBoolean } from 'coerce-property';
 import { map } from 'rxjs/operators';
 
@@ -11,7 +11,7 @@ import { countriesToOptions } from './utils';
 @Component({
     selector: 'dsh-country-autocomplete-field',
     templateUrl: 'country-autocomplete-field.component.html',
-    providers: [provideValueAccessor(() => CountryAutocompleteFieldComponent)],
+    providers: createControlProviders(() => CountryAutocompleteFieldComponent),
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CountryAutocompleteFieldComponent extends FormControlSuperclass<CountryId> {

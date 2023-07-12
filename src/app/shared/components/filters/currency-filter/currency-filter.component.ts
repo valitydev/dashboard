@@ -1,7 +1,7 @@
 import { getCurrencySymbol } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-import { provideValueAccessor } from '@vality/ng-core';
+import { createControlProviders } from '@vality/ng-core';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -11,7 +11,7 @@ import { FilterSuperclass } from '@dsh/components/filter';
     selector: 'dsh-currency-filter',
     templateUrl: 'currency-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideValueAccessor(() => CurrencyFilterComponent)],
+    providers: createControlProviders(() => CurrencyFilterComponent),
 })
 export class CurrencyFilterComponent extends FilterSuperclass<string> {
     @Input() currencies: string[] = [];

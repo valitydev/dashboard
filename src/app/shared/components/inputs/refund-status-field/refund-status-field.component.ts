@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControlSuperclass, provideValueAccessor, Option } from '@vality/ng-core';
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/ng-core';
 import { RefundStatus } from '@vality/swag-anapi-v2';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import StatusEnum = RefundStatus.StatusEnum;
 @Component({
     selector: 'dsh-refund-status-field',
     templateUrl: 'refund-status-field.component.html',
-    providers: [provideValueAccessor(() => RefundStatusFieldComponent), RefundStatusLabelPipe],
+    providers: [...createControlProviders(() => RefundStatusFieldComponent), RefundStatusLabelPipe],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RefundStatusFieldComponent extends FormControlSuperclass<StatusEnum> {

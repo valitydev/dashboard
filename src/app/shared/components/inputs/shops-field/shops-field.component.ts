@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { FormControlSuperclass, provideValueAccessor } from '@vality/ng-core';
+import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
 import { Shop } from '@vality/swag-payments';
 import { defer, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import { ComponentChanges } from '@dsh/type-utils';
 @Component({
     selector: 'dsh-shops-field',
     templateUrl: 'shops-field.component.html',
-    providers: [provideValueAccessor(() => ShopsFieldComponent)],
+    providers: createControlProviders(() => ShopsFieldComponent),
 })
 export class ShopsFieldComponent extends FormControlSuperclass<Shop['id'][]> implements OnChanges {
     @Input() shops: Shop[];

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { FormControlSuperclass, Option, provideValueAccessor } from '@vality/ng-core';
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/ng-core';
 import { Category } from '@vality/swag-payments';
 import { coerceBoolean } from 'coerce-property';
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { shareReplayRefCount } from '@dsh/app/custom-operators';
 @Component({
     selector: 'dsh-category-autocomplete-field',
     templateUrl: 'category-autocomplete-field.component.html',
-    providers: [provideValueAccessor(() => CategoryAutocompleteFieldComponent)],
+    providers: createControlProviders(() => CategoryAutocompleteFieldComponent),
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CategoryAutocompleteFieldComponent extends FormControlSuperclass<Category> {

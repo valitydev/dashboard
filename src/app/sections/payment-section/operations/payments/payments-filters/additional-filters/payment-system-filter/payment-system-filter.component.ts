@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControlSuperclass, provideValueAccessor } from '@vality/ng-core';
+import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
 import { SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 
 import { AnapiDictionaryService } from '@dsh/app/api/anapi';
@@ -9,7 +9,7 @@ import { PaymentSystem } from '@dsh/app/api/payments';
     selector: 'dsh-payment-system-filter',
     templateUrl: './payment-system-filter.component.html',
     styleUrls: ['./payment-system-filter.component.scss'],
-    providers: [provideValueAccessor(() => PaymentSystemFilterComponent)],
+    providers: createControlProviders(() => PaymentSystemFilterComponent),
 })
 export class PaymentSystemFilterComponent extends FormControlSuperclass<
     SearchPaymentsRequestParams['bankCardPaymentSystem']

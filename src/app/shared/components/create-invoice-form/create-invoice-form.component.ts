@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormArray } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { FormControlSuperclass, provideValueAccessor } from '@vality/ng-core';
+import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
 import { InvoiceLineTaxVAT } from '@vality/swag-anapi-v2';
 import { Shop } from '@vality/swag-payments';
 import isEqual from 'lodash-es/isEqual';
@@ -44,7 +44,7 @@ export interface FormData {
     templateUrl: 'create-invoice-form.component.html',
     styleUrls: ['create-invoice-form.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideValueAccessor(() => CreateInvoiceFormComponent)],
+    providers: createControlProviders(() => CreateInvoiceFormComponent),
 })
 export class CreateInvoiceFormComponent extends FormControlSuperclass<Partial<FormData>> implements OnInit {
     @Input() shops: Shop[];

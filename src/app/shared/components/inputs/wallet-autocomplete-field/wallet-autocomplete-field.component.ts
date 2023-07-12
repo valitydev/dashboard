@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { FormControlSuperclass, provideValueAccessor } from '@vality/ng-core';
+import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
 import { coerceBoolean } from 'coerce-property';
 import { map } from 'rxjs/operators';
 
@@ -11,7 +11,7 @@ import { walletsToOptions } from './utils';
 @Component({
     selector: 'dsh-wallet-autocomplete-field',
     templateUrl: 'wallet-autocomplete-field.component.html',
-    providers: [provideValueAccessor(() => WalletAutocompleteFieldComponent)],
+    providers: createControlProviders(() => WalletAutocompleteFieldComponent),
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WalletAutocompleteFieldComponent extends FormControlSuperclass<WalletId> {
