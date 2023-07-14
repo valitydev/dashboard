@@ -24,7 +24,7 @@ export class DialogFiltersComponent implements OnInit {
     form = this.fb.group({
         main: this.fb.group({
             depositID: [''],
-            walletID: [''],
+            walletID: [null],
             identityID: [''],
             sourceID: [''],
         }),
