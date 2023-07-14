@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-
-import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
+import { createControlProviders, FormGroupSuperclass } from '@vality/ng-core';
 
 import { MainInfoForm } from './types';
 
@@ -11,7 +10,7 @@ import { MainInfoForm } from './types';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => MainInfoFiltersComponent),
 })
-export class MainInfoFiltersComponent extends ValidatedControlSuperclass<MainInfoForm> {
+export class MainInfoFiltersComponent extends FormGroupSuperclass<MainInfoForm> {
     control = this.fb.group<MainInfoForm>({
         withdrawalID: null,
         walletID: null,

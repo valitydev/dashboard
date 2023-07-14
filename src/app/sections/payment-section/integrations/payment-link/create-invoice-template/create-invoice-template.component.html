@@ -1,5 +1,5 @@
-<form
-    [formGroup]="form"
+<div
+    [formGroup]="control"
     fxLayout="column"
     fxLayoutGap="32px"
     *transloco="let c; scope: 'payment-section'; read: 'paymentSection.createInvoiceTemplate'"
@@ -48,7 +48,7 @@
         </mat-radio-group>
 
         <ng-container
-            *ngIf="form.value.templateType === templateType.InvoiceTemplateMultiLine; else singleLine"
+            *ngIf="control.value.templateType === templateType.InvoiceTemplateMultiLine; else singleLine"
             formArrayName="cart"
         >
             <h2 class="dsh-subheading-1">{{ c('form.cart.title') }}:</h2>
@@ -89,7 +89,7 @@
             </ng-container>
             <mat-divider></mat-divider>
             <div fxLayout fxLayoutGap="24px" fxLayoutAlign="space-between center">
-                <div>{{ c('form.cart.summary') }}: {{ summary$ | async | currency : form.value.currency }}</div>
+                <div>{{ c('form.cart.summary') }}: {{ summary$ | async | currency : control.value.currency }}</div>
                 <button dsh-text-button color="accent" (click)="addProduct()">
                     {{ c('form.cart.add') }}
                 </button>
@@ -138,7 +138,7 @@
                 </mat-radio-button>
             </mat-radio-group>
 
-            <mat-form-field *ngIf="form.value.costType === costType.InvoiceTemplateLineCostFixed">
+            <mat-form-field *ngIf="control.value.costType === costType.InvoiceTemplateLineCostFixed">
                 <mat-label>{{ c('form.cost') }}</mat-label>
                 <dsh-format-input format="amount" formControlName="amount" required></dsh-format-input>
             </mat-form-field>
@@ -146,7 +146,7 @@
             <div
                 fxLayout
                 fxLayoutGap="24px"
-                *ngIf="form.value.costType === costType.InvoiceTemplateLineCostRange"
+                *ngIf="control.value.costType === costType.InvoiceTemplateLineCostRange"
                 formGroupName="range"
             >
                 <mat-form-field fxFlex>
@@ -167,17 +167,11 @@
         fxLayoutAlign="space-between"
         *transloco="let t; scope: 'components'; read: 'components.shared'"
     >
-        <button dsh-text-button color="accent" (click)="clear()" [disabled]="(isLoading$ | async) || form.pristine">
+        <button dsh-text-button color="accent" (click)="clear()" [disabled]="(isLoading$ | async) || control.pristine">
             {{ t('clearForm') }}
         </button>
-        <button
-            dsh-button
-            fxFlex="168px"
-            color="accent"
-            (click)="nextStep()"
-            [disabled]="form.invalid || (isLoading$ | async)"
-        >
+        <button dsh-button color="accent" (click)="nextStep()" [disabled]="control.invalid || (isLoading$ | async)">
             {{ t('next') }}
         </button>
     </div>
-</form>
+</div>

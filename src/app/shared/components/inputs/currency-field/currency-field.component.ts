@@ -1,23 +1,16 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
-
-import { Option } from '@dsh/components/form-controls/radio-group-field';
-import { provideValueAccessor } from '@dsh/utils';
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/ng-core';
 
 @Component({
     selector: 'dsh-currency-field',
     templateUrl: 'currency-field.component.html',
-    providers: [provideValueAccessor(() => CurrencyFieldComponent)],
+    providers: createControlProviders(() => CurrencyFieldComponent),
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CurrencyFieldComponent extends WrappedFormControlSuperclass<string> {
+export class CurrencyFieldComponent extends FormControlSuperclass<string> {
     @Input() set currencies(currencies: string[]) {
         this.options = currencies?.map((currency) => ({ label: currency, value: currency }));
     }
 
     options: Option<string>[] = [];
-
-    constructor() {
-        super();
-    }
 }

@@ -3,17 +3,12 @@
     (cancel)="cancel()"
     [title]="d('title')"
 >
-    <dsh-create-invoice-form
-        [shops]="shops"
-        [formControl]="formControl"
-        (valid)="valid = $event"
-        (empty)="empty = $event"
-    ></dsh-create-invoice-form>
+    <dsh-create-invoice-form [shops]="shops" [formControl]="formControl"></dsh-create-invoice-form>
     <ng-container dshBaseDialogActions *transloco="let t; scope: 'components'; read: 'components.shared'">
-        <button dsh-text-button color="accent" [disabled]="empty" (click)="formControl.reset()">
+        <button dsh-text-button color="accent" [disabled]="formControl.pristine" (click)="formControl.reset()">
             {{ t('clearForm') }}
         </button>
-        <button dsh-button (click)="create()" color="accent" [disabled]="!valid">
+        <button dsh-button (click)="create()" color="accent" [disabled]="formControl.invalid">
             {{ t('create') }}
         </button>
     </ng-container>

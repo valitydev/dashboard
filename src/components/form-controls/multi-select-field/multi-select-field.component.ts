@@ -1,11 +1,10 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
 import { coerceBoolean } from 'coerce-property';
 import isNil from 'lodash-es/isNil';
 
 import { ComponentChanges } from '@dsh/type-utils';
-import { provideValueAccessor } from '@dsh/utils';
 
 export interface Option<T> {
     value: T;
@@ -22,9 +21,9 @@ interface OptionScore<T> {
     selector: 'dsh-multi-select-field',
     templateUrl: 'multi-select-field.component.html',
     styleUrls: ['multi-select-field.component.scss'],
-    providers: [provideValueAccessor(() => MultiSelectFieldComponent)],
+    providers: createControlProviders(() => MultiSelectFieldComponent),
 })
-export class MultiSelectFieldComponent<T> extends WrappedFormControlSuperclass<T[]> implements OnChanges {
+export class MultiSelectFieldComponent<T> extends FormControlSuperclass<T[]> implements OnChanges {
     @Input() options: Option<T>[];
     @Input() label?: string;
     @Input() @coerceBoolean noSearch = false;

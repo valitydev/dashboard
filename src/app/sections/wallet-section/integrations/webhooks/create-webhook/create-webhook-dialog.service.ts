@@ -55,7 +55,7 @@ export class CreateWebhookDialogService {
             identityID: ['', Validators.required],
             url: ['', Validators.required],
             eventType: ['WithdrawalsTopic', Validators.required],
-            walletID: '',
+            walletID: null,
             eventTypes: this.fb.array(
                 getEventsByTopic('WithdrawalsTopic').map((eventName) =>
                     this.fb.group({

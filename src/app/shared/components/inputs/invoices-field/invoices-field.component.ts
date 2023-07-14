@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
-
-import { provideValueAccessor } from '@dsh/utils';
+import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
 
 @Component({
     selector: 'dsh-invoices-field',
     templateUrl: 'invoices-field.component.html',
-    providers: [provideValueAccessor(() => InvoicesFieldComponent)],
+    providers: createControlProviders(() => InvoicesFieldComponent),
 })
-export class InvoicesFieldComponent extends WrappedFormControlSuperclass<string[]> {}
+export class InvoicesFieldComponent extends FormControlSuperclass<string[]> {}

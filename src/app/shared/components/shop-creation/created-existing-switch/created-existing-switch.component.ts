@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ContentChild, Input, OnChanges } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { CreatedCaseDirective } from '@dsh/app/shared/components/shop-creation/created-existing-switch/directives/created-case.directive';
 import { ExistingCaseDirective } from '@dsh/app/shared/components/shop-creation/created-existing-switch/directives/existing-case.directive';
@@ -17,9 +17,9 @@ export type TypeUnion<C, E> = {
     existing?: E;
 };
 
-export function createTypeUnionDefaultForm<C, E>() {
+export function createTypeUnionDefaultForm<C, E>(optional = false) {
     return new FormGroup({
-        type: new FormControl<Type>(null),
+        type: new FormControl<Type>(null, optional ? undefined : Validators.required),
         created: new FormControl<C>({ value: null, disabled: true }),
         existing: new FormControl<E>({ value: null, disabled: true }),
     });

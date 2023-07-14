@@ -1,9 +1,7 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroupByValue } from '@vality/ng-core';
-
-import { ValidatedControlSuperclass, createControlProviders } from '@dsh/utils';
+import { FormGroupByValue, FormGroupSuperclass, createControlProviders } from '@vality/ng-core';
 
 import { AdditionalFilters } from '../../types';
 
@@ -13,7 +11,7 @@ import { AdditionalFilters } from '../../types';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => DialogFiltersComponent),
 })
-export class DialogFiltersComponent extends ValidatedControlSuperclass<Partial<AdditionalFilters>> implements OnInit {
+export class DialogFiltersComponent extends FormGroupSuperclass<Partial<AdditionalFilters>> implements OnInit {
     control = this.formBuilder.group({
         invoiceIDs: null,
         shopIDs: null,

@@ -1,6 +1,6 @@
 import { Injector } from '@angular/core';
 import { AbstractControl, FormControl } from '@angular/forms';
-import { FormComponentSuperclass } from '@s-libs/ng-core';
+import { FormComponentSuperclass } from '@vality/ng-core';
 import isEqual from 'lodash-es/isEqual';
 import { BehaviorSubject, defer, Observable } from 'rxjs';
 

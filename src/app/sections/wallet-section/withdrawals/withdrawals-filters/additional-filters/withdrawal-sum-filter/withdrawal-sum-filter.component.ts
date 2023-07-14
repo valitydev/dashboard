@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-
-import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
+import { createControlProviders, FormGroupSuperclass } from '@vality/ng-core';
 
 import { WithdrawalAmountForm } from './types';
 
@@ -11,7 +10,7 @@ import { WithdrawalAmountForm } from './types';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => WithdrawalSumFilterComponent),
 })
-export class WithdrawalSumFilterComponent extends ValidatedControlSuperclass<WithdrawalAmountForm> {
+export class WithdrawalSumFilterComponent extends FormGroupSuperclass<WithdrawalAmountForm> {
     control = this.fb.group<WithdrawalAmountForm>({
         amountFrom: null,
         amountTo: null,

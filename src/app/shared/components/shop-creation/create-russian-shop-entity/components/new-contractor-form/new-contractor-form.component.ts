@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormBuilder } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { FormGroupSuperclass, createControlProviders } from '@vality/ng-core';
 import { PartyContent, ReqResponse, OrgType } from '@vality/swag-questionary-aggr-proxy';
 import { map } from 'rxjs/operators';
 
@@ -11,7 +12,6 @@ import {
     isReqIndividualEntity,
     getAddress,
 } from '@dsh/app/api/questionary-aggr-proxy';
-import { ValidatedControlSuperclass, createControlProviders } from '@dsh/utils';
 
 import { RussianBankAccountForm } from '../russian-bank-account-form/types/bank-account-form-data';
 
@@ -32,7 +32,7 @@ export interface NewContractorForm {
     templateUrl: 'new-contractor-form.component.html',
     providers: createControlProviders(() => NewContractorFormComponent),
 })
-export class NewContractorFormComponent extends ValidatedControlSuperclass<Partial<NewContractorForm>> {
+export class NewContractorFormComponent extends FormGroupSuperclass<Partial<NewContractorForm>> {
     control = this.fb.group<NewContractorForm>({
         registeredName: null,
         inn: null,

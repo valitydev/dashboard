@@ -2,13 +2,12 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslocoModule } from '@ngneat/transloco';
-
-import { SelectSearchFieldModule } from '@dsh/components/form-controls/select-search-field';
+import { SelectFieldModule } from '@vality/ng-core';
 
 import { CurrencyAutocompleteFieldComponent } from './currency-autocomplete-field.component';
 
 @NgModule({
-    imports: [CommonModule, TranslocoModule, ReactiveFormsModule, SelectSearchFieldModule],
+    imports: [CommonModule, TranslocoModule, ReactiveFormsModule, SelectFieldModule],
     declarations: [CurrencyAutocompleteFieldComponent],
     exports: [CurrencyAutocompleteFieldComponent],
 })

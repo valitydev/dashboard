@@ -1,9 +1,8 @@
 import { Component, OnChanges } from '@angular/core';
-import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
 import { Report } from '@vality/swag-anapi-v2';
 
 import { valuesToOptions } from '@dsh/components/form-controls/utils/values-to-options';
-import { provideValueAccessor } from '@dsh/utils';
 
 import { ReportTypesLabelPipe } from './pipes/report-types-label.pipe';
 
@@ -12,9 +11,9 @@ import ReportTypeEnum = Report.ReportTypeEnum;
 @Component({
     selector: 'dsh-report-types-field',
     templateUrl: 'report-types-field.component.html',
-    providers: [provideValueAccessor(() => ReportTypesFieldComponent), ReportTypesLabelPipe],
+    providers: [...createControlProviders(() => ReportTypesFieldComponent), ReportTypesLabelPipe],
 })
-export class ReportTypesFieldComponent extends WrappedFormControlSuperclass<ReportTypeEnum[]> implements OnChanges {
+export class ReportTypesFieldComponent extends FormControlSuperclass<ReportTypeEnum[]> implements OnChanges {
     options$ = valuesToOptions(Object.values(ReportTypeEnum), (v) => this.reportTypesLabelPipe.transform(v));
 
     constructor(private reportTypesLabelPipe: ReportTypesLabelPipe) {

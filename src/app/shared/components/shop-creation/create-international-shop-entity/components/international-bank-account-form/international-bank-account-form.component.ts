@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-
-import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
+import { createControlProviders, FormGroupSuperclass } from '@vality/ng-core';
 
 import { PayoutToolForm } from '../payout-tool-form/types/payout-tool-form';
 
@@ -17,12 +16,10 @@ export interface InternationalBankAccountForm {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => InternationalBankAccountFormComponent),
 })
-export class InternationalBankAccountFormComponent extends ValidatedControlSuperclass<
-    Partial<InternationalBankAccountForm>
-> {
+export class InternationalBankAccountFormComponent extends FormGroupSuperclass<Partial<InternationalBankAccountForm>> {
     control = this.fb.group({
         payoutTool: null,
-        currency: '',
+        currency: null,
         correspondentPayoutTool: { value: null, disabled: true },
     }) as FormGroup;
 

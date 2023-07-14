@@ -1,11 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/ng-core';
 import { InvoiceStatus } from '@vality/swag-anapi-v2';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-import { Option } from '@dsh/components/form-controls/radio-group-field';
-import { provideValueAccessor } from '@dsh/utils';
 
 import { InvoiceStatusLabelPipe } from './pipes/invoce-status-label.pipe';
 import { OPTION_LABELS } from './types/option-labels';
@@ -15,10 +12,10 @@ import StatusEnum = InvoiceStatus.StatusEnum;
 @Component({
     selector: 'dsh-invoice-status-field',
     templateUrl: 'invoice-status-field.component.html',
-    providers: [provideValueAccessor(() => InvoiceStatusFieldComponent), InvoiceStatusLabelPipe],
+    providers: [...createControlProviders(() => InvoiceStatusFieldComponent), InvoiceStatusLabelPipe],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InvoiceStatusFieldComponent extends WrappedFormControlSuperclass<StatusEnum> {
+export class InvoiceStatusFieldComponent extends FormControlSuperclass<StatusEnum> {
     options$: Observable<Option<string>[]> = combineLatest(
         Object.keys(OPTION_LABELS).map((value: StatusEnum) =>
             this.invoiceStatusLabelPipe.transform(value).pipe(map((label) => ({ value, label })))

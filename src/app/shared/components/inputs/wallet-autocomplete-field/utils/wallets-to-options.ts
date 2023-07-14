@@ -1,6 +1,5 @@
+import { Option } from '@vality/ng-core';
 import { Wallet } from '@vality/swag-wallet';
-
-import { Option } from '@dsh/components/form-controls/select-search-field';
 
 const walletToOption = (wallet: Wallet): Option<string> => ({
     label: `${wallet?.id} - ${wallet?.name}`,
