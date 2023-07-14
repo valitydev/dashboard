@@ -46,9 +46,5 @@
             "week": "нед.",
             "year": "г."
         }
-    },
-    "selectSearchField": {
-        "noEntriesFoundLabel": "Ничего не найдено",
-        "searchPlaceholder": "Поиск..."
     }
 }

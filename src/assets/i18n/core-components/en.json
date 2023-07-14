@@ -46,9 +46,5 @@
             "week": "wk.",
             "year": "y."
         }
-    },
-    "selectSearchField": {
-        "noEntriesFoundLabel": "Nothing found",
-        "searchPlaceholder": "Search..."
     }
 }
