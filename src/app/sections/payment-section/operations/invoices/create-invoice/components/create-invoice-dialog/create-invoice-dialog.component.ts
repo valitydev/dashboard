@@ -18,8 +18,6 @@ import { CreateInvoiceDialogResponse } from '../../types/create-invoice-dialog-r
 })
 export class CreateInvoiceDialogComponent {
     formControl = new FormControl();
-    valid: boolean;
-    empty: boolean;
 
     constructor(
         private dialogRef: MatDialogRef<CreateInvoiceDialogComponent, CreateInvoiceDialogResponse>,

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Invoice, InvoiceTemplateAndToken } from '@vality/swag-payments';
 import pick from 'lodash-es/pick';
@@ -12,12 +12,12 @@ import { CreateInvoiceOrInvoiceTemplateService } from './create-invoice-or-invoi
 
 export enum Type {
     Invoice = 'invoice',
-    Tempalte = 'template',
+    Template = 'template',
 }
 
 export type InvoiceOrInvoiceTemplate =
     | { invoiceOrInvoiceTemplate: Invoice; type: Type.Invoice }
-    | { invoiceOrInvoiceTemplate: InvoiceTemplateAndToken; type: Type.Tempalte };
+    | { invoiceOrInvoiceTemplate: InvoiceTemplateAndToken; type: Type.Template };
 
 @UntilDestroy()
 @Component({
@@ -36,8 +36,6 @@ export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
     type = Type;
 
     createInvoiceFormControl = this.createInvoiceOrInvoiceTemplateService.createInvoiceFormControl;
-    createInvoiceFormControlEmpty: boolean;
-    createInvoiceFormControlValid: boolean;
 
     constructor(
         private createInvoiceOrInvoiceTemplateService: CreateInvoiceOrInvoiceTemplateService,
@@ -47,7 +45,7 @@ export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
     ngOnInit(): void {
         merge(
             this.nextTemplate.pipe(
-                map((template) => ({ invoiceOrInvoiceTemplate: template, type: Type.Tempalte } as const))
+                map((template) => ({ invoiceOrInvoiceTemplate: template, type: Type.Template } as const))
             ),
             this.nextInvoice
                 .pipe(map((invoice) => ({ invoiceOrInvoiceTemplate: invoice, type: Type.Invoice } as const)))

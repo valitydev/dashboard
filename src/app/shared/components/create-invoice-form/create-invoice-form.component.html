@@ -2,7 +2,7 @@
     *transloco="let d; scope: 'components'; read: 'components.createInvoiceForm'"
     fxLayout="column"
     fxLayoutGap="24px"
-    [formGroup]="form"
+    [formGroup]="control"
 >
     <div fxLayout="column" fxLayoutGap="24px">
         <mat-form-field>
@@ -29,10 +29,13 @@
         </mat-form-field>
     </div>
 
-    <ng-container *ngIf="form.value.shopID">
-        <h2 class="dsh-subheading-1" *ngIf="form.controls.cart.controls.length">{{ d('productsList') }}</h2>
+    <ng-container *ngIf="control.value.shopID">
+        <h2 class="dsh-subheading-1" *ngIf="control.controls.cart.controls.length">{{ d('productsList') }}</h2>
 
-        <ng-container *ngFor="let removeGroup of form.controls.cart.controls; index as idx" [formGroup]="removeGroup">
+        <ng-container
+            *ngFor="let removeGroup of control.controls.cart.controls; index as idx"
+            [formGroup]="removeGroup"
+        >
             <div fxLayout="column" fxLayoutGap="24px">
                 <mat-form-field>
                     <mat-label>{{ d('removeFormGroup.product') }}</mat-label>
@@ -71,7 +74,7 @@
                     fxLayout="column"
                     fxLayoutAlign="stretch"
                     fxLayoutAlign.gt-sm=" end"
-                    *ngIf="form.controls.cart.controls.length > 1"
+                    *ngIf="control.controls.cart.controls.length > 1"
                 >
                     <button dsh-text-button color="warn" (click)="removeCartItem(idx)">
                         {{ d('remove') }}

@@ -11,7 +11,7 @@
             </div>
             <mat-radio-group fxLayout="column" fxLayoutGap="24px" formControlName="type">
                 <mat-radio-button [value]="type.Invoice">{{ c('types.personal') }}</mat-radio-button>
-                <mat-radio-button [value]="type.Tempalte">{{ c('types.reusable') }}</mat-radio-button>
+                <mat-radio-button [value]="type.Template">{{ c('types.reusable') }}</mat-radio-button>
             </mat-radio-group>
         </form>
     </div>
@@ -24,26 +24,24 @@
                 <dsh-create-invoice-form
                     [shops]="shops$ | async"
                     [formControl]="createInvoiceFormControl"
-                    (valid)="createInvoiceFormControlValid = $event"
-                    (empty)="createInvoiceFormControlEmpty = $event"
                 ></dsh-create-invoice-form>
                 <dsh-actions *transloco="let t; scope: 'components'; read: 'components.shared'">
                     <button
                         dsh-text-button
                         color="accent"
-                        [disabled]="createInvoiceFormControlEmpty"
+                        [disabled]="createInvoiceFormControl.pristine"
                         (click)="createInvoiceFormControl.reset()"
                     >
                         {{ t('clearForm') }}
                     </button>
-                    <button dsh-button (click)="create()" color="accent" [disabled]="!createInvoiceFormControlValid">
+                    <button dsh-button (click)="create()" color="accent" [disabled]="createInvoiceFormControl.invalid">
                         {{ t('next') }}
                     </button>
                 </dsh-actions>
             </div>
         </ng-container>
         <dsh-create-invoice-template
-            *ngIf="form.value.type === type.Tempalte"
+            *ngIf="form.value.type === type.Template"
             [shops]="shops$ | async"
             (next)="nextTemplate.next($event)"
         ></dsh-create-invoice-template>
