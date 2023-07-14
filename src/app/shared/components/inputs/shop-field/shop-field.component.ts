@@ -34,8 +34,5 @@ export class ShopFieldComponent extends FormControlSuperclass<Shop> {
         private shops$?: Observable<Shop[]>
     ) {
         super();
-        this.control.statusChanges.subscribe(() => {
-            console.log(this.control.errors, this.control.value, this.control.status);
-        });
     }
 }
