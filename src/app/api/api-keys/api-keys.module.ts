@@ -9,7 +9,7 @@ import { ConfigService } from '../../config';
             provide: Configuration,
             deps: [ConfigService],
             useFactory: (configService: ConfigService) =>
-                new Configuration({ basePath: `${configService.apiEndpoint}/apikeys/v1` }),
+                new Configuration({ basePath: `${configService.apiEndpoint}/apikeys/v2` }),
         },
     ],
 })
