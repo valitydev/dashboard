@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiKey } from '@vality/swag-api-keys';
+import { ApiKey } from '@vality/swag-api-keys-v2';
 import { Observable } from 'rxjs';
 
 import { ExpandedIdManager } from '@dsh/app/shared/services';
@@ -18,6 +18,6 @@ export class ApiKeysExpandedIdManager extends ExpandedIdManager<ApiKey> {
     }
 
     protected get dataSet$(): Observable<ApiKey[]> {
-        return this.fetchApiKeysService.apiKeys$;
+        return this.fetchApiKeysService.result$;
     }
 }

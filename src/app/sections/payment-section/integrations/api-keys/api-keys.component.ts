@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { DialogService } from '@vality/ng-core';
-import { ApiKeyStatus, ListApiKeysRequestParams } from '@vality/swag-api-keys';
+import { ApiKeyStatus, ListApiKeysRequestParams } from '@vality/swag-api-keys-v2';
+import { Observable } from 'rxjs';
 
-import { ApiKeyCreateDialogComponent } from '@dsh/app/sections/payment-section/integrations/api-keys/components/api-key-create-dialog/api-key-create-dialog.component';
+import { mapToTimestamp, shareReplayRefCount } from '@dsh/app/custom-operators';
+import { QueryParamsService } from '@dsh/app/shared';
 
 import { ApiKeysExpandedIdManager } from './api-keys-expanded-id-manager.service';
+import { ApiKeyCreateDialogComponent } from './components/api-key-create-dialog/api-key-create-dialog.component';
 import { FetchApiKeysService } from './fetch-api-keys.service';
-import { QueryParamsService } from '../../../../shared';
 
 @UntilDestroy()
 @Component({
@@ -17,10 +19,11 @@ import { QueryParamsService } from '../../../../shared';
 })
 export class ApiKeysComponent {
     showInactive = this.qp.params.showInactive;
-    apiKeys$ = this.fetchApiKeysService.apiKeys$;
+    apiKeys$ = this.fetchApiKeysService.result$;
     isLoading$ = this.fetchApiKeysService.isLoading$;
+    hasMore$ = this.fetchApiKeysService.hasMore$;
     expandedId$ = this.apiKeysExpandedIdManager.expandedId$;
-    lastUpdated$ = this.fetchApiKeysService.lastUpdated$;
+    lastUpdated$: Observable<string> = this.fetchApiKeysService.result$.pipe(mapToTimestamp, shareReplayRefCount());
 
     constructor(
         private qp: QueryParamsService<{ showInactive: boolean }>,
@@ -29,8 +32,12 @@ export class ApiKeysComponent {
         private dialogService: DialogService
     ) {}
 
-    update(params: Omit<ListApiKeysRequestParams, 'partyId' | 'xRequestID'> = {}) {
-        this.fetchApiKeysService.update(Object.assign(params, !this.showInactive && { status: ApiKeyStatus.Active }));
+    update(params: Omit<ListApiKeysRequestParams, 'partyId' | 'xRequestID' | 'limit'> = {}) {
+        this.fetchApiKeysService.load(Object.assign(params, !this.showInactive && { status: ApiKeyStatus.Active }));
+    }
+
+    more() {
+        this.fetchApiKeysService.more();
     }
 
     create() {

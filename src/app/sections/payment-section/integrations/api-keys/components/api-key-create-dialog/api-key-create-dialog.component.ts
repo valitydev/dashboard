@@ -50,11 +50,11 @@ export class ApiKeyCreateDialogComponent extends DialogSuperclass<ApiKeyCreateDi
 
     confirm() {
         this.apiKeysService
-            .issueApiKey()
+            .issueApiKey({ apiKeyIssue: { name: this.form.value.name } })
             .pipe(untilDestroyed(this))
             .subscribe({
                 next: (res) => {
-                    this.apiKey = res.accessToken;
+                    this.apiKey = res.apiKey;
                 },
                 error: (err) => {
                     this.errorService.error(err);

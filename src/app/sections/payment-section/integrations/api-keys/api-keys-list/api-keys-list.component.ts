@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { DialogService } from '@vality/ng-core';
-import { ApiKey } from '@vality/swag-api-keys';
+import { ApiKey } from '@vality/swag-api-keys-v2';
 
 import { ApiKeyDeleteDialogComponent } from './components/api-key-delete-dialog/api-key-delete-dialog.component';
 

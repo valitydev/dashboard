@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Configuration } from '@vality/swag-api-keys';
+import { Configuration } from '@vality/swag-api-keys-v2';
 
 import { ConfigService } from '../../config';
 
