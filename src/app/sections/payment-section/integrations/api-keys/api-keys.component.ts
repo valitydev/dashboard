@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { DialogService } from '@vality/ng-core';
-import { ApiKeyStatus, ListApiKeysRequestParams } from '@vality/swag-api-keys-v2';
-import { Observable } from 'rxjs';
+import { ApiKeyStatus } from '@vality/swag-api-keys-v2';
 
 import { mapToTimestamp, shareReplayRefCount } from '@dsh/app/custom-operators';
 import { QueryParamsService } from '@dsh/app/shared';
@@ -23,17 +22,19 @@ export class ApiKeysComponent {
     isLoading$ = this.fetchApiKeysService.isLoading$;
     hasMore$ = this.fetchApiKeysService.hasMore$;
     expandedId$ = this.apiKeysExpandedIdManager.expandedId$;
-    lastUpdated$: Observable<string> = this.fetchApiKeysService.result$.pipe(mapToTimestamp, shareReplayRefCount());
+    lastUpdated$ = this.fetchApiKeysService.result$.pipe(mapToTimestamp, shareReplayRefCount());
 
     constructor(
         private qp: QueryParamsService<{ showInactive: boolean }>,
         private apiKeysExpandedIdManager: ApiKeysExpandedIdManager,
         private fetchApiKeysService: FetchApiKeysService,
         private dialogService: DialogService
-    ) {}
+    ) {
+        this.update();
+    }
 
-    update(params: Omit<ListApiKeysRequestParams, 'partyId' | 'xRequestID' | 'limit'> = {}) {
-        this.fetchApiKeysService.load(Object.assign(params, !this.showInactive && { status: ApiKeyStatus.Active }));
+    update() {
+        this.fetchApiKeysService.load(Object.assign({}, !this.showInactive && { status: ApiKeyStatus.Active }));
     }
 
     more() {
