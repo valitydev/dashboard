@@ -10,6 +10,7 @@ import { ButtonModule } from '@dsh/components/buttons';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { SpinnerModule } from '@dsh/components/indicators';
 import { CardModule } from '@dsh/components/layout';
+import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
 
 import { ApiKeysListModule } from './api-keys-list/api-keys-list.module';
 import { ApiKeysRoutingModule } from './api-keys-routing.module';
@@ -33,6 +34,7 @@ import { ApiKeyRevokeComponent } from './components/api-key-revoke/api-key-revok
         MatSlideToggleModule,
         ApiKeysListModule,
         ApiKeyCreateDialogComponent,
+        ShowMorePanelModule,
     ],
 })
 export class ApiKeysModule {}
