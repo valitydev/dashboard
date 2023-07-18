@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { TranslocoService } from '@ngneat/transloco';
 import { FetchSuperclass, NotifyLogService, FetchResult, FetchOptions } from '@vality/ng-core';
 import { ListApiKeysRequestParams } from '@vality/swag-api-keys-v2';
 import { ApiKey } from '@vality/swag-api-keys-v2/lib/model/api-key';
@@ -12,7 +13,11 @@ export class FetchApiKeysService extends FetchSuperclass<
     ApiKey,
     Omit<ListApiKeysRequestParams, 'partyId' | 'xRequestID' | 'limit'>
 > {
-    constructor(private apiKeysService: ApiKeysService, private logService: NotifyLogService) {
+    constructor(
+        private apiKeysService: ApiKeysService,
+        private logService: NotifyLogService,
+        private transloco: TranslocoService
+    ) {
         super();
     }
 
@@ -28,7 +33,7 @@ export class FetchApiKeysService extends FetchSuperclass<
                     continuationToken: res.continuationToken,
                 })),
                 catchError((err) => {
-                    this.logService.errorOperation(err, 'receive', 'api keys');
+                    this.logService.error(err, this.transloco.translate('apiKeys.fetch.error', {}, 'payment-section'));
                     return of({
                         result: [],
                     });

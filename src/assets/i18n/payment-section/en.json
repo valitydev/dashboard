@@ -38,6 +38,9 @@
             "title": "Key revocation request"
         },
         "emptyResult": "No keys released",
+        "fetch": {
+            "error": "Error loading keys"
+        },
         "list": {
             "createdAt": "Created at",
             "delete": "Revoke key",
