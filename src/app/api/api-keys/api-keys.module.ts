@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Configuration } from '@vality/swag-api-keys';
+import { Configuration } from '@vality/swag-api-keys-v2';
 
 import { ConfigService } from '../../config';
 
@@ -9,7 +9,7 @@ import { ConfigService } from '../../config';
             provide: Configuration,
             deps: [ConfigService],
             useFactory: (configService: ConfigService) =>
-                new Configuration({ basePath: `${configService.apiEndpoint}/apikeys/v1` }),
+                new Configuration({ basePath: `${configService.apiEndpoint}/apikeys/v2` }),
         },
     ],
 })

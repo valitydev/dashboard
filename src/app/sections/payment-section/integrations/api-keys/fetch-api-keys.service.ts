@@ -1,37 +1,43 @@
 import { Injectable } from '@angular/core';
-import { ListApiKeysRequestParams } from '@vality/swag-api-keys';
-import { BehaviorSubject, Observable, defer, of } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { TranslocoService } from '@ngneat/transloco';
+import { FetchSuperclass, NotifyLogService, FetchResult, FetchOptions } from '@vality/ng-core';
+import { ListApiKeysRequestParams } from '@vality/swag-api-keys-v2';
+import { ApiKey } from '@vality/swag-api-keys-v2/lib/model/api-key';
+import { of, Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 import { ApiKeysService } from '@dsh/app/api/api-keys';
-import { mapToTimestamp, shareReplayRefCount } from '@dsh/app/custom-operators';
-import { ErrorService } from '@dsh/app/shared/services';
-import { inProgressFrom, progressTo } from '@dsh/utils';
 
 @Injectable()
-export class FetchApiKeysService {
-    apiKeys$ = defer(() => this.fetchApiKeys$).pipe(
-        switchMap((p) =>
-            this.apiKeysService.listApiKeys(p).pipe(
-                map((r) => r.results),
-                progressTo(() => this.progress$),
+export class FetchApiKeysService extends FetchSuperclass<
+    ApiKey,
+    Omit<ListApiKeysRequestParams, 'partyId' | 'xRequestID' | 'limit'>
+> {
+    constructor(
+        private apiKeysService: ApiKeysService,
+        private logService: NotifyLogService,
+        private transloco: TranslocoService
+    ) {
+        super();
+    }
+
+    protected fetch(
+        params: Omit<ListApiKeysRequestParams, 'partyId' | 'xRequestID' | 'limit'>,
+        options: FetchOptions
+    ): Observable<FetchResult<ApiKey>> {
+        return this.apiKeysService
+            .listApiKeys({ ...params, limit: options.size, continuationToken: options.continuationToken })
+            .pipe(
+                map((res) => ({
+                    result: res.results,
+                    continuationToken: res.continuationToken,
+                })),
                 catchError((err) => {
-                    this.errorService.error(err);
-                    return of([]);
+                    this.logService.error(err, this.transloco.translate('apiKeys.fetch.error', {}, 'payment-section'));
+                    return of({
+                        result: [],
+                    });
                 })
-            )
-        ),
-        shareReplayRefCount()
-    );
-    isLoading$ = inProgressFrom(() => this.progress$, this.apiKeys$);
-    lastUpdated$: Observable<string> = this.apiKeys$.pipe(mapToTimestamp, shareReplayRefCount());
-
-    private progress$ = new BehaviorSubject(0);
-    private fetchApiKeys$ = new BehaviorSubject<Omit<ListApiKeysRequestParams, 'partyId' | 'xRequestID'>>({});
-
-    constructor(private apiKeysService: ApiKeysService, private errorService: ErrorService) {}
-
-    update(params: Omit<ListApiKeysRequestParams, 'partyId' | 'xRequestID'> = {}) {
-        this.fetchApiKeys$.next(params);
+            );
     }
 }

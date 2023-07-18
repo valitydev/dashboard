@@ -3,7 +3,7 @@ import { FlexModule } from '@angular/flex-layout';
 import { TranslocoModule } from '@ngneat/transloco';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { DialogSuperclass } from '@vality/ng-core';
-import { RequestRevokeApiKeyRequestParams } from '@vality/swag-api-keys';
+import { RequestRevokeApiKeyRequestParams } from '@vality/swag-api-keys-v2';
 
 import { ApiKeysService } from '@dsh/app/api/api-keys';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
@@ -34,7 +34,7 @@ export class ApiKeyDeleteDialogComponent extends DialogSuperclass<
 
     confirm() {
         this.apiKeysService
-            .requestRevokeApiKey(this.dialogData)
+            .requestRevokeApiKey({ ...this.dialogData, status: 'Revoked' })
             .pipe(untilDestroyed(this))
             .subscribe({
                 next: () => {

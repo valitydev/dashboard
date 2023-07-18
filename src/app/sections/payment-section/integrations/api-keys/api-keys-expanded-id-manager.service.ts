@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiKey } from '@vality/swag-api-keys';
+import { ApiKey } from '@vality/swag-api-keys-v2';
 import { Observable } from 'rxjs';
 
-import { ExpandedIdManager } from '@dsh/app/shared/services';
+import { ExpandedIdManager, Fragment } from '@dsh/app/shared/services';
 
 import { FetchApiKeysService } from './fetch-api-keys.service';
 
@@ -17,7 +17,15 @@ export class ApiKeysExpandedIdManager extends ExpandedIdManager<ApiKey> {
         super(route, router);
     }
 
+    protected toFragment(apiKey: ApiKey): Fragment {
+        return apiKey.id;
+    }
+
+    protected fragmentNotFound(): void {
+        this.fetchApiKeysService.more();
+    }
+
     protected get dataSet$(): Observable<ApiKey[]> {
-        return this.fetchApiKeysService.apiKeys$;
+        return this.fetchApiKeysService.result$;
     }
 }
