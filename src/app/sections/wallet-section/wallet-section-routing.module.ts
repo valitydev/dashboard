@@ -25,6 +25,10 @@ const WALLET_SECTION_ROUTES: Routes = [
                 loadChildren: () => import('./integrations').then((m) => m.IntegrationsModule),
             },
             {
+                path: 'reports',
+                loadChildren: () => import('./reports').then((m) => m.ReportsModule),
+            },
+            {
                 path: '',
                 redirectTo: 'wallets',
                 pathMatch: 'full',

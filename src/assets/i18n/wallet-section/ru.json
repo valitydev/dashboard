@@ -47,6 +47,7 @@
         "nav": {
             "deposits": "Пополнения",
             "integrations": "Интеграция",
+            "reports": "Отчеты",
             "wallets": "Кошельки",
             "withdrawals": "Выводы"
         }

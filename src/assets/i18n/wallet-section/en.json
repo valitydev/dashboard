@@ -47,6 +47,7 @@
         "nav": {
             "deposits": "Deposits",
             "integrations": "Integration",
+            "reports": "Reports",
             "wallets": "Wallets",
             "withdrawals": "Withdrawals"
         }

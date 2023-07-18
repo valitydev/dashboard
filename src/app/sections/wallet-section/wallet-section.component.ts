@@ -32,6 +32,7 @@ export class WalletSectionComponent implements OnInit {
 
     private getNavbarLabels() {
         return {
+            reports: this.transloco.translate('walletSection.nav.reports', null, 'wallet-section'),
             wallets: this.transloco.translate('walletSection.nav.wallets', null, 'wallet-section'),
             deposits: this.transloco.translate('walletSection.nav.deposits', null, 'wallet-section'),
             withdrawals: this.transloco.translate('walletSection.nav.withdrawals', null, 'wallet-section'),

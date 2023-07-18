@@ -5,6 +5,7 @@ export enum NavbarRouterLink {
     Deposits = 'deposits',
     Withdrawals = 'withdrawals',
     Integrations = 'integrations',
+    Reports = 'reports',
 }
 
 export interface NavbarItemConfig {
@@ -18,7 +19,8 @@ export const toNavbarItemConfig = ({
     deposits,
     withdrawals,
     integrations,
-}: Record<'wallets' | 'deposits' | 'withdrawals' | 'integrations', string>): NavbarItemConfig[] => [
+    reports,
+}: Record<'wallets' | 'deposits' | 'withdrawals' | 'integrations' | 'reports', string>): NavbarItemConfig[] => [
     {
         routerLink: NavbarRouterLink.Wallets,
         icon: BootstrapIconName.Wallet2,
@@ -33,6 +35,11 @@ export const toNavbarItemConfig = ({
         routerLink: NavbarRouterLink.Withdrawals,
         icon: BootstrapIconName.ArrowUpRightCircle,
         label: withdrawals,
+    },
+    {
+        routerLink: NavbarRouterLink.Reports,
+        icon: BootstrapIconName.FileText,
+        label: reports,
     },
     {
         routerLink: NavbarRouterLink.Integrations,
