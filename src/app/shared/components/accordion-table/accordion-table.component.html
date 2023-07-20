@@ -1,0 +1,36 @@
+<div fxLayout="column" fxLayoutGap="16px">
+    <dsh-last-updated [lastUpdated]="lastUpdated" (update)="update.emit($event)"></dsh-last-updated>
+    <dsh-row fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="24px">
+        <dsh-row-header-label *ngFor="let column of columns" [fxHide]="column.hide" [fxFlex]="column.width ?? true">{{
+            column.label
+        }}</dsh-row-header-label>
+    </dsh-row>
+    <dsh-accordion
+        *ngIf="data?.length && !inProgress"
+        fxLayout="column"
+        fxLayoutGap="16px"
+        [expanded]="expanded"
+        (expandedChange)="expandedChange.emit($event)"
+    >
+        <dsh-accordion-item *ngFor="let item of data" #accordionItem>
+            <dsh-row fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="24px">
+                <dsh-row-label *ngFor="let column of columns" [fxHide]="column.hide" [fxFlex]="column.width ?? true">
+                    {{ column.field(item, column) }}
+                </dsh-row-label>
+            </dsh-row>
+            <ng-template dshLazyPanelContent>
+                <dsh-card fxFlexFill fxLayout="column" fxLayoutGap="24px">
+                    <dsh-accordion-item-content-header (collapse)="accordionItem.collapse($event)">
+                        <div fxLayout fxLayoutAlign="space-between" fxLayoutGap="24px">
+                            <div *ngFor="let header of contentHeader">{{ header.label(item) }}</div>
+                        </div>
+                    </dsh-accordion-item-content-header>
+                    <ng-container *ngTemplateOutlet="contentTemplate; context: { $implicit: item }"></ng-container>
+                </dsh-card>
+            </ng-template>
+        </dsh-accordion-item>
+    </dsh-accordion>
+    <dsh-show-more-panel *ngIf="hasMore" [isLoading]="inProgress" (showMore)="more.emit($event)"></dsh-show-more-panel>
+    <dsh-empty-search-result *ngIf="!data?.length && !inProgress"></dsh-empty-search-result>
+    <dsh-spinner *ngIf="inProgress" fxLayoutAlign="center"></dsh-spinner>
+</div>
