@@ -43,6 +43,13 @@
         "sourceID": "Source identifier",
         "walletID": "Wallet"
     },
+    "reports": {
+        "dateRangeDescription": "Reporting period",
+        "errors": {
+            "identityNotSpecified": "Wallet holder not specified"
+        },
+        "openCreateReport": "Create report"
+    },
     "walletSection": {
         "nav": {
             "deposits": "Deposits",

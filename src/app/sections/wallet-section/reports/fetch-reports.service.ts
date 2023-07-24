@@ -21,13 +21,11 @@ export class FetchReportsService extends FetchSuperclass<
         params: Omit<GetReportsRequestParams, 'xRequestID' | 'xRequestDeadline'>
     ): Observable<FetchResult<Report, string>> {
         return this.reportsService.getReports(params).pipe(
-            map(
-                (result) => ({ result }),
-                catchError((err) => {
-                    this.log.error(err);
-                    return of({ result: [] });
-                })
-            )
+            map((result) => ({ result })),
+            catchError((err) => {
+                this.log.error(err);
+                return of({ result: [] });
+            })
         );
     }
 }

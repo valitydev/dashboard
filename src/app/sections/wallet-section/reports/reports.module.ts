@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexModule } from '@angular/flex-layout';
+import { FlexModule, GridModule, ExtendedModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -10,6 +10,7 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { IdentityFilterModule } from '@dsh/app/shared';
 import { AccordionTableModule } from '@dsh/app/shared/components/accordion-table';
 import { ClaimFieldModule } from '@dsh/app/shared/components/inputs/claim-field';
+import { ButtonModule } from '@dsh/components/buttons';
 import { DateRangeFilterModule } from '@dsh/components/date-range-filter';
 import { FilterModule } from '@dsh/components/filter';
 import { FiltersGroupModule } from '@dsh/components/filters-group';
@@ -34,6 +35,9 @@ import { ReportsComponent } from './reports.component';
         FilterModule,
         TranslocoModule,
         IdentityFilterModule,
+        ButtonModule,
+        GridModule,
+        ExtendedModule,
     ],
 })
 export class ReportsModule {}

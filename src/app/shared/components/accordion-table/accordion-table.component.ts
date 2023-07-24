@@ -23,6 +23,7 @@ export class AccordionTableComponent<T extends object> {
     @Input() data: T[];
     @Input() inProgress: boolean;
     @Input() hasMore: boolean;
+    @Input() error?: string;
 
     @Output() update = new EventEmitter<void>();
     @Output() more = new EventEmitter<void>();

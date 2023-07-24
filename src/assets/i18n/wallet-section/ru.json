@@ -43,6 +43,13 @@
         "sourceID": "Идентификатор источника",
         "walletID": "Кошелек"
     },
+    "reports": {
+        "dateRangeDescription": "Период создания отчетов",
+        "errors": {
+            "identityNotSpecified": "Владелец кошелька не указан"
+        },
+        "openCreateReport": "Создать отчет"
+    },
     "walletSection": {
         "nav": {
             "deposits": "Пополнения",
