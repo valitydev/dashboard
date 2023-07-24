@@ -1,0 +1,20 @@
+<ng-container *transloco="let t; scope: 'components'; read: 'components.identityFilter'">
+    <dsh-filter
+        [active]="isActive"
+        [label]="t('label')"
+        [activeLabel]="t('label') + ' #' + savedValue"
+        [content]="content"
+        (save)="save()"
+        (clear)="clear()"
+    ></dsh-filter>
+    <ng-template #content>
+        <mat-form-field fxFlex>
+            <mat-label>{{ t('label') }}</mat-label>
+            <mat-select [formControl]="control" required>
+                <mat-option *ngFor="let identity of identities$ | async" [value]="identity.id">
+                    {{ identity.id }} {{ identity.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </ng-template>
+</ng-container>

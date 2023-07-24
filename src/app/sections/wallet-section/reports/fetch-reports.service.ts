@@ -9,12 +9,17 @@ import { ReportsService } from '@dsh/app/api/wallet';
 @Injectable({
     providedIn: 'root',
 })
-export class FetchReportsService extends FetchSuperclass<Report, GetReportsRequestParams> {
+export class FetchReportsService extends FetchSuperclass<
+    Report,
+    Omit<GetReportsRequestParams, 'xRequestID' | 'xRequestDeadline'>
+> {
     constructor(private reportsService: ReportsService, private log: NotifyLogService) {
         super();
     }
 
-    protected fetch(params: GetReportsRequestParams): Observable<FetchResult<Report, string>> {
+    protected fetch(
+        params: Omit<GetReportsRequestParams, 'xRequestID' | 'xRequestDeadline'>
+    ): Observable<FetchResult<Report, string>> {
         return this.reportsService.getReports(params).pipe(
             map(
                 (result) => ({ result }),

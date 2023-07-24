@@ -1,1 +1,15 @@
-<p>reports works!</p>
+<div fxLayout="column" fxLayoutGap="32px" *transloco="let t; scope: 'wallet-section'; read: 'walletSection.reports'">
+    <dsh-filters-group [formGroup]="form">
+        <dsh-date-range-filter
+            formControlName="dateRange"
+            [default]="defaultDateRange"
+            [maxDate]="defaultDateRange.end"
+        />
+        <dsh-identity-filter formControlName="identityID" />
+    </dsh-filters-group>
+    <dsh-accordion-table [columns]="columns" [data]="reports$ | async">
+        <ng-template let-item>
+            <div fxLayout="column" fxLayoutGap="24px">{{ item.id }}</div></ng-template
+        >
+    </dsh-accordion-table>
+</div>
