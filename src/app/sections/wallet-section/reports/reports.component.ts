@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { Report } from '@vality/swag-wallet';
 import isEqual from 'lodash-es/isEqual';
-import { startWith, distinctUntilChanged } from 'rxjs/operators';
+import { startWith, distinctUntilChanged, filter } from 'rxjs/operators';
 
 import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { QueryParamsService } from '@dsh/app/shared';
 import { Column } from '@dsh/app/shared/components/accordion-table';
+import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { createDateRangeWithPreset, Preset, DateRange } from '@dsh/components/date-range-filter';
 
+import { CreateReportDialogComponent } from './components/create-report-dialog/create-report-dialog.component';
 import { FetchReportsService } from './fetch-reports.service';
 
 interface Form {
@@ -30,7 +33,6 @@ export class ReportsComponent implements OnInit {
     columns: Column<Report>[] = [
         { label: 'Created at', field: (r) => r.createdAt },
         { label: 'Status', field: (d) => d.status },
-        { label: 'Type', field: (d) => d.type },
         { label: 'Reporting period', field: (d) => d.fromTime + '-' + d.toTime },
     ];
     defaultDateRange = createDateRangeWithPreset(Preset.Last90days);
@@ -40,7 +42,8 @@ export class ReportsComponent implements OnInit {
     constructor(
         private fetchReportsService: FetchReportsService,
         private fb: NonNullableFormBuilder,
-        private qp: QueryParamsService<Partial<Form>>
+        private qp: QueryParamsService<Partial<Form>>,
+        private dialog: MatDialog
     ) {}
 
     ngOnInit() {
@@ -68,5 +71,16 @@ export class ReportsComponent implements OnInit {
         this.fetchReportsService.more();
     }
 
-    create() {}
+    create() {
+        this.dialog
+            .open(CreateReportDialogComponent)
+            .afterClosed()
+            .pipe(
+                filter((r) => r === BaseDialogResponseStatus.Success),
+                untilDestroyed(this)
+            )
+            .subscribe(() => {
+                this.load();
+            });
+    }
 }

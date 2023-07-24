@@ -1,0 +1,38 @@
+<dsh-base-dialog
+    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.reports.createReportDialog'"
+    [title]="t('title')"
+    (cancel)="cancel()"
+>
+    <div fxLayout="column" [formGroup]="form" fxLayout="column" fxLayoutGap="16px">
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="24px" fxLayoutGap.xs="16px">
+            <mat-form-field fxFlex>
+                <mat-label>{{ t('from') }}</mat-label>
+                <input required formControlName="fromTime" matInput [matDatepicker]="from" [max]="form.value.toTime" />
+                <mat-datepicker-toggle matSuffix [for]="from"></mat-datepicker-toggle>
+                <mat-datepicker #from></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <mat-label>{{ t('time') }}</mat-label>
+                <input required dshFormatTimeInput formControlName="fromTime" matInput placeholder="00:00:00" />
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="24px" fxLayoutGap.xs="16px">
+            <mat-form-field fxFlex>
+                <mat-label>{{ t('to') }}</mat-label>
+                <input required formControlName="toTime" matInput [matDatepicker]="to" [min]="form.value.fromTime" />
+                <mat-datepicker-toggle matSuffix [for]="to"></mat-datepicker-toggle>
+                <mat-datepicker #to></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <mat-label>{{ t('time') }}</mat-label>
+                <input required dshFormatTimeInput formControlName="toTime" matInput placeholder="00:00:00" />
+            </mat-form-field>
+        </div>
+        <dsh-identity-field formControlName="identityID"></dsh-identity-field>
+    </div>
+    <ng-container dshBaseDialogActions>
+        <button dsh-button color="accent" [disabled]="form.invalid || (inProgress$ | async)" (click)="confirm()">
+            {{ t('confirm') }}
+        </button>
+    </ng-container>
+</dsh-base-dialog>

@@ -3,23 +3,28 @@ import { NgModule } from '@angular/core';
 import { FlexModule, GridModule, ExtendedModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@ngneat/transloco';
 
 import { IdentityFilterModule } from '@dsh/app/shared';
 import { AccordionTableModule } from '@dsh/app/shared/components/accordion-table';
+import { DialogModule } from '@dsh/app/shared/components/dialog';
 import { ClaimFieldModule } from '@dsh/app/shared/components/inputs/claim-field';
 import { ButtonModule } from '@dsh/components/buttons';
 import { DateRangeFilterModule } from '@dsh/components/date-range-filter';
 import { FilterModule } from '@dsh/components/filter';
 import { FiltersGroupModule } from '@dsh/components/filters-group';
 
+import { CreateReportDialogComponent } from './components/create-report-dialog/create-report-dialog.component';
 import { ReportsRoutingModule } from './reports-routing.module';
 import { ReportsComponent } from './reports.component';
 
 @NgModule({
-    declarations: [ReportsComponent],
+    declarations: [ReportsComponent, CreateReportDialogComponent],
     imports: [
         CommonModule,
         ReportsRoutingModule,
@@ -38,6 +43,10 @@ import { ReportsComponent } from './reports.component';
         ButtonModule,
         GridModule,
         ExtendedModule,
+        DialogModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatDialogModule,
     ],
 })
 export class ReportsModule {}
