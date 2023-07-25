@@ -13,8 +13,8 @@
             *ngIf="data?.length"
             fxLayout="column"
             fxLayoutGap="16px"
-            [expanded]="expanded"
-            (expandedChange)="expandedChange.emit($event)"
+            [expanded]="expanded ? (expanded.expanded$ | async) : undefined"
+            (expandedChange)="expanded ? expanded.set($event) : undefined"
         >
             <dsh-accordion-item *ngFor="let item of data" #accordionItem>
                 <dsh-row fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="24px">

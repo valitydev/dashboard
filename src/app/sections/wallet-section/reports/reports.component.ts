@@ -13,7 +13,7 @@ import { startWith, distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { WalletDictionaryService } from '@dsh/app/api/wallet';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { QueryParamsService } from '@dsh/app/shared';
-import { Column } from '@dsh/app/shared/components/accordion-table';
+import { Column, ExpandedFragment } from '@dsh/app/shared/components/accordion-table';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { StatusColor } from '@dsh/app/theme-manager';
 import { createDateRangeWithPreset, Preset, DateRange } from '@dsh/components/date-range-filter';
@@ -72,6 +72,11 @@ export class ReportsComponent implements OnInit {
     lastUpdated$ = this.fetchReportsService.result$.pipe(mapToTimestamp);
     reportStatusDict$ = this.walletDictionaryService.reportStatus$;
     reportStatusColor = REPORT_STATUS_COLOR;
+    expanded = new ExpandedFragment(
+        this.fetchReportsService.result$,
+        () => this.fetchReportsService.more(),
+        this.fetchReportsService.hasMore$
+    );
 
     constructor(
         private fetchReportsService: FetchReportsService,

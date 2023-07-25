@@ -5,6 +5,8 @@ import { map, startWith } from 'rxjs/operators';
 
 import { StatusColor } from '@dsh/app/theme-manager';
 
+import { ExpandedFragment } from './expanded-fragment';
+
 const HIDED_BREAKPOINTS = [
     Breakpoints.XSmall,
     Breakpoints.Small,
@@ -46,8 +48,7 @@ export class AccordionTableComponent<T extends object> {
     @Output() update = new EventEmitter<void>();
     @Output() more = new EventEmitter<void>();
 
-    @Input() expanded: number;
-    @Output() expandedChange = new EventEmitter<number>();
+    @Input() expanded?: ExpandedFragment;
 
     @ContentChild(TemplateRef, { static: true }) contentTemplate!: TemplateRef<unknown>;
 
