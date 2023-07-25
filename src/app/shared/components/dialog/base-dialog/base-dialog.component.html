@@ -26,7 +26,10 @@
 
 <ng-template #titleBlock>
     <div fxLayout="row" fxLayoutAlign="space-between">
-        <div class="dsh-headline">{{ title }}</div>
+        <div fxLayout="column" fxLayoutGap="16px">
+            <div class="dsh-headline">{{ title }}</div>
+            <div class="dsh-body-1" *ngIf="subtitle">{{ subtitle }}</div>
+        </div>
         <dsh-bi class="base-dialog-title-close" icon="x" size="lg" (click)="cancelDialog()"></dsh-bi>
     </div>
 </ng-template>

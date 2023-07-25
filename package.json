@@ -9,6 +9,7 @@
     "build": "ng build && transloco-optimize dist/assets/i18n",
     "test": "ng test",
     "i18n:extract": "transloco-keys-manager extract",
+    "i18n:clean": "transloco-keys-manager extract --remove-extra-keys",
     "i18n:check": "transloco-keys-manager find --emit-error-on-extra-keys",
     "coverage": "npx http-server -c-1 -o -p 9875 ./coverage",
     "lint": "ng lint --max-warnings=0",

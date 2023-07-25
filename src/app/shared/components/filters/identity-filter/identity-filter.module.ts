@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@ngneat/transloco';
 
+import { IdentityFieldComponent } from '@dsh/app/shared/components/inputs/identity-field';
 import { FilterModule } from '@dsh/components/filter';
 
 import { IdentityFilterComponent } from './identity-filter.component';
@@ -23,6 +24,7 @@ import { ClaimFieldModule } from '../../inputs/claim-field';
         MatFormFieldModule,
         MatOptionModule,
         MatSelectModule,
+        IdentityFieldComponent,
     ],
     declarations: [IdentityFilterComponent],
     exports: [IdentityFilterComponent],
