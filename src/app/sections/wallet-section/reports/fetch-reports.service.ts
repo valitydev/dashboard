@@ -6,9 +6,7 @@ import { map, catchError } from 'rxjs/operators';
 
 import { ReportsService } from '@dsh/app/api/wallet';
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable()
 export class FetchReportsService extends FetchSuperclass<
     Report,
     Omit<GetReportsRequestParams, 'xRequestID' | 'xRequestDeadline'>

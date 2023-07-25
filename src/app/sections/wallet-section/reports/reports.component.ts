@@ -36,7 +36,7 @@ const REPORT_STATUS_COLOR = {
 @Component({
     selector: 'dsh-reports',
     templateUrl: './reports.component.html',
-    styles: [],
+    providers: [FetchReportsService],
 })
 export class ReportsComponent implements OnInit {
     reports$ = this.fetchReportsService.result$;
