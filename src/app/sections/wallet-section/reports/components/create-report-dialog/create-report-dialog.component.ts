@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslocoService } from '@ngneat/transloco';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
-import { NotifyLogService } from '@vality/ng-core';
+import { NotifyLogService, progressTo } from '@vality/ng-core';
 import moment from 'moment/moment';
+import { BehaviorSubject } from 'rxjs';
 
 import { ReportsService } from '@dsh/app/api/wallet';
 import { getDateWithTime } from '@dsh/app/sections/payment-section/reports/create-report/form-value-to-create-value';
@@ -20,16 +21,17 @@ const TIME_PATTERN = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
 })
 export class CreateReportDialogComponent {
     form = this.fb.group({
-        identityID: undefined as string,
+        identityID: this.data.identityID as string,
         fromDate: [moment().startOf('month').format(), Validators.required],
         fromTime: ['00:00:00', Validators.pattern(TIME_PATTERN)],
         toDate: [moment().endOf('day').format(), Validators.required],
         toTime: ['23:59:59', Validators.pattern(TIME_PATTERN)],
     });
-    inProgress$;
+    progress$ = new BehaviorSubject(0);
 
     constructor(
         private dialogRef: MatDialogRef<CreateReportDialogComponent>,
+        @Inject(MAT_DIALOG_DATA) private data: { identityID?: string },
         private fb: NonNullableFormBuilder,
         private reportsService: ReportsService,
         private log: NotifyLogService,
@@ -47,7 +49,7 @@ export class CreateReportDialogComponent {
                     reportType: 'withdrawalRegistry',
                 },
             })
-            .pipe(untilDestroyed(this))
+            .pipe(progressTo(this.progress$), untilDestroyed(this))
             .subscribe({
                 next: () => {
                     this.log.success(

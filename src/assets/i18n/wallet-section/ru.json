@@ -44,11 +44,25 @@
         "walletID": "Кошелек"
     },
     "reports": {
+        "createReportDialog": {
+            "confirm": "Сформировать",
+            "error": "Ошибка при создании отчета",
+            "from": "Начало периода",
+            "subtitle": "Отчет с реестром операций за выбранный период",
+            "success": "Отчет успешно создан",
+            "time": "Время",
+            "title": "Параметры формирования отчета",
+            "to": "Конец периода"
+        },
+        "createdAt": "Дата и время создания",
         "dateRangeDescription": "Период создания отчетов",
         "errors": {
             "identityNotSpecified": "Владелец кошелька не указан"
         },
-        "openCreateReport": "Создать отчет"
+        "openCreateReport": "Создать отчет",
+        "period": "Период отчетности",
+        "report": "Отчет",
+        "status": "Статус"
     },
     "walletSection": {
         "nav": {

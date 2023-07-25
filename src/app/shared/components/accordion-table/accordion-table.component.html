@@ -4,7 +4,7 @@
         <dsh-row fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="24px">
             <dsh-row-header-label
                 *ngFor="let column of columns"
-                [fxHide]="column.hide"
+                [fxHide]="isHided(column.hide) | async"
                 [fxFlex]="column.width ?? true"
                 >{{ column.label }}</dsh-row-header-label
             >
@@ -20,10 +20,25 @@
                 <dsh-row fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="24px">
                     <dsh-row-label
                         *ngFor="let column of columns"
-                        [fxHide]="column.hide"
+                        [fxHide]="isHided(column.hide) | async"
                         [fxFlex]="column.width ?? true"
                     >
-                        {{ column.field(item, column) }}
+                        <ng-container [ngSwitch]="column.type" *ngIf="column.field(item, column) as value">
+                            <ng-template ngSwitchCase="daterange">
+                                {{ value.start | date : 'dd MMMM yyyy' }} - {{ value.end | date : 'dd MMMM yyyy' }}
+                            </ng-template>
+                            <ng-template ngSwitchCase="datetime">
+                                {{ value | date : 'dd MMMM yyyy, HH:mm' }}
+                            </ng-template>
+                            <ng-template ngSwitchCase="tag">
+                                <dsh-status [color]="column.typeParameters.color[value]">{{
+                                    column.typeParameters.label[value]
+                                }}</dsh-status>
+                            </ng-template>
+                            <ng-template ngSwitchDefault>
+                                {{ value }}
+                            </ng-template>
+                        </ng-container>
                     </dsh-row-label>
                 </dsh-row>
                 <ng-template dshLazyPanelContent>

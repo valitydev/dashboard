@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-import { DepositRevert, WithdrawalsTopic, DestinationsTopic, Deposit, Withdrawal } from '@vality/swag-wallet';
+import { DepositRevert, WithdrawalsTopic, DestinationsTopic, Deposit, Withdrawal, Report } from '@vality/swag-wallet';
 
 import { DictionaryService } from '../utils';
 
@@ -61,6 +61,14 @@ export class WalletDictionaryService {
         Pending: this.t.translate('wallet.withdrawalStatus.Pending', null, 'dictionary'),
         Succeeded: this.t.translate('wallet.withdrawalStatus.Succeeded', null, 'dictionary'),
         Failed: this.t.translate('wallet.withdrawalStatus.Failed', null, 'dictionary'),
+        /* eslint-enable @typescript-eslint/naming-convention */
+    }));
+
+    reportStatus$ = this.dictionaryService.create<Report.StatusEnum>(() => ({
+        /* eslint-disable @typescript-eslint/naming-convention */
+        pending: this.t.translate('wallet.reportStatus.pending', null, 'dictionary'),
+        created: this.t.translate('wallet.reportStatus.created', null, 'dictionary'),
+        canceled: this.t.translate('wallet.reportStatus.canceled', null, 'dictionary'),
         /* eslint-enable @typescript-eslint/naming-convention */
     }));
 

@@ -177,6 +177,11 @@
     "identityFilter": {
         "label": "Wallet holder"
     },
+    "inputs": {
+        "identityField": {
+            "label": "Wallet holder"
+        }
+    },
     "internationalBankAccountForm": {
         "correspondentAccount": "Correspondent account"
     },

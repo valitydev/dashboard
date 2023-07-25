@@ -1,15 +1,21 @@
+import { Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { TranslocoService } from '@ngneat/transloco';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { Report } from '@vality/swag-wallet';
 import isEqual from 'lodash-es/isEqual';
-import { startWith, distinctUntilChanged, filter } from 'rxjs/operators';
+import moment from 'moment';
+import { Observable } from 'rxjs';
+import { startWith, distinctUntilChanged, filter, map } from 'rxjs/operators';
 
+import { WalletDictionaryService } from '@dsh/app/api/wallet';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { QueryParamsService } from '@dsh/app/shared';
 import { Column } from '@dsh/app/shared/components/accordion-table';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
+import { StatusColor } from '@dsh/app/theme-manager';
 import { createDateRangeWithPreset, Preset, DateRange } from '@dsh/components/date-range-filter';
 
 import { CreateReportDialogComponent } from './components/create-report-dialog/create-report-dialog.component';
@@ -19,6 +25,12 @@ interface Form {
     dateRange: DateRange;
     identityID: string;
 }
+
+const REPORT_STATUS_COLOR = {
+    [Report.StatusEnum.Created]: StatusColor.Success,
+    [Report.StatusEnum.Pending]: StatusColor.Pending,
+    [Report.StatusEnum.Canceled]: StatusColor.Warn,
+};
 
 @UntilDestroy()
 @Component({
@@ -30,20 +42,44 @@ export class ReportsComponent implements OnInit {
     reports$ = this.fetchReportsService.result$;
     hasMore$ = this.fetchReportsService.hasMore$;
     isLoading$ = this.fetchReportsService.isLoading$;
-    columns: Column<Report>[] = [
-        { label: 'Created at', field: (r) => r.createdAt },
-        { label: 'Status', field: (d) => d.status },
-        { label: 'Reporting period', field: (d) => d.fromTime + '-' + d.toTime },
-    ];
+    columns$: Observable<Column<Report>[]> = this.walletDictionaryService.reportStatus$.pipe(
+        map((reportStatus) => [
+            { label: 'Created at', field: (r) => r.createdAt, type: 'datetime' },
+            {
+                label: 'Status',
+                field: (d) => d.status,
+                type: 'tag',
+                typeParameters: {
+                    color: REPORT_STATUS_COLOR,
+                    label: reportStatus,
+                },
+                hide: Breakpoints.Small,
+            },
+            {
+                label: 'Reporting period',
+                field: (d): DateRange => ({
+                    start: moment(d.fromTime),
+                    end: moment(d.toTime),
+                }),
+                type: 'daterange',
+                hide: Breakpoints.Medium,
+            },
+        ])
+    );
+    contentHeader = [{ label: (r) => `${this.transloco.translate('reports.report', {}, 'wallet-section')} #${r.id}` }];
     defaultDateRange = createDateRangeWithPreset(Preset.Last90days);
     form = this.fb.group<Form>({ dateRange: this.defaultDateRange, identityID: undefined, ...this.qp.params });
     lastUpdated$ = this.fetchReportsService.result$.pipe(mapToTimestamp);
+    reportStatusDict$ = this.walletDictionaryService.reportStatus$;
+    reportStatusColor = REPORT_STATUS_COLOR;
 
     constructor(
         private fetchReportsService: FetchReportsService,
         private fb: NonNullableFormBuilder,
         private qp: QueryParamsService<Partial<Form>>,
-        private dialog: MatDialog
+        private dialog: MatDialog,
+        private transloco: TranslocoService,
+        private walletDictionaryService: WalletDictionaryService
     ) {}
 
     ngOnInit() {
@@ -73,7 +109,7 @@ export class ReportsComponent implements OnInit {
 
     create() {
         this.dialog
-            .open(CreateReportDialogComponent)
+            .open(CreateReportDialogComponent, { data: { identityID: this.form.value.identityID } })
             .afterClosed()
             .pipe(
                 filter((r) => r === BaseDialogResponseStatus.Success),

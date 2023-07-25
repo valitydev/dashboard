@@ -177,6 +177,11 @@
     "identityFilter": {
         "label": "Владелец кошелька"
     },
+    "inputs": {
+        "identityField": {
+            "label": "Владелец кошелька"
+        }
+    },
     "internationalBankAccountForm": {
         "correspondentAccount": "Корреспондентский счет"
     },

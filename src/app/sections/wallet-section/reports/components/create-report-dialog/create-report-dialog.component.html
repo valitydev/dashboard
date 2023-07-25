@@ -32,7 +32,7 @@
         <dsh-identity-field formControlName="identityID" required></dsh-identity-field>
     </div>
     <ng-container dshBaseDialogActions>
-        <button dsh-button color="accent" [disabled]="form.invalid || (inProgress$ | async)" (click)="confirm()">
+        <button dsh-button color="accent" [disabled]="form.invalid || !!(progress$ | async)" (click)="confirm()">
             {{ t('confirm') }}
         </button>
     </ng-container>

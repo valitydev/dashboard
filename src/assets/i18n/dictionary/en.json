@@ -153,6 +153,11 @@
             "DestinationCreated": "DestinationCreated (Receiver of funds is created)",
             "DestinationUnauthorized": "DestinationUnauthorized (An attempt to authorize the funds receiver failed)"
         },
+        "reportStatus": {
+            "canceled": "Cancelled",
+            "created": "Created",
+            "pending": "Pending"
+        },
         "withdrawalStatus": {
             "Failed": "Failed",
             "Pending": "Pending",

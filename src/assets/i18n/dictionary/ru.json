@@ -153,6 +153,11 @@
             "DestinationCreated": "DestinationCreated (Приемник средств создан)",
             "DestinationUnauthorized": "DestinationUnauthorized (Попытка авторизации приемника средств завершилась неудачей)"
         },
+        "reportStatus": {
+            "canceled": "Отменен",
+            "created": "Создан",
+            "pending": "В процессе"
+        },
         "withdrawalStatus": {
             "Failed": "Неуспешно",
             "Pending": "В процессе",
