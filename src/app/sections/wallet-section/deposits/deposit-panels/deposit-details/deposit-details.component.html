@@ -21,7 +21,7 @@
             {{ deposit.wallet | walletDetails }}
         </dsh-details-item>
         <dsh-details-item *ngIf="deposit.failure" [title]="t('error')">
-            <!-- t(failed) -->
+            <!-- t(errors.failed) -->
             {{ t('errors.' + deposit.failure.code) }}
         </dsh-details-item>
     </div>

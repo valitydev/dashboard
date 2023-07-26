@@ -1,6 +1,5 @@
 {
     "depositDetails": {
-        "amount": "Amount",
         "error": "Error",
         "errors": {
             "failed": "Deposit operation failed"
@@ -75,8 +74,11 @@
     },
     "wallets": {
         "accountInfo": {
+            "amount": "Available amount",
+            "description": "Available funds are equal to equity minus the amounts of all pending transactions",
             "fetchWalletAccountError": "An error occurred while loading the account",
-            "title": "Balance"
+            "own": "Equity",
+            "title": "Account status"
         },
         "emptyResult": "There are no wallets yet",
         "headerRow": {
@@ -156,7 +158,6 @@
     },
     "withdrawals": {
         "details": {
-            "amount": "Payout amount",
             "error": "Error",
             "errors": {
                 "failed": "An error occurred when withdrawing funds"
