@@ -1,37 +1,28 @@
-<div
-    fxLayout="column"
-    fxLayoutGap="24px"
-    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.depositDetails'"
->
-    <div fxLayout="row" fxLayoutAlign="start center">
-        <div fxFlex="33" class="dsh-headline">
+<ng-container *transloco="let t; scope: 'wallet-section'; read: 'walletSection.depositDetails'">
+    <div
+        gdColumns="1fr"
+        gdColumns.gt-sm="1fr 1fr"
+        gdColumns.gt-md="1fr 1fr 1fr 1fr"
+        gdGap="24px"
+        gdAlignColumns="start center"
+    >
+        <div class="dsh-headline">
             {{ deposit.body.amount | amountCurrency : deposit.body.currency }}
         </div>
-        <dsh-details-item fxFlex="33" [title]="t('amount')">
-            {{ deposit.body.amount | amountCurrency : deposit.body.currency }}
-        </dsh-details-item>
-        <dsh-details-item fxFlex="33" [title]="t('fee')">
+        <dsh-details-item [title]="t('fee')">
             {{ deposit.fee.amount | amountCurrency : deposit.fee.currency }}
         </dsh-details-item>
-    </div>
-    <div fxLayout="row">
-        <dsh-details-item fxFlex="33" [title]="t('status')">
+        <dsh-details-item [title]="t('status')">
             <dsh-status [color]="deposit.status | depositStatusColor">{{
                 (depositStatusDict$ | async)?.[deposit.status]
             }}</dsh-status>
         </dsh-details-item>
-        <dsh-details-item fxFlex="33" [title]="t('wallet')">
+        <dsh-details-item [title]="t('wallet')">
             {{ deposit.wallet | walletDetails }}
         </dsh-details-item>
-    </div>
-    <div *ngIf="deposit.failure" fxLayout="row">
-        <dsh-details-item
-            fxFlex="33"
-            [title]="t('error')"
-            *transloco="let errors; scope: 'wallet-section'; read: 'walletSection.depositDetails.errors'"
-        >
+        <dsh-details-item *ngIf="deposit.failure" [title]="t('error')">
             <!-- t(failed) -->
-            {{ errors(deposit.failure.code) }}
+            {{ t('errors.' + deposit.failure.code) }}
         </dsh-details-item>
     </div>
-</div>
+</ng-container>
