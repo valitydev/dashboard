@@ -14,7 +14,7 @@ export const formValueToCreateValue = ({
     reportType: 'paymentRegistry',
 });
 
-const getDateWithTime = (date: string, time: string): string =>
+export const getDateWithTime = (date: string, time: string): string =>
     moment(`${moment(date).format('YYYY-MM-DD')}, ${time}`, 'YYYY-MM-DD, HH:mm:ss')
         .utc()
         .format();

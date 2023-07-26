@@ -9,6 +9,7 @@ import { coerceBoolean } from 'coerce-property';
 })
 export class BaseDialogComponent {
     @Input() title: string;
+    @Input() subtitle: string;
     @coerceBoolean @Input() disabled: boolean;
     @coerceBoolean @Input() hasDivider = true;
     @coerceBoolean @Input() noActions = false;

@@ -22,7 +22,6 @@ import { DepositRevertsModule } from './deposit-reverts/deposit-reverts.module';
         LayoutModule,
         FlexLayoutModule,
         CommonModule,
-
         ApiModelRefsModule,
         EmptySearchResultModule,
         ShowMorePanelModule,

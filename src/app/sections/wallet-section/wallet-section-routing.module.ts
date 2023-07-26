@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { environment } from '@dsh/environments';
+
 import { WalletSectionComponent } from './wallet-section.component';
 
 const WALLET_SECTION_ROUTES: Routes = [
@@ -24,6 +26,14 @@ const WALLET_SECTION_ROUTES: Routes = [
                 path: 'integrations',
                 loadChildren: () => import('./integrations').then((m) => m.IntegrationsModule),
             },
+            ...(environment.production
+                ? []
+                : [
+                      {
+                          path: 'reports',
+                          loadChildren: () => import('./reports').then((m) => m.ReportsModule),
+                      },
+                  ]),
             {
                 path: '',
                 redirectTo: 'wallets',

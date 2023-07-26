@@ -1,4 +1,3 @@
-import { Injector } from '@angular/core';
 import { AbstractControl, FormControl } from '@angular/forms';
 import { FormComponentSuperclass } from '@vality/ng-core';
 import isEqual from 'lodash-es/isEqual';
@@ -30,10 +29,6 @@ export abstract class FilterSuperclass<Inner, Outer = Inner> extends FormCompone
     }
 
     private _savedValue$ = new BehaviorSubject<Inner>(this.empty);
-
-    protected constructor(injector: Injector) {
-        super(injector);
-    }
 
     handleIncomingValue(value: Outer): void {
         this.set(this.outerToInnerValue(value));

@@ -1,0 +1,13 @@
+<ng-container *transloco="let t; scope: 'components'; read: 'components.identityFilter'">
+    <dsh-filter
+        [active]="isActive"
+        [label]="t('label')"
+        [activeLabel]="t('label') + ' #' + savedValue"
+        [content]="content"
+        (save)="save()"
+        (clear)="clear()"
+    ></dsh-filter>
+    <ng-template #content>
+        <dsh-identity-field [formControl]="control"></dsh-identity-field>
+    </ng-template>
+</ng-container>
