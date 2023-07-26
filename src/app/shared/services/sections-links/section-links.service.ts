@@ -13,10 +13,10 @@ export class SectionsLinksService {
     sectionLinks$: Observable<SectionLink[]> = combineLatest([
         this.walletsService.hasWallets$,
         this.roleAccessService.isAccessAllowed([RoleAccessName.Wallets]),
-        this.roleAccessService.isAccessAllowed([RoleAccessName.Claims]),
+        // this.roleAccessService.isAccessAllowed([RoleAccessName.Claims]),
         this.transloco.selectTranslation('services'),
     ]).pipe(
-        map(([hasWallets, allowWallets, allowClaims]) =>
+        map(([hasWallets, allowWallets]) =>
             [
                 {
                     label: this.transloco.translate('sectionsLinks.links.payments', null, 'services'),
@@ -27,10 +27,10 @@ export class SectionsLinksService {
                         label: this.transloco.translate('sectionsLinks.links.wallets', null, 'services'),
                         path: '/wallet-section',
                     },
-                allowClaims && {
-                    label: this.transloco.translate('sectionsLinks.links.claims', null, 'services'),
-                    path: '/claim-section',
-                },
+                // allowClaims && {
+                //     label: this.transloco.translate('sectionsLinks.links.claims', null, 'services'),
+                //     path: '/claim-section',
+                // },
             ].filter(Boolean)
         ),
         first()

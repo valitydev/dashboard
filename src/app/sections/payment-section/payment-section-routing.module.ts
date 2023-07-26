@@ -41,13 +41,13 @@ const PAYMENT_SECTION_ROUTES: Routes = [
                 },
                 [RoleAccessName.Reports]
             ),
-            createPrivateRoute(
-                {
-                    path: 'payouts',
-                    loadChildren: () => import('./payouts/payouts.module').then((m) => m.PayoutsModule),
-                },
-                [RoleAccessName.ViewPayouts]
-            ),
+            // createPrivateRoute(
+            //     {
+            //         path: 'payouts',
+            //         loadChildren: () => import('./payouts/payouts.module').then((m) => m.PayoutsModule),
+            //     },
+            //     [RoleAccessName.ViewPayouts]
+            // ),
             {
                 path: 'integrations',
                 loadChildren: () => import('./integrations/integrations.module').then((m) => m.IntegrationsModule),
