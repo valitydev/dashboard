@@ -6,3 +6,4 @@ export * from './identities.service';
 export * from './deposits.service';
 export * from './wallet-dictionary.service';
 export * from './reports.service';
+export * from './downloads.service';
