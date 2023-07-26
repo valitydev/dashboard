@@ -75,11 +75,8 @@
     },
     "wallets": {
         "accountInfo": {
-            "amount": "Available amount",
-            "description": "Available funds are equal to equity minus the amounts of all pending transactions",
             "fetchWalletAccountError": "An error occurred while loading the account",
-            "own": "Equity",
-            "title": "Account status"
+            "title": "Balance"
         },
         "emptyResult": "There are no wallets yet",
         "headerRow": {
@@ -87,6 +84,7 @@
         },
         "mainInfo": {
             "createdAt": "Created at",
+            "fetchWalletAccountError": "Balance loading error",
             "name": "Name"
         },
         "wallet": "Wallet",
