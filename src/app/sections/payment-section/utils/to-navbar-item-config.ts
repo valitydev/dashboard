@@ -22,7 +22,6 @@ export const toNavbarItemConfig = ({
     analytics,
     integrations,
     operations,
-    payouts,
     reports,
 }: Record<
     'shops' | 'analytics' | 'integrations' | 'operations' | 'payouts' | 'reports',
