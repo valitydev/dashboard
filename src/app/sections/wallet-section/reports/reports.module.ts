@@ -11,8 +11,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { ReportFilesModule } from '@dsh/app/sections/payment-section/reports/report-files';
-import { ReportPipesModule } from '@dsh/app/sections/payment-section/reports/report-pipes';
 import { IdentityFilterModule, ApiModelRefsModule } from '@dsh/app/shared';
 import { AccordionTableModule } from '@dsh/app/shared/components/accordion-table';
 import { DialogModule } from '@dsh/app/shared/components/dialog';
@@ -26,11 +24,12 @@ import { BootstrapIconModule, StatusModule } from '@dsh/components/indicators';
 import { DetailsItemModule } from '@dsh/components/layout';
 
 import { CreateReportDialogComponent } from './components/create-report-dialog/create-report-dialog.component';
+import { FilesComponent } from './components/files/files.component';
 import { ReportsRoutingModule } from './reports-routing.module';
 import { ReportsComponent } from './reports.component';
 
 @NgModule({
-    declarations: [ReportsComponent, CreateReportDialogComponent],
+    declarations: [ReportsComponent, CreateReportDialogComponent, FilesComponent],
     imports: [
         CommonModule,
         ReportsRoutingModule,
@@ -56,10 +55,8 @@ import { ReportsComponent } from './reports.component';
         IdentityFieldComponent,
         BootstrapIconModule,
         MatDividerModule,
-        ReportFilesModule,
         ApiModelRefsModule,
         DetailsItemModule,
-        ReportPipesModule,
         StatusModule,
     ],
 })

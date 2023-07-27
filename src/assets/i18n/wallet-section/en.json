@@ -56,11 +56,16 @@
         "createdAt": "Created at",
         "dateRangeDescription": "Reporting period",
         "errors": {
+            "downloadReportError": "Failed to load documents",
             "identityNotSpecified": "Wallet holder not specified"
         },
         "openCreateReport": "Create report",
         "period": "Reporting period",
         "report": "Report",
+        "reportFiles": {
+            "downloadAll": "Download all",
+            "title": "Documents"
+        },
         "status": "Status"
     },
     "walletSection": {
