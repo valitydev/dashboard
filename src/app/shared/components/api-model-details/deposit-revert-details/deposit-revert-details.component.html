@@ -4,21 +4,21 @@
     *transloco="let t; scope: 'components'; read: 'components.depositRevertDetails'"
 >
     <div fxLayout="row" fxLayoutAlign="start center">
-        <dsh-details-item fxFlex="33" [title]="t('amount')">
+        <dsh-details-item fxFlex="25" [title]="t('amount')">
             {{ revert.body.amount | amountCurrency : revert.body.currency }}
         </dsh-details-item>
-        <dsh-details-item fxFlex="33" [title]="t('status')">
+        <dsh-details-item fxFlex="25" [title]="t('status')">
             <dsh-status [color]="revert.status | depositRevertStatusColor">{{
                 (depositRevertStatusDict$ | async)?.[revert.status]
             }}</dsh-status>
         </dsh-details-item>
-        <dsh-details-item fxFlex="33" [title]="t('createdAt')">
+        <dsh-details-item fxFlex="25" [title]="t('createdAt')">
             {{ revert.createdAt | date : 'dd MMMM yyyy, HH:mm' }}
         </dsh-details-item>
     </div>
     <div *ngIf="revert.failure" fxLayout="row">
         <dsh-details-item
-            fxFlex="33"
+            fxFlex="25"
             [title]="t('error')"
             *transloco="let errors; scope: 'components'; read: 'components.depositRevertDetails.errors'"
         >

@@ -10,7 +10,6 @@
     },
     "sectionsLinks": {
         "links": {
-            "claims": "Заявки",
             "payments": "Платежи",
             "wallets": "Кошельки"
         }

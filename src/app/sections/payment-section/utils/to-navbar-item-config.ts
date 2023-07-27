@@ -22,7 +22,6 @@ export const toNavbarItemConfig = ({
     analytics,
     integrations,
     operations,
-    payouts,
     reports,
 }: Record<
     'shops' | 'analytics' | 'integrations' | 'operations' | 'payouts' | 'reports',
@@ -46,12 +45,12 @@ export const toNavbarItemConfig = ({
         label: operations,
         roles: [RoleAccessName.ViewPayments, RoleAccessName.ViewInvoices, RoleAccessName.ViewRefunds],
     },
-    {
-        routerLink: NavbarRouterLink.Payouts,
-        icon: BootstrapIconName.ArrowRightCircle,
-        label: payouts,
-        roles: [RoleAccessName.ViewPayouts],
-    },
+    // {
+    //     routerLink: NavbarRouterLink.Payouts,
+    //     icon: BootstrapIconName.ArrowRightCircle,
+    //     label: payouts,
+    //     roles: [RoleAccessName.ViewPayouts],
+    // },
     {
         routerLink: NavbarRouterLink.Reports,
         icon: BootstrapIconName.FileText,

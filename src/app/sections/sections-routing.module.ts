@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const ROUTES: Routes = [
-    {
-        path: 'claim-section',
-        loadChildren: () => import('./claim-section').then((m) => m.ClaimSectionModule),
-    },
+    // {
+    //     path: 'claim-section',
+    //     loadChildren: () => import('./claim-section').then((m) => m.ClaimSectionModule),
+    // },
     {
         path: 'payment-section',
         loadChildren: () => import('./payment-section').then((m) => m.PaymentSectionModule),
