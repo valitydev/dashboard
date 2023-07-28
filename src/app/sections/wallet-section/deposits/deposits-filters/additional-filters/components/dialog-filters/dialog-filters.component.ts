@@ -76,7 +76,7 @@ export class DialogFiltersComponent implements OnInit {
     private getInitFormValues(): AdditionalFiltersForm {
         const {
             depositID = '',
-            walletID = '',
+            walletID = null,
             identityID = '',
             sourceID = '',
             depositStatus = null,
