@@ -92,14 +92,13 @@ export class ReportsComponent implements OnInit {
             .pipe(startWith(this.form.value), distinctUntilChanged(isEqual), untilDestroyed(this))
             .subscribe((value) => {
                 void this.qp.set(value);
-                if (value.identityID) {
-                    this.load();
-                }
+                this.load();
             });
     }
 
     load() {
         const { dateRange, identityID } = this.form.value;
+        if (!identityID) return;
         this.fetchReportsService.load({
             fromTime: dateRange.start.utc().format(),
             toTime: dateRange.end.utc().format(),

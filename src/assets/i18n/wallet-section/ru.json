@@ -56,11 +56,16 @@
         "createdAt": "Дата и время создания",
         "dateRangeDescription": "Период создания отчетов",
         "errors": {
+            "downloadReportError": "Не удалось загрузить документы",
             "identityNotSpecified": "Владелец кошелька не указан"
         },
         "openCreateReport": "Создать отчет",
         "period": "Период отчетности",
         "report": "Отчет",
+        "reportFiles": {
+            "downloadAll": "Загрузить все",
+            "title": "Документы"
+        },
         "status": "Статус"
     },
     "walletSection": {

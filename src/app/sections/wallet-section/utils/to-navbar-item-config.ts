@@ -1,5 +1,4 @@
 import { BootstrapIconName } from '@dsh/components/indicators';
-import { environment } from '@dsh/environments';
 
 export enum NavbarRouterLink {
     Wallets = 'wallets',
@@ -37,15 +36,11 @@ export const toNavbarItemConfig = ({
         icon: BootstrapIconName.ArrowUpRightCircle,
         label: withdrawals,
     },
-    ...(environment.production
-        ? []
-        : [
-              {
-                  routerLink: NavbarRouterLink.Reports,
-                  icon: BootstrapIconName.FileText,
-                  label: reports,
-              },
-          ]),
+    {
+        routerLink: NavbarRouterLink.Reports,
+        icon: BootstrapIconName.FileText,
+        label: reports,
+    },
     {
         routerLink: NavbarRouterLink.Integrations,
         icon: BootstrapIconName.Plug,

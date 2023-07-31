@@ -175,7 +175,7 @@
         "showAllStatuses": "Показать все статусы"
     },
     "identityFilter": {
-        "label": "Владелец кошелька"
+        "label": "Владелец кошелька: {{name}}"
     },
     "inputs": {
         "identityField": {
