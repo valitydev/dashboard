@@ -8,9 +8,9 @@ import { Report } from '@vality/swag-wallet';
 import isEqual from 'lodash-es/isEqual';
 import moment from 'moment';
 import { Observable } from 'rxjs';
-import { startWith, distinctUntilChanged, filter, map } from 'rxjs/operators';
+import { startWith, distinctUntilChanged, filter, map, first } from 'rxjs/operators';
 
-import { WalletDictionaryService } from '@dsh/app/api/wallet';
+import { WalletDictionaryService, IdentitiesService } from '@dsh/app/api/wallet';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { QueryParamsService } from '@dsh/app/shared';
 import { Column, ExpandedFragment } from '@dsh/app/shared/components/accordion-table';
@@ -84,10 +84,16 @@ export class ReportsComponent implements OnInit {
         private qp: QueryParamsService<Partial<Form>>,
         private dialog: MatDialog,
         private transloco: TranslocoService,
-        private walletDictionaryService: WalletDictionaryService
+        private walletDictionaryService: WalletDictionaryService,
+        private identitiesService: IdentitiesService
     ) {}
 
     ngOnInit() {
+        this.identitiesService.identities$.pipe(first(), untilDestroyed(this)).subscribe((identities) => {
+            if (!this.form.value.identityID && identities.length === 1) {
+                this.form.patchValue({ identityID: identities[0].id });
+            }
+        });
         this.form.valueChanges
             .pipe(startWith(this.form.value), distinctUntilChanged(isEqual), untilDestroyed(this))
             .subscribe((value) => {
