@@ -175,7 +175,8 @@
         "showAllStatuses": "Show all statuses"
     },
     "identityFilter": {
-        "label": "Wallet holder: {{name}}"
+        "activeLabel": "Wallet holder: {{name}}",
+        "label": "Wallet holder"
     },
     "inputs": {
         "identityField": {

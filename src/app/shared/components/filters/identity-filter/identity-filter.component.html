@@ -2,7 +2,7 @@
     <dsh-filter
         [active]="isActive"
         [label]="t('label')"
-        [activeLabel]="t('label', { name: (identity$ | async)?.name || '#' + savedValue })"
+        [activeLabel]="t('activeLabel', { name: (identity$ | async)?.name || '#' + savedValue })"
         [content]="content"
         (save)="save()"
         (clear)="clear()"
