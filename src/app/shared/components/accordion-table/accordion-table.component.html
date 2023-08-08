@@ -34,7 +34,7 @@
                                 <dsh-status
                                     *ngIf="column.typeParameters.label | vPossiblyAsync as tagLabel"
                                     [color]="column.typeParameters.color[value]"
-                                    >{{ tagLabel }}</dsh-status
+                                    >{{ tagLabel[value] }}</dsh-status
                                 >
                             </ng-template>
                             <ng-template ngSwitchDefault>

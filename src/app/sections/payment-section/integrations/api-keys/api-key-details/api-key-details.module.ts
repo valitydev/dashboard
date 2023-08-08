@@ -10,7 +10,7 @@ import { ButtonModule } from '@dsh/components/buttons';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
 
-import { ApiKeysListComponent } from './api-keys-list.component';
+import { ApiKeyDetailsComponent } from './api-key-details.component';
 import { ApiKeyDeleteDialogComponent } from './components/api-key-delete-dialog/api-key-delete-dialog.component';
 
 @NgModule({
@@ -26,7 +26,7 @@ import { ApiKeyDeleteDialogComponent } from './components/api-key-delete-dialog/
         ApiKeyDeleteDialogComponent,
         DialogModule,
     ],
-    declarations: [ApiKeysListComponent],
-    exports: [ApiKeysListComponent],
+    declarations: [ApiKeyDetailsComponent],
+    exports: [ApiKeyDetailsComponent],
 })
-export class ApiKeysListModule {}
+export class ApiKeyDetailsModule {}
