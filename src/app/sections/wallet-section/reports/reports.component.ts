@@ -7,8 +7,7 @@ import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { Report } from '@vality/swag-wallet';
 import isEqual from 'lodash-es/isEqual';
 import moment from 'moment';
-import { Observable } from 'rxjs';
-import { startWith, distinctUntilChanged, filter, map, first } from 'rxjs/operators';
+import { startWith, distinctUntilChanged, filter, first } from 'rxjs/operators';
 
 import { WalletDictionaryService, IdentitiesService } from '@dsh/app/api/wallet';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
@@ -42,30 +41,32 @@ export class ReportsComponent implements OnInit {
     reports$ = this.fetchReportsService.result$;
     hasMore$ = this.fetchReportsService.hasMore$;
     isLoading$ = this.fetchReportsService.isLoading$;
-    columns$: Observable<Column<Report>[]> = this.walletDictionaryService.reportStatus$.pipe(
-        map((reportStatus) => [
-            { label: 'Created at', field: (r) => r.createdAt, type: 'datetime' },
-            {
-                label: 'Status',
-                field: (d) => d.status,
-                type: 'tag',
-                typeParameters: {
-                    color: REPORT_STATUS_COLOR,
-                    label: reportStatus,
-                },
-                hide: Breakpoints.Small,
+    columns: Column<Report>[] = [
+        {
+            label: this.transloco.selectTranslate('reports.table.createdAt', {}, 'wallet-section'),
+            field: (r) => r.createdAt,
+            type: 'datetime',
+        },
+        {
+            label: this.transloco.selectTranslate('reports.table.status', {}, 'wallet-section'),
+            field: (d) => d.status,
+            type: 'tag',
+            typeParameters: {
+                color: REPORT_STATUS_COLOR,
+                label: this.walletDictionaryService.reportStatus$,
             },
-            {
-                label: 'Reporting period',
-                field: (d): DateRange => ({
-                    start: moment(d.fromTime),
-                    end: moment(d.toTime),
-                }),
-                type: 'daterange',
-                hide: Breakpoints.Medium,
-            },
-        ])
-    );
+            hide: Breakpoints.Small,
+        },
+        {
+            label: this.transloco.selectTranslate('reports.table.reportingPeriod', {}, 'wallet-section'),
+            field: (d): DateRange => ({
+                start: moment(d.fromTime),
+                end: moment(d.toTime),
+            }),
+            type: 'daterange',
+            hide: Breakpoints.Medium,
+        },
+    ];
     contentHeader = [{ label: (r) => `${this.transloco.translate('reports.report', {}, 'wallet-section')} #${r.id}` }];
     defaultDateRange = createDateRangeWithPreset(Preset.Last90days);
     form = this.fb.group<Form>({ dateRange: this.defaultDateRange, identityID: undefined, ...this.qp.params });

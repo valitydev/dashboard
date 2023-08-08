@@ -1,5 +1,6 @@
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Component, Input, Output, EventEmitter, TemplateRef, ContentChild } from '@angular/core';
+import { PossiblyAsync } from '@vality/ng-core';
 import { of } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
@@ -16,14 +17,14 @@ const HIDED_BREAKPOINTS = [
 ];
 
 export interface Column<T extends object> {
-    label: string;
+    label: PossiblyAsync<string>;
     width?: string;
     hide?: boolean | string; // Material Breakpoint
     field?: (row: T, columns: Column<T>) => unknown; // | string
     type?: 'daterange' | 'datetime' | 'tag';
     typeParameters?: {
         color: Record<PropertyKey, StatusColor>;
-        label: Record<PropertyKey, string>;
+        label: PossiblyAsync<Record<PropertyKey, string>>;
     };
 }
 

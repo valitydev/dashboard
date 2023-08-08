@@ -6,8 +6,8 @@
                 *ngFor="let column of columns"
                 [fxHide]="isHided(column.hide) | async"
                 [fxFlex]="column.width ?? true"
-                >{{ column.label }}</dsh-row-header-label
-            >
+                >{{ column.label | vPossiblyAsync }}
+            </dsh-row-header-label>
         </dsh-row>
         <dsh-accordion
             *ngIf="data?.length"
@@ -31,9 +31,11 @@
                                 {{ value | date : 'dd MMMM yyyy, HH:mm' }}
                             </ng-template>
                             <ng-template ngSwitchCase="tag">
-                                <dsh-status [color]="column.typeParameters.color[value]">{{
-                                    column.typeParameters.label[value]
-                                }}</dsh-status>
+                                <dsh-status
+                                    *ngIf="column.typeParameters.label | vPossiblyAsync as tagLabel"
+                                    [color]="column.typeParameters.color[value]"
+                                    >{{ tagLabel }}</dsh-status
+                                >
                             </ng-template>
                             <ng-template ngSwitchDefault>
                                 {{ value }}
