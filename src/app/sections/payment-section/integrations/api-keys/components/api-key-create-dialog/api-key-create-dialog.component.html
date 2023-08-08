@@ -3,10 +3,10 @@
     [title]="t('title')"
     (cancel)="closeWithCancellation()"
 >
-    <div *ngIf="apiKey; else releaseApiKey">
+    <div *ngIf="accessToken; else releaseApiKey">
         <mat-form-field style="width: 100%">
             <mat-label>{{ t('apiKey') }}</mat-label>
-            <textarea matInput [value]="apiKey" readonly rows="5"></textarea>
+            <textarea matInput [value]="accessToken" readonly rows="5"></textarea>
         </mat-form-field>
     </div>
     <ng-template #releaseApiKey>
@@ -21,11 +21,11 @@
         </div>
     </ng-template>
     <ng-container dshBaseDialogActions>
-        <button *ngIf="apiKey; else confirmActions" dsh-button (click)="copy()" color="primary">
+        <button *ngIf="accessToken; else confirmActions" dsh-button (click)="copy()" color="primary">
             {{ t('copy') }}
         </button>
         <ng-template #confirmActions>
-            <button dsh-button (click)="confirm()" color="primary" [disabled]="form.invalid">
+            <button dsh-button (click)="confirm()" color="primary" [disabled]="form.invalid || !!(progress$ | async)">
                 {{ t('confirm') }}
             </button>
         </ng-template>

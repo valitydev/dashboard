@@ -6,7 +6,8 @@ import { ReactiveFormsModule, NonNullableFormBuilder } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
-import { DialogSuperclass } from '@vality/ng-core';
+import { DialogSuperclass, progressTo } from '@vality/ng-core';
+import { BehaviorSubject } from 'rxjs';
 
 import { ApiKeysService } from '@dsh/app/api/api-keys';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
@@ -34,7 +35,8 @@ import { SpinnerModule } from '@dsh/components/indicators';
 })
 export class ApiKeyCreateDialogComponent extends DialogSuperclass<ApiKeyCreateDialogComponent> {
     form = this.fb.group({ name: '' });
-    apiKey: string;
+    progress$ = new BehaviorSubject(0);
+    accessToken: string;
 
     constructor(
         injector: Injector,
@@ -51,10 +53,10 @@ export class ApiKeyCreateDialogComponent extends DialogSuperclass<ApiKeyCreateDi
     confirm() {
         this.apiKeysService
             .issueApiKey({ apiKeyIssue: { name: this.form.value.name } })
-            .pipe(untilDestroyed(this))
+            .pipe(progressTo(this.progress$), untilDestroyed(this))
             .subscribe({
                 next: (res) => {
-                    this.apiKey = res.apiKey;
+                    this.accessToken = res.AccessToken.accessToken;
                 },
                 error: (err) => {
                     this.errorService.error(err);
@@ -63,7 +65,7 @@ export class ApiKeyCreateDialogComponent extends DialogSuperclass<ApiKeyCreateDi
     }
 
     copy() {
-        if (this.clipboard.copy(this.apiKey)) {
+        if (this.clipboard.copy(this.accessToken)) {
             this.notificationService.success(
                 this.transloco.selectTranslate('apiKeys.copy.success', null, 'payment-section')
             );
