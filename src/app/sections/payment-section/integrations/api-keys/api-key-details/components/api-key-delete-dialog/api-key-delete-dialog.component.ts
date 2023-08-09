@@ -1,13 +1,12 @@
 import { Component, Injector } from '@angular/core';
 import { FlexModule } from '@angular/flex-layout';
-import { TranslocoModule } from '@ngneat/transloco';
+import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
-import { DialogSuperclass } from '@vality/ng-core';
+import { DialogSuperclass, NotifyLogService } from '@vality/ng-core';
 import { RequestRevokeApiKeyRequestParams } from '@vality/swag-api-keys-v2';
 
 import { ApiKeysService } from '@dsh/app/api/api-keys';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
-import { ErrorService, NotificationService } from '@dsh/app/shared/services';
 import { ButtonModule } from '@dsh/components/buttons';
 import { SpinnerModule } from '@dsh/components/indicators';
 
@@ -26,23 +25,28 @@ export class ApiKeyDeleteDialogComponent extends DialogSuperclass<
     constructor(
         injector: Injector,
         private apiKeysService: ApiKeysService,
-        private errorService: ErrorService,
-        private notificationService: NotificationService
+        private log: NotifyLogService,
+        private translocoService: TranslocoService
     ) {
         super(injector);
     }
 
     confirm() {
         this.apiKeysService
-            .requestRevokeApiKey({ ...this.dialogData, status: 'Revoked' })
+            .requestRevokeApiKey({ ...this.dialogData, requestRevoke: { status: 'revoked' } })
             .pipe(untilDestroyed(this))
             .subscribe({
                 next: () => {
-                    this.notificationService.success();
+                    this.log.success(
+                        this.translocoService.selectTranslate('apiKeys.deleteDialog.success', null, 'payment-section')
+                    );
                     this.closeWithSuccess();
                 },
                 error: (err) => {
-                    this.errorService.error(err);
+                    this.log.error(
+                        err,
+                        this.translocoService.selectTranslate('apiKeys.deleteDialog.error', null, 'payment-section')
+                    );
                 },
             });
     }
