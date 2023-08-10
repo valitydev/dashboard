@@ -7,7 +7,7 @@
         {{ t('desc') }}
     </div>
     <ng-container dshBaseDialogActions>
-        <button dsh-button (click)="confirm()" color="warn">
+        <button dsh-button (click)="confirm()" color="warn" [disabled]="!!(progress$ | async)">
             {{ t('confirm') }}
         </button>
     </ng-container>

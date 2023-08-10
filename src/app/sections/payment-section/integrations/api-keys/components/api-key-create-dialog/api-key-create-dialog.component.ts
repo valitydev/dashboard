@@ -36,7 +36,7 @@ import { SpinnerModule } from '@dsh/components/indicators';
 export class ApiKeyCreateDialogComponent extends DialogSuperclass<ApiKeyCreateDialogComponent> {
     form = this.fb.group({ name: '' });
     progress$ = new BehaviorSubject(0);
-    accessToken: string;
+    accessToken?: string;
 
     constructor(
         injector: Injector,
@@ -56,7 +56,7 @@ export class ApiKeyCreateDialogComponent extends DialogSuperclass<ApiKeyCreateDi
             .pipe(progressTo(this.progress$), untilDestroyed(this))
             .subscribe({
                 next: (res) => {
-                    this.accessToken = res.AccessToken.accessToken;
+                    this.accessToken = res.accessToken;
                 },
                 error: (err) => {
                     this.errorService.error(err);
