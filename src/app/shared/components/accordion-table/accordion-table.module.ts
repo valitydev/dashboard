@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { PipesModule } from '@vality/ng-core';
 
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { IndicatorsModule } from '@dsh/components/indicators';
@@ -20,6 +21,7 @@ import { AccordionTableComponent } from './accordion-table.component';
         AccordionModule,
         CardModule,
         FlexLayoutModule,
+        PipesModule,
     ],
     exports: [AccordionTableComponent],
 })

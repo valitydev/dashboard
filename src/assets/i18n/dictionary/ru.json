@@ -83,6 +83,12 @@
             "provisionOfService": "Акт об оказании услуг"
         }
     },
+    "api-keys": {
+        "ApiKeyStatus": {
+            "active": "Активный",
+            "revoked": "Отозван"
+        }
+    },
     "claimManagement": {
         "claimStatus": {
             "accepted": "Одобрена",

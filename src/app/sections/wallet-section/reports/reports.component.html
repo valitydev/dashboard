@@ -23,7 +23,7 @@
     <dsh-accordion-table
         [error]="form.value.identityID ? undefined : t('errors.identityNotSpecified')"
         [lastUpdated]="lastUpdated$ | async"
-        [columns]="columns$ | async"
+        [columns]="columns"
         [data]="reports$ | async"
         (update)="load()"
         (more)="more()"

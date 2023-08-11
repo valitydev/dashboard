@@ -19,6 +19,7 @@
         "title": "API key"
     },
     "apiKeys": {
+        "apiKey": "API key",
         "copy": {
             "error": "An error occurred while copying",
             "success": "Successfully copied"
@@ -35,23 +36,28 @@
         "deleteDialog": {
             "confirm": "Request key revocation",
             "desc": "You will receive an email with a confirmation link. Please follow the link to confirm the operation. After revoking the key, it will no longer be valid, and if you need access to the API in the future, you will have to create a new one.",
+            "error": "Error when trying to revoke the key",
+            "success": "Please follow the message sent to you via email",
             "title": "Key revocation request"
         },
-        "emptyResult": "No keys released",
         "fetch": {
             "error": "Error loading keys"
         },
         "list": {
             "createdAt": "Created at",
             "delete": "Revoke key",
-            "details": "Key data",
             "name": "Name",
             "status": "Status"
         },
         "revoke": {
             "success": "Key successfully revoked"
         },
-        "showInactive": "Show inactive"
+        "showInactive": "Show inactive",
+        "table": {
+            "createdAt": "Created at",
+            "name": "Name",
+            "status": "Status"
+        }
     },
     "balances": {
         "title": "Available amount"

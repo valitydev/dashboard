@@ -83,6 +83,12 @@
             "provisionOfService": "Certificate of rendered services"
         }
     },
+    "api-keys": {
+        "ApiKeyStatus": {
+            "active": "Active",
+            "revoked": "Revoked"
+        }
+    },
     "claimManagement": {
         "claimStatus": {
             "accepted": "Accepted",
