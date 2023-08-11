@@ -1,6 +1,6 @@
 {
   "name": "dashboard",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "ng serve --proxy-config proxy.conf.js --port 8000",
@@ -87,7 +87,7 @@
     "@types/lodash-es": "4.17.6",
     "@types/moment": "2.13.0",
     "@types/prettier": "2.4.3",
-    "@vality/eslint-config": "0.1.1-2a1b72f.0",
+    "@vality/eslint-config": "1.0.0",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
     "eslint": "^8.39.0",
