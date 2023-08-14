@@ -6,7 +6,7 @@ import { TokenProvider, PaymentSystem } from '@dsh/app/api/payments';
 interface BankCardIconConfig {
     iconName: string;
     width: string;
-    heigth: string;
+    height: string;
 }
 
 @Component({
@@ -20,11 +20,11 @@ export class BankCardComponent {
     getPaymentSystemIconConfig(paymentSystem: PaymentSystem): BankCardIconConfig {
         switch (paymentSystem) {
             case PaymentSystem.Visa:
-                return { iconName: 'visa', width: '32px', heigth: '24px' };
+                return { iconName: 'visa', width: '32px', height: '24px' };
             case PaymentSystem.MasterCard:
-                return { iconName: 'mastercard', width: '24px', heigth: '24px' };
+                return { iconName: 'mastercard', width: '24px', height: '24px' };
             case PaymentSystem.Mir:
-                return { iconName: 'mir', width: '32px', heigth: '24px' };
+                return { iconName: 'mir', width: '32px', height: '24px' };
             default:
                 return null;
         }
@@ -33,13 +33,13 @@ export class BankCardComponent {
     getTokenProviderIconConfig(tokenProvider: TokenProvider): BankCardIconConfig {
         switch (tokenProvider) {
             case TokenProvider.SamsungPay:
-                return { iconName: 'samsung_pay', width: '100px', heigth: '27px' };
+                return { iconName: 'samsung_pay', width: '100px', height: '27px' };
             case TokenProvider.GooglePay:
-                return { iconName: 'google_pay', width: '40px', heigth: '26px' };
+                return { iconName: 'google_pay', width: '40px', height: '26px' };
             case TokenProvider.ApplePay:
-                return { iconName: 'apple_pay', width: '24px', heigth: '24px' };
+                return { iconName: 'apple_pay', width: '24px', height: '24px' };
             case TokenProvider.YandexPay:
-                return { iconName: 'yandex_pay', width: '44px', heigth: '24px' };
+                return { iconName: 'yandex_pay', width: '44px', height: '24px' };
             default:
                 return null;
         }

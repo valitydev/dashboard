@@ -10,7 +10,7 @@ import { StatusToColorPipe } from './status-to-color.pipe';
 import { WithdrawalInfoComponent } from './withdrawal-info.component';
 
 /**
- * @deprecated have to delete after redisign
+ * @deprecated have to delete after redesign
  */
 @NgModule({
     imports: [CommonModule, FlexModule, DetailsItemModule, TranslocoModule, AmountCurrencyModule],

@@ -114,10 +114,10 @@ export class DropdownTriggerDirective implements OnDestroy {
     }
 
     private removeWindowListeners() {
-        let unlisten = this.removeWindowListenersFns.pop();
-        while (unlisten) {
-            unlisten();
-            unlisten = this.removeWindowListenersFns.pop();
+        let unlisted = this.removeWindowListenersFns.pop();
+        while (unlisted) {
+            unlisted();
+            unlisted = this.removeWindowListenersFns.pop();
         }
     }
 

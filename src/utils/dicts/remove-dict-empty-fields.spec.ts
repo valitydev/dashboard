@@ -9,7 +9,7 @@ describe('removeDictEmptyFields', () => {
         data = {
             a: '1',
             b: '22',
-            c: '0afaf',
+            c: '0test',
             d: '',
             e: '7',
             g: '',
@@ -18,7 +18,7 @@ describe('removeDictEmptyFields', () => {
         expect(removeDictEmptyFields(data)).toEqual({
             a: '1',
             b: '22',
-            c: '0afaf',
+            c: '0test',
             e: '7',
         });
     });
