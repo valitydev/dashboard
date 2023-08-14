@@ -6,7 +6,7 @@ import sortBy from 'lodash-es/sortBy';
 import { BehaviorSubject, forkJoin, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, map, shareReplay, switchMap } from 'rxjs/operators';
 
-import { IdentitiesService, WebhooksService } from '@dsh/api/wallet';
+import { IdentitiesService, WebhooksService } from '@dsh/app/api/wallet';
 
 import { mapToTimestamp, SHARE_REPLAY_CONF, progress } from '../../../../custom-operators';
 
@@ -19,12 +19,12 @@ export class ReceiveWebhooksService {
     webhooks$: Observable<Webhook[]> = this.webhooksState$.pipe(
         filter((s) => !!s),
         map((w) => sortBy(w, (i) => !i.active)),
-        shareReplay(SHARE_REPLAY_CONF)
+        shareReplay(SHARE_REPLAY_CONF),
     );
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     isLoading$: Observable<boolean> = progress(this.receiveWebhooks$, this.webhooks$).pipe(
-        shareReplay(SHARE_REPLAY_CONF)
+        shareReplay(SHARE_REPLAY_CONF),
     );
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
@@ -34,22 +34,29 @@ export class ReceiveWebhooksService {
         private walletWebhooksService: WebhooksService,
         private identitiesService: IdentitiesService,
         private snackBar: MatSnackBar,
-        private transloco: TranslocoService
+        private transloco: TranslocoService,
     ) {
         this.receiveWebhooks$
             .pipe(
                 switchMap(() => this.identitiesService.identities$),
                 map((identities) => identities.map((identity) => identity.id)),
                 switchMap((ids) =>
-                    forkJoin(ids.map((identityID) => this.walletWebhooksService.getWebhooks({ identityID }))).pipe(
+                    forkJoin(
+                        ids.map((identityID) =>
+                            this.walletWebhooksService.getWebhooks({ identityID }),
+                        ),
+                    ).pipe(
                         catchError((err) => {
                             console.error(err);
-                            this.snackBar.open(this.transloco.translate('shared.httpError', null, 'components'), 'OK');
-                            return of([]);
-                        })
-                    )
+                            this.snackBar.open(
+                                this.transloco.translate('shared.httpError', null, 'components'),
+                                'OK',
+                            );
+                            return of<Webhook[]>([]);
+                        }),
+                    ),
                 ),
-                map((webhooks) => webhooks.flat())
+                map((webhooks) => webhooks.flat()),
             )
             .subscribe((webhooks) => {
                 this.webhooksState$.next(webhooks);

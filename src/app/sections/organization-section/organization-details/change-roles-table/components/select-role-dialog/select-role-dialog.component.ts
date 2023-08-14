@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder } from '@ngneat/reactive-forms';
 import { RoleId } from '@vality/swag-organizations';
 
-import { OrganizationsDictionaryService } from '@dsh/api/organizations';
+import { OrganizationsDictionaryService } from '@dsh/app/api/organizations';
 import { RoleAccess, ROLE_ACCESS_GROUPS } from '@dsh/app/auth';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ROLE_PRIORITY_DESC } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
@@ -26,7 +25,7 @@ interface FlatRoleAccess extends RoleAccess {
 export class SelectRoleDialogComponent {
     roleControl = this.fb.control<RoleId>(null, Validators.required);
     accesses: FlatRoleAccess[] = ROLE_ACCESS_GROUPS.map((r) => ({ ...r, isHeader: true })).flatMap(
-        (r) => [r, ...(r.children || [])] as FlatRoleAccess[]
+        (r) => [r, ...(r.children || [])] as FlatRoleAccess[],
     );
     roleIdDict$ = this.organizationsDictionaryService.roleId$;
     roleAccessDict$ = this.roleAccessesDictionaryService.roleAccessDict$;
@@ -34,7 +33,9 @@ export class SelectRoleDialogComponent {
         return `2fr ${'1fr '.repeat(this.data.availableRoles.length)}`;
     }
     get roles() {
-        return this.data.availableRoles.sort((a, b) => ROLE_PRIORITY_DESC[a] - ROLE_PRIORITY_DESC[b]);
+        return this.data.availableRoles.sort(
+            (a, b) => ROLE_PRIORITY_DESC[a] - ROLE_PRIORITY_DESC[b],
+        );
     }
 
     constructor(
@@ -42,7 +43,7 @@ export class SelectRoleDialogComponent {
         private dialogRef: MatDialogRef<SelectRoleDialogComponent, SelectRoleDialogResult>,
         private fb: FormBuilder,
         private organizationsDictionaryService: OrganizationsDictionaryService,
-        private roleAccessesDictionaryService: RoleAccessesDictionaryService
+        private roleAccessesDictionaryService: RoleAccessesDictionaryService,
     ) {}
 
     cancel() {

@@ -19,10 +19,15 @@ type DeepOnlyMutable<T> = T extends object
     : T;
 type ApiArgs = [Injector];
 
-type MethodParams<P extends Record<PropertyKey, any>, K extends PropertyKey> = RequiredKeys<Omit<P, K>> extends never
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type MethodParams<P extends Record<PropertyKey, any>, K extends PropertyKey> = RequiredKeys<
+    Omit<P, K>
+> extends never
     ? void | Overwrite<P, { [N in K]?: P[N] }>
     : Overwrite<P, { [N in K]?: P[N] }>;
-type Method<M, P extends PropertyKey> = M extends (...args: unknown[]) => Observable<HttpResponse<infer R>>
+type Method<M, P extends PropertyKey> = M extends (
+    ...args: unknown[]
+) => Observable<HttpResponse<infer R>>
     ? (params: DeepOnlyMutable<MethodParams<Parameters<M>[0], P>>) => Observable<R>
     : never;
 
@@ -30,13 +35,16 @@ type Method<M, P extends PropertyKey> = M extends (...args: unknown[]) => Observ
  * Don't use super with Api class methods because they were added with the object assign
  */
 export function createApi<
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     T extends Record<PropertyKey, any> & { defaultHeaders: HttpHeaders },
-    E extends (new (...args: any[]) => ApiExtension)[] = []
->(apiClass: new (...args: any[]) => T, extensions: E = [] as E) {
+    E extends (new (...args: unknown[]) => ApiExtension)[] = [],
+>(apiClass: new (...args: unknown[]) => T, extensions: E = [] as E) {
     @Injectable()
     class Api {
         private api = this.injector.get<T>(apiClass);
-        private extensions = [XrequestIdExtension, ...extensions].map((e) => this.injector.get<ApiExtension>(e));
+        private extensions = [XrequestIdExtension, ...extensions].map((e) =>
+            this.injector.get<ApiExtension>(e),
+        );
 
         constructor(private injector: Injector) {
             if (this.api.defaultHeaders !== DEFAULT_HEADERS) {
@@ -45,17 +53,23 @@ export function createApi<
             const methodNames = getMethods(apiClass, this.api);
             Object.assign(
                 this,
-                Object.fromEntries(methodNames.map((name) => [name, (params) => this.call(name, params)]))
+                Object.fromEntries(
+                    methodNames.map((name) => [name, (params) => this.call(name, params)]),
+                ),
             );
         }
 
         private call(name: keyof T, params: Record<PropertyKey, unknown>) {
-            return this.createExtendedParams().pipe(switchMap((p) => this.api[name](Object.assign({}, params, ...p))));
+            return this.createExtendedParams().pipe(
+                switchMap((p) => this.api[name](Object.assign({}, params, ...p))),
+            );
         }
 
         private createExtendedParams() {
             return combineLatest(
-                this.extensions.map((extension) => extension.selector()).map((p) => (isObservable(p) ? p : of(p)))
+                this.extensions
+                    .map((extension) => extension.selector())
+                    .map((p) => (isObservable(p) ? p : of(p))),
             );
         }
     }
@@ -63,8 +77,12 @@ export function createApi<
     return Api as unknown as new (...args: ApiArgs) => {
         [N in keyof T]: Method<
             T[N],
-            | keyof UnionToIntersection<ObservableValue<ReturnType<InstanceType<E[number]>['selector']>>>
-            | keyof UnionToIntersection<ObservableValue<ReturnType<XrequestIdExtension['selector']>>>
+            | keyof UnionToIntersection<
+                  ObservableValue<ReturnType<InstanceType<E[number]>['selector']>>
+              >
+            | keyof UnionToIntersection<
+                  ObservableValue<ReturnType<XrequestIdExtension['selector']>>
+              >
         >;
     };
 }

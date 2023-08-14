@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { FormGroup } from '@ngneat/reactive-forms';
+import { FormGroupByValue } from '@vality/ng-core';
 
 import { MainInfoFilters } from './types/main-info-filters';
 
@@ -9,5 +9,5 @@ import { MainInfoFilters } from './types/main-info-filters';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainInfoFiltersComponent {
-    @Input() form: FormGroup<MainInfoFilters>;
+    @Input() form: FormGroupByValue<MainInfoFilters>;
 }

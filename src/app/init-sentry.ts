@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/angular';
+import * as Sentry from '@sentry/angular-ivy';
 import { Integrations } from '@sentry/tracing';
 import isNil from 'lodash-es/isNil';
 

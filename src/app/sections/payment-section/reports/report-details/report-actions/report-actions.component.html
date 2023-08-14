@@ -1,10 +1,16 @@
 <div
+    *transloco="
+        let t;
+        scope: 'payment-section';
+        read: 'paymentSection.reports.reportDetails.actions'
+    "
     fxLayout="column"
     fxLayoutGap="24px"
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.reports.reportDetails.actions'"
 >
     <div class="dsh-title">{{ t('title') }}</div>
     <div>
-        <button dsh-text-button color="warn" (click)="cancelReport.emit(reportID)">{{ t('cancelReport') }}</button>
+        <button color="warn" dsh-text-button (click)="cancelReport.emit(reportID)">
+            {{ t('cancelReport') }}
+        </button>
     </div>
 </div>

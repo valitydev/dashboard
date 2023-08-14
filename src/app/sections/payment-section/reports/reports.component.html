@@ -1,26 +1,30 @@
-<div *transloco="let r; scope: 'payment-section'; read: 'paymentSection.reports'" fxLayout="column" fxLayoutGap="32px">
+<div
+    *transloco="let r; scope: 'payment-section'; read: 'paymentSection.reports'"
+    fxLayout="column"
+    fxLayoutGap="32px"
+>
     <div
-        gdColumns="1fr"
-        gdColumns.gt-sm="repeat(2, auto)"
         gdAlignColumns="center center"
         gdAlignRows="space-between start"
+        gdColumns="1fr"
+        gdColumns.gt-sm="repeat(2, auto)"
         gdGap="32px"
     >
-        <button dsh-button color="accent" (click)="create()">
+        <button color="accent" dsh-button (click)="create()">
             {{ r('openCreateReport') }}
         </button>
         <dsh-reports-search-filters
-            gdRow.gt-sm="1"
             [initParams]="params$ | async"
+            gdRow.gt-sm="1"
             (searchParamsChanges)="searchParamsChanges($event)"
         ></dsh-reports-search-filters>
     </div>
     <div fxLayout="column" fxLayoutGap="16px">
         <dsh-reports-list
             [expandedId]="expandedId$ | async"
-            (expandedIdChange)="expandedIdChange($event)"
-            [reports]="reports$ | async"
             [lastUpdated]="lastUpdated$ | async"
+            [reports]="reports$ | async"
+            (expandedIdChange)="expandedIdChange($event)"
             (refreshData)="refresh()"
         ></dsh-reports-list>
         <dsh-show-more-panel

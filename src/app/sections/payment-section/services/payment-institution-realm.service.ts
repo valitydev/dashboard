@@ -4,7 +4,7 @@ import { PaymentInstitution } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { shareReplayRefCount } from '@dsh/operators';
+import { shareReplayRefCount } from '@dsh/app/custom-operators';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 
@@ -12,7 +12,7 @@ import RealmEnum = PaymentInstitution.RealmEnum;
 export class PaymentInstitutionRealmService {
     realm$: Observable<RealmEnum | undefined> = this.route.params.pipe(
         map(({ realm }) => realm as RealmEnum),
-        shareReplayRefCount()
+        shareReplayRefCount(),
     );
 
     constructor(private route: ActivatedRoute) {}

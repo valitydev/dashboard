@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Injector, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
 import {
     BankContent,
     DaDataRequest,
@@ -9,13 +9,18 @@ import {
     FmsUnitQuery,
     PartyContent,
 } from '@vality/swag-questionary-aggr-proxy';
+import { coerceBoolean } from 'coerce-property';
 import isEmpty from 'lodash-es/isEmpty';
 import { interval, Observable } from 'rxjs';
 import { debounce, filter, map, switchMap, take } from 'rxjs/operators';
 
-import { ContentByRequestType, DaDataService, ParamsByRequestType, Suggestion } from '@dsh/api/questionary-aggr-proxy';
-import { progress, shareReplayUntilDestroyed, takeError } from '@dsh/operators';
-import { coerceBoolean } from '@dsh/utils';
+import {
+    ContentByRequestType,
+    DaDataService,
+    ParamsByRequestType,
+    Suggestion,
+} from '@dsh/app/api/questionary-aggr-proxy';
+import { progress, shareReplayUntilDestroyed, takeError } from '@dsh/app/custom-operators';
 
 import { Type } from './type';
 
@@ -42,10 +47,13 @@ const REQUEST_TYPE_BY_TYPE: RequestTypeByType = {
     selector: 'dsh-dadata-autocomplete',
     styleUrls: ['dadata.component.scss'],
     templateUrl: 'dadata.component.html',
-    providers: [provideValueAccessor(DaDataAutocompleteComponent)],
+    providers: createControlProviders(() => DaDataAutocompleteComponent),
 })
-export class DaDataAutocompleteComponent<T extends Type = Type, R extends DaDataRequestType = RequestTypeByType[T]>
-    extends WrappedFormControlSuperclass<string>
+export class DaDataAutocompleteComponent<
+        T extends Type = Type,
+        R extends DaDataRequestType = RequestTypeByType[T],
+    >
+    extends FormControlSuperclass<string>
     implements OnInit
 {
     @Input() type: T;
@@ -61,24 +69,29 @@ export class DaDataAutocompleteComponent<T extends Type = Type, R extends DaData
         filter<string>(Boolean),
         debounce(() => interval(300)),
         switchMap((v) => this.loadSuggestions(v)),
-        shareReplayUntilDestroyed(this)
+        shareReplayUntilDestroyed(this),
     );
     options$: Observable<Option<ContentByRequestType[R]>[]> = this.suggestions$.pipe(
         map((suggestions) => suggestions.map((s) => this.getOption(s))),
-        shareReplayUntilDestroyed(this)
+        shareReplayUntilDestroyed(this),
     );
-    isOptionsLoading$: Observable<boolean> = progress(this.control.valueChanges, this.suggestions$).pipe(
-        shareReplayUntilDestroyed(this)
-    );
+    isOptionsLoading$: Observable<boolean> = progress(
+        this.control.valueChanges,
+        this.suggestions$,
+    ).pipe(shareReplayUntilDestroyed(this));
 
-    constructor(injector: Injector, private daDataService: DaDataService) {
-        super(injector);
+    constructor(private daDataService: DaDataService) {
+        super();
     }
 
     ngOnInit(): void {
         this.isOptionsLoading$.pipe(untilDestroyed(this)).subscribe();
-        this.suggestions$.pipe(filter(isEmpty), untilDestroyed(this)).subscribe(() => this.suggestionNotFound.emit());
-        this.suggestions$.pipe(takeError, untilDestroyed(this)).subscribe((error) => this.errorOccurred.next(error));
+        this.suggestions$
+            .pipe(filter(isEmpty), untilDestroyed(this))
+            .subscribe(() => this.suggestionNotFound.emit());
+        this.suggestions$
+            .pipe(takeError, untilDestroyed(this))
+            .subscribe((error) => this.errorOccurred.next(error));
     }
 
     optionSelectedHandler(e: MatAutocompleteSelectedEvent): void {
@@ -97,7 +110,7 @@ export class DaDataAutocompleteComponent<T extends Type = Type, R extends DaData
         const params: ParamsByRequestType[R] = { query } as ParamsByRequestType[R];
         return this.daDataService.suggest(
             REQUEST_TYPE_BY_TYPE[this.type],
-            this.withSpecificParams(params)
+            this.withSpecificParams(params),
         ) as unknown as Observable<ContentByRequestType[R][]>;
     }
 

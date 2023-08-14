@@ -5,8 +5,8 @@ import { ErrorDistribution } from './error-distribution';
 import { KNOWN_ERRORS } from './known-errors';
 
 function getDistributionErrorCode(errorCode: string): ErrorDistribution['errorCode'] {
-    return KNOWN_ERRORS.includes(errorCode as typeof KNOWN_ERRORS[number])
-        ? (errorCode as typeof KNOWN_ERRORS[number])
+    return KNOWN_ERRORS.includes(errorCode as (typeof KNOWN_ERRORS)[number])
+        ? (errorCode as (typeof KNOWN_ERRORS)[number])
         : 'other';
 }
 
@@ -35,7 +35,9 @@ const groupDistribution = (distribution: ErrorDistribution[]): ErrorDistribution
         return newAcc;
     }, []);
 
-export const subErrorsToErrorDistribution = (errors: PaymentsSubErrorsDistributionResult[]): ErrorDistribution[] => {
+export const subErrorsToErrorDistribution = (
+    errors: PaymentsSubErrorsDistributionResult[],
+): ErrorDistribution[] => {
     const errorDistribution: ErrorDistribution[] = (errors ?? []).map(({ error, percents }) => ({
         errorCode: getDistributionErrorCode(error.code),
         subErrors: error.subError ? [subErrorToDistribution(error.subError, percents)] : [],

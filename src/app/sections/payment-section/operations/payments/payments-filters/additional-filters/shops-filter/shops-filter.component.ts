@@ -1,8 +1,8 @@
-import { Component, Injector, ChangeDetectionStrategy } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroupSuperclass, createControlProviders } from '@vality/ng-core';
 
-import { ShopsService } from '@dsh/api/payments';
-import { ValidatedControlSuperclass, createControlProviders } from '@dsh/utils';
+import { ShopsDataService } from '@dsh/app/shared';
 
 import { ShopsFilterForm } from './types';
 
@@ -10,16 +10,19 @@ import { ShopsFilterForm } from './types';
     selector: 'dsh-shops-filter',
     templateUrl: './shops-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createControlProviders(ShopsFilterComponent),
+    providers: createControlProviders(() => ShopsFilterComponent),
 })
-export class ShopsFilterComponent extends ValidatedControlSuperclass<ShopsFilterForm> {
-    control = this.fb.group<ShopsFilterForm>({
+export class ShopsFilterComponent extends FormGroupSuperclass<ShopsFilterForm> {
+    control = this.fb.group({
         shopIDs: null,
-    });
+    }) as unknown as FormGroup;
 
-    shops$ = this.shopsService.shops$;
+    shops$ = this.shopsDataService.shops$;
 
-    constructor(injector: Injector, private fb: FormBuilder, private shopsService: ShopsService) {
-        super(injector);
+    constructor(
+        private fb: FormBuilder,
+        private shopsDataService: ShopsDataService,
+    ) {
+        super();
     }
 }

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Claim } from '@vality/swag-claim-management';
 
-import { ClaimManagementDictionaryService } from '@dsh/api/claim-management';
+import { ClaimManagementDictionaryService } from '@dsh/app/api/claim-management';
 
 @Component({
     selector: 'dsh-claim-row',

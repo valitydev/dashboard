@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { OrganizationsModule as OrganizationsAPIModule } from '@dsh/api/organizations';
+import { OrganizationsModule as OrganizationsAPIModule } from '@dsh/app/api/organizations';
 import { ErrorModule, NotificationModule } from '@dsh/app/shared';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ButtonModule } from '@dsh/components/buttons';
@@ -23,6 +23,7 @@ import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
 
 import { OrganizationRolesModule } from '../../../../shared/components/organization-roles';
 import { ChangeRolesTableModule } from '../change-roles-table';
+
 import { EditRolesDialogComponent } from './components/edit-roles-dialog/edit-roles-dialog.component';
 import { MemberComponent } from './components/member/member.component';
 import { MembersListComponent } from './components/members-list/members-list.component';
@@ -60,7 +61,12 @@ import { MembersComponent } from './members.component';
         ChangeRolesTableModule,
         EmptyModule,
     ],
-    declarations: [MembersComponent, MembersListComponent, MemberComponent, EditRolesDialogComponent],
+    declarations: [
+        MembersComponent,
+        MembersListComponent,
+        MemberComponent,
+        EditRolesDialogComponent,
+    ],
     exports: [MembersComponent, MemberComponent],
 })
 export class MembersModule {}

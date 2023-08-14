@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { instance, mock, when } from 'ts-mockito';
 
-import { ContractsService } from '@dsh/api/contracts';
+import { ContractsService } from '@dsh/app/api/contracts';
 
 import { ShopContractDetailsService } from './shop-contract-details.service';
 
@@ -45,7 +45,7 @@ describe('ShopContractDetailsService', () => {
                     status: Contract.StatusEnum.Active,
                     contractor: {
                         contractorType: 'LegalEntity',
-                    } as any,
+                    } as never,
                     paymentInstitutionID: 2,
                 });
             });
@@ -59,7 +59,7 @@ describe('ShopContractDetailsService', () => {
                         contractorType: 'LegalEntity',
                     },
                     paymentInstitutionID: 2,
-                })
+                }),
             );
 
             service.requestContract('my_id');
@@ -72,8 +72,8 @@ describe('ShopContractDetailsService', () => {
                 of(null).pipe(
                     map(() => {
                         throw new Error(`[TEST_ERROR]: Error in observable`);
-                    })
-                )
+                    }),
+                ),
             );
 
             service.requestContract('my_id');
@@ -81,7 +81,7 @@ describe('ShopContractDetailsService', () => {
             expect(service.errorOccurred$).toBeObservable(
                 cold('a', {
                     a: true,
-                })
+                }),
             );
         });
     });

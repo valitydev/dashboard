@@ -7,5 +7,5 @@ export class ExpandableRadioGroupItemDirective {
     @Input()
     dshExpandableRadioGroupItem: string | number;
 
-    constructor(public readonly templateRef: TemplateRef<any>) {}
+    constructor(public readonly templateRef: TemplateRef<ExpandableRadioGroupItemDirective>) {}
 }

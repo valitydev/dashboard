@@ -14,8 +14,8 @@ import { NavigationLinkModule } from '@dsh/components/navigation-link';
 import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
 
 import { ClaimsListComponent } from './claims-list.component';
-import { ClaimRowHeaderComponent } from './components/claim-row-header/claim-row-header.component';
 import { ClaimRowComponent } from './components/claim-row/claim-row.component';
+import { ClaimRowHeaderComponent } from './components/claim-row-header/claim-row-header.component';
 
 @NgModule({
     declarations: [ClaimsListComponent, ClaimRowHeaderComponent, ClaimRowComponent],

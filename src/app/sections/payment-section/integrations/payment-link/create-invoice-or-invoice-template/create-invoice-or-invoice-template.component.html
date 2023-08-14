@@ -1,7 +1,11 @@
 <div
+    *transloco="
+        let c;
+        scope: 'payment-section';
+        read: 'paymentSection.createInvoiceOrInvoiceTemplate'
+    "
     fxLayout="column"
     fxLayoutGap="24px"
-    *transloco="let c; scope: 'payment-section'; read: 'paymentSection.createInvoiceOrInvoiceTemplate'"
 >
     <div fxLayout="column" fxLayoutGap="32px">
         <h1 class="dsh-headline">{{ c('title') }}</h1>
@@ -9,9 +13,13 @@
             <div class="dsh-body-1">
                 {{ c('description') }}
             </div>
-            <mat-radio-group fxLayout="column" fxLayoutGap="24px" formControlName="type">
-                <mat-radio-button [value]="type.Invoice">{{ c('types.personal') }}</mat-radio-button>
-                <mat-radio-button [value]="type.Tempalte">{{ c('types.reusable') }}</mat-radio-button>
+            <mat-radio-group formControlName="type" fxLayout="column" fxLayoutGap="24px">
+                <mat-radio-button [value]="type.Invoice">{{
+                    c('types.personal')
+                }}</mat-radio-button>
+                <mat-radio-button [value]="type.Template">{{
+                    c('types.reusable')
+                }}</mat-radio-button>
             </mat-radio-group>
         </form>
     </div>
@@ -22,28 +30,31 @@
             <div fxLayout="column" fxLayoutGap="24px">
                 <h1 class="dsh-headline">{{ c('invoiceTitle') }}</h1>
                 <dsh-create-invoice-form
-                    [shops]="shops$ | async"
                     [formControl]="createInvoiceFormControl"
-                    (valid)="createInvoiceFormControlValid = $event"
-                    (empty)="createInvoiceFormControlEmpty = $event"
+                    [shops]="shops$ | async"
                 ></dsh-create-invoice-form>
                 <dsh-actions *transloco="let t; scope: 'components'; read: 'components.shared'">
                     <button
-                        dsh-text-button
+                        [disabled]="createInvoiceFormControl.pristine"
                         color="accent"
-                        [disabled]="createInvoiceFormControlEmpty"
+                        dsh-text-button
                         (click)="createInvoiceFormControl.reset()"
                     >
                         {{ t('clearForm') }}
                     </button>
-                    <button dsh-button (click)="create()" color="accent" [disabled]="!createInvoiceFormControlValid">
+                    <button
+                        [disabled]="createInvoiceFormControl.invalid"
+                        color="accent"
+                        dsh-button
+                        (click)="create()"
+                    >
                         {{ t('next') }}
                     </button>
                 </dsh-actions>
             </div>
         </ng-container>
         <dsh-create-invoice-template
-            *ngIf="form.value.type === type.Tempalte"
+            *ngIf="form.value.type === type.Template"
             [shops]="shops$ | async"
             (next)="nextTemplate.next($event)"
         ></dsh-create-invoice-template>

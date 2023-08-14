@@ -4,9 +4,9 @@ import { WalletAccount } from '@vality/swag-wallet';
 import { BehaviorSubject, defer, EMPTY, Observable, ReplaySubject } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
-import { WalletsService } from '@dsh/api/wallet';
+import { WalletsService } from '@dsh/app/api/wallet';
+import { shareReplayUntilDestroyed } from '@dsh/app/custom-operators';
 import { ErrorService } from '@dsh/app/shared';
-import { shareReplayUntilDestroyed } from '@dsh/operators';
 import { errorTo, progressTo } from '@dsh/utils';
 
 @UntilDestroy()
@@ -20,10 +20,10 @@ export class FetchWalletAccountService {
                 catchError((err) => {
                     this.errorService.error(err, false);
                     return EMPTY;
-                })
-            )
+                }),
+            ),
         ),
-        shareReplayUntilDestroyed(this)
+        shareReplayUntilDestroyed(this),
     );
 
     isLoading$: Observable<boolean> = defer(() => this.progress$).pipe(map(Boolean));
@@ -34,7 +34,10 @@ export class FetchWalletAccountService {
 
     private fetchWalletAccount$ = new ReplaySubject<string>();
 
-    constructor(private walletService: WalletsService, private errorService: ErrorService) {}
+    constructor(
+        private walletService: WalletsService,
+        private errorService: ErrorService,
+    ) {}
 
     fetchWalletAccount(walletID: string): void {
         this.fetchWalletAccount$.next(walletID);

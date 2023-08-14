@@ -8,6 +8,7 @@ import { StatusModule } from '@dsh/components/indicators';
 import { generateMockPayment } from '../../../tests/generate-mock-payment';
 import { MockDetailsItemModule } from '../../../tests/mock-details-item-component';
 import { MockShopDetailsPipe } from '../../../tests/mock-shop-details-pipe';
+
 import { AdditionalInfoComponent } from './components/additional-info/additional-info.component';
 import { ChargeAmountComponent } from './components/charge-amount/charge-amount.component';
 import { PaymentFeeComponent } from './components/payment-fee/payment-fee.component';
@@ -24,7 +25,13 @@ describe('PaymentMainInfoComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [getTranslocoModule(), MockDetailsItemModule, PaymentToolModule, FlexLayoutModule, StatusModule],
+            imports: [
+                getTranslocoModule(),
+                MockDetailsItemModule,
+                PaymentToolModule,
+                FlexLayoutModule,
+                StatusModule,
+            ],
             declarations: [
                 PaymentMainInfoComponent,
                 PaymentStatusComponent,

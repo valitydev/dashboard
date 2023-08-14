@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ToolbarModule } from '../toolbar';
+
 import { LaptopGridComponent } from './laptop-grid.component';
 
 @NgModule({

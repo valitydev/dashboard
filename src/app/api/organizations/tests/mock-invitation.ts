@@ -1,4 +1,9 @@
-import { Invitation, InvitationStatusName, Invitee, InviteeContact } from '@vality/swag-organizations';
+import {
+    Invitation,
+    InvitationStatusName,
+    Invitee,
+    InviteeContact,
+} from '@vality/swag-organizations';
 
 import { MOCK_MEMBER_ROLE } from './mock-member-role';
 

@@ -1,10 +1,16 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    Output,
+    TemplateRef,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { coerceBoolean } from 'coerce-property';
 import { map, pluck } from 'rxjs/operators';
-
-import { coerceBoolean } from '@dsh/utils';
 
 import { FilterDialogComponent } from './components/filter-dialog/filter-dialog.component';
 
@@ -30,7 +36,10 @@ export class FilterComponent {
         .observe([Breakpoints.XSmall, Breakpoints.Small])
         .pipe(pluck('matches'), map(Boolean));
 
-    constructor(private breakpointObserver: BreakpointObserver, private dialog: MatDialog) {}
+    constructor(
+        private breakpointObserver: BreakpointObserver,
+        private dialog: MatDialog,
+    ) {}
 
     open(): void {
         if (this.breakpointObserver.isMatched([Breakpoints.XSmall, Breakpoints.Small])) {

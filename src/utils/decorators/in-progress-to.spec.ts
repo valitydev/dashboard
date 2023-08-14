@@ -54,11 +54,11 @@ describe('inProgressTo', () => {
                 return of('Test')
                     .pipe(
                         delay(1),
-                        switchMap(() => throwError('Test'))
+                        switchMap(() => throwError('Test')),
                     )
                     .subscribe(
                         () => null,
-                        () => expect(test.inProgress$.value).toBe(true)
+                        () => expect(test.inProgress$.value).toBe(true),
                     );
             }
         }

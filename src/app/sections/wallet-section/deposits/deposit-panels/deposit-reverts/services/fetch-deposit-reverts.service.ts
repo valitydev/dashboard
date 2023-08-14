@@ -6,7 +6,7 @@ import { ListDepositRevertsRequestParams } from '@vality/swag-wallet/lib/api/dep
 import { Observable, of } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 
-import { DepositsService } from '@dsh/api/wallet';
+import { DepositsService } from '@dsh/app/api/wallet';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
 
@@ -24,17 +24,25 @@ export class FetchDepositRevertsService extends PartialFetcher<
         @Inject(SEARCH_LIMIT)
         private searchLimit: number,
         @Inject(DEBOUNCE_FETCHER_ACTION_TIME)
-        debounceActionTime: number
+        debounceActionTime: number,
     ) {
         super(debounceActionTime);
     }
 
-    protected fetch(params: Omit<ListDepositRevertsRequestParams, 'xRequestID' | 'limit'>, continuationToken: string) {
-        return this.depositsService.listDepositReverts({ ...params, limit: this.searchLimit, continuationToken }).pipe(
-            catchError(() => {
-                this.snackBar.open(this.transloco.translate('shared.httpError', null, 'components'), 'OK');
-                return of({ result: [] });
-            })
-        );
+    protected fetch(
+        params: Omit<ListDepositRevertsRequestParams, 'xRequestID' | 'limit'>,
+        continuationToken: string,
+    ) {
+        return this.depositsService
+            .listDepositReverts({ ...params, limit: this.searchLimit, continuationToken })
+            .pipe(
+                catchError(() => {
+                    this.snackBar.open(
+                        this.transloco.translate('shared.httpError', null, 'components'),
+                        'OK',
+                    );
+                    return of({ result: [] });
+                }),
+            );
     }
 }

@@ -5,6 +5,7 @@ import { ComponentChanges } from '@dsh/type-utils';
 
 import { ChartsThemeProvider, CHARTS_THEME } from '../charts-theme';
 import { SearchParams } from '../search-params';
+
 import { PaymentSplitCountService } from './payment-split-count.service';
 
 @Component({
@@ -25,7 +26,7 @@ export class PaymentSplitCountComponent implements OnChanges {
 
     constructor(
         private paymentSplitCountService: PaymentSplitCountService,
-        @Inject(CHARTS_THEME) private theme: ChartsThemeProvider
+        @Inject(CHARTS_THEME) private theme: ChartsThemeProvider,
     ) {}
 
     ngOnChanges({ searchParams }: ComponentChanges<PaymentSplitCountComponent>): void {

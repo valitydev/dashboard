@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FormControl } from '@ngneat/reactive-forms';
 
 import { FulfillInvoiceDialogResponse } from '../../types/fulfill-invoice-dialog-response';
 
@@ -10,9 +10,14 @@ import { FulfillInvoiceDialogResponse } from '../../types/fulfill-invoice-dialog
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FulfillInvoiceDialogComponent {
-    reason = new FormControl<string>();
+    reason = new FormControl();
 
-    constructor(private dialogRef: MatDialogRef<FulfillInvoiceDialogComponent, FulfillInvoiceDialogResponse>) {}
+    constructor(
+        private dialogRef: MatDialogRef<
+            FulfillInvoiceDialogComponent,
+            FulfillInvoiceDialogResponse
+        >,
+    ) {}
 
     cancel() {
         this.dialogRef.close('cancel');

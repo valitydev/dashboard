@@ -1,20 +1,29 @@
-import { ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import {
+    ChangeDetectorRef,
+    Component,
+    EventEmitter,
+    Inject,
+    Input,
+    OnInit,
+    Output,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { MemberRole, ResourceScopeId, RoleId } from '@vality/swag-organizations';
+import { coerceBoolean } from 'coerce-property';
 import isNil from 'lodash-es/isNil';
 import { BehaviorSubject, combineLatest, EMPTY, Observable, of } from 'rxjs';
 import { first, map, switchMap, tap } from 'rxjs/operators';
 
-import { OrganizationsDictionaryService } from '@dsh/api/organizations';
-import { ShopsService } from '@dsh/api/payments';
+import { OrganizationsDictionaryService } from '@dsh/app/api/organizations';
 import { DialogConfig, DIALOG_CONFIG } from '@dsh/app/sections/tokens';
+import { ShopsDataService } from '@dsh/app/shared';
 import { sortRoleIds } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
 import { PartialReadonly } from '@dsh/type-utils';
-import { coerceBoolean } from '@dsh/utils';
 
 import { addDialogsClass } from '../../../../../utils/add-dialogs-class';
 import { equalRoles } from '../members/components/edit-roles-dialog/utils/equal-roles';
+
 import { SelectRoleDialogComponent } from './components/select-role-dialog/select-role-dialog.component';
 import { SelectRoleDialogResult } from './components/select-role-dialog/types/select-role-dialog-result';
 import { SelectRoleDialogData } from './components/select-role-dialog/types/selected-role-dialog-data';
@@ -49,7 +58,7 @@ export class ChangeRolesTableComponent implements OnInit {
     @Output() removedRoles = new EventEmitter<PartialReadonly<MemberRole>[]>();
 
     roleIds: RoleId[] = [];
-    shops$ = this.shopsService.shops$;
+    shops$ = this.shopsDataService.shops$;
     roleIdDict$ = this.organizationsDictionaryService.roleId$;
 
     get availableRoles(): RoleId[] {
@@ -71,11 +80,11 @@ export class ChangeRolesTableComponent implements OnInit {
     }
 
     constructor(
-        private shopsService: ShopsService,
+        private shopsDataService: ShopsDataService,
         private dialog: MatDialog,
         @Inject(DIALOG_CONFIG) private dialogConfig: DialogConfig,
         private cdr: ChangeDetectorRef,
-        private organizationsDictionaryService: OrganizationsDictionaryService
+        private organizationsDictionaryService: OrganizationsDictionaryService,
     ) {}
 
     ngOnInit(): void {
@@ -85,15 +94,20 @@ export class ChangeRolesTableComponent implements OnInit {
     add(): void {
         const removeDialogsClass = addDialogsClass(this.dialog.openDialogs, 'dsh-hidden');
         this.dialog
-            .open<SelectRoleDialogComponent, SelectRoleDialogData, SelectRoleDialogResult>(SelectRoleDialogComponent, {
-                ...this.dialogConfig.large,
-                data: { availableRoles: this.availableRoles },
-            })
+            .open<SelectRoleDialogComponent, SelectRoleDialogData, SelectRoleDialogResult>(
+                SelectRoleDialogComponent,
+                {
+                    ...this.dialogConfig.large,
+                    data: { availableRoles: this.availableRoles },
+                },
+            )
             .afterClosed()
             .pipe(
                 tap(() => removeDialogsClass()),
-                switchMap((result) => (typeof result === 'object' ? of(result.selectedRoleId) : EMPTY)),
-                untilDestroyed(this)
+                switchMap((result) =>
+                    typeof result === 'object' ? of(result.selectedRoleId) : EMPTY,
+                ),
+                untilDestroyed(this),
             )
             .subscribe((roleId) => {
                 this.addRoleIds([roleId]);
@@ -146,7 +160,7 @@ export class ChangeRolesTableComponent implements OnInit {
     disabled(roleId: RoleId, resourceId: string): Observable<boolean> {
         if (roleId === RoleId.Administrator) return of(true);
         return combineLatest([this.roles$, this.checked(roleId, resourceId)]).pipe(
-            map(([roles, isChecked]) => roles.length <= 1 && isChecked)
+            map(([roles, isChecked]) => roles.length <= 1 && isChecked),
         );
     }
 
@@ -159,8 +173,10 @@ export class ChangeRolesTableComponent implements OnInit {
             map(
                 (roles) =>
                     roleId === RoleId.Administrator ||
-                    !!roles.find((r) => equalRoles(r, { roleId, scope: { id: ResourceScopeId.Shop, resourceId } }))
-            )
+                    !!roles.find((r) =>
+                        equalRoles(r, { roleId, scope: { id: ResourceScopeId.Shop, resourceId } }),
+                    ),
+            ),
         );
     }
 
@@ -171,9 +187,11 @@ export class ChangeRolesTableComponent implements OnInit {
                 return (
                     roleId === RoleId.Administrator ||
                     shops.length <=
-                        roles.filter((r) => r.roleId === roleId && shopIds.includes(r.scope?.resourceId)).length
+                        roles.filter(
+                            (r) => r.roleId === roleId && shopIds.includes(r.scope?.resourceId),
+                        ).length
                 );
-            })
+            }),
         );
     }
 
@@ -189,10 +207,10 @@ export class ChangeRolesTableComponent implements OnInit {
                 }
                 const shopIds = shops.map(({ id }) => id);
                 const rolesCount = roles.filter(
-                    (r) => r.roleId === roleId && shopIds.includes(r.scope?.resourceId)
+                    (r) => r.roleId === roleId && shopIds.includes(r.scope?.resourceId),
                 ).length;
                 return rolesCount > 0 && rolesCount < shops.length;
-            })
+            }),
         );
     }
 

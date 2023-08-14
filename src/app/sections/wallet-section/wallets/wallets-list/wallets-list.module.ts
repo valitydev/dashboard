@@ -29,7 +29,12 @@ import { WalletsListComponent } from './wallets-list.component';
         WalletDepositsModule,
         WalletWithdrawalsModule,
     ],
-    declarations: [WalletsListComponent, WalletRowHeaderComponent, WalletRowComponent, WalletDetailsComponent],
+    declarations: [
+        WalletsListComponent,
+        WalletRowHeaderComponent,
+        WalletRowComponent,
+        WalletDetailsComponent,
+    ],
     exports: [WalletsListComponent],
 })
 export class WalletsListModule {}

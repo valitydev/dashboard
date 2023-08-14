@@ -1,6 +1,6 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/angular-ivy';
 import isNil from 'lodash-es/isNil';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -15,7 +15,7 @@ export class SentryHttpInterceptor implements HttpInterceptor {
                     Sentry.setTag('x-request-id', xRequestId);
                 }
                 return throwError(resp);
-            })
+            }),
         );
     }
 }

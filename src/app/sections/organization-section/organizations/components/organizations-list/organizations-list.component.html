@@ -1,19 +1,22 @@
 <div
+    *transloco="let t; scope: 'organization-section'; read: 'organizationSection'"
     fxLayout="column"
     fxLayoutGap="16px"
-    *transloco="let t; scope: 'organization-section'; read: 'organizationSection'"
 >
-    <dsh-row fxLayout fxLayoutAlign=" center" fxLayoutGap="24px" color="primary">
+    <dsh-row color="primary" fxLayout fxLayoutAlign=" center" fxLayoutGap="24px">
         <dsh-row-header-label>{{ t('headerRow.name') }}</dsh-row-header-label>
     </dsh-row>
     <dsh-accordion
+        *dshEmpty="!organizations?.length; text: t('emptyOrganizations')"
+        [expanded]="expandedId$ | async"
         fxLayout="column"
         fxLayoutGap="16px"
-        *dshEmpty="!organizations?.length; text: t('emptyOrganizations')"
         (expandedChange)="expandedIdChange($event)"
-        [expanded]="expandedId$ | async"
     >
-        <dsh-accordion-item *ngFor="let organization of organizations; trackBy: trackOrganization" #accordionItem>
+        <dsh-accordion-item
+            #accordionItem
+            *ngFor="let organization of organizations; trackBy: trackOrganization"
+        >
             <dsh-row fxLayout fxLayoutAlign=" center" fxLayoutGap="24px">
                 <dsh-row-label>
                     {{ organization.name }}
@@ -27,7 +30,10 @@
                             <div>{{ organization.createdAt | date: 'dd MMMM yyyy, HH:mm' }}</div>
                         </div>
                     </dsh-accordion-item-content-header>
-                    <dsh-organization [organization]="organization" (changed)="changed.emit()"></dsh-organization>
+                    <dsh-organization
+                        [organization]="organization"
+                        (changed)="changed.emit()"
+                    ></dsh-organization>
                 </dsh-card>
             </ng-template>
         </dsh-accordion-item>

@@ -1,18 +1,29 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnChanges,
+    OnInit,
+    Output,
+} from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
+import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Shop } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
 import negate from 'lodash-es/negate';
-// eslint-disable-next-line you-dont-need-lodash-underscore/omit
 import omit from 'lodash-es/omit';
 import pick from 'lodash-es/pick';
 import { combineLatest, defer, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { createDateRangeWithPreset, Preset, DateRangeWithPreset } from '@dsh/components/date-range-filter';
+import {
+    createDateRangeWithPreset,
+    Preset,
+    DateRangeWithPreset,
+} from '@dsh/components/date-range-filter';
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
@@ -48,16 +59,24 @@ export class RefundsSearchFiltersComponent implements OnInit, OnChanges {
     isAdditionalFilterApplied$ = defer(() => this.additionalFilters$).pipe(map(negate(isEmpty)));
 
     get keys(): string[] {
-        return this.mediaObserver.isActive('gt-sm') ? [...MAIN_FILTERS, ...ADDITIONAL_FILTERS] : MAIN_FILTERS;
+        return this.mediaObserver.isActive('gt-sm')
+            ? [...MAIN_FILTERS, ...ADDITIONAL_FILTERS]
+            : MAIN_FILTERS;
     }
 
     private additionalFilters$ = new BehaviorSubject<AdditionalFilters>({});
 
-    constructor(private fb: FormBuilder, private dialog: MatDialog, private mediaObserver: MediaObserver) {}
+    constructor(
+        private fb: FormBuilder,
+        private dialog: MatDialog,
+        private mediaObserver: MediaObserver,
+    ) {}
 
     ngOnInit(): void {
         combineLatest([
-            getFormValueChanges(this.form).pipe(map((filters) => pick(filters, this.keys) as MainFilters)),
+            getFormValueChanges(this.form).pipe(
+                map((filters) => pick(filters, this.keys) as MainFilters),
+            ),
             this.additionalFilters$.pipe(map((filters) => omit(filters, this.keys))),
         ])
             .pipe(untilDestroyed(this))
@@ -66,7 +85,7 @@ export class RefundsSearchFiltersComponent implements OnInit, OnChanges {
 
     ngOnChanges({ initParams }: ComponentChanges<RefundsSearchFiltersComponent>): void {
         if (initParams?.firstChange && initParams.currentValue) {
-            this.form.patchValue(pick(initParams.currentValue, this.keys));
+            this.form.patchValue(pick(initParams.currentValue, this.keys) as unknown);
             this.additionalFilters$.next(omit(initParams.currentValue, this.keys));
         }
     }

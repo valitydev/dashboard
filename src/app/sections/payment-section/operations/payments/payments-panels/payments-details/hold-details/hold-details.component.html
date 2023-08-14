@@ -36,13 +36,13 @@
             *ngIf="holdDate | holdActive: payment?.status"
             fxLayout="column"
             fxLayout.gt-sm="row"
-            fxLayoutGap="16px"
             fxLayoutAlign="space-between stretch"
+            fxLayoutGap="16px"
         >
-            <button fxFlex fxFlex.gt-sm="180px" dsh-button color="warn" (click)="cancelHold()">
+            <button color="warn" dsh-button fxFlex fxFlex.gt-sm="180px" (click)="cancelHold()">
                 {{ t('actions.deny') }}
             </button>
-            <button fxFlex fxFlex.gt-sm="180px" dsh-button color="accent" (click)="confirmHold()">
+            <button color="accent" dsh-button fxFlex fxFlex.gt-sm="180px" (click)="confirmHold()">
                 {{ t('actions.accept') }}
             </button>
         </div>

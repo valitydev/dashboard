@@ -1,24 +1,36 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnChanges,
+    OnInit,
+    Output,
+} from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
+import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { PaymentInstitution } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
 import negate from 'lodash-es/negate';
-// eslint-disable-next-line you-dont-need-lodash-underscore/omit
 import omit from 'lodash-es/omit';
 import pick from 'lodash-es/pick';
 import { defer, ReplaySubject, BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ShopsService } from '@dsh/api/payments';
-import { createDateRangeWithPreset, Preset, DateRangeWithPreset } from '@dsh/components/date-range-filter';
-import { shareReplayRefCount } from '@dsh/operators';
+import { shareReplayRefCount } from '@dsh/app/custom-operators';
+import { ShopsDataService } from '@dsh/app/shared';
+import {
+    createDateRangeWithPreset,
+    Preset,
+    DateRangeWithPreset,
+} from '@dsh/components/date-range-filter';
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
 import { filterShopsByRealm } from '../../operators';
+
 import { AdditionalFilters, DialogFiltersComponent } from './additional-filters';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
@@ -43,17 +55,22 @@ export class InvoicesSearchFiltersComponent implements OnChanges, OnInit {
     @Output() filtersChanged = new EventEmitter<Filters>();
 
     defaultDateRange = createDateRangeWithPreset(Preset.Last90days);
-    form = this.fb.group<Filters>({
+    form = this.fb.group({
         dateRange: this.defaultDateRange,
         invoiceIDs: null,
         shopIDs: null,
         invoiceStatus: null,
     });
-    shops$ = defer(() => this.realm$).pipe(filterShopsByRealm(this.shopService.shops$), shareReplayRefCount());
+    shops$ = defer(() => this.realm$).pipe(
+        filterShopsByRealm(this.shopsDataService.shops$),
+        shareReplayRefCount(),
+    );
     isAdditionalFilterApplied$ = defer(() => this.additionalFilters$).pipe(map(negate(isEmpty)));
 
     get keys(): string[] {
-        return this.mediaObserver.isActive('gt-sm') ? [...MAIN_FILTERS, ...ADDITIONAL_FILTERS] : MAIN_FILTERS;
+        return this.mediaObserver.isActive('gt-sm')
+            ? [...MAIN_FILTERS, ...ADDITIONAL_FILTERS]
+            : MAIN_FILTERS;
     }
 
     private additionalFilters$ = new BehaviorSubject<AdditionalFilters>({});
@@ -61,14 +78,16 @@ export class InvoicesSearchFiltersComponent implements OnChanges, OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private shopService: ShopsService,
+        private shopsDataService: ShopsDataService,
         private dialog: MatDialog,
-        private mediaObserver: MediaObserver
+        private mediaObserver: MediaObserver,
     ) {}
 
     ngOnInit(): void {
         combineLatest([
-            getFormValueChanges(this.form).pipe(map((filters) => pick(filters, this.keys) as MainFilters)),
+            getFormValueChanges(this.form).pipe(
+                map((filters) => pick(filters, this.keys) as MainFilters),
+            ),
             this.additionalFilters$.pipe(map((filters) => omit(filters, this.keys))),
         ])
             .pipe(untilDestroyed(this))

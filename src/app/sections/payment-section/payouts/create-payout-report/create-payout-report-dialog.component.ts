@@ -22,15 +22,19 @@ export class CreatePayoutReportDialogComponent implements OnInit {
         private createPayoutReportDialogService: CreatePayoutReportDialogService,
         private transloco: TranslocoService,
         private snackBar: MatSnackBar,
-        @Inject(MAT_DIALOG_DATA) private data: { payout: Payout }
+        @Inject(MAT_DIALOG_DATA) private data: { payout: Payout },
     ) {}
 
     ngOnInit() {
         this.createPayoutReportDialogService.errorOccurred$.subscribe(() =>
             this.snackBar.open(
-                this.transloco.translate('payouts.errors.createReportError', null, 'payment-section'),
-                'OK'
-            )
+                this.transloco.translate(
+                    'payouts.errors.createReportError',
+                    null,
+                    'payment-section',
+                ),
+                'OK',
+            ),
         );
     }
 

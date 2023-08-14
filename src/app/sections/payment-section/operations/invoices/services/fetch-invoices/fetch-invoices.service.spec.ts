@@ -5,11 +5,12 @@ import { of } from 'rxjs';
 import { delay, take } from 'rxjs/operators';
 import { deepEqual, instance, mock, when } from 'ts-mockito';
 
-import { PaymentInstitutionRealm } from '@dsh/api/model';
-import { InvoiceSearchService } from '@dsh/api/search';
+import { PaymentInstitutionRealm } from '@dsh/app/api/model';
+import { InvoiceSearchService } from '@dsh/app/api/search';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 
 import { generateMockInvoiceList } from '../../tests/generate-mock-invoice-list';
+
 import { FetchInvoicesService } from './fetch-invoices.service';
 
 describe('FetchInvoicesService', () => {
@@ -59,8 +60,8 @@ describe('FetchInvoicesService', () => {
                     '',
                     deepEqual({ paymentInstitutionRealm: 'test' }),
                     5,
-                    undefined
-                )
+                    undefined,
+                ),
             ).thenReturn(of({ result: generateMockInvoiceList(2) }));
 
             service.searchResult$.pipe(take(1)).subscribe((res) => {
@@ -78,12 +79,18 @@ describe('FetchInvoicesService', () => {
                     '',
                     deepEqual({ paymentInstitutionRealm: 'test' }),
                     5,
-                    undefined
-                )
+                    undefined,
+                ),
             ).thenReturn(of({ result: generateMockInvoiceList(5), continuationToken: 'token' }));
 
             when(
-                invoiceSearchService.searchInvoices('', '', deepEqual({ paymentInstitutionRealm: 'test' }), 5, 'token')
+                invoiceSearchService.searchInvoices(
+                    '',
+                    '',
+                    deepEqual({ paymentInstitutionRealm: 'test' }),
+                    5,
+                    'token',
+                ),
             ).thenReturn(of({ result: generateMockInvoiceList(2, 5) }));
 
             let count = 0;
@@ -113,8 +120,8 @@ describe('FetchInvoicesService', () => {
                     '',
                     deepEqual({ paymentInstitutionRealm: 'test' }),
                     5,
-                    undefined
-                )
+                    undefined,
+                ),
             ).thenReturn(of({ result: generateMockInvoiceList(1) }).pipe(delay(600)));
 
             let count = 0;
@@ -143,8 +150,8 @@ describe('FetchInvoicesService', () => {
                     '',
                     deepEqual({ paymentInstitutionRealm: 'test' }),
                     5,
-                    undefined
-                )
+                    undefined,
+                ),
             ).thenReturn(of({ result: generateMockInvoiceList(1) }));
 
             service.lastUpdated$.pipe(take(1)).subscribe((res) => {

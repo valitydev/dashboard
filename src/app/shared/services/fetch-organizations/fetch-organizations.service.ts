@@ -3,10 +3,10 @@ import { Organization } from '@vality/swag-organizations';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 
-import { OrgsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/app/api/organizations';
+import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME, FetchResult, PartialFetcher } from '@dsh/app/shared';
-import { mapToTimestamp } from '@dsh/operators';
 
 @Injectable()
 export class FetchOrganizationsService extends PartialFetcher<Organization, void> {
@@ -15,12 +15,18 @@ export class FetchOrganizationsService extends PartialFetcher<Organization, void
     constructor(
         private organizationsService: OrgsService,
         @Inject(SEARCH_LIMIT) private searchLimit: number,
-        @Inject(DEBOUNCE_FETCHER_ACTION_TIME) debounceActionTime: number
+        @Inject(DEBOUNCE_FETCHER_ACTION_TIME) debounceActionTime: number,
     ) {
         super(debounceActionTime);
     }
 
-    protected fetch(_params: void, continuationToken?: string): Observable<FetchResult<Organization>> {
-        return this.organizationsService.listOrgMembership({ limit: this.searchLimit, continuationToken });
+    protected fetch(
+        _params: void,
+        continuationToken?: string,
+    ): Observable<FetchResult<Organization>> {
+        return this.organizationsService.listOrgMembership({
+            limit: this.searchLimit,
+            continuationToken,
+        });
     }
 }

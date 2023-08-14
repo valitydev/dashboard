@@ -1,0 +1,31 @@
+<div
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.apiKeys.list'"
+    fxLayout="column"
+    fxLayoutGap="32px"
+>
+    <div fxLayout="column" fxLayoutGap="24px">
+        <div fxLayout="column" gdColumns="1fr 1fr 1fr" gdColumns.lt-md="1fr" gdGap="24px">
+            <dsh-details-item [title]="t('name')">
+                <div class="dsh-body-1">
+                    {{ apiKey.name }}
+                </div>
+            </dsh-details-item>
+            <dsh-details-item [title]="t('status')">
+                <dsh-status [color]="statusColors[apiKey.status]">{{
+                    (statusLabels$ | async)[apiKey.status]
+                }}</dsh-status>
+            </dsh-details-item>
+            <dsh-details-item [title]="t('createdAt')">
+                <div class="dsh-body-1">{{ apiKey.createdAt | date: 'dd MMMM yyyy, HH:mm' }}</div>
+            </dsh-details-item>
+        </div>
+        <mat-divider></mat-divider>
+        <div fxLayout="column" fxLayoutGap="24px">
+            <div>
+                <button color="warn" dsh-button (click)="delete(apiKey)">
+                    {{ t('delete') }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

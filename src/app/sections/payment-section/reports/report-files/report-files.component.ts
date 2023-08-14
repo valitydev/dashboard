@@ -21,25 +21,29 @@ export class ReportFilesComponent implements OnInit {
     constructor(
         private reportFilesService: ReportFilesService,
         private snackBar: MatSnackBar,
-        private transloco: TranslocoService
+        private transloco: TranslocoService,
     ) {}
 
     ngOnInit() {
         this.reportFilesService.errorOccurred$.subscribe(() =>
             this.snackBar.open(
-                this.transloco.translate('reports.errors.downloadReportError', null, 'payment-section'),
+                this.transloco.translate(
+                    'reports.errors.downloadReportError',
+                    null,
+                    'payment-section',
+                ),
                 'OK',
                 {
                     duration: 2000,
-                }
-            )
+                },
+            ),
         );
     }
 
     downloadAll() {
         this.reportFilesService.download(
             this.reportID,
-            this.files.map((file) => file.id)
+            this.files.map((file) => file.id),
         );
     }
 }

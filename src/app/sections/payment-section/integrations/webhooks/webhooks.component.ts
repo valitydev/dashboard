@@ -21,7 +21,7 @@ export class WebhooksComponent implements OnInit, OnDestroy {
         private createWebhookService: CreateWebhookService,
         private webhooksExpandedIdManager: WebhooksExpandedIdManager,
         private transloco: TranslocoService,
-        private snackBar: MatSnackBar
+        private snackBar: MatSnackBar,
     ) {}
 
     ngOnInit() {
@@ -29,11 +29,15 @@ export class WebhooksComponent implements OnInit, OnDestroy {
         this.receiveWebhooksService.receiveWebhooks();
         this.createWebhookService.webhookCreated$.subscribe(() => {
             this.snackBar.open(
-                this.transloco.translate('webhook.createWebhook.successfullyCreated', null, 'payment-section'),
+                this.transloco.translate(
+                    'webhook.createWebhook.successfullyCreated',
+                    null,
+                    'payment-section',
+                ),
                 'OK',
                 {
                     duration: 2000,
-                }
+                },
             );
             this.receiveWebhooks();
         });

@@ -6,11 +6,15 @@ import { RoleAccessName } from './types/role-access-name';
 
 @Pipe({
     name: 'isAccessAllowed',
+    pure: false,
 })
 export class IsAccessAllowedPipe implements PipeTransform, OnDestroy {
     private asyncPipe: AsyncPipe;
 
-    constructor(private roleAccessService: RoleAccessService, ref: ChangeDetectorRef) {
+    constructor(
+        private roleAccessService: RoleAccessService,
+        ref: ChangeDetectorRef,
+    ) {
         this.asyncPipe = new AsyncPipe(ref);
     }
 
@@ -20,13 +24,15 @@ export class IsAccessAllowedPipe implements PipeTransform, OnDestroy {
 
     transform(
         roleAccessNames: RoleAccessName[] | keyof typeof RoleAccessName,
-        type: 'every' | 'some' = 'every'
+        type: 'every' | 'some' = 'every',
     ): boolean {
         return this.asyncPipe.transform(
             this.roleAccessService.isAccessAllowed(
-                Array.isArray(roleAccessNames) ? roleAccessNames : [RoleAccessName[roleAccessNames]],
-                type
-            )
+                Array.isArray(roleAccessNames)
+                    ? roleAccessNames
+                    : [RoleAccessName[roleAccessNames]],
+                type,
+            ),
         );
     }
 }

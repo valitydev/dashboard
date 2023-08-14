@@ -3,7 +3,7 @@ import { PaymentSearchResult } from '@vality/swag-payments';
 import { BehaviorSubject, Observable, of, ReplaySubject, Subject } from 'rxjs';
 import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
 
-import { PaymentsService } from '@dsh/api/payments';
+import { PaymentsService } from '@dsh/app/api/payments';
 
 export interface ReceivePaymentParams {
     invoiceID: string;
@@ -35,11 +35,11 @@ export class ReceivePaymentService {
                             this.loading$.next(false);
                             this.error$.next(true);
                             return of('error');
-                        })
-                    )
+                        }),
+                    ),
                 ),
                 filter((result) => result !== 'error'),
-                map((r) => r as PaymentSearchResult)
+                map((r) => r as PaymentSearchResult),
             )
             .subscribe((payment: PaymentSearchResult) => {
                 this.loading$.next(false);

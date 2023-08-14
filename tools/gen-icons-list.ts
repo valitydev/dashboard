@@ -21,5 +21,7 @@ async function genIconsList(iconsDirPath: string) {
 }
 
 (async () => {
-    return await Promise.all(iconsConfig.sourceIconsDirPaths.map((sourcePath) => genIconsList(sourcePath)));
+    return await Promise.all(
+        iconsConfig.sourceIconsDirPaths.map((sourcePath) => genIconsList(sourcePath)),
+    );
 })();

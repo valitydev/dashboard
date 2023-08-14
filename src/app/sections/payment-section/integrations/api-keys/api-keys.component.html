@@ -1,0 +1,37 @@
+<div
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.apiKeys'"
+    fxLayout="column"
+    fxLayoutGap="32px"
+>
+    <div
+        fxLayout="row"
+        fxLayout.lt-md="column"
+        fxLayoutAlign="space-between"
+        fxLayoutAlign.lt-md="center stretch"
+        fxLayoutGap="24px"
+    >
+        <div fxLayoutAlign=" center" fxLayoutGap="16px" style="cursor: pointer" (click)="toggle()">
+            <div class="dsh-subheading-1">
+                {{ t('showInactive') }}
+            </div>
+            <mat-slide-toggle [checked]="showInactive"></mat-slide-toggle>
+        </div>
+        <button color="accent" dsh-button (click)="create()">{{ t('create') }}</button>
+    </div>
+
+    <dsh-accordion-table
+        [columns]="columns"
+        [contentHeader]="contentHeader"
+        [data]="apiKeys$ | async"
+        [expanded]="expanded"
+        [hasMore]="hasMore$ | async"
+        [inProgress]="isLoading$ | async"
+        [lastUpdated]="lastUpdated$ | async"
+        (more)="more()"
+        (update)="update()"
+    >
+        <ng-template let-apiKey>
+            <dsh-api-key-details [apiKey]="apiKey"></dsh-api-key-details>
+        </ng-template>
+    </dsh-accordion-table>
+</div>

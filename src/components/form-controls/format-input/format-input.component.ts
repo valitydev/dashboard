@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { MatFormFieldControl } from '@angular/material/form-field';
-import { TextMaskConfig } from 'angular2-text-mask';
 
 import { CustomFormControl } from '../utils';
+
 import { CONFIGS, Type } from './configs';
+import { TextMaskConfig } from './types/text-mask-config';
 
 @Component({
     selector: 'dsh-format-input',
@@ -14,13 +15,11 @@ import { CONFIGS, Type } from './configs';
 /**
  * @deprecated
  */
-export class FormatInputComponent extends CustomFormControl {
+export class FormatInputComponent extends CustomFormControl<unknown> {
     mask: TextMaskConfig;
     prefix = '';
     postfix = '';
     size: string = null;
-    toInternalValue: (v: any) => any;
-    toPublicValue: (v: any) => any;
 
     private _format: Type;
     @Input()
@@ -35,8 +34,10 @@ export class FormatInputComponent extends CustomFormControl {
     private setType(type: Type) {
         const c = CONFIGS[type];
         const { placeholder, prefix, postfix, size, mask, toInternalValue, toPublicValue } = c;
-        const sizeFromPlaceholder = c.sizeFromPlaceholder === undefined ? true : c.sizeFromPlaceholder;
-        const estimatedSize = sizeFromPlaceholder && !size && placeholder ? placeholder.length : size;
+        const sizeFromPlaceholder =
+            c.sizeFromPlaceholder === undefined ? true : c.sizeFromPlaceholder;
+        const estimatedSize =
+            sizeFromPlaceholder && !size && placeholder ? placeholder.length : size;
 
         this.size = (prefix || postfix) && estimatedSize ? String(estimatedSize) : null;
         this.placeholder = this.prepareText(placeholder);

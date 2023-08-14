@@ -25,5 +25,5 @@ export const customTooltip = ({ series, dataPointIndex, w }) => {
     `;
 };
 
-const getValueX = (series: any[], index: number): string =>
+const getValueX = (series, index: number): string =>
     series.reduce((acc, curr) => (acc ? acc : curr.data.length ? curr.data[index].x : acc), null);

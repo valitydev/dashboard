@@ -1,11 +1,10 @@
-import { Component, Injector, Input, OnChanges } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { Component, Input, OnChanges } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
+import { coerceBoolean } from 'coerce-property';
 import isNil from 'lodash-es/isNil';
 
 import { ComponentChanges } from '@dsh/type-utils';
-import { coerceBoolean } from '@dsh/utils';
 
 export interface Option<T> {
     value: T;
@@ -22,9 +21,9 @@ interface OptionScore<T> {
     selector: 'dsh-multi-select-field',
     templateUrl: 'multi-select-field.component.html',
     styleUrls: ['multi-select-field.component.scss'],
-    providers: [provideValueAccessor(MultiSelectFieldComponent)],
+    providers: createControlProviders(() => MultiSelectFieldComponent),
 })
-export class MultiSelectFieldComponent<T> extends WrappedFormControlSuperclass<T[]> implements OnChanges {
+export class MultiSelectFieldComponent<T> extends FormControlSuperclass<T[]> implements OnChanges {
     @Input() options: Option<T>[];
     @Input() label?: string;
     @Input() @coerceBoolean noSearch = false;
@@ -33,12 +32,11 @@ export class MultiSelectFieldComponent<T> extends WrappedFormControlSuperclass<T
     filtered: Option<T>[] = [];
     searchStr: string = '';
 
-    constructor(private fb: FormBuilder, injector: Injector) {
-        super(injector);
-    }
-
     @Input() searchPredicate?: (option: Option<T>, searchStr: string) => number = (option) =>
-        option?.label?.includes(this.searchStr) || JSON.stringify(option.value).includes(this.searchStr) ? 1 : 0;
+        option?.label?.includes(this.searchStr) ||
+        JSON.stringify(option.value).includes(this.searchStr)
+            ? 1
+            : 0;
 
     ngOnChanges({ options }: ComponentChanges<MultiSelectFieldComponent<T>>): void {
         if (options) {
@@ -67,7 +65,7 @@ export class MultiSelectFieldComponent<T> extends WrappedFormControlSuperclass<T
                     ({
                         option,
                         score: this.searchPredicate(option, searchStr),
-                    } as OptionScore<T>)
+                    }) as OptionScore<T>,
             )
             .filter((v) => this.selected.has(v.option.value) || v.score > 0)
             .sort((a, b) => a.score - b.score)

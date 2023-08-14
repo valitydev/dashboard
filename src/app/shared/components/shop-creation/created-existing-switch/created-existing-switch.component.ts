@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ContentChild, Input, OnChanges } from '@angular/core';
-import { FormControl, FormGroup } from '@ngneat/reactive-forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { CreatedCaseDirective } from '@dsh/app/shared/components/shop-creation/created-existing-switch/directives/created-case.directive';
 import { ExistingCaseDirective } from '@dsh/app/shared/components/shop-creation/created-existing-switch/directives/existing-case.directive';
@@ -17,11 +17,11 @@ export type TypeUnion<C, E> = {
     existing?: E;
 };
 
-export function createTypeUnionDefaultForm<C, E>(): FormGroup<TypeUnion<C, E>> {
-    return new FormGroup<TypeUnion<C, E>>({
-        type: new FormControl<Type>(null),
-        created: new FormControl<C>({ value: null, disabled: true }) as any,
-        existing: new FormControl<E>({ value: null, disabled: true }) as any,
+export function createTypeUnionDefaultForm<C, E>(optional = false) {
+    return new FormGroup({
+        type: new FormControl<Type>(null, optional ? undefined : Validators.required),
+        created: new FormControl<C>({ value: null, disabled: true }),
+        existing: new FormControl<E>({ value: null, disabled: true }),
     });
 }
 
@@ -31,7 +31,11 @@ export function createTypeUnionDefaultForm<C, E>(): FormGroup<TypeUnion<C, E>> {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreatedExistingSwitchComponent<N, E> implements OnChanges {
-    @Input() form: FormGroup<TypeUnion<N, E>>;
+    @Input() form: FormGroup<{
+        type: FormControl<Type>;
+        created: FormControl<N>;
+        existing: FormControl<E>;
+    }>;
     type = Type;
 
     @ContentChild(CreatedCaseDirective) createdCase!: CreatedCaseDirective;

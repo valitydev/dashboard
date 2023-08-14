@@ -6,6 +6,7 @@ import { instance, mock, verify } from 'ts-mockito';
 
 import { generateMockPayment } from '../../tests/generate-mock-payment';
 import { PaymentIds } from '../../types/payment-ids';
+
 import { PaymentDetailsComponent } from './payment-details.component';
 import { InvoiceDetailsService } from './services/invoice-details/invoice-details.service';
 

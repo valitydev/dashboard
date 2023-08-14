@@ -8,7 +8,11 @@ import { FetchOrganizationsService } from '@dsh/app/shared/services/fetch-organi
 
 @Injectable()
 export class OrganizationsExpandedIdManager extends ExpandedIdManager<Organization> {
-    constructor(route: ActivatedRoute, router: Router, private fetchOrganizationsService: FetchOrganizationsService) {
+    constructor(
+        route: ActivatedRoute,
+        router: Router,
+        private fetchOrganizationsService: FetchOrganizationsService,
+    ) {
         super(route, router);
     }
 

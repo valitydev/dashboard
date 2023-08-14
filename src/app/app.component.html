@@ -1,3 +1,8 @@
 <dsh-home>
-    <dsh-sections *ngIf="bootstrapped$ | async"></dsh-sections>
+    <dsh-sections *ngIf="bootstrapped$ | async; else spinner"></dsh-sections>
+    <ng-template #spinner>
+        <div fxFlexAlign="center" fxLayout="row">
+            <dsh-spinner style="margin: auto"></dsh-spinner>
+        </div>
+    </ng-template>
 </dsh-home>

@@ -1,0 +1,28 @@
+<div
+    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.reports.reportFiles'"
+    gdColumns="1fr"
+    gdGap="24px"
+>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="8px">
+        <div class="dsh-title">{{ t('title') }}</div>
+        <button
+            [disabled]="!!(progress$ | async)"
+            color="accent"
+            dsh-text-button
+            (click)="download()"
+        >
+            {{ t('downloadAll') }}
+        </button>
+    </div>
+    <div
+        *ngFor="let file of files"
+        gdAlignColumns="center center"
+        gdAlignRows="space-between"
+        gdColumns="auto auto"
+    >
+        <div class="dsh-body-1">{{ file.id }}</div>
+        <button [disabled]="!!(progress$ | async)" dsh-icon-button (click)="download([file.id])">
+            <dsh-bi icon="save"></dsh-bi>
+        </button>
+    </div>
+</div>

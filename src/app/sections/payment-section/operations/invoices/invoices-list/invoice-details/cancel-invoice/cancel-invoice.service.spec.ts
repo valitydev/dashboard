@@ -6,7 +6,7 @@ import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 
-import { InvoiceService } from '@dsh/api/invoice';
+import { InvoiceService } from '@dsh/app/api/invoice';
 
 import { CancelInvoiceService } from './cancel-invoice.service';
 import { CancelInvoiceDialogComponent } from './components/cancel-invoice-dialog/cancel-invoice-dialog.component';
@@ -41,7 +41,7 @@ describe('CancelInvoiceService', () => {
                     {
                         availableLangs: ['operations'],
                         defaultLang: 'operations',
-                    }
+                    },
                 ),
             ],
             providers: [
@@ -75,11 +75,15 @@ describe('CancelInvoiceService', () => {
                     CancelInvoiceDialogComponent,
                     deepEqual({
                         width: '720px',
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(instance(mockDialogRef));
-            when(mockInvoiceService.rescindInvoice('test', deepEqual({ reason: 'test' }))).thenReturn(of(null));
-            when(mockSnackbar.open('invoice was cancelled', 'OK', deepEqual({ duration: 2000 }))).thenReturn(null);
+            when(
+                mockInvoiceService.rescindInvoice('test', deepEqual({ reason: 'test' })),
+            ).thenReturn(of(null));
+            when(
+                mockSnackbar.open('invoice was cancelled', 'OK', deepEqual({ duration: 2000 })),
+            ).thenReturn(null);
         });
 
         afterEach(() => {
@@ -97,8 +101,8 @@ describe('CancelInvoiceService', () => {
                     CancelInvoiceDialogComponent,
                     deepEqual({
                         width: '720px',
-                    })
-                )
+                    }),
+                ),
             ).once();
         });
 
@@ -114,7 +118,7 @@ describe('CancelInvoiceService', () => {
             expect(service.cancelInvoice('test')).toBeObservable(
                 cold('a', {
                     a: undefined,
-                })
+                }),
             );
         });
 
@@ -123,7 +127,9 @@ describe('CancelInvoiceService', () => {
 
             service.cancelInvoice('test');
 
-            verify(mockSnackbar.open('invoice was cancelled', 'OK', deepEqual({ duration: 2000 }))).once();
+            verify(
+                mockSnackbar.open('invoice was cancelled', 'OK', deepEqual({ duration: 2000 })),
+            ).once();
         });
     });
 });

@@ -1,4 +1,5 @@
 import { ShopItem } from '../types/shop-item';
+
 import { generateMockShopItem } from './generate-shop-item';
 import { makeEmptyList } from './make-empty-list';
 

@@ -1,21 +1,8 @@
 @use '@angular/material' as mat;
-
-@import 'dsh/typography';
+@use '@vality/ng-core' as v;
 @import 'dsh/style';
-
-@import 'mat/typography';
 @import 'mat/style';
 
-@mixin typography($config) {
-    @include mat.core($config);
-    @include mat-typography($config);
-    @include dsh-typography($config);
-}
-
-@mixin core() {
-    @include typography(dsh-typography-config());
-    @include mat-style();
-    @include dsh-style();
-}
-
-@include core();
+@include v.core();
+@include mat-style();
+@include dsh-style();

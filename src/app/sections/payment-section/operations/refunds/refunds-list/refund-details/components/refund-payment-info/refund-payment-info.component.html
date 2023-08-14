@@ -1,10 +1,14 @@
 <div
+    *transloco="
+        let t;
+        scope: 'payment-section';
+        read: 'paymentSection.operations.refunds.paymentInfo'
+    "
     fxLayout="column"
     fxLayoutGap="24px"
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.refunds.paymentInfo'"
 >
-    <div fxLayout fxLayoutGap="16px" fxLayoutAlign="space-between">
-        <div class="mat-title">{{ t('title') }}</div>
+    <div fxLayout fxLayoutAlign="space-between" fxLayoutGap="16px">
+        <div class="mat-h2">{{ t('title') }}</div>
     </div>
     <ng-container *ngIf="isLoading$ | async; else afterLoading">
         <div *transloco="let c; scope: 'components'; read: 'components.shared'" class="dsh-body-1">
@@ -15,6 +19,9 @@
         <div *ngIf="errorOccurred$ | async; else content" class="dsh-body-1">{{ t('error') }}</div>
     </ng-template>
     <ng-template #content>
-        <dsh-payment-details *ngIf="payment$ | async as payment" [payment]="payment"></dsh-payment-details>
+        <dsh-payment-details
+            *ngIf="payment$ | async as payment"
+            [payment]="payment"
+        ></dsh-payment-details>
     </ng-template>
 </div>

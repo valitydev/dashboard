@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 
 import { ConfigService } from '../config';
+
 import { ThemeName } from './types/theme-name';
 import { createStyleElement } from './utils/create-style-element';
 import { isTheme } from './utils/is-theme';
@@ -14,7 +15,10 @@ export class ThemeManager {
 
     private element: HTMLScriptElement | HTMLLinkElement;
 
-    constructor(@Inject(DOCUMENT) private doc: Document, private configService: ConfigService) {}
+    constructor(
+        @Inject(DOCUMENT) private doc: Document,
+        private configService: ConfigService,
+    ) {}
 
     change(name: ThemeName): void {
         this.removeCurrent();

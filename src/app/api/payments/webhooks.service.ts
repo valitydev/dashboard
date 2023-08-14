@@ -1,9 +1,19 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { WebhooksService as ApiWebhooksService } from '@vality/swag-payments';
+
+import { PartyIdPatchMethodService, PartyIdExtension } from '@dsh/app/api/utils/extensions';
 
 import { createApi } from '../utils';
 
 @Injectable({
     providedIn: 'root',
 })
-export class WebhooksService extends createApi(ApiWebhooksService) {}
+export class WebhooksService extends createApi(ApiWebhooksService, [PartyIdExtension]) {
+    constructor(injector: Injector, partyIdPatchMethodService: PartyIdPatchMethodService) {
+        super(injector);
+        this.createWebhook = partyIdPatchMethodService.patch(
+            this.createWebhook,
+            (params, partyID) => (params.webhookParams.partyID = partyID),
+        );
+    }
+}

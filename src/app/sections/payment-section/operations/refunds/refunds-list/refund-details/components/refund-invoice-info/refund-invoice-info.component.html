@@ -1,10 +1,14 @@
 <div
+    *transloco="
+        let t;
+        scope: 'payment-section';
+        read: 'paymentSection.operations.refunds.invoiceInfo'
+    "
     fxLayout="column"
     fxLayoutGap="24px"
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.refunds.invoiceInfo'"
 >
-    <div fxLayout fxLayoutGap="16px" fxLayoutAlign="space-between">
-        <div class="mat-title">
+    <div fxLayout fxLayoutAlign="space-between" fxLayoutGap="16px">
+        <div class="mat-h2">
             {{ t('title') }} <span>#{{ (invoice$ | async)?.id }}</span>
         </div>
     </div>
@@ -17,6 +21,9 @@
         <div *ngIf="errorOccurred$ | async; else content" class="dsh-body-1">{{ t('error') }}</div>
     </ng-template>
     <ng-template #content>
-        <dsh-invoice-details *ngIf="invoice$ | async as invoice" [invoice]="invoice"></dsh-invoice-details>
+        <dsh-invoice-details
+            *ngIf="invoice$ | async as invoice"
+            [invoice]="invoice"
+        ></dsh-invoice-details>
     </ng-template>
 </div>

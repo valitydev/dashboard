@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
-
-import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { createControlProviders, FormGroupSuperclass } from '@vality/ng-core';
 
 import { MainInfoForm } from './types';
 
@@ -9,9 +8,9 @@ import { MainInfoForm } from './types';
     selector: 'dsh-main-info-filters',
     templateUrl: './main-info-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createControlProviders(MainInfoFiltersComponent),
+    providers: createControlProviders(() => MainInfoFiltersComponent),
 })
-export class MainInfoFiltersComponent extends ValidatedControlSuperclass<MainInfoForm> {
+export class MainInfoFiltersComponent extends FormGroupSuperclass<MainInfoForm> {
     control = this.fb.group<MainInfoForm>({
         withdrawalID: null,
         walletID: null,
@@ -19,7 +18,7 @@ export class MainInfoFiltersComponent extends ValidatedControlSuperclass<MainInf
         destinationID: null,
     });
 
-    constructor(injector: Injector, private fb: FormBuilder) {
-        super(injector);
+    constructor(private fb: FormBuilder) {
+        super();
     }
 }

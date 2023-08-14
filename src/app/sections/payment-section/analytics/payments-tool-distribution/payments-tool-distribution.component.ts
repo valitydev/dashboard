@@ -4,6 +4,7 @@ import { SpinnerType } from '@dsh/components/indicators';
 
 import { ChartsThemeProvider, CHARTS_THEME } from '../charts-theme';
 import { SearchParams } from '../search-params';
+
 import { PaymentsToolDistributionService } from './payments-tool-distribution.service';
 
 @Component({
@@ -24,7 +25,7 @@ export class PaymentsToolDistributionComponent implements OnChanges {
 
     constructor(
         private distributionsService: PaymentsToolDistributionService,
-        @Inject(CHARTS_THEME) private theme: ChartsThemeProvider
+        @Inject(CHARTS_THEME) private theme: ChartsThemeProvider,
     ) {}
 
     ngOnChanges(changes: SimpleChanges) {

@@ -1,12 +1,12 @@
 import { Component, Inject } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormControl, FormGroup } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { FormGroupByValue } from '@vality/ng-core';
 import { CaptureParams } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
 
-import { PaymentsService } from '@dsh/api/payments';
+import { PaymentsService } from '@dsh/app/api/payments';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services';
 import { amountValidator } from '@dsh/components/form-controls';
@@ -24,9 +24,9 @@ import { CreateHoldDialogData } from '../../types/create-hold-dialog-data';
 })
 export class CreateHoldDialogComponent {
     maxReasonLength: number = MAX_REASON_LENGTH;
-    form: FormGroup<CreateRefundForm> = this.fb.group({
+    form = this.fb.group({
         reason: ['', Validators.maxLength(this.maxReasonLength)],
-    });
+    }) as unknown as FormGroupByValue<CreateRefundForm>;
 
     isPartial = false;
 
@@ -38,7 +38,7 @@ export class CreateHoldDialogComponent {
         return this.dialogData.currency;
     }
 
-    get amountControl(): FormControl<number> | null {
+    get amountControl() {
         return this.form.controls.amount ?? null;
     }
 
@@ -47,7 +47,7 @@ export class CreateHoldDialogComponent {
         private dialogRef: MatDialogRef<CreateHoldDialogComponent, BaseDialogResponseStatus>,
         private fb: FormBuilder,
         private paymentsService: PaymentsService,
-        private errorService: ErrorService
+        private errorService: ErrorService,
     ) {}
 
     confirm(): void {
@@ -64,7 +64,7 @@ export class CreateHoldDialogComponent {
                 (err: Error) => {
                     this.errorService.error(err);
                     this.dialogRef.close(BaseDialogResponseStatus.Error);
-                }
+                },
             );
     }
 
@@ -105,7 +105,7 @@ export class CreateHoldDialogComponent {
                 amountValidator,
                 Validators.min(1),
                 Validators.max(this.maxAllowedAmount),
-            ])
+            ]),
         );
     }
 

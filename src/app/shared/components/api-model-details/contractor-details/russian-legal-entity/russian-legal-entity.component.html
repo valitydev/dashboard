@@ -13,7 +13,7 @@
     <dsh-details-item [title]="t('registeredNumber')">
         {{ russianLegalEntity?.registeredNumber }}
     </dsh-details-item>
-    <dsh-details-item gdColumn.gt-sm="1/-1" [title]="t('actualAddress')">
+    <dsh-details-item [title]="t('actualAddress')" gdColumn.gt-sm="1/-1">
         {{ russianLegalEntity?.actualAddress }}
     </dsh-details-item>
     <dsh-details-item [title]="t('representativePosition')">
@@ -27,7 +27,7 @@
     </dsh-details-item>
     <mat-divider gdColumn.gt-sm="1/-1"></mat-divider>
     <dsh-bank-account-details
-        gdColumn.gt-sm="1/-1"
         [bankAccount]="russianLegalEntity?.bankAccount"
+        gdColumn.gt-sm="1/-1"
     ></dsh-bank-account-details>
 </div>

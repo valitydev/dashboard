@@ -1,12 +1,16 @@
-<div *transloco="let t; scope: 'payment-section'; read: 'paymentSection.shops'" fxLayout="column" fxLayoutGap="32px">
-    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="16px" fxLayoutAlign="end">
-        <button (click)="createShop()" color="accent" dsh-button>{{ t('createShop') }}</button>
+<div
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.shops'"
+    fxLayout="column"
+    fxLayoutGap="32px"
+>
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="end" fxLayoutGap="16px">
+        <button color="accent" dsh-button (click)="createShop()">{{ t('createShop') }}</button>
     </div>
     <dsh-shops-list
-        [shopList]="shops$ | async"
-        [lastUpdated]="lastUpdated$ | async"
-        [isLoading]="isLoading$ | async"
         [hasMore]="hasMore$ | async"
+        [isLoading]="isLoading$ | async"
+        [lastUpdated]="lastUpdated$ | async"
+        [shopList]="shops$ | async"
         (refresh)="refreshData()"
         (showMore)="showMore()"
     >

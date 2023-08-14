@@ -39,16 +39,21 @@
             </ng-container>
         </ng-container>
         <mat-divider></mat-divider>
-        <mat-checkbox formControlName="paymentFlowHold">{{ c('form.paymentFlowHold') }}</mat-checkbox>
+        <mat-checkbox formControlName="paymentFlowHold">{{
+            c('form.paymentFlowHold')
+        }}</mat-checkbox>
         <ng-container *ngIf="control.value.paymentFlowHold">
             <label class="dsh-subheading-1">{{ c('form.paymentFlowHoldPolicy') }}:</label>
             <mat-radio-group
+                formControlName="holdExpiration"
                 gdColumns="1fr"
                 gdColumns.gt-sm="1fr 1fr 1fr"
                 gdGap="24px"
-                formControlName="holdExpiration"
             >
-                <mat-radio-button *ngFor="let holdExpiration of holdExpirations" [value]="holdExpiration">
+                <mat-radio-button
+                    *ngFor="let holdExpiration of holdExpirations"
+                    [value]="holdExpiration"
+                >
                     <span>{{ holdExpirationLabels[holdExpiration] }}</span>
                 </mat-radio-button>
             </mat-radio-group>
@@ -57,15 +62,15 @@
         <ng-container *ngIf="paymentLink">
             <mat-divider></mat-divider>
             <!-- TODO select to component and reuse + add style for button       -->
-            <div fxLayout.gt-sm fxLayout="column" fxLayoutAlign.gt-sm=" center" fxLayoutGap="16px">
+            <div fxLayout="column" fxLayout.gt-sm fxLayoutAlign.gt-sm=" center" fxLayoutGap="16px">
                 <mat-form-field fxFlex>
                     <mat-label>{{ c('form.link') }}</mat-label>
-                    <input [value]="paymentLink" matInput readonly disabled />
+                    <input [value]="paymentLink" disabled matInput readonly />
                 </mat-form-field>
                 <button
-                    dsh-button
-                    color="accent"
                     [cdkCopyToClipboard]="paymentLink"
+                    color="accent"
+                    dsh-button
                     (cdkCopyToClipboardCopied)="copied($event)"
                 >
                     {{ c('form.copy') }}

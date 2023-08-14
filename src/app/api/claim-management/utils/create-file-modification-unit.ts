@@ -8,7 +8,7 @@ type FileModificationType = FileModification.FileModificationTypeEnum;
 
 export const createFileModificationUnit = (
     fileId: string,
-    fileModificationType: FileModificationType = FileModificationType.FileCreated
+    fileModificationType: FileModificationType = FileModificationType.FileCreated,
 ): SpecificClaimModificationUnit<FileModificationUnit> => ({
     modificationType: 'ClaimModification',
     claimModificationType: {

@@ -2,17 +2,21 @@
     <dsh-last-updated [lastUpdated]="lastUpdated" (update)="refreshData.emit()"></dsh-last-updated>
     <dsh-payout-row-header></dsh-payout-row-header>
     <dsh-accordion
+        [expanded]="expandedId"
         fxLayout="column"
         fxLayoutGap="16px"
         (expandedChange)="expandedIdChange.emit($event)"
-        [expanded]="expandedId"
     >
-        <dsh-accordion-item *ngFor="let payout of payouts" #accordionItem>
+        <dsh-accordion-item #accordionItem *ngFor="let payout of payouts">
             <dsh-payout-row [payout]="payout"></dsh-payout-row>
             <dsh-accordion-item-content>
                 <dsh-card fxLayout="column" fxLayoutGap="32px">
                     <dsh-accordion-item-content-header
-                        *transloco="let t; scope: 'payment-section'; read: 'paymentSection.payouts.panel'"
+                        *transloco="
+                            let t;
+                            scope: 'payment-section';
+                            read: 'paymentSection.payouts.panel'
+                        "
                         (collapse)="accordionItem.collapse($event)"
                         >{{ t('payoutID', { num: payout.id }) }}</dsh-accordion-item-content-header
                     >

@@ -33,11 +33,6 @@
     "emptySearchResult": {
         "empty": "No data available for this period"
     },
-    "fileUploader": {
-        "choose": "select",
-        "forUpload": "To upload, move the files to the area, or",
-        "uploading": "Loading..."
-    },
     "humanizeDuration": {
         "ago": "ago",
         "justNow": "just now",
@@ -51,9 +46,5 @@
             "week": "wk.",
             "year": "y."
         }
-    },
-    "selectSearchField": {
-        "noEntriesFoundLabel": "Nothing found",
-        "searchPlaceholder": "Search..."
     }
 }

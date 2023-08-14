@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { coerceBoolean } from 'coerce-property';
 import { map } from 'rxjs/operators';
 
-import { ContextService } from '@dsh/app/shared/services/context';
-import { coerceBoolean } from '@dsh/utils';
+import { ContextOrganizationService } from '@dsh/app/shared/services';
 
 import { KeycloakService } from '../../../../auth';
+
 import { ROTATE } from './utils/rotate-animation';
 
 @Component({
@@ -18,7 +19,10 @@ export class UserDropdownComponent {
     @Input() @coerceBoolean expanded = false;
 
     username = this.keycloakService.getUsername();
-    orgName$ = this.contextService.organization$.pipe(map(({ name }) => name));
+    orgName$ = this.contextOrganizationService.organization$.pipe(map(({ name }) => name));
 
-    constructor(private contextService: ContextService, private keycloakService: KeycloakService) {}
+    constructor(
+        private contextOrganizationService: ContextOrganizationService,
+        private keycloakService: KeycloakService,
+    ) {}
 }

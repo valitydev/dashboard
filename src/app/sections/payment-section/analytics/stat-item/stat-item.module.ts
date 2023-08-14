@@ -8,6 +8,7 @@ import { SpinnerModule } from '@dsh/components/indicators';
 import { CardModule } from '@dsh/components/layout';
 
 import { PercentDifferenceModule } from '../percent-difference';
+
 import { StatItemComponent } from './stat-item.component';
 
 @NgModule({

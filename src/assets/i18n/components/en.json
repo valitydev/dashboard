@@ -136,12 +136,6 @@
         "send": "Send for review",
         "title": "Request to create a shop"
     },
-    "createShopDialog": {
-        "internationalLegalEntityType": "International legal entity",
-        "russianLegalEntityType": "Russian legal entity",
-        "title": "New claim",
-        "type": "Create shop"
-    },
     "createdExistingSwitch": {
         "created": "Specify new",
         "existing": "Use existing"
@@ -179,6 +173,15 @@
         "any": "Any",
         "hideAllStatuses": "Hide all statuses",
         "showAllStatuses": "Show all statuses"
+    },
+    "identityFilter": {
+        "activeLabel": "Wallet holder: {{name}}",
+        "label": "Wallet holder"
+    },
+    "inputs": {
+        "identityField": {
+            "label": "Wallet holder"
+        }
     },
     "internationalBankAccountForm": {
         "correspondentAccount": "Correspondent account"

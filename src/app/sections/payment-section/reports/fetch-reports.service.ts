@@ -4,10 +4,10 @@ import isEmpty from 'lodash-es/isEmpty';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 
-import { ReportsService as ReportsApiService } from '@dsh/api/anapi';
+import { ReportsService as ReportsApiService } from '@dsh/app/api/anapi';
+import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { PartialFetcher } from '@dsh/app/shared';
-import { mapToTimestamp } from '@dsh/operators';
 
 import { SearchFiltersParams } from './reports-search-filters';
 
@@ -19,7 +19,7 @@ export class FetchReportsService extends PartialFetcher<Report, SearchFiltersPar
     constructor(
         private reportsService: ReportsApiService,
         @Inject(SEARCH_LIMIT)
-        protected searchLimit: number
+        protected searchLimit: number,
     ) {
         super();
     }
@@ -27,7 +27,9 @@ export class FetchReportsService extends PartialFetcher<Report, SearchFiltersPar
     protected fetch({ realm, ...p }: SearchFiltersParams, continuationToken: string) {
         return this.reportsService.searchReports({
             ...p,
-            reportTypes: isEmpty(p.reportTypes) ? Object.values(Report.ReportTypeEnum) : p.reportTypes,
+            reportTypes: isEmpty(p.reportTypes)
+                ? Object.values(Report.ReportTypeEnum)
+                : p.reportTypes,
             continuationToken,
             paymentInstitutionRealm: realm,
             limit: this.searchLimit,

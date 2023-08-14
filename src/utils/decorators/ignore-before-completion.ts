@@ -1,10 +1,9 @@
 import { Subscription } from 'rxjs';
 
-export function ignoreBeforeCompletion<P extends PropertyKey, C extends { [N in P]: (...args: any[]) => Subscription }>(
-    target: C,
-    propertyKey: P,
-    descriptor: PropertyDescriptor
-) {
+export function ignoreBeforeCompletion<
+    P extends PropertyKey,
+    C extends { [N in P]: (...args: unknown[]) => Subscription },
+>(target: C, propertyKey: P, descriptor: PropertyDescriptor) {
     let lastSubscription: Subscription;
     const original = descriptor.value;
     descriptor.value = function (...args) {

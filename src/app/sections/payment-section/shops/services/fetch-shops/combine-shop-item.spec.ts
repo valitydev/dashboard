@@ -1,5 +1,6 @@
 import { generateMockBalance } from '../../tests/generate-mock-balance';
 import { generateMockShopsList } from '../../tests/generate-mock-shops-list';
+
 import { combineShopItem } from './combine-shop-item';
 
 describe('combineShopItem', () => {
@@ -54,7 +55,11 @@ describe('combineShopItem', () => {
 
     it('should use null if shop has not its own balance data', () => {
         const shopsList = generateMockShopsList(5);
-        const balancesList = [generateMockBalance(1, 15), generateMockBalance(2, 20), generateMockBalance(5, 23)];
+        const balancesList = [
+            generateMockBalance(1, 15),
+            generateMockBalance(2, 20),
+            generateMockBalance(5, 23),
+        ];
 
         expect(combineShopItem(shopsList, balancesList)).toEqual([
             {

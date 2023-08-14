@@ -1,11 +1,11 @@
 <dsh-filter
     *transloco="let t; scope: 'claim-section'; read: 'claimSection.claimStatusesFilter'"
     [active]="isActive"
-    [label]="t('label')"
     [activeLabel]="t('label') | listLabel: (labels$ | async)"
     [content]="content"
-    (save)="save()"
+    [label]="t('label')"
     (clear)="clear()"
+    (save)="save()"
 >
 </dsh-filter>
 <ng-template #content>

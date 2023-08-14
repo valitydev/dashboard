@@ -8,7 +8,7 @@ import { share } from 'rxjs/operators';
 export const SHARE_REPLAY_CONF: ShareReplayConfig = { bufferSize: 1, refCount: true };
 
 export function shareReplayRefCount<T>(
-    params: Pick<ShareReplayConfig, 'bufferSize'> & { resetOnRefCountZeroTimer?: number } = {}
+    params: Pick<ShareReplayConfig, 'bufferSize'> & { resetOnRefCountZeroTimer?: number } = {},
 ): MonoTypeOperatorFunction<T> {
     const state = new ReplaySubject<T>(1);
     return share({

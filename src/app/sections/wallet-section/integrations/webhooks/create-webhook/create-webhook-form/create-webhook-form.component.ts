@@ -5,7 +5,7 @@ import { WebhookScope } from '@vality/swag-wallet';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { IdentitiesService, WalletDictionaryService } from '@dsh/api/wallet';
+import { IdentitiesService, WalletDictionaryService } from '@dsh/app/api/wallet';
 import { oneMustBeSelected } from '@dsh/components/form-controls';
 
 import { getEventsByTopic } from '../get-events-by-topic';
@@ -31,7 +31,7 @@ export class CreateWebhookFormComponent implements OnInit {
     constructor(
         private identitiesService: IdentitiesService,
         private fb: UntypedFormBuilder,
-        private walletDictionaryService: WalletDictionaryService
+        private walletDictionaryService: WalletDictionaryService,
     ) {}
 
     ngOnInit(): void {
@@ -49,10 +49,10 @@ export class CreateWebhookFormComponent implements OnInit {
                         this.fb.group({
                             eventName,
                             selected: false,
-                        })
+                        }),
                     ),
-                    [oneMustBeSelected]
-                )
+                    [oneMustBeSelected],
+                ),
             );
         });
     }

@@ -1,4 +1,11 @@
-import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, Input, QueryList } from '@angular/core';
+import {
+    AfterContentInit,
+    ChangeDetectionStrategy,
+    Component,
+    ContentChildren,
+    Input,
+    QueryList,
+} from '@angular/core';
 
 import { LimitedListItemComponent } from './components/limited-list-item/limited-list-item.component';
 
@@ -28,6 +35,8 @@ export class LimitedListComponent implements AfterContentInit {
     }
 
     private displayContent(): void {
-        this.contentChildren.forEach((item, idx) => (item.hidden = !this.displayedAll && idx >= this.displayedCount));
+        this.contentChildren.forEach(
+            (item, idx) => (item.hidden = !this.displayedAll && idx >= this.displayedCount),
+        );
     }
 }

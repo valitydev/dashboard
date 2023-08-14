@@ -32,7 +32,10 @@
 
         &-button {
             &.dsh-primary {
-                @include button(map-get($background, card), mat.get-color-from-palette($primary, default));
+                @include button(
+                    map-get($background, card),
+                    mat.get-color-from-palette($primary, default)
+                );
                 @include focused-background(mat.get-color-from-palette($primary, default, 0.88));
 
                 &:hover:not(:disabled) {
@@ -41,7 +44,10 @@
             }
 
             &.dsh-accent {
-                @include button(map-get($background, card), mat.get-color-from-palette($accent, default));
+                @include button(
+                    map-get($background, card),
+                    mat.get-color-from-palette($accent, default)
+                );
                 @include focused-background(mat.get-color-from-palette($primary, default, 0.88));
 
                 &:hover:not(:disabled) {
@@ -100,12 +106,18 @@
             @include focused-background(map-get($background, selected-button));
 
             &.dsh-primary {
-                @include button(map-get($background, card), mat.get-color-from-palette($primary, default));
+                @include button(
+                    map-get($background, card),
+                    mat.get-color-from-palette($primary, default)
+                );
                 @include focused-background(mat.get-color-from-palette($primary, 300));
             }
 
             &.dsh-accent {
-                @include button(map-get($background, card), mat.get-color-from-palette($accent, default));
+                @include button(
+                    map-get($background, card),
+                    mat.get-color-from-palette($accent, default)
+                );
                 @include focused-background(mat.get-color-from-palette($accent, 200));
             }
 

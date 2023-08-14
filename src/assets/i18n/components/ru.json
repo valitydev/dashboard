@@ -136,12 +136,6 @@
         "send": "Отправить на рассмотрение",
         "title": "Заявка на создание магазина"
     },
-    "createShopDialog": {
-        "internationalLegalEntityType": "Международное ЮЛ",
-        "russianLegalEntityType": "Российское ЮЛ",
-        "title": "Новая заявка",
-        "type": "Создание магазина"
-    },
     "createdExistingSwitch": {
         "created": "Указать новые",
         "existing": "Использовать существующие"
@@ -179,6 +173,15 @@
         "any": "Любой",
         "hideAllStatuses": "Скрыть все статусы",
         "showAllStatuses": "Показать все статусы"
+    },
+    "identityFilter": {
+        "activeLabel": "Владелец кошелька: {{name}}",
+        "label": "Владелец кошелька"
+    },
+    "inputs": {
+        "identityField": {
+            "label": "Владелец кошелька"
+        }
     },
     "internationalBankAccountForm": {
         "correspondentAccount": "Корреспондентский счет"

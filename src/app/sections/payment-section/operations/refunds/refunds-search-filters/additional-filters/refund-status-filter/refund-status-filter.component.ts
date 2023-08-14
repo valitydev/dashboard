@@ -1,20 +1,20 @@
-import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
-import { WrappedFormControlSuperclass, provideValueAccessor } from '@s-libs/ng-core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
 import { RefundStatus } from '@vality/swag-anapi-v2';
 
-import { AnapiDictionaryService } from '@dsh/api/anapi';
+import { AnapiDictionaryService } from '@dsh/app/api/anapi';
 
 @Component({
     selector: 'dsh-refund-status-filter',
     templateUrl: './refund-status-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideValueAccessor(RefundStatusFilterComponent)],
+    providers: createControlProviders(() => RefundStatusFilterComponent),
 })
-export class RefundStatusFilterComponent extends WrappedFormControlSuperclass<RefundStatus.StatusEnum> {
+export class RefundStatusFilterComponent extends FormControlSuperclass<RefundStatus.StatusEnum> {
     statuses = Object.values(RefundStatus.StatusEnum);
     refundStatusDict$ = this.anapiDictionaryService.refundStatus$;
 
-    constructor(injector: Injector, private anapiDictionaryService: AnapiDictionaryService) {
-        super(injector);
+    constructor(private anapiDictionaryService: AnapiDictionaryService) {
+        super();
     }
 }

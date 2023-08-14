@@ -1,25 +1,47 @@
 <dsh-base-dialog
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentDetails.refunds.createRefund'"
+    *transloco="
+        let t;
+        scope: 'payment-section';
+        read: 'paymentSection.paymentDetails.refunds.createRefund'
+    "
     [title]="t('title')"
     (cancel)="decline()"
 >
-    <form fxLayout="column" [formGroup]="form">
+    <form [formGroup]="form" fxLayout="column">
         <dsh-max-length-input
-            class="create-refund-dialog-reason"
-            formControlName="reason"
             [label]="t('reason')"
             [maxLength]="maxReasonLength"
+            class="create-refund-dialog-reason"
+            formControlName="reason"
         ></dsh-max-length-input>
         <div fxLayout="column" fxLayoutGap="24px">
-            <mat-checkbox [checked]="isPartialRefund" (change)="togglePartialRefund(!isPartialRefund)">{{
-                t('partialRefund')
-            }}</mat-checkbox>
-            <mat-form-field *ngIf="isPartialRefund && amountControl" class="create-refund-dialog-amount">
+            <mat-checkbox
+                [checked]="isPartialRefund"
+                (change)="togglePartialRefund(!isPartialRefund)"
+                >{{ t('partialRefund') }}</mat-checkbox
+            >
+            <mat-form-field
+                *ngIf="isPartialRefund && amountControl"
+                class="create-refund-dialog-amount"
+            >
                 <mat-label>{{ t('amount') }}</mat-label>
-                <dsh-format-input [formControl]="amountControl" format="amount" required></dsh-format-input>
-                <mat-hint *ngIf="availableRefundAmount$ | async as availableRefundAmount; else loadingBalanceHint">
+                <dsh-format-input
+                    [formControl]="amountControl"
+                    format="amount"
+                    required
+                ></dsh-format-input>
+                <mat-hint
+                    *ngIf="
+                        availableRefundAmount$ | async as availableRefundAmount;
+                        else loadingBalanceHint
+                    "
+                >
                     {{ t('availableRefund') }}
-                    : {{ availableRefundAmount.amount | amountCurrency: availableRefundAmount.currency }}
+                    :
+                    {{
+                        availableRefundAmount.amount
+                            | amountCurrency: availableRefundAmount.currency
+                    }}
                     <!--                        <br />-->
                     <!--                        {{ t('balance') }}-->
                     <!--                        : {{ balance.accountBalance.amount | amountCurrency: balance.accountBalance.currency }}-->
@@ -31,7 +53,7 @@
         </div>
     </form>
     <ng-container dshBaseDialogActions>
-        <button dsh-button color="accent" [disabled]="form.invalid" (click)="confirm()">
+        <button [disabled]="form.invalid" color="accent" dsh-button (click)="confirm()">
             {{ t('confirm') }}
         </button>
     </ng-container>

@@ -1,20 +1,20 @@
-import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
-import { WrappedFormControlSuperclass, provideValueAccessor } from '@s-libs/ng-core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
 import { PaymentStatus } from '@vality/swag-anapi-v2';
 
-import { PaymentsDictionaryService } from '@dsh/api/payments';
+import { AnapiDictionaryService } from '@dsh/app/api/anapi';
 
 @Component({
     selector: 'dsh-payment-status-filter',
     templateUrl: './payment-status-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideValueAccessor(PaymentStatusFilterComponent)],
+    providers: createControlProviders(() => PaymentStatusFilterComponent),
 })
-export class PaymentStatusFilterComponent extends WrappedFormControlSuperclass<PaymentStatus.StatusEnum> {
+export class PaymentStatusFilterComponent extends FormControlSuperclass<PaymentStatus.StatusEnum> {
     statuses = Object.values(PaymentStatus.StatusEnum);
-    paymentStatusDict$ = this.paymentsDictionaryService.paymentStatus$;
+    paymentStatusDict$ = this.anapiDictionaryService.paymentStatus$;
 
-    constructor(injector: Injector, private paymentsDictionaryService: PaymentsDictionaryService) {
-        super(injector);
+    constructor(private anapiDictionaryService: AnapiDictionaryService) {
+        super();
     }
 }

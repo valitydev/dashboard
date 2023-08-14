@@ -19,7 +19,7 @@ export class ReportsListComponent implements OnInit, OnDestroy {
     constructor(
         private cancelReportService: CancelReportService,
         private snackBar: MatSnackBar,
-        private transloco: TranslocoService
+        private transloco: TranslocoService,
     ) {}
 
     cancelReport(reportID: number) {
@@ -30,11 +30,15 @@ export class ReportsListComponent implements OnInit, OnDestroy {
         this.cancelReportService.init();
         this.cancelReportService.reportCancelled$.subscribe(() => {
             this.snackBar.open(
-                this.transloco.translate('reports.cancelReport.successfullyCanceled', null, 'payment-section'),
+                this.transloco.translate(
+                    'reports.cancelReport.successfullyCanceled',
+                    null,
+                    'payment-section',
+                ),
                 'OK',
                 {
                     duration: 2000,
-                }
+                },
             );
             this.refreshData.emit();
         });

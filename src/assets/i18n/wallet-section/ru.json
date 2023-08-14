@@ -1,6 +1,5 @@
 {
     "depositDetails": {
-        "amount": "Сумма зачисления",
         "error": "Ошибка",
         "errors": {
             "failed": "Ошибка при пополнении"
@@ -43,10 +42,42 @@
         "sourceID": "Идентификатор источника",
         "walletID": "Кошелек"
     },
+    "reports": {
+        "createReportDialog": {
+            "confirm": "Сформировать",
+            "error": "Ошибка при создании отчета",
+            "from": "Начало периода",
+            "subtitle": "Отчет с реестром операций за выбранный период",
+            "success": "Отчет успешно создан",
+            "time": "Время",
+            "title": "Параметры формирования отчета",
+            "to": "Конец периода"
+        },
+        "createdAt": "Дата и время создания",
+        "dateRangeDescription": "Период создания отчетов",
+        "errors": {
+            "downloadReportError": "Не удалось загрузить документы",
+            "identityNotSpecified": "Владелец кошелька не указан"
+        },
+        "openCreateReport": "Создать отчет",
+        "period": "Период отчетности",
+        "report": "Отчет",
+        "reportFiles": {
+            "downloadAll": "Загрузить все",
+            "title": "Документы"
+        },
+        "status": "Статус",
+        "table": {
+            "createdAt": "Дата и время создания",
+            "reportingPeriod": "Период отчетности",
+            "status": "Статус"
+        }
+    },
     "walletSection": {
         "nav": {
             "deposits": "Пополнения",
             "integrations": "Интеграция",
+            "reports": "Отчеты",
             "wallets": "Кошельки",
             "withdrawals": "Выводы"
         }
@@ -65,6 +96,7 @@
         },
         "mainInfo": {
             "createdAt": "Дата и время создания",
+            "fetchWalletAccountError": "Ошибка загрузки баланса",
             "name": "Название"
         },
         "wallet": "Кошелек",
@@ -136,7 +168,6 @@
     },
     "withdrawals": {
         "details": {
-            "amount": "Сумма списания",
             "error": "Ошибка",
             "errors": {
                 "failed": "Произошла ошибка при выводе средств"

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 
+import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { QueryParamsService } from '@dsh/app/shared/services/query-params';
-import { shareReplayRefCount } from '@dsh/operators';
 
 import { FetchWithdrawalsService, WithdrawalsExpandedIdManager } from './services';
 import { WithdrawalsFilters } from './withdrawals-filters';
@@ -26,12 +26,15 @@ export class WithdrawalsComponent implements OnInit {
         private snackBar: MatSnackBar,
         private transloco: TranslocoService,
         private withdrawalsExpandedIdManager: WithdrawalsExpandedIdManager,
-        private qp: QueryParamsService<WithdrawalsFilters>
+        private qp: QueryParamsService<WithdrawalsFilters>,
     ) {}
 
     ngOnInit(): void {
         this.fetchWithdrawalsService.errors$.subscribe(() =>
-            this.snackBar.open(this.transloco.translate('withdrawals.fetchError', null, 'wallet-section'), 'OK')
+            this.snackBar.open(
+                this.transloco.translate('withdrawals.fetchError', null, 'wallet-section'),
+                'OK',
+            ),
         );
     }
 

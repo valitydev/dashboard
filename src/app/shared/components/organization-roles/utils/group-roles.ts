@@ -1,6 +1,7 @@
 import { MemberRole } from '@vality/swag-organizations';
 
 import { RoleGroup, RoleGroupScope } from '../types/role-group';
+
 import { sortRoleIds } from './sort-role-ids';
 
 export function groupRoles(roles: MemberRole[]): RoleGroup[] {

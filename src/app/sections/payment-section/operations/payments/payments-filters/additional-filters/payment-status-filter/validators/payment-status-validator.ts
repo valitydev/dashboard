@@ -1,8 +1,10 @@
-import { FormControl, ValidatorFn } from '@ngneat/reactive-forms';
+import { FormControl, ValidatorFn } from '@angular/forms';
 import { PaymentStatus } from '@vality/swag-anapi-v2';
 import isNil from 'lodash-es/isNil';
 
-export const paymentStatusValidator: ValidatorFn = (control: FormControl<PaymentStatus.StatusEnum>) => {
+export const paymentStatusValidator: ValidatorFn = (
+    control: FormControl<PaymentStatus.StatusEnum>,
+) => {
     const value = control.value;
     const isValid = isNil(value) || Object.values(PaymentStatus.StatusEnum).includes(value);
 

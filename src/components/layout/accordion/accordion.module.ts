@@ -6,6 +6,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { BootstrapIconModule, ResizedModule } from '@dsh/components/indicators';
 
 import { ButtonModule } from '../../buttons';
+
 import { AccordionItemComponent, LazyPanelContentDirective } from './accordion-item';
 import { AccordionItemContentComponent } from './accordion-item-content';
 import { AccordionItemContentHeaderComponent } from './accordion-item-content-header';
@@ -20,7 +21,14 @@ const EXPORTED_DECLARATIONS = [
 ];
 
 @NgModule({
-    imports: [CommonModule, ResizedModule, FlexLayoutModule, ButtonModule, MatDividerModule, BootstrapIconModule],
+    imports: [
+        CommonModule,
+        ResizedModule,
+        FlexLayoutModule,
+        ButtonModule,
+        MatDividerModule,
+        BootstrapIconModule,
+    ],
     declarations: [EXPORTED_DECLARATIONS],
     exports: [EXPORTED_DECLARATIONS],
 })

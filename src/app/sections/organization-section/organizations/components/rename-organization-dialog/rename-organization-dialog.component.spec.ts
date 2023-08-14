@@ -9,9 +9,12 @@ import { TranslocoTestingModule } from '@ngneat/transloco';
 import { of, throwError } from 'rxjs';
 import { anyString, anything, instance, mock, objectContaining, verify, when } from 'ts-mockito';
 
-import { OrgsService } from '@dsh/api/organizations';
-import { MOCK_ORG } from '@dsh/api/organizations/tests/mock-org';
-import { BaseDialogModule, BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
+import { OrgsService } from '@dsh/app/api/organizations';
+import { MOCK_ORG } from '@dsh/app/api/organizations/tests/mock-org';
+import {
+    BaseDialogModule,
+    BaseDialogResponseStatus,
+} from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services/error';
 import { NotificationService } from '@dsh/app/shared/services/notification';
 
@@ -95,7 +98,9 @@ describe('RenameOrganizationDialogComponent', () => {
         });
 
         it('should update organization', () => {
-            when(mockOrganizationsService.patchOrg(anyString(), anything())).thenReturn(of(MOCK_ORG));
+            when(mockOrganizationsService.patchOrg(anyString(), anything())).thenReturn(
+                of(MOCK_ORG),
+            );
 
             input.value = 'Test 2';
             input.dispatchEvent(new Event('input'));
@@ -103,13 +108,20 @@ describe('RenameOrganizationDialogComponent', () => {
             fixture.detectChanges();
             component.update();
 
-            verify(mockOrganizationsService.patchOrg(MOCK_ORG.id, objectContaining({ name: 'Test 2' }))).once();
+            verify(
+                mockOrganizationsService.patchOrg(
+                    MOCK_ORG.id,
+                    objectContaining({ name: 'Test 2' }),
+                ),
+            ).once();
             verify(mockNotificationsService.success()).once();
             verify(mockDialogRef.close(BaseDialogResponseStatus.Success)).once();
         });
 
         it("shouldn't update organization", () => {
-            when(mockOrganizationsService.patchOrg(anyString(), anything())).thenReturn(throwError('Error'));
+            when(mockOrganizationsService.patchOrg(anyString(), anything())).thenReturn(
+                throwError('Error'),
+            );
 
             input.value = 'Test 2';
             input.dispatchEvent(new Event('input'));
@@ -117,7 +129,12 @@ describe('RenameOrganizationDialogComponent', () => {
             fixture.detectChanges();
             component.update();
 
-            verify(mockOrganizationsService.patchOrg(MOCK_ORG.id, objectContaining({ name: 'Test 2' }))).once();
+            verify(
+                mockOrganizationsService.patchOrg(
+                    MOCK_ORG.id,
+                    objectContaining({ name: 'Test 2' }),
+                ),
+            ).once();
             verify(mockErrorService.error(anything())).once();
             verify(mockDialogRef.close(anyString())).never();
         });

@@ -1,15 +1,14 @@
 <span *ngIf="mask && prefix" class="dsh-format-input-spacer">{{ prefix }}</span>
 <input
     *ngIf="mask"
+    [attr.size]="size"
+    [formControl]="formControl"
     [ngClass]="{
         'dsh-format-input-element': true,
         'mat-input-element': true,
         'dsh-format-input-element-full-size': !size
     }"
-    [attr.size]="size"
     [placeholder]="placeholder"
-    [formControl]="formControl"
-    [textMask]="mask"
     (change)="writeValue($event.target.value)"
 />
 <span *ngIf="mask && postfix" class="dsh-format-input-spacer">{{ postfix }}</span>

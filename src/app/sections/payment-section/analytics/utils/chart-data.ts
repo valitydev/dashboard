@@ -1,8 +1,8 @@
 export interface Series {
     name?: string;
     data: {
-        x: any;
-        y: any;
+        x: unknown;
+        y: unknown;
         fillColor?: string;
         strokeColor?: string;
     }[];

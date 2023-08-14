@@ -1,4 +1,8 @@
-<div class="dsh-accordion-item" (click)="expand()" [ngClass]="{ 'dsh-accordion-item-expanded': expanded }">
+<div
+    [ngClass]="{ 'dsh-accordion-item-expanded': expanded }"
+    class="dsh-accordion-item"
+    (click)="expand()"
+>
     <div *ngIf="expandedChange | async; then content; else panelBase"></div>
     <ng-template #content>
         <div @expand class="dsh-accordion-item-content">

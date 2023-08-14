@@ -3,7 +3,7 @@ import { DestinationsTopic, WebhookScope, WithdrawalsTopic } from '@vality/swag-
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { WalletDictionaryService } from '@dsh/api/wallet';
+import { WalletDictionaryService } from '@dsh/app/api/wallet';
 
 @Component({
     selector: 'dsh-webhook-events',
@@ -23,9 +23,9 @@ export class WebhookEventsComponent {
     get events(): WithdrawalsTopic.EventTypesEnum[] | DestinationsTopic.EventTypesEnum[] {
         switch (this.scope.topic) {
             case 'WithdrawalsTopic':
-                return (this.scope as any as WithdrawalsTopic).eventTypes;
+                return (this.scope as unknown as WithdrawalsTopic).eventTypes;
             case 'DestinationsTopic':
-                return (this.scope as any as DestinationsTopic).eventTypes;
+                return (this.scope as unknown as DestinationsTopic).eventTypes;
         }
     }
 

@@ -6,8 +6,8 @@ import { TranslocoTestingModule } from '@ngneat/transloco';
 import { of, throwError } from 'rxjs';
 import { anyString, anything, mock, objectContaining, verify, when } from 'ts-mockito';
 
-import { OrgsService } from '@dsh/api/organizations';
-import { MOCK_ORG } from '@dsh/api/organizations/tests/mock-org';
+import { OrgsService } from '@dsh/app/api/organizations';
+import { MOCK_ORG } from '@dsh/app/api/organizations/tests/mock-org';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services/error';
 import { NotificationService } from '@dsh/app/shared/services/notification';
@@ -64,7 +64,8 @@ describe('CreateOrganizationDialogComponent', () => {
     describe('create', () => {
         it('should create organization', () => {
             when(mockOrganizationsService.createOrg(anything())).thenReturn(of(MOCK_ORG));
-            const input = fixture.debugElement.query(By.css('input')).nativeElement as HTMLInputElement;
+            const input = fixture.debugElement.query(By.css('input'))
+                .nativeElement as HTMLInputElement;
             input.value = 'Test 2';
             input.dispatchEvent(new Event('input'));
             fixture.detectChanges();
@@ -78,7 +79,8 @@ describe('CreateOrganizationDialogComponent', () => {
         it("shouldn't create organization", () => {
             const error = new Error('Error 1');
             when(mockOrganizationsService.createOrg(anything())).thenReturn(throwError(error));
-            const input = fixture.debugElement.query(By.css('input')).nativeElement as HTMLInputElement;
+            const input = fixture.debugElement.query(By.css('input'))
+                .nativeElement as HTMLInputElement;
             input.value = 'Test 2';
             input.dispatchEvent(new Event('input'));
             fixture.detectChanges();

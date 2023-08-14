@@ -5,6 +5,7 @@ import { TranslocoTestingModule } from '@ngneat/transloco';
 import { instance, mock } from 'ts-mockito';
 
 import { OrganizationsExpandedIdManager } from '../../services/organizations-expanded-id-manager/organizations-expanded-id-manager.service';
+
 import { OrganizationsListComponent } from './organizations-list.component';
 
 @Component({
@@ -20,7 +21,9 @@ describe('OrganizationsListComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [TranslocoTestingModule.withLangs({}, { missingHandler: { logMissingKey: false } })],
+            imports: [
+                TranslocoTestingModule.withLangs({}, { missingHandler: { logMissingKey: false } }),
+            ],
             declarations: [HostComponent, OrganizationsListComponent],
         })
             .overrideComponent(OrganizationsListComponent, {

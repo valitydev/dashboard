@@ -9,6 +9,7 @@ import { CardModule } from '@dsh/components/layout';
 
 import { PercentDifferenceModule } from '../percent-difference';
 import { StatItemModule } from '../stat-item/stat-item.module';
+
 import { AveragePaymentComponent } from './average-payment.component';
 
 @NgModule({

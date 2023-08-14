@@ -3,7 +3,7 @@ import { Invoice } from '@vality/swag-payments';
 import { BehaviorSubject, Observable, of, ReplaySubject, Subject } from 'rxjs';
 import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
 
-import { InvoicesService } from '@dsh/api/payments';
+import { InvoicesService } from '@dsh/app/api/payments';
 
 @Injectable()
 export class ReceiveInvoiceService {
@@ -30,11 +30,11 @@ export class ReceiveInvoiceService {
                             this.loading$.next(false);
                             this.error$.next(true);
                             return of('error');
-                        })
-                    )
+                        }),
+                    ),
                 ),
                 filter((result) => result !== 'error'),
-                map((r) => r as Invoice)
+                map((r) => r as Invoice),
             )
             .subscribe((invoice: Invoice) => {
                 this.loading$.next(false);

@@ -83,6 +83,12 @@
             "provisionOfService": "Акт об оказании услуг"
         }
     },
+    "api-keys": {
+        "ApiKeyStatus": {
+            "active": "Активный",
+            "revoked": "Отозван"
+        }
+    },
     "claimManagement": {
         "claimStatus": {
             "accepted": "Одобрена",
@@ -91,13 +97,6 @@
             "pendingAcceptance": "В ожидании одобрения",
             "review": "На рассмотрении",
             "revoked": "Отозвана"
-        }
-    },
-    "darkApi": {
-        "refundStatus": {
-            "failed": "Неуспешен",
-            "pending": "Запущен",
-            "succeeded": "Успешен"
         }
     },
     "organizations": {
@@ -159,6 +158,11 @@
             "DestinationAuthorized": "DestinationAuthorized (Приемник средств успешно авторизован)",
             "DestinationCreated": "DestinationCreated (Приемник средств создан)",
             "DestinationUnauthorized": "DestinationUnauthorized (Попытка авторизации приемника средств завершилась неудачей)"
+        },
+        "reportStatus": {
+            "canceled": "Отменен",
+            "created": "Создан",
+            "pending": "В процессе"
         },
         "withdrawalStatus": {
             "Failed": "Неуспешно",

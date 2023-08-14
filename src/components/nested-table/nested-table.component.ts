@@ -26,13 +26,16 @@ import { queryListStartedArrayChanges } from '@dsh/utils';
 })
 export class NestedTableComponent implements AfterContentInit, OnChanges {
     @Input() rowsGridTemplateColumns: string;
-    @ContentChildren(NestedTableRowComponent) nestedTableRowComponentChildren: QueryList<NestedTableRowComponent>;
+    @ContentChildren(NestedTableRowComponent)
+    nestedTableRowComponentChildren: QueryList<NestedTableRowComponent>;
 
     constructor(private layoutManagementService: LayoutManagementService) {}
 
     ngOnChanges({ rowsGridTemplateColumns }: ComponentChanges<NestedTableComponent>) {
         if (rowsGridTemplateColumns) {
-            this.layoutManagementService.setRowsGridTemplateColumns(rowsGridTemplateColumns.currentValue);
+            this.layoutManagementService.setRowsGridTemplateColumns(
+                rowsGridTemplateColumns.currentValue,
+            );
         }
     }
 
@@ -42,7 +45,7 @@ export class NestedTableComponent implements AfterContentInit, OnChanges {
                 switchMap((rows) => combineLatest(rows.map(({ colsCount$ }) => colsCount$))),
                 map((rowsColsCounts) => Math.max(...rowsColsCounts)),
                 distinctUntilChanged(),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe((colsCount) => this.layoutManagementService.setLayoutColsCount(colsCount));
     }

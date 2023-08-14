@@ -1,13 +1,12 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormControl } from '@ngneat/reactive-forms';
 import { BehaviorSubject, defer, merge, Subject } from 'rxjs';
 import { mapTo, switchMap } from 'rxjs/operators';
 
-import { InvoicesService } from '@dsh/api/payments';
-import { Controls } from '@dsh/app/shared/components/create-payment-link-form';
+import { InvoicesService } from '@dsh/app/api/payments';
+import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { CreatePaymentLinkService } from '@dsh/app/shared/services/create-payment-link/create-payment-link.service';
-import { shareReplayRefCount } from '@dsh/operators';
 
 import { CreatePaymentLinkDialogData } from './types/create-payment-link-dialog-data';
 
@@ -21,14 +20,17 @@ export class CreatePaymentLinkDialogComponent {
         .getInvoicePaymentMethods({ invoiceID: this.data.invoice.id })
         .pipe(shareReplayRefCount());
 
-    formControl = new FormControl<Controls>();
+    formControl = new FormControl();
     paymentLink$ = merge(
         defer(() => this.create$).pipe(
             switchMap(() =>
-                this.createPaymentLinkService.createPaymentLinkByInvoice(this.data.invoice, this.formControl.value)
-            )
+                this.createPaymentLinkService.createPaymentLinkByInvoice(
+                    this.data.invoice,
+                    this.formControl.value,
+                ),
+            ),
         ),
-        this.formControl.valueChanges.pipe(mapTo(''))
+        this.formControl.valueChanges.pipe(mapTo('')),
     );
     inProgress$ = new BehaviorSubject(false);
 
@@ -38,7 +40,7 @@ export class CreatePaymentLinkDialogComponent {
         private dialogRef: MatDialogRef<CreatePaymentLinkDialogComponent, 'cancel'>,
         @Inject(MAT_DIALOG_DATA) public data: CreatePaymentLinkDialogData,
         private createPaymentLinkService: CreatePaymentLinkService,
-        private invoicesService: InvoicesService
+        private invoicesService: InvoicesService,
     ) {}
 
     cancel(): void {

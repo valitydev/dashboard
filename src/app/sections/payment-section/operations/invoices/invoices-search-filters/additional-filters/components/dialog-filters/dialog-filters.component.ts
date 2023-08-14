@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, Inject, OnInit, Injector } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormGroup } from '@ngneat/reactive-forms';
-
-import { ValidatedControlSuperclass, createControlProviders } from '@dsh/utils';
+import { FormGroupByValue, FormGroupSuperclass, createControlProviders } from '@vality/ng-core';
 
 import { AdditionalFilters } from '../../types';
 
@@ -10,22 +9,24 @@ import { AdditionalFilters } from '../../types';
     selector: 'dsh-dialog-filters',
     templateUrl: 'dialog-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createControlProviders(DialogFiltersComponent),
+    providers: createControlProviders(() => DialogFiltersComponent),
 })
-export class DialogFiltersComponent extends ValidatedControlSuperclass<AdditionalFilters> implements OnInit {
-    control: FormGroup<AdditionalFilters> = this.formBuilder.group({
+export class DialogFiltersComponent
+    extends FormGroupSuperclass<Partial<AdditionalFilters>>
+    implements OnInit
+{
+    control = this.formBuilder.group({
         invoiceIDs: null,
         shopIDs: null,
         invoiceStatus: null,
-    });
+    }) as unknown as FormGroupByValue<AdditionalFilters>;
 
     constructor(
-        injector: Injector,
         @Inject(MAT_DIALOG_DATA) private data: AdditionalFilters,
         private dialogRef: MatDialogRef<DialogFiltersComponent, AdditionalFilters>,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
     ) {
-        super(injector);
+        super();
     }
 
     ngOnInit() {

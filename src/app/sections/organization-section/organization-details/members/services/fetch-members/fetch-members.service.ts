@@ -5,9 +5,9 @@ import { Member } from '@vality/swag-organizations';
 import { BehaviorSubject, defer, of } from 'rxjs';
 import { catchError, pluck, shareReplay, switchMap, switchMapTo } from 'rxjs/operators';
 
-import { MembersService } from '@dsh/api/organizations';
+import { MembersService } from '@dsh/app/api/organizations';
+import { mapToTimestamp, progress } from '@dsh/app/custom-operators';
 import { ErrorService } from '@dsh/app/shared';
-import { mapToTimestamp, progress } from '@dsh/operators';
 
 @UntilDestroy()
 @Injectable()
@@ -20,21 +20,24 @@ export class FetchMembersService {
                 catchError((err) => {
                     this.errorService.error(err);
                     return of([] as Member[]);
-                })
-            )
+                }),
+            ),
         ),
         untilDestroyed(this),
-        shareReplay(1)
+        shareReplay(1),
     );
     lastUpdated$ = this.members$.pipe(mapToTimestamp, untilDestroyed(this), shareReplay(1));
-    isLoading$ = defer(() => progress(this.loadMembers$, this.members$)).pipe(untilDestroyed(this), shareReplay(1));
+    isLoading$ = defer(() => progress(this.loadMembers$, this.members$)).pipe(
+        untilDestroyed(this),
+        shareReplay(1),
+    );
 
     private loadMembers$ = new BehaviorSubject<void>(undefined);
 
     constructor(
         private membersService: MembersService,
         private errorService: ErrorService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
     ) {}
 
     load() {

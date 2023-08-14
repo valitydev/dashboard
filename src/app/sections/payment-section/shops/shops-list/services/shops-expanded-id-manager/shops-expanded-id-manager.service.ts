@@ -9,7 +9,11 @@ import { FetchShopsService } from '../../../services/fetch-shops/fetch-shops.ser
 
 @Injectable()
 export class ShopsExpandedIdManagerService extends ExpandedIdManager<Shop> {
-    constructor(protected route: ActivatedRoute, protected router: Router, private shopsService: FetchShopsService) {
+    constructor(
+        protected route: ActivatedRoute,
+        protected router: Router,
+        private shopsService: FetchShopsService,
+    ) {
         super(route, router);
     }
 

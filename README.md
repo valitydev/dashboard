@@ -15,34 +15,11 @@
 
 1. Add environment and configurations:
 
-    - `src/appConfig.json`:
+    - `src/.env`
+    - `src/appConfig.json`
+    - `src/authConfig.json`
 
-        ```json
-        {
-            "apiEndpoint": "https://api.xample.com",
-            "urlShortenerEndpoint": "https://shrt.example.com",
-            "checkoutEndpoint": "https://checkout.example.com",
-            "docsEndpoints": {
-                "payments": "https://example.com/docs"
-            },
-            "theme": {
-                "name": "main"
-            },
-            "sentryDsn": "https://public@sentry.example.com/1",
-            "keycloakEndpoint": "https://auth.example.com"
-        }
-        ```
-
-    - `src/authConfig.json`:
-        ```json
-        {
-            "realm": "external",
-            "auth-server-url": "https://auth.example.com/auth/",
-            "ssl-required": "external",
-            "resource": "koffing",
-            "public-client": true
-        }
-        ```
+You can copy from examples like this one: [`_appConfig.json`](./src/_appConfig.json)
 
 2. Install packages
     ```sh

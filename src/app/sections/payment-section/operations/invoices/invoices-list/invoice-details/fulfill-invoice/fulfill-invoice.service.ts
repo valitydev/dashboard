@@ -5,7 +5,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { Observable, ReplaySubject } from 'rxjs';
 import { filter, switchMap, take } from 'rxjs/operators';
 
-import { InvoicesService } from '@dsh/api/payments';
+import { InvoicesService } from '@dsh/app/api/payments';
 
 import { FulfillInvoiceDialogComponent } from './components/cancel-invoice-dialog/fulfill-invoice-dialog.component';
 
@@ -15,7 +15,7 @@ export class FulfillInvoiceService {
         private invoicesService: InvoicesService,
         private dialog: MatDialog,
         private snackBar: MatSnackBar,
-        private transloco: TranslocoService
+        private transloco: TranslocoService,
     ) {}
 
     fulfillInvoice(invoiceID: string): Observable<void> {
@@ -28,14 +28,20 @@ export class FulfillInvoiceService {
             .pipe(
                 take(1),
                 filter((value) => value !== 'cancel'),
-                switchMap((fulfillInvoice) => this.invoicesService.fulfillInvoice({ invoiceID, fulfillInvoice }))
+                switchMap((fulfillInvoice) =>
+                    this.invoicesService.fulfillInvoice({ invoiceID, fulfillInvoice }),
+                ),
             )
             .subscribe(() => {
                 invoiceFulfilled$.next();
                 this.snackBar.open(
-                    this.transloco.translate('operations.invoices.actions.invoiceFulfilled', null, 'payment-section'),
+                    this.transloco.translate(
+                        'operations.invoices.actions.invoiceFulfilled',
+                        null,
+                        'payment-section',
+                    ),
                     'OK',
-                    { duration: 2000 }
+                    { duration: 2000 },
                 );
             });
         return invoiceFulfilled$;

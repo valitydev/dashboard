@@ -1,20 +1,21 @@
-<div
-    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.integrations'"
-    fxLayout="column"
-    fxLayoutGap="32px"
->
+<div fxLayout="column" fxLayoutGap="32px">
     <nav mat-tab-nav-bar>
         <a
-            mat-tab-link
-            *ngFor="let link of links"
-            [routerLink]="link.path"
-            routerLinkActive
             #rla="routerLinkActive"
+            *ngFor="let link of links"
             [active]="rla.isActive"
+            [routerLink]="link.path"
+            mat-tab-link
+            routerLinkActive
         >
-            <span *transloco="let tabs; scope: 'wallet-section'; read: 'walletSection.integrations.tabs'">{{
-                link.label$ | async
-            }}</span>
+            <span
+                *transloco="
+                    let tabs;
+                    scope: 'wallet-section';
+                    read: 'walletSection.integrations.tabs'
+                "
+                >{{ link.label$ | async }}</span
+            >
         </a>
     </nav>
     <div>

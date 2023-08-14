@@ -5,7 +5,7 @@ import moment from 'moment';
 import { Observable, ReplaySubject } from 'rxjs';
 import { distinctUntilChanged, switchMap, tap, map, withLatestFrom } from 'rxjs/operators';
 
-import { SearchService } from '@dsh/api/anapi';
+import { SearchService } from '@dsh/app/api/anapi';
 import { ErrorService } from '@dsh/app/shared/services';
 
 import { PaymentInstitutionRealmService } from '../../../../../../services';
@@ -23,7 +23,7 @@ export class InvoiceDetailsService {
     constructor(
         private searchService: SearchService,
         private errorService: ErrorService,
-        private paymentInstitutionRealmService: PaymentInstitutionRealmService
+        private paymentInstitutionRealmService: PaymentInstitutionRealmService,
     ) {
         this.invoice$ = this.invoiceData$.asObservable();
         this.error$ = this.innerErrors$.asObservable();
@@ -53,7 +53,7 @@ export class InvoiceDetailsService {
                     });
                 }),
                 map(({ result }) => result?.[0] ?? null),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe({
                 next: (invoice) => {

@@ -1,0 +1,63 @@
+<div
+    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.reports'"
+    fxLayout="column"
+    fxLayoutGap="32px"
+>
+    <div
+        gdAlignColumns="center center"
+        gdAlignRows="space-between start"
+        gdColumns="1fr"
+        gdColumns.gt-sm="repeat(2, auto)"
+        gdGap="32px"
+    >
+        <dsh-filters-group [formGroup]="form">
+            <div class="dsh-body-1" fxHide.lt-md>{{ t('dateRangeDescription') }}:</div>
+            <dsh-date-range-filter
+                [default]="defaultDateRange"
+                [maxDate]="defaultDateRange.end"
+                formControlName="dateRange"
+            ></dsh-date-range-filter>
+            <dsh-identity-filter formControlName="identityID"></dsh-identity-filter>
+        </dsh-filters-group>
+        <button color="accent" dsh-button (click)="create()">
+            {{ t('openCreateReport') }}
+        </button>
+    </div>
+
+    <dsh-accordion-table
+        [columns]="columns"
+        [contentHeader]="contentHeader"
+        [data]="reports$ | async"
+        [error]="form.value.identityID ? undefined : t('errors.identityNotSpecified')"
+        [expanded]="expanded"
+        [hasMore]="hasMore$ | async"
+        [inProgress]="isLoading$ | async"
+        [lastUpdated]="lastUpdated$ | async"
+        (more)="more()"
+        (update)="load()"
+    >
+        <ng-template let-report>
+            <div fxLayout="column" fxLayoutGap="24px">
+                <div gdColumns="1fr" gdColumns.gt-sm="1fr 1fr" gdGap="24px">
+                    <dsh-details-item [title]="t('status')">
+                        <dsh-status [color]="reportStatusColor[report.status]">{{
+                            (reportStatusDict$ | async)?.[report.status]
+                        }}</dsh-status>
+                    </dsh-details-item>
+                    <dsh-details-item [title]="t('createdAt')">{{
+                        report.createdAt | date: 'dd MMMM yyyy, HH:mm:ss'
+                    }}</dsh-details-item>
+                    <dsh-details-item [title]="t('period')" gdColumn="1/-1"
+                        >{{ report.fromTime | date: 'dd MMMM yyyy, HH:mm:ss' }} -
+                        {{ report.toTime | date: 'dd MMMM yyyy, HH:mm:ss' }}</dsh-details-item
+                    >
+                </div>
+
+                <ng-container *ngIf="report.status === 'created'">
+                    <mat-divider></mat-divider>
+                    <dsh-files [files]="report.files" [id]="report.id"></dsh-files>
+                </ng-container>
+            </div>
+        </ng-template>
+    </dsh-accordion-table>
+</div>

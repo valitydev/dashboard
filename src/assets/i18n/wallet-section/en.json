@@ -1,6 +1,5 @@
 {
     "depositDetails": {
-        "amount": "Amount",
         "error": "Error",
         "errors": {
             "failed": "Deposit operation failed"
@@ -43,10 +42,42 @@
         "sourceID": "Source identifier",
         "walletID": "Wallet"
     },
+    "reports": {
+        "createReportDialog": {
+            "confirm": "Generate",
+            "error": "Error generating report",
+            "from": "Start of the period",
+            "subtitle": "Report with the register of operations for the selected period",
+            "success": "Report created successfully",
+            "time": "Time",
+            "title": "Report generation status",
+            "to": "End of the period"
+        },
+        "createdAt": "Created at",
+        "dateRangeDescription": "Reporting period",
+        "errors": {
+            "downloadReportError": "Failed to load documents",
+            "identityNotSpecified": "Wallet holder not specified"
+        },
+        "openCreateReport": "Create report",
+        "period": "Reporting period",
+        "report": "Report",
+        "reportFiles": {
+            "downloadAll": "Download all",
+            "title": "Documents"
+        },
+        "status": "Status",
+        "table": {
+            "createdAt": "Created At",
+            "reportingPeriod": "Reporting period",
+            "status": "Status"
+        }
+    },
     "walletSection": {
         "nav": {
             "deposits": "Deposits",
             "integrations": "Integration",
+            "reports": "Reports",
             "wallets": "Wallets",
             "withdrawals": "Withdrawals"
         }
@@ -65,6 +96,7 @@
         },
         "mainInfo": {
             "createdAt": "Created at",
+            "fetchWalletAccountError": "Balance loading error",
             "name": "Name"
         },
         "wallet": "Wallet",
@@ -136,7 +168,6 @@
     },
     "withdrawals": {
         "details": {
-            "amount": "Payout amount",
             "error": "Error",
             "errors": {
                 "failed": "An error occurred when withdrawing funds"

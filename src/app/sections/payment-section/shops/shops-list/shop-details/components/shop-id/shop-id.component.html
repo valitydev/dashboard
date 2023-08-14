@@ -1,8 +1,8 @@
 <ng-container *transloco="let p; scope: 'payment-section'; read: 'paymentSection.shops.panel'">
-    <div class="mat-title">{{ p('id') }}</div>
-    <div class="mat-subheading-2">{{ id }}</div>
+    <div class="mat-h2">{{ p('id') }}</div>
+    <div class="mat-h3">{{ id }}</div>
     <div>
-        <button dsh-button [cdkCopyToClipboard]="id" (cdkCopyToClipboardCopied)="copied($event)">
+        <button [cdkCopyToClipboard]="id" dsh-button (cdkCopyToClipboardCopied)="copied($event)">
             {{ p('copy') }}
         </button>
     </div>

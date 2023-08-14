@@ -6,7 +6,10 @@
     <div class="dsh-title">{{ t('title') }}</div>
     <div class="dsh-body-1">{{ t('description') }}</div>
     <div
-        *ngIf="walletAccount$ | async as account; else (isLoading$ | async) ? loading : (error$ | async) ? error : null"
+        *ngIf="
+            walletAccount$ | async as account;
+            else (isLoading$ | async) ? loading : (error$ | async) ? error : null
+        "
         gdColumns="1fr"
         gdColumns.gt-sm="1fr 1fr 1fr"
         gdGap="24px"

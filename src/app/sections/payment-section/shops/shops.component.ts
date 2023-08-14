@@ -5,6 +5,7 @@ import { take } from 'rxjs/operators';
 import { ShopCreationService } from '@dsh/app/shared/components/shop-creation';
 
 import { PaymentInstitutionRealmService, RealmShopsService } from '../services';
+
 import { FetchShopsService } from './services/fetch-shops/fetch-shops.service';
 import { ShopsExpandedIdManagerService } from './shops-list/services/shops-expanded-id-manager/shops-expanded-id-manager.service';
 
@@ -26,7 +27,7 @@ export class ShopsComponent implements OnInit {
         private expandedIdManager: ShopsExpandedIdManagerService,
         private createShopService: ShopCreationService,
         private realmShopsService: RealmShopsService,
-        private realmService: PaymentInstitutionRealmService
+        private realmService: PaymentInstitutionRealmService,
     ) {}
 
     ngOnInit(): void {

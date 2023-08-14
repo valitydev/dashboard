@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@a
 import { BehaviorSubject } from 'rxjs';
 
 import { smoothChangeTo } from '../../../utils';
+
 import { HIDE_ANIMATION } from './hide-animation';
 
 const RIGHT_OFFSET = 30;
@@ -53,7 +54,9 @@ export class ScrollUpComponent implements OnInit, OnDestroy {
     }
 
     scrollToTop() {
-        smoothChangeTo(window.pageYOffset, 0, this.scrollTime).subscribe((v) => window.scrollTo(0, v));
+        smoothChangeTo(window.pageYOffset, 0, this.scrollTime).subscribe((v) =>
+            window.scrollTo(0, v),
+        );
     }
 
     private changeIsShow(isShow: boolean) {

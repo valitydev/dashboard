@@ -8,6 +8,7 @@ import { SectionsLinksModule } from '@dsh/app/shared/services/sections-links';
 
 import { ActionbarModule } from '../actionbar';
 import { BrandModule } from '../brand';
+
 import { ToolbarComponent } from './toolbar.component';
 
 @NgModule({

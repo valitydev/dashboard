@@ -22,7 +22,10 @@ export class OrganizationsComponent implements OnInit {
     isLoading$ = this.fetchOrganizationsService.doSearchAction$;
     lastUpdated$ = this.fetchOrganizationsService.lastUpdated$;
 
-    constructor(private fetchOrganizationsService: FetchOrganizationsService, private dialog: MatDialog) {}
+    constructor(
+        private fetchOrganizationsService: FetchOrganizationsService,
+        private dialog: MatDialog,
+    ) {}
 
     ngOnInit() {
         this.fetchOrganizationsService.search();
@@ -31,11 +34,13 @@ export class OrganizationsComponent implements OnInit {
     @ignoreBeforeCompletion
     createOrganization() {
         return this.dialog
-            .open<CreateOrganizationDialogComponent, void, BaseDialogResponseStatus>(CreateOrganizationDialogComponent)
+            .open<CreateOrganizationDialogComponent, void, BaseDialogResponseStatus>(
+                CreateOrganizationDialogComponent,
+            )
             .afterClosed()
             .pipe(
                 filter((r) => r === BaseDialogResponseStatus.Success),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe(() => this.refresh());
     }

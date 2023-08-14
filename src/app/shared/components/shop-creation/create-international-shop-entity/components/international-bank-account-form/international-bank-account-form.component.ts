@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
-
-import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { createControlProviders, FormGroupSuperclass } from '@vality/ng-core';
 
 import { PayoutToolForm } from '../payout-tool-form/types/payout-tool-form';
 
@@ -15,17 +14,19 @@ export interface InternationalBankAccountForm {
     selector: 'dsh-international-bank-account-form',
     templateUrl: 'international-bank-account-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createControlProviders(InternationalBankAccountFormComponent),
+    providers: createControlProviders(() => InternationalBankAccountFormComponent),
 })
-export class InternationalBankAccountFormComponent extends ValidatedControlSuperclass<InternationalBankAccountForm> {
-    control = this.fb.group<InternationalBankAccountForm>({
+export class InternationalBankAccountFormComponent extends FormGroupSuperclass<
+    Partial<InternationalBankAccountForm>
+> {
+    control = this.fb.group({
         payoutTool: null,
-        currency: '',
+        currency: null,
         correspondentPayoutTool: { value: null, disabled: true },
-    });
+    }) as FormGroup;
 
-    constructor(injector: Injector, private fb: FormBuilder) {
-        super(injector);
+    constructor(private fb: FormBuilder) {
+        super();
     }
 
     toggleCorrespondentPayoutTool(): void {

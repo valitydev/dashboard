@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { createControlProviders, FormGroupSuperclass } from '@vality/ng-core';
 import { BankContent } from '@vality/swag-questionary-aggr-proxy';
-
-import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
 
 import { RussianBankAccountForm } from './types/bank-account-form-data';
 
@@ -10,9 +9,11 @@ import { RussianBankAccountForm } from './types/bank-account-form-data';
     selector: 'dsh-russian-bank-account-form',
     templateUrl: 'russian-bank-account-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createControlProviders(RussianBankAccountFormComponent),
+    providers: createControlProviders(() => RussianBankAccountFormComponent),
 })
-export class RussianBankAccountFormComponent extends ValidatedControlSuperclass<RussianBankAccountForm> {
+export class RussianBankAccountFormComponent extends FormGroupSuperclass<
+    Partial<RussianBankAccountForm>
+> {
     control = this.fb.group<RussianBankAccountForm>({
         account: null,
         bankName: null,
@@ -21,8 +22,8 @@ export class RussianBankAccountFormComponent extends ValidatedControlSuperclass<
     });
     searchControl = this.fb.control<string>('');
 
-    constructor(injector: Injector, private fb: FormBuilder) {
-        super(injector);
+    constructor(private fb: FormBuilder) {
+        super();
     }
 
     bankSelected(bank: BankContent): void {

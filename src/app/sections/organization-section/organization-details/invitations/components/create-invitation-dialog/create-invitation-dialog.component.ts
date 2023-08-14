@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { InviteeContact, MemberRole } from '@vality/swag-organizations';
 import { BehaviorSubject } from 'rxjs';
 
-import { InvitationsService } from '@dsh/api/organizations';
+import { InvitationsService } from '@dsh/app/api/organizations';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services/error';
 import { NotificationService } from '@dsh/app/shared/services/notification';
@@ -31,7 +30,7 @@ export class CreateInvitationDialogComponent {
         private invitationsService: InvitationsService,
         private errorService: ErrorService,
         private notificationService: NotificationService,
-        private fb: FormBuilder
+        private fb: FormBuilder,
     ) {}
 
     @inProgressTo('inProgress$')
@@ -57,7 +56,7 @@ export class CreateInvitationDialogComponent {
                 },
                 (err) => {
                     this.errorService.error(err);
-                }
+                },
             );
     }
 

@@ -18,27 +18,33 @@
         fxLayoutGap.xs="16px"
     >
         <button
+            [disabled]="isLoading$ | async"
+            color="warn"
+            dsh-text-button
             fxFlex="160px"
             fxFlex.xs="none"
-            dsh-text-button
-            color="warn"
-            [disabled]="isLoading$ | async"
             (click)="cancel()"
         >
             {{ t('cancel') }}
         </button>
         <button
             *ngIf="!(reportCreated$ | async)"
+            [disabled]="isLoading$ | async"
+            color="accent"
+            dsh-button
             fxFlex="160px"
             fxFlex.xs="none"
-            dsh-button
-            color="accent"
-            [disabled]="isLoading$ | async"
             (click)="create()"
         >
             {{ t('create') }}
         </button>
-        <button *ngIf="reportCreated$ | async" fxFlex.xs="none" dsh-button color="accent" (click)="toReports()">
+        <button
+            *ngIf="reportCreated$ | async"
+            color="accent"
+            dsh-button
+            fxFlex.xs="none"
+            (click)="toReports()"
+        >
             {{ t('toReports') }}
         </button>
     </div>

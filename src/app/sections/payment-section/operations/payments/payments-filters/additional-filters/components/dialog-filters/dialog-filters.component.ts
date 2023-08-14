@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, Inject, OnInit, Injector } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormGroup } from '@ngneat/reactive-forms';
-
-import { ValidatedControlSuperclass, createControlProviders } from '@dsh/utils';
+import { FormGroupSuperclass, createControlProviders } from '@vality/ng-core';
 
 import { paymentStatusValidator } from '../../payment-status-filter';
 import { AdditionalFilters, AdditionalFiltersForm } from '../../types';
@@ -12,10 +11,13 @@ import { formToFilters, filtersToForm } from '../../utils';
     selector: 'dsh-dialog-filters',
     templateUrl: 'dialog-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createControlProviders(DialogFiltersComponent),
+    providers: createControlProviders(() => DialogFiltersComponent),
 })
-export class DialogFiltersComponent extends ValidatedControlSuperclass<AdditionalFiltersForm> implements OnInit {
-    control: FormGroup<AdditionalFiltersForm> = this.formBuilder.group({
+export class DialogFiltersComponent
+    extends FormGroupSuperclass<AdditionalFiltersForm>
+    implements OnInit
+{
+    control = this.fb.group({
         main: null,
         paymentStatus: [null, paymentStatusValidator],
         paymentSum: null,
@@ -24,15 +26,14 @@ export class DialogFiltersComponent extends ValidatedControlSuperclass<Additiona
         invoices: null,
         shops: null,
         binPan: null,
-    });
+    }) as unknown as FormGroup;
 
     constructor(
-        injector: Injector,
         @Inject(MAT_DIALOG_DATA) private data: AdditionalFilters,
         private dialogRef: MatDialogRef<DialogFiltersComponent, AdditionalFilters>,
-        private formBuilder: FormBuilder
+        private fb: FormBuilder,
     ) {
-        super(injector);
+        super();
     }
 
     ngOnInit() {

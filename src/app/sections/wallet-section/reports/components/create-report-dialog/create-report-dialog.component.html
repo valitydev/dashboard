@@ -1,0 +1,68 @@
+<dsh-base-dialog
+    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.reports.createReportDialog'"
+    [subtitle]="t('subtitle')"
+    [title]="t('title')"
+    (cancel)="cancel()"
+>
+    <div [formGroup]="form" fxLayout="column" fxLayoutGap="16px">
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="24px" fxLayoutGap.xs="16px">
+            <mat-form-field fxFlex>
+                <mat-label>{{ t('from') }}</mat-label>
+                <input
+                    [matDatepicker]="from"
+                    [max]="form.value.toTime"
+                    formControlName="fromDate"
+                    matInput
+                    required
+                />
+                <mat-datepicker-toggle [for]="from" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #from></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <mat-label>{{ t('time') }}</mat-label>
+                <input
+                    dshFormatTimeInput
+                    formControlName="fromTime"
+                    matInput
+                    placeholder="00:00:00"
+                    required
+                />
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="24px" fxLayoutGap.xs="16px">
+            <mat-form-field fxFlex>
+                <mat-label>{{ t('to') }}</mat-label>
+                <input
+                    [matDatepicker]="to"
+                    [min]="form.value.fromTime"
+                    formControlName="toDate"
+                    matInput
+                    required
+                />
+                <mat-datepicker-toggle [for]="to" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #to></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <mat-label>{{ t('time') }}</mat-label>
+                <input
+                    dshFormatTimeInput
+                    formControlName="toTime"
+                    matInput
+                    placeholder="00:00:00"
+                    required
+                />
+            </mat-form-field>
+        </div>
+        <dsh-identity-field formControlName="identityID" required></dsh-identity-field>
+    </div>
+    <ng-container dshBaseDialogActions>
+        <button
+            [disabled]="form.invalid || !!(progress$ | async)"
+            color="accent"
+            dsh-button
+            (click)="confirm()"
+        >
+            {{ t('confirm') }}
+        </button>
+    </ng-container>
+</dsh-base-dialog>

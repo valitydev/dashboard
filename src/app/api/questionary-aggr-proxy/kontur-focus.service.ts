@@ -52,7 +52,7 @@ export type ResponsesByRequestType = Mapping<
 export class KonturFocusService extends createApi(ApiKonturFocusService) {
     request<T extends RequestType>(
         konturFocusRequestType: T,
-        requestParams: Partial<Omit<ParamsByRequestType[T], 'konturFocusRequestType'>>
+        requestParams: Partial<Omit<ParamsByRequestType[T], 'konturFocusRequestType'>>,
     ): Observable<ResponsesByRequestType[T]['responses']> {
         return this.requestKonturFocus({
             konturFocusParams: { request: { konturFocusRequestType, ...requestParams } },

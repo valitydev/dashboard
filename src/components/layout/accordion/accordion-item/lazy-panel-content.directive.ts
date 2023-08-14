@@ -4,5 +4,5 @@ import { Directive, TemplateRef } from '@angular/core';
     selector: 'ng-template[dshLazyPanelContent]',
 })
 export class LazyPanelContentDirective {
-    constructor(public _template: TemplateRef<any>) {}
+    constructor(public _template: TemplateRef<unknown>) {}
 }

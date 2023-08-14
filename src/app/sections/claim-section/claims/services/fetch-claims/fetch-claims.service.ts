@@ -4,9 +4,9 @@ import { TranslocoService } from '@ngneat/transloco';
 import { Claim } from '@vality/swag-claim-management';
 import { Observable } from 'rxjs';
 
-import { ClaimsService } from '@dsh/api/claim-management';
+import { ClaimsService } from '@dsh/app/api/claim-management';
+import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { FetchResult, PartialFetcher } from '@dsh/app/shared';
-import { mapToTimestamp } from '@dsh/operators';
 
 import { ClaimsSearchFiltersSearchParams } from '../../claims-search-filters/claims-search-filters-search-params';
 
@@ -19,18 +19,21 @@ export class FetchClaimsService extends PartialFetcher<Claim, ClaimsSearchFilter
     constructor(
         private claimsService: ClaimsService,
         private snackBar: MatSnackBar,
-        private transloco: TranslocoService
+        private transloco: TranslocoService,
     ) {
         super();
         this.errors$.subscribe(() => {
-            this.snackBar.open(this.transloco.translate('shared.httpError', null, 'components'), 'OK');
+            this.snackBar.open(
+                this.transloco.translate('shared.httpError', null, 'components'),
+                'OK',
+            );
             return [];
         });
     }
 
     protected fetch(
         params: ClaimsSearchFiltersSearchParams,
-        continuationToken: string
+        continuationToken: string,
     ): Observable<FetchResult<Claim>> {
         return this.claimsService.searchClaims({
             limit: this.searchLimit,

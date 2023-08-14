@@ -3,7 +3,7 @@ import { ValidatorFn } from '@angular/forms';
 export function regExpToValidator(
     regExp: RegExp,
     forbiddenName: string = 'regExpValidator',
-    required = false
+    required = false,
 ): ValidatorFn {
     return (control) => {
         const value: string = control.value;

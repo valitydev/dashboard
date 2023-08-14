@@ -1,15 +1,13 @@
-import { AbstractControl as NgAbstractControl } from '@angular/forms';
-import { AbstractControl } from '@ngneat/reactive-forms';
+import { AbstractControl } from '@angular/forms';
+import { getValue } from '@vality/ng-core';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
-import { getValue } from './get-value';
-
-export function getFormValueChanges<T>(form: AbstractControl<T> | NgAbstractControl): Observable<T> {
+export function getFormValueChanges<T>(form: AbstractControl<T>): Observable<T> {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return form.valueChanges.pipe(
         startWith(form.value),
         // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-        map(() => getValue(form))
+        map(() => getValue(form)),
     );
 }

@@ -13,6 +13,7 @@ import { ButtonModule } from '@dsh/components/buttons';
 import { DetailsItemModule } from '@dsh/components/layout';
 
 import { ShopBalanceModule } from '../shop-balance';
+
 import { ShopActionsComponent } from './components/shop-actions/shop-actions.component';
 import { ShopContractDetailsComponent } from './components/shop-contract-details/shop-contract-details.component';
 import { ShopIdComponent } from './components/shop-id/shop-id.component';

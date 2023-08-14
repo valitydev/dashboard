@@ -6,6 +6,7 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { FilterModule } from '@dsh/components/filter';
 
 import { ClaimFieldModule } from '../../inputs/claim-field';
+
 import { ClaimFilterComponent } from './claim-filter.component';
 
 @NgModule({

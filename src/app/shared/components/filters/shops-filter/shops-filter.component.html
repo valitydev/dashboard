@@ -1,11 +1,11 @@
 <dsh-filter
     *transloco="let t; scope: 'components'; read: 'components.shopsFilter'"
     [active]="isActive"
-    [label]="t('label')"
     [activeLabel]="t('activeLabel') | listLabel: (labels$ | async)"
     [content]="content"
-    (save)="save()"
+    [label]="t('label')"
     (clear)="clear()"
+    (save)="save()"
 >
 </dsh-filter>
 <ng-template #content>

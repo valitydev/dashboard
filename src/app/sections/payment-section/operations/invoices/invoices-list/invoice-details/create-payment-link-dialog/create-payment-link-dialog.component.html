@@ -1,18 +1,31 @@
 <dsh-base-dialog
     *transloco="let c; scope: 'payment-section'; read: 'paymentSection.createPaymentLinkDialog'"
-    (cancel)="cancel()"
     [title]="c('title')"
+    (cancel)="cancel()"
 >
     <dsh-create-payment-link-form
         [formControl]="formControl"
-        [paymentMethods]="paymentMethods$ | async"
         [paymentLink]="paymentLink$ | async"
+        [paymentMethods]="paymentMethods$ | async"
     ></dsh-create-payment-link-form>
-    <ng-container dshBaseDialogActions *transloco="let t; scope: 'components'; read: 'components.shared'">
-        <button dsh-text-button color="accent" [disabled]="inProgress$ | async" (click)="formControl.reset()">
+    <ng-container
+        *transloco="let t; scope: 'components'; read: 'components.shared'"
+        dshBaseDialogActions
+    >
+        <button
+            [disabled]="inProgress$ | async"
+            color="accent"
+            dsh-text-button
+            (click)="formControl.reset()"
+        >
             {{ t('clearForm') }}
         </button>
-        <button dsh-button (click)="create()" color="accent" [disabled]="formControl.invalid || (inProgress$ | async)">
+        <button
+            [disabled]="formControl.invalid || (inProgress$ | async)"
+            color="accent"
+            dsh-button
+            (click)="create()"
+        >
             {{ c('create') }}
         </button>
     </ng-container>

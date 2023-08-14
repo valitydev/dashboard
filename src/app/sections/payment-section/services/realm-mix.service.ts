@@ -14,11 +14,14 @@ export class RealmMixService<T> {
     private mix$ = new Subject<T>();
 
     constructor(private paymentInstitutionRealmService: PaymentInstitutionRealmService) {
-        this.mixedValue$ = combineLatest([this.paymentInstitutionRealmService.realm$, this.mix$]).pipe(
+        this.mixedValue$ = combineLatest([
+            this.paymentInstitutionRealmService.realm$,
+            this.mix$,
+        ]).pipe(
             map(([realm, value]) => ({
                 ...value,
                 realm,
-            }))
+            })),
         );
     }
 

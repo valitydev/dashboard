@@ -1,19 +1,22 @@
-import { Component, Injector, ChangeDetectionStrategy } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
-import { WrappedFormControlSuperclass, provideValueAccessor } from '@s-libs/ng-core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
 
-import { ShopsService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/app/shared';
 
 @Component({
     selector: 'dsh-shops-filter',
     templateUrl: './shops-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideValueAccessor(ShopsFilterComponent)],
+    providers: createControlProviders(() => ShopsFilterComponent),
 })
-export class ShopsFilterComponent extends WrappedFormControlSuperclass<string[]> {
-    shops$ = this.shopsService.shops$;
+export class ShopsFilterComponent extends FormControlSuperclass<string[]> {
+    shops$ = this.shopsDataService.shops$;
 
-    constructor(injector: Injector, private fb: FormBuilder, private shopsService: ShopsService) {
-        super(injector);
+    constructor(
+        private fb: FormBuilder,
+        private shopsDataService: ShopsDataService,
+    ) {
+        super();
     }
 }

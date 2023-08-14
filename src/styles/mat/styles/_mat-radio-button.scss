@@ -1,13 +1,23 @@
 @use '@angular/material' as mat;
 
 @mixin mat-radio-button-override() {
-    .mat-radio-label {
+    .mat-mdc-radio-button * {
+        cursor: pointer;
+    }
+
+    .mdc-radio {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    .mat-mdc-radio-label {
         white-space: normal !important;
     }
 }
 
 @mixin mat-radio-button-override-typography($config) {
-    .mat-radio-button {
+    .mat-mdc-radio-button {
         font: {
             family: mat.font-family($config, body-1);
             size: mat.font-size($config, body-1);

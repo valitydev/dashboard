@@ -25,6 +25,7 @@ import { CountryCodesModule } from '@dsh/app/shared/services';
 import { ButtonModule } from '@dsh/components/buttons';
 
 import { CurrencyAutocompleteFieldModule } from '../../inputs/currency-autocomplete-field';
+
 import { PayoutToolFormComponent } from './components/payout-tool-form/payout-tool-form.component';
 import { ShopFormComponent } from './components/shop-form/shop-form.component';
 import { CreateInternationalShopEntityComponent } from './create-international-shop-entity.component';

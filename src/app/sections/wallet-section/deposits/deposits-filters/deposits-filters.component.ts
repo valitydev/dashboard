@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import isEmpty from 'lodash-es/isEmpty';
 import isEqual from 'lodash-es/isEqual';
 import negate from 'lodash-es/negate';
-// eslint-disable-next-line you-dont-need-lodash-underscore/omit
 import omit from 'lodash-es/omit';
 import pick from 'lodash-es/pick';
 import { combineLatest, defer, ReplaySubject } from 'rxjs';
@@ -34,18 +33,23 @@ export class DepositsFiltersComponent implements OnInit, OnChanges {
 
     isAdditionalFilterApplied$ = defer(() => this.additionalFilters$).pipe(map(negate(isEmpty)));
     defaultDateRange = createDateRangeWithPreset(Preset.Last90days);
-    form = this.fb.group<MainFilters>({
+    form = this.fb.group({
         dateRange: this.defaultDateRange,
     });
 
     private additionalFilters$ = new ReplaySubject<AdditionalFilters>();
 
-    constructor(private fb: FormBuilder, private dialog: MatDialog) {}
+    constructor(
+        private fb: FormBuilder,
+        private dialog: MatDialog,
+    ) {}
 
     ngOnInit(): void {
         combineLatest([getFormValueChanges(this.form), this.additionalFilters$])
             .pipe(untilDestroyed(this))
-            .subscribe((filters) => this.filtersChanged.next(Object.assign({}, ...filters)));
+            .subscribe((filters) =>
+                this.filtersChanged.next(Object.assign({}, ...filters) as MainFilters),
+            );
     }
 
     ngOnChanges({ initParams }: ComponentChanges<DepositsFiltersComponent>): void {
@@ -62,7 +66,7 @@ export class DepositsFiltersComponent implements OnInit, OnChanges {
             .afterClosed()
             .pipe(
                 filter((v) => !isEqual(v, data)),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe((filters) => {
                 this.additionalFilters$.next(filters);

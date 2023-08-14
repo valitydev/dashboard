@@ -18,14 +18,18 @@ import {
  */
 export class NoContentDirective implements AfterContentChecked {
     @Input()
-    dshNoContent: TemplateRef<any>;
+    dshNoContent: TemplateRef<unknown>;
 
     private get element(): HTMLElement {
         return this.elementRef.nativeElement;
     }
     private hasContent = true;
 
-    constructor(private elementRef: ElementRef, private container: ViewContainerRef, private cdr: ChangeDetectorRef) {}
+    constructor(
+        private elementRef: ElementRef,
+        private container: ViewContainerRef,
+        private cdr: ChangeDetectorRef,
+    ) {}
 
     ngAfterContentChecked(): void {
         let hasContent = false;

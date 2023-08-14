@@ -1,47 +1,47 @@
-<ng-container *ngIf="!selectionConfirmed">
-    <ng-container *transloco="let t; scope: 'components'; read: 'components.createShopDialog'">
-        <dsh-base-dialog [title]="t('title')" (cancel)="cancelClaim()">
-            <div fxLayout="column" fxLayoutGap="16px">
-                <p class="dsh-subheading-2">{{ t('type') }}</p>
-                <mat-radio-group fxLayout="column" fxLayoutGap="16px">
-                    <mat-radio-button
-                        [checked]="selectedShopType === shopType.Russian"
-                        [value]="shopType.Russian"
-                        (change)="onTypeChange($event.value)"
-                        >{{ t('russianLegalEntityType') }}</mat-radio-button
-                    >
-                    <mat-radio-button
-                        [checked]="selectedShopType === shopType.International"
-                        [value]="shopType.International"
-                        (change)="onTypeChange($event.value)"
-                        ><span class="dsh-wrap-mat-radio-label">{{
-                            t('internationalLegalEntityType')
-                        }}</span></mat-radio-button
-                    >
-                </mat-radio-group>
-            </div>
-            <dsh-actions dshBaseDialogActions *transloco="let c; scope: 'components'; read: 'components.shared'">
-                <button
-                    class="dsh-next-button"
-                    dsh-button
-                    (click)="next()"
-                    color="accent"
-                    [disabled]="!selectedShopType"
-                >
-                    {{ c('next') }}
-                </button>
-            </dsh-actions>
-        </dsh-base-dialog>
-    </ng-container>
-</ng-container>
+<!--<ng-container *ngIf="!selectionConfirmed">-->
+<!--    <ng-container *transloco="let t; scope: 'components'; read: 'components.createShopDialog'">-->
+<!--        <dsh-base-dialog [title]="t('title')" (cancel)="cancelClaim()">-->
+<!--            <div fxLayout="column" fxLayoutGap="16px">-->
+<!--                <p class="dsh-subheading-2">{{ t('type') }}</p>-->
+<!--                <mat-radio-group fxLayout="column" fxLayoutGap="16px">-->
+<!--                    <mat-radio-button-->
+<!--                        [checked]="selectedShopType === shopType.Russian"-->
+<!--                        [value]="shopType.Russian"-->
+<!--                        (change)="onTypeChange($event.value)"-->
+<!--                        >{{ t('russianLegalEntityType') }}</mat-radio-button-->
+<!--                    >-->
+<!--                    <mat-radio-button-->
+<!--                        [checked]="selectedShopType === shopType.International"-->
+<!--                        [value]="shopType.International"-->
+<!--                        (change)="onTypeChange($event.value)"-->
+<!--                        ><span class="dsh-wrap-mat-radio-label">{{-->
+<!--                            \t('internationalLegalEntityType')-->
+<!--                        }}</span></mat-radio-button-->
+<!--                    >-->
+<!--                </mat-radio-group>-->
+<!--            </div>-->
+<!--            <dsh-actions dshBaseDialogActions *transloco="let c; scope: 'components'; read: 'components.shared'">-->
+<!--                <button-->
+<!--                    class="dsh-next-button"-->
+<!--                    dsh-button-->
+<!--                    (click)="next()"-->
+<!--                    color="accent"-->
+<!--                    [disabled]="!selectedShopType"-->
+<!--                >-->
+<!--                    {{ c('next') }}-->
+<!--                </button>-->
+<!--            </dsh-actions>-->
+<!--        </dsh-base-dialog>-->
+<!--    </ng-container>-->
+<!--</ng-container>-->
 
-<dsh-create-russian-shop-entity
-    *ngIf="selectionConfirmed && selectedShopType === shopType.Russian"
-    (send)="sendClaim()"
-    (cancel)="cancelClaim()"
-></dsh-create-russian-shop-entity>
+<!--<dsh-create-russian-shop-entity-->
+<!--    *ngIf="selectionConfirmed && selectedShopType === shopType.Russian"-->
+<!--    (send)="sendClaim()"-->
+<!--    (cancel)="cancelClaim()"-->
+<!--&gt;</dsh-create-russian-shop-entity>-->
+<!--    *ngIf="selectionConfirmed && selectedShopType === shopType.International"-->
 <dsh-create-international-shop-entity
-    *ngIf="selectionConfirmed && selectedShopType === shopType.International"
-    (send)="sendClaim()"
     (cancel)="cancelClaim()"
+    (send)="sendClaim()"
 ></dsh-create-international-shop-entity>

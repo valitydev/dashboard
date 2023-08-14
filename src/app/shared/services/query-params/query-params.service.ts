@@ -25,7 +25,7 @@ export class QueryParamsService<Params> {
         startWith(this.params),
         distinctUntilChanged<Params>(isEqual),
         publishReplay(1),
-        refCount()
+        refCount(),
     );
 
     get params(): Params {
@@ -35,7 +35,7 @@ export class QueryParamsService<Params> {
     constructor(
         private router: Router,
         private route: ActivatedRoute,
-        @Inject(QUERY_PARAMS_SERIALIZERS) private serializers: Serializer[] = []
+        @Inject(QUERY_PARAMS_SERIALIZERS) private serializers: Serializer[] = [],
     ) {}
 
     async set(params: Params, options?: Options): Promise<boolean> {
@@ -50,11 +50,17 @@ export class QueryParamsService<Params> {
         return await this.set({ ...param, ...this.params });
     }
 
-    private serialize(params: Params, { filter = negate(isEmptyValue) }: Options = {}): { [key: string]: string } {
-        return Object.entries(params).reduce((acc, [k, v]) => {
-            if (filter(v, k)) acc[k] = serializeQueryParam(v, this.serializers);
-            return acc;
-        }, {} as { [key: string]: string });
+    private serialize(
+        params: Params,
+        { filter = negate(isEmptyValue) }: Options = {},
+    ): { [key: string]: string } {
+        return Object.entries(params).reduce(
+            (acc, [k, v]) => {
+                if (filter(v, k)) acc[k] = serializeQueryParam(v, this.serializers);
+                return acc;
+            },
+            {} as { [key: string]: string },
+        );
     }
 
     private deserialize(params: { [key: string]: string }): Params {

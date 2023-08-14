@@ -1,4 +1,7 @@
-<mat-form-field class="field" *transloco="let t; scope: 'components'; read: 'components.claimField'">
+<mat-form-field
+    *transloco="let t; scope: 'components'; read: 'components.claimField'"
+    class="field"
+>
     <mat-label>{{ t('label') }}</mat-label>
-    <input matInput [formControl]="control" type="number" autocomplete="off" />
+    <input [formControl]="control" autocomplete="off" matInput type="number" />
 </mat-form-field>

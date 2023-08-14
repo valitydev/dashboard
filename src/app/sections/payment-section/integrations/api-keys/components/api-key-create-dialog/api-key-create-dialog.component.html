@@ -1,0 +1,43 @@
+<dsh-base-dialog
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.apiKeys.createDialog'"
+    [title]="t('title')"
+    (cancel)="closeWithCancellation()"
+>
+    <div *ngIf="accessToken; else releaseApiKey">
+        <mat-form-field style="width: 100%">
+            <mat-label>{{ t('apiKey') }}</mat-label>
+            <textarea [value]="accessToken" matInput readonly rows="5"></textarea>
+        </mat-form-field>
+    </div>
+    <ng-template #releaseApiKey>
+        <div [formGroup]="form" fxLayout="column" fxLayoutGap="24px">
+            <mat-form-field style="width: 100%">
+                <mat-label>{{ t('keyName') }}</mat-label>
+                <input formControlName="name" matInput required />
+            </mat-form-field>
+            <div class="dsh-body-1">
+                {{ t('desc') }}
+            </div>
+        </div>
+    </ng-template>
+    <ng-container dshBaseDialogActions>
+        <button
+            *ngIf="accessToken; else confirmActions"
+            color="primary"
+            dsh-button
+            (click)="copy()"
+        >
+            {{ t('copy') }}
+        </button>
+        <ng-template #confirmActions>
+            <button
+                [disabled]="form.invalid || !!(progress$ | async)"
+                color="primary"
+                dsh-button
+                (click)="confirm()"
+            >
+                {{ t('confirm') }}
+            </button>
+        </ng-template>
+    </ng-container>
+</dsh-base-dialog>

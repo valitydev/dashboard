@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, of, Subject } from 'rxjs';
 import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
 
-import { ReportsService } from '@dsh/api/anapi';
+import { ReportsService } from '@dsh/app/api/anapi';
 
 import { formValueToCreateValue } from './form-value-to-create-value';
 
@@ -32,10 +32,10 @@ export class CreateReportDialogService {
                             this.loading$.next(false);
                             this.error$.next();
                             return of('error');
-                        })
-                    )
+                        }),
+                    ),
                 ),
-                filter((result) => result !== 'error')
+                filter((result) => result !== 'error'),
             )
             .subscribe(() => {
                 this.loading$.next(false);
@@ -43,7 +43,7 @@ export class CreateReportDialogService {
             });
     }
 
-    create(formValue: any) {
+    create(formValue: unknown) {
         this.create$.next(formValue);
     }
 }

@@ -14,8 +14,8 @@ export const handleFetchResultError =
                     result,
                     continuationToken,
                     error,
-                })
-            )
+                }),
+            ),
         );
 
 export const scanFetchResult =
@@ -34,11 +34,11 @@ export const scanFetchResult =
                                     result: result.concat(r.result),
                                     continuationToken: r.continuationToken,
                                 })),
-                                handleFetchResultError(result, continuationToken)
+                                handleFetchResultError(result, continuationToken),
                             );
                     }
                 },
                 { result: [] },
-                1
-            )
+                1,
+            ),
         );

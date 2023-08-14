@@ -7,9 +7,9 @@ import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 import { mock, verify, when } from 'ts-mockito';
 
-import { OrgsService } from '@dsh/api/organizations';
-import { MOCK_MEMBER } from '@dsh/api/organizations/tests/mock-member';
-import { MOCK_ORG } from '@dsh/api/organizations/tests/mock-org';
+import { OrgsService } from '@dsh/app/api/organizations';
+import { MOCK_MEMBER } from '@dsh/app/api/organizations/tests/mock-member';
+import { MOCK_ORG } from '@dsh/app/api/organizations/tests/mock-org';
 import { ErrorService } from '@dsh/app/shared';
 import { provideMockService } from '@dsh/app/shared/tests';
 

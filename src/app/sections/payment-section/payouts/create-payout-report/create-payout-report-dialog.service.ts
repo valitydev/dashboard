@@ -3,7 +3,7 @@ import { Payout } from '@vality/swag-anapi-v2';
 import { BehaviorSubject, of, Subject } from 'rxjs';
 import { catchError, filter, switchMap, tap } from 'rxjs/operators';
 
-import { ReportsService } from '@dsh/api/anapi';
+import { ReportsService } from '@dsh/app/api/anapi';
 
 @Injectable()
 export class CreatePayoutReportDialogService {
@@ -40,10 +40,10 @@ export class CreatePayoutReportDialogService {
                                 this.loading$.next(false);
                                 this.error$.next();
                                 return of('error');
-                            })
-                        )
+                            }),
+                        ),
                 ),
-                filter((result) => result !== 'error')
+                filter((result) => result !== 'error'),
             )
             .subscribe(() => {
                 this.loading$.next(false);

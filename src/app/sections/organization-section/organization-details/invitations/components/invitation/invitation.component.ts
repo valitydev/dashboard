@@ -4,7 +4,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { InlineObject1, Invitation, Organization } from '@vality/swag-organizations';
 import { filter, switchMap } from 'rxjs/operators';
 
-import { InvitationsService } from '@dsh/api/organizations';
+import { InvitationsService } from '@dsh/app/api/organizations';
 import { ErrorService, NotificationService } from '@dsh/app/shared';
 import { ConfirmActionDialogComponent, ConfirmActionDialogResult } from '@dsh/components/popups';
 import { ignoreBeforeCompletion } from '@dsh/utils';
@@ -25,13 +25,15 @@ export class InvitationComponent {
         private dialog: MatDialog,
         private invitationsService: InvitationsService,
         private notificationService: NotificationService,
-        private errorService: ErrorService
+        private errorService: ErrorService,
     ) {}
 
     @ignoreBeforeCompletion
     cancel() {
         return this.dialog
-            .open<ConfirmActionDialogComponent, void, ConfirmActionDialogResult>(ConfirmActionDialogComponent)
+            .open<ConfirmActionDialogComponent, void, ConfirmActionDialogResult>(
+                ConfirmActionDialogComponent,
+            )
             .afterClosed()
             .pipe(
                 filter((r) => r === 'confirm'),
@@ -42,16 +44,16 @@ export class InvitationComponent {
                         inlineObject1: {
                             status: InlineObject1.StatusEnum.Revoked,
                         },
-                    })
+                    }),
                 ),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe(
                 () => {
                     this.changed.emit();
                     this.notificationService.success();
                 },
-                (err) => this.errorService.error(err)
+                (err) => this.errorService.error(err),
             );
     }
 }

@@ -1,11 +1,19 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnInit,
+    Output,
+} from '@angular/core';
 import { UntypedFormArray } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { createControlProviders, FormGroupSuperclass } from '@vality/ng-core';
 import { InvoiceLineTaxVAT, InvoiceTemplateAndToken, Shop } from '@vality/swag-payments';
 import moment from 'moment';
 
-import { InvoiceTemplateType, InvoiceTemplateLineCostType } from '@dsh/api/payments';
+import { InvoiceTemplateType, InvoiceTemplateLineCostType } from '@dsh/app/api/payments';
 
 import { CreateInvoiceTemplateService, WITHOUT_VAT } from './create-invoice-template.service';
 
@@ -13,8 +21,9 @@ import { CreateInvoiceTemplateService, WITHOUT_VAT } from './create-invoice-temp
     selector: 'dsh-create-invoice-template',
     templateUrl: 'create-invoice-template.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: createControlProviders(() => CreateInvoiceTemplateComponent),
 })
-export class CreateInvoiceTemplateComponent implements OnInit {
+export class CreateInvoiceTemplateComponent extends FormGroupSuperclass<unknown> implements OnInit {
     @Output()
     next = new EventEmitter<InvoiceTemplateAndToken>();
 
@@ -40,7 +49,7 @@ export class CreateInvoiceTemplateComponent implements OnInit {
         InvoiceTemplateLineCostType.InvoiceTemplateLineCostUnlim,
     ];
 
-    form = this.invoiceTemplateFormService.form;
+    control = this.invoiceTemplateFormService.form;
     summary$ = this.invoiceTemplateFormService.summary$;
     isLoading$ = this.invoiceTemplateFormService.isLoading$;
 
@@ -51,14 +60,22 @@ export class CreateInvoiceTemplateComponent implements OnInit {
     constructor(
         private invoiceTemplateFormService: CreateInvoiceTemplateService,
         private snackBar: MatSnackBar,
-        private transloco: TranslocoService
-    ) {}
+        private transloco: TranslocoService,
+    ) {
+        super();
+    }
 
     ngOnInit(): void {
+        super.ngOnInit();
         this.invoiceTemplateFormService.errors$.subscribe(() =>
-            this.snackBar.open(this.transloco.translate('shared.commonError', null, 'components'), 'OK')
+            this.snackBar.open(
+                this.transloco.translate('shared.commonError', null, 'components'),
+                'OK',
+            ),
         );
-        this.invoiceTemplateFormService.nextInvoiceTemplateAndToken$.subscribe((template) => this.next.emit(template));
+        this.invoiceTemplateFormService.nextInvoiceTemplateAndToken$.subscribe((template) =>
+            this.next.emit(template),
+        );
     }
 
     nextStep(): void {

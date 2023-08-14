@@ -12,7 +12,7 @@ export class WithdrawalsExpandedIdManager extends ExpandedIdManager<Withdrawal> 
     constructor(
         protected route: ActivatedRoute,
         protected router: Router,
-        private fetchWithdrawalsService: FetchWithdrawalsService
+        private fetchWithdrawalsService: FetchWithdrawalsService,
     ) {
         super(route, router);
     }

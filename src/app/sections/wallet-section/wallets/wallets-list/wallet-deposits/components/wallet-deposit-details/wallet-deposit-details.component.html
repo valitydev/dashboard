@@ -18,13 +18,13 @@
         }}</dsh-details-item>
         <dsh-details-item [title]="t('status')"
             ><dsh-status [color]="deposit.status | depositStatusColor">{{
-            (depositStatusDict$ | async)?.[deposit.status]
+                (depositStatusDict$ | async)?.[deposit.status]
             }}</dsh-status></dsh-details-item
         >
         <dsh-details-item [title]="t('createdAt')">{{
             deposit.createdAt | date: 'dd MMMM yyyy, HH:mm'
         }}</dsh-details-item>
-        <dsh-details-item gdColumn.gt-sm="1/-1" *ngIf="deposit.failure" [title]="t('error')">{{
+        <dsh-details-item *ngIf="deposit.failure" [title]="t('error')" gdColumn.gt-sm="1/-1">{{
             deposit.failure.code
         }}</dsh-details-item>
     </div>

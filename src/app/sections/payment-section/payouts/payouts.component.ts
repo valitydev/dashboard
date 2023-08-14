@@ -9,6 +9,7 @@ import { filter, first, switchMap, switchMapTo } from 'rxjs/operators';
 import { QueryParamsService } from '@dsh/app/shared/services/query-params';
 
 import { RealmMixService, PaymentInstitutionRealmService, RealmShopsService } from '../services';
+
 import { CreatePayoutDialogComponent } from './create-payout/create-payout-dialog.component';
 import { FetchPayoutsService } from './fetch-payouts.service';
 import { PayoutsExpandedIdManager } from './payouts-expanded-id-manager.service';
@@ -43,14 +44,17 @@ export class PayoutsComponent implements OnInit {
         private qp: QueryParamsService<Filters>,
         private dialog: MatDialog,
         private realmShopsService: RealmShopsService,
-        private realmMixService: RealmMixService<SearchParams>
+        private realmMixService: RealmMixService<SearchParams>,
     ) {}
 
     ngOnInit(): void {
         this.fetchPayoutsService.errors$
             .pipe(untilDestroyed(this))
             .subscribe(() =>
-                this.snackBar.open(this.transloco.translate('shared.httpError', null, 'components'), 'OK')
+                this.snackBar.open(
+                    this.transloco.translate('shared.httpError', null, 'components'),
+                    'OK',
+                ),
             );
         this.realmMixService.mixedValue$
             .pipe(untilDestroyed(this))
@@ -62,14 +66,18 @@ export class PayoutsComponent implements OnInit {
                     this.dialog
                         .open(CreatePayoutDialogComponent, { data: { realm } })
                         .afterClosed()
-                        .pipe(filter((r) => r === 'created'))
+                        .pipe(filter((r) => r === 'created')),
                 ),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe(() => {
-                this.snackBar.open(this.transloco.translate('payouts.payouts.created', null, 'payment-section'), 'OK', {
-                    duration: 2000,
-                });
+                this.snackBar.open(
+                    this.transloco.translate('payouts.payouts.created', null, 'payment-section'),
+                    'OK',
+                    {
+                        duration: 2000,
+                    },
+                );
                 this.refresh();
             });
     }

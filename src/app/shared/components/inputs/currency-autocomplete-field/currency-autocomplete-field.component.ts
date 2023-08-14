@@ -1,40 +1,24 @@
-import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
-import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Option, createControlProviders, FormControlSuperclass } from '@vality/ng-core';
+import { coerceBoolean } from 'coerce-property';
 
-import { Option } from '@dsh/components/form-controls/radio-group-field';
-import { coerceBoolean } from '@dsh/utils';
+import { ConfigService } from '@dsh/app/config';
 
 @Component({
     selector: 'dsh-currency-autocomplete-field',
     templateUrl: 'currency-autocomplete-field.component.html',
-    providers: [provideValueAccessor(CurrencyAutocompleteFieldComponent)],
+    providers: createControlProviders(() => CurrencyAutocompleteFieldComponent),
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CurrencyAutocompleteFieldComponent extends WrappedFormControlSuperclass<string> {
+export class CurrencyAutocompleteFieldComponent extends FormControlSuperclass<string> {
     @Input() label: string;
     @Input() @coerceBoolean required = false;
 
-    options: Option<string>[] = [
-        'RUB',
-        'USD',
-        'EUR',
-        'UAH',
-        'KZT',
-        'BYN',
-        'JPY',
-        'INR',
-        'AZN',
-        'BRL',
-        'BDT',
-        'TRY',
-        'PHP',
-        'KRW',
-        'PKR',
-    ]
+    options: Option<string>[] = this.configService.currencies
         .sort()
         .map((currency) => ({ label: currency, value: currency }));
 
-    constructor(injector: Injector) {
-        super(injector);
+    constructor(private configService: ConfigService) {
+        super();
     }
 }

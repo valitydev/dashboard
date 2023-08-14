@@ -15,7 +15,7 @@ export class KeycloakTokenInfoService {
     private decoded$ = from(this.keycloakService.getToken()).pipe(
         map((token) => jwt_decode<JwtPayload>(token)),
         untilDestroyed(this),
-        shareReplay(1)
+        shareReplay(1),
     );
 
     constructor(private keycloakService: KeycloakService) {}

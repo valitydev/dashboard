@@ -5,7 +5,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { combineLatest, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, switchMap, takeUntil } from 'rxjs/operators';
 
-import { WebhooksService } from '@dsh/api/wallet';
+import { WebhooksService } from '@dsh/app/api/wallet';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 
 import { DeleteWebhookParams } from '../webhook-details/webhook-actions';
@@ -23,7 +23,7 @@ export class DeleteWebhookService {
         private dialog: MatDialog,
         private walletWebhooksService: WebhooksService,
         private transloco: TranslocoService,
-        private snackBar: MatSnackBar
+        private snackBar: MatSnackBar,
     ) {}
 
     deleteWebhook(params: DeleteWebhookParams) {
@@ -41,21 +41,25 @@ export class DeleteWebhookService {
                             .open(ConfirmActionDialogComponent)
                             .afterClosed()
                             .pipe(filter((r) => r === 'confirm')),
-                    ])
+                    ]),
                 ),
                 switchMap(([{ webhookID, identityID }]) =>
                     this.walletWebhooksService.deleteWebhookByID({ webhookID, identityID }).pipe(
                         catchError((e) => {
                             console.error(e);
                             this.snackBar.open(
-                                this.transloco.translate('webhooks.errors.deleteError', null, 'wallet-section'),
-                                'OK'
+                                this.transloco.translate(
+                                    'webhooks.errors.deleteError',
+                                    null,
+                                    'wallet-section',
+                                ),
+                                'OK',
                             );
                             return of('error');
-                        })
-                    )
+                        }),
+                    ),
                 ),
-                filter((result) => result !== 'error')
+                filter((result) => result !== 'error'),
             )
             .subscribe(() => this.deleted$.next());
     }

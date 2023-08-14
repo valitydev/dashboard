@@ -1,9 +1,9 @@
 <div
     *transloco="let t; scope: 'organization-section'; read: 'organizationSection.acceptInvitation'"
-    fxLayout="column"
-    fxLayoutGap="48px"
-    fxLayoutAlign=" center"
     class="dsh-accept-invitation"
+    fxLayout="column"
+    fxLayoutAlign=" center"
+    fxLayoutGap="48px"
 >
     <dsh-spinner *ngIf="isLoading$ | async; else loaded"></dsh-spinner>
     <ng-template #loaded>
@@ -13,15 +13,19 @@
             </ng-container>
             <ng-template #success>
                 <div class="dsh-headline">{{ t('success.title') }}</div>
-                <a dshLink routerLink="/organization-section/organizations">{{ t('success.goToOrganizationsList') }}</a>
+                <a dshLink routerLink="/organization-section/organizations">{{
+                    t('success.goToOrganizationsList')
+                }}</a>
             </ng-template>
         </ng-container>
         <ng-template #confirm>
             <div class="dsh-headline">{{ t('confirm.title') }}</div>
-            <button dsh-button (click)="accept()" color="accent" size="lg" class="accept-button">
+            <button class="accept-button" color="accent" dsh-button size="lg" (click)="accept()">
                 {{ t('confirm.button') }}
             </button>
-            <div dshTextColor="secondary" class="dsh-caption">{{ t('confirm.refuseDescription') }}</div>
+            <div class="dsh-caption" dshTextColor="secondary">
+                {{ t('confirm.refuseDescription') }}
+            </div>
         </ng-template>
     </ng-template>
 </div>

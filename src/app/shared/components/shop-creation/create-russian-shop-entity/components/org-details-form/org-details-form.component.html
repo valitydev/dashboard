@@ -1,12 +1,19 @@
-<div *transloco="let p; scope: 'components'; read: 'components.orgDetailsForm'" fxLayout="column" fxLayoutGap="24px">
+<div
+    *transloco="let p; scope: 'components'; read: 'components.orgDetailsForm'"
+    fxLayout="column"
+    fxLayoutGap="24px"
+>
     <h2 class="dsh-title">{{ p('title') }}</h2>
 
-    <dsh-created-existing-switch [formGroup]="control" [form]="control">
-        <dsh-new-contractor-form *dshCreatedCase formControlName="created"></dsh-new-contractor-form>
+    <dsh-created-existing-switch [form]="control" [formGroup]="control">
+        <dsh-new-contractor-form
+            *dshCreatedCase
+            formControlName="created"
+        ></dsh-new-contractor-form>
         <dsh-existing-contract-form
             *dshExistingCase
-            formControlName="existing"
             entityType="RussianLegalEntity"
+            formControlName="existing"
         ></dsh-existing-contract-form>
     </dsh-created-existing-switch>
 </div>

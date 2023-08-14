@@ -7,6 +7,7 @@ import { instance, mock, when } from 'ts-mockito';
 
 import { generateMockPaymentsList } from '../../tests/generate-mock-payments-list';
 import { FetchPaymentsService } from '../fetch-payments/fetch-payments.service';
+
 import { PaymentsExpandedIdManager } from './payments-expanded-id-manager.service';
 
 describe('PaymentsExpandedIdManager', () => {
@@ -51,7 +52,7 @@ describe('PaymentsExpandedIdManager', () => {
             expect(service.expandedId$).toBeObservable(
                 cold('(a|)', {
                     a: 1,
-                })
+                }),
             );
         });
 
@@ -63,7 +64,7 @@ describe('PaymentsExpandedIdManager', () => {
             expect(service.expandedId$).toBeObservable(
                 cold('(a|)', {
                     a: -1,
-                })
+                }),
             );
         });
 
@@ -75,7 +76,7 @@ describe('PaymentsExpandedIdManager', () => {
             expect(service.expandedId$).toBeObservable(
                 cold('(a|)', {
                     a: -1,
-                })
+                }),
             );
         });
     });

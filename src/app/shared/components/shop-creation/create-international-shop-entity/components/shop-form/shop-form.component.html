@@ -1,8 +1,8 @@
 <form
     *transloco="let t; scope: 'components'; read: 'components.internationalShopForm'"
+    [formGroup]="control"
     fxLayout="column"
     fxLayoutGap="24px"
-    [formGroup]="control"
 >
     <dsh-shop-details-form formControlName="shopDetails"></dsh-shop-details-form>
 
@@ -10,12 +10,15 @@
 
     <h2 class="dsh-title">{{ t('organization') }}</h2>
 
-    <dsh-created-existing-switch formGroupName="orgDetails" [form]="control.controls.orgDetails">
-        <dsh-new-contractor-form *dshCreatedCase formControlName="created"></dsh-new-contractor-form>
+    <dsh-created-existing-switch [form]="control.controls.orgDetails" formGroupName="orgDetails">
+        <dsh-new-contractor-form
+            *dshCreatedCase
+            formControlName="created"
+        ></dsh-new-contractor-form>
         <dsh-existing-contract-form
             *dshExistingCase
-            formControlName="existing"
             entityType="InternationalLegalEntity"
+            formControlName="existing"
         ></dsh-existing-contract-form>
     </dsh-created-existing-switch>
 
@@ -30,15 +33,15 @@
 
     <h2 class="dsh-title">{{ t('payoutToolTitle') }}</h2>
 
-    <dsh-created-existing-switch formGroupName="bankAccount" [form]="control.controls.bankAccount">
+    <dsh-created-existing-switch [form]="control.controls.bankAccount" formGroupName="bankAccount">
         <dsh-international-bank-account-form
             *dshCreatedCase
             formControlName="created"
         ></dsh-international-bank-account-form>
         <dsh-existing-bank-account
             *dshExistingCase
-            formControlName="existing"
             bankAccountType="PayoutToolDetailsInternationalBankAccount"
+            formControlName="existing"
         ></dsh-existing-bank-account>
     </dsh-created-existing-switch>
 </form>

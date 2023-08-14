@@ -1,4 +1,4 @@
-<dsh-card class="stat-item" *transloco="let c; scope: 'components'; read: 'components.shared'">
+<dsh-card *transloco="let c; scope: 'components'; read: 'components.shared'" class="stat-item">
     <div *ngIf="!error; else onError" fxLayout="column" fxLayoutGap="5px">
         <div
             *transloco="let t; scope: 'payment-section'; read: 'paymentSection.analytics'"
@@ -6,13 +6,13 @@
             fxLayoutAlign="space-between"
             fxLayoutGap="10px"
         >
-            <h2 *ngIf="!isLoading" class="mat-title stat-item-title">
+            <h2 *ngIf="!isLoading" class="mat-h2 stat-item-title">
                 <div *ngIf="statData?.current; else noData">
                     <div *ngIf="hideCurrency; else showCurrency">
                         {{ statData.current | number }}
                     </div>
                     <ng-template #showCurrency>
-                        {{ statData.current | amountCurrency: statData.currency:'short' }}
+                        {{ statData.current | amountCurrency: statData.currency : 'short' }}
                     </ng-template>
                 </div>
                 <ng-template #noData>

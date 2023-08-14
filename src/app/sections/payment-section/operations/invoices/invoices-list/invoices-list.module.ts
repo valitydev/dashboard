@@ -9,8 +9,8 @@ import { ApiModelRefsModule, AmountCurrencyModule } from '@dsh/app/shared/pipes'
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
 
-import { InvoiceRowHeaderComponent } from './components/invoice-row-header/invoice-row-header.component';
 import { InvoiceRowComponent } from './components/invoice-row/invoice-row.component';
+import { InvoiceRowHeaderComponent } from './components/invoice-row-header/invoice-row-header.component';
 import { InvoiceDetailsModule } from './invoice-details';
 import { InvoicesListComponent } from './invoices-list.component';
 

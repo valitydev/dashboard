@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { first, map } from 'rxjs/operators';
 
-import { ContextService } from '@dsh/app/shared';
+import { ContextOrganizationService } from '@dsh/app/shared/services/context-organization';
 
 import { ApiExtension } from '../create-api';
 
@@ -9,12 +9,12 @@ import { ApiExtension } from '../create-api';
     providedIn: 'root',
 })
 export class PartyIdExtension implements ApiExtension {
-    constructor(private contextService: ContextService) {}
+    constructor(private contextOrganizationService: ContextOrganizationService) {}
 
     selector() {
-        return this.contextService.organization$.pipe(
+        return this.contextOrganizationService.organization$.pipe(
             first(),
-            map(({ party }) => ({ partyID: party }))
+            map(({ party }) => ({ partyID: party, partyId: party })),
         );
     }
 }

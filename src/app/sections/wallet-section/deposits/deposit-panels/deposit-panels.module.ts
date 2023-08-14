@@ -10,8 +10,8 @@ import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
 import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
 
-import { DepositRowHeaderComponent } from './components/deposit-row-header/deposit-row-header.component';
 import { DepositRowComponent } from './components/deposit-row/deposit-row.component';
+import { DepositRowHeaderComponent } from './components/deposit-row-header/deposit-row-header.component';
 import { DepositDetailsModule } from './deposit-details';
 import { DepositPanelsComponent } from './deposit-panels.component';
 import { DepositRevertsModule } from './deposit-reverts/deposit-reverts.module';
@@ -22,7 +22,6 @@ import { DepositRevertsModule } from './deposit-reverts/deposit-reverts.module';
         LayoutModule,
         FlexLayoutModule,
         CommonModule,
-
         ApiModelRefsModule,
         EmptySearchResultModule,
         ShowMorePanelModule,

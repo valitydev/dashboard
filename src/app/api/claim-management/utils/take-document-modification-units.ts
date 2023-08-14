@@ -2,11 +2,14 @@ import { ModificationUnit, DocumentModificationUnit } from '@vality/swag-claim-m
 
 import { isClaimModification, isDocumentModificationUnit } from './type-guards';
 
-export const takeDocumentModificationUnits = (changeset: ModificationUnit[]): DocumentModificationUnit[] =>
+export const takeDocumentModificationUnits = (
+    changeset: ModificationUnit[],
+): DocumentModificationUnit[] =>
     changeset.reduce(
         (acc, { modification }) =>
-            isClaimModification(modification) && isDocumentModificationUnit(modification.claimModificationType)
+            isClaimModification(modification) &&
+            isDocumentModificationUnit(modification.claimModificationType)
                 ? acc.concat(modification.claimModificationType)
                 : acc,
-        [] as DocumentModificationUnit[]
+        [] as DocumentModificationUnit[],
     );

@@ -1,7 +1,7 @@
-<dsh-select-search-field
+<v-select-field
     *ngIf="wallets$ | async"
-    [label]="label"
-    [required]="required"
-    [options]="options$ | async"
     [formControl]="control"
-></dsh-select-search-field>
+    [label]="label"
+    [options]="options$ | async"
+    [required]="required"
+></v-select-field>

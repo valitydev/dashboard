@@ -1,16 +1,31 @@
 <mat-drawer-container class="dsh-mobile-grid">
-    <mat-drawer class="dsh-mobile-grid-drawer" mode="over" [autoFocus]="false">
+    <mat-drawer [autoFocus]="false" class="dsh-mobile-grid-drawer" mode="over">
         <div class="dsh-mobile-grid-drawer-wrapper" fxLayout="column">
             <div class="dsh-mobile-grid-drawer-actions" fxLayout="row" fxLayoutAlign="end center">
-                <dsh-bi class="dsh-mobile-grid-toggle-button" (click)="closeSideNav()" icon="x" size="lg"></dsh-bi>
+                <dsh-bi
+                    class="dsh-mobile-grid-toggle-button"
+                    icon="x"
+                    size="lg"
+                    (click)="closeSideNav()"
+                ></dsh-bi>
             </div>
             <dsh-mobile-menu fxFlex (menuItemSelected)="closeSideNav()"></dsh-mobile-menu>
         </div>
     </mat-drawer>
     <mat-drawer-content>
         <div class="dsh-mobile-grid-content" fxLayout="column" fxLayoutGap="24px">
-            <div class="dsh-mobile-grid-content-actions" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="24px">
-                <dsh-bi class="dsh-mobile-grid-toggle-button" (click)="openSideNav()" icon="list" size="lg"></dsh-bi>
+            <div
+                class="dsh-mobile-grid-content-actions"
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                fxLayoutGap="24px"
+            >
+                <dsh-bi
+                    class="dsh-mobile-grid-toggle-button"
+                    icon="list"
+                    size="lg"
+                    (click)="openSideNav()"
+                ></dsh-bi>
                 <dsh-brand></dsh-brand>
             </div>
             <ng-content></ng-content>

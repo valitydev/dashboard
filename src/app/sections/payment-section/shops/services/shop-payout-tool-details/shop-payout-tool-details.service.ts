@@ -4,7 +4,7 @@ import { PayoutTool } from '@vality/swag-payments';
 import { BehaviorSubject, defer, Observable, of, ReplaySubject, Subject } from 'rxjs';
 import { catchError, distinctUntilChanged, filter, switchMap, tap } from 'rxjs/operators';
 
-import { PayoutsService } from '@dsh/api/payments';
+import { PayoutsService } from '@dsh/app/api/payments';
 
 import { PayoutToolParams } from '../../shops-list/shop-details/types/payout-tool-params';
 
@@ -32,7 +32,7 @@ export class ShopPayoutToolDetailsService {
                 switchMap((payoutToolParams) =>
                     payoutToolParams
                         ? this.payoutsService
-                              .getPayoutToolByID({
+                              .getPayoutToolByIDForParty({
                                   contractID: payoutToolParams.contractID,
                                   payoutToolID: payoutToolParams.payoutToolID,
                               })
@@ -41,13 +41,13 @@ export class ShopPayoutToolDetailsService {
                                       console.error(e);
                                       this.error$.next(true);
                                       return of('error');
-                                  })
+                                  }),
                               )
-                        : of(null)
+                        : of(null),
                 ),
                 tap(() => this._isLoading$.next(false)),
                 filter((result) => result !== 'error'),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe((payoutTool: PayoutTool) => {
                 this.payoutTool$.next(payoutTool);

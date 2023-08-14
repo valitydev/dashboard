@@ -33,17 +33,29 @@
             <dsh-details-item *ngIf="bankDetails?.abartn" [title]="d('abartn')">
                 {{ bankDetails?.abartn }}
             </dsh-details-item>
-            <dsh-details-item gdColumn.gt-sm="1/-1" *ngIf="bankDetails?.address" [title]="d('address')">
+            <dsh-details-item
+                *ngIf="bankDetails?.address"
+                [title]="d('address')"
+                gdColumn.gt-sm="1/-1"
+            >
                 {{ bankDetails?.address }}
             </dsh-details-item>
-            <dsh-details-item gdColumn.gt-sm="1/-1" *ngIf="bankDetails?.countryCode" [title]="d('countryCode')">
+            <dsh-details-item
+                *ngIf="bankDetails?.countryCode"
+                [title]="d('countryCode')"
+                gdColumn.gt-sm="1/-1"
+            >
                 {{ bankDetails?.countryCode }}
             </dsh-details-item>
         </ng-container>
     </ng-container>
-    <div *ngIf="internationalBankAccount?.correspondentBankAccount" fxLayout="column" fxLayoutGap="24px">
+    <div
+        *ngIf="internationalBankAccount?.correspondentBankAccount"
+        fxLayout="column"
+        fxLayoutGap="24px"
+    >
         <mat-divider></mat-divider>
-        <div class="mat-title">{{ t('correspondentBankAccount') }}</div>
+        <div class="mat-h2">{{ t('correspondentBankAccount') }}</div>
         <dsh-international-bank-account
             [internationalBankAccount]="internationalBankAccount?.correspondentBankAccount"
         ></dsh-international-bank-account>

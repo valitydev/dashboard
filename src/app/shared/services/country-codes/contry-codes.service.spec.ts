@@ -22,7 +22,9 @@ describe('CountryCodesService', () => {
         });
 
         it('should throw an error if cannot find code using provided country', () => {
-            expect(() => service.getCountryCode('AAA')).toThrowError(`Can't get code for country [AAA]`);
+            expect(() => service.getCountryCode('AAA')).toThrowError(
+                `Can't get code for country [AAA]`,
+            );
         });
     });
 
@@ -32,7 +34,9 @@ describe('CountryCodesService', () => {
         });
 
         it('should throw an error if cannot find code using provided country', () => {
-            expect(() => service.getCountryByCode(100500)).toThrowError(`Can't get country using code [100500]`);
+            expect(() => service.getCountryByCode(100500)).toThrowError(
+                `Can't get country using code [100500]`,
+            );
         });
     });
 

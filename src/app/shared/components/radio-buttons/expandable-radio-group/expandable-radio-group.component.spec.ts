@@ -1,18 +1,17 @@
 import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { MatIconTestingModule } from '@angular/material/icon/testing';
 import { MatRadioModule } from '@angular/material/radio';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { FormControl } from '@ngneat/reactive-forms';
 
 import { getTextContent } from '@dsh/app/shared/tests/get-text-content';
-import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 import { createArrayOfLength } from '@dsh/app/shared/utils';
 
 import { InlineShowAllToggleModule } from '../../buttons/inline-show-all-toggle';
+
 import { ExpandableRadioGroupItemDirective } from './directives/expandable-radio-group-item/expandable-radio-group-item.directive';
 import { ExpandableRadioGroupComponent } from './expandable-radio-group.component';
 
@@ -20,17 +19,21 @@ describe('ExpandableRadioGroupComponent', () => {
     let component: ExpandableRadioGroupComponent;
     let fixture: ComponentFixture<ExpandableRadioGroupComponent>;
 
-    async function createComponent(components: any[] = []) {
+    async function createComponent(components: unknown[] = []) {
         await TestBed.configureTestingModule({
             imports: [
                 NoopAnimationsModule,
-                getTranslocoModule(),
                 MatRadioModule,
                 InlineShowAllToggleModule,
                 ReactiveFormsModule,
                 MatIconTestingModule,
             ],
-            declarations: [ExpandableRadioGroupComponent, ExpandableRadioGroupItemDirective, MatIcon, ...components],
+            declarations: [
+                ExpandableRadioGroupComponent,
+                ExpandableRadioGroupItemDirective,
+                MatIcon,
+                ...components,
+            ],
         }).compileComponents();
 
         fixture = TestBed.createComponent(ExpandableRadioGroupComponent);
@@ -160,17 +163,21 @@ describe('ExpandableRadioGroupComponent', () => {
         let testFixture: ComponentFixture<BaseHostComponent>;
 
         function getButtons(): DebugElement[] {
-            return testFixture.debugElement.queryAll(By.css('dsh-expandable-radio-group mat-radio-button'));
+            return testFixture.debugElement.queryAll(
+                By.css('dsh-expandable-radio-group mat-radio-button'),
+            );
         }
 
         function getButtonsNames(): string[] {
-            return getButtons().map((radioButtonEl: DebugElement) => getTextContent(radioButtonEl.nativeElement));
+            return getButtons().map((radioButtonEl: DebugElement) =>
+                getTextContent(radioButtonEl.nativeElement),
+            );
         }
 
         it('should render template item if it was provided for id', async () => {
             @Component({
                 template: `
-                    <dsh-expandable-radio-group [control]="control" [choices]="choices">
+                    <dsh-expandable-radio-group [choices]="choices" [control]="control">
                         <ng-container *ngFor="let choice of choices">
                             <ng-template [dshExpandableRadioGroupItem]="choice">
                                 <div>{{ getFormattedChoice(choice) }}</div>
@@ -195,13 +202,17 @@ describe('ExpandableRadioGroupComponent', () => {
             const radioNames = getButtonsNames();
 
             expect(radioButtons.length).toBe(3);
-            expect(radioNames).toEqual(['Formatted: "mine"', 'Formatted: "another_mine"', 'Formatted: "alternative"']);
+            expect(radioNames).toEqual([
+                'Formatted: "mine"',
+                'Formatted: "another_mine"',
+                'Formatted: "alternative"',
+            ]);
         });
 
         it('should render item label instead of custom template using id', async () => {
             @Component({
                 template: `
-                    <dsh-expandable-radio-group [control]="control" [choices]="choices">
+                    <dsh-expandable-radio-group [choices]="choices" [control]="control">
                         <ng-container *ngFor="let choice of choices; let i = index">
                             <ng-template [dshExpandableRadioGroupItem]="i === 1 ? 'never' : choice">
                                 <div>{{ getFormattedChoice(choice) }}</div>
@@ -226,7 +237,11 @@ describe('ExpandableRadioGroupComponent', () => {
             const radioNames = getButtonsNames();
 
             expect(radioButtons.length).toBe(3);
-            expect(radioNames).toEqual(['Formatted: "mine"', 'another_mine', 'Formatted: "alternative"']);
+            expect(radioNames).toEqual([
+                'Formatted: "mine"',
+                'another_mine',
+                'Formatted: "alternative"',
+            ]);
         });
     });
 

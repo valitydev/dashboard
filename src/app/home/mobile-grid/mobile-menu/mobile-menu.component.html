@@ -1,12 +1,12 @@
 <div class="dsh-mobile-menu" fxLayout="column">
     <div class="dsh-enu-nav-items" fxFlex fxLayout="column" fxLayoutGap="16px">
         <dsh-mobile-menu-nav-item
-            *ngFor="let link of sectionLinks$ | async"
-            [routerLink]="link.path"
-            routerLinkActive
-            [routerLinkActiveOptions]="{ exact: link?.exact }"
             #rla="routerLinkActive"
+            *ngFor="let link of sectionLinks$ | async"
             [active]="rla.isActive"
+            [routerLink]="link.path"
+            [routerLinkActiveOptions]="{ exact: link?.exact }"
+            routerLinkActive
             (click)="menuItemSelected.emit()"
             >{{ link.label }}</dsh-mobile-menu-nav-item
         >

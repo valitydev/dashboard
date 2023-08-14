@@ -9,7 +9,14 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { WithdrawalSumFilterComponent } from './withdrawal-sum-filter.component';
 
 @NgModule({
-    imports: [CommonModule, ReactiveFormsModule, FlexLayoutModule, TranslocoModule, MatFormFieldModule, MatInputModule],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        FlexLayoutModule,
+        TranslocoModule,
+        MatFormFieldModule,
+        MatInputModule,
+    ],
     declarations: [WithdrawalSumFilterComponent],
     exports: [WithdrawalSumFilterComponent],
 })

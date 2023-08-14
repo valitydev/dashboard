@@ -3,31 +3,43 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { APP_INITIALIZER, ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
+    DateAdapter,
+    MAT_DATE_FORMATS,
+    MAT_DATE_LOCALE,
+    MAT_RIPPLE_GLOBAL_OPTIONS,
+} from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import {
     MAT_MOMENT_DATE_ADAPTER_OPTIONS,
     MAT_MOMENT_DATE_FORMATS,
     MomentDateAdapter,
 } from '@angular/material-moment-adapter';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
-import { TRANSLOCO_CONFIG, TRANSLOCO_LOADER, TranslocoModule, translocoConfig } from '@ngneat/transloco';
-import * as Sentry from '@sentry/angular';
+import {
+    TRANSLOCO_CONFIG,
+    TRANSLOCO_LOADER,
+    TranslocoModule,
+    translocoConfig,
+} from '@ngneat/transloco';
+import * as Sentry from '@sentry/angular-ivy';
 
-import { AnapiModule } from '@dsh/api/anapi';
-import { ClaimManagementModule } from '@dsh/api/claim-management';
-import { DarkApiModule } from '@dsh/api/dark-api';
-import { PaymentsModule } from '@dsh/api/payments';
-import { QuestionaryAggrProxyModule } from '@dsh/api/questionary-aggr-proxy';
-import { UrlShortenerModule } from '@dsh/api/url-shortener';
-import { WalletModule } from '@dsh/api/wallet';
+import { AnapiModule } from '@dsh/app/api/anapi';
+import { ClaimManagementModule } from '@dsh/app/api/claim-management';
+import { PaymentsModule } from '@dsh/app/api/payments';
+import { QuestionaryAggrProxyModule } from '@dsh/app/api/questionary-aggr-proxy';
+import { UrlShortenerModule } from '@dsh/app/api/url-shortener';
+import { WalletModule } from '@dsh/app/api/wallet';
 import { ErrorModule } from '@dsh/app/shared/services';
 import { QUERY_PARAMS_SERIALIZERS } from '@dsh/app/shared/services/query-params/utils/query-params-serializers';
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
+import { SpinnerModule } from '@dsh/components/indicators';
 
 import { ENV, environment } from '../environments';
+
+import { ApiKeysModule } from './api/api-keys';
 import { OrganizationsModule } from './api/organizations';
 import { AppComponent } from './app.component';
 import { AuthModule, KeycloakAngularModule, KeycloakService } from './auth';
@@ -64,15 +76,23 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         OrganizationsModule,
         UrlShortenerModule,
         QuestionaryAggrProxyModule,
-        DarkApiModule,
         WalletModule,
+        SpinnerModule,
+        ApiKeysModule,
     ],
     providers: [
         LanguageService,
         {
             provide: APP_INITIALIZER,
             useFactory: initializer,
-            deps: [ConfigService, KeycloakService, LanguageService, ThemeManager, IconsService, Sentry.TraceService],
+            deps: [
+                ConfigService,
+                KeycloakService,
+                LanguageService,
+                ThemeManager,
+                IconsService,
+                Sentry.TraceService,
+            ],
             multi: true,
         },
         {
@@ -87,7 +107,11 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         },
         { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: false } },
         { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
-        { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS] },
+        {
+            provide: DateAdapter,
+            useClass: MomentDateAdapter,
+            deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+        },
         { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: { disabled: true } },
         { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
         {

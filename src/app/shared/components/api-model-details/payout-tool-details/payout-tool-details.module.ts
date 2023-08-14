@@ -9,6 +9,7 @@ import { LayoutModule } from '@dsh/components/layout';
 
 import { ApiModelRefsModule } from '../../../pipes';
 import { BankAccountDetailsModule } from '../bank-account-details';
+
 import { InternationalBankAccountComponent } from './international-bank-account';
 import { PayoutToolDetailsComponent } from './payout-tool-details.component';
 import { WalletComponent } from './wallet';

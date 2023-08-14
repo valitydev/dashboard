@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject, switchMap } from 'rxjs';
 import { first } from 'rxjs/operators';
 
-import { OrgsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/app/api/organizations';
 import { KeycloakTokenInfoService } from '@dsh/app/shared';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services/error';
@@ -23,12 +23,15 @@ export class CreateOrganizationDialogComponent {
     inProgress$ = new BehaviorSubject<boolean>(false);
 
     constructor(
-        private dialogRef: MatDialogRef<CreateOrganizationDialogComponent, BaseDialogResponseStatus>,
+        private dialogRef: MatDialogRef<
+            CreateOrganizationDialogComponent,
+            BaseDialogResponseStatus
+        >,
         private organizationsService: OrgsService,
         private notificationService: NotificationService,
         private errorService: ErrorService,
         private fb: FormBuilder,
-        private keycloakTokenInfoService: KeycloakTokenInfoService
+        private keycloakTokenInfoService: KeycloakTokenInfoService,
     ) {}
 
     @inProgressTo('inProgress$')
@@ -42,16 +45,16 @@ export class CreateOrganizationDialogComponent {
                             name: this.form.value.name,
                             owner,
                         },
-                    })
+                    }),
                 ),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe(
                 () => {
                     this.notificationService.success();
                     this.dialogRef.close(BaseDialogResponseStatus.Success);
                 },
-                (err) => this.errorService.error(err)
+                (err) => this.errorService.error(err),
             );
     }
 

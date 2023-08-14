@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
-import { provideValueAccessor } from '@s-libs/ng-core';
+import { createControlProviders } from '@vality/ng-core';
 import { combineLatest } from 'rxjs';
 import { share, switchMap } from 'rxjs/operators';
 
@@ -11,15 +11,23 @@ import { FilterSuperclass } from '@dsh/components/filter';
     selector: 'dsh-claim-statuses-filter',
     templateUrl: 'claim-statuses-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideValueAccessor(ClaimStatusesFilterComponent), ClaimStatusesLabelPipe],
+    providers: [
+        ...createControlProviders(() => ClaimStatusesFilterComponent),
+        ClaimStatusesLabelPipe,
+    ],
 })
 export class ClaimStatusesFilterComponent extends FilterSuperclass<ClaimStatusesEnum[]> {
     labels$ = this.savedValue$.pipe(
-        switchMap((types) => combineLatest((types || []).map((type) => this.claimStatusesLabelPipe.transform(type)))),
-        share()
+        switchMap((types) =>
+            combineLatest((types || []).map((type) => this.claimStatusesLabelPipe.transform(type))),
+        ),
+        share(),
     );
 
-    constructor(injector: Injector, private claimStatusesLabelPipe: ClaimStatusesLabelPipe) {
+    constructor(
+        injector: Injector,
+        private claimStatusesLabelPipe: ClaimStatusesLabelPipe,
+    ) {
         super(injector);
     }
 

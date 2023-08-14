@@ -1,12 +1,12 @@
 <div
-    class="dsh-state-nav-item"
-    (click)="clickHandler()"
     [ngClass]="{ selected: selected, success: status === 'success', warn: status === 'warn' }"
+    class="dsh-state-nav-item"
     fxLayout="row"
     fxLayoutAlign="start center"
     fxLayoutGap="8px"
+    (click)="clickHandler()"
 >
-    <div class="dsh-icon-container" fxFlex="24px" *ngIf="icon">
+    <div *ngIf="icon" class="dsh-icon-container" fxFlex="24px">
         <dsh-bi *ngIf="iconVisible" [icon]="icon"></dsh-bi>
     </div>
     <div class="dsh-state-nav-content">

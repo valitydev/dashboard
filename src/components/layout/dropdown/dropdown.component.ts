@@ -9,10 +9,9 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
+import { coerceBoolean } from 'coerce-property';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
-
-import { coerceBoolean } from '@dsh/utils';
 
 import { OPEN_CLOSE_ANIMATION, State } from './open-close-animation';
 
@@ -43,8 +42,8 @@ export class DropdownComponent implements OnInit, OnDestroy {
     @Output() closed = new EventEmitter<void>();
     @Output() destroy = new EventEmitter<void>();
 
-    @ViewChild(TemplateRef, { static: true }) templateRef: TemplateRef<any>;
-    @ContentChild(TemplateRef, { static: true }) contentTemplateRef: TemplateRef<any>;
+    @ViewChild(TemplateRef, { static: true }) templateRef: TemplateRef<unknown>;
+    @ContentChild(TemplateRef, { static: true }) contentTemplateRef: TemplateRef<unknown>;
 
     state$ = new BehaviorSubject(State.Closed);
     triangleLeftOffset: string;
@@ -54,7 +53,7 @@ export class DropdownComponent implements OnInit, OnDestroy {
         this.state$
             .pipe(
                 filter((state: State) => state === State.Open),
-                takeUntil(this.destroy)
+                takeUntil(this.destroy),
             )
             .subscribe(() => {
                 this.opened.emit();
@@ -72,7 +71,8 @@ export class DropdownComponent implements OnInit, OnDestroy {
         if (this.isAutoSize(this.width)) {
             return this.width;
         }
-        const widthPx: number = typeof this.width === 'string' ? parseFloat(this.width) : this.width;
+        const widthPx: number =
+            typeof this.width === 'string' ? parseFloat(this.width) : this.width;
         if (widthPx + 1 >= document.body.getBoundingClientRect().width) {
             return FULL_WIDTH;
         }

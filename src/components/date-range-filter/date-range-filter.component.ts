@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/co
 import { DateRange as MatDateRange } from '@angular/material/datepicker';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { provideValueAccessor } from '@s-libs/ng-core';
+import { createControlProviders } from '@vality/ng-core';
 import { Moment } from 'moment';
 import { switchMap, map } from 'rxjs/operators';
 
@@ -27,9 +27,15 @@ type InnerDateRange = {
     templateUrl: 'date-range-filter.component.html',
     styleUrls: ['date-range-filter.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideValueAccessor(DateRangeFilterComponent), DateRangeLocalizationService],
+    providers: [
+        ...createControlProviders(() => DateRangeFilterComponent),
+        DateRangeLocalizationService,
+    ],
 })
-export class DateRangeFilterComponent extends FilterSuperclass<InnerDateRange, DateRangeWithPreset> {
+export class DateRangeFilterComponent extends FilterSuperclass<
+    InnerDateRange,
+    DateRangeWithPreset
+> {
     @Input() default: Partial<DateRangeWithPreset> = { start: null, end: null };
     @Input() maxDate: Moment;
 
@@ -37,14 +43,21 @@ export class DateRangeFilterComponent extends FilterSuperclass<InnerDateRange, D
     presets: Preset[] = Object.values(Preset);
     activeLabel$ = this.savedValue$.pipe(
         switchMap(({ dateRange, preset }) => {
-            if (!preset) return this.transloco.selectTranslate('dateRangeFilter.label', null, 'core-components');
+            if (!preset)
+                return this.transloco.selectTranslate(
+                    'dateRangeFilter.label',
+                    null,
+                    'core-components',
+                );
             return preset === Preset.Custom
                 ? this.dateRangeLocalizationService.getLocalizedString(dateRange)
                 : this.presetLabels$.pipe(map((d) => d[preset]));
-        })
+        }),
     );
     stepEnum = Step;
-    presetLabels$ = this.transloco.selectTranslation('core-components').pipe(map(() => this.getPresetLabels()));
+    presetLabels$ = this.transloco
+        .selectTranslation('core-components')
+        .pipe(map(() => this.getPresetLabels()));
 
     protected get empty(): InnerDateRange {
         return { dateRange: new MatDateRange<Moment>(null, null) };
@@ -53,7 +66,7 @@ export class DateRangeFilterComponent extends FilterSuperclass<InnerDateRange, D
     constructor(
         injector: Injector,
         private dateRangeLocalizationService: DateRangeLocalizationService,
-        private transloco: TranslocoService
+        private transloco: TranslocoService,
     ) {
         super(injector);
     }
@@ -78,7 +91,7 @@ export class DateRangeFilterComponent extends FilterSuperclass<InnerDateRange, D
         this.value = {
             dateRange: new MatDateRange(
                 newStart?.local()?.startOf('day')?.utc(true),
-                newEnd?.local()?.endOf('day')?.utc(true)
+                newEnd?.local()?.endOf('day')?.utc(true),
             ),
             preset: Preset.Custom,
         };
@@ -106,7 +119,10 @@ export class DateRangeFilterComponent extends FilterSuperclass<InnerDateRange, D
         this.control.setValue(this.outerToInnerValue(this.default));
     }
 
-    protected innerToOuterValue({ dateRange: { start, end }, preset }: InnerDateRange): DateRangeWithPreset {
+    protected innerToOuterValue({
+        dateRange: { start, end },
+        preset,
+    }: InnerDateRange): DateRangeWithPreset {
         return { start, end, preset };
     }
 
@@ -116,16 +132,39 @@ export class DateRangeFilterComponent extends FilterSuperclass<InnerDateRange, D
             return { dateRange: new MatDateRange(start, end), preset: dateRange.preset };
         }
         if (!dateRange?.start || !dateRange?.end) return this.empty;
-        return { dateRange: new MatDateRange(dateRange.start, dateRange.end), preset: Preset.Custom };
+        return {
+            dateRange: new MatDateRange(dateRange.start, dateRange.end),
+            preset: Preset.Custom,
+        };
     }
 
     private getPresetLabels(): Record<Preset, string> {
         return {
-            last24hour: this.transloco.translate('dateRangeFilter.preset.last24hour', null, 'core-components'),
-            last30days: this.transloco.translate('dateRangeFilter.preset.last30days', null, 'core-components'),
-            last90days: this.transloco.translate('dateRangeFilter.preset.last90days', null, 'core-components'),
-            last365days: this.transloco.translate('dateRangeFilter.preset.last365days', null, 'core-components'),
-            custom: this.transloco.translate('dateRangeFilter.preset.custom', null, 'core-components'),
+            last24hour: this.transloco.translate(
+                'dateRangeFilter.preset.last24hour',
+                null,
+                'core-components',
+            ),
+            last30days: this.transloco.translate(
+                'dateRangeFilter.preset.last30days',
+                null,
+                'core-components',
+            ),
+            last90days: this.transloco.translate(
+                'dateRangeFilter.preset.last90days',
+                null,
+                'core-components',
+            ),
+            last365days: this.transloco.translate(
+                'dateRangeFilter.preset.last365days',
+                null,
+                'core-components',
+            ),
+            custom: this.transloco.translate(
+                'dateRangeFilter.preset.custom',
+                null,
+                'core-components',
+            ),
         };
     }
 }

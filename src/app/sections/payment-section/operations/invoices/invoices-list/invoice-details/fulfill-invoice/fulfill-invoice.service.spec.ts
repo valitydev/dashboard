@@ -6,7 +6,7 @@ import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 
-import { InvoiceService } from '@dsh/api/invoice';
+import { InvoiceService } from '@dsh/app/api/invoice';
 
 import { FulfillInvoiceDialogComponent } from './components/cancel-invoice-dialog/fulfill-invoice-dialog.component';
 import { FulfillInvoiceService } from './fulfill-invoice.service';
@@ -41,7 +41,7 @@ describe('FulfillInvoiceService', () => {
                     {
                         availableLangs: ['operations'],
                         defaultLang: 'operations',
-                    }
+                    },
                 ),
             ],
             providers: [
@@ -75,11 +75,15 @@ describe('FulfillInvoiceService', () => {
                     FulfillInvoiceDialogComponent,
                     deepEqual({
                         width: '720px',
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(instance(mockDialogRef));
-            when(mockInvoiceService.fulfillInvoice('test', deepEqual({ reason: 'test' }))).thenReturn(of(null));
-            when(mockSnackbar.open('invoice was fulfilled', 'OK', deepEqual({ duration: 2000 }))).thenReturn(null);
+            when(
+                mockInvoiceService.fulfillInvoice('test', deepEqual({ reason: 'test' })),
+            ).thenReturn(of(null));
+            when(
+                mockSnackbar.open('invoice was fulfilled', 'OK', deepEqual({ duration: 2000 })),
+            ).thenReturn(null);
         });
 
         afterEach(() => {
@@ -97,8 +101,8 @@ describe('FulfillInvoiceService', () => {
                     FulfillInvoiceDialogComponent,
                     deepEqual({
                         width: '720px',
-                    })
-                )
+                    }),
+                ),
             ).once();
         });
 
@@ -114,7 +118,7 @@ describe('FulfillInvoiceService', () => {
             expect(service.fulfillInvoice('test')).toBeObservable(
                 cold('a', {
                     a: undefined,
-                })
+                }),
             );
         });
 
@@ -123,7 +127,9 @@ describe('FulfillInvoiceService', () => {
 
             service.fulfillInvoice('test');
 
-            verify(mockSnackbar.open('invoice was fulfilled', 'OK', deepEqual({ duration: 2000 }))).once();
+            verify(
+                mockSnackbar.open('invoice was fulfilled', 'OK', deepEqual({ duration: 2000 })),
+            ).once();
         });
     });
 });

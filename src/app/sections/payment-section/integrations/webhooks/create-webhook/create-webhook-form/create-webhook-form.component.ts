@@ -4,7 +4,8 @@ import { WebhookScope } from '@vality/swag-payments';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ShopsService, PaymentsDictionaryService } from '@dsh/api/payments';
+import { PaymentsDictionaryService } from '@dsh/app/api/payments';
+import { ShopsDataService } from '@dsh/app/shared';
 import { oneMustBeSelected } from '@dsh/components/form-controls';
 
 import { getEventsByTopic } from '../get-events-by-topic';
@@ -19,7 +20,7 @@ export class CreateWebhookFormComponent implements OnInit {
     @Input()
     form: UntypedFormGroup;
 
-    shops$ = this.shopService.shops$;
+    shops$ = this.shopsDataService.shops$;
 
     activeTopic$ = new BehaviorSubject<TopicEnum>('InvoicesTopic');
 
@@ -29,9 +30,9 @@ export class CreateWebhookFormComponent implements OnInit {
     ]).pipe(map(([i, c]) => ({ ...i, ...c })));
 
     constructor(
-        private shopService: ShopsService,
+        private shopsDataService: ShopsDataService,
         private fb: UntypedFormBuilder,
-        private paymentsDictionaryService: PaymentsDictionaryService
+        private paymentsDictionaryService: PaymentsDictionaryService,
     ) {}
 
     ngOnInit() {
@@ -44,10 +45,10 @@ export class CreateWebhookFormComponent implements OnInit {
                         this.fb.group({
                             eventName,
                             selected: false,
-                        })
+                        }),
                     ),
-                    [oneMustBeSelected]
-                )
+                    [oneMustBeSelected],
+                ),
             );
         });
     }

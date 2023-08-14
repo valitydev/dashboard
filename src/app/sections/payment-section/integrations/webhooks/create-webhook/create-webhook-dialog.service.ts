@@ -3,7 +3,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { BehaviorSubject, of, Subject } from 'rxjs';
 import { catchError, filter, map, switchMap } from 'rxjs/operators';
 
-import { WebhooksService } from '@dsh/api/payments';
+import { WebhooksService } from '@dsh/app/api/payments';
 import { oneMustBeSelected } from '@dsh/components/form-controls';
 
 import { FormParams } from './form-params';
@@ -27,7 +27,10 @@ export class CreateWebhookDialogService {
     // eslint-disable-next-line @typescript-eslint/member-ordering
     webhookCreated$ = this.created$.asObservable();
 
-    constructor(private fb: UntypedFormBuilder, private webhooksService: WebhooksService) {
+    constructor(
+        private fb: UntypedFormBuilder,
+        private webhooksService: WebhooksService,
+    ) {
         this.create$
             .pipe(
                 map(formValuesToWebhook),
@@ -38,10 +41,10 @@ export class CreateWebhookDialogService {
                             this.loading$.next(false);
                             this.error$.next();
                             return of('error');
-                        })
-                    )
+                        }),
+                    ),
                 ),
-                filter((result) => result !== 'error')
+                filter((result) => result !== 'error'),
             )
             .subscribe(() => this.created$.next('created'));
     }
@@ -60,9 +63,9 @@ export class CreateWebhookDialogService {
                     this.fb.group({
                         eventName,
                         selected: false,
-                    })
+                    }),
                 ),
-                [oneMustBeSelected]
+                [oneMustBeSelected],
             ),
         });
     }

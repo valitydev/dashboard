@@ -1,5 +1,9 @@
 <div
-    *transloco="let t; scope: 'organization-section'; read: 'organizationSection.organizationDetails.member'"
+    *transloco="
+        let t;
+        scope: 'organization-section';
+        read: 'organizationSection.organizationDetails.member'
+    "
     fxLayout="column"
     fxLayoutGap="24px"
 >
@@ -8,14 +12,16 @@
     <mat-divider></mat-divider>
     <div fxLayout fxLayoutAlign="space-between">
         <div class="dsh-title">{{ t('titles.roles') }}</div>
-        <button (click)="editRoles()" dsh-button color="accent">{{ t('actions.editRoles') }}</button>
+        <button color="accent" dsh-button (click)="editRoles()">
+            {{ t('actions.editRoles') }}
+        </button>
     </div>
     <dsh-organization-roles [roles]="member?.roles"></dsh-organization-roles>
 
     <mat-divider></mat-divider>
     <div class="dsh-title">{{ t('titles.actions') }}</div>
     <div>
-        <button (click)="removeFromOrganization()" dsh-button color="warn">
+        <button color="warn" dsh-button (click)="removeFromOrganization()">
             {{ t('actions.removeFromOrganization') }}
         </button>
     </div>

@@ -12,7 +12,7 @@ export class PayoutsExpandedIdManager extends ExpandedIdManager<Payout> {
     constructor(
         protected route: ActivatedRoute,
         protected router: Router,
-        private fetchPayoutsService: FetchPayoutsService
+        private fetchPayoutsService: FetchPayoutsService,
     ) {
         super(route, router);
     }

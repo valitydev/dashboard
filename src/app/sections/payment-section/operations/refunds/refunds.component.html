@@ -7,9 +7,9 @@
     <div fxLayout="column" fxLayoutGap="16px">
         <dsh-refunds-list
             [expandedId]="expandedId$ | async"
-            (expandedIdChange)="expandedIdChange($event)"
-            [refunds]="refunds$ | async"
             [lastUpdated]="lastUpdated$ | async"
+            [refunds]="refunds$ | async"
+            (expandedIdChange)="expandedIdChange($event)"
             (refreshData)="refresh()"
         ></dsh-refunds-list>
         <dsh-show-more-panel

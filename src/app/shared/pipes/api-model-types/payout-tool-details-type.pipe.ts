@@ -14,27 +14,31 @@ export class PayoutToolDetailsTypePipe implements PipeTransform {
                 return this.transloco.selectTranslate(
                     'payoutToolDetailsType.payoutToolDetailsBankAccount',
                     null,
-                    'pipes'
+                    'pipes',
                 );
             case 'PayoutToolDetailsInternationalBankAccount':
                 return this.transloco.selectTranslate(
                     'payoutToolDetailsType.payoutToolDetailsInternationalBankAccount',
                     null,
-                    'pipes'
+                    'pipes',
                 );
             case 'PayoutToolDetailsBankCard':
-                return this.transloco.selectTranslate('payoutToolDetailsType.payoutToolDetailsBankCard', null, 'pipes');
+                return this.transloco.selectTranslate(
+                    'payoutToolDetailsType.payoutToolDetailsBankCard',
+                    null,
+                    'pipes',
+                );
             case 'PayoutToolDetailsWalletInfo':
                 return this.transloco.selectTranslate(
                     'payoutToolDetailsType.payoutToolDetailsWalletInfo',
                     null,
-                    'pipes'
+                    'pipes',
                 );
             case 'PayoutToolDetailsPaymentInstitutionAccount':
                 return this.transloco.selectTranslate(
                     'payoutToolDetailsType.payoutToolDetailsPaymentInstitutionAccount',
                     null,
-                    'pipes'
+                    'pipes',
                 );
         }
         return of('');

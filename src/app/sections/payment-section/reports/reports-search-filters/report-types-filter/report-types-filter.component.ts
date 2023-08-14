@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
-import { provideValueAccessor } from '@s-libs/ng-core';
+import { createControlProviders } from '@vality/ng-core';
 import { Report } from '@vality/swag-anapi-v2';
 import { combineLatest } from 'rxjs';
 import { share, switchMap } from 'rxjs/operators';
@@ -11,15 +11,20 @@ import { FilterSuperclass } from '@dsh/components/filter';
     selector: 'dsh-report-types-filter',
     templateUrl: 'report-types-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideValueAccessor(ReportTypesFilterComponent), ReportTypesLabelPipe],
+    providers: [...createControlProviders(() => ReportTypesFilterComponent), ReportTypesLabelPipe],
 })
 export class ReportTypesFilterComponent extends FilterSuperclass<Report.ReportTypeEnum[]> {
     labels$ = this.savedValue$.pipe(
-        switchMap((types) => combineLatest((types || []).map((type) => this.reportTypesLabelPipe.transform(type)))),
-        share()
+        switchMap((types) =>
+            combineLatest((types || []).map((type) => this.reportTypesLabelPipe.transform(type))),
+        ),
+        share(),
     );
 
-    constructor(injector: Injector, private reportTypesLabelPipe: ReportTypesLabelPipe) {
+    constructor(
+        injector: Injector,
+        private reportTypesLabelPipe: ReportTypesLabelPipe,
+    ) {
         super(injector);
     }
 

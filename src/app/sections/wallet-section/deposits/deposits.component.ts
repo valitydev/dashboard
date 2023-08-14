@@ -26,7 +26,7 @@ export class DepositsComponent {
         private fetchDepositsService: FetchDepositsService,
         private depositsExpandedIdManagerService: DepositsExpandedIdManagerService,
         private errorsService: ErrorService,
-        private qp: QueryParamsService<DepositsFilters>
+        private qp: QueryParamsService<DepositsFilters>,
     ) {
         this.fetchDepositsService.errors$.pipe(untilDestroyed(this)).subscribe((error: Error) => {
             this.errorsService.error(error);

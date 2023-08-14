@@ -11,28 +11,33 @@ import {
     createRussianLegalEntityModification,
     createShopCreationModification,
     makeShopLocation,
-} from '@dsh/api/claim-management';
+} from '@dsh/app/api/claim-management';
 import { IdGeneratorService } from '@dsh/app/shared/services/id-generator';
 
 import { RussianShopForm } from '../../types/russian-shop-entity';
 
 @Injectable()
 export class CreateRussianShopEntityService {
-    constructor(private claimsService: ClaimsService, private idGenerator: IdGeneratorService) {}
+    constructor(
+        private claimsService: ClaimsService,
+        private idGenerator: IdGeneratorService,
+    ) {}
 
     createShop(creationData: RussianShopForm): Observable<Claim> {
-        return this.claimsService.createClaim({ changeset: this.createShopCreationModifications(creationData) }).pipe(
-            switchMap((claim) => {
-                return forkJoin([
-                    of(claim),
-                    this.claimsService.requestReviewClaimByIDWithRevisionCheck({
-                        claimID: claim.id,
-                        claimRevision: claim.revision,
-                    }),
-                ]);
-            }),
-            pluck(0)
-        );
+        return this.claimsService
+            .createClaim({ changeset: this.createShopCreationModifications(creationData) })
+            .pipe(
+                switchMap((claim) => {
+                    return forkJoin([
+                        of(claim),
+                        this.claimsService.requestReviewClaimByIDWithRevisionCheck({
+                            claimID: claim.id,
+                            claimRevision: claim.revision,
+                        }),
+                    ]);
+                }),
+                pluck(0),
+            );
     }
 
     private createShopCreationModifications({
@@ -85,8 +90,8 @@ export class CreateRussianShopEntityService {
                     contractID,
                     payoutToolID,
                     payoutToolBankAccount,
-                    currency
-                )
+                    currency,
+                ),
             );
         }
         return [

@@ -10,6 +10,7 @@ import { FilterModule } from '@dsh/components/filter';
 import { FiltersGroupModule } from '@dsh/components/filters-group';
 
 import { ReportPipesModule } from '../report-pipes';
+
 import { ReportTypesFilterComponent } from './report-types-filter';
 import { ReportsSearchFiltersComponent } from './reports-search-filters.component';
 

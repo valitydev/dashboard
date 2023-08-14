@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { shareReplay, switchMap } from 'rxjs/operators';
 
-import { OrgsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/app/api/organizations';
 
 import { FetchMembersService } from './services/fetch-members/fetch-members.service';
 import { MembersExpandedIdManager } from './services/members-expanded-id-manager/members-expanded-id-manager.service';
@@ -19,7 +19,7 @@ export class MembersComponent {
     organization$ = this.route.params.pipe(
         switchMap(({ orgId }) => this.organizationsService.getOrg({ orgId })),
         untilDestroyed(this),
-        shareReplay(1)
+        shareReplay(1),
     );
     members$ = this.fetchMembersService.members$;
     lastUpdated$ = this.fetchMembersService.lastUpdated$;
@@ -28,7 +28,7 @@ export class MembersComponent {
     constructor(
         private organizationsService: OrgsService,
         private fetchMembersService: FetchMembersService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
     ) {}
 
     refresh() {

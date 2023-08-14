@@ -1,17 +1,17 @@
 <div fxLayout="column" fxLayoutGap="24px">
     <mat-radio-group
         *transloco="let t; scope: 'components'; read: 'components.createdExistingSwitch'"
-        fxLayout.gt-sm
-        fxLayout="column"
-        fxLayoutGap="24px"
         [formControl]="form.controls.type"
-        (ngModelChange)="typeChanged($event)"
+        fxLayout="column"
+        fxLayout.gt-sm
+        fxLayoutGap="24px"
         required
+        (ngModelChange)="typeChanged($event)"
     >
-        <mat-radio-button fxFlex [value]="type.Created">
+        <mat-radio-button [value]="type.Created" fxFlex>
             {{ t('created') }}
         </mat-radio-button>
-        <mat-radio-button fxFlex [value]="type.Existing">
+        <mat-radio-button [value]="type.Existing" fxFlex>
             {{ t('existing') }}
         </mat-radio-button>
     </mat-radio-group>

@@ -83,6 +83,12 @@
             "provisionOfService": "Certificate of rendered services"
         }
     },
+    "api-keys": {
+        "ApiKeyStatus": {
+            "active": "Active",
+            "revoked": "Revoked"
+        }
+    },
     "claimManagement": {
         "claimStatus": {
             "accepted": "Accepted",
@@ -91,13 +97,6 @@
             "pendingAcceptance": "Waiting for approval",
             "review": "In review",
             "revoked": "Revoked"
-        }
-    },
-    "darkApi": {
-        "refundStatus": {
-            "failed": "Failed",
-            "pending": "Pending",
-            "succeeded": "Succeeded"
         }
     },
     "organizations": {
@@ -159,6 +158,11 @@
             "DestinationAuthorized": "DestinationAuthorized (Receiver of funds successfully authorized)",
             "DestinationCreated": "DestinationCreated (Receiver of funds is created)",
             "DestinationUnauthorized": "DestinationUnauthorized (An attempt to authorize the funds receiver failed)"
+        },
+        "reportStatus": {
+            "canceled": "Cancelled",
+            "created": "Created",
+            "pending": "Pending"
         },
         "withdrawalStatus": {
             "Failed": "Failed",

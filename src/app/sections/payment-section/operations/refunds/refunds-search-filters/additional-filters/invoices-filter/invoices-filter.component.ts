@@ -1,15 +1,10 @@
-import { Component, Injector, ChangeDetectionStrategy } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
-import { WrappedFormControlSuperclass, provideValueAccessor } from '@s-libs/ng-core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
 
 @Component({
     selector: 'dsh-invoices-filter',
     templateUrl: './invoices-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideValueAccessor(InvoicesFilterComponent)],
+    providers: createControlProviders(() => InvoicesFilterComponent),
 })
-export class InvoicesFilterComponent extends WrappedFormControlSuperclass<string[]> {
-    constructor(injector: Injector, private fb: FormBuilder) {
-        super(injector);
-    }
-}
+export class InvoicesFilterComponent extends FormControlSuperclass<string[]> {}

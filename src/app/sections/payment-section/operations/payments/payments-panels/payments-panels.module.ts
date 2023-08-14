@@ -12,8 +12,8 @@ import { SpinnerModule } from '@dsh/components/indicators';
 import { AccordionModule, CardModule, RowModule } from '@dsh/components/layout';
 import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
 
-import { PaymentsRowHeaderComponent } from './components/row-header/payments-row-header.component';
 import { PaymentsRowComponent } from './components/row/payments-row.component';
+import { PaymentsRowHeaderComponent } from './components/row-header/payments-row-header.component';
 import { PaymentDetailHeaderModule } from './payment-detail-header';
 import { PaymentsDetailsModule } from './payments-details';
 import { PaymentsPanelsComponent } from './payments-panels.component';

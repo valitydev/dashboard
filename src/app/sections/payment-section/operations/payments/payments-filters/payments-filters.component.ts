@@ -1,30 +1,35 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
+import { AbstractControl, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { FormBuilder } from '@ngneat/reactive-forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Shop, PaymentInstitution } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
 import negate from 'lodash-es/negate';
-// eslint-disable-next-line you-dont-need-lodash-underscore/omit
 import omit from 'lodash-es/omit';
 import pick from 'lodash-es/pick';
 import { defer, ReplaySubject, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
-import { ShopsService } from '@dsh/api/payments';
+import { ShopsDataService } from '@dsh/app/shared';
 import { DateRange, Preset, createDateRangeWithPreset } from '@dsh/components/date-range-filter';
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
 import { filterShopsByRealm } from '../../operators';
+
 import { AdditionalFilters, FloatingFilters } from './additional-filters';
 import { DialogFiltersComponent } from './additional-filters/components/dialog-filters/dialog-filters.component';
 import { CardBinPan } from './card-bin-pan-filter';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 
-type MainFilters = { dateRange: DateRange; invoiceIDs?: string[]; shopIDs?: Shop['id'][]; binPan?: CardBinPan };
+type MainFilters = {
+    dateRange: DateRange;
+    invoiceIDs?: string[];
+    shopIDs?: Shop['id'][];
+    binPan?: CardBinPan;
+};
 export type Filters = MainFilters & AdditionalFilters & FloatingFilters;
 
 const MAIN_FILTERS = ['dateRange'];
@@ -40,33 +45,40 @@ export class PaymentsFiltersComponent implements OnInit, OnChanges {
     @Input() initParams: Filters;
     @Output() filtersChanged = new EventEmitter<MainFilters>();
 
-    shops$ = defer(() => this.realm$).pipe(filterShopsByRealm(this.shopService.shops$), shareReplay(1));
+    shops$ = defer(() => this.realm$).pipe(
+        filterShopsByRealm(this.shopsDataService.shops$),
+        shareReplay(1),
+    );
     isAdditionalFilterApplied$ = defer(() => this.additionalFilters$).pipe(map(negate(isEmpty)));
     defaultDateRange = createDateRangeWithPreset(Preset.Last90days);
-    form = this.fb.group<MainFilters>({
+    form = this.fb.group({
         invoiceIDs: null,
         shopIDs: null,
         binPan: null,
-        dateRange: this.defaultDateRange,
+        dateRange: this.defaultDateRange as unknown as AbstractControl,
     });
 
     get keys(): string[] {
-        return this.mediaObserver.isActive('gt-sm') ? [...MAIN_FILTERS, ...FLOATING_FILTERS] : MAIN_FILTERS;
+        return this.mediaObserver.isActive('gt-sm')
+            ? [...MAIN_FILTERS, ...FLOATING_FILTERS]
+            : MAIN_FILTERS;
     }
 
     private additionalFilters$ = new BehaviorSubject<AdditionalFilters>({});
     private realm$ = new ReplaySubject<RealmEnum>(1);
 
     constructor(
-        private shopService: ShopsService,
+        private shopsDataService: ShopsDataService,
         private fb: FormBuilder,
         private dialog: MatDialog,
-        private mediaObserver: MediaObserver
+        private mediaObserver: MediaObserver,
     ) {}
 
     ngOnInit(): void {
         combineLatest([
-            getFormValueChanges(this.form).pipe(map((filters) => pick(filters, this.keys) as MainFilters)),
+            getFormValueChanges(this.form).pipe(
+                map((filters) => pick(filters, this.keys) as MainFilters),
+            ),
             this.additionalFilters$.pipe(map((filters) => omit(filters, this.keys))),
         ])
             .pipe(untilDestroyed(this))
@@ -76,7 +88,7 @@ export class PaymentsFiltersComponent implements OnInit, OnChanges {
     ngOnChanges({ realm, initParams }: ComponentChanges<PaymentsFiltersComponent>): void {
         if (realm) this.realm$.next(realm.currentValue);
         if (initParams?.firstChange && initParams.currentValue) {
-            this.form.patchValue(pick(initParams.currentValue, this.keys));
+            this.form.patchValue(pick(initParams.currentValue, this.keys) as unknown);
             this.additionalFilters$.next(omit(initParams.currentValue, this.keys));
         }
     }

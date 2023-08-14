@@ -1,10 +1,10 @@
 <div
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.refunds'"
     fxLayout="column"
     fxLayoutGap="24px"
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.refunds'"
 >
     <div *ngFor="let item of list; index as i" fxLayout="column" fxLayoutGap="24px">
-        <div fxLayout fxLayoutGap="16px" fxLayoutAlign="space-between">
+        <div fxLayout fxLayoutAlign="space-between" fxLayoutGap="16px">
             <div>
                 {{ t('header') }}
                 <span>#{{ item.id }}</span>

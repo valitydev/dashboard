@@ -4,6 +4,9 @@
     fxLayoutGap="24px"
 >
     <div class="dsh-title">{{ t('title') }}</div>
-    <dsh-contract-details *ngIf="contract$ | async as contract" [contract]="contract"></dsh-contract-details>
+    <dsh-contract-details
+        *ngIf="contract$ | async as contract"
+        [contract]="contract"
+    ></dsh-contract-details>
     <div *ngIf="errorOccurred$ | async" class="dsh-body-1">{{ t('error') }}</div>
 </div>

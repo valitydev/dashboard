@@ -8,8 +8,8 @@ import { TranslocoTestingModule } from '@ngneat/transloco';
 import { of } from 'rxjs';
 import { instance, mock, when } from 'ts-mockito';
 
-import { CategoriesModule } from '@dsh/api/categories';
-import { ContractsModule } from '@dsh/api/contracts';
+import { CategoriesModule } from '@dsh/app/api/categories';
+import { ContractsModule } from '@dsh/app/api/contracts';
 import { ContractDetailsModule, PayoutToolModule } from '@dsh/app/shared/components';
 import { ShopContractDetailsService } from '@dsh/app/shared/services/shop-contract-details';
 import { ButtonModule } from '@dsh/components/buttons';
@@ -18,6 +18,7 @@ import { DetailsItemModule } from '@dsh/components/layout';
 import { ShopPayoutToolDetailsService } from '../../services/shop-payout-tool-details/shop-payout-tool-details.service';
 import { generateMockShopItem } from '../../tests/generate-shop-item';
 import { ShopBalanceModule } from '../shop-balance';
+
 import { ShopActionsComponent } from './components/shop-actions/shop-actions.component';
 import { ShopContractDetailsComponent } from './components/shop-contract-details/shop-contract-details.component';
 import { ShopIdComponent } from './components/shop-id/shop-id.component';

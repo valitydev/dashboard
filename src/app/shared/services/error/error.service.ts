@@ -1,17 +1,21 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-import * as Sentry from '@sentry/angular';
+import * as Sentry from '@sentry/angular-ivy';
 
 import { ErrorResult } from '@dsh/app/shared/services/error/models/error-result';
 import { extractError } from '@dsh/utils';
 
 import { NotificationService } from '../notification';
+
 import { CommonError } from './models/common-error';
 
 @Injectable()
 export class ErrorService {
-    constructor(private notificationService: NotificationService, private transloco: TranslocoService) {}
+    constructor(
+        private notificationService: NotificationService,
+        private transloco: TranslocoService,
+    ) {}
 
     // TODO: collect and dev log error information
     error(error: unknown, notify = true): ErrorResult {

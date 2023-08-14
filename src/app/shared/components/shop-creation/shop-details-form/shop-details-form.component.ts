@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
-import { FormBuilder } from '@ngneat/reactive-forms';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { createControlProviders, FormGroupSuperclass } from '@vality/ng-core';
 import { Category } from '@vality/swag-payments';
-
-import { createControlProviders, ValidatedControlSuperclass } from '@dsh/utils';
 
 export interface ShopDetailsForm {
     name: string;
@@ -14,16 +13,16 @@ export interface ShopDetailsForm {
     selector: 'dsh-shop-details-form',
     templateUrl: 'shop-details-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: createControlProviders(ShopDetailsFormComponent),
+    providers: createControlProviders(() => ShopDetailsFormComponent),
 })
-export class ShopDetailsFormComponent extends ValidatedControlSuperclass<ShopDetailsForm> {
+export class ShopDetailsFormComponent extends FormGroupSuperclass<Partial<ShopDetailsForm>> {
     control = this.fb.group<ShopDetailsForm>({
         url: '',
         name: '',
         category: null,
     });
 
-    constructor(injector: Injector, private fb: FormBuilder) {
-        super(injector);
+    constructor(private fb: FormBuilder) {
+        super();
     }
 }

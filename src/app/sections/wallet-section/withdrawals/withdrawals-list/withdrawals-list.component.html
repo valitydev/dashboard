@@ -2,17 +2,21 @@
     <dsh-last-updated [lastUpdated]="lastUpdated" (update)="refreshData.emit()"></dsh-last-updated>
     <dsh-withdrawal-row-header></dsh-withdrawal-row-header>
     <dsh-accordion
+        [expanded]="expandedId"
         fxLayout="column"
         fxLayoutGap="16px"
-        [expanded]="expandedId"
         (expandedChange)="expandedIdChange.emit($event)"
     >
-        <dsh-accordion-item *ngFor="let withdrawal of withdrawals" #accordionItem>
+        <dsh-accordion-item #accordionItem *ngFor="let withdrawal of withdrawals">
             <dsh-withdrawal-row [withdrawal]="withdrawal"></dsh-withdrawal-row>
             <ng-template dshLazyPanelContent>
                 <dsh-card fxFlexFill fxLayout="column" fxLayoutGap="32px">
                     <dsh-accordion-item-content-header
-                        *transloco="let t; scope: 'wallet-section'; read: 'walletSection.withdrawals'"
+                        *transloco="
+                            let t;
+                            scope: 'wallet-section';
+                            read: 'walletSection.withdrawals'
+                        "
                         (collapse)="accordionItem.collapse($event)"
                     >
                         <div fxLayout fxLayoutAlign="space-between">

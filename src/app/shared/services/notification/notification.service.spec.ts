@@ -23,7 +23,8 @@ describe('NotificationService', () => {
                                 ok: 'OK',
                                 error: 'Что-то пошло не так',
                                 success: 'Успешно',
-                                httpError: 'Произошла ошибка в процессе передачи / получения данных',
+                                httpError:
+                                    'Произошла ошибка в процессе передачи / получения данных',
                                 unknownError: 'Неизвестная ошибка',
                             },
                         },
@@ -31,7 +32,7 @@ describe('NotificationService', () => {
                     {
                         availableLangs: ['en'],
                         defaultLang: 'en',
-                    }
+                    },
                 ),
             ],
             providers: [
@@ -64,7 +65,9 @@ describe('NotificationService', () => {
         it('should open error snackbar', () => {
             service.error();
 
-            verify(mockMatSnackBar.open('Что-то пошло не так', 'OK', deepEqual({ duration: 3000 }))).once();
+            verify(
+                mockMatSnackBar.open('Что-то пошло не так', 'OK', deepEqual({ duration: 3000 })),
+            ).once();
             expect().nothing();
         });
     });

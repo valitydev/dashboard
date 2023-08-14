@@ -9,7 +9,9 @@ export type ConfirmActionDialogResult = 'cancel' | 'confirm';
     styleUrls: ['confirm-action-dialog.component.scss'],
 })
 export class ConfirmActionDialogComponent {
-    constructor(public dialogRef: MatDialogRef<ConfirmActionDialogComponent, ConfirmActionDialogResult>) {}
+    constructor(
+        public dialogRef: MatDialogRef<ConfirmActionDialogComponent, ConfirmActionDialogResult>,
+    ) {}
 
     cancel() {
         this.dialogRef.close('cancel');

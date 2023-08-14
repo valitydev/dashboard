@@ -11,10 +11,19 @@ import { NotificationService } from '@dsh/app/shared';
 export class ShopIdComponent {
     @Input() id: string;
 
-    constructor(private notificationService: NotificationService, private transloco: TranslocoService) {}
+    constructor(
+        private notificationService: NotificationService,
+        private transloco: TranslocoService,
+    ) {}
 
     copied(isCopied: boolean): void {
-        if (isCopied) this.notificationService.success(this.transloco.translate('shared.copied', null, 'components'));
-        else this.notificationService.success(this.transloco.translate('shared.copyFailed', null, 'components'));
+        if (isCopied)
+            this.notificationService.success(
+                this.transloco.translate('shared.copied', null, 'components'),
+            );
+        else
+            this.notificationService.success(
+                this.transloco.translate('shared.copyFailed', null, 'components'),
+            );
     }
 }

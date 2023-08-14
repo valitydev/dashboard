@@ -1,25 +1,27 @@
 import { Injectable } from '@angular/core';
-import { UntypedFormBuilder } from '@angular/forms';
+import { UntypedFormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { FormControl } from '@ngneat/reactive-forms';
 import { pluck, shareReplay } from 'rxjs/operators';
 
-import { ShopsService } from '@dsh/api/payments';
-import { FormData } from '@dsh/app/shared/components/create-invoice-form';
-import { SHARE_REPLAY_CONF } from '@dsh/operators';
+import { SHARE_REPLAY_CONF } from '@dsh/app/custom-operators';
+import { ShopsDataService } from '@dsh/app/shared';
 
 import { filterShopsByRealm } from '../../../operations/operators';
 
 @Injectable()
 export class CreateInvoiceOrInvoiceTemplateService {
     form = this.fb.group({ type: null });
-    createInvoiceFormControl = new FormControl<FormData>();
+    createInvoiceFormControl = new FormControl();
 
     shops$ = this.route.params.pipe(
         pluck('realm'),
-        filterShopsByRealm(this.shopService.shops$),
-        shareReplay(SHARE_REPLAY_CONF)
+        filterShopsByRealm(this.shopsDataService.shops$),
+        shareReplay(SHARE_REPLAY_CONF),
     );
 
-    constructor(private fb: UntypedFormBuilder, private route: ActivatedRoute, private shopService: ShopsService) {}
+    constructor(
+        private fb: UntypedFormBuilder,
+        private route: ActivatedRoute,
+        private shopsDataService: ShopsDataService,
+    ) {}
 }

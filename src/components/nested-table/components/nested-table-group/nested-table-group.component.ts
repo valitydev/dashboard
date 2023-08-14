@@ -30,18 +30,26 @@ import { EXPANSION } from './expansion';
 export class NestedTableGroupComponent implements AfterContentInit, OnChanges {
     @Input() displayedCount: number;
     showMoreDisplayed$ = defer(() =>
-        combineLatest([queryListStartedArrayChanges(this.rowChildren), this.displayedAll$, this.displayedCount$])
+        combineLatest([
+            queryListStartedArrayChanges(this.rowChildren),
+            this.displayedAll$,
+            this.displayedCount$,
+        ]),
     ).pipe(
         // displayedCount + 1 - to show the last element instead of the "show all" link when the number of elements is only 1 more
-        map(([rows, displayedAll, displayedCount]) => !displayedAll && rows.length > displayedCount + 1),
+        map(
+            ([rows, displayedAll, displayedCount]) =>
+                !displayedAll && rows.length > displayedCount + 1,
+        ),
         untilDestroyed(this),
-        shareReplay(1)
+        shareReplay(1),
     );
 
     @HostBinding(TABLE_ITEM_CLASS) readonly tableItemClass = true;
     @HostBinding('@expansion') readonly expansion;
 
-    @ContentChildren(NestedTableRowComponent) private rowChildren = new QueryList<NestedTableRowComponent>();
+    @ContentChildren(NestedTableRowComponent) private rowChildren =
+        new QueryList<NestedTableRowComponent>();
     private displayedAll$ = new BehaviorSubject<boolean>(false);
     private displayedCount$ = new BehaviorSubject(Infinity);
 

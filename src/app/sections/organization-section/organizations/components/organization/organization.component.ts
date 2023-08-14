@@ -1,13 +1,24 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnChanges,
+    Output,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Organization } from '@vality/swag-organizations';
 import isNil from 'lodash-es/isNil';
 import { filter, pluck, switchMap } from 'rxjs/operators';
 
-import { OrgsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/app/api/organizations';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
-import { ErrorService, NotificationService, ContextService } from '@dsh/app/shared/services';
+import {
+    ErrorService,
+    NotificationService,
+    ContextOrganizationService,
+} from '@dsh/app/shared/services';
 import { FetchOrganizationsService } from '@dsh/app/shared/services/fetch-organizations';
 import { OrganizationManagementService } from '@dsh/app/shared/services/organization-management/organization-management.service';
 import { ConfirmActionDialogComponent, ConfirmActionDialogResult } from '@dsh/components/popups';
@@ -29,7 +40,7 @@ export class OrganizationComponent implements OnChanges {
 
     @Output() changed = new EventEmitter<void>();
 
-    member$ = this.contextService.member$;
+    member$ = this.contextOrganizationService.member$;
     membersCount$ = this.organizationManagementService.members$.pipe(pluck('length'));
     hasAdminAccess$ = this.organizationManagementService.hasAdminAccess$;
     isOwner$ = this.organizationManagementService.isOrganizationOwner$;
@@ -41,7 +52,7 @@ export class OrganizationComponent implements OnChanges {
         private notificationService: NotificationService,
         private errorService: ErrorService,
         private fetchOrganizationsService: FetchOrganizationsService,
-        private contextService: ContextService
+        private contextOrganizationService: ContextOrganizationService,
     ) {}
 
     ngOnChanges({ organization }: ComponentChanges<OrganizationComponent>) {
@@ -53,33 +64,38 @@ export class OrganizationComponent implements OnChanges {
     @ignoreBeforeCompletion
     leave() {
         return this.dialog
-            .open<ConfirmActionDialogComponent, void, ConfirmActionDialogResult>(ConfirmActionDialogComponent)
+            .open<ConfirmActionDialogComponent, void, ConfirmActionDialogResult>(
+                ConfirmActionDialogComponent,
+            )
             .afterClosed()
             .pipe(
                 filter((r) => r === 'confirm'),
-                switchMap(() => this.organizationsService.cancelOrgMembership({ orgId: this.organization.id })),
-                untilDestroyed(this)
+                switchMap(() =>
+                    this.organizationsService.cancelOrgMembership({ orgId: this.organization.id }),
+                ),
+                untilDestroyed(this),
             )
             .subscribe(
                 () => {
                     this.notificationService.success();
                     this.changed.emit();
                 },
-                (err) => this.errorService.error(err)
+                (err) => this.errorService.error(err),
             );
     }
 
     @ignoreBeforeCompletion
     rename() {
         return this.dialog
-            .open<RenameOrganizationDialogComponent, RenameOrganizationDialogData, BaseDialogResponseStatus>(
+            .open<
                 RenameOrganizationDialogComponent,
-                { data: { organization: this.organization } }
-            )
+                RenameOrganizationDialogData,
+                BaseDialogResponseStatus
+            >(RenameOrganizationDialogComponent, { data: { organization: this.organization } })
             .afterClosed()
             .pipe(
                 filter((r) => r === BaseDialogResponseStatus.Success),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe(() => {
                 this.fetchOrganizationsService.refresh();

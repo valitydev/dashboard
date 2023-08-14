@@ -10,7 +10,6 @@
     },
     "sectionsLinks": {
         "links": {
-            "claims": "Claims",
             "payments": "Payments",
             "wallets": "Wallets"
         }

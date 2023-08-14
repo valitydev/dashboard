@@ -12,7 +12,7 @@ export class WebhooksExpandedIdManager extends ExpandedIdManager<Webhook> {
     constructor(
         protected route: ActivatedRoute,
         protected router: Router,
-        private receiveWebhooksService: ReceiveWebhooksService
+        private receiveWebhooksService: ReceiveWebhooksService,
     ) {
         super(route, router);
     }

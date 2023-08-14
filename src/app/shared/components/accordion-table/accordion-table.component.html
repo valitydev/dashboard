@@ -1,0 +1,82 @@
+<div fxLayout="column" fxLayoutGap="32px">
+    <div fxLayout="column" fxLayoutGap="16px">
+        <dsh-last-updated
+            [lastUpdated]="lastUpdated"
+            (update)="update.emit($event)"
+        ></dsh-last-updated>
+        <dsh-row fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="24px">
+            <dsh-row-header-label
+                *ngFor="let column of columns"
+                [fxFlex]="column.width ?? true"
+                [fxHide]="isHided(column.hide) | async"
+                >{{ column.label | vPossiblyAsync }}
+            </dsh-row-header-label>
+        </dsh-row>
+        <dsh-accordion
+            *ngIf="data?.length"
+            [expanded]="expanded ? (expanded.expanded$ | async) : undefined"
+            fxLayout="column"
+            fxLayoutGap="16px"
+            (expandedChange)="expanded ? expanded.set($event) : undefined"
+        >
+            <dsh-accordion-item #accordionItem *ngFor="let item of data">
+                <dsh-row fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="24px">
+                    <dsh-row-label
+                        *ngFor="let column of columns"
+                        [fxFlex]="column.width ?? true"
+                        [fxHide]="isHided(column.hide) | async"
+                    >
+                        <ng-container
+                            *ngIf="column.field(item, column) as value"
+                            [ngSwitch]="column.type"
+                        >
+                            <ng-template ngSwitchCase="daterange">
+                                {{ value.start | date: 'dd MMMM yyyy' }} -
+                                {{ value.end | date: 'dd MMMM yyyy' }}
+                            </ng-template>
+                            <ng-template ngSwitchCase="datetime">
+                                {{ value | date: 'dd MMMM yyyy, HH:mm' }}
+                            </ng-template>
+                            <ng-template ngSwitchCase="tag">
+                                <dsh-status
+                                    *ngIf="column.typeParameters.label | vPossiblyAsync as tagLabel"
+                                    [color]="column.typeParameters.color[value]"
+                                    >{{ tagLabel[value] }}</dsh-status
+                                >
+                            </ng-template>
+                            <ng-template ngSwitchDefault>
+                                {{ value }}
+                            </ng-template>
+                        </ng-container>
+                    </dsh-row-label>
+                </dsh-row>
+                <ng-template dshLazyPanelContent>
+                    <dsh-card fxFlexFill fxLayout="column" fxLayoutGap="24px">
+                        <dsh-accordion-item-content-header
+                            (collapse)="accordionItem.collapse($event)"
+                        >
+                            <div fxLayout fxLayoutAlign="space-between" fxLayoutGap="24px">
+                                <div *ngFor="let header of contentHeader">
+                                    {{ header.label(item) }}
+                                </div>
+                            </div>
+                        </dsh-accordion-item-content-header>
+                        <ng-container
+                            *ngTemplateOutlet="contentTemplate; context: { $implicit: item }"
+                        ></ng-container>
+                    </dsh-card>
+                </ng-template>
+            </dsh-accordion-item>
+        </dsh-accordion>
+        <dsh-show-more-panel
+            *ngIf="hasMore"
+            [isLoading]="inProgress"
+            (showMore)="more.emit($event)"
+        ></dsh-show-more-panel>
+    </div>
+    <dsh-empty-search-result
+        *ngIf="!data?.length && !inProgress"
+        [text]="error"
+    ></dsh-empty-search-result>
+    <dsh-spinner *ngIf="inProgress && !data?.length" fxLayoutAlign="center"></dsh-spinner>
+</div>

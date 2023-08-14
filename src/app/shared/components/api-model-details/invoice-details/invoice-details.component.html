@@ -1,19 +1,22 @@
 <div
+    *transloco="let t; scope: 'components'; read: 'components.invoiceDetails'"
     gdColumns="1fr"
     gdColumns.gt-sm="1fr 1fr 1fr"
     gdGap="24px"
-    *transloco="let t; scope: 'components'; read: 'components.invoiceDetails'"
 >
     <dsh-details-item [title]="t('status')">
-        <dsh-status
-            [color]="invoice.status | invoiceStatusColor"
-            >{{ (invoiceStatusDict$ | async)?.[invoice.status] }}</dsh-status
-        >
+        <dsh-status [color]="invoice.status | invoiceStatusColor">{{
+            (invoiceStatusDict$ | async)?.[invoice.status]
+        }}</dsh-status>
     </dsh-details-item>
-    <dsh-details-item [title]="t('amount')">{{ invoice.amount | amountCurrency: invoice.currency }}</dsh-details-item>
-    <dsh-details-item [title]="t('createdAt')">{{ invoice.createdAt | date: 'dd MMMM yyyy, HH:mm' }}</dsh-details-item>
-    <dsh-details-item gdColumn="1/-1" [title]="t('name')">{{ invoice.product }}</dsh-details-item>
-    <dsh-details-item gdColumn="1/-1" *ngIf="invoice.description" [title]="t('description')">{{
+    <dsh-details-item [title]="t('amount')">{{
+        invoice.amount | amountCurrency: invoice.currency
+    }}</dsh-details-item>
+    <dsh-details-item [title]="t('createdAt')">{{
+        invoice.createdAt | date: 'dd MMMM yyyy, HH:mm'
+    }}</dsh-details-item>
+    <dsh-details-item [title]="t('name')" gdColumn="1/-1">{{ invoice.product }}</dsh-details-item>
+    <dsh-details-item *ngIf="invoice.description" [title]="t('description')" gdColumn="1/-1">{{
         invoice.description
     }}</dsh-details-item>
 </div>

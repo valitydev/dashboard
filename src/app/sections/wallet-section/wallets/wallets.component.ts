@@ -17,7 +17,7 @@ export class WalletsComponent implements OnInit {
 
     constructor(
         private receiveWalletsService: FetchWalletsService,
-        private walletsExpandedIdManager: WalletsExpandedIdManager
+        private walletsExpandedIdManager: WalletsExpandedIdManager,
     ) {}
 
     ngOnInit(): void {

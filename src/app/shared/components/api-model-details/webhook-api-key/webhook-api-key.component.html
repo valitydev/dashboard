@@ -1,5 +1,5 @@
 <div *transloco="let t; scope: 'payment-section'; read: 'paymentSection.webhook.key'">
-    <div class="mat-title">{{ t('title') }}</div>
+    <div class="mat-h2">{{ t('title') }}</div>
     <div class="ym-hide-content" fxLayout="column" fxLayoutGap="20px">
         <div class="mat-caption">
             {{ t('publicKey') }}
@@ -8,7 +8,11 @@
             {{ key }}
         </div>
         <div>
-            <button dsh-button [cdkCopyToClipboard]="key" (cdkCopyToClipboardCopied)="copied($event)">
+            <button
+                [cdkCopyToClipboard]="key"
+                dsh-button
+                (cdkCopyToClipboardCopied)="copied($event)"
+            >
                 {{ t('buttons.copy') }}
             </button>
         </div>

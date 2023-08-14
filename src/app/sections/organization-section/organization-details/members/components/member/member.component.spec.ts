@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogModule } from '@angular/material/dialog';
 import { By } from '@angular/platform-browser';
 
-import { OrgsService } from '@dsh/api/organizations';
+import { OrgsService } from '@dsh/app/api/organizations';
 import { DIALOG_CONFIG } from '@dsh/app/sections/tokens';
 import { ErrorService, NotificationService } from '@dsh/app/shared';
 import { OrganizationManagementService } from '@dsh/app/shared/services/organization-management/organization-management.service';
@@ -27,7 +27,7 @@ describe('MemberComponent', () => {
             imports: [MatDialogModule],
             declarations: [HostComponent, MemberComponent],
             providers: [
-                provideMockToken(DIALOG_CONFIG, {} as any),
+                provideMockToken(DIALOG_CONFIG, {} as unknown),
                 provideMockService(OrganizationManagementService),
                 provideMockService(OrgsService),
                 provideMockService(NotificationService),

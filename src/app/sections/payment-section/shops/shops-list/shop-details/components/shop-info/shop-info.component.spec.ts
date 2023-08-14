@@ -11,6 +11,7 @@ import { DetailsItemModule } from '@dsh/components/layout';
 import { generateMockShopItem } from '../../../../tests/generate-shop-item';
 import { ShopBalanceModule } from '../../../shop-balance';
 import { CategoryService } from '../../services/category/category.service';
+
 import { ShopInfoComponent } from './shop-info.component';
 
 class MockCategoryService {

@@ -1,24 +1,18 @@
-import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatRadioChange } from '@angular/material/radio';
-import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { Option, FormControlSuperclass, createControlProviders } from '@vality/ng-core';
 import { Overwrite } from 'utility-types';
-
-import { Option } from './types/option';
 
 @Component({
     selector: 'dsh-radio-group-field',
     templateUrl: 'radio-group-field.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideValueAccessor(RadioGroupFieldComponent)],
+    providers: createControlProviders(() => RadioGroupFieldComponent),
 })
-export class RadioGroupFieldComponent<T> extends WrappedFormControlSuperclass<T> {
+export class RadioGroupFieldComponent<T> extends FormControlSuperclass<T> {
     @Input() options: Option<T>[];
 
     selected: T;
-
-    constructor(injector: Injector) {
-        super(injector);
-    }
 
     handleIncomingValue(value: T): void {
         this.selected = value;

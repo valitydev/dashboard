@@ -1,4 +1,4 @@
-<div class="base-dialog" fxLayout="column" fxLayoutGap="24px" fxFlex="grow">
+<div class="base-dialog" fxFlex="grow" fxLayout="column" fxLayoutGap="24px">
     <div class="base-dialog-title">
         <div [dshNoContent]="titleBlock">
             <ng-content select="dshBaseDialogTitle"></ng-content>
@@ -6,7 +6,7 @@
         </div>
     </div>
     <ng-container *ngTemplateOutlet="contentDividerContent"></ng-container>
-    <div class="base-dialog-content" [dshNoContent]="noContent">
+    <div [dshNoContent]="noContent" class="base-dialog-content">
         <ng-content></ng-content>
     </div>
     <ng-container *ngIf="!noActions">
@@ -26,7 +26,15 @@
 
 <ng-template #titleBlock>
     <div fxLayout="row" fxLayoutAlign="space-between">
-        <div class="dsh-headline">{{ title }}</div>
-        <dsh-bi class="base-dialog-title-close" icon="x" size="lg" (click)="cancelDialog()"></dsh-bi>
+        <div fxLayout="column" fxLayoutGap="16px">
+            <div class="dsh-headline">{{ title }}</div>
+            <div *ngIf="subtitle" class="dsh-body-1">{{ subtitle }}</div>
+        </div>
+        <dsh-bi
+            class="base-dialog-title-close"
+            icon="x"
+            size="lg"
+            (click)="cancelDialog()"
+        ></dsh-bi>
     </div>
 </ng-template>

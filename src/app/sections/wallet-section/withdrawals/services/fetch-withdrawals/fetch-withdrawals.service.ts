@@ -6,10 +6,10 @@ import { ListWithdrawalsRequestParams } from '@vality/swag-wallet/lib/api/withdr
 import { Observable, of } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 
-import { WithdrawalsService } from '@dsh/api/wallet';
+import { WithdrawalsService } from '@dsh/app/api/wallet';
+import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
-import { mapToTimestamp } from '@dsh/operators';
 
 type WithdrawalsAndContinuationToken = InlineResponse2007;
 
@@ -28,20 +28,25 @@ export class FetchWithdrawalsService extends PartialFetcher<
         @Inject(SEARCH_LIMIT)
         private searchLimit: number,
         @Inject(DEBOUNCE_FETCHER_ACTION_TIME)
-        debounceActionTime: number
+        debounceActionTime: number,
     ) {
         super(debounceActionTime);
     }
 
     protected fetch(
         params: Omit<ListWithdrawalsRequestParams, 'xRequestID' | 'limit'>,
-        continuationToken?: string
+        continuationToken?: string,
     ): Observable<WithdrawalsAndContinuationToken> {
-        return this.withdrawalsService.listWithdrawals({ ...params, limit: this.searchLimit, continuationToken }).pipe(
-            catchError(() => {
-                this.snackBar.open(this.transloco.translate('shared.httpError', null, 'components'), 'OK');
-                return of({ result: [] });
-            })
-        );
+        return this.withdrawalsService
+            .listWithdrawals({ ...params, limit: this.searchLimit, continuationToken })
+            .pipe(
+                catchError(() => {
+                    this.snackBar.open(
+                        this.transloco.translate('shared.httpError', null, 'components'),
+                        'OK',
+                    );
+                    return of({ result: [] });
+                }),
+            );
     }
 }

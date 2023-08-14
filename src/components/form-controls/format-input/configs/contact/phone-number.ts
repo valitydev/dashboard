@@ -1,7 +1,7 @@
 import { ValidatorFn } from '@angular/forms';
-import { TextMaskConfig } from 'angular2-text-mask';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
+import { TextMaskConfig } from '../../types/text-mask-config';
 import { FormatInputConfig } from '../format-input-config';
 
 const DIGIT_REG_EXP = /\d/;

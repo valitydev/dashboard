@@ -1,34 +1,34 @@
-import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
-import { provideValueAccessor, WrappedFormControlSuperclass } from '@s-libs/ng-core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/ng-core';
 import { PaymentInstitution } from '@vality/swag-payments';
+import { coerceBoolean } from 'coerce-property';
 import { Observable } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 
-import { PaymentInstitutionsService } from '@dsh/api/payments';
-import { Option } from '@dsh/components/form-controls/select-search-field';
-import { coerceBoolean } from '@dsh/utils';
+import { PaymentInstitutionsService } from '@dsh/app/api/payments';
 
 @Component({
     selector: 'dsh-payment-institution-field',
     templateUrl: 'payment-institution-field.component.html',
-    providers: [provideValueAccessor(PaymentInstitutionFieldComponent)],
+    providers: createControlProviders(() => PaymentInstitutionFieldComponent),
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PaymentInstitutionFieldComponent extends WrappedFormControlSuperclass<PaymentInstitution> {
+export class PaymentInstitutionFieldComponent extends FormControlSuperclass<PaymentInstitution> {
     @Input() label: string;
     @Input() @coerceBoolean required = false;
 
-    options$: Observable<Option<PaymentInstitution>[]> = this.paymentInstitutionsService.paymentInstitutions$.pipe(
-        map((paymentInstitutions) =>
-            paymentInstitutions.map((paymentInstitution) => ({
-                label: `${paymentInstitution.id} - ${paymentInstitution.name}`,
-                value: paymentInstitution,
-            }))
-        ),
-        share()
-    );
+    options$: Observable<Option<PaymentInstitution>[]> =
+        this.paymentInstitutionsService.paymentInstitutions$.pipe(
+            map((paymentInstitutions) =>
+                paymentInstitutions.map((paymentInstitution) => ({
+                    label: `${paymentInstitution.id} - ${paymentInstitution.name}`,
+                    value: paymentInstitution,
+                })),
+            ),
+            share(),
+        );
 
-    constructor(injector: Injector, private paymentInstitutionsService: PaymentInstitutionsService) {
-        super(injector);
+    constructor(private paymentInstitutionsService: PaymentInstitutionsService) {
+        super();
     }
 }

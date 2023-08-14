@@ -2,11 +2,17 @@
     <dsh-invoice-main-info [invoice]="invoice"></dsh-invoice-main-info>
     <ng-container *ngIf="isCartAvailable(invoice.cart)">
         <mat-divider></mat-divider>
-        <dsh-invoice-cart-info [cart]="invoice.cart" [currency]="invoice.currency"></dsh-invoice-cart-info>
+        <dsh-invoice-cart-info
+            [cart]="invoice.cart"
+            [currency]="invoice.currency"
+        ></dsh-invoice-cart-info>
     </ng-container>
     <ng-container *ngIf="isActionsAvailable(invoice?.status)">
         <mat-divider></mat-divider>
-        <dsh-invoice-actions [invoice]="invoice" (refreshData)="refreshData.emit()"></dsh-invoice-actions>
+        <dsh-invoice-actions
+            [invoice]="invoice"
+            (refreshData)="refreshData.emit()"
+        ></dsh-invoice-actions>
     </ng-container>
     <ng-container *ngIf="(payments$ | async)?.length">
         <mat-divider></mat-divider>

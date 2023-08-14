@@ -6,7 +6,11 @@ import { ChartsThemeProvider } from './payment-section/analytics/charts-theme';
 export const SEARCH_LIMIT = new InjectionToken<number>('searchLimit');
 export const DEFAULT_SEARCH_LIMIT = 10;
 
-export type DialogConfig = { small: MatDialogConfig; medium: MatDialogConfig; large: MatDialogConfig };
+export type DialogConfig = {
+    small: MatDialogConfig;
+    medium: MatDialogConfig;
+    large: MatDialogConfig;
+};
 export const DIALOG_CONFIG = new InjectionToken<DialogConfig>('dialogConfig');
 const BASE_CONFIG: MatDialogConfig = {
     ...new MatDialogConfig(),

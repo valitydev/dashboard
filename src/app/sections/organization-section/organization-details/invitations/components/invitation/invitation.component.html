@@ -1,5 +1,9 @@
 <div
-    *transloco="let t; scope: 'organization-section'; read: 'organizationSection.organizationDetails.invitation'"
+    *transloco="
+        let t;
+        scope: 'organization-section';
+        read: 'organizationSection.organizationDetails.invitation'
+    "
     fxLayout="column"
     fxLayoutGap="24px"
 >
@@ -21,7 +25,7 @@
     <mat-divider></mat-divider>
     <div class="dsh-title">{{ t('titles.actions') }}</div>
     <div>
-        <button (click)="cancel()" dsh-button color="warn">
+        <button color="warn" dsh-button (click)="cancel()">
             {{ t('actions.cancel') }}
         </button>
     </div>

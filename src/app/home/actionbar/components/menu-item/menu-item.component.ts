@@ -1,6 +1,11 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';
-
-import { coerceBoolean } from '@dsh/utils';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
+import { coerceBoolean } from 'coerce-property';
 
 @Component({
     selector: 'dsh-menu-item',

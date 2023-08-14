@@ -8,6 +8,7 @@ import { LayoutModule } from '@dsh/components/layout';
 
 import { BankAccountDetailsModule } from '../bank-account-details';
 import { PayoutToolDetailsModule } from '../payout-tool-details';
+
 import { PayoutToolComponent } from './payout-tool.component';
 
 @NgModule({

@@ -23,5 +23,8 @@ export class OrganizationsDictionaryService {
         /* eslint-enable @typescript-eslint/naming-convention */
     }));
 
-    constructor(private t: TranslocoService, private dictionaryService: DictionaryService) {}
+    constructor(
+        private t: TranslocoService,
+        private dictionaryService: DictionaryService,
+    ) {}
 }

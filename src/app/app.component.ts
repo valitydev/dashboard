@@ -1,13 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import * as Sentry from '@sentry/angular';
-import { first, map } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import * as Sentry from '@sentry/angular-ivy';
+import { first } from 'rxjs/operators';
 
-import { ENV, Env } from '../environments';
 import { BootstrapService } from './bootstrap.service';
-import { ContextService } from './shared';
+import { ContextOrganizationService } from './shared';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-root',
     templateUrl: 'app.component.html',
@@ -18,15 +15,12 @@ export class AppComponent implements OnInit {
 
     constructor(
         private bootstrapService: BootstrapService,
-        @Inject(ENV) public env: Env,
-        private contextService: ContextService
+        private contextOrganizationService: ContextOrganizationService,
     ) {}
 
     ngOnInit(): void {
-        this.bootstrapService.bootstrap();
-        this.contextService.organization$
-            .pipe(map(({ party }) => party))
-            .pipe(first(), untilDestroyed(this))
-            .subscribe((partyID) => Sentry.setUser({ id: partyID }));
+        this.contextOrganizationService.organization$
+            .pipe(first())
+            .subscribe(({ party }) => Sentry.setUser({ id: party }));
     }
 }

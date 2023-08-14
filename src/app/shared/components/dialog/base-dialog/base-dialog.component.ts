@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-
-import { coerceBoolean } from '@dsh/utils';
+import { coerceBoolean } from 'coerce-property';
 
 // TODO: add unit test for template with new ng-content
 @Component({
@@ -10,6 +9,7 @@ import { coerceBoolean } from '@dsh/utils';
 })
 export class BaseDialogComponent {
     @Input() title: string;
+    @Input() subtitle: string;
     @coerceBoolean @Input() disabled: boolean;
     @coerceBoolean @Input() hasDivider = true;
     @coerceBoolean @Input() noActions = false;

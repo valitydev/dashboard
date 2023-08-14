@@ -1,7 +1,13 @@
 import { ChangeDetectionStrategy, Component, forwardRef, Input, OnChanges } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
-import { FormControl, ValidatorFn } from '@ngneat/reactive-forms';
+import {
+    ControlValueAccessor,
+    NG_VALUE_ACCESSOR,
+    Validators,
+    ValidatorFn,
+    FormControl,
+} from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { coerceBoolean } from 'coerce-property';
 import isNil from 'lodash-es/isNil';
 import isObject from 'lodash-es/isObject';
 import { skip } from 'rxjs/operators';
@@ -9,7 +15,6 @@ import { skip } from 'rxjs/operators';
 import { ComponentInputError } from '@dsh/app/shared/services/error/models/component-input-error';
 import { ErrorMatcher } from '@dsh/app/shared/utils';
 import { ComponentChanges } from '@dsh/type-utils';
-import { coerceBoolean } from '@dsh/utils';
 @UntilDestroy()
 @Component({
     selector: 'dsh-max-length-input',
@@ -40,7 +45,7 @@ export class MaxLengthInputComponent implements OnChanges, ControlValueAccessor 
         this.formControl.setValue(value);
     }
 
-    formControl = new FormControl<string>();
+    formControl = new FormControl();
     isDisabled = false;
     // material needs this to work with error state properly
     matcher = new ErrorMatcher();
@@ -68,10 +73,12 @@ export class MaxLengthInputComponent implements OnChanges, ControlValueAccessor 
         this.innerOnTouched();
     }
 
-    registerOnChange(onChange: (value: any) => void): void {
-        this.formControl.valueChanges.pipe(skip(1), untilDestroyed(this)).subscribe((value: string) => {
-            onChange(value);
-        });
+    registerOnChange(onChange: (value: unknown) => void): void {
+        this.formControl.valueChanges
+            .pipe(skip(1), untilDestroyed(this))
+            .subscribe((value: string) => {
+                onChange(value);
+            });
     }
 
     registerOnTouched(onTouch: () => void): void {

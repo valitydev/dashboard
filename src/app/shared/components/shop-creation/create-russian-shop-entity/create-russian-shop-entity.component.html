@@ -4,8 +4,15 @@
     (cancel)="cancelCreation()"
 >
     <dsh-shop-form [formControl]="form"> </dsh-shop-form>
-    <div dshBaseDialogActions fxLayout fxLayoutAlign.gt-sm="end" fxLayoutAlign="stretch">
-        <button fxFlex fxFlex.gt-sm="none" dsh-button color="accent" [disabled]="form.invalid" (click)="createShop()">
+    <div dshBaseDialogActions fxLayout fxLayoutAlign="stretch" fxLayoutAlign.gt-sm="end">
+        <button
+            [disabled]="form.invalid"
+            color="accent"
+            dsh-button
+            fxFlex
+            fxFlex.gt-sm="none"
+            (click)="createShop()"
+        >
             {{ t('send') }}
         </button>
     </div>

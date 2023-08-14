@@ -7,6 +7,7 @@ import { getTextContent } from '@dsh/app/shared/tests/get-text-content';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 
 import { MockDetailsItemModule } from '../../../../../tests/mock-details-item-component';
+
 import { AdditionalInfoComponent } from './additional-info.component';
 
 @Component({

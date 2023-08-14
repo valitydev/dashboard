@@ -10,8 +10,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import { mixinDisabled } from '@angular/material/core';
-
-import { coerceBoolean } from '@dsh/utils';
+import { coerceBoolean } from 'coerce-property';
 
 import { ColorManager } from './color-manager';
 import { FocusManager } from './focus-manager';
@@ -59,7 +58,10 @@ export class ButtonComponent extends _MatButtonMixinBase implements OnChanges {
     button: HTMLButtonElement;
     private colorManager: ColorManager;
 
-    constructor(elementRef: ElementRef, private renderer: Renderer2) {
+    constructor(
+        elementRef: ElementRef,
+        private renderer: Renderer2,
+    ) {
         super(elementRef);
         const button = elementRef.nativeElement as HTMLButtonElement;
         this.button = button;

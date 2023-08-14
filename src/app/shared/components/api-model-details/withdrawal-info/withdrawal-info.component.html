@@ -1,28 +1,36 @@
-<div *transloco="let t; scope: 'components'; read: 'components.withdrawalInfo'" fxLayout="column" fxLayoutGap="20px">
+<div
+    *transloco="let t; scope: 'components'; read: 'components.withdrawalInfo'"
+    fxLayout="column"
+    fxLayoutGap="20px"
+>
     <div fxLayout fxLayout.sm="column" fxLayoutGap="10px">
-        <dsh-details-item fxFlex [title]="t('status')">
+        <dsh-details-item [title]="t('status')" fxFlex>
             {{ withdrawal.status }}
         </dsh-details-item>
-        <dsh-details-item fxFlex class="mat-body-1" [title]="t('createdAt')">{{
+        <dsh-details-item [title]="t('createdAt')" class="mat-body-1" fxFlex>{{
             withdrawal.createdAt | date: 'dd MMMM yyyy, HH:mm'
         }}</dsh-details-item>
         <div fxFlex></div>
     </div>
     <div fxLayout fxLayout.sm="column" fxLayoutGap="10px">
-        <dsh-details-item fxFlex class="mat-body-1" [title]="t('amount')">{{
+        <dsh-details-item [title]="t('amount')" class="mat-body-1" fxFlex>{{
             withdrawal.body.amount | amountCurrency: withdrawal.body.currency
         }}</dsh-details-item>
-        <dsh-details-item fxFlex class="mat-body-1" [title]="t('fee')"
+        <dsh-details-item [title]="t('fee')" class="mat-body-1" fxFlex
             >{{ withdrawal.fee.amount | amountCurrency: withdrawal.fee.currency }} ({{
-                withdrawal.fee.amount / withdrawal.body.amount | percent: '1.0-2':'en'
+                withdrawal.fee.amount / withdrawal.body.amount | percent: '1.0-2' : 'en'
             }})</dsh-details-item
         >
-        <dsh-details-item fxFlex class="mat-body-1" [title]="t('total')">{{
-            withdrawal.body.amount + withdrawal.fee.amount | amountCurrency: withdrawal.body.currency
+        <dsh-details-item [title]="t('total')" class="mat-body-1" fxFlex>{{
+            withdrawal.body.amount + withdrawal.fee.amount
+                | amountCurrency: withdrawal.body.currency
         }}</dsh-details-item>
     </div>
-    <dsh-details-item *ngIf="withdrawal.failure" fxFlex [title]="t('error')">
-        <div *transloco="let errors; scope: 'components'; read: 'components.withdrawalInfo.errors'" class="mat-body-1">
+    <dsh-details-item *ngIf="withdrawal.failure" [title]="t('error')" fxFlex>
+        <div
+            *transloco="let errors; scope: 'components'; read: 'components.withdrawalInfo.errors'"
+            class="mat-body-1"
+        >
             <!-- t(failed) -->
             {{ errors(withdrawal.failure.code) }}
         </div>

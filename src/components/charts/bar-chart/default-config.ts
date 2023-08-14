@@ -5,6 +5,7 @@ import { formatAmount } from '@dsh/components/charts/format-amount';
 
 import { DEFAULT_LEGEND } from '../default-legend';
 import { DEFAULT_STATES } from '../default-states';
+
 import { customTooltip } from './custom-tooltip';
 
 const COLUMN_WIDTH = '30%';

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexModule } from '@angular/flex-layout';
+import { FlexModule, GridModule } from '@angular/flex-layout';
 import { TranslocoModule } from '@ngneat/transloco';
 
 import { ApiModelRefsModule, ApiModelTypesModule, AmountCurrencyModule } from '@dsh/app/shared';
@@ -20,6 +20,7 @@ import { DepositDetailsComponent } from './deposit-details.component';
         ApiModelTypesModule,
 
         AmountCurrencyModule,
+        GridModule,
     ],
     declarations: [DepositDetailsComponent],
     exports: [DepositDetailsComponent],

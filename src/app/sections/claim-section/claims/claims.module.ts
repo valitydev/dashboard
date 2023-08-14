@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { ClaimsService } from '@dsh/api/claim-management';
+import { ClaimsService } from '@dsh/app/api/claim-management';
 import { ShopCreationModule } from '@dsh/app/shared/components/shop-creation';
 import { ButtonModule } from '@dsh/components/buttons';
 import { IndicatorsModule } from '@dsh/components/indicators';

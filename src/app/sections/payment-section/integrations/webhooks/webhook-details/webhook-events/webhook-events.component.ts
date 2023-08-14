@@ -3,7 +3,7 @@ import { CustomersTopic, InvoicesTopic, WebhookScope } from '@vality/swag-paymen
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { PaymentsDictionaryService } from '@dsh/api/payments';
+import { PaymentsDictionaryService } from '@dsh/app/api/payments';
 
 @Component({
     selector: 'dsh-webhook-events',
@@ -23,9 +23,9 @@ export class WebhookEventsComponent {
     get events(): InvoicesTopic.EventTypesEnum[] | CustomersTopic.EventTypesEnum[] {
         switch (this.scope.topic) {
             case 'InvoicesTopic':
-                return (this.scope as any as InvoicesTopic).eventTypes;
+                return (this.scope as unknown as InvoicesTopic).eventTypes;
             case 'CustomersTopic':
-                return (this.scope as any as CustomersTopic).eventTypes;
+                return (this.scope as unknown as CustomersTopic).eventTypes;
         }
     }
 

@@ -10,14 +10,17 @@ import {
     QueryList,
     TemplateRef,
 } from '@angular/core';
-import { FormControl } from '@ngneat/reactive-forms';
+import { FormControl } from '@angular/forms';
+import { coerceBoolean } from 'coerce-property';
 
 import { isNumber } from '@dsh/app/shared/utils';
 import { Dict } from '@dsh/type-utils';
-import { coerceBoolean } from '@dsh/utils';
 
 import { ExpandableRadioGroupItemDirective } from './directives/expandable-radio-group-item/expandable-radio-group-item.directive';
-import { ExpandableRadioChoice, isExpandableRadioObjectChoice } from './types/expandable-radio-choice';
+import {
+    ExpandableRadioChoice,
+    isExpandableRadioObjectChoice,
+} from './types/expandable-radio-choice';
 import { ExpandableRadioChoiceId } from './types/expandable-radio-choice-id';
 
 @Component({
@@ -56,11 +59,14 @@ export class ExpandableRadioGroupComponent implements OnInit, AfterContentInit {
 
     ngAfterContentInit(): void {
         this.itemsDict = Array.from(this.itemsQuery).reduce(
-            (acc: Dict<TemplateRef<ExpandableRadioGroupItemDirective>>, item: ExpandableRadioGroupItemDirective) => {
+            (
+                acc: Dict<TemplateRef<ExpandableRadioGroupItemDirective>>,
+                item: ExpandableRadioGroupItemDirective,
+            ) => {
                 acc[item.dshExpandableRadioGroupItem] = item.templateRef;
                 return acc;
             },
-            {}
+            {},
         );
     }
 
@@ -68,7 +74,9 @@ export class ExpandableRadioGroupComponent implements OnInit, AfterContentInit {
         return isExpandableRadioObjectChoice(choice) ? choice.id : choice;
     }
 
-    getChoiceTemplate(choice: ExpandableRadioChoice): TemplateRef<ExpandableRadioGroupItemDirective> | null {
+    getChoiceTemplate(
+        choice: ExpandableRadioChoice,
+    ): TemplateRef<ExpandableRadioGroupItemDirective> | null {
         return this.itemsDict[this.getChoiceId(choice)] ?? null;
     }
 

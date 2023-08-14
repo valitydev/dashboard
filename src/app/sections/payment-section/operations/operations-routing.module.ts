@@ -13,23 +13,26 @@ const OPERATIONS_ROUTES: Routes = [
             createPrivateRoute(
                 {
                     path: 'payments',
-                    loadChildren: () => import('./payments/payments.module').then((mod) => mod.PaymentsModule),
+                    loadChildren: () =>
+                        import('./payments/payments.module').then((mod) => mod.PaymentsModule),
                 },
-                [RoleAccessName.ViewPayments]
+                [RoleAccessName.ViewPayments],
             ),
             createPrivateRoute(
                 {
                     path: 'refunds',
-                    loadChildren: () => import('./refunds/refunds.module').then((mod) => mod.RefundsModule),
+                    loadChildren: () =>
+                        import('./refunds/refunds.module').then((mod) => mod.RefundsModule),
                 },
-                [RoleAccessName.ViewRefunds]
+                [RoleAccessName.ViewRefunds],
             ),
             createPrivateRoute(
                 {
                     path: 'invoices',
-                    loadChildren: () => import('./invoices/invoices.module').then((mod) => mod.InvoicesModule),
+                    loadChildren: () =>
+                        import('./invoices/invoices.module').then((mod) => mod.InvoicesModule),
                 },
-                [RoleAccessName.ViewInvoices]
+                [RoleAccessName.ViewInvoices],
             ),
             {
                 path: '',

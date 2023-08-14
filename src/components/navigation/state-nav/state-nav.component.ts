@@ -8,9 +8,9 @@ import {
     QueryList,
     ViewEncapsulation,
 } from '@angular/core';
+import { coerceBoolean } from 'coerce-property';
 import { Subscription } from 'rxjs';
 
-import { coerceBoolean } from '../../../utils';
 import { StateNavItemComponent } from './state-nav-item';
 
 @Component({
@@ -64,7 +64,7 @@ export class StateNavComponent {
             this.selectionSubscriptions.pop().unsubscribe();
         }
         this.selectionSubscriptions = items.map((item, idx) =>
-            item.attemptToSelect$.subscribe(() => (this.selectedIdx = idx))
+            item.attemptToSelect$.subscribe(() => (this.selectedIdx = idx)),
         );
     }
 }

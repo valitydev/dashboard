@@ -9,6 +9,7 @@ import { CardModule } from '@dsh/components/layout';
 
 import { PercentDifferenceModule } from '../percent-difference';
 import { StatItemModule } from '../stat-item/stat-item.module';
+
 import { RefundsAmountComponent } from './refunds-amount.component';
 
 @NgModule({

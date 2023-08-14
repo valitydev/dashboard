@@ -6,6 +6,7 @@ import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 
 import { generateMockPayment } from '../../../../../tests/generate-mock-payment';
 import { MockDetailsItemModule } from '../../../../../tests/mock-details-item-component';
+
 import { PaymentFeeComponent } from './payment-fee.component';
 
 describe('PaymentFeeComponent', () => {

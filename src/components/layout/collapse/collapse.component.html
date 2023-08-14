@@ -1,9 +1,9 @@
 <ng-template #body>
     <div
-        class="dsh-collapse-body"
         *ngIf="expanded"
         [@bodyExpansion]="animationState"
         [ngClass]="{ 'dsh-collapse-body-up': expandDirection === 'up' }"
+        class="dsh-collapse-body"
     >
         <ng-content></ng-content>
     </div>
@@ -17,7 +17,7 @@
     <div fxLayout>
         <div class="dsh-collapse-header" fxLayout fxLayoutGap="4px" (click)="toggle()">
             <div class="dsh-body-1">{{ title }}</div>
-            <dsh-bi icon="chevron-up" size="sm" [@indicatorRotate]="animationState"></dsh-bi>
+            <dsh-bi [@indicatorRotate]="animationState" icon="chevron-up" size="sm"></dsh-bi>
         </div>
     </div>
     <ng-container *ngIf="expandDirection === 'down'">

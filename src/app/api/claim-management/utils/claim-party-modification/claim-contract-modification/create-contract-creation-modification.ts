@@ -1,10 +1,14 @@
-import { ContractCreationModification, ContractModification, PartyModification } from '@vality/swag-claim-management';
+import {
+    ContractCreationModification,
+    ContractModification,
+    PartyModification,
+} from '@vality/swag-claim-management';
 
 import { createBaseContractModification } from './create-base-contract-modification';
 
 export function createContractCreationModification(
     id: string,
-    params: Omit<ContractCreationModification, 'contractModificationType'>
+    params: Omit<ContractCreationModification, 'contractModificationType'>,
 ): PartyModification {
     return {
         ...createBaseContractModification({
@@ -18,7 +22,10 @@ export function createContractCreationModification(
     };
 }
 
-export function createTestContractCreationModification(id: string, contractorID: string): PartyModification {
+export function createTestContractCreationModification(
+    id: string,
+    contractorID: string,
+): PartyModification {
     return createContractCreationModification(id, {
         contractorID,
     });
