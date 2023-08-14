@@ -1,10 +1,13 @@
-<dsh-base-dialog (cancel)="save()" [title]="data.label">
+<dsh-base-dialog [title]="data.label" (cancel)="save()">
     <ng-container *ngTemplateOutlet="data.content"></ng-container>
-    <ng-container dshBaseDialogActions *transloco="let t; scope: 'components'; read: 'components.shared'">
-        <button *ngIf="!data.noClearButton" dsh-text-button color="accent" (click)="clear()">
+    <ng-container
+        *transloco="let t; scope: 'components'; read: 'components.shared'"
+        dshBaseDialogActions
+    >
+        <button *ngIf="!data.noClearButton" color="accent" dsh-text-button (click)="clear()">
             {{ t('clear') }}
         </button>
-        <button dsh-button color="accent" (click)="save()">
+        <button color="accent" dsh-button (click)="save()">
             {{ t('save') }}
         </button>
     </ng-container>

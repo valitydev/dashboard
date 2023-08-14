@@ -5,7 +5,7 @@ import isNil from 'lodash-es/isNil';
 
 export function getAbstractControl<Control extends AbstractControl, GroupType = unknown>(
     form: FormGroupByValue<GroupType>,
-    path: string
+    path: string,
 ) {
     if (isEmpty(path)) {
         throw new Error(`Path can't be an emtpy string`);

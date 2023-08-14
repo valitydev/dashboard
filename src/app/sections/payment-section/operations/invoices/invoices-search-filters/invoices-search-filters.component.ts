@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnChanges,
+    OnInit,
+    Output,
+} from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,7 +21,11 @@ import { map } from 'rxjs/operators';
 
 import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { ShopsDataService } from '@dsh/app/shared';
-import { createDateRangeWithPreset, Preset, DateRangeWithPreset } from '@dsh/components/date-range-filter';
+import {
+    createDateRangeWithPreset,
+    Preset,
+    DateRangeWithPreset,
+} from '@dsh/components/date-range-filter';
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
@@ -48,11 +60,16 @@ export class InvoicesSearchFiltersComponent implements OnChanges, OnInit {
         shopIDs: null,
         invoiceStatus: null,
     });
-    shops$ = defer(() => this.realm$).pipe(filterShopsByRealm(this.shopsDataService.shops$), shareReplayRefCount());
+    shops$ = defer(() => this.realm$).pipe(
+        filterShopsByRealm(this.shopsDataService.shops$),
+        shareReplayRefCount(),
+    );
     isAdditionalFilterApplied$ = defer(() => this.additionalFilters$).pipe(map(negate(isEmpty)));
 
     get keys(): string[] {
-        return this.mediaObserver.isActive('gt-sm') ? [...MAIN_FILTERS, ...ADDITIONAL_FILTERS] : MAIN_FILTERS;
+        return this.mediaObserver.isActive('gt-sm')
+            ? [...MAIN_FILTERS, ...ADDITIONAL_FILTERS]
+            : MAIN_FILTERS;
     }
 
     private additionalFilters$ = new BehaviorSubject<AdditionalFilters>({});
@@ -62,12 +79,14 @@ export class InvoicesSearchFiltersComponent implements OnChanges, OnInit {
         private fb: FormBuilder,
         private shopsDataService: ShopsDataService,
         private dialog: MatDialog,
-        private mediaObserver: MediaObserver
+        private mediaObserver: MediaObserver,
     ) {}
 
     ngOnInit(): void {
         combineLatest([
-            getFormValueChanges(this.form).pipe(map((filters) => pick(filters, this.keys) as MainFilters)),
+            getFormValueChanges(this.form).pipe(
+                map((filters) => pick(filters, this.keys) as MainFilters),
+            ),
             this.additionalFilters$.pipe(map((filters) => omit(filters, this.keys))),
         ])
             .pipe(untilDestroyed(this))

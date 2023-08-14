@@ -9,6 +9,8 @@ export interface ExpandableRadioObjectChoice {
 
 export type ExpandableRadioChoice = ExpandableRadioObjectChoice | string;
 
-export function isExpandableRadioObjectChoice(choice: ExpandableRadioChoice): choice is ExpandableRadioObjectChoice {
+export function isExpandableRadioObjectChoice(
+    choice: ExpandableRadioChoice,
+): choice is ExpandableRadioObjectChoice {
     return isObject(choice);
 }

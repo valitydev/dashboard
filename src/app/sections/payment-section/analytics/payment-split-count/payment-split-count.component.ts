@@ -25,7 +25,7 @@ export class PaymentSplitCountComponent implements OnChanges {
 
     constructor(
         private paymentSplitCountService: PaymentSplitCountService,
-        @Inject(CHARTS_THEME) private theme: ChartsThemeProvider
+        @Inject(CHARTS_THEME) private theme: ChartsThemeProvider,
     ) {}
 
     ngOnChanges({ searchParams }: ComponentChanges<PaymentSplitCountComponent>): void {

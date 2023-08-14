@@ -17,15 +17,16 @@ export class PaymentInstitutionFieldComponent extends FormControlSuperclass<Paym
     @Input() label: string;
     @Input() @coerceBoolean required = false;
 
-    options$: Observable<Option<PaymentInstitution>[]> = this.paymentInstitutionsService.paymentInstitutions$.pipe(
-        map((paymentInstitutions) =>
-            paymentInstitutions.map((paymentInstitution) => ({
-                label: `${paymentInstitution.id} - ${paymentInstitution.name}`,
-                value: paymentInstitution,
-            }))
-        ),
-        share()
-    );
+    options$: Observable<Option<PaymentInstitution>[]> =
+        this.paymentInstitutionsService.paymentInstitutions$.pipe(
+            map((paymentInstitutions) =>
+                paymentInstitutions.map((paymentInstitution) => ({
+                    label: `${paymentInstitution.id} - ${paymentInstitution.name}`,
+                    value: paymentInstitution,
+                })),
+            ),
+            share(),
+        );
 
     constructor(private paymentInstitutionsService: PaymentInstitutionsService) {
         super();

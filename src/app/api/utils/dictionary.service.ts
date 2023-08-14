@@ -13,10 +13,12 @@ export class DictionaryService {
 
     constructor(private readonly transloco: TranslocoService) {}
 
-    create<T extends PropertyKey>(getTranslations: () => Record<T, string>): Observable<Record<T, string>> {
+    create<T extends PropertyKey>(
+        getTranslations: () => Record<T, string>,
+    ): Observable<Record<T, string>> {
         return this.init$.pipe(
             map(() => getTranslations()),
-            shareReplayRefCount()
+            shareReplayRefCount(),
         );
     }
 }

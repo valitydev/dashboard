@@ -54,7 +54,7 @@ describe('PaymentsPanelsComponent', () => {
                     {
                         availableLangs: ['ru'],
                         defaultLang: 'ru',
-                    }
+                    },
                 ),
             ],
             declarations: [PaymentsPanelsComponent, MockRowHeaderComponent, MockRowComponent],
@@ -127,7 +127,10 @@ describe('PaymentsPanelsComponent', () => {
 
     describe('expandedIdChange', () => {
         it('should emit output that expanded id changed', () => {
-            const spyOnExpandedIdChanged = spyOn(component.expandedIdChanged, 'emit').and.callThrough();
+            const spyOnExpandedIdChanged = spyOn(
+                component.expandedIdChanged,
+                'emit',
+            ).and.callThrough();
 
             component.expandedIndexChange(3);
 

@@ -12,10 +12,17 @@ export class ClaimManagementDictionaryService {
         accepted: this.t.translate('claimManagement.claimStatus.accepted', null, 'dictionary'),
         denied: this.t.translate('claimManagement.claimStatus.denied', null, 'dictionary'),
         pending: this.t.translate('claimManagement.claimStatus.pending', null, 'dictionary'),
-        pendingAcceptance: this.t.translate('claimManagement.claimStatus.pendingAcceptance', null, 'dictionary'),
+        pendingAcceptance: this.t.translate(
+            'claimManagement.claimStatus.pendingAcceptance',
+            null,
+            'dictionary',
+        ),
         review: this.t.translate('claimManagement.claimStatus.review', null, 'dictionary'),
         revoked: this.t.translate('claimManagement.claimStatus.revoked', null, 'dictionary'),
     }));
 
-    constructor(private t: TranslocoService, private dictionaryService: DictionaryService) {}
+    constructor(
+        private t: TranslocoService,
+        private dictionaryService: DictionaryService,
+    ) {}
 }

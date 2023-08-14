@@ -26,20 +26,23 @@ const PAYMENT_SECTION_ROUTES: Routes = [
             createPrivateRoute(
                 {
                     path: 'analytics',
-                    loadChildren: () => import('./analytics/analytics.module').then((m) => m.AnalyticsModule),
+                    loadChildren: () =>
+                        import('./analytics/analytics.module').then((m) => m.AnalyticsModule),
                 },
-                [RoleAccessName.ViewAnalytics]
+                [RoleAccessName.ViewAnalytics],
             ),
             {
                 path: 'operations',
-                loadChildren: () => import('./operations/operations.module').then((m) => m.OperationsModule),
+                loadChildren: () =>
+                    import('./operations/operations.module').then((m) => m.OperationsModule),
             },
             createPrivateRoute(
                 {
                     path: 'reports',
-                    loadChildren: () => import('./reports/reports.module').then((m) => m.ReportsModule),
+                    loadChildren: () =>
+                        import('./reports/reports.module').then((m) => m.ReportsModule),
                 },
-                [RoleAccessName.Reports]
+                [RoleAccessName.Reports],
             ),
             // createPrivateRoute(
             //     {
@@ -50,7 +53,8 @@ const PAYMENT_SECTION_ROUTES: Routes = [
             // ),
             {
                 path: 'integrations',
-                loadChildren: () => import('./integrations/integrations.module').then((m) => m.IntegrationsModule),
+                loadChildren: () =>
+                    import('./integrations/integrations.module').then((m) => m.IntegrationsModule),
             },
         ],
     },

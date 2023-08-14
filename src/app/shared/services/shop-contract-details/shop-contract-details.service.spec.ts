@@ -59,7 +59,7 @@ describe('ShopContractDetailsService', () => {
                         contractorType: 'LegalEntity',
                     },
                     paymentInstitutionID: 2,
-                })
+                }),
             );
 
             service.requestContract('my_id');
@@ -72,8 +72,8 @@ describe('ShopContractDetailsService', () => {
                 of(null).pipe(
                     map(() => {
                         throw new Error(`[TEST_ERROR]: Error in observable`);
-                    })
-                )
+                    }),
+                ),
             );
 
             service.requestContract('my_id');
@@ -81,7 +81,7 @@ describe('ShopContractDetailsService', () => {
             expect(service.errorOccurred$).toBeObservable(
                 cold('a', {
                     a: true,
-                })
+                }),
             );
         });
     });

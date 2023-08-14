@@ -17,7 +17,7 @@ export class ShopsFieldComponent extends FormControlSuperclass<Shop['id'][]> imp
 
     options$ = defer(() => this.shops$).pipe(
         map((shops) => shops.map((shop) => ({ value: shop.id, label: shop.details.name }))),
-        shareReplayRefCount()
+        shareReplayRefCount(),
     );
 
     private shops$ = new ReplaySubject<Shop[]>();

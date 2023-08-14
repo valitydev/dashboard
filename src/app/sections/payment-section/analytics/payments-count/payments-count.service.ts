@@ -26,18 +26,18 @@ export class PaymentsCountService {
                         ...previous,
                         paymentInstitutionRealm: realm,
                     }),
-                ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$))
+                ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$)),
             ),
             map((res) => res.map((r) => r.result)),
-            map(countResultToStatData)
+            map(countResultToStatData),
         ),
         defer(() => this.searchParams$).pipe(
             map(({ currency }) => currency),
-            distinctUntilChanged()
+            distinctUntilChanged(),
         ),
     ]).pipe(
         map(([result, currency]) => result.find((r) => r.currency === currency)),
-        shareReplayRefCount()
+        shareReplayRefCount(),
     );
     isLoading$ = inProgressFrom(() => this.progress$, this.paymentsCount$);
     error$ = attach(() => this.errorSub$, this.paymentsCount$);

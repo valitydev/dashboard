@@ -17,12 +17,19 @@ export class PaymentsToolDistributionService {
         distinctUntilChangedDeep(),
         switchMap(({ fromTime, toTime, shopIDs, realm }) =>
             this.analyticsService
-                .getPaymentsToolDistribution({ fromTime, toTime, paymentInstitutionRealm: realm, shopIDs })
-                .pipe(errorTo(this.errorSub$), progressTo(this.progress$))
+                .getPaymentsToolDistribution({
+                    fromTime,
+                    toTime,
+                    paymentInstitutionRealm: realm,
+                    shopIDs,
+                })
+                .pipe(errorTo(this.errorSub$), progressTo(this.progress$)),
         ),
         withLatestFrom(this.analyticsDictionaryService.paymentTool$),
-        map(([{ result }, paymentToolDict]) => paymentsToolDistributionToChartData(result, paymentToolDict)),
-        shareReplayRefCount()
+        map(([{ result }, paymentToolDict]) =>
+            paymentsToolDistributionToChartData(result, paymentToolDict),
+        ),
+        shareReplayRefCount(),
     );
     isLoading$ = inProgressFrom(() => this.progress$, this.toolDistribution$);
     error$ = attach(() => this.errorSub$, this.toolDistribution$);
@@ -33,7 +40,7 @@ export class PaymentsToolDistributionService {
 
     constructor(
         private analyticsService: AnalyticsService,
-        private analyticsDictionaryService: AnapiDictionaryService
+        private analyticsDictionaryService: AnapiDictionaryService,
     ) {}
 
     updateSearchParams(searchParams: SearchParams) {

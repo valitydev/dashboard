@@ -24,7 +24,13 @@ describe('PaymentMainInfoComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [getTranslocoModule(), MockDetailsItemModule, PaymentToolModule, FlexLayoutModule, StatusModule],
+            imports: [
+                getTranslocoModule(),
+                MockDetailsItemModule,
+                PaymentToolModule,
+                FlexLayoutModule,
+                StatusModule,
+            ],
             declarations: [
                 PaymentMainInfoComponent,
                 PaymentStatusComponent,

@@ -10,7 +10,14 @@ import { CardModule } from '@dsh/components/layout';
 import { BarChartItemComponent } from './bar-chart-item.component';
 
 @NgModule({
-    imports: [CommonModule, FlexLayoutModule, CardModule, SpinnerModule, TranslocoModule, BarChartModule],
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        CardModule,
+        SpinnerModule,
+        TranslocoModule,
+        BarChartModule,
+    ],
     declarations: [BarChartItemComponent],
     exports: [BarChartItemComponent],
 })

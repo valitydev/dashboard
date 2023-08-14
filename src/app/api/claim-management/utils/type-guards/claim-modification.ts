@@ -14,17 +14,17 @@ import ClaimModificationTypeEnum = ClaimModificationType.ClaimModificationTypeEn
 const createTypeGuard = createUnionTypeGuardCreator<ClaimModificationType>('claimModificationType');
 
 export const isFileModificationUnit = createTypeGuard<FileModificationUnit>(
-    ClaimModificationTypeEnum.FileModificationUnit
+    ClaimModificationTypeEnum.FileModificationUnit,
 );
 export const isCommentModificationUnit = createTypeGuard<CommentModificationUnit>(
-    ClaimModificationTypeEnum.CommentModificationUnit
+    ClaimModificationTypeEnum.CommentModificationUnit,
 );
 export const isStatusModificationUnit = createTypeGuard<StatusModificationUnit>(
-    ClaimModificationTypeEnum.StatusModificationUnit
+    ClaimModificationTypeEnum.StatusModificationUnit,
 );
 export const isDocumentModificationUnit = createTypeGuard<DocumentModificationUnit>(
-    ClaimModificationTypeEnum.DocumentModificationUnit
+    ClaimModificationTypeEnum.DocumentModificationUnit,
 );
 export const isExternalInfoModificationUnit = createTypeGuard<ExternalInfoModificationUnit>(
-    ClaimModificationTypeEnum.ExternalInfoModificationUnit
+    ClaimModificationTypeEnum.ExternalInfoModificationUnit,
 );

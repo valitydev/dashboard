@@ -17,14 +17,14 @@ const fixExtraInterval = (offsetCounts: OffsetCount[]): OffsetCount[] =>
                       },
                   ]
                 : [...acc, curr],
-        []
+        [],
     );
 
 const fillSplitCountByZeroValues = (
     offsetCounts: OffsetCount[],
     fromTime: string,
     toTime: string,
-    splitUnit: SplitUnit
+    splitUnit: SplitUnit,
 ): OffsetCount[] => {
     const offsets = getOffsets(fromTime, toTime, splitUnit);
     if (offsetCounts) {
@@ -46,7 +46,7 @@ const fillSplitCountByZeroValues = (
 export const prepareSplitCount = (
     splitCounts: SplitCountResult[],
     fromTime: string,
-    toTime: string
+    toTime: string,
 ): SplitCountResult[] =>
     (splitCounts ?? []).map(({ splitUnit, currency, statusOffsetCounts }) => ({
         splitUnit,
@@ -57,7 +57,7 @@ export const prepareSplitCount = (
                 statusOffsetCounts.find((o) => o.status === status)?.offsetCount,
                 fromTime,
                 toTime,
-                splitUnit
+                splitUnit,
             ),
         })),
     }));

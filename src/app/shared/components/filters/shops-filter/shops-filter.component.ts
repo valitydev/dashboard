@@ -18,12 +18,17 @@ export class ShopsFilterComponent extends FilterSuperclass<Shop['id'][]> {
 
     labels$ = combineLatest([this.savedValue$, this.shopsDataService.shops$]).pipe(
         map(([selectedShopIds, shops]) =>
-            (selectedShopIds || []).map((id) => shops.find((s) => s.id === id)?.details?.name || id)
+            (selectedShopIds || []).map(
+                (id) => shops.find((s) => s.id === id)?.details?.name || id,
+            ),
         ),
-        share()
+        share(),
     );
 
-    constructor(injector: Injector, private shopsDataService: ShopsDataService) {
+    constructor(
+        injector: Injector,
+        private shopsDataService: ShopsDataService,
+    ) {
         super(injector);
     }
 }

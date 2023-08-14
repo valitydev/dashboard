@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Inject, TemplateRef } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Inject,
+    TemplateRef,
+} from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -15,7 +21,7 @@ export class FilterDialogComponent {
             label: string;
             clear: EventEmitter<void>;
         },
-        private dialogRef: MatDialogRef<'save' | 'clear'>
+        private dialogRef: MatDialogRef<'save' | 'clear'>,
     ) {}
 
     save(): void {

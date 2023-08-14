@@ -10,7 +10,14 @@ import { MobileMenuModule } from './mobile-menu';
 import { BrandModule } from '../brand';
 
 @NgModule({
-    imports: [CommonModule, MatSidenavModule, BrandModule, FlexLayoutModule, MobileMenuModule, BootstrapIconModule],
+    imports: [
+        CommonModule,
+        MatSidenavModule,
+        BrandModule,
+        FlexLayoutModule,
+        MobileMenuModule,
+        BootstrapIconModule,
+    ],
     declarations: [MobileGridComponent],
     exports: [MobileGridComponent],
 })

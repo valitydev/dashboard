@@ -6,11 +6,11 @@
     gdGap="24px"
 >
     <div class="dsh-headline">
-        {{ withdrawal.body.amount | amountCurrency : withdrawal.body.currency }}
+        {{ withdrawal.body.amount | amountCurrency: withdrawal.body.currency }}
     </div>
     <dsh-details-item [title]="t('fee')">
-        {{ withdrawal.fee.amount | amountCurrency : withdrawal.fee.currency }} ({{
-            withdrawal.fee.amount / withdrawal.body.amount | percent : '1.0-2' : 'en'
+        {{ withdrawal.fee.amount | amountCurrency: withdrawal.fee.currency }} ({{
+            withdrawal.fee.amount / withdrawal.body.amount | percent: '1.0-2' : 'en'
         }})
     </dsh-details-item>
     <dsh-details-item [title]="t('status')">
@@ -21,9 +21,13 @@
     <dsh-details-item [title]="t('wallet')">
         {{ withdrawal.wallet | walletDetails }}
     </dsh-details-item>
-    <dsh-details-item *ngIf="withdrawal.failure" gdColumn="1/-1" [title]="t('error')">
+    <dsh-details-item *ngIf="withdrawal.failure" [title]="t('error')" gdColumn="1/-1">
         <div
-            *transloco="let errors; scope: 'wallet-section'; read: 'walletSection.withdrawals.details.errors'"
+            *transloco="
+                let errors;
+                scope: 'wallet-section';
+                read: 'walletSection.withdrawals.details.errors'
+            "
             class="mat-body-1"
         >
             <!-- t(failed) -->

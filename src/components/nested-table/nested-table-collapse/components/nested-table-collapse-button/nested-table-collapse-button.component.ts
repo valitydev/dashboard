@@ -16,9 +16,11 @@ import { ExpansionService } from '../../services/expansion/expansion.service';
 })
 export class NestedTableCollapseButtonComponent {
     animationState$ = this.expansionService.expanded$.pipe(
-        map((expanded) => (expanded ? IndicatorRotateState.Expanded : IndicatorRotateState.Collapsed)),
+        map((expanded) =>
+            expanded ? IndicatorRotateState.Expanded : IndicatorRotateState.Collapsed,
+        ),
         untilDestroyed(this),
-        shareReplay(1)
+        shareReplay(1),
     );
 
     constructor(private expansionService: ExpansionService) {}

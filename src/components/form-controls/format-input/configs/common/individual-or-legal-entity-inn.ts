@@ -7,7 +7,10 @@ export const INDIVIDUAL_OR_LEGAL_ENTITY_INN_MASK: TextMaskConfig = {
     guide: false,
 };
 
-export const individualOrLegalEntityInnValidator = regExpToValidator(/^(\d{10}|\d{12})$/, 'individualOrLegalEntityInn');
+export const individualOrLegalEntityInnValidator = regExpToValidator(
+    /^(\d{10}|\d{12})$/,
+    'individualOrLegalEntityInn',
+);
 
 export const INDIVIDUAL_OR_LEGAL_ENTITY_INN_CONFIG: FormatInputConfig = {
     mask: INDIVIDUAL_OR_LEGAL_ENTITY_INN_MASK,

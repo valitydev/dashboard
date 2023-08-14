@@ -23,12 +23,15 @@ export class CreateOrganizationDialogComponent {
     inProgress$ = new BehaviorSubject<boolean>(false);
 
     constructor(
-        private dialogRef: MatDialogRef<CreateOrganizationDialogComponent, BaseDialogResponseStatus>,
+        private dialogRef: MatDialogRef<
+            CreateOrganizationDialogComponent,
+            BaseDialogResponseStatus
+        >,
         private organizationsService: OrgsService,
         private notificationService: NotificationService,
         private errorService: ErrorService,
         private fb: FormBuilder,
-        private keycloakTokenInfoService: KeycloakTokenInfoService
+        private keycloakTokenInfoService: KeycloakTokenInfoService,
     ) {}
 
     @inProgressTo('inProgress$')
@@ -42,16 +45,16 @@ export class CreateOrganizationDialogComponent {
                             name: this.form.value.name,
                             owner,
                         },
-                    })
+                    }),
                 ),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe(
                 () => {
                     this.notificationService.success();
                     this.dialogRef.close(BaseDialogResponseStatus.Success);
                 },
-                (err) => this.errorService.error(err)
+                (err) => this.errorService.error(err),
             );
     }
 

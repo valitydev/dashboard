@@ -24,7 +24,7 @@ export class PaymentSplitAmountComponent implements OnChanges {
 
     constructor(
         private paymentSplitAmountService: PaymentSplitAmountService,
-        @Inject(CHARTS_THEME) private theme: ChartsThemeProvider
+        @Inject(CHARTS_THEME) private theme: ChartsThemeProvider,
     ) {}
 
     ngOnChanges(changes: SimpleChanges) {

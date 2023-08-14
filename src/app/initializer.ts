@@ -12,7 +12,7 @@ export const initializer =
         keycloakService: KeycloakService,
         languageService: LanguageService,
         themeManager: ThemeManager,
-        iconsService: IconsService
+        iconsService: IconsService,
     ) =>
     () =>
         Promise.all([
@@ -31,7 +31,7 @@ export const initializer =
                         bearerExcludedUrls: ['/assets'],
                         bearerPrefix: 'Bearer',
                     }),
-                ])
+                ]),
             ),
             languageService.init(),
             iconsService.init(),

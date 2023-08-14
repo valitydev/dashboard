@@ -1,10 +1,10 @@
 <dsh-donut-chart-item
     *transloco="let t; scope: 'payment-section'; read: 'paymentSection.analytics'"
-    fxFlex
+    [chartData]="toolDistribution$ | async"
+    [colors]="colors"
+    [error]="error$ | async"
+    [isLoading]="isLoading$ | async"
     [spinnerType]="spinnerType"
     [title]="t('paymentTools')"
-    [colors]="colors"
-    [chartData]="toolDistribution$ | async"
-    [isLoading]="isLoading$ | async"
-    [error]="error$ | async"
+    fxFlex
 ></dsh-donut-chart-item>

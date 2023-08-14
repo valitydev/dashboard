@@ -6,7 +6,7 @@ import { PayoutToolForm } from '../types/payout-tool-form';
 
 // bic | iban | abaRtn | country & address & name should be provided;
 export const payoutToolFormValidator: ValidatorFn = (
-    form: FormGroupByValue<PayoutToolForm>
+    form: FormGroupByValue<PayoutToolForm>,
 ): { error: boolean } | null => {
     const { bic, iban, abaRtn, country, address, name } = form.controls;
 

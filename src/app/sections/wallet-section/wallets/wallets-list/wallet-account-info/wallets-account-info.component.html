@@ -6,16 +6,19 @@
     <div class="dsh-title">{{ t('title') }}</div>
     <div class="dsh-body-1">{{ t('description') }}</div>
     <div
-        *ngIf="walletAccount$ | async as account; else (isLoading$ | async) ? loading : (error$ | async) ? error : null"
+        *ngIf="
+            walletAccount$ | async as account;
+            else (isLoading$ | async) ? loading : (error$ | async) ? error : null
+        "
         gdColumns="1fr"
         gdColumns.gt-sm="1fr 1fr 1fr"
         gdGap="24px"
     >
         <dsh-details-item [title]="t('own')">{{
-            account.own.amount | amountCurrency : account.own.currency
+            account.own.amount | amountCurrency: account.own.currency
         }}</dsh-details-item>
         <dsh-details-item [title]="t('amount')">{{
-            account.available.amount | amountCurrency : account.available.currency
+            account.available.amount | amountCurrency: account.available.currency
         }}</dsh-details-item>
     </div>
     <ng-template #loading>

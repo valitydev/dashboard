@@ -21,7 +21,7 @@ export class CancelReportService {
         private dialog: MatDialog,
         private reportsService: ReportsService,
         private transloco: TranslocoService,
-        private snackBar: MatSnackBar
+        private snackBar: MatSnackBar,
     ) {}
 
     cancelReport(reportID: number) {
@@ -39,21 +39,25 @@ export class CancelReportService {
                             .open(ConfirmActionDialogComponent)
                             .afterClosed()
                             .pipe(filter((r) => r === 'confirm')),
-                    ])
+                    ]),
                 ),
                 switchMap(([reportID]) =>
                     this.reportsService.cancelReport({ reportID }).pipe(
                         catchError((e) => {
                             console.error(e);
                             this.snackBar.open(
-                                this.transloco.translate('reports.errors.cancelError', null, 'payment-section'),
-                                'OK'
+                                this.transloco.translate(
+                                    'reports.errors.cancelError',
+                                    null,
+                                    'payment-section',
+                                ),
+                                'OK',
                             );
                             return of('error');
-                        })
-                    )
+                        }),
+                    ),
                 ),
-                filter((result) => result !== 'error')
+                filter((result) => result !== 'error'),
             )
             .subscribe(() => this.cancelled$.next());
     }

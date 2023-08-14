@@ -13,7 +13,9 @@ export class CreateHoldService {
 
     openDialog(data: CreateHoldDialogData): Observable<BaseDialogResponseStatus> {
         return this.dialog
-            .open<CreateHoldDialogComponent, CreateHoldDialogData>(CreateHoldDialogComponent, { data })
+            .open<CreateHoldDialogComponent, CreateHoldDialogData>(CreateHoldDialogComponent, {
+                data,
+            })
             .afterClosed();
     }
 }

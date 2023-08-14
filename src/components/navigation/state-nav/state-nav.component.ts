@@ -64,7 +64,7 @@ export class StateNavComponent {
             this.selectionSubscriptions.pop().unsubscribe();
         }
         this.selectionSubscriptions = items.map((item, idx) =>
-            item.attemptToSelect$.subscribe(() => (this.selectedIdx = idx))
+            item.attemptToSelect$.subscribe(() => (this.selectedIdx = idx)),
         );
     }
 }

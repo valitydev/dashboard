@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
         private router: Router,
         // need to create class when home component was init
         private themeManager: ThemeManager,
-        private breakpointObserver: BreakpointObserver
+        private breakpointObserver: BreakpointObserver,
     ) {}
 
     ngOnInit(): void {
@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
             filter((event) => event instanceof NavigationEnd),
             map(() => true),
             take(1),
-            untilDestroyed(this)
+            untilDestroyed(this),
         );
         this.isXSmallSmall$ = this.breakpointObserver
             .observe([Breakpoints.XSmall, Breakpoints.Small])

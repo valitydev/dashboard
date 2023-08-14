@@ -27,7 +27,10 @@ export class CreateWebhookDialogService {
     // eslint-disable-next-line @typescript-eslint/member-ordering
     webhookCreated$ = this.created$.asObservable();
 
-    constructor(private fb: UntypedFormBuilder, private webhooksService: WebhooksService) {
+    constructor(
+        private fb: UntypedFormBuilder,
+        private webhooksService: WebhooksService,
+    ) {
         this.create$
             .pipe(
                 map(formValuesToWebhook),
@@ -38,10 +41,10 @@ export class CreateWebhookDialogService {
                             this.loading$.next(false);
                             this.error$.next();
                             return of('error');
-                        })
-                    )
+                        }),
+                    ),
                 ),
-                filter((result) => result !== 'error')
+                filter((result) => result !== 'error'),
             )
             .subscribe(() => this.created$.next('created'));
     }
@@ -60,9 +63,9 @@ export class CreateWebhookDialogService {
                     this.fb.group({
                         eventName,
                         selected: false,
-                    })
+                    }),
                 ),
-                [oneMustBeSelected]
+                [oneMustBeSelected],
             ),
         });
     }

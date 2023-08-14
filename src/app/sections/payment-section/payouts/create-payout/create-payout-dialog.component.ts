@@ -25,7 +25,10 @@ export class CreatePayoutDialogComponent implements OnInit {
 
     currentPayoutToolCurrency: string;
 
-    shopsInfo$ = of(this.data.realm).pipe(filterShopsByRealm(this.shopsDataService.shops$), mapToShopInfo);
+    shopsInfo$ = of(this.data.realm).pipe(
+        filterShopsByRealm(this.shopsDataService.shops$),
+        mapToShopInfo,
+    );
 
     isPayoutToolsLoading$ = this.createPayoutDialogService.isLoading$;
     payoutTools$ = this.createPayoutDialogService.payoutTools$;
@@ -38,13 +41,18 @@ export class CreatePayoutDialogComponent implements OnInit {
         private snackBar: MatSnackBar,
         private transloco: TranslocoService,
         private shopsDataService: ShopsDataService,
-        @Inject(MAT_DIALOG_DATA) private data: { realm: string }
+        @Inject(MAT_DIALOG_DATA) private data: { realm: string },
     ) {}
 
     ngOnInit() {
-        this.createPayoutDialogService.payoutCreated$.subscribe(() => this.dialogRef.close('created'));
+        this.createPayoutDialogService.payoutCreated$.subscribe(() =>
+            this.dialogRef.close('created'),
+        );
         this.createPayoutDialogService.errorOccurred$.subscribe(() =>
-            this.snackBar.open(this.transloco.translate('payouts.errors.createError', null, 'payment-section'), 'OK')
+            this.snackBar.open(
+                this.transloco.translate('payouts.errors.createError', null, 'payment-section'),
+                'OK',
+            ),
         );
     }
 
@@ -63,7 +71,7 @@ export class CreatePayoutDialogComponent implements OnInit {
             this.form.addControl('payoutToolID', this.fb.control('', [Validators.required]));
             this.form.addControl(
                 'amount',
-                this.fb.control('', [Validators.required, amountValidator, Validators.min(1)])
+                this.fb.control('', [Validators.required, amountValidator, Validators.min(1)]),
             );
         } else {
             this.form.removeControl('payoutToolID');

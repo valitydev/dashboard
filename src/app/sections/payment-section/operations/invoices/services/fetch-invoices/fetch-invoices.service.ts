@@ -18,12 +18,15 @@ export class FetchInvoicesService extends PartialFetcher<Invoice, SearchFiltersP
     constructor(
         private searchService: SearchService,
         @Inject(SEARCH_LIMIT)
-        private searchLimit: number
+        private searchLimit: number,
     ) {
         super();
     }
 
-    protected fetch({ fromTime, toTime, realm, ...params }: SearchFiltersParams, continuationToken: string) {
+    protected fetch(
+        { fromTime, toTime, realm, ...params }: SearchFiltersParams,
+        continuationToken: string,
+    ) {
         return this.searchService.searchInvoices({
             ...params,
             fromTime,

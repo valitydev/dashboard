@@ -38,7 +38,7 @@ export class UserComponent {
                 title: this.transloco.translate('actionbar.user.twoFactorAuth', {}, 'components'),
                 href: `${this.keycloakAccountEndpoint}/totp`,
             },
-        ])
+        ]),
     );
 
     constructor(
@@ -48,7 +48,7 @@ export class UserComponent {
         private router: Router,
         private dialog: MatDialog,
         private transloco: TranslocoService,
-        @Inject(DIALOG_CONFIG) private dialogConfig: DialogConfig
+        @Inject(DIALOG_CONFIG) private dialogConfig: DialogConfig,
     ) {}
 
     openBlank(href: string): void {
@@ -62,12 +62,20 @@ export class UserComponent {
     selectActiveOrg(): void {
         this.selected.emit();
         this.dialog
-            .open<SelectActiveOrganizationDialogComponent, void, BaseDialogResponseStatus | Organization>(
+            .open<
                 SelectActiveOrganizationDialogComponent,
-                this.dialogConfig.medium
-            )
+                void,
+                BaseDialogResponseStatus | Organization
+            >(SelectActiveOrganizationDialogComponent, this.dialogConfig.medium)
             .afterClosed()
-            .pipe(filter((res) => !Object.values(BaseDialogResponseStatus).includes(res as BaseDialogResponseStatus)))
+            .pipe(
+                filter(
+                    (res) =>
+                        !Object.values(BaseDialogResponseStatus).includes(
+                            res as BaseDialogResponseStatus,
+                        ),
+                ),
+            )
             .subscribe((org: Organization) => {
                 this.contextOrganizationService.switchOrganization(org.id);
             });
@@ -79,7 +87,9 @@ export class UserComponent {
     }
 
     toActiveOrg(activeOrg: string): void {
-        void this.router.navigate(['organization-section', 'organizations'], { fragment: activeOrg });
+        void this.router.navigate(['organization-section', 'organizations'], {
+            fragment: activeOrg,
+        });
         this.selected.emit();
     }
 }

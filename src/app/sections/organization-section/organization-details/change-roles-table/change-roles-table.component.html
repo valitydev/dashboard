@@ -1,11 +1,16 @@
-<dsh-nested-table *transloco="let t; scope: 'organization-section'; read: 'organizationSection.changeRolesTable'">
+<dsh-nested-table
+    *transloco="let t; scope: 'organization-section'; read: 'organizationSection.changeRolesTable'"
+>
     <dsh-nested-table-row>
         <dsh-nested-table-col class="dsh-body-2"></dsh-nested-table-col>
-        <dsh-nested-table-col *ngFor="let roleId of roleIds" class="dsh-body-2" fxLayoutAlign="center center">{{
-            (roleIdDict$ | async)?.[roleId]
-        }}</dsh-nested-table-col>
+        <dsh-nested-table-col
+            *ngFor="let roleId of roleIds"
+            class="dsh-body-2"
+            fxLayoutAlign="center center"
+            >{{ (roleIdDict$ | async)?.[roleId] }}</dsh-nested-table-col
+        >
         <dsh-nested-table-col *ngIf="isAllowAdd">
-            <button dsh-button color="accent" (click)="add()">{{ t('add') }}</button>
+            <button color="accent" dsh-button (click)="add()">{{ t('add') }}</button>
         </dsh-nested-table-col>
     </dsh-nested-table-row>
 
@@ -13,15 +18,17 @@
         <dsh-nested-table-row>
             <dsh-nested-table-col>
                 <dsh-nested-table-collapse-button
-                    >{{ t('shops') }} ({{ (shops$ | async).length }})</dsh-nested-table-collapse-button
+                    >{{ t('shops') }} ({{
+                        (shops$ | async).length
+                    }})</dsh-nested-table-collapse-button
                 >
             </dsh-nested-table-col>
             <dsh-nested-table-col *ngFor="let roleId of roleIds">
                 <mat-checkbox
                     [checked]="checkedAll(roleId) | async"
                     [disabled]="disabledAll(roleId)"
-                    [ngClass]="{ disabled: disabledAll(roleId) }"
                     [indeterminate]="isIntermediate(roleId) | async"
+                    [ngClass]="{ disabled: disabledAll(roleId) }"
                     (click)="toggleAll(roleId, $event)"
                 ></mat-checkbox>
             </dsh-nested-table-col>
@@ -43,8 +50,12 @@
 
     <dsh-nested-table-row *ngIf="isAllowRemoves">
         <dsh-nested-table-col class="dsh-body-2"></dsh-nested-table-col>
-        <dsh-nested-table-col class="dsh-body-2" *ngFor="let roleId of roleIds" fxLayoutAlign="center center">
-            <button *ngIf="hasRemove(roleId)" dsh-button color="warn" (click)="remove(roleId)">
+        <dsh-nested-table-col
+            *ngFor="let roleId of roleIds"
+            class="dsh-body-2"
+            fxLayoutAlign="center center"
+        >
+            <button *ngIf="hasRemove(roleId)" color="warn" dsh-button (click)="remove(roleId)">
                 {{ t('remove') }}
             </button>
         </dsh-nested-table-col>

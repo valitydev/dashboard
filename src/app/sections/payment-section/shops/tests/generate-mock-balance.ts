@@ -6,7 +6,7 @@ import { ShopBalance } from '../types/shop-balance';
 export function generateMockBalance(
     order: number,
     amount: number | null = null,
-    currency: string = 'USD'
+    currency: string = 'USD',
 ): ShopBalance {
     return {
         id: generateMockShopId(order),

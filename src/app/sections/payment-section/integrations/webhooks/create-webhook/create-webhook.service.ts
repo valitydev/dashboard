@@ -24,8 +24,8 @@ export class CreateWebhookService {
                     this.dialog
                         .open(CreateWebhookDialogComponent)
                         .afterClosed()
-                        .pipe(filter((r) => r === 'created'))
-                )
+                        .pipe(filter((r) => r === 'created')),
+                ),
             )
             .subscribe(() => {
                 this.created$.next();

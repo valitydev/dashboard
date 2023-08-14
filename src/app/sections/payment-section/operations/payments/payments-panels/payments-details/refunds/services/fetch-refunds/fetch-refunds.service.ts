@@ -23,14 +23,14 @@ export class FetchRefundsService extends PartialFetcher<
         private searchLimit: number,
         @Inject(DEBOUNCE_FETCHER_ACTION_TIME)
         debounceActionTime: number,
-        private paymentInstitutionRealmService: PaymentInstitutionRealmService
+        private paymentInstitutionRealmService: PaymentInstitutionRealmService,
     ) {
         super(debounceActionTime);
     }
 
     protected fetch(
         { invoiceID, paymentID }: Pick<SearchRefundsRequestParams, 'invoiceID' | 'paymentID'>,
-        continuationToken: string
+        continuationToken: string,
     ) {
         return this.paymentInstitutionRealmService.realm$.pipe(
             first(),
@@ -43,8 +43,8 @@ export class FetchRefundsService extends PartialFetcher<
                     limit: this.searchLimit,
                     continuationToken,
                     paymentInstitutionRealm,
-                })
-            )
+                }),
+            ),
         );
     }
 }

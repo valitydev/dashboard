@@ -13,11 +13,14 @@ export class DaterangePipe implements PipeTransform {
     private daterange$ = new BehaviorSubject<Partial<Daterange>>({});
     private result = '';
 
-    constructor(daterangeService: DaterangeService, private ref: ChangeDetectorRef) {
+    constructor(
+        daterangeService: DaterangeService,
+        private ref: ChangeDetectorRef,
+    ) {
         this.daterange$
             .pipe(
                 switchMap((daterange) => daterangeService.switchToDaterangeStr(daterange)),
-                distinctUntilChanged()
+                distinctUntilChanged(),
             )
             .subscribe((r) => {
                 this.result = r;

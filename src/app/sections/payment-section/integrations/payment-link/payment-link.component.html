@@ -1,13 +1,13 @@
 <dsh-card
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentLink'"
     fxLayout="column"
     fxLayoutGap="24px"
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentLink'"
 >
     <dsh-create-invoice-or-invoice-template
         *ngIf="(currentStep$ | async) === step.InvoiceTemplate"
         (next)="nextInvoiceOrInvoiceTemplate($event)"
     ></dsh-create-invoice-or-invoice-template>
-    <div fxLayout="column" fxLayoutGap="32px" *ngIf="(currentStep$ | async) === step.PaymentLink">
+    <div *ngIf="(currentStep$ | async) === step.PaymentLink" fxLayout="column" fxLayoutGap="32px">
         <ng-container>
             <h1 class="dsh-headline">
                 {{ t('title') }}
@@ -15,30 +15,37 @@
             <div fxLayout="column" fxLayoutGap="24px">
                 <dsh-create-payment-link-form
                     [formControl]="formControl"
-                    [paymentMethods]="paymentMethods$ | async"
                     [paymentLink]="paymentLink$ | async"
+                    [paymentMethods]="paymentMethods$ | async"
                 ></dsh-create-payment-link-form>
                 <dsh-actions>
                     <button
-                        dsh-text-button
-                        color="accent"
-                        (click)="currentStep$.next(step.InvoiceTemplate)"
                         [disabled]="!!(progress$ | async)"
+                        color="accent"
+                        dsh-text-button
+                        (click)="currentStep$.next(step.InvoiceTemplate)"
                     >
                         {{ t('back') }}
                     </button>
 
-                    <ng-container *ngIf="formControl.valid && !(paymentLink$ | async); else clearButton">
-                        <button dsh-button color="accent" (click)="create()" [disabled]="!!(progress$ | async)">
+                    <ng-container
+                        *ngIf="formControl.valid && !(paymentLink$ | async); else clearButton"
+                    >
+                        <button
+                            [disabled]="!!(progress$ | async)"
+                            color="accent"
+                            dsh-button
+                            (click)="create()"
+                        >
                             {{ t('create') }}
                         </button>
                     </ng-container>
                     <ng-template #clearButton>
                         <button
-                            dsh-text-button
-                            color="accent"
-                            (click)="formControl.reset()"
                             [disabled]="!!(progress$ | async)"
+                            color="accent"
+                            dsh-text-button
+                            (click)="formControl.reset()"
                         >
                             {{ t('clearForm') }}
                         </button>

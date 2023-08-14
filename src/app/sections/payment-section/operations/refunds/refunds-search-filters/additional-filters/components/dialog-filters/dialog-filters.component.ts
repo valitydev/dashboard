@@ -11,7 +11,10 @@ import { AdditionalFilters } from '../../types';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => DialogFiltersComponent),
 })
-export class DialogFiltersComponent extends FormGroupSuperclass<Partial<AdditionalFilters>> implements OnInit {
+export class DialogFiltersComponent
+    extends FormGroupSuperclass<Partial<AdditionalFilters>>
+    implements OnInit
+{
     control = this.formBuilder.group({
         invoiceIDs: null,
         shopIDs: null,
@@ -21,7 +24,7 @@ export class DialogFiltersComponent extends FormGroupSuperclass<Partial<Addition
     constructor(
         @Inject(MAT_DIALOG_DATA) private data: AdditionalFilters,
         private dialogRef: MatDialogRef<DialogFiltersComponent, AdditionalFilters>,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
     ) {
         super();
     }

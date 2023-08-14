@@ -98,13 +98,13 @@ describe('RefundsComponent', () => {
                         shopID: component.shopID,
                         currency: component.currency,
                         maxRefundAmount: component.maxRefundAmount,
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(
                 of({
                     status: CreateRefundDialogResponseStatus.Success,
                     availableAmount: 400,
-                })
+                }),
             );
             component.createRefund();
 
@@ -113,8 +113,8 @@ describe('RefundsComponent', () => {
                     deepEqual({
                         invoiceID: component.invoiceID,
                         paymentID: component.paymentID,
-                    })
-                )
+                    }),
+                ),
             ).once();
             expect().nothing();
         });
@@ -128,13 +128,13 @@ describe('RefundsComponent', () => {
                         shopID: component.shopID,
                         currency: component.currency,
                         maxRefundAmount: component.maxRefundAmount,
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(
                 of({
                     status: CreateRefundDialogResponseStatus.Success,
                     availableAmount: 0,
-                })
+                }),
             );
 
             const spyOnsStatusChanged = spyOn(component.fullyRefunded, 'emit');
@@ -153,12 +153,12 @@ describe('RefundsComponent', () => {
                         shopID: component.shopID,
                         currency: component.currency,
                         maxRefundAmount: component.maxRefundAmount,
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(
                 of({
                     status: CreateRefundDialogResponseStatus.Cancelled,
-                })
+                }),
             );
 
             const spyOnsStatusChanged = spyOn(component.fullyRefunded, 'emit');
@@ -170,8 +170,8 @@ describe('RefundsComponent', () => {
                     deepEqual({
                         invoiceID: component.invoiceID,
                         paymentID: component.paymentID,
-                    })
-                )
+                    }),
+                ),
             ).never();
             expect(spyOnsStatusChanged).not.toHaveBeenCalled();
         });

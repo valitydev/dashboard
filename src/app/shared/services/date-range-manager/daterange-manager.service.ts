@@ -24,7 +24,7 @@ export class DaterangeManagerService {
     constructor(
         @Optional()
         @Inject(DATE_RANGE_TYPE)
-        private rangeType: DaterangeType | null
+        private rangeType: DaterangeType | null,
     ) {}
 
     serializeDateRange({ begin, end }: Daterange): DaterangeParams {

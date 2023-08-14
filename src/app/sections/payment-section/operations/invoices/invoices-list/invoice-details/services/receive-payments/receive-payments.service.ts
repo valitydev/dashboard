@@ -33,15 +33,17 @@ export class ReceivePaymentsService {
                             this.loading$.next(false);
                             this.error$.next();
                             return of('error');
-                        })
-                    )
+                        }),
+                    ),
                 ),
                 filter((result) => result !== 'error'),
                 map((r) => r as Payment[]),
                 map((payments) =>
-                    payments.sort((a, b) => moment(b.createdAt).valueOf() - moment(a.createdAt).valueOf())
+                    payments.sort(
+                        (a, b) => moment(b.createdAt).valueOf() - moment(a.createdAt).valueOf(),
+                    ),
                 ),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe((payments: Payment[]) => {
                 this.loading$.next(false);

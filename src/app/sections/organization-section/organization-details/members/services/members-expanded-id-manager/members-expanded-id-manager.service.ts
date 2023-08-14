@@ -12,7 +12,7 @@ export class MembersExpandedIdManager extends ExpandedIdManager<Member> {
     constructor(
         protected route: ActivatedRoute,
         protected router: Router,
-        private fetchMembersService: FetchMembersService
+        private fetchMembersService: FetchMembersService,
     ) {
         super(route, router);
     }

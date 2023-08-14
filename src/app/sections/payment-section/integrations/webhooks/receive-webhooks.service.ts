@@ -18,12 +18,12 @@ export class ReceiveWebhooksService {
     webhooks$: Observable<Webhook[]> = this.webhooksState$.pipe(
         filter((s) => !!s),
         map((w) => sortBy(w, (i) => !i.active)),
-        shareReplay(SHARE_REPLAY_CONF)
+        shareReplay(SHARE_REPLAY_CONF),
     );
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     isLoading$: Observable<boolean> = progress(this.receiveWebhooks$, this.webhooks$).pipe(
-        shareReplay(SHARE_REPLAY_CONF)
+        shareReplay(SHARE_REPLAY_CONF),
     );
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
@@ -32,7 +32,7 @@ export class ReceiveWebhooksService {
     constructor(
         private webhooksService: WebhooksService,
         private snackBar: MatSnackBar,
-        private transloco: TranslocoService
+        private transloco: TranslocoService,
     ) {
         this.isLoading$.subscribe();
 
@@ -42,12 +42,15 @@ export class ReceiveWebhooksService {
                     this.webhooksService.getWebhooksForParty().pipe(
                         catchError((err) => {
                             console.error(err);
-                            this.snackBar.open(this.transloco.translate('shared.httpError', null, 'components'), 'OK');
+                            this.snackBar.open(
+                                this.transloco.translate('shared.httpError', null, 'components'),
+                                'OK',
+                            );
                             return of([]);
-                        })
-                    )
+                        }),
+                    ),
                 ),
-                map((webhooks) => webhooks.filter((webhook) => webhook.active))
+                map((webhooks) => webhooks.filter((webhook) => webhook.active)),
             )
             .subscribe((webhooks) => {
                 this.webhooksState$.next(webhooks);

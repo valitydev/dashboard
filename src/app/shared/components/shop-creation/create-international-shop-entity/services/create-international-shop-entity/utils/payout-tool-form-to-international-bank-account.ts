@@ -3,7 +3,7 @@ import { InternationalBankAccount } from '@vality/swag-claim-management';
 import { PayoutToolForm } from '../../../components/payout-tool-form/types/payout-tool-form';
 
 export function payoutToolFormToInternationalBankAccount(
-    form: PayoutToolForm
+    form: PayoutToolForm,
 ): Required<Pick<InternationalBankAccount, 'iban' | 'number' | 'bank'>> {
     return {
         iban: form.iban,

@@ -13,13 +13,16 @@ import { IdentitiesService } from '@dsh/app/api/wallet';
 export class IdentityNamePipe implements PipeTransform {
     async = new AsyncPipe(this.cdr);
 
-    constructor(private cdr: ChangeDetectorRef, private identitiesService: IdentitiesService) {}
+    constructor(
+        private cdr: ChangeDetectorRef,
+        private identitiesService: IdentitiesService,
+    ) {}
 
     transform(id: Identity['id']): Identity['name'] {
         return this.async.transform(
             this.identitiesService.identities$.pipe(
-                map((identities) => identities.find((identity) => identity.id === id)?.name || id)
-            )
+                map((identities) => identities.find((identity) => identity.id === id)?.name || id),
+            ),
         );
     }
 }

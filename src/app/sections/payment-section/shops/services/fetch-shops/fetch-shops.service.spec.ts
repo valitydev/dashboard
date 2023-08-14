@@ -93,7 +93,7 @@ describe('FetchShopsService', () => {
                         index: 2,
                         categoryID: 2,
                     },
-                ])
+                ]),
             );
 
             const expectedShops$ = cold('a', {
@@ -107,8 +107,8 @@ describe('FetchShopsService', () => {
                 service.allShops$.pipe(
                     map((list) => {
                         return list.map(({ id }) => id);
-                    })
-                )
+                    }),
+                ),
             ).toBeObservable(expectedShops$);
         });
     });
@@ -129,8 +129,8 @@ describe('FetchShopsService', () => {
                 service.shownShops$.pipe(
                     map((list) => {
                         return list.map(({ id }) => id);
-                    })
-                )
+                    }),
+                ),
             ).toBeObservable(expectedShops$);
         });
     });
@@ -166,8 +166,8 @@ describe('FetchShopsService', () => {
                 service.allShops$.pipe(
                     map((list) => {
                         return list.map(({ id }) => id);
-                    })
-                )
+                    }),
+                ),
             ).toBeObservable(expectedShops$);
         });
 
@@ -183,7 +183,7 @@ describe('FetchShopsService', () => {
                 cold('(ab)', {
                     a: true,
                     b: false,
-                })
+                }),
             );
 
             service.refreshData();
@@ -192,7 +192,7 @@ describe('FetchShopsService', () => {
                 cold('(ab)', {
                     a: true,
                     b: false,
-                })
+                }),
             );
         });
     });
@@ -217,12 +217,12 @@ describe('FetchShopsService', () => {
                 service.shownShops$.pipe(
                     map((list) => {
                         return list.map(({ id }) => id);
-                    })
-                )
+                    }),
+                ),
             ).toBeObservable(
                 cold('a', {
                     a: mockListIds.slice(0, 10),
-                })
+                }),
             );
         });
 
@@ -238,7 +238,7 @@ describe('FetchShopsService', () => {
                 cold('(ab)', {
                     a: true,
                     b: false,
-                })
+                }),
             );
 
             service.showMore();
@@ -247,7 +247,7 @@ describe('FetchShopsService', () => {
                 cold('(ab)', {
                     a: true,
                     b: false,
-                })
+                }),
             );
         });
     });

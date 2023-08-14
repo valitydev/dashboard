@@ -11,10 +11,16 @@ import { getShopsByRealm } from '../operations/operators';
 
 @Injectable()
 export class RealmShopsService {
-    shops$: Observable<Shop[]> = combineLatest([this.shopsDataService.shops$, this.realmService.realm$]).pipe(
+    shops$: Observable<Shop[]> = combineLatest([
+        this.shopsDataService.shops$,
+        this.realmService.realm$,
+    ]).pipe(
         map(([shops, realm]) => (realm ? getShopsByRealm(shops, realm) : [])),
-        shareReplayRefCount()
+        shareReplayRefCount(),
     );
 
-    constructor(private shopsDataService: ShopsDataService, private realmService: PaymentInstitutionRealmService) {}
+    constructor(
+        private shopsDataService: ShopsDataService,
+        private realmService: PaymentInstitutionRealmService,
+    ) {}
 }

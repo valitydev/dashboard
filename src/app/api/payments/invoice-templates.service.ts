@@ -9,11 +9,14 @@ import { createApi } from '../utils';
     providedIn: 'root',
 })
 export class InvoiceTemplatesService extends createApi(ApiInvoiceTemplatesService) {
-    constructor(injector: Injector, private partyIdPatchMethodService: PartyIdPatchMethodService) {
+    constructor(
+        injector: Injector,
+        private partyIdPatchMethodService: PartyIdPatchMethodService,
+    ) {
         super(injector);
         this.createInvoiceTemplate = this.partyIdPatchMethodService.patch(
             this.createInvoiceTemplate,
-            (params, partyId) => (params.invoiceTemplateCreateParams.partyID = partyId)
+            (params, partyId) => (params.invoiceTemplateCreateParams.partyID = partyId),
         );
     }
 }

@@ -3,7 +3,7 @@ import { CommentModificationUnit } from '@vality/swag-claim-management';
 import { SpecificClaimModificationUnit } from './specific-claim-modification-unit';
 
 export const createCommentModificationUnit = (
-    commentId: string
+    commentId: string,
 ): SpecificClaimModificationUnit<CommentModificationUnit> => ({
     modificationType: 'ClaimModification',
     claimModificationType: {

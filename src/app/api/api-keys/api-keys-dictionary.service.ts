@@ -13,5 +13,8 @@ export class ApiKeysDictionaryService {
         revoked: this.t.translate('api-keys.ApiKeyStatus.revoked', null, 'dictionary'),
     }));
 
-    constructor(private t: TranslocoService, private dictionaryService: DictionaryService) {}
+    constructor(
+        private t: TranslocoService,
+        private dictionaryService: DictionaryService,
+    ) {}
 }

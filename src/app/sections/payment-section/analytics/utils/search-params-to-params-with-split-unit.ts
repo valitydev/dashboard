@@ -17,7 +17,10 @@ export const searchParamsToParamsWithSplitUnit = ({
     realm,
 });
 
-const calculateSplitUnit = (fromTime: string, toTime: string): GetPaymentsSplitCountRequestParams['splitUnit'] => {
+const calculateSplitUnit = (
+    fromTime: string,
+    toTime: string,
+): GetPaymentsSplitCountRequestParams['splitUnit'] => {
     const daysCount = Math.abs(moment(fromTime).diff(toTime, 'd'));
     if (daysCount > 90) {
         return 'month';

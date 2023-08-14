@@ -25,7 +25,7 @@ export class ClaimsComponent {
     constructor(
         private fetchClaimsService: FetchClaimsService,
         private qp: QueryParamsService<Filters>,
-        private shopCreationService: ShopCreationService
+        private shopCreationService: ShopCreationService,
     ) {}
 
     search(filters: Filters): void {

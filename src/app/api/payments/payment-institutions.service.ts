@@ -13,7 +13,7 @@ import { createApi } from '../utils';
 export class PaymentInstitutionsService extends createApi(ApiPaymentInstitutionsService) {
     paymentInstitutions$ = defer(() => this.reload$).pipe(
         switchMap(() => this.getPaymentInstitutions()),
-        shareReplayRefCount()
+        shareReplayRefCount(),
     );
 
     private reload$ = new BehaviorSubject<void>(undefined);

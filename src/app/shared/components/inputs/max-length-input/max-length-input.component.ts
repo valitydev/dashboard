@@ -1,5 +1,11 @@
 import { ChangeDetectionStrategy, Component, forwardRef, Input, OnChanges } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, Validators, ValidatorFn, FormControl } from '@angular/forms';
+import {
+    ControlValueAccessor,
+    NG_VALUE_ACCESSOR,
+    Validators,
+    ValidatorFn,
+    FormControl,
+} from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { coerceBoolean } from 'coerce-property';
 import isNil from 'lodash-es/isNil';
@@ -68,9 +74,11 @@ export class MaxLengthInputComponent implements OnChanges, ControlValueAccessor 
     }
 
     registerOnChange(onChange: (value: unknown) => void): void {
-        this.formControl.valueChanges.pipe(skip(1), untilDestroyed(this)).subscribe((value: string) => {
-            onChange(value);
-        });
+        this.formControl.valueChanges
+            .pipe(skip(1), untilDestroyed(this))
+            .subscribe((value: string) => {
+                onChange(value);
+            });
     }
 
     registerOnTouched(onTouch: () => void): void {

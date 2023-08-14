@@ -7,7 +7,7 @@ import { StateNavModule } from './state-nav.module';
 
 @Component({
     template: `
-        <dsh-state-nav (selectedIdxChange)="selectItem($event)" [autoselect]="autoselect">
+        <dsh-state-nav [autoselect]="autoselect" (selectedIdxChange)="selectItem($event)">
             <dsh-state-nav-item selected>first</dsh-state-nav-item>
             <dsh-state-nav-item status="warn">second</dsh-state-nav-item>
             <dsh-state-nav-item status="success">third</dsh-state-nav-item>
@@ -28,7 +28,7 @@ describe('DshStateNav', () => {
     function createComponent<T>(
         component: Type<T>,
         providers: Provider[] = [],
-        declarations: unknown[] = []
+        declarations: unknown[] = [],
     ): ComponentFixture<T> {
         TestBed.configureTestingModule({
             imports: [StateNavModule],
@@ -72,7 +72,9 @@ describe('DshStateNav', () => {
 
         it('should has warn class', () => {
             const fixture = createComponent(SimpleStateNavComponent);
-            const itemContent: HTMLElement = getAllItems(fixture)[1].query(By.css('*')).nativeElement;
+            const itemContent: HTMLElement = getAllItems(fixture)[1].query(
+                By.css('*'),
+            ).nativeElement;
             expect(itemContent.classList.contains('warn')).toBeTruthy();
         });
 
@@ -84,7 +86,9 @@ describe('DshStateNav', () => {
 
         it('should has success class', () => {
             const fixture = createComponent(SimpleStateNavComponent);
-            const itemContent: HTMLElement = getAllItems(fixture)[2].query(By.css('*')).nativeElement;
+            const itemContent: HTMLElement = getAllItems(fixture)[2].query(
+                By.css('*'),
+            ).nativeElement;
             expect(itemContent.classList.contains('success')).toBeTruthy();
         });
 

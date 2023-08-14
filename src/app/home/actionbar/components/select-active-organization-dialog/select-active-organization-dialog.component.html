@@ -4,9 +4,19 @@
     (cancel)="close()"
 >
     <div fxLayout="column" fxLayoutGap="8px">
-        <dsh-limited-panel (showMore)="showMore()" [hasMore]="(isLoading$ | async) === false && (hasMore$ | async)">
-            <mat-radio-group [(ngModel)]="selectedOrganization" fxLayout="column" fxLayoutGap="24px">
-                <mat-radio-button *ngFor="let organization of organizations$ | async" [value]="organization">
+        <dsh-limited-panel
+            [hasMore]="(isLoading$ | async) === false && (hasMore$ | async)"
+            (showMore)="showMore()"
+        >
+            <mat-radio-group
+                [(ngModel)]="selectedOrganization"
+                fxLayout="column"
+                fxLayoutGap="24px"
+            >
+                <mat-radio-button
+                    *ngFor="let organization of organizations$ | async"
+                    [value]="organization"
+                >
                     {{ organization.name }}
                 </mat-radio-button>
             </mat-radio-group>
@@ -15,10 +25,13 @@
     </div>
     <ng-container dshBaseDialogActions>
         <button
-            dsh-button
+            [disabled]="
+                !selectedOrganization ||
+                selectedOrganization.id === (contextOrganization$ | async)?.id
+            "
             color="accent"
+            dsh-button
             (click)="confirm()"
-            [disabled]="!selectedOrganization || selectedOrganization.id === (contextOrganization$ | async)?.id"
         >
             {{ t('confirm') }}
         </button>

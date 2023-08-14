@@ -9,7 +9,13 @@ import { FilterModule } from '@dsh/components/filter';
 import { InvoicesFilterComponent } from './invoices-filter.component';
 
 @NgModule({
-    imports: [CommonModule, TranslocoModule, InvoicesFieldModule, ReactiveFormsModule, FilterModule],
+    imports: [
+        CommonModule,
+        TranslocoModule,
+        InvoicesFieldModule,
+        ReactiveFormsModule,
+        FilterModule,
+    ],
     declarations: [InvoicesFilterComponent],
     exports: [InvoicesFilterComponent],
 })

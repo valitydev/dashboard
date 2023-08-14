@@ -26,7 +26,9 @@ import { NavbarItemConfig, toNavbarItemConfig } from './utils';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaymentSectionComponent implements OnInit {
-    isTestRealm$ = this.realmService.realm$.pipe(map((realm) => realm === PaymentInstitution.RealmEnum.Test));
+    isTestRealm$ = this.realmService.realm$.pipe(
+        map((realm) => realm === PaymentInstitution.RealmEnum.Test),
+    );
     navbarItemConfig$: Observable<NavbarItemConfig[]> = this.transloco
         .selectTranslation('payment-section')
         .pipe(map(() => toNavbarItemConfig(this.getNavbarItemLabels())));
@@ -42,18 +44,20 @@ export class PaymentSectionComponent implements OnInit {
         private router: Router,
         private route: ActivatedRoute,
         private transloco: TranslocoService,
-        private realmShopsService: RealmShopsService
+        private realmShopsService: RealmShopsService,
     ) {}
 
     ngOnInit(): void {
         this.realmService.realm$
             .pipe(
                 filter((realm) => !realm),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe(
                 () =>
-                    void this.router.navigate(['realm', PaymentInstitution.RealmEnum.Live], { relativeTo: this.route })
+                    void this.router.navigate(['realm', PaymentInstitution.RealmEnum.Live], {
+                        relativeTo: this.route,
+                    }),
             );
 
         combineLatest([this.activeSectionChange$, this.realmChange$])
@@ -63,7 +67,7 @@ export class PaymentSectionComponent implements OnInit {
                     void this.router.navigate(['../../', 'realm', realm, routerLink], {
                         relativeTo: this.route,
                         queryParamsHandling: 'preserve',
-                    })
+                    }),
             );
 
         this.activeSection$ = this.activeSectionChange$.pipe(pluck('label'));
@@ -72,7 +76,7 @@ export class PaymentSectionComponent implements OnInit {
             (realm) =>
                 void this.router.navigate(['../../', 'realm', realm, 'shops'], {
                     relativeTo: this.route,
-                })
+                }),
         );
     }
 
@@ -84,7 +88,9 @@ export class PaymentSectionComponent implements OnInit {
     }
 
     testEnvToggle(isTestEnv: boolean): void {
-        const realm = isTestEnv ? PaymentInstitution.RealmEnum.Test : PaymentInstitution.RealmEnum.Live;
+        const realm = isTestEnv
+            ? PaymentInstitution.RealmEnum.Test
+            : PaymentInstitution.RealmEnum.Live;
         this.realmChange$.next(realm);
     }
 
@@ -95,11 +101,31 @@ export class PaymentSectionComponent implements OnInit {
     private getNavbarItemLabels() {
         return {
             shops: this.transloco.translate('paymentSection.nav.shops', null, 'payment-section'),
-            analytics: this.transloco.translate('paymentSection.nav.analytics', null, 'payment-section'),
-            integrations: this.transloco.translate('paymentSection.nav.integrations', null, 'payment-section'),
-            operations: this.transloco.translate('paymentSection.nav.operations', null, 'payment-section'),
-            payouts: this.transloco.translate('paymentSection.nav.payouts', null, 'payment-section'),
-            reports: this.transloco.translate('paymentSection.nav.reports', null, 'payment-section'),
+            analytics: this.transloco.translate(
+                'paymentSection.nav.analytics',
+                null,
+                'payment-section',
+            ),
+            integrations: this.transloco.translate(
+                'paymentSection.nav.integrations',
+                null,
+                'payment-section',
+            ),
+            operations: this.transloco.translate(
+                'paymentSection.nav.operations',
+                null,
+                'payment-section',
+            ),
+            payouts: this.transloco.translate(
+                'paymentSection.nav.payouts',
+                null,
+                'payment-section',
+            ),
+            reports: this.transloco.translate(
+                'paymentSection.nav.reports',
+                null,
+                'payment-section',
+            ),
         };
     }
 }

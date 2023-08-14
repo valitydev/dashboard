@@ -39,12 +39,15 @@ export class ReportsComponent implements OnInit {
         private qp: QueryParamsService<Filters>,
         private realmService: PaymentInstitutionRealmService,
         private dialog: MatDialog,
-        private realmMixinService: RealmMixService<SearchFiltersParams>
+        private realmMixinService: RealmMixService<SearchFiltersParams>,
     ) {}
 
     ngOnInit(): void {
         this.fetchReportsService.errors$.subscribe(() =>
-            this.snackBar.open(this.transloco.translate('reports.errors.fetchError', null, 'payment-section'), 'OK')
+            this.snackBar.open(
+                this.transloco.translate('reports.errors.fetchError', null, 'payment-section'),
+                'OK',
+            ),
         );
         this.realmMixinService.mixedValue$
             .pipe(untilDestroyed(this))
@@ -56,15 +59,19 @@ export class ReportsComponent implements OnInit {
                     this.dialog
                         .open(CreateReportDialogComponent, { data: { realm } })
                         .afterClosed()
-                        .pipe(filter((r) => r === 'created'))
+                        .pipe(filter((r) => r === 'created')),
                 ),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe(() => {
                 this.snackBar.open(
-                    this.transloco.translate('reports.createReport.successfullyCreated', null, 'payment-section'),
+                    this.transloco.translate(
+                        'reports.createReport.successfullyCreated',
+                        null,
+                        'payment-section',
+                    ),
                     'OK',
-                    { duration: 2000 }
+                    { duration: 2000 },
                 );
                 this.refresh();
             });

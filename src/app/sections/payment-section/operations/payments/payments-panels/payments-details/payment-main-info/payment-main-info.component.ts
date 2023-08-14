@@ -18,7 +18,9 @@ export class PaymentMainInfoComponent {
     }
 
     get resourcePayer(): PaymentResourcePayer | null {
-        return this.payer.payerType === 'PaymentResourcePayer' ? (this.payer as PaymentResourcePayer) : null;
+        return this.payer.payerType === 'PaymentResourcePayer'
+            ? (this.payer as PaymentResourcePayer)
+            : null;
     }
 
     get additionalInfo(): PaymentAdditionalInfo | null {

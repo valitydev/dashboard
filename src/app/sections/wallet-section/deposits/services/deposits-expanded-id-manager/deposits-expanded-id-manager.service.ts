@@ -12,7 +12,7 @@ export class DepositsExpandedIdManagerService extends ExpandedIdManager<Deposit>
     constructor(
         protected route: ActivatedRoute,
         protected router: Router,
-        private depositsService: FetchDepositsService
+        private depositsService: FetchDepositsService,
     ) {
         super(route, router);
     }

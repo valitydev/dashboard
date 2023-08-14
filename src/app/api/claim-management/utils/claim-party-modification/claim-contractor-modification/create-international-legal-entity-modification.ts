@@ -4,7 +4,7 @@ import { createContractorLegalEntityModification } from './create-contractor-leg
 
 export function createInternationalLegalEntityModification(
     id: string,
-    params: Omit<InternationalLegalEntity, 'legalEntityType'>
+    params: Omit<InternationalLegalEntity, 'legalEntityType'>,
 ): PartyModification {
     return createContractorLegalEntityModification(id, {
         legalEntityType: 'InternationalLegalEntity',

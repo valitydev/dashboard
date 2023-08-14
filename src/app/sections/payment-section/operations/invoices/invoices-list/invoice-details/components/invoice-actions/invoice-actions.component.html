@@ -1,20 +1,29 @@
 <div
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.invoices.actions'"
     fxLayout="column"
     fxLayoutGap="24px"
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.invoices.actions'"
 >
     <div class="mat-h2">
         {{ t('title') }}
     </div>
     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="24px">
         <ng-container *ngIf="invoice.status === 'unpaid'">
-            <button dsh-button color="accent" *ngIf="'PaymentLinks' | isAccessAllowed" (click)="createPaymentLink()">
+            <button
+                *ngIf="'PaymentLinks' | isAccessAllowed"
+                color="accent"
+                dsh-button
+                (click)="createPaymentLink()"
+            >
                 {{ t('createPaymentLink') }}
             </button>
-            <button dsh-button color="warn" (click)="cancelInvoice()">{{ t('cancelInvoice') }}</button>
+            <button color="warn" dsh-button (click)="cancelInvoice()">
+                {{ t('cancelInvoice') }}
+            </button>
         </ng-container>
         <ng-container *ngIf="invoice.status === 'paid'">
-            <button dsh-button color="accent" (click)="fulfillInvoice()">{{ t('fulfillInvoice') }}</button>
+            <button color="accent" dsh-button (click)="fulfillInvoice()">
+                {{ t('fulfillInvoice') }}
+            </button>
         </ng-container>
     </div>
 </div>

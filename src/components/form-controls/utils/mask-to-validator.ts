@@ -4,7 +4,10 @@ import { TextMaskConfig } from '@dsh/components/form-controls/format-input';
 
 import { regExpToValidator } from './regexp-to-validator';
 
-export function maskToValidator(maskConfig: TextMaskConfig, forbiddenName: string = 'maskValidator'): ValidatorFn {
+export function maskToValidator(
+    maskConfig: TextMaskConfig,
+    forbiddenName: string = 'maskValidator',
+): ValidatorFn {
     const mask = maskConfig.mask as Array<string | RegExp>;
     const maskParts = mask.map((i) => (i instanceof RegExp ? i.toString().slice(1, -1) : i));
     const regExp = new RegExp(`^${maskParts.join('')}$`);

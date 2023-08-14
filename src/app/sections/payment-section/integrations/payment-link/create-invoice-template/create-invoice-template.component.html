@@ -1,8 +1,8 @@
 <div
+    *transloco="let c; scope: 'payment-section'; read: 'paymentSection.createInvoiceTemplate'"
     [formGroup]="control"
     fxLayout="column"
     fxLayoutGap="32px"
-    *transloco="let c; scope: 'payment-section'; read: 'paymentSection.createInvoiceTemplate'"
 >
     <h1 class="dsh-headline">{{ c('title') }}</h1>
     <div fxLayout="column" fxLayoutGap="16px">
@@ -17,17 +17,23 @@
 
         <mat-form-field>
             <mat-label>{{ c('form.lifetime') }}</mat-label>
-            <input matInput formControlName="lifetime" [matDatepicker]="dateDatepicker" required [min]="minDate" />
-            <mat-datepicker-toggle matSuffix [for]="dateDatepicker"></mat-datepicker-toggle>
+            <input
+                [matDatepicker]="dateDatepicker"
+                [min]="minDate"
+                formControlName="lifetime"
+                matInput
+                required
+            />
+            <mat-datepicker-toggle [for]="dateDatepicker" matSuffix></mat-datepicker-toggle>
             <mat-datepicker #dateDatepicker></mat-datepicker>
         </mat-form-field>
 
         <label class="dsh-subheading-1">{{ c('form.invoiceTemplateType') }}:</label>
-        <mat-radio-group fxLayout fxLayoutGap="24px" formControlName="templateType">
+        <mat-radio-group formControlName="templateType" fxLayout fxLayoutGap="24px">
             <mat-radio-button
                 *ngFor="let selectedInvoiceTemplateType of invoiceTemplateTypes"
-                fxFlex="0 1 calc((100% - 24px * 2)/3)"
                 [value]="selectedInvoiceTemplateType"
+                fxFlex="0 1 calc((100% - 24px * 2)/3)"
             >
                 <ng-container
                     *transloco="
@@ -48,7 +54,10 @@
         </mat-radio-group>
 
         <ng-container
-            *ngIf="control.value.templateType === templateType.InvoiceTemplateMultiLine; else singleLine"
+            *ngIf="
+                control.value.templateType === templateType.InvoiceTemplateMultiLine;
+                else singleLine
+            "
             formArrayName="cart"
         >
             <h2 class="dsh-subheading-1">{{ c('form.cart.title') }}:</h2>
@@ -60,15 +69,23 @@
                 <div fxLayout fxLayoutGap="24px">
                     <mat-form-field fxFlex>
                         <mat-label>{{ c('form.cart.amount') }}</mat-label>
-                        <dsh-format-input format="amount" formControlName="price" required></dsh-format-input>
+                        <dsh-format-input
+                            format="amount"
+                            formControlName="price"
+                            required
+                        ></dsh-format-input>
                     </mat-form-field>
                     <mat-form-field fxFlex>
                         <mat-label>{{ c('form.cart.quantity') }}</mat-label>
-                        <dsh-format-input format="quantity" formControlName="quantity" required></dsh-format-input>
+                        <dsh-format-input
+                            format="quantity"
+                            formControlName="quantity"
+                            required
+                        ></dsh-format-input>
                     </mat-form-field>
                     <mat-form-field fxFlex>
                         <mat-label>{{ c('form.taxMode') }}</mat-label>
-                        <mat-select required formControlName="taxMode">
+                        <mat-select formControlName="taxMode" required>
                             <mat-option [value]="withoutVAT">{{ c('form.withoutVAT') }}</mat-option>
                             <mat-option *ngFor="let taxMode of taxModes" [value]="taxMode">
                                 {{ taxMode }}
@@ -78,19 +95,22 @@
                 </div>
                 <div fxLayout="column" fxLayoutAlign=" end">
                     <button
-                        dsh-text-button
-                        color="warn"
-                        (click)="removeProduct(i)"
                         *ngIf="i !== 0 || (i === 0 && cartForm.controls.length > 1)"
+                        color="warn"
+                        dsh-text-button
+                        (click)="removeProduct(i)"
                     >
                         {{ c('form.cart.remove') }}
                     </button>
                 </div>
             </ng-container>
             <mat-divider></mat-divider>
-            <div fxLayout fxLayoutGap="24px" fxLayoutAlign="space-between center">
-                <div>{{ c('form.cart.summary') }}: {{ summary$ | async | currency : control.value.currency }}</div>
-                <button dsh-text-button color="accent" (click)="addProduct()">
+            <div fxLayout fxLayoutAlign="space-between center" fxLayoutGap="24px">
+                <div>
+                    {{ c('form.cart.summary') }}:
+                    {{ summary$ | async | currency: control.value.currency }}
+                </div>
+                <button color="accent" dsh-text-button (click)="addProduct()">
                     {{ c('form.cart.add') }}
                 </button>
             </div>
@@ -104,18 +124,20 @@
 
             <mat-form-field>
                 <mat-label>{{ c('form.taxMode') }}</mat-label>
-                <mat-select required formControlName="taxMode">
+                <mat-select formControlName="taxMode" required>
                     <mat-option [value]="withoutVAT">{{ c('form.withoutVAT') }}</mat-option>
-                    <mat-option *ngFor="let taxMode of taxModes" [value]="taxMode">{{ taxMode }}</mat-option>
+                    <mat-option *ngFor="let taxMode of taxModes" [value]="taxMode">{{
+                        taxMode
+                    }}</mat-option>
                 </mat-select>
             </mat-form-field>
 
             <label class="dsh-subheading-1">{{ c('form.invoiceTemplateTypeCostType') }}:</label>
-            <mat-radio-group fxLayout fxLayoutGap="24px" formControlName="costType">
+            <mat-radio-group formControlName="costType" fxLayout fxLayoutGap="24px">
                 <mat-radio-button
                     *ngFor="let selectedInvoiceTemplateCostType of invoiceTemplateCostTypes"
-                    fxFlex
                     [value]="selectedInvoiceTemplateCostType"
+                    fxFlex
                 >
                     <ng-container
                         *transloco="
@@ -138,39 +160,63 @@
                 </mat-radio-button>
             </mat-radio-group>
 
-            <mat-form-field *ngIf="control.value.costType === costType.InvoiceTemplateLineCostFixed">
+            <mat-form-field
+                *ngIf="control.value.costType === costType.InvoiceTemplateLineCostFixed"
+            >
                 <mat-label>{{ c('form.cost') }}</mat-label>
-                <dsh-format-input format="amount" formControlName="amount" required></dsh-format-input>
+                <dsh-format-input
+                    format="amount"
+                    formControlName="amount"
+                    required
+                ></dsh-format-input>
             </mat-form-field>
 
             <div
-                fxLayout
-                fxLayoutGap="24px"
                 *ngIf="control.value.costType === costType.InvoiceTemplateLineCostRange"
                 formGroupName="range"
+                fxLayout
+                fxLayoutGap="24px"
             >
                 <mat-form-field fxFlex>
                     <mat-label>{{ c('form.lowerBound') }}</mat-label>
-                    <dsh-format-input format="amount" formControlName="lowerBound" required></dsh-format-input>
+                    <dsh-format-input
+                        format="amount"
+                        formControlName="lowerBound"
+                        required
+                    ></dsh-format-input>
                 </mat-form-field>
                 <mat-form-field fxFlex>
                     <mat-label>{{ c('form.upperBound') }}</mat-label>
-                    <dsh-format-input format="amount" formControlName="upperBound" required></dsh-format-input>
+                    <dsh-format-input
+                        format="amount"
+                        formControlName="upperBound"
+                        required
+                    ></dsh-format-input>
                 </mat-form-field>
             </div>
         </ng-template>
     </div>
 
     <div
-        fxLayout
-        fxLayoutGap="24px"
-        fxLayoutAlign="space-between"
         *transloco="let t; scope: 'components'; read: 'components.shared'"
+        fxLayout
+        fxLayoutAlign="space-between"
+        fxLayoutGap="24px"
     >
-        <button dsh-text-button color="accent" (click)="clear()" [disabled]="(isLoading$ | async) || control.pristine">
+        <button
+            [disabled]="(isLoading$ | async) || control.pristine"
+            color="accent"
+            dsh-text-button
+            (click)="clear()"
+        >
             {{ t('clearForm') }}
         </button>
-        <button dsh-button color="accent" (click)="nextStep()" [disabled]="control.invalid || (isLoading$ | async)">
+        <button
+            [disabled]="control.invalid || (isLoading$ | async)"
+            color="accent"
+            dsh-button
+            (click)="nextStep()"
+        >
             {{ t('next') }}
         </button>
     </div>

@@ -16,7 +16,13 @@ import {
     Self,
     SimpleChanges,
 } from '@angular/core';
-import { ControlValueAccessor, UntypedFormControl, FormGroupDirective, NgControl, NgForm } from '@angular/forms';
+import {
+    ControlValueAccessor,
+    UntypedFormControl,
+    FormGroupDirective,
+    NgControl,
+    NgForm,
+} from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
@@ -34,7 +40,13 @@ import { INPUT_MIXIN_BASE } from './input-base';
  */
 export class CustomFormControl<I, P = I>
     extends INPUT_MIXIN_BASE
-    implements AfterViewInit, ControlValueAccessor, MatFormFieldControl<I>, OnDestroy, DoCheck, OnChanges
+    implements
+        AfterViewInit,
+        ControlValueAccessor,
+        MatFormFieldControl<I>,
+        OnDestroy,
+        DoCheck,
+        OnChanges
 {
     /** The aria-describedby attribute on the input for improved a11y. */
     @HostBinding('attr.aria-describedby') _ariaDescribedby: string;
@@ -147,7 +159,7 @@ export class CustomFormControl<I, P = I>
         private autofillMonitor: AutofillMonitor,
         defaultErrorStateMatcher: ErrorStateMatcher,
         @Optional() parentForm: NgForm,
-        @Optional() parentFormGroup: FormGroupDirective
+        @Optional() parentFormGroup: FormGroupDirective,
     ) {
         super(defaultErrorStateMatcher, parentForm, parentFormGroup, ngControl, new Subject());
         if (this.ngControl !== null) {
@@ -200,7 +212,9 @@ export class CustomFormControl<I, P = I>
 
     registerOnChange(onChange: (value: P) => void): void {
         // TODO: иногда передаются public value в toPublicValue и возникают ошибки
-        this.formControl.valueChanges.pipe(untilDestroyed(this)).subscribe((v) => onChange(this.toPublicValue(v)));
+        this.formControl.valueChanges
+            .pipe(untilDestroyed(this))
+            .subscribe((v) => onChange(this.toPublicValue(v)));
     }
 
     registerOnTouched(onTouched: () => void): void {
@@ -222,7 +236,9 @@ export class CustomFormControl<I, P = I>
         this.disabled = shouldDisable;
     }
 
-    setInputElement(input: HTMLInputElement = this.elementRef.nativeElement.querySelector('input')) {
+    setInputElement(
+        input: HTMLInputElement = this.elementRef.nativeElement.querySelector('input'),
+    ) {
         this.inputRef.nativeElement = input;
         this.registerMonitors();
     }

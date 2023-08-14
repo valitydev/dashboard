@@ -1,4 +1,11 @@
-import { Component, Inject, Input, OnChanges, SimpleChanges, ViewEncapsulation } from '@angular/core';
+import {
+    Component,
+    Inject,
+    Input,
+    OnChanges,
+    SimpleChanges,
+    ViewEncapsulation,
+} from '@angular/core';
 
 import { SpinnerType } from '@dsh/components/indicators';
 
@@ -24,7 +31,7 @@ export class PaymentsErrorDistributionComponent implements OnChanges {
 
     constructor(
         private distributionsService: PaymentsErrorDistributionService,
-        @Inject(CHARTS_THEME) private theme: ChartsThemeProvider
+        @Inject(CHARTS_THEME) private theme: ChartsThemeProvider,
     ) {}
 
     ngOnChanges(changes: SimpleChanges) {

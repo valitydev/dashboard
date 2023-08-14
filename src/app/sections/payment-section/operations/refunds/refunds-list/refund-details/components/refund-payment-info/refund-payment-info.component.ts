@@ -19,6 +19,9 @@ export class RefundPaymentInfoComponent implements OnInit {
     constructor(private refundPaymentInfoService: ReceivePaymentService) {}
 
     ngOnInit() {
-        this.refundPaymentInfoService.receivePayment({ invoiceID: this.invoiceID, paymentID: this.paymentID });
+        this.refundPaymentInfoService.receivePayment({
+            invoiceID: this.invoiceID,
+            paymentID: this.paymentID,
+        });
     }
 }

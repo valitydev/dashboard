@@ -32,12 +32,12 @@ export class ReceiveInvoiceService {
                             this.loading$.next(false);
                             this.error$.next();
                             return of('error');
-                        })
-                    )
+                        }),
+                    ),
                 ),
                 filter((result) => result !== 'error'),
                 map((r) => r as Invoice),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe((invoice: Invoice) => {
                 this.loading$.next(false);

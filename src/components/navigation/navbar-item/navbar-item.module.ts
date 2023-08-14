@@ -8,7 +8,13 @@ import { NavbarItemComponent } from './navbar-item.component';
 import { BootstrapIconModule } from '../../indicators';
 
 @NgModule({
-    imports: [CommonModule, FlexLayoutModule, MatIconModule, MatSlideToggleModule, BootstrapIconModule],
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        MatIconModule,
+        MatSlideToggleModule,
+        BootstrapIconModule,
+    ],
     declarations: [NavbarItemComponent],
     exports: [NavbarItemComponent],
 })

@@ -49,7 +49,10 @@ const REQUEST_TYPE_BY_TYPE: RequestTypeByType = {
     templateUrl: 'dadata.component.html',
     providers: createControlProviders(() => DaDataAutocompleteComponent),
 })
-export class DaDataAutocompleteComponent<T extends Type = Type, R extends DaDataRequestType = RequestTypeByType[T]>
+export class DaDataAutocompleteComponent<
+        T extends Type = Type,
+        R extends DaDataRequestType = RequestTypeByType[T],
+    >
     extends FormControlSuperclass<string>
     implements OnInit
 {
@@ -66,15 +69,16 @@ export class DaDataAutocompleteComponent<T extends Type = Type, R extends DaData
         filter<string>(Boolean),
         debounce(() => interval(300)),
         switchMap((v) => this.loadSuggestions(v)),
-        shareReplayUntilDestroyed(this)
+        shareReplayUntilDestroyed(this),
     );
     options$: Observable<Option<ContentByRequestType[R]>[]> = this.suggestions$.pipe(
         map((suggestions) => suggestions.map((s) => this.getOption(s))),
-        shareReplayUntilDestroyed(this)
+        shareReplayUntilDestroyed(this),
     );
-    isOptionsLoading$: Observable<boolean> = progress(this.control.valueChanges, this.suggestions$).pipe(
-        shareReplayUntilDestroyed(this)
-    );
+    isOptionsLoading$: Observable<boolean> = progress(
+        this.control.valueChanges,
+        this.suggestions$,
+    ).pipe(shareReplayUntilDestroyed(this));
 
     constructor(private daDataService: DaDataService) {
         super();
@@ -82,8 +86,12 @@ export class DaDataAutocompleteComponent<T extends Type = Type, R extends DaData
 
     ngOnInit(): void {
         this.isOptionsLoading$.pipe(untilDestroyed(this)).subscribe();
-        this.suggestions$.pipe(filter(isEmpty), untilDestroyed(this)).subscribe(() => this.suggestionNotFound.emit());
-        this.suggestions$.pipe(takeError, untilDestroyed(this)).subscribe((error) => this.errorOccurred.next(error));
+        this.suggestions$
+            .pipe(filter(isEmpty), untilDestroyed(this))
+            .subscribe(() => this.suggestionNotFound.emit());
+        this.suggestions$
+            .pipe(takeError, untilDestroyed(this))
+            .subscribe((error) => this.errorOccurred.next(error));
     }
 
     optionSelectedHandler(e: MatAutocompleteSelectedEvent): void {
@@ -102,7 +110,7 @@ export class DaDataAutocompleteComponent<T extends Type = Type, R extends DaData
         const params: ParamsByRequestType[R] = { query } as ParamsByRequestType[R];
         return this.daDataService.suggest(
             REQUEST_TYPE_BY_TYPE[this.type],
-            this.withSpecificParams(params)
+            this.withSpecificParams(params),
         ) as unknown as Observable<ContentByRequestType[R][]>;
     }
 

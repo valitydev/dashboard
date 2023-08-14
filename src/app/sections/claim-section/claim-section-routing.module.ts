@@ -13,12 +13,13 @@ const CLAIM_SECTION_ROUTES: Routes = [
             children: [
                 {
                     path: 'claims',
-                    loadChildren: () => import('./claims/claims.module').then((m) => m.ClaimsModule),
+                    loadChildren: () =>
+                        import('./claims/claims.module').then((m) => m.ClaimsModule),
                 },
                 { path: '', redirectTo: 'claims', pathMatch: 'full' },
             ],
         },
-        [RoleAccessName.Claims]
+        [RoleAccessName.Claims],
     ),
 ];
 

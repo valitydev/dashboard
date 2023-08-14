@@ -3,7 +3,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import isNil from 'lodash-es/isNil';
 import { Observable, of, Subject } from 'rxjs';
-import { distinctUntilChanged, map, pluck, shareReplay, switchMap, take, tap, withLatestFrom } from 'rxjs/operators';
+import {
+    distinctUntilChanged,
+    map,
+    pluck,
+    shareReplay,
+    switchMap,
+    take,
+    tap,
+    withLatestFrom,
+} from 'rxjs/operators';
 
 import { DatasetItemId } from './types/dataset-item-id';
 
@@ -19,22 +28,27 @@ export abstract class ExpandedIdManager<T extends DatasetItemId> {
 
     private expandedIdChange$: Subject<ExpandedId> = new Subject();
 
-    constructor(protected route: ActivatedRoute, protected router: Router) {
+    constructor(
+        protected route: ActivatedRoute,
+        protected router: Router,
+    ) {
         this.expandedId$ = this.route.fragment.pipe(
             take(1),
             switchMap((fragment) => this.findExpandedId(fragment)),
             distinctUntilChanged(),
             untilDestroyed(this),
-            shareReplay(1)
+            shareReplay(1),
         );
 
         this.expandedIdChange$
             .pipe(
                 switchMap((expandedId) => this.dataSet$.pipe(pluck(expandedId))),
                 map((dataSetItem) => (dataSetItem ? this.toFragment(dataSetItem) : '')),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
-            .subscribe((fragment) => this.router.navigate([], { fragment, queryParamsHandling: 'preserve' }));
+            .subscribe((fragment) =>
+                this.router.navigate([], { fragment, queryParamsHandling: 'preserve' }),
+            );
     }
 
     expandedIdChange(id: ExpandedId | null): void {
@@ -68,7 +82,7 @@ export abstract class ExpandedIdManager<T extends DatasetItemId> {
                     this.fragmentNotFound(fragment);
                 }
             }),
-            pluck(0)
+            pluck(0),
         );
     }
 }

@@ -13,6 +13,6 @@ export const removeEmptyProperties = <T>(s: Observable<T>) =>
                 } else {
                     return acc;
                 }
-            }, {} as T)
-        )
+            }, {} as T),
+        ),
     );

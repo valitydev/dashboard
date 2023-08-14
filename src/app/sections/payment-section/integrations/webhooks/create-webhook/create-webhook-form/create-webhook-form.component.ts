@@ -32,7 +32,7 @@ export class CreateWebhookFormComponent implements OnInit {
     constructor(
         private shopsDataService: ShopsDataService,
         private fb: UntypedFormBuilder,
-        private paymentsDictionaryService: PaymentsDictionaryService
+        private paymentsDictionaryService: PaymentsDictionaryService,
     ) {}
 
     ngOnInit() {
@@ -45,10 +45,10 @@ export class CreateWebhookFormComponent implements OnInit {
                         this.fb.group({
                             eventName,
                             selected: false,
-                        })
+                        }),
                     ),
-                    [oneMustBeSelected]
-                )
+                    [oneMustBeSelected],
+                ),
             );
         });
     }

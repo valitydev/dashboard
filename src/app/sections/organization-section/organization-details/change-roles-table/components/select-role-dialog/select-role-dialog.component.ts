@@ -25,7 +25,7 @@ interface FlatRoleAccess extends RoleAccess {
 export class SelectRoleDialogComponent {
     roleControl = this.fb.control<RoleId>(null, Validators.required);
     accesses: FlatRoleAccess[] = ROLE_ACCESS_GROUPS.map((r) => ({ ...r, isHeader: true })).flatMap(
-        (r) => [r, ...(r.children || [])] as FlatRoleAccess[]
+        (r) => [r, ...(r.children || [])] as FlatRoleAccess[],
     );
     roleIdDict$ = this.organizationsDictionaryService.roleId$;
     roleAccessDict$ = this.roleAccessesDictionaryService.roleAccessDict$;
@@ -33,7 +33,9 @@ export class SelectRoleDialogComponent {
         return `2fr ${'1fr '.repeat(this.data.availableRoles.length)}`;
     }
     get roles() {
-        return this.data.availableRoles.sort((a, b) => ROLE_PRIORITY_DESC[a] - ROLE_PRIORITY_DESC[b]);
+        return this.data.availableRoles.sort(
+            (a, b) => ROLE_PRIORITY_DESC[a] - ROLE_PRIORITY_DESC[b],
+        );
     }
 
     constructor(
@@ -41,7 +43,7 @@ export class SelectRoleDialogComponent {
         private dialogRef: MatDialogRef<SelectRoleDialogComponent, SelectRoleDialogResult>,
         private fb: FormBuilder,
         private organizationsDictionaryService: OrganizationsDictionaryService,
-        private roleAccessesDictionaryService: RoleAccessesDictionaryService
+        private roleAccessesDictionaryService: RoleAccessesDictionaryService,
     ) {}
 
     cancel() {

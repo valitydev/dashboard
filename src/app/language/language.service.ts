@@ -13,7 +13,10 @@ export class LanguageService {
 
     private static readonly key = 'language';
 
-    constructor(private settingsService: SettingsService, private transloco: TranslocoService) {}
+    constructor(
+        private settingsService: SettingsService,
+        private transloco: TranslocoService,
+    ) {}
 
     async init() {
         // TODO: Use after language change support starts
@@ -24,7 +27,8 @@ export class LanguageService {
             language = storageLang as Language;
         } else {
             const browserLang: string =
-                navigator.language || (navigator as never as Record<PropertyKey, string>).userLanguage;
+                navigator.language ||
+                (navigator as never as Record<PropertyKey, string>).userLanguage;
             language = Array.from<string>(LANGUAGES).includes(browserLang)
                 ? (browserLang as Language)
                 : this.active || 'en';

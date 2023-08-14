@@ -11,4 +11,4 @@ export const formValuesToWebhook = (v: FormParams): Webhook =>
             eventTypes: v.eventTypes.filter((e) => e.selected).map((e) => e.eventName),
             topic: v.eventType,
         },
-    } as Webhook);
+    }) as Webhook;

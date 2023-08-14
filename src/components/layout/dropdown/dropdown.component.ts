@@ -53,7 +53,7 @@ export class DropdownComponent implements OnInit, OnDestroy {
         this.state$
             .pipe(
                 filter((state: State) => state === State.Open),
-                takeUntil(this.destroy)
+                takeUntil(this.destroy),
             )
             .subscribe(() => {
                 this.opened.emit();
@@ -71,7 +71,8 @@ export class DropdownComponent implements OnInit, OnDestroy {
         if (this.isAutoSize(this.width)) {
             return this.width;
         }
-        const widthPx: number = typeof this.width === 'string' ? parseFloat(this.width) : this.width;
+        const widthPx: number =
+            typeof this.width === 'string' ? parseFloat(this.width) : this.width;
         if (widthPx + 1 >= document.body.getBoundingClientRect().width) {
             return FULL_WIDTH;
         }

@@ -9,7 +9,13 @@ import { InvoicesFieldModule } from '@dsh/app/shared/components/inputs/invoices-
 import { InvoicesFilterComponent } from './invoices-filter.component';
 
 @NgModule({
-    imports: [CommonModule, ReactiveFormsModule, FlexLayoutModule, TranslocoModule, InvoicesFieldModule],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        FlexLayoutModule,
+        TranslocoModule,
+        InvoicesFieldModule,
+    ],
     declarations: [InvoicesFilterComponent],
     exports: [InvoicesFilterComponent],
 })

@@ -20,7 +20,9 @@ describe('OrganizationsListComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [TranslocoTestingModule.withLangs({}, { missingHandler: { logMissingKey: false } })],
+            imports: [
+                TranslocoTestingModule.withLangs({}, { missingHandler: { logMissingKey: false } }),
+            ],
             declarations: [HostComponent, OrganizationsListComponent],
         })
             .overrideComponent(OrganizationsListComponent, {

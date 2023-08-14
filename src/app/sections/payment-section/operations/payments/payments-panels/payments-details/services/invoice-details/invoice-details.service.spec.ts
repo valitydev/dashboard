@@ -56,7 +56,10 @@ describe('InvoiceDetailsService', () => {
                 metadata: {},
             };
             when(
-                mockInvoiceSearchService.getInvoiceByDuration(deepEqual({ amount: 3, unit: 'y' }), 'invoice_id')
+                mockInvoiceSearchService.getInvoiceByDuration(
+                    deepEqual({ amount: 3, unit: 'y' }),
+                    'invoice_id',
+                ),
             ).thenReturn(of(invoiceData));
 
             service.setInvoiceID('invoice_id');
@@ -64,7 +67,7 @@ describe('InvoiceDetailsService', () => {
             expect(service.invoice$).toBeObservable(
                 cold('a', {
                     a: invoiceData,
-                })
+                }),
             );
         });
     });
@@ -74,13 +77,16 @@ describe('InvoiceDetailsService', () => {
 
         beforeEach(() => {
             when(
-                mockInvoiceSearchService.getInvoiceByDuration(deepEqual({ amount: 3, unit: 'y' }), 'invoice_id')
+                mockInvoiceSearchService.getInvoiceByDuration(
+                    deepEqual({ amount: 3, unit: 'y' }),
+                    'invoice_id',
+                ),
             ).thenReturn(
                 of(null).pipe(
                     switchMap(() => {
                         throw testError;
-                    })
-                )
+                    }),
+                ),
             );
 
             service.setInvoiceID('invoice_id');
@@ -90,7 +96,7 @@ describe('InvoiceDetailsService', () => {
             expect(service.error$).toBeObservable(
                 cold('a', {
                     a: testError,
-                })
+                }),
             );
         });
 
@@ -103,14 +109,20 @@ describe('InvoiceDetailsService', () => {
     describe('setInvoiceID', () => {
         it('should request invoice using id', () => {
             when(
-                mockInvoiceSearchService.getInvoiceByDuration(deepEqual({ amount: 3, unit: 'y' }), 'invoice_id')
+                mockInvoiceSearchService.getInvoiceByDuration(
+                    deepEqual({ amount: 3, unit: 'y' }),
+                    'invoice_id',
+                ),
             ).thenReturn(of(null));
 
             service.setInvoiceID('invoice_id');
             service.invoice$.pipe(take(1)).subscribe();
 
             verify(
-                mockInvoiceSearchService.getInvoiceByDuration(deepEqual({ amount: 3, unit: 'y' }), 'invoice_id')
+                mockInvoiceSearchService.getInvoiceByDuration(
+                    deepEqual({ amount: 3, unit: 'y' }),
+                    'invoice_id',
+                ),
             ).once();
             expect().nothing();
         });

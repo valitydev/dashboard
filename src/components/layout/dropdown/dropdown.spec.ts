@@ -1,6 +1,13 @@
 import { FullscreenOverlayContainer, OverlayContainer } from '@angular/cdk/overlay';
 import { Component, Provider, Type, ViewChild } from '@angular/core';
-import { ComponentFixture, ComponentFixtureAutoDetect, fakeAsync, inject, TestBed, tick } from '@angular/core/testing';
+import {
+    ComponentFixture,
+    ComponentFixtureAutoDetect,
+    fakeAsync,
+    inject,
+    TestBed,
+    tick,
+} from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { DropdownTriggerDirective } from './dropdown-trigger.directive';
@@ -9,8 +16,12 @@ import { DropdownModule } from './dropdown.module';
 @Component({
     template: `
         <button id="another">Another button</button>
-        <button id="toggle" [dshDropdownTriggerFor]="dropdown"><span id="toggle-content">Toggle</span></button>
-        <dsh-dropdown width="400px" #dropdown="dshDropdown"><ng-template>Text</ng-template></dsh-dropdown>
+        <button [dshDropdownTriggerFor]="dropdown" id="toggle">
+            <span id="toggle-content">Toggle</span>
+        </button>
+        <dsh-dropdown #dropdown="dshDropdown" width="400px"
+            ><ng-template>Text</ng-template></dsh-dropdown
+        >
     `,
 })
 class SimpleDropdownComponent {
@@ -24,7 +35,7 @@ describe('DshDropdown', () => {
     function createComponent<T>(
         component: Type<T>,
         providers: Provider[] = [],
-        declarations: unknown[] = []
+        declarations: unknown[] = [],
     ): ComponentFixture<T> {
         TestBed.configureTestingModule({
             imports: [DropdownModule, NoopAnimationsModule],

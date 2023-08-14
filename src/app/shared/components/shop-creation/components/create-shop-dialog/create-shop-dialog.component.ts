@@ -29,7 +29,9 @@ export class CreateShopDialogComponent {
     selectionConfirmed = false;
     shopType = ShopType;
 
-    constructor(public dialogRef: MatDialogRef<CreateShopDialogComponent, BaseDialogResponseStatus>) {}
+    constructor(
+        public dialogRef: MatDialogRef<CreateShopDialogComponent, BaseDialogResponseStatus>,
+    ) {}
 
     onTypeChange(type: ShopType): void {
         this.selectedShopType = type;

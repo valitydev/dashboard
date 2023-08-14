@@ -9,7 +9,14 @@ import { CollapseModule, LimitedListModule } from '@dsh/components/layout';
 import { OrganizationRolesComponent } from './organization-roles.component';
 
 @NgModule({
-    imports: [CommonModule, CollapseModule, LimitedListModule, TranslocoModule, FlexLayoutModule, ApiModelRefsModule],
+    imports: [
+        CommonModule,
+        CollapseModule,
+        LimitedListModule,
+        TranslocoModule,
+        FlexLayoutModule,
+        ApiModelRefsModule,
+    ],
     declarations: [OrganizationRolesComponent],
     exports: [OrganizationRolesComponent],
 })

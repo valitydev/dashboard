@@ -6,4 +6,5 @@ const walletToOption = (wallet: Wallet): Option<string> => ({
     value: wallet?.id,
 });
 
-export const walletsToOptions = (wallets: Wallet[]): Option<string>[] => wallets.map(walletToOption);
+export const walletsToOptions = (wallets: Wallet[]): Option<string>[] =>
+    wallets.map(walletToOption);

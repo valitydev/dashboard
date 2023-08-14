@@ -25,7 +25,7 @@ describe('PaymentDetailHeaderComponent', () => {
                     {
                         availableLangs: ['ru'],
                         defaultLang: 'ru',
-                    }
+                    },
                 ),
             ],
             declarations: [PaymentDetailHeaderComponent],

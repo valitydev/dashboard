@@ -11,7 +11,15 @@ import { PaymentSplitCountComponent } from './payment-split-count.component';
 import { BarChartItemModule } from '../bar-chart-item/bar-chart-item.module';
 
 @NgModule({
-    imports: [CommonModule, CardModule, BarChartModule, FlexModule, SpinnerModule, TranslocoModule, BarChartItemModule],
+    imports: [
+        CommonModule,
+        CardModule,
+        BarChartModule,
+        FlexModule,
+        SpinnerModule,
+        TranslocoModule,
+        BarChartItemModule,
+    ],
     exports: [PaymentSplitCountComponent],
     declarations: [PaymentSplitCountComponent],
 })

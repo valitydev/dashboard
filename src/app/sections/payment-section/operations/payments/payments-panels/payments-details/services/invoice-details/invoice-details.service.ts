@@ -23,7 +23,7 @@ export class InvoiceDetailsService {
     constructor(
         private searchService: SearchService,
         private errorService: ErrorService,
-        private paymentInstitutionRealmService: PaymentInstitutionRealmService
+        private paymentInstitutionRealmService: PaymentInstitutionRealmService,
     ) {
         this.invoice$ = this.invoiceData$.asObservable();
         this.error$ = this.innerErrors$.asObservable();
@@ -53,7 +53,7 @@ export class InvoiceDetailsService {
                     });
                 }),
                 map(({ result }) => result?.[0] ?? null),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe({
                 next: (invoice) => {

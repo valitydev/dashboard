@@ -16,7 +16,10 @@ export class HumanizedDurationPipe implements OnDestroy, PipeTransform {
     private subscription: Subscription;
     private inputValue: Value;
 
-    constructor(private humanizeDurationService: HumanizeDurationService, private ref: ChangeDetectorRef) {}
+    constructor(
+        private humanizeDurationService: HumanizeDurationService,
+        private ref: ChangeDetectorRef,
+    ) {}
 
     transform(value: Value, { interval: inpIntervalMs, ...config }: HumanizeDurationConfig = {}) {
         if (value !== this.inputValue) {
@@ -24,11 +27,12 @@ export class HumanizedDurationPipe implements OnDestroy, PipeTransform {
             if (!this.humanizeDurationService.isDiff(value)) {
                 this.dispose();
                 this.subscription = interval(
-                    inpIntervalMs || this.humanizeDurationService.getOptimalUpdateInterval(value, config)
+                    inpIntervalMs ||
+                        this.humanizeDurationService.getOptimalUpdateInterval(value, config),
                 )
                     .pipe(
                         startWith(0),
-                        switchMap(() => this.humanizeDurationService.getDuration(value, config))
+                        switchMap(() => this.humanizeDurationService.getDuration(value, config)),
                     )
                     .subscribe((duration) => {
                         if (duration !== this.latestValue) {

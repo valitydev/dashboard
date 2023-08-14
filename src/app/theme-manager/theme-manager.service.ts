@@ -14,7 +14,10 @@ export class ThemeManager {
 
     private element: HTMLScriptElement | HTMLLinkElement;
 
-    constructor(@Inject(DOCUMENT) private doc: Document, private configService: ConfigService) {}
+    constructor(
+        @Inject(DOCUMENT) private doc: Document,
+        private configService: ConfigService,
+    ) {}
 
     change(name: ThemeName): void {
         this.removeCurrent();

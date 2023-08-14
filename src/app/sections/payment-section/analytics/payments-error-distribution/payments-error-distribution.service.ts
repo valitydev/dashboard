@@ -14,19 +14,21 @@ import { searchParamsToDistributionSearchParams } from '../utils';
 
 @Injectable()
 export class PaymentsErrorDistributionService {
-    currentErrorTitle$ = defer(() => combineLatest([this.errorDistribution$, this.errorLabels$])).pipe(
-        map(([{ errorCode }, errorLabels]) => errorLabels[errorCode])
-    );
+    currentErrorTitle$ = defer(() =>
+        combineLatest([this.errorDistribution$, this.errorLabels$]),
+    ).pipe(map(([{ errorCode }, errorLabels]) => errorLabels[errorCode]));
     chartData$ = defer(() => combineLatest([this.errorDistribution$, this.errorLabels$])).pipe(
-        map(([{ subErrors }, errorLabels]) => errorsDistributionToChartData(subErrors, errorLabels))
+        map(([{ subErrors }, errorLabels]) =>
+            errorsDistributionToChartData(subErrors, errorLabels),
+        ),
     );
     isLoading$ = inProgressFrom(
         () => this.progress$,
-        () => this.errorDistribution$
+        () => this.errorDistribution$,
     );
     error$ = attach(
         () => this.errorSub$,
-        () => this.errorDistribution$
+        () => this.errorDistribution$,
     );
 
     private errorDistribution$ = combineLatest([
@@ -35,18 +37,23 @@ export class PaymentsErrorDistributionService {
             distinctUntilChangedDeep(),
             switchMap(({ fromTime, toTime, shopIDs, realm }) =>
                 this.analyticsService
-                    .getPaymentsSubErrorDistribution({ fromTime, toTime, paymentInstitutionRealm: realm, shopIDs })
-                    .pipe(errorTo(this.errorSub$), progressTo(this.progress$))
+                    .getPaymentsSubErrorDistribution({
+                        fromTime,
+                        toTime,
+                        paymentInstitutionRealm: realm,
+                        shopIDs,
+                    })
+                    .pipe(errorTo(this.errorSub$), progressTo(this.progress$)),
             ),
             pluck('result'),
-            map(subErrorsToErrorDistribution)
+            map(subErrorsToErrorDistribution),
         ),
         defer(() => this.selectedSubError$),
     ]).pipe(
         map(([errorDistribution, selectedSubErrorPath]) =>
-            getSelectedErrorDistribution(errorDistribution, selectedSubErrorPath)
+            getSelectedErrorDistribution(errorDistribution, selectedSubErrorPath),
         ),
-        shareReplayRefCount()
+        shareReplayRefCount(),
     );
     private searchParams$ = new ReplaySubject<SearchParams>(1);
     private selectedSubError$ = new BehaviorSubject<number[]>([]);
@@ -54,7 +61,10 @@ export class PaymentsErrorDistributionService {
     private progress$ = new BehaviorSubject<number>(0);
     private errorLabels$ = this.anapiDictionaryService.errorCode$;
 
-    constructor(private analyticsService: AnalyticsService, private anapiDictionaryService: AnapiDictionaryService) {}
+    constructor(
+        private analyticsService: AnalyticsService,
+        private anapiDictionaryService: AnapiDictionaryService,
+    ) {}
 
     updateSearchParams(searchParams: SearchParams) {
         this.searchParams$.next(searchParams);

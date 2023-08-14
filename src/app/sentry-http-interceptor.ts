@@ -15,7 +15,7 @@ export class SentryHttpInterceptor implements HttpInterceptor {
                     Sentry.setTag('x-request-id', xRequestId);
                 }
                 return throwError(resp);
-            })
+            }),
         );
     }
 }

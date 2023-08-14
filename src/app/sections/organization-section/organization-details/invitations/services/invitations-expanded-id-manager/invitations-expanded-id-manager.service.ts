@@ -12,7 +12,7 @@ export class InvitationsExpandedIdManager extends ExpandedIdManager<Invitation> 
     constructor(
         protected route: ActivatedRoute,
         protected router: Router,
-        private fetchInvitationsService: FetchInvitationsService
+        private fetchInvitationsService: FetchInvitationsService,
     ) {
         super(route, router);
     }

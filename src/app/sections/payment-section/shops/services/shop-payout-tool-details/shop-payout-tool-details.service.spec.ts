@@ -54,7 +54,7 @@ describe('ShopPayoutToolDetailsService', () => {
                         detailsType: 'any',
                     },
                     id: 'my_id',
-                })
+                }),
             );
 
             service.requestPayoutTool({
@@ -70,8 +70,8 @@ describe('ShopPayoutToolDetailsService', () => {
                 of(null).pipe(
                     map(() => {
                         throw new Error(`[TEST_ERROR]: Error in observable`);
-                    })
-                )
+                    }),
+                ),
             );
 
             service.requestPayoutTool({
@@ -82,7 +82,7 @@ describe('ShopPayoutToolDetailsService', () => {
             expect(service.errorOccurred$).toBeObservable(
                 cold('a', {
                     a: true,
-                })
+                }),
             );
         });
     });

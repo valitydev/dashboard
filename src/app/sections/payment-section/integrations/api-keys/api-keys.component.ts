@@ -30,10 +30,13 @@ export class ApiKeysComponent {
     expanded = new ExpandedFragment(
         this.fetchApiKeysService.result$,
         () => this.fetchApiKeysService.more(),
-        this.fetchApiKeysService.hasMore$
+        this.fetchApiKeysService.hasMore$,
     );
     columns: Column<ApiKey>[] = [
-        { label: this.transloco.translate('apiKeys.table.name', {}, 'payment-section'), field: (r) => r.name },
+        {
+            label: this.transloco.translate('apiKeys.table.name', {}, 'payment-section'),
+            field: (r) => r.name,
+        },
         {
             label: this.transloco.translate('apiKeys.table.createdAt', {}, 'payment-section'),
             field: (r) => r.createdAt,
@@ -50,20 +53,27 @@ export class ApiKeysComponent {
             hide: Breakpoints.Small,
         },
     ];
-    contentHeader = [{ label: (r) => `${this.transloco.translate('apiKeys.apiKey', {}, 'payment-section')} #${r.id}` }];
+    contentHeader = [
+        {
+            label: (r) =>
+                `${this.transloco.translate('apiKeys.apiKey', {}, 'payment-section')} #${r.id}`,
+        },
+    ];
 
     constructor(
         private qp: QueryParamsService<{ showInactive: boolean }>,
         private fetchApiKeysService: FetchApiKeysService,
         private dialogService: DialogService,
         private transloco: TranslocoService,
-        private apiKeysDictionaryService: ApiKeysDictionaryService
+        private apiKeysDictionaryService: ApiKeysDictionaryService,
     ) {
         this.update();
     }
 
     update() {
-        this.fetchApiKeysService.load(Object.assign({}, !this.showInactive && { status: ApiKeyStatus.Active }));
+        this.fetchApiKeysService.load(
+            Object.assign({}, !this.showInactive && { status: ApiKeyStatus.Active }),
+        );
     }
 
     more() {

@@ -21,7 +21,10 @@ const TIME_PATTERN = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
 })
 export class CreateReportDialogComponent implements OnInit {
     isLoading$ = this.createReportDialogService.isLoading$;
-    shopsInfo$ = of(this.data.realm).pipe(filterShopsByRealm(this.shopsDataService.shops$), mapToShopInfo);
+    shopsInfo$ = of(this.data.realm).pipe(
+        filterShopsByRealm(this.shopsDataService.shops$),
+        mapToShopInfo,
+    );
     form = this.fb.group({
         fromDate: [moment().startOf('month').format(), Validators.required],
         fromTime: ['00:00:00', Validators.pattern(TIME_PATTERN)],
@@ -37,13 +40,18 @@ export class CreateReportDialogComponent implements OnInit {
         private createReportDialogService: CreateReportDialogService,
         private transloco: TranslocoService,
         private snackBar: MatSnackBar,
-        @Inject(MAT_DIALOG_DATA) private data: { realm: string }
+        @Inject(MAT_DIALOG_DATA) private data: { realm: string },
     ) {}
 
     ngOnInit() {
-        this.createReportDialogService.reportCreated$.subscribe(() => this.dialogRef.close('created'));
+        this.createReportDialogService.reportCreated$.subscribe(() =>
+            this.dialogRef.close('created'),
+        );
         this.createReportDialogService.errorOccurred$.subscribe(() =>
-            this.snackBar.open(this.transloco.translate('reports.errors.createError', null, 'payment-section'), 'OK')
+            this.snackBar.open(
+                this.transloco.translate('reports.errors.createError', null, 'payment-section'),
+                'OK',
+            ),
         );
     }
 

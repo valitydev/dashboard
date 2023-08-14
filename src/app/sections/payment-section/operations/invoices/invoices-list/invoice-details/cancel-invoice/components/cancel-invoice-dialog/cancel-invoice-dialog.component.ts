@@ -12,7 +12,9 @@ import { CancelInvoiceDialogResponse } from '../../types/cancel-invoice-dialog-r
 export class CancelInvoiceDialogComponent {
     reason = new FormControl();
 
-    constructor(private dialogRef: MatDialogRef<CancelInvoiceDialogComponent, CancelInvoiceDialogResponse>) {}
+    constructor(
+        private dialogRef: MatDialogRef<CancelInvoiceDialogComponent, CancelInvoiceDialogResponse>,
+    ) {}
 
     cancel() {
         this.dialogRef.close('cancel');

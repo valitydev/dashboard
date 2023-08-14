@@ -1,8 +1,8 @@
 <dsh-filters-group [formGroup]="form">
     <dsh-date-range-filter
-        formControlName="dateRange"
         [default]="defaultDateRange"
         [maxDate]="defaultDateRange.end"
+        formControlName="dateRange"
     ></dsh-date-range-filter>
-    <dsh-shops-filter formControlName="shopIDs" [shops]="shops"></dsh-shops-filter>
+    <dsh-shops-filter [shops]="shops" formControlName="shopIDs"></dsh-shops-filter>
 </dsh-filters-group>

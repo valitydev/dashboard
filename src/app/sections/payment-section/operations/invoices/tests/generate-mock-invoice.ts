@@ -2,7 +2,10 @@ import { Invoice } from '@vality/swag-payments';
 
 import { generateMockInvoiceCart } from './generate-mock-invoice-cart';
 
-export function generateMockInvoice(id: string, status: Invoice.StatusEnum = Invoice.StatusEnum.Paid): Invoice {
+export function generateMockInvoice(
+    id: string,
+    status: Invoice.StatusEnum = Invoice.StatusEnum.Paid,
+): Invoice {
     return {
         id,
         shopID: 'testShopID',

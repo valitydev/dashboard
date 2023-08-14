@@ -1,16 +1,16 @@
 <ng-container *transloco="let t; scope: 'wallet-section'; read: 'walletSection.depositDetails'">
     <div
-        gdColumns="1fr"
-        gdColumns.gt-sm="1fr 1fr"
-        gdColumns.gt-md="1fr 1fr 1fr 1fr"
-        gdGap="24px"
         gdAlignColumns="start center"
+        gdColumns="1fr"
+        gdColumns.gt-md="1fr 1fr 1fr 1fr"
+        gdColumns.gt-sm="1fr 1fr"
+        gdGap="24px"
     >
         <div class="dsh-headline">
-            {{ deposit.body.amount | amountCurrency : deposit.body.currency }}
+            {{ deposit.body.amount | amountCurrency: deposit.body.currency }}
         </div>
         <dsh-details-item [title]="t('fee')">
-            {{ deposit.fee.amount | amountCurrency : deposit.fee.currency }}
+            {{ deposit.fee.amount | amountCurrency: deposit.fee.currency }}
         </dsh-details-item>
         <dsh-details-item [title]="t('status')">
             <dsh-status [color]="deposit.status | depositStatusColor">{{

@@ -48,8 +48,8 @@ describe('CreateHoldService', () => {
                     CreateHoldDialogComponent,
                     deepEqual({
                         data,
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(instance(mockMatDialogRef));
 
             service.openDialog(data);
@@ -59,8 +59,8 @@ describe('CreateHoldService', () => {
                     CancelHoldDialogComponent,
                     deepEqual({
                         data,
-                    })
-                )
+                    }),
+                ),
             );
             expect().nothing();
         });

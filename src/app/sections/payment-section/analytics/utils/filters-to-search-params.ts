@@ -7,7 +7,7 @@ import { SearchParams } from '../search-params';
 
 export const filtersToSearchParams = (
     { dateRange, ...otherParams }: Filters,
-    realm: PaymentInstitution.RealmEnum
+    realm: PaymentInstitution.RealmEnum,
 ): SearchParams => {
     const { start, end } = dateRange;
     return {

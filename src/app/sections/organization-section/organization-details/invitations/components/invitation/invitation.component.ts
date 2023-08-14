@@ -25,13 +25,15 @@ export class InvitationComponent {
         private dialog: MatDialog,
         private invitationsService: InvitationsService,
         private notificationService: NotificationService,
-        private errorService: ErrorService
+        private errorService: ErrorService,
     ) {}
 
     @ignoreBeforeCompletion
     cancel() {
         return this.dialog
-            .open<ConfirmActionDialogComponent, void, ConfirmActionDialogResult>(ConfirmActionDialogComponent)
+            .open<ConfirmActionDialogComponent, void, ConfirmActionDialogResult>(
+                ConfirmActionDialogComponent,
+            )
             .afterClosed()
             .pipe(
                 filter((r) => r === 'confirm'),
@@ -42,16 +44,16 @@ export class InvitationComponent {
                         inlineObject1: {
                             status: InlineObject1.StatusEnum.Revoked,
                         },
-                    })
+                    }),
                 ),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe(
                 () => {
                     this.changed.emit();
                     this.notificationService.success();
                 },
-                (err) => this.errorService.error(err)
+                (err) => this.errorService.error(err),
             );
     }
 }

@@ -2,7 +2,7 @@
     <dsh-report-main-info [report]="report"></dsh-report-main-info>
     <mat-divider></mat-divider>
     <ng-container *ngIf="report.status === 'created'">
-        <dsh-report-files [reportID]="report.id" [files]="report.files"></dsh-report-files>
+        <dsh-report-files [files]="report.files" [reportID]="report.id"></dsh-report-files>
         <mat-divider></mat-divider>
     </ng-container>
     <dsh-report-actions

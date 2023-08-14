@@ -19,26 +19,34 @@ export class SectionsLinksService {
         map(([hasWallets, allowWallets]) =>
             [
                 {
-                    label: this.transloco.translate('sectionsLinks.links.payments', null, 'services'),
+                    label: this.transloco.translate(
+                        'sectionsLinks.links.payments',
+                        null,
+                        'services',
+                    ),
                     path: `/payment-section`,
                 },
                 hasWallets &&
                     allowWallets && {
-                        label: this.transloco.translate('sectionsLinks.links.wallets', null, 'services'),
+                        label: this.transloco.translate(
+                            'sectionsLinks.links.wallets',
+                            null,
+                            'services',
+                        ),
                         path: '/wallet-section',
                     },
                 // allowClaims && {
                 //     label: this.transloco.translate('sectionsLinks.links.claims', null, 'services'),
                 //     path: '/claim-section',
                 // },
-            ].filter(Boolean)
+            ].filter(Boolean),
         ),
-        first()
+        first(),
     );
 
     constructor(
         private walletsService: WalletsService,
         private transloco: TranslocoService,
-        private roleAccessService: RoleAccessService
+        private roleAccessService: RoleAccessService,
     ) {}
 }

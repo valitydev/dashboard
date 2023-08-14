@@ -36,7 +36,10 @@ describe('CreateRefundDialogComponent', () => {
     let mockErrorService: ErrorService;
 
     beforeEach(() => {
-        mockMatDialogRef = mock<MatDialogRef<CreateRefundDialogComponent, CreateRefundDialogResponse>>(MatDialogRef);
+        mockMatDialogRef =
+            mock<MatDialogRef<CreateRefundDialogComponent, CreateRefundDialogResponse>>(
+                MatDialogRef,
+            );
         mockRefundsService = mock(RefundsService);
         mockAccountsService = mock(AccountsService);
         mockNotificationService = mock(NotificationService);
@@ -112,7 +115,7 @@ describe('CreateRefundDialogComponent', () => {
                 currency: 'USD',
                 availableAmount: 15000,
                 ownAmount: 80000,
-            })
+            }),
         );
     });
 
@@ -128,7 +131,9 @@ describe('CreateRefundDialogComponent', () => {
 
     describe('ngOnInit', () => {
         it('should init availableRefundAmount$', async () => {
-            when(mockRefundsService.getRefundedAmountSum('invoiceID', 'paymentID')).thenReturn(of(4500));
+            when(mockRefundsService.getRefundedAmountSum('invoiceID', 'paymentID')).thenReturn(
+                of(4500),
+            );
 
             await createComponent({
                 maxRefundAmount: 8000,
@@ -140,7 +145,7 @@ describe('CreateRefundDialogComponent', () => {
                         amount: 3500,
                         currency: 'USD',
                     },
-                })
+                }),
             );
         });
 
@@ -184,8 +189,8 @@ describe('CreateRefundDialogComponent', () => {
                     deepEqual({
                         reason: '',
                         currency: 'USD',
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(
                 of({
                     id: 'refundID',
@@ -193,7 +198,7 @@ describe('CreateRefundDialogComponent', () => {
                     amount: 100,
                     currency: 'USD',
                     status: Refund.StatusEnum.Succeeded,
-                })
+                }),
             );
         });
 
@@ -209,8 +214,8 @@ describe('CreateRefundDialogComponent', () => {
                     deepEqual({
                         reason: 'my reason',
                         currency: 'USD',
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(
                 of({
                     id: 'refundID',
@@ -218,7 +223,7 @@ describe('CreateRefundDialogComponent', () => {
                     amount: 5000,
                     currency: 'USD',
                     status: Refund.StatusEnum.Succeeded,
-                })
+                }),
             );
 
             component.form.setValue({
@@ -234,8 +239,8 @@ describe('CreateRefundDialogComponent', () => {
                     deepEqual({
                         reason: 'my reason',
                         currency: 'USD',
-                    })
-                )
+                    }),
+                ),
             ).once();
             expect(component.form.value.amount).toBeUndefined();
         });
@@ -249,8 +254,8 @@ describe('CreateRefundDialogComponent', () => {
                         reason: 'another reason',
                         currency: 'USD',
                         amount: 3000,
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(
                 of({
                     id: 'refundID',
@@ -258,7 +263,7 @@ describe('CreateRefundDialogComponent', () => {
                     amount: 3000,
                     currency: 'USD',
                     status: Refund.StatusEnum.Succeeded,
-                })
+                }),
             );
 
             component.form.addControl('amount', new FormControl<number>(0));
@@ -277,8 +282,8 @@ describe('CreateRefundDialogComponent', () => {
                         reason: 'another reason',
                         currency: 'USD',
                         amount: 3000,
-                    })
-                )
+                    }),
+                ),
             ).once();
             expect().nothing();
         });
@@ -286,7 +291,9 @@ describe('CreateRefundDialogComponent', () => {
         it('should notify about success', () => {
             component.confirm();
 
-            verify(mockNotificationService.success('paymentDetails.refunds.createRefund.successful')).once();
+            verify(
+                mockNotificationService.success('paymentDetails.refunds.createRefund.successful'),
+            ).once();
             expect().nothing();
         });
 
@@ -298,8 +305,8 @@ describe('CreateRefundDialogComponent', () => {
                     deepEqual({
                         reason: '',
                         currency: 'USD',
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(
                 of({
                     id: 'refundID',
@@ -307,7 +314,7 @@ describe('CreateRefundDialogComponent', () => {
                     amount: 750,
                     currency: 'USD',
                     status: Refund.StatusEnum.Succeeded,
-                })
+                }),
             );
 
             component.confirm();
@@ -317,8 +324,8 @@ describe('CreateRefundDialogComponent', () => {
                     deepEqual({
                         status: CreateRefundDialogResponseStatus.Success,
                         availableAmount: 1250,
-                    })
-                )
+                    }),
+                ),
             ).once();
             expect().nothing();
         });
@@ -331,8 +338,8 @@ describe('CreateRefundDialogComponent', () => {
                     deepEqual({
                         reason: '',
                         currency: 'USD',
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(
                 of({
                     id: 'refundID',
@@ -347,16 +354,20 @@ describe('CreateRefundDialogComponent', () => {
                                 code: 'invoicePaymentAmountExceeded',
                             },
                         });
-                    })
-                )
+                    }),
+                ),
             );
 
             component.confirm();
 
             verify(
                 mockErrorService.error(
-                    deepEqual(new CommonError('paymentDetails.refunds.errors.invoicePaymentAmountExceeded'))
-                )
+                    deepEqual(
+                        new CommonError(
+                            'paymentDetails.refunds.errors.invoicePaymentAmountExceeded',
+                        ),
+                    ),
+                ),
             ).once();
             expect().nothing();
         });
@@ -370,8 +381,8 @@ describe('CreateRefundDialogComponent', () => {
                     deepEqual({
                         reason: '',
                         currency: 'USD',
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(
                 of({
                     id: 'refundID',
@@ -382,8 +393,8 @@ describe('CreateRefundDialogComponent', () => {
                 }).pipe(
                     switchMap(() => {
                         throw error;
-                    })
-                )
+                    }),
+                ),
             );
 
             component.confirm();
@@ -400,8 +411,8 @@ describe('CreateRefundDialogComponent', () => {
                     deepEqual({
                         reason: '',
                         currency: 'USD',
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(
                 of({
                     id: 'refundID',
@@ -412,8 +423,8 @@ describe('CreateRefundDialogComponent', () => {
                 }).pipe(
                     switchMap(() => {
                         throw new Error('my error');
-                    })
-                )
+                    }),
+                ),
             );
 
             component.confirm();
@@ -422,8 +433,8 @@ describe('CreateRefundDialogComponent', () => {
                 mockMatDialogRef.close(
                     deepEqual({
                         status: CreateRefundDialogResponseStatus.Error,
-                    })
-                )
+                    }),
+                ),
             ).once();
             expect().nothing();
         });
@@ -441,8 +452,8 @@ describe('CreateRefundDialogComponent', () => {
                 mockMatDialogRef.close(
                     deepEqual({
                         status: CreateRefundDialogResponseStatus.Cancelled,
-                    })
-                )
+                    }),
+                ),
             ).once();
             expect().nothing();
         });

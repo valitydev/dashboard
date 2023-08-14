@@ -12,7 +12,7 @@ export class InvoicesExpandedIdManager extends ExpandedIdManager<Invoice> {
     constructor(
         protected route: ActivatedRoute,
         protected router: Router,
-        private fetchInvoicesService: FetchInvoicesService
+        private fetchInvoicesService: FetchInvoicesService,
     ) {
         super(route, router);
     }

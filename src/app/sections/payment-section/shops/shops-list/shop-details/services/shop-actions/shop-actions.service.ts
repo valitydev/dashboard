@@ -16,7 +16,7 @@ export class ShopActionsService {
         private shopsService: ShopsService,
         private dialog: MatDialog,
         private snackBar: MatSnackBar,
-        private transloco: TranslocoService
+        private transloco: TranslocoService,
     ) {}
 
     suspend(shopID: string): Observable<ShopActionResult> {
@@ -32,14 +32,17 @@ export class ShopActionsService {
                         'OK',
                         {
                             duration: 3000,
-                        }
+                        },
                     );
                     return ShopActionResult.Success;
                 }),
                 catchError(() => {
-                    this.snackBar.open(this.transloco.translate('shops.suspend.error', null, 'payment-section'), 'OK');
+                    this.snackBar.open(
+                        this.transloco.translate('shops.suspend.error', null, 'payment-section'),
+                        'OK',
+                    );
                     return of(ShopActionResult.Error);
-                })
+                }),
             );
     }
 
@@ -56,14 +59,17 @@ export class ShopActionsService {
                         'OK',
                         {
                             duration: 3000,
-                        }
+                        },
                     );
                     return ShopActionResult.Success;
                 }),
                 catchError(() => {
-                    this.snackBar.open(this.transloco.translate('shops.activate.error', null, 'payment-section'), 'OK');
+                    this.snackBar.open(
+                        this.transloco.translate('shops.activate.error', null, 'payment-section'),
+                        'OK',
+                    );
                     return of(ShopActionResult.Error);
-                })
+                }),
             );
     }
 }

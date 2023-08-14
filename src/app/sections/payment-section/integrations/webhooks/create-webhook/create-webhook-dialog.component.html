@@ -2,19 +2,19 @@
     <dsh-base-dialog [title]="t('createWebhook.title')" (cancel)="cancel()">
         <dsh-create-webhook-form [form]="form"></dsh-create-webhook-form>
         <div
+            *transloco="let c; scope: 'components'; read: 'components.shared'"
             dshBaseDialogActions
             fxLayout="row"
-            fxLayoutAlign.gt-sm="end"
             fxLayoutAlign="stretch"
-            *transloco="let c; scope: 'components'; read: 'components.shared'"
+            fxLayoutAlign.gt-sm="end"
         >
             <button
+                [disabled]="(isLoading$ | async) || !form.valid"
+                class="action-button"
+                color="accent"
+                dsh-button
                 fxFlex
                 fxFlex.gt-sm="none"
-                class="action-button"
-                dsh-button
-                color="accent"
-                [disabled]="(isLoading$ | async) || !form.valid"
                 (click)="save()"
             >
                 {{ t('createWebhook.create') }}

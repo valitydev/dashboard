@@ -1,10 +1,10 @@
 <button
     *transloco="let t; scope: 'components'; read: 'components.shared'"
     [disabled]="isLoading"
-    dsh-text-button
-    color="accent"
-    (click)="getMore()"
     class="dsh-show-more-btn"
+    color="accent"
+    dsh-text-button
+    (click)="getMore()"
 >
     {{ isLoading ? t('loading') : t('showMore') }}
 </button>

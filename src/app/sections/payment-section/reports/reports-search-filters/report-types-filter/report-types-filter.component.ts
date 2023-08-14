@@ -15,11 +15,16 @@ import { FilterSuperclass } from '@dsh/components/filter';
 })
 export class ReportTypesFilterComponent extends FilterSuperclass<Report.ReportTypeEnum[]> {
     labels$ = this.savedValue$.pipe(
-        switchMap((types) => combineLatest((types || []).map((type) => this.reportTypesLabelPipe.transform(type)))),
-        share()
+        switchMap((types) =>
+            combineLatest((types || []).map((type) => this.reportTypesLabelPipe.transform(type))),
+        ),
+        share(),
     );
 
-    constructor(injector: Injector, private reportTypesLabelPipe: ReportTypesLabelPipe) {
+    constructor(
+        injector: Injector,
+        private reportTypesLabelPipe: ReportTypesLabelPipe,
+    ) {
         super(injector);
     }
 

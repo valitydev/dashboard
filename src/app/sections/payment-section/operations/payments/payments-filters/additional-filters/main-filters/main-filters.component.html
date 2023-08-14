@@ -1,16 +1,18 @@
-<ng-container *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.payments.filter'">
-    <form [formGroup]="control" gdColumns.gt-sm="1fr 1fr" gdColumns="1fr" gdGap="0 24px">
+<ng-container
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.payments.filter'"
+>
+    <form [formGroup]="control" gdColumns="1fr" gdColumns.gt-sm="1fr 1fr" gdGap="0 24px">
         <mat-form-field>
             <mat-label>{{ t('payerEmail') }}</mat-label>
-            <input aria-label="payerEmail" matInput type="email" formControlName="payerEmail" />
+            <input aria-label="payerEmail" formControlName="payerEmail" matInput type="email" />
         </mat-form-field>
         <mat-form-field>
             <mat-label>{{ t('customerID') }}</mat-label>
-            <input aria-label="customerID" matInput formControlName="customerID" />
+            <input aria-label="customerID" formControlName="customerID" matInput />
         </mat-form-field>
         <mat-form-field>
             <mat-label>{{ t('rrn') }}</mat-label>
-            <input aria-label="rrn" matInput formControlName="rrn" />
+            <input aria-label="rrn" formControlName="rrn" matInput />
         </mat-form-field>
     </form>
 </ng-container>

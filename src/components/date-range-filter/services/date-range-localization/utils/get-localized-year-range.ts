@@ -7,7 +7,7 @@ import { Moment } from 'moment';
  */
 export function getLocalizedYearRange(
     { start, end }: DateRange<Moment>,
-    t: Record<'from' | 'to' | 'year', string>
+    t: Record<'from' | 'to' | 'year', string>,
 ): string {
     const endStr = `${end.year()} ${t.year}`;
     if (start.isSame(end, 'year')) return endStr;

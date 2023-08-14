@@ -11,7 +11,9 @@ import { RussianBankAccountForm } from './types/bank-account-form-data';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => RussianBankAccountFormComponent),
 })
-export class RussianBankAccountFormComponent extends FormGroupSuperclass<Partial<RussianBankAccountForm>> {
+export class RussianBankAccountFormComponent extends FormGroupSuperclass<
+    Partial<RussianBankAccountForm>
+> {
     control = this.fb.group<RussianBankAccountForm>({
         account: null,
         bankName: null,

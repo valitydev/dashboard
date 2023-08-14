@@ -13,9 +13,14 @@ const WORDS = ['from', 'fromStartWith2', 'to', 'today', 'currentWeek', 'year'] a
 
 @Injectable()
 export class DaterangeService {
-    private translations$ = this.transloco.selectTranslation('core-pipes').pipe(map(() => this.wordTranslates()));
+    private translations$ = this.transloco
+        .selectTranslation('core-pipes')
+        .pipe(map(() => this.wordTranslates()));
 
-    constructor(@Inject(LOCALE_ID) private locale: string, private transloco: TranslocoService) {}
+    constructor(
+        @Inject(LOCALE_ID) private locale: string,
+        private transloco: TranslocoService,
+    ) {}
 
     switchToDaterangeStr(daterange: Partial<Daterange>): Observable<string> {
         daterange = { begin: daterange?.begin?.local(), end: daterange?.end?.local() };
@@ -45,7 +50,7 @@ export class DaterangeService {
                     return endStr;
                 }
                 return `${t.from} ${begin.year()} ${t.to} ${endStr}`;
-            })
+            }),
         );
     }
 
@@ -66,7 +71,7 @@ export class DaterangeService {
                     return this.capitalizeFirstLetter(endStr);
                 }
                 return `${t.from} ${beginStr} ${t.to} ${endStr}`;
-            })
+            }),
         );
     }
 
@@ -80,13 +85,20 @@ export class DaterangeService {
     toDateStr({ begin, end }: Daterange) {
         return this.translations$.pipe(
             map((t) => {
-                const beginStr = this.formatDate(begin, true, !begin.isSame(end, 'month'), !begin.isSame(end, 'year'));
+                const beginStr = this.formatDate(
+                    begin,
+                    true,
+                    !begin.isSame(end, 'month'),
+                    !begin.isSame(end, 'year'),
+                );
                 const endStr = this.formatDate(end, true, true, !isCurrentYear({ begin, end }));
                 if (begin.isSame(end, 'day')) {
                     return endStr;
                 }
-                return `${begin.date() === 2 ? t.fromStartWith2 : t.from} ${beginStr} ${t.to} ${endStr}`;
-            })
+                return `${begin.date() === 2 ? t.fromStartWith2 : t.from} ${beginStr} ${
+                    t.to
+                } ${endStr}`;
+            }),
         );
     }
 
@@ -95,17 +107,34 @@ export class DaterangeService {
     }
 
     private formatDate(date: Moment, d: boolean = false, m: boolean = false, y: boolean = false) {
-        return formatDate(date.toDate(), [d && 'd', m && 'MMMM', y && 'y'].filter((v) => v).join(' '), this.locale);
+        return formatDate(
+            date.toDate(),
+            [d && 'd', m && 'MMMM', y && 'y'].filter((v) => v).join(' '),
+            this.locale,
+        );
     }
 
-    private formatStandaloneDate(date: Moment, d: boolean = false, m: boolean = false, y: boolean = false) {
-        return formatDate(date.toDate(), [d && 'd', m && 'LLLL', y && 'y'].filter((v) => v).join(' '), this.locale);
+    private formatStandaloneDate(
+        date: Moment,
+        d: boolean = false,
+        m: boolean = false,
+        y: boolean = false,
+    ) {
+        return formatDate(
+            date.toDate(),
+            [d && 'd', m && 'LLLL', y && 'y'].filter((v) => v).join(' '),
+            this.locale,
+        );
     }
 
     private wordTranslates(): Record<(typeof WORDS)[number], string> {
         return {
             from: this.transloco.translate('daterange.from', null, 'core-pipes'),
-            fromStartWith2: this.transloco.translate('daterange.fromStartWith2', null, 'core-pipes'),
+            fromStartWith2: this.transloco.translate(
+                'daterange.fromStartWith2',
+                null,
+                'core-pipes',
+            ),
             to: this.transloco.translate('daterange.to', null, 'core-pipes'),
             today: this.transloco.translate('daterange.today', null, 'core-pipes'),
             currentWeek: this.transloco.translate('daterange.currentWeek', null, 'core-pipes'),

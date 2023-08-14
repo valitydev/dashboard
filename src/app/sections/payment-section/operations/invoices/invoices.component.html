@@ -1,34 +1,34 @@
 <div fxLayout="column" fxLayoutGap="32px">
     <div
-        gdColumns="1fr"
-        gdColumns.gt-sm="repeat(2, auto)"
         gdAlignColumns="center center"
         gdAlignRows="space-between start"
+        gdColumns="1fr"
+        gdColumns.gt-sm="repeat(2, auto)"
         gdGap="32px"
     >
         <ng-container *ngIf="'CreateInvoice' | isAccessAllowed">
             <button
                 *transloco="let i; scope: 'payment-section'; read: 'paymentSection.invoices'"
-                dsh-button
                 color="accent"
+                dsh-button
                 (click)="create()"
             >
                 {{ i('createButton') }}
             </button>
         </ng-container>
         <dsh-invoices-search-filters
-            gdRow.gt-sm="1"
             [initParams]="params$ | async"
             [realm]="realm$ | async"
+            gdRow.gt-sm="1"
             (filtersChanged)="searchParamsChanges($event)"
         ></dsh-invoices-search-filters>
     </div>
     <div fxLayout="column" fxLayoutGap="16px">
         <dsh-invoices-list
             [expandedId]="expandedId$ | async"
-            (expandedIdChange)="expandedIdChange($event)"
             [invoices]="invoices$ | async"
             [lastUpdated]="lastUpdated$ | async"
+            (expandedIdChange)="expandedIdChange($event)"
             (refreshData)="refresh()"
         ></dsh-invoices-list>
         <dsh-show-more-panel

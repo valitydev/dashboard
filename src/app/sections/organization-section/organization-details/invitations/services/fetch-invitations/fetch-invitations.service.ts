@@ -15,21 +15,23 @@ export class FetchInvitationsService {
     invitations$ = defer(() => this.loadInvitations$).pipe(
         switchMapTo(this.route.params),
         switchMap(({ orgId }) =>
-            this.invitationsService.listInvitations({ orgId, status: InvitationStatusName.Pending }).pipe(
-                pluck('result'),
-                catchError((err) => {
-                    this.errorService.error(err);
-                    return of([] as Invitation[]);
-                })
-            )
+            this.invitationsService
+                .listInvitations({ orgId, status: InvitationStatusName.Pending })
+                .pipe(
+                    pluck('result'),
+                    catchError((err) => {
+                        this.errorService.error(err);
+                        return of([] as Invitation[]);
+                    }),
+                ),
         ),
         untilDestroyed(this),
-        shareReplay(1)
+        shareReplay(1),
     );
     lastUpdated$ = this.invitations$.pipe(mapToTimestamp, untilDestroyed(this), shareReplay(1));
     isLoading$ = defer(() => progress(this.loadInvitations$, this.invitations$)).pipe(
         untilDestroyed(this),
-        shareReplay(1)
+        shareReplay(1),
     );
 
     private loadInvitations$ = new BehaviorSubject<void>(undefined);
@@ -37,7 +39,7 @@ export class FetchInvitationsService {
     constructor(
         private invitationsService: InvitationsService,
         private errorService: ErrorService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
     ) {}
 
     load() {

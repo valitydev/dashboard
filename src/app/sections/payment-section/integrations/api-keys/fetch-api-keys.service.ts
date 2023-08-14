@@ -16,28 +16,35 @@ export class FetchApiKeysService extends FetchSuperclass<
     constructor(
         private apiKeysService: ApiKeysService,
         private logService: NotifyLogService,
-        private transloco: TranslocoService
+        private transloco: TranslocoService,
     ) {
         super();
     }
 
     protected fetch(
         params: Omit<ListApiKeysRequestParams, 'partyId' | 'xRequestID' | 'limit'>,
-        options: FetchOptions
+        options: FetchOptions,
     ): Observable<FetchResult<ApiKey>> {
         return this.apiKeysService
-            .listApiKeys({ ...params, limit: options.size, continuationToken: options.continuationToken })
+            .listApiKeys({
+                ...params,
+                limit: options.size,
+                continuationToken: options.continuationToken,
+            })
             .pipe(
                 map((res) => ({
                     result: res.results,
                     continuationToken: res.continuationToken,
                 })),
                 catchError((err) => {
-                    this.logService.error(err, this.transloco.translate('apiKeys.fetch.error', {}, 'payment-section'));
+                    this.logService.error(
+                        err,
+                        this.transloco.translate('apiKeys.fetch.error', {}, 'payment-section'),
+                    );
                     return of({
                         result: [],
                     });
-                })
+                }),
             );
     }
 }

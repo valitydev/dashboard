@@ -1,26 +1,30 @@
 <div
+    *transloco="let t; scope: 'components'; read: 'components.depositRevertDetails'"
     fxLayout="column"
     fxLayoutGap="24px"
-    *transloco="let t; scope: 'components'; read: 'components.depositRevertDetails'"
 >
     <div fxLayout="row" fxLayoutAlign="start center">
-        <dsh-details-item fxFlex="25" [title]="t('amount')">
-            {{ revert.body.amount | amountCurrency : revert.body.currency }}
+        <dsh-details-item [title]="t('amount')" fxFlex="25">
+            {{ revert.body.amount | amountCurrency: revert.body.currency }}
         </dsh-details-item>
-        <dsh-details-item fxFlex="25" [title]="t('status')">
+        <dsh-details-item [title]="t('status')" fxFlex="25">
             <dsh-status [color]="revert.status | depositRevertStatusColor">{{
                 (depositRevertStatusDict$ | async)?.[revert.status]
             }}</dsh-status>
         </dsh-details-item>
-        <dsh-details-item fxFlex="25" [title]="t('createdAt')">
-            {{ revert.createdAt | date : 'dd MMMM yyyy, HH:mm' }}
+        <dsh-details-item [title]="t('createdAt')" fxFlex="25">
+            {{ revert.createdAt | date: 'dd MMMM yyyy, HH:mm' }}
         </dsh-details-item>
     </div>
     <div *ngIf="revert.failure" fxLayout="row">
         <dsh-details-item
-            fxFlex="25"
+            *transloco="
+                let errors;
+                scope: 'components';
+                read: 'components.depositRevertDetails.errors'
+            "
             [title]="t('error')"
-            *transloco="let errors; scope: 'components'; read: 'components.depositRevertDetails.errors'"
+            fxFlex="25"
         >
             <!-- t(failed) -->
             {{ errors(revert.failure.code) }}

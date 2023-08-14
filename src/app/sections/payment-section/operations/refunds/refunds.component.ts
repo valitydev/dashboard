@@ -33,12 +33,15 @@ export class RefundsComponent implements OnInit {
         private transloco: TranslocoService,
         private qp: QueryParamsService<Filters>,
         private realmShopsService: RealmShopsService,
-        private realmMixinService: RealmMixService<SearchFiltersParams>
+        private realmMixinService: RealmMixService<SearchFiltersParams>,
     ) {}
 
     ngOnInit(): void {
         this.fetchRefundsService.errors$.subscribe(() =>
-            this.snackBar.open(this.transloco.translate('operations.refunds.fetchError', null, 'payment-section'), 'OK')
+            this.snackBar.open(
+                this.transloco.translate('operations.refunds.fetchError', null, 'payment-section'),
+                'OK',
+            ),
         );
         this.realmMixinService.mixedValue$
             .pipe(untilDestroyed(this))

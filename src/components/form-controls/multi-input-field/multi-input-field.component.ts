@@ -22,7 +22,7 @@ export class MultiInputFieldComponent extends FormControlSuperclass<string[]> im
             .pipe(
                 map((value) => value.filter(Boolean)),
                 distinctUntilChanged(isEqual),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe((value) => this.emitOutgoingValue(value));
     }

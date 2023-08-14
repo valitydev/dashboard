@@ -16,7 +16,7 @@ import StatusEnum = WithdrawalStatus.StatusEnum;
 })
 export class WithdrawalStatusFilterComponent extends FormControlSuperclass<StatusEnum> {
     options$: Observable<Option<string>[]> = this.walletDictionaryService.withdrawalStatus$.pipe(
-        map((labels) => Object.entries(labels).map(([value, label]) => ({ value, label })))
+        map((labels) => Object.entries(labels).map(([value, label]) => ({ value, label }))),
     );
 
     statuses = Object.values(WithdrawalStatus.StatusEnum);

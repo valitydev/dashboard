@@ -8,7 +8,13 @@ import { SelectFieldModule } from '@vality/ng-core';
 import { CountryAutocompleteFieldComponent } from './countries-autocomplete-field.component';
 
 @NgModule({
-    imports: [CommonModule, MatInputModule, MatFormFieldModule, ReactiveFormsModule, SelectFieldModule],
+    imports: [
+        CommonModule,
+        MatInputModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        SelectFieldModule,
+    ],
     declarations: [CountryAutocompleteFieldComponent],
     exports: [CountryAutocompleteFieldComponent],
 })

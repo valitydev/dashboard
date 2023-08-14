@@ -26,7 +26,10 @@ export class CardBinPanFilterComponent extends FilterSuperclass<CardBinPan> {
         return { bin: '', pan: '' };
     }
 
-    constructor(injector: Injector, private fb: FormBuilder) {
+    constructor(
+        injector: Injector,
+        private fb: FormBuilder,
+    ) {
         super(injector);
     }
 

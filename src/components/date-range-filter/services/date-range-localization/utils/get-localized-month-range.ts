@@ -16,7 +16,7 @@ import { getLocalizedDate } from './get-localized-date';
 export function getLocalizedMonthRange(
     dateRange: DateRange<Moment>,
     t: Record<'from' | 'to', string>,
-    locale: string
+    locale: string,
 ): string {
     const currentYear = isCurrentYear(dateRange);
     const startStr = getLocalizedDate(dateRange.start, { m: true, y: !currentYear }, locale);

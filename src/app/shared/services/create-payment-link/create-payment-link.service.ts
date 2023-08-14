@@ -19,12 +19,12 @@ export class CreatePaymentLinkService {
     constructor(
         private shortenerService: ShortenerService,
         private configService: ConfigService,
-        private invoicesService: InvoicesService
+        private invoicesService: InvoicesService,
     ) {}
 
     createPaymentLinkByTemplate(
         { invoiceTemplate, invoiceTemplateAccessToken }: InvoiceTemplateAndToken,
-        params: PaymentLinkParams
+        params: PaymentLinkParams,
     ): Observable<string> {
         return this.shortenerService
             .shortenUrl({
@@ -52,13 +52,15 @@ export class CreatePaymentLinkService {
                         }),
                         expiresAt: moment(invoice.dueDate).utc().format(),
                     },
-                })
+                }),
             ),
-            pluck('shortenedUrl')
+            pluck('shortenedUrl'),
         );
     }
 
     private buildUrl(params: PaymentLinkParams): string {
-        return `${this.configService.checkoutEndpoint}/v1/checkout.html?${queryParamsToStr(params)}`;
+        return `${this.configService.checkoutEndpoint}/v1/checkout.html?${queryParamsToStr(
+            params,
+        )}`;
     }
 }

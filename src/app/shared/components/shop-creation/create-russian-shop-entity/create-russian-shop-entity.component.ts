@@ -25,7 +25,7 @@ export class CreateRussianShopEntityComponent {
         private createShopRussianLegalEntityService: CreateRussianShopEntityService,
         private transloco: TranslocoService,
         private snackBar: MatSnackBar,
-        private router: Router
+        private router: Router,
     ) {}
 
     cancelCreation(): void {
@@ -43,8 +43,11 @@ export class CreateRussianShopEntityComponent {
                 },
                 (err) => {
                     console.error(err);
-                    this.snackBar.open(this.transloco.translate('shared.commonError', null, 'components'), 'OK');
-                }
+                    this.snackBar.open(
+                        this.transloco.translate('shared.commonError', null, 'components'),
+                        'OK',
+                    );
+                },
             );
     }
 }

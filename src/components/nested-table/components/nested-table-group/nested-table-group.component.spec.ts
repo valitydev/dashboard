@@ -32,7 +32,12 @@ describe('NestedTableLimitedRowsComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             imports: [NoopAnimationsModule, CommonModule],
-            declarations: [HostComponent, NestedTableGroupComponent, NestedTableRowComponent, NestedTableColComponent],
+            declarations: [
+                HostComponent,
+                NestedTableGroupComponent,
+                NestedTableRowComponent,
+                NestedTableColComponent,
+            ],
             providers: [LayoutManagementService],
         }).compileComponents();
 

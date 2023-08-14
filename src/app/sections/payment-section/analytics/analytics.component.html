@@ -1,37 +1,49 @@
 <div
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.analytics'"
     fxLayout="column"
     fxLayoutGap="32px"
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.analytics'"
 >
     <div gdColumns="1fr" gdColumns.gt-sm="1fr 1fr 1fr 1fr" gdGap="24px">
         <dsh-analytics-search-filters
-            gdColumn.gt-sm="1/-1"
             [initParams]="params$ | async"
+            gdColumn.gt-sm="1/-1"
             (filterValuesChanged)="updateFilters($event)"
         ></dsh-analytics-search-filters>
-        <dsh-payments-amount [searchParams]="searchParams$ | async" [spinnerType]="spinnerType"></dsh-payments-amount>
-        <dsh-refunds-amount [searchParams]="searchParams$ | async" [spinnerType]="spinnerType"></dsh-refunds-amount>
-        <dsh-average-payment [searchParams]="searchParams$ | async" [spinnerType]="spinnerType"></dsh-average-payment>
-        <dsh-payments-count [searchParams]="searchParams$ | async" [spinnerType]="spinnerType"></dsh-payments-count>
-        <dsh-payment-split-count
-            gdColumn.gt-sm="1/-1"
+        <dsh-payments-amount
             [searchParams]="searchParams$ | async"
             [spinnerType]="spinnerType"
+        ></dsh-payments-amount>
+        <dsh-refunds-amount
+            [searchParams]="searchParams$ | async"
+            [spinnerType]="spinnerType"
+        ></dsh-refunds-amount>
+        <dsh-average-payment
+            [searchParams]="searchParams$ | async"
+            [spinnerType]="spinnerType"
+        ></dsh-average-payment>
+        <dsh-payments-count
+            [searchParams]="searchParams$ | async"
+            [spinnerType]="spinnerType"
+        ></dsh-payments-count>
+        <dsh-payment-split-count
+            [searchParams]="searchParams$ | async"
+            [spinnerType]="spinnerType"
+            gdColumn.gt-sm="1/-1"
         ></dsh-payment-split-count>
         <dsh-payment-split-amount
-            gdColumn.gt-sm="1/-1"
             [searchParams]="searchParams$ | async"
             [spinnerType]="spinnerType"
+            gdColumn.gt-sm="1/-1"
         ></dsh-payment-split-amount>
         <dsh-payments-tool-distribution
-            gdColumn.gt-sm="1/3"
             [searchParams]="searchParams$ | async"
             [spinnerType]="spinnerType"
+            gdColumn.gt-sm="1/3"
         ></dsh-payments-tool-distribution>
         <dsh-payments-error-distribution
-            gdColumn.gt-sm="3/5"
             [searchParams]="searchParams$ | async"
             [spinnerType]="spinnerType"
+            gdColumn.gt-sm="3/5"
         ></dsh-payments-error-distribution>
     </div>
 </div>

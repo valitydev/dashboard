@@ -45,7 +45,7 @@ export class ApiKeyCreateDialogComponent extends DialogSuperclass<ApiKeyCreateDi
         private notificationService: NotificationService,
         private fb: NonNullableFormBuilder,
         private clipboard: Clipboard,
-        private transloco: TranslocoService
+        private transloco: TranslocoService,
     ) {
         super(injector);
     }
@@ -67,11 +67,11 @@ export class ApiKeyCreateDialogComponent extends DialogSuperclass<ApiKeyCreateDi
     copy() {
         if (this.clipboard.copy(this.accessToken)) {
             this.notificationService.success(
-                this.transloco.selectTranslate('apiKeys.copy.success', null, 'payment-section')
+                this.transloco.selectTranslate('apiKeys.copy.success', null, 'payment-section'),
             );
         } else {
             this.notificationService.error(
-                this.transloco.selectTranslate('apiKeys.copy.error', null, 'payment-section')
+                this.transloco.selectTranslate('apiKeys.copy.error', null, 'payment-section'),
             );
         }
     }

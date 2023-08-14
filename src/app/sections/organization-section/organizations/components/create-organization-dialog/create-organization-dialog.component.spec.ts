@@ -64,7 +64,8 @@ describe('CreateOrganizationDialogComponent', () => {
     describe('create', () => {
         it('should create organization', () => {
             when(mockOrganizationsService.createOrg(anything())).thenReturn(of(MOCK_ORG));
-            const input = fixture.debugElement.query(By.css('input')).nativeElement as HTMLInputElement;
+            const input = fixture.debugElement.query(By.css('input'))
+                .nativeElement as HTMLInputElement;
             input.value = 'Test 2';
             input.dispatchEvent(new Event('input'));
             fixture.detectChanges();
@@ -78,7 +79,8 @@ describe('CreateOrganizationDialogComponent', () => {
         it("shouldn't create organization", () => {
             const error = new Error('Error 1');
             when(mockOrganizationsService.createOrg(anything())).thenReturn(throwError(error));
-            const input = fixture.debugElement.query(By.css('input')).nativeElement as HTMLInputElement;
+            const input = fixture.debugElement.query(By.css('input'))
+                .nativeElement as HTMLInputElement;
             input.value = 'Test 2';
             input.dispatchEvent(new Event('input'));
             fixture.detectChanges();

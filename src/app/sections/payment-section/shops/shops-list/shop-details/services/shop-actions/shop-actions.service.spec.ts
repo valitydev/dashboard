@@ -46,7 +46,7 @@ describe('ShopActionsService', () => {
                     {
                         availableLangs: ['en'],
                         defaultLang: 'en',
-                    }
+                    },
                 ),
             ],
             providers: [
@@ -75,17 +75,19 @@ describe('ShopActionsService', () => {
     describe('suspend', () => {
         beforeEach(() => {
             when(mockDialogRef.afterClosed()).thenReturn(of(null));
-            when(mockMatDialog.open(ConfirmActionDialogComponent)).thenReturn(instance(mockDialogRef));
+            when(mockMatDialog.open(ConfirmActionDialogComponent)).thenReturn(
+                instance(mockDialogRef),
+            );
             when(mockApiShopsService.suspendShop('my_id')).thenReturn(of(null));
             when(
                 mockSnackbar.open('success suspend', 'OK', {
                     duration: 3000,
-                })
+                }),
             );
             when(
                 mockSnackbar.open('error suspend', 'OK', {
                     duration: 3000,
-                })
+                }),
             );
         });
 
@@ -120,7 +122,7 @@ describe('ShopActionsService', () => {
             expect(service.suspend('my_id')).toBeObservable(
                 cold('(a|)', {
                     a: ShopActionResult.Success,
-                })
+                }),
             );
         });
 
@@ -130,14 +132,14 @@ describe('ShopActionsService', () => {
                 of(null).pipe(
                     map(() => {
                         throw new Error(`[TEST_ERROR]: Error in observable`);
-                    })
-                )
+                    }),
+                ),
             );
 
             expect(service.suspend('my_id')).toBeObservable(
                 cold('(a|)', {
                     a: ShopActionResult.Error,
-                })
+                }),
             );
         });
     });
@@ -145,17 +147,19 @@ describe('ShopActionsService', () => {
     describe('activate', () => {
         beforeEach(() => {
             when(mockDialogRef.afterClosed()).thenReturn(of(null));
-            when(mockMatDialog.open(ConfirmActionDialogComponent)).thenReturn(instance(mockDialogRef));
+            when(mockMatDialog.open(ConfirmActionDialogComponent)).thenReturn(
+                instance(mockDialogRef),
+            );
             when(mockApiShopsService.activateShop('my_id')).thenReturn(of(null));
             when(
                 mockSnackbar.open('success activate', 'OK', {
                     duration: 3000,
-                })
+                }),
             );
             when(
                 mockSnackbar.open('error activate', 'OK', {
                     duration: 3000,
-                })
+                }),
             );
         });
 
@@ -190,7 +194,7 @@ describe('ShopActionsService', () => {
             expect(service.activate('my_id')).toBeObservable(
                 cold('(a|)', {
                     a: ShopActionResult.Success,
-                })
+                }),
             );
         });
 
@@ -200,14 +204,14 @@ describe('ShopActionsService', () => {
                 of(null).pipe(
                     map(() => {
                         throw new Error(`[TEST_ERROR]: Error in observable`);
-                    })
-                )
+                    }),
+                ),
             );
 
             expect(service.activate('my_id')).toBeObservable(
                 cold('(a|)', {
                     a: ShopActionResult.Error,
-                })
+                }),
             );
         });
     });

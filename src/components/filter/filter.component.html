@@ -1,6 +1,10 @@
-<div class="button-wrapper" [ngClass]="{ 'button-wrapper-disabled': disabled }">
-    <div *ngIf="(isMobile$ | async) === false" class="dropdown-trigger" [dshDropdownTriggerFor]="dropdown"></div>
-    <dsh-filter-button [disabled]="disabled" [active]="active" (click)="open()">
+<div [ngClass]="{ 'button-wrapper-disabled': disabled }" class="button-wrapper">
+    <div
+        *ngIf="(isMobile$ | async) === false"
+        [dshDropdownTriggerFor]="dropdown"
+        class="dropdown-trigger"
+    ></div>
+    <dsh-filter-button [active]="active" [disabled]="disabled" (click)="open()">
         {{ active ? activeLabel : label }}
     </dsh-filter-button>
 </div>
@@ -8,13 +12,17 @@
 <dsh-dropdown
     #dropdown="dshDropdown"
     hasArrow="false"
-    position="left"
     offset="8px 0 0"
+    position="left"
     width="360px"
     (closed)="save.emit()"
 >
     <ng-template>
-        <dsh-filter-content (save)="dropdown.close()" (clear)="clear.emit()" [noClearButton]="noClearButton">
+        <dsh-filter-content
+            [noClearButton]="noClearButton"
+            (clear)="clear.emit()"
+            (save)="dropdown.close()"
+        >
             <ng-container *ngTemplateOutlet="content"></ng-container>
         </dsh-filter-content>
     </ng-template>

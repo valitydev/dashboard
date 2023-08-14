@@ -25,7 +25,7 @@ export const createTestShopClaimChangeset = (
     testShopID: string,
     testContractID: string,
     testPayoutToolID: string,
-    testContractorID: string
+    testContractorID: string,
 ): Modification[] => {
     return [
         createInternationalLegalEntityModification(testContractorID, {

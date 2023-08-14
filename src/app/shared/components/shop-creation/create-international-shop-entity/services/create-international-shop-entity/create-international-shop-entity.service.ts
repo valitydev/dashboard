@@ -22,7 +22,10 @@ import { InternationalShopEntityFormValue } from '../../types/international-shop
 
 @Injectable()
 export class CreateInternationalShopEntityService {
-    constructor(private claimsService: ClaimsService, private idGenerator: IdGeneratorService) {}
+    constructor(
+        private claimsService: ClaimsService,
+        private idGenerator: IdGeneratorService,
+    ) {}
 
     createShop(creationData: InternationalShopEntityFormValue): Observable<Claim> {
         return this.claimsService
@@ -30,9 +33,12 @@ export class CreateInternationalShopEntityService {
             .pipe(
                 switchMap((claim) =>
                     this.claimsService
-                        .requestReviewClaimByIDWithRevisionCheck({ claimID: claim.id, claimRevision: claim.revision })
-                        .pipe(mapTo(claim))
-                )
+                        .requestReviewClaimByIDWithRevisionCheck({
+                            claimID: claim.id,
+                            claimRevision: claim.revision,
+                        })
+                        .pipe(mapTo(claim)),
+                ),
             );
     }
 
@@ -67,7 +73,7 @@ export class CreateInternationalShopEntityService {
                           tradingName: contractor.tradingName,
                           actualAddress: contractor.principalPlaceOfBusiness,
                           country: contractor.country,
-                      }
+                      },
             ),
             createContractCreationModification(contractID, {
                 contractorID,
@@ -81,17 +87,21 @@ export class CreateInternationalShopEntityService {
                     ? {
                           ...payoutToolFormToInternationalBankAccount(newBankAccount.payoutTool),
                           correspondentAccount: newBankAccount.correspondentPayoutTool
-                              ? payoutToolFormToInternationalBankAccount(newBankAccount.correspondentPayoutTool)
-                              : null,
-                      }
-                    : {
-                          ...payoutToolDetailsInternationalBankAccountToInternationalBankAccount(payoutTool.details),
-                          correspondentAccount: payoutTool.details.correspondentBankAccount
-                              ? payoutToolDetailsInternationalBankAccountToInternationalBankAccount(
-                                    payoutTool.details.correspondentBankAccount
+                              ? payoutToolFormToInternationalBankAccount(
+                                    newBankAccount.correspondentPayoutTool,
                                 )
                               : null,
                       }
+                    : {
+                          ...payoutToolDetailsInternationalBankAccountToInternationalBankAccount(
+                              payoutTool.details,
+                          ),
+                          correspondentAccount: payoutTool.details.correspondentBankAccount
+                              ? payoutToolDetailsInternationalBankAccountToInternationalBankAccount(
+                                    payoutTool.details.correspondentBankAccount,
+                                )
+                              : null,
+                      },
             ),
             createShopCreationModification(shopID, {
                 category: {

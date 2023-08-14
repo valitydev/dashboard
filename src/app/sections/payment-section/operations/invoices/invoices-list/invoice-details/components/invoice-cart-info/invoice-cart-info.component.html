@@ -1,13 +1,17 @@
 <div
+    *transloco="
+        let t;
+        scope: 'payment-section';
+        read: 'paymentSection.operations.invoices.cartInfo'
+    "
     fxLayout="column"
     fxLayoutGap="24px"
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.invoices.cartInfo'"
 >
     <div class="mat-h2">
         {{ t('title') }}
     </div>
     <ng-container *ngFor="let line of cart; index as i">
-        <dsh-invoice-cart-line [line]="line" [currency]="currency"></dsh-invoice-cart-line>
+        <dsh-invoice-cart-line [currency]="currency" [line]="line"></dsh-invoice-cart-line>
         <mat-divider *ngIf="i < cart.length - 1"></mat-divider>
     </ng-container>
 </div>

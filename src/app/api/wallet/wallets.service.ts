@@ -15,13 +15,13 @@ export class WalletsService extends createApi(ApiWalletsService, [PartyIdExtensi
     wallets$ = this.listWallets({ limit: 1000 }).pipe(
         catchError(() => of({ result: [] })),
         pluck('result'),
-        shareReplay(SHARE_REPLAY_CONF)
+        shareReplay(SHARE_REPLAY_CONF),
     );
 
     hasWallets$ = this.listWallets({ limit: 1 }).pipe(
         catchError(() => of({ result: [] })),
         pluck('result', 'length'),
         map((l) => l > 0),
-        shareReplay(SHARE_REPLAY_CONF)
+        shareReplay(SHARE_REPLAY_CONF),
     );
 }

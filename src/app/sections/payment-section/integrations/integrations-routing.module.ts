@@ -16,14 +16,14 @@ const ROUTES: Routes = [
                     path: 'webhooks',
                     loadChildren: () => import('./webhooks').then((m) => m.WebhooksModule),
                 },
-                [RoleAccessName.Webhooks]
+                [RoleAccessName.Webhooks],
             ),
             createPrivateRoute(
                 {
                     path: 'payment-link',
                     loadChildren: () => import('./payment-link').then((m) => m.PaymentLinkModule),
                 },
-                [RoleAccessName.PaymentLinks]
+                [RoleAccessName.PaymentLinks],
             ),
             createPrivateRoute(
                 {
@@ -32,7 +32,7 @@ const ROUTES: Routes = [
                         ? () => import('./api-keys').then((m) => m.ApiKeysModule)
                         : () => import('./api-key').then((m) => m.ApiKeyModule),
                 },
-                [RoleAccessName.ApiKeys]
+                [RoleAccessName.ApiKeys],
             ),
             {
                 path: '',

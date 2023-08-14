@@ -6,4 +6,5 @@ const countryToOption = (country: Country): Option<string> => ({
     value: country?.id,
 });
 
-export const countriesToOptions = (countries: Country[]): Option<string>[] => countries.map(countryToOption);
+export const countriesToOptions = (countries: Country[]): Option<string>[] =>
+    countries.map(countryToOption);

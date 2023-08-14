@@ -8,7 +8,11 @@ export class IntegrationsComponent {
     links = [
         {
             path: 'webhooks',
-            label$: this.transloco.selectTranslate('integrations.tabs.webhooks', null, 'wallet-section'),
+            label$: this.transloco.selectTranslate(
+                'integrations.tabs.webhooks',
+                null,
+                'wallet-section',
+            ),
         },
     ];
 

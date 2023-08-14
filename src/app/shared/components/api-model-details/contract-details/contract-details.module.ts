@@ -10,7 +10,14 @@ import { ContractDetailsComponent } from './contract-details.component';
 import { ContractorDetailsModule } from '../contractor-details';
 
 @NgModule({
-    imports: [FlexLayoutModule, TranslocoModule, CommonModule, MatDividerModule, ContractorDetailsModule, LayoutModule],
+    imports: [
+        FlexLayoutModule,
+        TranslocoModule,
+        CommonModule,
+        MatDividerModule,
+        ContractorDetailsModule,
+        LayoutModule,
+    ],
     declarations: [ContractDetailsComponent],
     exports: [ContractDetailsComponent],
 })

@@ -33,8 +33,10 @@ export class FormatInputComponent extends CustomFormControl<unknown> {
     private setType(type: Type) {
         const c = CONFIGS[type];
         const { placeholder, prefix, postfix, size, mask, toInternalValue, toPublicValue } = c;
-        const sizeFromPlaceholder = c.sizeFromPlaceholder === undefined ? true : c.sizeFromPlaceholder;
-        const estimatedSize = sizeFromPlaceholder && !size && placeholder ? placeholder.length : size;
+        const sizeFromPlaceholder =
+            c.sizeFromPlaceholder === undefined ? true : c.sizeFromPlaceholder;
+        const estimatedSize =
+            sizeFromPlaceholder && !size && placeholder ? placeholder.length : size;
 
         this.size = (prefix || postfix) && estimatedSize ? String(estimatedSize) : null;
         this.placeholder = this.prepareText(placeholder);

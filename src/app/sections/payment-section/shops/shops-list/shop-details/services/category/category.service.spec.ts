@@ -51,7 +51,7 @@ describe('CategoryService', () => {
                                     categoryID: index,
                                     name: `My Category #${index + 1}`,
                                 };
-                            })
+                            }),
                         ),
                     },
                 ],

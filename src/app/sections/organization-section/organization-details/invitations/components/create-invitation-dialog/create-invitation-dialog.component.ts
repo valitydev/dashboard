@@ -30,7 +30,7 @@ export class CreateInvitationDialogComponent {
         private invitationsService: InvitationsService,
         private errorService: ErrorService,
         private notificationService: NotificationService,
-        private fb: FormBuilder
+        private fb: FormBuilder,
     ) {}
 
     @inProgressTo('inProgress$')
@@ -56,7 +56,7 @@ export class CreateInvitationDialogComponent {
                 },
                 (err) => {
                     this.errorService.error(err);
-                }
+                },
             );
     }
 

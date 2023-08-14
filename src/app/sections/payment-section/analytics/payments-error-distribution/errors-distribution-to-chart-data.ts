@@ -9,8 +9,11 @@ const errorsToSeries = (errors: ErrorDistribution[]): number[] => {
 
 export const errorsDistributionToChartData = (
     distribution: ErrorDistribution[],
-    errorLabels: Record<string, string>
+    errorLabels: Record<string, string>,
 ): DistributionChartData => {
     const filtered = distribution.filter((e) => e.percents > 0);
-    return { series: errorsToSeries(filtered), labels: filtered.map(({ errorCode }) => errorLabels[errorCode]) };
+    return {
+        series: errorsToSeries(filtered),
+        labels: filtered.map(({ errorCode }) => errorLabels[errorCode]),
+    };
 };

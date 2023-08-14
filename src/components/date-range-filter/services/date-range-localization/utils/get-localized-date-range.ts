@@ -8,7 +8,11 @@ import { getLocalizedMonthRange } from './get-localized-month-range';
 import { getLocalizedYearRange } from './get-localized-year-range';
 import { DateRangeTranslations } from '../types/translations';
 
-export function getLocalizedDateRange(dateRange: DateRange<Moment>, t: DateRangeTranslations, locale: string): string {
+export function getLocalizedDateRange(
+    dateRange: DateRange<Moment>,
+    t: DateRangeTranslations,
+    locale: string,
+): string {
     if (!dateRange.start && !dateRange.end) return null;
     if (isYearsRange(dateRange)) return getLocalizedYearRange(dateRange, t);
     else if (isMonthsRange(dateRange)) return getLocalizedMonthRange(dateRange, t, locale);

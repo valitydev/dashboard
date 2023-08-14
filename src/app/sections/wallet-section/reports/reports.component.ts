@@ -58,7 +58,11 @@ export class ReportsComponent implements OnInit {
             hide: Breakpoints.Small,
         },
         {
-            label: this.transloco.selectTranslate('reports.table.reportingPeriod', {}, 'wallet-section'),
+            label: this.transloco.selectTranslate(
+                'reports.table.reportingPeriod',
+                {},
+                'wallet-section',
+            ),
             field: (d): DateRange => ({
                 start: moment(d.fromTime),
                 end: moment(d.toTime),
@@ -67,16 +71,25 @@ export class ReportsComponent implements OnInit {
             hide: Breakpoints.Medium,
         },
     ];
-    contentHeader = [{ label: (r) => `${this.transloco.translate('reports.report', {}, 'wallet-section')} #${r.id}` }];
+    contentHeader = [
+        {
+            label: (r) =>
+                `${this.transloco.translate('reports.report', {}, 'wallet-section')} #${r.id}`,
+        },
+    ];
     defaultDateRange = createDateRangeWithPreset(Preset.Last90days);
-    form = this.fb.group<Form>({ dateRange: this.defaultDateRange, identityID: undefined, ...this.qp.params });
+    form = this.fb.group<Form>({
+        dateRange: this.defaultDateRange,
+        identityID: undefined,
+        ...this.qp.params,
+    });
     lastUpdated$ = this.fetchReportsService.result$.pipe(mapToTimestamp);
     reportStatusDict$ = this.walletDictionaryService.reportStatus$;
     reportStatusColor = REPORT_STATUS_COLOR;
     expanded = new ExpandedFragment(
         this.fetchReportsService.result$,
         () => this.fetchReportsService.more(),
-        this.fetchReportsService.hasMore$
+        this.fetchReportsService.hasMore$,
     );
 
     constructor(
@@ -86,15 +99,17 @@ export class ReportsComponent implements OnInit {
         private dialog: MatDialog,
         private transloco: TranslocoService,
         private walletDictionaryService: WalletDictionaryService,
-        private identitiesService: IdentitiesService
+        private identitiesService: IdentitiesService,
     ) {}
 
     ngOnInit() {
-        this.identitiesService.identities$.pipe(first(), untilDestroyed(this)).subscribe((identities) => {
-            if (!this.form.value.identityID && identities.length === 1) {
-                this.form.patchValue({ identityID: identities[0].id });
-            }
-        });
+        this.identitiesService.identities$
+            .pipe(first(), untilDestroyed(this))
+            .subscribe((identities) => {
+                if (!this.form.value.identityID && identities.length === 1) {
+                    this.form.patchValue({ identityID: identities[0].id });
+                }
+            });
         this.form.valueChanges
             .pipe(startWith(this.form.value), distinctUntilChanged(isEqual), untilDestroyed(this))
             .subscribe((value) => {
@@ -124,7 +139,7 @@ export class ReportsComponent implements OnInit {
             .afterClosed()
             .pipe(
                 filter((r) => r === BaseDialogResponseStatus.Success),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe(() => {
                 this.load();

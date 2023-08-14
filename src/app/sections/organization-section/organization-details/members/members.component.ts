@@ -19,7 +19,7 @@ export class MembersComponent {
     organization$ = this.route.params.pipe(
         switchMap(({ orgId }) => this.organizationsService.getOrg({ orgId })),
         untilDestroyed(this),
-        shareReplay(1)
+        shareReplay(1),
     );
     members$ = this.fetchMembersService.members$;
     lastUpdated$ = this.fetchMembersService.lastUpdated$;
@@ -28,7 +28,7 @@ export class MembersComponent {
     constructor(
         private organizationsService: OrgsService,
         private fetchMembersService: FetchMembersService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
     ) {}
 
     refresh() {

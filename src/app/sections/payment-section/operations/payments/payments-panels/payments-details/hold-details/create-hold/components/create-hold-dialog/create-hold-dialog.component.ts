@@ -47,7 +47,7 @@ export class CreateHoldDialogComponent {
         private dialogRef: MatDialogRef<CreateHoldDialogComponent, BaseDialogResponseStatus>,
         private fb: FormBuilder,
         private paymentsService: PaymentsService,
-        private errorService: ErrorService
+        private errorService: ErrorService,
     ) {}
 
     confirm(): void {
@@ -64,7 +64,7 @@ export class CreateHoldDialogComponent {
                 (err: Error) => {
                     this.errorService.error(err);
                     this.dialogRef.close(BaseDialogResponseStatus.Error);
-                }
+                },
             );
     }
 
@@ -105,7 +105,7 @@ export class CreateHoldDialogComponent {
                 amountValidator,
                 Validators.min(1),
                 Validators.max(this.maxAllowedAmount),
-            ])
+            ]),
         );
     }
 

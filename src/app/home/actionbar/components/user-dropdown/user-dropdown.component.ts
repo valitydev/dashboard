@@ -22,6 +22,6 @@ export class UserDropdownComponent {
 
     constructor(
         private contextOrganizationService: ContextOrganizationService,
-        private keycloakService: KeycloakService
+        private keycloakService: KeycloakService,
     ) {}
 }

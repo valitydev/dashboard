@@ -45,7 +45,10 @@ export class NewContractorFormComponent extends FormGroupSuperclass<Partial<NewC
     });
     searchControl = new FormControl<string>('');
 
-    constructor(private fb: FormBuilder, private konturFocusService: KonturFocusService) {
+    constructor(
+        private fb: FormBuilder,
+        private konturFocusService: KonturFocusService,
+    ) {
         super();
     }
 
@@ -57,14 +60,14 @@ export class NewContractorFormComponent extends FormGroupSuperclass<Partial<NewC
             })
             .pipe(
                 map(([kontur]): Partial<NewContractorForm> => this.getFormByData(dadata, kontur)),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe(
                 (data) => this.control.patchValue(data),
                 (err) => {
                     console.error('Kontur.Focus API error', err);
                     this.control.patchValue(this.getFormByData(dadata));
-                }
+                },
             );
     }
 
@@ -79,18 +82,23 @@ export class NewContractorFormComponent extends FormGroupSuperclass<Partial<NewC
         if (dadata) {
             if (dadata.orgType === OrgType.Individual) {
                 result.actualAddress = dadata.address?.value || result.actualAddress;
-                result.representativeFullName = dadata.name?.fullName || result.representativeFullName;
+                result.representativeFullName =
+                    dadata.name?.fullName || result.representativeFullName;
             }
         }
         if (kontur) {
             if (isReqIndividualEntity(kontur.contractor)) {
                 result.registeredName =
-                    createIndividualEntityRegisteredName(kontur.contractor.fio) || result.registeredName;
-                result.representativeFullName = kontur.contractor.fio || result.representativeFullName;
+                    createIndividualEntityRegisteredName(kontur.contractor.fio) ||
+                    result.registeredName;
+                result.representativeFullName =
+                    kontur.contractor.fio || result.representativeFullName;
             }
             if (isReqLegalEntity(kontur.contractor)) {
-                result.registeredName = kontur.contractor.legalName.shortName || result.registeredName;
-                result.actualAddress = getAddress(kontur.contractor.legalAddress.addressRf) || result.actualAddress;
+                result.registeredName =
+                    kontur.contractor.legalName.shortName || result.registeredName;
+                result.actualAddress =
+                    getAddress(kontur.contractor.legalAddress.addressRf) || result.actualAddress;
             }
         }
         return result;

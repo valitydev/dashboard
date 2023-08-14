@@ -25,18 +25,18 @@ export class PaymentsAmountService {
                         ...previous,
                         paymentInstitutionRealm: realm,
                     }),
-                ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$))
+                ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$)),
             ),
             map((res) => res.map((r) => r.result)),
-            map(amountResultToStatData)
+            map(amountResultToStatData),
         ),
         defer(() => this.searchParams$).pipe(
             map(({ currency }) => currency),
-            distinctUntilChanged()
+            distinctUntilChanged(),
         ),
     ]).pipe(
         map(([result, currency]) => result.find((r) => r.currency === currency)),
-        shareReplayRefCount()
+        shareReplayRefCount(),
     );
     isLoading$ = inProgressFrom(() => this.progress$, this.paymentsAmount$);
     error$ = attach(() => this.errorSub$, this.paymentsAmount$);

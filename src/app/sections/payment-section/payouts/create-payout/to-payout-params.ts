@@ -5,7 +5,7 @@ import { toMinor } from '../../../../../utils';
 
 export const toPayoutParams = (
     { shopID, payoutToolID, amount }: { shopID: string; payoutToolID: string; amount: number },
-    currency: string
+    currency: string,
 ): PayoutParams => {
     return {
         id: uuid(),

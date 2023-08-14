@@ -12,7 +12,12 @@ import { FulfillInvoiceDialogResponse } from '../../types/fulfill-invoice-dialog
 export class FulfillInvoiceDialogComponent {
     reason = new FormControl();
 
-    constructor(private dialogRef: MatDialogRef<FulfillInvoiceDialogComponent, FulfillInvoiceDialogResponse>) {}
+    constructor(
+        private dialogRef: MatDialogRef<
+            FulfillInvoiceDialogComponent,
+            FulfillInvoiceDialogResponse
+        >,
+    ) {}
 
     cancel() {
         this.dialogRef.close('cancel');

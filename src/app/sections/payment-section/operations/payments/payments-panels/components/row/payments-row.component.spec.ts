@@ -39,7 +39,7 @@ describe('PaymentsRowComponent', () => {
                     {
                         availableLangs: ['ru'],
                         defaultLang: 'ru',
-                    }
+                    },
                 ),
             ],
             declarations: [PaymentsRowComponent, MockShopDetailsPipe],
@@ -82,7 +82,9 @@ describe('PaymentsRowComponent', () => {
             expect(labels.length).toBe(4);
             expect(labels[0].nativeElement.textContent.trim()).toBe(`$0.20`);
             expect(labels[1].nativeElement.textContent.trim()).toBe(`Запущен`);
-            expect(labels[2].nativeElement.textContent.trim()).toBe(date.format('DD MMMM YYYY, HH:mm'));
+            expect(labels[2].nativeElement.textContent.trim()).toBe(
+                date.format('DD MMMM YYYY, HH:mm'),
+            );
             expect(labels[3].nativeElement.textContent.trim()).toBe(`shopID_name`);
         });
     });

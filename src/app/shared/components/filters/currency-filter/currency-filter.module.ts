@@ -9,7 +9,13 @@ import { CurrencyFilterComponent } from './currency-filter.component';
 import { CurrencyFieldModule } from '../../inputs/currency-field';
 
 @NgModule({
-    imports: [CommonModule, TranslocoModule, FilterModule, CurrencyFieldModule, ReactiveFormsModule],
+    imports: [
+        CommonModule,
+        TranslocoModule,
+        FilterModule,
+        CurrencyFieldModule,
+        ReactiveFormsModule,
+    ],
     declarations: [CurrencyFilterComponent],
     exports: [CurrencyFilterComponent],
 })

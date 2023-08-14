@@ -6,7 +6,10 @@ import icons from './icons.json';
 
 @Injectable()
 export class IconsService {
-    constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {}
+    constructor(
+        private matIconRegistry: MatIconRegistry,
+        private domSanitizer: DomSanitizer,
+    ) {}
 
     init(): void {
         this.registerIcons(icons);
@@ -16,7 +19,7 @@ export class IconsService {
         for (const name of iconList) {
             this.matIconRegistry.addSvgIcon(
                 name,
-                this.domSanitizer.bypassSecurityTrustResourceUrl(`../assets/icons/${name}.svg`)
+                this.domSanitizer.bypassSecurityTrustResourceUrl(`../assets/icons/${name}.svg`),
             );
         }
     }

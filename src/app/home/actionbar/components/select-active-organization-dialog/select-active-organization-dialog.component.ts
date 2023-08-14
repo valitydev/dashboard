@@ -34,7 +34,7 @@ export class SelectActiveOrganizationDialogComponent implements OnInit {
         >,
         private fetchOrganizationsService: FetchOrganizationsService,
         private router: Router,
-        private contextOrganizationService: ContextOrganizationService
+        private contextOrganizationService: ContextOrganizationService,
     ) {}
 
     ngOnInit(): void {
@@ -43,7 +43,7 @@ export class SelectActiveOrganizationDialogComponent implements OnInit {
             .pipe(
                 first(),
                 map(([orgs, activeOrg]) => orgs.find((org) => org.id === activeOrg.id)),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe((organization) => (this.selectedOrganization = organization));
     }

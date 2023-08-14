@@ -31,7 +31,11 @@ export function createTypeUnionDefaultForm<C, E>(optional = false) {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreatedExistingSwitchComponent<N, E> implements OnChanges {
-    @Input() form: FormGroup<{ type: FormControl<Type>; created: FormControl<N>; existing: FormControl<E> }>;
+    @Input() form: FormGroup<{
+        type: FormControl<Type>;
+        created: FormControl<N>;
+        existing: FormControl<E>;
+    }>;
     type = Type;
 
     @ContentChild(CreatedCaseDirective) createdCase!: CreatedCaseDirective;

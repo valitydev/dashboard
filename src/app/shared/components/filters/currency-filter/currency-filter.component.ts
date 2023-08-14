@@ -21,7 +21,10 @@ export class CurrencyFilterComponent extends FilterSuperclass<string> {
         this.transloco.selectTranslate<string>('currencyFilter.label', null, 'components'),
     ]).pipe(map(([v, label]) => `${label} · ${getCurrencySymbol(v, 'narrow')}`));
 
-    constructor(injector: Injector, private transloco: TranslocoService) {
+    constructor(
+        injector: Injector,
+        private transloco: TranslocoService,
+    ) {
         super(injector);
     }
 }

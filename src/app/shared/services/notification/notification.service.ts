@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar, MatSnackBarConfig, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
+import {
+    MatSnackBar,
+    MatSnackBarConfig,
+    MatSnackBarRef,
+    SimpleSnackBar,
+} from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { Observable, first, isObservable, timeout } from 'rxjs';
 
@@ -7,23 +12,34 @@ const DEFAULT_DURATION_MS = 3000;
 
 @Injectable()
 export class NotificationService {
-    constructor(private snackBar: MatSnackBar, private transloco: TranslocoService) {}
+    constructor(
+        private snackBar: MatSnackBar,
+        private transloco: TranslocoService,
+    ) {}
 
     success(
-        message: string | Observable<string> = this.transloco.translate('notification.success', null, 'services')
+        message: string | Observable<string> = this.transloco.translate(
+            'notification.success',
+            null,
+            'services',
+        ),
     ): MatSnackBarRef<SimpleSnackBar> {
         return this.openSnackBar(message);
     }
 
     error(
-        message: string | Observable<string> = this.transloco.translate('notification.error', null, 'services')
+        message: string | Observable<string> = this.transloco.translate(
+            'notification.error',
+            null,
+            'services',
+        ),
     ): MatSnackBarRef<SimpleSnackBar> {
         return this.openSnackBar(message);
     }
 
     private openSnackBar(
         message: string | Observable<string>,
-        config: MatSnackBarConfig<unknown> = {}
+        config: MatSnackBarConfig<unknown> = {},
     ): MatSnackBarRef<SimpleSnackBar> {
         const okMessage = this.transloco.translate('notification.ok', null, 'services');
         const resConfig = {

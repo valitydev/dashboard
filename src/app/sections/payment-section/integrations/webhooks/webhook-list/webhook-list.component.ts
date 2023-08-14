@@ -20,7 +20,7 @@ export class WebhookListComponent implements OnInit, OnDestroy {
     constructor(
         private deleteWebhookService: DeleteWebhookService,
         private snackBar: MatSnackBar,
-        private transloco: TranslocoService
+        private transloco: TranslocoService,
     ) {}
 
     ngOnInit() {
@@ -31,7 +31,7 @@ export class WebhookListComponent implements OnInit, OnDestroy {
                 'OK',
                 {
                     duration: 2000,
-                }
+                },
             );
             this.refreshData.emit();
         });

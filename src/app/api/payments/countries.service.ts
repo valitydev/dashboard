@@ -18,10 +18,13 @@ export class CountriesService extends createApi(ApiCountriesService) {
             this.errorService.error(error, false);
             return of([]);
         }),
-        shareReplay(SHARE_REPLAY_CONF)
+        shareReplay(SHARE_REPLAY_CONF),
     );
 
-    constructor(injector: Injector, private errorService: ErrorService) {
+    constructor(
+        injector: Injector,
+        private errorService: ErrorService,
+    ) {
         super(injector);
         this.getCountries = () => {
             return this.getCountries().pipe(map((countries) => sortBy(countries, 'id')));

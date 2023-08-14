@@ -53,7 +53,9 @@ export class ScrollUpComponent implements OnInit, OnDestroy {
     }
 
     scrollToTop() {
-        smoothChangeTo(window.pageYOffset, 0, this.scrollTime).subscribe((v) => window.scrollTo(0, v));
+        smoothChangeTo(window.pageYOffset, 0, this.scrollTime).subscribe((v) =>
+            window.scrollTo(0, v),
+        );
     }
 
     private changeIsShow(isShow: boolean) {

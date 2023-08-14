@@ -18,7 +18,14 @@ import { SpinnerModule } from '@dsh/components/indicators';
     standalone: true,
     templateUrl: './api-key-delete-dialog.component.html',
     styles: [],
-    imports: [BaseDialogModule, SpinnerModule, FlexModule, ButtonModule, TranslocoModule, CommonModule],
+    imports: [
+        BaseDialogModule,
+        SpinnerModule,
+        FlexModule,
+        ButtonModule,
+        TranslocoModule,
+        CommonModule,
+    ],
 })
 export class ApiKeyDeleteDialogComponent extends DialogSuperclass<
     ApiKeyDeleteDialogComponent,
@@ -30,7 +37,7 @@ export class ApiKeyDeleteDialogComponent extends DialogSuperclass<
         injector: Injector,
         private apiKeysService: ApiKeysService,
         private log: NotifyLogService,
-        private translocoService: TranslocoService
+        private translocoService: TranslocoService,
     ) {
         super(injector);
     }
@@ -42,14 +49,22 @@ export class ApiKeyDeleteDialogComponent extends DialogSuperclass<
             .subscribe({
                 next: () => {
                     this.log.success(
-                        this.translocoService.selectTranslate('apiKeys.deleteDialog.success', null, 'payment-section')
+                        this.translocoService.selectTranslate(
+                            'apiKeys.deleteDialog.success',
+                            null,
+                            'payment-section',
+                        ),
                     );
                     this.closeWithSuccess();
                 },
                 error: (err) => {
                     this.log.error(
                         err,
-                        this.translocoService.selectTranslate('apiKeys.deleteDialog.error', null, 'payment-section')
+                        this.translocoService.selectTranslate(
+                            'apiKeys.deleteDialog.error',
+                            null,
+                            'payment-section',
+                        ),
                     );
                 },
             });

@@ -1,16 +1,23 @@
-<ng-container *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentDetails.holdDetails'">
+<ng-container
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentDetails.holdDetails'"
+>
     <dsh-base-dialog [title]="t('cancelTitle')" (cancel)="decline()">
         <form [formGroup]="form">
             <dsh-max-length-input
-                class="create-refund-dialog-reason"
-                formControlName="reason"
                 [label]="t('reason')"
                 [maxLength]="maxReasonLength"
+                class="create-refund-dialog-reason"
+                formControlName="reason"
                 required
             ></dsh-max-length-input>
         </form>
         <ng-container dshBaseDialogActions>
-            <button dsh-button color="accent" [disabled]="form.pristine || form.invalid" (click)="confirm()">
+            <button
+                [disabled]="form.pristine || form.invalid"
+                color="accent"
+                dsh-button
+                (click)="confirm()"
+            >
                 {{ t('confirm') }}
             </button>
         </ng-container>

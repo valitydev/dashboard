@@ -15,18 +15,25 @@ import {
     providedIn: 'root',
 })
 export class ShopCreationService {
-    constructor(private dialog: MatDialog, private transloco: TranslocoService, private snackBar: MatSnackBar) {}
+    constructor(
+        private dialog: MatDialog,
+        private transloco: TranslocoService,
+        private snackBar: MatSnackBar,
+    ) {}
 
     createShop(data: CreateShopDialogData = {}): void {
         this.dialog
             .open<CreateShopDialogComponent, CreateShopDialogData, BaseDialogResponseStatus>(
                 CreateShopDialogComponent,
-                { data }
+                { data },
             )
             .afterClosed()
             .pipe(filter((response) => response === BaseDialogResponseStatus.Success))
             .subscribe(() => {
-                this.snackBar.open(this.transloco.translate('shopCreation.created', null, 'components'), 'OK');
+                this.snackBar.open(
+                    this.transloco.translate('shopCreation.created', null, 'components'),
+                    'OK',
+                );
             });
     }
 }

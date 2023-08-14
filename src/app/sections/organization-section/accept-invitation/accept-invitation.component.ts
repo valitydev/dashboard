@@ -23,7 +23,7 @@ export class AcceptInvitationComponent {
     constructor(
         private route: ActivatedRoute,
         private organizationsService: OrgsService,
-        private errorService: ErrorService
+        private errorService: ErrorService,
     ) {}
 
     @inProgressTo('isLoading$')
@@ -33,9 +33,9 @@ export class AcceptInvitationComponent {
                 first(),
                 pluck('token'),
                 switchMap((invitation: string) =>
-                    this.organizationsService.joinOrg({ organizationJoinRequest: { invitation } })
+                    this.organizationsService.joinOrg({ organizationJoinRequest: { invitation } }),
                 ),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe({
                 error: (err) => {

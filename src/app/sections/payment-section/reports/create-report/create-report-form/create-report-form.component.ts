@@ -14,7 +14,9 @@ export class CreateReportFormComponent {
     @Input() form: UntypedFormGroup;
     @Input() shopsInfo: ShopInfo[];
 
-    isMobile$ = this.breakpointObserver.observe([Breakpoints.XSmall, Breakpoints.Small]).pipe(pluck('matches'));
+    isMobile$ = this.breakpointObserver
+        .observe([Breakpoints.XSmall, Breakpoints.Small])
+        .pipe(pluck('matches'));
 
     constructor(private breakpointObserver: BreakpointObserver) {}
 }

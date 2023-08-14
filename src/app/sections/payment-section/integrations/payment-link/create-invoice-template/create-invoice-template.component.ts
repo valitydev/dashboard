@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnInit,
+    Output,
+} from '@angular/core';
 import { UntypedFormArray } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
@@ -53,7 +60,7 @@ export class CreateInvoiceTemplateComponent extends FormGroupSuperclass<unknown>
     constructor(
         private invoiceTemplateFormService: CreateInvoiceTemplateService,
         private snackBar: MatSnackBar,
-        private transloco: TranslocoService
+        private transloco: TranslocoService,
     ) {
         super();
     }
@@ -61,9 +68,14 @@ export class CreateInvoiceTemplateComponent extends FormGroupSuperclass<unknown>
     ngOnInit(): void {
         super.ngOnInit();
         this.invoiceTemplateFormService.errors$.subscribe(() =>
-            this.snackBar.open(this.transloco.translate('shared.commonError', null, 'components'), 'OK')
+            this.snackBar.open(
+                this.transloco.translate('shared.commonError', null, 'components'),
+                'OK',
+            ),
         );
-        this.invoiceTemplateFormService.nextInvoiceTemplateAndToken$.subscribe((template) => this.next.emit(template));
+        this.invoiceTemplateFormService.nextInvoiceTemplateAndToken$.subscribe((template) =>
+            this.next.emit(template),
+        );
     }
 
     nextStep(): void {

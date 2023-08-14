@@ -1,9 +1,13 @@
-<div fxLayout="column" fxLayoutGap="8px" *transloco="let t; scope: 'components'; read: 'components.shared'">
+<div
+    *transloco="let t; scope: 'components'; read: 'components.shared'"
+    fxLayout="column"
+    fxLayoutGap="8px"
+>
     <div class="dsh-body-2 dsh-limited-list-title">{{ title }}</div>
     <ng-content></ng-content>
     <div
-        class="dsh-limited-list-show-more dsh-caption"
         *ngIf="!displayedAll && contentChildren?.length > displayedCount"
+        class="dsh-limited-list-show-more dsh-caption"
         (click)="showMore()"
     >
         {{ t('showMore') }}

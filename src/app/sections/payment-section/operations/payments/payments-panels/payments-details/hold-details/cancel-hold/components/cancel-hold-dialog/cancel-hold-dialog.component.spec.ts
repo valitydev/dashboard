@@ -7,7 +7,10 @@ import { cold, getTestScheduler, hot } from 'jasmine-marbles';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 
 import { PaymentService } from '@dsh/app/api/payment';
-import { BaseDialogModule, BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
+import {
+    BaseDialogModule,
+    BaseDialogResponseStatus,
+} from '@dsh/app/shared/components/dialog/base-dialog';
 import { MaxLengthInputModule } from '@dsh/app/shared/components/inputs/max-length-input/max-length-input.module';
 import { ErrorService } from '@dsh/app/shared/services';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
@@ -83,11 +86,15 @@ describe('CancelHoldDialogComponent', () => {
 
     describe('confirm', () => {
         beforeEach(() => {
-            when(mockPaymentService.cancelPayment('invoiceID', 'paymentID', 'reason')).thenReturn(cold('(|)'));
+            when(mockPaymentService.cancelPayment('invoiceID', 'paymentID', 'reason')).thenReturn(
+                cold('(|)'),
+            );
         });
 
         it('should call cancel payment using provided data', async () => {
-            when(mockPaymentService.cancelPayment('myInvoiceId', 'myPaymentId', 'myReason')).thenReturn(cold('(|)'));
+            when(
+                mockPaymentService.cancelPayment('myInvoiceId', 'myPaymentId', 'myReason'),
+            ).thenReturn(cold('(|)'));
 
             await createComponent({
                 invoiceID: 'myInvoiceId',
@@ -100,7 +107,9 @@ describe('CancelHoldDialogComponent', () => {
 
             component.confirm();
 
-            verify(mockPaymentService.cancelPayment('myInvoiceId', 'myPaymentId', 'myReason')).once();
+            verify(
+                mockPaymentService.cancelPayment('myInvoiceId', 'myPaymentId', 'myReason'),
+            ).once();
             expect().nothing();
         });
 
@@ -108,7 +117,7 @@ describe('CancelHoldDialogComponent', () => {
             const scheduler = getTestScheduler();
 
             when(mockPaymentService.cancelPayment('invoiceID', 'paymentID', 'myReason')).thenReturn(
-                hot('^--(a|)', { a: null })
+                hot('^--(a|)', { a: null }),
             );
 
             await createComponent();
@@ -129,9 +138,9 @@ describe('CancelHoldDialogComponent', () => {
         it('should response with error if error happened', async () => {
             const scheduler = getTestScheduler();
 
-            when(mockPaymentService.cancelPayment('invoiceID', 'paymentID', 'anotherReason')).thenReturn(
-                hot('^-#-(|)', {}, new Error('my error'))
-            );
+            when(
+                mockPaymentService.cancelPayment('invoiceID', 'paymentID', 'anotherReason'),
+            ).thenReturn(hot('^-#-(|)', {}, new Error('my error')));
 
             await createComponent();
 
@@ -152,9 +161,9 @@ describe('CancelHoldDialogComponent', () => {
             const scheduler = getTestScheduler();
 
             const error = new Error('my error');
-            when(mockPaymentService.cancelPayment('invoiceID', 'paymentID', 'anotherReason')).thenReturn(
-                hot('^-#-(|)', {}, error)
-            );
+            when(
+                mockPaymentService.cancelPayment('invoiceID', 'paymentID', 'anotherReason'),
+            ).thenReturn(hot('^-#-(|)', {}, error));
 
             await createComponent();
 

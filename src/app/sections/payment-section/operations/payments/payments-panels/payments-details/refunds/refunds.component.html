@@ -9,17 +9,17 @@
         </div>
         <button
             *ngIf="'CreateRefund' | isAccessAllowed"
-            dsh-button
-            color="accent"
             [disabled]="!isRefundAvailable"
+            color="accent"
+            dsh-button
             (click)="createRefund()"
         >
             {{ t('createRefund.title') }}
         </button>
     </div>
     <dsh-refunds-list
-        [list]="refunds$ | async"
         [hasMore]="hasMore$ | async"
+        [list]="refunds$ | async"
         [loading]="isLoading$ | async"
         (showMore)="loadMoreRefunds()"
     ></dsh-refunds-list>

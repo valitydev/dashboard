@@ -14,7 +14,10 @@ import { isNumber } from '@dsh/app/shared/utils';
 import { PaymentSearchFormValue } from '../../types';
 
 @Injectable()
-export class FetchPaymentsService extends PartialFetcher<PaymentSearchResult, PaymentSearchFormValue> {
+export class FetchPaymentsService extends PartialFetcher<
+    PaymentSearchResult,
+    PaymentSearchFormValue
+> {
     isLoading$: Observable<boolean> = this.doAction$.pipe(shareReplay(1));
     lastUpdated$: Observable<string> = this.searchResult$.pipe(mapToTimestamp, shareReplay(1));
     paymentsList$: Observable<PaymentSearchResult[]> = this.searchResult$;
@@ -26,14 +29,14 @@ export class FetchPaymentsService extends PartialFetcher<PaymentSearchResult, Pa
         @Inject(SEARCH_LIMIT)
         private searchLimit: number,
         @Inject(DEBOUNCE_FETCHER_ACTION_TIME)
-        debounceActionTime: number
+        debounceActionTime: number,
     ) {
         super(debounceActionTime);
     }
 
     protected fetch(
         { paymentAmountFrom, paymentAmountTo, realm, ...params }: PaymentSearchFormValue,
-        continuationToken?: string
+        continuationToken?: string,
     ) {
         return this.searchService
             .searchPayments({
@@ -46,9 +49,12 @@ export class FetchPaymentsService extends PartialFetcher<PaymentSearchResult, Pa
             })
             .pipe(
                 catchError(() => {
-                    this.snackBar.open(this.transloco.translate('shared.httpError', null, 'components'), 'OK');
+                    this.snackBar.open(
+                        this.transloco.translate('shared.httpError', null, 'components'),
+                        'OK',
+                    );
                     return of({ result: [] });
-                })
+                }),
             );
     }
 }

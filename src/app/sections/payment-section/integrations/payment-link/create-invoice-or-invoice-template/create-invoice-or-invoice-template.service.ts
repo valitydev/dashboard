@@ -16,12 +16,12 @@ export class CreateInvoiceOrInvoiceTemplateService {
     shops$ = this.route.params.pipe(
         pluck('realm'),
         filterShopsByRealm(this.shopsDataService.shops$),
-        shareReplay(SHARE_REPLAY_CONF)
+        shareReplay(SHARE_REPLAY_CONF),
     );
 
     constructor(
         private fb: UntypedFormBuilder,
         private route: ActivatedRoute,
-        private shopsDataService: ShopsDataService
+        private shopsDataService: ShopsDataService,
     ) {}
 }

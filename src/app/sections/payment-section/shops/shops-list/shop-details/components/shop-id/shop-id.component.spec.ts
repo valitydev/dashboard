@@ -23,7 +23,7 @@ describe('ShopIdComponent', () => {
                     {
                         availableLangs: ['en'],
                         defaultLang: 'en',
-                    }
+                    },
                 ),
                 MatSnackBarModule,
                 ClipboardModule,

@@ -11,7 +11,7 @@ import { PartyIdExtension } from './party-id-extension';
 export class PartyIdPatchMethodService extends PartyIdExtension {
     patch<P extends object, R, E extends DeepPartial<P> | void>(
         method: (params: P) => Observable<R>,
-        patch: (params: P, partyId: string) => unknown
+        patch: (params: P, partyId: string) => unknown,
     ): (params: E) => Observable<R> {
         return (params) =>
             this.selector().pipe(
@@ -19,7 +19,7 @@ export class PartyIdPatchMethodService extends PartyIdExtension {
                     const newParams = cloneDeep(params);
                     patch(newParams as unknown as P, partyID);
                     return method(newParams as unknown as P);
-                })
+                }),
             );
     }
 }

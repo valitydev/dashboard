@@ -2,7 +2,7 @@ import { ErrorDistribution } from './error-distribution';
 
 export const getSelectedErrorDistribution = (
     errors: ErrorDistribution[],
-    selectedSubErrorPath: number[]
+    selectedSubErrorPath: number[],
 ): ErrorDistribution => {
     if (!selectedSubErrorPath.length) {
         return {

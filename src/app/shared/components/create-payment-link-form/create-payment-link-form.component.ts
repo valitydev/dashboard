@@ -40,15 +40,18 @@ export class CreatePaymentLinkFormComponent
         email: [EMPTY_VALUE['email'], Validators.email],
         paymentMethods: this.fb.group(
             Object.fromEntries(
-                Object.entries(EMPTY_VALUE.paymentMethods).map(([name, value]) => [name, { value, disabled: true }])
-            ) as unknown
+                Object.entries(EMPTY_VALUE.paymentMethods).map(([name, value]) => [
+                    name,
+                    { value, disabled: true },
+                ]),
+            ) as unknown,
         ),
     }) as FormGroup;
 
     constructor(
         private notificationService: NotificationService,
         private transloco: TranslocoService,
-        private fb: FormBuilder
+        private fb: FormBuilder,
     ) {
         super();
     }
@@ -61,11 +64,21 @@ export class CreatePaymentLinkFormComponent
     }
 
     copied(isCopied: boolean): void {
-        if (isCopied) this.notificationService.success(this.transloco.translate('shared.copied', null, 'components'));
-        else this.notificationService.success(this.transloco.translate('shared.copyFailed', null, 'components'));
+        if (isCopied)
+            this.notificationService.success(
+                this.transloco.translate('shared.copied', null, 'components'),
+            );
+        else
+            this.notificationService.success(
+                this.transloco.translate('shared.copyFailed', null, 'components'),
+            );
     }
 
-    protected innerToOuterValue({ holdExpiration, paymentMethods, ...value }: Controls): PaymentLinkParams {
+    protected innerToOuterValue({
+        holdExpiration,
+        paymentMethods,
+        ...value
+    }: Controls): PaymentLinkParams {
         return {
             ...(value.paymentFlowHold ? { holdExpiration } : {}),
             ...value,
@@ -74,7 +87,8 @@ export class CreatePaymentLinkFormComponent
     }
 
     private updatePaymentMethods(paymentMethods: PaymentMethod[]) {
-        const paymentMethodsControls: FormGroup['controls'] = this.control.controls.paymentMethods['controls'];
+        const paymentMethodsControls: FormGroup['controls'] =
+            this.control.controls.paymentMethods['controls'];
         Object.values(paymentMethodsControls).forEach((c) => c.disable());
         paymentMethods.forEach((item) => {
             switch (item.method) {
@@ -138,41 +152,60 @@ export class CreatePaymentLinkFormComponent
         });
     }
 
-    private getPaymentMethodLabels(): Record<(typeof ORDERED_PAYMENT_METHODS_NAMES)[number], Observable<string>> {
+    private getPaymentMethodLabels(): Record<
+        (typeof ORDERED_PAYMENT_METHODS_NAMES)[number],
+        Observable<string>
+    > {
         return {
             bankCard: this.transloco.selectTranslate(
                 'createPaymentLinkForm.paymentMethod.bankCard',
                 null,
-                'components'
+                'components',
             ),
             yandexPay: this.transloco.selectTranslate(
                 'createPaymentLinkForm.paymentMethod.yandexPay',
                 null,
-                'components'
+                'components',
             ),
             applePay: this.transloco.selectTranslate(
                 'createPaymentLinkForm.paymentMethod.applePay',
                 null,
-                'components'
+                'components',
             ),
             googlePay: this.transloco.selectTranslate(
                 'createPaymentLinkForm.paymentMethod.googlePay',
                 null,
-                'components'
+                'components',
             ),
             samsungPay: this.transloco.selectTranslate(
                 'createPaymentLinkForm.paymentMethod.samsungPay',
                 null,
-                'components'
+                'components',
             ),
-            uzcard: this.transloco.selectTranslate('createPaymentLinkForm.paymentMethod.uzcard', null, 'components'),
-            wallets: this.transloco.selectTranslate('createPaymentLinkForm.paymentMethod.wallets', null, 'components'),
-            euroset: this.transloco.selectTranslate('createPaymentLinkForm.paymentMethod.euroset', null, 'components'),
-            qps: this.transloco.selectTranslate('createPaymentLinkForm.paymentMethod.qps', null, 'components'),
+            uzcard: this.transloco.selectTranslate(
+                'createPaymentLinkForm.paymentMethod.uzcard',
+                null,
+                'components',
+            ),
+            wallets: this.transloco.selectTranslate(
+                'createPaymentLinkForm.paymentMethod.wallets',
+                null,
+                'components',
+            ),
+            euroset: this.transloco.selectTranslate(
+                'createPaymentLinkForm.paymentMethod.euroset',
+                null,
+                'components',
+            ),
+            qps: this.transloco.selectTranslate(
+                'createPaymentLinkForm.paymentMethod.qps',
+                null,
+                'components',
+            ),
             mobileCommerce: this.transloco.selectTranslate(
                 'createPaymentLinkForm.paymentMethod.mobileCommerce',
                 null,
-                'components'
+                'components',
             ),
         };
     }
@@ -182,12 +215,12 @@ export class CreatePaymentLinkFormComponent
             [HoldExpiration.Cancel]: this.transloco.selectTranslate(
                 'createPaymentLinkForm.holdExpiration.cancel',
                 null,
-                'components'
+                'components',
             ),
             [HoldExpiration.Capture]: this.transloco.selectTranslate(
                 'createPaymentLinkForm.holdExpiration.capture',
                 null,
-                'components'
+                'components',
             ),
         };
     }

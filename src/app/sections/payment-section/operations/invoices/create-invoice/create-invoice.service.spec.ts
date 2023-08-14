@@ -44,7 +44,7 @@ describe('CreateInvoiceService', () => {
                     {
                         availableLangs: ['operations'],
                         defaultLang: 'operations',
-                    }
+                    },
                 ),
             ],
             providers: [
@@ -80,10 +80,12 @@ describe('CreateInvoiceService', () => {
                     deepEqual({
                         width: '720px',
                         data: [],
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(instance(mockDialogRef));
-            when(mockSnackbar.open('invoice created', 'OK', deepEqual({ duration: 2000 }))).thenReturn(null);
+            when(
+                mockSnackbar.open('invoice created', 'OK', deepEqual({ duration: 2000 })),
+            ).thenReturn(null);
         });
 
         afterEach(() => {
@@ -102,8 +104,8 @@ describe('CreateInvoiceService', () => {
                     deepEqual({
                         width: '720px',
                         data: [],
-                    })
-                )
+                    }),
+                ),
             ).once();
         });
 
@@ -119,7 +121,7 @@ describe('CreateInvoiceService', () => {
             expect(service.createInvoice(PaymentInstitutionRealm.Test)).toBeObservable(
                 cold('a', {
                     a: 'test',
-                })
+                }),
             );
         });
 
@@ -128,7 +130,9 @@ describe('CreateInvoiceService', () => {
 
             service.createInvoice(PaymentInstitutionRealm.Test);
 
-            verify(mockSnackbar.open('invoice created', 'OK', deepEqual({ duration: 2000 }))).once();
+            verify(
+                mockSnackbar.open('invoice created', 'OK', deepEqual({ duration: 2000 })),
+            ).once();
         });
     });
 });

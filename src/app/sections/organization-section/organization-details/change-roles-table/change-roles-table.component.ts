@@ -1,4 +1,12 @@
-import { ChangeDetectorRef, Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import {
+    ChangeDetectorRef,
+    Component,
+    EventEmitter,
+    Inject,
+    Input,
+    OnInit,
+    Output,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { MemberRole, ResourceScopeId, RoleId } from '@vality/swag-organizations';
@@ -75,7 +83,7 @@ export class ChangeRolesTableComponent implements OnInit {
         private dialog: MatDialog,
         @Inject(DIALOG_CONFIG) private dialogConfig: DialogConfig,
         private cdr: ChangeDetectorRef,
-        private organizationsDictionaryService: OrganizationsDictionaryService
+        private organizationsDictionaryService: OrganizationsDictionaryService,
     ) {}
 
     ngOnInit(): void {
@@ -85,15 +93,20 @@ export class ChangeRolesTableComponent implements OnInit {
     add(): void {
         const removeDialogsClass = addDialogsClass(this.dialog.openDialogs, 'dsh-hidden');
         this.dialog
-            .open<SelectRoleDialogComponent, SelectRoleDialogData, SelectRoleDialogResult>(SelectRoleDialogComponent, {
-                ...this.dialogConfig.large,
-                data: { availableRoles: this.availableRoles },
-            })
+            .open<SelectRoleDialogComponent, SelectRoleDialogData, SelectRoleDialogResult>(
+                SelectRoleDialogComponent,
+                {
+                    ...this.dialogConfig.large,
+                    data: { availableRoles: this.availableRoles },
+                },
+            )
             .afterClosed()
             .pipe(
                 tap(() => removeDialogsClass()),
-                switchMap((result) => (typeof result === 'object' ? of(result.selectedRoleId) : EMPTY)),
-                untilDestroyed(this)
+                switchMap((result) =>
+                    typeof result === 'object' ? of(result.selectedRoleId) : EMPTY,
+                ),
+                untilDestroyed(this),
             )
             .subscribe((roleId) => {
                 this.addRoleIds([roleId]);
@@ -146,7 +159,7 @@ export class ChangeRolesTableComponent implements OnInit {
     disabled(roleId: RoleId, resourceId: string): Observable<boolean> {
         if (roleId === RoleId.Administrator) return of(true);
         return combineLatest([this.roles$, this.checked(roleId, resourceId)]).pipe(
-            map(([roles, isChecked]) => roles.length <= 1 && isChecked)
+            map(([roles, isChecked]) => roles.length <= 1 && isChecked),
         );
     }
 
@@ -159,8 +172,10 @@ export class ChangeRolesTableComponent implements OnInit {
             map(
                 (roles) =>
                     roleId === RoleId.Administrator ||
-                    !!roles.find((r) => equalRoles(r, { roleId, scope: { id: ResourceScopeId.Shop, resourceId } }))
-            )
+                    !!roles.find((r) =>
+                        equalRoles(r, { roleId, scope: { id: ResourceScopeId.Shop, resourceId } }),
+                    ),
+            ),
         );
     }
 
@@ -171,9 +186,11 @@ export class ChangeRolesTableComponent implements OnInit {
                 return (
                     roleId === RoleId.Administrator ||
                     shops.length <=
-                        roles.filter((r) => r.roleId === roleId && shopIds.includes(r.scope?.resourceId)).length
+                        roles.filter(
+                            (r) => r.roleId === roleId && shopIds.includes(r.scope?.resourceId),
+                        ).length
                 );
-            })
+            }),
         );
     }
 
@@ -189,10 +206,10 @@ export class ChangeRolesTableComponent implements OnInit {
                 }
                 const shopIds = shops.map(({ id }) => id);
                 const rolesCount = roles.filter(
-                    (r) => r.roleId === roleId && shopIds.includes(r.scope?.resourceId)
+                    (r) => r.roleId === roleId && shopIds.includes(r.scope?.resourceId),
                 ).length;
                 return rolesCount > 0 && rolesCount < shops.length;
-            })
+            }),
         );
     }
 

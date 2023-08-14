@@ -20,7 +20,14 @@ const EXPORTED_DECLARATIONS = [
 ];
 
 @NgModule({
-    imports: [CommonModule, ResizedModule, FlexLayoutModule, ButtonModule, MatDividerModule, BootstrapIconModule],
+    imports: [
+        CommonModule,
+        ResizedModule,
+        FlexLayoutModule,
+        ButtonModule,
+        MatDividerModule,
+        BootstrapIconModule,
+    ],
     declarations: [EXPORTED_DECLARATIONS],
     exports: [EXPORTED_DECLARATIONS],
 })

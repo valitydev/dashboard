@@ -1,10 +1,16 @@
 <dsh-row
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.invoices.headerRow'"
+    *transloco="
+        let t;
+        scope: 'payment-section';
+        read: 'paymentSection.operations.invoices.headerRow'
+    "
     fxLayout="row"
     fxLayoutAlign="space-between center"
     fxLayoutGap="24px"
 >
-    <dsh-row-header-label fxFlex.gt-md="40" fxHide.lt-md>{{ t('productName') }}</dsh-row-header-label>
+    <dsh-row-header-label fxFlex.gt-md="40" fxHide.lt-md>{{
+        t('productName')
+    }}</dsh-row-header-label>
     <dsh-row-header-label fxFlex.gt-md="10">{{ t('amount') }}</dsh-row-header-label>
     <dsh-row-header-label fxFlex.gt-md="10" fxHide.lt-md>{{ t('status') }}</dsh-row-header-label>
     <dsh-row-header-label fxFlex.gt-md="20">{{ t('createdAt') }}</dsh-row-header-label>

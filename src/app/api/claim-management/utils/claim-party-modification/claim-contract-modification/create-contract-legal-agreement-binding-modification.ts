@@ -6,12 +6,16 @@ import {
 
 import { createBaseContractModification } from './create-base-contract-modification';
 
-export const createContractLegalAgreementBindingModification = (id: string, legalAgreement: LegalAgreement) =>
+export const createContractLegalAgreementBindingModification = (
+    id: string,
+    legalAgreement: LegalAgreement,
+) =>
     createBaseContractModification({
         id,
         modification: {
             contractModificationType:
-                ContractModification.ContractModificationTypeEnum.ContractLegalAgreementBindingModification,
+                ContractModification.ContractModificationTypeEnum
+                    .ContractLegalAgreementBindingModification,
             legalAgreement,
         } as ContractLegalAgreementBindingModification,
     });

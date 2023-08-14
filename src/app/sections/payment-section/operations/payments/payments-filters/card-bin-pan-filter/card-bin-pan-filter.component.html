@@ -1,11 +1,13 @@
-<ng-container *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.payments.filter'">
+<ng-container
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.payments.filter'"
+>
     <dsh-filter
         [active]="isActive"
-        [label]="t('binPan')"
         [activeLabel]="t('binPan') + ' · ' + (savedValue$ | async | cardBinPanLabel)"
         [content]="content"
-        (save)="save()"
+        [label]="t('binPan')"
         (clear)="clear()"
+        (save)="save()"
     >
     </dsh-filter>
     <ng-template #content>

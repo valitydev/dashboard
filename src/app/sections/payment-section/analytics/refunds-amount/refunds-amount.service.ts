@@ -17,20 +17,26 @@ export class RefundsAmountService {
             distinctUntilChangedDeep(),
             switchMap(({ current, previous, realm }) =>
                 forkJoin([
-                    this.analyticsService.getRefundsAmount({ ...current, paymentInstitutionRealm: realm }),
-                    this.analyticsService.getRefundsAmount({ ...previous, paymentInstitutionRealm: realm }),
-                ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$))
+                    this.analyticsService.getRefundsAmount({
+                        ...current,
+                        paymentInstitutionRealm: realm,
+                    }),
+                    this.analyticsService.getRefundsAmount({
+                        ...previous,
+                        paymentInstitutionRealm: realm,
+                    }),
+                ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$)),
             ),
             map((res) => res.map((r) => r.result)),
-            map(amountResultToStatData)
+            map(amountResultToStatData),
         ),
         defer(() => this.searchParams$).pipe(
             map(({ currency }) => currency),
-            distinctUntilChanged()
+            distinctUntilChanged(),
         ),
     ]).pipe(
         map(([result, currency]) => result.find((r) => r.currency === currency)),
-        shareReplayRefCount()
+        shareReplayRefCount(),
     );
     isLoading$ = inProgressFrom(() => this.progress$, this.refundsAmount$);
     error$ = attach(() => this.errorSub$, this.refundsAmount$);

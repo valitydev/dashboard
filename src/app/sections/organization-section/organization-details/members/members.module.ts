@@ -60,7 +60,12 @@ import { ChangeRolesTableModule } from '../change-roles-table';
         ChangeRolesTableModule,
         EmptyModule,
     ],
-    declarations: [MembersComponent, MembersListComponent, MemberComponent, EditRolesDialogComponent],
+    declarations: [
+        MembersComponent,
+        MembersListComponent,
+        MemberComponent,
+        EditRolesDialogComponent,
+    ],
     exports: [MembersComponent, MemberComponent],
 })
 export class MembersModule {}

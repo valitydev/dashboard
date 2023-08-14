@@ -1,5 +1,9 @@
 <dsh-details-item
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentDetails.statusDetailItem'"
+    *transloco="
+        let t;
+        scope: 'payment-section';
+        read: 'paymentSection.paymentDetails.statusDetailItem'
+    "
     [title]="t('status')"
 >
     <dsh-payment-status [status]="status"></dsh-payment-status>

@@ -54,8 +54,8 @@ describe('ShopPayoutToolDetailsComponent', () => {
                     deepEqual({
                         contractID: 'my_contract_id',
                         payoutToolID: 'my_payout_tool_id',
-                    })
-                )
+                    }),
+                ),
             ).thenReturn();
 
             component.payoutToolParams = {
@@ -68,8 +68,8 @@ describe('ShopPayoutToolDetailsComponent', () => {
                     deepEqual({
                         contractID: 'my_contract_id',
                         payoutToolID: 'my_payout_tool_id',
-                    })
-                )
+                    }),
+                ),
             ).once();
             expect().nothing();
         });

@@ -19,7 +19,10 @@ export class ApiKeyDetailsComponent {
     statusColors = API_KEY_STATUS_COLOR;
     statusLabels$ = this.apiKeysDictionaryService.apiKeyStatus$;
 
-    constructor(private dialogService: DialogService, private apiKeysDictionaryService: ApiKeysDictionaryService) {}
+    constructor(
+        private dialogService: DialogService,
+        private apiKeysDictionaryService: ApiKeysDictionaryService,
+    ) {}
 
     delete(apiKey: ApiKey) {
         this.dialogService.open(ApiKeyDeleteDialogComponent, { apiKeyId: apiKey.id });

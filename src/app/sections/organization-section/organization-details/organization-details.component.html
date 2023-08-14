@@ -1,21 +1,21 @@
 <div
-    class="dsh-organization-details"
     *ngIf="organization$ | async as organization"
+    class="dsh-organization-details"
     fxLayout="column"
     fxLayoutGap="32px"
 >
     <div fxLayout="column" fxLayoutGap="8px">
         <h2 class="dsh-display-1">{{ organization.name }}</h2>
         <ol
-            dsh-breadcrumb
             *transloco="
                 let b;
                 scope: 'organization-section';
                 read: 'organizationSection.organizationDetails.breadcrumb'
             "
+            dsh-breadcrumb
         >
             <li dsh-breadcrumb-item>
-                <a routerLink="/organization-section/organizations" dshTextColor="secondary">{{
+                <a dshTextColor="secondary" routerLink="/organization-section/organizations">{{
                     b('organizations')
                 }}</a>
             </li>
@@ -26,12 +26,12 @@
     <div fxLayout="column" fxLayoutGap="32px">
         <nav mat-tab-nav-bar>
             <a
-                mat-tab-link
-                *ngFor="let link of links"
-                [routerLink]="link.path"
-                routerLinkActive
                 #rla="routerLinkActive"
+                *ngFor="let link of links"
                 [active]="rla.isActive"
+                [routerLink]="link.path"
+                mat-tab-link
+                routerLinkActive
             >
                 <ng-container>{{ link.label$ | async }}</ng-container>
             </a>

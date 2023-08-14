@@ -26,7 +26,7 @@ export class ShopsComponent implements OnInit {
         private expandedIdManager: ShopsExpandedIdManagerService,
         private createShopService: ShopCreationService,
         private realmShopsService: RealmShopsService,
-        private realmService: PaymentInstitutionRealmService
+        private realmService: PaymentInstitutionRealmService,
     ) {}
 
     ngOnInit(): void {

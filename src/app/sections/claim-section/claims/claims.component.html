@@ -1,28 +1,28 @@
 <div
+    *transloco="let t; scope: 'claim-section'; read: 'claimSection.claims'"
     class="container"
     fxLayout="column"
     fxLayoutGap="32px"
-    *transloco="let t; scope: 'claim-section'; read: 'claimSection.claims'"
 >
     <dsh-section-header [label]="t('title')"></dsh-section-header>
     <div
         fxLayout="column-reverse"
         fxLayout.gt-sm="row"
-        fxLayoutGap="16px"
         fxLayoutAlign="start start"
         fxLayoutAlign.gt-sm="space-between"
+        fxLayoutGap="16px"
     >
         <dsh-claims-search-filters
             [initParams]="params$ | async"
             (searchParamsChanges)="search($event)"
         ></dsh-claims-search-filters>
-        <button (click)="createShop()" color="accent" dsh-button>{{ t('createClaim') }}</button>
+        <button color="accent" dsh-button (click)="createShop()">{{ t('createClaim') }}</button>
     </div>
     <dsh-claims-list
-        [lastUpdated]="lastUpdated$ | async"
+        [claimList]="claimsList$ | async"
         [hasMore]="hasMore$ | async"
         [isLoading]="isLoading$ | async"
-        [claimList]="claimsList$ | async"
+        [lastUpdated]="lastUpdated$ | async"
         (refresh)="refresh()"
         (showMore)="fetchMore()"
     ></dsh-claims-list>

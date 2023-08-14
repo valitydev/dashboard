@@ -11,7 +11,10 @@ import { NotificationService } from '../notification';
 
 @Injectable()
 export class ErrorService {
-    constructor(private notificationService: NotificationService, private transloco: TranslocoService) {}
+    constructor(
+        private notificationService: NotificationService,
+        private transloco: TranslocoService,
+    ) {}
 
     // TODO: collect and dev log error information
     error(error: unknown, notify = true): ErrorResult {

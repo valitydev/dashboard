@@ -11,7 +11,14 @@ import { ReportFileComponent } from './report-file';
 import { ReportFilesComponent } from './report-files.component';
 
 @NgModule({
-    imports: [CommonModule, FlexLayoutModule, TranslocoModule, ButtonModule, MatSnackBarModule, BootstrapIconModule],
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        TranslocoModule,
+        ButtonModule,
+        MatSnackBarModule,
+        BootstrapIconModule,
+    ],
     declarations: [ReportFilesComponent, ReportFileComponent],
     exports: [ReportFilesComponent],
 })

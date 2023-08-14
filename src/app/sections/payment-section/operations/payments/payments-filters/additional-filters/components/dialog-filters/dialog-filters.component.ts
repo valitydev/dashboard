@@ -13,7 +13,10 @@ import { formToFilters, filtersToForm } from '../../utils';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => DialogFiltersComponent),
 })
-export class DialogFiltersComponent extends FormGroupSuperclass<AdditionalFiltersForm> implements OnInit {
+export class DialogFiltersComponent
+    extends FormGroupSuperclass<AdditionalFiltersForm>
+    implements OnInit
+{
     control = this.fb.group({
         main: null,
         paymentStatus: [null, paymentStatusValidator],
@@ -28,7 +31,7 @@ export class DialogFiltersComponent extends FormGroupSuperclass<AdditionalFilter
     constructor(
         @Inject(MAT_DIALOG_DATA) private data: AdditionalFilters,
         private dialogRef: MatDialogRef<DialogFiltersComponent, AdditionalFilters>,
-        private fb: FormBuilder
+        private fb: FormBuilder,
     ) {
         super();
     }

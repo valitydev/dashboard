@@ -22,7 +22,7 @@ export class CreateInvoiceDialogComponent {
     constructor(
         private dialogRef: MatDialogRef<CreateInvoiceDialogComponent, CreateInvoiceDialogResponse>,
         @Inject(MAT_DIALOG_DATA) public shops: Shop[],
-        private invoicesService: InvoicesService
+        private invoicesService: InvoicesService,
     ) {}
 
     cancel(): void {

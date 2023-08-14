@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnChanges,
+    Output,
+} from '@angular/core';
 import { Invoice, PaymentSearchResult } from '@vality/swag-anapi-v2';
 import isEmpty from 'lodash-es/isEmpty';
 import { Observable } from 'rxjs';

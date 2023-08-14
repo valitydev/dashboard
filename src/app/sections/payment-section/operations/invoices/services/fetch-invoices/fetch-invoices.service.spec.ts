@@ -59,8 +59,8 @@ describe('FetchInvoicesService', () => {
                     '',
                     deepEqual({ paymentInstitutionRealm: 'test' }),
                     5,
-                    undefined
-                )
+                    undefined,
+                ),
             ).thenReturn(of({ result: generateMockInvoiceList(2) }));
 
             service.searchResult$.pipe(take(1)).subscribe((res) => {
@@ -78,12 +78,18 @@ describe('FetchInvoicesService', () => {
                     '',
                     deepEqual({ paymentInstitutionRealm: 'test' }),
                     5,
-                    undefined
-                )
+                    undefined,
+                ),
             ).thenReturn(of({ result: generateMockInvoiceList(5), continuationToken: 'token' }));
 
             when(
-                invoiceSearchService.searchInvoices('', '', deepEqual({ paymentInstitutionRealm: 'test' }), 5, 'token')
+                invoiceSearchService.searchInvoices(
+                    '',
+                    '',
+                    deepEqual({ paymentInstitutionRealm: 'test' }),
+                    5,
+                    'token',
+                ),
             ).thenReturn(of({ result: generateMockInvoiceList(2, 5) }));
 
             let count = 0;
@@ -113,8 +119,8 @@ describe('FetchInvoicesService', () => {
                     '',
                     deepEqual({ paymentInstitutionRealm: 'test' }),
                     5,
-                    undefined
-                )
+                    undefined,
+                ),
             ).thenReturn(of({ result: generateMockInvoiceList(1) }).pipe(delay(600)));
 
             let count = 0;
@@ -143,8 +149,8 @@ describe('FetchInvoicesService', () => {
                     '',
                     deepEqual({ paymentInstitutionRealm: 'test' }),
                     5,
-                    undefined
-                )
+                    undefined,
+                ),
             ).thenReturn(of({ result: generateMockInvoiceList(1) }));
 
             service.lastUpdated$.pipe(take(1)).subscribe((res) => {

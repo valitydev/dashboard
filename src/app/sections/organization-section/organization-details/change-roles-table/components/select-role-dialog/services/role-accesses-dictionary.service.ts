@@ -14,80 +14,80 @@ export class RoleAccessesDictionaryService {
                 [RoleAccessName.Claims]: this.t.translate(
                     'roleAccessesDictionary.claims',
                     null,
-                    'organization-section'
+                    'organization-section',
                 ),
                 [RoleAccessName.CreateInvoice]: this.t.translate(
                     'roleAccessesDictionary.createInvoice',
                     null,
-                    'organization-section'
+                    'organization-section',
                 ),
                 [RoleAccessName.PaymentLinks]: this.t.translate(
                     'roleAccessesDictionary.createPaymentLink',
                     null,
-                    'organization-section'
+                    'organization-section',
                 ),
                 [RoleAccessName.CreateRefund]: this.t.translate(
                     'roleAccessesDictionary.createRefund',
                     null,
-                    'organization-section'
+                    'organization-section',
                 ),
                 [RoleAccessName.ManageOrganizations]: this.t.translate(
                     'roleAccessesDictionary.manageOrganizations',
                     null,
-                    'organization-section'
+                    'organization-section',
                 ),
                 [RoleAccessName.Reports]: this.t.translate(
                     'roleAccessesDictionary.manageReports',
                     null,
-                    'organization-section'
+                    'organization-section',
                 ),
                 [RoleAccessName.Webhooks]: this.t.translate(
                     'roleAccessesDictionary.manageWebhooks',
                     null,
-                    'organization-section'
+                    'organization-section',
                 ),
                 [RoleAccessName.Payments]: this.t.translate(
                     'roleAccessesDictionary.payments',
                     null,
-                    'organization-section'
+                    'organization-section',
                 ),
                 [RoleAccessName.ViewAnalytics]: this.t.translate(
                     'roleAccessesDictionary.viewAnalytics',
                     null,
-                    'organization-section'
+                    'organization-section',
                 ),
                 [RoleAccessName.ApiKeys]: this.t.translate(
                     'roleAccessesDictionary.viewApiKey',
                     null,
-                    'organization-section'
+                    'organization-section',
                 ),
                 [RoleAccessName.ViewInvoices]: this.t.translate(
                     'roleAccessesDictionary.viewInvoices',
                     null,
-                    'organization-section'
+                    'organization-section',
                 ),
                 [RoleAccessName.ViewPayments]: this.t.translate(
                     'roleAccessesDictionary.viewPayments',
                     null,
-                    'organization-section'
+                    'organization-section',
                 ),
                 [RoleAccessName.ViewPayouts]: this.t.translate(
                     'roleAccessesDictionary.viewPayouts',
                     null,
-                    'organization-section'
+                    'organization-section',
                 ),
                 [RoleAccessName.ViewRefunds]: this.t.translate(
                     'roleAccessesDictionary.viewRefunds',
                     null,
-                    'organization-section'
+                    'organization-section',
                 ),
                 [RoleAccessName.Wallets]: this.t.translate(
                     'roleAccessesDictionary.wallets',
                     null,
-                    'organization-section'
+                    'organization-section',
                 ),
-            })
-        )
+            }),
+        ),
     );
 
     constructor(private t: TranslocoService) {}

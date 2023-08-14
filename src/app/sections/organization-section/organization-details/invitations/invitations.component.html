@@ -1,10 +1,14 @@
 <div
-    *transloco="let t; scope: 'organization-section'; read: 'organizationSection.organizationDetails.invitations'"
+    *transloco="
+        let t;
+        scope: 'organization-section';
+        read: 'organizationSection.organizationDetails.invitations'
+    "
     fxLayout="column"
     fxLayoutGap="32px"
 >
     <div fxLayout fxLayoutAlign="end">
-        <button dsh-button color="accent" (click)="createInvitation()">
+        <button color="accent" dsh-button (click)="createInvitation()">
             {{ t('createInvitation') }}
         </button>
     </div>
@@ -12,7 +16,10 @@
         <dsh-spinner *ngIf="isLoading$ | async; else loaded" fxFlexAlign="center"></dsh-spinner>
         <ng-template #loaded>
             <div fxLayout="column" fxLayoutGap="16px">
-                <dsh-last-updated [lastUpdated]="lastUpdated$ | async" (update)="refresh()"></dsh-last-updated>
+                <dsh-last-updated
+                    [lastUpdated]="lastUpdated$ | async"
+                    (update)="refresh()"
+                ></dsh-last-updated>
                 <dsh-invitations-list
                     [invitations]="invitations$ | async"
                     [orgId]="organization.id"

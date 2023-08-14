@@ -24,10 +24,13 @@ export class CreatePaymentLinkDialogComponent {
     paymentLink$ = merge(
         defer(() => this.create$).pipe(
             switchMap(() =>
-                this.createPaymentLinkService.createPaymentLinkByInvoice(this.data.invoice, this.formControl.value)
-            )
+                this.createPaymentLinkService.createPaymentLinkByInvoice(
+                    this.data.invoice,
+                    this.formControl.value,
+                ),
+            ),
         ),
-        this.formControl.valueChanges.pipe(mapTo(''))
+        this.formControl.valueChanges.pipe(mapTo('')),
     );
     inProgress$ = new BehaviorSubject(false);
 
@@ -37,7 +40,7 @@ export class CreatePaymentLinkDialogComponent {
         private dialogRef: MatDialogRef<CreatePaymentLinkDialogComponent, 'cancel'>,
         @Inject(MAT_DIALOG_DATA) public data: CreatePaymentLinkDialogData,
         private createPaymentLinkService: CreatePaymentLinkService,
-        private invoicesService: InvoicesService
+        private invoicesService: InvoicesService,
     ) {}
 
     cancel(): void {

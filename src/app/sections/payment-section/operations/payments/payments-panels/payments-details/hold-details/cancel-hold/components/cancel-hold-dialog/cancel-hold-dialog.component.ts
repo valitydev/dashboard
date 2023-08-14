@@ -27,22 +27,24 @@ export class CancelHoldDialogComponent {
         private dialogRef: MatDialogRef<CancelHoldDialogComponent, BaseDialogResponseStatus>,
         private fb: FormBuilder,
         private paymentsService: PaymentsService,
-        private errorService: ErrorService
+        private errorService: ErrorService,
     ) {}
 
     confirm(): void {
         const { reason } = this.form.value;
         const { invoiceID, paymentID } = this.dialogData;
 
-        this.paymentsService.cancelPayment({ invoiceID, paymentID, cancelPayment: { reason } }).subscribe({
-            next: () => {
-                this.dialogRef.close(BaseDialogResponseStatus.Success);
-            },
-            error: (err: Error) => {
-                this.errorService.error(err);
-                this.dialogRef.close(BaseDialogResponseStatus.Error);
-            },
-        });
+        this.paymentsService
+            .cancelPayment({ invoiceID, paymentID, cancelPayment: { reason } })
+            .subscribe({
+                next: () => {
+                    this.dialogRef.close(BaseDialogResponseStatus.Success);
+                },
+                error: (err: Error) => {
+                    this.errorService.error(err);
+                    this.dialogRef.close(BaseDialogResponseStatus.Error);
+                },
+            });
     }
 
     decline(): void {

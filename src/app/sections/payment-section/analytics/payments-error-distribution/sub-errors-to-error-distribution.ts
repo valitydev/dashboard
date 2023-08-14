@@ -35,7 +35,9 @@ const groupDistribution = (distribution: ErrorDistribution[]): ErrorDistribution
         return newAcc;
     }, []);
 
-export const subErrorsToErrorDistribution = (errors: PaymentsSubErrorsDistributionResult[]): ErrorDistribution[] => {
+export const subErrorsToErrorDistribution = (
+    errors: PaymentsSubErrorsDistributionResult[],
+): ErrorDistribution[] => {
     const errorDistribution: ErrorDistribution[] = (errors ?? []).map(({ error, percents }) => ({
         errorCode: getDistributionErrorCode(error.code),
         subErrors: error.subError ? [subErrorToDistribution(error.subError, percents)] : [],

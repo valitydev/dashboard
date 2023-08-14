@@ -1,8 +1,10 @@
-<ng-container *transloco="let t; scope: 'wallet-section'; read: 'walletSection.withdrawals.filters'">
-    <form [formGroup]="control" gdColumns.gt-sm="1fr 1fr" gdColumns="1fr" gdGap="0 24px">
+<ng-container
+    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.withdrawals.filters'"
+>
+    <form [formGroup]="control" gdColumns="1fr" gdColumns.gt-sm="1fr 1fr" gdGap="0 24px">
         <mat-form-field>
             <mat-label>{{ t('withdrawalID') }}</mat-label>
-            <input matInput type="text" formControlName="withdrawalID" />
+            <input formControlName="withdrawalID" matInput type="text" />
         </mat-form-field>
         <dsh-wallet-autocomplete-field
             [label]="t('walletID')"
@@ -10,11 +12,11 @@
         ></dsh-wallet-autocomplete-field>
         <mat-form-field>
             <mat-label>{{ t('identityID') }}</mat-label>
-            <input matInput type="text" formControlName="identityID" />
+            <input formControlName="identityID" matInput type="text" />
         </mat-form-field>
         <mat-form-field>
             <mat-label>{{ t('destinationID') }}</mat-label>
-            <input matInput type="text" formControlName="destinationID" />
+            <input formControlName="destinationID" matInput type="text" />
         </mat-form-field>
     </form>
 </ng-container>

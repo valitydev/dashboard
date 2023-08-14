@@ -12,10 +12,12 @@ export class LayoutManagementService {
             gridTemplateColumns
                 ? of(gridTemplateColumns)
                 : this.layoutColsCount$.pipe(
-                      map((colsCount) => LayoutManagementService.getDefaultGridTemplateColumns(colsCount))
-                  )
+                      map((colsCount) =>
+                          LayoutManagementService.getDefaultGridTemplateColumns(colsCount),
+                      ),
+                  ),
         ),
-        shareReplay(SHARE_REPLAY_CONF)
+        shareReplay(SHARE_REPLAY_CONF),
     );
 
     private _layoutColsCount$ = new ReplaySubject<number>(1);
@@ -25,7 +27,7 @@ export class LayoutManagementService {
         return combineLatest([this.layoutColsCount$, colsCount$]).pipe(
             map(([baseCount, count]) => Math.max(baseCount - count, 0)),
             distinctUntilChanged(),
-            map((count) => new Array(count).fill(''))
+            map((count) => new Array(count).fill('')),
         );
     }
 

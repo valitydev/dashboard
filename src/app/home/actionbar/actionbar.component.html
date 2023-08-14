@@ -3,6 +3,6 @@
     [expanded]="(userDropdown.state$ | async) === 'open'"
 ></dsh-user-dropdown>
 
-<dsh-dropdown width="287px" #userDropdown="dshDropdown" [hasArrow]="false" position="left">
+<dsh-dropdown #userDropdown="dshDropdown" [hasArrow]="false" position="left" width="287px">
     <ng-template><dsh-user (selected)="userDropdown.close()"></dsh-user></ng-template>
 </dsh-dropdown>

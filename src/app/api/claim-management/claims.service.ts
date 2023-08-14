@@ -12,7 +12,10 @@ import { PartyIdExtension } from '../utils/extensions';
 })
 export class ClaimsService extends createApi(ApiClaimsService, [PartyIdExtension]) {
     requestReviewClaimByIDWithRevisionCheck = (
-        params: ApiMethodParams<ApiClaimsService['requestReviewClaimByID'], 'xRequestID' | 'partyID'>
+        params: ApiMethodParams<
+            ApiClaimsService['requestReviewClaimByID'],
+            'xRequestID' | 'partyID'
+        >,
     ) => {
         return this.requestReviewClaimByID(params).pipe(
             catchError((err) => {
@@ -22,11 +25,11 @@ export class ClaimsService extends createApi(ApiClaimsService, [PartyIdExtension
                             this.requestReviewClaimByID({
                                 ...params,
                                 claimRevision: claim.revision,
-                            })
-                        )
+                            }),
+                        ),
                     );
                 return throwError(err);
-            })
+            }),
         );
     };
 }

@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
     constructor(
         private bootstrapService: BootstrapService,
-        private contextOrganizationService: ContextOrganizationService
+        private contextOrganizationService: ContextOrganizationService,
     ) {}
 
     ngOnInit(): void {

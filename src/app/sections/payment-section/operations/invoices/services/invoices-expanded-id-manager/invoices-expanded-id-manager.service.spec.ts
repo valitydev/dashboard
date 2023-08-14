@@ -51,7 +51,7 @@ describe('InvoicesExpandedIdManager', () => {
             expect(service.expandedId$).toBeObservable(
                 cold('(a|)', {
                     a: 1,
-                })
+                }),
             );
         });
 
@@ -63,7 +63,7 @@ describe('InvoicesExpandedIdManager', () => {
             expect(service.expandedId$).toBeObservable(
                 cold('(a|)', {
                     a: -1,
-                })
+                }),
             );
         });
 
@@ -75,7 +75,7 @@ describe('InvoicesExpandedIdManager', () => {
             expect(service.expandedId$).toBeObservable(
                 cold('(a|)', {
                     a: -1,
-                })
+                }),
             );
         });
     });

@@ -28,18 +28,20 @@ export class PaymentSplitAmountService {
                         paymentInstitutionRealm: realm,
                         shopIDs,
                     }),
-                ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$))
+                ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$)),
             ),
-            map(([fromTime, toTime, splitAmount]) => prepareSplitAmount(splitAmount?.result, fromTime, toTime)),
-            map(splitAmountToChartData)
+            map(([fromTime, toTime, splitAmount]) =>
+                prepareSplitAmount(splitAmount?.result, fromTime, toTime),
+            ),
+            map(splitAmountToChartData),
         ),
         defer(() => this.searchParams$).pipe(
             map(({ currency }) => currency),
-            distinctUntilChanged()
+            distinctUntilChanged(),
         ),
     ]).pipe(
         map(([result, currency]) => result.find((r) => r.currency === currency)),
-        shareReplayRefCount()
+        shareReplayRefCount(),
     );
     isLoading$ = inProgressFrom(() => this.progress$, this.splitAmount$);
     error$ = attach(() => this.errorSub$, this.splitAmount$);

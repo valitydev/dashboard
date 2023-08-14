@@ -28,20 +28,25 @@ export class FetchWithdrawalsService extends PartialFetcher<
         @Inject(SEARCH_LIMIT)
         private searchLimit: number,
         @Inject(DEBOUNCE_FETCHER_ACTION_TIME)
-        debounceActionTime: number
+        debounceActionTime: number,
     ) {
         super(debounceActionTime);
     }
 
     protected fetch(
         params: Omit<ListWithdrawalsRequestParams, 'xRequestID' | 'limit'>,
-        continuationToken?: string
+        continuationToken?: string,
     ): Observable<WithdrawalsAndContinuationToken> {
-        return this.withdrawalsService.listWithdrawals({ ...params, limit: this.searchLimit, continuationToken }).pipe(
-            catchError(() => {
-                this.snackBar.open(this.transloco.translate('shared.httpError', null, 'components'), 'OK');
-                return of({ result: [] });
-            })
-        );
+        return this.withdrawalsService
+            .listWithdrawals({ ...params, limit: this.searchLimit, continuationToken })
+            .pipe(
+                catchError(() => {
+                    this.snackBar.open(
+                        this.transloco.translate('shared.httpError', null, 'components'),
+                        'OK',
+                    );
+                    return of({ result: [] });
+                }),
+            );
     }
 }

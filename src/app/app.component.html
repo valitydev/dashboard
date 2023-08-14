@@ -1,7 +1,7 @@
 <dsh-home>
     <dsh-sections *ngIf="bootstrapped$ | async; else spinner"></dsh-sections>
     <ng-template #spinner>
-        <div fxLayout="row" fxFlexAlign="center">
+        <div fxFlexAlign="center" fxLayout="row">
             <dsh-spinner style="margin: auto"></dsh-spinner>
         </div>
     </ng-template>

@@ -20,9 +20,12 @@ export class CategoryAutocompleteFieldComponent extends FormControlSuperclass<Ca
 
     options$: Observable<Option<Category>[]> = this.categoriesService.categories$.pipe(
         map((categories) =>
-            categories.map((category) => ({ label: `${category.categoryID} - ${category.name}`, value: category }))
+            categories.map((category) => ({
+                label: `${category.categoryID} - ${category.name}`,
+                value: category,
+            })),
         ),
-        shareReplayRefCount()
+        shareReplayRefCount(),
     );
 
     constructor(private categoriesService: CategoriesService) {

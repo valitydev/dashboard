@@ -16,7 +16,9 @@ export interface InternationalBankAccountForm {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => InternationalBankAccountFormComponent),
 })
-export class InternationalBankAccountFormComponent extends FormGroupSuperclass<Partial<InternationalBankAccountForm>> {
+export class InternationalBankAccountFormComponent extends FormGroupSuperclass<
+    Partial<InternationalBankAccountForm>
+> {
     control = this.fb.group({
         payoutTool: null,
         currency: null,

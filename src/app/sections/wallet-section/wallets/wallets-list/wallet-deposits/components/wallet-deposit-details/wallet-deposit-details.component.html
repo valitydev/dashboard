@@ -8,23 +8,23 @@
     </div>
     <div gdColumns="1fr" gdColumns.gt-sm="1fr 1fr 1fr" gdGap="24px">
         <dsh-details-item [title]="t('amount')">{{
-            deposit.body.amount | amountCurrency : deposit.body.currency
+            deposit.body.amount | amountCurrency: deposit.body.currency
         }}</dsh-details-item>
         <dsh-details-item [title]="t('fee')">{{
-            deposit.fee.amount | amountCurrency : deposit.fee.currency
+            deposit.fee.amount | amountCurrency: deposit.fee.currency
         }}</dsh-details-item>
         <dsh-details-item [title]="t('total')">{{
-            deposit.body.amount - deposit.fee.amount | amountCurrency : deposit.body.currency
+            deposit.body.amount - deposit.fee.amount | amountCurrency: deposit.body.currency
         }}</dsh-details-item>
         <dsh-details-item [title]="t('status')"
             ><dsh-status [color]="deposit.status | depositStatusColor">{{
-            (depositStatusDict$ | async)?.[deposit.status]
+                (depositStatusDict$ | async)?.[deposit.status]
             }}</dsh-status></dsh-details-item
         >
         <dsh-details-item [title]="t('createdAt')">{{
-            deposit.createdAt | date : 'dd MMMM yyyy, HH:mm'
+            deposit.createdAt | date: 'dd MMMM yyyy, HH:mm'
         }}</dsh-details-item>
-        <dsh-details-item gdColumn.gt-sm="1/-1" *ngIf="deposit.failure" [title]="t('error')">{{
+        <dsh-details-item *ngIf="deposit.failure" [title]="t('error')" gdColumn.gt-sm="1/-1">{{
             deposit.failure.code
         }}</dsh-details-item>
     </div>

@@ -11,19 +11,22 @@ export class FetchReportsService extends FetchSuperclass<
     Report,
     Omit<GetReportsRequestParams, 'xRequestID' | 'xRequestDeadline'>
 > {
-    constructor(private reportsService: ReportsService, private log: NotifyLogService) {
+    constructor(
+        private reportsService: ReportsService,
+        private log: NotifyLogService,
+    ) {
         super();
     }
 
     protected fetch(
-        params: Omit<GetReportsRequestParams, 'xRequestID' | 'xRequestDeadline'>
+        params: Omit<GetReportsRequestParams, 'xRequestID' | 'xRequestDeadline'>,
     ): Observable<FetchResult<Report, string>> {
         return this.reportsService.getReports(params).pipe(
             map((result) => ({ result })),
             catchError((err) => {
                 this.log.error(err);
                 return of({ result: [] });
-            })
+            }),
         );
     }
 }

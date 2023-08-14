@@ -19,11 +19,17 @@ export class ApiKeyComponent {
         private keycloakService: KeycloakService,
         private configService: ConfigService,
         private notificationService: NotificationService,
-        private transloco: TranslocoService
+        private transloco: TranslocoService,
     ) {}
 
     copied(isCopied: boolean): void {
-        if (isCopied) this.notificationService.success(this.transloco.translate('shared.copied', null, 'components'));
-        else this.notificationService.success(this.transloco.translate('shared.copyFailed', null, 'components'));
+        if (isCopied)
+            this.notificationService.success(
+                this.transloco.translate('shared.copied', null, 'components'),
+            );
+        else
+            this.notificationService.success(
+                this.transloco.translate('shared.copyFailed', null, 'components'),
+            );
     }
 }

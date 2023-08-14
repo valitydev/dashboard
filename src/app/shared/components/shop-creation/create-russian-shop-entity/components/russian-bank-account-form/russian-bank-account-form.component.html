@@ -1,13 +1,13 @@
 <div
     *transloco="let p; scope: 'components'; read: 'components.russianBankAccountForm'"
+    [formGroup]="control"
     fxLayout="column"
     fxLayoutGap="16px"
-    [formGroup]="control"
 >
     <dsh-dadata-autocomplete
         [formControl]="searchControl"
-        type="bank"
         [label]="p('search')"
+        type="bank"
         (optionSelected)="bankSelected($event)"
     ></dsh-dadata-autocomplete>
 
@@ -18,15 +18,23 @@
         </mat-form-field>
         <mat-form-field>
             <mat-label>{{ p('bik') }}</mat-label>
-            <dsh-format-input formControlName="bankBik" format="bik" required></dsh-format-input>
+            <dsh-format-input format="bik" formControlName="bankBik" required></dsh-format-input>
         </mat-form-field>
         <mat-form-field>
             <mat-label>{{ p('postAccount') }}</mat-label>
-            <dsh-format-input formControlName="bankPostAccount" format="bankPostAccount" required></dsh-format-input>
+            <dsh-format-input
+                format="bankPostAccount"
+                formControlName="bankPostAccount"
+                required
+            ></dsh-format-input>
         </mat-form-field>
         <mat-form-field gdColumn="1/-1">
             <mat-label>{{ p('account') }}</mat-label>
-            <dsh-format-input formControlName="account" format="bankAccount" required></dsh-format-input>
+            <dsh-format-input
+                format="bankAccount"
+                formControlName="account"
+                required
+            ></dsh-format-input>
         </mat-form-field>
     </div>
 </div>

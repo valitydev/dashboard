@@ -24,7 +24,7 @@ export class PaymentsToolDistributionComponent implements OnChanges {
 
     constructor(
         private distributionsService: PaymentsToolDistributionService,
-        @Inject(CHARTS_THEME) private theme: ChartsThemeProvider
+        @Inject(CHARTS_THEME) private theme: ChartsThemeProvider,
     ) {}
 
     ngOnChanges(changes: SimpleChanges) {

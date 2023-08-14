@@ -12,7 +12,17 @@ import {
 
 @NgModule({
     imports: [CommonModule, BootstrapIconModule],
-    declarations: [PanelComponent, PanelHeaderComponent, PanelContentComponent, PanelHeaderIconComponent],
-    exports: [PanelComponent, PanelHeaderComponent, PanelContentComponent, PanelHeaderIconComponent],
+    declarations: [
+        PanelComponent,
+        PanelHeaderComponent,
+        PanelContentComponent,
+        PanelHeaderIconComponent,
+    ],
+    exports: [
+        PanelComponent,
+        PanelHeaderComponent,
+        PanelContentComponent,
+        PanelHeaderIconComponent,
+    ],
 })
 export class PanelModule {}

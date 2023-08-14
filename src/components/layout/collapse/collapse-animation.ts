@@ -9,7 +9,10 @@ export const INDICATOR_ROTATE = trigger('indicatorRotate', [
     state('expanded', style({ transform: 'rotate({{rotateDeg}}deg)' }), {
         params: { rotateDeg: 180 },
     }),
-    transition('expanded <=> collapsed, void => collapsed', animate(EXPANSION_PANEL_ANIMATION_TIMING)),
+    transition(
+        'expanded <=> collapsed, void => collapsed',
+        animate(EXPANSION_PANEL_ANIMATION_TIMING),
+    ),
 ]);
 
 export const BODY_EXPANSION = trigger('bodyExpansion', [

@@ -42,7 +42,10 @@ const createTestLegalAgreement = (): LegalAgreement => ({
     legalAgreementID: '000000/00',
 });
 
-const TEST_SHOP_CREATION: Omit<ShopCreationModification, 'shopModificationType' | 'contractID' | 'payoutToolID'> = {
+const TEST_SHOP_CREATION: Omit<
+    ShopCreationModification,
+    'shopModificationType' | 'contractID' | 'payoutToolID'
+> = {
     category: {
         categoryID: 1,
     },
@@ -67,6 +70,10 @@ export const createTestShopModifications = ({
     createRussianLegalEntityModification(contractorID, TEST_RUSSIAN_LEGAL_ENTITY),
     createContractCreationModification(contractID, { contractorID }),
     createContractLegalAgreementBindingModification(contractID, createTestLegalAgreement()),
-    createRussianContractPayoutToolCreationModification(contractID, payoutToolID, TEST_RUSSIAN_BANK_ACCOUNT),
+    createRussianContractPayoutToolCreationModification(
+        contractID,
+        payoutToolID,
+        TEST_RUSSIAN_BANK_ACCOUNT,
+    ),
     createShopCreationModification(shopID, { ...TEST_SHOP_CREATION, contractID, payoutToolID }),
 ];
