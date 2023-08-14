@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as Sentry from '@sentry/angular';
+import * as Sentry from '@sentry/angular-ivy';
 import { first } from 'rxjs/operators';
 
 import { BootstrapService } from './bootstrap.service';

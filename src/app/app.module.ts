@@ -24,7 +24,7 @@ import {
     TranslocoModule,
     translocoConfig,
 } from '@ngneat/transloco';
-import * as Sentry from '@sentry/angular';
+import * as Sentry from '@sentry/angular-ivy';
 
 import { AnapiModule } from '@dsh/app/api/anapi';
 import { ClaimManagementModule } from '@dsh/app/api/claim-management';
