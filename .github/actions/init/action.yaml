@@ -1,8 +1,8 @@
 name: Init
 description: Init
 runs:
-    using: composite
-    steps:
-        - uses: valitydev/action-frontend/setup@v0.1
-        - run: npm ci --force # TODO: Remove "--force" after updating Angular in external libraries (@vality)
-          shell: bash
+  using: composite
+  steps:
+    - uses: valitydev/action-frontend/setup@v0.1
+    - run: npm ci --force # TODO: Remove "--force" after updating Angular in external libraries (@vality)
+      shell: bash
