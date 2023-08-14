@@ -5,7 +5,7 @@
   "scripts": {
     "start": "ng serve --proxy-config proxy.conf.js --port 8000",
     "stage": "cross-env NODE_ENV=stage ng serve --proxy-config proxy.conf.js --port 8001 --configuration=stage",
-    "fix": "npm run lint:fix && npm run format:fix",
+    "fix": "npm run lint:fix && npm run format:fix && npm run spell:fix",
     "build": "ng build && transloco-optimize dist/assets/i18n",
     "test": "ng test",
     "i18n:extract": "transloco-keys-manager extract",
@@ -20,7 +20,9 @@
     "tools-cmd": "ts-node --project tools/tsconfig.json",
     "icons-list-gen": "npm run tools-cmd -- tools/gen-icons-list.ts",
     "icons-ids-gen": "npm run tools-cmd -- tools/gen-icons-ids.ts",
-    "ci:test": "npm run test -- --configuration=ci"
+    "ci:test": "npm run test -- --configuration=ci",
+    "spell": "cspell --no-progress **",
+    "spell:fix": "cspell --no-progress --show-suggestions --show-context **"
   },
   "dependencies": {
     "@angular/animations": "^16.2.0",
@@ -86,9 +88,11 @@
     "@types/lodash-es": "4.17.6",
     "@types/moment": "2.13.0",
     "@types/prettier": "^3.0.0",
+    "@vality/cspell-config": "^7.0.1-pr-33-52841c7.0",
     "@vality/eslint-config": "^8.0.1-pr-33-52841c7.0",
     "@vality/prettier-config": "3.0.1-pr-33-52841c7.0",
     "cross-env": "^7.0.3",
+    "cspell": "^7.0.0",
     "dotenv": "^16.0.3",
     "eslint": "^8.47.0",
     "glob": "^7.1.6",

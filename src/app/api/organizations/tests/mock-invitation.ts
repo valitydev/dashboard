@@ -9,7 +9,7 @@ import { MOCK_MEMBER_ROLE } from './mock-member-role';
 
 export const MOCK_INVITEE_CONTACT: InviteeContact = {
     type: InviteeContact.TypeEnum.EMail,
-    email: 'user@rbkmoney.com',
+    email: 'user@vality.dev',
 };
 
 export const MOCK_INVITEE: Invitee = {
@@ -23,6 +23,6 @@ export const MOCK_INVITATION: Invitation = {
     expiresAt: '2020-11-21T18:43:00.000000Z',
     invitee: MOCK_INVITEE,
     acceptToken: 'token',
-    metadata: { metameta: 'postpost' },
+    metadata: { metaMeta: 'postPost' },
     status: InvitationStatusName.Pending,
 };

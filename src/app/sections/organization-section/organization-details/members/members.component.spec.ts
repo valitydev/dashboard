@@ -75,7 +75,7 @@ describe('MembersComponent', () => {
     });
 
     describe('refresh', () => {
-        it('should load memebers$', () => {
+        it('should load members$', () => {
             component.members$.subscribe();
             component.refresh();
             verify(mockOrganizationsService.listOrgMembers(MOCK_ORG.id)).twice();

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { OrginizationSectionComponent } from './organization-section.component';
+import { OrganizationSectionComponent } from './organization-section.component';
 
 const ORGANIZATION_SECTION_ROUTES: Routes = [
     {
         path: '',
-        component: OrginizationSectionComponent,
+        component: OrganizationSectionComponent,
         children: [
             {
                 path: 'organizations',
@@ -35,4 +35,4 @@ const ORGANIZATION_SECTION_ROUTES: Routes = [
     imports: [RouterModule.forChild(ORGANIZATION_SECTION_ROUTES)],
     exports: [RouterModule],
 })
-export class OrginizationSectionRoutingModule {}
+export class OrganizationSectionRoutingModule {}

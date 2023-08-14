@@ -4,7 +4,7 @@ import { InvoiceStatus } from '@vality/swag-anapi-v2';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { InvoiceStatusLabelPipe } from './pipes/invoce-status-label.pipe';
+import { InvoiceStatusLabelPipe } from './pipes/invoice-status-label.pipe';
 import { OPTION_LABELS } from './types/option-labels';
 
 import StatusEnum = InvoiceStatus.StatusEnum;
