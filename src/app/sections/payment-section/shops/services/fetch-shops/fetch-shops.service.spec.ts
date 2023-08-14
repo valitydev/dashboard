@@ -9,12 +9,13 @@ import { AnalyticsService } from '@dsh/app/api/analytics';
 import { PaymentInstitutionRealm } from '@dsh/app/api/model';
 import { ApiShopsService } from '@dsh/app/api/shop';
 
-import { FetchShopsService, SHOPS_LIST_PAGINATION_OFFSET } from './fetch-shops.service';
 import { generateMockShopsList } from '../../tests/generate-mock-shops-list';
 import { MockAnalyticsService } from '../../tests/mock-analytics-service';
 import { ShopsBalanceService } from '../shops-balance/shops-balance.service';
 import { ShopsFiltersService } from '../shops-filters/shops-filters.service';
 import { ShopsFiltersStoreService } from '../shops-filters-store/shops-filters-store.service';
+
+import { FetchShopsService, SHOPS_LIST_PAGINATION_OFFSET } from './fetch-shops.service';
 
 class MockApiShopsService {
     shops$: Observable<Shop[]>;
@@ -93,7 +94,7 @@ describe('FetchShopsService', () => {
                         index: 2,
                         categoryID: 2,
                     },
-                ])
+                ]),
             );
 
             const expectedShops$ = cold('a', {
@@ -107,8 +108,8 @@ describe('FetchShopsService', () => {
                 service.allShops$.pipe(
                     map((list) => {
                         return list.map(({ id }) => id);
-                    })
-                )
+                    }),
+                ),
             ).toBeObservable(expectedShops$);
         });
     });
@@ -129,8 +130,8 @@ describe('FetchShopsService', () => {
                 service.shownShops$.pipe(
                     map((list) => {
                         return list.map(({ id }) => id);
-                    })
-                )
+                    }),
+                ),
             ).toBeObservable(expectedShops$);
         });
     });
@@ -166,8 +167,8 @@ describe('FetchShopsService', () => {
                 service.allShops$.pipe(
                     map((list) => {
                         return list.map(({ id }) => id);
-                    })
-                )
+                    }),
+                ),
             ).toBeObservable(expectedShops$);
         });
 
@@ -183,7 +184,7 @@ describe('FetchShopsService', () => {
                 cold('(ab)', {
                     a: true,
                     b: false,
-                })
+                }),
             );
 
             service.refreshData();
@@ -192,7 +193,7 @@ describe('FetchShopsService', () => {
                 cold('(ab)', {
                     a: true,
                     b: false,
-                })
+                }),
             );
         });
     });
@@ -217,12 +218,12 @@ describe('FetchShopsService', () => {
                 service.shownShops$.pipe(
                     map((list) => {
                         return list.map(({ id }) => id);
-                    })
-                )
+                    }),
+                ),
             ).toBeObservable(
                 cold('a', {
                     a: mockListIds.slice(0, 10),
-                })
+                }),
             );
         });
 
@@ -238,7 +239,7 @@ describe('FetchShopsService', () => {
                 cold('(ab)', {
                     a: true,
                     b: false,
-                })
+                }),
             );
 
             service.showMore();
@@ -247,7 +248,7 @@ describe('FetchShopsService', () => {
                 cold('(ab)', {
                     a: true,
                     b: false,
-                })
+                }),
             );
         });
     });

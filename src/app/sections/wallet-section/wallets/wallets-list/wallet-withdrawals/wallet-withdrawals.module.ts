@@ -7,7 +7,12 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { ApiModelTypesModule, AmountCurrencyModule } from '@dsh/app/shared';
 import { ButtonModule } from '@dsh/components/buttons';
 import { StatusModule, TextColorModule } from '@dsh/components/indicators';
-import { AccordionModule, CollapseModule, DetailsItemModule, RowModule } from '@dsh/components/layout';
+import {
+    AccordionModule,
+    CollapseModule,
+    DetailsItemModule,
+    RowModule,
+} from '@dsh/components/layout';
 import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
 
 import { WalletWithdrawalDetailsComponent } from './components';

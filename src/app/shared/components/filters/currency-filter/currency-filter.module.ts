@@ -5,11 +5,18 @@ import { TranslocoModule } from '@ngneat/transloco';
 
 import { FilterModule } from '@dsh/components/filter';
 
-import { CurrencyFilterComponent } from './currency-filter.component';
 import { CurrencyFieldModule } from '../../inputs/currency-field';
 
+import { CurrencyFilterComponent } from './currency-filter.component';
+
 @NgModule({
-    imports: [CommonModule, TranslocoModule, FilterModule, CurrencyFieldModule, ReactiveFormsModule],
+    imports: [
+        CommonModule,
+        TranslocoModule,
+        FilterModule,
+        CurrencyFieldModule,
+        ReactiveFormsModule,
+    ],
     declarations: [CurrencyFilterComponent],
     exports: [CurrencyFilterComponent],
 })

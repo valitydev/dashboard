@@ -24,17 +24,25 @@ export class FetchDepositRevertsService extends PartialFetcher<
         @Inject(SEARCH_LIMIT)
         private searchLimit: number,
         @Inject(DEBOUNCE_FETCHER_ACTION_TIME)
-        debounceActionTime: number
+        debounceActionTime: number,
     ) {
         super(debounceActionTime);
     }
 
-    protected fetch(params: Omit<ListDepositRevertsRequestParams, 'xRequestID' | 'limit'>, continuationToken: string) {
-        return this.depositsService.listDepositReverts({ ...params, limit: this.searchLimit, continuationToken }).pipe(
-            catchError(() => {
-                this.snackBar.open(this.transloco.translate('shared.httpError', null, 'components'), 'OK');
-                return of({ result: [] });
-            })
-        );
+    protected fetch(
+        params: Omit<ListDepositRevertsRequestParams, 'xRequestID' | 'limit'>,
+        continuationToken: string,
+    ) {
+        return this.depositsService
+            .listDepositReverts({ ...params, limit: this.searchLimit, continuationToken })
+            .pipe(
+                catchError(() => {
+                    this.snackBar.open(
+                        this.transloco.translate('shared.httpError', null, 'components'),
+                        'OK',
+                    );
+                    return of({ result: [] });
+                }),
+            );
     }
 }

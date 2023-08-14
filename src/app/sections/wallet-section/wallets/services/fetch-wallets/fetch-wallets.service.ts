@@ -13,16 +13,26 @@ export class FetchWalletsService extends PartialFetcher<
     Wallet,
     Pick<ListWalletsRequestParams, 'identityID' | 'currencyID'>
 > {
-    lastUpdated$: Observable<string> = this.searchResult$.pipe(mapToTimestamp, shareReplayRefCount());
+    lastUpdated$: Observable<string> = this.searchResult$.pipe(
+        mapToTimestamp,
+        shareReplayRefCount(),
+    );
 
-    constructor(@Inject(SEARCH_LIMIT) private searchLimit: number, private walletService: WalletsService) {
+    constructor(
+        @Inject(SEARCH_LIMIT) private searchLimit: number,
+        private walletService: WalletsService,
+    ) {
         super();
     }
 
     protected fetch(
         params: Pick<ListWalletsRequestParams, 'identityID' | 'currencyID'>,
-        continuationToken: string
+        continuationToken: string,
     ): Observable<FetchResult<Wallet>> {
-        return this.walletService.listWallets({ limit: this.searchLimit, ...params, continuationToken });
+        return this.walletService.listWallets({
+            limit: this.searchLimit,
+            ...params,
+            continuationToken,
+        });
     }
 }

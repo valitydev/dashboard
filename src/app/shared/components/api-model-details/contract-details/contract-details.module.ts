@@ -6,11 +6,19 @@ import { TranslocoModule } from '@ngneat/transloco';
 
 import { LayoutModule } from '@dsh/components/layout';
 
-import { ContractDetailsComponent } from './contract-details.component';
 import { ContractorDetailsModule } from '../contractor-details';
 
+import { ContractDetailsComponent } from './contract-details.component';
+
 @NgModule({
-    imports: [FlexLayoutModule, TranslocoModule, CommonModule, MatDividerModule, ContractorDetailsModule, LayoutModule],
+    imports: [
+        FlexLayoutModule,
+        TranslocoModule,
+        CommonModule,
+        MatDividerModule,
+        ContractorDetailsModule,
+        LayoutModule,
+    ],
     declarations: [ContractDetailsComponent],
     exports: [ContractDetailsComponent],
 })

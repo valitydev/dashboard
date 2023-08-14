@@ -25,7 +25,7 @@ export function createInternationalContractPayoutToolModification(
                 { accountHolder?: CorrespondentAccount['accountHolder'] }
             >;
         }
-    >
+    >,
 ): PartyModification {
     return createContractPayoutToolCreationModification(id, payoutToolID, {
         currency: {

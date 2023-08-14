@@ -16,7 +16,7 @@ import { FilterSuperclass } from '@dsh/components/filter';
 export class IdentityFilterComponent extends FilterSuperclass<Identity['id']> {
     identity$ = combineLatest([this.identitiesService.identities$, this.savedValue$]).pipe(
         map(([identities, value]) => identities.find((i) => i.id === value)),
-        share()
+        share(),
     );
 
     constructor(private identitiesService: IdentitiesService) {

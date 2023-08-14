@@ -58,7 +58,10 @@ export class ButtonComponent extends _MatButtonMixinBase implements OnChanges {
     button: HTMLButtonElement;
     private colorManager: ColorManager;
 
-    constructor(elementRef: ElementRef, private renderer: Renderer2) {
+    constructor(
+        elementRef: ElementRef,
+        private renderer: Renderer2,
+    ) {
         super(elementRef);
         const button = elementRef.nativeElement as HTMLButtonElement;
         this.button = button;

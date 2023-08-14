@@ -8,12 +8,13 @@ import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 import { ButtonModule } from '@dsh/components/buttons';
 
+import { HumanizeDurationModule } from '../../../../../../../humanize-duration';
+import { generateMockPayment } from '../../../tests/generate-mock-payment';
+
 import { CancelHoldService } from './cancel-hold';
 import { CreateHoldService } from './create-hold';
 import { HoldDetailsComponent } from './hold-details.component';
 import { HoldActivePipe } from './pipes/hold-active/hold-active.pipe';
-import { HumanizeDurationModule } from '../../../../../../../humanize-duration';
-import { generateMockPayment } from '../../../tests/generate-mock-payment';
 
 describe('HoldComponent', () => {
     let component: HoldDetailsComponent;
@@ -176,16 +177,16 @@ describe('HoldComponent', () => {
 
             when(
                 mockCancelHoldService.openDialog(
-                    deepEqual({ invoiceID: mockPayment.invoiceID, paymentID: mockPayment.id })
-                )
+                    deepEqual({ invoiceID: mockPayment.invoiceID, paymentID: mockPayment.id }),
+                ),
             ).thenReturn(of(BaseDialogResponseStatus.Cancelled));
 
             component.cancelHold();
 
             verify(
                 mockCancelHoldService.openDialog(
-                    deepEqual({ invoiceID: mockPayment.invoiceID, paymentID: mockPayment.id })
-                )
+                    deepEqual({ invoiceID: mockPayment.invoiceID, paymentID: mockPayment.id }),
+                ),
             ).once();
             expect().nothing();
         });
@@ -206,8 +207,11 @@ describe('HoldComponent', () => {
 
             when(
                 mockCancelHoldService.openDialog(
-                    deepEqual({ invoiceID: paymentState.a.invoiceID, paymentID: paymentState.a.id })
-                )
+                    deepEqual({
+                        invoiceID: paymentState.a.invoiceID,
+                        paymentID: paymentState.a.id,
+                    }),
+                ),
             ).thenReturn(of(BaseDialogResponseStatus.Success));
 
             component.cancelHold();
@@ -241,8 +245,8 @@ describe('HoldComponent', () => {
                         paymentID: mockPayment.id,
                         currency: mockPayment.currency,
                         maxAllowedAmount: mockPayment.amount,
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(of(BaseDialogResponseStatus.Cancelled));
 
             component.confirmHold();
@@ -254,8 +258,8 @@ describe('HoldComponent', () => {
                         paymentID: mockPayment.id,
                         currency: mockPayment.currency,
                         maxAllowedAmount: mockPayment.amount,
-                    })
-                )
+                    }),
+                ),
             ).once();
             expect().nothing();
         });
@@ -281,8 +285,8 @@ describe('HoldComponent', () => {
                         paymentID: paymentState.a.id,
                         currency: paymentState.a.currency,
                         maxAllowedAmount: paymentState.a.amount,
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(of(BaseDialogResponseStatus.Success));
 
             component.confirmHold();

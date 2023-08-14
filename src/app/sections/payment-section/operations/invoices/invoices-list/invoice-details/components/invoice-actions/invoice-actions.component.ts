@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Inject,
+    Input,
+    Output,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Invoice } from '@vality/swag-payments';
@@ -28,7 +35,7 @@ export class InvoiceActionsComponent {
         private fulfillInvoiceService: FulfillInvoiceService,
         private cancelInvoiceService: CancelInvoiceService,
         private dialog: MatDialog,
-        @Inject(DIALOG_CONFIG) private dialogConfig: DialogConfig
+        @Inject(DIALOG_CONFIG) private dialogConfig: DialogConfig,
     ) {}
 
     createPaymentLink(): void {

@@ -27,14 +27,18 @@ export class FetchDepositsService extends PartialFetcher<
         @Inject(SEARCH_LIMIT)
         private searchLimit: number,
         @Inject(DEBOUNCE_FETCHER_ACTION_TIME)
-        debounceActionTime: number
+        debounceActionTime: number,
     ) {
         super(debounceActionTime);
     }
 
     protected fetch(
-        { amountTo, amountFrom, ...params }: Omit<ListDepositsRequestParams, 'xRequestID' | 'limit'>,
-        continuationToken: string
+        {
+            amountTo,
+            amountFrom,
+            ...params
+        }: Omit<ListDepositsRequestParams, 'xRequestID' | 'limit'>,
+        continuationToken: string,
     ) {
         return this.depositsService
             .listDeposits({
@@ -46,9 +50,12 @@ export class FetchDepositsService extends PartialFetcher<
             })
             .pipe(
                 catchError(() => {
-                    this.snackBar.open(this.transloco.translate('shared.httpError', null, 'components'), 'OK');
+                    this.snackBar.open(
+                        this.transloco.translate('shared.httpError', null, 'components'),
+                        'OK',
+                    );
                     return of({ result: [] });
-                })
+                }),
             );
     }
 }

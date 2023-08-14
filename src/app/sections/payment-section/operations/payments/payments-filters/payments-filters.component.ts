@@ -16,14 +16,20 @@ import { DateRange, Preset, createDateRangeWithPreset } from '@dsh/components/da
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
+import { filterShopsByRealm } from '../../operators';
+
 import { AdditionalFilters, FloatingFilters } from './additional-filters';
 import { DialogFiltersComponent } from './additional-filters/components/dialog-filters/dialog-filters.component';
 import { CardBinPan } from './card-bin-pan-filter';
-import { filterShopsByRealm } from '../../operators';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 
-type MainFilters = { dateRange: DateRange; invoiceIDs?: string[]; shopIDs?: Shop['id'][]; binPan?: CardBinPan };
+type MainFilters = {
+    dateRange: DateRange;
+    invoiceIDs?: string[];
+    shopIDs?: Shop['id'][];
+    binPan?: CardBinPan;
+};
 export type Filters = MainFilters & AdditionalFilters & FloatingFilters;
 
 const MAIN_FILTERS = ['dateRange'];
@@ -39,7 +45,10 @@ export class PaymentsFiltersComponent implements OnInit, OnChanges {
     @Input() initParams: Filters;
     @Output() filtersChanged = new EventEmitter<MainFilters>();
 
-    shops$ = defer(() => this.realm$).pipe(filterShopsByRealm(this.shopsDataService.shops$), shareReplay(1));
+    shops$ = defer(() => this.realm$).pipe(
+        filterShopsByRealm(this.shopsDataService.shops$),
+        shareReplay(1),
+    );
     isAdditionalFilterApplied$ = defer(() => this.additionalFilters$).pipe(map(negate(isEmpty)));
     defaultDateRange = createDateRangeWithPreset(Preset.Last90days);
     form = this.fb.group({
@@ -50,7 +59,9 @@ export class PaymentsFiltersComponent implements OnInit, OnChanges {
     });
 
     get keys(): string[] {
-        return this.mediaObserver.isActive('gt-sm') ? [...MAIN_FILTERS, ...FLOATING_FILTERS] : MAIN_FILTERS;
+        return this.mediaObserver.isActive('gt-sm')
+            ? [...MAIN_FILTERS, ...FLOATING_FILTERS]
+            : MAIN_FILTERS;
     }
 
     private additionalFilters$ = new BehaviorSubject<AdditionalFilters>({});
@@ -60,12 +71,14 @@ export class PaymentsFiltersComponent implements OnInit, OnChanges {
         private shopsDataService: ShopsDataService,
         private fb: FormBuilder,
         private dialog: MatDialog,
-        private mediaObserver: MediaObserver
+        private mediaObserver: MediaObserver,
     ) {}
 
     ngOnInit(): void {
         combineLatest([
-            getFormValueChanges(this.form).pipe(map((filters) => pick(filters, this.keys) as MainFilters)),
+            getFormValueChanges(this.form).pipe(
+                map((filters) => pick(filters, this.keys) as MainFilters),
+            ),
             this.additionalFilters$.pipe(map((filters) => omit(filters, this.keys))),
         ])
             .pipe(untilDestroyed(this))

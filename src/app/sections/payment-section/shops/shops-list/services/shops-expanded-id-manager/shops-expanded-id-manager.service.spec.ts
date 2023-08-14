@@ -3,12 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { cold } from 'jasmine-marbles';
 
-import { ShopsExpandedIdManagerService } from './shops-expanded-id-manager.service';
 import { FetchShopsService } from '../../../services/fetch-shops/fetch-shops.service';
 import { generateMockShopId } from '../../../tests/generate-mock-shop-id';
 import { generateMockShopsList } from '../../../tests/generate-mock-shops-list';
 import { MockActivatedRoute } from '../../tests/mock-activated-route';
 import { MockFetchShops } from '../../tests/mock-fetch-shops';
+
+import { ShopsExpandedIdManagerService } from './shops-expanded-id-manager.service';
 
 describe('ShopsExpandedIdManagerService', () => {
     let service: ShopsExpandedIdManagerService;

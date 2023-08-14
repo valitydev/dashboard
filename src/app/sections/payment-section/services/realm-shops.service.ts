@@ -6,15 +6,22 @@ import { map } from 'rxjs/operators';
 import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { ShopsDataService } from '@dsh/app/shared';
 
-import { PaymentInstitutionRealmService } from './payment-institution-realm.service';
 import { getShopsByRealm } from '../operations/operators';
+
+import { PaymentInstitutionRealmService } from './payment-institution-realm.service';
 
 @Injectable()
 export class RealmShopsService {
-    shops$: Observable<Shop[]> = combineLatest([this.shopsDataService.shops$, this.realmService.realm$]).pipe(
+    shops$: Observable<Shop[]> = combineLatest([
+        this.shopsDataService.shops$,
+        this.realmService.realm$,
+    ]).pipe(
         map(([shops, realm]) => (realm ? getShopsByRealm(shops, realm) : [])),
-        shareReplayRefCount()
+        shareReplayRefCount(),
     );
 
-    constructor(private shopsDataService: ShopsDataService, private realmService: PaymentInstitutionRealmService) {}
+    constructor(
+        private shopsDataService: ShopsDataService,
+        private realmService: PaymentInstitutionRealmService,
+    ) {}
 }

@@ -9,7 +9,14 @@ import { DetailsItemModule } from '@dsh/components/layout';
 import { WalletsAccountInfoComponent } from './wallets-account-info.component';
 
 @NgModule({
-    imports: [CommonModule, FlexModule, DetailsItemModule, TranslocoModule, GridModule, AmountCurrencyModule],
+    imports: [
+        CommonModule,
+        FlexModule,
+        DetailsItemModule,
+        TranslocoModule,
+        GridModule,
+        AmountCurrencyModule,
+    ],
     declarations: [WalletsAccountInfoComponent],
     exports: [WalletsAccountInfoComponent],
 })

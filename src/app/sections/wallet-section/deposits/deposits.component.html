@@ -4,14 +4,17 @@
         (filtersChanged)="filtersChanged($event)"
     ></dsh-deposits-filters>
     <div fxLayout="column" fxLayoutGap="16px">
-        <dsh-last-updated [lastUpdated]="lastUpdated$ | async" (update)="refreshList()"></dsh-last-updated>
+        <dsh-last-updated
+            [lastUpdated]="lastUpdated$ | async"
+            (update)="refreshList()"
+        ></dsh-last-updated>
         <dsh-deposit-panels
-            [list]="deposits$ | async"
-            [isLoading]="isLoading$ | async"
-            [hasMore]="hasMore$ | async"
             [expandedId]="expandedId$ | async"
-            (showMore)="requestNextPage()"
+            [hasMore]="hasMore$ | async"
+            [isLoading]="isLoading$ | async"
+            [list]="deposits$ | async"
             (expandedIdChanged)="expandedIdChange($event)"
+            (showMore)="requestNextPage()"
         ></dsh-deposit-panels>
     </div>
 </div>

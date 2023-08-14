@@ -1,5 +1,5 @@
 import { ErrorHandler as AngularErrorHandler, Injectable } from '@angular/core';
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/angular-ivy';
 
 import { extractError } from '@dsh/utils';
 

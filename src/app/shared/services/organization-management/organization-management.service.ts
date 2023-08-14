@@ -13,30 +13,33 @@ export class OrganizationManagementService implements Initializable {
     members$: Observable<Member[]> = defer(() => this.organization$).pipe(
         switchMap(({ id }) => this.membersService.listOrgMembers({ orgId: id })),
         pluck('result'),
-        shareReplay(SHARE_REPLAY_CONF)
+        shareReplay(SHARE_REPLAY_CONF),
     );
     isOrganizationOwner$: Observable<boolean> = defer(() =>
-        combineLatest([this.organization$, this.contextOrganizationService.organization$.pipe(pluck('party'))])
+        combineLatest([
+            this.organization$,
+            this.contextOrganizationService.organization$.pipe(pluck('party')),
+        ]),
     ).pipe(
         map(([{ owner }, id]) => owner === id),
-        shareReplay(SHARE_REPLAY_CONF)
+        shareReplay(SHARE_REPLAY_CONF),
     );
     isOrganizationAdmin$: Observable<boolean> = this.contextOrganizationService.member$.pipe(
         map((member) => member.roles.findIndex((r) => r.roleId === RoleId.Administrator) !== -1),
-        shareReplay(SHARE_REPLAY_CONF)
+        shareReplay(SHARE_REPLAY_CONF),
     );
     hasAdminAccess$: Observable<boolean> = defer(() =>
-        combineLatest([this.isOrganizationAdmin$, this.isOrganizationOwner$])
+        combineLatest([this.isOrganizationAdmin$, this.isOrganizationOwner$]),
     ).pipe(
         map((hasAdminLikeRoles) => hasAdminLikeRoles.includes(true)),
-        shareReplay(SHARE_REPLAY_CONF)
+        shareReplay(SHARE_REPLAY_CONF),
     );
 
     private organization$ = new ReplaySubject<Organization>();
 
     constructor(
         private membersService: MembersService,
-        private contextOrganizationService: ContextOrganizationService
+        private contextOrganizationService: ContextOrganizationService,
     ) {}
 
     init(organization: Organization) {

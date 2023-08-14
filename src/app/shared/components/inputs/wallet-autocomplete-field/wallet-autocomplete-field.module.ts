@@ -8,7 +8,13 @@ import { SelectFieldModule } from '@vality/ng-core';
 import { WalletAutocompleteFieldComponent } from './wallet-autocomplete-field.component';
 
 @NgModule({
-    imports: [CommonModule, MatInputModule, MatFormFieldModule, ReactiveFormsModule, SelectFieldModule],
+    imports: [
+        CommonModule,
+        MatInputModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        SelectFieldModule,
+    ],
     declarations: [WalletAutocompleteFieldComponent],
     exports: [WalletAutocompleteFieldComponent],
 })

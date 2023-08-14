@@ -43,7 +43,11 @@ export const toNavbarItemConfig = ({
         routerLink: NavbarRouterLink.Operations,
         icon: BootstrapIconName.LayoutTextSidebarReverse,
         label: operations,
-        roles: [RoleAccessName.ViewPayments, RoleAccessName.ViewInvoices, RoleAccessName.ViewRefunds],
+        roles: [
+            RoleAccessName.ViewPayments,
+            RoleAccessName.ViewInvoices,
+            RoleAccessName.ViewRefunds,
+        ],
     },
     // {
     //     routerLink: NavbarRouterLink.Payouts,

@@ -8,7 +8,10 @@ export class DebouncePipe<T> implements PipeTransform, OnDestroy {
     private transformValue: T | symbol = INIT_VALUE;
     private timeout: number = -1;
 
-    constructor(private changeDetector: ChangeDetectorRef, private zone: NgZone) {}
+    constructor(
+        private changeDetector: ChangeDetectorRef,
+        private zone: NgZone,
+    ) {}
 
     transform(value: T, debounceTime: number = 500): T {
         if (this.currentValue === INIT_VALUE) {

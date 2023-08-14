@@ -2,9 +2,10 @@ import { Component, Inject, Input, OnChanges, SimpleChanges } from '@angular/cor
 
 import { SpinnerType } from '@dsh/components/indicators';
 
-import { PaymentsToolDistributionService } from './payments-tool-distribution.service';
 import { ChartsThemeProvider, CHARTS_THEME } from '../charts-theme';
 import { SearchParams } from '../search-params';
+
+import { PaymentsToolDistributionService } from './payments-tool-distribution.service';
 
 @Component({
     selector: 'dsh-payments-tool-distribution',
@@ -24,7 +25,7 @@ export class PaymentsToolDistributionComponent implements OnChanges {
 
     constructor(
         private distributionsService: PaymentsToolDistributionService,
-        @Inject(CHARTS_THEME) private theme: ChartsThemeProvider
+        @Inject(CHARTS_THEME) private theme: ChartsThemeProvider,
     ) {}
 
     ngOnChanges(changes: SimpleChanges) {

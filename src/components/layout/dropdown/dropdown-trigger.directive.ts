@@ -6,7 +6,15 @@ import {
     OverlayRef,
 } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
-import { Directive, ElementRef, HostListener, Input, OnDestroy, Renderer2, ViewContainerRef } from '@angular/core';
+import {
+    Directive,
+    ElementRef,
+    HostListener,
+    Input,
+    OnDestroy,
+    Renderer2,
+    ViewContainerRef,
+} from '@angular/core';
 
 import { DropdownComponent } from './dropdown.component';
 import { State } from './open-close-animation';
@@ -44,7 +52,7 @@ export class DropdownTriggerDirective implements OnDestroy {
         private viewContainerRef: ViewContainerRef,
         private overlay: Overlay,
         private origin: ElementRef<HTMLElement>,
-        private renderer: Renderer2
+        private renderer: Renderer2,
     ) {}
 
     private get dropdownEl() {
@@ -101,7 +109,7 @@ export class DropdownTriggerDirective implements OnDestroy {
     private addWindowListeners() {
         this.removeWindowListenersFns.push(
             this.renderer.listen(window, 'mousedown', this.backdropClickHandler),
-            this.renderer.listen(window, 'keyup', this.keypressHandler)
+            this.renderer.listen(window, 'keyup', this.keypressHandler),
         );
     }
 
@@ -119,7 +127,9 @@ export class DropdownTriggerDirective implements OnDestroy {
 
     private createOverlayRef(): OverlayRef {
         const config = this.getOverlayConfig();
-        (config.positionStrategy as FlexibleConnectedPositionStrategy).positionChanges.subscribe(this.updatePosition);
+        (config.positionStrategy as FlexibleConnectedPositionStrategy).positionChanges.subscribe(
+            this.updatePosition,
+        );
         const overlayRef = this.overlay.create(config);
         this.dropdown.animationDone$.subscribe(this.animationDoneHandler);
         return overlayRef;
@@ -141,7 +151,9 @@ export class DropdownTriggerDirective implements OnDestroy {
                 .withPush(true)
                 .withDefaultOffsetX(0)
                 .withLockedPosition()
-                .withPositions([this.dropdown.position === 'center' ? POSITION_CENTER : POSITION_LEFT]),
+                .withPositions([
+                    this.dropdown.position === 'center' ? POSITION_CENTER : POSITION_LEFT,
+                ]),
             scrollStrategy: this.overlay.scrollStrategies.reposition(),
             width: this.dropdown.getCorrectedWidth(),
         });
@@ -160,7 +172,11 @@ export class DropdownTriggerDirective implements OnDestroy {
             const dropdownLeft = dropdownEl.getBoundingClientRect().left;
             const triangleWidth = triangleEl.getBoundingClientRect().width;
             const leftOffset =
-                originSize.left - dropdownLeft + originSize.width / 2 - triangleWidth / 2 + WRAPPER_OFFSET / 2;
+                originSize.left -
+                dropdownLeft +
+                originSize.width / 2 -
+                triangleWidth / 2 +
+                WRAPPER_OFFSET / 2;
             return `${leftOffset}px`;
         }
     }

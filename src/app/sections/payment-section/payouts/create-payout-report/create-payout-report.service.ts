@@ -28,8 +28,8 @@ export class CreatePayoutReportService {
                                 payout,
                             },
                         })
-                        .afterClosed()
-                )
+                        .afterClosed(),
+                ),
             )
             .subscribe();
     }

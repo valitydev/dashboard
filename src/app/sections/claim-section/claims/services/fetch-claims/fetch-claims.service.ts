@@ -19,18 +19,21 @@ export class FetchClaimsService extends PartialFetcher<Claim, ClaimsSearchFilter
     constructor(
         private claimsService: ClaimsService,
         private snackBar: MatSnackBar,
-        private transloco: TranslocoService
+        private transloco: TranslocoService,
     ) {
         super();
         this.errors$.subscribe(() => {
-            this.snackBar.open(this.transloco.translate('shared.httpError', null, 'components'), 'OK');
+            this.snackBar.open(
+                this.transloco.translate('shared.httpError', null, 'components'),
+                'OK',
+            );
             return [];
         });
     }
 
     protected fetch(
         params: ClaimsSearchFiltersSearchParams,
-        continuationToken: string
+        continuationToken: string,
     ): Observable<FetchResult<Claim>> {
         return this.claimsService.searchClaims({
             limit: this.searchLimit,

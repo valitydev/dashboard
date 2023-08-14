@@ -1,6 +1,16 @@
-<ng-container *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentDetails.invoiceDetails'">
+<ng-container
+    *transloco="
+        let t;
+        scope: 'payment-section';
+        read: 'paymentSection.paymentDetails.invoiceDetails'
+    "
+>
     <div fxLayout="column" fxLayoutGap="24px">
-        <div class="payment-invoice-info-title mat-h2" fxLayout fxLayoutAlign="space-between center">
+        <div
+            class="payment-invoice-info-title mat-h2"
+            fxLayout
+            fxLayoutAlign="space-between center"
+        >
             <div>
                 {{ t('title') }}
                 <span *ngIf="invoice">#{{ invoice.id }}</span>

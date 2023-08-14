@@ -20,9 +20,11 @@ import { EditRolesDialogData } from './types/edit-roles-dialog-data';
 export class EditRolesDialogComponent {
     roles$ = defer(() => this.updateRoles$).pipe(
         switchMap(() =>
-            this.membersService.getOrgMember({ orgId: this.data.orgId, userId: this.data.userId }).pipe(pluck('roles'))
+            this.membersService
+                .getOrgMember({ orgId: this.data.orgId, userId: this.data.userId })
+                .pipe(pluck('roles')),
         ),
-        shareReplay(1)
+        shareReplay(1),
     );
 
     private updateRoles$ = new BehaviorSubject<void>(null);
@@ -31,7 +33,7 @@ export class EditRolesDialogComponent {
         private dialogRef: MatDialogRef<EditRolesDialogComponent, BaseDialogResponseStatus>,
         @Inject(MAT_DIALOG_DATA) private data: EditRolesDialogData,
         private membersService: MembersService,
-        private errorService: ErrorService
+        private errorService: ErrorService,
     ) {}
 
     cancel(): void {
@@ -41,14 +43,18 @@ export class EditRolesDialogComponent {
     addRoles(roles: MemberRole[]): Subscription {
         return forkJoin(
             roles.map((memberRole) =>
-                this.membersService.assignMemberRole({ orgId: this.data.orgId, userId: this.data.userId, memberRole })
-            )
+                this.membersService.assignMemberRole({
+                    orgId: this.data.orgId,
+                    userId: this.data.userId,
+                    memberRole,
+                }),
+            ),
         )
             .pipe(
                 catchError((err) => {
                     this.errorService.error(err);
                     return of(undefined);
-                })
+                }),
             )
             .subscribe(() => this.updateRoles$.next());
     }
@@ -60,14 +66,14 @@ export class EditRolesDialogComponent {
                     orgId: this.data.orgId,
                     userId: this.data.userId,
                     memberRoleId: role.id,
-                })
-            )
+                }),
+            ),
         )
             .pipe(
                 catchError((err) => {
                     this.errorService.error(err);
                     return of(undefined);
-                })
+                }),
             )
             .subscribe(() => this.updateRoles$.next());
     }

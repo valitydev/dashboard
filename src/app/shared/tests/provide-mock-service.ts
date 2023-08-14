@@ -2,7 +2,7 @@ import { instance, mock } from 'ts-mockito';
 
 export function provideMockService<T extends new (...args: unknown[]) => unknown>(
     service: T,
-    mockedService?: InstanceType<T>
+    mockedService?: InstanceType<T>,
 ): {
     provide: T;
     useFactory: () => InstanceType<T>;

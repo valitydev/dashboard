@@ -1,13 +1,13 @@
 <dsh-base-dialog
     *transloco="let t; scope: 'organization-section'; read: 'organizationSection.editRolesDialog'"
     [title]="t('title')"
-    (cancel)="cancel()"
     noActions
+    (cancel)="cancel()"
 >
     <dsh-change-roles-table
+        [roles]="roles$ | async"
         controlled
         editMode
-        [roles]="roles$ | async"
         (addedRoles)="addRoles($event)"
         (removedRoles)="removeRoles($event)"
     ></dsh-change-roles-table>

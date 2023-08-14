@@ -8,6 +8,6 @@ export function getFormValueChanges<T>(form: AbstractControl<T>): Observable<T> 
     return form.valueChanges.pipe(
         startWith(form.value),
         // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-        map(() => getValue(form))
+        map(() => getValue(form)),
     );
 }

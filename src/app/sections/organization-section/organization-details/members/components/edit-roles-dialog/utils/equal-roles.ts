@@ -6,6 +6,7 @@ export function equalRoles(a: PartialReadonly<MemberRole>, b: PartialReadonly<Me
     return (
         (a.id && b.id && a.id === b.id) ||
         (a.roleId === b.roleId &&
-            ((!a.scope && !b.scope) || (a.scope.id === b.scope.id && a.scope.resourceId === b.scope.resourceId)))
+            ((!a.scope && !b.scope) ||
+                (a.scope.id === b.scope.id && a.scope.resourceId === b.scope.resourceId)))
     );
 }

@@ -68,7 +68,9 @@ describe('LimitedListComponent', () => {
 
         it('should render first 5 items', () => {
             const items = selector.selectItems();
-            expect(items.map((item) => item.nativeElement.textContent).filter((t) => t).length).toBe(5);
+            expect(
+                items.map((item) => item.nativeElement.textContent).filter((t) => t).length,
+            ).toBe(5);
         });
 
         describe('items', () => {
@@ -82,7 +84,9 @@ describe('LimitedListComponent', () => {
                 const items = selector.selectItems();
                 showMore.nativeElement.click();
                 fixture.detectChanges();
-                expect(items.map((item) => item.nativeElement.textContent).filter((t) => t).length).toBe(6);
+                expect(
+                    items.map((item) => item.nativeElement.textContent).filter((t) => t).length,
+                ).toBe(6);
             });
         });
     });

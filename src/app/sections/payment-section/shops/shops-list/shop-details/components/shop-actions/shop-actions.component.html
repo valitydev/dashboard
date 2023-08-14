@@ -2,13 +2,15 @@
     <ng-container>
         <div class="mat-h2">{{ p('actions') }}</div>
         <div>
-            <ng-container *ngTemplateOutlet="shop.isSuspended ? activateButton : suspendButton"></ng-container>
+            <ng-container
+                *ngTemplateOutlet="shop.isSuspended ? activateButton : suspendButton"
+            ></ng-container>
         </div>
     </ng-container>
 
     <ng-template #activateButton>
         <ng-container>
-            <button (click)="activate(shop.id)" color="accent" dsh-button>
+            <button color="accent" dsh-button (click)="activate(shop.id)">
                 {{ p('activate') }}
             </button>
         </ng-container>
@@ -16,7 +18,7 @@
 
     <ng-template #suspendButton>
         <ng-container>
-            <button (click)="suspend(shop.id)" color="warn" dsh-button>
+            <button color="warn" dsh-button (click)="suspend(shop.id)">
                 {{ p('suspend') }}
             </button>
         </ng-container>

@@ -31,7 +31,12 @@ import { WebhookMainInfoComponent } from './webhook-main-info';
         ClipboardModule,
         WebhookApiKeyModule,
     ],
-    declarations: [WebhookDetailsComponent, WebhookMainInfoComponent, WebhookActionsComponent, WebhookEventsComponent],
+    declarations: [
+        WebhookDetailsComponent,
+        WebhookMainInfoComponent,
+        WebhookActionsComponent,
+        WebhookEventsComponent,
+    ],
     exports: [WebhookDetailsComponent],
 })
 export class WebhookDetailsModule {}

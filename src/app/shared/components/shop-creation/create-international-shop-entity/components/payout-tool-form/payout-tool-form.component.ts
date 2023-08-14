@@ -22,7 +22,7 @@ export class PayoutToolFormComponent extends FormGroupSuperclass<Partial<PayoutT
             country: [null],
             address: ['', [Validators.maxLength(1000)]],
         },
-        { validators: payoutToolFormValidator }
+        { validators: payoutToolFormValidator },
     );
 
     constructor(private fb: FormBuilder) {

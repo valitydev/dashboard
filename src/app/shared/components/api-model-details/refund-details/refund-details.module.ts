@@ -11,7 +11,14 @@ import { RefundDetailsComponent } from './refund-details.component';
 import { RefundStatusColorPipe } from './refund-status-color.pipe';
 
 @NgModule({
-    imports: [TranslocoModule, LayoutModule, FlexLayoutModule, CommonModule, StatusModule, AmountCurrencyModule],
+    imports: [
+        TranslocoModule,
+        LayoutModule,
+        FlexLayoutModule,
+        CommonModule,
+        StatusModule,
+        AmountCurrencyModule,
+    ],
     declarations: [RefundDetailsComponent, RefundStatusColorPipe],
     exports: [RefundDetailsComponent, RefundStatusColorPipe],
 })

@@ -1,5 +1,7 @@
 <dsh-row fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="24px">
-    <ng-container *ngTemplateOutlet="claim ? tableGrid : loading; context: { $implicit: claim }"></ng-container>
+    <ng-container
+        *ngTemplateOutlet="claim ? tableGrid : loading; context: { $implicit: claim }"
+    ></ng-container>
 </dsh-row>
 
 <ng-template #loading>
@@ -7,15 +9,14 @@
 </ng-template>
 
 <ng-template #tableGrid let-item>
-    <dsh-row-label fxHide.lt-md fxFlex="15">{{ item.id }}</dsh-row-label>
-    <dsh-row-label fxHide.lt-md fxFlex="25">
-        <dsh-status
-            [color]="item.status | claimStatusColor"
-            >{{ (claimStatusDict$ | async)?.[item.status] }}</dsh-status
-        >
+    <dsh-row-label fxFlex="15" fxHide.lt-md>{{ item.id }}</dsh-row-label>
+    <dsh-row-label fxFlex="25" fxHide.lt-md>
+        <dsh-status [color]="item.status | claimStatusColor">{{
+            (claimStatusDict$ | async)?.[item.status]
+        }}</dsh-status>
     </dsh-row-label>
-    <dsh-row-label fxFlex.gt-sm="30" fxFlex fxLayoutAlign="end center">
-        <span fxHide.lt-md>{{ item.updatedAt | date : 'dd MMMM yyyy, HH:mm' }}</span>
-        <span fxHide.gt-sm>{{ item.updatedAt | date : 'dd.MM.yyyy, HH:mm' }}</span>
+    <dsh-row-label fxFlex fxFlex.gt-sm="30" fxLayoutAlign="end center">
+        <span fxHide.lt-md>{{ item.updatedAt | date: 'dd MMMM yyyy, HH:mm' }}</span>
+        <span fxHide.gt-sm>{{ item.updatedAt | date: 'dd.MM.yyyy, HH:mm' }}</span>
     </dsh-row-label>
 </ng-template>

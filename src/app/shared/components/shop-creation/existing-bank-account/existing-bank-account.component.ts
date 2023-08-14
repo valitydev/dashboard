@@ -34,7 +34,10 @@ export type ExistingBankAccountForm<T extends BankAccountType = BankAccountType>
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => ExistingBankAccountComponent),
 })
-export class ExistingBankAccountComponent extends FormControlSuperclass<ExistingBankAccountForm, Shop> {
+export class ExistingBankAccountComponent extends FormControlSuperclass<
+    ExistingBankAccountForm,
+    Shop
+> {
     @Input() bankAccountType: BankAccountType;
 
     payoutTool: PayoutTool = null;
@@ -44,7 +47,7 @@ export class ExistingBankAccountComponent extends FormControlSuperclass<Existing
     constructor(
         private payoutsService: PayoutsService,
         private transloco: TranslocoService,
-        private errorService: ErrorService
+        private errorService: ErrorService,
     ) {
         super();
     }
@@ -52,14 +55,17 @@ export class ExistingBankAccountComponent extends FormControlSuperclass<Existing
     protected setUpInnerToOuterValue$(value$: Observable<Shop>): Observable<PayoutTool> {
         return value$.pipe(
             switchMap((shop) =>
-                (shop?.contractID && shop?.payoutToolID ? this.getPayoutToolByShop(shop) : of<PayoutTool>(null)).pipe(
+                (shop?.contractID && shop?.payoutToolID
+                    ? this.getPayoutToolByShop(shop)
+                    : of<PayoutTool>(null)
+                ).pipe(
                     progressTo(this.progress$),
                     errorTo(this.error$, true),
-                    catchError((err) => (this.errorService.error(err, false), EMPTY))
-                )
+                    catchError((err) => (this.errorService.error(err, false), EMPTY)),
+                ),
             ),
             tap((payoutTool) => (this.payoutTool = payoutTool)),
-            share()
+            share(),
         );
     }
 
@@ -69,7 +75,10 @@ export class ExistingBankAccountComponent extends FormControlSuperclass<Existing
 
     private getPayoutToolByShop(shop: Shop): Observable<PayoutTool> {
         return this.payoutsService
-            .getPayoutToolByIDForParty({ contractID: shop.contractID, payoutToolID: shop.payoutToolID })
+            .getPayoutToolByIDForParty({
+                contractID: shop.contractID,
+                payoutToolID: shop.payoutToolID,
+            })
             .pipe(
                 switchMap((payoutTool) => {
                     if (payoutTool.details.detailsType !== this.bankAccountType)
@@ -78,16 +87,16 @@ export class ExistingBankAccountComponent extends FormControlSuperclass<Existing
                                 ? this.transloco.selectTranslate(
                                       'existingBankAccount.errors.onlyInternationalShopCanBeSelected',
                                       null,
-                                      'components'
+                                      'components',
                                   )
                                 : this.transloco.selectTranslate(
                                       'existingBankAccount.errors.onlyRussianShopCanBeSelected',
                                       null,
-                                      'components'
+                                      'components',
                                   )
                         ).pipe(switchMap((t) => throwError(new CommonError(t))));
                     return of(payoutTool);
-                })
+                }),
             );
     }
 }

@@ -36,6 +36,10 @@ import { FormatTimeInputDirective } from './create-report-form/format-time-input
         BaseDialogModule,
         BootstrapIconModule,
     ],
-    declarations: [CreateReportDialogComponent, CreateReportFormComponent, FormatTimeInputDirective],
+    declarations: [
+        CreateReportDialogComponent,
+        CreateReportFormComponent,
+        FormatTimeInputDirective,
+    ],
 })
 export class CreateReportModule {}

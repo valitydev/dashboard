@@ -1,9 +1,13 @@
 <dsh-row
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.refunds.headerRow'"
+    *transloco="
+        let t;
+        scope: 'payment-section';
+        read: 'paymentSection.operations.refunds.headerRow'
+    "
+    color="primary"
     fxLayout="row"
     fxLayoutAlign="space-between center"
     fxLayoutGap="24px"
-    color="primary"
 >
     <dsh-row-header-label fxFlex>{{ t('amount') }}</dsh-row-header-label>
     <dsh-row-header-label fxFlex>{{ t('status') }}</dsh-row-header-label>

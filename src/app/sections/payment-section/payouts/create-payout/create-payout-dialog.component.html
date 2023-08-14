@@ -12,7 +12,10 @@
                         <mat-option>
                             {{ p('any') }}
                         </mat-option>
-                        <mat-option *ngFor="let shopInfo of shopsInfo$ | async" [value]="shopInfo.shopID">
+                        <mat-option
+                            *ngFor="let shopInfo of shopsInfo$ | async"
+                            [value]="shopInfo.shopID"
+                        >
                             {{ shopInfo.name }}
                         </mat-option>
                     </mat-select>
@@ -26,16 +29,27 @@
                                     <mat-option
                                         *ngFor="let payoutTool of payoutTools$ | async"
                                         [value]="payoutTool.id"
-                                        (onSelectionChange)="onPayoutToolSelectionChange(payoutTool.currency)"
+                                        (onSelectionChange)="
+                                            onPayoutToolSelectionChange(payoutTool.currency)
+                                        "
                                     >
-                                        {{ payoutTool.details.detailsType | payoutToolDetailsType | async }}:
-                                        {{ payoutTool.details.walletID }} ({{ payoutTool.currency }})
+                                        {{
+                                            payoutTool.details.detailsType
+                                                | payoutToolDetailsType
+                                                | async
+                                        }}: {{ payoutTool.details.walletID }} ({{
+                                            payoutTool.currency
+                                        }})
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>
                             <mat-form-field fxFill>
                                 <mat-label>{{ p('amount') }}</mat-label>
-                                <dsh-format-input formControlName="amount" format="amount" required></dsh-format-input>
+                                <dsh-format-input
+                                    format="amount"
+                                    formControlName="amount"
+                                    required
+                                ></dsh-format-input>
                             </mat-form-field>
                         </ng-container>
                         <ng-template #noPayoutTools>
@@ -54,10 +68,10 @@
         </div>
         <ng-container dshBaseDialogActions>
             <button
-                fxFlex.gt-sm="160px"
-                dsh-button
-                color="accent"
                 [disabled]="form.invalid || !(hasPayoutTools$ | async)"
+                color="accent"
+                dsh-button
+                fxFlex.gt-sm="160px"
                 (click)="create(form.value)"
             >
                 {{ p('createPayout') }}

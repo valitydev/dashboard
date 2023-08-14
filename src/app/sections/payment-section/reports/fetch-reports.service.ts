@@ -19,7 +19,7 @@ export class FetchReportsService extends PartialFetcher<Report, SearchFiltersPar
     constructor(
         private reportsService: ReportsApiService,
         @Inject(SEARCH_LIMIT)
-        protected searchLimit: number
+        protected searchLimit: number,
     ) {
         super();
     }
@@ -27,7 +27,9 @@ export class FetchReportsService extends PartialFetcher<Report, SearchFiltersPar
     protected fetch({ realm, ...p }: SearchFiltersParams, continuationToken: string) {
         return this.reportsService.searchReports({
             ...p,
-            reportTypes: isEmpty(p.reportTypes) ? Object.values(Report.ReportTypeEnum) : p.reportTypes,
+            reportTypes: isEmpty(p.reportTypes)
+                ? Object.values(Report.ReportTypeEnum)
+                : p.reportTypes,
             continuationToken,
             paymentInstitutionRealm: realm,
             limit: this.searchLimit,

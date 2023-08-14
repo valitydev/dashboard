@@ -5,7 +5,10 @@ import { BehaviorSubject, defer, Observable } from 'rxjs';
 
 import { isEmptyValue } from '@dsh/utils';
 
-export abstract class FilterSuperclass<Inner, Outer = Inner> extends FormComponentSuperclass<Outer> {
+export abstract class FilterSuperclass<
+    Inner,
+    Outer = Inner,
+> extends FormComponentSuperclass<Outer> {
     control: AbstractControl<Inner> = new FormControl();
 
     get value(): Inner {

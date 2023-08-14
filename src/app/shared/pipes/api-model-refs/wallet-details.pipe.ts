@@ -13,12 +13,18 @@ export class WalletDetailsPipe implements PipeTransform, OnDestroy {
     private walletIDChange$: Subject<string> = new Subject();
     private destroy$: Subject<void> = new Subject();
 
-    constructor(private walletService: WalletsService, private ref: ChangeDetectorRef) {
-        combineLatest([this.walletService.wallets$, this.walletIDChange$.pipe(distinctUntilChanged())])
+    constructor(
+        private walletService: WalletsService,
+        private ref: ChangeDetectorRef,
+    ) {
+        combineLatest([
+            this.walletService.wallets$,
+            this.walletIDChange$.pipe(distinctUntilChanged()),
+        ])
             .pipe(
                 takeUntil(this.destroy$),
                 map(([wallets, walletID]) => wallets.find((s) => s.id === walletID)),
-                pluck('name')
+                pluck('name'),
             )
             .subscribe((v) => {
                 this.walletName$.next(v);

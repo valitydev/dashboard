@@ -49,19 +49,19 @@ describe('RefundsService', () => {
                     deepEqual({
                         amount: 400,
                         currency: 'USD',
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(of(refund));
 
             expect(
                 service.createRefund('invoiceID', 'paymentID', {
                     amount: 400,
                     currency: 'USD',
-                })
+                }),
             ).toBeObservable(
                 cold('(a|)', {
                     a: refund,
-                })
+                }),
             );
         });
     });
@@ -84,12 +84,14 @@ describe('RefundsService', () => {
                     };
                 });
 
-            when(mockRefundService.getRefunds('invoiceID', 'paymentID')).thenReturn(of(refundsList));
+            when(mockRefundService.getRefunds('invoiceID', 'paymentID')).thenReturn(
+                of(refundsList),
+            );
 
             expect(service.getRefundedAmountSum('invoiceID', 'paymentID')).toBeObservable(
                 cold('(a|)', {
                     a: 1500,
-                })
+                }),
             );
         });
     });

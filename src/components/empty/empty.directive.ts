@@ -1,4 +1,12 @@
-import { Directive, Input, OnChanges, TemplateRef, ViewContainerRef, OnInit, ChangeDetectorRef } from '@angular/core';
+import {
+    Directive,
+    Input,
+    OnChanges,
+    TemplateRef,
+    ViewContainerRef,
+    OnInit,
+    ChangeDetectorRef,
+} from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
@@ -20,7 +28,7 @@ export class EmptyDirective implements OnChanges, OnInit {
         private templateRef: TemplateRef<unknown>,
         private viewContainer: ViewContainerRef,
         private translocoService: TranslocoService,
-        private cdr: ChangeDetectorRef
+        private cdr: ChangeDetectorRef,
     ) {}
 
     ngOnInit() {

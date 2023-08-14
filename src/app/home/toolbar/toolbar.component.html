@@ -1,15 +1,15 @@
-<div class="dsh-toolbar" fxLayout fxLayoutGap="24px" fxLayoutAlign="center center">
+<div class="dsh-toolbar" fxLayout fxLayoutAlign="center center" fxLayoutGap="24px">
     <dsh-brand fxFlex fxLayoutAlign="start"></dsh-brand>
     <div fxFlex fxLayoutAlign="center">
-        <nav class="dsh-top-tab-nav-bar" mat-tab-nav-bar [tabPanel]="tabPanel">
+        <nav [tabPanel]="tabPanel" class="dsh-top-tab-nav-bar" mat-tab-nav-bar>
             <a
-                *ngFor="let link of sectionLinks$ | async"
-                mat-tab-link
-                [routerLink]="link.path"
-                routerLinkActive
-                [routerLinkActiveOptions]="{ exact: link?.exact }"
                 #rla="routerLinkActive"
+                *ngFor="let link of sectionLinks$ | async"
                 [active]="rla.isActive"
+                [routerLink]="link.path"
+                [routerLinkActiveOptions]="{ exact: link?.exact }"
+                mat-tab-link
+                routerLinkActive
             >
                 {{ link.label }}
             </a>

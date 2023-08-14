@@ -5,7 +5,7 @@ export const generateMockClaim = (
     status: StatusModificationUnit.StatusEnum | string = StatusModificationUnit.StatusEnum.Pending,
     revision: number = 1,
     createdAt = new Date().toISOString(),
-    updatedAt = new Date().toISOString()
+    updatedAt = new Date().toISOString(),
 ): Claim => ({
     id,
     status,

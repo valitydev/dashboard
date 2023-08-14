@@ -1,17 +1,17 @@
 <div
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations'"
     class="dsh-operations"
     fxLayout="column"
     fxLayoutGap="32px"
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations'"
 >
     <nav mat-tab-nav-bar>
         <a
-            mat-tab-link
-            *ngFor="let link of links"
-            [routerLink]="link.path"
-            routerLinkActive
             #rla="routerLinkActive"
+            *ngFor="let link of links"
             [active]="rla.isActive"
+            [routerLink]="link.path"
+            mat-tab-link
+            routerLinkActive
         >
             <span>{{ link.label$ | async }}</span>
         </a>

@@ -6,10 +6,11 @@ import { AnalyticsService, AnapiDictionaryService } from '@dsh/app/api/anapi';
 import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { errorTo, progressTo, distinctUntilChangedDeep, inProgressFrom, attach } from '@dsh/utils';
 
-import { prepareSplitCount } from './prepare-split-count';
-import { splitCountToChartData } from './split-count-to-chart-data';
 import { SearchParams } from '../search-params';
 import { searchParamsToParamsWithSplitUnit } from '../utils';
+
+import { prepareSplitCount } from './prepare-split-count';
+import { splitCountToChartData } from './split-count-to-chart-data';
 
 @Injectable()
 export class PaymentSplitCountService {
@@ -28,19 +29,21 @@ export class PaymentSplitCountService {
                         paymentInstitutionRealm: realm,
                         shopIDs,
                     }),
-                ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$))
+                ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$)),
             ),
-            map(([fromTime, toTime, splitCount]) => prepareSplitCount(splitCount?.result, fromTime, toTime)),
+            map(([fromTime, toTime, splitCount]) =>
+                prepareSplitCount(splitCount?.result, fromTime, toTime),
+            ),
             withLatestFrom(this.anapiDictionaryService.paymentStatus$),
-            map(([res, paymentStatusDict]) => splitCountToChartData(res, paymentStatusDict))
+            map(([res, paymentStatusDict]) => splitCountToChartData(res, paymentStatusDict)),
         ),
         defer(() => this.searchParams$).pipe(
             map(({ currency }) => currency),
-            distinctUntilChanged()
+            distinctUntilChanged(),
         ),
     ]).pipe(
         map(([result, currency]) => result.find((r) => r.currency === currency)),
-        shareReplayRefCount()
+        shareReplayRefCount(),
     );
     isLoading$ = inProgressFrom(() => this.progress$, this.splitCount$);
     error$ = attach(() => this.errorSub$, this.splitCount$);
@@ -49,7 +52,10 @@ export class PaymentSplitCountService {
     private errorSub$ = new ReplaySubject<unknown>(1);
     private progress$ = new BehaviorSubject<number>(0);
 
-    constructor(private analyticsService: AnalyticsService, private anapiDictionaryService: AnapiDictionaryService) {}
+    constructor(
+        private analyticsService: AnalyticsService,
+        private anapiDictionaryService: AnapiDictionaryService,
+    ) {}
 
     updateSearchParams(searchParams: SearchParams): void {
         this.searchParams$.next(searchParams);

@@ -4,9 +4,11 @@
     fxLayoutAlign="space-between center"
     fxLayoutGap="24px"
 >
-    <dsh-row-header-label fxHide.lt-md fxFlex="15">#</dsh-row-header-label>
-    <dsh-row-header-label fxHide.lt-md fxFlex="25"> {{ claims('panel.status') }} </dsh-row-header-label>
-    <dsh-row-header-label fxFlex.gt-sm="30" fxFlex fxLayoutAlign="end center">
+    <dsh-row-header-label fxFlex="15" fxHide.lt-md>#</dsh-row-header-label>
+    <dsh-row-header-label fxFlex="25" fxHide.lt-md>
+        {{ claims('panel.status') }}
+    </dsh-row-header-label>
+    <dsh-row-header-label fxFlex fxFlex.gt-sm="30" fxLayoutAlign="end center">
         {{ claims('panel.updatedAt') }}
     </dsh-row-header-label>
 </dsh-row>

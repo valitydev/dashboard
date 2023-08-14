@@ -18,18 +18,25 @@ export class ApiKeyRevokeComponent implements OnInit {
         private router: Router,
         private notificationService: NotificationService,
         private errorService: ErrorService,
-        private translocoService: TranslocoService
+        private translocoService: TranslocoService,
     ) {}
 
     ngOnInit(): void {
-        const { apiKeyRevokeToken, apiKeyId } = this.route.snapshot.params as Record<string, string>;
+        const { apiKeyRevokeToken, apiKeyId } = this.route.snapshot.params as Record<
+            string,
+            string
+        >;
         this.apiKeysService
             .revokeApiKey({ apiKeyRevokeToken, apiKeyId })
             .pipe(untilDestroyed(this))
             .subscribe({
                 next: () => {
                     this.notificationService.success(
-                        this.translocoService.selectTranslate('apiKeys.revoke.success', null, 'payment-section')
+                        this.translocoService.selectTranslate(
+                            'apiKeys.revoke.success',
+                            null,
+                            'payment-section',
+                        ),
                     );
                     void this.router.navigate(['../../..'], { relativeTo: this.route });
                 },

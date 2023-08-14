@@ -8,11 +8,11 @@
         <mat-divider></mat-divider>
     </ng-container>
     <dsh-refunds
+        [currency]="payment.currency"
         [invoiceID]="payment.invoiceID"
+        [maxRefundAmount]="payment.amount"
         [paymentID]="payment.id"
         [shopID]="payment.shopID"
-        [currency]="payment.currency"
-        [maxRefundAmount]="payment.amount"
         [status]="payment.status"
         (fullyRefunded)="refresh($event)"
     ></dsh-refunds>

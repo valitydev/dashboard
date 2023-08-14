@@ -12,7 +12,7 @@ export class ReportsExpandedIdManager extends ExpandedIdManager<Report> {
     constructor(
         protected route: ActivatedRoute,
         protected router: Router,
-        private fetchReportsService: FetchReportsService
+        private fetchReportsService: FetchReportsService,
     ) {
         super(route, router);
     }

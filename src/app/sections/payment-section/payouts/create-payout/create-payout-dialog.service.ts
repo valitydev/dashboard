@@ -25,19 +25,28 @@ export class CreatePayoutDialogService {
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     payoutTools$ = this.currentShopID$.pipe(
-        switchMap((shopID) => this.shopsDataService.shops$.pipe(map((shops) => shops.find(({ id }) => id === shopID)))),
+        switchMap((shopID) =>
+            this.shopsDataService.shops$.pipe(
+                map((shops) => shops.find(({ id }) => id === shopID)),
+            ),
+        ),
         switchMap(({ contractID }) => this.payoutsService.getPayoutToolsForParty({ contractID })),
-        map((tools) => tools.filter((tool) => tool.details.detailsType === 'PayoutToolDetailsWalletInfo')),
-        shareReplay(1)
+        map((tools) =>
+            tools.filter((tool) => tool.details.detailsType === 'PayoutToolDetailsWalletInfo'),
+        ),
+        shareReplay(1),
     );
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     hasPayoutTools$ = this.payoutTools$.pipe(
         map((tools) => !!tools.length),
-        shareReplay(1)
+        shareReplay(1),
     );
 
-    constructor(private shopsDataService: ShopsDataService, private payoutsService: PayoutsService) {
+    constructor(
+        private shopsDataService: ShopsDataService,
+        private payoutsService: PayoutsService,
+    ) {
         merge(this.payoutTools$, this.hasPayoutTools$).subscribe();
         this.create$
             .pipe(
@@ -50,9 +59,9 @@ export class CreatePayoutDialogService {
                         of(params),
                         this.shopsDataService.shops$.pipe(
                             take(1),
-                            map((shops) => shops.find(({ id }) => id === params.shopID)?.currency)
+                            map((shops) => shops.find(({ id }) => id === params.shopID)?.currency),
                         ),
-                    ])
+                    ]),
                 ),
                 map(([params, currency]) => toPayoutParams(params, currency)),
                 switchMap((payoutParams) =>
@@ -62,10 +71,10 @@ export class CreatePayoutDialogService {
                             this.loading$.next(false);
                             this.error$.next();
                             return of('error');
-                        })
-                    )
+                        }),
+                    ),
                 ),
-                filter((result) => result !== 'error')
+                filter((result) => result !== 'error'),
             )
             .subscribe(() => {
                 this.loading$.next(false);

@@ -2,7 +2,12 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { APP_INITIALIZER, ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MAT_RIPPLE_GLOBAL_OPTIONS } from '@angular/material/core';
+import {
+    DateAdapter,
+    MAT_DATE_FORMATS,
+    MAT_DATE_LOCALE,
+    MAT_RIPPLE_GLOBAL_OPTIONS,
+} from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import {
@@ -13,8 +18,13 @@ import {
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
-import { TRANSLOCO_CONFIG, TRANSLOCO_LOADER, TranslocoModule, translocoConfig } from '@ngneat/transloco';
-import * as Sentry from '@sentry/angular';
+import {
+    TRANSLOCO_CONFIG,
+    TRANSLOCO_LOADER,
+    TranslocoModule,
+    translocoConfig,
+} from '@ngneat/transloco';
+import * as Sentry from '@sentry/angular-ivy';
 
 import { AnapiModule } from '@dsh/app/api/anapi';
 import { ClaimManagementModule } from '@dsh/app/api/claim-management';
@@ -26,6 +36,8 @@ import { ErrorModule } from '@dsh/app/shared/services';
 import { QUERY_PARAMS_SERIALIZERS } from '@dsh/app/shared/services/query-params/utils/query-params-serializers';
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
 import { SpinnerModule } from '@dsh/components/indicators';
+
+import { ENV, environment } from '../environments';
 
 import { ApiKeysModule } from './api/api-keys';
 import { OrganizationsModule } from './api/organizations';
@@ -41,7 +53,6 @@ import { SentryErrorHandler } from './sentry-error-handler.service';
 import { SentryHttpInterceptor } from './sentry-http-interceptor';
 import { ThemeManager } from './theme-manager';
 import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
-import { ENV, environment } from '../environments';
 
 @NgModule({
     declarations: [AppComponent],
@@ -74,7 +85,14 @@ import { ENV, environment } from '../environments';
         {
             provide: APP_INITIALIZER,
             useFactory: initializer,
-            deps: [ConfigService, KeycloakService, LanguageService, ThemeManager, IconsService, Sentry.TraceService],
+            deps: [
+                ConfigService,
+                KeycloakService,
+                LanguageService,
+                ThemeManager,
+                IconsService,
+                Sentry.TraceService,
+            ],
             multi: true,
         },
         {
@@ -89,7 +107,11 @@ import { ENV, environment } from '../environments';
         },
         { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: false } },
         { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
-        { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS] },
+        {
+            provide: DateAdapter,
+            useClass: MomentDateAdapter,
+            deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+        },
         { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: { disabled: true } },
         { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
         {

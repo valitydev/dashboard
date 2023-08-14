@@ -6,10 +6,11 @@ import { AnalyticsService } from '@dsh/app/api/anapi';
 import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { errorTo, progressTo, attach, inProgressFrom, distinctUntilChangedDeep } from '@dsh/utils';
 
-import { prepareSplitAmount } from './prepare-split-amount';
-import { splitAmountToChartData } from './split-amount-to-chart-data';
 import { SearchParams } from '../search-params';
 import { searchParamsToParamsWithSplitUnit } from '../utils';
+
+import { prepareSplitAmount } from './prepare-split-amount';
+import { splitAmountToChartData } from './split-amount-to-chart-data';
 
 @Injectable()
 export class PaymentSplitAmountService {
@@ -28,18 +29,20 @@ export class PaymentSplitAmountService {
                         paymentInstitutionRealm: realm,
                         shopIDs,
                     }),
-                ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$))
+                ]).pipe(errorTo(this.errorSub$), progressTo(this.progress$)),
             ),
-            map(([fromTime, toTime, splitAmount]) => prepareSplitAmount(splitAmount?.result, fromTime, toTime)),
-            map(splitAmountToChartData)
+            map(([fromTime, toTime, splitAmount]) =>
+                prepareSplitAmount(splitAmount?.result, fromTime, toTime),
+            ),
+            map(splitAmountToChartData),
         ),
         defer(() => this.searchParams$).pipe(
             map(({ currency }) => currency),
-            distinctUntilChanged()
+            distinctUntilChanged(),
         ),
     ]).pipe(
         map(([result, currency]) => result.find((r) => r.currency === currency)),
-        shareReplayRefCount()
+        shareReplayRefCount(),
     );
     isLoading$ = inProgressFrom(() => this.progress$, this.splitAmount$);
     error$ = attach(() => this.errorSub$, this.splitAmount$);

@@ -1,9 +1,9 @@
 <div
     *ngIf="percents !== undefined; else noPercents"
-    class="mat-caption"
     [class.negative-percent-difference]="percents < 0"
     [class.positive-percent-difference]="percents > 0"
+    class="mat-caption"
 >
-    {{ percents >= 0 ? '+' : '' }}{{ percents | percent : '1.0-2' : 'en' }}
+    {{ percents >= 0 ? '+' : '' }}{{ percents | percent: '1.0-2' : 'en' }}
 </div>
 <ng-template #noPercents>-</ng-template>

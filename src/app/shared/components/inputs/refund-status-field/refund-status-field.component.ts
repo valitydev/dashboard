@@ -18,8 +18,8 @@ import StatusEnum = RefundStatus.StatusEnum;
 export class RefundStatusFieldComponent extends FormControlSuperclass<StatusEnum> {
     options$: Observable<Option<string>[]> = combineLatest(
         Object.keys(OPTION_LABELS).map((value: StatusEnum) =>
-            this.refundStatusLabelPipe.transform(value).pipe(map((label) => ({ value, label })))
-        )
+            this.refundStatusLabelPipe.transform(value).pipe(map((label) => ({ value, label }))),
+        ),
     );
 
     constructor(private refundStatusLabelPipe: RefundStatusLabelPipe) {

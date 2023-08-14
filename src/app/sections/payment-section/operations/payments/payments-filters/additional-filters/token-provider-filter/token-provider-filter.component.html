@@ -1,12 +1,12 @@
-<ng-container *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.payments.filter'">
+<ng-container
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.payments.filter'"
+>
     <div fxLayout="column" fxLayoutGap="24px">
         <div class="dsh-title" fxFlex>{{ t('bankCardTokenProvider') }}</div>
-        <dsh-expandable-radio-group fxFlex [control]="control" [choices]="providers" anyResponse>
+        <dsh-expandable-radio-group [choices]="providers" [control]="control" anyResponse fxFlex>
             <ng-container *ngFor="let provider of providers">
                 <ng-template [dshExpandableRadioGroupItem]="provider">
-                    <span>{{
-                        (bankCardTokenProviderDict$ | async)?.[provider]
-                    }}</span>
+                    <span>{{ (bankCardTokenProviderDict$ | async)?.[provider] }}</span>
                 </ng-template>
             </ng-container>
         </dsh-expandable-radio-group>

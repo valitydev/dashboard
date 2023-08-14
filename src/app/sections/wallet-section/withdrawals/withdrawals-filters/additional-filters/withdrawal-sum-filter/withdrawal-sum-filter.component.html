@@ -1,14 +1,16 @@
-<ng-container *transloco="let t; scope: 'wallet-section'; read: 'walletSection.withdrawals.filters'">
+<ng-container
+    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.withdrawals.filters'"
+>
     <div fxLayout="column" fxLayoutGap="16px">
         <div class="dsh-title" fxFlex>{{ t('amount') }}</div>
-        <form [formGroup]="control" gdColumns.gt-sm="1fr 1fr" gdColumns="1fr" gdGap="0 24px">
+        <form [formGroup]="control" gdColumns="1fr" gdColumns.gt-sm="1fr 1fr" gdGap="0 24px">
             <mat-form-field>
                 <mat-label>{{ t('amountFrom') }}</mat-label>
-                <input matInput type="number" formControlName="amountFrom" />
+                <input formControlName="amountFrom" matInput type="number" />
             </mat-form-field>
             <mat-form-field>
                 <mat-label>{{ t('amountTo') }}</mat-label>
-                <input matInput type="number" formControlName="amountTo" />
+                <input formControlName="amountTo" matInput type="number" />
             </mat-form-field>
         </form>
     </div>

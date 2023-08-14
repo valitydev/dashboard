@@ -1,44 +1,44 @@
 <form
     *transloco="let t; scope: 'components'; read: 'components.payoutToolForm'"
+    [formGroup]="control"
     fxLayout="column"
     fxLayoutGap="16px"
-    [formGroup]="control"
 >
     <mat-form-field>
         <mat-label>{{ t('accountNumber') }}</mat-label>
-        <input aria-label="accountNumber" matInput formControlName="number" />
+        <input aria-label="accountNumber" formControlName="number" matInput />
     </mat-form-field>
 
     <div class="dsh-body-1">{{ t('description') }}</div>
 
     <mat-form-field>
         <mat-label>{{ t('iban') }}</mat-label>
-        <input aria-label="iban" matInput formControlName="iban" />
+        <input aria-label="iban" formControlName="iban" matInput />
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>{{ t('bic') }}</mat-label>
-        <input aria-label="bic" matInput formControlName="bic" />
+        <input aria-label="bic" formControlName="bic" matInput />
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>{{ t('abaRtn') }}</mat-label>
-        <input aria-label="abaRtn" matInput formControlName="abaRtn" />
+        <input aria-label="abaRtn" formControlName="abaRtn" matInput />
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>{{ t('bankName') }}</mat-label>
-        <input aria-label="bankName" matInput formControlName="name" />
+        <input aria-label="bankName" formControlName="name" matInput />
     </mat-form-field>
 
     <dsh-country-autocomplete-field
-        formControlName="country"
         [label]="t('bankCountry')"
+        formControlName="country"
         required
     ></dsh-country-autocomplete-field>
 
     <mat-form-field>
         <mat-label>{{ t('bankAddress') }}</mat-label>
-        <input aria-label="bankAddress" matInput formControlName="address" />
+        <input aria-label="bankAddress" formControlName="address" matInput />
     </mat-form-field>
 </form>

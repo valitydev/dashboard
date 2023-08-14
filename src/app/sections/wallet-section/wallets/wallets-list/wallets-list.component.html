@@ -2,12 +2,12 @@
     <dsh-last-updated [lastUpdated]="lastUpdated" (update)="refreshData.emit()"></dsh-last-updated>
     <dsh-wallet-row-header></dsh-wallet-row-header>
     <dsh-accordion
+        [expanded]="expandedId"
         fxLayout="column"
         fxLayoutGap="16px"
-        [expanded]="expandedId"
         (expandedChange)="expandedIdChange.emit($event)"
     >
-        <dsh-accordion-item *ngFor="let wallet of wallets" #accordionItem>
+        <dsh-accordion-item #accordionItem *ngFor="let wallet of wallets">
             <dsh-wallet-row [walletName]="wallet.name"></dsh-wallet-row>
             <ng-template dshLazyPanelContent>
                 <dsh-card fxFlexFill fxLayout="column" fxLayoutGap="24px">

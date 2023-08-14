@@ -23,12 +23,15 @@ export class RenameOrganizationDialogComponent {
     inProgress$ = new BehaviorSubject<boolean>(false);
 
     constructor(
-        private dialogRef: MatDialogRef<RenameOrganizationDialogComponent, BaseDialogResponseStatus>,
+        private dialogRef: MatDialogRef<
+            RenameOrganizationDialogComponent,
+            BaseDialogResponseStatus
+        >,
         private organizationsService: OrgsService,
         private notificationService: NotificationService,
         private errorService: ErrorService,
         private fb: FormBuilder,
-        @Inject(MAT_DIALOG_DATA) private data: RenameOrganizationDialogData
+        @Inject(MAT_DIALOG_DATA) private data: RenameOrganizationDialogData,
     ) {
         this.form = this.fb.group<{ name: string }>({ name: data.organization.name });
     }
@@ -48,7 +51,7 @@ export class RenameOrganizationDialogComponent {
                     this.notificationService.success();
                     this.dialogRef.close(BaseDialogResponseStatus.Success);
                 },
-                (err) => this.errorService.error(err)
+                (err) => this.errorService.error(err),
             );
     }
 

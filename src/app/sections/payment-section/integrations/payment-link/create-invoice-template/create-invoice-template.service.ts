@@ -18,10 +18,29 @@ import {
 } from '@vality/swag-payments';
 import * as moment from 'moment';
 import { combineLatest, merge, Observable, Subject } from 'rxjs';
-import { distinctUntilChanged, filter, map, share, shareReplay, startWith, switchMap, take } from 'rxjs/operators';
+import {
+    distinctUntilChanged,
+    filter,
+    map,
+    share,
+    shareReplay,
+    startWith,
+    switchMap,
+    take,
+} from 'rxjs/operators';
 
-import { InvoiceTemplatesService, InvoiceTemplateType, InvoiceTemplateLineCostType } from '@dsh/app/api/payments';
-import { filterError, filterPayload, progress, replaceError, SHARE_REPLAY_CONF } from '@dsh/app/custom-operators';
+import {
+    InvoiceTemplatesService,
+    InvoiceTemplateType,
+    InvoiceTemplateLineCostType,
+} from '@dsh/app/api/payments';
+import {
+    filterError,
+    filterPayload,
+    progress,
+    replaceError,
+    SHARE_REPLAY_CONF,
+} from '@dsh/app/custom-operators';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 import { toMinor } from '@dsh/utils';
 
@@ -39,7 +58,7 @@ export class CreateInvoiceTemplateService {
         // TODO: add form types
         startWith(this.cartForm.value),
         map((v) => v.reduce((sum, c) => sum + c.price * c.quantity, 0)),
-        shareReplay(1)
+        shareReplay(1),
     );
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
@@ -59,29 +78,38 @@ export class CreateInvoiceTemplateService {
     constructor(
         private fb: UntypedFormBuilder,
         private invoiceTemplatesService: InvoiceTemplatesService,
-        private dialog: MatDialog
+        private dialog: MatDialog,
     ) {
         const createInvoiceTemplate$ = this.nextInvoiceTemplate$.pipe(
             distinctUntilChanged((x, y) => JSON.stringify(x) === JSON.stringify(y)),
-            share()
+            share(),
         );
         const notCreatedInvoiceTemplate$ = this.nextInvoiceTemplate$.pipe(
             distinctUntilChanged((x, y) => JSON.stringify(x) !== JSON.stringify(y)),
-            share()
+            share(),
         );
         const invoiceTemplateAndTokenWithErrors$ = createInvoiceTemplate$.pipe(
             switchMap((invoiceTemplateCreateParams) =>
-                this.invoiceTemplatesService.createInvoiceTemplate({ invoiceTemplateCreateParams }).pipe(replaceError)
+                this.invoiceTemplatesService
+                    .createInvoiceTemplate({ invoiceTemplateCreateParams })
+                    .pipe(replaceError),
             ),
-            share()
+            share(),
         );
-        this.invoiceTemplateAndToken$ = invoiceTemplateAndTokenWithErrors$.pipe(filterPayload, shareReplay(1));
+        this.invoiceTemplateAndToken$ = invoiceTemplateAndTokenWithErrors$.pipe(
+            filterPayload,
+            shareReplay(1),
+        );
         this.errors$ = invoiceTemplateAndTokenWithErrors$.pipe(filterError, shareReplay(1));
-        this.isLoading$ = progress(createInvoiceTemplate$, invoiceTemplateAndTokenWithErrors$).pipe(shareReplay(1));
+        this.isLoading$ = progress(createInvoiceTemplate$, invoiceTemplateAndTokenWithErrors$).pipe(
+            shareReplay(1),
+        );
 
         this.nextInvoiceTemplateAndToken$ = merge(
             this.invoiceTemplateAndToken$,
-            notCreatedInvoiceTemplate$.pipe(switchMap(() => this.invoiceTemplateAndToken$.pipe(take(1))))
+            notCreatedInvoiceTemplate$.pipe(
+                switchMap(() => this.invoiceTemplateAndToken$.pipe(take(1))),
+            ),
         ).pipe(share());
 
         this.subscribeFormChanges();
@@ -89,7 +117,7 @@ export class CreateInvoiceTemplateService {
             this.invoiceTemplateAndToken$,
             this.errors$,
             this.isLoading$,
-            this.nextInvoiceTemplateAndToken$
+            this.nextInvoiceTemplateAndToken$,
         ).subscribe();
     }
 
@@ -120,9 +148,11 @@ export class CreateInvoiceTemplateService {
     private subscribeFormChanges() {
         const templateType$ = this.form.controls.templateType.valueChanges.pipe(
             startWith<InvoiceTemplateType>(this.form.value.templateType),
-            shareReplay(SHARE_REPLAY_CONF)
+            shareReplay(SHARE_REPLAY_CONF),
         );
-        const costType$ = this.form.controls.costType.valueChanges.pipe(startWith(this.form.value.costType));
+        const costType$ = this.form.controls.costType.valueChanges.pipe(
+            startWith(this.form.value.costType),
+        );
         templateType$.subscribe((templateType) => {
             const { product } = this.form.controls;
             if (templateType === InvoiceTemplateType.InvoiceTemplateMultiLine) {

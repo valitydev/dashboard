@@ -35,7 +35,7 @@ export class CreateReportDialogComponent {
         private fb: NonNullableFormBuilder,
         private reportsService: ReportsService,
         private log: NotifyLogService,
-        private transloco: TranslocoService
+        private transloco: TranslocoService,
     ) {}
 
     confirm(): void {
@@ -53,14 +53,22 @@ export class CreateReportDialogComponent {
             .subscribe({
                 next: () => {
                     this.log.success(
-                        this.transloco.translate('reports.createReportDialog.success', {}, 'wallet-section')
+                        this.transloco.translate(
+                            'reports.createReportDialog.success',
+                            {},
+                            'wallet-section',
+                        ),
                     );
                     this.dialogRef.close(BaseDialogResponseStatus.Success);
                 },
                 error: (err) => {
                     this.log.error(
                         err,
-                        this.transloco.translate('reports.createReportDialog.error', {}, 'wallet-section')
+                        this.transloco.translate(
+                            'reports.createReportDialog.error',
+                            {},
+                            'wallet-section',
+                        ),
                     );
                 },
             });

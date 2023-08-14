@@ -45,11 +45,18 @@ describe('NestedTableComponent', () => {
 
         await TestBed.configureTestingModule({
             imports: [CommonModule, NoopAnimationsModule],
-            declarations: [HostComponent, NestedTableComponent, NestedTableRowComponent, NestedTableColComponent],
+            declarations: [
+                HostComponent,
+                NestedTableComponent,
+                NestedTableRowComponent,
+                NestedTableColComponent,
+            ],
         })
             .overrideComponent(NestedTableComponent, {
                 set: {
-                    providers: [provideMockService(LayoutManagementService, mockLayoutManagementService)],
+                    providers: [
+                        provideMockService(LayoutManagementService, mockLayoutManagementService),
+                    ],
                 },
             })
             .compileComponents();

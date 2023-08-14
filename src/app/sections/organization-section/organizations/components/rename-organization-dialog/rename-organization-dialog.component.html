@@ -1,16 +1,25 @@
 <dsh-base-dialog
-    *transloco="let t; scope: 'organization-section'; read: 'organizationSection.renameOrganizationDialog'"
+    *transloco="
+        let t;
+        scope: 'organization-section';
+        read: 'organizationSection.renameOrganizationDialog'
+    "
     [title]="t('title')"
     (cancel)="cancel()"
 >
-    <form fxLayout="column" [formGroup]="form">
+    <form [formGroup]="form" fxLayout="column">
         <mat-form-field>
             <mat-label>{{ t('name') }}</mat-label>
-            <input formControlName="name" matInput type="text" autocomplete="off" required />
+            <input autocomplete="off" formControlName="name" matInput required type="text" />
         </mat-form-field>
     </form>
     <ng-container dshBaseDialogActions>
-        <button dsh-button color="accent" [disabled]="form.invalid || (inProgress$ | async)" (click)="update()">
+        <button
+            [disabled]="form.invalid || (inProgress$ | async)"
+            color="accent"
+            dsh-button
+            (click)="update()"
+        >
             {{ t('save') }}
         </button>
     </ng-container>

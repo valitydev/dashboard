@@ -19,17 +19,17 @@ export class FakePaginatorService<T> {
     private offset$ = this.showMore$.pipe(
         switchMapTo(this.paginationLimit$),
         scan((offset, limit) => offset + limit, 0),
-        shareReplay(SHARE_REPLAY_CONF)
+        shareReplay(SHARE_REPLAY_CONF),
     );
 
     constructor() {
         this.values$ = combineLatest([this.allValues$, this.offset$]).pipe(
             map(([values, showedCount]) => values.slice(0, showedCount)),
-            shareReplay(SHARE_REPLAY_CONF)
+            shareReplay(SHARE_REPLAY_CONF),
         );
         this.hasMore$ = combineLatest([this.allValues$.pipe(pluck('length')), this.offset$]).pipe(
             map(([count, showedCount]) => count > showedCount),
-            shareReplay(SHARE_REPLAY_CONF)
+            shareReplay(SHARE_REPLAY_CONF),
         );
     }
 

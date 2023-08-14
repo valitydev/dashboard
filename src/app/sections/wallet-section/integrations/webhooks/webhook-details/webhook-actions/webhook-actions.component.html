@@ -6,8 +6,8 @@
     <div class="dsh-title">{{ t('title') }}</div>
     <div>
         <button
-            dsh-text-button
             color="warn"
+            dsh-text-button
             (click)="deleteWebhook.emit({ webhookID: webhookID, identityID: identityID })"
         >
             {{ t('buttons.delete') }}

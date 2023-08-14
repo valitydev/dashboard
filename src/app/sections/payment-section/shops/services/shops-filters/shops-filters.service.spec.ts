@@ -1,9 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ShopsFiltersService } from './shops-filters.service';
 import { generateMockShopsItemList } from '../../tests/generate-mock-shops-item-list';
 import { generateMockShopItem } from '../../tests/generate-shop-item';
 import { ShopItem } from '../../types/shop-item';
+
+import { ShopsFiltersService } from './shops-filters.service';
 
 describe('ShopsFiltersService', () => {
     let service: ShopsFiltersService;

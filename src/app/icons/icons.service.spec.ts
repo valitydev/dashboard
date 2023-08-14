@@ -1,9 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { instance, mock } from 'ts-mockito';
 
-import { IconsService } from './icons.service';
 import { ConfigService } from '../config';
 import { ThemeManager } from '../theme-manager';
+
+import { IconsService } from './icons.service';
 
 describe('IconsService', () => {
     let service: IconsService;

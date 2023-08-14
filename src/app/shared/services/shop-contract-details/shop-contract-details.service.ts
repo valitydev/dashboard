@@ -12,7 +12,7 @@ import { ContractsService } from '@dsh/app/api/payments';
 @Injectable()
 export class ShopContractDetailsService {
     shopContract$: Observable<Overwrite<Contract, { contractor: RussianLegalEntity }>> = defer(() =>
-        this.contract$.asObservable()
+        this.contract$.asObservable(),
     );
     errorOccurred$: Observable<boolean> = defer(() => this.error$.asObservable());
     isLoading$: Observable<boolean> = defer(() => this._isLoading$.asObservable());
@@ -20,7 +20,9 @@ export class ShopContractDetailsService {
     private contractRequest$: Subject<string> = new Subject();
     // TODO: contract errors not forwarded
     private error$ = new BehaviorSubject<boolean>(false);
-    private contract$ = new ReplaySubject<Overwrite<Contract, { contractor: RussianLegalEntity }>>();
+    private contract$ = new ReplaySubject<
+        Overwrite<Contract, { contractor: RussianLegalEntity }>
+    >();
     private _isLoading$ = new BehaviorSubject<boolean>(false);
 
     constructor(private contractsService: ContractsService) {
@@ -36,16 +38,18 @@ export class ShopContractDetailsService {
                                   console.error(e);
                                   this.error$.next(true);
                                   return of('error');
-                              })
+                              }),
                           )
-                        : of(null)
+                        : of(null),
                 ),
                 tap(() => this._isLoading$.next(false)),
                 filter((result) => result !== 'error'),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe((contract) =>
-                this.contract$.next(contract as unknown as Overwrite<Contract, { contractor: RussianLegalEntity }>)
+                this.contract$.next(
+                    contract as unknown as Overwrite<Contract, { contractor: RussianLegalEntity }>,
+                ),
             );
     }
 

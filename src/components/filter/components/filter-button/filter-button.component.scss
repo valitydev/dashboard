@@ -27,7 +27,9 @@ $dsh-filter-button-transition-time: 200ms;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    transition: border-color $dsh-filter-button-transition-time ease, color $dsh-filter-button-transition-time ease;
+    transition:
+        border-color $dsh-filter-button-transition-time ease,
+        color $dsh-filter-button-transition-time ease;
 
     &-content,
     &-actions {

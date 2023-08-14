@@ -5,10 +5,11 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { QueryParamsService } from '@dsh/app/shared/services/query-params';
 
+import { RealmMixService, RealmShopsService } from '../../services';
+
 import { Filters, SearchFiltersParams } from './refunds-search-filters';
 import { FetchRefundsService } from './services/fetch-refunds/fetch-refunds.service';
 import { RefundsExpandedIdManager } from './services/refunds-expanded-id-manager/refunds-expanded-id-manager.service';
-import { RealmMixService, RealmShopsService } from '../../services';
 
 @UntilDestroy()
 @Component({
@@ -33,12 +34,15 @@ export class RefundsComponent implements OnInit {
         private transloco: TranslocoService,
         private qp: QueryParamsService<Filters>,
         private realmShopsService: RealmShopsService,
-        private realmMixinService: RealmMixService<SearchFiltersParams>
+        private realmMixinService: RealmMixService<SearchFiltersParams>,
     ) {}
 
     ngOnInit(): void {
         this.fetchRefundsService.errors$.subscribe(() =>
-            this.snackBar.open(this.transloco.translate('operations.refunds.fetchError', null, 'payment-section'), 'OK')
+            this.snackBar.open(
+                this.transloco.translate('operations.refunds.fetchError', null, 'payment-section'),
+                'OK',
+            ),
         );
         this.realmMixinService.mixedValue$
             .pipe(untilDestroyed(this))

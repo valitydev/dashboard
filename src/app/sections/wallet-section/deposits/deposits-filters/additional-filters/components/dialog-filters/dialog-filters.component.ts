@@ -50,7 +50,7 @@ export class DialogFiltersComponent implements OnInit {
     constructor(
         @Inject(MAT_DIALOG_DATA) private data: AdditionalFilters,
         private dialogRef: MatDialogRef<DialogFiltersComponent, AdditionalFilters>,
-        private fb: FormBuilder
+        private fb: FormBuilder,
     ) {}
 
     ngOnInit(): void {
@@ -112,12 +112,15 @@ export class DialogFiltersComponent implements OnInit {
     }
 
     private extractGroupValidFields<T>(group: FormGroupByValue<T>): Partial<T> {
-        return Object.entries(group.controls).reduce((acc: Partial<T>, [key, control]: [string, AbstractControl]) => {
-            if (control.valid) {
-                acc[key] = control.value;
-            }
-            return acc;
-        }, {});
+        return Object.entries(group.controls).reduce(
+            (acc: Partial<T>, [key, control]: [string, AbstractControl]) => {
+                if (control.valid) {
+                    acc[key] = control.value;
+                }
+                return acc;
+            },
+            {},
+        );
     }
 
     private resetFiltersData(): void {

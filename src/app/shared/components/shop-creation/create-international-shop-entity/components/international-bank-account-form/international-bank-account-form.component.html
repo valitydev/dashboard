@@ -1,12 +1,14 @@
 <div
     *transloco="let t; scope: 'components'; read: 'components.internationalBankAccountForm'"
+    [formGroup]="control"
     fxLayout="column"
     fxLayoutGap="24px"
-    [formGroup]="control"
 >
     <div fxLayout="column" fxLayoutGap="16px">
         <dsh-payout-tool-form formControlName="payoutTool"></dsh-payout-tool-form>
-        <dsh-currency-autocomplete-field formControlName="currency"></dsh-currency-autocomplete-field>
+        <dsh-currency-autocomplete-field
+            formControlName="currency"
+        ></dsh-currency-autocomplete-field>
     </div>
     <mat-checkbox
         [checked]="control.controls.correspondentPayoutTool.enabled"

@@ -3,7 +3,13 @@ import { FormBuilder } from '@angular/forms';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { createControlProviders, FormControlSuperclass } from '@vality/ng-core';
-import { Shop, Contract, InternationalLegalEntity, RussianLegalEntity, LegalEntityAllOf } from '@vality/swag-payments';
+import {
+    Shop,
+    Contract,
+    InternationalLegalEntity,
+    RussianLegalEntity,
+    LegalEntityAllOf,
+} from '@vality/swag-payments';
 import { BehaviorSubject, EMPTY, of, Observable, throwError } from 'rxjs';
 import { switchMap, catchError, share, tap } from 'rxjs/operators';
 import { Overwrite } from 'utility-types';
@@ -16,7 +22,11 @@ import EntityTypeEnum = LegalEntityAllOf.EntityTypeEnum;
 
 export type ExistingContractForm<T extends EntityTypeEnum = EntityTypeEnum> = Overwrite<
     Contract,
-    { contractor: T extends 'InternationalLegalEntity' ? InternationalLegalEntity : RussianLegalEntity }
+    {
+        contractor: T extends 'InternationalLegalEntity'
+            ? InternationalLegalEntity
+            : RussianLegalEntity;
+    }
 >;
 
 @UntilDestroy()
@@ -25,7 +35,10 @@ export type ExistingContractForm<T extends EntityTypeEnum = EntityTypeEnum> = Ov
     templateUrl: 'existing-contract-form.component.html',
     providers: createControlProviders(() => ExistingContractFormComponent),
 })
-export class ExistingContractFormComponent extends FormControlSuperclass<ExistingContractForm, Shop> {
+export class ExistingContractFormComponent extends FormControlSuperclass<
+    ExistingContractForm,
+    Shop
+> {
     @Input() entityType: EntityTypeEnum;
 
     progress$ = new BehaviorSubject(0);
@@ -36,7 +49,7 @@ export class ExistingContractFormComponent extends FormControlSuperclass<Existin
         private contractsService: ContractsService,
         private fb: FormBuilder,
         private transloco: TranslocoService,
-        private errorService: ErrorService
+        private errorService: ErrorService,
     ) {
         super();
     }
@@ -51,11 +64,11 @@ export class ExistingContractFormComponent extends FormControlSuperclass<Existin
                 (shop ? this.getContract(shop.contractID) : of<ExistingContractForm>(null)).pipe(
                     progressTo(this.progress$),
                     errorTo(this.error$, true),
-                    catchError((err) => (this.errorService.error(err, false), EMPTY))
-                )
+                    catchError((err) => (this.errorService.error(err, false), EMPTY)),
+                ),
             ),
             tap((contract) => (this.contract = contract)),
-            share()
+            share(),
         );
     }
 
@@ -68,16 +81,16 @@ export class ExistingContractFormComponent extends FormControlSuperclass<Existin
                             ? this.transloco.selectTranslate<string>(
                                   'existingContractForm.errors.onlyInternationalShopCanBeSelected',
                                   null,
-                                  'components'
+                                  'components',
                               )
                             : this.transloco.selectTranslate<string>(
                                   'existingContractForm.errors.onlyRussianShopCanBeSelected',
                                   null,
-                                  'components'
+                                  'components',
                               )
                     ).pipe(switchMap((t) => throwError(new CommonError(t))));
                 return of(contract);
-            })
+            }),
         );
     }
 }

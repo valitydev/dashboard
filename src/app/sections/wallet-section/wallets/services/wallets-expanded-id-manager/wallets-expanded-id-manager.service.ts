@@ -12,7 +12,7 @@ export class WalletsExpandedIdManager extends ExpandedIdManager<Wallet> {
     constructor(
         protected route: ActivatedRoute,
         protected router: Router,
-        private fetchWalletsService: FetchWalletsService
+        private fetchWalletsService: FetchWalletsService,
     ) {
         super(route, router);
     }

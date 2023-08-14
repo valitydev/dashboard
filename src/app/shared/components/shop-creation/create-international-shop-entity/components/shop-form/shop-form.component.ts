@@ -11,7 +11,9 @@ import { InternationalShopEntityFormValue } from '../../types/international-shop
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => ShopFormComponent),
 })
-export class ShopFormComponent extends FormGroupSuperclass<Partial<InternationalShopEntityFormValue>> {
+export class ShopFormComponent extends FormGroupSuperclass<
+    Partial<InternationalShopEntityFormValue>
+> {
     control = this.fb.group({
         shopDetails: null,
         orgDetails: createTypeUnionDefaultForm(),

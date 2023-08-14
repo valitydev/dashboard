@@ -7,11 +7,20 @@ import { BarChartModule } from '@dsh/components/charts/bar-chart';
 import { SpinnerModule } from '@dsh/components/indicators';
 import { CardModule } from '@dsh/components/layout';
 
-import { PaymentSplitCountComponent } from './payment-split-count.component';
 import { BarChartItemModule } from '../bar-chart-item/bar-chart-item.module';
 
+import { PaymentSplitCountComponent } from './payment-split-count.component';
+
 @NgModule({
-    imports: [CommonModule, CardModule, BarChartModule, FlexModule, SpinnerModule, TranslocoModule, BarChartItemModule],
+    imports: [
+        CommonModule,
+        CardModule,
+        BarChartModule,
+        FlexModule,
+        SpinnerModule,
+        TranslocoModule,
+        BarChartItemModule,
+    ],
     exports: [PaymentSplitCountComponent],
     declarations: [PaymentSplitCountComponent],
 })

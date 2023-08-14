@@ -6,8 +6,9 @@ import { instance, mock, when } from 'ts-mockito';
 
 import { InvoiceService } from '@dsh/app/api/invoice';
 
-import { ReceiveInvoiceService } from './receive-invoice.service';
 import { generateMockInvoice } from '../../../../tests/generate-mock-invoice';
+
+import { ReceiveInvoiceService } from './receive-invoice.service';
 
 describe('ReceiveInvoiceService', () => {
     let service: ReceiveInvoiceService;
@@ -36,7 +37,9 @@ describe('ReceiveInvoiceService', () => {
 
     describe('invoice$', () => {
         beforeEach(() => {
-            when(mockInvoiceService.getInvoiceByID('test')).thenReturn(of(generateMockInvoice('test')));
+            when(mockInvoiceService.getInvoiceByID('test')).thenReturn(
+                of(generateMockInvoice('test')),
+            );
         });
 
         it('should receive invoice', () => {
@@ -60,7 +63,9 @@ describe('ReceiveInvoiceService', () => {
 
     describe('isLoading$', () => {
         it('should emit trigger isLoading by invoice', (done) => {
-            when(mockInvoiceService.getInvoiceByID('test')).thenReturn(of(generateMockInvoice('test')));
+            when(mockInvoiceService.getInvoiceByID('test')).thenReturn(
+                of(generateMockInvoice('test')),
+            );
 
             let count = 0;
             service.isLoading$.pipe(take(3)).subscribe((res) => {

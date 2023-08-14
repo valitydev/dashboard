@@ -5,9 +5,10 @@ import { filter } from 'rxjs/operators';
 
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 
+import { PaymentIds } from '../../../types/payment-ids';
+
 import { CancelHoldService } from './cancel-hold';
 import { CreateHoldService } from './create-hold';
-import { PaymentIds } from '../../../types/payment-ids';
 
 @UntilDestroy()
 @Component({
@@ -31,7 +32,10 @@ export class HoldDetailsComponent {
         return this.flowHold.heldUntil?.toString() ?? '';
     }
 
-    constructor(private cancelHoldService: CancelHoldService, private createHoldService: CreateHoldService) {}
+    constructor(
+        private cancelHoldService: CancelHoldService,
+        private createHoldService: CreateHoldService,
+    ) {}
 
     cancelHold(): void {
         const payment = this.payment;
@@ -42,7 +46,10 @@ export class HoldDetailsComponent {
             })
             .pipe(
                 untilDestroyed(this),
-                filter((response: BaseDialogResponseStatus) => response === BaseDialogResponseStatus.Success)
+                filter(
+                    (response: BaseDialogResponseStatus) =>
+                        response === BaseDialogResponseStatus.Success,
+                ),
             )
             .subscribe(() => {
                 this.requestStatusUpdate(payment);
@@ -60,7 +67,10 @@ export class HoldDetailsComponent {
             })
             .pipe(
                 untilDestroyed(this),
-                filter((response: BaseDialogResponseStatus) => response === BaseDialogResponseStatus.Success)
+                filter(
+                    (response: BaseDialogResponseStatus) =>
+                        response === BaseDialogResponseStatus.Success,
+                ),
             )
             .subscribe(() => {
                 this.requestStatusUpdate(payment);

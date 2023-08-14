@@ -1,7 +1,14 @@
 <ng-template cdk-portal>
-    <div class="dsh-dropdown-wrapper" [ngStyle]="{ margin: offset, marginLeft: position === 'left' ? 0 : offset }">
+    <div
+        [ngStyle]="{ margin: offset, marginLeft: position === 'left' ? 0 : offset }"
+        class="dsh-dropdown-wrapper"
+    >
         <div [@openClose]="state$ | async" (@openClose.done)="animationDone$.next($event)">
-            <div *ngIf="hasArrow" class="dsh-dropdown-triangle" [style.left]="triangleLeftOffset"></div>
+            <div
+                *ngIf="hasArrow"
+                [style.left]="triangleLeftOffset"
+                class="dsh-dropdown-triangle"
+            ></div>
             <div class="dsh-dropdown">
                 <ng-container *ngTemplateOutlet="contentTemplateRef"></ng-container>
             </div>

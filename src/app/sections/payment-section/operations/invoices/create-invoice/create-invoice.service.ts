@@ -8,8 +8,9 @@ import { filter, pluck, switchMap, take } from 'rxjs/operators';
 
 import { ShopsDataService } from '@dsh/app/shared';
 
-import { CreateInvoiceDialogComponent } from './components/create-invoice-dialog/create-invoice-dialog.component';
 import { filterShopsByRealm } from '../../operators';
+
+import { CreateInvoiceDialogComponent } from './components/create-invoice-dialog/create-invoice-dialog.component';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 
@@ -19,7 +20,7 @@ export class CreateInvoiceService {
         private shopsDataService: ShopsDataService,
         private dialog: MatDialog,
         private transloco: TranslocoService,
-        private snackBar: MatSnackBar
+        private snackBar: MatSnackBar,
     ) {}
 
     createInvoice(realm: RealmEnum): Observable<string> {
@@ -33,20 +34,24 @@ export class CreateInvoiceService {
                             width: '720px',
                             data: shops,
                         })
-                        .afterClosed()
+                        .afterClosed(),
                 ),
                 take(1),
                 filter((res) => res !== 'cancel'),
-                pluck('id')
+                pluck('id'),
             )
             .subscribe((id) => {
                 invoiceCreated$.next(id);
                 this.snackBar.open(
-                    this.transloco.translate('operations.invoices.actions.invoiceCreated', null, 'payment-section'),
+                    this.transloco.translate(
+                        'operations.invoices.actions.invoiceCreated',
+                        null,
+                        'payment-section',
+                    ),
                     'OK',
                     {
                         duration: 2000,
-                    }
+                    },
                 );
             });
         return invoiceCreated$;

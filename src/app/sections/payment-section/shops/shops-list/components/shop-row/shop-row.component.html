@@ -1,5 +1,7 @@
 <dsh-row fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="24px">
-    <ng-container *ngTemplateOutlet="shop ? tableGrid : loading; context: { $implicit: shop }"></ng-container>
+    <ng-container
+        *ngTemplateOutlet="shop ? tableGrid : loading; context: { $implicit: shop }"
+    ></ng-container>
 </dsh-row>
 
 <ng-template #loading>

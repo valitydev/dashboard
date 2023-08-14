@@ -6,9 +6,10 @@ import { AnalyticsService, AnapiDictionaryService } from '@dsh/app/api/anapi';
 import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { errorTo, progressTo, distinctUntilChangedDeep, inProgressFrom, attach } from '@dsh/utils';
 
-import { paymentsToolDistributionToChartData } from './payments-tool-distribution-to-chart-data';
 import { SearchParams } from '../search-params';
 import { searchParamsToDistributionSearchParams } from '../utils';
+
+import { paymentsToolDistributionToChartData } from './payments-tool-distribution-to-chart-data';
 
 @Injectable()
 export class PaymentsToolDistributionService {
@@ -17,12 +18,19 @@ export class PaymentsToolDistributionService {
         distinctUntilChangedDeep(),
         switchMap(({ fromTime, toTime, shopIDs, realm }) =>
             this.analyticsService
-                .getPaymentsToolDistribution({ fromTime, toTime, paymentInstitutionRealm: realm, shopIDs })
-                .pipe(errorTo(this.errorSub$), progressTo(this.progress$))
+                .getPaymentsToolDistribution({
+                    fromTime,
+                    toTime,
+                    paymentInstitutionRealm: realm,
+                    shopIDs,
+                })
+                .pipe(errorTo(this.errorSub$), progressTo(this.progress$)),
         ),
         withLatestFrom(this.analyticsDictionaryService.paymentTool$),
-        map(([{ result }, paymentToolDict]) => paymentsToolDistributionToChartData(result, paymentToolDict)),
-        shareReplayRefCount()
+        map(([{ result }, paymentToolDict]) =>
+            paymentsToolDistributionToChartData(result, paymentToolDict),
+        ),
+        shareReplayRefCount(),
     );
     isLoading$ = inProgressFrom(() => this.progress$, this.toolDistribution$);
     error$ = attach(() => this.errorSub$, this.toolDistribution$);
@@ -33,7 +41,7 @@ export class PaymentsToolDistributionService {
 
     constructor(
         private analyticsService: AnalyticsService,
-        private analyticsDictionaryService: AnapiDictionaryService
+        private analyticsDictionaryService: AnapiDictionaryService,
     ) {}
 
     updateSearchParams(searchParams: SearchParams) {

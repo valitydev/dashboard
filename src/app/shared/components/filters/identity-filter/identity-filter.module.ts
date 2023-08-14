@@ -10,8 +10,9 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { IdentityFieldComponent } from '@dsh/app/shared/components/inputs/identity-field';
 import { FilterModule } from '@dsh/components/filter';
 
-import { IdentityFilterComponent } from './identity-filter.component';
 import { ClaimFieldModule } from '../../inputs/claim-field';
+
+import { IdentityFilterComponent } from './identity-filter.component';
 
 @NgModule({
     imports: [

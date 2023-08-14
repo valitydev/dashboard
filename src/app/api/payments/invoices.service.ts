@@ -13,7 +13,7 @@ export class InvoicesService extends createApi(ApiInvoicesService) {
         super(injector);
         this.createInvoice = partyIdPatchMethodService.patch(
             this.createInvoice,
-            (p, id) => (p.invoiceParams.partyID = id)
+            (p, id) => (p.invoiceParams.partyID = id),
         );
     }
 }

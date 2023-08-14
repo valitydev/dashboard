@@ -35,11 +35,11 @@ export class ReceivePaymentService {
                             this.loading$.next(false);
                             this.error$.next(true);
                             return of('error');
-                        })
-                    )
+                        }),
+                    ),
                 ),
                 filter((result) => result !== 'error'),
-                map((r) => r as PaymentSearchResult)
+                map((r) => r as PaymentSearchResult),
             )
             .subscribe((payment: PaymentSearchResult) => {
                 this.loading$.next(false);

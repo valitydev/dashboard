@@ -19,7 +19,10 @@ export class ShopsFilterComponent extends FormGroupSuperclass<ShopsFilterForm> {
 
     shops$ = this.shopsDataService.shops$;
 
-    constructor(private fb: FormBuilder, private shopsDataService: ShopsDataService) {
+    constructor(
+        private fb: FormBuilder,
+        private shopsDataService: ShopsDataService,
+    ) {
         super();
     }
 }

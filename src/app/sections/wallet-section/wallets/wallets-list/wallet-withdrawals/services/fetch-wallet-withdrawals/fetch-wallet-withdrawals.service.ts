@@ -13,7 +13,7 @@ export class FetchWalletWithdrawalsService extends PartialFetcher<Withdrawal, st
     constructor(
         @Inject(SEARCH_LIMIT)
         private searchLimit: number,
-        private withdrawalsService: WithdrawalsService
+        private withdrawalsService: WithdrawalsService,
     ) {
         super();
     }

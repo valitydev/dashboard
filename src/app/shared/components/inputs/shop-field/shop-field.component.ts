@@ -21,17 +21,17 @@ export class ShopFieldComponent extends FormControlSuperclass<Shop> {
     @Input({ transform: booleanAttribute }) required = false;
 
     options$: Observable<Option<Shop>[]> = defer(
-        () => this.shops$ || this.shopsDataService.shops$.pipe(map(toLiveShops))
+        () => this.shops$ || this.shopsDataService.shops$.pipe(map(toLiveShops)),
     ).pipe(
         map((shops) => shops.map(shopToOption)),
-        shareReplayRefCount()
+        shareReplayRefCount(),
     );
 
     constructor(
         private shopsDataService: ShopsDataService,
         @Inject(SHOPS)
         @Optional()
-        private shops$?: Observable<Shop[]>
+        private shops$?: Observable<Shop[]>,
     ) {
         super();
     }

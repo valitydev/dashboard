@@ -7,11 +7,12 @@ import { take } from 'rxjs/operators';
 import { QueryParamsService } from '@dsh/app/shared/services/query-params/query-params.service';
 import { SpinnerType } from '@dsh/components/indicators';
 
+import { RealmMixService, PaymentInstitutionRealmService } from '../../services';
+
 import { CreateInvoiceService } from './create-invoice';
 import { Filters, SearchFiltersParams } from './invoices-search-filters';
 import { FetchInvoicesService } from './services/fetch-invoices/fetch-invoices.service';
 import { InvoicesExpandedIdManager } from './services/invoices-expanded-id-manager/invoices-expanded-id-manager.service';
-import { RealmMixService, PaymentInstitutionRealmService } from '../../services';
 
 @UntilDestroy()
 @Component({
@@ -38,16 +39,21 @@ export class InvoicesComponent implements OnInit {
         private transloco: TranslocoService,
         private paymentInstitutionRealmService: PaymentInstitutionRealmService,
         private qp: QueryParamsService<Filters>,
-        private realmMixService: RealmMixService<SearchFiltersParams>
+        private realmMixService: RealmMixService<SearchFiltersParams>,
     ) {}
 
     ngOnInit(): void {
         this.invoicesService.errors$
             .pipe(untilDestroyed(this))
             .subscribe(() =>
-                this.snackBar.open(this.transloco.translate('shared.commonError', null, 'components'), 'OK')
+                this.snackBar.open(
+                    this.transloco.translate('shared.commonError', null, 'components'),
+                    'OK',
+                ),
             );
-        this.realmMixService.mixedValue$.pipe(untilDestroyed(this)).subscribe((v) => this.invoicesService.search(v));
+        this.realmMixService.mixedValue$
+            .pipe(untilDestroyed(this))
+            .subscribe((v) => this.invoicesService.search(v));
     }
 
     searchParamsChanges(p: Filters): void {
@@ -78,7 +84,7 @@ export class InvoicesComponent implements OnInit {
             this.createInvoiceService
                 .createInvoice(realm)
                 .pipe(untilDestroyed(this))
-                .subscribe((invoiceID) => this.refreshAndShowNewInvoice(invoiceID))
+                .subscribe((invoiceID) => this.refreshAndShowNewInvoice(invoiceID)),
         );
     }
 

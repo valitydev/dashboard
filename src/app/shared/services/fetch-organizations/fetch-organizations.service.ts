@@ -15,12 +15,18 @@ export class FetchOrganizationsService extends PartialFetcher<Organization, void
     constructor(
         private organizationsService: OrgsService,
         @Inject(SEARCH_LIMIT) private searchLimit: number,
-        @Inject(DEBOUNCE_FETCHER_ACTION_TIME) debounceActionTime: number
+        @Inject(DEBOUNCE_FETCHER_ACTION_TIME) debounceActionTime: number,
     ) {
         super(debounceActionTime);
     }
 
-    protected fetch(_params: void, continuationToken?: string): Observable<FetchResult<Organization>> {
-        return this.organizationsService.listOrgMembership({ limit: this.searchLimit, continuationToken });
+    protected fetch(
+        _params: void,
+        continuationToken?: string,
+    ): Observable<FetchResult<Organization>> {
+        return this.organizationsService.listOrgMembership({
+            limit: this.searchLimit,
+            continuationToken,
+        });
     }
 }

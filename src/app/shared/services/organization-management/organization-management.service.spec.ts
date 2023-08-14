@@ -24,7 +24,9 @@ describe('OrganizationManagementService', () => {
         mockKeycloakTokenInfoService = mock(KeycloakTokenInfoService);
 
         when(mockKeycloakTokenInfoService.partyID$).thenReturn(of(someUserId));
-        when(mockOrganizationsService.getOrgMember(anyString(), anyString())).thenReturn(of(MOCK_MEMBER));
+        when(mockOrganizationsService.getOrgMember(anyString(), anyString())).thenReturn(
+            of(MOCK_MEMBER),
+        );
         when(mockOrganizationsService.createOrg(anything())).thenReturn(of(MOCK_ORG));
 
         TestBed.configureTestingModule({

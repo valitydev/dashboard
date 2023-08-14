@@ -34,10 +34,11 @@ export const replaceError = <T, E>(source: Observable<T>): Observable<T | BasicE
 export const filterError = <E, T>(source: Observable<T | BasicError<E>>): Observable<E> =>
     source.pipe(
         filter<BasicError<E>>((value) => value instanceof BasicError),
-        pluck('error')
+        pluck('error'),
     );
 
 /**
  * @deprecated use toError()
  */
-export const filterPayload = <T>(source: Observable<T | BasicError>): Observable<T> => source.pipe(filter(isPayload));
+export const filterPayload = <T>(source: Observable<T | BasicError>): Observable<T> =>
+    source.pipe(filter(isPayload));

@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-import { HIDE_ANIMATION } from './hide-animation';
 import { smoothChangeTo } from '../../../utils';
+
+import { HIDE_ANIMATION } from './hide-animation';
 
 const RIGHT_OFFSET = 30;
 const BOTTOM_OFFSET = 50;
@@ -53,7 +54,9 @@ export class ScrollUpComponent implements OnInit, OnDestroy {
     }
 
     scrollToTop() {
-        smoothChangeTo(window.pageYOffset, 0, this.scrollTime).subscribe((v) => window.scrollTo(0, v));
+        smoothChangeTo(window.pageYOffset, 0, this.scrollTime).subscribe((v) =>
+            window.scrollTo(0, v),
+        );
     }
 
     private changeIsShow(isShow: boolean) {

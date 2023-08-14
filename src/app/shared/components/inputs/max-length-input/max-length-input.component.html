@@ -1,14 +1,14 @@
 <mat-form-field>
     <mat-label>{{ label }}</mat-label>
     <input
-        [formControl]="formControl"
         [attr.disabled]="isDisabled"
         [errorStateMatcher]="matcher"
+        [formControl]="formControl"
         [required]="required"
-        (focusout)="onTouched()"
         aria-label="max-length-input"
         matInput
         type="text"
+        (focusout)="onTouched()"
     />
     <mat-hint>
         <ng-container *ngTemplateOutlet="hint"></ng-container>

@@ -19,7 +19,7 @@ export class CreateWebhookDialogComponent implements OnInit {
         private dialogRef: MatDialogRef<CreateWebhookDialogComponent>,
         private createWebhookDialogService: CreateWebhookDialogService,
         private transloco: TranslocoService,
-        private snackBar: MatSnackBar
+        private snackBar: MatSnackBar,
     ) {
         this.createWebhookDialogService.webhookCreated$.pipe(filter((r) => !!r)).subscribe((r) => {
             this.dialogRef.close(r);
@@ -27,9 +27,14 @@ export class CreateWebhookDialogComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.createWebhookDialogService.webhookCreated$.subscribe(() => this.dialogRef.close('created'));
+        this.createWebhookDialogService.webhookCreated$.subscribe(() =>
+            this.dialogRef.close('created'),
+        );
         this.createWebhookDialogService.errorOccurred$.subscribe(() =>
-            this.snackBar.open(this.transloco.translate('webhook.errors.createError', null, 'payment-section'), 'OK')
+            this.snackBar.open(
+                this.transloco.translate('webhook.errors.createError', null, 'payment-section'),
+                'OK',
+            ),
         );
     }
 

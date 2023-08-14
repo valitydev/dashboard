@@ -9,7 +9,11 @@ import { PaymentsService } from '@dsh/app/api/payments';
 export class RefundsService {
     constructor(private paymentsService: PaymentsService) {}
 
-    createRefund(invoiceID: string, paymentID: string, refundParams?: RefundParams): Observable<Refund> {
+    createRefund(
+        invoiceID: string,
+        paymentID: string,
+        refundParams?: RefundParams,
+    ): Observable<Refund> {
         return this.paymentsService.createRefund({ invoiceID, paymentID, refundParams });
     }
 
@@ -21,7 +25,7 @@ export class RefundsService {
                     .reduce((sumAmount: number, refund: Refund) => {
                         return sumAmount + refund.amount;
                     }, 0);
-            })
+            }),
         );
     }
 }

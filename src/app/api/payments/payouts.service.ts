@@ -9,11 +9,14 @@ import { createApi } from '../utils';
     providedIn: 'root',
 })
 export class PayoutsService extends createApi(ApiPayoutsService, [PartyIdExtension]) {
-    constructor(injector: Injector, private partyIdPatchMethodService: PartyIdPatchMethodService) {
+    constructor(
+        injector: Injector,
+        private partyIdPatchMethodService: PartyIdPatchMethodService,
+    ) {
         super(injector);
         this.createPayout = partyIdPatchMethodService.patch(
             this.createPayout,
-            (params, partyId) => (params.payoutParams.partyID = partyId)
+            (params, partyId) => (params.payoutParams.partyID = partyId),
         );
     }
 }

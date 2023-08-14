@@ -1,10 +1,18 @@
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { ChangeDetectionStrategy, Component, ContentChild, EventEmitter, Input, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ContentChild,
+    EventEmitter,
+    Input,
+    Output,
+} from '@angular/core';
 import { coerce } from 'coerce-property';
+
+import { AccordionItemContentComponent } from '../accordion-item-content';
 
 import { EXPAND_ANIMATION } from './expand-animation';
 import { LazyPanelContentDirective } from './lazy-panel-content.directive';
-import { AccordionItemContentComponent } from '../accordion-item-content';
 
 @Component({
     selector: 'dsh-accordion-item',
@@ -17,7 +25,9 @@ export class AccordionItemComponent {
     @Output() expandedChange = new EventEmitter<boolean>();
 
     @Input()
-    @coerce<AccordionItemComponent>(coerceBooleanProperty, (v: boolean, self) => self.expandedChange.emit(v))
+    @coerce<AccordionItemComponent>(coerceBooleanProperty, (v: boolean, self) =>
+        self.expandedChange.emit(v),
+    )
     expanded = false;
 
     @ContentChild(AccordionItemContentComponent)

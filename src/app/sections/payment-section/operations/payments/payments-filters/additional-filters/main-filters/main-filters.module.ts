@@ -9,7 +9,14 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { MainFiltersComponent } from './main-filters.component';
 
 @NgModule({
-    imports: [CommonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, FlexLayoutModule, TranslocoModule],
+    imports: [
+        CommonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        FlexLayoutModule,
+        TranslocoModule,
+    ],
     declarations: [MainFiltersComponent],
     exports: [MainFiltersComponent],
 })

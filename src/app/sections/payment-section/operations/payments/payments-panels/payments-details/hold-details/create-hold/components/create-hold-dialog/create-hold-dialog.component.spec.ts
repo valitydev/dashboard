@@ -9,14 +9,18 @@ import { cold, getTestScheduler, hot } from 'jasmine-marbles';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 
 import { PaymentService } from '@dsh/app/api/payment';
-import { BaseDialogModule, BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
+import {
+    BaseDialogModule,
+    BaseDialogResponseStatus,
+} from '@dsh/app/shared/components/dialog/base-dialog';
 import { MaxLengthInputModule } from '@dsh/app/shared/components/inputs/max-length-input/max-length-input.module';
 import { ErrorService } from '@dsh/app/shared/services';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 import { FormatInputModule } from '@dsh/components/form-controls';
 
-import { CreateHoldDialogComponent } from './create-hold-dialog.component';
 import { CreateHoldDialogData } from '../../types/create-hold-dialog-data';
+
+import { CreateHoldDialogComponent } from './create-hold-dialog.component';
 
 describe('CreateHoldDialogComponent', () => {
     let component: CreateHoldDialogComponent;
@@ -132,8 +136,8 @@ describe('CreateHoldDialogComponent', () => {
                     deepEqual({
                         reason: 'reason',
                         currency: 'USD',
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(cold('(|)'));
         });
 
@@ -145,8 +149,8 @@ describe('CreateHoldDialogComponent', () => {
                     deepEqual({
                         reason: 'myReason',
                         currency: 'USD',
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(cold('(|)'));
 
             await createComponent({
@@ -167,8 +171,8 @@ describe('CreateHoldDialogComponent', () => {
                     deepEqual({
                         reason: 'myReason',
                         currency: 'USD',
-                    })
-                )
+                    }),
+                ),
             ).once();
             expect().nothing();
         });
@@ -184,8 +188,8 @@ describe('CreateHoldDialogComponent', () => {
                         reason: 'myReason',
                         currency: 'USD',
                         amount: 50000,
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(hot('^--(a|)', { a: null }));
 
             await createComponent();
@@ -215,8 +219,8 @@ describe('CreateHoldDialogComponent', () => {
                     deepEqual({
                         reason: 'errorReason',
                         currency: 'USD',
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(hot('^-#-(|)', {}, new Error('my error')));
 
             await createComponent();
@@ -246,8 +250,8 @@ describe('CreateHoldDialogComponent', () => {
                         reason: 'errorReason',
                         currency: 'USD',
                         amount: 200,
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(hot('^-#-(|)', {}, error));
 
             await createComponent();

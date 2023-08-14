@@ -12,10 +12,15 @@ export function easeInOutCubic(t: number): number {
     }
 }
 
-export function smoothChangeTo(from: number, to: number, timeMs: number = 500, intervalMs: number = 16) {
+export function smoothChangeTo(
+    from: number,
+    to: number,
+    timeMs: number = 500,
+    intervalMs: number = 16,
+) {
     const count = Math.ceil(timeMs / intervalMs);
     return interval(intervalMs).pipe(
         takeWhile((i) => i !== count),
-        map((i) => easeInOutCubic((1 / count) * i) * (to - from) + from)
+        map((i) => easeInOutCubic((1 / count) * i) * (to - from) + from),
     );
 }

@@ -1,7 +1,12 @@
 import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormArray } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { createControlProviders, FormGroupByValue, FormComponentSuperclass, getErrorsTree } from '@vality/ng-core';
+import {
+    createControlProviders,
+    FormGroupByValue,
+    FormComponentSuperclass,
+    getErrorsTree,
+} from '@vality/ng-core';
 import { InvoiceLineTaxVAT } from '@vality/swag-anapi-v2';
 import { Shop } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
@@ -13,7 +18,12 @@ import { shareReplayUntilDestroyed } from '@dsh/app/custom-operators';
 import { replaceFormArrayValue, getFormValueChanges, toMinor, toMajor } from '@dsh/utils';
 
 export const WITHOUT_VAT = Symbol('without VAT');
-export const EMPTY_CART_ITEM: CartItem = { product: '', quantity: null, price: null, taxVatRate: WITHOUT_VAT };
+export const EMPTY_CART_ITEM: CartItem = {
+    product: '',
+    quantity: null,
+    price: null,
+    taxVatRate: WITHOUT_VAT,
+};
 export const EMPTY_FORM_DATA: FormData = {
     shopID: null,
     dueDate: null,
@@ -45,7 +55,10 @@ export interface FormData {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => CreateInvoiceFormComponent),
 })
-export class CreateInvoiceFormComponent extends FormComponentSuperclass<Partial<FormData>> implements OnInit {
+export class CreateInvoiceFormComponent
+    extends FormComponentSuperclass<Partial<FormData>>
+    implements OnInit
+{
     @Input() shops: Shop[];
 
     control = this.fb.group({
@@ -55,7 +68,7 @@ export class CreateInvoiceFormComponent extends FormComponentSuperclass<Partial<
     totalAmount$ = this.control.controls.cart.valueChanges.pipe(
         startWith(this.control.controls.cart.value),
         map((v) => v.map(({ price, quantity }) => price * quantity).reduce((sum, s) => sum + s, 0)),
-        shareReplayUntilDestroyed(this)
+        shareReplayUntilDestroyed(this),
     );
     taxVatRates = Object.values(InvoiceLineTaxVAT.RateEnum);
     withoutVAT = WITHOUT_VAT;
@@ -83,7 +96,7 @@ export class CreateInvoiceFormComponent extends FormComponentSuperclass<Partial<
                         ...i,
                         price: i.price && this.currency ? toMinor(i.price, this.currency) : i.price,
                     })) as CartItem[],
-                })
+                }),
             );
     }
 
@@ -97,11 +110,16 @@ export class CreateInvoiceFormComponent extends FormComponentSuperclass<Partial<
             ...(value || {}),
             cart: (value?.cart || [EMPTY_CART_ITEM]).map((v) => ({
                 ...v,
-                price: isNil(v.price) || isNil(this.currency) ? v.price : toMajor(v.price, this.currency),
+                price:
+                    isNil(v.price) || isNil(this.currency)
+                        ? v.price
+                        : toMajor(v.price, this.currency),
             })),
         };
-        replaceFormArrayValue<Partial<CartItem>>(this.control.controls.cart as unknown as FormArray, value.cart, (v) =>
-            this.fb.group(v)
+        replaceFormArrayValue<Partial<CartItem>>(
+            this.control.controls.cart as unknown as FormArray,
+            value.cart,
+            (v) => this.fb.group(v),
         );
         this.control.setValue(value);
     }

@@ -16,7 +16,10 @@ describe('CreateRefundService', () => {
 
     beforeEach(() => {
         mockMatDialog = mock(MatDialog);
-        mockMatDialogRef = mock<MatDialogRef<CreateRefundDialogComponent, CreateRefundDialogResponse>>(MatDialogRef);
+        mockMatDialogRef =
+            mock<MatDialogRef<CreateRefundDialogComponent, CreateRefundDialogResponse>>(
+                MatDialogRef,
+            );
     });
 
     beforeEach(() => {
@@ -51,13 +54,13 @@ describe('CreateRefundService', () => {
                     CreateRefundDialogComponent,
                     deepEqual({
                         data,
-                    })
-                )
+                    }),
+                ),
             ).thenReturn(instance(mockMatDialogRef));
             when(mockMatDialogRef.afterClosed()).thenReturn(
                 of({
                     status: CreateRefundDialogResponseStatus.Success,
-                })
+                }),
             );
 
             expect(service.createRefund(data)).toBeObservable(
@@ -65,7 +68,7 @@ describe('CreateRefundService', () => {
                     a: {
                         status: CreateRefundDialogResponseStatus.Success,
                     },
-                })
+                }),
             );
         });
     });

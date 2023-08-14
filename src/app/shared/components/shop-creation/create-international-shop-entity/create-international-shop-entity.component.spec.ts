@@ -85,22 +85,30 @@ describe('CreateInternationalShopEntityComponent', () => {
         };
 
         it('should call create shop with form value', () => {
-            when(mockCreateInternationalShopEntityService.createShop(deepEqual(component.form.value))).thenReturn(
-                of(claim)
-            );
+            when(
+                mockCreateInternationalShopEntityService.createShop(
+                    deepEqual(component.form.value),
+                ),
+            ).thenReturn(of(claim));
 
             component.createShop();
 
-            verify(mockCreateInternationalShopEntityService.createShop(deepEqual(component.form.value))).once();
+            verify(
+                mockCreateInternationalShopEntityService.createShop(
+                    deepEqual(component.form.value),
+                ),
+            ).once();
             expect().nothing();
         });
 
         it('should emit send on success', () => {
             const spyOnSend = spyOn(component.send, 'emit').and.callThrough();
 
-            when(mockCreateInternationalShopEntityService.createShop(deepEqual(component.form.value))).thenReturn(
-                of(claim)
-            );
+            when(
+                mockCreateInternationalShopEntityService.createShop(
+                    deepEqual(component.form.value),
+                ),
+            ).thenReturn(of(claim));
 
             component.createShop();
 
@@ -108,10 +116,14 @@ describe('CreateInternationalShopEntityComponent', () => {
         });
 
         it('should navigate to claim with claim id', () => {
-            when(mockCreateInternationalShopEntityService.createShop(deepEqual(component.form.value))).thenReturn(
-                of(claim)
-            );
-            when(mockRouter.navigate(deepEqual(['claim-section', 'claims', claim.id]))).thenReturn();
+            when(
+                mockCreateInternationalShopEntityService.createShop(
+                    deepEqual(component.form.value),
+                ),
+            ).thenReturn(of(claim));
+            when(
+                mockRouter.navigate(deepEqual(['claim-section', 'claims', claim.id])),
+            ).thenReturn();
 
             component.createShop();
 
@@ -125,8 +137,8 @@ describe('CreateInternationalShopEntityComponent', () => {
                 of(claim).pipe(
                     switchMap(() => {
                         throw error;
-                    })
-                )
+                    }),
+                ),
             );
             when(mockMatSnackBar.open('Что-то пошло не так', 'OK')).thenReturn();
 

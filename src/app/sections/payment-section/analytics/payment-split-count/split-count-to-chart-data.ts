@@ -22,7 +22,7 @@ const offsetToX = (offset: number, unit: SplitUnit, index: number, length: numbe
 const statusOffsetCountsToSeries = (
     statusOffsetCounts: StatusOffsetCount[],
     unit: SplitUnit,
-    paymentStatusLabels: Record<StatusOffsetCount['status'], string>
+    paymentStatusLabels: Record<StatusOffsetCount['status'], string>,
 ): Series[] => {
     return statusOffsetCounts.map(({ status, offsetCount }) => ({
         name: paymentStatusLabels[status],
@@ -35,7 +35,7 @@ const statusOffsetCountsToSeries = (
 
 export const splitCountToChartData = (
     splitCounts: SplitCountResult[],
-    paymentStatusLabels: Record<StatusOffsetCount['status'], string>
+    paymentStatusLabels: Record<StatusOffsetCount['status'], string>,
 ): ChartData[] =>
     splitCounts.map(({ currency, statusOffsetCounts, splitUnit }) => {
         const prepared = prepareOffsetCounts(statusOffsetCounts);

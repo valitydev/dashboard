@@ -5,8 +5,9 @@ import { By } from '@angular/platform-browser';
 import { getTextContent } from '@dsh/app/shared/tests/get-text-content';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 
-import { ResourcePayerComponent } from './resource-payer.component';
 import { MockDetailsItemModule } from '../../../../../tests/mock-details-item-component';
+
+import { ResourcePayerComponent } from './resource-payer.component';
 
 describe('ResourcePayerComponent', () => {
     let component: ResourcePayerComponent;

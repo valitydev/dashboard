@@ -5,6 +5,10 @@ import { CustomerPayer, Payer, PaymentResourcePayer } from '@vality/swag-anapi-v
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 import { StatusModule } from '@dsh/components/indicators';
 
+import { generateMockPayment } from '../../../tests/generate-mock-payment';
+import { MockDetailsItemModule } from '../../../tests/mock-details-item-component';
+import { MockShopDetailsPipe } from '../../../tests/mock-shop-details-pipe';
+
 import { AdditionalInfoComponent } from './components/additional-info/additional-info.component';
 import { ChargeAmountComponent } from './components/charge-amount/charge-amount.component';
 import { PaymentFeeComponent } from './components/payment-fee/payment-fee.component';
@@ -14,9 +18,6 @@ import { ShopNameComponent } from './components/shop-name/shop-name.component';
 import { PaymentMainInfoComponent } from './payment-main-info.component';
 import { PaymentToolModule } from './payment-tool';
 import { PaymentErrorMessagePipe } from './pipes/payment-error-message/payment-error-message.pipe';
-import { generateMockPayment } from '../../../tests/generate-mock-payment';
-import { MockDetailsItemModule } from '../../../tests/mock-details-item-component';
-import { MockShopDetailsPipe } from '../../../tests/mock-shop-details-pipe';
 
 describe('PaymentMainInfoComponent', () => {
     let component: PaymentMainInfoComponent;
@@ -24,7 +25,13 @@ describe('PaymentMainInfoComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [getTranslocoModule(), MockDetailsItemModule, PaymentToolModule, FlexLayoutModule, StatusModule],
+            imports: [
+                getTranslocoModule(),
+                MockDetailsItemModule,
+                PaymentToolModule,
+                FlexLayoutModule,
+                StatusModule,
+            ],
             declarations: [
                 PaymentMainInfoComponent,
                 PaymentStatusComponent,

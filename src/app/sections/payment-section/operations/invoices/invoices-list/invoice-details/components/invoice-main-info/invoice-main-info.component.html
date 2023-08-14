@@ -1,7 +1,7 @@
 <div
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.invoices'"
     fxLayout="column"
     fxLayoutGap="24px"
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.invoices'"
 >
     <dsh-invoice-details [invoice]="invoice"></dsh-invoice-details>
     <dsh-details-item [title]="t('shop')">

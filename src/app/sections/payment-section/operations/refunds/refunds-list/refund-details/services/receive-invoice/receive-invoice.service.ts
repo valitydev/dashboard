@@ -30,11 +30,11 @@ export class ReceiveInvoiceService {
                             this.loading$.next(false);
                             this.error$.next(true);
                             return of('error');
-                        })
-                    )
+                        }),
+                    ),
                 ),
                 filter((result) => result !== 'error'),
-                map((r) => r as Invoice)
+                map((r) => r as Invoice),
             )
             .subscribe((invoice: Invoice) => {
                 this.loading$.next(false);

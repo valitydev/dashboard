@@ -4,22 +4,26 @@
         <div fxLayout="row" fxLayout.gt-sm="column">
             <ng-container *ngFor="let item of navbarItemConfig$ | async">
                 <dsh-navbar-item
-                    *ngIf="item.roles | isAccessAllowed : 'some'"
-                    [routerLink]="item.routerLink"
-                    routerLinkActive
                     #rla="routerLinkActive"
+                    *ngIf="item.roles | isAccessAllowed: 'some'"
                     [active]="rla.isActive"
                     [icon]="item.icon"
+                    [routerLink]="item.routerLink"
+                    routerLinkActive
                     (activeChange)="setActiveSection($event, item)"
                 >
                     {{ item.label }}
                 </dsh-navbar-item>
             </ng-container>
             <dsh-navbar-item
-                *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentSection.nav'"
-                withToggle="true"
-                icon="toggles"
+                *transloco="
+                    let t;
+                    scope: 'payment-section';
+                    read: 'paymentSection.paymentSection.nav'
+                "
                 [toggleChecked]="isTestRealm$ | async"
+                icon="toggles"
+                withToggle="true"
                 (toggleChange)="testEnvToggle($event)"
                 >{{ t('testEnv') }}</dsh-navbar-item
             >

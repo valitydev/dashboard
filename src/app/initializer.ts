@@ -1,10 +1,11 @@
+import { environment } from '../environments';
+
 import { KeycloakService } from './auth/keycloak';
 import { ConfigService } from './config';
 import { IconsService } from './icons';
 import { initSentry } from './init-sentry';
 import { LanguageService } from './language';
 import { ThemeManager } from './theme-manager';
-import { environment } from '../environments';
 
 export const initializer =
     (
@@ -12,7 +13,7 @@ export const initializer =
         keycloakService: KeycloakService,
         languageService: LanguageService,
         themeManager: ThemeManager,
-        iconsService: IconsService
+        iconsService: IconsService,
     ) =>
     () =>
         Promise.all([
@@ -31,7 +32,7 @@ export const initializer =
                         bearerExcludedUrls: ['/assets'],
                         bearerPrefix: 'Bearer',
                     }),
-                ])
+                ]),
             ),
             languageService.init(),
             iconsService.init(),

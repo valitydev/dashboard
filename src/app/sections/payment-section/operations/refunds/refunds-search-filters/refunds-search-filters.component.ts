@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnChanges,
+    OnInit,
+    Output,
+} from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,7 +19,11 @@ import pick from 'lodash-es/pick';
 import { combineLatest, defer, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { createDateRangeWithPreset, Preset, DateRangeWithPreset } from '@dsh/components/date-range-filter';
+import {
+    createDateRangeWithPreset,
+    Preset,
+    DateRangeWithPreset,
+} from '@dsh/components/date-range-filter';
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
@@ -47,16 +59,24 @@ export class RefundsSearchFiltersComponent implements OnInit, OnChanges {
     isAdditionalFilterApplied$ = defer(() => this.additionalFilters$).pipe(map(negate(isEmpty)));
 
     get keys(): string[] {
-        return this.mediaObserver.isActive('gt-sm') ? [...MAIN_FILTERS, ...ADDITIONAL_FILTERS] : MAIN_FILTERS;
+        return this.mediaObserver.isActive('gt-sm')
+            ? [...MAIN_FILTERS, ...ADDITIONAL_FILTERS]
+            : MAIN_FILTERS;
     }
 
     private additionalFilters$ = new BehaviorSubject<AdditionalFilters>({});
 
-    constructor(private fb: FormBuilder, private dialog: MatDialog, private mediaObserver: MediaObserver) {}
+    constructor(
+        private fb: FormBuilder,
+        private dialog: MatDialog,
+        private mediaObserver: MediaObserver,
+    ) {}
 
     ngOnInit(): void {
         combineLatest([
-            getFormValueChanges(this.form).pipe(map((filters) => pick(filters, this.keys) as MainFilters)),
+            getFormValueChanges(this.form).pipe(
+                map((filters) => pick(filters, this.keys) as MainFilters),
+            ),
             this.additionalFilters$.pipe(map((filters) => omit(filters, this.keys))),
         ])
             .pipe(untilDestroyed(this))

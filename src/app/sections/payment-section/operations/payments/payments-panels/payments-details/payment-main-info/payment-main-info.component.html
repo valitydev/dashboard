@@ -1,17 +1,23 @@
-<ng-container *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentDetails.details'">
+<ng-container
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentDetails.details'"
+>
     <div gdColumns="1fr" gdColumns.gt-sm="1fr 1fr 1fr" gdGap="24px">
         <div class="payment-main-info-amount mat-body-1">
-            {{ payment.amount | amountCurrency : payment.currency }}
+            {{ payment.amount | amountCurrency: payment.currency }}
         </div>
         <dsh-charge-amount [payment]="payment"></dsh-charge-amount>
         <dsh-payment-fee *ngIf="payment.fee" [payment]="payment"></dsh-payment-fee>
         <dsh-payment-status [status]="payment.status"></dsh-payment-status>
         <dsh-payment-tool [paymentToolDetails]="payer.paymentToolDetails"></dsh-payment-tool>
         <dsh-resource-payer *ngIf="resourcePayer" [payer]="resourcePayer"></dsh-resource-payer>
-        <dsh-shop-name gdColumn="1/-1" [shopName]="payment.shopID | shopDetails"></dsh-shop-name>
-        <dsh-details-item gdColumn="1/-1" *ngIf="payment.error?.code" [title]="t('error')">
+        <dsh-shop-name [shopName]="payment.shopID | shopDetails" gdColumn="1/-1"></dsh-shop-name>
+        <dsh-details-item *ngIf="payment.error?.code" [title]="t('error')" gdColumn="1/-1">
             <div class="mat-body-1">{{ payment.error | paymentErrorMessage }}</div>
         </dsh-details-item>
-        <dsh-additional-info gdColumn="1/-1" *ngIf="additionalInfo as info" [info]="info"></dsh-additional-info>
+        <dsh-additional-info
+            *ngIf="additionalInfo as info"
+            [info]="info"
+            gdColumn="1/-1"
+        ></dsh-additional-info>
     </div>
 </ng-container>

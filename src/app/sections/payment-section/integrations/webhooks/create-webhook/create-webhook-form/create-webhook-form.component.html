@@ -15,24 +15,30 @@
         </mat-form-field>
         <mat-form-field fxFlex>
             <mat-label>{{ t('createWebhook.url') }}</mat-label>
-            <input formControlName="url" matInput type="text" autocomplete="off" required />
+            <input autocomplete="off" formControlName="url" matInput required type="text" />
         </mat-form-field>
     </div>
     <mat-divider></mat-divider>
     <div class="dsh-title">{{ t('createWebhook.eventType') }}</div>
     <mat-radio-group
-        fxLayout.gt-sm
-        fxLayout="column"
-        fxLayoutGap="24px"
         formControlName="eventType"
+        fxLayout="column"
+        fxLayout.gt-sm
+        fxLayoutGap="24px"
         (change)="changeActiveTopic($event.value)"
     >
-        <mat-radio-button fxFlex [checked]="(activeTopic$ | async) === 'InvoicesTopic'" value="InvoicesTopic">{{
-            t('createWebhook.eventTypes.invoices')
-        }}</mat-radio-button>
-        <mat-radio-button fxFlex [checked]="(activeTopic$ | async) === 'CustomersTopic'" value="CustomersTopic">{{
-            t('createWebhook.eventTypes.customers')
-        }}</mat-radio-button>
+        <mat-radio-button
+            [checked]="(activeTopic$ | async) === 'InvoicesTopic'"
+            fxFlex
+            value="InvoicesTopic"
+            >{{ t('createWebhook.eventTypes.invoices') }}</mat-radio-button
+        >
+        <mat-radio-button
+            [checked]="(activeTopic$ | async) === 'CustomersTopic'"
+            fxFlex
+            value="CustomersTopic"
+            >{{ t('createWebhook.eventTypes.customers') }}</mat-radio-button
+        >
     </mat-radio-group>
     <mat-divider></mat-divider>
     <div fxLayout="column" fxLayoutGap="8px">
@@ -41,9 +47,9 @@
     </div>
     <div formArrayName="eventTypes" fxLayout="column" fxLayoutGap="16px">
         <div *ngFor="let eventType of eventTypes.controls; let i = index" [formGroupName]="i">
-            <mat-checkbox formControlName="selected" class="dsh-body-1"
+            <mat-checkbox class="dsh-body-1" formControlName="selected"
                 ><span>{{
-                (eventType$ | async)?.[eventType.controls.eventName.value]
+                    (eventType$ | async)?.[eventType.controls.eventName.value]
                 }}</span></mat-checkbox
             >
         </div>

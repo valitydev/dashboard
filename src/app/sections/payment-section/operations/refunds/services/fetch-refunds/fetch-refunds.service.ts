@@ -20,7 +20,10 @@ export class FetchRefundsService extends PartialFetcher<RefundSearchResult, Sear
         super();
     }
 
-    protected fetch({ fromTime, toTime, realm, ...params }: SearchFiltersParams, continuationToken: string) {
+    protected fetch(
+        { fromTime, toTime, realm, ...params }: SearchFiltersParams,
+        continuationToken: string,
+    ) {
         return this.searchService.searchRefunds({
             ...params,
             fromTime,

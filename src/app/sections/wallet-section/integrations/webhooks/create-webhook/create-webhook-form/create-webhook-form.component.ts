@@ -31,7 +31,7 @@ export class CreateWebhookFormComponent implements OnInit {
     constructor(
         private identitiesService: IdentitiesService,
         private fb: UntypedFormBuilder,
-        private walletDictionaryService: WalletDictionaryService
+        private walletDictionaryService: WalletDictionaryService,
     ) {}
 
     ngOnInit(): void {
@@ -49,10 +49,10 @@ export class CreateWebhookFormComponent implements OnInit {
                         this.fb.group({
                             eventName,
                             selected: false,
-                        })
+                        }),
                     ),
-                    [oneMustBeSelected]
-                )
+                    [oneMustBeSelected],
+                ),
             );
         });
     }

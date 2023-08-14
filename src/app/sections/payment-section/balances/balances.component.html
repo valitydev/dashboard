@@ -1,6 +1,6 @@
 <div
-    class="dsh-balances"
     *transloco="let t; scope: 'payment-section'; read: 'paymentSection.balances'"
+    class="dsh-balances"
     fxLayout="column"
     fxLayoutGap="8px"
 >
@@ -8,9 +8,13 @@
     <ng-container *ngIf="(balances$ | async) && (balancesCount$ | async) > 0; else elseBlock">
         <div
             *ngFor="let balance of balances$ | async"
-            [ngClass]="(balancesCount$ | async) <= 3 ? 'dsh-balances-balance-lg' : 'dsh-balances-balance-md'"
+            [ngClass]="
+                (balancesCount$ | async) <= 3
+                    ? 'dsh-balances-balance-lg'
+                    : 'dsh-balances-balance-md'
+            "
         >
-            {{ balance.amount | amountCurrency : balance.currency : 'short' }}
+            {{ balance.amount | amountCurrency: balance.currency : 'short' }}
         </div>
     </ng-container>
     <ng-template #elseBlock><div class="dsh-balances-balance-lg">--/--</div></ng-template>

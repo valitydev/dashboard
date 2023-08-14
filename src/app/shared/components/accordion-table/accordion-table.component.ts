@@ -61,7 +61,7 @@ export class AccordionTableComponent<T extends object> {
         const idx = HIDED_BREAKPOINTS.findIndex((h) => h === hide);
         return this.breakpointObserver.observe(HIDED_BREAKPOINTS.slice(0, idx)).pipe(
             map((s) => s.matches),
-            startWith(false)
+            startWith(false),
         );
     }
 }

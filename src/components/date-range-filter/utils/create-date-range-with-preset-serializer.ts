@@ -3,9 +3,10 @@ import moment from 'moment';
 
 import { Serializer } from '@dsh/app/shared/services/query-params/types/serializer';
 
-import { createDateRangeWithPreset } from './create-date-range-with-preset';
 import { DateRangeWithPreset } from '../types/date-range-with-preset';
 import { Preset } from '../types/preset';
+
+import { createDateRangeWithPreset } from './create-date-range-with-preset';
 
 export function createDateRangeWithPresetSerializer(id = 'dr'): Serializer<DateRangeWithPreset> {
     return {
@@ -18,7 +19,8 @@ export function createDateRangeWithPresetSerializer(id = 'dr'): Serializer<DateR
                       dateRange.end ? dateRange.end.utc().format() : '',
                   ].join(','),
         deserialize: (str) => {
-            if (Object.values(Preset).includes(str as Preset)) return createDateRangeWithPreset(str as Preset);
+            if (Object.values(Preset).includes(str as Preset))
+                return createDateRangeWithPreset(str as Preset);
             const [startStr, endStr] = str.split(',');
             const start = moment(startStr);
             const end = moment(endStr);

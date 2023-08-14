@@ -8,11 +8,12 @@ import { filter, first, switchMap, switchMapTo } from 'rxjs/operators';
 
 import { QueryParamsService } from '@dsh/app/shared/services/query-params';
 
+import { RealmMixService, PaymentInstitutionRealmService } from '../services';
+
 import { CreateReportDialogComponent } from './create-report/create-report-dialog.component';
 import { FetchReportsService } from './fetch-reports.service';
 import { ReportsExpandedIdManager } from './reports-expanded-id-manager.service';
 import { Filters, SearchFiltersParams } from './reports-search-filters';
-import { RealmMixService, PaymentInstitutionRealmService } from '../services';
 
 @UntilDestroy()
 @Component({
@@ -39,12 +40,15 @@ export class ReportsComponent implements OnInit {
         private qp: QueryParamsService<Filters>,
         private realmService: PaymentInstitutionRealmService,
         private dialog: MatDialog,
-        private realmMixinService: RealmMixService<SearchFiltersParams>
+        private realmMixinService: RealmMixService<SearchFiltersParams>,
     ) {}
 
     ngOnInit(): void {
         this.fetchReportsService.errors$.subscribe(() =>
-            this.snackBar.open(this.transloco.translate('reports.errors.fetchError', null, 'payment-section'), 'OK')
+            this.snackBar.open(
+                this.transloco.translate('reports.errors.fetchError', null, 'payment-section'),
+                'OK',
+            ),
         );
         this.realmMixinService.mixedValue$
             .pipe(untilDestroyed(this))
@@ -56,15 +60,19 @@ export class ReportsComponent implements OnInit {
                     this.dialog
                         .open(CreateReportDialogComponent, { data: { realm } })
                         .afterClosed()
-                        .pipe(filter((r) => r === 'created'))
+                        .pipe(filter((r) => r === 'created')),
                 ),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe(() => {
                 this.snackBar.open(
-                    this.transloco.translate('reports.createReport.successfullyCreated', null, 'payment-section'),
+                    this.transloco.translate(
+                        'reports.createReport.successfullyCreated',
+                        null,
+                        'payment-section',
+                    ),
                     'OK',
-                    { duration: 2000 }
+                    { duration: 2000 },
                 );
                 this.refresh();
             });

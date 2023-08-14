@@ -16,7 +16,8 @@ const ROUTES: Routes = [
     },
     {
         path: 'organization-section',
-        loadChildren: () => import('./organization-section').then((m) => m.OrginizationSectionModule),
+        loadChildren: () =>
+            import('./organization-section').then((m) => m.OrginizationSectionModule),
     },
     {
         path: '',

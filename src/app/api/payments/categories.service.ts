@@ -13,7 +13,7 @@ import { createApi } from '../utils';
 export class CategoriesService extends createApi(ApiCategoriesService) {
     categories$ = defer(() => this.reloadCategories$).pipe(
         switchMap(() => this.getCategories()),
-        shareReplayRefCount()
+        shareReplayRefCount(),
     );
 
     private reloadCategories$ = new BehaviorSubject<void>(undefined);

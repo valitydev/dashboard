@@ -14,14 +14,14 @@ export class AppAuthGuardService extends KeycloakAuthGuard {
         protected router: Router,
         protected keycloakAngular: KeycloakService,
         private errorService: ErrorService,
-        private roleAccessService: RoleAccessService
+        private roleAccessService: RoleAccessService,
     ) {
         super(router, keycloakAngular);
     }
 
     async isAccessAllowed(route: ActivatedRouteSnapshot): Promise<boolean | UrlTree> {
         const isAccessAllowed = await firstValueFrom(
-            this.roleAccessService.isAccessAllowed(route.data.roles as RoleAccessName[])
+            this.roleAccessService.isAccessAllowed(route.data.roles as RoleAccessName[]),
         );
         if (!isAccessAllowed) {
             this.errorService.error('Access is denied', false);

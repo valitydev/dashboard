@@ -16,11 +16,11 @@ import { IdGeneratorService } from '../id-generator';
 export class ShopsDataService {
     shops$: Observable<Shop[]> = merge(
         this.contextOrganizationService.organization$,
-        defer(() => this.reloadShops$)
+        defer(() => this.reloadShops$),
     ).pipe(
         switchMap(() => this.shopsService.getShopsForParty()),
         switchMap((shops) => (shops.length ? of(shops) : this.createTestShop())),
-        shareReplayRefCount()
+        shareReplayRefCount(),
     );
 
     private reloadShops$ = new Subject<void>();
@@ -29,7 +29,7 @@ export class ShopsDataService {
         private shopsService: ShopsService,
         private contextOrganizationService: ContextOrganizationService,
         private idGenerator: IdGeneratorService,
-        private claimsService: ClaimsService
+        private claimsService: ClaimsService,
     ) {}
 
     reloadShops() {
@@ -46,14 +46,16 @@ export class ShopsDataService {
                               this.idGenerator.uuid(),
                               this.idGenerator.uuid(),
                               this.idGenerator.uuid(),
-                              this.idGenerator.uuid()
+                              this.idGenerator.uuid(),
                           ),
-                      })
+                      }),
             ),
-            switchMap(() => this.shopsService.getShopsForParty().pipe(repeat({ count: 5, delay: 1000 }))),
+            switchMap(() =>
+                this.shopsService.getShopsForParty().pipe(repeat({ count: 5, delay: 1000 })),
+            ),
             filter((shops) => !!shops.length),
             first(),
-            catchError(() => of([]))
+            catchError(() => of([])),
         );
     }
 }

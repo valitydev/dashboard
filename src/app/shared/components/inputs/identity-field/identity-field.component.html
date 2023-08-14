@@ -1,4 +1,7 @@
-<mat-form-field fxFlex *transloco="let t; scope: 'components'; read: 'components.inputs.identityField'">
+<mat-form-field
+    *transloco="let t; scope: 'components'; read: 'components.inputs.identityField'"
+    fxFlex
+>
     <mat-label>{{ t('label') }}</mat-label>
     <mat-select [formControl]="control" [required]="required">
         <mat-option *ngFor="let identity of identities$ | async" [value]="identity.id">

@@ -24,7 +24,7 @@ export class FilesComponent {
     constructor(
         private downloadsService: DownloadsService,
         private transloco: TranslocoService,
-        private log: NotifyLogService
+        private log: NotifyLogService,
     ) {}
 
     download(fileIDs: string[] = this.files.map((f) => f.id)) {
@@ -34,13 +34,17 @@ export class FilesComponent {
                     catchError((err) => {
                         this.log.error(
                             err,
-                            this.transloco.translate('reports.errors.downloadReportError', null, 'wallet-section')
+                            this.transloco.translate(
+                                'reports.errors.downloadReportError',
+                                null,
+                                'wallet-section',
+                            ),
                         );
                         return EMPTY;
                     }),
-                    progressTo(this.progress$)
-                )
-            )
+                    progressTo(this.progress$),
+                ),
+            ),
         )
             .pipe(untilDestroyed(this))
             .subscribe((files) => {

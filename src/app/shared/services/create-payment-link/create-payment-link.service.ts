@@ -8,9 +8,10 @@ import { InvoicesService } from '@dsh/app/api/payments';
 import { ShortenerService } from '@dsh/app/api/url-shortener';
 import { queryParamsToStr } from '@dsh/utils';
 
+import { ConfigService } from '../../../config';
+
 import { PaymentLinkParams } from './types/payment-link-params';
 import { getDueDate } from './utils/get-due-date';
-import { ConfigService } from '../../../config';
 
 @Injectable({
     providedIn: 'root',
@@ -19,12 +20,12 @@ export class CreatePaymentLinkService {
     constructor(
         private shortenerService: ShortenerService,
         private configService: ConfigService,
-        private invoicesService: InvoicesService
+        private invoicesService: InvoicesService,
     ) {}
 
     createPaymentLinkByTemplate(
         { invoiceTemplate, invoiceTemplateAccessToken }: InvoiceTemplateAndToken,
-        params: PaymentLinkParams
+        params: PaymentLinkParams,
     ): Observable<string> {
         return this.shortenerService
             .shortenUrl({
@@ -52,13 +53,15 @@ export class CreatePaymentLinkService {
                         }),
                         expiresAt: moment(invoice.dueDate).utc().format(),
                     },
-                })
+                }),
             ),
-            pluck('shortenedUrl')
+            pluck('shortenedUrl'),
         );
     }
 
     private buildUrl(params: PaymentLinkParams): string {
-        return `${this.configService.checkoutEndpoint}/v1/checkout.html?${queryParamsToStr(params)}`;
+        return `${this.configService.checkoutEndpoint}/v1/checkout.html?${queryParamsToStr(
+            params,
+        )}`;
     }
 }

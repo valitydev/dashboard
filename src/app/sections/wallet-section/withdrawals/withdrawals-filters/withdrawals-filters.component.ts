@@ -37,12 +37,17 @@ export class WithdrawalsFiltersComponent implements OnInit, OnChanges {
 
     private additionalFilters$ = new ReplaySubject<AdditionalFilters>();
 
-    constructor(private fb: FormBuilder, private dialog: MatDialog) {}
+    constructor(
+        private fb: FormBuilder,
+        private dialog: MatDialog,
+    ) {}
 
     ngOnInit(): void {
         combineLatest([getFormValueChanges(this.form), this.additionalFilters$])
             .pipe(untilDestroyed(this))
-            .subscribe((filters) => this.filtersChanged.next(Object.assign({}, ...filters) as MainFilters));
+            .subscribe((filters) =>
+                this.filtersChanged.next(Object.assign({}, ...filters) as MainFilters),
+            );
     }
 
     ngOnChanges({ initParams }: ComponentChanges<WithdrawalsFiltersComponent>): void {
@@ -59,7 +64,7 @@ export class WithdrawalsFiltersComponent implements OnInit, OnChanges {
             .afterClosed()
             .pipe(
                 filter((v) => !isEqual(v, data)),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe((filters) => {
                 this.additionalFilters$.next(filters);

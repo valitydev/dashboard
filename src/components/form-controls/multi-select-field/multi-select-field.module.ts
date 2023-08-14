@@ -9,7 +9,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MultiSelectFieldComponent } from './multi-select-field.component';
 
 @NgModule({
-    imports: [CommonModule, FlexLayoutModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, FormsModule],
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCheckboxModule,
+        FormsModule,
+    ],
     declarations: [MultiSelectFieldComponent],
     exports: [MultiSelectFieldComponent],
 })

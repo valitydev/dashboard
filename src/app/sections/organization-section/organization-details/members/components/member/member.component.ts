@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Input, OnChanges, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Inject,
+    Input,
+    OnChanges,
+    Output,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Member, Organization } from '@vality/swag-organizations';
@@ -33,7 +41,7 @@ export class MemberComponent implements OnChanges {
         private organizationManagementService: OrganizationManagementService,
         private membersService: MembersService,
         private notificationService: NotificationService,
-        private errorService: ErrorService
+        private errorService: ErrorService,
     ) {}
 
     ngOnChanges({ organization }: ComponentChanges<MemberComponent>) {
@@ -45,21 +53,26 @@ export class MemberComponent implements OnChanges {
     @ignoreBeforeCompletion
     removeFromOrganization() {
         return this.dialog
-            .open<ConfirmActionDialogComponent, void, ConfirmActionDialogResult>(ConfirmActionDialogComponent)
+            .open<ConfirmActionDialogComponent, void, ConfirmActionDialogResult>(
+                ConfirmActionDialogComponent,
+            )
             .afterClosed()
             .pipe(
                 filter((r) => r === 'confirm'),
                 switchMap(() =>
-                    this.membersService.expelOrgMember({ orgId: this.organization.id, userId: this.member.id })
+                    this.membersService.expelOrgMember({
+                        orgId: this.organization.id,
+                        userId: this.member.id,
+                    }),
                 ),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe(
                 () => {
                     this.notificationService.success();
                     this.changed.emit();
                 },
-                (err) => this.errorService.error(err)
+                (err) => this.errorService.error(err),
             );
     }
 

@@ -4,8 +4,9 @@ import { By } from '@angular/platform-browser';
 import { TranslocoTestingModule } from '@ngneat/transloco';
 import { instance, mock } from 'ts-mockito';
 
-import { OrganizationsListComponent } from './organizations-list.component';
 import { OrganizationsExpandedIdManager } from '../../services/organizations-expanded-id-manager/organizations-expanded-id-manager.service';
+
+import { OrganizationsListComponent } from './organizations-list.component';
 
 @Component({
     selector: 'dsh-host',
@@ -20,7 +21,9 @@ describe('OrganizationsListComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [TranslocoTestingModule.withLangs({}, { missingHandler: { logMissingKey: false } })],
+            imports: [
+                TranslocoTestingModule.withLangs({}, { missingHandler: { logMissingKey: false } }),
+            ],
             declarations: [HostComponent, OrganizationsListComponent],
         })
             .overrideComponent(OrganizationsListComponent, {

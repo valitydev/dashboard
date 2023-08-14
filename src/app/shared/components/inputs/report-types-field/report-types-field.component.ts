@@ -13,8 +13,13 @@ import ReportTypeEnum = Report.ReportTypeEnum;
     templateUrl: 'report-types-field.component.html',
     providers: [...createControlProviders(() => ReportTypesFieldComponent), ReportTypesLabelPipe],
 })
-export class ReportTypesFieldComponent extends FormControlSuperclass<ReportTypeEnum[]> implements OnChanges {
-    options$ = valuesToOptions(Object.values(ReportTypeEnum), (v) => this.reportTypesLabelPipe.transform(v));
+export class ReportTypesFieldComponent
+    extends FormControlSuperclass<ReportTypeEnum[]>
+    implements OnChanges
+{
+    options$ = valuesToOptions(Object.values(ReportTypeEnum), (v) =>
+        this.reportTypesLabelPipe.transform(v),
+    );
 
     constructor(private reportTypesLabelPipe: ReportTypesLabelPipe) {
         super();

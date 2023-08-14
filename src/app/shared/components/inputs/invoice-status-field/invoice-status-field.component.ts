@@ -12,14 +12,17 @@ import StatusEnum = InvoiceStatus.StatusEnum;
 @Component({
     selector: 'dsh-invoice-status-field',
     templateUrl: 'invoice-status-field.component.html',
-    providers: [...createControlProviders(() => InvoiceStatusFieldComponent), InvoiceStatusLabelPipe],
+    providers: [
+        ...createControlProviders(() => InvoiceStatusFieldComponent),
+        InvoiceStatusLabelPipe,
+    ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InvoiceStatusFieldComponent extends FormControlSuperclass<StatusEnum> {
     options$: Observable<Option<string>[]> = combineLatest(
         Object.keys(OPTION_LABELS).map((value: StatusEnum) =>
-            this.invoiceStatusLabelPipe.transform(value).pipe(map((label) => ({ value, label })))
-        )
+            this.invoiceStatusLabelPipe.transform(value).pipe(map((label) => ({ value, label }))),
+        ),
     );
 
     constructor(private invoiceStatusLabelPipe: InvoiceStatusLabelPipe) {

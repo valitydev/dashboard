@@ -14,11 +14,13 @@ const ORGANIZATION_SECTION_ROUTES: Routes = [
             },
             {
                 path: 'organizations/:orgId',
-                loadChildren: () => import('./organization-details').then((m) => m.OrganizationDetailsModule),
+                loadChildren: () =>
+                    import('./organization-details').then((m) => m.OrganizationDetailsModule),
             },
             {
                 path: 'accept-invitation',
-                loadChildren: () => import('./accept-invitation').then((m) => m.AcceptInvitationModule),
+                loadChildren: () =>
+                    import('./accept-invitation').then((m) => m.AcceptInvitationModule),
             },
             {
                 path: '',

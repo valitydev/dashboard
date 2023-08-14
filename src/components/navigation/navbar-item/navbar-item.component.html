@@ -1,5 +1,10 @@
-<div class="dsh-navbar-item" [ngClass]="{ 'dsh-navbar-item-active': active }" fxLayout fxLayoutAlign="start stretch">
-    <div fxFlex fxLayoutAlign="start center" fxLayoutGap="16px" class="dsh-navbar-item-content">
+<div
+    [ngClass]="{ 'dsh-navbar-item-active': active }"
+    class="dsh-navbar-item"
+    fxLayout
+    fxLayoutAlign="start stretch"
+>
+    <div class="dsh-navbar-item-content" fxFlex fxLayoutAlign="start center" fxLayoutGap="16px">
         <div fxFlex fxLayout fxLayoutAlign="start center" fxLayoutGap="24px" (click)="toggle()">
             <dsh-bi [icon]="icon" [size]="iconSize$ | async"></dsh-bi>
             <div fxHide.lt-md>
@@ -7,9 +12,9 @@
             </div>
         </div>
         <mat-slide-toggle
-            fxHide.lt-md
             *ngIf="withToggle"
             [checked]="toggleChecked"
+            fxHide.lt-md
             (change)="slideToggleChange($event)"
         ></mat-slide-toggle>
     </div>

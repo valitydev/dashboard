@@ -39,17 +39,25 @@ export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
 
     constructor(
         private createInvoiceOrInvoiceTemplateService: CreateInvoiceOrInvoiceTemplateService,
-        private invoicesService: InvoicesService
+        private invoicesService: InvoicesService,
     ) {}
 
     ngOnInit(): void {
         merge(
             this.nextTemplate.pipe(
-                map((template) => ({ invoiceOrInvoiceTemplate: template, type: Type.Template } as const))
+                map(
+                    (template) =>
+                        ({ invoiceOrInvoiceTemplate: template, type: Type.Template }) as const,
+                ),
             ),
             this.nextInvoice
-                .pipe(map((invoice) => ({ invoiceOrInvoiceTemplate: invoice, type: Type.Invoice } as const)))
-                .pipe(untilDestroyed(this))
+                .pipe(
+                    map(
+                        (invoice) =>
+                            ({ invoiceOrInvoiceTemplate: invoice, type: Type.Invoice }) as const,
+                    ),
+                )
+                .pipe(untilDestroyed(this)),
         ).subscribe((invoiceOrInvoiceTemplate) => this.next.emit(invoiceOrInvoiceTemplate));
     }
 
@@ -66,9 +74,9 @@ export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
                             currency: shops.find((s) => s.id === value.shopID)?.currency,
                             metadata: {},
                         },
-                    })
+                    }),
                 ),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe(({ invoice }) => this.nextInvoice.next(invoice));
     }

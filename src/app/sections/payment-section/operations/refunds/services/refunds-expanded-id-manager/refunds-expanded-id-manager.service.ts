@@ -12,7 +12,7 @@ export class RefundsExpandedIdManager extends ExpandedIdManager<RefundSearchResu
     constructor(
         protected route: ActivatedRoute,
         protected router: Router,
-        private fetchRefundsService: FetchRefundsService
+        private fetchRefundsService: FetchRefundsService,
     ) {
         super(route, router);
     }

@@ -5,9 +5,10 @@ import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 import { instance, mock, when } from 'ts-mockito';
 
-import { PaymentsExpandedIdManager } from './payments-expanded-id-manager.service';
 import { generateMockPaymentsList } from '../../tests/generate-mock-payments-list';
 import { FetchPaymentsService } from '../fetch-payments/fetch-payments.service';
+
+import { PaymentsExpandedIdManager } from './payments-expanded-id-manager.service';
 
 describe('PaymentsExpandedIdManager', () => {
     let service: PaymentsExpandedIdManager;
@@ -51,7 +52,7 @@ describe('PaymentsExpandedIdManager', () => {
             expect(service.expandedId$).toBeObservable(
                 cold('(a|)', {
                     a: 1,
-                })
+                }),
             );
         });
 
@@ -63,7 +64,7 @@ describe('PaymentsExpandedIdManager', () => {
             expect(service.expandedId$).toBeObservable(
                 cold('(a|)', {
                     a: -1,
-                })
+                }),
             );
         });
 
@@ -75,7 +76,7 @@ describe('PaymentsExpandedIdManager', () => {
             expect(service.expandedId$).toBeObservable(
                 cold('(a|)', {
                     a: -1,
-                })
+                }),
             );
         });
     });

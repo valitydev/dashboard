@@ -51,7 +51,7 @@ export class CreateRefundDialogComponent implements OnInit {
         private refundsService: RefundsService,
         private transloco: TranslocoService,
         private notificationService: NotificationService,
-        private errorService: ErrorService
+        private errorService: ErrorService,
     ) {}
 
     ngOnInit(): void {
@@ -78,13 +78,13 @@ export class CreateRefundDialogComponent implements OnInit {
                             ? this.transloco.translate(
                                   `paymentDetails.refunds.createRefund.pending`,
                                   null,
-                                  'payment-section'
+                                  'payment-section',
                               )
                             : this.transloco.translate(
                                   `paymentDetails.refunds.createRefund.successful`,
                                   null,
-                                  'payment-section'
-                              )
+                                  'payment-section',
+                              ),
                     );
                     this.dialogRef.close({
                         status: CreateRefundDialogResponseStatus.Success,
@@ -127,7 +127,7 @@ export class CreateRefundDialogComponent implements OnInit {
                     currency,
                 };
             }),
-            shareReplay(1)
+            shareReplay(1),
         );
     }
 
@@ -153,10 +153,12 @@ export class CreateRefundDialogComponent implements OnInit {
                 validators: [Validators.required, amountValidator, Validators.min(1)],
                 asyncValidators: [
                     maxAvailableAmountValidator(
-                        this.availableRefundAmount$.pipe(map(({ amount, currency }) => toMajor(amount, currency)))
+                        this.availableRefundAmount$.pipe(
+                            map(({ amount, currency }) => toMajor(amount, currency)),
+                        ),
                     ),
                 ],
-            })
+            }),
         );
     }
 
@@ -169,14 +171,18 @@ export class CreateRefundDialogComponent implements OnInit {
         if (err instanceof HttpErrorResponse && !isEmpty(err.error?.code)) {
             handledError = new CommonError(
                 err.error.code === 'invalidRequest'
-                    ? this.transloco.translate(`paymentDetails.refunds.errors.invalidRequest`, null, 'payment-section')
+                    ? this.transloco.translate(
+                          `paymentDetails.refunds.errors.invalidRequest`,
+                          null,
+                          'payment-section',
+                      )
                     : err.error.code === 'invoicePaymentAmountExceeded'
                     ? this.transloco.translate(
                           `paymentDetails.refunds.errors.invoicePaymentAmountExceeded`,
                           null,
-                          'payment-section'
+                          'payment-section',
                       )
-                    : err.error.code
+                    : err.error.code,
             );
         }
         this.errorService.error(handledError);

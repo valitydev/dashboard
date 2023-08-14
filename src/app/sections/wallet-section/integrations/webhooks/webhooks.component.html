@@ -1,25 +1,29 @@
-<div fxLayout="column" fxLayoutGap="32px" *transloco="let t; scope: 'wallet-section'; read: 'walletSection.webhooks'">
+<div
+    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.webhooks'"
+    fxLayout="column"
+    fxLayoutGap="32px"
+>
     <div
-        fxLayout.lt-md="column"
         fxLayout="row"
-        fxLayoutAlign.lt-md="center stretch"
+        fxLayout.lt-md="column"
         fxLayoutAlign="end"
+        fxLayoutAlign.lt-md="center stretch"
         fxLayoutGap="24px"
     >
-        <button dsh-button color="accent" (click)="createWebhook()">{{ t('create') }}</button>
+        <button color="accent" dsh-button (click)="createWebhook()">{{ t('create') }}</button>
     </div>
 
     <ng-container *ngIf="(isLoading$ | async) || !(webhooks$ | async); else webhooksList">
-        <div fxLayout fxFlexAlign="center">
+        <div fxFlexAlign="center" fxLayout>
             <dsh-spinner></dsh-spinner>
         </div>
     </ng-container>
     <ng-template #webhooksList>
         <dsh-webhooks-list
-            [webhooks]="webhooks$ | async"
             [expandedId]="expandedId$ | async"
-            (expandedIdChange)="expandedIdChange($event)"
             [lastUpdated]="lastUpdated$ | async"
+            [webhooks]="webhooks$ | async"
+            (expandedIdChange)="expandedIdChange($event)"
             (refreshData)="receiveWebhooks()"
         ></dsh-webhooks-list>
         <dsh-empty-search-result

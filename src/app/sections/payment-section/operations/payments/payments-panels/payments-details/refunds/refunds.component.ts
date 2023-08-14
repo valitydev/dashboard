@@ -1,13 +1,25 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnInit,
+    Output,
+} from '@angular/core';
 import { RefundSearchResult, PaymentSearchResult } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 
-import { CreateRefundDialogResponse, CreateRefundDialogResponseStatus, CreateRefundService } from './create-refund';
-import { FetchRefundsService } from './services/fetch-refunds/fetch-refunds.service';
 import { PaymentIds } from '../../../types';
+
+import {
+    CreateRefundDialogResponse,
+    CreateRefundDialogResponseStatus,
+    CreateRefundService,
+} from './create-refund';
+import { FetchRefundsService } from './services/fetch-refunds/fetch-refunds.service';
 
 @Component({
     selector: 'dsh-refunds',
@@ -36,7 +48,10 @@ export class RefundsComponent implements OnInit {
     isLoading$: Observable<boolean> = this.refundsService.isLoading$;
     hasMore$: Observable<boolean> = this.refundsService.hasMore$;
 
-    constructor(private refundsService: FetchRefundsService, private createRefundService: CreateRefundService) {}
+    constructor(
+        private refundsService: FetchRefundsService,
+        private createRefundService: CreateRefundService,
+    ) {}
 
     get isRefundAvailable(): boolean {
         return this.status === PaymentSearchResult.StatusEnum.Captured;
@@ -58,7 +73,10 @@ export class RefundsComponent implements OnInit {
             .createRefund(createRefundData)
             .pipe(
                 take(1),
-                filter(({ status }: CreateRefundDialogResponse) => status === CreateRefundDialogResponseStatus.Success)
+                filter(
+                    ({ status }: CreateRefundDialogResponse) =>
+                        status === CreateRefundDialogResponseStatus.Success,
+                ),
             )
             .subscribe(({ availableAmount }: CreateRefundDialogResponse) => {
                 this.updateRefunds();

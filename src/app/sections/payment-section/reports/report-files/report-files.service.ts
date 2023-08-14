@@ -23,14 +23,18 @@ export class ReportFilesService {
                     this.loading$.next(true);
                 }),
                 switchMap(({ reportID, fileIDs }) =>
-                    forkJoin(fileIDs.map((fileID) => this.reportsApiService.downloadFile({ reportID, fileID })))
+                    forkJoin(
+                        fileIDs.map((fileID) =>
+                            this.reportsApiService.downloadFile({ reportID, fileID }),
+                        ),
+                    ),
                 ),
                 map((links) => links.map((link) => link.url)),
                 catchError((err) => {
                     console.error(err);
                     this.error$.next();
                     return of([]);
-                })
+                }),
             )
             .subscribe((urls: string[]) => {
                 this.loading$.next(false);

@@ -12,7 +12,7 @@ export class ApiKeysService extends createApi(ApiService, [PartyIdExtension]) {
         super(injector);
         this.requestRevokeApiKey = partyIdPatchMethodService.patch(
             this.requestRevokeApiKey,
-            (params, partyId) => (params.partyId = partyId)
+            (params, partyId) => (params.partyId = partyId),
         );
     }
 }

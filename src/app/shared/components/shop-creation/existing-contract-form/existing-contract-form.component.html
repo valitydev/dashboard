@@ -3,9 +3,15 @@
     fxLayout="column"
     fxLayoutGap="16px"
 >
-    <dsh-shop-field required [label]="p('useShop')" [formControl]="control"></dsh-shop-field>
-    <ng-container class="dsh-body-1" *transloco="let t; scope: 'components'; read: 'components.shared'">
-        <div *ngIf="progress$ | async; else (error$ | async) ? error : contract && loaded" class="dsh-body-1">
+    <dsh-shop-field [formControl]="control" [label]="p('useShop')" required></dsh-shop-field>
+    <ng-container
+        *transloco="let t; scope: 'components'; read: 'components.shared'"
+        class="dsh-body-1"
+    >
+        <div
+            *ngIf="progress$ | async; else (error$ | async) ? error : contract && loaded"
+            class="dsh-body-1"
+        >
             {{ t('loading') }}
         </div>
         <ng-template #error>

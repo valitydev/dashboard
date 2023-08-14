@@ -13,7 +13,7 @@ export function getRolesByGroup(group: RoleGroup): PartialReadonly<MemberRole>[]
             scope.resourcesIds.map((resourceId) => ({
                 roleId: group.id,
                 scope: { id: scope.id, resourceId },
-            }))
+            })),
         )
         .flat();
 }

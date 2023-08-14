@@ -5,11 +5,12 @@ import { TranslocoModule } from '@ngneat/transloco';
 
 import { ButtonModule } from '@dsh/components/buttons';
 
+import { HumanizeDurationModule } from '../../../../../../../humanize-duration';
+
 import { CancelHoldModule } from './cancel-hold';
 import { CreateHoldModule } from './create-hold';
 import { HoldDetailsComponent } from './hold-details.component';
 import { HoldActivePipe } from './pipes/hold-active/hold-active.pipe';
-import { HumanizeDurationModule } from '../../../../../../../humanize-duration';
 
 @NgModule({
     imports: [

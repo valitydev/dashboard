@@ -42,7 +42,7 @@ export class NestedTableRowComponent implements AfterContentInit, OnInit {
         private layoutManagementService: LayoutManagementService,
         private el: ElementRef,
         private renderer: Renderer2,
-        private cdr: ChangeDetectorRef
+        private cdr: ChangeDetectorRef,
     ) {}
 
     ngOnInit() {
@@ -50,7 +50,11 @@ export class NestedTableRowComponent implements AfterContentInit, OnInit {
             .pipe(untilDestroyed(this))
             .subscribe((gridTemplateColumns) => {
                 this.gridTemplateColumns = gridTemplateColumns;
-                this.renderer.setStyle(this.el.nativeElement, 'grid-template-columns', gridTemplateColumns);
+                this.renderer.setStyle(
+                    this.el.nativeElement,
+                    'grid-template-columns',
+                    gridTemplateColumns,
+                );
             });
         this.layoutManagementService.getFillCols(this.colsCount$).subscribe((fillCols) => {
             this.fillCols = fillCols;

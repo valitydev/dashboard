@@ -6,14 +6,14 @@
     <div *ngIf="accessToken; else releaseApiKey">
         <mat-form-field style="width: 100%">
             <mat-label>{{ t('apiKey') }}</mat-label>
-            <textarea matInput [value]="accessToken" readonly rows="5"></textarea>
+            <textarea [value]="accessToken" matInput readonly rows="5"></textarea>
         </mat-form-field>
     </div>
     <ng-template #releaseApiKey>
-        <div fxLayout="column" fxLayoutGap="24px" [formGroup]="form">
+        <div [formGroup]="form" fxLayout="column" fxLayoutGap="24px">
             <mat-form-field style="width: 100%">
                 <mat-label>{{ t('keyName') }}</mat-label>
-                <input matInput required formControlName="name" />
+                <input formControlName="name" matInput required />
             </mat-form-field>
             <div class="dsh-body-1">
                 {{ t('desc') }}
@@ -21,11 +21,21 @@
         </div>
     </ng-template>
     <ng-container dshBaseDialogActions>
-        <button *ngIf="accessToken; else confirmActions" dsh-button (click)="copy()" color="primary">
+        <button
+            *ngIf="accessToken; else confirmActions"
+            color="primary"
+            dsh-button
+            (click)="copy()"
+        >
             {{ t('copy') }}
         </button>
         <ng-template #confirmActions>
-            <button dsh-button (click)="confirm()" color="primary" [disabled]="form.invalid || !!(progress$ | async)">
+            <button
+                [disabled]="form.invalid || !!(progress$ | async)"
+                color="primary"
+                dsh-button
+                (click)="confirm()"
+            >
                 {{ t('confirm') }}
             </button>
         </ng-template>

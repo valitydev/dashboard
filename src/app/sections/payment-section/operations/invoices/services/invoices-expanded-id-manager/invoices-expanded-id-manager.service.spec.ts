@@ -5,9 +5,10 @@ import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';
 import { instance, mock, when } from 'ts-mockito';
 
-import { InvoicesExpandedIdManager } from './invoices-expanded-id-manager.service';
 import { generateMockInvoiceList } from '../../tests/generate-mock-invoice-list';
 import { FetchInvoicesService } from '../fetch-invoices/fetch-invoices.service';
+
+import { InvoicesExpandedIdManager } from './invoices-expanded-id-manager.service';
 
 describe('InvoicesExpandedIdManager', () => {
     let service: InvoicesExpandedIdManager;
@@ -51,7 +52,7 @@ describe('InvoicesExpandedIdManager', () => {
             expect(service.expandedId$).toBeObservable(
                 cold('(a|)', {
                     a: 1,
-                })
+                }),
             );
         });
 
@@ -63,7 +64,7 @@ describe('InvoicesExpandedIdManager', () => {
             expect(service.expandedId$).toBeObservable(
                 cold('(a|)', {
                     a: -1,
-                })
+                }),
             );
         });
 
@@ -75,7 +76,7 @@ describe('InvoicesExpandedIdManager', () => {
             expect(service.expandedId$).toBeObservable(
                 cold('(a|)', {
                     a: -1,
-                })
+                }),
             );
         });
     });

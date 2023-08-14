@@ -10,7 +10,8 @@ const ROUTES: Routes = [
         children: [
             {
                 path: 'webhooks',
-                loadChildren: () => import('./webhooks/webhooks.module').then((m) => m.WebhooksModule),
+                loadChildren: () =>
+                    import('./webhooks/webhooks.module').then((m) => m.WebhooksModule),
             },
             {
                 path: '',

@@ -6,9 +6,10 @@ import { RouterModule } from '@angular/router';
 
 import { SectionsLinksModule } from '@dsh/app/shared/services/sections-links';
 
-import { ToolbarComponent } from './toolbar.component';
 import { ActionbarModule } from '../actionbar';
 import { BrandModule } from '../brand';
+
+import { ToolbarComponent } from './toolbar.component';
 
 @NgModule({
     imports: [

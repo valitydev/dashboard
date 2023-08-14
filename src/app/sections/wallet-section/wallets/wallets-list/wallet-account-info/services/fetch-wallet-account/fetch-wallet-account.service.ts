@@ -20,10 +20,10 @@ export class FetchWalletAccountService {
                 catchError((err) => {
                     this.errorService.error(err, false);
                     return EMPTY;
-                })
-            )
+                }),
+            ),
         ),
-        shareReplayUntilDestroyed(this)
+        shareReplayUntilDestroyed(this),
     );
 
     isLoading$: Observable<boolean> = defer(() => this.progress$).pipe(map(Boolean));
@@ -34,7 +34,10 @@ export class FetchWalletAccountService {
 
     private fetchWalletAccount$ = new ReplaySubject<string>();
 
-    constructor(private walletService: WalletsService, private errorService: ErrorService) {}
+    constructor(
+        private walletService: WalletsService,
+        private errorService: ErrorService,
+    ) {}
 
     fetchWalletAccount(walletID: string): void {
         this.fetchWalletAccount$.next(walletID);

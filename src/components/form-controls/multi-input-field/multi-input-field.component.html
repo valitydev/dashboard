@@ -2,15 +2,21 @@
     <div *ngFor="let control of formControl.controls; let idx = index" fxLayout fxLayoutGap="24px">
         <mat-form-field fxFlex>
             <mat-label>{{ label }}</mat-label>
-            <input matInput [formControl]="control" type="text" autocomplete="off" />
+            <input [formControl]="control" autocomplete="off" matInput type="text" />
         </mat-form-field>
         <dsh-bi
             *ngIf="formControl.controls.length > 1 || formControl.controls[0].value"
+            class="remove-icon action-icon"
             icon="x"
             size="lg"
-            class="remove-icon action-icon"
             (click)="removeControl(idx)"
         ></dsh-bi>
     </div>
-    <dsh-bi icon="plus" size="lg" class="action-icon" fxFlexAlign="end" (click)="addControl()"></dsh-bi>
+    <dsh-bi
+        class="action-icon"
+        fxFlexAlign="end"
+        icon="plus"
+        size="lg"
+        (click)="addControl()"
+    ></dsh-bi>
 </div>

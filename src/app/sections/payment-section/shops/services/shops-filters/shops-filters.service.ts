@@ -15,7 +15,7 @@ export class ShopsFiltersService {
                         return acc;
                 }
             },
-            shops
+            shops,
         );
     }
 

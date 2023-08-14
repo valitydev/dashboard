@@ -20,7 +20,9 @@
 
             <dsh-nested-table-row *ngFor="let access of accesses">
                 <dsh-nested-table-col>
-                    <span [class.dsh-body-2]="access.isHeader">{{ (roleAccessDict$ | async)?.[access.name] }}</span>
+                    <span [class.dsh-body-2]="access.isHeader">{{
+                        (roleAccessDict$ | async)?.[access.name]
+                    }}</span>
                 </dsh-nested-table-col>
                 <dsh-nested-table-col *ngFor="let role of roles" fxLayoutAlign="center center">
                     <dsh-selection
@@ -32,7 +34,7 @@
         </dsh-nested-table>
     </mat-radio-group>
     <ng-container dshBaseDialogActions>
-        <button dsh-button color="accent" [disabled]="roleControl.invalid" (click)="select()">
+        <button [disabled]="roleControl.invalid" color="accent" dsh-button (click)="select()">
             {{ t('select') }}
         </button>
     </ng-container>

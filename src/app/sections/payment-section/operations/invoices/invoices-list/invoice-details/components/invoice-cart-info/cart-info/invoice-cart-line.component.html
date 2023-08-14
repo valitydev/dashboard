@@ -1,14 +1,18 @@
 <div
+    *transloco="
+        let t;
+        scope: 'payment-section';
+        read: 'paymentSection.operations.invoices.cartInfo'
+    "
     gdColumns="1fr"
     gdColumns.gt-sm="1fr 1fr 1fr"
     gdGap="24px"
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.invoices.cartInfo'"
 >
-    <dsh-details-item gdColumn="1/-1" [title]="t('description')">
+    <dsh-details-item [title]="t('description')" gdColumn="1/-1">
         {{ line.product }}
     </dsh-details-item>
     <dsh-details-item [title]="t('price')">
-        {{ line.price | amountCurrency : currency }}
+        {{ line.price | amountCurrency: currency }}
     </dsh-details-item>
     <dsh-details-item [title]="t('quantity')">
         {{ line.quantity }}

@@ -14,7 +14,11 @@ import { BaseDialogComponent } from './base-dialog.component';
 import { BaseDialogActionsDirective } from './directives/base-dialog-actions/base-dialog-actions.directive';
 import { BaseDialogTitleDirective } from './directives/base-dialog-title/base-dialog-title.directive';
 
-const SHARED_DECLARATIONS = [BaseDialogComponent, BaseDialogActionsDirective, BaseDialogTitleDirective];
+const SHARED_DECLARATIONS = [
+    BaseDialogComponent,
+    BaseDialogActionsDirective,
+    BaseDialogTitleDirective,
+];
 
 @NgModule({
     imports: [

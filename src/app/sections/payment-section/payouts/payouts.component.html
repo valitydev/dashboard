@@ -1,27 +1,31 @@
-<div *transloco="let t; scope: 'payment-section'; read: 'paymentSection.payouts'" fxLayout="column" fxLayoutGap="32px">
+<div
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.payouts'"
+    fxLayout="column"
+    fxLayoutGap="32px"
+>
     <div
-        gdColumns="1fr"
-        gdColumns.gt-sm="repeat(2, auto)"
         gdAlignColumns="center center"
         gdAlignRows="space-between start"
+        gdColumns="1fr"
+        gdColumns.gt-sm="repeat(2, auto)"
         gdGap="32px"
     >
-        <button dsh-button color="accent" (click)="createPayout()">
+        <button color="accent" dsh-button (click)="createPayout()">
             {{ t('payouts.createPayout') }}
         </button>
         <dsh-payouts-search-filters
-            gdRow.gt-sm="1"
             [initParams]="params$ | async"
             [shops]="shops$ | async"
+            gdRow.gt-sm="1"
             (searchParamsChanges)="searchParamsChanges($event)"
         ></dsh-payouts-search-filters>
     </div>
     <div fxLayout="column" fxLayoutGap="16px">
         <dsh-payouts-list
             [expandedId]="expandedId$ | async"
-            (expandedIdChange)="expandedIdChange($event)"
-            [payouts]="payouts$ | async"
             [lastUpdated]="lastUpdated$ | async"
+            [payouts]="payouts$ | async"
+            (expandedIdChange)="expandedIdChange($event)"
             (refreshData)="refresh()"
         ></dsh-payouts-list>
         <dsh-show-more-panel

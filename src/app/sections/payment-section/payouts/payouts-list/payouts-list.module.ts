@@ -4,14 +4,19 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@ngneat/transloco';
 
-import { ApiModelRefsModule, ApiModelTypesModule, AmountCurrencyModule } from '@dsh/app/shared/pipes';
+import {
+    ApiModelRefsModule,
+    ApiModelTypesModule,
+    AmountCurrencyModule,
+} from '@dsh/app/shared/pipes';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
+
+import { PayoutsDetailsModule } from '../payouts-details';
 
 import { PayoutRowComponent } from './payout-row';
 import { PayoutRowHeaderComponent } from './payout-row-header';
 import { PayoutsListComponent } from './payouts-list.component';
-import { PayoutsDetailsModule } from '../payouts-details';
 
 @NgModule({
     imports: [

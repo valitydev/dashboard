@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    HostBinding,
+    Input,
+    ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
     selector: 'dsh-panel-content',
@@ -10,7 +16,7 @@ export class PanelContentComponent {
 
 @Component({
     selector: 'dsh-panel-header-icon',
-    template: ` <dsh-bi class="dsh-panel-header-icon" [icon]="icon"></dsh-bi> `,
+    template: ` <dsh-bi [icon]="icon" class="dsh-panel-header-icon"></dsh-bi> `,
 })
 export class PanelHeaderIconComponent {
     @Input() icon: string;

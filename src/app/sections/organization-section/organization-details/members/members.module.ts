@@ -21,13 +21,14 @@ import { ScrollUpModule } from '@dsh/components/navigation';
 import { NavigationLinkModule } from '@dsh/components/navigation-link';
 import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
 
+import { OrganizationRolesModule } from '../../../../shared/components/organization-roles';
+import { ChangeRolesTableModule } from '../change-roles-table';
+
 import { EditRolesDialogComponent } from './components/edit-roles-dialog/edit-roles-dialog.component';
 import { MemberComponent } from './components/member/member.component';
 import { MembersListComponent } from './components/members-list/members-list.component';
 import { MembersRoutingModule } from './members-routing.module';
 import { MembersComponent } from './members.component';
-import { OrganizationRolesModule } from '../../../../shared/components/organization-roles';
-import { ChangeRolesTableModule } from '../change-roles-table';
 
 @NgModule({
     imports: [
@@ -60,7 +61,12 @@ import { ChangeRolesTableModule } from '../change-roles-table';
         ChangeRolesTableModule,
         EmptyModule,
     ],
-    declarations: [MembersComponent, MembersListComponent, MemberComponent, EditRolesDialogComponent],
+    declarations: [
+        MembersComponent,
+        MembersListComponent,
+        MemberComponent,
+        EditRolesDialogComponent,
+    ],
     exports: [MembersComponent, MemberComponent],
 })
 export class MembersModule {}

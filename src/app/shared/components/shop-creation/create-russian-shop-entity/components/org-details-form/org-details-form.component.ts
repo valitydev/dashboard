@@ -7,10 +7,14 @@ import {
     TypeUnion,
 } from '@dsh/app/shared/components/shop-creation/created-existing-switch/created-existing-switch.component';
 
-import { NewContractorForm } from './../new-contractor-form/new-contractor-form.component';
 import { ExistingContractForm } from '../../../existing-contract-form/existing-contract-form.component';
 
-export type OrgDetailsForm = TypeUnion<NewContractorForm, ExistingContractForm<'RussianLegalEntity'>>;
+import { NewContractorForm } from './../new-contractor-form/new-contractor-form.component';
+
+export type OrgDetailsForm = TypeUnion<
+    NewContractorForm,
+    ExistingContractForm<'RussianLegalEntity'>
+>;
 
 @UntilDestroy()
 @Component({
@@ -19,5 +23,8 @@ export type OrgDetailsForm = TypeUnion<NewContractorForm, ExistingContractForm<'
     providers: createControlProviders(() => OrgDetailsFormComponent),
 })
 export class OrgDetailsFormComponent extends FormGroupSuperclass<Partial<OrgDetailsForm>> {
-    control = createTypeUnionDefaultForm<NewContractorForm, ExistingContractForm<'RussianLegalEntity'>>();
+    control = createTypeUnionDefaultForm<
+        NewContractorForm,
+        ExistingContractForm<'RussianLegalEntity'>
+    >();
 }

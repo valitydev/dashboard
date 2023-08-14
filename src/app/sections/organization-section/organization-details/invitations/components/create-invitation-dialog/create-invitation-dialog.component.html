@@ -1,13 +1,17 @@
 <dsh-base-dialog
-    *transloco="let t; scope: 'organization-section'; read: 'organizationSection.createInvitationDialog'"
+    *transloco="
+        let t;
+        scope: 'organization-section';
+        read: 'organizationSection.createInvitationDialog'
+    "
+    [disabled]="inProgress$ | async"
     [title]="t('title')"
     (cancel)="cancel()"
-    [disabled]="inProgress$ | async"
 >
     <div fxLayout="column" fxLayoutGap="16px">
         <mat-form-field fxFlex>
             <mat-label>{{ t('form.email') }}</mat-label>
-            <input [formControl]="emailControl" matInput type="email" required />
+            <input [formControl]="emailControl" matInput required type="email" />
         </mat-form-field>
 
         <div fxLayout="column" fxLayoutGap="24px">
@@ -18,9 +22,9 @@
     </div>
     <ng-container dshBaseDialogActions>
         <button
-            dsh-button
-            color="accent"
             [disabled]="emailControl.invalid || !selectedRoles.length || (inProgress$ | async)"
+            color="accent"
+            dsh-button
             (click)="create()"
         >
             {{ t('send') }}

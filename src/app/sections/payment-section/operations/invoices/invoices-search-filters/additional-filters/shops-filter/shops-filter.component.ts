@@ -13,7 +13,10 @@ import { ShopsDataService } from '@dsh/app/shared';
 export class ShopsFilterComponent extends FormControlSuperclass<string[]> {
     shops$ = this.shopsDataService.shops$;
 
-    constructor(private fb: FormBuilder, private shopsDataService: ShopsDataService) {
+    constructor(
+        private fb: FormBuilder,
+        private shopsDataService: ShopsDataService,
+    ) {
         super();
     }
 }

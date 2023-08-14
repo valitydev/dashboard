@@ -33,7 +33,10 @@ export class MultiSelectFieldComponent<T> extends FormControlSuperclass<T[]> imp
     searchStr: string = '';
 
     @Input() searchPredicate?: (option: Option<T>, searchStr: string) => number = (option) =>
-        option?.label?.includes(this.searchStr) || JSON.stringify(option.value).includes(this.searchStr) ? 1 : 0;
+        option?.label?.includes(this.searchStr) ||
+        JSON.stringify(option.value).includes(this.searchStr)
+            ? 1
+            : 0;
 
     ngOnChanges({ options }: ComponentChanges<MultiSelectFieldComponent<T>>): void {
         if (options) {
@@ -62,7 +65,7 @@ export class MultiSelectFieldComponent<T> extends FormControlSuperclass<T[]> imp
                     ({
                         option,
                         score: this.searchPredicate(option, searchStr),
-                    } as OptionScore<T>)
+                    }) as OptionScore<T>,
             )
             .filter((v) => this.selected.has(v.option.value) || v.score > 0)
             .sort((a, b) => a.score - b.score)

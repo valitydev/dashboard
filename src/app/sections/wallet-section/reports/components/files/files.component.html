@@ -1,17 +1,27 @@
 <div
+    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.reports.reportFiles'"
     gdColumns="1fr"
     gdGap="24px"
-    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.reports.reportFiles'"
 >
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="8px">
         <div class="dsh-title">{{ t('title') }}</div>
-        <button dsh-text-button color="accent" [disabled]="!!(progress$ | async)" (click)="download()">
+        <button
+            [disabled]="!!(progress$ | async)"
+            color="accent"
+            dsh-text-button
+            (click)="download()"
+        >
             {{ t('downloadAll') }}
         </button>
     </div>
-    <div *ngFor="let file of files" gdColumns="auto auto" gdAlignRows="space-between" gdAlignColumns="center center">
+    <div
+        *ngFor="let file of files"
+        gdAlignColumns="center center"
+        gdAlignRows="space-between"
+        gdColumns="auto auto"
+    >
         <div class="dsh-body-1">{{ file.id }}</div>
-        <button dsh-icon-button (click)="download([file.id])" [disabled]="!!(progress$ | async)">
+        <button [disabled]="!!(progress$ | async)" dsh-icon-button (click)="download([file.id])">
             <dsh-bi icon="save"></dsh-bi>
         </button>
     </div>

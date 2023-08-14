@@ -20,7 +20,8 @@ export function createNumberMask({
 } = {}): TextMaskConfig {
     const prefixLength = (prefix && prefix.length) || 0;
     const suffixLength = (suffix && suffix.length) || 0;
-    const thousandsSeparatorSymbolLength = (thousandsSeparatorSymbol && thousandsSeparatorSymbol.length) || 0;
+    const thousandsSeparatorSymbolLength =
+        (thousandsSeparatorSymbol && thousandsSeparatorSymbol.length) || 0;
 
     function numberMask(rawValue = '') {
         const rawValueLength = rawValue.length;
@@ -28,7 +29,14 @@ export function createNumberMask({
         if (rawValue === '' || (rawValue[0] === prefix[0] && rawValueLength === 1)) {
             return [...prefix.split(''), DIGIT_REG_EXP, ...suffix.split('')];
         } else if (rawValue === decimalSymbol && allowDecimal) {
-            return [...prefix.split(''), '0', decimalSymbol, ...decimalSuffixMask, DIGIT_REG_EXP, ...suffix.split('')];
+            return [
+                ...prefix.split(''),
+                '0',
+                decimalSymbol,
+                ...decimalSuffixMask,
+                DIGIT_REG_EXP,
+                ...suffix.split(''),
+            ];
         }
 
         const isNegative = rawValue[0] === '-' && allowNegative;
@@ -49,7 +57,10 @@ export function createNumberMask({
         }
 
         if (hasDecimal && (allowDecimal || requireDecimal)) {
-            integer = rawValue.slice(rawValue.slice(0, prefixLength) === prefix ? prefixLength : 0, indexOfLastDecimal);
+            integer = rawValue.slice(
+                rawValue.slice(0, prefixLength) === prefix ? prefixLength : 0,
+                indexOfLastDecimal,
+            );
 
             const fractionStr = rawValue.slice(indexOfLastDecimal + 1, rawValueLength);
             fraction = convertToMask(fractionStr.replace(NON_DIGITS_REG_EXP, ''));
@@ -62,11 +73,17 @@ export function createNumberMask({
         }
 
         if (integerLimit && typeof integerLimit === 'number') {
-            const thousandsSeparatorRegex = thousandsSeparatorSymbol === '.' ? '[.]' : `${thousandsSeparatorSymbol}`;
+            const thousandsSeparatorRegex =
+                thousandsSeparatorSymbol === '.' ? '[.]' : `${thousandsSeparatorSymbol}`;
             // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
-            const numberOfThousandSeparators = (integer.match(new RegExp(thousandsSeparatorRegex, 'g')) || []).length;
+            const numberOfThousandSeparators = (
+                integer.match(new RegExp(thousandsSeparatorRegex, 'g')) || []
+            ).length;
 
-            integer = integer.slice(0, integerLimit + numberOfThousandSeparators * thousandsSeparatorSymbolLength);
+            integer = integer.slice(
+                0,
+                integerLimit + numberOfThousandSeparators * thousandsSeparatorSymbolLength,
+            );
         }
 
         integer = integer.replace(NON_DIGITS_REG_EXP, '');
@@ -75,7 +92,9 @@ export function createNumberMask({
             integer = integer.replace(/^0+(0$|[^0])/, '$1');
         }
 
-        integer = includeThousandsSeparator ? addThousandsSeparator(integer, thousandsSeparatorSymbol) : integer;
+        integer = includeThousandsSeparator
+            ? addThousandsSeparator(integer, thousandsSeparatorSymbol)
+            : integer;
 
         let mask: Array<string | RegExp> = convertToMask(integer);
 

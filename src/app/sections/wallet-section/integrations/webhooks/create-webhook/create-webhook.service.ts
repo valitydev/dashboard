@@ -16,7 +16,10 @@ export class CreateWebhookService {
     // eslint-disable-next-line @typescript-eslint/member-ordering
     webhookCreated$: Observable<void> = this.created$.asObservable();
 
-    constructor(private dialog: MatDialog, private identitiesService: IdentitiesService) {}
+    constructor(
+        private dialog: MatDialog,
+        private identitiesService: IdentitiesService,
+    ) {}
 
     init() {
         this.createWebhook$
@@ -29,8 +32,8 @@ export class CreateWebhookService {
                             data: identities,
                         })
                         .afterClosed()
-                        .pipe(filter((r) => r === 'created'))
-                )
+                        .pipe(filter((r) => r === 'created')),
+                ),
             )
             .subscribe(() => {
                 this.created$.next();

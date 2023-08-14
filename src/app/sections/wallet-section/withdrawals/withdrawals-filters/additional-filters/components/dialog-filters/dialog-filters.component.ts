@@ -25,7 +25,7 @@ export class DialogFiltersComponent
     constructor(
         @Inject(MAT_DIALOG_DATA) private data: AdditionalFilters,
         private dialogRef: MatDialogRef<DialogFiltersComponent, AdditionalFiltersForm>,
-        private fb: FormBuilder
+        private fb: FormBuilder,
     ) {
         super();
     }

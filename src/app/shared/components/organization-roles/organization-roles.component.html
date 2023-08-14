@@ -1,8 +1,14 @@
-<ng-container *transloco="let t; scope: 'organization-section'; read: 'organizationSection.organizationRoles'">
+<ng-container
+    *transloco="let t; scope: 'organization-section'; read: 'organizationSection.organizationRoles'"
+>
     <div *ngIf="isOwner; else notOwner" class="dsh-body-1">{{ t('owner') }}</div>
 
     <ng-template #notOwner>
-        <div *ngIf="!rolesByGroup || rolesByGroup.length; else noRoles" gdGap="24px" gdColumns="1fr 1fr">
+        <div
+            *ngIf="!rolesByGroup || rolesByGroup.length; else noRoles"
+            gdColumns="1fr 1fr"
+            gdGap="24px"
+        >
             <ng-container *ngFor="let role of rolesByGroup">
                 <dsh-collapse
                     *ngIf="role?.scopes?.length; else roleWithoutScopes"

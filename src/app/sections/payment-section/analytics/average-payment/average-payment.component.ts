@@ -2,8 +2,9 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { SpinnerType } from '@dsh/components/indicators';
 
-import { AveragePaymentService } from './average-payment.service';
 import { SearchParams } from '../search-params';
+
+import { AveragePaymentService } from './average-payment.service';
 
 @Component({
     selector: 'dsh-average-payment',

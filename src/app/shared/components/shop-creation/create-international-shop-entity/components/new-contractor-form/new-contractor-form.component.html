@@ -1,28 +1,36 @@
 <div
-    [formGroup]="control"
     *transloco="let t; scope: 'components'; read: 'components.newInternationalContractorForm'"
+    [formGroup]="control"
     fxLayout="column"
     fxLayoutGap="16px"
 >
     <mat-form-field>
         <mat-label>{{ t('organizationName') }}</mat-label>
-        <input aria-label="organizationName" matInput formControlName="organizationName" required />
+        <input aria-label="organizationName" formControlName="organizationName" matInput required />
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>{{ t('tradingName') }}</mat-label>
-        <input aria-label="tradingName" matInput formControlName="tradingName" />
+        <input aria-label="tradingName" formControlName="tradingName" matInput />
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>{{ t('registeredAddress') }}</mat-label>
-        <input aria-label="registeredAddress" matInput formControlName="registeredAddress" required />
+        <input
+            aria-label="registeredAddress"
+            formControlName="registeredAddress"
+            matInput
+            required
+        />
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>{{ t('actualAddress') }}</mat-label>
-        <input aria-label="actualAddress" matInput formControlName="actualAddress" />
+        <input aria-label="actualAddress" formControlName="actualAddress" matInput />
     </mat-form-field>
 
-    <dsh-country-autocomplete-field [label]="t('country')" formControlName="country"></dsh-country-autocomplete-field>
+    <dsh-country-autocomplete-field
+        [label]="t('country')"
+        formControlName="country"
+    ></dsh-country-autocomplete-field>
 </div>

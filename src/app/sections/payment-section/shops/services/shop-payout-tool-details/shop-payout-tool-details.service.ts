@@ -41,13 +41,13 @@ export class ShopPayoutToolDetailsService {
                                       console.error(e);
                                       this.error$.next(true);
                                       return of('error');
-                                  })
+                                  }),
                               )
-                        : of(null)
+                        : of(null),
                 ),
                 tap(() => this._isLoading$.next(false)),
                 filter((result) => result !== 'error'),
-                untilDestroyed(this)
+                untilDestroyed(this),
             )
             .subscribe((payoutTool: PayoutTool) => {
                 this.payoutTool$.next(payoutTool);

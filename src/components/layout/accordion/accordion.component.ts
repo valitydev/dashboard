@@ -11,10 +11,19 @@ import {
 } from '@angular/core';
 import { coerce } from 'coerce-property';
 import { combineLatest, merge, of } from 'rxjs';
-import { delay, distinctUntilChanged, filter, map, startWith, switchMap, take } from 'rxjs/operators';
+import {
+    delay,
+    distinctUntilChanged,
+    filter,
+    map,
+    startWith,
+    switchMap,
+    take,
+} from 'rxjs/operators';
+
+import { smoothChangeTo } from '../../../utils';
 
 import { AccordionItemComponent } from './accordion-item';
-import { smoothChangeTo } from '../../../utils';
 
 const INIT_DELAY_MS = 350;
 const SCROLL_TO_Y_OFFSET_PX = 80;
@@ -61,12 +70,12 @@ export class AccordionComponent implements AfterViewInit {
                         smoothChangeTo(
                             window.pageYOffset,
                             ref.element.nativeElement.offsetTop - SCROLL_TO_Y_OFFSET_PX,
-                            SCROLL_TIME_MS
+                            SCROLL_TIME_MS,
                         ),
                         of(component),
-                    ])
+                    ]),
                 ),
-                map(([scrollY, component]) => ({ scrollY, component }))
+                map(([scrollY, component]) => ({ scrollY, component })),
             )
             .subscribe(({ scrollY, component }) => this.scrollTo(component, scrollY));
     }
@@ -80,11 +89,13 @@ export class AccordionComponent implements AfterViewInit {
                         ...accordionItems
                             .toArray()
                             .map((accordionItem, idx) =>
-                                accordionItem.expandedChange.pipe(map((isExpand) => ({ idx, isExpand })))
-                            )
-                    )
+                                accordionItem.expandedChange.pipe(
+                                    map((isExpand) => ({ idx, isExpand })),
+                                ),
+                            ),
+                    ),
                 ),
-                distinctUntilChanged()
+                distinctUntilChanged(),
             )
             .subscribe(({ idx, isExpand }) => this.toggle(idx, isExpand));
     }
@@ -92,7 +103,9 @@ export class AccordionComponent implements AfterViewInit {
     private toggle(idx: number, isExpand: boolean) {
         let expanded = idx;
         if (isExpand) {
-            this.accordionItems.filter((p, i) => p.expanded && i !== idx).forEach((p) => p.collapse());
+            this.accordionItems
+                .filter((p, i) => p.expanded && i !== idx)
+                .forEach((p) => p.collapse());
             expanded = idx;
         } else {
             expanded = this.accordionItems.toArray().findIndex((p) => p.expanded);

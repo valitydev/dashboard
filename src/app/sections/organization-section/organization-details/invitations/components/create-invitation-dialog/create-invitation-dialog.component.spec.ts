@@ -37,7 +37,9 @@ describe('CreateInvitationDialogComponent', () => {
         mockShopsService = mock(ApiShopsService);
 
         when(mockShopsService.shops$).thenReturn(of([{ id: shopId } as Shop]));
-        when(mockOrganizationsService.createInvitation(MOCK_ORG.id, anything())).thenReturn(of(MOCK_INVITATION));
+        when(mockOrganizationsService.createInvitation(MOCK_ORG.id, anything())).thenReturn(
+            of(MOCK_INVITATION),
+        );
 
         TestBed.configureTestingModule({
             imports: [
@@ -88,8 +90,8 @@ describe('CreateInvitationDialogComponent', () => {
                             },
                             roles: [],
                         },
-                    })
-                )
+                    }),
+                ),
             ).once();
             verify(mockNotificationsService.success()).once();
             verify(mockDialogRef.close(BaseDialogResponseStatus.Success)).once();
@@ -99,7 +101,9 @@ describe('CreateInvitationDialogComponent', () => {
         it("shouldn't create", () => {
             const error = new Error('Error 1');
             component.emailControl.patchValue(someEmail);
-            when(mockOrganizationsService.createInvitation(MOCK_ORG.id, anything())).thenReturn(throwError(error));
+            when(mockOrganizationsService.createInvitation(MOCK_ORG.id, anything())).thenReturn(
+                throwError(error),
+            );
             component.create();
             verify(mockErrorService.error(error)).once();
             verify(mockDialogRef.close(anyString())).never();

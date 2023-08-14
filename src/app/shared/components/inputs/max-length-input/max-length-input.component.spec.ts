@@ -12,7 +12,12 @@ describe('MaxLengthInputComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [NoopAnimationsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule],
+            imports: [
+                NoopAnimationsModule,
+                ReactiveFormsModule,
+                MatFormFieldModule,
+                MatInputModule,
+            ],
             declarations: [MaxLengthInputComponent],
         }).compileComponents();
     });

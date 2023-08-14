@@ -16,7 +16,7 @@ describe('PartialFetch', () => {
     class PartialFetched extends PartialFetcher<unknown, unknown> {
         constructor(
             private fetchFn: (params?: unknown, continuationToken?: string) => Observable<unknown>,
-            debounce?: number
+            debounce?: number,
         ) {
             super(debounce);
         }
@@ -56,7 +56,7 @@ describe('PartialFetch', () => {
                     cold('--x|', {
                         x: { result: [token], continuationToken: token ? token + '0' : 'token' },
                     }),
-                0
+                0,
             );
             partialFetched.search('token');
             partialFetched.fetchMore();
@@ -78,8 +78,10 @@ describe('PartialFetch', () => {
         createScheduler().run(({ cold, expectObservable }) => {
             const partialFetched = new PartialFetched(
                 (params) =>
-                    cold('--x|', { x: { result: [params], continuationToken: 'token' } as FetchResult<unknown> }),
-                0
+                    cold('--x|', {
+                        x: { result: [params], continuationToken: 'token' } as FetchResult<unknown>,
+                    }),
+                0,
             );
             partialFetched.search('params');
             partialFetched.fetchMore();

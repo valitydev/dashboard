@@ -9,7 +9,11 @@ import { StatusModule } from '@dsh/components/indicators';
 import { LastUpdatedModule } from '@dsh/components/indicators/last-updated/last-updated.module';
 import { LayoutModule } from '@dsh/components/layout';
 
-import { WithdrawalDetailsComponent, WithdrawalRowHeaderComponent, WithdrawalRowComponent } from './components';
+import {
+    WithdrawalDetailsComponent,
+    WithdrawalRowHeaderComponent,
+    WithdrawalRowComponent,
+} from './components';
 import { WithdrawalsListComponent } from './withdrawals-list.component';
 
 @NgModule({

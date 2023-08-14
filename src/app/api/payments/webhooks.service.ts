@@ -13,7 +13,7 @@ export class WebhooksService extends createApi(ApiWebhooksService, [PartyIdExten
         super(injector);
         this.createWebhook = partyIdPatchMethodService.patch(
             this.createWebhook,
-            (params, partyID) => (params.webhookParams.partyID = partyID)
+            (params, partyID) => (params.webhookParams.partyID = partyID),
         );
     }
 }

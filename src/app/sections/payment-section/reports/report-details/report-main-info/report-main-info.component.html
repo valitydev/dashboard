@@ -1,23 +1,24 @@
 <div
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.reports.reportDetails'"
     gdColumns="1fr"
     gdGap="24px"
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.reports.reportDetails'"
 >
     <div gdColumns="1fr" gdColumns.gt-sm="1fr 1fr 1fr" gdGap="24px">
         <dsh-details-item [title]="t('status')">
-            <dsh-status
-                [color]="report.status | reportStatusColor"
-                >{{ (reportStatusDict$| async)?.[report.status] }}</dsh-status
-            >
+            <dsh-status [color]="report.status | reportStatusColor">{{
+                (reportStatusDict$ | async)?.[report.status]
+            }}</dsh-status>
         </dsh-details-item>
-        <dsh-details-item [title]="t('type')">{{ (reportTypeDict$| async)?.[report.reportType] }}</dsh-details-item>
+        <dsh-details-item [title]="t('type')">{{
+            (reportTypeDict$ | async)?.[report.reportType]
+        }}</dsh-details-item>
         <dsh-details-item [title]="t('createdAt')">{{
-            report.createdAt | date : 'dd MMMM yyyy, HH:mm:ss'
+            report.createdAt | date: 'dd MMMM yyyy, HH:mm:ss'
         }}</dsh-details-item>
     </div>
     <dsh-details-item [title]="t('period')"
-        >{{ report.fromTime | date : 'dd MMMM yyyy, HH:mm:ss' }} -
-        {{ report.toTime | date : 'dd MMMM yyyy, HH:mm:ss' }}</dsh-details-item
+        >{{ report.fromTime | date: 'dd MMMM yyyy, HH:mm:ss' }} -
+        {{ report.toTime | date: 'dd MMMM yyyy, HH:mm:ss' }}</dsh-details-item
     >
     <dsh-details-item *ngIf="report?.shopID" [title]="t('shop')">
         {{ report?.shopID | shopDetails }}

@@ -12,16 +12,17 @@ export class ShopsBalanceService {
 
     getBalances(shopIDs: string[]): Observable<ShopBalance[]> {
         return this.analyticsService.getCurrentShopBalances({ shopIDs }).pipe(
-            map(({ result }) =>
-                result?.map(({ id, amountResults = [] }) => ({
-                    id,
-                    data: amountResults?.length ? amountResults[0] : null,
-                }))
+            map(
+                ({ result }) =>
+                    result?.map(({ id, amountResults = [] }) => ({
+                        id,
+                        data: amountResults?.length ? amountResults[0] : null,
+                    })),
             ),
             catchError((err) => {
                 console.error(err);
                 return of([]);
-            })
+            }),
         );
     }
 }

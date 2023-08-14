@@ -11,7 +11,7 @@ const OPERATIONS_ROUTES: Routes = [
             path: '',
             component: AnalyticsComponent,
         },
-        [RoleAccessName.ViewAnalytics]
+        [RoleAccessName.ViewAnalytics],
     ),
 ];
 

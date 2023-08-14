@@ -16,13 +16,16 @@ export class BalancesService {
                 catchError((ex) => {
                     console.error(ex);
                     return of({ result: [] });
-                })
-            )
+                }),
+            ),
         ),
         pluck('result'),
-        shareReplayRefCount()
+        shareReplayRefCount(),
     );
     balancesCount$ = this.balances$.pipe(pluck('length'));
 
-    constructor(private analyticsService: AnalyticsService, private realmService: PaymentInstitutionRealmService) {}
+    constructor(
+        private analyticsService: AnalyticsService,
+        private realmService: PaymentInstitutionRealmService,
+    ) {}
 }

@@ -12,7 +12,10 @@ describe('OrganizationsExpandedIdManager', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [RouterTestingModule],
-            providers: [provideMockService(FetchOrganizationsService), OrganizationsExpandedIdManager],
+            providers: [
+                provideMockService(FetchOrganizationsService),
+                OrganizationsExpandedIdManager,
+            ],
         });
         service = TestBed.inject(OrganizationsExpandedIdManager);
     });

@@ -13,15 +13,30 @@ export const ROLE_ACCESS_GROUPS: RoleAccessGroup[] = [
             },
             {
                 name: RoleAccessName.ViewInvoices,
-                availableRoles: [RoleId.Administrator, RoleId.Manager, RoleId.Accountant, RoleId.Integrator],
+                availableRoles: [
+                    RoleId.Administrator,
+                    RoleId.Manager,
+                    RoleId.Accountant,
+                    RoleId.Integrator,
+                ],
             },
             {
                 name: RoleAccessName.ViewPayments,
-                availableRoles: [RoleId.Administrator, RoleId.Manager, RoleId.Accountant, RoleId.Integrator],
+                availableRoles: [
+                    RoleId.Administrator,
+                    RoleId.Manager,
+                    RoleId.Accountant,
+                    RoleId.Integrator,
+                ],
             },
             {
                 name: RoleAccessName.ViewRefunds,
-                availableRoles: [RoleId.Administrator, RoleId.Manager, RoleId.Accountant, RoleId.Integrator],
+                availableRoles: [
+                    RoleId.Administrator,
+                    RoleId.Manager,
+                    RoleId.Accountant,
+                    RoleId.Integrator,
+                ],
             },
             {
                 name: RoleAccessName.ViewPayouts,

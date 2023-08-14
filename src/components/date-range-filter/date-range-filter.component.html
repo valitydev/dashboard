@@ -1,19 +1,19 @@
 <ng-container *transloco="let t; scope: 'core-components'; read: 'coreComponents.dateRangeFilter'">
     <dsh-filter
         [active]="isActive"
-        [label]="t('label')"
         [activeLabel]="activeLabel$ | async"
         [content]="content"
-        (save)="save()"
+        [label]="t('label')"
         (clear)="clear()"
+        (save)="save()"
     >
     </dsh-filter>
     <ng-template #content>
-        <div fxLayout="column" fxLayoutGap="24px" *ngIf="step === stepEnum.Presets">
+        <div *ngIf="step === stepEnum.Presets" fxLayout="column" fxLayoutGap="24px">
             <div
                 *ngFor="let preset of presets"
-                class="dsh-subheading-2 preset"
                 [ngClass]="{ 'dsh-date-range-filter-preset-active': preset === value.preset }"
+                class="dsh-subheading-2 preset"
                 (click)="selectPreset(preset)"
             >
                 {{ (presetLabels$ | async)?.[preset] }}
@@ -21,9 +21,9 @@
         </div>
         <mat-calendar
             *ngIf="step === stepEnum.Calendar"
+            [maxDate]="maxDate"
             [selected]="value.dateRange"
             (selectedChange)="selectedChange($event)"
-            [maxDate]="maxDate"
         ></mat-calendar>
     </ng-template>
 </ng-container>

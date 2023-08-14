@@ -21,7 +21,11 @@ export const searchParamsToStatSearchParams = ({
     return { current, previous, realm };
 };
 
-const getPreviousParams = (currentFromTime: string, currentToTime: string, shopIDs: string[]): StatSearchParams => {
+const getPreviousParams = (
+    currentFromTime: string,
+    currentToTime: string,
+    shopIDs: string[],
+): StatSearchParams => {
     const currFrom = moment(currentFromTime);
     const currTo = moment(currentToTime);
     const timeDiff = currTo.diff(currFrom);

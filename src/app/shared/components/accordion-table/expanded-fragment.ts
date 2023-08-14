@@ -3,7 +3,15 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import isNil from 'lodash-es/isNil';
 import { Observable, BehaviorSubject, defer, of } from 'rxjs';
-import { take, switchMap, shareReplay, map, tap, withLatestFrom, distinctUntilChanged } from 'rxjs/operators';
+import {
+    take,
+    switchMap,
+    shareReplay,
+    map,
+    tap,
+    withLatestFrom,
+    distinctUntilChanged,
+} from 'rxjs/operators';
 
 import { Fragment } from '@dsh/app/shared';
 
@@ -20,7 +28,7 @@ export class ExpandedFragment<T extends { id: unknown } = { id: unknown }> {
     constructor(
         private data$: Observable<T[]>,
         private more: () => void,
-        private hasMore$: Observable<boolean> = of(true)
+        private hasMore$: Observable<boolean> = of(true),
     ) {
         this.route.fragment
             .pipe(
@@ -28,19 +36,23 @@ export class ExpandedFragment<T extends { id: unknown } = { id: unknown }> {
                 switchMap((fragment) =>
                     this.data$.pipe(
                         take(EMIT_LIMIT),
-                        map((data) => (fragment ? data.findIndex((item) => this.serialize(item) === fragment) : -1)),
+                        map((data) =>
+                            fragment
+                                ? data.findIndex((item) => this.serialize(item) === fragment)
+                                : -1,
+                        ),
                         withLatestFrom(hasMore$),
                         tap(([index, hasMore]) => {
                             if (!isNil(fragment) && index === -1 && hasMore) {
                                 more();
                             }
                         }),
-                        map(([index]) => index)
-                    )
+                        map(([index]) => index),
+                    ),
                 ),
                 distinctUntilChanged(),
                 takeUntilDestroyed(this.destroyRef),
-                shareReplay(1)
+                shareReplay(1),
             )
             .subscribe((index) => {
                 this.set(index);
@@ -49,9 +61,11 @@ export class ExpandedFragment<T extends { id: unknown } = { id: unknown }> {
             .pipe(
                 withLatestFrom(this.data$),
                 map(([index, data]) => this.serialize(data[index])),
-                takeUntilDestroyed(this.destroyRef)
+                takeUntilDestroyed(this.destroyRef),
             )
-            .subscribe((fragment) => this.router.navigate([], { fragment, queryParamsHandling: 'preserve' }));
+            .subscribe((fragment) =>
+                this.router.navigate([], { fragment, queryParamsHandling: 'preserve' }),
+            );
     }
 
     set(expandedIndex: number) {

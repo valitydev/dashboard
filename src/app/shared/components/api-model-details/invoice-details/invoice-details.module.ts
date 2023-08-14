@@ -11,7 +11,14 @@ import { InvoiceDetailsComponent } from './invoice-details.component';
 import { InvoiceStatusColorPipe } from './invoice-status-color.pipe';
 
 @NgModule({
-    imports: [TranslocoModule, LayoutModule, FlexLayoutModule, CommonModule, StatusModule, AmountCurrencyModule],
+    imports: [
+        TranslocoModule,
+        LayoutModule,
+        FlexLayoutModule,
+        CommonModule,
+        StatusModule,
+        AmountCurrencyModule,
+    ],
     declarations: [InvoiceDetailsComponent, InvoiceStatusColorPipe],
     exports: [InvoiceDetailsComponent, InvoiceStatusColorPipe],
 })

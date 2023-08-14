@@ -15,7 +15,7 @@ export class PaymentsExpandedIdManager extends ExpandedIdManager<PaymentSearchRe
     constructor(
         protected route: ActivatedRoute,
         protected router: Router,
-        private paymentsService: FetchPaymentsService
+        private paymentsService: FetchPaymentsService,
     ) {
         super(route, router);
     }

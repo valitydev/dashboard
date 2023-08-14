@@ -1,9 +1,9 @@
 <ng-container *transloco="let s; scope: 'payment-section'; read: 'paymentSection.shops'">
     <div fxLayout="column" fxLayoutGap="16px">
-        <dsh-last-updated (update)="refreshList()" [lastUpdated]="lastUpdated"></dsh-last-updated>
+        <dsh-last-updated [lastUpdated]="lastUpdated" (update)="refreshList()"></dsh-last-updated>
         <dsh-shop-row-header></dsh-shop-row-header>
         <ng-container *ngIf="isLoading && !isListExist; else shopsPanelsList">
-            <div fxLayout fxFlexAlign="center">
+            <div fxFlexAlign="center" fxLayout>
                 <dsh-spinner></dsh-spinner>
             </div>
         </ng-container>
@@ -11,21 +11,28 @@
 
     <ng-template #shopsPanelsList>
         <dsh-accordion
-            (expandedChange)="expandedIdChange($event)"
             [expanded]="expandedId$ | async"
             fxLayout="column"
             fxLayoutGap="16px"
+            (expandedChange)="expandedIdChange($event)"
         >
             <dsh-accordion-item #accordionItem *ngFor="let shop of shopList">
                 <dsh-shop-row [shop]="shop"></dsh-shop-row>
                 <ng-template dshLazyPanelContent>
                     <dsh-card fxFlexFill fxLayout="column" fxLayoutGap="32px">
                         <dsh-accordion-item-content-header
+                            *transloco="
+                                let s;
+                                scope: 'payment-section';
+                                read: 'paymentSection.shops'
+                            "
                             (collapse)="accordionItem.collapse($event)"
-                            *transloco="let s; scope: 'payment-section'; read: 'paymentSection.shops'"
                             >{{ s('panel.details') }}</dsh-accordion-item-content-header
                         >
-                        <dsh-shop-details [shop]="shop" (updateData)="refreshList()"></dsh-shop-details>
+                        <dsh-shop-details
+                            [shop]="shop"
+                            (updateData)="refreshList()"
+                        ></dsh-shop-details>
                     </dsh-card>
                 </ng-template>
             </dsh-accordion-item>

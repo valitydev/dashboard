@@ -15,7 +15,7 @@ export class IdentitiesService extends createApi(ApiIdentitiesService) {
         startWith<void>(undefined),
         switchMap(() => this.listIdentities()),
         map((r) => r.result as Identity[]),
-        shareReplayRefCount()
+        shareReplayRefCount(),
     );
 
     private reloadIdentities$ = new Subject<void>();
