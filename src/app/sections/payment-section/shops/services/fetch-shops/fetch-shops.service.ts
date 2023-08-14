@@ -16,7 +16,6 @@ import {
 import { mapToTimestamp, shareReplayRefCount } from '@dsh/app/custom-operators';
 import { ShopsDataService } from '@dsh/app/shared';
 
-import { combineShopItem } from './combine-shop-item';
 import { getShopsByRealm } from '../../../operations/operators';
 import { ShopBalance } from '../../types/shop-balance';
 import { ShopFiltersData } from '../../types/shop-filters-data';
@@ -24,6 +23,8 @@ import { ShopItem } from '../../types/shop-item';
 import { ShopsBalanceService } from '../shops-balance/shops-balance.service';
 import { ShopsFiltersService } from '../shops-filters/shops-filters.service';
 import { ShopsFiltersStoreService } from '../shops-filters-store/shops-filters-store.service';
+
+import { combineShopItem } from './combine-shop-item';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 

@@ -6,9 +6,10 @@ import { AnalyticsService } from '@dsh/app/api/anapi';
 import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { progressTo, errorTo, attach, inProgressFrom, distinctUntilChangedDeep } from '@dsh/utils';
 
-import { countResultToStatData } from './count-result-to-stat-data';
 import { SearchParams } from '../search-params';
 import { searchParamsToStatSearchParams } from '../utils';
+
+import { countResultToStatData } from './count-result-to-stat-data';
 
 @Injectable()
 export class PaymentsCountService {

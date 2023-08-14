@@ -2,9 +2,10 @@ import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core'
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { map, shareReplay } from 'rxjs/operators';
 
+import { ExpansionService } from '../../services/expansion/expansion.service';
+
 import { INDICATOR_ROTATE } from './indicator-rotate';
 import { IndicatorRotateState } from './types/indicator-rotate';
-import { ExpansionService } from '../../services/expansion/expansion.service';
 
 @UntilDestroy()
 @Component({

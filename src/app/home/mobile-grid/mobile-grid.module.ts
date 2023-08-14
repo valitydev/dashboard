@@ -5,9 +5,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { BootstrapIconModule } from '@dsh/components/indicators';
 
+import { BrandModule } from '../brand';
+
 import { MobileGridComponent } from './mobile-grid.component';
 import { MobileMenuModule } from './mobile-menu';
-import { BrandModule } from '../brand';
 
 @NgModule({
     imports: [

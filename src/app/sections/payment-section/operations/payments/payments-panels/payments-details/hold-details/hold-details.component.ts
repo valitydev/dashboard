@@ -5,9 +5,10 @@ import { filter } from 'rxjs/operators';
 
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 
+import { PaymentIds } from '../../../types/payment-ids';
+
 import { CancelHoldService } from './cancel-hold';
 import { CreateHoldService } from './create-hold';
-import { PaymentIds } from '../../../types/payment-ids';
 
 @UntilDestroy()
 @Component({

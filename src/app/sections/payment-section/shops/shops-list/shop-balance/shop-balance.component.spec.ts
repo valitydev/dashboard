@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShopBalanceComponent } from './shop-balance.component';
 import { generateMockBalance } from '../../tests/generate-mock-balance';
 import { generateMockShop } from '../../tests/generate-mock-shop';
+
+import { ShopBalanceComponent } from './shop-balance.component';
 
 const EMPTY_BALANCE_SYMBOL = '--/--';
 

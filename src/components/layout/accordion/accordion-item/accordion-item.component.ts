@@ -9,9 +9,10 @@ import {
 } from '@angular/core';
 import { coerce } from 'coerce-property';
 
+import { AccordionItemContentComponent } from '../accordion-item-content';
+
 import { EXPAND_ANIMATION } from './expand-animation';
 import { LazyPanelContentDirective } from './lazy-panel-content.directive';
-import { AccordionItemContentComponent } from '../accordion-item-content';
 
 @Component({
     selector: 'dsh-accordion-item',

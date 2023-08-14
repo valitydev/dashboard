@@ -16,10 +16,11 @@ import { DateRange, Preset, createDateRangeWithPreset } from '@dsh/components/da
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
+import { filterShopsByRealm } from '../../operators';
+
 import { AdditionalFilters, FloatingFilters } from './additional-filters';
 import { DialogFiltersComponent } from './additional-filters/components/dialog-filters/dialog-filters.component';
 import { CardBinPan } from './card-bin-pan-filter';
-import { filterShopsByRealm } from '../../operators';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 

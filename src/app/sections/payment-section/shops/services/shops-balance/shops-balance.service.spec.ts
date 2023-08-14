@@ -7,8 +7,9 @@ import { AnalyticsService } from '@dsh/app/api/analytics';
 
 // import { generateMockBalance } from '../../tests/generate-mock-balance';
 // import { generateMockShopId } from '../../tests/generate-mock-shop-id';
-import { ShopsBalanceService } from './shops-balance.service';
 import { MockAnalyticsService } from '../../tests/mock-analytics-service';
+
+import { ShopsBalanceService } from './shops-balance.service';
 
 describe('ShopsBalanceService', () => {
     let service: ShopsBalanceService;

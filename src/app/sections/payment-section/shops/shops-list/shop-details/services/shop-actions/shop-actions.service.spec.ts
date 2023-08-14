@@ -10,8 +10,9 @@ import { instance, mock, verify, when } from 'ts-mockito';
 import { ApiShopsService } from '@dsh/app/api/shop';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 
-import { ShopActionsService } from './shop-actions.service';
 import { ShopActionResult } from '../../types/shop-action-result';
+
+import { ShopActionsService } from './shop-actions.service';
 
 describe('ShopActionsService', () => {
     let service: ShopActionsService;

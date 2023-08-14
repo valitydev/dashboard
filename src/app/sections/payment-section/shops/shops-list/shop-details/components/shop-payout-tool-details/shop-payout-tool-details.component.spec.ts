@@ -4,8 +4,9 @@ import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 
-import { ShopPayoutToolDetailsComponent } from './shop-payout-tool-details.component';
 import { ShopPayoutToolDetailsService } from '../../../../services/shop-payout-tool-details/shop-payout-tool-details.service';
+
+import { ShopPayoutToolDetailsComponent } from './shop-payout-tool-details.component';
 
 describe('ShopPayoutToolDetailsComponent', () => {
     let component: ShopPayoutToolDetailsComponent;

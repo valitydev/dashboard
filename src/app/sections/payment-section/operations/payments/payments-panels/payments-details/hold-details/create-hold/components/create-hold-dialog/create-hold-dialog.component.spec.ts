@@ -18,8 +18,9 @@ import { ErrorService } from '@dsh/app/shared/services';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 import { FormatInputModule } from '@dsh/components/form-controls';
 
-import { CreateHoldDialogComponent } from './create-hold-dialog.component';
 import { CreateHoldDialogData } from '../../types/create-hold-dialog-data';
+
+import { CreateHoldDialogComponent } from './create-hold-dialog.component';
 
 describe('CreateHoldDialogComponent', () => {
     let component: CreateHoldDialogComponent;

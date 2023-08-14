@@ -8,8 +8,9 @@ import { filter, pluck, switchMap, take } from 'rxjs/operators';
 
 import { ShopsDataService } from '@dsh/app/shared';
 
-import { CreateInvoiceDialogComponent } from './components/create-invoice-dialog/create-invoice-dialog.component';
 import { filterShopsByRealm } from '../../operators';
+
+import { CreateInvoiceDialogComponent } from './components/create-invoice-dialog/create-invoice-dialog.component';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 

@@ -6,8 +6,9 @@ import {
 import { Observable } from 'rxjs';
 import { pluck } from 'rxjs/operators';
 
-import { ParamsByRequestType, ResponseByRequestType, SuggestionsByRequestType } from './utils';
 import { createApi } from '../utils';
+
+import { ParamsByRequestType, ResponseByRequestType, SuggestionsByRequestType } from './utils';
 
 type RequestType = DaDataRequest.DaDataRequestTypeEnum;
 

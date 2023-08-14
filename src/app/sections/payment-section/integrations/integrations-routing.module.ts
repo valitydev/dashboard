@@ -3,8 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { createPrivateRoute, RoleAccessName } from '@dsh/app/auth';
 
-import { IntegrationsComponent } from './integrations.component';
 import { environment } from '../../../../environments';
+
+import { IntegrationsComponent } from './integrations.component';
 
 const ROUTES: Routes = [
     {

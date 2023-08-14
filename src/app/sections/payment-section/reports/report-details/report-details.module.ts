@@ -10,11 +10,12 @@ import { ButtonModule } from '@dsh/components/buttons';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
 
+import { ReportFilesModule } from '../report-files';
+import { ReportPipesModule } from '../report-pipes';
+
 import { ReportActionsComponent } from './report-actions';
 import { ReportDetailsComponent } from './report-details.component';
 import { ReportMainInfoComponent } from './report-main-info';
-import { ReportFilesModule } from '../report-files';
-import { ReportPipesModule } from '../report-pipes';
 
 @NgModule({
     imports: [

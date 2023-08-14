@@ -14,11 +14,12 @@ import {
 } from '@dsh/app/api/claim-management';
 import { IdGeneratorService } from '@dsh/app/shared/services/id-generator';
 
+import { InternationalShopEntityFormValue } from '../../types/international-shop-entity-form-value';
+
 import {
     payoutToolDetailsInternationalBankAccountToInternationalBankAccount,
     payoutToolFormToInternationalBankAccount,
 } from './utils';
-import { InternationalShopEntityFormValue } from '../../types/international-shop-entity-form-value';
 
 @Injectable()
 export class CreateInternationalShopEntityService {

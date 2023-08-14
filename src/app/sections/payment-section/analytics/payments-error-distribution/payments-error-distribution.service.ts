@@ -6,11 +6,12 @@ import { AnalyticsService, AnapiDictionaryService } from '@dsh/app/api/anapi';
 import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { errorTo, progressTo, distinctUntilChangedDeep, inProgressFrom, attach } from '@dsh/utils';
 
+import { SearchParams } from '../search-params';
+import { searchParamsToDistributionSearchParams } from '../utils';
+
 import { errorsDistributionToChartData } from './errors-distribution-to-chart-data';
 import { getSelectedErrorDistribution } from './get-selected-error-distribution';
 import { subErrorsToErrorDistribution } from './sub-errors-to-error-distribution';
-import { SearchParams } from '../search-params';
-import { searchParamsToDistributionSearchParams } from '../utils';
 
 @Injectable()
 export class PaymentsErrorDistributionService {

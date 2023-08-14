@@ -6,10 +6,11 @@ import { AnalyticsService } from '@dsh/app/api/anapi';
 import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { errorTo, progressTo, attach, inProgressFrom, distinctUntilChangedDeep } from '@dsh/utils';
 
-import { prepareSplitAmount } from './prepare-split-amount';
-import { splitAmountToChartData } from './split-amount-to-chart-data';
 import { SearchParams } from '../search-params';
 import { searchParamsToParamsWithSplitUnit } from '../utils';
+
+import { prepareSplitAmount } from './prepare-split-amount';
+import { splitAmountToChartData } from './split-amount-to-chart-data';
 
 @Injectable()
 export class PaymentSplitAmountService {

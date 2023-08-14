@@ -15,8 +15,9 @@ import { MaxLengthInputModule } from '@dsh/app/shared/components/inputs/max-leng
 import { ErrorService } from '@dsh/app/shared/services';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 
-import { CancelHoldDialogComponent } from './cancel-hold-dialog.component';
 import { CancelHoldDialogData } from '../../types/cancel-hold-dialog-data';
+
+import { CancelHoldDialogComponent } from './cancel-hold-dialog.component';
 
 describe('CancelHoldDialogComponent', () => {
     let component: CancelHoldDialogComponent;

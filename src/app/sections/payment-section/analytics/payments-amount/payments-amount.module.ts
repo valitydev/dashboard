@@ -7,9 +7,10 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { SpinnerModule } from '@dsh/components/indicators';
 import { CardModule } from '@dsh/components/layout';
 
-import { PaymentsAmountComponent } from './payments-amount.component';
 import { PercentDifferenceModule } from '../percent-difference';
 import { StatItemModule } from '../stat-item/stat-item.module';
+
+import { PaymentsAmountComponent } from './payments-amount.component';
 
 @NgModule({
     imports: [

@@ -5,8 +5,9 @@ import { ApiKey } from '@vality/swag-api-keys-v2';
 
 import { ApiKeysDictionaryService } from '@dsh/app/api/api-keys';
 
-import { ApiKeyDeleteDialogComponent } from './components/api-key-delete-dialog/api-key-delete-dialog.component';
 import { API_KEY_STATUS_COLOR } from '../types/api-key-status-color';
+
+import { ApiKeyDeleteDialogComponent } from './components/api-key-delete-dialog/api-key-delete-dialog.component';
 
 @UntilDestroy()
 @Component({

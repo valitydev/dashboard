@@ -37,6 +37,8 @@ import { QUERY_PARAMS_SERIALIZERS } from '@dsh/app/shared/services/query-params/
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
 import { SpinnerModule } from '@dsh/components/indicators';
 
+import { ENV, environment } from '../environments';
+
 import { ApiKeysModule } from './api/api-keys';
 import { OrganizationsModule } from './api/organizations';
 import { AppComponent } from './app.component';
@@ -51,7 +53,6 @@ import { SentryErrorHandler } from './sentry-error-handler.service';
 import { SentryHttpInterceptor } from './sentry-http-interceptor';
 import { ThemeManager } from './theme-manager';
 import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
-import { ENV, environment } from '../environments';
 
 @NgModule({
     declarations: [AppComponent],

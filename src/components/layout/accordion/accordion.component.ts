@@ -21,8 +21,9 @@ import {
     take,
 } from 'rxjs/operators';
 
-import { AccordionItemComponent } from './accordion-item';
 import { smoothChangeTo } from '../../../utils';
+
+import { AccordionItemComponent } from './accordion-item';
 
 const INIT_DELAY_MS = 350;
 const SCROLL_TO_Y_OFFSET_PX = 80;

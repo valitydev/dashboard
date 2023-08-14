@@ -5,11 +5,12 @@ import { MatDividerModule } from '@angular/material/divider';
 
 import { BootstrapIconModule, ResizedModule } from '@dsh/components/indicators';
 
+import { ButtonModule } from '../../buttons';
+
 import { AccordionItemComponent, LazyPanelContentDirective } from './accordion-item';
 import { AccordionItemContentComponent } from './accordion-item-content';
 import { AccordionItemContentHeaderComponent } from './accordion-item-content-header';
 import { AccordionComponent } from './accordion.component';
-import { ButtonModule } from '../../buttons';
 
 const EXPORTED_DECLARATIONS = [
     AccordionComponent,

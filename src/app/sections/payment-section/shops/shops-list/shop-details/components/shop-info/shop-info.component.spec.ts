@@ -8,10 +8,11 @@ import { delay } from 'rxjs/operators';
 
 import { DetailsItemModule } from '@dsh/components/layout';
 
-import { ShopInfoComponent } from './shop-info.component';
 import { generateMockShopItem } from '../../../../tests/generate-shop-item';
 import { ShopBalanceModule } from '../../../shop-balance';
 import { CategoryService } from '../../services/category/category.service';
+
+import { ShopInfoComponent } from './shop-info.component';
 
 class MockCategoryService {
     category$: Observable<Category>;

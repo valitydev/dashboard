@@ -9,12 +9,13 @@ import { AnalyticsService } from '@dsh/app/api/analytics';
 import { PaymentInstitutionRealm } from '@dsh/app/api/model';
 import { ApiShopsService } from '@dsh/app/api/shop';
 
-import { FetchShopsService, SHOPS_LIST_PAGINATION_OFFSET } from './fetch-shops.service';
 import { generateMockShopsList } from '../../tests/generate-mock-shops-list';
 import { MockAnalyticsService } from '../../tests/mock-analytics-service';
 import { ShopsBalanceService } from '../shops-balance/shops-balance.service';
 import { ShopsFiltersService } from '../shops-filters/shops-filters.service';
 import { ShopsFiltersStoreService } from '../shops-filters-store/shops-filters-store.service';
+
+import { FetchShopsService, SHOPS_LIST_PAGINATION_OFFSET } from './fetch-shops.service';
 
 class MockApiShopsService {
     shops$: Observable<Shop[]>;

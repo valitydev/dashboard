@@ -6,8 +6,9 @@ import { instance, mock, when } from 'ts-mockito';
 
 import { InvoiceService } from '@dsh/app/api/invoice';
 
-import { ReceiveInvoiceService } from './receive-invoice.service';
 import { generateMockInvoice } from '../../../../tests/generate-mock-invoice';
+
+import { ReceiveInvoiceService } from './receive-invoice.service';
 
 describe('ReceiveInvoiceService', () => {
     let service: ReceiveInvoiceService;

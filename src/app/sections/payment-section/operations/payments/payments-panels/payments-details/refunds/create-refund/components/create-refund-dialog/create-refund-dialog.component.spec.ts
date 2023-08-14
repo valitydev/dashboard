@@ -19,12 +19,13 @@ import { CommonError, ErrorService, NotificationService } from '@dsh/app/shared/
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 import { ButtonModule } from '@dsh/components/buttons';
 
-import { CreateRefundDialogComponent } from './create-refund-dialog.component';
 import { AccountsService } from '../../services/accounts/accounts.service';
 import { RefundsService } from '../../services/refunds/refunds.service';
 import { CreateRefundDialogData } from '../../types/create-refund-dialog-data';
 import { CreateRefundDialogResponse } from '../../types/create-refund-dialog-response';
 import { CreateRefundDialogResponseStatus } from '../../types/create-refund-dialog-response-status';
+
+import { CreateRefundDialogComponent } from './create-refund-dialog.component';
 
 describe('CreateRefundDialogComponent', () => {
     let fixture: ComponentFixture<CreateRefundDialogComponent>;

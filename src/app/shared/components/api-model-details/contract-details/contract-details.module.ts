@@ -6,8 +6,9 @@ import { TranslocoModule } from '@ngneat/transloco';
 
 import { LayoutModule } from '@dsh/components/layout';
 
-import { ContractDetailsComponent } from './contract-details.component';
 import { ContractorDetailsModule } from '../contractor-details';
+
+import { ContractDetailsComponent } from './contract-details.component';
 
 @NgModule({
     imports: [

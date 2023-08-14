@@ -8,9 +8,10 @@ import { InvoicesService } from '@dsh/app/api/payments';
 import { ShortenerService } from '@dsh/app/api/url-shortener';
 import { queryParamsToStr } from '@dsh/utils';
 
+import { ConfigService } from '../../../config';
+
 import { PaymentLinkParams } from './types/payment-link-params';
 import { getDueDate } from './utils/get-due-date';
-import { ConfigService } from '../../../config';
 
 @Injectable({
     providedIn: 'root',

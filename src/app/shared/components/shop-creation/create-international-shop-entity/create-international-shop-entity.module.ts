@@ -24,11 +24,12 @@ import { ShopDetailsFormModule } from '@dsh/app/shared/components/shop-creation/
 import { CountryCodesModule } from '@dsh/app/shared/services';
 import { ButtonModule } from '@dsh/components/buttons';
 
+import { CurrencyAutocompleteFieldModule } from '../../inputs/currency-autocomplete-field';
+
 import { PayoutToolFormComponent } from './components/payout-tool-form/payout-tool-form.component';
 import { ShopFormComponent } from './components/shop-form/shop-form.component';
 import { CreateInternationalShopEntityComponent } from './create-international-shop-entity.component';
 import { CreateInternationalShopEntityService } from './services/create-international-shop-entity/create-international-shop-entity.service';
-import { CurrencyAutocompleteFieldModule } from '../../inputs/currency-autocomplete-field';
 
 @NgModule({
     imports: [

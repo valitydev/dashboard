@@ -2,8 +2,9 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { SpinnerType } from '@dsh/components/indicators';
 
-import { RefundsAmountService } from './refunds-amount.service';
 import { SearchParams } from '../search-params';
+
+import { RefundsAmountService } from './refunds-amount.service';
 
 @Component({
     selector: 'dsh-refunds-amount',

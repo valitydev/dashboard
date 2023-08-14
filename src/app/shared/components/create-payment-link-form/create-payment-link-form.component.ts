@@ -11,9 +11,10 @@ import { NotificationService } from '@dsh/app/shared';
 import { PaymentLinkParams } from '@dsh/app/shared/services/create-payment-link/types/payment-link-params';
 import { ComponentChanges } from '@dsh/type-utils';
 
-import { Controls, EMPTY_VALUE } from './types/controls';
 import { HoldExpiration } from '../../services/create-payment-link/types/hold-expiration';
 import { ORDERED_PAYMENT_METHODS_NAMES } from '../../services/create-payment-link/types/ordered-payment-methods-names';
+
+import { Controls, EMPTY_VALUE } from './types/controls';
 
 import MethodEnum = PaymentMethod.MethodEnum;
 

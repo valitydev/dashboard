@@ -29,8 +29,9 @@ import {
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
-import { AdditionalFilters, DialogFiltersComponent } from './additional-filters';
 import { filterShopsByRealm } from '../../operators';
+
+import { AdditionalFilters, DialogFiltersComponent } from './additional-filters';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 

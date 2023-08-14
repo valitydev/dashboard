@@ -8,11 +8,12 @@ import { filter, first, switchMap, switchMapTo } from 'rxjs/operators';
 
 import { QueryParamsService } from '@dsh/app/shared/services/query-params';
 
+import { RealmMixService, PaymentInstitutionRealmService } from '../services';
+
 import { CreateReportDialogComponent } from './create-report/create-report-dialog.component';
 import { FetchReportsService } from './fetch-reports.service';
 import { ReportsExpandedIdManager } from './reports-expanded-id-manager.service';
 import { Filters, SearchFiltersParams } from './reports-search-filters';
-import { RealmMixService, PaymentInstitutionRealmService } from '../services';
 
 @UntilDestroy()
 @Component({

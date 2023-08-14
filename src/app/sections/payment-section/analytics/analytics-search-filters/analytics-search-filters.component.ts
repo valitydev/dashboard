@@ -22,8 +22,9 @@ import {
 import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
-import { shopsToCurrencies } from './shops-to-currencies';
 import { RealmShopsService } from '../../services';
+
+import { shopsToCurrencies } from './shops-to-currencies';
 
 export interface Filters {
     shopIDs: Shop['id'][];

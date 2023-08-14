@@ -21,11 +21,12 @@ import { ShopsDataService } from '@dsh/app/shared';
 import { sortRoleIds } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
 import { PartialReadonly } from '@dsh/type-utils';
 
+import { addDialogsClass } from '../../../../../utils/add-dialogs-class';
+import { equalRoles } from '../members/components/edit-roles-dialog/utils/equal-roles';
+
 import { SelectRoleDialogComponent } from './components/select-role-dialog/select-role-dialog.component';
 import { SelectRoleDialogResult } from './components/select-role-dialog/types/select-role-dialog-result';
 import { SelectRoleDialogData } from './components/select-role-dialog/types/selected-role-dialog-data';
-import { addDialogsClass } from '../../../../../utils/add-dialogs-class';
-import { equalRoles } from '../members/components/edit-roles-dialog/utils/equal-roles';
 
 @UntilDestroy()
 @Component({

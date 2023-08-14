@@ -15,10 +15,11 @@ import { ButtonModule } from '@dsh/components/buttons';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
 
+import { CreatePayoutReportModule } from '../create-payout-report';
+
 import { PayoutActionsComponent } from './payout-actions';
 import { PayoutMainInfoComponent } from './payout-main-info';
 import { PayoutsDetailsComponent } from './payouts-details.component';
-import { CreatePayoutReportModule } from '../create-payout-report';
 
 @NgModule({
     imports: [

@@ -8,8 +8,9 @@ import { of } from 'rxjs';
 import { ShopsDataService } from '@dsh/app/shared';
 import { amountValidator } from '@dsh/components/form-controls';
 
-import { CreatePayoutDialogService } from './create-payout-dialog.service';
 import { filterShopsByRealm, mapToShopInfo } from '../../operations/operators';
+
+import { CreatePayoutDialogService } from './create-payout-dialog.service';
 
 @Component({
     selector: 'dsh-create-payout-dialog',

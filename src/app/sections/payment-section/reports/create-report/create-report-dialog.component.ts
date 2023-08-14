@@ -8,8 +8,9 @@ import { of } from 'rxjs';
 
 import { ShopsDataService } from '@dsh/app/shared';
 
-import { CreateReportDialogService } from './create-report-dialog.service';
 import { filterShopsByRealm, mapToShopInfo } from '../../operations/operators';
+
+import { CreateReportDialogService } from './create-report-dialog.service';
 
 const TIME_PATTERN = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
 

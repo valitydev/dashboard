@@ -4,8 +4,9 @@ import { map } from 'rxjs/operators';
 
 import { ContextOrganizationService } from '@dsh/app/shared/services';
 
-import { ROTATE } from './utils/rotate-animation';
 import { KeycloakService } from '../../../../auth';
+
+import { ROTATE } from './utils/rotate-animation';
 
 @Component({
     selector: 'dsh-user-dropdown',
