@@ -314,12 +314,12 @@
                     "message": "Bank card declined",
                     "unknown": "Reason unknown"
                 },
-                "message": "Payment instrument declined",
-                "unknown": "Unknown payment instrument"
+                "message": "Платёжный инструмент отклонён",
+                "unknown": "Неизвестный платёжный инструмент"
             },
             "provider_limit_exceeded": {
                 "amount": "Limit on the amount",
-                "message": "Merchant limit exceeded on provider side",
+                "message": "Превышен лимит на мерчанта у провайдера (вас или платформы)",
                 "number": "Limit on the number of attempts",
                 "unknown": "Object of the limit is unknown"
             },
