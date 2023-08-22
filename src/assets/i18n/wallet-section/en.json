@@ -166,6 +166,12 @@
         },
         "webhook": "Webhook"
     },
+    "withdrawalErrorMessage": {
+        "authorization_failed": {
+            "unknown": "Authorization error"
+        },
+        "failed": "Unknown error"
+    },
     "withdrawals": {
         "details": {
             "error": "Error",

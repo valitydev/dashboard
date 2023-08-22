@@ -166,6 +166,12 @@
         },
         "webhook": "Webhook"
     },
+    "withdrawalErrorMessage": {
+        "authorization_failed": {
+            "unknown": "Ошибка авторизации"
+        },
+        "failed": "Неизвестная ошибка"
+    },
     "withdrawals": {
         "details": {
             "error": "Ошибка",
