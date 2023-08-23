@@ -14,6 +14,7 @@ import {
     WithdrawalRowHeaderComponent,
     WithdrawalRowComponent,
 } from './components';
+import { WithdrawalErrorMessagePipe } from './components/withdrawal-details/pipes/withdrawal-error-message.pipe';
 import { WithdrawalsListComponent } from './withdrawals-list.component';
 
 @NgModule({
@@ -34,6 +35,7 @@ import { WithdrawalsListComponent } from './withdrawals-list.component';
         WithdrawalRowHeaderComponent,
         WithdrawalRowComponent,
         WithdrawalDetailsComponent,
+        WithdrawalErrorMessagePipe,
     ],
     exports: [WithdrawalsListComponent],
 })

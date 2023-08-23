@@ -30,8 +30,7 @@
             "
             class="mat-body-1"
         >
-            <!-- t(failed) -->
-            {{ errors(withdrawal.failure.code) }}
+            {{ withdrawal.failure | withdrawalErrorMessage }}
         </div>
     </dsh-details-item>
 </div>
