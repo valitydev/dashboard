@@ -175,9 +175,6 @@
     "withdrawals": {
         "details": {
             "error": "Error",
-            "errors": {
-                "failed": "An error occurred when withdrawing funds"
-            },
             "fee": "Fee",
             "status": "Status",
             "wallet": "Wallet"
