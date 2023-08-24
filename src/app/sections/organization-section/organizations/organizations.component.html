@@ -6,11 +6,12 @@
 >
     <h1 class="dsh-display-1">{{ t('header') }}</h1>
 
-    <div fxLayout fxLayoutAlign="end">
-        <button color="accent" dsh-button (click)="createOrganization()">
-            {{ t('createOrganization') }}
-        </button>
-    </div>
+    <!--    t(createOrganization)-->
+    <!--    <div fxLayout fxLayoutAlign="end">-->
+    <!--        <button color="accent" dsh-button (click)="createOrganization()">-->
+    <!--            {{ t('createOrganization') }}-->
+    <!--        </button>-->
+    <!--    </div>-->
 
     <div fxLayout="column" fxLayoutGap="16px">
         <dsh-spinner *ngIf="isLoading$ | async; else loaded" fxFlexAlign="center"></dsh-spinner>
