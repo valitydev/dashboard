@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { createPrivateRoute, RoleAccessName } from '@dsh/app/auth';
 
-import { environment } from '../../../../environments';
-
 import { IntegrationsComponent } from './integrations.component';
 
 const ROUTES: Routes = [
@@ -29,9 +27,7 @@ const ROUTES: Routes = [
             createPrivateRoute(
                 {
                     path: 'api-keys',
-                    loadChildren: environment.stage
-                        ? () => import('./api-keys').then((m) => m.ApiKeysModule)
-                        : () => import('./api-key').then((m) => m.ApiKeyModule),
+                    loadChildren: () => import('./api-keys').then((m) => m.ApiKeysModule),
                 },
                 [RoleAccessName.ApiKeys],
             ),

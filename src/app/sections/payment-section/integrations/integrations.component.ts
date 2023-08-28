@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 
-import { environment } from '../../../../environments';
-
 @Component({
     templateUrl: 'integrations.component.html',
 })
@@ -18,17 +16,11 @@ export class IntegrationsComponent {
         },
         {
             path: 'api-keys',
-            label$: environment.stage
-                ? this.transloco.selectTranslate(
-                      'integrations.tabs.api-keys',
-                      null,
-                      'payment-section',
-                  )
-                : this.transloco.selectTranslate(
-                      'integrations.tabs.api-key',
-                      null,
-                      'payment-section',
-                  ),
+            label$: this.transloco.selectTranslate(
+                'integrations.tabs.api-keys',
+                null,
+                'payment-section',
+            ),
         },
         {
             path: 'webhooks',

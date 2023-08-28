@@ -12,12 +12,6 @@
         },
         "unsuccessfulPaymentReasons": "Причины неуспешных платежей"
     },
-    "apiKey": {
-        "api": "API",
-        "copy": "Скопировать",
-        "description": "Ваш приватный ключ для доступа к",
-        "title": "API ключ"
-    },
     "apiKeys": {
         "apiKey": "API ключ",
         "copy": {
@@ -116,7 +110,6 @@
     },
     "integrations": {
         "tabs": {
-            "api-key": "API КЛЮЧ",
             "api-keys": "API КЛЮЧИ",
             "payment-link": "ПЛАТЕЖНАЯ ССЫЛКА",
             "webhooks": "WEBHOOKS"
