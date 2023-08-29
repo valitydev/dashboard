@@ -123,7 +123,7 @@ export class ChangeRolesTableComponent implements OnInit {
         this.removeRoles(this.roles.filter((r) => r.roleId === roleId));
     }
 
-    toggle(roleId: RoleId, resourceId: string, event: MouseEvent): void {
+    toggle(roleId: RoleId, resourceId: string): void {
         const role: PartialReadonly<MemberRole> = {
             roleId,
             scope: { id: ResourceScopeId.Shop, resourceId },
@@ -134,10 +134,9 @@ export class ChangeRolesTableComponent implements OnInit {
         } else {
             this.addRoles([role]);
         }
-        event.preventDefault();
     }
 
-    toggleAll(roleId: RoleId, event: MouseEvent): void {
+    toggleAll(roleId: RoleId): void {
         const roles = this.roles.filter((r) => r.roleId === roleId);
         combineLatest([this.shops$, this.checkedAll(roleId)])
             .pipe(first(), untilDestroyed(this))
@@ -154,14 +153,11 @@ export class ChangeRolesTableComponent implements OnInit {
                     this.addRoles(newRoles);
                 }
             });
-        event.preventDefault();
     }
 
-    disabled(roleId: RoleId, resourceId: string): Observable<boolean> {
+    disabled(roleId: RoleId, _resourceId: string): Observable<boolean> {
         if (roleId === RoleId.Administrator) return of(true);
-        return combineLatest([this.roles$, this.checked(roleId, resourceId)]).pipe(
-            map(([roles, isChecked]) => roles.length <= 1 && isChecked),
-        );
+        return of(false);
     }
 
     disabledAll(roleId: RoleId): boolean {

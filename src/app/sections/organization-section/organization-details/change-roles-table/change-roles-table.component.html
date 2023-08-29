@@ -29,7 +29,7 @@
                     [disabled]="disabledAll(roleId)"
                     [indeterminate]="isIntermediate(roleId) | async"
                     [ngClass]="{ disabled: disabledAll(roleId) }"
-                    (click)="toggleAll(roleId, $event)"
+                    (change)="toggleAll(roleId)"
                 ></mat-checkbox>
             </dsh-nested-table-col>
         </dsh-nested-table-row>
@@ -41,7 +41,7 @@
                         [checked]="checked(roleId, shop.id) | async"
                         [disabled]="disabled(roleId, shop.id) | async"
                         [ngClass]="{ disabled: (disabled(roleId, shop.id) | async) }"
-                        (click)="toggle(roleId, shop.id, $event)"
+                        (change)="toggle(roleId, shop.id, $event.checked)"
                     ></mat-checkbox>
                 </dsh-nested-table-col>
             </dsh-nested-table-row>
