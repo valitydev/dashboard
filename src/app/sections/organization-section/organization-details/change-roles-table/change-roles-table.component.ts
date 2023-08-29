@@ -65,15 +65,13 @@ export class ChangeRolesTableComponent implements OnInit {
         return Object.values(RoleId).filter((r) => !this.roleIds.includes(r));
     }
 
-    get isAllowRemoves(): boolean {
-        return !this.editMode || this.hasAdminRole;
-    }
-
     get isAllowAdd(): boolean {
         return !!this.availableRoles.length && !this.hasAdminRole;
     }
 
     roles$ = new BehaviorSubject<PartialReadonly<MemberRole>[]>([]);
+
+    isAllowRemoves$ = this.roles$.pipe(map((r) => r.length > 1));
 
     private get hasAdminRole() {
         return !!this.roles.find((r) => r.id === RoleId.Administrator);
@@ -192,10 +190,6 @@ export class ChangeRolesTableComponent implements OnInit {
                 );
             }),
         );
-    }
-
-    hasRemove(roleId: RoleId): boolean {
-        return roleId === RoleId.Administrator || !this.editMode;
     }
 
     isIntermediate(roleId: RoleId): Observable<boolean> {

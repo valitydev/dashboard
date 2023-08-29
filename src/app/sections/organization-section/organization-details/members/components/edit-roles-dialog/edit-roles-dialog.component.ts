@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { UntilDestroy } from '@ngneat/until-destroy';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { MemberRole } from '@vality/swag-organizations';
 import { BehaviorSubject, defer, forkJoin, of, Subscription } from 'rxjs';
-import { catchError, pluck, shareReplay, switchMap } from 'rxjs/operators';
+import { catchError, shareReplay, switchMap, map } from 'rxjs/operators';
 
 import { MembersService } from '@dsh/app/api/organizations';
 import { ErrorService } from '@dsh/app/shared';
@@ -22,8 +22,9 @@ export class EditRolesDialogComponent {
         switchMap(() =>
             this.membersService
                 .getOrgMember({ orgId: this.data.orgId, userId: this.data.userId })
-                .pipe(pluck('roles')),
+                .pipe(map((r) => r.roles)),
         ),
+        untilDestroyed(this),
         shareReplay(1),
     );
 
@@ -62,19 +63,19 @@ export class EditRolesDialogComponent {
     removeRoles(roles: MemberRole[]): Subscription {
         return forkJoin(
             roles.map((role) =>
-                this.membersService.removeMemberRole({
-                    orgId: this.data.orgId,
-                    userId: this.data.userId,
-                    memberRoleId: role.id,
-                }),
+                this.membersService
+                    .removeMemberRole({
+                        orgId: this.data.orgId,
+                        userId: this.data.userId,
+                        memberRoleId: role.id,
+                    })
+                    .pipe(
+                        catchError((err) => {
+                            this.errorService.error(err);
+                            return of(undefined);
+                        }),
+                    ),
             ),
-        )
-            .pipe(
-                catchError((err) => {
-                    this.errorService.error(err);
-                    return of(undefined);
-                }),
-            )
-            .subscribe(() => this.updateRoles$.next());
+        ).subscribe(() => this.updateRoles$.next());
     }
 }
