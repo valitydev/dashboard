@@ -155,9 +155,12 @@ export class ChangeRolesTableComponent implements OnInit {
             });
     }
 
-    disabled(roleId: RoleId, _resourceId: string): Observable<boolean> {
+    disabled(roleId: RoleId, resourceId: string): Observable<boolean> {
         if (roleId === RoleId.Administrator) return of(true);
-        return of(false);
+        if (!this.editMode) return of(false);
+        return combineLatest([this.roles$, this.checked(roleId, resourceId)]).pipe(
+            map(([roles, isChecked]) => roles.length <= 1 && isChecked),
+        );
     }
 
     disabledAll(roleId: RoleId): boolean {
