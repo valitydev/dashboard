@@ -5,13 +5,13 @@
 >
     <mat-radio-group [formControl]="roleControl">
         <dsh-nested-table [rowsGridTemplateColumns]="rowsGridTemplateColumns">
-            <dsh-nested-table-row>
+            <dsh-nested-table-row *ngIf="!data.isShow">
                 <dsh-nested-table-col></dsh-nested-table-col>
                 <dsh-nested-table-col *ngFor="let role of roles" fxLayoutAlign="center center">
                     <span class="dsh-body-2 header">{{ (roleIdDict$ | async)?.[role] }}</span>
                 </dsh-nested-table-col>
             </dsh-nested-table-row>
-            <dsh-nested-table-row>
+            <dsh-nested-table-row *ngIf="!data.isShow">
                 <dsh-nested-table-col></dsh-nested-table-col>
                 <dsh-nested-table-col *ngFor="let role of roles">
                     <mat-radio-button [value]="role"></mat-radio-button>
@@ -33,7 +33,7 @@
             </dsh-nested-table-row>
         </dsh-nested-table>
     </mat-radio-group>
-    <ng-container dshBaseDialogActions>
+    <ng-container *ngIf="!data.isShow" dshBaseDialogActions>
         <button [disabled]="roleControl.invalid" color="accent" dsh-button (click)="select()">
             {{ t('select') }}
         </button>

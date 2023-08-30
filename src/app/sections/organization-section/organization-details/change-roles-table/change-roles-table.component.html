@@ -7,7 +7,9 @@
             *ngFor="let roleId of roleIds"
             class="dsh-body-2"
             fxLayoutAlign="center center"
-            >{{ (roleIdDict$ | async)?.[roleId] }}</dsh-nested-table-col
+            ><button dsh-button (click)="show(roleId)">
+                {{ (roleIdDict$ | async)?.[roleId] }}
+            </button></dsh-nested-table-col
         >
         <dsh-nested-table-col *ngIf="isAllowAdd">
             <button color="accent" dsh-button (click)="add()">{{ t('add') }}</button>

@@ -131,6 +131,25 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
             });
     }
 
+    show(roleId: RoleId) {
+        const removeDialogsClass = addDialogsClass(this.dialog.openDialogs, 'dsh-hidden');
+        this.dialog
+            .open<SelectRoleDialogComponent, SelectRoleDialogData, SelectRoleDialogResult>(
+                SelectRoleDialogComponent,
+                {
+                    ...this.dialogConfig.large,
+                    data: { availableRoles: [roleId], isShow: true },
+                },
+            )
+            .afterClosed()
+            .pipe(untilDestroyed(this))
+            .subscribe({
+                complete: () => {
+                    removeDialogsClass();
+                },
+            });
+    }
+
     remove(roleId: RoleId): void {
         this.removeRoleIds([roleId]);
         this.removeRoles(this.roles.filter((r) => r.roleId === roleId));
