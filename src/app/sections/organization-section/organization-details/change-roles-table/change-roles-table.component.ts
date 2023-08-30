@@ -80,7 +80,12 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
 
     roles$ = new BehaviorSubject<PartialReadonly<MemberRole>[]>([]);
 
-    isAllowRemoves$ = this.roles$.pipe(map((r) => !this.editMode || r.length > 1));
+    isAllowRemoves$ = this.roles$.pipe(
+        map(
+            (roles) =>
+                !this.editMode || roles.some((r) => roles.some((b) => b.roleId !== r.roleId)),
+        ),
+    );
 
     private get hasAdminRole() {
         return !!this.roles.find((r) => r.id === RoleId.Administrator);
