@@ -3,21 +3,17 @@
     align-items: center;
     min-height: 32px;
     padding: 8px;
-    overflow: auto;
 
     & > ::ng-deep button,
     & > ::ng-deep mat-checkbox,
     & > ::ng-deep mat-radio-button {
         margin: auto;
-    }
 
-    & > ::ng-deep mat-checkbox,
-    & > ::ng-deep mat-radio-button {
-        display: flex;
-
-        & * {
+        .mdc-radio {
             padding: 0;
-            margin: 0;
+        }
+        .mdc-label {
+            display: none;
         }
     }
 

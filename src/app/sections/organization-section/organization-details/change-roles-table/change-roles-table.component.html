@@ -29,7 +29,7 @@
                     [disabled]="disabledAll(roleId)"
                     [indeterminate]="isIntermediate(roleId) | async"
                     [ngClass]="{ disabled: disabledAll(roleId) }"
-                    (click)="toggleAll(roleId, $event)"
+                    (change)="toggleAll(roleId)"
                 ></mat-checkbox>
             </dsh-nested-table-col>
         </dsh-nested-table-row>
@@ -41,21 +41,26 @@
                         [checked]="checked(roleId, shop.id) | async"
                         [disabled]="disabled(roleId, shop.id) | async"
                         [ngClass]="{ disabled: (disabled(roleId, shop.id) | async) }"
-                        (click)="toggle(roleId, shop.id, $event)"
+                        (change)="toggle(roleId, shop.id, $event.checked)"
                     ></mat-checkbox>
                 </dsh-nested-table-col>
             </dsh-nested-table-row>
         </dsh-nested-table-group>
     </ng-container>
 
-    <dsh-nested-table-row *ngIf="isAllowRemoves">
+    <dsh-nested-table-row>
         <dsh-nested-table-col class="dsh-body-2"></dsh-nested-table-col>
         <dsh-nested-table-col
             *ngFor="let roleId of roleIds"
             class="dsh-body-2"
             fxLayoutAlign="center center"
         >
-            <button *ngIf="hasRemove(roleId)" color="warn" dsh-button (click)="remove(roleId)">
+            <button
+                [disabled]="!(isAllowRemoves$ | async)"
+                color="warn"
+                dsh-button
+                (click)="remove(roleId)"
+            >
                 {{ t('remove') }}
             </button>
         </dsh-nested-table-col>
