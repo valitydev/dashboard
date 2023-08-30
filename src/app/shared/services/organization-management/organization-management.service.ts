@@ -5,7 +5,7 @@ import { map, pluck, shareReplay, switchMap } from 'rxjs/operators';
 
 import { MembersService } from '@dsh/app/api/organizations';
 import { SHARE_REPLAY_CONF } from '@dsh/app/custom-operators';
-import { ContextOrganizationService } from '@dsh/app/shared';
+import { KeycloakTokenInfoService } from '@dsh/app/shared';
 import { Initializable } from '@dsh/app/shared/types';
 
 @Injectable()
@@ -16,16 +16,19 @@ export class OrganizationManagementService implements Initializable {
         shareReplay(SHARE_REPLAY_CONF),
     );
     isOrganizationOwner$: Observable<boolean> = defer(() =>
-        combineLatest([
-            this.organization$,
-            this.contextOrganizationService.organization$.pipe(pluck('party')),
-        ]),
+        combineLatest([this.organization$, this.keycloakTokenInfoService.userID$]),
     ).pipe(
         map(([{ owner }, id]) => owner === id),
         shareReplay(SHARE_REPLAY_CONF),
     );
-    isOrganizationAdmin$: Observable<boolean> = this.contextOrganizationService.member$.pipe(
-        map((member) => member.roles.findIndex((r) => r.roleId === RoleId.Administrator) !== -1),
+    isOrganizationAdmin$: Observable<boolean> = combineLatest([
+        this.members$,
+        this.keycloakTokenInfoService.userID$,
+    ]).pipe(
+        map(([members, userId]) => members.find((m) => m.id === userId)),
+        map(
+            (member) => member?.roles?.findIndex?.((r) => r.roleId === RoleId.Administrator) !== -1,
+        ),
         shareReplay(SHARE_REPLAY_CONF),
     );
     hasAdminAccess$: Observable<boolean> = defer(() =>
@@ -39,7 +42,7 @@ export class OrganizationManagementService implements Initializable {
 
     constructor(
         private membersService: MembersService,
-        private contextOrganizationService: ContextOrganizationService,
+        private keycloakTokenInfoService: KeycloakTokenInfoService,
     ) {}
 
     init(organization: Organization) {
