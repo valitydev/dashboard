@@ -1,4 +1,6 @@
+import { Organization } from '@vality/swag-organizations';
+
 export interface EditRolesDialogData {
-    orgId: string;
+    organization: Organization;
     userId: string;
 }

@@ -6,18 +6,20 @@ import {
     Input,
     OnInit,
     Output,
+    OnChanges,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { MemberRole, ResourceScopeId, RoleId } from '@vality/swag-organizations';
+import { ComponentChanges } from '@vality/ng-core';
+import { MemberRole, ResourceScopeId, RoleId, Organization } from '@vality/swag-organizations';
 import { coerceBoolean } from 'coerce-property';
 import isNil from 'lodash-es/isNil';
-import { BehaviorSubject, combineLatest, EMPTY, Observable, of } from 'rxjs';
-import { first, map, switchMap, tap } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, EMPTY, Observable, of, ReplaySubject } from 'rxjs';
+import { first, map, switchMap, tap, shareReplay } from 'rxjs/operators';
 
 import { OrganizationsDictionaryService } from '@dsh/app/api/organizations';
+import { ShopsService } from '@dsh/app/api/payments';
 import { DialogConfig, DIALOG_CONFIG } from '@dsh/app/sections/tokens';
-import { ShopsDataService } from '@dsh/app/shared';
 import { sortRoleIds } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
 import { PartialReadonly } from '@dsh/type-utils';
 
@@ -34,7 +36,7 @@ import { SelectRoleDialogData } from './components/select-role-dialog/types/sele
     templateUrl: 'change-roles-table.component.html',
     styleUrls: ['change-roles-table.component.scss'],
 })
-export class ChangeRolesTableComponent implements OnInit {
+export class ChangeRolesTableComponent implements OnInit, OnChanges {
     @Input() set roles(roles: PartialReadonly<MemberRole>[]) {
         if (!isNil(roles)) {
             this.roles$.next(roles);
@@ -44,6 +46,7 @@ export class ChangeRolesTableComponent implements OnInit {
     get roles(): PartialReadonly<MemberRole>[] {
         return this.roles$.value;
     }
+    @Input() organization: Organization;
 
     /**
      * Edit mode:
@@ -57,8 +60,14 @@ export class ChangeRolesTableComponent implements OnInit {
     @Output() addedRoles = new EventEmitter<PartialReadonly<MemberRole>[]>();
     @Output() removedRoles = new EventEmitter<PartialReadonly<MemberRole>[]>();
 
+    organization$ = new ReplaySubject<Organization>(1);
     roleIds: RoleId[] = [];
-    shops$ = this.shopsDataService.shops$;
+    shops$ = this.organization$.pipe(
+        switchMap((organization) =>
+            this.shopsService.getShopsForParty({ partyID: organization.party }),
+        ),
+        shareReplay({ bufferSize: 1, refCount: true }),
+    );
     roleIdDict$ = this.organizationsDictionaryService.roleId$;
 
     get availableRoles(): RoleId[] {
@@ -78,12 +87,18 @@ export class ChangeRolesTableComponent implements OnInit {
     }
 
     constructor(
-        private shopsDataService: ShopsDataService,
+        private shopsService: ShopsService,
         private dialog: MatDialog,
         @Inject(DIALOG_CONFIG) private dialogConfig: DialogConfig,
         private cdr: ChangeDetectorRef,
         private organizationsDictionaryService: OrganizationsDictionaryService,
     ) {}
+
+    ngOnChanges({ organization }: ComponentChanges<ChangeRolesTableComponent>) {
+        if (organization) {
+            this.organization$.next(organization.currentValue);
+        }
+    }
 
     ngOnInit(): void {
         this.roles$.pipe(untilDestroyed(this)).subscribe((roles) => this.selectedRoles.emit(roles));

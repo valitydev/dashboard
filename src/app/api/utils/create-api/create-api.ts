@@ -61,7 +61,9 @@ export function createApi<
 
         private call(name: keyof T, params: Record<PropertyKey, unknown>) {
             return this.createExtendedParams().pipe(
-                switchMap((p) => this.api[name](Object.assign({}, params, ...p))),
+                switchMap((extendParams) =>
+                    this.api[name](Object.assign({}, ...extendParams, params)),
+                ),
             );
         }
 

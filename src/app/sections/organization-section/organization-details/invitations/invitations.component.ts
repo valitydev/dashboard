@@ -43,7 +43,7 @@ export class InvitationsComponent {
         return this.organization$
             .pipe(
                 first(),
-                switchMap(({ id: orgId }) =>
+                switchMap((organization) =>
                     this.dialog
                         .open<
                             CreateInvitationDialogComponent,
@@ -51,7 +51,7 @@ export class InvitationsComponent {
                             BaseDialogResponseStatus
                         >(CreateInvitationDialogComponent, {
                             ...this.dialogConfig.large,
-                            data: { orgId },
+                            data: { organization },
                         })
                         .afterClosed(),
                 ),
