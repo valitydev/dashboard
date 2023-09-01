@@ -59,7 +59,7 @@ export const toNavbarItemConfig = ({
         routerLink: NavbarRouterLink.Reports,
         icon: BootstrapIconName.FileText,
         label: reports,
-        roles: [],
+        roles: [RoleAccessName.Reports],
     },
     {
         routerLink: NavbarRouterLink.Integrations,

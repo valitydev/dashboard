@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 
+import { RoleAccessName } from '@dsh/app/auth';
+
 @Component({
     templateUrl: 'integrations.component.html',
 })
@@ -13,6 +15,7 @@ export class IntegrationsComponent {
                 null,
                 'payment-section',
             ),
+            roles: [RoleAccessName.PaymentLinks],
         },
         {
             path: 'api-keys',
@@ -21,6 +24,7 @@ export class IntegrationsComponent {
                 null,
                 'payment-section',
             ),
+            roles: [RoleAccessName.ApiKeys],
         },
         {
             path: 'webhooks',
@@ -29,6 +33,7 @@ export class IntegrationsComponent {
                 null,
                 'payment-section',
             ),
+            roles: [RoleAccessName.Webhooks],
         },
     ];
 
