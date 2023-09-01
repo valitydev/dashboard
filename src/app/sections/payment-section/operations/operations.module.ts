@@ -4,6 +4,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TranslocoModule } from '@ngneat/transloco';
 
+import { AuthModule } from '@dsh/app/auth';
 import { LayoutModule } from '@dsh/components/layout';
 import { ScrollUpModule } from '@dsh/components/navigation';
 
@@ -19,6 +20,7 @@ import { OperationsComponent } from './operations.component';
         TranslocoModule,
         ScrollUpModule,
         MatTabsModule,
+        AuthModule,
     ],
     declarations: [OperationsComponent],
 })

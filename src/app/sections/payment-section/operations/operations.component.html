@@ -5,16 +5,18 @@
     fxLayoutGap="32px"
 >
     <nav mat-tab-nav-bar>
-        <a
-            #rla="routerLinkActive"
-            *ngFor="let link of links"
-            [active]="rla.isActive"
-            [routerLink]="link.path"
-            mat-tab-link
-            routerLinkActive
-        >
-            <span>{{ link.label$ | async }}</span>
-        </a>
+        <ng-container *ngFor="let link of links">
+            <a
+                #rla="routerLinkActive"
+                *ngIf="link.roles | isAccessAllowed: 'some'"
+                [active]="rla.isActive"
+                [routerLink]="link.path"
+                mat-tab-link
+                routerLinkActive
+            >
+                <span>{{ link.label$ | async }}</span>
+            </a>
+        </ng-container>
     </nav>
     <div>
         <router-outlet></router-outlet>
