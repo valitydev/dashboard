@@ -31,11 +31,18 @@ const PAYMENT_SECTION_ROUTES: Routes = [
                 },
                 [RoleAccessName.ViewAnalytics],
             ),
-            {
-                path: 'operations',
-                loadChildren: () =>
-                    import('./operations/operations.module').then((m) => m.OperationsModule),
-            },
+            createPrivateRoute(
+                {
+                    path: 'operations',
+                    loadChildren: () =>
+                        import('./operations/operations.module').then((m) => m.OperationsModule),
+                },
+                [
+                    RoleAccessName.ViewPayments,
+                    RoleAccessName.ViewInvoices,
+                    RoleAccessName.ViewRefunds,
+                ],
+            ),
             createPrivateRoute(
                 {
                     path: 'reports',
@@ -51,11 +58,16 @@ const PAYMENT_SECTION_ROUTES: Routes = [
             //     },
             //     [RoleAccessName.ViewPayouts]
             // ),
-            {
-                path: 'integrations',
-                loadChildren: () =>
-                    import('./integrations/integrations.module').then((m) => m.IntegrationsModule),
-            },
+            createPrivateRoute(
+                {
+                    path: 'integrations',
+                    loadChildren: () =>
+                        import('./integrations/integrations.module').then(
+                            (m) => m.IntegrationsModule,
+                        ),
+                },
+                [RoleAccessName.PaymentLinks, RoleAccessName.ApiKeys, RoleAccessName.Webhooks],
+            ),
         ],
     },
 ];

@@ -82,7 +82,7 @@ export class MemberComponent implements OnChanges {
             .open<EditRolesDialogComponent, EditRolesDialogData>(EditRolesDialogComponent, {
                 ...this.dialogConfig.large,
                 data: {
-                    orgId: this.organization.id,
+                    organization: this.organization,
                     userId: this.member.id,
                 },
             })

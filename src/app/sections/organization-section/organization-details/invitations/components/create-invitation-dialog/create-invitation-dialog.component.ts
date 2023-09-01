@@ -37,7 +37,7 @@ export class CreateInvitationDialogComponent {
     create() {
         return this.invitationsService
             .createInvitation({
-                orgId: this.data.orgId,
+                orgId: this.data.organization.id,
                 invitationRequest: {
                     invitee: {
                         contact: {

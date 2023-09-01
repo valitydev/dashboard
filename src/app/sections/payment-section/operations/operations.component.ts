@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 
+import { RoleAccessName } from '@dsh/app/auth';
+
 @Component({
     templateUrl: 'operations.component.html',
 })
@@ -13,6 +15,7 @@ export class OperationsComponent {
                 null,
                 'payment-section',
             ),
+            roles: [RoleAccessName.ViewPayments],
         },
         {
             path: 'invoices',
@@ -21,6 +24,7 @@ export class OperationsComponent {
                 null,
                 'payment-section',
             ),
+            roles: [RoleAccessName.ViewInvoices],
         },
         {
             path: 'refunds',
@@ -29,6 +33,7 @@ export class OperationsComponent {
                 null,
                 'payment-section',
             ),
+            roles: [RoleAccessName.ViewRefunds],
         },
     ];
 

@@ -5,6 +5,7 @@
     (cancel)="cancel()"
 >
     <dsh-change-roles-table
+        [organization]="data.organization"
         [roles]="roles$ | async"
         controlled
         editMode

@@ -4,6 +4,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { TranslocoModule } from '@ngneat/transloco';
 
+import { AuthModule } from '@dsh/app/auth';
 import { ShopCreationModule } from '@dsh/app/shared/components/shop-creation';
 import { ButtonModule } from '@dsh/components/buttons';
 
@@ -26,6 +27,7 @@ import { ShopsComponent } from './shops.component';
         ShopCreationModule,
         ButtonModule,
         TranslocoModule,
+        AuthModule,
     ],
     declarations: [ShopsComponent],
     exports: [ShopsComponent],

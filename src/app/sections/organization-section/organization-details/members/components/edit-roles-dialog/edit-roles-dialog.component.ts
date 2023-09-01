@@ -21,7 +21,7 @@ export class EditRolesDialogComponent {
     roles$ = defer(() => this.updateRoles$).pipe(
         switchMap(() =>
             this.membersService
-                .getOrgMember({ orgId: this.data.orgId, userId: this.data.userId })
+                .getOrgMember({ orgId: this.data.organization.id, userId: this.data.userId })
                 .pipe(map((r) => r.roles)),
         ),
         untilDestroyed(this),
@@ -45,7 +45,7 @@ export class EditRolesDialogComponent {
         return forkJoin(
             roles.map((memberRole) =>
                 this.membersService.assignMemberRole({
-                    orgId: this.data.orgId,
+                    orgId: this.data.organization.id,
                     userId: this.data.userId,
                     memberRole,
                 }),
@@ -65,7 +65,7 @@ export class EditRolesDialogComponent {
             roles.map((role) =>
                 this.membersService
                     .removeMemberRole({
-                        orgId: this.data.orgId,
+                        orgId: this.data.organization.id,
                         userId: this.data.userId,
                         memberRoleId: role.id,
                     })

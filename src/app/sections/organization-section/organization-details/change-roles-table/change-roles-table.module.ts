@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { TranslocoModule } from '@ngneat/transloco';
@@ -26,6 +27,7 @@ import { SelectRoleDialogComponent } from './components/select-role-dialog/selec
         MatRadioModule,
         ReactiveFormsModule,
         SelectionModule,
+        MatButtonModule,
     ],
     declarations: [ChangeRolesTableComponent, SelectRoleDialogComponent],
     exports: [ChangeRolesTableComponent],
