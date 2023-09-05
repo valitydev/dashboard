@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { NotifyLogService } from '@vality/ng-core';
 import { Webhook } from '@vality/swag-wallet';
 import sortBy from 'lodash-es/sortBy';
 import { BehaviorSubject, forkJoin, Observable, of, Subject } from 'rxjs';
@@ -33,7 +33,7 @@ export class ReceiveWebhooksService {
     constructor(
         private walletWebhooksService: WebhooksService,
         private identitiesService: IdentitiesService,
-        private snackBar: MatSnackBar,
+        private log: NotifyLogService,
         private transloco: TranslocoService,
     ) {
         this.receiveWebhooks$
@@ -47,10 +47,13 @@ export class ReceiveWebhooksService {
                         ),
                     ).pipe(
                         catchError((err) => {
-                            console.error(err);
-                            this.snackBar.open(
-                                this.transloco.translate('shared.httpError', null, 'components'),
-                                'OK',
+                            this.log.error(
+                                err,
+                                this.transloco.selectTranslate(
+                                    'shared.httpError',
+                                    null,
+                                    'components',
+                                ),
                             );
                             return of<Webhook[]>([]);
                         }),

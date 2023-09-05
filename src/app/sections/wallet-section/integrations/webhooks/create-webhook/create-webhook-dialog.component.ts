@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { NotifyLogService } from '@vality/ng-core';
 import { filter } from 'rxjs/operators';
 
 import { CreateWebhookDialogService } from './create-webhook-dialog.service';
@@ -19,7 +19,7 @@ export class CreateWebhookDialogComponent implements OnInit {
         private dialogRef: MatDialogRef<CreateWebhookDialogComponent>,
         private createWebhookDialogService: CreateWebhookDialogService,
         private transloco: TranslocoService,
-        private snackBar: MatSnackBar,
+        private log: NotifyLogService,
     ) {
         this.createWebhookDialogService.webhookCreated$.pipe(filter((r) => !!r)).subscribe((r) => {
             this.dialogRef.close(r);
@@ -30,10 +30,14 @@ export class CreateWebhookDialogComponent implements OnInit {
         this.createWebhookDialogService.webhookCreated$.subscribe(() =>
             this.dialogRef.close('created'),
         );
-        this.createWebhookDialogService.errorOccurred$.subscribe(() =>
-            this.snackBar.open(
-                this.transloco.translate('reports.errors.createError', null, 'payment-section'),
-                'OK',
+        this.createWebhookDialogService.errorOccurred$.subscribe((err) =>
+            this.log.error(
+                err,
+                this.transloco.selectTranslate(
+                    'reports.errors.createError',
+                    null,
+                    'payment-section',
+                ),
             ),
         );
     }

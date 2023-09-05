@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { NotifyLogService } from '@vality/ng-core';
 import { PaymentSearchResult } from '@vality/swag-anapi-v2';
 import { Observable, of } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
@@ -24,7 +24,7 @@ export class FetchPaymentsService extends PartialFetcher<
 
     constructor(
         private searchService: SearchService,
-        private snackBar: MatSnackBar,
+        private log: NotifyLogService,
         private transloco: TranslocoService,
         @Inject(SEARCH_LIMIT)
         private searchLimit: number,
@@ -48,10 +48,10 @@ export class FetchPaymentsService extends PartialFetcher<
                 continuationToken,
             })
             .pipe(
-                catchError(() => {
-                    this.snackBar.open(
-                        this.transloco.translate('shared.httpError', null, 'components'),
-                        'OK',
+                catchError((err) => {
+                    this.log.error(
+                        err,
+                        this.transloco.selectTranslate('shared.httpError', null, 'components'),
                     );
                     return of({ result: [] });
                 }),

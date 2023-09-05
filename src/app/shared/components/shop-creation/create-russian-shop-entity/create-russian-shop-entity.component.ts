@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { NotifyLogService } from '@vality/ng-core';
 
 import { CreateRussianShopEntityService } from './services/create-russian-shop-entity/create-russian-shop-entity.service';
 
@@ -24,7 +24,7 @@ export class CreateRussianShopEntityComponent {
     constructor(
         private createShopRussianLegalEntityService: CreateRussianShopEntityService,
         private transloco: TranslocoService,
-        private snackBar: MatSnackBar,
+        private log: NotifyLogService,
         private router: Router,
     ) {}
 
@@ -36,18 +36,17 @@ export class CreateRussianShopEntityComponent {
         this.createShopRussianLegalEntityService
             .createShop(this.form.value)
             .pipe(untilDestroyed(this))
-            .subscribe(
-                ({ id }) => {
+            .subscribe({
+                next: ({ id }) => {
                     this.send.emit();
                     void this.router.navigate(['claim-section', 'claims', id]);
                 },
-                (err) => {
-                    console.error(err);
-                    this.snackBar.open(
-                        this.transloco.translate('shared.commonError', null, 'components'),
-                        'OK',
+                error: (err) => {
+                    this.log.error(
+                        err,
+                        this.transloco.selectTranslate('shared.commonError', null, 'components'),
                     );
                 },
-            );
+            });
     }
 }
