@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { combineLatest, Observable, of, Subject } from 'rxjs';
-import { catchError, filter, switchMap, takeUntil } from 'rxjs/operators';
+import { catchError, filter, switchMap, takeUntil, tap, map, first } from 'rxjs/operators';
 
 import { ReportsService } from '@dsh/app/api/anapi';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
@@ -45,15 +45,17 @@ export class CancelReportService {
                     this.reportsService.cancelReport({ reportID }).pipe(
                         catchError((e) => {
                             console.error(e);
-                            this.snackBar.open(
-                                this.transloco.translate(
+                            return this.transloco
+                                .selectTranslate(
                                     'reports.errors.cancelError',
                                     null,
                                     'payment-section',
-                                ),
-                                'OK',
-                            );
-                            return of('error');
+                                )
+                                .pipe(
+                                    first(),
+                                    tap((message) => this.snackBar.open(message, 'OK')),
+                                    map(() => 'error'),
+                                );
                         }),
                     ),
                 ),

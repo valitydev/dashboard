@@ -1,11 +1,13 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { FileMeta } from '@vality/swag-anapi-v2';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 
 import { ReportFilesService } from './report-files.service';
 
+@UntilDestroy()
 @Component({
     selector: 'dsh-report-files',
     templateUrl: 'report-files.component.html',
@@ -25,19 +27,20 @@ export class ReportFilesComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.reportFilesService.errorOccurred$.subscribe(() =>
-            this.snackBar.open(
-                this.transloco.translate(
-                    'reports.errors.downloadReportError',
-                    null,
-                    'payment-section',
-                ),
-                'OK',
-                {
-                    duration: 2000,
-                },
+        combineLatest([
+            this.transloco.selectTranslate(
+                'reports.errors.downloadReportError',
+                null,
+                'payment-section',
             ),
-        );
+            this.reportFilesService.errorOccurred$,
+        ])
+            .pipe(untilDestroyed(this))
+            .subscribe(([message]) =>
+                this.snackBar.open(message, 'OK', {
+                    duration: 2000,
+                }),
+            );
     }
 
     downloadAll() {

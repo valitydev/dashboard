@@ -3,8 +3,10 @@ import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import moment from 'moment';
-import { of } from 'rxjs';
+import { of, switchMap } from 'rxjs';
+import { first } from 'rxjs/operators';
 
 import { ShopsDataService } from '@dsh/app/shared';
 
@@ -14,6 +16,7 @@ import { CreateReportDialogService } from './create-report-dialog.service';
 
 const TIME_PATTERN = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
 
+@UntilDestroy()
 @Component({
     templateUrl: 'create-report-dialog.component.html',
     styleUrls: ['create-report-dialog.component.scss'],
@@ -48,12 +51,16 @@ export class CreateReportDialogComponent implements OnInit {
         this.createReportDialogService.reportCreated$.subscribe(() =>
             this.dialogRef.close('created'),
         );
-        this.createReportDialogService.errorOccurred$.subscribe(() =>
-            this.snackBar.open(
-                this.transloco.translate('reports.errors.createError', null, 'payment-section'),
-                'OK',
-            ),
-        );
+        this.createReportDialogService.errorOccurred$
+            .pipe(
+                switchMap(() =>
+                    this.transloco
+                        .selectTranslate('reports.errors.createError', null, 'payment-section')
+                        .pipe(first()),
+                ),
+                untilDestroyed(this),
+            )
+            .subscribe((message) => this.snackBar.open(message, 'OK'));
     }
 
     create(formValue: unknown) {

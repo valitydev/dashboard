@@ -1,10 +1,14 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { Report } from '@vality/swag-anapi-v2';
+import { switchMap } from 'rxjs';
+import { first } from 'rxjs/operators';
 
 import { CancelReportService } from '../cancel-report';
 
+@UntilDestroy()
 @Component({
     selector: 'dsh-reports-list',
     templateUrl: 'reports-list.component.html',
@@ -28,20 +32,25 @@ export class ReportsListComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.cancelReportService.init();
-        this.cancelReportService.reportCancelled$.subscribe(() => {
-            this.snackBar.open(
-                this.transloco.translate(
-                    'reports.cancelReport.successfullyCanceled',
-                    null,
-                    'payment-section',
+        this.cancelReportService.reportCancelled$
+            .pipe(
+                switchMap(() =>
+                    this.transloco
+                        .selectTranslate(
+                            'reports.cancelReport.successfullyCanceled',
+                            null,
+                            'payment-section',
+                        )
+                        .pipe(first()),
                 ),
-                'OK',
-                {
+                untilDestroyed(this),
+            )
+            .subscribe((message) => {
+                this.snackBar.open(message, 'OK', {
                     duration: 2000,
-                },
-            );
-            this.refreshData.emit();
-        });
+                });
+                this.refreshData.emit();
+            });
     }
 
     ngOnDestroy(): void {
