@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { NotifyLogService } from '@vality/ng-core';
 import { InlineResponse2007, Withdrawal } from '@vality/swag-wallet';
 import { ListWithdrawalsRequestParams } from '@vality/swag-wallet/lib/api/withdrawals.service';
 import { Observable, of } from 'rxjs';
@@ -23,7 +23,7 @@ export class FetchWithdrawalsService extends PartialFetcher<
 
     constructor(
         private withdrawalsService: WithdrawalsService,
-        private snackBar: MatSnackBar,
+        private log: NotifyLogService,
         private transloco: TranslocoService,
         @Inject(SEARCH_LIMIT)
         private searchLimit: number,
@@ -40,10 +40,10 @@ export class FetchWithdrawalsService extends PartialFetcher<
         return this.withdrawalsService
             .listWithdrawals({ ...params, limit: this.searchLimit, continuationToken })
             .pipe(
-                catchError(() => {
-                    this.snackBar.open(
-                        this.transloco.translate('shared.httpError', null, 'components'),
-                        'OK',
+                catchError((err) => {
+                    this.log.error(
+                        err,
+                        this.transloco.selectTranslate('shared.httpError', null, 'components'),
                     );
                     return of({ result: [] });
                 }),

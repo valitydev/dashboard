@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-
-import { NotificationService } from '@dsh/app/shared';
+import { NotifyLogService } from '@vality/ng-core';
 
 @Component({
     selector: 'dsh-webhook-api-key',
@@ -13,18 +12,16 @@ export class WebhookApiKeyComponent {
     key: string;
 
     constructor(
-        private notificationService: NotificationService,
+        private log: NotifyLogService,
         private transloco: TranslocoService,
     ) {}
 
     copied(isCopied: boolean): void {
         if (isCopied)
-            this.notificationService.success(
-                this.transloco.translate('shared.copied', null, 'components'),
-            );
+            this.log.success(this.transloco.selectTranslate('shared.copied', null, 'components'));
         else
-            this.notificationService.success(
-                this.transloco.translate('shared.copyFailed', null, 'components'),
+            this.log.success(
+                this.transloco.selectTranslate('shared.copyFailed', null, 'components'),
             );
     }
 }

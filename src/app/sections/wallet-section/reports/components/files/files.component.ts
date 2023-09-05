@@ -34,7 +34,7 @@ export class FilesComponent {
                     catchError((err) => {
                         this.log.error(
                             err,
-                            this.transloco.translate(
+                            this.transloco.selectTranslate(
                                 'reports.errors.downloadReportError',
                                 null,
                                 'wallet-section',

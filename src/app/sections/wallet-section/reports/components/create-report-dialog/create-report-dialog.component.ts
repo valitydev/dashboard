@@ -53,7 +53,7 @@ export class CreateReportDialogComponent {
             .subscribe({
                 next: () => {
                     this.log.success(
-                        this.transloco.translate(
+                        this.transloco.selectTranslate(
                             'reports.createReportDialog.success',
                             {},
                             'wallet-section',
@@ -64,7 +64,7 @@ export class CreateReportDialogComponent {
                 error: (err) => {
                     this.log.error(
                         err,
-                        this.transloco.translate(
+                        this.transloco.selectTranslate(
                             'reports.createReportDialog.error',
                             {},
                             'wallet-section',
