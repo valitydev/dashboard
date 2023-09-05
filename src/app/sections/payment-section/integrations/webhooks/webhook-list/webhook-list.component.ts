@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { NotifyLogService } from '@vality/ng-core';
 import { Webhook, WebhookScope } from '@vality/swag-payments';
 
 import { DeleteWebhookService } from '../delete-webhook';
@@ -19,19 +19,19 @@ export class WebhookListComponent implements OnInit, OnDestroy {
 
     constructor(
         private deleteWebhookService: DeleteWebhookService,
-        private snackBar: MatSnackBar,
+        private log: NotifyLogService,
         private transloco: TranslocoService,
     ) {}
 
     ngOnInit() {
         this.deleteWebhookService.init();
         this.deleteWebhookService.webhookDeleted$.subscribe(() => {
-            this.snackBar.open(
-                this.transloco.translate('webhook.actions.delete.success', null, 'payment-section'),
-                'OK',
-                {
-                    duration: 2000,
-                },
+            this.log.success(
+                this.transloco.selectTranslate(
+                    'webhook.actions.delete.success',
+                    null,
+                    'payment-section',
+                ),
             );
             this.refreshData.emit();
         });

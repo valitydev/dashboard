@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { NotifyLogService } from '@vality/ng-core';
 import { take } from 'rxjs/operators';
 
 import { QueryParamsService } from '@dsh/app/shared/services/query-params/query-params.service';
@@ -35,7 +35,7 @@ export class InvoicesComponent implements OnInit {
         private invoicesService: FetchInvoicesService,
         private createInvoiceService: CreateInvoiceService,
         private invoicesExpandedIdManager: InvoicesExpandedIdManager,
-        private snackBar: MatSnackBar,
+        private log: NotifyLogService,
         private transloco: TranslocoService,
         private paymentInstitutionRealmService: PaymentInstitutionRealmService,
         private qp: QueryParamsService<Filters>,
@@ -45,10 +45,10 @@ export class InvoicesComponent implements OnInit {
     ngOnInit(): void {
         this.invoicesService.errors$
             .pipe(untilDestroyed(this))
-            .subscribe(() =>
-                this.snackBar.open(
-                    this.transloco.translate('shared.commonError', null, 'components'),
-                    'OK',
+            .subscribe((err) =>
+                this.log.error(
+                    err,
+                    this.transloco.selectTranslate('shared.commonError', null, 'components'),
                 ),
             );
         this.realmMixService.mixedValue$
