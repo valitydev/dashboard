@@ -57,7 +57,7 @@
                         >
                             <div fxLayout fxLayoutAlign="space-between" fxLayoutGap="24px">
                                 <div *ngFor="let header of contentHeader">
-                                    {{ header.label(item) }}
+                                    {{ header.label(item) | vPossiblyAsync }}
                                 </div>
                             </div>
                         </dsh-accordion-item-content-header>

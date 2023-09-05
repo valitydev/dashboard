@@ -29,7 +29,7 @@ export interface Column<T extends object> {
 }
 
 export interface ContentHeader<T extends object> {
-    label: (row: T) => unknown;
+    label: (row: T) => PossiblyAsync<unknown>;
 }
 
 @Component({
