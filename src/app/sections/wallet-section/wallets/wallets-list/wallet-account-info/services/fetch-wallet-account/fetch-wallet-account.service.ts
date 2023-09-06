@@ -6,7 +6,6 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 
 import { WalletsService } from '@dsh/app/api/wallet';
 import { shareReplayUntilDestroyed } from '@dsh/app/custom-operators';
-import { ErrorService } from '@dsh/app/shared';
 import { errorTo, progressTo } from '@dsh/utils';
 
 @UntilDestroy()
@@ -18,7 +17,7 @@ export class FetchWalletAccountService {
                 progressTo(this.progress$),
                 errorTo(this.error$, true),
                 catchError((err) => {
-                    this.errorService.error(err, false);
+                    console.error(err);
                     return EMPTY;
                 }),
             ),
@@ -34,10 +33,7 @@ export class FetchWalletAccountService {
 
     private fetchWalletAccount$ = new ReplaySubject<string>();
 
-    constructor(
-        private walletService: WalletsService,
-        private errorService: ErrorService,
-    ) {}
+    constructor(private walletService: WalletsService) {}
 
     fetchWalletAccount(walletID: string): void {
         this.fetchWalletAccount$.next(walletID);

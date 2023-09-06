@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { createControlProviders, FormControlSuperclass } from '@vality/ng-core';
@@ -15,7 +14,7 @@ import { switchMap, catchError, share, tap } from 'rxjs/operators';
 import { Overwrite } from 'utility-types';
 
 import { ContractsService } from '@dsh/app/api/payments';
-import { CommonError, ErrorService } from '@dsh/app/shared';
+import { CommonError } from '@dsh/app/shared';
 import { progressTo, errorTo } from '@dsh/utils';
 
 import EntityTypeEnum = LegalEntityAllOf.EntityTypeEnum;
@@ -47,9 +46,7 @@ export class ExistingContractFormComponent extends FormControlSuperclass<
 
     constructor(
         private contractsService: ContractsService,
-        private fb: FormBuilder,
         private transloco: TranslocoService,
-        private errorService: ErrorService,
     ) {
         super();
     }
@@ -64,7 +61,7 @@ export class ExistingContractFormComponent extends FormControlSuperclass<
                 (shop ? this.getContract(shop.contractID) : of<ExistingContractForm>(null)).pipe(
                     progressTo(this.progress$),
                     errorTo(this.error$, true),
-                    catchError((err) => (this.errorService.error(err, false), EMPTY)),
+                    catchError((err) => (console.error(err), EMPTY)),
                 ),
             ),
             tap((contract) => (this.contract = contract)),

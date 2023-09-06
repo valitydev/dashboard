@@ -5,7 +5,6 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 import { first, pluck, switchMap } from 'rxjs/operators';
 
 import { OrgsService } from '@dsh/app/api/organizations';
-import { ErrorService } from '@dsh/app/shared';
 import { inProgressTo } from '@dsh/utils';
 
 @UntilDestroy()
@@ -23,7 +22,6 @@ export class AcceptInvitationComponent {
     constructor(
         private route: ActivatedRoute,
         private organizationsService: OrgsService,
-        private errorService: ErrorService,
     ) {}
 
     @inProgressTo('isLoading$')
@@ -39,7 +37,7 @@ export class AcceptInvitationComponent {
             )
             .subscribe({
                 error: (err) => {
-                    this.errorService.error(err, false);
+                    console.error(err);
                     this.hasError = true;
                 },
             });
