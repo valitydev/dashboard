@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { NotifyLogService } from '@vality/ng-core';
 import { Observable, of } from 'rxjs';
 import { catchError, filter, map, switchMap } from 'rxjs/operators';
 
@@ -15,7 +15,7 @@ export class ShopActionsService {
     constructor(
         private shopsService: ShopsService,
         private dialog: MatDialog,
-        private snackBar: MatSnackBar,
+        private log: NotifyLogService,
         private transloco: TranslocoService,
     ) {}
 
@@ -27,19 +27,23 @@ export class ShopActionsService {
                 filter((r) => r === 'confirm'),
                 switchMap(() => this.shopsService.suspendShopForParty({ shopID })),
                 map(() => {
-                    this.snackBar.open(
-                        this.transloco.translate('shops.suspend.success', null, 'payment-section'),
-                        'OK',
-                        {
-                            duration: 3000,
-                        },
+                    this.log.success(
+                        this.transloco.selectTranslate(
+                            'shops.suspend.success',
+                            null,
+                            'payment-section',
+                        ),
                     );
                     return ShopActionResult.Success;
                 }),
-                catchError(() => {
-                    this.snackBar.open(
-                        this.transloco.translate('shops.suspend.error', null, 'payment-section'),
-                        'OK',
+                catchError((err) => {
+                    this.log.error(
+                        err,
+                        this.transloco.selectTranslate(
+                            'shops.suspend.error',
+                            null,
+                            'payment-section',
+                        ),
                     );
                     return of(ShopActionResult.Error);
                 }),
@@ -54,19 +58,23 @@ export class ShopActionsService {
                 filter((r) => r === 'confirm'),
                 switchMap(() => this.shopsService.activateShopForParty({ shopID })),
                 map(() => {
-                    this.snackBar.open(
-                        this.transloco.translate('shops.activate.success', null, 'payment-section'),
-                        'OK',
-                        {
-                            duration: 3000,
-                        },
+                    this.log.success(
+                        this.transloco.selectTranslate(
+                            'shops.activate.success',
+                            null,
+                            'payment-section',
+                        ),
                     );
                     return ShopActionResult.Success;
                 }),
-                catchError(() => {
-                    this.snackBar.open(
-                        this.transloco.translate('shops.activate.error', null, 'payment-section'),
-                        'OK',
+                catchError((err) => {
+                    this.log.error(
+                        err,
+                        this.transloco.selectTranslate(
+                            'shops.activate.error',
+                            null,
+                            'payment-section',
+                        ),
                     );
                     return of(ShopActionResult.Error);
                 }),

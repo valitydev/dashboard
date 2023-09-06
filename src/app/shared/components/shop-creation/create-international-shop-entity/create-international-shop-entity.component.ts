@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { progressTo } from '@vality/ng-core';
+import { progressTo, NotifyLogService } from '@vality/ng-core';
 import { BehaviorSubject, first } from 'rxjs';
 
 import { CreateInternationalShopEntityService } from './services/create-international-shop-entity/create-international-shop-entity.service';
@@ -27,7 +26,7 @@ export class CreateInternationalShopEntityComponent {
     constructor(
         private createShopInternationalLegalEntityService: CreateInternationalShopEntityService,
         private transloco: TranslocoService,
-        private snackBar: MatSnackBar,
+        private log: NotifyLogService,
         private router: Router,
     ) {}
 
@@ -35,19 +34,18 @@ export class CreateInternationalShopEntityComponent {
         this.createShopInternationalLegalEntityService
             .createShop(this.form.value)
             .pipe(progressTo(this.progress$), first(), untilDestroyed(this))
-            .subscribe(
-                () => {
+            .subscribe({
+                next: () => {
                     this.send.emit();
                     void this.router.navigate(['claim-section', 'claims']);
                 },
-                (err) => {
-                    console.error(err);
-                    this.snackBar.open(
-                        this.transloco.translate('shared.commonError', null, 'components'),
-                        'OK',
+                error: (err) => {
+                    this.log.error(
+                        err,
+                        this.transloco.selectTranslate('shared.commonError', null, 'components'),
                     );
                 },
-            );
+            });
     }
 
     cancelCreation(): void {

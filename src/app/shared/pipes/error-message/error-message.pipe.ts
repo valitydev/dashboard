@@ -1,15 +1,19 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
+import { Observable, of } from 'rxjs';
 
 import { CommonError } from '@dsh/app/shared';
 
 @Pipe({ name: 'errorMessage' })
+/**
+ * @deprecated
+ */
 export class ErrorMessagePipe implements PipeTransform {
     constructor(private transloco: TranslocoService) {}
 
-    transform(err: unknown): string {
-        if (!err) return '';
-        if (err instanceof CommonError) return err.message;
-        return this.transloco.translate('errorMessage.errorOccurred', null, 'pipes');
+    transform(err: unknown): Observable<string> {
+        if (!err) return of('');
+        if (err instanceof CommonError) return of(err.message);
+        return this.transloco.selectTranslate('errorMessage.errorOccurred', null, 'pipes');
     }
 }

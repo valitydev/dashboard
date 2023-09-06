@@ -2,12 +2,11 @@ import { Component, Input, OnChanges, ChangeDetectionStrategy } from '@angular/c
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { createControlProviders, FormGroupSuperclass } from '@vality/ng-core';
+import { createControlProviders, FormGroupSuperclass, NotifyLogService } from '@vality/ng-core';
 import { BankCard, PaymentMethod, PaymentTerminal, DigitalWallet } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 
 import { TokenProvider, TerminalProvider } from '@dsh/app/api/payments';
-import { NotificationService } from '@dsh/app/shared';
 import { PaymentLinkParams } from '@dsh/app/shared/services/create-payment-link/types/payment-link-params';
 import { ComponentChanges } from '@dsh/type-utils';
 
@@ -50,7 +49,7 @@ export class CreatePaymentLinkFormComponent
     }) as FormGroup;
 
     constructor(
-        private notificationService: NotificationService,
+        private log: NotifyLogService,
         private transloco: TranslocoService,
         private fb: FormBuilder,
     ) {
@@ -66,12 +65,10 @@ export class CreatePaymentLinkFormComponent
 
     copied(isCopied: boolean): void {
         if (isCopied)
-            this.notificationService.success(
-                this.transloco.translate('shared.copied', null, 'components'),
-            );
+            this.log.success(this.transloco.selectTranslate('shared.copied', null, 'components'));
         else
-            this.notificationService.success(
-                this.transloco.translate('shared.copyFailed', null, 'components'),
+            this.log.success(
+                this.transloco.selectTranslate('shared.copyFailed', null, 'components'),
             );
     }
 
