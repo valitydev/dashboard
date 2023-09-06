@@ -12,7 +12,7 @@
         <dsh-resource-payer *ngIf="resourcePayer" [payer]="resourcePayer"></dsh-resource-payer>
         <dsh-shop-name [shopName]="payment.shopID | shopDetails" gdColumn="1/-1"></dsh-shop-name>
         <dsh-details-item *ngIf="payment.error?.code" [title]="t('error')" gdColumn="1/-1">
-            <div class="mat-body-1">{{ payment.error | paymentErrorMessage }}</div>
+            <div class="mat-body-1">{{ payment.error | paymentErrorMessage | async }}</div>
         </dsh-details-item>
         <dsh-additional-info
             *ngIf="additionalInfo as info"
