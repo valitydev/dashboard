@@ -4,13 +4,10 @@
         "httpError": "An error occurred in the process of transmitting/receiving data"
     },
     "notification": {
-        "error": "Something's gone wrong",
-        "ok": "OK",
         "success": "Success"
     },
     "sectionsLinks": {
         "links": {
-            "claims": "Claims",
             "payments": "Payments",
             "wallets": "Wallets"
         }
