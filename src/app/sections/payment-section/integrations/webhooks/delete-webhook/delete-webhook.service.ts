@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { NotifyLogService } from '@vality/ng-core';
 import { combineLatest, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, switchMap, takeUntil } from 'rxjs/operators';
 
@@ -21,7 +21,7 @@ export class DeleteWebhookService {
         private dialog: MatDialog,
         private webhooksService: WebhooksService,
         private transloco: TranslocoService,
-        private snackBar: MatSnackBar,
+        private log: NotifyLogService,
     ) {}
 
     deleteWebhook(id: string) {
@@ -44,14 +44,13 @@ export class DeleteWebhookService {
                 switchMap(([webhookID]) =>
                     this.webhooksService.deleteWebhookByID({ webhookID }).pipe(
                         catchError((e) => {
-                            console.error(e);
-                            this.snackBar.open(
-                                this.transloco.translate(
+                            this.log.error(
+                                e,
+                                this.transloco.selectTranslate(
                                     'webhook.errors.deleteError',
                                     null,
                                     'payment-section',
                                 ),
-                                'OK',
                             );
                             return of('error');
                         }),

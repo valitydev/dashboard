@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { NotifyLogService } from '@vality/ng-core';
 
 import { CreateWebhookService } from './create-webhook';
 import { ReceiveWebhooksService } from './receive-webhooks.service';
@@ -21,23 +21,19 @@ export class WebhooksComponent implements OnInit, OnDestroy {
         private createWebhookService: CreateWebhookService,
         private webhooksExpandedIdManager: WebhooksExpandedIdManager,
         private transloco: TranslocoService,
-        private snackBar: MatSnackBar,
+        private log: NotifyLogService,
     ) {}
 
     ngOnInit() {
         this.createWebhookService.init();
         this.receiveWebhooksService.receiveWebhooks();
         this.createWebhookService.webhookCreated$.subscribe(() => {
-            this.snackBar.open(
-                this.transloco.translate(
+            this.log.success(
+                this.transloco.selectTranslate(
                     'webhook.createWebhook.successfullyCreated',
                     null,
                     'payment-section',
                 ),
-                'OK',
-                {
-                    duration: 2000,
-                },
             );
             this.receiveWebhooks();
         });

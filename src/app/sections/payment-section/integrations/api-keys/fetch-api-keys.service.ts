@@ -15,7 +15,7 @@ export class FetchApiKeysService extends FetchSuperclass<
 > {
     constructor(
         private apiKeysService: ApiKeysService,
-        private logService: NotifyLogService,
+        private log: NotifyLogService,
         private transloco: TranslocoService,
     ) {
         super();
@@ -37,9 +37,13 @@ export class FetchApiKeysService extends FetchSuperclass<
                     continuationToken: res.continuationToken,
                 })),
                 catchError((err) => {
-                    this.logService.error(
+                    this.log.error(
                         err,
-                        this.transloco.translate('apiKeys.fetch.error', {}, 'payment-section'),
+                        this.transloco.selectTranslate(
+                            'apiKeys.fetch.error',
+                            {},
+                            'payment-section',
+                        ),
                     );
                     return of({
                         result: [],

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { NotifyLogService } from '@vality/ng-core';
 import { PaymentInstitution, Shop } from '@vality/swag-payments';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { filter, pluck, switchMap, take } from 'rxjs/operators';
@@ -20,7 +20,7 @@ export class CreateInvoiceService {
         private shopsDataService: ShopsDataService,
         private dialog: MatDialog,
         private transloco: TranslocoService,
-        private snackBar: MatSnackBar,
+        private log: NotifyLogService,
     ) {}
 
     createInvoice(realm: RealmEnum): Observable<string> {
@@ -42,16 +42,12 @@ export class CreateInvoiceService {
             )
             .subscribe((id) => {
                 invoiceCreated$.next(id);
-                this.snackBar.open(
-                    this.transloco.translate(
+                this.log.success(
+                    this.transloco.selectTranslate(
                         'operations.invoices.actions.invoiceCreated',
                         null,
                         'payment-section',
                     ),
-                    'OK',
-                    {
-                        duration: 2000,
-                    },
                 );
             });
         return invoiceCreated$;

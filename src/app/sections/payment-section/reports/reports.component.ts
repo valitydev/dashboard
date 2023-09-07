@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { Subject } from 'rxjs';
-import { filter, first, switchMap, switchMapTo } from 'rxjs/operators';
+import { Subject, combineLatest } from 'rxjs';
+import { filter, first, switchMap } from 'rxjs/operators';
 
 import { QueryParamsService } from '@dsh/app/shared/services/query-params';
 
@@ -44,36 +44,35 @@ export class ReportsComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.fetchReportsService.errors$.subscribe(() =>
-            this.snackBar.open(
-                this.transloco.translate('reports.errors.fetchError', null, 'payment-section'),
-                'OK',
-            ),
-        );
+        combineLatest([
+            this.transloco.selectTranslate('reports.errors.fetchError', null, 'payment-section'),
+            this.fetchReportsService.errors$,
+        ])
+            .pipe(untilDestroyed(this))
+            .subscribe(([message]) => this.snackBar.open(message, 'OK'));
         this.realmMixinService.mixedValue$
             .pipe(untilDestroyed(this))
             .subscribe((v) => this.fetchReportsService.search(v));
         this.createReport$
             .pipe(
-                switchMapTo(this.realmService.realm$.pipe(first())),
+                switchMap(() => this.realmService.realm$.pipe(first())),
                 switchMap((realm) =>
                     this.dialog
                         .open(CreateReportDialogComponent, { data: { realm } })
                         .afterClosed()
                         .pipe(filter((r) => r === 'created')),
                 ),
-                untilDestroyed(this),
-            )
-            .subscribe(() => {
-                this.snackBar.open(
-                    this.transloco.translate(
+                switchMap(() =>
+                    this.transloco.selectTranslate(
                         'reports.createReport.successfullyCreated',
                         null,
                         'payment-section',
                     ),
-                    'OK',
-                    { duration: 2000 },
-                );
+                ),
+                untilDestroyed(this),
+            )
+            .subscribe((message) => {
+                this.snackBar.open(message, 'OK', { duration: 2000 });
                 this.refresh();
             });
     }

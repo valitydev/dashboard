@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { NotifyLogService } from '@vality/ng-core';
 import { of } from 'rxjs';
 
 import { ShopsDataService } from '@dsh/app/shared';
@@ -39,7 +39,7 @@ export class CreatePayoutDialogComponent implements OnInit {
         private dialogRef: MatDialogRef<CreatePayoutDialogComponent>,
         private fb: UntypedFormBuilder,
         private createPayoutDialogService: CreatePayoutDialogService,
-        private snackBar: MatSnackBar,
+        private log: NotifyLogService,
         private transloco: TranslocoService,
         private shopsDataService: ShopsDataService,
         @Inject(MAT_DIALOG_DATA) private data: { realm: string },
@@ -49,10 +49,14 @@ export class CreatePayoutDialogComponent implements OnInit {
         this.createPayoutDialogService.payoutCreated$.subscribe(() =>
             this.dialogRef.close('created'),
         );
-        this.createPayoutDialogService.errorOccurred$.subscribe(() =>
-            this.snackBar.open(
-                this.transloco.translate('payouts.errors.createError', null, 'payment-section'),
-                'OK',
+        this.createPayoutDialogService.errorOccurred$.subscribe((err) =>
+            this.log.error(
+                err,
+                this.transloco.selectTranslate(
+                    'payouts.errors.createError',
+                    null,
+                    'payment-section',
+                ),
             ),
         );
     }

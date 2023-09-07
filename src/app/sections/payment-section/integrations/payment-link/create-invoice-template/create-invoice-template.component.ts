@@ -7,9 +7,9 @@ import {
     Output,
 } from '@angular/core';
 import { UntypedFormArray } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
-import { createControlProviders, FormGroupSuperclass } from '@vality/ng-core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { createControlProviders, FormGroupSuperclass, NotifyLogService } from '@vality/ng-core';
 import { InvoiceLineTaxVAT, InvoiceTemplateAndToken, Shop } from '@vality/swag-payments';
 import moment from 'moment';
 
@@ -17,6 +17,7 @@ import { InvoiceTemplateType, InvoiceTemplateLineCostType } from '@dsh/app/api/p
 
 import { CreateInvoiceTemplateService, WITHOUT_VAT } from './create-invoice-template.service';
 
+@UntilDestroy()
 @Component({
     selector: 'dsh-create-invoice-template',
     templateUrl: 'create-invoice-template.component.html',
@@ -59,7 +60,7 @@ export class CreateInvoiceTemplateComponent extends FormGroupSuperclass<unknown>
 
     constructor(
         private invoiceTemplateFormService: CreateInvoiceTemplateService,
-        private snackBar: MatSnackBar,
+        private log: NotifyLogService,
         private transloco: TranslocoService,
     ) {
         super();
@@ -67,15 +68,17 @@ export class CreateInvoiceTemplateComponent extends FormGroupSuperclass<unknown>
 
     ngOnInit(): void {
         super.ngOnInit();
-        this.invoiceTemplateFormService.errors$.subscribe(() =>
-            this.snackBar.open(
-                this.transloco.translate('shared.commonError', null, 'components'),
-                'OK',
-            ),
-        );
-        this.invoiceTemplateFormService.nextInvoiceTemplateAndToken$.subscribe((template) =>
-            this.next.emit(template),
-        );
+        this.invoiceTemplateFormService.errors$
+            .pipe(untilDestroyed(this))
+            .subscribe((err) =>
+                this.log.error(
+                    err,
+                    this.transloco.selectTranslate('shared.commonError', null, 'components'),
+                ),
+            );
+        this.invoiceTemplateFormService.nextInvoiceTemplateAndToken$
+            .pipe(untilDestroyed(this))
+            .subscribe((template) => this.next.emit(template));
     }
 
     nextStep(): void {

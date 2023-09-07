@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { NotifyLogService } from '@vality/ng-core';
 
 import { QueryParamsService } from '@dsh/app/shared/services/query-params';
 
@@ -30,7 +30,7 @@ export class RefundsComponent implements OnInit {
     constructor(
         private fetchRefundsService: FetchRefundsService,
         private refundsExpandedIdManager: RefundsExpandedIdManager,
-        private snackBar: MatSnackBar,
+        private log: NotifyLogService,
         private transloco: TranslocoService,
         private qp: QueryParamsService<Filters>,
         private realmShopsService: RealmShopsService,
@@ -38,10 +38,14 @@ export class RefundsComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.fetchRefundsService.errors$.subscribe(() =>
-            this.snackBar.open(
-                this.transloco.translate('operations.refunds.fetchError', null, 'payment-section'),
-                'OK',
+        this.fetchRefundsService.errors$.subscribe((err) =>
+            this.log.error(
+                err,
+                this.transloco.selectTranslate(
+                    'operations.refunds.fetchError',
+                    null,
+                    'payment-section',
+                ),
             ),
         );
         this.realmMixinService.mixedValue$

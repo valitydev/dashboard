@@ -3,15 +3,13 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslocoService } from '@ngneat/transloco';
-import { FormGroupByValue } from '@vality/ng-core';
+import { FormGroupByValue, NotifyLogService } from '@vality/ng-core';
 import { Refund, RefundParams } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
 import isNil from 'lodash-es/isNil';
 import { Observable } from 'rxjs';
 import { map, shareReplay, take, withLatestFrom } from 'rxjs/operators';
 
-import { ErrorService, NotificationService } from '@dsh/app/shared/services';
-import { CommonError } from '@dsh/app/shared/services/error/models/common-error';
 import { amountValidator } from '@dsh/components/form-controls';
 import { toMajor, toMinor } from '@dsh/utils';
 
@@ -50,8 +48,7 @@ export class CreateRefundDialogComponent implements OnInit {
         private fb: FormBuilder,
         private refundsService: RefundsService,
         private transloco: TranslocoService,
-        private notificationService: NotificationService,
-        private errorService: ErrorService,
+        private log: NotifyLogService,
     ) {}
 
     ngOnInit(): void {
@@ -73,14 +70,14 @@ export class CreateRefundDialogComponent implements OnInit {
                         });
                         return;
                     }
-                    this.notificationService.success(
+                    this.log.success(
                         refund.status === 'pending'
-                            ? this.transloco.translate(
+                            ? this.transloco.selectTranslate(
                                   `paymentDetails.refunds.createRefund.pending`,
                                   null,
                                   'payment-section',
                               )
-                            : this.transloco.translate(
+                            : this.transloco.selectTranslate(
                                   `paymentDetails.refunds.createRefund.successful`,
                                   null,
                                   'payment-section',
@@ -167,24 +164,23 @@ export class CreateRefundDialogComponent implements OnInit {
     }
 
     private handleResponseError(err: Error): void {
-        let handledError: Error = err;
+        let message: Observable<string> | undefined;
         if (err instanceof HttpErrorResponse && !isEmpty(err.error?.code)) {
-            handledError = new CommonError(
+            message =
                 err.error.code === 'invalidRequest'
-                    ? this.transloco.translate(
+                    ? this.transloco.selectTranslate(
                           `paymentDetails.refunds.errors.invalidRequest`,
                           null,
                           'payment-section',
                       )
                     : err.error.code === 'invoicePaymentAmountExceeded'
-                    ? this.transloco.translate(
+                    ? this.transloco.selectTranslate(
                           `paymentDetails.refunds.errors.invoicePaymentAmountExceeded`,
                           null,
                           'payment-section',
                       )
-                    : err.error.code,
-            );
+                    : undefined;
         }
-        this.errorService.error(handledError);
+        this.log.error(err, message);
     }
 }

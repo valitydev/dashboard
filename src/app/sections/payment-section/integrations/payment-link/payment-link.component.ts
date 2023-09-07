@@ -1,21 +1,12 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { TranslocoService } from '@ngneat/transloco';
+import { NotifyLogService } from '@vality/ng-core';
 import { PaymentMethod } from '@vality/swag-payments';
-import {
-    BehaviorSubject,
-    defer,
-    merge,
-    ReplaySubject,
-    Subject,
-    Subscription,
-    tap,
-    EMPTY,
-} from 'rxjs';
-import { mapTo, shareReplay, switchMap, catchError, switchMapTo } from 'rxjs/operators';
+import { BehaviorSubject, defer, merge, ReplaySubject, Subject, Subscription, EMPTY } from 'rxjs';
+import { mapTo, shareReplay, switchMap, catchError } from 'rxjs/operators';
 
 import { InvoicesService, InvoiceTemplatesService } from '@dsh/app/api/payments';
-import { NotificationService, ErrorService } from '@dsh/app/shared';
 import { CreatePaymentLinkService } from '@dsh/app/shared/services/create-payment-link';
 import { progressTo } from '@dsh/utils';
 
@@ -58,17 +49,15 @@ export class PaymentLinkComponent {
                 ).pipe(
                     progressTo(() => this.progress$),
                     catchError((err) => {
-                        this.errorService.error(err, false);
-                        return this.transloco
-                            .selectTranslate(
+                        this.log.error(
+                            err,
+                            this.transloco.selectTranslate(
                                 'paymentLink.errors.createPaymentLinkError',
                                 null,
                                 'payment-section',
-                            )
-                            .pipe(
-                                tap((message) => this.notificationService.error(message)),
-                                switchMapTo(EMPTY),
-                            );
+                            ),
+                        );
+                        return EMPTY;
                     }),
                 ),
             ),
@@ -83,8 +72,7 @@ export class PaymentLinkComponent {
         private invoicesService: InvoicesService,
         private invoiceTemplatesService: InvoiceTemplatesService,
         private createPaymentLinkService: CreatePaymentLinkService,
-        private notificationService: NotificationService,
-        private errorService: ErrorService,
+        private log: NotifyLogService,
         private transloco: TranslocoService,
     ) {}
 

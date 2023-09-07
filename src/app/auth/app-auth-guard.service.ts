@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, UrlTree } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 
-import { ErrorService } from '@dsh/app/shared';
-
 import { KeycloakAuthGuard, KeycloakService } from './keycloak';
 import { RoleAccessService } from './role-access.service';
 import { RoleAccessName } from './types/role-access-name';
@@ -13,7 +11,6 @@ export class AppAuthGuardService extends KeycloakAuthGuard {
     constructor(
         protected router: Router,
         protected keycloakAngular: KeycloakService,
-        private errorService: ErrorService,
         private roleAccessService: RoleAccessService,
     ) {
         super(router, keycloakAngular);
@@ -24,7 +21,7 @@ export class AppAuthGuardService extends KeycloakAuthGuard {
             this.roleAccessService.isAccessAllowed(route.data.roles as RoleAccessName[]),
         );
         if (!isAccessAllowed) {
-            this.errorService.error('Access is denied', false);
+            console.error('Access is denied');
             return this.router.createUrlTree(['404']);
         }
         return isAccessAllowed;

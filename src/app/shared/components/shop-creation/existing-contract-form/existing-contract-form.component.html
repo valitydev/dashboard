@@ -15,7 +15,7 @@
             {{ t('loading') }}
         </div>
         <ng-template #error>
-            <div class="dsh-body-1">{{ error$ | async | errorMessage }}</div>
+            <div class="dsh-body-1">{{ error$ | async | errorMessage | async }}</div>
         </ng-template>
         <ng-template #loaded>
             <dsh-contractor-details [contractor]="contract.contractor"></dsh-contractor-details>

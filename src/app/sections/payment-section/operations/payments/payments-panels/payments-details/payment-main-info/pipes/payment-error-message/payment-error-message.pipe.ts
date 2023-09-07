@@ -4,6 +4,8 @@ import { PaymentError } from '@vality/swag-payments';
 import isObject from 'lodash-es/isObject';
 import lowerCase from 'lodash-es/lowerCase';
 import upperFirst from 'lodash-es/upperFirst';
+import { Observable } from 'rxjs';
+import { first, map } from 'rxjs/operators';
 
 function renderSubErrorMessage(error?: string, sub?: string) {
     if (!error) return sub;
@@ -22,32 +24,41 @@ function getErrorLabel(error: PaymentError) {
 export class PaymentErrorMessagePipe implements PipeTransform {
     constructor(private t: TranslocoService) {}
 
-    transform(error: PaymentError): string {
+    transform(error: PaymentError): Observable<string> {
         return this.formatErrors(error);
     }
 
-    private formatErrors(error: PaymentError): string {
-        let curError: PaymentError = error;
-        let translationPath = this.getErrorDict();
-        let errorsMessage = '';
+    private formatErrors(error: PaymentError) {
+        return this.t.selectTranslation('payment-section').pipe(
+            first(),
+            map(() => {
+                let curError: PaymentError = error;
+                let translationPath = this.getErrorDict();
+                let errorsMessage = '';
 
-        while (isObject(curError)) {
-            const { code, subError } = curError;
-            translationPath = translationPath?.[code];
+                while (isObject(curError)) {
+                    const { code, subError } = curError;
+                    translationPath = translationPath?.[code];
 
-            const currMessage = subError ? translationPath?.['message'] : translationPath;
-            const message: string =
-                currMessage && typeof currMessage !== 'object'
-                    ? currMessage
-                    : error.code === 'authorization_failed'
-                    ? getErrorLabel(curError)
-                    : this.t.translate('paymentErrorMessage.unknownError', null, 'payment-section');
-            errorsMessage = renderSubErrorMessage(errorsMessage, message);
+                    const currMessage = subError ? translationPath?.['message'] : translationPath;
+                    const message: string =
+                        currMessage && typeof currMessage !== 'object'
+                            ? currMessage
+                            : error.code === 'authorization_failed'
+                            ? getErrorLabel(curError)
+                            : this.t.translate(
+                                  'paymentErrorMessage.unknownError',
+                                  null,
+                                  'payment-section',
+                              );
+                    errorsMessage = renderSubErrorMessage(errorsMessage, message);
 
-            curError = subError;
-        }
+                    curError = subError;
+                }
 
-        return errorsMessage;
+                return errorsMessage;
+            }),
+        );
     }
 
     private getErrorDict() {

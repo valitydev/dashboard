@@ -5,11 +5,16 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { DialogService } from '@vality/ng-core';
 import { ApiKeyStatus } from '@vality/swag-api-keys-v2';
 import { ApiKey } from '@vality/swag-api-keys-v2/lib/model/api-key';
+import { map } from 'rxjs/operators';
 
 import { ApiKeysDictionaryService } from '@dsh/app/api/api-keys';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { QueryParamsService } from '@dsh/app/shared';
-import { ExpandedFragment, Column } from '@dsh/app/shared/components/accordion-table';
+import {
+    ExpandedFragment,
+    Column,
+    ContentHeader,
+} from '@dsh/app/shared/components/accordion-table';
 
 import { ApiKeyCreateDialogComponent } from './components/api-key-create-dialog/api-key-create-dialog.component';
 import { FetchApiKeysService } from './fetch-api-keys.service';
@@ -34,16 +39,16 @@ export class ApiKeysComponent {
     );
     columns: Column<ApiKey>[] = [
         {
-            label: this.transloco.translate('apiKeys.table.name', {}, 'payment-section'),
+            label: this.transloco.selectTranslate('apiKeys.table.name', {}, 'payment-section'),
             field: (r) => r.name,
         },
         {
-            label: this.transloco.translate('apiKeys.table.createdAt', {}, 'payment-section'),
+            label: this.transloco.selectTranslate('apiKeys.table.createdAt', {}, 'payment-section'),
             field: (r) => r.createdAt,
             type: 'datetime',
         },
         {
-            label: this.transloco.translate('apiKeys.table.status', {}, 'payment-section'),
+            label: this.transloco.selectTranslate('apiKeys.table.status', {}, 'payment-section'),
             field: (d) => d.status,
             type: 'tag',
             typeParameters: {
@@ -53,10 +58,12 @@ export class ApiKeysComponent {
             hide: Breakpoints.Small,
         },
     ];
-    contentHeader = [
+    contentHeader: ContentHeader<ApiKey>[] = [
         {
             label: (r) =>
-                `${this.transloco.translate('apiKeys.apiKey', {}, 'payment-section')} #${r.id}`,
+                this.transloco
+                    .selectTranslate('apiKeys.apiKey', {}, 'payment-section')
+                    .pipe(map((apiKey) => `${apiKey} #${r.id}`)),
         },
     ];
 

@@ -13,7 +13,7 @@ import { switchMap, tap, share, catchError } from 'rxjs/operators';
 import { Overwrite } from 'utility-types';
 
 import { PayoutsService } from '@dsh/app/api/payments';
-import { CommonError, ErrorService } from '@dsh/app/shared';
+import { CommonError } from '@dsh/app/shared';
 import { progressTo, errorTo } from '@dsh/utils';
 
 type BankAccountType = 'PayoutToolDetailsInternationalBankAccount' | 'PayoutToolDetailsBankAccount';
@@ -47,7 +47,6 @@ export class ExistingBankAccountComponent extends FormControlSuperclass<
     constructor(
         private payoutsService: PayoutsService,
         private transloco: TranslocoService,
-        private errorService: ErrorService,
     ) {
         super();
     }
@@ -61,7 +60,7 @@ export class ExistingBankAccountComponent extends FormControlSuperclass<
                 ).pipe(
                     progressTo(this.progress$),
                     errorTo(this.error$, true),
-                    catchError((err) => (this.errorService.error(err, false), EMPTY)),
+                    catchError((err) => (console.error(err), EMPTY)),
                 ),
             ),
             tap((payoutTool) => (this.payoutTool = payoutTool)),

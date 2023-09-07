@@ -7,7 +7,7 @@ import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { Report } from '@vality/swag-wallet';
 import isEqual from 'lodash-es/isEqual';
 import moment from 'moment';
-import { startWith, distinctUntilChanged, filter, first } from 'rxjs/operators';
+import { startWith, distinctUntilChanged, filter, first, map } from 'rxjs/operators';
 
 import { WalletDictionaryService, IdentitiesService } from '@dsh/app/api/wallet';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
@@ -74,7 +74,9 @@ export class ReportsComponent implements OnInit {
     contentHeader = [
         {
             label: (r) =>
-                `${this.transloco.translate('reports.report', {}, 'wallet-section')} #${r.id}`,
+                this.transloco
+                    .selectTranslate('reports.report', {}, 'wallet-section')
+                    .pipe(map((reportText) => `${reportText} #${r.id}`)),
         },
     ];
     defaultDateRange = createDateRangeWithPreset(Preset.Last90days);

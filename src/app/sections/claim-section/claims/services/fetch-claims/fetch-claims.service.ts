@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { Claim } from '@vality/swag-claim-management';
 import { Observable } from 'rxjs';
+import { withLatestFrom } from 'rxjs/operators';
 
 import { ClaimsService } from '@dsh/app/api/claim-management';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
@@ -22,13 +23,16 @@ export class FetchClaimsService extends PartialFetcher<Claim, ClaimsSearchFilter
         private transloco: TranslocoService,
     ) {
         super();
-        this.errors$.subscribe(() => {
-            this.snackBar.open(
-                this.transloco.translate('shared.httpError', null, 'components'),
-                'OK',
-            );
-            return [];
-        });
+        this.errors$
+            .pipe(
+                withLatestFrom(
+                    this.transloco.selectTranslate('shared.httpError', null, 'components'),
+                ),
+            )
+            .subscribe(([, message]) => {
+                this.snackBar.open(message, 'OK');
+                return [];
+            });
     }
 
     protected fetch(

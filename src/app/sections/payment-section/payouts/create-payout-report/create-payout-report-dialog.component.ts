@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
+import { NotifyLogService } from '@vality/ng-core';
 import { Payout } from '@vality/swag-anapi-v2';
 
 import { CreatePayoutReportDialogService } from './create-payout-report-dialog.service';
@@ -21,19 +21,19 @@ export class CreatePayoutReportDialogComponent implements OnInit {
         private router: Router,
         private createPayoutReportDialogService: CreatePayoutReportDialogService,
         private transloco: TranslocoService,
-        private snackBar: MatSnackBar,
+        private log: NotifyLogService,
         @Inject(MAT_DIALOG_DATA) private data: { payout: Payout },
     ) {}
 
     ngOnInit() {
-        this.createPayoutReportDialogService.errorOccurred$.subscribe(() =>
-            this.snackBar.open(
-                this.transloco.translate(
+        this.createPayoutReportDialogService.errorOccurred$.subscribe((err) =>
+            this.log.error(
+                err,
+                this.transloco.selectTranslate(
                     'payouts.errors.createReportError',
                     null,
                     'payment-section',
                 ),
-                'OK',
             ),
         );
     }

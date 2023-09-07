@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { NotifyLogService } from '@vality/ng-core';
 import { Observable, ReplaySubject } from 'rxjs';
 import { filter, switchMap, take } from 'rxjs/operators';
 
@@ -14,7 +14,7 @@ export class CancelInvoiceService {
     constructor(
         private invoicesService: InvoicesService,
         private dialog: MatDialog,
-        private snackBar: MatSnackBar,
+        private log: NotifyLogService,
         private transloco: TranslocoService,
     ) {}
 
@@ -34,14 +34,12 @@ export class CancelInvoiceService {
             )
             .subscribe(() => {
                 invoiceCancelled$.next();
-                this.snackBar.open(
-                    this.transloco.translate(
+                this.log.success(
+                    this.transloco.selectTranslate(
                         'operations.invoices.actions.invoiceCancelled',
                         null,
                         'payment-section',
                     ),
-                    'OK',
-                    { duration: 2000 },
                 );
             });
         return invoiceCancelled$;

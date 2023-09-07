@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { NotifyLogService } from '@vality/ng-core';
 import { Subject } from 'rxjs';
 import { filter, first, switchMap, switchMapTo } from 'rxjs/operators';
 
@@ -38,7 +38,7 @@ export class PayoutsComponent implements OnInit {
     constructor(
         private fetchPayoutsService: FetchPayoutsService,
         private payoutsExpandedIdManager: PayoutsExpandedIdManager,
-        private snackBar: MatSnackBar,
+        private log: NotifyLogService,
         private transloco: TranslocoService,
         private realmService: PaymentInstitutionRealmService,
         private qp: QueryParamsService<Filters>,
@@ -50,10 +50,10 @@ export class PayoutsComponent implements OnInit {
     ngOnInit(): void {
         this.fetchPayoutsService.errors$
             .pipe(untilDestroyed(this))
-            .subscribe(() =>
-                this.snackBar.open(
-                    this.transloco.translate('shared.httpError', null, 'components'),
-                    'OK',
+            .subscribe((err) =>
+                this.log.error(
+                    err,
+                    this.transloco.selectTranslate('shared.httpError', null, 'components'),
                 ),
             );
         this.realmMixService.mixedValue$
@@ -71,12 +71,12 @@ export class PayoutsComponent implements OnInit {
                 untilDestroyed(this),
             )
             .subscribe(() => {
-                this.snackBar.open(
-                    this.transloco.translate('payouts.payouts.created', null, 'payment-section'),
-                    'OK',
-                    {
-                        duration: 2000,
-                    },
+                this.log.success(
+                    this.transloco.selectTranslate(
+                        'payouts.payouts.created',
+                        null,
+                        'payment-section',
+                    ),
                 );
                 this.refresh();
             });
