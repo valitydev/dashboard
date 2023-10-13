@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { WalletsService as ApiWalletsService } from '@vality/swag-wallet';
-import { of } from 'rxjs';
+import { WalletsService as ApiWalletsService, Wallet } from '@vality/swag-wallet';
+import { of, Observable } from 'rxjs';
 import { catchError, map, pluck, shareReplay } from 'rxjs/operators';
 
 import { SHARE_REPLAY_CONF } from '@dsh/app/custom-operators';
@@ -12,7 +12,7 @@ import { PartyIdExtension } from '../utils/extensions';
     providedIn: 'root',
 })
 export class WalletsService extends createApi(ApiWalletsService, [PartyIdExtension]) {
-    wallets$ = this.listWallets({ limit: 1000 }).pipe(
+    wallets$: Observable<Wallet[]> = this.listWallets({ limit: 1000 }).pipe(
         catchError(() => of({ result: [] })),
         pluck('result'),
         shareReplay(SHARE_REPLAY_CONF),
