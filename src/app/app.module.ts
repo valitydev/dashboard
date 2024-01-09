@@ -29,7 +29,6 @@ import * as Sentry from '@sentry/angular-ivy';
 import { AnapiModule } from '@dsh/app/api/anapi';
 import { ClaimManagementModule } from '@dsh/app/api/claim-management';
 import { PaymentsModule } from '@dsh/app/api/payments';
-import { QuestionaryAggrProxyModule } from '@dsh/app/api/questionary-aggr-proxy';
 import { UrlShortenerModule } from '@dsh/app/api/url-shortener';
 import { WalletModule } from '@dsh/app/api/wallet';
 import { ErrorModule } from '@dsh/app/shared/services';
@@ -75,7 +74,6 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         PaymentsModule,
         OrganizationsModule,
         UrlShortenerModule,
-        QuestionaryAggrProxyModule,
         WalletModule,
         SpinnerModule,
         ApiKeysModule,

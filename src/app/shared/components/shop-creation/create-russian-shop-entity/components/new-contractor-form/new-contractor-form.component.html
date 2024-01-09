@@ -4,12 +4,6 @@
         fxLayout="column"
         fxLayoutGap="16px"
     >
-        <dsh-dadata-autocomplete
-            [formControl]="searchControl"
-            [label]="p('form.search')"
-            type="party"
-            (optionSelected)="updateSuggestion($event)"
-        ></dsh-dadata-autocomplete>
         <mat-form-field>
             <mat-label>{{ p('form.registeredName') }}</mat-label>
             <input

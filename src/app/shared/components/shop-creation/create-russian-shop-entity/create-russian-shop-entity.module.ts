@@ -22,7 +22,6 @@ import { ButtonModule } from '@dsh/components/buttons';
 import { FormatInputModule } from '@dsh/components/form-controls';
 import { DetailsItemModule } from '@dsh/components/layout';
 
-import { DaDataModule } from '../../../../dadata';
 import { ShopPayoutToolDetailsService } from '../../../../sections/payment-section/shops/services/shop-payout-tool-details/shop-payout-tool-details.service';
 import { CurrencyAutocompleteFieldModule } from '../../inputs/currency-autocomplete-field';
 
@@ -43,7 +42,6 @@ import { CreateRussianShopEntityService } from './services/create-russian-shop-e
         MatInputModule,
         MatDividerModule,
         MatRadioModule,
-        DaDataModule,
         FormatInputModule,
         MatSelectModule,
         PayoutToolDetailsModule,

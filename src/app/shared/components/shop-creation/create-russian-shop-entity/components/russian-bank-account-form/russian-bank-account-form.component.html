@@ -4,13 +4,6 @@
     fxLayout="column"
     fxLayoutGap="16px"
 >
-    <dsh-dadata-autocomplete
-        [formControl]="searchControl"
-        [label]="p('search')"
-        type="bank"
-        (optionSelected)="bankSelected($event)"
-    ></dsh-dadata-autocomplete>
-
     <div gdColumns="1fr" gdColumns.gt-sm="1fr 1fr" gdGap="24px">
         <mat-form-field gdColumn="1/-1">
             <mat-label>{{ p('name') }}</mat-label>

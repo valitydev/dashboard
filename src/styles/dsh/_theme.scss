@@ -23,7 +23,6 @@
 @import '../../app/home/home-theme';
 @import '../../app/home/actionbar/actionbar-theme';
 @import '../../app/home/mobile-grid/mobile-grid-theme';
-@import '../../app/dadata/dadata-theme';
 @import '../../app/sections/payment-section/analytics/percent-difference/percent-difference-theme';
 @import '../../app/sections/payment-section/analytics/stat-item/stat-item-theme';
 @import '../../app/sections/payment-section/balances/balances-theme';
@@ -39,7 +38,6 @@
     @include dsh-mobile-grid-theme($theme);
     @include dsh-button-theme($theme);
     @include dsh-status-theme($theme);
-    @include dsh-dadata-autocomplete-theme($theme);
     @include dsh-details-item-theme($theme);
     @include dsh-panel-theme($theme);
     @include dsh-bar-chart-theme($theme);
