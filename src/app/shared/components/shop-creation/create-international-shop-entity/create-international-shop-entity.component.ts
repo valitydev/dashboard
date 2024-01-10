@@ -37,7 +37,8 @@ export class CreateInternationalShopEntityComponent {
             .subscribe({
                 next: () => {
                     this.send.emit();
-                    void this.router.navigate(['claim-section', 'claims']);
+                    // TODO: Claims page disabled
+                    // void this.router.navigate(['claim-section', 'claims', id]);
                 },
                 error: (err) => {
                     this.log.error(

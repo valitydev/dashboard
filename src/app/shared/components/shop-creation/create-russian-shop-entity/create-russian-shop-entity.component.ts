@@ -37,9 +37,10 @@ export class CreateRussianShopEntityComponent {
             .createShop(this.form.value)
             .pipe(untilDestroyed(this))
             .subscribe({
-                next: ({ id }) => {
+                next: () => {
                     this.send.emit();
-                    void this.router.navigate(['claim-section', 'claims', id]);
+                    // TODO: Claims page disabled
+                    // void this.router.navigate(['claim-section', 'claims', id]);
                 },
                 error: (err) => {
                     this.log.error(
