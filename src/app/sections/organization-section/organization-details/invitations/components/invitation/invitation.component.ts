@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { InlineObject1, Invitation, Organization } from '@vality/swag-organizations';
+import { Invitation, Organization, RevokeInvitationRequest } from '@vality/swag-organizations';
 import { filter, switchMap } from 'rxjs/operators';
 
 import { InvitationsService } from '@dsh/app/api/organizations';
@@ -41,8 +41,8 @@ export class InvitationComponent {
                     this.invitationsService.revokeInvitation({
                         orgId: this.orgId,
                         invitationId: this.invitation.id,
-                        inlineObject1: {
-                            status: InlineObject1.StatusEnum.Revoked,
+                        revokeInvitationRequest: {
+                            status: RevokeInvitationRequest.StatusEnum.Revoked,
                         },
                     }),
                 ),

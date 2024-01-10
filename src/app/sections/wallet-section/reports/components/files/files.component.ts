@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { NotifyLogService, progressTo } from '@vality/ng-core';
-import { ReportFiles } from '@vality/swag-wallet';
+import { ReportFilesInner } from '@vality/swag-wallet';
 import { forkJoin, EMPTY, BehaviorSubject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -17,7 +17,7 @@ import { multipleDownload } from '@dsh/utils';
 })
 export class FilesComponent {
     @Input() id: number;
-    @Input() files: ReportFiles[];
+    @Input() files: ReportFilesInner[];
 
     progress$ = new BehaviorSubject(0);
 

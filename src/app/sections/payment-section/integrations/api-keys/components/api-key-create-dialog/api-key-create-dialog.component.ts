@@ -1,6 +1,6 @@
 import { ClipboardModule, Clipboard } from '@angular/cdk/clipboard';
 import { CommonModule } from '@angular/common';
-import { Component, Injector } from '@angular/core';
+import { Component } from '@angular/core';
 import { ReactiveFormsModule, NonNullableFormBuilder } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
@@ -39,7 +39,6 @@ export class ApiKeyCreateDialogComponent extends DialogSuperclass<ApiKeyCreateDi
     accessToken?: string;
 
     constructor(
-        injector: Injector,
         private apiKeysService: ApiKeysService,
         private errorService: ErrorService,
         private log: NotifyLogService,
@@ -47,7 +46,7 @@ export class ApiKeyCreateDialogComponent extends DialogSuperclass<ApiKeyCreateDi
         private clipboard: Clipboard,
         private transloco: TranslocoService,
     ) {
-        super(injector);
+        super();
     }
 
     confirm() {

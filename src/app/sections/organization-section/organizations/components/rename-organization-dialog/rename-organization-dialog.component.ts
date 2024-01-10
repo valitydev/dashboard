@@ -41,7 +41,7 @@ export class RenameOrganizationDialogComponent {
         return this.organizationsService
             .patchOrg({
                 orgId: this.data.organization.id,
-                inlineObject: {
+                patchOrgRequest: {
                     name: this.form.value.name,
                 },
             })

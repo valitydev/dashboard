@@ -1,14 +1,19 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-import { AsyncTransform } from '@vality/ng-core';
+import { AsyncTransform, AsyncTransformParameters } from '@vality/ng-core';
 import { PaymentError } from '@vality/swag-payments';
 import lowerCase from 'lodash-es/lowerCase';
 import upperFirst from 'lodash-es/upperFirst';
-import { isObservable, Observable, of } from 'rxjs';
+import { isObservable, Observable, of, switchMap } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
 
 function renderSubErrorMessage(error?: string, sub?: string) {
-    if (!error) return sub;
-    if (!sub) return error;
+    if (!error) {
+        return sub;
+    }
+    if (!sub) {
+        return error;
+    }
     return `${error} -> ${sub}`;
 }
 
@@ -21,13 +26,21 @@ function getErrorLabel(error: PaymentError) {
     name: 'withdrawalErrorMessage',
     pure: false,
 })
-export class WithdrawalErrorMessagePipe extends AsyncTransform<string> implements PipeTransform {
+export class WithdrawalErrorMessagePipe
+    extends AsyncTransform<PaymentError>
+    implements PipeTransform
+{
+    protected result$ = this.params$.pipe(
+        switchMap(([errors]) => this.formatErrors(errors)),
+        distinctUntilChanged(),
+    );
+
     constructor(private t: TranslocoService) {
         super();
     }
 
-    protected getValue(error: PaymentError) {
-        return this.formatErrors(error);
+    transform(...params: AsyncTransformParameters) {
+        return super.asyncTransform(params);
     }
 
     private formatErrors(error: PaymentError): Observable<string> {
@@ -39,7 +52,9 @@ export class WithdrawalErrorMessagePipe extends AsyncTransform<string> implement
             curError = curError.subError;
         }
 
-        if (isObservable(translation)) return translation as Observable<string>;
+        if (isObservable(translation)) {
+            return translation as Observable<string>;
+        }
         return of(getErrorLabel(error));
     }
 
