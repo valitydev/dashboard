@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@ngneat/transloco';
+import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { InvoiceDetailsModule as ApiInvoiceDetailsModule } from '@dsh/app/shared/components';
 import { ApiModelRefsModule, AmountCurrencyModule } from '@dsh/app/shared/pipes';

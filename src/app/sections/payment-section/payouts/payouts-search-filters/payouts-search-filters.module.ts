@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { ShopsFilterModule } from '@dsh/app/shared/components/filters/shops-filter';
 import { DateRangeFilterModule } from '@dsh/components/date-range-filter';

@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexModule } from '@angular/flex-layout';
 import { MatDividerModule } from '@angular/material/divider';
 import { TranslocoModule } from '@ngneat/transloco';
+import { FlexModule } from 'ng-flex-layout';
 
 import { LastUpdatedModule } from '@dsh/components/indicators/last-updated/last-updated.module';
 import { AccordionModule, CardModule, RowModule } from '@dsh/components/layout';

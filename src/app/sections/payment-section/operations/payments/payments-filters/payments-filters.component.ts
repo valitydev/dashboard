@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
-import { MediaObserver } from '@angular/flex-layout';
 import { AbstractControl, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
@@ -8,6 +7,7 @@ import isEmpty from 'lodash-es/isEmpty';
 import negate from 'lodash-es/negate';
 import omit from 'lodash-es/omit';
 import pick from 'lodash-es/pick';
+import { MediaObserver } from 'ng-flex-layout';
 import { defer, ReplaySubject, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
@@ -86,7 +86,9 @@ export class PaymentsFiltersComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges({ realm, initParams }: ComponentChanges<PaymentsFiltersComponent>): void {
-        if (realm) this.realm$.next(realm.currentValue);
+        if (realm) {
+            this.realm$.next(realm.currentValue);
+        }
         if (initParams?.firstChange && initParams.currentValue) {
             this.form.patchValue(pick(initParams.currentValue, this.keys) as unknown);
             this.additionalFilters$.next(omit(initParams.currentValue, this.keys));

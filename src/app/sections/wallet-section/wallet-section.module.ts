@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslocoModule, TRANSLOCO_SCOPE } from '@ngneat/transloco';
+import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { RouteNavbarLayoutModule } from '@dsh/app/shared/components/route-navbar-layout';
 import { NavbarItemModule } from '@dsh/components/navigation';

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { BootstrapIconModule } from '@dsh/components/indicators';
 

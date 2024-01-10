@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { APP_INITIALIZER, ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import {
     DateAdapter,
     MAT_DATE_FORMATS,
@@ -25,6 +24,7 @@ import {
     translocoConfig,
 } from '@ngneat/transloco';
 import * as Sentry from '@sentry/angular-ivy';
+import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { AnapiModule } from '@dsh/app/api/anapi';
 import { ClaimManagementModule } from '@dsh/app/api/claim-management';

@@ -7,7 +7,6 @@ import {
     OnInit,
     Output,
 } from '@angular/core';
-import { MediaObserver } from '@angular/flex-layout';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
@@ -16,6 +15,7 @@ import isEmpty from 'lodash-es/isEmpty';
 import negate from 'lodash-es/negate';
 import omit from 'lodash-es/omit';
 import pick from 'lodash-es/pick';
+import { MediaObserver } from 'ng-flex-layout';
 import { combineLatest, defer, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 

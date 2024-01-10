@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, Injector } from '@angular/core';
-import { FlexModule } from '@angular/flex-layout';
 import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { DialogSuperclass, NotifyLogService, progressTo } from '@vality/ng-core';
 import { RequestRevokeApiKeyRequestParams } from '@vality/swag-api-keys-v2';
+import { FlexModule } from 'ng-flex-layout';
 import { BehaviorSubject } from 'rxjs';
 
 import { ApiKeysService } from '@dsh/app/api/api-keys';
