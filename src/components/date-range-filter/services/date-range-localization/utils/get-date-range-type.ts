@@ -24,8 +24,8 @@ export enum DateRangeType {
 
 export const getDateRangeType = (dateRange: DateRange<Moment>): DateRangeType => {
     if (isYearsRange(dateRange))
-        return isYear(dateRange) ? DateRangeType.Year : DateRangeType.Years;
+        {return isYear(dateRange) ? DateRangeType.Year : DateRangeType.Years;}
     else if (isMonthsRange(dateRange))
-        return isMonth(dateRange) ? DateRangeType.Month : DateRangeType.Months;
+        {return isMonth(dateRange) ? DateRangeType.Month : DateRangeType.Months;}
     return isDay(dateRange) ? DateRangeType.Day : DateRangeType.Days;
 };

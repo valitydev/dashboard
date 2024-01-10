@@ -73,7 +73,7 @@ export class ExistingContractFormComponent extends FormControlSuperclass<
         return this.contractsService.getContractByIDForParty({ contractID }).pipe(
             switchMap((contract: ExistingContractForm) => {
                 if (contract.contractor.entityType !== this.entityType)
-                    return (
+                    {return (
                         this.entityType === EntityTypeEnum.InternationalLegalEntity
                             ? this.transloco.selectTranslate<string>(
                                   'existingContractForm.errors.onlyInternationalShopCanBeSelected',
@@ -85,7 +85,7 @@ export class ExistingContractFormComponent extends FormControlSuperclass<
                                   null,
                                   'components',
                               )
-                    ).pipe(switchMap((t) => throwError(new CommonError(t))));
+                    ).pipe(switchMap((t) => throwError(new CommonError(t))));}
                 return of(contract);
             }),
         );

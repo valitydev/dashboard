@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
 import { FormControlSuperclass, Option, createControlProviders } from '@vality/ng-core';
 import { PaymentInstitution } from '@vality/swag-payments';
-import { coerceBoolean } from 'coerce-property';
 import { Observable } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 
@@ -15,7 +14,7 @@ import { PaymentInstitutionsService } from '@dsh/app/api/payments';
 })
 export class PaymentInstitutionFieldComponent extends FormControlSuperclass<PaymentInstitution> {
     @Input() label: string;
-    @Input() @coerceBoolean required = false;
+    @Input({ transform: booleanAttribute }) required = false;
 
     options$: Observable<Option<PaymentInstitution>[]> =
         this.paymentInstitutionsService.paymentInstitutions$.pipe(

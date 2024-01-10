@@ -69,14 +69,14 @@ export class AnalyticsSearchFiltersComponent implements OnInit, OnChanges {
             .subscribe((filters) => this.filterValuesChanged.next(filters as unknown as Filters));
         this.currencies$.pipe(first(), untilDestroyed(this)).subscribe((currencies) => {
             if (!this.form.value.currency)
-                this.form.patchValue({
+                {this.form.patchValue({
                     currency: currencies.includes('RUB') ? 'RUB' : currencies[0],
-                });
+                });}
         });
     }
 
     ngOnChanges({ initParams }: ComponentChanges<AnalyticsSearchFiltersComponent>): void {
         if (initParams?.firstChange && initParams.currentValue)
-            this.form.patchValue(initParams.currentValue as unknown);
+            {this.form.patchValue(initParams.currentValue as unknown);}
     }
 }

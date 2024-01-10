@@ -33,6 +33,6 @@ export class ClaimsSearchFiltersComponent implements OnInit, OnChanges {
 
     ngOnChanges({ initParams }: ComponentChanges<ClaimsSearchFiltersComponent>): void {
         if (initParams?.firstChange && initParams.currentValue)
-            this.form.patchValue(initParams.currentValue as unknown);
+            {this.form.patchValue(initParams.currentValue as unknown);}
     }
 }

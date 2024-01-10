@@ -1,4 +1,3 @@
-import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,8 +5,9 @@ import {
     EventEmitter,
     Input,
     Output,
+    OnChanges,
 } from '@angular/core';
-import { coerce } from 'coerce-property';
+import { ComponentChanges } from '@vality/ng-core';
 
 import { AccordionItemContentComponent } from '../accordion-item-content';
 
@@ -21,20 +21,31 @@ import { LazyPanelContentDirective } from './lazy-panel-content.directive';
     animations: [EXPAND_ANIMATION],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AccordionItemComponent {
+export class AccordionItemComponent implements OnChanges {
     @Output() expandedChange = new EventEmitter<boolean>();
 
     @Input()
-    @coerce<AccordionItemComponent>(coerceBooleanProperty, (v: boolean, self) =>
-        self.expandedChange.emit(v),
-    )
-    expanded = false;
+    get expanded(): boolean {
+        return this._expanded;
+    }
+    set expanded(expanded: unknown) {
+        this._expanded = Boolean(expanded);
+        this.expandedChange.emit(this.expanded);
+    }
 
     @ContentChild(AccordionItemContentComponent)
     accordionItemContent: AccordionItemContentComponent;
 
     @ContentChild(LazyPanelContentDirective)
     lazyContent: LazyPanelContentDirective;
+
+    private _expanded = false;
+
+    ngOnChanges(changes: ComponentChanges<AccordionItemComponent>) {
+        if (changes.expanded) {
+            this.expandedChange.emit(this.expanded);
+        }
+    }
 
     expand(): void {
         if (!this.expanded) {

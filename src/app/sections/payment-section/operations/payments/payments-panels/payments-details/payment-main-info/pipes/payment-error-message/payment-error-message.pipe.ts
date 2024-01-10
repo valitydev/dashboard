@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
 function renderSubErrorMessage(error?: string, sub?: string) {
-    if (!error) return sub;
-    if (!sub) return error;
+    if (!error) {return sub;}
+    if (!sub) {return error;}
     return `${error} -> ${sub}`;
 }
 

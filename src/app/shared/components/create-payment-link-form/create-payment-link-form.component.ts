@@ -65,11 +65,11 @@ export class CreatePaymentLinkFormComponent
 
     copied(isCopied: boolean): void {
         if (isCopied)
-            this.log.success(this.transloco.selectTranslate('shared.copied', null, 'components'));
+            {this.log.success(this.transloco.selectTranslate('shared.copied', null, 'components'));}
         else
-            this.log.success(
+            {this.log.success(
                 this.transloco.selectTranslate('shared.copyFailed', null, 'components'),
-            );
+            );}
     }
 
     protected innerToOuterValue({

@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { coerceBoolean } from 'coerce-property';
+import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
 
 @Component({
     selector: 'dsh-selection',
@@ -8,5 +7,5 @@ import { coerceBoolean } from 'coerce-property';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectionComponent {
-    @Input() @coerceBoolean selected: boolean;
+    @Input({ transform: booleanAttribute }) selected: boolean;
 }

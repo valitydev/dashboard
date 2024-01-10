@@ -27,6 +27,6 @@ export class ShopsFieldComponent extends FormControlSuperclass<Shop['id'][]> imp
     }
 
     ngOnChanges({ shops }: ComponentChanges<ShopsFieldComponent>): void {
-        if (shops) this.shops$.next(shops.currentValue);
+        if (shops) {this.shops$.next(shops.currentValue);}
     }
 }

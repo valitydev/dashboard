@@ -50,6 +50,6 @@ export class PayoutsSearchFiltersComponent implements OnInit, OnChanges {
 
     ngOnChanges({ initParams }: ComponentChanges<PayoutsSearchFiltersComponent>): void {
         if (initParams?.firstChange && initParams.currentValue)
-            this.form.patchValue(initParams.currentValue as unknown);
+            {this.form.patchValue(initParams.currentValue as unknown);}
     }
 }

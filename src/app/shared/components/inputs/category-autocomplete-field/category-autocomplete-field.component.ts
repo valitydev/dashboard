@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
 import { FormControlSuperclass, Option, createControlProviders } from '@vality/ng-core';
 import { Category } from '@vality/swag-payments';
-import { coerceBoolean } from 'coerce-property';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -16,7 +15,7 @@ import { shareReplayRefCount } from '@dsh/app/custom-operators';
 })
 export class CategoryAutocompleteFieldComponent extends FormControlSuperclass<Category> {
     @Input() label: string;
-    @Input() @coerceBoolean required = false;
+    @Input({ transform: booleanAttribute }) required = false;
 
     options$: Observable<Option<Category>[]> = this.categoriesService.categories$.pipe(
         map((categories) =>

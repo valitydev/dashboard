@@ -7,12 +7,12 @@ import {
     OnInit,
     Output,
     OnChanges,
+    booleanAttribute,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ComponentChanges } from '@vality/ng-core';
 import { MemberRole, ResourceScopeId, RoleId, Organization } from '@vality/swag-organizations';
-import { coerceBoolean } from 'coerce-property';
 import isNil from 'lodash-es/isNil';
 import { BehaviorSubject, combineLatest, EMPTY, Observable, of, ReplaySubject } from 'rxjs';
 import { first, map, switchMap, tap, shareReplay } from 'rxjs/operators';
@@ -53,8 +53,8 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
      * - no batch changes
      * - there must be at least one role
      */
-    @Input() @coerceBoolean editMode: boolean;
-    @Input() @coerceBoolean controlled: boolean;
+    @Input({ transform: booleanAttribute }) editMode: boolean;
+    @Input({ transform: booleanAttribute }) controlled: boolean;
 
     @Output() selectedRoles = new EventEmitter<PartialReadonly<MemberRole>[]>();
     @Output() addedRoles = new EventEmitter<PartialReadonly<MemberRole>[]>();
@@ -193,8 +193,12 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
     }
 
     disabled(roleId: RoleId, resourceId: string): Observable<boolean> {
-        if (roleId === RoleId.Administrator) return of(true);
-        if (!this.editMode) return of(false);
+        if (roleId === RoleId.Administrator) {
+            return of(true);
+        }
+        if (!this.editMode) {
+            return of(false);
+        }
         return combineLatest([this.roles$, this.checked(roleId, resourceId)]).pipe(
             map(([roles, isChecked]) => roles.length <= 1 && isChecked),
         );

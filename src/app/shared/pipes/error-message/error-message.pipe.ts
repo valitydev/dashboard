@@ -12,8 +12,8 @@ export class ErrorMessagePipe implements PipeTransform {
     constructor(private transloco: TranslocoService) {}
 
     transform(err: unknown): Observable<string> {
-        if (!err) return of('');
-        if (err instanceof CommonError) return of(err.message);
+        if (!err) {return of('');}
+        if (err instanceof CommonError) {return of(err.message);}
         return this.transloco.selectTranslate('errorMessage.errorOccurred', null, 'pipes');
     }
 }

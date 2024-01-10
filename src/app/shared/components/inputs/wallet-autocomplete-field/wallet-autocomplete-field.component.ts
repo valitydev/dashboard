@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
 import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
-import { coerceBoolean } from 'coerce-property';
 import { map } from 'rxjs/operators';
 
 import { WalletsService } from '@dsh/app/api/wallet';
@@ -16,7 +15,7 @@ import { walletsToOptions } from './utils';
 })
 export class WalletAutocompleteFieldComponent extends FormControlSuperclass<WalletId> {
     @Input() label: string;
-    @Input() @coerceBoolean required = false;
+    @Input({ transform: booleanAttribute }) required = false;
 
     wallets$ = this.walletService.wallets$;
     options$ = this.wallets$.pipe(map(walletsToOptions));

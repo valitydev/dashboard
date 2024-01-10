@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
 import { MemberRole } from '@vality/swag-organizations';
-import { coerceBoolean } from 'coerce-property';
 
 import { OrganizationsDictionaryService } from '@dsh/app/api/organizations';
 
@@ -13,7 +12,7 @@ import { groupRoles } from './utils/group-roles';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OrganizationRolesComponent {
-    @Input() @coerceBoolean isOwner: boolean;
+    @Input({ transform: booleanAttribute }) isOwner: boolean;
 
     @Input() set roles(roles: MemberRole[]) {
         this.rolesByGroup = groupRoles(roles);

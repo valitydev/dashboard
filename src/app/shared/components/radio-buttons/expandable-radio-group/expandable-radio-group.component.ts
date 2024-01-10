@@ -9,9 +9,9 @@ import {
     Output,
     QueryList,
     TemplateRef,
+    booleanAttribute,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { coerceBoolean } from 'coerce-property';
 
 import { isNumber } from '@dsh/app/shared/utils';
 import { Dict } from '@dsh/type-utils';
@@ -34,8 +34,7 @@ export class ExpandableRadioGroupComponent implements OnInit, AfterContentInit {
     @Input() previewCount?: number;
     @Input() isOpen?: boolean;
 
-    @coerceBoolean
-    @Input()
+    @Input({ transform: booleanAttribute })
     anyResponse: boolean;
 
     @Output() opened = new EventEmitter<void>();

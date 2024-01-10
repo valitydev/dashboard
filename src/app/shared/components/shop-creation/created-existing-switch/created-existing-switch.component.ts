@@ -42,7 +42,7 @@ export class CreatedExistingSwitchComponent<N, E> implements OnChanges {
     @ContentChild(ExistingCaseDirective) existingCase!: ExistingCaseDirective;
 
     ngOnChanges({ form }: ComponentChanges<CreatedExistingSwitchComponent<N, E>>): void {
-        if (form && form.currentValue) this.typeChanged(form.currentValue.value.type);
+        if (form && form.currentValue) {this.typeChanged(form.currentValue.value.type);}
     }
 
     typeChanged(type: Type): void {

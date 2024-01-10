@@ -20,7 +20,7 @@ export function createDateRangeWithPresetSerializer(id = 'dr'): Serializer<DateR
                   ].join(','),
         deserialize: (str) => {
             if (Object.values(Preset).includes(str as Preset))
-                return createDateRangeWithPreset(str as Preset);
+                {return createDateRangeWithPreset(str as Preset);}
             const [startStr, endStr] = str.split(',');
             const start = moment(startStr);
             const end = moment(endStr);

@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, forwardRef, Input, OnChanges } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    forwardRef,
+    Input,
+    OnChanges,
+    booleanAttribute,
+} from '@angular/core';
 import {
     ControlValueAccessor,
     NG_VALUE_ACCESSOR,
@@ -7,7 +14,6 @@ import {
     FormControl,
 } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { coerceBoolean } from 'coerce-property';
 import isNil from 'lodash-es/isNil';
 import isObject from 'lodash-es/isObject';
 import { skip } from 'rxjs/operators';
@@ -33,9 +39,7 @@ export class MaxLengthInputComponent implements OnChanges, ControlValueAccessor 
     @Input() label: string;
     @Input() maxLength: number;
 
-    @coerceBoolean
-    @Input()
-    required: boolean;
+    @Input({ transform: booleanAttribute }) required: boolean;
 
     @Input()
     get value(): string {

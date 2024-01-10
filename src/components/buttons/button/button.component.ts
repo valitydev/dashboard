@@ -8,9 +8,9 @@ import {
     Renderer2,
     SimpleChanges,
     ViewEncapsulation,
+    booleanAttribute,
 } from '@angular/core';
 import { mixinDisabled } from '@angular/material/core';
-import { coerceBoolean } from 'coerce-property';
 
 import { ColorManager } from './color-manager';
 import { FocusManager } from './focus-manager';
@@ -35,11 +35,9 @@ const _MatButtonMixinBase: typeof MatButtonBase = mixinDisabled(MatButtonBase);
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent extends _MatButtonMixinBase implements OnChanges {
-    @Input()
-    color;
+    @Input() color: string;
 
-    @Input()
-    @coerceBoolean
+    @Input({ transform: booleanAttribute })
     disabled = false;
 
     @Input()

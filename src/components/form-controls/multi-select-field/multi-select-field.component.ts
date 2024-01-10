@@ -1,7 +1,6 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, booleanAttribute } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
-import { coerceBoolean } from 'coerce-property';
 import isNil from 'lodash-es/isNil';
 
 import { ComponentChanges } from '@dsh/type-utils';
@@ -26,7 +25,7 @@ interface OptionScore<T> {
 export class MultiSelectFieldComponent<T> extends FormControlSuperclass<T[]> implements OnChanges {
     @Input() options: Option<T>[];
     @Input() label?: string;
-    @Input() @coerceBoolean noSearch = false;
+    @Input({ transform: booleanAttribute }) noSearch = false;
 
     selected = new Set<T>();
     filtered: Option<T>[] = [];
@@ -45,14 +44,19 @@ export class MultiSelectFieldComponent<T> extends FormControlSuperclass<T[]> imp
     }
 
     handleIncomingValue(value: T[]): void {
-        if (isNil(value)) this.searchStr = '';
+        if (isNil(value)) {
+            this.searchStr = '';
+        }
         this.selected = new Set(value);
         this.search();
     }
 
     toggle({ value }: Option<T>): void {
-        if (this.selected.has(value)) this.selected.delete(value);
-        else this.selected.add(value);
+        if (this.selected.has(value)) {
+            this.selected.delete(value);
+        } else {
+            this.selected.add(value);
+        }
         this.emitOutgoingValue(Array.from(this.selected.values()));
         this.search();
     }

@@ -47,6 +47,6 @@ export class ReportsSearchFiltersComponent implements OnInit, OnChanges {
 
     ngOnChanges({ initParams }: ComponentChanges<ReportsSearchFiltersComponent>): void {
         if (initParams?.firstChange && initParams.currentValue)
-            this.form.patchValue(initParams.currentValue as unknown);
+            {this.form.patchValue(initParams.currentValue as unknown);}
     }
 }

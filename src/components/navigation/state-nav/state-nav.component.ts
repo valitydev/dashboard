@@ -7,8 +7,8 @@ import {
     Output,
     QueryList,
     ViewEncapsulation,
+    booleanAttribute,
 } from '@angular/core';
-import { coerceBoolean } from 'coerce-property';
 import { Subscription } from 'rxjs';
 
 import { StateNavItemComponent } from './state-nav-item';
@@ -21,12 +21,10 @@ import { StateNavItemComponent } from './state-nav-item';
 })
 export class StateNavComponent {
     @HostBinding('class.dsh-state-nav-flat')
-    @Input()
-    @coerceBoolean
+    @Input({ transform: booleanAttribute })
     flat = false;
 
-    @Input()
-    @coerceBoolean
+    @Input({ transform: booleanAttribute })
     autoselect = false;
 
     @Output()

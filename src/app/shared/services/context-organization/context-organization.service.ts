@@ -30,13 +30,13 @@ export class ContextOrganizationService {
             map(({ organizationId }) => organizationId),
             catchError((err) => {
                 if (err instanceof HttpErrorResponse && err.status === 404)
-                    return this.organizationsService.listOrgMembership({ limit: 1 }).pipe(
+                    {return this.organizationsService.listOrgMembership({ limit: 1 }).pipe(
                         switchMap(({ result }) =>
                             result[0] ? of(result[0]) : this.createOrganization(),
                         ),
                         tap(({ id }) => this.switchOrganization(id)),
                         switchMap(() => EMPTY),
-                    );
+                    );}
                 console.error(err);
                 return EMPTY;
             }),

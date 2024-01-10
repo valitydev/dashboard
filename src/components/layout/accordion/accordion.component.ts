@@ -9,7 +9,6 @@ import {
     QueryList,
     ViewContainerRef,
 } from '@angular/core';
-import { coerce } from 'coerce-property';
 import { combineLatest, merge, of } from 'rxjs';
 import {
     delay,
@@ -36,8 +35,13 @@ const SCROLL_TIME_MS = 500;
 })
 export class AccordionComponent implements AfterViewInit {
     @Input()
-    @coerce<AccordionComponent>((v) => v, (v: number, self) => self.expandedChange.emit(v))
-    expanded: number;
+    get expanded() {
+        return this._expanded;
+    }
+    set expanded(expanded: number) {
+        this._expanded = expanded;
+        this.expandedChange.emit(this.expanded);
+    }
 
     @Output() expandedChange = new EventEmitter<number>();
 
@@ -46,6 +50,8 @@ export class AccordionComponent implements AfterViewInit {
 
     @ContentChildren(AccordionItemComponent, { read: ViewContainerRef, descendants: true })
     private accordionItemsRefs: QueryList<AccordionItemComponent>;
+
+    private _expanded: number;
 
     ngAfterViewInit() {
         this.subscribeExpandedPanelsExpand();

@@ -1,5 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { coerceBoolean } from 'coerce-property';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    Output,
+    booleanAttribute,
+} from '@angular/core';
 
 @Component({
     selector: 'dsh-filter-content',
@@ -8,7 +14,7 @@ import { coerceBoolean } from 'coerce-property';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FilterContentComponent {
-    @Input() @coerceBoolean noClearButton = false;
+    @Input({ transform: booleanAttribute }) noClearButton = false;
 
     @Output() save = new EventEmitter<MouseEvent>();
     @Output() clear = new EventEmitter<MouseEvent>();
