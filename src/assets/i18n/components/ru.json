@@ -220,8 +220,7 @@
             "registeredNumber": "ОГРН/ОГРНИП",
             "representativeDocument": "Документ ЕИО/представителя",
             "representativeFullName": "ФИО ЕИО/представителя",
-            "representativePosition": "Должность ЕИО/представителя",
-            "search": "Для поиска укажите название юр. лица, ИНН, ОГРН/ОГРНИП"
+            "representativePosition": "Должность ЕИО/представителя"
         }
     },
     "newInternationalContractorForm": {
@@ -269,8 +268,7 @@
         "account": "Расчетный счет",
         "bik": "БИК",
         "name": "Наименование",
-        "postAccount": "Корреспондентский счет",
-        "search": "Для поиска укажите название, БИК, SWIFT или ИНН банка"
+        "postAccount": "Корреспондентский счет"
     },
     "select-active-organization-dialog": {
         "confirm": "Подтвердить",
