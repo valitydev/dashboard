@@ -18,7 +18,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { TranslocoModule, provideTransloco } from '@ngneat/transloco';
-import * as Sentry from '@sentry/angular-ivy';
+import * as sentry from '@sentry/angular-ivy';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { AnapiModule } from '@dsh/app/api/anapi';
@@ -84,7 +84,7 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
                 LanguageService,
                 ThemeManager,
                 IconsService,
-                Sentry.TraceService,
+                sentry.TraceService,
             ],
             multi: true,
         },
@@ -128,7 +128,7 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
             multi: true,
         },
         {
-            provide: Sentry.TraceService,
+            provide: sentry.TraceService,
             deps: [Router],
         },
         {
