@@ -1,9 +1,7 @@
 import { Component, Input, OnChanges, booleanAttribute } from '@angular/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
+import { FormControlSuperclass, createControlProviders, ComponentChanges } from '@vality/ng-core';
 import isNil from 'lodash-es/isNil';
-
-import { ComponentChanges } from '@dsh/type-utils';
 
 export interface Option<T> {
     value: T;

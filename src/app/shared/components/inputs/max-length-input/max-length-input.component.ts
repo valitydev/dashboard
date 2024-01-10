@@ -14,13 +14,13 @@ import {
     FormControl,
 } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ComponentChanges } from '@vality/ng-core';
 import isNil from 'lodash-es/isNil';
 import isObject from 'lodash-es/isObject';
 import { skip } from 'rxjs/operators';
 
 import { ComponentInputError } from '@dsh/app/shared/services/error/models/component-input-error';
 import { ErrorMatcher } from '@dsh/app/shared/utils';
-import { ComponentChanges } from '@dsh/type-utils';
 @UntilDestroy()
 @Component({
     selector: 'dsh-max-length-input',

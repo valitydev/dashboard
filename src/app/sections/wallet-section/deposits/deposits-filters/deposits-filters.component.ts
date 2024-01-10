@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angu
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ComponentChanges } from '@vality/ng-core';
 import isEmpty from 'lodash-es/isEmpty';
 import isEqual from 'lodash-es/isEqual';
 import negate from 'lodash-es/negate';
@@ -11,7 +12,6 @@ import { combineLatest, defer, ReplaySubject } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
 import { createDateRangeWithPreset, Preset } from '@dsh/components/date-range-filter';
-import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
 import { DialogFiltersComponent } from './additional-filters/components/dialog-filters/dialog-filters.component';

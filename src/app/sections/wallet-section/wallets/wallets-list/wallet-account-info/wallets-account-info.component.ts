@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
-
-import { ComponentChanges } from '@dsh/type-utils';
+import { ComponentChanges } from '@vality/ng-core';
 
 import { FetchWalletAccountService } from './services';
 

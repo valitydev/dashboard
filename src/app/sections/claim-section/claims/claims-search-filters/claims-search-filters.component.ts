@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ComponentChanges } from '@vality/ng-core';
 import { Claim } from '@vality/swag-claim-management';
 
 import { ClaimStatusesEnum } from '@dsh/app/shared/components/inputs/claim-statuses-field/types/claim-statuses-enum';
-import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
 export interface Filters {
@@ -32,7 +32,8 @@ export class ClaimsSearchFiltersComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges({ initParams }: ComponentChanges<ClaimsSearchFiltersComponent>): void {
-        if (initParams?.firstChange && initParams.currentValue)
-            {this.form.patchValue(initParams.currentValue as unknown);}
+        if (initParams?.firstChange && initParams.currentValue) {
+            this.form.patchValue(initParams.currentValue as unknown);
+        }
     }
 }
