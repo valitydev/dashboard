@@ -1,8 +1,6 @@
-import { MemberRole } from '@vality/swag-organizations';
+import { MemberRoleOptionalId } from '@dsh/app/api/organizations';
 
-import { PartialReadonly } from '@dsh/type-utils';
-
-export function equalRoles(a: PartialReadonly<MemberRole>, b: PartialReadonly<MemberRole>) {
+export function equalRoles(a: MemberRoleOptionalId, b: MemberRoleOptionalId) {
     return (
         (a.id && b.id && a.id === b.id) ||
         (a.roleId === b.roleId &&

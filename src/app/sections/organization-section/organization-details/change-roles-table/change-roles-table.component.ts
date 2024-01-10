@@ -12,18 +12,17 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ComponentChanges } from '@vality/ng-core';
-import { MemberRole, ResourceScopeId, RoleId, Organization } from '@vality/swag-organizations';
+import { ResourceScopeId, RoleId, Organization } from '@vality/swag-organizations';
 import isNil from 'lodash-es/isNil';
 import { BehaviorSubject, combineLatest, EMPTY, Observable, of, ReplaySubject } from 'rxjs';
 import { first, map, switchMap, tap, shareReplay } from 'rxjs/operators';
 
-import { OrganizationsDictionaryService } from '@dsh/app/api/organizations';
+import { OrganizationsDictionaryService, MemberRoleOptionalId } from '@dsh/app/api/organizations';
 import { ShopsService } from '@dsh/app/api/payments';
 import { DialogConfig, DIALOG_CONFIG } from '@dsh/app/sections/tokens';
 import { sortRoleIds } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
-import { PartialReadonly } from '@dsh/type-utils';
+import { addDialogsClass } from '@dsh/utils/add-dialogs-class';
 
-import { addDialogsClass } from '../../../../../utils/add-dialogs-class';
 import { equalRoles } from '../members/components/edit-roles-dialog/utils/equal-roles';
 
 import { SelectRoleDialogComponent } from './components/select-role-dialog/select-role-dialog.component';
@@ -37,13 +36,13 @@ import { SelectRoleDialogData } from './components/select-role-dialog/types/sele
     styleUrls: ['change-roles-table.component.scss'],
 })
 export class ChangeRolesTableComponent implements OnInit, OnChanges {
-    @Input() set roles(roles: PartialReadonly<MemberRole>[]) {
+    @Input() set roles(roles: MemberRoleOptionalId[]) {
         if (!isNil(roles)) {
             this.roles$.next(roles);
             this.addRoleIds(roles.map(({ roleId }) => roleId));
         }
     }
-    get roles(): PartialReadonly<MemberRole>[] {
+    get roles(): MemberRoleOptionalId[] {
         return this.roles$.value;
     }
     @Input() organization: Organization;
@@ -56,9 +55,9 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
     @Input({ transform: booleanAttribute }) editMode: boolean;
     @Input({ transform: booleanAttribute }) controlled: boolean;
 
-    @Output() selectedRoles = new EventEmitter<PartialReadonly<MemberRole>[]>();
-    @Output() addedRoles = new EventEmitter<PartialReadonly<MemberRole>[]>();
-    @Output() removedRoles = new EventEmitter<PartialReadonly<MemberRole>[]>();
+    @Output() selectedRoles = new EventEmitter<MemberRoleOptionalId[]>();
+    @Output() addedRoles = new EventEmitter<MemberRoleOptionalId[]>();
+    @Output() removedRoles = new EventEmitter<MemberRoleOptionalId[]>();
 
     organization$ = new ReplaySubject<Organization>(1);
     roleIds: RoleId[] = [];
@@ -78,7 +77,7 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
         return !!this.availableRoles.length && !this.hasAdminRole;
     }
 
-    roles$ = new BehaviorSubject<PartialReadonly<MemberRole>[]>([]);
+    roles$ = new BehaviorSubject<MemberRoleOptionalId[]>([]);
 
     isAllowRemoves$ = this.roles$.pipe(
         map(
@@ -161,7 +160,7 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
     }
 
     toggle(roleId: RoleId, resourceId: string): void {
-        const role: PartialReadonly<MemberRole> = {
+        const role: MemberRoleOptionalId = {
             roleId,
             scope: { id: ResourceScopeId.Shop, resourceId },
         };
@@ -258,7 +257,7 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
         this.roleIds = this.roleIds.filter((r) => !roleIds.includes(r));
     }
 
-    private addRoles(roles: PartialReadonly<MemberRole>[]) {
+    private addRoles(roles: MemberRoleOptionalId[]) {
         if (roles.length) {
             if (!this.controlled) {
                 this.roles = [...this.roles, ...roles];
@@ -267,7 +266,7 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
         }
     }
 
-    private removeRoles(roles: PartialReadonly<MemberRole>[]) {
+    private removeRoles(roles: MemberRoleOptionalId[]) {
         if (roles.length) {
             if (!this.controlled) {
                 this.roles = this.roles.filter((r) => !roles.includes(r));
