@@ -220,8 +220,7 @@
             "registeredNumber": "OGRN/OGRNIP",
             "representativeDocument": "EEC/representative document",
             "representativeFullName": "EEC/representative full name",
-            "representativePosition": "Position of EEC/representative",
-            "search": "To search, enter the name of the legal entity, INN, OGRN/OGRNIP"
+            "representativePosition": "Position of EEC/representative"
         }
     },
     "newInternationalContractorForm": {
@@ -269,8 +268,7 @@
         "account": "Operating account",
         "bik": "BIC",
         "name": "Name",
-        "postAccount": "Correspondent account",
-        "search": "For search, specify the name, BIC, SWIFT or TIN of the bank"
+        "postAccount": "Correspondent account"
     },
     "select-active-organization-dialog": {
         "confirm": "Confirm",
