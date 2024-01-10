@@ -14,7 +14,6 @@ import {
 import { FormControl } from '@angular/forms';
 
 import { isNumber } from '@dsh/app/shared/utils';
-import { Dict } from '@dsh/type-utils';
 
 import { ExpandableRadioGroupItemDirective } from './directives/expandable-radio-group-item/expandable-radio-group-item.directive';
 import {
@@ -46,7 +45,7 @@ export class ExpandableRadioGroupComponent implements OnInit, AfterContentInit {
     @ContentChildren(ExpandableRadioGroupItemDirective)
     private itemsQuery: QueryList<ExpandableRadioGroupItemDirective>;
 
-    private itemsDict: Dict<TemplateRef<ExpandableRadioGroupItemDirective>>;
+    private itemsDict: Record<string, TemplateRef<ExpandableRadioGroupItemDirective>>;
 
     get isValidPreviewCount(): boolean {
         return isNumber(this.previewCount) && this.previewCount >= 0;
@@ -59,7 +58,7 @@ export class ExpandableRadioGroupComponent implements OnInit, AfterContentInit {
     ngAfterContentInit(): void {
         this.itemsDict = Array.from(this.itemsQuery).reduce(
             (
-                acc: Dict<TemplateRef<ExpandableRadioGroupItemDirective>>,
+                acc: Record<string, TemplateRef<ExpandableRadioGroupItemDirective>>,
                 item: ExpandableRadioGroupItemDirective,
             ) => {
                 acc[item.dshExpandableRadioGroupItem] = item.templateRef;
