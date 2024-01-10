@@ -20,7 +20,6 @@
 
 @import '../../app/home/home-theme';
 @import '../../app/home/mobile-grid/mobile-grid-theme';
-@import '../../app/dadata/dadata-theme';
 @import '../../app/sections/payment-section/balances/balances-theme';
 @import '../../app/sections/payment-section/no-shops-alert/no-shops-alert-theme';
 
@@ -30,7 +29,6 @@
     @include dsh-state-nav-typography($config);
     @include dsh-card-typography($config);
     @include dsh-dropdown-typography($config);
-    @include dsh-dadata-autocomplete-typography($config);
     @include dsh-panel-typography($config);
     @include dsh-charts-typography($config);
     @include dsh-row-typography($config);
