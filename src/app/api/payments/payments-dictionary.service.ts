@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-import { PaymentStatus } from '@vality/swag-payments';
-import { CustomersTopic } from '@vality/swag-payments/lib/model/customers-topic';
-import { InvoicesTopic } from '@vality/swag-payments/lib/model/invoices-topic';
+import { PaymentStatus, CustomersTopic, InvoicesTopic } from '@vality/swag-payments';
 
 import { DictionaryService } from '../utils';
 

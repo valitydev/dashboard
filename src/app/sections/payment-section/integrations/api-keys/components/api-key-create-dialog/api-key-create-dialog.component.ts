@@ -1,12 +1,12 @@
 import { ClipboardModule, Clipboard } from '@angular/cdk/clipboard';
 import { CommonModule } from '@angular/common';
-import { Component, Injector } from '@angular/core';
-import { FlexModule } from '@angular/flex-layout';
+import { Component } from '@angular/core';
 import { ReactiveFormsModule, NonNullableFormBuilder } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { DialogSuperclass, progressTo, NotifyLogService } from '@vality/ng-core';
+import { FlexModule } from 'ng-flex-layout';
 import { BehaviorSubject } from 'rxjs';
 
 import { ApiKeysService } from '@dsh/app/api/api-keys';
@@ -39,7 +39,6 @@ export class ApiKeyCreateDialogComponent extends DialogSuperclass<ApiKeyCreateDi
     accessToken?: string;
 
     constructor(
-        injector: Injector,
         private apiKeysService: ApiKeysService,
         private errorService: ErrorService,
         private log: NotifyLogService,
@@ -47,7 +46,7 @@ export class ApiKeyCreateDialogComponent extends DialogSuperclass<ApiKeyCreateDi
         private clipboard: Clipboard,
         private transloco: TranslocoService,
     ) {
-        super(injector);
+        super();
     }
 
     confirm() {

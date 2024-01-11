@@ -7,15 +7,16 @@ import {
     OnInit,
     Output,
 } from '@angular/core';
-import { MediaObserver } from '@angular/flex-layout';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ComponentChanges } from '@vality/ng-core';
 import { Shop } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
 import negate from 'lodash-es/negate';
 import omit from 'lodash-es/omit';
 import pick from 'lodash-es/pick';
+import { MediaObserver } from 'ng-flex-layout';
 import { combineLatest, defer, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -24,7 +25,6 @@ import {
     Preset,
     DateRangeWithPreset,
 } from '@dsh/components/date-range-filter';
-import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
 import { AdditionalFilters, DialogFiltersComponent } from './additional-filters';

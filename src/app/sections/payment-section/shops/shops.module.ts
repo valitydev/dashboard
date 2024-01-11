@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { TranslocoModule } from '@ngneat/transloco';
+import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { AuthModule } from '@dsh/app/auth';
 import { ShopCreationModule } from '@dsh/app/shared/components/shop-creation';

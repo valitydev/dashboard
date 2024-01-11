@@ -1,5 +1,4 @@
-import { Component, ElementRef, Input, Renderer2 } from '@angular/core';
-import { coerceBoolean } from 'coerce-property';
+import { Component, ElementRef, Input, Renderer2, booleanAttribute } from '@angular/core';
 import { Subject } from 'rxjs';
 
 export enum Color {
@@ -15,8 +14,7 @@ const HOST_ATTRIBUTES = ['withIcon'];
     styleUrls: ['state-nav-item.component.scss'],
 })
 export class StateNavItemComponent {
-    @Input()
-    @coerceBoolean
+    @Input({ transform: booleanAttribute })
     selected = false;
 
     @Input()
@@ -25,8 +23,7 @@ export class StateNavItemComponent {
     @Input()
     icon: string;
 
-    @Input()
-    @coerceBoolean
+    @Input({ transform: booleanAttribute })
     iconVisible = true;
 
     attemptToSelect$ = new Subject<boolean>();

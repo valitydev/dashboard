@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { FormGroupByValue } from '@vality/ng-core';
+import { FormGroupByValue, toMajor, toMinor } from '@vality/ng-core';
 import { CaptureParams } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
 
@@ -10,7 +10,6 @@ import { PaymentsService } from '@dsh/app/api/payments';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services';
 import { amountValidator } from '@dsh/components/form-controls';
-import { toMajor, toMinor } from '@dsh/utils';
 
 import { CreateRefundForm } from '../../../../refunds/create-refund/types/create-refund-form';
 import { MAX_REASON_LENGTH } from '../../../consts';

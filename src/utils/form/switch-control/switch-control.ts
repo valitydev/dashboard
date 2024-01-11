@@ -5,7 +5,10 @@ export function switchControl<T extends PropertyKey>(
     controls: [T, AbstractControl][],
 ): void {
     for (const [controlType, control] of controls) {
-        if (type === controlType) control.enable();
-        else control.disable();
+        if (type === controlType) {
+            control.enable();
+        } else {
+            control.disable();
+        }
     }
 }

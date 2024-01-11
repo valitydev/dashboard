@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
 import { Option, createControlProviders, FormControlSuperclass } from '@vality/ng-core';
-import { coerceBoolean } from 'coerce-property';
 
 import { ConfigService } from '@dsh/app/config';
 
@@ -12,7 +11,7 @@ import { ConfigService } from '@dsh/app/config';
 })
 export class CurrencyAutocompleteFieldComponent extends FormControlSuperclass<string> {
     @Input() label: string;
-    @Input() @coerceBoolean required = false;
+    @Input({ transform: booleanAttribute }) required = false;
 
     options: Option<string>[] = this.configService.currencies
         .sort()

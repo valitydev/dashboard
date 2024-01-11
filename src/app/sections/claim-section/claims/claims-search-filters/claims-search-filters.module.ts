@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslocoModule } from '@ngneat/transloco';
+import { FlexModule } from 'ng-flex-layout';
 
 import { ClaimFilterModule } from '@dsh/app/shared/components/filters/claim-filter';
 import { ClaimStatusesFieldModule } from '@dsh/app/shared/components/inputs/claim-statuses-field';

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexModule } from '@angular/flex-layout';
+import { FlexModule } from 'ng-flex-layout';
 
 import { BootstrapIconModule } from '@dsh/components/indicators';
 

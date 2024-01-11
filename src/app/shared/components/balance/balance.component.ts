@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { isNumber } from 'lodash-es';
 import isEmpty from 'lodash-es/isEmpty';
-
-import { isNumber } from '@dsh/app/shared/utils';
 
 @Component({
     selector: 'dsh-balance',

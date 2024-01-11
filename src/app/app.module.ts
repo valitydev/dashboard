@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { APP_INITIALIZER, ErrorHandler, LOCALE_ID, NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { APP_INITIALIZER, ErrorHandler, LOCALE_ID, NgModule, isDevMode } from '@angular/core';
 import {
     DateAdapter,
     MAT_DATE_FORMATS,
@@ -18,13 +17,9 @@ import {
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
-import {
-    TRANSLOCO_CONFIG,
-    TRANSLOCO_LOADER,
-    TranslocoModule,
-    translocoConfig,
-} from '@ngneat/transloco';
-import * as Sentry from '@sentry/angular-ivy';
+import { TranslocoModule, provideTransloco } from '@ngneat/transloco';
+import * as sentry from '@sentry/angular-ivy';
+import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { AnapiModule } from '@dsh/app/api/anapi';
 import { ClaimManagementModule } from '@dsh/app/api/claim-management';
@@ -89,7 +84,7 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
                 LanguageService,
                 ThemeManager,
                 IconsService,
-                Sentry.TraceService,
+                sentry.TraceService,
             ],
             multi: true,
         },
@@ -112,17 +107,16 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         },
         { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: { disabled: true } },
         { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
-        {
-            provide: TRANSLOCO_CONFIG,
-            useValue: translocoConfig({
+        provideTransloco({
+            config: {
                 availableLangs: ['en', 'ru'],
                 defaultLang: 'en',
                 fallbackLang: 'ru',
                 reRenderOnLangChange: true,
-                prodMode: environment.production,
-            }),
-        },
-        { provide: TRANSLOCO_LOADER, useClass: TranslocoHttpLoaderService },
+                prodMode: !isDevMode(),
+            },
+            loader: TranslocoHttpLoaderService,
+        }),
         { provide: ENV, useValue: environment },
         {
             provide: ErrorHandler,
@@ -134,7 +128,7 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
             multi: true,
         },
         {
-            provide: Sentry.TraceService,
+            provide: sentry.TraceService,
             deps: [Router],
         },
         {

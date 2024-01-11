@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { PaymentSearchResult, RefundSearchResult } from '@vality/swag-payments';
+import { FlexLayoutModule } from 'ng-flex-layout';
 import { of } from 'rxjs';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 

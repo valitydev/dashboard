@@ -1,11 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { cold, getTestScheduler, hot } from 'jasmine-marbles';
+import { FlexLayoutModule } from 'ng-flex-layout';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 
 import { PaymentService } from '@dsh/app/api/payment';

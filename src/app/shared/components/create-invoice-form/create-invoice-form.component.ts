@@ -6,6 +6,8 @@ import {
     FormGroupByValue,
     FormComponentSuperclass,
     getErrorsTree,
+    toMinor,
+    toMajor,
 } from '@vality/ng-core';
 import { InvoiceLineTaxVAT } from '@vality/swag-anapi-v2';
 import { Shop } from '@vality/swag-payments';
@@ -15,7 +17,7 @@ import { Moment } from 'moment';
 import { map, startWith } from 'rxjs/operators';
 
 import { shareReplayUntilDestroyed } from '@dsh/app/custom-operators';
-import { replaceFormArrayValue, getFormValueChanges, toMinor, toMajor } from '@dsh/utils';
+import { replaceFormArrayValue, getFormValueChanges } from '@dsh/utils';
 
 export const WITHOUT_VAT = Symbol('without VAT');
 export const EMPTY_CART_ITEM: CartItem = {

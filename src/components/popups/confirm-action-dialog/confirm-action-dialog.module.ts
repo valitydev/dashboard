@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslocoModule } from '@ngneat/transloco';
+import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ButtonModule } from '@dsh/components/buttons';

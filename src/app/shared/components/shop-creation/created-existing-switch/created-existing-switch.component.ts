@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, ContentChild, Input, OnChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ComponentChanges } from '@vality/ng-core';
 
 import { CreatedCaseDirective } from '@dsh/app/shared/components/shop-creation/created-existing-switch/directives/created-case.directive';
 import { ExistingCaseDirective } from '@dsh/app/shared/components/shop-creation/created-existing-switch/directives/existing-case.directive';
-import { ComponentChanges } from '@dsh/type-utils';
 import { switchControl } from '@dsh/utils';
 
 export enum Type {
@@ -42,7 +42,9 @@ export class CreatedExistingSwitchComponent<N, E> implements OnChanges {
     @ContentChild(ExistingCaseDirective) existingCase!: ExistingCaseDirective;
 
     ngOnChanges({ form }: ComponentChanges<CreatedExistingSwitchComponent<N, E>>): void {
-        if (form && form.currentValue) this.typeChanged(form.currentValue.value.type);
+        if (form && form.currentValue) {
+            this.typeChanged(form.currentValue.value.type);
+        }
     }
 
     typeChanged(type: Type): void {

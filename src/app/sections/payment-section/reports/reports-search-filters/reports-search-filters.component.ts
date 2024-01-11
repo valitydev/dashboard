@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ComponentChanges } from '@vality/ng-core';
 import { Report } from '@vality/swag-anapi-v2';
 
 import {
@@ -16,7 +17,6 @@ import {
     DateRangeWithPreset,
     Preset,
 } from '@dsh/components/date-range-filter';
-import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
 export interface Filters {
@@ -46,7 +46,8 @@ export class ReportsSearchFiltersComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges({ initParams }: ComponentChanges<ReportsSearchFiltersComponent>): void {
-        if (initParams?.firstChange && initParams.currentValue)
+        if (initParams?.firstChange && initParams.currentValue) {
             this.form.patchValue(initParams.currentValue as unknown);
+        }
     }
 }

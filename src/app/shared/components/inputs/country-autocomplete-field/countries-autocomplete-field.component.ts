@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
 import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
-import { coerceBoolean } from 'coerce-property';
 import { map } from 'rxjs/operators';
 
 import { CountriesService } from '@dsh/app/api/payments';
@@ -16,7 +15,7 @@ import { countriesToOptions } from './utils';
 })
 export class CountryAutocompleteFieldComponent extends FormControlSuperclass<CountryId> {
     @Input() label: string;
-    @Input() @coerceBoolean required = false;
+    @Input({ transform: booleanAttribute }) required = false;
 
     countries$ = this.countriesService.countries$;
     options$ = this.countries$.pipe(map(countriesToOptions));

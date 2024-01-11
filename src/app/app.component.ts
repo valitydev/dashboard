@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as Sentry from '@sentry/angular-ivy';
+import * as sentry from '@sentry/angular-ivy';
 import { first } from 'rxjs/operators';
 
 import { BootstrapService } from './bootstrap.service';
@@ -21,6 +21,6 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
         this.contextOrganizationService.organization$
             .pipe(first())
-            .subscribe(({ party }) => Sentry.setUser({ id: party }));
+            .subscribe(({ party }) => sentry.setUser({ id: party }));
     }
 }

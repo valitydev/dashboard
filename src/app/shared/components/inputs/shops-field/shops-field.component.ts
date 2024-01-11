@@ -1,11 +1,10 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
+import { FormControlSuperclass, createControlProviders, ComponentChanges } from '@vality/ng-core';
 import { Shop } from '@vality/swag-payments';
 import { defer, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { shareReplayRefCount } from '@dsh/app/custom-operators';
-import { ComponentChanges } from '@dsh/type-utils';
 
 @Component({
     selector: 'dsh-shops-field',
@@ -27,6 +26,8 @@ export class ShopsFieldComponent extends FormControlSuperclass<Shop['id'][]> imp
     }
 
     ngOnChanges({ shops }: ComponentChanges<ShopsFieldComponent>): void {
-        if (shops) this.shops$.next(shops.currentValue);
+        if (shops) {
+            this.shops$.next(shops.currentValue);
+        }
     }
 }

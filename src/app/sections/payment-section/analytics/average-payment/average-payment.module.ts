@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@ngneat/transloco';
+import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { SpinnerModule } from '@dsh/components/indicators';
 import { CardModule } from '@dsh/components/layout';

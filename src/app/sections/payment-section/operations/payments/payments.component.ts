@@ -60,8 +60,12 @@ export class PaymentsComponent implements OnInit {
         const { dateRange, binPan, ...otherFilters } = filters;
         const paymentMethod: Partial<PaymentSearchFormValue> =
             binPan?.bin || binPan?.pan ? { paymentMethod: 'bankCard' } : {};
-        if (binPan?.bin) paymentMethod.first6 = binPan.bin;
-        if (binPan?.pan) paymentMethod.last4 = binPan.pan;
+        if (binPan?.bin) {
+            paymentMethod.first6 = binPan.bin;
+        }
+        if (binPan?.pan) {
+            paymentMethod.last4 = binPan.pan;
+        }
         this.realmMixService.mix({
             ...otherFilters,
             ...paymentMethod,

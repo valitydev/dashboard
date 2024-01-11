@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, Injector } from '@angular/core';
-import { FlexModule } from '@angular/flex-layout';
+import { Component } from '@angular/core';
 import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { DialogSuperclass, NotifyLogService, progressTo } from '@vality/ng-core';
 import { RequestRevokeApiKeyRequestParams } from '@vality/swag-api-keys-v2';
+import { FlexModule } from 'ng-flex-layout';
 import { BehaviorSubject } from 'rxjs';
 
 import { ApiKeysService } from '@dsh/app/api/api-keys';
@@ -34,12 +34,11 @@ export class ApiKeyDeleteDialogComponent extends DialogSuperclass<
     progress$ = new BehaviorSubject(0);
 
     constructor(
-        injector: Injector,
         private apiKeysService: ApiKeysService,
         private log: NotifyLogService,
         private translocoService: TranslocoService,
     ) {
-        super(injector);
+        super();
     }
 
     confirm() {

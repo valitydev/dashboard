@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { coerceBoolean } from 'coerce-property';
+import { Component, EventEmitter, Input, Output, booleanAttribute } from '@angular/core';
 
 // TODO: add unit test for template with new ng-content
 @Component({
@@ -10,9 +9,9 @@ import { coerceBoolean } from 'coerce-property';
 export class BaseDialogComponent {
     @Input() title: string;
     @Input() subtitle: string;
-    @coerceBoolean @Input() disabled: boolean;
-    @coerceBoolean @Input() hasDivider = true;
-    @coerceBoolean @Input() noActions = false;
+    @Input({ transform: booleanAttribute }) disabled: boolean;
+    @Input({ transform: booleanAttribute }) hasDivider = true;
+    @Input({ transform: booleanAttribute }) noActions = false;
 
     @Output() cancel = new EventEmitter<void>();
 

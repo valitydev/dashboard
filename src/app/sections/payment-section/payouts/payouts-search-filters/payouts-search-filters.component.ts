@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ComponentChanges } from '@vality/ng-core';
 import { Shop } from '@vality/swag-payments';
 
 import {
@@ -16,7 +17,6 @@ import {
     DateRangeWithPreset,
     Preset,
 } from '@dsh/components/date-range-filter';
-import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
 import { SearchParams } from '../types/search-params';
@@ -49,7 +49,8 @@ export class PayoutsSearchFiltersComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges({ initParams }: ComponentChanges<PayoutsSearchFiltersComponent>): void {
-        if (initParams?.firstChange && initParams.currentValue)
+        if (initParams?.firstChange && initParams.currentValue) {
             this.form.patchValue(initParams.currentValue as unknown);
+        }
     }
 }

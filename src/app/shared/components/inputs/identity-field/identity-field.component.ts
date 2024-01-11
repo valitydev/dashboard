@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { FlexModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -8,6 +7,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@ngneat/transloco';
 import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
 import { Identity } from '@vality/swag-wallet';
+import { FlexModule } from 'ng-flex-layout';
 
 import { IdentitiesService } from '@dsh/app/api/wallet';
 

@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -11,6 +10,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { TranslocoModule } from '@ngneat/transloco';
+import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { ApiModelTypesModule } from '@dsh/app/shared/pipes';
 import { ButtonModule } from '@dsh/components/buttons';

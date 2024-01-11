@@ -27,6 +27,8 @@ export function getLocalizedDayRange(
         { d: true, m: true, y: !isCurrentYear(dateRange) },
         locale,
     );
-    if (start.isSame(end, 'day')) return endStr;
+    if (start.isSame(end, 'day')) {
+        return endStr;
+    }
     return `${start.date() === 2 ? t.fromStartWith2 : t.from} ${startStr} ${t.to} ${endStr}`;
 }

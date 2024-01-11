@@ -6,11 +6,10 @@ import {
     OnChanges,
     Output,
 } from '@angular/core';
+import { ComponentChanges } from '@vality/ng-core';
 import { Invoice, PaymentSearchResult } from '@vality/swag-anapi-v2';
 import isEmpty from 'lodash-es/isEmpty';
 import { Observable } from 'rxjs';
-
-import { ComponentChanges } from '@dsh/type-utils';
 
 import { PaymentIds } from '../../types';
 

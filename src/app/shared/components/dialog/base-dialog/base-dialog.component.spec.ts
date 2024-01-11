@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDividerModule } from '@angular/material/divider';
+import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { NoContentModule } from '@dsh/app/shared/directives';
 import { ButtonModule } from '@dsh/components/buttons';

@@ -1,5 +1,5 @@
 import { ErrorHandler as AngularErrorHandler, Injectable } from '@angular/core';
-import * as Sentry from '@sentry/angular-ivy';
+import * as sentry from '@sentry/angular-ivy';
 
 import { extractError } from '@dsh/utils';
 
@@ -34,7 +34,7 @@ export class SentryErrorHandler implements AngularErrorHandler {
         this.captureChunkLoadError(extractedError);
 
         // Capture handled exception and send it to Sentry.
-        Sentry.captureException(extractedError);
+        sentry.captureException(extractedError);
 
         if (this.options.logErrors) {
             // eslint-disable-next-line no-console
@@ -51,7 +51,7 @@ export class SentryErrorHandler implements AngularErrorHandler {
         }
         if (chunkFailedMessage.test(errorMessage) || chunkLoadError.test(errorMessage)) {
             // TODO Temporary log for checking error capture efficiency
-            Sentry.captureMessage('Chunk load error captured');
+            sentry.captureMessage('Chunk load error captured');
             window.location.reload();
         }
     }

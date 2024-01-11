@@ -121,13 +121,13 @@
                     "builder": "@angular-builders/custom-webpack:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "dashboard:build:production"
+                            "buildTarget": "dashboard:build:production"
                         },
                         "development": {
-                            "browserTarget": "dashboard:build:development"
+                            "buildTarget": "dashboard:build:development"
                         },
                         "stage": {
-                            "browserTarget": "dashboard:build:development,stage"
+                            "buildTarget": "dashboard:build:development,stage"
                         }
                     },
                     "defaultConfiguration": "development"

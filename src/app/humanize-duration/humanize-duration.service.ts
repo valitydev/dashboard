@@ -55,22 +55,28 @@ export class HumanizeDurationService {
 
     getDuration(value: Value, config: HumanizeConfig = {}): Observable<string> {
         const diffMs = this.getDiffMs(value);
-        if (isNaN(diffMs)) return null;
-        if (diffMs < HumanizeDurationService.LESS_THAN_FEW_SECONDS)
+        if (isNaN(diffMs)) {
+            return null;
+        }
+        if (diffMs < HumanizeDurationService.LESS_THAN_FEW_SECONDS) {
             return this.transloco.selectTranslate(
                 'humanizeDuration.justNow',
                 null,
                 'core-components',
             );
+        }
         return of(this.duration(diffMs, config)).pipe(
             switchMap((duration) => {
-                if (config.isShort)
+                if (config.isShort) {
                     return this.shortEnglishHumanizer.pipe(
                         map((shortEnglishHumanizer) =>
                             this.duration(diffMs, { ...config, ...shortEnglishHumanizer }),
                         ),
                     );
-                if (config.largest === 1) return of(moment.duration(diffMs).humanize());
+                }
+                if (config.largest === 1) {
+                    return of(moment.duration(diffMs).humanize());
+                }
                 return of(duration);
             }),
             map((duration) => (duration === 'минута' ? 'минуту' : duration)),

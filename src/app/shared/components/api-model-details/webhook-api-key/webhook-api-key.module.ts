@@ -1,7 +1,7 @@
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { NgModule } from '@angular/core';
-import { FlexModule } from '@angular/flex-layout';
 import { TranslocoModule } from '@ngneat/transloco';
+import { FlexModule } from 'ng-flex-layout';
 
 import { ButtonModule } from '@dsh/components/buttons';
 

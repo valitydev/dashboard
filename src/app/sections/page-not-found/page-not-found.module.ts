@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { FlexModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { TranslocoModule } from '@ngneat/transloco';
+import { FlexModule } from 'ng-flex-layout';
 
 import { ButtonModule } from '@dsh/components/buttons';
 

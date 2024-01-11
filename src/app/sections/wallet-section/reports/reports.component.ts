@@ -122,7 +122,9 @@ export class ReportsComponent implements OnInit {
 
     load() {
         const { dateRange, identityID } = this.form.value;
-        if (!identityID) return;
+        if (!identityID) {
+            return;
+        }
         this.fetchReportsService.load({
             fromTime: dateRange.start.utc().format(),
             toTime: dateRange.end.utc().format(),

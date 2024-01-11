@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { TranslocoModule } from '@ngneat/transloco';
+import { FlexModule } from 'ng-flex-layout';
 
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ButtonModule } from '@dsh/components/buttons';

@@ -1,4 +1,4 @@
-import { isNumber } from '@dsh/app/shared/utils';
+import { isNumber } from 'lodash-es';
 
 import { AdditionalFilters, AdditionalFiltersForm } from '../types';
 

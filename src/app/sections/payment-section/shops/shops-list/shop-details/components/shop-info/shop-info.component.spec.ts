@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslocoTestingModule } from '@ngneat/transloco';
 import { Category, ShopLocationUrl } from '@vality/swag-payments';
 import { getTestScheduler } from 'jasmine-marbles';
+import { FlexLayoutModule } from 'ng-flex-layout';
 import { Observable, ReplaySubject } from 'rxjs';
 import { delay } from 'rxjs/operators';
 

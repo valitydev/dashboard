@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { DialogService } from '@vality/ng-core';
-import { ApiKeyStatus } from '@vality/swag-api-keys-v2';
-import { ApiKey } from '@vality/swag-api-keys-v2/lib/model/api-key';
+import { ApiKeyStatus, ApiKey } from '@vality/swag-api-keys-v2';
 import { map } from 'rxjs/operators';
 
 import { ApiKeysDictionaryService } from '@dsh/app/api/api-keys';

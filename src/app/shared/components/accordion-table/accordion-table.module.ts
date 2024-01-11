@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { PipesModule } from '@vality/ng-core';
+import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { IndicatorsModule } from '@dsh/components/indicators';

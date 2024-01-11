@@ -73,7 +73,9 @@ export class ExpandedFragment<T extends { id: unknown } = { id: unknown }> {
     }
 
     private serialize(item?: T): Fragment {
-        if (!item) return '';
+        if (!item) {
+            return '';
+        }
         return String(item.id);
     }
 }

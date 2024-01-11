@@ -10,6 +10,8 @@ export function getLocalizedYearRange(
     t: Record<'from' | 'to' | 'year', string>,
 ): string {
     const endStr = `${end.year()} ${t.year}`;
-    if (start.isSame(end, 'year')) return endStr;
+    if (start.isSame(end, 'year')) {
+        return endStr;
+    }
     return `${t.from} ${start.year()} ${t.to} ${endStr}`;
 }

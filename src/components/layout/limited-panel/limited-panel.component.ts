@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Output, EventEmitter, Input } from '@angular/core';
-import { FlexModule } from '@angular/flex-layout';
 import { TranslocoModule } from '@ngneat/transloco';
+import { FlexModule } from 'ng-flex-layout';
 
 @Component({
     standalone: true,

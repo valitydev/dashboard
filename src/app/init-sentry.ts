@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/angular-ivy';
+import * as sentry from '@sentry/angular-ivy';
 import { Integrations } from '@sentry/tracing';
 import isNil from 'lodash-es/isNil';
 
@@ -8,11 +8,11 @@ export const initSentry = (dsn: string): void => {
     if (isNil(dsn)) {
         return null;
     }
-    Sentry.init({
+    sentry.init({
         dsn,
         integrations: [
             new Integrations.BrowserTracing({
-                routingInstrumentation: Sentry.routingInstrumentation,
+                routingInstrumentation: sentry.routingInstrumentation,
             }),
         ],
 

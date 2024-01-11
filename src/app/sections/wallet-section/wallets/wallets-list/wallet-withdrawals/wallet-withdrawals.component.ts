@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
+import { ComponentChanges } from '@vality/ng-core';
 
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
-import { ComponentChanges } from '@dsh/type-utils';
 
 import { FetchWalletWithdrawalsService } from './services';
 

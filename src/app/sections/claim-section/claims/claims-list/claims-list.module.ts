@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ExtendedModule, FlexModule } from '@angular/flex-layout';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslocoModule } from '@ngneat/transloco';
+import { ExtendedModule, FlexModule } from 'ng-flex-layout';
 
 import { ApiModelTypesModule } from '@dsh/app/shared/pipes';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';

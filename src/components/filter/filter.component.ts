@@ -6,10 +6,10 @@ import {
     Input,
     Output,
     TemplateRef,
+    booleanAttribute,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { coerceBoolean } from 'coerce-property';
 import { map, pluck } from 'rxjs/operators';
 
 import { FilterDialogComponent } from './components/filter-dialog/filter-dialog.component';
@@ -25,9 +25,9 @@ export class FilterComponent {
     @Input() label: string;
     @Input() activeLabel: string;
     @Input() content: TemplateRef<unknown>;
-    @Input() @coerceBoolean active = false;
-    @Input() @coerceBoolean disabled = false;
-    @Input() @coerceBoolean noClearButton = false;
+    @Input({ transform: booleanAttribute }) active = false;
+    @Input({ transform: booleanAttribute }) disabled = false;
+    @Input({ transform: booleanAttribute }) noClearButton = false;
 
     @Output() save = new EventEmitter<void>();
     @Output() clear = new EventEmitter<void>();

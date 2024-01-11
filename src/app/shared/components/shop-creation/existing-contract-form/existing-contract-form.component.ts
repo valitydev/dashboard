@@ -72,7 +72,7 @@ export class ExistingContractFormComponent extends FormControlSuperclass<
     private getContract(contractID: Contract['id']): Observable<ExistingContractForm> {
         return this.contractsService.getContractByIDForParty({ contractID }).pipe(
             switchMap((contract: ExistingContractForm) => {
-                if (contract.contractor.entityType !== this.entityType)
+                if (contract.contractor.entityType !== this.entityType) {
                     return (
                         this.entityType === EntityTypeEnum.InternationalLegalEntity
                             ? this.transloco.selectTranslate<string>(
@@ -86,6 +86,7 @@ export class ExistingContractFormComponent extends FormControlSuperclass<
                                   'components',
                               )
                     ).pipe(switchMap((t) => throwError(new CommonError(t))));
+                }
                 return of(contract);
             }),
         );

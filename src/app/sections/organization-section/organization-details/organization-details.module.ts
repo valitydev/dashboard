@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TranslocoModule } from '@ngneat/transloco';
+import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { OrganizationManagementModule } from '@dsh/app/shared/services/organization-management/organization-management.module';
 import { IndicatorsModule } from '@dsh/components/indicators';

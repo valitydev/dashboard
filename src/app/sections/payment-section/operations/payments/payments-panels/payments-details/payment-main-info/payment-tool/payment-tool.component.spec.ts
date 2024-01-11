@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FlexModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
+import { FlexModule } from 'ng-flex-layout';
 
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
 import { DetailsItemModule } from '@dsh/components/layout';

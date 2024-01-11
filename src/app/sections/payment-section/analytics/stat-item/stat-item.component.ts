@@ -1,5 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { coerceBoolean } from 'coerce-property';
+import { Component, Input, OnChanges, SimpleChanges, booleanAttribute } from '@angular/core';
 
 import { SpinnerType } from '@dsh/components/indicators';
 
@@ -16,7 +15,7 @@ export class StatItemComponent implements OnChanges {
     @Input() statData: StatData;
     @Input() isLoading: boolean;
     @Input() error: Error;
-    @Input() @coerceBoolean hideCurrency = false;
+    @Input({ transform: booleanAttribute }) hideCurrency = false;
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes.statData?.currentValue) {

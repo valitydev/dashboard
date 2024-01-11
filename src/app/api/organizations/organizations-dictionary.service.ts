@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-import { ResourceScopeId } from '@vality/swag-organizations/lib/model/resource-scope-id';
-import { RoleId } from '@vality/swag-organizations/lib/model/role-id';
+import { ResourceScopeId, RoleId } from '@vality/swag-organizations';
 
 import { DictionaryService } from '../utils';
 

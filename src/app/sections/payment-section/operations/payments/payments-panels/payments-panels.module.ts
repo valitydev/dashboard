@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslocoModule } from '@ngneat/transloco';
+import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { BalanceModule } from '@dsh/app/shared/components/balance/balance.module';
 import { PaymentStatusComponent } from '@dsh/app/shared/components/payment-status';

@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { coerceBoolean } from 'coerce-property';
+import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
 
 @Component({
     selector: 'dsh-filter-button',
@@ -8,6 +7,6 @@ import { coerceBoolean } from 'coerce-property';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FilterButtonComponent {
-    @Input() @coerceBoolean active = false;
-    @Input() @coerceBoolean disabled = false;
+    @Input({ transform: booleanAttribute }) active = false;
+    @Input({ transform: booleanAttribute }) disabled = false;
 }

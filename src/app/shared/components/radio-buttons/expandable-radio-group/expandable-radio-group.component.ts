@@ -9,12 +9,10 @@ import {
     Output,
     QueryList,
     TemplateRef,
+    booleanAttribute,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { coerceBoolean } from 'coerce-property';
-
-import { isNumber } from '@dsh/app/shared/utils';
-import { Dict } from '@dsh/type-utils';
+import { isNumber } from 'lodash-es';
 
 import { ExpandableRadioGroupItemDirective } from './directives/expandable-radio-group-item/expandable-radio-group-item.directive';
 import {
@@ -34,8 +32,7 @@ export class ExpandableRadioGroupComponent implements OnInit, AfterContentInit {
     @Input() previewCount?: number;
     @Input() isOpen?: boolean;
 
-    @coerceBoolean
-    @Input()
+    @Input({ transform: booleanAttribute })
     anyResponse: boolean;
 
     @Output() opened = new EventEmitter<void>();
@@ -47,7 +44,7 @@ export class ExpandableRadioGroupComponent implements OnInit, AfterContentInit {
     @ContentChildren(ExpandableRadioGroupItemDirective)
     private itemsQuery: QueryList<ExpandableRadioGroupItemDirective>;
 
-    private itemsDict: Dict<TemplateRef<ExpandableRadioGroupItemDirective>>;
+    private itemsDict: Record<string, TemplateRef<ExpandableRadioGroupItemDirective>>;
 
     get isValidPreviewCount(): boolean {
         return isNumber(this.previewCount) && this.previewCount >= 0;
@@ -60,7 +57,7 @@ export class ExpandableRadioGroupComponent implements OnInit, AfterContentInit {
     ngAfterContentInit(): void {
         this.itemsDict = Array.from(this.itemsQuery).reduce(
             (
-                acc: Dict<TemplateRef<ExpandableRadioGroupItemDirective>>,
+                acc: Record<string, TemplateRef<ExpandableRadioGroupItemDirective>>,
                 item: ExpandableRadioGroupItemDirective,
             ) => {
                 acc[item.dshExpandableRadioGroupItem] = item.templateRef;

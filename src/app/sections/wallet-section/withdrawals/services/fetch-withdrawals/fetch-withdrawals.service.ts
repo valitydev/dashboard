@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { NotifyLogService } from '@vality/ng-core';
-import { InlineResponse2007, Withdrawal } from '@vality/swag-wallet';
+import { Withdrawal, ListWithdrawals200Response } from '@vality/swag-wallet';
 import { ListWithdrawalsRequestParams } from '@vality/swag-wallet/lib/api/withdrawals.service';
 import { Observable, of } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
@@ -10,8 +10,6 @@ import { WithdrawalsService } from '@dsh/app/api/wallet';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
-
-type WithdrawalsAndContinuationToken = InlineResponse2007;
 
 @Injectable()
 export class FetchWithdrawalsService extends PartialFetcher<
@@ -36,7 +34,7 @@ export class FetchWithdrawalsService extends PartialFetcher<
     protected fetch(
         params: Omit<ListWithdrawalsRequestParams, 'xRequestID' | 'limit'>,
         continuationToken?: string,
-    ): Observable<WithdrawalsAndContinuationToken> {
+    ): Observable<ListWithdrawals200Response> {
         return this.withdrawalsService
             .listWithdrawals({ ...params, limit: this.searchLimit, continuationToken })
             .pipe(

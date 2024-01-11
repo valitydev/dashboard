@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ComponentChanges } from '@vality/ng-core';
 import { Shop } from '@vality/swag-payments';
 import { combineLatest, defer, Observable } from 'rxjs';
 import { first, map, pluck } from 'rxjs/operators';
@@ -19,7 +20,6 @@ import {
     DateRangeWithPreset,
     Preset,
 } from '@dsh/components/date-range-filter';
-import { ComponentChanges } from '@dsh/type-utils';
 import { getFormValueChanges } from '@dsh/utils';
 
 import { RealmShopsService } from '../../services';
@@ -68,15 +68,17 @@ export class AnalyticsSearchFiltersComponent implements OnInit, OnChanges {
             .pipe(untilDestroyed(this))
             .subscribe((filters) => this.filterValuesChanged.next(filters as unknown as Filters));
         this.currencies$.pipe(first(), untilDestroyed(this)).subscribe((currencies) => {
-            if (!this.form.value.currency)
+            if (!this.form.value.currency) {
                 this.form.patchValue({
                     currency: currencies.includes('RUB') ? 'RUB' : currencies[0],
                 });
+            }
         });
     }
 
     ngOnChanges({ initParams }: ComponentChanges<AnalyticsSearchFiltersComponent>): void {
-        if (initParams?.firstChange && initParams.currentValue)
+        if (initParams?.firstChange && initParams.currentValue) {
             this.form.patchValue(initParams.currentValue as unknown);
+        }
     }
 }

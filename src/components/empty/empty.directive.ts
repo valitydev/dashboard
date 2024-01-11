@@ -9,8 +9,7 @@ import {
 } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-
-import { ComponentChanges } from '@dsh/type-utils';
+import { ComponentChanges } from '@vality/ng-core';
 
 import { TextComponent } from './components/text/text.component';
 

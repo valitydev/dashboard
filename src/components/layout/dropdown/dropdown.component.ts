@@ -8,8 +8,8 @@ import {
     Output,
     TemplateRef,
     ViewChild,
+    booleanAttribute,
 } from '@angular/core';
-import { coerceBoolean } from 'coerce-property';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
@@ -33,7 +33,7 @@ export class DropdownComponent implements OnInit, OnDestroy {
      */
     @Input() width?: number | string;
     @Input() disableClose = false;
-    @Input() @coerceBoolean hasArrow = true;
+    @Input({ transform: booleanAttribute }) hasArrow = true;
     @Input() position: 'left' | 'center' = 'center';
     @Input() offset = '15px';
 

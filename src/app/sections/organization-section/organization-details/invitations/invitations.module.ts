@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexModule, GridModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -9,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { TranslocoModule } from '@ngneat/transloco';
+import { FlexModule, GridModule } from 'ng-flex-layout';
 
 import { DialogModule } from '@dsh/app/shared/components/dialog';
 import { OrganizationRolesModule } from '@dsh/app/shared/components/organization-roles';

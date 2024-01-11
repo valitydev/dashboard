@@ -80,7 +80,7 @@ export class ExistingBankAccountComponent extends FormControlSuperclass<
             })
             .pipe(
                 switchMap((payoutTool) => {
-                    if (payoutTool.details.detailsType !== this.bankAccountType)
+                    if (payoutTool.details.detailsType !== this.bankAccountType) {
                         return (
                             this.bankAccountType === 'PayoutToolDetailsInternationalBankAccount'
                                 ? this.transloco.selectTranslate(
@@ -94,6 +94,7 @@ export class ExistingBankAccountComponent extends FormControlSuperclass<
                                       'components',
                                   )
                         ).pipe(switchMap((t) => throwError(new CommonError(t))));
+                    }
                     return of(payoutTool);
                 }),
             );

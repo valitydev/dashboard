@@ -1,4 +1,4 @@
-<svg width="30" height="10" viewBox="0 0 30 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg fill="none" height="10" viewBox="0 0 30 10" width="30" xmlns="http://www.w3.org/2000/svg">
     <title>VISA</title>
     <g clip-path="url(#ID-0__23da536f-6c4e-48d1-b758-6e57c80c2294)">
         <path d="M13 9.85556H10.5698L12.0899 0.175293H14.5199L13 9.85556Z" fill="#00579F" />
@@ -21,7 +21,7 @@
     </g>
     <defs>
         <clipPath id="ID-0__23da536f-6c4e-48d1-b758-6e57c80c2294">
-            <rect width="30" height="10" fill="white" />
+            <rect fill="white" height="10" width="30" />
         </clipPath>
     </defs>
 </svg>

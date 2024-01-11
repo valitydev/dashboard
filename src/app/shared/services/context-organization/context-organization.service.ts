@@ -29,7 +29,7 @@ export class ContextOrganizationService {
         this.organizationsService.getContext().pipe(
             map(({ organizationId }) => organizationId),
             catchError((err) => {
-                if (err instanceof HttpErrorResponse && err.status === 404)
+                if (err instanceof HttpErrorResponse && err.status === 404) {
                     return this.organizationsService.listOrgMembership({ limit: 1 }).pipe(
                         switchMap(({ result }) =>
                             result[0] ? of(result[0]) : this.createOrganization(),
@@ -37,6 +37,7 @@ export class ContextOrganizationService {
                         tap(({ id }) => this.switchOrganization(id)),
                         switchMap(() => EMPTY),
                     );
+                }
                 console.error(err);
                 return EMPTY;
             }),

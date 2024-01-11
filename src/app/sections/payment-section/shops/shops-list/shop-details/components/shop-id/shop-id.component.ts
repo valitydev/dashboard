@@ -16,11 +16,12 @@ export class ShopIdComponent {
     ) {}
 
     copied(isCopied: boolean): void {
-        if (isCopied)
+        if (isCopied) {
             this.log.success(this.transloco.selectTranslate('shared.copied', null, 'components'));
-        else
+        } else {
             this.log.success(
                 this.transloco.selectTranslate('shared.copyFailed', null, 'components'),
             );
+        }
     }
 }

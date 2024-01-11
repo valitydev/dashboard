@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormGroup } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
 import { Claim } from '@vality/swag-claim-management';
+import { FlexLayoutModule } from 'ng-flex-layout';
 import { of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';

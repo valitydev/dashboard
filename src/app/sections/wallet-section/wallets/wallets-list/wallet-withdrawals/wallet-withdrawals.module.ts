@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexModule, GridModule } from '@angular/flex-layout';
 import { MatDividerModule } from '@angular/material/divider';
 import { TranslocoModule } from '@ngneat/transloco';
+import { FlexModule, GridModule } from 'ng-flex-layout';
 
 import { ApiModelTypesModule, AmountCurrencyModule } from '@dsh/app/shared';
 import { ButtonModule } from '@dsh/components/buttons';

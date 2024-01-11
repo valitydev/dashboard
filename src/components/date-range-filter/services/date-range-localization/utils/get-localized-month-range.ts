@@ -21,6 +21,8 @@ export function getLocalizedMonthRange(
     const currentYear = isCurrentYear(dateRange);
     const startStr = getLocalizedDate(dateRange.start, { m: true, y: !currentYear }, locale);
     const endStr = getLocalizedDate(dateRange.end, { m: true, y: !currentYear }, locale, true);
-    if (isMonth(dateRange)) return capitalizeFirstLetter(endStr);
+    if (isMonth(dateRange)) {
+        return capitalizeFirstLetter(endStr);
+    }
     return `${t.from} ${startStr} ${t.to} ${endStr}`;
 }

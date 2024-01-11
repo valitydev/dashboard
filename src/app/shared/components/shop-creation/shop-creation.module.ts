@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
 import { TranslocoModule } from '@ngneat/transloco';
+import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { ActionsModule } from '@dsh/app/shared/components/actions';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';

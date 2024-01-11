@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { PaymentFlow, PaymentFlowHold, PaymentStatus } from '@vality/swag-anapi-v2';
+import { FlexLayoutModule } from 'ng-flex-layout';
 import { of } from 'rxjs';
 import { deepEqual, instance, mock, verify, when } from 'ts-mockito';
 

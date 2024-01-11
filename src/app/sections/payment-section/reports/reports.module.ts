@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@ngneat/transloco';
+import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { ButtonModule } from '@dsh/components/buttons';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';

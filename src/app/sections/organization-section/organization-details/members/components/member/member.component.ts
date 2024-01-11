@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ComponentChanges } from '@vality/ng-core';
 import { Member, Organization } from '@vality/swag-organizations';
 import { filter, switchMap } from 'rxjs/operators';
 
@@ -17,7 +18,6 @@ import { DialogConfig, DIALOG_CONFIG } from '@dsh/app/sections/tokens';
 import { ErrorService, NotificationService } from '@dsh/app/shared';
 import { OrganizationManagementService } from '@dsh/app/shared/services/organization-management/organization-management.service';
 import { ConfirmActionDialogComponent, ConfirmActionDialogResult } from '@dsh/components/popups';
-import { ComponentChanges } from '@dsh/type-utils';
 import { ignoreBeforeCompletion } from '@dsh/utils';
 
 import { EditRolesDialogComponent } from '../edit-roles-dialog/edit-roles-dialog.component';

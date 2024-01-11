@@ -6,10 +6,9 @@ import { map, pluck, shareReplay, switchMap } from 'rxjs/operators';
 import { MembersService } from '@dsh/app/api/organizations';
 import { SHARE_REPLAY_CONF } from '@dsh/app/custom-operators';
 import { KeycloakTokenInfoService } from '@dsh/app/shared';
-import { Initializable } from '@dsh/app/shared/types';
 
 @Injectable()
-export class OrganizationManagementService implements Initializable {
+export class OrganizationManagementService {
     members$: Observable<Member[]> = defer(() => this.organization$).pipe(
         switchMap(({ id }) => this.membersService.listOrgMembers({ orgId: id })),
         pluck('result'),

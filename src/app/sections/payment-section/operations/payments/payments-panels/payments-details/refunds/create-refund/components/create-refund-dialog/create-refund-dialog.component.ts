@@ -3,7 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslocoService } from '@ngneat/transloco';
-import { FormGroupByValue, NotifyLogService } from '@vality/ng-core';
+import { FormGroupByValue, NotifyLogService, toMajor, toMinor } from '@vality/ng-core';
 import { Refund, RefundParams } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
 import isNil from 'lodash-es/isNil';
@@ -11,7 +11,6 @@ import { Observable } from 'rxjs';
 import { map, shareReplay, take, withLatestFrom } from 'rxjs/operators';
 
 import { amountValidator } from '@dsh/components/form-controls';
-import { toMajor, toMinor } from '@dsh/utils';
 
 import { RefundsService } from '../../services/refunds/refunds.service';
 import { Balance } from '../../types/balance';
@@ -174,12 +173,12 @@ export class CreateRefundDialogComponent implements OnInit {
                           'payment-section',
                       )
                     : err.error.code === 'invoicePaymentAmountExceeded'
-                    ? this.transloco.selectTranslate(
-                          `paymentDetails.refunds.errors.invoicePaymentAmountExceeded`,
-                          null,
-                          'payment-section',
-                      )
-                    : undefined;
+                      ? this.transloco.selectTranslate(
+                            `paymentDetails.refunds.errors.invoicePaymentAmountExceeded`,
+                            null,
+                            'payment-section',
+                        )
+                      : undefined;
         }
         this.log.error(err, message);
     }

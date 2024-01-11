@@ -12,7 +12,9 @@ export class ClaimStatusesLabelPipe implements PipeTransform {
     constructor(private translocoService: TranslocoService) {}
 
     transform(value: StatusModificationUnit.StatusEnum): Observable<string> {
-        if (!value) return of('');
+        if (!value) {
+            return of('');
+        }
         return this.optionLabels[OPTION_LABELS[value]];
     }
 

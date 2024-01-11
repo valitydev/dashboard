@@ -1,10 +1,8 @@
-import { MemberRole, RoleId } from '@vality/swag-organizations';
-
-import { PartialReadonly } from '@dsh/type-utils';
+import { RoleId } from '@vality/swag-organizations';
 
 import { RoleGroup } from '../types/role-group';
 
-export function getRolesByGroup(group: RoleGroup): PartialReadonly<MemberRole>[] {
+export function getRolesByGroup(group: RoleGroup): MemberRoleNoId[] {
     if (group.id === RoleId.Administrator) {
         return [{ roleId: group.id }];
     }

@@ -4,8 +4,8 @@ import {
     HostBinding,
     Input,
     ViewEncapsulation,
+    booleanAttribute,
 } from '@angular/core';
-import { coerceBoolean } from 'coerce-property';
 
 @Component({
     selector: 'dsh-menu-item',
@@ -15,8 +15,9 @@ import { coerceBoolean } from 'coerce-property';
     encapsulation: ViewEncapsulation.None,
 })
 export class MenuItemComponent {
-    @Input() @coerceBoolean @HostBinding('class.dsh-menu-item-header') header = false;
-    @Input() @coerceBoolean @HostBinding('class.dsh-menu-item-link') link = true;
+    @Input({ transform: booleanAttribute }) @HostBinding('class.dsh-menu-item-header') header =
+        false;
+    @Input({ transform: booleanAttribute }) @HostBinding('class.dsh-menu-item-link') link = true;
 
     @HostBinding('class.dsh-menu-item') dshMenuItemClass = true;
 }
