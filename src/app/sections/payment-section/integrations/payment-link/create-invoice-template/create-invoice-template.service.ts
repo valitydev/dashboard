@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { toMinor } from '@vality/ng-core';
 import {
     InvoiceLineTaxMode,
     InvoiceLineTaxVAT,
@@ -42,7 +43,6 @@ import {
     SHARE_REPLAY_CONF,
 } from '@dsh/app/custom-operators';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
-import { toMinor } from '@dsh/utils';
 
 export const WITHOUT_VAT = Symbol('without VAT');
 

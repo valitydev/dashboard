@@ -1,7 +1,6 @@
+import { toMinor } from '@vality/ng-core';
 import { PayoutParams } from '@vality/swag-payments';
 import { v4 as uuid } from 'uuid';
-
-import { toMinor } from '../../../../../utils';
 
 export const toPayoutParams = (
     { shopID, payoutToolID, amount }: { shopID: string; payoutToolID: string; amount: number },
