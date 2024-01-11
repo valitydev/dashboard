@@ -19,15 +19,19 @@ export class ClaimsService extends createApi(ApiClaimsService, [PartyIdExtension
     ) => {
         return this.requestReviewClaimByID(params).pipe(
             catchError((err) => {
-                if (err instanceof HttpErrorResponse && err.error?.code === 'invalidClaimRevision')
-                    {return this.getClaimByID({ claimID: params.claimID }).pipe(
+                if (
+                    err instanceof HttpErrorResponse &&
+                    err.error?.code === 'invalidClaimRevision'
+                ) {
+                    return this.getClaimByID({ claimID: params.claimID }).pipe(
                         switchMap((claim) =>
                             this.requestReviewClaimByID({
                                 ...params,
                                 claimRevision: claim.revision,
                             }),
                         ),
-                    );}
+                    );
+                }
                 return throwError(err);
             }),
         );
