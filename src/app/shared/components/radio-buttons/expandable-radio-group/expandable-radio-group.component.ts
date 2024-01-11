@@ -12,8 +12,7 @@ import {
     booleanAttribute,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
-
-import { isNumber } from '@dsh/app/shared/utils';
+import { isNumber } from 'lodash-es';
 
 import { ExpandableRadioGroupItemDirective } from './directives/expandable-radio-group-item/expandable-radio-group-item.directive';
 import {

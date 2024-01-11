@@ -3,6 +3,7 @@ import { TranslocoService } from '@ngneat/transloco';
 import { NotifyLogService } from '@vality/ng-core';
 import { Deposit } from '@vality/swag-wallet';
 import { ListDepositsRequestParams } from '@vality/swag-wallet/lib/api/deposits.service';
+import { isNumber } from 'lodash-es';
 import { Observable, of } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 
@@ -10,7 +11,6 @@ import { DepositsService } from '@dsh/app/api/wallet';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
-import { isNumber } from '@dsh/app/shared/utils';
 
 @Injectable()
 export class FetchDepositsService extends PartialFetcher<

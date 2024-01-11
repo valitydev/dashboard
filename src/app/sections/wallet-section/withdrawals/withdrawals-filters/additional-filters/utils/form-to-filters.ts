@@ -1,4 +1,5 @@
-import { isNumber } from '@dsh/app/shared/utils';
+import { isNumber } from 'lodash-es';
+
 import { removeDictEmptyFields } from '@dsh/utils';
 
 import { AdditionalFilters, AdditionalFiltersForm } from '../types';
