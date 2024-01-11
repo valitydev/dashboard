@@ -8,8 +8,12 @@ import { Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
 function renderSubErrorMessage(error?: string, sub?: string) {
-    if (!error) {return sub;}
-    if (!sub) {return error;}
+    if (!error) {
+        return sub;
+    }
+    if (!sub) {
+        return error;
+    }
     return `${error} -> ${sub}`;
 }
 
@@ -45,12 +49,12 @@ export class PaymentErrorMessagePipe implements PipeTransform {
                         currMessage && typeof currMessage !== 'object'
                             ? currMessage
                             : error.code === 'authorization_failed'
-                            ? getErrorLabel(curError)
-                            : this.t.translate(
-                                  'paymentErrorMessage.unknownError',
-                                  null,
-                                  'payment-section',
-                              );
+                              ? getErrorLabel(curError)
+                              : this.t.translate(
+                                    'paymentErrorMessage.unknownError',
+                                    null,
+                                    'payment-section',
+                                );
                     errorsMessage = renderSubErrorMessage(errorsMessage, message);
 
                     curError = subError;

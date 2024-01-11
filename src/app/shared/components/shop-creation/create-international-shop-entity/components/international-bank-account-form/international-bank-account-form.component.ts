@@ -31,7 +31,10 @@ export class InternationalBankAccountFormComponent extends FormGroupSuperclass<
 
     toggleCorrespondentPayoutTool(): void {
         const { correspondentPayoutTool } = this.control.controls;
-        if (correspondentPayoutTool.disabled) {correspondentPayoutTool.enable();}
-        else {correspondentPayoutTool.disable();}
+        if (correspondentPayoutTool.disabled) {
+            correspondentPayoutTool.enable();
+        } else {
+            correspondentPayoutTool.disable();
+        }
     }
 }

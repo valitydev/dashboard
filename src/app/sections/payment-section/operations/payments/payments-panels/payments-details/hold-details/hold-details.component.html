@@ -17,8 +17,8 @@
                     flowHold.onHoldExpiration === onHoldExpirationEnum.Capture
                         ? t('holdWithCapture')
                         : flowHold.onHoldExpiration === onHoldExpirationEnum.Cancel
-                        ? t('holdWithCancel')
-                        : ''
+                          ? t('holdWithCancel')
+                          : ''
                 }}
                 {{ t('activeHoldTutorial') }}
             </ng-container>
@@ -27,8 +27,8 @@
                     payment.status === statusEnum.Captured
                         ? t('capturedHoldMessage')
                         : payment.status === statusEnum.Cancelled
-                        ? t('cancelledHoldMessage')
-                        : ''
+                          ? t('cancelledHoldMessage')
+                          : ''
                 }}
             </ng-template>
         </div>

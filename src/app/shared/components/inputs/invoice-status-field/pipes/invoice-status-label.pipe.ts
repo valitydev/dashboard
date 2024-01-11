@@ -10,7 +10,9 @@ export class InvoiceStatusLabelPipe implements PipeTransform {
     constructor(private anapiDictionaryService: AnapiDictionaryService) {}
 
     transform(value: InvoiceStatus.StatusEnum): Observable<string> {
-        if (!value) {return of('');}
+        if (!value) {
+            return of('');
+        }
         return this.anapiDictionaryService.invoiceStatus$.pipe(map((d) => d[value]));
     }
 }

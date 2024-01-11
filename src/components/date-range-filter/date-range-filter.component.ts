@@ -43,12 +43,13 @@ export class DateRangeFilterComponent extends FilterSuperclass<
     presets: Preset[] = Object.values(Preset);
     activeLabel$ = this.savedValue$.pipe(
         switchMap(({ dateRange, preset }) => {
-            if (!preset)
-                {return this.transloco.selectTranslate(
+            if (!preset) {
+                return this.transloco.selectTranslate(
                     'dateRangeFilter.label',
                     null,
                     'core-components',
-                );}
+                );
+            }
             return preset === Preset.Custom
                 ? this.dateRangeLocalizationService.getLocalizedString(dateRange)
                 : this.presetLabels$.pipe(map((d) => d[preset]));
@@ -131,7 +132,9 @@ export class DateRangeFilterComponent extends FilterSuperclass<
             const { start, end } = createDateRangeByPreset(dateRange.preset);
             return { dateRange: new MatDateRange(start, end), preset: dateRange.preset };
         }
-        if (!dateRange?.start || !dateRange?.end) {return this.empty;}
+        if (!dateRange?.start || !dateRange?.end) {
+            return this.empty;
+        }
         return {
             dateRange: new MatDateRange(dateRange.start, dateRange.end),
             preset: Preset.Custom,

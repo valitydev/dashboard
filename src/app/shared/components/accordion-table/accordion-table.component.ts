@@ -56,8 +56,12 @@ export class AccordionTableComponent<T extends object> {
     constructor(private breakpointObserver: BreakpointObserver) {}
 
     isHided(hide: Column<T>['hide']) {
-        if (hide === true) {return of(true);}
-        if (!hide) {return of(false);}
+        if (hide === true) {
+            return of(true);
+        }
+        if (!hide) {
+            return of(false);
+        }
         const idx = HIDED_BREAKPOINTS.findIndex((h) => h === hide);
         return this.breakpointObserver.observe(HIDED_BREAKPOINTS.slice(0, idx)).pipe(
             map((s) => s.matches),

@@ -41,7 +41,9 @@ export class LanguageService {
     private async set(language: Language) {
         this.active = language;
         registerLocaleData(ANGULAR_LOCALE_DATA[language], language);
-        if (language !== 'en') {await import(`moment/locale/${language}`);}
+        if (language !== 'en') {
+            await import(`moment/locale/${language}`);
+        }
         moment.locale(language);
         this.settingsService.setLocalStorageItem(LanguageService.key, language);
         this.transloco.setActiveLang(language);

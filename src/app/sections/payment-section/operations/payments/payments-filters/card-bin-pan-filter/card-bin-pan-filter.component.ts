@@ -44,8 +44,12 @@ export class CardBinPanFilterComponent extends FilterSuperclass<CardBinPan> {
 
     protected innerToOuterValue(inner: CardBinPan): CardBinPan {
         const result: CardBinPan = {};
-        if (inner.bin) {result.bin = inner.bin;}
-        if (inner.pan) {result.pan = inner.pan;}
+        if (inner.bin) {
+            result.bin = inner.bin;
+        }
+        if (inner.pan) {
+            result.pan = inner.pan;
+        }
         return result;
     }
 }

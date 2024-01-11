@@ -17,11 +17,12 @@ export class WebhookApiKeyComponent {
     ) {}
 
     copied(isCopied: boolean): void {
-        if (isCopied)
-            {this.log.success(this.transloco.selectTranslate('shared.copied', null, 'components'));}
-        else
-            {this.log.success(
+        if (isCopied) {
+            this.log.success(this.transloco.selectTranslate('shared.copied', null, 'components'));
+        } else {
+            this.log.success(
                 this.transloco.selectTranslate('shared.copyFailed', null, 'components'),
-            );}
+            );
+        }
     }
 }

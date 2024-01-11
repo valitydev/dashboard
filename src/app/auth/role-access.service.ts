@@ -25,7 +25,9 @@ export class RoleAccessService {
         roleAccessNames: RoleAccessName[],
         type: 'every' | 'some' = 'every',
     ): Observable<boolean> {
-        if (!roleAccessNames.length) {return of(true);}
+        if (!roleAccessNames.length) {
+            return of(true);
+        }
         return this.contextOrganizationService.member$.pipe(
             map((member) => {
                 const memberRoles = member.roles.map((r) => r.roleId);

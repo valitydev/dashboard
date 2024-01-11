@@ -3,7 +3,10 @@ package-lock.json
 node_modules
 dist
 coverage
-schemes
-.vscode
-.idea
-.angular
+
+.*
+_.*
+LICENSE
+Dockerfile
+*.conf
+*.ico

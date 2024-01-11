@@ -10,7 +10,9 @@ export class RefundStatusLabelPipe implements PipeTransform {
     constructor(private anapiDictionaryService: AnapiDictionaryService) {}
 
     transform(value: RefundStatus.StatusEnum): Observable<string> {
-        if (!value) {return of('');}
+        if (!value) {
+            return of('');
+        }
         return this.anapiDictionaryService.refundStatus$.pipe(map((d) => d[value]));
     }
 }

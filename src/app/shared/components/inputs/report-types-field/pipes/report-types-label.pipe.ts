@@ -10,7 +10,9 @@ export class ReportTypesLabelPipe implements PipeTransform {
     constructor(private anapiDictionaryService: AnapiDictionaryService) {}
 
     transform(value: Report.ReportTypeEnum): Observable<string> {
-        if (!value) {return of('');}
+        if (!value) {
+            return of('');
+        }
         return this.anapiDictionaryService.reportType$.pipe(map((d) => d[value]));
     }
 }

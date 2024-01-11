@@ -14,10 +14,17 @@ export function getLocalizedDateRange(
     t: DateRangeTranslations,
     locale: string,
 ): string {
-    if (!dateRange.start && !dateRange.end) {return null;}
-    if (isYearsRange(dateRange)) {return getLocalizedYearRange(dateRange, t);}
-    else if (isMonthsRange(dateRange)) {return getLocalizedMonthRange(dateRange, t, locale);}
-    else if (isCurrentWeek(dateRange)) {return t.currentWeek;}
-    else if (isToday(dateRange)) {return t.today;}
+    if (!dateRange.start && !dateRange.end) {
+        return null;
+    }
+    if (isYearsRange(dateRange)) {
+        return getLocalizedYearRange(dateRange, t);
+    } else if (isMonthsRange(dateRange)) {
+        return getLocalizedMonthRange(dateRange, t, locale);
+    } else if (isCurrentWeek(dateRange)) {
+        return t.currentWeek;
+    } else if (isToday(dateRange)) {
+        return t.today;
+    }
     return getLocalizedDayRange(dateRange, t, locale);
 }
