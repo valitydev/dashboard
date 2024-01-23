@@ -48,7 +48,7 @@
     "@vality/swag-organizations": "1.0.0",
     "@vality/swag-payments": "0.1.3-77c86a5.0",
     "@vality/swag-url-shortener": "0.1.0",
-    "@vality/swag-wallet": "0.1.3-099fc69.0",
+    "@vality/swag-wallet": "0.1.3-e6d0c88.0",
     "angular-file": "^3.0.1",
     "apexcharts": "^3.19.2",
     "css-element-queries": "1.2.3",
