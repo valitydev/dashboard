@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { APP_INITIALIZER, ErrorHandler, LOCALE_ID, NgModule, isDevMode } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import {
     DateAdapter,
     MAT_DATE_FORMATS,
@@ -9,6 +10,7 @@ import {
 } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatMenuModule } from '@angular/material/menu';
 import {
     MAT_MOMENT_DATE_ADAPTER_OPTIONS,
     MAT_MOMENT_DATE_FORMATS,
@@ -17,7 +19,7 @@ import {
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
-import { TranslocoModule, provideTransloco } from '@ngneat/transloco';
+import { TranslocoModule, provideTransloco, TRANSLOCO_SCOPE } from '@ngneat/transloco';
 import * as sentry from '@sentry/angular-ivy';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
@@ -29,7 +31,7 @@ import { WalletModule } from '@dsh/app/api/wallet';
 import { ErrorModule } from '@dsh/app/shared/services';
 import { QUERY_PARAMS_SERIALIZERS } from '@dsh/app/shared/services/query-params/utils/query-params-serializers';
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
-import { SpinnerModule } from '@dsh/components/indicators';
+import { SpinnerModule, BootstrapIconModule } from '@dsh/components/indicators';
 
 import { ENV, environment } from '../environments';
 
@@ -72,6 +74,9 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         WalletModule,
         SpinnerModule,
         ApiKeysModule,
+        MatButtonModule,
+        BootstrapIconModule,
+        MatMenuModule,
     ],
     providers: [
         LanguageService,
@@ -135,6 +140,7 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
             provide: QUERY_PARAMS_SERIALIZERS,
             useValue: [createDateRangeWithPresetSerializer()],
         },
+        { provide: TRANSLOCO_SCOPE, useValue: 'app' },
     ],
     bootstrap: [AppComponent],
 })
