@@ -32,7 +32,7 @@
                 <button
                     *ngFor="let language of languages"
                     mat-menu-item
-                    (click)="languageService.set(language)"
+                    (click)="setLanguage(language)"
                 >
                     {{ t('language.' + language) }}
                 </button>
