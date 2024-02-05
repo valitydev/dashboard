@@ -175,6 +175,7 @@
     "withdrawals": {
         "details": {
             "error": "Ошибка",
+            "externalId": "External ID",
             "fee": "Комиссия",
             "status": "Статус",
             "wallet": "Кошелек"
