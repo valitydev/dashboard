@@ -9,7 +9,7 @@
                 *ngFor="let column of columns"
                 [fxFlex]="column.width ?? true"
                 [fxHide]="isHided(column.hide) | async"
-                >{{ column.label | vPossiblyAsync }}
+                >{{ column.label | async }}
             </dsh-row-header-label>
         </dsh-row>
         <dsh-accordion
@@ -39,7 +39,7 @@
                             </ng-template>
                             <ng-template ngSwitchCase="tag">
                                 <dsh-status
-                                    *ngIf="column.typeParameters.label | vPossiblyAsync as tagLabel"
+                                    *ngIf="column.typeParameters.label | async as tagLabel"
                                     [color]="column.typeParameters.color[value]"
                                     >{{ tagLabel[value] }}</dsh-status
                                 >
@@ -57,7 +57,7 @@
                         >
                             <div fxLayout fxLayoutAlign="space-between" fxLayoutGap="24px">
                                 <div *ngFor="let header of contentHeader">
-                                    {{ header.label(item) | vPossiblyAsync }}
+                                    {{ header.label(item) | async }}
                                 </div>
                             </div>
                         </dsh-accordion-item-content-header>

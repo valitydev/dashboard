@@ -54,7 +54,7 @@
             "to": "End of the period"
         },
         "createdAt": "Created at",
-        "dateRangeDescription": "Reporting period",
+        "dateRangeDescription": "Report creation period",
         "errors": {
             "downloadReportError": "Failed to load documents",
             "identityNotSpecified": "Wallet holder not specified"
