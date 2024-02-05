@@ -4,6 +4,7 @@
         [activeLabel]="activeLabel$ | async"
         [content]="content"
         [label]="t('label')"
+        [title]="isActive ? (activeLabel$ | async) : ''"
         (clear)="clear()"
         (save)="save()"
     >
