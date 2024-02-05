@@ -12,21 +12,3 @@ export const isMonthsRange = ({ start, end }: DateRange<Moment>): boolean =>
 export const isMonth = (dateRange: DateRange<Moment>): boolean =>
     isMonthsRange(dateRange) && dateRange.start.isSame(dateRange.end, 'month');
 export const isDay = ({ start, end }: DateRange<Moment>): boolean => start.isSame(end, 'days');
-
-export enum DateRangeType {
-    Years,
-    Year,
-    Months,
-    Month,
-    Days,
-    Day,
-}
-
-export const getDateRangeType = (dateRange: DateRange<Moment>): DateRangeType => {
-    if (isYearsRange(dateRange)) {
-        return isYear(dateRange) ? DateRangeType.Year : DateRangeType.Years;
-    } else if (isMonthsRange(dateRange)) {
-        return isMonth(dateRange) ? DateRangeType.Month : DateRangeType.Months;
-    }
-    return isDay(dateRange) ? DateRangeType.Day : DateRangeType.Days;
-};
