@@ -1,8 +1,29 @@
-<dsh-home>
+<dsh-home *transloco="let t; scope: 'app'; read: 'app'">
     <dsh-sections *ngIf="bootstrapped$ | async; else spinner"></dsh-sections>
     <ng-template #spinner>
         <div fxFlexAlign="center" fxLayout="row">
             <dsh-spinner style="margin: auto"></dsh-spinner>
         </div>
     </ng-template>
+    <div *ngIf="isDev" style="display: flex; justify-content: center">
+        <div
+            [matMenuTriggerFor]="menu"
+            class="dsh-body-2"
+            style="cursor: pointer; display: flex; gap: 8px; align-items: center"
+        >
+            <dsh-bi icon="globe" size="sm"></dsh-bi>
+            <!-- t(language.en) -->
+            <!-- t(language.ru) -->
+            {{ t('language.' + languageService.active) }}
+        </div>
+        <mat-menu #menu="matMenu">
+            <button
+                *ngFor="let language of languageService.list"
+                mat-menu-item
+                (click)="languageService.set(language)"
+            >
+                {{ t('language.' + language) }}
+            </button>
+        </mat-menu>
+    </div>
 </dsh-home>

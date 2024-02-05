@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, isDevMode } from '@angular/core';
 import * as sentry from '@sentry/angular-ivy';
 import { first } from 'rxjs/operators';
+
+import { LanguageService } from '@dsh/app/language';
 
 import { BootstrapService } from './bootstrap.service';
 import { ContextOrganizationService } from './shared';
@@ -12,10 +14,12 @@ import { ContextOrganizationService } from './shared';
 })
 export class AppComponent implements OnInit {
     bootstrapped$ = this.bootstrapService.bootstrapped$;
+    isDev = isDevMode();
 
     constructor(
         private bootstrapService: BootstrapService,
         private contextOrganizationService: ContextOrganizationService,
+        public languageService: LanguageService,
     ) {}
 
     ngOnInit(): void {

@@ -175,6 +175,7 @@
     "withdrawals": {
         "details": {
             "error": "Error",
+            "externalId": "External ID",
             "fee": "Fee",
             "status": "Status",
             "wallet": "Wallet"

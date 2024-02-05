@@ -21,7 +21,10 @@
     <dsh-details-item [title]="t('wallet')">
         {{ withdrawal.wallet | walletDetails }}
     </dsh-details-item>
-    <dsh-details-item *ngIf="withdrawal.failure" [title]="t('error')" gdColumn="1/-1">
+    <dsh-details-item *ngIf="withdrawal.externalID" [title]="t('externalId')">
+        {{ withdrawal.externalID }}
+    </dsh-details-item>
+    <dsh-details-item *ngIf="withdrawal.failure" [title]="t('error')">
         <div
             *transloco="
                 let errors;

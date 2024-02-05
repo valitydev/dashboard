@@ -11,6 +11,7 @@ import { LANGUAGES, Language } from './languages';
 @Injectable({ providedIn: 'root' })
 export class LanguageService {
     active: Language;
+    list = LANGUAGES;
 
     private static readonly key = 'language';
 
@@ -20,9 +21,7 @@ export class LanguageService {
     ) {}
 
     async init() {
-        // TODO: Use after language change support starts
-        // const storageLang = this.settingsService.getLocalStorageItem(LanguageService.key);
-        const storageLang = null;
+        const storageLang = this.settingsService.getLocalStorageItem(LanguageService.key);
         let language: Language;
         if (Array.from<string>(LANGUAGES).includes(storageLang)) {
             language = storageLang as Language;
@@ -37,8 +36,7 @@ export class LanguageService {
         await this.set(language);
     }
 
-    // TODO: Make it public after language change support starts
-    private async set(language: Language) {
+    async set(language: Language) {
         this.active = language;
         registerLocaleData(ANGULAR_LOCALE_DATA[language], language);
         if (language !== 'en') {
