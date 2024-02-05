@@ -8,7 +8,10 @@ import { SpinnerType } from '@dsh/components/indicators';
 import { PaymentInstitutionRealmService } from '../services';
 
 import { Filters } from './analytics-search-filters/analytics-search-filters.component';
-import { filtersToSearchParams } from './utils/filters-to-search-params';
+import {
+    filtersToSearchParams,
+    filtersToBarChartSearchParams,
+} from './utils/filters-to-search-params';
 
 @Component({
     templateUrl: 'analytics.component.html',
@@ -18,8 +21,11 @@ export class AnalyticsComponent {
 
     filters$ = new ReplaySubject<Filters>();
 
-    searchParams$ = combineLatest([this.filters$, this.realmService.realm$]).pipe(
+    accurateSearchParams$ = combineLatest([this.filters$, this.realmService.realm$]).pipe(
         map(([filters, realm]) => filtersToSearchParams(filters, realm)),
+    );
+    barChartSearchParams$ = combineLatest([this.filters$, this.realmService.realm$]).pipe(
+        map(([filters, realm]) => filtersToBarChartSearchParams(filters, realm)),
     );
 
     params$ = this.qp.params$;
