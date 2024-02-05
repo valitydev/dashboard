@@ -16,6 +16,10 @@ export class AppComponent implements OnInit {
     bootstrapped$ = this.bootstrapService.bootstrapped$;
     isDev = isDevMode();
 
+    get languages() {
+        return this.languageService.list.filter((l) => l !== this.languageService.active);
+    }
+
     constructor(
         private bootstrapService: BootstrapService,
         private contextOrganizationService: ContextOrganizationService,
