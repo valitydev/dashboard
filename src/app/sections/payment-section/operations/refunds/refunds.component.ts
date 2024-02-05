@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { NotifyLogService } from '@vality/ng-core';
-
-import { QueryParamsService } from '@dsh/app/shared/services/query-params';
+import { NotifyLogService, QueryParamsService } from '@vality/ng-core';
 
 import { RealmMixService, RealmShopsService } from '../../services';
 
@@ -58,8 +56,8 @@ export class RefundsComponent implements OnInit {
         const { dateRange, ...params } = p;
         this.realmMixinService.mix({
             realm: null,
-            fromTime: dateRange.start.utc().format(),
-            toTime: dateRange.end.utc().format(),
+            fromTime: dateRange.start.clone().utc().format(),
+            toTime: dateRange.end.clone().utc().format(),
             ...params,
         });
     }

@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { TranslocoModule, provideTransloco, TRANSLOCO_SCOPE } from '@ngneat/transloco';
 import * as sentry from '@sentry/angular-ivy';
+import { QUERY_PARAMS_SERIALIZERS } from '@vality/ng-core';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { AnapiModule } from '@dsh/app/api/anapi';
@@ -29,7 +30,6 @@ import { PaymentsModule } from '@dsh/app/api/payments';
 import { UrlShortenerModule } from '@dsh/app/api/url-shortener';
 import { WalletModule } from '@dsh/app/api/wallet';
 import { ErrorModule } from '@dsh/app/shared/services';
-import { QUERY_PARAMS_SERIALIZERS } from '@dsh/app/shared/services/query-params/utils/query-params-serializers';
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
 import { SpinnerModule, BootstrapIconModule } from '@dsh/components/indicators';
 

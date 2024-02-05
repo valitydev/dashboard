@@ -23,7 +23,7 @@
         <mat-calendar
             *ngIf="step === stepEnum.Calendar"
             [maxDate]="maxDate"
-            [selected]="value.dateRange"
+            [selected]="selectedCalendar$ | async"
             (selectedChange)="selectedChange($event)"
         ></mat-calendar>
     </ng-template>

@@ -2,11 +2,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { NotifyLogService } from '@vality/ng-core';
+import { NotifyLogService, QueryParamsService } from '@vality/ng-core';
 import { Subject } from 'rxjs';
 import { filter, first, switchMap, switchMapTo } from 'rxjs/operators';
-
-import { QueryParamsService } from '@dsh/app/shared/services/query-params';
 
 import { RealmMixService, PaymentInstitutionRealmService, RealmShopsService } from '../services';
 
@@ -90,8 +88,8 @@ export class PayoutsComponent implements OnInit {
         void this.qp.set(p);
         const { dateRange, ...otherParams } = p;
         this.realmMixService.mix({
-            fromTime: dateRange.start.utc().format(),
-            toTime: dateRange.end.utc().format(),
+            fromTime: dateRange.start.clone().utc().format(),
+            toTime: dateRange.end.clone().utc().format(),
             realm: null,
             ...otherParams,
         });

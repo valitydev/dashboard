@@ -13,9 +13,9 @@ export const filtersToSearchParams = (
     return {
         fromTime:
             dateRange.preset === Preset.Custom
-                ? start.utc().format()
+                ? start.clone().utc().format()
                 : start.clone().endOf('d').add(1, 'ms').utc().format(),
-        toTime: end.utc().format(),
+        toTime: end.clone().utc().format(),
         realm,
         ...otherParams,
     };

@@ -12,8 +12,8 @@ export const filtersToSearchParams = ({
     walletID,
     identityID,
 }: DepositsFilters): Omit<ListDepositsRequestParams, 'xRequestID' | 'limit'> => ({
-    createdAtFrom: dateRange.start.utc().format(),
-    createdAtTo: dateRange.end.utc().format(),
+    createdAtFrom: dateRange.start.clone().utc().format(),
+    createdAtTo: dateRange.end.clone().utc().format(),
     walletID,
     identityID,
     sourceID,

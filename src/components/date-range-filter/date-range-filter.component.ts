@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/co
 import { DateRange as MatDateRange } from '@angular/material/datepicker';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { createControlProviders } from '@vality/ng-core';
+import { createControlProviders, getValueChanges } from '@vality/ng-core';
 import { Moment } from 'moment';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, shareReplay } from 'rxjs/operators';
 
 import { FilterSuperclass } from '@dsh/components/filter';
 
@@ -59,6 +59,16 @@ export class DateRangeFilterComponent extends FilterSuperclass<
     presetLabels$ = this.transloco
         .selectTranslation('core-components')
         .pipe(map(() => this.getPresetLabels()));
+    selectedCalendar$ = getValueChanges(this.control).pipe(
+        map(
+            ({ dateRange }) =>
+                new MatDateRange(
+                    dateRange.start?.clone?.()?.local?.(),
+                    dateRange.end?.clone?.()?.local?.(),
+                ),
+        ),
+        shareReplay({ refCount: true, bufferSize: 1 }),
+    );
 
     protected get empty(): InnerDateRange {
         return { dateRange: new MatDateRange<Moment>(null, null) };
@@ -91,8 +101,8 @@ export class DateRangeFilterComponent extends FilterSuperclass<
         }
         this.value = {
             dateRange: new MatDateRange(
-                newStart?.local()?.startOf('day')?.utc(true),
-                newEnd?.local()?.endOf('day')?.utc(true),
+                newStart?.clone()?.startOf('day'),
+                newEnd?.clone()?.endOf('day'),
             ),
             preset: Preset.Custom,
         };
@@ -108,9 +118,17 @@ export class DateRangeFilterComponent extends FilterSuperclass<
     }
 
     save(value = this.control.value): void {
-        if (!value.dateRange.start || !value.dateRange.end) {
+        const { start, end } = value.dateRange;
+        if (!start && !end) {
             this.clear();
             value = this.control.value;
+        } else if (!start || !end) {
+            const date = start || end;
+            value = {
+                dateRange: new MatDateRange(date.clone().startOf('day'), date.clone().endOf('day')),
+                preset: Preset.Custom,
+            };
+            this.control.setValue(value);
         }
         this.step = Step.Presets;
         this.set(value);
@@ -128,17 +146,16 @@ export class DateRangeFilterComponent extends FilterSuperclass<
     }
 
     protected outerToInnerValue(dateRange: Partial<DateRangeWithPreset>): InnerDateRange {
-        if (dateRange?.preset && dateRange.preset !== Preset.Custom) {
-            const { start, end } = createDateRangeByPreset(dateRange.preset);
-            return { dateRange: new MatDateRange(start, end), preset: dateRange.preset };
-        }
-        if (!dateRange?.start || !dateRange?.end) {
-            return this.empty;
-        }
-        return {
-            dateRange: new MatDateRange(dateRange.start, dateRange.end),
-            preset: Preset.Custom,
-        };
+        const { start, end } =
+            dateRange?.preset && dateRange.preset !== Preset.Custom
+                ? createDateRangeByPreset(dateRange.preset)
+                : dateRange ?? {};
+        return start && end
+            ? {
+                  dateRange: new MatDateRange(start, end),
+                  preset: dateRange?.preset ?? Preset.Custom,
+              }
+            : this.empty;
     }
 
     private getPresetLabels(): Record<Preset, string> {

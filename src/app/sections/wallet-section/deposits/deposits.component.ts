@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { QueryParamsService } from '@vality/ng-core';
 
 import { ErrorService } from '@dsh/app/shared';
-import { QueryParamsService } from '@dsh/app/shared/services/query-params';
 
 import { DepositsFilters } from './deposits-filters/types/deposits-filters';
 import { DepositsExpandedIdManagerService } from './services/deposits-expanded-id-manager/deposits-expanded-id-manager.service';

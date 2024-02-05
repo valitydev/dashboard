@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { QueryParamsService } from '@vality/ng-core';
 
-import { QueryParamsService } from '@dsh/app/shared';
 import { ShopCreationService } from '@dsh/app/shared/components/shop-creation';
 import { SpinnerType } from '@dsh/components/indicators';
 

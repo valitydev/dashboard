@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { QueryParamsService } from '@vality/ng-core';
 import { PaymentSearchResult } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';
-
-import { QueryParamsService } from '@dsh/app/shared/services';
 
 import { RealmMixService } from '../../services';
 import { PaymentInstitutionRealmService } from '../../services/payment-institution-realm.service';
@@ -69,8 +68,8 @@ export class PaymentsComponent implements OnInit {
         this.realmMixService.mix({
             ...otherFilters,
             ...paymentMethod,
-            fromTime: dateRange.start.utc().format(),
-            toTime: dateRange.end.utc().format(),
+            fromTime: dateRange.start.clone().utc().format(),
+            toTime: dateRange.end.clone().utc().format(),
             realm: null,
         });
     }

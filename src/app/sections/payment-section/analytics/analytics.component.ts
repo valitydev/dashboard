@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
+import { QueryParamsService } from '@vality/ng-core';
 import { combineLatest, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { QueryParamsService } from '@dsh/app/shared/services/query-params';
 import { SpinnerType } from '@dsh/components/indicators';
 
 import { PaymentInstitutionRealmService } from '../services';

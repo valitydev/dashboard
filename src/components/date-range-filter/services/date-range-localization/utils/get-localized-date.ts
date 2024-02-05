@@ -13,6 +13,5 @@ export function getLocalizedDate(
         date.toDate(),
         [d && 'd', m && (standalone ? 'LLLL' : 'MMMM'), y && 'y'].filter((v) => v).join(' '),
         locale,
-        '+0',
     );
 }

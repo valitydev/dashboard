@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-import { NotifyLogService } from '@vality/ng-core';
+import { NotifyLogService, QueryParamsService } from '@vality/ng-core';
 
 import { shareReplayRefCount } from '@dsh/app/custom-operators';
-import { QueryParamsService } from '@dsh/app/shared/services/query-params';
 
 import { FetchWithdrawalsService, WithdrawalsExpandedIdManager } from './services';
 import { WithdrawalsFilters } from './withdrawals-filters';
@@ -42,8 +41,8 @@ export class WithdrawalsComponent implements OnInit {
         void this.qp.set(filters);
         this.fetchWithdrawalsService.search({
             ...filters,
-            createdAtFrom: filters.dateRange.start.utc().format(),
-            createdAtTo: filters.dateRange.end.utc().format(),
+            createdAtFrom: filters.dateRange.start.clone().utc().format(),
+            createdAtTo: filters.dateRange.end.clone().utc().format(),
         });
     }
 

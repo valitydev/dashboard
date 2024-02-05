@@ -29,8 +29,8 @@ export class DaterangeManagerService {
 
     serializeDateRange({ begin, end }: Daterange): DaterangeParams {
         return {
-            begin: begin.utc().format(),
-            end: end.utc().format(),
+            begin: begin.clone().utc().format(),
+            end: end.clone().utc().format(),
         };
     }
 
