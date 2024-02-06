@@ -8,7 +8,7 @@ import { getLocalizedDate } from './get-localized-date';
 
 /**
  * Январь
- * Янаврь 2020
+ * Январь 2020
  * 2 января
  * 2 января 2020
  *
