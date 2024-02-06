@@ -1,5 +1,8 @@
-<div *ngIf="routerNavigationEnd$ | async">
-    <ng-container *ngTemplateOutlet="(isXSmallSmall$ | async) ? mobile : laptop"> </ng-container>
+<div
+    *ngIf="routerNavigationEnd$ | async"
+    style="min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column"
+>
+    <ng-container *ngTemplateOutlet="(isXSmallSmall$ | async) ? mobile : laptop"></ng-container>
 </div>
 
 <ng-template #content>
@@ -13,7 +16,7 @@
 </ng-template>
 
 <ng-template #laptop>
-    <dsh-laptop-grid>
+    <dsh-laptop-grid style="flex: 1">
         <ng-container *ngTemplateOutlet="content"></ng-container>
     </dsh-laptop-grid>
 </ng-template>

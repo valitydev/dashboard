@@ -1,7 +1,6 @@
+import { Serializer } from '@vality/ng-core';
 import isNil from 'lodash-es/isNil';
 import moment from 'moment';
-
-import { Serializer } from '@dsh/app/shared/services/query-params/types/serializer';
 
 import { DateRangeWithPreset } from '../types/date-range-with-preset';
 import { Preset } from '../types/preset';
@@ -11,13 +10,14 @@ import { createDateRangeWithPreset } from './create-date-range-with-preset';
 export function createDateRangeWithPresetSerializer(id = 'dr'): Serializer<DateRangeWithPreset> {
     return {
         id,
-        serialize: (dateRange) =>
-            dateRange.preset && dateRange.preset !== Preset.Custom
+        serialize: (dateRange) => {
+            return dateRange.preset && dateRange.preset !== Preset.Custom
                 ? dateRange.preset
                 : [
-                      dateRange.start ? dateRange.start.utc().format() : '',
-                      dateRange.end ? dateRange.end.utc().format() : '',
-                  ].join(','),
+                      dateRange.start ? dateRange.start.clone().utc().format() : '',
+                      dateRange.end ? dateRange.end.clone().utc().format() : '',
+                  ].join(',');
+        },
         deserialize: (str) => {
             if (Object.values(Preset).includes(str as Preset)) {
                 return createDateRangeWithPreset(str as Preset);

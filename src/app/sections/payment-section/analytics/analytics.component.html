@@ -10,38 +10,38 @@
             (filterValuesChanged)="updateFilters($event)"
         ></dsh-analytics-search-filters>
         <dsh-payments-amount
-            [searchParams]="searchParams$ | async"
+            [searchParams]="accurateSearchParams$ | async"
             [spinnerType]="spinnerType"
         ></dsh-payments-amount>
         <dsh-refunds-amount
-            [searchParams]="searchParams$ | async"
+            [searchParams]="accurateSearchParams$ | async"
             [spinnerType]="spinnerType"
         ></dsh-refunds-amount>
         <dsh-average-payment
-            [searchParams]="searchParams$ | async"
+            [searchParams]="accurateSearchParams$ | async"
             [spinnerType]="spinnerType"
         ></dsh-average-payment>
         <dsh-payments-count
-            [searchParams]="searchParams$ | async"
+            [searchParams]="accurateSearchParams$ | async"
             [spinnerType]="spinnerType"
         ></dsh-payments-count>
         <dsh-payment-split-count
-            [searchParams]="searchParams$ | async"
+            [searchParams]="barChartSearchParams$ | async"
             [spinnerType]="spinnerType"
             gdColumn.gt-sm="1/-1"
         ></dsh-payment-split-count>
         <dsh-payment-split-amount
-            [searchParams]="searchParams$ | async"
+            [searchParams]="barChartSearchParams$ | async"
             [spinnerType]="spinnerType"
             gdColumn.gt-sm="1/-1"
         ></dsh-payment-split-amount>
         <dsh-payments-tool-distribution
-            [searchParams]="searchParams$ | async"
+            [searchParams]="accurateSearchParams$ | async"
             [spinnerType]="spinnerType"
             gdColumn.gt-sm="1/3"
         ></dsh-payments-tool-distribution>
         <dsh-payments-error-distribution
-            [searchParams]="searchParams$ | async"
+            [searchParams]="accurateSearchParams$ | async"
             [spinnerType]="spinnerType"
             gdColumn.gt-sm="3/5"
         ></dsh-payments-error-distribution>

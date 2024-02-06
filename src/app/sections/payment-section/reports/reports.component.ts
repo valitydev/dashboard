@@ -3,10 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { QueryParamsService } from '@vality/ng-core';
 import { Subject, combineLatest } from 'rxjs';
 import { filter, first, switchMap } from 'rxjs/operators';
-
-import { QueryParamsService } from '@dsh/app/shared/services/query-params';
 
 import { RealmMixService, PaymentInstitutionRealmService } from '../services';
 
@@ -82,8 +81,8 @@ export class ReportsComponent implements OnInit {
         const { dateRange, ...params } = p;
         this.realmMixinService.mix({
             ...params,
-            fromTime: dateRange.start.utc().format(),
-            toTime: dateRange.end.utc().format(),
+            fromTime: dateRange.start.clone().utc().format(),
+            toTime: dateRange.end.clone().utc().format(),
             realm: null,
         });
     }

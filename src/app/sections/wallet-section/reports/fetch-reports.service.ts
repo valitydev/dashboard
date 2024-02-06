@@ -21,6 +21,9 @@ export class FetchReportsService extends FetchSuperclass<
     protected fetch(
         params: Omit<GetReportsRequestParams, 'xRequestID' | 'xRequestDeadline'>,
     ): Observable<FetchResult<Report, string>> {
+        if (!params?.identityID) {
+            return of({ result: [] });
+        }
         return this.reportsService.getReports(params).pipe(
             map((result) => ({ result })),
             catchError((err) => {

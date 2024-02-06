@@ -4,6 +4,7 @@
         [activeLabel]="activeLabel$ | async"
         [content]="content"
         [label]="t('label')"
+        [title]="isActive ? (activeLabel$ | async) : ''"
         (clear)="clear()"
         (save)="save()"
     >
@@ -22,7 +23,7 @@
         <mat-calendar
             *ngIf="step === stepEnum.Calendar"
             [maxDate]="maxDate"
-            [selected]="value.dateRange"
+            [selected]="selectedCalendar$ | async"
             (selectedChange)="selectedChange($event)"
         ></mat-calendar>
     </ng-template>

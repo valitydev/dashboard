@@ -6,7 +6,6 @@ export * from './notification';
 export * from './error';
 export * from './keycloak-token-info';
 export * from './sections-links';
-export * from './query-params';
 export * from './id-generator';
 export * from './partial-fetcher';
 export * from './context-organization';

@@ -2,11 +2,13 @@ $dsh-container-padding: 16px;
 $dsh-container-max-width: 1724px;
 
 :host {
-    display: block;
+    display: flex;
     padding: $dsh-container-padding;
+    min-height: calc(100% - $dsh-container-padding * 2);
 }
 
 .dsh-laptop-grid {
     max-width: $dsh-container-max-width;
     margin: 0 auto;
+    width: 100%;
 }

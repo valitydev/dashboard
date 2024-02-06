@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { NotifyLogService } from '@vality/ng-core';
+import { NotifyLogService, QueryParamsService } from '@vality/ng-core';
 import { take } from 'rxjs/operators';
 
-import { QueryParamsService } from '@dsh/app/shared/services/query-params/query-params.service';
 import { SpinnerType } from '@dsh/components/indicators';
 
 import { RealmMixService, PaymentInstitutionRealmService } from '../../services';
@@ -61,8 +60,8 @@ export class InvoicesComponent implements OnInit {
         const { dateRange, ...otherFilters } = p;
         this.realmMixService.mix({
             ...otherFilters,
-            fromTime: dateRange.start.utc().format(),
-            toTime: dateRange.end.utc().format(),
+            fromTime: dateRange.start.clone().utc().format(),
+            toTime: dateRange.end.clone().utc().format(),
             realm: null,
         });
     }

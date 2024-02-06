@@ -1,7 +1,7 @@
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Component, Input, Output, EventEmitter, TemplateRef, ContentChild } from '@angular/core';
 import { PossiblyAsync } from '@vality/ng-core';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 import { StatusColor } from '@dsh/app/theme-manager';
@@ -24,12 +24,12 @@ export interface Column<T extends object> {
     type?: 'daterange' | 'datetime' | 'tag';
     typeParameters?: {
         color: Record<PropertyKey, StatusColor>;
-        label: PossiblyAsync<Record<PropertyKey, string>>;
+        label: Observable<Record<PropertyKey, string>>;
     };
 }
 
 export interface ContentHeader<T extends object> {
-    label: (row: T) => PossiblyAsync<unknown>;
+    label: (row: T) => Observable<unknown>;
 }
 
 @Component({

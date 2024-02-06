@@ -445,7 +445,7 @@
             "title": "Documents"
         },
         "searchFilters": {
-            "dateRangeDescription": "Reporting period"
+            "dateRangeDescription": "Report creation period"
         }
     },
     "shops": {

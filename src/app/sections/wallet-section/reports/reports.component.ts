@@ -4,6 +4,7 @@ import { NonNullableFormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslocoService } from '@ngneat/transloco';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
+import { QueryParamsService } from '@vality/ng-core';
 import { Report } from '@vality/swag-wallet';
 import isEqual from 'lodash-es/isEqual';
 import moment from 'moment';
@@ -11,7 +12,6 @@ import { startWith, distinctUntilChanged, filter, first, map } from 'rxjs/operat
 
 import { WalletDictionaryService, IdentitiesService } from '@dsh/app/api/wallet';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
-import { QueryParamsService } from '@dsh/app/shared';
 import { Column, ExpandedFragment } from '@dsh/app/shared/components/accordion-table';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { StatusColor } from '@dsh/app/theme-manager';
@@ -122,12 +122,9 @@ export class ReportsComponent implements OnInit {
 
     load() {
         const { dateRange, identityID } = this.form.value;
-        if (!identityID) {
-            return;
-        }
         this.fetchReportsService.load({
-            fromTime: dateRange.start.utc().format(),
-            toTime: dateRange.end.utc().format(),
+            fromTime: dateRange.start.clone().utc().format(),
+            toTime: dateRange.end.clone().utc().format(),
             identityID,
             type: 'withdrawalRegistry',
         });

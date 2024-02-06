@@ -2,13 +2,12 @@ import { Breakpoints } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { DialogService } from '@vality/ng-core';
+import { DialogService, QueryParamsService } from '@vality/ng-core';
 import { ApiKeyStatus, ApiKey } from '@vality/swag-api-keys-v2';
 import { map } from 'rxjs/operators';
 
 import { ApiKeysDictionaryService } from '@dsh/app/api/api-keys';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
-import { QueryParamsService } from '@dsh/app/shared';
 import {
     ExpandedFragment,
     Column,
