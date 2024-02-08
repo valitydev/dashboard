@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { RoleId } from '@vality/swag-organizations';
 
 import { OrganizationsDictionaryService } from '@dsh/app/api/organizations';
 import { RoleAccess, ROLE_ACCESS_GROUPS } from '@dsh/app/auth';
+import { RoleId } from '@dsh/app/auth/types/role-id';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ROLE_PRIORITY_DESC } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
 

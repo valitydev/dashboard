@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { Organization, Member, RoleId } from '@vality/swag-organizations';
+import { Organization, Member } from '@vality/swag-organizations';
 import isNil from 'lodash-es/isNil';
 import {
     Observable,
@@ -16,6 +16,7 @@ import {
 import { switchMap, shareReplay, catchError, map, tap, filter } from 'rxjs/operators';
 
 import { OrgsService, MembersService, DEFAULT_ORGANIZATION_NAME } from '@dsh/app/api/organizations';
+import { RoleId } from '@dsh/app/auth/types/role-id';
 import { KeycloakTokenInfoService } from '@dsh/app/shared/services/keycloak-token-info';
 
 import { ErrorService } from '../error';

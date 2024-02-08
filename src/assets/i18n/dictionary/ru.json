@@ -107,7 +107,8 @@
             "Accountant": "Бухгалтер",
             "Administrator": "Администратор",
             "Integrator": "Интегратор",
-            "Manager": "Менеджер"
+            "Manager": "Менеджер",
+            "WalletManager": "Менеджер по кошелькам"
         }
     },
     "payments": {

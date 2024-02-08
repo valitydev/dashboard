@@ -12,13 +12,14 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ComponentChanges } from '@vality/ng-core';
-import { ResourceScopeId, RoleId, Organization } from '@vality/swag-organizations';
+import { ResourceScopeId, Organization } from '@vality/swag-organizations';
 import isNil from 'lodash-es/isNil';
 import { BehaviorSubject, combineLatest, EMPTY, Observable, of, ReplaySubject } from 'rxjs';
 import { first, map, switchMap, tap, shareReplay } from 'rxjs/operators';
 
 import { OrganizationsDictionaryService, MemberRoleOptionalId } from '@dsh/app/api/organizations';
 import { ShopsService } from '@dsh/app/api/payments';
+import { RoleId } from '@dsh/app/auth/types/role-id';
 import { DialogConfig, DIALOG_CONFIG } from '@dsh/app/sections/tokens';
 import { sortRoleIds } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
 import { addDialogsClass } from '@dsh/utils/add-dialogs-class';
@@ -39,7 +40,7 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
     @Input() set roles(roles: MemberRoleOptionalId[]) {
         if (!isNil(roles)) {
             this.roles$.next(roles);
-            this.addRoleIds(roles.map(({ roleId }) => roleId));
+            this.addRoleIds(roles.map(({ roleId }) => roleId as RoleId));
         }
     }
     get roles(): MemberRoleOptionalId[] {

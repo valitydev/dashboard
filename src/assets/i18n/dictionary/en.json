@@ -107,7 +107,8 @@
             "Accountant": "Accountant",
             "Administrator": "Administrator",
             "Integrator": "Integrator",
-            "Manager": "Manager"
+            "Manager": "Manager",
+            "WalletManager": "Wallets Manager"
         }
     },
     "payments": {

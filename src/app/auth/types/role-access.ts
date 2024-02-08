@@ -1,7 +1,7 @@
-import { RoleId } from '@vality/swag-organizations';
 import { Overwrite } from 'utility-types';
 
 import { RoleAccessName } from './role-access-name';
+import { RoleId } from './role-id';
 
 export interface RoleAccess {
     name: RoleAccessName;
