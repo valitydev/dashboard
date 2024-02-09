@@ -2,26 +2,22 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    Inject,
     Input,
     OnChanges,
     Output,
 } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { ComponentChanges } from '@vality/ng-core';
+import { ComponentChanges, DialogService, DialogResponseStatus } from '@vality/ng-core';
 import { Member, Organization } from '@vality/swag-organizations';
 import { filter, switchMap } from 'rxjs/operators';
 
 import { MembersService } from '@dsh/app/api/organizations';
-import { DialogConfig, DIALOG_CONFIG } from '@dsh/app/sections/tokens';
 import { ErrorService, NotificationService } from '@dsh/app/shared';
 import { OrganizationManagementService } from '@dsh/app/shared/services/organization-management/organization-management.service';
-import { ConfirmActionDialogComponent, ConfirmActionDialogResult } from '@dsh/components/popups';
+import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 import { ignoreBeforeCompletion } from '@dsh/utils';
 
 import { EditRolesDialogComponent } from '../edit-roles-dialog/edit-roles-dialog.component';
-import { EditRolesDialogData } from '../edit-roles-dialog/types/edit-roles-dialog-data';
 
 @UntilDestroy()
 @Component({
@@ -36,8 +32,7 @@ export class MemberComponent implements OnChanges {
     @Output() changed = new EventEmitter<void>();
 
     constructor(
-        private dialog: MatDialog,
-        @Inject(DIALOG_CONFIG) private dialogConfig: DialogConfig,
+        private dialogService: DialogService,
         private organizationManagementService: OrganizationManagementService,
         private membersService: MembersService,
         private notificationService: NotificationService,
@@ -52,13 +47,11 @@ export class MemberComponent implements OnChanges {
 
     @ignoreBeforeCompletion
     removeFromOrganization() {
-        return this.dialog
-            .open<ConfirmActionDialogComponent, void, ConfirmActionDialogResult>(
-                ConfirmActionDialogComponent,
-            )
+        return this.dialogService
+            .open(ConfirmActionDialogComponent)
             .afterClosed()
             .pipe(
-                filter((r) => r === 'confirm'),
+                filter((r) => r.status === DialogResponseStatus.Success),
                 switchMap(() =>
                     this.membersService.expelOrgMember({
                         orgId: this.organization.id,
@@ -78,13 +71,10 @@ export class MemberComponent implements OnChanges {
 
     @ignoreBeforeCompletion
     editRoles() {
-        return this.dialog
-            .open<EditRolesDialogComponent, EditRolesDialogData>(EditRolesDialogComponent, {
-                ...this.dialogConfig.large,
-                data: {
-                    organization: this.organization,
-                    userId: this.member.id,
-                },
+        return this.dialogService
+            .open(EditRolesDialogComponent, {
+                organization: this.organization,
+                userId: this.member.id,
             })
             .afterClosed()
             .pipe(untilDestroyed(this))

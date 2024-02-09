@@ -1,23 +1,16 @@
 import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-
-// TODO: replace with BaseDialogResponseStatus
-export type ConfirmActionDialogResult = 'cancel' | 'confirm';
+import { DialogSuperclass } from '@vality/ng-core';
 
 @Component({
     templateUrl: 'confirm-action-dialog.component.html',
     styleUrls: ['confirm-action-dialog.component.scss'],
 })
-export class ConfirmActionDialogComponent {
-    constructor(
-        public dialogRef: MatDialogRef<ConfirmActionDialogComponent, ConfirmActionDialogResult>,
-    ) {}
-
+export class ConfirmActionDialogComponent extends DialogSuperclass<ConfirmActionDialogComponent> {
     cancel() {
-        this.dialogRef.close('cancel');
+        this.closeWithCancellation();
     }
 
     confirm() {
-        this.dialogRef.close('confirm');
+        this.closeWithSuccess();
     }
 }

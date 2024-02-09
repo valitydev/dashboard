@@ -3,37 +3,28 @@
     [title]="t('title')"
     (cancel)="cancel()"
 >
-    <mat-radio-group [formControl]="roleControl">
-        <dsh-nested-table [rowsGridTemplateColumns]="rowsGridTemplateColumns">
-            <dsh-nested-table-row *ngIf="!data.isShow">
-                <dsh-nested-table-col></dsh-nested-table-col>
-                <dsh-nested-table-col *ngFor="let role of roles" fxLayoutAlign="center center">
-                    <span class="dsh-body-2 header">{{ (roleIdDict$ | async)?.[role] }}</span>
-                </dsh-nested-table-col>
-            </dsh-nested-table-row>
-            <dsh-nested-table-row *ngIf="!data.isShow">
-                <dsh-nested-table-col></dsh-nested-table-col>
-                <dsh-nested-table-col *ngFor="let role of roles">
-                    <mat-radio-button [value]="role"></mat-radio-button>
-                </dsh-nested-table-col>
-            </dsh-nested-table-row>
-
-            <dsh-nested-table-row *ngFor="let access of accesses">
-                <dsh-nested-table-col>
-                    <span [class.dsh-body-2]="access.isHeader">{{
-                        (roleAccessDict$ | async)?.[access.name]
-                    }}</span>
-                </dsh-nested-table-col>
-                <dsh-nested-table-col *ngFor="let role of roles" fxLayoutAlign="center center">
-                    <dsh-selection
-                        *ngIf="access.availableRoles !== undefined"
-                        [selected]="access.availableRoles.includes(role)"
-                    ></dsh-selection>
-                </dsh-nested-table-col>
-            </dsh-nested-table-row>
+    <div style="overflow: auto; height: 100%">
+        <dsh-nested-table
+            [cellsTemplates]="cellsTemplates"
+            [columns]="columns$ | async"
+            [data]="data"
+        >
+            <ng-template #accessCellTpl let-column="column" let-index="index" let-value="value">
+                <dsh-selection
+                    *ngIf="value && value.availableRoles !== undefined"
+                    [selected]="value.availableRoles.includes(column.field)"
+                    style="display: flex; justify-content: center"
+                ></dsh-selection>
+                <mat-radio-button
+                    *ngIf="index === 0"
+                    [value]="roleControl.value === column.field"
+                    style="display: flex; justify-content: center"
+                    (click)="roleControl.setValue(column.field)"
+                ></mat-radio-button>
+            </ng-template>
         </dsh-nested-table>
-    </mat-radio-group>
-    <ng-container *ngIf="!data.isShow" dshBaseDialogActions>
+    </div>
+    <ng-container *ngIf="!dialogData?.isShow" dshBaseDialogActions>
         <button [disabled]="roleControl.invalid" color="accent" dsh-button (click)="select()">
             {{ t('select') }}
         </button>

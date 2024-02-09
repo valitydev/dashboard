@@ -2,17 +2,19 @@ import {
     ChangeDetectorRef,
     Component,
     EventEmitter,
-    Inject,
     Input,
     OnInit,
     Output,
     OnChanges,
     booleanAttribute,
+    ViewChild,
+    TemplateRef,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { ComponentChanges } from '@vality/ng-core';
+import { ComponentChanges, getEnumValues, DialogService } from '@vality/ng-core';
 import { ResourceScopeId, Organization } from '@vality/swag-organizations';
+import { Shop } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
 import { BehaviorSubject, combineLatest, EMPTY, Observable, of, ReplaySubject } from 'rxjs';
 import { first, map, switchMap, tap, shareReplay } from 'rxjs/operators';
@@ -20,15 +22,13 @@ import { first, map, switchMap, tap, shareReplay } from 'rxjs/operators';
 import { OrganizationsDictionaryService, MemberRoleOptionalId } from '@dsh/app/api/organizations';
 import { ShopsService } from '@dsh/app/api/payments';
 import { RoleId } from '@dsh/app/auth/types/role-id';
-import { DialogConfig, DIALOG_CONFIG } from '@dsh/app/sections/tokens';
 import { sortRoleIds } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
+import { NestedTableColumn, NestedTableNode } from '@dsh/components/nested-table';
 import { addDialogsClass } from '@dsh/utils/add-dialogs-class';
 
 import { equalRoles } from '../members/components/edit-roles-dialog/utils/equal-roles';
 
 import { SelectRoleDialogComponent } from './components/select-role-dialog/select-role-dialog.component';
-import { SelectRoleDialogResult } from './components/select-role-dialog/types/select-role-dialog-result';
-import { SelectRoleDialogData } from './components/select-role-dialog/types/selected-role-dialog-data';
 
 @UntilDestroy()
 @Component({
@@ -39,8 +39,8 @@ import { SelectRoleDialogData } from './components/select-role-dialog/types/sele
 export class ChangeRolesTableComponent implements OnInit, OnChanges {
     @Input() set roles(roles: MemberRoleOptionalId[]) {
         if (!isNil(roles)) {
-            this.roles$.next(roles);
             this.addRoleIds(roles.map(({ roleId }) => roleId as RoleId));
+            this.roles$.next(roles);
         }
     }
     get roles(): MemberRoleOptionalId[] {
@@ -60,6 +60,9 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
     @Output() addedRoles = new EventEmitter<MemberRoleOptionalId[]>();
     @Output() removedRoles = new EventEmitter<MemberRoleOptionalId[]>();
 
+    @ViewChild('roleCellTpl') cellTemplate: TemplateRef<unknown>;
+    @ViewChild('footerCellTpl') footerTemplate: TemplateRef<unknown>;
+
     organization$ = new ReplaySubject<Organization>(1);
     roleIds: RoleId[] = [];
     shops$ = this.organization$.pipe(
@@ -68,7 +71,6 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
         ),
         shareReplay({ bufferSize: 1, refCount: true }),
     );
-    roleIdDict$ = this.organizationsDictionaryService.roleId$;
 
     get availableRoles(): RoleId[] {
         return Object.values(RoleId).filter((r) => !this.roleIds.includes(r));
@@ -86,6 +88,49 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
                 !this.editMode || roles.some((r) => roles.some((b) => b.roleId !== r.roleId)),
         ),
     );
+    columns$: Observable<NestedTableColumn<Shop>[]> = combineLatest([
+        this.roles$,
+        this.organizationsDictionaryService.roleId$,
+    ]).pipe(
+        map(([, dict]) => [
+            {
+                field: 'name',
+                header: '',
+                formatter: (d) => (d ? d.details.name : 'Shops'),
+                style: { 'min-width': '130px' },
+            },
+            ...this.roleIds.map((r) => ({
+                field: r,
+                header: dict?.[r] || r,
+                style: { 'text-align': 'center' },
+            })),
+            ...(this.isAllowAdd
+                ? [
+                      {
+                          field: 'add',
+                          header: '',
+                      },
+                  ]
+                : []),
+        ]),
+    );
+    data$: Observable<NestedTableNode<Shop>[]> = this.shops$.pipe(
+        map((shops) => [
+            {
+                value: null,
+                children: shops.map((s) => ({ value: s })),
+                expanded: true,
+            },
+        ]),
+    );
+
+    get cellsTemplates() {
+        return Object.fromEntries(getEnumValues(RoleId).map((r) => [r, this.cellTemplate]));
+    }
+
+    get footerTemplates() {
+        return Object.fromEntries(getEnumValues(RoleId).map((r) => [r, this.footerTemplate]));
+    }
 
     private get hasAdminRole() {
         return !!this.roles.find((r) => r.id === RoleId.Administrator);
@@ -94,7 +139,7 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
     constructor(
         private shopsService: ShopsService,
         private dialog: MatDialog,
-        @Inject(DIALOG_CONFIG) private dialogConfig: DialogConfig,
+        private dialogService: DialogService,
         private cdr: ChangeDetectorRef,
         private organizationsDictionaryService: OrganizationsDictionaryService,
     ) {}
@@ -111,19 +156,13 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
 
     add(): void {
         const removeDialogsClass = addDialogsClass(this.dialog.openDialogs, 'dsh-hidden');
-        this.dialog
-            .open<SelectRoleDialogComponent, SelectRoleDialogData, SelectRoleDialogResult>(
-                SelectRoleDialogComponent,
-                {
-                    ...this.dialogConfig.large,
-                    data: { availableRoles: this.availableRoles },
-                },
-            )
+        this.dialogService
+            .open(SelectRoleDialogComponent, { availableRoles: this.availableRoles })
             .afterClosed()
             .pipe(
                 tap(() => removeDialogsClass()),
                 switchMap((result) =>
-                    typeof result === 'object' ? of(result.selectedRoleId) : EMPTY,
+                    typeof result.data === 'object' ? of(result.data.selectedRoleId) : EMPTY,
                 ),
                 untilDestroyed(this),
             )
@@ -138,14 +177,8 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
 
     show(roleId: RoleId) {
         const removeDialogsClass = addDialogsClass(this.dialog.openDialogs, 'dsh-hidden');
-        this.dialog
-            .open<SelectRoleDialogComponent, SelectRoleDialogData, SelectRoleDialogResult>(
-                SelectRoleDialogComponent,
-                {
-                    ...this.dialogConfig.large,
-                    data: { availableRoles: [roleId], isShow: true },
-                },
-            )
+        this.dialogService
+            .open(SelectRoleDialogComponent, { availableRoles: [roleId], isShow: true })
             .afterClosed()
             .pipe(untilDestroyed(this))
             .subscribe({
@@ -160,7 +193,10 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
         this.removeRoles(this.roles.filter((r) => r.roleId === roleId));
     }
 
-    toggle(roleId: RoleId, resourceId: string): void {
+    toggle(roleId: RoleId, resourceId?: string): void {
+        if (!resourceId) {
+            this.toggleAll(roleId);
+        }
         const role: MemberRoleOptionalId = {
             roleId,
             scope: { id: ResourceScopeId.Shop, resourceId },
@@ -192,9 +228,12 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
             });
     }
 
-    disabled(roleId: RoleId, resourceId: string): Observable<boolean> {
+    disabled(roleId: RoleId, resourceId?: string): Observable<boolean> {
         if (roleId === RoleId.Administrator) {
             return of(true);
+        }
+        if (!resourceId) {
+            return of(this.disabledAll(roleId));
         }
         if (!this.editMode) {
             return of(false);
@@ -208,7 +247,10 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
         return roleId === RoleId.Administrator || this.editMode;
     }
 
-    checked(roleId: RoleId, resourceId: string): Observable<boolean> {
+    checked(roleId: RoleId, resourceId?: string): Observable<boolean> {
+        if (!resourceId) {
+            return this.checkedAll(roleId);
+        }
         return this.roles$.pipe(
             map(
                 (roles) =>

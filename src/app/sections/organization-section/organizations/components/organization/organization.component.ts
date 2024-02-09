@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { ComponentChanges } from '@vality/ng-core';
+import { ComponentChanges, DialogResponseStatus } from '@vality/ng-core';
 import { Organization } from '@vality/swag-organizations';
 import isNil from 'lodash-es/isNil';
 import { filter, pluck, switchMap } from 'rxjs/operators';
@@ -22,7 +22,7 @@ import {
 } from '@dsh/app/shared/services';
 import { FetchOrganizationsService } from '@dsh/app/shared/services/fetch-organizations';
 import { OrganizationManagementService } from '@dsh/app/shared/services/organization-management/organization-management.service';
-import { ConfirmActionDialogComponent, ConfirmActionDialogResult } from '@dsh/components/popups';
+import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 import { ignoreBeforeCompletion } from '@dsh/utils';
 
 import { RenameOrganizationDialogComponent } from '../rename-organization-dialog/rename-organization-dialog.component';
@@ -64,12 +64,10 @@ export class OrganizationComponent implements OnChanges {
     @ignoreBeforeCompletion
     leave() {
         return this.dialog
-            .open<ConfirmActionDialogComponent, void, ConfirmActionDialogResult>(
-                ConfirmActionDialogComponent,
-            )
+            .open(ConfirmActionDialogComponent)
             .afterClosed()
             .pipe(
-                filter((r) => r === 'confirm'),
+                filter((r) => r.status === DialogResponseStatus.Success),
                 switchMap(() =>
                     this.organizationsService.cancelOrgMembership({ orgId: this.organization.id }),
                 ),

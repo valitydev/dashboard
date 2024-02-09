@@ -1,13 +1,12 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { DialogSuperclass, DEFAULT_DIALOG_CONFIG } from '@vality/ng-core';
 import { MemberRole } from '@vality/swag-organizations';
 import { BehaviorSubject, defer, forkJoin, of, Subscription } from 'rxjs';
 import { catchError, shareReplay, switchMap, map } from 'rxjs/operators';
 
 import { MembersService } from '@dsh/app/api/organizations';
 import { ErrorService } from '@dsh/app/shared';
-import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 
 import { EditRolesDialogData } from './types/edit-roles-dialog-data';
 
@@ -17,11 +16,19 @@ import { EditRolesDialogData } from './types/edit-roles-dialog-data';
     templateUrl: 'edit-roles-dialog.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EditRolesDialogComponent {
+export class EditRolesDialogComponent extends DialogSuperclass<
+    EditRolesDialogData,
+    EditRolesDialogData
+> {
+    static defaultDialogConfig = DEFAULT_DIALOG_CONFIG.large;
+
     roles$ = defer(() => this.updateRoles$).pipe(
         switchMap(() =>
             this.membersService
-                .getOrgMember({ orgId: this.data.organization.id, userId: this.data.userId })
+                .getOrgMember({
+                    orgId: this.dialogData.organization.id,
+                    userId: this.dialogData.userId,
+                })
                 .pipe(map((r) => r.roles)),
         ),
         untilDestroyed(this),
@@ -31,22 +38,22 @@ export class EditRolesDialogComponent {
     private updateRoles$ = new BehaviorSubject<void>(null);
 
     constructor(
-        private dialogRef: MatDialogRef<EditRolesDialogComponent, BaseDialogResponseStatus>,
-        @Inject(MAT_DIALOG_DATA) private data: EditRolesDialogData,
         private membersService: MembersService,
         private errorService: ErrorService,
-    ) {}
+    ) {
+        super();
+    }
 
     cancel(): void {
-        this.dialogRef.close(BaseDialogResponseStatus.Cancelled);
+        this.closeWithCancellation();
     }
 
     addRoles(roles: MemberRole[]): Subscription {
         return forkJoin(
             roles.map((memberRole) =>
                 this.membersService.assignMemberRole({
-                    orgId: this.data.organization.id,
-                    userId: this.data.userId,
+                    orgId: this.dialogData.organization.id,
+                    userId: this.dialogData.userId,
                     memberRole,
                 }),
             ),
@@ -65,8 +72,8 @@ export class EditRolesDialogComponent {
             roles.map((role) =>
                 this.membersService
                     .removeMemberRole({
-                        orgId: this.data.organization.id,
-                        userId: this.data.userId,
+                        orgId: this.dialogData.organization.id,
+                        userId: this.dialogData.userId,
                         memberRoleId: role.id,
                     })
                     .pipe(

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslocoService } from '@ngneat/transloco';
-import { NotifyLogService } from '@vality/ng-core';
+import { NotifyLogService, DialogResponseStatus } from '@vality/ng-core';
 import { Observable, of } from 'rxjs';
 import { catchError, filter, map, switchMap } from 'rxjs/operators';
 
@@ -24,7 +24,7 @@ export class ShopActionsService {
             .open(ConfirmActionDialogComponent)
             .afterClosed()
             .pipe(
-                filter((r) => r === 'confirm'),
+                filter((r) => r.status === DialogResponseStatus.Success),
                 switchMap(() => this.shopsService.suspendShopForParty({ shopID })),
                 map(() => {
                     this.log.success(
@@ -55,7 +55,7 @@ export class ShopActionsService {
             .open(ConfirmActionDialogComponent)
             .afterClosed()
             .pipe(
-                filter((r) => r === 'confirm'),
+                filter((r) => r.status === DialogResponseStatus.Success),
                 switchMap(() => this.shopsService.activateShopForParty({ shopID })),
                 map(() => {
                     this.log.success(
