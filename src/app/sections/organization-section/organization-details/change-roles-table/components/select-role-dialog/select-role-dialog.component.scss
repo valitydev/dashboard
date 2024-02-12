@@ -2,3 +2,8 @@
     word-break: break-all;
     text-align: center;
 }
+
+::ng-deep mat-radio-button * {
+    padding: 0 !important;
+    margin: 0 !important;
+}

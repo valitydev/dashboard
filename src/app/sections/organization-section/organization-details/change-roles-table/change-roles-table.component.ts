@@ -50,7 +50,6 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
 
     /**
      * Edit mode:
-     * - no batch changes
      * - there must be at least one role
      */
     @Input({ transform: booleanAttribute }) editMode: boolean;
@@ -232,19 +231,12 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
         if (roleId === RoleId.Administrator) {
             return of(true);
         }
-        if (!resourceId) {
-            return of(this.disabledAll(roleId));
-        }
         if (!this.editMode) {
             return of(false);
         }
         return combineLatest([this.roles$, this.checked(roleId, resourceId)]).pipe(
             map(([roles, isChecked]) => roles.length <= 1 && isChecked),
         );
-    }
-
-    disabledAll(roleId: RoleId): boolean {
-        return roleId === RoleId.Administrator || this.editMode;
     }
 
     checked(roleId: RoleId, resourceId?: string): Observable<boolean> {
