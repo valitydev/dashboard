@@ -15,11 +15,7 @@
     },
     "changeRolesTable": {
         "add": "Add",
-        "remove": "Delete",
-        "resourcesScope": {
-            "Shop": "Shops",
-            "Wallet": "Wallets"
-        }
+        "remove": "Delete"
     },
     "createInvitationDialog": {
         "form": {

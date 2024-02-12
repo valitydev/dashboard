@@ -29,7 +29,11 @@ import isNil from 'lodash-es/isNil';
 import { BehaviorSubject, combineLatest, Observable, of, ReplaySubject, filter, defer } from 'rxjs';
 import { first, map, switchMap, tap, shareReplay } from 'rxjs/operators';
 
-import { OrganizationsDictionaryService, MemberRoleOptionalId } from '@dsh/app/api/organizations';
+import {
+    OrganizationsDictionaryService,
+    MemberRoleOptionalId,
+    ResourceScopeIdInternal,
+} from '@dsh/app/api/organizations';
 import { ShopsService } from '@dsh/app/api/payments';
 import { RoleId } from '@dsh/app/auth/types/role-id';
 import { sortRoleIds } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
@@ -40,7 +44,6 @@ import { equalRoles } from '../members/components/edit-roles-dialog/utils/equal-
 
 import { SelectRoleDialogComponent } from './components/select-role-dialog/select-role-dialog.component';
 
-type ResourceScopeIdInternal = ResourceScopeId | 'Wallet';
 type DataItem = { shop?: Shop; scope?: ResourceScopeIdInternal };
 
 @Component({
@@ -92,53 +95,29 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
         toObservable(this.roleIds),
         this.organizationsDictionaryService.roleId$,
         defer(() => toObservable(this.isAllowAdd, { injector: this.injector })),
-        this.t.selectTranslate(
-            'changeRolesTable.resourcesScope.Shop',
-            null,
-            'organization-section',
-        ),
-        this.t.selectTranslate(
-            'changeRolesTable.resourcesScope.Wallet',
-            null,
-            'organization-section',
-        ),
+        this.organizationsDictionaryService.resourceScopeIdPlural$,
     ]).pipe(
-        map(
-            ([
-                roleIds,
-                dict,
-                isAllowAdd,
-                shopsLabel,
-                walletsLabel,
-            ]): NestedTableColumn<DataItem>[] => [
-                {
-                    field: 'name',
-                    header: '',
-                    formatter: (d) =>
-                        d.scope
-                            ? d.scope === ResourceScopeId.Shop
-                                ? shopsLabel
-                                : d.scope === 'Wallet'
-                                  ? walletsLabel
-                                  : ''
-                            : d.shop.details.name,
-                    style: { 'min-width': '130px' },
-                },
-                ...roleIds.map((r) => ({
-                    field: r,
-                    header: dict?.[r] || r,
-                    style: { 'text-align': 'center' },
-                })),
-                ...(isAllowAdd
-                    ? [
-                          {
-                              field: 'add',
-                              header: '',
-                          },
-                      ]
-                    : []),
-            ],
-        ),
+        map(([roleIds, rolesDict, isAllowAdd, scopesDict]): NestedTableColumn<DataItem>[] => [
+            {
+                field: 'name',
+                header: '',
+                formatter: (d) => (d.scope ? scopesDict[d.scope] : d.shop.details.name),
+                style: { 'min-width': '130px' },
+            },
+            ...roleIds.map((r) => ({
+                field: r,
+                header: rolesDict?.[r] || r,
+                style: { 'text-align': 'center' },
+            })),
+            ...(isAllowAdd
+                ? [
+                      {
+                          field: 'add',
+                          header: '',
+                      },
+                  ]
+                : []),
+        ]),
     );
     data$: Observable<NestedTableNode<DataItem>[]> = this.shops$.pipe(
         map((shops) => [
