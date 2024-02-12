@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
+import { MatTooltip } from '@angular/material/tooltip';
 import { TranslocoModule } from '@ngneat/transloco';
 import { FlexModule } from 'ng-flex-layout';
 
@@ -33,6 +34,7 @@ import { SelectRoleDialogComponent } from './components/select-role-dialog/selec
         MatTableModule,
         BootstrapIconModule,
         FormsModule,
+        MatTooltip,
     ],
     declarations: [ChangeRolesTableComponent, SelectRoleDialogComponent],
     exports: [ChangeRolesTableComponent],

@@ -1,13 +1,16 @@
 import { Component, ViewChild, TemplateRef, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { DialogSuperclass, DEFAULT_DIALOG_CONFIG } from '@vality/ng-core';
+import { DialogSuperclass, DEFAULT_DIALOG_CONFIG, getEnumValues } from '@vality/ng-core';
 import { combineLatest, Observable, ReplaySubject } from 'rxjs';
 import { map, first } from 'rxjs/operators';
 
 import { OrganizationsDictionaryService } from '@dsh/app/api/organizations';
 import { ROLE_ACCESS_GROUPS, RoleAccessGroup } from '@dsh/app/auth';
 import { RoleId } from '@dsh/app/auth/types/role-id';
-import { ROLE_PRIORITY_DESC } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
+import {
+    ROLE_PRIORITY_DESC,
+    sortRoleIds,
+} from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
 import { NestedTableColumn, NestedTableNode } from '@dsh/components/nested-table';
 
 import { RoleAccessesDictionaryService } from './services/role-accesses-dictionary.service';
@@ -37,11 +40,11 @@ export class SelectRoleDialogComponent extends DialogSuperclass<
                 header: '',
                 formatter: (d) => (d ? roleAccessDict[d.name] : ''),
             },
-            ...this.roles.map((r) => ({ field: r, header: roleIdDict[r] })),
+            ...this.roles.sort(sortRoleIds).map((r) => ({ field: r, header: roleIdDict[r] })),
         ]),
     );
     data: NestedTableNode<RoleAccessGroup>[] = [
-        { value: null },
+        ...(this.dialogData.isShow ? [] : [{ value: null }]),
         ...ROLE_ACCESS_GROUPS.map((g) => ({
             value: g,
             children: g.children?.map?.((a) => ({ value: a })),
@@ -52,7 +55,7 @@ export class SelectRoleDialogComponent extends DialogSuperclass<
     @ViewChild('accessCellTpl') accessCellTpl: TemplateRef<unknown>;
 
     get cellsTemplates() {
-        return Object.fromEntries(this.roles.map((r) => [r, this.accessCellTpl]));
+        return Object.fromEntries(getEnumValues(RoleId).map((r) => [r, this.accessCellTpl]));
     }
 
     get roles() {

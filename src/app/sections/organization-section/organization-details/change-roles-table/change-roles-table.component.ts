@@ -15,7 +15,6 @@ import {
 } from '@angular/core';
 import { toObservable, takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
-import { TranslocoService } from '@ngneat/transloco';
 import {
     ComponentChanges,
     getEnumValues,
@@ -34,7 +33,7 @@ import {
     MemberRoleOptionalId,
     ResourceScopeIdInternal,
 } from '@dsh/app/api/organizations';
-import { ShopsService } from '@dsh/app/api/payments';
+import { ShopsService, toLiveShops } from '@dsh/app/api/payments';
 import { RoleId } from '@dsh/app/auth/types/role-id';
 import { sortRoleIds } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
 import { NestedTableColumn, NestedTableNode } from '@dsh/components/nested-table';
@@ -44,7 +43,7 @@ import { equalRoles } from '../members/components/edit-roles-dialog/utils/equal-
 
 import { SelectRoleDialogComponent } from './components/select-role-dialog/select-role-dialog.component';
 
-type DataItem = { shop?: Shop; scope?: ResourceScopeIdInternal };
+type DataItem = { shop?: Pick<Shop, 'id' | 'details'>; scope?: ResourceScopeIdInternal };
 
 @Component({
     selector: 'dsh-change-roles-table',
@@ -62,7 +61,7 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
         return this.roles$.value;
     }
     @Input() organization: Organization;
-    @Input({ transform: booleanAttribute }) editMode: boolean;
+    @Input({ transform: booleanAttribute }) hasAtLeastOneRole: boolean;
     @Input({ transform: booleanAttribute }) controlled: boolean;
     @Input() inProgress = false;
 
@@ -79,16 +78,11 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
         switchMap((organization) =>
             this.shopsService.getShopsForParty({ partyID: organization.party }),
         ),
+        map((shops) => toLiveShops(shops)),
         shareReplay({ bufferSize: 1, refCount: true }),
     );
     availableRoles = computed(() => Object.values(RoleId).filter((r) => !this.roleIds().has(r)));
     roles$ = new BehaviorSubject<MemberRoleOptionalId[]>([]);
-    isAllowRemoves$ = this.roles$.pipe(
-        map(
-            (roles) =>
-                !this.editMode || roles.some((r) => roles.some((b) => b.roleId !== r.roleId)),
-        ),
-    );
     columns$ = combineLatest([
         toObservable(this.roleIds),
         this.organizationsDictionaryService.roleId$,
@@ -117,11 +111,18 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
                 : []),
         ]),
     );
-    data$: Observable<NestedTableNode<DataItem>[]> = this.shops$.pipe(
-        map((shops) => [
+    data$: Observable<NestedTableNode<DataItem>[]> = combineLatest([this.shops$, this.roles$]).pipe(
+        map(([shops, roles]) => [
             {
                 value: { scope: ResourceScopeId.Shop },
-                children: shops.map((shop) => ({ value: { shop } })),
+                children: [
+                    ...shops,
+                    ...roles
+                        .filter((r) => r.scope?.id === ResourceScopeId.Shop)
+                        .map((r) => r.scope.resourceId)
+                        .filter((id) => !!id && shops.every((s) => s.id !== id))
+                        .map((id) => ({ id, details: { name: `${id}` } })),
+                ].map((shop) => ({ value: { shop } })),
                 expanded: true,
             },
             {
@@ -151,7 +152,6 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
         private organizationsDictionaryService: OrganizationsDictionaryService,
         private injector: Injector,
         private destroyRef: DestroyRef,
-        private t: TranslocoService,
     ) {}
 
     ngOnChanges({ organization }: ComponentChanges<ChangeRolesTableComponent>) {
@@ -187,10 +187,13 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
             });
     }
 
-    show(roleId: RoleId) {
+    show(roleId?: RoleId) {
         const removeDialogsClass = addDialogsClass(this.dialog.openDialogs, 'dsh-hidden');
         this.dialogService
-            .open(SelectRoleDialogComponent, { availableRoles: [roleId], isShow: true })
+            .open(SelectRoleDialogComponent, {
+                availableRoles: roleId ? [roleId] : getEnumValues(RoleId),
+                isShow: true,
+            })
             .afterClosed()
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe({
@@ -230,7 +233,7 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
         if ([RoleId.Administrator, RoleId.WalletManager].includes(roleId) || scopeId === 'Wallet') {
             return of(true);
         }
-        if (!this.editMode) {
+        if (!this.hasAtLeastOneRole) {
             return of(false);
         }
         return combineLatest([this.roles$, this.checked(roleId, resourceId)]).pipe(
@@ -282,6 +285,12 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
                 ).length;
                 return rolesCount > 0 && rolesCount < shops.length;
             }),
+        );
+    }
+
+    isAllowRemove(roleId: RoleId) {
+        return this.roles$.pipe(
+            map((roles) => !this.hasAtLeastOneRole || roles.some((r) => r.roleId !== roleId)),
         );
     }
 

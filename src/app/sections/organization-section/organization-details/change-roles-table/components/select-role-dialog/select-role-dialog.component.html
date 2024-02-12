@@ -1,5 +1,6 @@
 <dsh-base-dialog
     *transloco="let t; scope: 'organization-section'; read: 'organizationSection.selectRoleDialog'"
+    [noActions]="dialogData.isShow"
     [title]="t('title')"
     (cancel)="cancel()"
 >
@@ -11,12 +12,13 @@
         >
             <ng-template #accessCellTpl let-column="column" let-index="index" let-value="value">
                 <dsh-selection
-                    *ngIf="value && value.availableRoles !== undefined"
-                    [selected]="value.availableRoles.includes(column.field)"
+                    *ngIf="value && value?.availableRoles !== undefined"
+                    [selected]="value?.availableRoles?.includes?.(column.field)"
                     style="display: flex; justify-content: center"
                 ></dsh-selection>
-                <div *ngIf="index === 0" style="display: flex; justify-content: center">
+                <div *ngIf="!value && index === 0" style="display: flex; justify-content: center">
                     <mat-radio-group
+                        [disabled]="!dialogData.availableRoles.includes(column?.field)"
                         [ngModel]="selectedRole$ | async"
                         (ngModelChange)="selectedRole$.next(column.field)"
                     >

@@ -15,6 +15,7 @@
     },
     "changeRolesTable": {
         "add": "Add",
+        "info": "Roles accesses",
         "remove": "Delete"
     },
     "createInvitationDialog": {

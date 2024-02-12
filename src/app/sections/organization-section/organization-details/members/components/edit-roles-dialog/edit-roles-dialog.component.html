@@ -9,7 +9,7 @@
         [organization]="dialogData.organization"
         [roles]="roles$ | async"
         controlled
-        editMode
+        hasAtLeastOneRole
         (addedRoles)="addRoles($event)"
         (removedRoles)="removeRoles($event)"
     ></dsh-change-roles-table>

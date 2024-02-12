@@ -1,10 +1,14 @@
-<div style="overflow: auto">
+<div
+    *transloco="let t; scope: 'organization-section'; read: 'organizationSection.changeRolesTable'"
+    style="overflow: auto"
+>
+    <span
+        class="dsh-text-color-secondary dsh-body-1"
+        style="text-decoration: underline; cursor: pointer"
+        (click)="show()"
+        >{{ t('info') }}</span
+    >
     <dsh-nested-table
-        *transloco="
-            let t;
-            scope: 'organization-section';
-            read: 'organizationSection.changeRolesTable'
-        "
         [cellsTemplates]="cellsTemplates"
         [columns]="columns$ | async"
         [data]="data$ | async"
@@ -40,7 +44,7 @@
         </ng-template>
         <ng-template #footerCellTpl let-column="column" let-value="value">
             <button
-                [disabled]="!(isAllowRemoves$ | async) || inProgress"
+                [disabled]="!(isAllowRemove(column?.field) | async) || inProgress"
                 color="warn"
                 dsh-button
                 (click)="remove(column.field)"
