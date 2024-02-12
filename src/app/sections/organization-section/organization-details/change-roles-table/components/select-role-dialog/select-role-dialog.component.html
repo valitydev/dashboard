@@ -15,17 +15,19 @@
                     [selected]="value.availableRoles.includes(column.field)"
                     style="display: flex; justify-content: center"
                 ></dsh-selection>
-                <mat-radio-button
-                    *ngIf="index === 0"
-                    [value]="roleControl.value === column.field"
-                    style="display: flex; justify-content: center"
-                    (click)="roleControl.setValue(column.field)"
-                ></mat-radio-button>
+                <div *ngIf="index === 0" style="display: flex; justify-content: center">
+                    <mat-radio-group
+                        [ngModel]="selectedRole$ | async"
+                        (ngModelChange)="selectedRole$.next(column.field)"
+                    >
+                        <mat-radio-button [value]="column.field"></mat-radio-button>
+                    </mat-radio-group>
+                </div>
             </ng-template>
         </dsh-nested-table>
     </div>
     <ng-container *ngIf="!dialogData?.isShow" dshBaseDialogActions>
-        <button [disabled]="roleControl.invalid" color="accent" dsh-button (click)="select()">
+        <button [disabled]="!(selectedRole$ | async)" color="accent" dsh-button (click)="select()">
             {{ t('select') }}
         </button>
     </ng-container>

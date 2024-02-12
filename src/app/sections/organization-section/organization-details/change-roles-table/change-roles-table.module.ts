@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
@@ -32,6 +32,7 @@ import { SelectRoleDialogComponent } from './components/select-role-dialog/selec
         MatButtonModule,
         MatTableModule,
         BootstrapIconModule,
+        FormsModule,
     ],
     declarations: [ChangeRolesTableComponent, SelectRoleDialogComponent],
     exports: [ChangeRolesTableComponent],

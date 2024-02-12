@@ -16,15 +16,31 @@
         </ng-template>
         <ng-template #roleCellTpl let-column="column" let-value="value">
             <mat-checkbox
-                [checked]="checked(column.field, value?.id) | async"
-                [disabled]="disabled(column.field, value?.id) | async"
-                [indeterminate]="value?.id ? false : (isIntermediate(column.field) | async)"
-                (change)="toggle(column.field, value?.id, $event.checked)"
+                *ngIf="
+                    value?.scope !== 'Wallet' && column.field !== 'WalletManager';
+                    else selectedTpl
+                "
+                [checked]="checked(column.field, value?.shop?.id, value?.scope) | async"
+                [disabled]="
+                    (disabled(column.field, value?.shop?.id, value?.scope) | async) || inProgress
+                "
+                [indeterminate]="
+                    value?.shop || value?.scope === 'Wallet'
+                        ? false
+                        : (isIntermediate(column.field) | async)
+                "
+                (change)="toggle(column.field, value?.shop?.id, $event.checked)"
             ></mat-checkbox>
+            <ng-template #selectedTpl>
+                <dsh-selection
+                    [selected]="checked(column.field, value?.shop?.id, value?.scope) | async"
+                    style="display: flex; justify-content: center"
+                ></dsh-selection>
+            </ng-template>
         </ng-template>
         <ng-template #footerCellTpl let-column="column" let-value="value">
             <button
-                [disabled]="!(isAllowRemoves$ | async)"
+                [disabled]="!(isAllowRemoves$ | async) || inProgress"
                 color="warn"
                 dsh-button
                 (click)="remove(column.field)"

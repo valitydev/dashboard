@@ -1,10 +1,15 @@
 import { MemberRoleOptionalId } from '@dsh/app/api/organizations';
 
-export function equalRoles(a: MemberRoleOptionalId, b: MemberRoleOptionalId) {
+export function equalRoles(a: MemberRoleOptionalId, b: MemberRoleOptionalId): boolean {
+    if (typeof a !== 'object' || typeof b !== 'object') {
+        return false;
+    }
+    if (a.id && b.id) {
+        return a.id === b.id;
+    }
     return (
-        (a.id && b.id && a.id === b.id) ||
-        (a.roleId === b.roleId &&
-            ((!a.scope && !b.scope) ||
-                (a.scope.id === b.scope.id && a.scope.resourceId === b.scope.resourceId)))
+        a.roleId === b.roleId &&
+        a.scope?.id === b.scope?.id &&
+        a.scope?.resourceId === b.scope?.resourceId
     );
 }

@@ -14,7 +14,13 @@
                 {{ column.header }}
             </ng-template>
         </th>
-        <td *matCellDef="let item; let itemIndex = index" [style]="column.style" mat-cell>
+        <td
+            *matCellDef="let item; let itemIndex = index"
+            [style.width.px]="0"
+            [style]="column.style"
+            class="dsh-body-1"
+            mat-cell
+        >
             <div
                 *ngIf="item.expandable && columnIndex === 0; else cellTpl"
                 [style.margin-left.px]="item.level * 32"
@@ -34,17 +40,19 @@
                 ></dsh-bi>
             </div>
             <ng-template #cellTpl>
-                <ng-container *ngIf="cellsTemplates[column.field]; else defaultCellTpl">
-                    <ng-container
-                        *ngTemplateOutlet="
-                            cellsTemplates[column.field];
-                            context: { value: item.value, index: itemIndex, column: column }
-                        "
-                    ></ng-container>
-                </ng-container>
-                <ng-template #defaultCellTpl>
-                    {{ column.formatter ? column.formatter(item.value) : '' }}
-                </ng-template>
+                <div [class.dsh-body-2]="item.level === 0">
+                    <ng-container *ngIf="cellsTemplates[column.field]; else defaultCellTpl">
+                        <ng-container
+                            *ngTemplateOutlet="
+                                cellsTemplates[column.field];
+                                context: { value: item.value, index: itemIndex, column: column }
+                            "
+                        ></ng-container>
+                    </ng-container>
+                    <ng-template #defaultCellTpl>
+                        {{ column.formatter ? column.formatter(item.value) : '' }}
+                    </ng-template>
+                </div>
             </ng-template>
         </td>
         <ng-container *ngIf="footerTemplates">

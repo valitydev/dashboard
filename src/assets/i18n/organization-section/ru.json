@@ -16,6 +16,10 @@
     "changeRolesTable": {
         "add": "Добавить",
         "remove": "Удалить",
+        "resourcesScope": {
+            "Shop": "Магазины",
+            "Wallet": "Кошельки"
+        },
         "shops": "Магазины"
     },
     "createInvitationDialog": {

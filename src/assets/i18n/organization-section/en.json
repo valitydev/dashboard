@@ -16,7 +16,10 @@
     "changeRolesTable": {
         "add": "Add",
         "remove": "Delete",
-        "shops": "Shops"
+        "resourcesScope": {
+            "Shop": "Shops",
+            "Wallet": "Wallets"
+        }
     },
     "createInvitationDialog": {
         "form": {

@@ -1,20 +1,16 @@
-import { Component, ViewChild, TemplateRef } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Component, ViewChild, TemplateRef, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DialogSuperclass, DEFAULT_DIALOG_CONFIG } from '@vality/ng-core';
-import { combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { combineLatest, Observable, ReplaySubject } from 'rxjs';
+import { map, first } from 'rxjs/operators';
 
 import { OrganizationsDictionaryService } from '@dsh/app/api/organizations';
-import { RoleAccess, ROLE_ACCESS_GROUPS } from '@dsh/app/auth';
+import { ROLE_ACCESS_GROUPS, RoleAccessGroup } from '@dsh/app/auth';
 import { RoleId } from '@dsh/app/auth/types/role-id';
 import { ROLE_PRIORITY_DESC } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
 import { NestedTableColumn, NestedTableNode } from '@dsh/components/nested-table';
 
 import { RoleAccessesDictionaryService } from './services/role-accesses-dictionary.service';
-
-interface FlatRoleAccess extends RoleAccess {
-    isHeader: boolean;
-}
 
 @Component({
     selector: 'dsh-select-role-dialog',
@@ -28,13 +24,10 @@ export class SelectRoleDialogComponent extends DialogSuperclass<
 > {
     static defaultDialogConfig = DEFAULT_DIALOG_CONFIG.large;
 
-    roleControl = this.fb.control<RoleId>(null, Validators.required);
-    accesses: FlatRoleAccess[] = ROLE_ACCESS_GROUPS.map((r) => ({ ...r, isHeader: true })).flatMap(
-        (r) => [r, ...(r.children || [])] as FlatRoleAccess[],
-    );
+    selectedRole$ = new ReplaySubject<RoleId>(1);
     roleIdDict$ = this.organizationsDictionaryService.roleId$;
     roleAccessDict$ = this.roleAccessesDictionaryService.roleAccessDict$;
-    columns$: Observable<NestedTableColumn<FlatRoleAccess>[]> = combineLatest([
+    columns$: Observable<NestedTableColumn<RoleAccessGroup>[]> = combineLatest([
         this.roleIdDict$,
         this.roleAccessDict$,
     ]).pipe(
@@ -47,9 +40,13 @@ export class SelectRoleDialogComponent extends DialogSuperclass<
             ...this.roles.map((r) => ({ field: r, header: roleIdDict[r] })),
         ]),
     );
-    data: NestedTableNode<FlatRoleAccess>[] = [
+    data: NestedTableNode<RoleAccessGroup>[] = [
         { value: null },
-        ...this.accesses.map((a) => ({ value: a })),
+        ...ROLE_ACCESS_GROUPS.map((g) => ({
+            value: g,
+            children: g.children?.map?.((a) => ({ value: a })),
+            expanded: true,
+        })),
     ];
 
     @ViewChild('accessCellTpl') accessCellTpl: TemplateRef<unknown>;
@@ -65,7 +62,7 @@ export class SelectRoleDialogComponent extends DialogSuperclass<
     }
 
     constructor(
-        private fb: FormBuilder,
+        private destroyRef: DestroyRef,
         private organizationsDictionaryService: OrganizationsDictionaryService,
         private roleAccessesDictionaryService: RoleAccessesDictionaryService,
     ) {
@@ -77,6 +74,10 @@ export class SelectRoleDialogComponent extends DialogSuperclass<
     }
 
     select() {
-        this.closeWithSuccess({ selectedRoleId: this.roleControl.value });
+        this.selectedRole$
+            .pipe(first(), takeUntilDestroyed(this.destroyRef))
+            .subscribe((selectedRoleId) => {
+                this.closeWithSuccess({ selectedRoleId });
+            });
     }
 }

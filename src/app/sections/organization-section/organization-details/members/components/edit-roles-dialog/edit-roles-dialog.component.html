@@ -5,6 +5,7 @@
     (cancel)="cancel()"
 >
     <dsh-change-roles-table
+        [inProgress]="!!(progress$ | async)"
         [organization]="dialogData.organization"
         [roles]="roles$ | async"
         controlled
