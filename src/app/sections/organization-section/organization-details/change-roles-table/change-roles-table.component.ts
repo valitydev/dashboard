@@ -210,7 +210,7 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
 
     toggleAll(roleId: RoleId): void {
         const roles = this.roles.filter((r) => r.roleId === roleId);
-        combineLatest([this.shops$, this.checkedAll(roleId)])
+        combineLatest([this.shops$, this.checked(roleId)])
             .pipe(first(), untilDestroyed(this))
             .subscribe(([shops, isCheckedAll]) => {
                 if (isCheckedAll) {
@@ -240,32 +240,22 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
     }
 
     checked(roleId: RoleId, resourceId?: string): Observable<boolean> {
-        if (!resourceId) {
-            return this.checkedAll(roleId);
+        if (roleId === RoleId.Administrator) {
+            return of(true);
         }
-        return this.roles$.pipe(
-            map(
-                (roles) =>
-                    roleId === RoleId.Administrator ||
-                    !!roles.find((r) =>
+        return combineLatest([
+            resourceId
+                ? of([resourceId])
+                : this.shops$.pipe(map((shops) => shops.map(({ id }) => id))),
+            this.roles$,
+        ]).pipe(
+            map(([shopIds, roles]) =>
+                shopIds.every((resourceId) =>
+                    roles.find((r) =>
                         equalRoles(r, { roleId, scope: { id: ResourceScopeId.Shop, resourceId } }),
                     ),
+                ),
             ),
-        );
-    }
-
-    checkedAll(roleId: RoleId): Observable<boolean> {
-        return combineLatest([this.shops$, this.roles$]).pipe(
-            map(([shops, roles]) => {
-                const shopIds = shops.map(({ id }) => id);
-                return (
-                    roleId === RoleId.Administrator ||
-                    shops.length <=
-                        roles.filter(
-                            (r) => r.roleId === roleId && shopIds.includes(r.scope?.resourceId),
-                        ).length
-                );
-            }),
         );
     }
 
