@@ -74,16 +74,14 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
     @ViewChild('footerCellTpl') footerTemplate: TemplateRef<unknown>;
 
     organization$ = new ReplaySubject<Organization>(1);
-    roleIds = signal<RoleId[]>([]);
+    roleIds = signal<Set<RoleId>>(new Set());
     shops$ = this.organization$.pipe(
         switchMap((organization) =>
             this.shopsService.getShopsForParty({ partyID: organization.party }),
         ),
         shareReplay({ bufferSize: 1, refCount: true }),
     );
-    availableRoles = computed(() =>
-        Object.values(RoleId).filter((r) => !this.roleIds().includes(r)),
-    );
+    availableRoles = computed(() => Object.values(RoleId).filter((r) => !this.roleIds().has(r)));
     roles$ = new BehaviorSubject<MemberRoleOptionalId[]>([]);
     isAllowRemoves$ = this.roles$.pipe(
         map(
@@ -104,7 +102,7 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
                 formatter: (d) => (d.scope ? scopesDict[d.scope] : d.shop.details.name),
                 style: { 'min-width': '130px' },
             },
-            ...roleIds.map((r) => ({
+            ...Array.from(roleIds).map((r) => ({
                 field: r,
                 header: rolesDict?.[r] || r,
                 style: { 'text-align': 'center' },
@@ -307,11 +305,15 @@ export class ChangeRolesTableComponent implements OnInit, OnChanges {
     }
 
     private addRoleIds(roleIds: RoleId[]) {
-        this.roleIds.update((v) => Array.from(new Set([...v, ...roleIds])).sort(sortRoleIds));
+        const newRoleIds = new Set(roleIds.sort(sortRoleIds));
+        if (Array.from(newRoleIds).every((r) => this.roleIds().has(r))) {
+            return;
+        }
+        this.roleIds.update((v) => (newRoleIds.forEach((r) => v.add(r)), new Set(v)));
     }
 
     private removeRoleIds(roleIds: RoleId[]) {
-        this.roleIds.update((v) => v.filter((r) => !roleIds.includes(r)));
+        this.roleIds.update((v) => (roleIds.forEach((r) => v.delete(r)), new Set(v)));
     }
 
     private addRoles(roles: MemberRoleOptionalId[]) {
