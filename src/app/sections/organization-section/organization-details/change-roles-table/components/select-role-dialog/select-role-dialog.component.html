@@ -28,7 +28,7 @@
             </ng-template>
         </dsh-nested-table>
     </div>
-    <ng-container *ngIf="!dialogData?.isShow" dshBaseDialogActions>
+    <ng-container *ngIf="!dialogData.isShow" dshBaseDialogActions>
         <button [disabled]="!(selectedRole$ | async)" color="accent" dsh-button (click)="select()">
             {{ t('select') }}
         </button>
