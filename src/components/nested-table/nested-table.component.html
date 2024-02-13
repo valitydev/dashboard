@@ -1,1 +1,72 @@
-<ng-content></ng-content>
+<table [dataSource]="data" mat-table>
+    <ng-container
+        *ngFor="let column of columns; let columnIndex = index"
+        [matColumnDef]="column.field"
+        [sticky]="columnIndex === 0"
+    >
+        <th *matHeaderCellDef mat-header-cell style="text-align: center">
+            <ng-container *ngIf="headersTemplates[column.field]; else defaultHeaderTpl">
+                <ng-container
+                    *ngTemplateOutlet="headersTemplates[column.field]; context: { column: column }"
+                ></ng-container>
+            </ng-container>
+            <ng-template #defaultHeaderTpl>
+                {{ column.header }}
+            </ng-template>
+        </th>
+        <td
+            *matCellDef="let item; let itemIndex = index"
+            [style.width.px]="0"
+            [style]="column.style"
+            class="dsh-body-1"
+            mat-cell
+        >
+            <div
+                *ngIf="item.expandable && columnIndex === 0; else cellTpl"
+                [style.margin-left.px]="item.level * 32"
+                style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    cursor: pointer;
+                    gap: 8px;
+                "
+                (click)="toggle(item)"
+            >
+                <ng-container *ngTemplateOutlet="cellTpl"></ng-container>
+                <dsh-bi
+                    [icon]="isExpanded(item) ? 'chevron-up' : 'chevron-right'"
+                    size="sm"
+                ></dsh-bi>
+            </div>
+            <ng-template #cellTpl>
+                <div [class.dsh-body-2]="item.level === 0">
+                    <ng-container *ngIf="cellsTemplates[column.field]; else defaultCellTpl">
+                        <ng-container
+                            *ngTemplateOutlet="
+                                cellsTemplates[column.field];
+                                context: { value: item.value, index: itemIndex, column: column }
+                            "
+                        ></ng-container>
+                    </ng-container>
+                    <ng-template #defaultCellTpl>
+                        {{ column.formatter ? column.formatter(item.value) : '' }}
+                    </ng-template>
+                </div>
+            </ng-template>
+        </td>
+        <ng-container *ngIf="footerTemplates">
+            <td *matFooterCellDef mat-footer-cell style="text-align: center">
+                <ng-container
+                    *ngTemplateOutlet="footerTemplates[column.field]; context: { column: column }"
+                ></ng-container>
+            </td>
+        </ng-container>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
+    <ng-container *ngIf="footerTemplates">
+        <tr *matFooterRowDef="displayedColumns; sticky: true" mat-footer-row></tr>
+    </ng-container>
+</table>

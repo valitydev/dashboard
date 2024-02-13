@@ -5,10 +5,11 @@
     (cancel)="cancel()"
 >
     <dsh-change-roles-table
-        [organization]="data.organization"
+        [inProgress]="!!(progress$ | async)"
+        [organization]="dialogData.organization"
         [roles]="roles$ | async"
         controlled
-        editMode
+        hasAtLeastOneRole
         (addedRoles)="addRoles($event)"
         (removedRoles)="removeRoles($event)"
     ></dsh-change-roles-table>

@@ -1,7 +1,6 @@
-import { RoleId } from '@vality/swag-organizations';
-
 import { RoleAccessGroup } from './types/role-access';
 import { RoleAccessName } from './types/role-access-name';
+import { RoleId } from './types/role-id';
 
 export const ROLE_ACCESS_GROUPS: RoleAccessGroup[] = [
     {
@@ -70,7 +69,7 @@ export const ROLE_ACCESS_GROUPS: RoleAccessGroup[] = [
     },
     {
         name: RoleAccessName.Wallets,
-        availableRoles: [RoleId.Administrator, RoleId.Accountant, RoleId.Integrator],
+        availableRoles: [RoleId.WalletManager],
     },
     {
         name: RoleAccessName.Claims,

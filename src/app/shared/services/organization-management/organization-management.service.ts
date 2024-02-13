@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Member, Organization, RoleId } from '@vality/swag-organizations';
+import { Member, Organization } from '@vality/swag-organizations';
 import { combineLatest, defer, Observable, ReplaySubject } from 'rxjs';
 import { map, pluck, shareReplay, switchMap } from 'rxjs/operators';
 
 import { MembersService } from '@dsh/app/api/organizations';
+import { RoleId } from '@dsh/app/auth/types/role-id';
 import { SHARE_REPLAY_CONF } from '@dsh/app/custom-operators';
 import { KeycloakTokenInfoService } from '@dsh/app/shared';
 

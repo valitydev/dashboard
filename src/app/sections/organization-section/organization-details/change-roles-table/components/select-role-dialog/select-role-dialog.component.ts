@@ -1,58 +1,86 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { RoleId } from '@vality/swag-organizations';
+import { Component, ViewChild, TemplateRef, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { DialogSuperclass, DEFAULT_DIALOG_CONFIG, getEnumValues } from '@vality/ng-core';
+import { combineLatest, Observable, ReplaySubject } from 'rxjs';
+import { map, first } from 'rxjs/operators';
 
 import { OrganizationsDictionaryService } from '@dsh/app/api/organizations';
-import { RoleAccess, ROLE_ACCESS_GROUPS } from '@dsh/app/auth';
-import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
-import { ROLE_PRIORITY_DESC } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
+import { ROLE_ACCESS_GROUPS, RoleAccessGroup } from '@dsh/app/auth';
+import { RoleId } from '@dsh/app/auth/types/role-id';
+import {
+    ROLE_PRIORITY_DESC,
+    sortRoleIds,
+} from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
+import { NestedTableColumn, NestedTableNode } from '@dsh/components/nested-table';
 
 import { RoleAccessesDictionaryService } from './services/role-accesses-dictionary.service';
-import { SelectRoleDialogResult } from './types/select-role-dialog-result';
-import { SelectRoleDialogData } from './types/selected-role-dialog-data';
-
-interface FlatRoleAccess extends RoleAccess {
-    isHeader: boolean;
-}
 
 @Component({
     selector: 'dsh-select-role-dialog',
     templateUrl: 'select-role-dialog.component.html',
     styleUrls: ['select-role-dialog.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SelectRoleDialogComponent {
-    roleControl = this.fb.control<RoleId>(null, Validators.required);
-    accesses: FlatRoleAccess[] = ROLE_ACCESS_GROUPS.map((r) => ({ ...r, isHeader: true })).flatMap(
-        (r) => [r, ...(r.children || [])] as FlatRoleAccess[],
-    );
+export class SelectRoleDialogComponent extends DialogSuperclass<
+    SelectRoleDialogComponent,
+    { availableRoles: RoleId[]; isShow?: boolean },
+    { selectedRoleId: RoleId }
+> {
+    static defaultDialogConfig = DEFAULT_DIALOG_CONFIG.large;
+
+    selectedRole$ = new ReplaySubject<RoleId>(1);
     roleIdDict$ = this.organizationsDictionaryService.roleId$;
     roleAccessDict$ = this.roleAccessesDictionaryService.roleAccessDict$;
-    get rowsGridTemplateColumns() {
-        return `2fr ${'1fr '.repeat(this.data.availableRoles.length)}`;
+    columns$: Observable<NestedTableColumn<RoleAccessGroup>[]> = combineLatest([
+        this.roleIdDict$,
+        this.roleAccessDict$,
+    ]).pipe(
+        map(([roleIdDict, roleAccessDict]) => [
+            {
+                field: 'name',
+                header: '',
+                formatter: (d) => (d ? roleAccessDict[d.name] : ''),
+            },
+            ...this.roles.sort(sortRoleIds).map((r) => ({ field: r, header: roleIdDict[r] })),
+        ]),
+    );
+    data: NestedTableNode<RoleAccessGroup>[] = [
+        ...(this.dialogData.isShow ? [] : [{ value: null }]),
+        ...ROLE_ACCESS_GROUPS.map((g) => ({
+            value: g,
+            children: g.children?.map?.((a) => ({ value: a })),
+            expanded: true,
+        })),
+    ];
+
+    @ViewChild('accessCellTpl') accessCellTpl: TemplateRef<unknown>;
+
+    get cellsTemplates() {
+        return Object.fromEntries(getEnumValues(RoleId).map((r) => [r, this.accessCellTpl]));
     }
+
     get roles() {
-        return this.data.availableRoles.sort(
+        return (this.dialogData?.availableRoles || []).sort(
             (a, b) => ROLE_PRIORITY_DESC[a] - ROLE_PRIORITY_DESC[b],
         );
     }
 
     constructor(
-        @Inject(MAT_DIALOG_DATA) private data: SelectRoleDialogData,
-        private dialogRef: MatDialogRef<SelectRoleDialogComponent, SelectRoleDialogResult>,
-        private fb: FormBuilder,
+        private destroyRef: DestroyRef,
         private organizationsDictionaryService: OrganizationsDictionaryService,
         private roleAccessesDictionaryService: RoleAccessesDictionaryService,
-    ) {}
+    ) {
+        super();
+    }
 
     cancel() {
-        this.dialogRef.close(BaseDialogResponseStatus.Error);
+        this.closeWithError();
     }
 
     select() {
-        this.dialogRef.close({
-            selectedRoleId: this.roleControl.value,
-        });
+        this.selectedRole$
+            .pipe(first(), takeUntilDestroyed(this.destroyRef))
+            .subscribe((selectedRoleId) => {
+                this.closeWithSuccess({ selectedRoleId });
+            });
     }
 }

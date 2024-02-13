@@ -2,3 +2,18 @@
     word-break: break-all;
     text-align: center;
 }
+
+::ng-deep mat-radio-button * {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.content {
+    overflow: auto;
+    height: 100%;
+
+    .selection {
+        display: flex;
+        justify-content: center;
+    }
+}

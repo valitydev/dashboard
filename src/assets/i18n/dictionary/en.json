@@ -103,11 +103,16 @@
         "resourceScopeId": {
             "Shop": "Shops"
         },
+        "resourceScopeIdPlural": {
+            "Shop": "Shops",
+            "Wallet": "Wallets"
+        },
         "roleId": {
             "Accountant": "Accountant",
             "Administrator": "Administrator",
             "Integrator": "Integrator",
-            "Manager": "Manager"
+            "Manager": "Manager",
+            "WalletManager": "Wallets Manager"
         }
     },
     "payments": {

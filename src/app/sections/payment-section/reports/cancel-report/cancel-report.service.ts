@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
+import { DialogResponseStatus } from '@vality/ng-core';
 import { combineLatest, Observable, of, Subject } from 'rxjs';
 import { catchError, filter, switchMap, takeUntil, tap, map, first } from 'rxjs/operators';
 
@@ -38,7 +39,7 @@ export class CancelReportService {
                         this.dialog
                             .open(ConfirmActionDialogComponent)
                             .afterClosed()
-                            .pipe(filter((r) => r === 'confirm')),
+                            .pipe(filter((r) => r.status === DialogResponseStatus.Success)),
                     ]),
                 ),
                 switchMap(([reportID]) =>

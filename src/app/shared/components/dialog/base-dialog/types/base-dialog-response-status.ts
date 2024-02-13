@@ -1,5 +1,3 @@
-export enum BaseDialogResponseStatus {
-    Success = 'success',
-    Error = 'error',
-    Cancelled = 'canceled',
-}
+import { DialogResponseStatus as BaseDialogResponseStatus } from '@vality/ng-core';
+
+export { BaseDialogResponseStatus };

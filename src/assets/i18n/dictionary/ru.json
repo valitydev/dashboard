@@ -103,11 +103,16 @@
         "resourceScopeId": {
             "Shop": "Магазины"
         },
+        "resourceScopeIdPlural": {
+            "Shop": "Магазины",
+            "Wallet": "Кошельки"
+        },
         "roleId": {
             "Accountant": "Бухгалтер",
             "Administrator": "Администратор",
             "Integrator": "Интегратор",
-            "Manager": "Менеджер"
+            "Manager": "Менеджер",
+            "WalletManager": "Менеджер по кошелькам"
         }
     },
     "payments": {

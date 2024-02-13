@@ -1,52 +1,90 @@
-import {
-    AfterContentInit,
-    ChangeDetectionStrategy,
-    Component,
-    ContentChildren,
-    Input,
-    OnChanges,
-    QueryList,
-} from '@angular/core';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { ComponentChanges } from '@vality/ng-core';
-import { combineLatest } from 'rxjs';
-import { distinctUntilChanged, map, switchMap } from 'rxjs/operators';
+import { FlatTreeControl } from '@angular/cdk/tree';
+import { Component, Input, TemplateRef } from '@angular/core';
+import { MatTreeFlattener, MatTreeFlatDataSource } from '@angular/material/tree';
+import { of } from 'rxjs';
+import { first } from 'rxjs/operators';
 
-import { NestedTableRowComponent } from '@dsh/components/nested-table/components/nested-table-row/nested-table-row.component';
-import { LayoutManagementService } from '@dsh/components/nested-table/services/layout-management/layout-management.service';
-import { queryListStartedArrayChanges } from '@dsh/utils';
+export type NestedTableNode<T = unknown> = {
+    value: T;
+    children?: NestedTableNode<T>[];
+    expanded?: boolean;
+};
 
-@UntilDestroy()
+export type NestedTableFlatNode<T = unknown> = {
+    value: T;
+    expandable: boolean;
+    level: number;
+    initExpanded: boolean;
+};
+
+export interface NestedTableColumn<T = unknown> {
+    field: string;
+    header: string;
+    formatter?: (d: T) => string;
+    style?: Record<string, unknown>;
+}
+
+function flatten<T>(node: NestedTableNode<T>, level: number): NestedTableFlatNode<T> {
+    return {
+        value: node.value,
+        expandable: node.children?.length > 0,
+        level: level,
+        initExpanded: node.expanded,
+    };
+}
+
+const TREE_CONTROL = new FlatTreeControl<NestedTableFlatNode>(
+    (node) => node.level,
+    (node) => node.expandable,
+);
+
+const TREE_FLATTENER = new MatTreeFlattener<NestedTableNode, NestedTableFlatNode>(
+    flatten,
+    (node) => node.level,
+    (node) => node.expandable,
+    (node) => node.children,
+);
+
 @Component({
     selector: 'dsh-nested-table',
     templateUrl: 'nested-table.component.html',
     styleUrls: ['nested-table.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [LayoutManagementService],
 })
-export class NestedTableComponent implements AfterContentInit, OnChanges {
-    @Input() rowsGridTemplateColumns: string;
-    @ContentChildren(NestedTableRowComponent)
-    nestedTableRowComponentChildren: QueryList<NestedTableRowComponent>;
+export class NestedTableComponent {
+    @Input({
+        transform: (data: NestedTableNode[]) => {
+            const dataSource = new MatTreeFlatDataSource(TREE_CONTROL, TREE_FLATTENER);
+            dataSource.data = data || [];
+            dataSource
+                .connect({ viewChange: of() })
+                .pipe(first())
+                .subscribe((flatten) => {
+                    for (const d of flatten) {
+                        if (d.initExpanded) {
+                            TREE_CONTROL.expand(d);
+                        }
+                    }
+                });
+            return dataSource;
+        },
+    })
+    data!: MatTreeFlatDataSource<NestedTableNode, NestedTableFlatNode>;
+    @Input() columns: NestedTableColumn[] = [];
+    @Input() cellsTemplates: Record<string, TemplateRef<unknown>> = {};
+    @Input() headersTemplates: Record<string, TemplateRef<unknown>> = {};
+    @Input() footerTemplates: Record<string, TemplateRef<unknown>> = {};
 
-    constructor(private layoutManagementService: LayoutManagementService) {}
+    get displayedColumns() {
+        return (this.columns || []).map((c) => c.field);
+    }
 
-    ngOnChanges({ rowsGridTemplateColumns }: ComponentChanges<NestedTableComponent>) {
-        if (rowsGridTemplateColumns) {
-            this.layoutManagementService.setRowsGridTemplateColumns(
-                rowsGridTemplateColumns.currentValue,
-            );
+    toggle(data: NestedTableFlatNode) {
+        if (data.expandable) {
+            TREE_CONTROL.toggle(data);
         }
     }
 
-    ngAfterContentInit() {
-        queryListStartedArrayChanges(this.nestedTableRowComponentChildren)
-            .pipe(
-                switchMap((rows) => combineLatest(rows.map(({ colsCount$ }) => colsCount$))),
-                map((rowsColsCounts) => Math.max(...rowsColsCounts)),
-                distinctUntilChanged(),
-                untilDestroyed(this),
-            )
-            .subscribe((colsCount) => this.layoutManagementService.setLayoutColsCount(colsCount));
+    isExpanded(data: NestedTableFlatNode) {
+        return TREE_CONTROL.isExpanded(data);
     }
 }

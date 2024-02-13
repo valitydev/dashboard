@@ -15,8 +15,8 @@
     },
     "changeRolesTable": {
         "add": "Добавить",
-        "remove": "Удалить",
-        "shops": "Магазины"
+        "info": "Права доступа ролей",
+        "remove": "Удалить"
     },
     "createInvitationDialog": {
         "form": {
@@ -123,7 +123,7 @@
         "wallets": "Кошельки"
     },
     "selectRoleDialog": {
-        "select": "Выбрать",
-        "title": "Выберите роль"
+        "select": "Добавить",
+        "title": "Роли"
     }
 }

@@ -2,6 +2,11 @@
     display: none;
 }
 
-.disabled {
-    pointer-events: none;
+.wrapper {
+    overflow: auto;
+
+    .selection {
+        display: flex;
+        justify-content: center;
+    }
 }

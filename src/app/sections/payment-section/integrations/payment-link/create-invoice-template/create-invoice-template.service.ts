@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { toMinor } from '@vality/ng-core';
+import { toMinor, DialogResponseStatus } from '@vality/ng-core';
 import {
     InvoiceLineTaxMode,
     InvoiceLineTaxVAT,
@@ -129,7 +129,7 @@ export class CreateInvoiceTemplateService {
         this.dialog
             .open(ConfirmActionDialogComponent)
             .afterClosed()
-            .pipe(filter((r) => r === 'confirm'))
+            .pipe(filter((r) => r.status === DialogResponseStatus.Success))
             .subscribe(() => {
                 this.cartForm.clear();
                 this.addProduct();

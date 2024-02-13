@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { DialogResponseStatus, DialogResponse } from '@vality/ng-core';
 import { Invitation, Organization, RevokeInvitationRequest } from '@vality/swag-organizations';
 import { filter, switchMap } from 'rxjs/operators';
 
 import { InvitationsService } from '@dsh/app/api/organizations';
 import { ErrorService, NotificationService } from '@dsh/app/shared';
-import { ConfirmActionDialogComponent, ConfirmActionDialogResult } from '@dsh/components/popups';
+import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 import { ignoreBeforeCompletion } from '@dsh/utils';
 
 @UntilDestroy()
@@ -31,12 +32,10 @@ export class InvitationComponent {
     @ignoreBeforeCompletion
     cancel() {
         return this.dialog
-            .open<ConfirmActionDialogComponent, void, ConfirmActionDialogResult>(
-                ConfirmActionDialogComponent,
-            )
+            .open<ConfirmActionDialogComponent, void, DialogResponse>(ConfirmActionDialogComponent)
             .afterClosed()
             .pipe(
-                filter((r) => r === 'confirm'),
+                filter((r) => r.status === DialogResponseStatus.Success),
                 switchMap(() =>
                     this.invitationsService.revokeInvitation({
                         orgId: this.orgId,

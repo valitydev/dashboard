@@ -1,70 +1,56 @@
-<dsh-nested-table
+<div
     *transloco="let t; scope: 'organization-section'; read: 'organizationSection.changeRolesTable'"
+    class="wrapper"
 >
-    <dsh-nested-table-row>
-        <dsh-nested-table-col class="dsh-body-2"></dsh-nested-table-col>
-        <dsh-nested-table-col
-            *ngFor="let roleId of roleIds"
-            class="dsh-body-2"
-            fxLayoutAlign="center center"
-            ><button dsh-button (click)="show(roleId)">
-                {{ (roleIdDict$ | async)?.[roleId] }}
-            </button></dsh-nested-table-col
-        >
-        <dsh-nested-table-col *ngIf="isAllowAdd">
+    <span
+        class="dsh-text-color-secondary dsh-body-1"
+        style="text-decoration: underline; cursor: pointer"
+        (click)="show()"
+        >{{ t('info') }}</span
+    >
+    <dsh-nested-table
+        [cellsTemplates]="cellsTemplates"
+        [columns]="columns$ | async"
+        [data]="data$ | async"
+        [footerTemplates]="footerTemplates"
+        [headersTemplates]="{ add: headerTpl }"
+    >
+        <ng-template #headerTpl let-column="column">
             <button color="accent" dsh-button (click)="add()">{{ t('add') }}</button>
-        </dsh-nested-table-col>
-    </dsh-nested-table-row>
-
-    <ng-container *ngIf="shops$ | async" [dshNestedTableCollapse]="true">
-        <dsh-nested-table-row>
-            <dsh-nested-table-col>
-                <dsh-nested-table-collapse-button
-                    >{{ t('shops') }} ({{
-                        (shops$ | async).length
-                    }})</dsh-nested-table-collapse-button
-                >
-            </dsh-nested-table-col>
-            <dsh-nested-table-col *ngFor="let roleId of roleIds">
-                <mat-checkbox
-                    [checked]="checkedAll(roleId) | async"
-                    [disabled]="disabledAll(roleId)"
-                    [indeterminate]="isIntermediate(roleId) | async"
-                    [ngClass]="{ disabled: disabledAll(roleId) }"
-                    (change)="toggleAll(roleId)"
-                ></mat-checkbox>
-            </dsh-nested-table-col>
-        </dsh-nested-table-row>
-        <dsh-nested-table-group *dshNestedTableCollapseBody [displayedCount]="10">
-            <dsh-nested-table-row *ngFor="let shop of shops$ | async">
-                <dsh-nested-table-col>{{ shop.details.name }}</dsh-nested-table-col>
-                <dsh-nested-table-col *ngFor="let roleId of roleIds">
-                    <mat-checkbox
-                        [checked]="checked(roleId, shop.id) | async"
-                        [disabled]="disabled(roleId, shop.id) | async"
-                        [ngClass]="{ disabled: (disabled(roleId, shop.id) | async) }"
-                        (change)="toggle(roleId, shop.id, $event.checked)"
-                    ></mat-checkbox>
-                </dsh-nested-table-col>
-            </dsh-nested-table-row>
-        </dsh-nested-table-group>
-    </ng-container>
-
-    <dsh-nested-table-row>
-        <dsh-nested-table-col class="dsh-body-2"></dsh-nested-table-col>
-        <dsh-nested-table-col
-            *ngFor="let roleId of roleIds"
-            class="dsh-body-2"
-            fxLayoutAlign="center center"
-        >
+        </ng-template>
+        <ng-template #roleCellTpl let-column="column" let-value="value">
+            <mat-checkbox
+                *ngIf="
+                    value?.scope !== 'Wallet' && column.field !== 'WalletManager';
+                    else selectedTpl
+                "
+                [checked]="checked(column.field, value?.shop?.id, value?.scope) | async"
+                [disabled]="
+                    (disabled(column.field, value?.shop?.id, value?.scope) | async) || inProgress
+                "
+                [indeterminate]="
+                    value?.shop || value?.scope === 'Wallet'
+                        ? false
+                        : (isIntermediate(column.field) | async)
+                "
+                (change)="toggle(column.field, value?.shop?.id, $event.checked)"
+            ></mat-checkbox>
+            <ng-template #selectedTpl>
+                <dsh-selection
+                    [selected]="checked(column.field, value?.shop?.id, value?.scope) | async"
+                    class="selection"
+                ></dsh-selection>
+            </ng-template>
+        </ng-template>
+        <ng-template #footerCellTpl let-column="column" let-value="value">
             <button
-                [disabled]="!(isAllowRemoves$ | async)"
+                [disabled]="!(isAllowRemove(column?.field) | async) || inProgress"
                 color="warn"
                 dsh-button
-                (click)="remove(roleId)"
+                (click)="remove(column.field)"
             >
                 {{ t('remove') }}
             </button>
-        </dsh-nested-table-col>
-    </dsh-nested-table-row>
-</dsh-nested-table>
+        </ng-template>
+    </dsh-nested-table>
+</div>
