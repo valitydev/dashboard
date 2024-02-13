@@ -1,12 +1,12 @@
 ::ng-deep .dsh-hidden {
     display: none;
+}
 
-    .wrapper {
-        overflow: auto;
+.wrapper {
+    overflow: auto;
 
-        .selection {
-            display: flex;
-            justify-content: center;
-        }
+    .selection {
+        display: flex;
+        justify-content: center;
     }
 }
