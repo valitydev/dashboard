@@ -7,3 +7,13 @@
     padding: 0 !important;
     margin: 0 !important;
 }
+
+.content {
+    overflow: auto;
+    height: 100%;
+
+    .selection {
+        display: flex;
+        justify-content: center;
+    }
+}

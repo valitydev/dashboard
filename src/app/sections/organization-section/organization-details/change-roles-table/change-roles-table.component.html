@@ -1,6 +1,6 @@
 <div
     *transloco="let t; scope: 'organization-section'; read: 'organizationSection.changeRolesTable'"
-    style="overflow: auto"
+    class="wrapper"
 >
     <span
         class="dsh-text-color-secondary dsh-body-1"
@@ -38,7 +38,7 @@
             <ng-template #selectedTpl>
                 <dsh-selection
                     [selected]="checked(column.field, value?.shop?.id, value?.scope) | async"
-                    style="display: flex; justify-content: center"
+                    class="selection"
                 ></dsh-selection>
             </ng-template>
         </ng-template>
