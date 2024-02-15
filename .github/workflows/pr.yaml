@@ -25,12 +25,11 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
           SLACK_COLOR: ${{ job.status }}
           SLACK_LINK_NAMES: true
-          SLACK_FOOTER: ""
+          SLACK_FOOTER: ${{ github.head_ref }}.${{ github.sha }}
           MSG_MINIMAL: true
           SLACK_TITLE: ${{ github.repository }}
           SLACK_MESSAGE: |
             **[${{ github.event.pull_request.title }}](${{ github.server_url }}/${{ github.repository }}/pull/${{ github.event.number }})**
-
             ${{ github.event.pull_request.body }}
 
 #  format:
