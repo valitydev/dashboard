@@ -1,7 +1,7 @@
 name: Main
 on:
   push:
-    branches: ['master', 'main', 'epic/**']
+    branches: [ 'master', 'main', 'epic/**' ]
 jobs:
   build:
     name: Build
@@ -49,6 +49,7 @@ jobs:
           MSG_MINIMAL: true
           SLACK_TITLE: ${{ github.repository }}
           SLACK_MESSAGE: |
-            **[${{ github.event.pull_request.title }}](${{ github.server_url }}/${{ github.repository }}/pull/${{ github.event.number }})**
+            **[${{ github.event.pull_request.title }}](${{ github.server_url }}/${{ github.repository }}|
+            /pull/${{ github.event.number }})**
 
             ${{ github.event.pull_request.body }}
