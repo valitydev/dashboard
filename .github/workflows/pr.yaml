@@ -8,6 +8,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Mattermost Notification
+        if: always()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_CHANNEL: "3fywn1dcu7fk5ym6d48nx3j3nc"
+          SLACK_USERNAME: "Frontend"
+          SLACK_ICON_EMOJI: ":tractor:"
+          SLACK_WEBHOOK: ${{ secrets.mm-webhook-url }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_LINK_NAMES: true
+          SLACK_FOOTER: ""
+          MSG_MINIMAL: true
       - uses: ./.github/actions/init
       - name: Cache all
         uses: actions/cache@v3
