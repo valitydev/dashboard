@@ -6,7 +6,7 @@ export const ROLE_PRIORITY_DESC: Record<RoleId, number> = {
     [RoleId.Manager]: 1,
     [RoleId.Accountant]: 2,
     [RoleId.Integrator]: 3,
-    [RoleId.WalletManager]: 3,
+    [RoleId.WalletManager]: 4,
     /* eslint-enable @typescript-eslint/naming-convention */
 };
 

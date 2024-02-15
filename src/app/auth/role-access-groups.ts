@@ -69,7 +69,7 @@ export const ROLE_ACCESS_GROUPS: RoleAccessGroup[] = [
     },
     {
         name: RoleAccessName.Wallets,
-        availableRoles: [RoleId.WalletManager],
+        availableRoles: [RoleId.Administrator, RoleId.WalletManager],
     },
     {
         name: RoleAccessName.Claims,
