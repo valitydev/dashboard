@@ -20,6 +20,8 @@ jobs:
           SLACK_LINK_NAMES: true
           SLACK_FOOTER: ""
           MSG_MINIMAL: true
+          SLACK_TITLE: "Hello"
+          SLACK_MESSAGE: "world"
       - uses: ./.github/actions/init
       - name: Cache all
         uses: actions/cache@v3
