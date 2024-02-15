@@ -15,7 +15,7 @@ jobs:
           SLACK_CHANNEL: "3fywn1dcu7fk5ym6d48nx3j3nc"
           SLACK_USERNAME: "Frontend"
           SLACK_ICON_EMOJI: ":tractor:"
-          SLACK_WEBHOOK: ${{ secrets.mm-webhook-url }}
+          SLACK_WEBHOOK: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
           SLACK_COLOR: ${{ job.status }}
           SLACK_LINK_NAMES: true
           SLACK_FOOTER: ""
