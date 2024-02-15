@@ -29,6 +29,13 @@ jobs:
           MSG_MINIMAL: true
           SLACK_TITLE: ${{ github.event.pull_request.title }}
           SLACK_MESSAGE: ${{ github.event.pull_request.body }}
+      - name: Create the Mattermost Message
+        run: |
+          echo "{\"text\":\"testing github action :tada:\"}" > mattermost.json
+      - uses: mattermost/action-mattermost-notify@master
+        env:
+          MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
+          MATTERMOST_CHANNEL: "test"
   format:
     name: Format check
     runs-on: ubuntu-latest
