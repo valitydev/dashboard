@@ -25,12 +25,10 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
           SLACK_COLOR: ${{ job.status }}
           SLACK_LINK_NAMES: true
-          SLACK_FOOTER: [${{ github.event.pull_request.title }}](${{ github.server_url }}/${{ github.repository }}/pull/${{ github.event.number }})
+          SLACK_FOOTER: \[${{ github.event.pull_request.title }}\](${{ github.server_url }}/${{ github.repository }}/pull/${{ github.event.number }})
           MSG_MINIMAL: true
-          SLACK_TITLE: [${{ github.event.pull_request.title }}](${{ github.server_url }}/${{ github.repository }}/pull/${{ github.event.number }})
-          SLACK_MESSAGE: |
-            ${{ github.event.pull_request.body }}
-            [${{ github.event.pull_request.title }}](${{ github.server_url }}/${{ github.repository }}/pull/${{ github.event.number }})
+          SLACK_TITLE: \[${{ github.event.pull_request.title }}\](${{ github.server_url }}/${{ github.repository }}/pull/${{ github.event.number }})
+          SLACK_MESSAGE: ${{ github.event.pull_request.body }}
   format:
     name: Format check
     runs-on: ubuntu-latest
