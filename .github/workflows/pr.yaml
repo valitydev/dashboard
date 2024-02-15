@@ -12,7 +12,7 @@ jobs:
         if: always()
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_CHANNEL: "3fywn1dcu7fk5ym6d48nx3j3nc"
+          SLACK_CHANNEL: "test"
           SLACK_USERNAME: "Frontend"
           SLACK_ICON_EMOJI: ":tractor:"
           SLACK_WEBHOOK: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
