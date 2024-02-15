@@ -39,7 +39,7 @@ jobs:
       - name: Mattermost Notification
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_CHANNEL: "frontend"
+          SLACK_CHANNEL: "frontend-deployments"
           SLACK_USERNAME: "Frontend"
           SLACK_ICON_EMOJI: ":tractor:"
           SLACK_WEBHOOK: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
