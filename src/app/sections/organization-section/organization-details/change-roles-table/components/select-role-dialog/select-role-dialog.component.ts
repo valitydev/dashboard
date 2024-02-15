@@ -40,7 +40,10 @@ export class SelectRoleDialogComponent extends DialogSuperclass<
                 header: '',
                 formatter: (d) => (d ? roleAccessDict[d.name] : ''),
             },
-            ...this.roles.sort(sortRoleIds).map((r) => ({ field: r, header: roleIdDict[r] })),
+            ...this.roles
+                .filter((r) => r !== RoleId.WalletManager) // TODO: Remove when fix WalletManager role
+                .sort(sortRoleIds)
+                .map((r) => ({ field: r, header: roleIdDict[r] })),
         ]),
     );
     data: NestedTableNode<RoleAccessGroup>[] = [
