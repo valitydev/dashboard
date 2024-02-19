@@ -1,18 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Organization, Member } from '@vality/swag-organizations';
 import isNil from 'lodash-es/isNil';
-import {
-    Observable,
-    ReplaySubject,
-    EMPTY,
-    concat,
-    defer,
-    combineLatest,
-    of,
-    throwError,
-} from 'rxjs';
+import { Observable, ReplaySubject, EMPTY, concat, defer, combineLatest, of } from 'rxjs';
 import { switchMap, shareReplay, catchError, map, tap, filter } from 'rxjs/operators';
 
 import { OrgsService, MembersService, DEFAULT_ORGANIZATION_NAME } from '@dsh/app/api/organizations';
@@ -21,7 +11,6 @@ import { KeycloakTokenInfoService } from '@dsh/app/shared/services/keycloak-toke
 
 import { ErrorService } from '../error';
 
-@UntilDestroy()
 @Injectable({
     providedIn: 'root',
 })
@@ -31,13 +20,7 @@ export class ContextOrganizationService {
             map(({ organizationId }) => organizationId),
             catchError((err) => {
                 if (err instanceof HttpErrorResponse && err.status === 404) {
-                    return this.organizationsService.listOrgMembership({ limit: 1 }).pipe(
-                        switchMap(({ result }) =>
-                            result[0] ? of(result[0]) : this.createOrganization(),
-                        ),
-                        tap(({ id }) => this.switchOrganization(id)),
-                        switchMap(() => EMPTY),
-                    );
+                    return this.switchToFirstOrCreateOrganization();
                 }
                 console.error(err);
                 return EMPTY;
@@ -51,8 +34,17 @@ export class ContextOrganizationService {
             ),
         ),
     ).pipe(
-        switchMap((orgId) => this.organizationsService.getOrg({ orgId })),
-        untilDestroyed(this),
+        switchMap((orgId) =>
+            this.organizationsService.getOrg({ orgId }).pipe(
+                catchError((err) => {
+                    if (err.status === 403) {
+                        return this.switchToFirstOrCreateOrganization();
+                    }
+                    console.error(err);
+                    throw err;
+                }),
+            ),
+        ),
         shareReplay(1),
     );
     member$ = combineLatest([this.organization$, this.keycloakTokenInfoService.userID$]).pipe(
@@ -68,11 +60,10 @@ export class ContextOrganizationService {
                         });
                     }
                     this.errorService.error(error);
-                    return throwError(error);
+                    throw error;
                 }),
             ),
         ),
-        untilDestroyed(this),
         shareReplay(1),
     );
 
@@ -93,5 +84,13 @@ export class ContextOrganizationService {
         return this.organizationsService.createOrg({
             organization: { name: DEFAULT_ORGANIZATION_NAME } as Organization,
         });
+    }
+
+    private switchToFirstOrCreateOrganization() {
+        return this.organizationsService.listOrgMembership({ limit: 1 }).pipe(
+            switchMap(({ result }) => (result[0] ? of(result[0]) : this.createOrganization())),
+            tap(({ id }) => this.switchOrganization(id)),
+            switchMap(() => EMPTY),
+        );
     }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, isDevMode } from '@angular/core';
 import * as sentry from '@sentry/angular-ivy';
-import { first } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 
 import { LanguageService, Language } from '@dsh/app/language';
 
@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         this.contextOrganizationService.organization$
-            .pipe(first())
+            .pipe(take(1))
             .subscribe(({ party }) => sentry.setUser({ id: party }));
     }
 
