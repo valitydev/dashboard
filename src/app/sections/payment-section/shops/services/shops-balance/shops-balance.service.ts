@@ -11,6 +11,9 @@ export class ShopsBalanceService {
     constructor(private analyticsService: AnalyticsService) {}
 
     getBalances(shopIDs: string[]): Observable<ShopBalance[]> {
+        if (!shopIDs?.length) {
+            return of([]);
+        }
         return this.analyticsService.getCurrentShopBalances({ shopIDs }).pipe(
             map(
                 ({ result }) =>

@@ -25,13 +25,16 @@ export class ShopsDataService {
         this.contextOrganizationService.organization$,
         defer(() => this.reloadShops$),
     ).pipe(
-        switchMap(() => this.shopsService.getShopsForParty()),
-        catchError((error) => {
-            if (error?.status == 401) {
-                return of(null);
-            }
-            throw error;
-        }),
+        switchMap(() =>
+            this.shopsService.getShopsForParty().pipe(
+                catchError((error) => {
+                    if (error?.status == 401) {
+                        return of(null);
+                    }
+                    throw error;
+                }),
+            ),
+        ),
         switchMap((shops) =>
             shops ? (shops.length ? of(shops) : this.createTestShop()) : of(null),
         ),
