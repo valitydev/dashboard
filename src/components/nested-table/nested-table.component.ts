@@ -1,6 +1,8 @@
 import { FlatTreeControl } from '@angular/cdk/tree';
-import { Component, Input, TemplateRef } from '@angular/core';
+import { Component, Input, TemplateRef, OnChanges, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatTreeFlattener, MatTreeFlatDataSource } from '@angular/material/tree';
+import { ComponentChanges } from '@vality/ng-core';
 import { of } from 'rxjs';
 import { first } from 'rxjs/operators';
 
@@ -50,41 +52,76 @@ const TREE_FLATTENER = new MatTreeFlattener<NestedTableNode, NestedTableFlatNode
     templateUrl: 'nested-table.component.html',
     styleUrls: ['nested-table.component.scss'],
 })
-export class NestedTableComponent {
-    @Input({
-        transform: (data: NestedTableNode[]) => {
-            const dataSource = new MatTreeFlatDataSource(TREE_CONTROL, TREE_FLATTENER);
-            dataSource.data = data || [];
-            dataSource
-                .connect({ viewChange: of() })
-                .pipe(first())
-                .subscribe((flatten) => {
-                    for (const d of flatten) {
-                        if (d.initExpanded) {
-                            TREE_CONTROL.expand(d);
-                        }
-                    }
-                });
-            return dataSource;
-        },
-    })
-    data!: MatTreeFlatDataSource<NestedTableNode, NestedTableFlatNode>;
+export class NestedTableComponent implements OnChanges {
+    @Input() data!: NestedTableNode[];
+    @Input() dataSource!: MatTreeFlatDataSource<NestedTableNode, NestedTableFlatNode>;
     @Input() columns: NestedTableColumn[] = [];
     @Input() cellsTemplates: Record<string, TemplateRef<unknown>> = {};
     @Input() headersTemplates: Record<string, TemplateRef<unknown>> = {};
     @Input() footerTemplates: Record<string, TemplateRef<unknown>> = {};
 
+    expanded!: Set<number>;
+
     get displayedColumns() {
         return (this.columns || []).map((c) => c.field);
+    }
+
+    constructor(private destroyRef: DestroyRef) {}
+
+    ngOnChanges(changes: ComponentChanges<NestedTableComponent>) {
+        if (changes.data && this.data?.length) {
+            this.dataSource = new MatTreeFlatDataSource(TREE_CONTROL, TREE_FLATTENER);
+            this.dataSource.data = this.data || [];
+            const initExpanded = !this.expanded;
+            if (initExpanded) {
+                this.expanded = new Set<number>();
+            }
+            this.getFlat().subscribe((flatten) => {
+                if (initExpanded) {
+                    for (const [idx, d] of flatten.entries()) {
+                        if (d.initExpanded) {
+                            this.expanded.add(idx);
+                            TREE_CONTROL.expand(d);
+                        }
+                    }
+                } else {
+                    /**
+                     * TODO: in this implementation it is expected that the table does not change
+                     */
+                    for (const idx of this.expanded) {
+                        const item = flatten[idx];
+                        if (!item || !item.expandable) {
+                            this.expanded.delete(idx);
+                            continue;
+                        }
+                        TREE_CONTROL.expand(item);
+                    }
+                }
+            });
+        }
     }
 
     toggle(data: NestedTableFlatNode) {
         if (data.expandable) {
             TREE_CONTROL.toggle(data);
+            this.getFlat().subscribe((flat) => {
+                const idx = flat.findIndex((f) => f === data);
+                if (TREE_CONTROL.isExpanded(data)) {
+                    this.expanded.add(idx);
+                } else {
+                    this.expanded.delete(idx);
+                }
+            });
         }
     }
 
     isExpanded(data: NestedTableFlatNode) {
         return TREE_CONTROL.isExpanded(data);
+    }
+
+    private getFlat() {
+        return this.dataSource
+            .connect({ viewChange: of() })
+            .pipe(first(), takeUntilDestroyed(this.destroyRef));
     }
 }

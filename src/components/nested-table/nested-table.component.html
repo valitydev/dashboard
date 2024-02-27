@@ -1,4 +1,4 @@
-<table [dataSource]="data" mat-table>
+<table [dataSource]="dataSource" mat-table>
     <ng-container
         *ngFor="let column of columns; let columnIndex = index"
         [matColumnDef]="column.field"
