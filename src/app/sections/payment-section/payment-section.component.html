@@ -5,7 +5,7 @@
             <ng-container *ngFor="let item of navbarItemConfig$ | async">
                 <dsh-navbar-item
                     #rla="routerLinkActive"
-                    *ngIf="item.roles | isAccessAllowed: 'some'"
+                    *ngIf="item.roles | isAccessAllowed"
                     [active]="rla.isActive"
                     [icon]="item.icon"
                     [routerLink]="item.routerLink"

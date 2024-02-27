@@ -24,7 +24,7 @@ export class IsAccessAllowedPipe implements PipeTransform, OnDestroy {
 
     transform(
         roleAccessNames: RoleAccessName[] | keyof typeof RoleAccessName,
-        type: 'every' | 'some' = 'every',
+        type: 'every' | 'some' = 'some',
     ): boolean {
         return this.asyncPipe.transform(
             this.roleAccessService.isAccessAllowed(

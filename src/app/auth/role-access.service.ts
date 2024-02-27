@@ -23,7 +23,7 @@ export class RoleAccessService {
 
     isAccessAllowed(
         roleAccessNames: RoleAccessName[],
-        type: 'every' | 'some' = 'every',
+        type: 'every' | 'some' = 'some',
     ): Observable<boolean> {
         if (!roleAccessNames.length) {
             return of(true);
