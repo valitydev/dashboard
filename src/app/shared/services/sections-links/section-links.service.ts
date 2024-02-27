@@ -3,20 +3,20 @@ import { TranslocoService } from '@ngneat/transloco';
 import { combineLatest, Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
-import { WalletsService } from '@dsh/app/api/wallet';
+import { SectionsService, AppSection } from '@dsh/app/sections/sections.service';
 
 import { SectionLink } from './types';
 
 @Injectable()
 export class SectionsLinksService {
     sectionLinks$: Observable<SectionLink[]> = combineLatest([
-        this.walletsService.wallets$.pipe(map((wallets) => !!wallets.length)),
+        this.sectionsService.allowedMap$,
         // this.roleAccessService.isAccessAllowed([RoleAccessName.Claims]),
         this.transloco.selectTranslation('services'),
     ]).pipe(
-        map(([hasWallets]) =>
+        map(([allowedMap]) =>
             [
-                {
+                allowedMap[AppSection.Payment] && {
                     label: this.transloco.translate(
                         'sectionsLinks.links.payments',
                         null,
@@ -24,7 +24,7 @@ export class SectionsLinksService {
                     ),
                     path: `/payment-section`,
                 },
-                hasWallets && {
+                allowedMap[AppSection.Wallet] && {
                     label: this.transloco.translate(
                         'sectionsLinks.links.wallets',
                         null,
@@ -42,7 +42,7 @@ export class SectionsLinksService {
     );
 
     constructor(
-        private walletsService: WalletsService,
+        private sectionsService: SectionsService,
         private transloco: TranslocoService,
     ) {}
 }

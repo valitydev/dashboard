@@ -8,7 +8,7 @@
         <ng-container *ngFor="let link of links">
             <a
                 #rla="routerLinkActive"
-                *ngIf="link.roles | isAccessAllowed: 'some'"
+                *ngIf="link.roles | isAccessAllowed"
                 [active]="rla.isActive"
                 [routerLink]="link.path"
                 mat-tab-link
