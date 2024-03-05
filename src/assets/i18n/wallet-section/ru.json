@@ -1,5 +1,6 @@
 {
     "depositDetails": {
+        "desc": "Описание",
         "error": "Ошибка",
         "errors": {
             "failed": "Ошибка при пополнении"

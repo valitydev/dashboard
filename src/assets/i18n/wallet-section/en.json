@@ -1,5 +1,6 @@
 {
     "depositDetails": {
+        "desc": "Description",
         "error": "Error",
         "errors": {
             "failed": "Deposit operation failed"
