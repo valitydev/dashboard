@@ -137,7 +137,9 @@
             "PaymentRefundFailed": "PaymentRefundFailed (возврат платежа завершился неудачей)",
             "PaymentRefundSucceeded": "PaymentRefundSucceeded (возврат платежа прошел успешно)",
             "PaymentRefunded": "PaymentRefunded (платеж успешно возвращен)",
-            "PaymentStarted": "PaymentStarted (создан платеж)"
+            "PaymentStarted": "PaymentStarted (создан платеж)",
+            "PaymentUserInteractionCompleted": "PaymentUserInteractionCompleted (взаимодействие с пользователем по оплате завершено)",
+            "PaymentUserInteractionRequested": "PaymentUserInteractionRequested (запрошено взаимодействие с пользователем по оплате)"
         },
         "paymentStatus": {
             "cancelled": "Отменен",

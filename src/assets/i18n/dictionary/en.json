@@ -137,7 +137,9 @@
             "PaymentRefundFailed": "PaymentRefundFailed (payment refund failed)",
             "PaymentRefundSucceeded": "PaymentRefundSucceeded (payment refund was successful)",
             "PaymentRefunded": "PaymentRefundSucceeded (payment successfully refunded)",
-            "PaymentStarted": "PaymentStarted (payment created)"
+            "PaymentStarted": "PaymentStarted (payment created)",
+            "PaymentUserInteractionCompleted": "PaymentUserInteractionCompleted (payment user interaction completed)",
+            "PaymentUserInteractionRequested": "PaymentUserInteractionRequested (payment user interaction requested)"
         },
         "paymentStatus": {
             "cancelled": "Cancelled",

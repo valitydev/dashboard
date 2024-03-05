@@ -75,6 +75,16 @@ export class PaymentsDictionaryService {
             null,
             'dictionary',
         ),
+        PaymentUserInteractionRequested: this.t.translate(
+            'payments.invoicesTopicEventType.PaymentUserInteractionRequested',
+            null,
+            'dictionary',
+        ),
+        PaymentUserInteractionCompleted: this.t.translate(
+            'payments.invoicesTopicEventType.PaymentUserInteractionCompleted',
+            null,
+            'dictionary',
+        ),
         /* eslint-enable @typescript-eslint/naming-convention */
     }));
 
