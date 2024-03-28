@@ -4,6 +4,7 @@ export const filtersToForm = ({
     payerEmail = null,
     customerID = null,
     rrn = null,
+    externalID = null,
     paymentStatus = null,
     paymentAmountFrom = null,
     paymentAmountTo = null,
@@ -17,6 +18,7 @@ export const filtersToForm = ({
         payerEmail,
         customerID,
         rrn,
+        externalID,
     },
     paymentStatus,
     paymentSum: {

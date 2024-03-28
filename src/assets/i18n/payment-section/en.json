@@ -169,6 +169,7 @@
                 "binPan": "Card",
                 "card": "Card",
                 "customerID": "Customer ID",
+                "externalID": "External ID",
                 "first6": "Card issuing bank BIN",
                 "invoices": "Invoices",
                 "last4": "Card last digits",

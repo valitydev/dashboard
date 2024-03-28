@@ -7,6 +7,9 @@ import { PaymentInstitutionRealmService } from './payment-institution-realm.serv
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 
+/**
+ * @deprecated
+ */
 @Injectable()
 export class RealmMixService<T> {
     mixedValue$: Observable<T & { realm: RealmEnum }>;
