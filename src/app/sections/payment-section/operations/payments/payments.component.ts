@@ -1,28 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Component, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import { QueryParamsService } from '@vality/ng-core';
-import { PaymentSearchResult } from '@vality/swag-anapi-v2';
+import { PaymentSearchResult, SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
-import { RealmMixService } from '../../services';
 import { PaymentInstitutionRealmService } from '../../services/payment-institution-realm.service';
 
 import { Filters } from './payments-filters';
 import { PaymentsExpandedIdManager, FetchPaymentsService } from './services';
-import { PaymentSearchFormValue } from './types';
 
 @UntilDestroy()
 @Component({
     selector: 'dsh-payments',
     templateUrl: 'payments.component.html',
-    providers: [
-        FetchPaymentsService,
-        PaymentsExpandedIdManager,
-        RealmMixService,
-        PaymentInstitutionRealmService,
-    ],
+    providers: [FetchPaymentsService, PaymentsExpandedIdManager, PaymentInstitutionRealmService],
 })
-export class PaymentsComponent implements OnInit {
+export class PaymentsComponent {
     realm$ = this.paymentInstitutionRealmService.realm$;
     payments$: Observable<PaymentSearchResult[]> = this.paymentsService.paymentsList$;
     isLoading$: Observable<boolean> = this.paymentsService.isLoading$;
@@ -36,14 +31,8 @@ export class PaymentsComponent implements OnInit {
         private expandedIdManager: PaymentsExpandedIdManager,
         private paymentInstitutionRealmService: PaymentInstitutionRealmService,
         private qp: QueryParamsService<Filters>,
-        private realmMixService: RealmMixService<PaymentSearchFormValue>,
+        private destroyRef: DestroyRef,
     ) {}
-
-    ngOnInit(): void {
-        this.realmMixService.mixedValue$
-            .pipe(untilDestroyed(this))
-            .subscribe((v) => this.paymentsService.search(v));
-    }
 
     refreshList(): void {
         this.paymentsService.refresh();
@@ -57,7 +46,7 @@ export class PaymentsComponent implements OnInit {
         void this.qp.set(filters);
         // TODO: refactor additional filters
         const { dateRange, binPan, ...otherFilters } = filters;
-        const paymentMethod: Partial<PaymentSearchFormValue> =
+        const paymentMethod: Partial<SearchPaymentsRequestParams> =
             binPan?.bin || binPan?.pan ? { paymentMethod: 'bankCard' } : {};
         if (binPan?.bin) {
             paymentMethod.first6 = binPan.bin;
@@ -65,13 +54,17 @@ export class PaymentsComponent implements OnInit {
         if (binPan?.pan) {
             paymentMethod.last4 = binPan.pan;
         }
-        this.realmMixService.mix({
-            ...otherFilters,
-            ...paymentMethod,
-            fromTime: dateRange.start.clone().utc().format(),
-            toTime: dateRange.end.clone().utc().format(),
-            realm: null,
-        });
+        this.paymentInstitutionRealmService.realm$
+            .pipe(take(1), takeUntilDestroyed(this.destroyRef))
+            .subscribe((paymentInstitutionRealm) => {
+                this.paymentsService.search({
+                    ...otherFilters,
+                    ...paymentMethod,
+                    fromTime: dateRange.start.clone().utc().format(),
+                    toTime: dateRange.end.clone().utc().format(),
+                    paymentInstitutionRealm,
+                });
+            });
     }
 
     expandedIdChange(id: number): void {

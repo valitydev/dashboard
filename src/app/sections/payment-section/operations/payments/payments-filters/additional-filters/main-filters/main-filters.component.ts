@@ -15,6 +15,7 @@ export class MainFiltersComponent extends FormGroupSuperclass<Partial<MainFilter
         payerEmail: ['', Validators.email],
         customerID: [''],
         rrn: ['', Validators.pattern(new RegExp(/^\d+$/))],
+        externalID: [''],
     });
 
     constructor(private fb: FormBuilder) {
