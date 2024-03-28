@@ -1,23 +1,21 @@
-import { Component, DestroyRef } from '@angular/core';
+import { Component, DestroyRef, OnInit, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { UntilDestroy } from '@ngneat/until-destroy';
 import { QueryParamsService } from '@vality/ng-core';
 import { PaymentSearchResult, SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { take, skip } from 'rxjs/operators';
 
 import { PaymentInstitutionRealmService } from '../../services/payment-institution-realm.service';
 
 import { Filters } from './payments-filters';
 import { PaymentsExpandedIdManager, FetchPaymentsService } from './services';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-payments',
     templateUrl: 'payments.component.html',
     providers: [FetchPaymentsService, PaymentsExpandedIdManager, PaymentInstitutionRealmService],
 })
-export class PaymentsComponent {
+export class PaymentsComponent implements OnInit {
     realm$ = this.paymentInstitutionRealmService.realm$;
     payments$: Observable<PaymentSearchResult[]> = this.paymentsService.paymentsList$;
     isLoading$: Observable<boolean> = this.paymentsService.isLoading$;
@@ -25,6 +23,7 @@ export class PaymentsComponent {
     lastUpdated$: Observable<string> = this.paymentsService.lastUpdated$;
     expandedId$: Observable<number> = this.expandedIdManager.expandedId$;
     initParams$ = this.qp.params$;
+    filters = signal<Filters>(null);
 
     constructor(
         private paymentsService: FetchPaymentsService,
@@ -34,6 +33,14 @@ export class PaymentsComponent {
         private destroyRef: DestroyRef,
     ) {}
 
+    ngOnInit() {
+        this.paymentInstitutionRealmService.realm$
+            .pipe(skip(1), takeUntilDestroyed(this.destroyRef))
+            .subscribe(() => {
+                this.filtersChanged();
+            });
+    }
+
     refreshList(): void {
         this.paymentsService.refresh();
     }
@@ -42,7 +49,8 @@ export class PaymentsComponent {
         this.paymentsService.fetchMore();
     }
 
-    filtersChanged(filters: Filters): void {
+    filtersChanged(filters: Filters = this.filters()): void {
+        this.filters.set(filters);
         void this.qp.set(filters);
         // TODO: refactor additional filters
         const { dateRange, binPan, ...otherFilters } = filters;
