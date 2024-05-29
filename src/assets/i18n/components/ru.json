@@ -4,12 +4,10 @@
             "title": "Ваши организации"
         },
         "user": {
-            "changePassword": "Сменить пароль",
+            "accountSecurity": "Безопасность учетной записи",
             "logout": "Выход",
             "orgList": "Список организаций",
-            "selectActiveOrg": "Выбрать активную организацию",
-            "sessions": "Управление сессиями",
-            "twoFactorAuth": "Двухэтапная аутентификация"
+            "selectActiveOrg": "Выбрать активную организацию"
         }
     },
     "apiModelDetails": {
