@@ -4,12 +4,10 @@
             "title": "Your organizations"
         },
         "user": {
-            "changePassword": "Change password",
+            "accountSecurity": "Account security",
             "logout": "Logout",
             "orgList": "Organization list",
-            "selectActiveOrg": "Choose an active organization",
-            "sessions": "Session management",
-            "twoFactorAuth": "Two-step authentication"
+            "selectActiveOrg": "Choose an active organization"
         }
     },
     "apiModelDetails": {
