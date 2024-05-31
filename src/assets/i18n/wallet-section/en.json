@@ -187,6 +187,7 @@
             "amountFrom": "Deposit amount from",
             "amountTo": "Deposit amount to",
             "destinationID": "Identifier of the funds recipient",
+            "externalID": "External ID'",
             "identityID": "Identity ID",
             "status": "Withdrawal status",
             "walletID": "Wallet",
