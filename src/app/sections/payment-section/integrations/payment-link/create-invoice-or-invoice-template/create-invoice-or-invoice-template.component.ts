@@ -19,6 +19,14 @@ export type InvoiceOrInvoiceTemplate =
     | { invoiceOrInvoiceTemplate: Invoice; type: Type.Invoice }
     | { invoiceOrInvoiceTemplate: InvoiceTemplateAndToken; type: Type.Template };
 
+const getRandomizeAmountParams = (formValue: any): any => {
+    const isRandomizeAmount = formValue.isRandomizeAmount;
+    if (isRandomizeAmount) {
+        return formValue.randomizeAmount;
+    }
+    return undefined;
+};
+
 @UntilDestroy()
 @Component({
     selector: 'dsh-create-invoice-or-invoice-template',
@@ -62,6 +70,7 @@ export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
     }
 
     create(): void {
+        this.createInvoiceFormControl.disable();
         const { value } = this.createInvoiceFormControl;
         this.shops$
             .pipe(
@@ -69,15 +78,19 @@ export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
                 switchMap((shops) =>
                     this.invoicesService.createInvoice({
                         invoiceParams: {
-                            ...pick(value, ['product', 'description', 'cart', 'shopID']),
+                            ...pick(value, ['product', 'description', 'amount', 'shopID']),
                             dueDate: moment(value.dueDate).utc().endOf('d').format(),
                             currency: shops.find((s) => s.id === value.shopID)?.currency,
                             metadata: {},
+                            randomizeAmount: getRandomizeAmountParams(value),
                         },
                     }),
                 ),
                 untilDestroyed(this),
             )
-            .subscribe(({ invoice }) => this.nextInvoice.next(invoice));
+            .subscribe(({ invoice }) => {
+                this.nextInvoice.next(invoice);
+                this.createInvoiceFormControl.reset();
+            });
     }
 }

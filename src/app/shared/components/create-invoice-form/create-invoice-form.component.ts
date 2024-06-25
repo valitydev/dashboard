@@ -7,7 +7,6 @@ import {
     FormComponentSuperclass,
     getErrorsTree,
     toMinor,
-    toMajor,
 } from '@vality/ng-core';
 import { InvoiceLineTaxVAT } from '@vality/swag-anapi-v2';
 import { Shop } from '@vality/swag-payments';
@@ -17,7 +16,7 @@ import { Moment } from 'moment';
 import { map, startWith } from 'rxjs/operators';
 
 import { shareReplayUntilDestroyed } from '@dsh/app/custom-operators';
-import { replaceFormArrayValue, getFormValueChanges } from '@dsh/utils';
+import { getFormValueChanges } from '@dsh/utils';
 
 export const WITHOUT_VAT = Symbol('without VAT');
 export const EMPTY_CART_ITEM: CartItem = {
@@ -28,10 +27,14 @@ export const EMPTY_CART_ITEM: CartItem = {
 };
 export const EMPTY_FORM_DATA: FormData = {
     shopID: null,
-    dueDate: null,
+    dueDate: moment().add('1', 'month').endOf('day'),
     product: '',
     description: '',
-    cart: [EMPTY_CART_ITEM],
+    amount: null,
+    isRandomizeAmount: false,
+    randomizeAmount: {
+        deviation: null,
+    },
 };
 
 interface CartItem {
@@ -45,9 +48,21 @@ export interface FormData {
     shopID: string;
     dueDate: Moment;
     product: string;
-    description: string;
-    cart: CartItem[];
+    amount: number;
+    description?: string;
+    cart?: CartItem[];
+    isRandomizeAmount: boolean;
+    randomizeAmount: {
+        deviation: number;
+    };
 }
+
+const mapToMinor = (value: number | null, currency: string | null): number | null => {
+    if (isNil(value) || isNil(currency)) {
+        return value;
+    }
+    return toMinor(value, currency);
+};
 
 @UntilDestroy()
 @Component({
@@ -66,7 +81,11 @@ export class CreateInvoiceFormComponent
     control = this.fb.group({
         ...EMPTY_FORM_DATA,
         cart: this.fb.array([this.fb.group(EMPTY_CART_ITEM)]),
+        randomizeAmount: this.fb.group({
+            deviation: null,
+        }),
     }) as unknown as FormGroupByValue<Partial<FormData>>;
+
     totalAmount$ = this.control.controls.cart.valueChanges.pipe(
         startWith(this.control.controls.cart.value),
         map((v) => v.map(({ price, quantity }) => price * quantity).reduce((sum, s) => sum + s, 0)),
@@ -91,40 +110,26 @@ export class CreateInvoiceFormComponent
         super.ngOnInit();
         getFormValueChanges(this.control)
             .pipe(untilDestroyed(this))
-            .subscribe((v) =>
+            .subscribe((v) => {
                 this.emitOutgoingValue({
                     ...v,
                     cart: v.cart.map((i) => ({
                         ...i,
                         price: i.price && this.currency ? toMinor(i.price, this.currency) : i.price,
                     })) as CartItem[],
-                }),
-            );
+                    amount: mapToMinor(v.amount, this.currency),
+                    randomizeAmount: {
+                        deviation: mapToMinor(v.randomizeAmount.deviation, this.currency),
+                    },
+                });
+            });
     }
 
     validate() {
         return getErrorsTree(this.control);
     }
 
-    handleIncomingValue(value: FormData): void {
-        value = {
-            ...EMPTY_FORM_DATA,
-            ...(value || {}),
-            cart: (value?.cart || [EMPTY_CART_ITEM]).map((v) => ({
-                ...v,
-                price:
-                    isNil(v.price) || isNil(this.currency)
-                        ? v.price
-                        : toMajor(v.price, this.currency),
-            })),
-        };
-        replaceFormArrayValue<Partial<CartItem>>(
-            this.control.controls.cart as unknown as FormArray,
-            value.cart,
-            (v) => this.fb.group(v),
-        );
-        this.control.setValue(value);
-    }
+    handleIncomingValue(_value: FormData): void {}
 
     addCartItem(): void {
         (this.control.controls.cart as unknown as FormArray).push(this.fb.group(EMPTY_CART_ITEM));

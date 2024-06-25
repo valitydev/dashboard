@@ -84,10 +84,11 @@
     "createInvoiceForm": {
         "addProduct": "Add product or service",
         "form": {
-            "description": "Description of the goods or services offered",
+            "description": "Description of the goods or services offered (optional)",
             "dueDate": "End of validity of the invoice",
             "product": "Name of the offered goods or services",
-            "shop": "Shop"
+            "shop": "Shop",
+            "amount": "Amount"
         },
         "productsList": "Products and services list:",
         "remove": "Delete",

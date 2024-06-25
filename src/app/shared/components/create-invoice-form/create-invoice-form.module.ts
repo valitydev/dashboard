@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
@@ -42,6 +43,7 @@ import { CreateInvoiceFormComponent } from './create-invoice-form.component';
         MatDialogModule,
         ConfirmActionDialogModule,
         AmountCurrencyModule,
+        MatCheckboxModule,
     ],
     declarations: [CreateInvoiceFormComponent],
     exports: [CreateInvoiceFormComponent],

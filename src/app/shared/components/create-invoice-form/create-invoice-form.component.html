@@ -33,9 +33,34 @@
             <mat-label>{{ d('form.description') }}</mat-label>
             <input autocomplete="off" formControlName="description" matInput />
         </mat-form-field>
+        <mat-form-field fxFlex>
+            <mat-label>{{ d('form.amount') }}</mat-label>
+            <dsh-format-input
+                autocomplete="off"
+                format="amount"
+                formControlName="amount"
+                required
+            ></dsh-format-input>
+        </mat-form-field>
+        <mat-checkbox formControlName="isRandomizeAmount">Randomize amount</mat-checkbox>
+        <ng-container
+            *ngIf="control.value.isRandomizeAmount"
+            [formGroup]="control.controls.randomizeAmount"
+        >
+            <mat-form-field fxFlex>
+                <mat-label>Deviation</mat-label>
+                <dsh-format-input
+                    autocomplete="off"
+                    format="amount"
+                    formControlName="deviation"
+                    required
+                ></dsh-format-input>
+            </mat-form-field>
+        </ng-container>
     </div>
 
-    <ng-container *ngIf="control.value.shopID">
+    <!-- Disable invoice card -->
+    <ng-container *ngIf="false">
         <h2 *ngIf="control.controls.cart.controls.length" class="dsh-subheading-1">
             {{ d('productsList') }}
         </h2>

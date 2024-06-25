@@ -34,13 +34,16 @@ export class CreateInvoiceDialogComponent {
         this.invoicesService
             .createInvoice({
                 invoiceParams: {
-                    ...pick(value, ['product', 'description', 'cart', 'shopID']),
+                    ...pick(value, ['product', 'description', 'amount', 'shopID']),
                     dueDate: moment(value.dueDate).utc().endOf('d').format(),
                     currency: this.shops.find((s) => s.id === value.shopID)?.currency,
                     metadata: {},
                 },
             })
             .pipe(untilDestroyed(this))
-            .subscribe(({ invoice }) => this.dialogRef.close(invoice));
+            .subscribe(({ invoice }) => {
+                this.dialogRef.close(invoice);
+                this.formControl.reset();
+            });
     }
 }
