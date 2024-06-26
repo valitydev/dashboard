@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { APP_INITIALIZER, ErrorHandler, LOCALE_ID, NgModule, isDevMode } from '@angular/core';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { APP_INITIALIZER, LOCALE_ID, NgModule, isDevMode } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {
     DateAdapter,
@@ -18,9 +18,7 @@ import {
 } from '@angular/material-moment-adapter';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Router } from '@angular/router';
 import { TranslocoModule, provideTransloco, TRANSLOCO_SCOPE } from '@ngneat/transloco';
-import * as sentry from '@sentry/angular-ivy';
 import { QUERY_PARAMS_SERIALIZERS } from '@vality/ng-core';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
@@ -45,13 +43,14 @@ import { IconsModule, IconsService } from './icons';
 import { initializer } from './initializer';
 import { LanguageService } from './language';
 import { SectionsModule } from './sections';
-import { SentryErrorHandler } from './sentry-error-handler.service';
-import { SentryHttpInterceptor } from './sentry-http-interceptor';
 import { ThemeManager } from './theme-manager';
 import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
 
-@NgModule({ declarations: [AppComponent],
-    bootstrap: [AppComponent], imports: [CommonModule,
+@NgModule({
+    declarations: [AppComponent],
+    bootstrap: [AppComponent],
+    imports: [
+        CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
         SectionsModule,
@@ -73,19 +72,14 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         ApiKeysModule,
         MatButtonModule,
         BootstrapIconModule,
-        MatMenuModule], providers: [
+        MatMenuModule,
+    ],
+    providers: [
         LanguageService,
         {
             provide: APP_INITIALIZER,
             useFactory: initializer,
-            deps: [
-                ConfigService,
-                KeycloakService,
-                LanguageService,
-                ThemeManager,
-                IconsService,
-                sentry.TraceService,
-            ],
+            deps: [ConfigService, KeycloakService, LanguageService, ThemeManager, IconsService],
             multi: true,
         },
         {
@@ -119,23 +113,11 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         }),
         { provide: ENV, useValue: environment },
         {
-            provide: ErrorHandler,
-            useClass: SentryErrorHandler,
-        },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: SentryHttpInterceptor,
-            multi: true,
-        },
-        {
-            provide: sentry.TraceService,
-            deps: [Router],
-        },
-        {
             provide: QUERY_PARAMS_SERIALIZERS,
             useValue: [createDateRangeWithPresetSerializer()],
         },
         { provide: TRANSLOCO_SCOPE, useValue: 'app' },
         provideHttpClient(withInterceptorsFromDi()),
-    ] })
+    ],
+})
 export class AppModule {}

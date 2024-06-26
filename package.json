@@ -38,9 +38,6 @@
     "@angular/router": "^18.0.4",
     "@ngneat/transloco": "^6.0.4",
     "@ngneat/until-destroy": "^9.0.0",
-    "@sentry/angular-ivy": "^7.100.1",
-    "@sentry/integrations": "^7.100.1",
-    "@sentry/tracing": "^7.100.1",
     "@vality/ng-core": "18.0.1-pr-63-9e315a6.0",
     "@vality/swag-anapi-v2": "2.0.1-32ed85f.0",
     "@vality/swag-api-keys-v2": "0.1.2-f0ece04.0",
@@ -67,7 +64,7 @@
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
-    "@angular-builders/custom-webpack": "^17.0.0",
+    "@angular-builders/custom-webpack": "^18.0.0",
     "@angular-devkit/build-angular": "^18.0.5",
     "@angular-eslint/builder": "^18.0.1",
     "@angular-eslint/schematics": "^18.0.1",
