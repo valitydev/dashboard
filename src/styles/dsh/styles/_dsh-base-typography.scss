@@ -2,19 +2,19 @@
 
 @function dsh-typography-config(
     $font-family: 'Roboto, "Helvetica Neue", sans-serif',
-    $display-4: mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
-    $display-3: mat.define-typography-level(56px, 64px, 400, $letter-spacing: -0.02em),
-    $display-2: mat.define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
-    $display-1: mat.define-typography-level(34px, 48px, 400),
-    $headline: mat.define-typography-level(24px, 32px, 400),
-    $title: mat.define-typography-level(20px, 32px, 500),
-    $subheading-2: mat.define-typography-level(16px, 32px, 400),
-    $subheading-1: mat.define-typography-level(15px, 24px, 400),
-    $body-2: mat.define-typography-level(14px, 24px, 500),
-    $body-1: mat.define-typography-level(14px, 24px, 400),
-    $caption: mat.define-typography-level(12px, 16px, 400),
-    $button: mat.define-typography-level(14px, 16px, 500),
-    $input: mat.define-typography-level(14px, 1.15, 400)
+    $display-4: mat.m2-define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+    $display-3: mat.m2-define-typography-level(56px, 64px, 400, $letter-spacing: -0.02em),
+    $display-2: mat.m2-define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
+    $display-1: mat.m2-define-typography-level(34px, 48px, 400),
+    $headline: mat.m2-define-typography-level(24px, 32px, 400),
+    $title: mat.m2-define-typography-level(20px, 32px, 500),
+    $subheading-2: mat.m2-define-typography-level(16px, 32px, 400),
+    $subheading-1: mat.m2-define-typography-level(15px, 24px, 400),
+    $body-2: mat.m2-define-typography-level(14px, 24px, 500),
+    $body-1: mat.m2-define-typography-level(14px, 24px, 400),
+    $caption: mat.m2-define-typography-level(12px, 16px, 400),
+    $button: mat.m2-define-typography-level(14px, 16px, 500),
+    $input: mat.m2-define-typography-level(14px, 1.15, 400)
 ) {
     // Declare an initial map with all of the levels.
     $config: (
@@ -54,7 +54,7 @@
 
     // Add the base font family to the config.
     @return map-merge(
-        map-merge(mat.define-typography-config(), $config),
+        map-merge(mat.m2-define-typography-config(), $config),
         (
             font-family: $font-family,
         )
@@ -72,65 +72,65 @@
 @mixin dsh-base-typography($config, $selector: '.dsh-typography') {
     .dsh-headline,
     #{$selector} h1 {
-        @include mat.typography-level($config, headline);
+        @include mat.m2-typography-level($config, headline);
         margin: 0;
     }
 
     .dsh-title,
     #{$selector} h2 {
-        @include mat.typography-level($config, title);
+        @include mat.m2-typography-level($config, title);
         margin: 0;
     }
 
     .dsh-subheading-2,
     #{$selector} h3 {
-        @include mat.typography-level($config, subheading-2);
+        @include mat.m2-typography-level($config, subheading-2);
         margin: 0;
     }
 
     .dsh-subheading-1,
     #{$selector} h4 {
-        @include mat.typography-level($config, subheading-1);
+        @include mat.m2-typography-level($config, subheading-1);
         margin: 0;
     }
 
     .dsh-body-2 {
-        @include mat.typography-level($config, body-2);
+        @include mat.m2-typography-level($config, body-2);
     }
 
     .dsh-body-1,
     #{$selector} {
-        @include mat.typography-level($config, body-1);
+        @include mat.m2-typography-level($config, body-1);
         p {
             margin: 0;
         }
     }
 
     .dsh-caption {
-        @include mat.typography-level($config, caption);
+        @include mat.m2-typography-level($config, caption);
     }
 
     .dsh-display-4,
     #{$selector} .dsh-display-4 {
-        @include mat.typography-level($config, display-4);
+        @include mat.m2-typography-level($config, display-4);
         margin: 0;
     }
 
     .dsh-display-3,
     #{$selector} .dsh-display-3 {
-        @include mat.typography-level($config, display-3);
+        @include mat.m2-typography-level($config, display-3);
         margin: 0;
     }
 
     .dsh-display-2,
     #{$selector} .dsh-display-2 {
-        @include mat.typography-level($config, display-2);
+        @include mat.m2-typography-level($config, display-2);
         margin: 0;
     }
 
     .dsh-display-1,
     #{$selector} .dsh-display-1 {
-        @include mat.typography-level($config, display-1);
+        @include mat.m2-typography-level($config, display-1);
         margin: 0;
     }
 }

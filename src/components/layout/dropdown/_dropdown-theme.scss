@@ -10,13 +10,13 @@
 
         &,
         &-triangle {
-            background-color: mat.get-color-from-palette($background, card);
+            background-color: mat.m2-get-color-from-palette($background, card);
         }
     }
 }
 
 @mixin dsh-dropdown-typography($config) {
     .dsh-dropdown {
-        @include mat.typography-level($config, body-1);
+        @include mat.m2-typography-level($config, body-1);
     }
 }

@@ -3,6 +3,6 @@
 @mixin dsh-link-label-typography($config) {
     .dsh-link-label-content {
         text-decoration: underline;
-        @include mat.typography-level($config, body-1);
+        @include mat.m2-typography-level($config, body-1);
     }
 }

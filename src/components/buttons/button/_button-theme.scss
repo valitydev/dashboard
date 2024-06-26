@@ -34,33 +34,33 @@
             &.dsh-primary {
                 @include button(
                     map-get($background, card),
-                    mat.get-color-from-palette($primary, default)
+                    mat.m2-get-color-from-palette($primary, default)
                 );
-                @include focused-background(mat.get-color-from-palette($primary, default, 0.88));
+                @include focused-background(mat.m2-get-color-from-palette($primary, default, 0.88));
 
                 &:hover:not(:disabled) {
-                    background: mat.get-color-from-palette($primary, default, 0.88) !important;
+                    background: mat.m2-get-color-from-palette($primary, default, 0.88) !important;
                 }
             }
 
             &.dsh-accent {
                 @include button(
                     map-get($background, card),
-                    mat.get-color-from-palette($accent, default)
+                    mat.m2-get-color-from-palette($accent, default)
                 );
-                @include focused-background(mat.get-color-from-palette($primary, default, 0.88));
+                @include focused-background(mat.m2-get-color-from-palette($primary, default, 0.88));
 
                 &:hover:not(:disabled) {
-                    background: mat.get-color-from-palette($primary, default, 0.88) !important;
+                    background: mat.m2-get-color-from-palette($primary, default, 0.88) !important;
                 }
             }
 
             &.dsh-warn {
-                @include button(map-get($background, card), mat.get-color-from-palette($warn, 400));
-                @include focused-background(mat.get-color-from-palette($warn, default, 0.88));
+                @include button(map-get($background, card), mat.m2-get-color-from-palette($warn, 400));
+                @include focused-background(mat.m2-get-color-from-palette($warn, default, 0.88));
 
                 &:hover:not(:disabled) {
-                    background: mat.get-color-from-palette($warn, default, 0.88) !important;
+                    background: mat.m2-get-color-from-palette($warn, default, 0.88) !important;
                 }
             }
 
@@ -71,29 +71,29 @@
 
         &-text-button {
             &.dsh-primary {
-                @include button(mat.get-color-from-palette($primary, default), transparent);
-                @include focused-background(mat.get-color-from-palette($primary, default, 0.12));
+                @include button(mat.m2-get-color-from-palette($primary, default), transparent);
+                @include focused-background(mat.m2-get-color-from-palette($primary, default, 0.12));
 
                 &:hover:not(:disabled) {
-                    background: mat.get-color-from-palette($primary, default, 0.2) !important;
+                    background: mat.m2-get-color-from-palette($primary, default, 0.2) !important;
                 }
             }
 
             &.dsh-accent {
-                @include button(mat.get-color-from-palette($primary, default), transparent);
-                @include focused-background(mat.get-color-from-palette($primary, default, 0.12));
+                @include button(mat.m2-get-color-from-palette($primary, default), transparent);
+                @include focused-background(mat.m2-get-color-from-palette($primary, default, 0.12));
 
                 &:hover:not(:disabled) {
-                    background: mat.get-color-from-palette($primary, default, 0.2) !important;
+                    background: mat.m2-get-color-from-palette($primary, default, 0.2) !important;
                 }
             }
 
             &.dsh-warn {
-                @include button(mat.get-color-from-palette($warn, 400), transparent);
-                @include focused-background(mat.get-color-from-palette($warn, default, 0.88));
+                @include button(mat.m2-get-color-from-palette($warn, 400), transparent);
+                @include focused-background(mat.m2-get-color-from-palette($warn, default, 0.88));
 
                 &:hover:not(:disabled) {
-                    background: mat.get-color-from-palette($warn, default, 0.2) !important;
+                    background: mat.m2-get-color-from-palette($warn, default, 0.2) !important;
                 }
             }
 
@@ -108,22 +108,22 @@
             &.dsh-primary {
                 @include button(
                     map-get($background, card),
-                    mat.get-color-from-palette($primary, default)
+                    mat.m2-get-color-from-palette($primary, default)
                 );
-                @include focused-background(mat.get-color-from-palette($primary, 300));
+                @include focused-background(mat.m2-get-color-from-palette($primary, 300));
             }
 
             &.dsh-accent {
                 @include button(
                     map-get($background, card),
-                    mat.get-color-from-palette($accent, default)
+                    mat.m2-get-color-from-palette($accent, default)
                 );
-                @include focused-background(mat.get-color-from-palette($accent, 200));
+                @include focused-background(mat.m2-get-color-from-palette($accent, 200));
             }
 
             &.dsh-warn {
-                @include button(map-get($background, card), mat.get-color-from-palette($warn, 400));
-                @include focused-background(mat.get-color-from-palette($warn, 300));
+                @include button(map-get($background, card), mat.m2-get-color-from-palette($warn, 400));
+                @include focused-background(mat.m2-get-color-from-palette($warn, 300));
             }
 
             &:disabled {
@@ -139,9 +139,9 @@
         &-text-button,
         &-icon-button {
             font: {
-                family: mat.font-family($config, button);
-                size: mat.font-size($config, button);
-                weight: mat.font-weight($config, button);
+                family: mat.m2-font-family($config, button);
+                size: mat.m2-font-size($config, button);
+                weight: mat.m2-font-weight($config, button);
             }
         }
     }

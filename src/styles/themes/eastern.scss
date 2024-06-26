@@ -6,32 +6,32 @@ $background: (
     // Overrides
     background: #f0f7f7,
     // Custom
-    hover: map-get(mat.$grey-palette, 200),
-    selected-button: map-get(mat.$grey-palette, 100)
+    hover: map-get(mat.$m2-grey-palette, 200),
+    selected-button: map-get(mat.$m2-grey-palette, 100)
 );
 
 $foreground: (
     // Overrides
     // Custom
     contrast-text: $light-text,
-    light-text: mat.get-color-from-palette(mat.define-palette(mat.$grey-palette), 500),
-    border: map-get(mat.$grey-palette, 200)
+    light-text: mat.m2-get-color-from-palette(mat.m2-define-palette(mat.$m2-grey-palette), 500),
+    border: map-get(mat.$m2-grey-palette, 200)
 );
 
 $config: (
     // Overrides
     color:
         (
-            primary: mat.define-palette($dsh-eastern, 700),
-            accent: mat.define-palette($dsh-eastern, 700),
-            warn: mat.define-palette($dsh-warn, 300),
+            primary: mat.m2-define-palette($dsh-eastern, 700),
+            accent: mat.m2-define-palette($dsh-eastern, 700),
+            warn: mat.m2-define-palette($dsh-warn, 300),
         ),
     is-dark: false,
     // Custom
     name: 'eastern',
-    success-base: mat.get-color-from-palette(mat.define-palette($dsh-success), 400),
-    pending-base: mat.get-color-from-palette(mat.define-palette($dsh-pending), 800),
-    warn-base: mat.get-color-from-palette(mat.define-palette($dsh-warn), 300)
+    success-base: mat.m2-get-color-from-palette(mat.m2-define-palette($dsh-success), 400),
+    pending-base: mat.m2-get-color-from-palette(mat.m2-define-palette($dsh-pending), 800),
+    warn-base: mat.m2-get-color-from-palette(mat.m2-define-palette($dsh-warn), 300)
 );
 
 @include theme($config, $background, $foreground);

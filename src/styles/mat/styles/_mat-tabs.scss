@@ -50,14 +50,14 @@
 @mixin mat-tabs-override-typography($config) {
     .mat-mdc-tab-links {
         .mat-mdc-tab-link {
-            @include mat.typography-level($config, subheading-1);
+            @include mat.m2-typography-level($config, subheading-1);
         }
     }
 
     .dsh-top-tab-nav-bar {
         .mat-mdc-tab-links {
             .mat-mdc-tab-link {
-                @include mat.typography-level($config, subheading-2);
+                @include mat.m2-typography-level($config, subheading-2);
             }
         }
     }
