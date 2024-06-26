@@ -4,6 +4,6 @@
     $primary: map-get($theme, primary);
 
     .dsh-alert {
-        background-color: mat.get-color-from-palette($primary, default, 0.12);
+        background-color: mat.m2-get-color-from-palette($primary, default, 0.12);
     }
 }

@@ -4,7 +4,7 @@
     fxLayout="column"
     fxLayoutGap="32px"
 >
-    <nav mat-tab-nav-bar>
+    <nav [tabPanel]="tabPanel" mat-tab-nav-bar>
         <ng-container *ngFor="let link of links">
             <a
                 #rla="routerLinkActive"
@@ -18,8 +18,8 @@
             </a>
         </ng-container>
     </nav>
-    <div>
+    <mat-tab-nav-panel #tabPanel>
         <router-outlet></router-outlet>
-    </div>
+    </mat-tab-nav-panel>
 </div>
 <dsh-scroll-up [hideAfter]="200"></dsh-scroll-up>

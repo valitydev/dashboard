@@ -4,12 +4,12 @@
     $primary: map-get($theme, primary);
 
     .dsh-no-shops-action {
-        color: mat.get-color-from-palette($primary, default);
+        color: mat.m2-get-color-from-palette($primary, default);
     }
 }
 
 @mixin dsh-no-shops-alert-typography($config) {
     .dsh-no-shops-content {
-        @include mat.typography-level($config, subheading-2);
+        @include mat.m2-typography-level($config, subheading-2);
     }
 }

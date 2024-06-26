@@ -3,7 +3,6 @@ import { environment } from '../environments';
 import { KeycloakService } from './auth/keycloak';
 import { ConfigService } from './config';
 import { IconsService } from './icons';
-import { initSentry } from './init-sentry';
 import { LanguageService } from './language';
 import { ThemeManager } from './theme-manager';
 
@@ -20,7 +19,6 @@ export const initializer =
             configService.init({ configUrl: environment.appConfigPath }).then(() =>
                 Promise.all([
                     themeManager.init(),
-                    initSentry(configService.sentryDsn),
                     keycloakService.init({
                         config: environment.authConfigPath,
                         initOptions: {

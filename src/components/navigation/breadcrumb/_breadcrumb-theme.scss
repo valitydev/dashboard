@@ -10,6 +10,6 @@
 
 @mixin dsh-breadcrumb-typography($config) {
     .dsh-breadcrumb {
-        @include mat.typography-level($config, subheading-2);
+        @include mat.m2-typography-level($config, subheading-2);
     }
 }

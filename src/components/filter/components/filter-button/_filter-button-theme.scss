@@ -10,27 +10,27 @@
         color: map-get($foreground, text);
 
         &:hover:enabled {
-            border-color: mat.get-color-from-palette($primary, default);
+            border-color: mat.m2-get-color-from-palette($primary, default);
         }
 
         &-active:enabled {
-            border-color: mat.get-color-from-palette($primary, default);
-            color: mat.get-color-from-palette($primary, default);
-            background-color: mat.get-color-from-palette($primary, default, 0.14);
+            border-color: mat.m2-get-color-from-palette($primary, default);
+            color: mat.m2-get-color-from-palette($primary, default);
+            background-color: mat.m2-get-color-from-palette($primary, default, 0.14);
         }
 
         &:disabled {
-            color: mat.get-color-from-palette($foreground, disabled-text, 0.38);
+            color: mat.m2-get-color-from-palette($foreground, disabled-text, 0.38);
         }
     }
 }
 
 @mixin dsh-filter-button-typography($config) {
     .dsh-filter-button {
-        @include mat.typography-level($config, body-1);
+        @include mat.m2-typography-level($config, body-1);
 
         &-active {
-            @include mat.typography-level($config, body-2);
+            @include mat.m2-typography-level($config, body-2);
         }
     }
 }

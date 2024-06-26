@@ -6,20 +6,20 @@
 
     .dsh-card {
         @include dsh-shadow($theme);
-        background-color: mat.get-color-from-palette($background, card);
+        background-color: mat.m2-get-color-from-palette($background, card);
     }
 }
 
 @mixin dsh-card-typography($config) {
     .dsh-card {
-        font-family: mat.font-family($config);
+        font-family: mat.m2-font-family($config);
     }
 
     .dsh-card-header .dsh-card-title {
-        font-size: mat.font-size($config, title);
+        font-size: mat.m2-font-size($config, title);
     }
 
     .dsh-card-content {
-        font-size: mat.font-size($config, body-1);
+        font-size: mat.m2-font-size($config, body-1);
     }
 }

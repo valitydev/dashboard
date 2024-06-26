@@ -4,12 +4,12 @@
     $primary: map-get($theme, primary);
 
     .dsh-mobile-nav-item-active {
-        color: mat.get-color-from-palette($primary, default);
+        color: mat.m2-get-color-from-palette($primary, default);
     }
 }
 
 @mixin dsh-mobile-menu-nav-item-typography($config) {
     .dsh-mobile-menu-nav-item {
-        @include mat.typography-level($config, title);
+        @include mat.m2-typography-level($config, title);
     }
 }

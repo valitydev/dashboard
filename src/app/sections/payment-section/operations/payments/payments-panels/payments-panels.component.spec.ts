@@ -1,4 +1,5 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,6 +36,7 @@ describe('PaymentsPanelsComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
+            declarations: [PaymentsPanelsComponent, MockRowHeaderComponent, MockRowComponent],
             imports: [
                 FlexLayoutModule,
                 SpinnerModule,
@@ -44,7 +46,6 @@ describe('PaymentsPanelsComponent', () => {
                 ShowMorePanelModule,
                 PaymentsDetailsModule,
                 NoopAnimationsModule,
-                HttpClientTestingModule,
                 TranslocoTestingModule.withLangs(
                     {
                         ru: {
@@ -57,7 +58,7 @@ describe('PaymentsPanelsComponent', () => {
                     },
                 ),
             ],
-            declarations: [PaymentsPanelsComponent, MockRowHeaderComponent, MockRowComponent],
+            providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()],
         }).compileComponents();
     });
 

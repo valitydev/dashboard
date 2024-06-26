@@ -1,4 +1,5 @@
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { getTestBed, TestBed } from '@angular/core/testing';
 
 import { config, mockConfig } from './config-stub';
@@ -7,8 +8,12 @@ import { ConfigService } from './config.service';
 describe('ConfigService', () => {
     function createService() {
         TestBed.configureTestingModule({
-            imports: [HttpClientTestingModule],
-            providers: [ConfigService],
+            imports: [],
+            providers: [
+                ConfigService,
+                provideHttpClient(withInterceptorsFromDi()),
+                provideHttpClientTesting(),
+            ],
         });
         const injector = getTestBed();
         const service: ConfigService = injector.inject(ConfigService);
