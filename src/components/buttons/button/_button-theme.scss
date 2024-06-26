@@ -56,7 +56,10 @@
             }
 
             &.dsh-warn {
-                @include button(map-get($background, card), mat.m2-get-color-from-palette($warn, 400));
+                @include button(
+                    map-get($background, card),
+                    mat.m2-get-color-from-palette($warn, 400)
+                );
                 @include focused-background(mat.m2-get-color-from-palette($warn, default, 0.88));
 
                 &:hover:not(:disabled) {
@@ -122,7 +125,10 @@
             }
 
             &.dsh-warn {
-                @include button(map-get($background, card), mat.m2-get-color-from-palette($warn, 400));
+                @include button(
+                    map-get($background, card),
+                    mat.m2-get-color-from-palette($warn, 400)
+                );
                 @include focused-background(mat.m2-get-color-from-palette($warn, 300));
             }
 

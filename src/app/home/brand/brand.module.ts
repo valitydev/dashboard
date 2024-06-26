@@ -5,6 +5,10 @@ import { RouterModule } from '@angular/router';
 
 import { BrandComponent } from './brand.component';
 
-@NgModule({ declarations: [BrandComponent],
-    exports: [BrandComponent], imports: [RouterModule, MatIconModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+@NgModule({
+    declarations: [BrandComponent],
+    exports: [BrandComponent],
+    imports: [RouterModule, MatIconModule],
+    providers: [provideHttpClient(withInterceptorsFromDi())],
+})
 export class BrandModule {}
