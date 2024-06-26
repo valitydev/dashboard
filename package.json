@@ -85,7 +85,6 @@
     "@types/moment": "2.13.0",
     "@types/prettier": "^3.0.0",
     "@vality/cspell-config": "^8.0.1-pr-57-482a037.0",
-    "@vality/eslint-config": "^8.2.0",
     "@vality/prettier-config": "3.1.0",
     "cross-env": "^7.0.3",
     "cspell": "^8.3.2",
