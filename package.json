@@ -39,7 +39,7 @@
     "@ngneat/transloco": "^6.0.4",
     "@ngneat/until-destroy": "^9.0.0",
     "@vality/ng-core": "18.0.1-pr-63-9e315a6.0",
-    "@vality/swag-anapi-v2": "2.0.1-32ed85f.0",
+    "@vality/swag-anapi-v2": "2.0.1-2eda808.0",
     "@vality/swag-api-keys-v2": "0.1.2-f0ece04.0",
     "@vality/swag-claim-management": "0.1.1-6b6711b.0",
     "@vality/swag-organizations": "1.0.1-de0cd06.0",
