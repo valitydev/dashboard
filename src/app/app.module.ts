@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { APP_INITIALIZER, ErrorHandler, LOCALE_ID, NgModule, isDevMode } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {
@@ -50,17 +50,14 @@ import { SentryHttpInterceptor } from './sentry-http-interceptor';
 import { ThemeManager } from './theme-manager';
 import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
 
-@NgModule({
-    declarations: [AppComponent],
-    imports: [
-        CommonModule,
+@NgModule({ declarations: [AppComponent],
+    bootstrap: [AppComponent], imports: [CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
         SectionsModule,
         AuthModule,
         HomeModule,
         KeycloakAngularModule,
-        HttpClientModule,
         TranslocoModule,
         ErrorModule,
         IconsModule,
@@ -76,9 +73,7 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         ApiKeysModule,
         MatButtonModule,
         BootstrapIconModule,
-        MatMenuModule,
-    ],
-    providers: [
+        MatMenuModule], providers: [
         LanguageService,
         {
             provide: APP_INITIALIZER,
@@ -141,7 +136,6 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
             useValue: [createDateRangeWithPresetSerializer()],
         },
         { provide: TRANSLOCO_SCOPE, useValue: 'app' },
-    ],
-    bootstrap: [AppComponent],
-})
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {}

@@ -1,4 +1,4 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { Component } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { MatIconRegistry } from '@angular/material/icon';
@@ -7,6 +7,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CollapseComponent } from './collapse.component';
 import { CollapseModule } from './collapse.module';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 @Component({ template: '<dsh-collapse title="Title">Test</dsh-collapse>' })
 class MockCollapseComponent {}
@@ -34,9 +35,10 @@ describe('CollapseComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [CollapseModule, NoopAnimationsModule, HttpClientTestingModule],
-            declarations: [MockCollapseComponent, MockCollapseUpComponent],
-        }).compileComponents();
+    declarations: [MockCollapseComponent, MockCollapseUpComponent],
+    imports: [CollapseModule, NoopAnimationsModule],
+    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+}).compileComponents();
     });
 
     beforeEach(inject(
