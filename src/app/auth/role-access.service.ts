@@ -31,9 +31,8 @@ export class RoleAccessService {
         return this.contextOrganizationService.member$.pipe(
             map((member) => {
                 const memberRoles = member.roles.map((r) => r.roleId);
-                return roleAccessNames[type](
-                    (access) =>
-                        ROLE_ACCESSES_OBJECT[access]?.some((role) => memberRoles.includes(role)),
+                return roleAccessNames[type]((access) =>
+                    ROLE_ACCESSES_OBJECT[access]?.some((role) => memberRoles.includes(role)),
                 );
             }),
         );
