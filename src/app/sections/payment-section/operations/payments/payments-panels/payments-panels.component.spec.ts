@@ -1,3 +1,4 @@
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { Component, Input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
@@ -14,7 +15,6 @@ import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
 
 import { PaymentsDetailsModule } from './payments-details';
 import { PaymentsPanelsComponent } from './payments-panels.component';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 @Component({
     selector: 'dsh-payments-row-header',
@@ -36,25 +36,30 @@ describe('PaymentsPanelsComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-    declarations: [PaymentsPanelsComponent, MockRowHeaderComponent, MockRowComponent],
-    imports: [FlexLayoutModule,
-        SpinnerModule,
-        EmptySearchResultModule,
-        AccordionModule,
-        CardModule,
-        ShowMorePanelModule,
-        PaymentsDetailsModule,
-        NoopAnimationsModule,
-        TranslocoTestingModule.withLangs({
-            ru: {
-                emptySearchResult: 'Данные за указанный период отсутствуют',
-            },
-        }, {
-            availableLangs: ['ru'],
-            defaultLang: 'ru',
-        })],
-    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
-}).compileComponents();
+            declarations: [PaymentsPanelsComponent, MockRowHeaderComponent, MockRowComponent],
+            imports: [
+                FlexLayoutModule,
+                SpinnerModule,
+                EmptySearchResultModule,
+                AccordionModule,
+                CardModule,
+                ShowMorePanelModule,
+                PaymentsDetailsModule,
+                NoopAnimationsModule,
+                TranslocoTestingModule.withLangs(
+                    {
+                        ru: {
+                            emptySearchResult: 'Данные за указанный период отсутствуют',
+                        },
+                    },
+                    {
+                        availableLangs: ['ru'],
+                        defaultLang: 'ru',
+                    },
+                ),
+            ],
+            providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()],
+        }).compileComponents();
     });
 
     beforeEach(() => {
