@@ -35,15 +35,9 @@
                 ></dsh-create-invoice-form>
                 <dsh-actions *transloco="let t; scope: 'components'; read: 'components.shared'">
                     <button
-                        [disabled]="createInvoiceFormControl.pristine"
-                        color="accent"
-                        dsh-text-button
-                        (click)="createInvoiceFormControl.reset()"
-                    >
-                        {{ t('clearForm') }}
-                    </button>
-                    <button
-                        [disabled]="createInvoiceFormControl.invalid"
+                        [disabled]="
+                            createInvoiceFormControl.invalid || createInvoiceFormControl.disabled
+                        "
                         color="accent"
                         dsh-button
                         (click)="create()"

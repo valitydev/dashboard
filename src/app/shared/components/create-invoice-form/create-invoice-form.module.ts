@@ -20,6 +20,8 @@ import { FormControlsModule } from '@dsh/components/form-controls';
 import { LayoutModule } from '@dsh/components/layout';
 import { ConfirmActionDialogModule } from '@dsh/components/popups';
 
+import { InvoiceRandomizeAmountModule } from '../invoice-randomize-amount-form';
+
 import { CreateInvoiceFormComponent } from './create-invoice-form.component';
 
 @NgModule({
@@ -44,6 +46,7 @@ import { CreateInvoiceFormComponent } from './create-invoice-form.component';
         ConfirmActionDialogModule,
         AmountCurrencyModule,
         MatCheckboxModule,
+        InvoiceRandomizeAmountModule,
     ],
     declarations: [CreateInvoiceFormComponent],
     exports: [CreateInvoiceFormComponent],

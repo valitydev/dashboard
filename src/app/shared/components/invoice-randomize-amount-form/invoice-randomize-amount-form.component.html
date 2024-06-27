@@ -1,0 +1,28 @@
+<div
+    *transloco="let d; scope: 'components'; read: 'components.invoiceRandomizeAmountForm'"
+    [formGroup]="control"
+    fxLayout="column"
+    fxLayoutGap="24px"
+>
+    <div fxLayout="column" fxLayoutGap="24px">
+        <mat-checkbox formControlName="isRandomizeAmount">{{
+            d('isRandomizeAmount')
+        }}</mat-checkbox>
+        <ng-container
+            *ngIf="control.value.isRandomizeAmount"
+            [formGroup]="control.controls.randomizeAmount"
+        >
+            <mat-form-field fxFlex>
+                <mat-label>{{ d('deviation') }}</mat-label>
+                <dsh-format-input
+                    autocomplete="off"
+                    format="amount"
+                    formControlName="deviation"
+                    required
+                    type="number"
+                ></dsh-format-input>
+                <span matTextPrefix>{{ currency }}&nbsp;</span>
+            </mat-form-field>
+        </ng-container>
+    </div>
+</div>

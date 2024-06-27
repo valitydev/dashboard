@@ -82,24 +82,17 @@
         "title": "Request to create a shop"
     },
     "createInvoiceForm": {
-        "addProduct": "Add product or service",
         "form": {
             "description": "Description of the goods or services offered (optional)",
             "dueDate": "End of validity of the invoice",
             "product": "Name of the offered goods or services",
             "shop": "Shop",
             "amount": "Amount"
-        },
-        "productsList": "Products and services list:",
-        "remove": "Delete",
-        "removeFormGroup": {
-            "price": "Cost",
-            "product": "Description",
-            "quantity": "Quantity",
-            "taxMode": "Tax mode",
-            "withoutVAT": "VAT excl."
-        },
-        "totalAmount": "Total goods and services amounting to:"
+        }
+    },
+    "invoiceRandomizeAmountForm": {
+        "isRandomizeAmount": "Randomly modify invoice's cost amount",
+        "deviation": "Deviation"
     },
     "createPaymentLinkForm": {
         "description": "Information to be displayed on the payment page",

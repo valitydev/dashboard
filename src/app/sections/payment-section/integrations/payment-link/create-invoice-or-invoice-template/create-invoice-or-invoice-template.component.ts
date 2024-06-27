@@ -1,10 +1,10 @@
 import { Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Invoice, InvoiceTemplateAndToken } from '@vality/swag-payments';
-import pick from 'lodash-es/pick';
-import moment from 'moment';
-import { merge, Subject } from 'rxjs';
-import { map, switchMap, take } from 'rxjs/operators';
+import { merge, Subject, throwError } from 'rxjs';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 
 import { InvoicesService } from '@dsh/app/api/payments';
 
@@ -18,14 +18,6 @@ export enum Type {
 export type InvoiceOrInvoiceTemplate =
     | { invoiceOrInvoiceTemplate: Invoice; type: Type.Invoice }
     | { invoiceOrInvoiceTemplate: InvoiceTemplateAndToken; type: Type.Template };
-
-const getRandomizeAmountParams = (formValue: any): any => {
-    const isRandomizeAmount = formValue.isRandomizeAmount;
-    if (isRandomizeAmount) {
-        return formValue.randomizeAmount;
-    }
-    return undefined;
-};
 
 @UntilDestroy()
 @Component({
@@ -48,6 +40,8 @@ export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
     constructor(
         private createInvoiceOrInvoiceTemplateService: CreateInvoiceOrInvoiceTemplateService,
         private invoicesService: InvoicesService,
+        private snackBar: MatSnackBar,
+        private transloco: TranslocoService,
     ) {}
 
     ngOnInit(): void {
@@ -71,26 +65,32 @@ export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
 
     create(): void {
         this.createInvoiceFormControl.disable();
-        const { value } = this.createInvoiceFormControl;
-        this.shops$
+        this.invoicesService
+            .createInvoice({
+                invoiceParams: this.createInvoiceFormControl.value,
+            })
             .pipe(
-                take(1),
-                switchMap((shops) =>
-                    this.invoicesService.createInvoice({
-                        invoiceParams: {
-                            ...pick(value, ['product', 'description', 'amount', 'shopID']),
-                            dueDate: moment(value.dueDate).utc().endOf('d').format(),
-                            currency: shops.find((s) => s.id === value.shopID)?.currency,
-                            metadata: {},
-                            randomizeAmount: getRandomizeAmountParams(value),
-                        },
-                    }),
-                ),
                 untilDestroyed(this),
+                catchError((err) =>
+                    this.transloco
+                        .selectTranslate(
+                            'createInvoiceOrInvoiceTemplate.createInvoiceFailed',
+                            null,
+                            'payment-section',
+                        )
+                        .pipe(
+                            tap((translated) => {
+                                this.createInvoiceFormControl.enable();
+                                this.snackBar.open(translated, 'OK');
+                            }),
+                            switchMap(() => throwError(() => err)),
+                        ),
+                ),
             )
             .subscribe(({ invoice }) => {
                 this.nextInvoice.next(invoice);
                 this.createInvoiceFormControl.reset();
+                this.createInvoiceFormControl.enable();
             });
     }
 }
