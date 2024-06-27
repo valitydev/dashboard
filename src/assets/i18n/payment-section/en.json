@@ -345,7 +345,8 @@
         "errors": {
             "createPaymentLinkError": "Failed to create a payment link"
         },
-        "title": "Creating payment link"
+        "title": "Creating payment link",
+        "noAvailableShops": "No available shops"
     },
     "paymentSection": {
         "nav": {

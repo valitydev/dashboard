@@ -31,7 +31,7 @@
                 <h1 class="dsh-headline">{{ c('invoiceTitle') }}</h1>
                 <dsh-create-invoice-form
                     [formControl]="createInvoiceFormControl"
-                    [shops]="shops$ | async"
+                    [shops]="shops"
                 ></dsh-create-invoice-form>
                 <dsh-actions *transloco="let t; scope: 'components'; read: 'components.shared'">
                     <button
@@ -49,7 +49,7 @@
         </ng-container>
         <dsh-create-invoice-template
             *ngIf="form.value.type === type.Template"
-            [shops]="shops$ | async"
+            [shops]="shops"
             (next)="nextTemplate.next($event)"
         ></dsh-create-invoice-template>
     </ng-container>

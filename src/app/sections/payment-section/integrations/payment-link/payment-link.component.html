@@ -3,10 +3,16 @@
     fxLayout="column"
     fxLayoutGap="24px"
 >
-    <dsh-create-invoice-or-invoice-template
-        *ngIf="(currentStep$ | async) === step.InvoiceTemplate"
-        (next)="nextInvoiceOrInvoiceTemplate($event)"
-    ></dsh-create-invoice-or-invoice-template>
+    <ng-container *ngIf="(shops$ | async).length > 0">
+        <dsh-create-invoice-or-invoice-template
+            *ngIf="(currentStep$ | async) === step.InvoiceTemplate"
+            [shops]="shops$ | async"
+            (next)="nextInvoiceOrInvoiceTemplate($event)"
+        ></dsh-create-invoice-or-invoice-template>
+    </ng-container>
+    <ng-container *ngIf="(shops$ | async).length === 0">
+        <div class="dsh-headline">{{ t('noAvailableShops') }}</div>
+    </ng-container>
     <div *ngIf="(currentStep$ | async) === step.PaymentLink" fxLayout="column" fxLayoutGap="32px">
         <ng-container>
             <h1 class="dsh-headline">

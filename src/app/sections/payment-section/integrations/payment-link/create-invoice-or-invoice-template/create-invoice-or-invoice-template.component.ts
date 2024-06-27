@@ -1,8 +1,15 @@
-import { Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
+import {
+    Component,
+    EventEmitter,
+    OnInit,
+    Output,
+    ChangeDetectionStrategy,
+    Input,
+} from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { Invoice, InvoiceTemplateAndToken } from '@vality/swag-payments';
+import { Invoice, InvoiceTemplateAndToken, Shop } from '@vality/swag-payments';
 import { merge, Subject, throwError } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 
@@ -26,12 +33,13 @@ export type InvoiceOrInvoiceTemplate =
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
+    @Input() shops: Shop[];
     @Output() next = new EventEmitter<InvoiceOrInvoiceTemplate>();
 
     nextInvoice = new Subject<Invoice>();
     nextTemplate = new Subject<InvoiceTemplateAndToken>();
 
-    shops$ = this.createInvoiceOrInvoiceTemplateService.shops$;
+    // shops$ = this.createInvoiceOrInvoiceTemplateService.shops$;
     form = this.createInvoiceOrInvoiceTemplateService.form;
     type = Type;
 

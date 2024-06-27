@@ -345,7 +345,8 @@
         "errors": {
             "createPaymentLinkError": "Не удалось создать платежную ссылку"
         },
-        "title": "Создание платежной ссылки"
+        "title": "Создание платежной ссылки",
+        "noAvailableShops": "Отсутствуют доступные магазины"
     },
     "paymentSection": {
         "nav": {
