@@ -5,7 +5,7 @@
 
     .dsh-balances {
         &-title {
-            color: mat.get-color-from-palette($foreground, secondary-text);
+            color: mat.m2-get-color-from-palette($foreground, secondary-text);
         }
     }
 }
@@ -13,13 +13,13 @@
 @mixin dsh-balances-typography($config) {
     .dsh-balances {
         &-title {
-            @include mat.typography-level($config, caption);
+            @include mat.m2-typography-level($config, caption);
         }
         &-balance-lg {
-            @include mat.typography-level($config, title);
+            @include mat.m2-typography-level($config, title);
         }
         &-balance-md {
-            @include mat.typography-level($config, subheading-2);
+            @include mat.m2-typography-level($config, subheading-2);
         }
     }
 }

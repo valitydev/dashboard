@@ -12,10 +12,10 @@ export class CreateRefundService {
 
     createRefund(data: CreateRefundDialogData): Observable<CreateRefundDialogResponse> {
         return this.dialog
-            .open<CreateRefundDialogComponent, CreateRefundDialogData>(
+            .open<
                 CreateRefundDialogComponent,
-                { data },
-            )
+                CreateRefundDialogData
+            >(CreateRefundDialogComponent, { data })
             .afterClosed();
     }
 }

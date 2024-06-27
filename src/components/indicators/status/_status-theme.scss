@@ -44,6 +44,6 @@
 
 @mixin dsh-status-typography($config) {
     .dsh-status-label {
-        @include mat.typography-level($config, body-1);
+        @include mat.m2-typography-level($config, body-1);
     }
 }

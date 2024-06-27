@@ -2,6 +2,6 @@
 
 @mixin dsh-mobile-user-bar-typography($config) {
     .dsh-mobile-user-bar-username {
-        @include mat.typography-level($config, body-2);
+        @include mat.m2-typography-level($config, body-2);
     }
 }

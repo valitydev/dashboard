@@ -4,7 +4,7 @@
     $foreground: map-get($theme, foreground);
 
     .dsh-last-updated {
-        color: mat.get-color-from-palette($foreground, secondary-text);
+        color: mat.m2-get-color-from-palette($foreground, secondary-text);
     }
 }
 
@@ -14,6 +14,6 @@
     }
 
     .dsh-last-updated {
-        @include mat.typography-level($config, caption);
+        @include mat.m2-typography-level($config, caption);
     }
 }

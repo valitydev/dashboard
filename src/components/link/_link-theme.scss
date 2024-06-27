@@ -8,6 +8,6 @@
 
 @mixin dsh-link-typography($config) {
     .dsh-link {
-        @include mat.typography-level($config, body-1);
+        @include mat.m2-typography-level($config, body-1);
     }
 }
