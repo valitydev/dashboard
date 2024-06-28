@@ -6,16 +6,16 @@ import {
     ChangeDetectionStrategy,
     Input,
 } from '@angular/core';
+import { FormControl, UntypedFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { NotifyLogService } from '@vality/ng-core';
 import { Invoice, InvoiceTemplateAndToken, Shop } from '@vality/swag-payments';
 import { merge, Subject, throwError } from 'rxjs';
-import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 import { InvoicesService } from '@dsh/app/api/payments';
-
-import { CreateInvoiceOrInvoiceTemplateService } from './create-invoice-or-invoice-template.service';
 
 export enum Type {
     Invoice = 'invoice',
@@ -39,17 +39,17 @@ export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
     nextInvoice = new Subject<Invoice>();
     nextTemplate = new Subject<InvoiceTemplateAndToken>();
 
-    // shops$ = this.createInvoiceOrInvoiceTemplateService.shops$;
-    form = this.createInvoiceOrInvoiceTemplateService.form;
+    form = this.fb.group({ type: null });
     type = Type;
 
-    createInvoiceFormControl = this.createInvoiceOrInvoiceTemplateService.createInvoiceFormControl;
+    createInvoiceFormControl = new FormControl();
 
     constructor(
-        private createInvoiceOrInvoiceTemplateService: CreateInvoiceOrInvoiceTemplateService,
         private invoicesService: InvoicesService,
         private snackBar: MatSnackBar,
         private transloco: TranslocoService,
+        private fb: UntypedFormBuilder,
+        private log: NotifyLogService,
     ) {}
 
     ngOnInit(): void {
@@ -79,21 +79,18 @@ export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
             })
             .pipe(
                 untilDestroyed(this),
-                catchError((err) =>
-                    this.transloco
-                        .selectTranslate(
+                catchError((err) => {
+                    this.log.error(
+                        err,
+                        this.transloco.selectTranslate(
                             'createInvoiceOrInvoiceTemplate.createInvoiceFailed',
                             null,
                             'payment-section',
-                        )
-                        .pipe(
-                            tap((translated) => {
-                                this.createInvoiceFormControl.enable();
-                                this.snackBar.open(translated, 'OK');
-                            }),
-                            switchMap(() => throwError(() => err)),
                         ),
-                ),
+                    );
+                    this.createInvoiceFormControl.enable();
+                    return throwError(() => err);
+                }),
             )
             .subscribe(({ invoice }) => {
                 this.nextInvoice.next(invoice);

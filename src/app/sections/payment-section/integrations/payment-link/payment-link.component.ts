@@ -15,11 +15,7 @@ import { progressTo } from '@dsh/utils';
 
 import { filterShopsByRealm } from '../../operations/operators';
 
-import {
-    CreateInvoiceOrInvoiceTemplateService,
-    InvoiceOrInvoiceTemplate,
-    Type,
-} from './create-invoice-or-invoice-template';
+import { InvoiceOrInvoiceTemplate, Type } from './create-invoice-or-invoice-template';
 
 enum Step {
     InvoiceTemplate,
@@ -30,7 +26,6 @@ enum Step {
     selector: 'dsh-payment-link',
     templateUrl: 'payment-link.component.html',
     styleUrls: ['payment-link.component.scss'],
-    providers: [CreateInvoiceOrInvoiceTemplateService],
 })
 export class PaymentLinkComponent {
     step = Step;

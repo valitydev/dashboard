@@ -100,7 +100,8 @@
             "InvoiceTemplateMultiLine": "Корзина товаров",
             "InvoiceTemplateSingleLine": "Одиночная позиция"
         },
-        "title": "Создание шаблона инвойса"
+        "title": "Создание шаблона инвойса",
+        "createInvoiceTemplateFailed": "Не удалось создать шаблон инвойса. Проверьте консоль для получения подробностей."
     },
     "createPaymentLinkDialog": {
         "create": "Сформировать ссылку на оплату",

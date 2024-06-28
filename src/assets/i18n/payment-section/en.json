@@ -100,7 +100,8 @@
             "InvoiceTemplateMultiLine": "Shopping cart items",
             "InvoiceTemplateSingleLine": "Single item"
         },
-        "title": "Creating an invoice template"
+        "title": "Creating an invoice template",
+        "createInvoiceTemplateFailed": "Failed to create invoice template. Check the console for details."
     },
     "createPaymentLinkDialog": {
         "create": "Create payment link",
