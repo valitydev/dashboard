@@ -1,14 +1,20 @@
-import { Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
+import {
+    Component,
+    EventEmitter,
+    OnInit,
+    Output,
+    ChangeDetectionStrategy,
+    Input,
+} from '@angular/core';
+import { FormControl, UntypedFormBuilder } from '@angular/forms';
+import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { Invoice, InvoiceTemplateAndToken } from '@vality/swag-payments';
-import pick from 'lodash-es/pick';
-import moment from 'moment';
-import { merge, Subject } from 'rxjs';
-import { map, switchMap, take } from 'rxjs/operators';
+import { NotifyLogService } from '@vality/ng-core';
+import { Invoice, InvoiceTemplateAndToken, Shop } from '@vality/swag-payments';
+import { merge, Subject, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 import { InvoicesService } from '@dsh/app/api/payments';
-
-import { CreateInvoiceOrInvoiceTemplateService } from './create-invoice-or-invoice-template.service';
 
 export enum Type {
     Invoice = 'invoice',
@@ -26,20 +32,22 @@ export type InvoiceOrInvoiceTemplate =
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
+    @Input() shops: Shop[];
     @Output() next = new EventEmitter<InvoiceOrInvoiceTemplate>();
 
     nextInvoice = new Subject<Invoice>();
     nextTemplate = new Subject<InvoiceTemplateAndToken>();
 
-    shops$ = this.createInvoiceOrInvoiceTemplateService.shops$;
-    form = this.createInvoiceOrInvoiceTemplateService.form;
+    form = this.fb.group({ type: null });
     type = Type;
 
-    createInvoiceFormControl = this.createInvoiceOrInvoiceTemplateService.createInvoiceFormControl;
+    createInvoiceFormControl = new FormControl();
 
     constructor(
-        private createInvoiceOrInvoiceTemplateService: CreateInvoiceOrInvoiceTemplateService,
         private invoicesService: InvoicesService,
+        private transloco: TranslocoService,
+        private fb: UntypedFormBuilder,
+        private log: NotifyLogService,
     ) {}
 
     ngOnInit(): void {
@@ -62,22 +70,30 @@ export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
     }
 
     create(): void {
-        const { value } = this.createInvoiceFormControl;
-        this.shops$
+        this.createInvoiceFormControl.disable();
+        this.invoicesService
+            .createInvoice({
+                invoiceParams: this.createInvoiceFormControl.value,
+            })
             .pipe(
-                take(1),
-                switchMap((shops) =>
-                    this.invoicesService.createInvoice({
-                        invoiceParams: {
-                            ...pick(value, ['product', 'description', 'cart', 'shopID']),
-                            dueDate: moment(value.dueDate).utc().endOf('d').format(),
-                            currency: shops.find((s) => s.id === value.shopID)?.currency,
-                            metadata: {},
-                        },
-                    }),
-                ),
                 untilDestroyed(this),
+                catchError((err) => {
+                    this.log.error(
+                        err,
+                        this.transloco.selectTranslate(
+                            'createInvoiceOrInvoiceTemplate.createInvoiceFailed',
+                            null,
+                            'payment-section',
+                        ),
+                    );
+                    this.createInvoiceFormControl.enable();
+                    return throwError(() => err);
+                }),
             )
-            .subscribe(({ invoice }) => this.nextInvoice.next(invoice));
+            .subscribe(({ invoice }) => {
+                this.nextInvoice.next(invoice);
+                this.createInvoiceFormControl.reset();
+                this.createInvoiceFormControl.enable();
+            });
     }
 }

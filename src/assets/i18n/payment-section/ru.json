@@ -66,40 +66,18 @@
         "types": {
             "personal": "Создать персональную платежную ссылку для оплаты конкретного заказа",
             "reusable": "Создать многоразовую платежную ссылку для оплаты заказов нескольких клиентов"
-        }
+        },
+        "createInvoiceFailed": "Не удалось создать инвойс. Проверьте консоль для получения подробностей."
     },
     "createInvoiceTemplate": {
         "form": {
-            "cart": {
-                "add": "Добавить товар или услугу",
-                "amount": "Цена",
-                "description": "Описание",
-                "quantity": "Количество",
-                "remove": "Удалить",
-                "summary": "Итого товаров и услуг на сумму",
-                "title": "Список товаров и услуг"
-            },
             "cost": "Стоимость предлагаемых товаров или услуг",
-            "invoiceTemplateType": "Тип шаблона",
-            "invoiceTemplateTypeCostType": "Тип ограничения стоимости",
             "lifetime": "Окончание срока действия инвойса",
-            "lowerBound": "Нижняя граница стоимости",
             "product": "Наименование предлагаемых товаров или услуг",
-            "shop": "Магазин",
-            "taxMode": "Схема налогообложения",
-            "upperBound": "Верхняя граница стоимости",
-            "withoutVAT": "без НДС"
+            "shop": "Магазин"
         },
-        "invoiceTemplateCostType": {
-            "InvoiceTemplateLineCostFixed": "Фиксированная",
-            "InvoiceTemplateLineCostRange": "Диапазон",
-            "InvoiceTemplateLineCostUnlim": "Без ограничений"
-        },
-        "invoiceTemplateType": {
-            "InvoiceTemplateMultiLine": "Корзина товаров",
-            "InvoiceTemplateSingleLine": "Одиночная позиция"
-        },
-        "title": "Создание шаблона инвойса"
+        "title": "Создание шаблона инвойса",
+        "createInvoiceTemplateFailed": "Не удалось создать шаблон инвойса. Проверьте консоль для получения подробностей."
     },
     "createPaymentLinkDialog": {
         "create": "Сформировать ссылку на оплату",
@@ -344,7 +322,8 @@
         "errors": {
             "createPaymentLinkError": "Не удалось создать платежную ссылку"
         },
-        "title": "Создание платежной ссылки"
+        "title": "Создание платежной ссылки",
+        "noAvailableShops": "Отсутствуют доступные магазины"
     },
     "paymentSection": {
         "nav": {

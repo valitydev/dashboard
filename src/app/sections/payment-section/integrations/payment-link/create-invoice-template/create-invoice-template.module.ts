@@ -12,6 +12,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { TranslocoModule } from '@ngneat/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
+import { InvoiceRandomizeAmountModule } from '@dsh/app/shared/components/invoice-randomize-amount-form';
 import { ApiModelTypesModule } from '@dsh/app/shared/pipes';
 import { ButtonModule } from '@dsh/components/buttons';
 import { FormControlsModule } from '@dsh/components/form-controls';
@@ -42,6 +43,7 @@ const EXPORTED_DECLARATIONS = [CreateInvoiceTemplateComponent];
         MatDatepickerModule,
         MatMomentDateModule,
         ApiModelTypesModule,
+        InvoiceRandomizeAmountModule,
     ],
     declarations: EXPORTED_DECLARATIONS,
     exports: EXPORTED_DECLARATIONS,

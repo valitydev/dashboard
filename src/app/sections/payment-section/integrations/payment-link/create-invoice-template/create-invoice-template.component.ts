@@ -6,16 +6,16 @@ import {
     OnInit,
     Output,
 } from '@angular/core';
-import { UntypedFormArray } from '@angular/forms';
+import { FormBuilder, UntypedFormGroup } from '@angular/forms';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { createControlProviders, FormGroupSuperclass, NotifyLogService } from '@vality/ng-core';
-import { InvoiceLineTaxVAT, InvoiceTemplateAndToken, Shop } from '@vality/swag-payments';
+import { InvoiceTemplateAndToken, Shop } from '@vality/swag-payments';
+import isNil from 'lodash-es/isNil';
 import moment from 'moment';
+import { take } from 'rxjs';
 
-import { InvoiceTemplateType, InvoiceTemplateLineCostType } from '@dsh/app/api/payments';
-
-import { CreateInvoiceTemplateService, WITHOUT_VAT } from './create-invoice-template.service';
+import { CreateInvoiceTemplateService } from './create-invoice-template.service';
 
 @UntilDestroy()
 @Component({
@@ -33,67 +33,50 @@ export class CreateInvoiceTemplateComponent extends FormGroupSuperclass<unknown>
 
     minDate = moment().add('2', 'day').startOf('day').toDate();
 
-    taxModes = Object.values(InvoiceLineTaxVAT.RateEnum);
-    withoutVAT = WITHOUT_VAT;
+    control: UntypedFormGroup = this.fb.group({});
 
-    templateType = InvoiceTemplateType;
-    costType = InvoiceTemplateLineCostType;
-
-    invoiceTemplateTypes: InvoiceTemplateType[] = [
-        InvoiceTemplateType.InvoiceTemplateSingleLine,
-        InvoiceTemplateType.InvoiceTemplateMultiLine,
-    ];
-
-    invoiceTemplateCostTypes: InvoiceTemplateLineCostType[] = [
-        InvoiceTemplateLineCostType.InvoiceTemplateLineCostFixed,
-        InvoiceTemplateLineCostType.InvoiceTemplateLineCostRange,
-        InvoiceTemplateLineCostType.InvoiceTemplateLineCostUnlim,
-    ];
-
-    control = this.invoiceTemplateFormService.form;
-    summary$ = this.invoiceTemplateFormService.summary$;
     isLoading$ = this.invoiceTemplateFormService.isLoading$;
 
-    get cartForm(): UntypedFormArray {
-        return this.invoiceTemplateFormService.cartForm;
+    get currency() {
+        return this.shops?.find((s) => s.id === this.control.value.shopID)?.currency;
     }
 
     constructor(
         private invoiceTemplateFormService: CreateInvoiceTemplateService,
         private log: NotifyLogService,
         private transloco: TranslocoService,
+        private fb: FormBuilder,
     ) {
         super();
     }
 
     ngOnInit(): void {
         super.ngOnInit();
-        this.invoiceTemplateFormService.errors$
-            .pipe(untilDestroyed(this))
-            .subscribe((err) =>
-                this.log.error(
-                    err,
-                    this.transloco.selectTranslate('shared.commonError', null, 'components'),
+
+        if (isNil(this.shops) || this.shops.length === 0) {
+            throw new Error('Shops need to be initialized.');
+        }
+
+        this.control = this.invoiceTemplateFormService.createForm(this.shops);
+
+        this.invoiceTemplateFormService.errors$.pipe(untilDestroyed(this)).subscribe((err) => {
+            this.control.enable();
+            this.log.error(
+                err,
+                this.transloco.selectTranslate(
+                    'createInvoiceTemplate.createInvoiceTemplateFailed',
+                    null,
+                    'payment-section',
                 ),
             );
+        });
         this.invoiceTemplateFormService.nextInvoiceTemplateAndToken$
-            .pipe(untilDestroyed(this))
+            .pipe(take(1), untilDestroyed(this))
             .subscribe((template) => this.next.emit(template));
     }
 
     nextStep(): void {
-        this.invoiceTemplateFormService.create(this.shops);
-    }
-
-    clear(): void {
-        this.invoiceTemplateFormService.clear();
-    }
-
-    addProduct(): void {
-        this.invoiceTemplateFormService.addProduct();
-    }
-
-    removeProduct(idx: number): void {
-        this.invoiceTemplateFormService.removeProduct(idx);
+        this.control.disable();
+        this.invoiceTemplateFormService.create(this.control.value, this.shops);
     }
 }

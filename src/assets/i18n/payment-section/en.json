@@ -66,40 +66,18 @@
         "types": {
             "personal": "Create a personal payment link to pay for a specific order",
             "reusable": "Create a reusable payment link to pay for multiple customer orders"
-        }
+        },
+        "createInvoiceFailed": "Failed to create invoice. Check the console for details."
     },
     "createInvoiceTemplate": {
         "form": {
-            "cart": {
-                "add": "Add product or service",
-                "amount": "Price",
-                "description": "Description",
-                "quantity": "Quantity",
-                "remove": "Delete",
-                "summary": "Total goods and services amounting to",
-                "title": "Products and services list"
-            },
             "cost": "Cost of the offered goods or services",
-            "invoiceTemplateType": "Template type",
-            "invoiceTemplateTypeCostType": "Type of cost limitation",
             "lifetime": "End of validity of the invoice",
-            "lowerBound": "Lower cost cap",
             "product": "Name of the offered goods or services",
-            "shop": "Shop",
-            "taxMode": "Tax mode",
-            "upperBound": "Upper cost cap",
-            "withoutVAT": "VAT excl"
+            "shop": "Shop"
         },
-        "invoiceTemplateCostType": {
-            "InvoiceTemplateLineCostFixed": "Fixed",
-            "InvoiceTemplateLineCostRange": "Range",
-            "InvoiceTemplateLineCostUnlim": "No restrictions"
-        },
-        "invoiceTemplateType": {
-            "InvoiceTemplateMultiLine": "Shopping cart items",
-            "InvoiceTemplateSingleLine": "Single item"
-        },
-        "title": "Creating an invoice template"
+        "title": "Creating an invoice template",
+        "createInvoiceTemplateFailed": "Failed to create invoice template. Check the console for details."
     },
     "createPaymentLinkDialog": {
         "create": "Create payment link",
@@ -344,7 +322,8 @@
         "errors": {
             "createPaymentLinkError": "Failed to create a payment link"
         },
-        "title": "Creating payment link"
+        "title": "Creating payment link",
+        "noAvailableShops": "No available shops"
     },
     "paymentSection": {
         "nav": {

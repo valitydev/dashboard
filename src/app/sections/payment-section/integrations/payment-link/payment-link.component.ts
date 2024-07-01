@@ -1,20 +1,21 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
 import { NotifyLogService } from '@vality/ng-core';
 import { PaymentMethod } from '@vality/swag-payments';
 import { BehaviorSubject, defer, merge, ReplaySubject, Subject, Subscription, EMPTY } from 'rxjs';
-import { mapTo, shareReplay, switchMap, catchError } from 'rxjs/operators';
+import { mapTo, shareReplay, switchMap, catchError, map } from 'rxjs/operators';
 
 import { InvoicesService, InvoiceTemplatesService } from '@dsh/app/api/payments';
+import { shareReplayRefCount } from '@dsh/app/custom-operators';
+import { ShopsDataService } from '@dsh/app/shared';
 import { CreatePaymentLinkService } from '@dsh/app/shared/services/create-payment-link';
 import { progressTo } from '@dsh/utils';
 
-import {
-    CreateInvoiceOrInvoiceTemplateService,
-    InvoiceOrInvoiceTemplate,
-    Type,
-} from './create-invoice-or-invoice-template';
+import { filterShopsByRealm } from '../../operations/operators';
+
+import { InvoiceOrInvoiceTemplate, Type } from './create-invoice-or-invoice-template';
 
 enum Step {
     InvoiceTemplate,
@@ -25,7 +26,6 @@ enum Step {
     selector: 'dsh-payment-link',
     templateUrl: 'payment-link.component.html',
     styleUrls: ['payment-link.component.scss'],
-    providers: [CreateInvoiceOrInvoiceTemplateService],
 })
 export class PaymentLinkComponent {
     step = Step;
@@ -66,6 +66,12 @@ export class PaymentLinkComponent {
     ).pipe(shareReplay(1));
     progress$ = new BehaviorSubject(0);
 
+    shops$ = this.route.params.pipe(
+        map((params) => params?.realm),
+        filterShopsByRealm(this.shopsDataService.shops$),
+        shareReplayRefCount(),
+    );
+
     private create$ = new Subject<void>();
 
     constructor(
@@ -74,6 +80,8 @@ export class PaymentLinkComponent {
         private createPaymentLinkService: CreatePaymentLinkService,
         private log: NotifyLogService,
         private transloco: TranslocoService,
+        private route: ActivatedRoute,
+        private shopsDataService: ShopsDataService,
     ) {}
 
     nextInvoiceOrInvoiceTemplate(invoiceOrInvoiceTemplate: InvoiceOrInvoiceTemplate): Subscription {
