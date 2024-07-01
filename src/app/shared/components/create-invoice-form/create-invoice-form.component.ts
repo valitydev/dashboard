@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import {
     createControlProviders,
@@ -12,7 +12,6 @@ import { InvoiceParams, Shop } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
 import * as moment from 'moment';
 import { Moment } from 'moment';
-import { combineLatest } from 'rxjs';
 
 import { getFormValueChanges } from '@dsh/utils';
 
@@ -40,8 +39,6 @@ export class CreateInvoiceFormComponent
 
     control = this.fb.group({}) as FormGroupByValue<Partial<FormData>>;
 
-    randomizeAmountFormControl = new FormControl();
-
     get currency() {
         return this.shops?.find((s) => s.id === this.control.value.shopID)?.currency;
     }
@@ -67,23 +64,19 @@ export class CreateInvoiceFormComponent
             product: '',
             description: '',
             amount: null,
+            randomizeAmount: null,
         }) as unknown as FormGroupByValue<Partial<FormData>>;
 
-        combineLatest([
-            getFormValueChanges(this.control),
-            getFormValueChanges(this.randomizeAmountFormControl),
-        ])
+        getFormValueChanges(this.control)
             .pipe(untilDestroyed(this))
-            .subscribe(([v, randomizeAmountFormValue]) => {
+            .subscribe((v) => {
                 this.emitOutgoingValue({
                     ...v,
                     metadata: {},
                     amount: mapToMinor(v.amount, this.currency),
                     currency: this.currency,
                     dueDate: moment(v.dueDate).utc().endOf('d').format(),
-                    randomizeAmount: randomizeAmountFormValue?.isRandomizeAmount
-                        ? randomizeAmountFormValue.randomizeAmount
-                        : undefined,
+                    randomizeAmount: v.randomizeAmount || undefined,
                 });
             });
     }

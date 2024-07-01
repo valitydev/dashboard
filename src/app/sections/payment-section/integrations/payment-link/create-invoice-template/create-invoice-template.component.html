@@ -2,7 +2,7 @@
     *transloco="let c; scope: 'payment-section'; read: 'paymentSection.createInvoiceTemplate'"
     [formGroup]="control"
     fxLayout="column"
-    fxLayoutGap="32px"
+    fxLayoutGap="24px"
 >
     <h1 class="dsh-headline">{{ c('title') }}</h1>
     <div fxLayout="column" fxLayoutGap="16px">
@@ -36,7 +36,13 @@
         <mat-form-field>
             <mat-label>{{ c('form.cost') }}</mat-label>
             <dsh-format-input format="amount" formControlName="amount" required></dsh-format-input>
+            <span matTextPrefix>{{ currency }}&nbsp;</span>
         </mat-form-field>
+
+        <dsh-invoice-randomize-amount-form
+            [currency]="currency"
+            formControlName="randomizeAmount"
+        ></dsh-invoice-randomize-amount-form>
     </div>
 
     <div

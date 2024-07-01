@@ -6,7 +6,7 @@ import {
     OnInit,
     Output,
 } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, UntypedFormGroup } from '@angular/forms';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { createControlProviders, FormGroupSuperclass, NotifyLogService } from '@vality/ng-core';
@@ -32,9 +32,13 @@ export class CreateInvoiceTemplateComponent extends FormGroupSuperclass<unknown>
 
     minDate = moment().add('2', 'day').startOf('day').toDate();
 
-    control = this.fb.group({});
+    control: UntypedFormGroup = this.fb.group({});
 
     isLoading$ = this.invoiceTemplateFormService.isLoading$;
+
+    get currency() {
+        return this.shops?.find((s) => s.id === this.control.value.shopID)?.currency;
+    }
 
     constructor(
         private invoiceTemplateFormService: CreateInvoiceTemplateService,

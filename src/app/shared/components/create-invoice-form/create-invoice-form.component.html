@@ -4,7 +4,7 @@
     fxLayout="column"
     fxLayoutGap="24px"
 >
-    <div fxLayout="column" fxLayoutGap="24px">
+    <div fxLayout="column" fxLayoutGap="16px">
         <mat-form-field>
             <mat-label>{{ d('form.shop') }}</mat-label>
             <mat-select formControlName="shopID" required>
@@ -46,7 +46,7 @@
             </mat-form-field>
             <dsh-invoice-randomize-amount-form
                 [currency]="currency"
-                [formControl]="randomizeAmountFormControl"
+                formControlName="randomizeAmount"
             ></dsh-invoice-randomize-amount-form>
         </ng-container>
     </div>

@@ -104,6 +104,7 @@ export class CreateInvoiceTemplateService {
                 lowerBound: null,
                 upperBound: null,
             }),
+            randomizeAmount: null,
             amount: null,
         });
     }
@@ -122,6 +123,7 @@ export class CreateInvoiceTemplateService {
             shopID: formValue.shopID,
             lifetime: this.getLifetimeInterval(formValue),
             details: this.getInvoiceTemplateDetails(formValue, shops),
+            randomizeAmount: formValue.randomizeAmount || undefined,
         };
     }
 

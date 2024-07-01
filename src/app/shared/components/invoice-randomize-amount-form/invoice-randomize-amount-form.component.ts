@@ -20,10 +20,7 @@ const mapToMinor = (value: number | null, currency: string | null): number | nul
 };
 
 export interface FormData {
-    isRandomizeAmount: boolean;
-    randomizeAmount: {
-        deviation: number;
-    };
+    deviation: number;
 }
 
 @UntilDestroy()
@@ -40,11 +37,10 @@ export class InvoiceRandomizeAmountFormComponent
     @Input() currency: string;
 
     control = this.fb.group({
-        randomizeAmount: this.fb.group({
-            deviation: null,
-        }),
-        isRandomizeAmount: false,
+        deviation: null,
     }) as unknown as FormGroupByValue<Partial<FormData>>;
+
+    isRandomizeAmount = this.fb.control(false);
 
     constructor(private fb: FormBuilder) {
         super();
@@ -56,10 +52,7 @@ export class InvoiceRandomizeAmountFormComponent
             .pipe(untilDestroyed(this))
             .subscribe((v) => {
                 this.emitOutgoingValue({
-                    ...v,
-                    randomizeAmount: {
-                        deviation: mapToMinor(v.randomizeAmount.deviation, this.currency),
-                    },
+                    deviation: mapToMinor(v.deviation, this.currency),
                 });
             });
     }
