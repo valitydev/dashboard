@@ -71,34 +71,10 @@
     },
     "createInvoiceTemplate": {
         "form": {
-            "cart": {
-                "add": "Add product or service",
-                "amount": "Price",
-                "description": "Description",
-                "quantity": "Quantity",
-                "remove": "Delete",
-                "summary": "Total goods and services amounting to",
-                "title": "Products and services list"
-            },
             "cost": "Cost of the offered goods or services",
-            "invoiceTemplateType": "Template type",
-            "invoiceTemplateTypeCostType": "Type of cost limitation",
             "lifetime": "End of validity of the invoice",
-            "lowerBound": "Lower cost cap",
             "product": "Name of the offered goods or services",
-            "shop": "Shop",
-            "taxMode": "Tax mode",
-            "upperBound": "Upper cost cap",
-            "withoutVAT": "VAT excl"
-        },
-        "invoiceTemplateCostType": {
-            "InvoiceTemplateLineCostFixed": "Fixed",
-            "InvoiceTemplateLineCostRange": "Range",
-            "InvoiceTemplateLineCostUnlim": "No restrictions"
-        },
-        "invoiceTemplateType": {
-            "InvoiceTemplateMultiLine": "Shopping cart items",
-            "InvoiceTemplateSingleLine": "Single item"
+            "shop": "Shop"
         },
         "title": "Creating an invoice template",
         "createInvoiceTemplateFailed": "Failed to create invoice template. Check the console for details."

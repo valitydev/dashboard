@@ -71,34 +71,10 @@
     },
     "createInvoiceTemplate": {
         "form": {
-            "cart": {
-                "add": "Добавить товар или услугу",
-                "amount": "Цена",
-                "description": "Описание",
-                "quantity": "Количество",
-                "remove": "Удалить",
-                "summary": "Итого товаров и услуг на сумму",
-                "title": "Список товаров и услуг"
-            },
             "cost": "Стоимость предлагаемых товаров или услуг",
-            "invoiceTemplateType": "Тип шаблона",
-            "invoiceTemplateTypeCostType": "Тип ограничения стоимости",
             "lifetime": "Окончание срока действия инвойса",
-            "lowerBound": "Нижняя граница стоимости",
             "product": "Наименование предлагаемых товаров или услуг",
-            "shop": "Магазин",
-            "taxMode": "Схема налогообложения",
-            "upperBound": "Верхняя граница стоимости",
-            "withoutVAT": "без НДС"
-        },
-        "invoiceTemplateCostType": {
-            "InvoiceTemplateLineCostFixed": "Фиксированная",
-            "InvoiceTemplateLineCostRange": "Диапазон",
-            "InvoiceTemplateLineCostUnlim": "Без ограничений"
-        },
-        "invoiceTemplateType": {
-            "InvoiceTemplateMultiLine": "Корзина товаров",
-            "InvoiceTemplateSingleLine": "Одиночная позиция"
+            "shop": "Магазин"
         },
         "title": "Создание шаблона инвойса",
         "createInvoiceTemplateFailed": "Не удалось создать шаблон инвойса. Проверьте консоль для получения подробностей."
