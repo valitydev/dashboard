@@ -17,6 +17,45 @@
                     type="number"
                 ></dsh-format-input>
                 <span matTextPrefix>{{ currency }}&nbsp;</span>
+                <mat-hint>{{ d('deviationHint') }}</mat-hint>
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <mat-label>{{ d('precision') }}</mat-label>
+                <input autocomplete="off" formControlName="precision" matInput type="number" />
+                <mat-hint>{{ d('precisionHint') }}</mat-hint>
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <mat-label>{{ d('minAmountCondition') }}</mat-label>
+                <dsh-format-input
+                    autocomplete="off"
+                    format="amount"
+                    formControlName="minAmountCondition"
+                    type="number"
+                ></dsh-format-input>
+                <span matTextPrefix>{{ currency }}&nbsp;</span>
+                <mat-hint>{{ d('minAmountConditionHint') }}</mat-hint>
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <mat-label>{{ d('maxAmountCondition') }}</mat-label>
+                <dsh-format-input
+                    autocomplete="off"
+                    format="amount"
+                    formControlName="maxAmountCondition"
+                    type="number"
+                ></dsh-format-input>
+                <span matTextPrefix>{{ currency }}&nbsp;</span>
+                <mat-hint>{{ d('maxAmountConditionHint') }}</mat-hint>
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <mat-label>{{ d('amountMultiplicityCondition') }}</mat-label>
+                <dsh-format-input
+                    autocomplete="off"
+                    format="amount"
+                    formControlName="amountMultiplicityCondition"
+                    type="number"
+                ></dsh-format-input>
+                <span matTextPrefix>{{ currency }}&nbsp;</span>
+                <mat-hint>{{ d('amountMultiplicityConditionHint') }}</mat-hint>
             </mat-form-field>
         </ng-container>
     </div>

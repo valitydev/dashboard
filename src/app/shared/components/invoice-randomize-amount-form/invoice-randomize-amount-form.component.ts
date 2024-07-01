@@ -12,15 +12,19 @@ import isNil from 'lodash-es/isNil';
 
 import { getFormValueChanges } from '@dsh/utils';
 
-const mapToMinor = (value: number | null, currency: string | null): number | null => {
+const mapToMinor = (value: number | null, currency: string | null): number | undefined => {
     if (isNil(value) || isNil(currency)) {
-        return value;
+        return undefined;
     }
     return toMinor(value, currency);
 };
 
 export interface FormData {
     deviation: number;
+    precision?: number;
+    minAmountCondition?: number;
+    maxAmountCondition?: number;
+    amountMultiplicityCondition?: number;
 }
 
 @UntilDestroy()
@@ -38,6 +42,10 @@ export class InvoiceRandomizeAmountFormComponent
 
     control = this.fb.group({
         deviation: null,
+        precision: null,
+        minAmountCondition: null,
+        maxAmountCondition: null,
+        amountMultiplicityCondition: null,
     }) as unknown as FormGroupByValue<Partial<FormData>>;
 
     isRandomizeAmount = this.fb.control(false);
@@ -52,7 +60,14 @@ export class InvoiceRandomizeAmountFormComponent
             .pipe(untilDestroyed(this))
             .subscribe((v) => {
                 this.emitOutgoingValue({
+                    ...v,
                     deviation: mapToMinor(v.deviation, this.currency),
+                    minAmountCondition: mapToMinor(v.minAmountCondition, this.currency),
+                    maxAmountCondition: mapToMinor(v.maxAmountCondition, this.currency),
+                    amountMultiplicityCondition: mapToMinor(
+                        v.amountMultiplicityCondition,
+                        this.currency,
+                    ),
                 });
             });
     }

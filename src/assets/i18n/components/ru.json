@@ -92,7 +92,16 @@
     },
     "invoiceRandomizeAmountForm": {
         "isRandomizeAmount": "Случайным образом изменить сумму инвойса",
-        "deviation": "Отклонение"
+        "deviation": "Отклонение",
+        "deviationHint": "Укажите максимальное отклонение от оригинальной суммы.",
+        "precision": "Точность (опционально)",
+        "precisionHint": "Установите параметр для округления генерируемых случайных сумм до ближайшего десятка.",
+        "minAmountCondition": "Min amount condition (опционально)",
+        "minAmountConditionHint": "Установите параметр для указания минимальной генерируемой суммы.",
+        "maxAmountCondition": "Max amount condition (опционально)",
+        "maxAmountConditionHint": "Установите параметр для указания максимальной генерируемой суммы.",
+        "amountMultiplicityCondition": "Amount multiplicity condition (опционально)",
+        "amountMultiplicityConditionHint": "Установите параметр, чтобы генерируемая сумма была кратна заданному значению."
     },
     "createPaymentLinkForm": {
         "description": "Информация для отображения на платежной странице",

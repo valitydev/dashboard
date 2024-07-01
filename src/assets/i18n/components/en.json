@@ -92,7 +92,16 @@
     },
     "invoiceRandomizeAmountForm": {
         "isRandomizeAmount": "Randomly modify invoice's cost amount",
-        "deviation": "Deviation"
+        "deviation": "Deviation",
+        "deviationHint": "Specify the maximum deviation from the original amount.",
+        "precision": "Precision (optional)",
+        "precisionHint": "Set the parameter to round generated random amounts to the nearest ten.",
+        "minAmountCondition": "Min amount condition (optional)",
+        "minAmountConditionHint": "Set the parameter to specify the minimum generated amount.",
+        "maxAmountCondition": "Max amount condition (optional)",
+        "maxAmountConditionHint": "Set the parameter to specify the maximum generated amount.",
+        "amountMultiplicityCondition": "Amount multiplicity condition (optional)",
+        "amountMultiplicityConditionHint": "Set the parameter so that the generated amount is a multiple of the specified value."
     },
     "createPaymentLinkForm": {
         "description": "Information to be displayed on the payment page",
