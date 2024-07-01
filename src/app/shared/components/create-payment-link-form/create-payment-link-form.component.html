@@ -30,11 +30,9 @@
                 <mat-label>{{ c('form.locale') }}</mat-label>
                 <mat-select formControlName="locale">
                     <mat-option>{{ c('localeCodes.auto') }}</mat-option>
-                    @for (localeCode of localeCodes; track localeCode) {
-                        <mat-option [value]="localeCode">{{
-                            localeCode | localeCode | async
-                        }}</mat-option>
-                    }
+                    <mat-option *ngFor="let localeCode of localeCodes" [value]="localeCode">
+                        {{ localeCode | localeCode }}
+                    </mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
