@@ -4,7 +4,7 @@
     fxLayoutGap="32px"
 >
     <div class="dsh-body-1">{{ c('description') }}</div>
-    <form *ngIf="control" [formGroup]="control" fxLayout="column" fxLayoutGap="24px">
+    <div [formGroup]="control" fxLayout="column" fxLayoutGap="24px">
         <div fxLayout="column" fxLayoutGap="16px">
             <mat-form-field>
                 <mat-label>{{ c('form.name') }}</mat-label>
@@ -25,39 +25,19 @@
                 <mat-label>{{ c('form.redirectUrl') }}</mat-label>
                 <input formControlName="redirectUrl" matInput type="url" />
             </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>{{ c('form.locale') }}</mat-label>
+                <mat-select formControlName="locale">
+                    <mat-option>{{ c('localeCodes.auto') }}</mat-option>
+                    @for (localeCode of localeCodes; track localeCode) {
+                        <mat-option [value]="localeCode">{{
+                            localeCode | localeCode | async
+                        }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
         </div>
-        <mat-divider></mat-divider>
-        <ng-container formGroupName="paymentMethods">
-            <h2 class="dsh-subheading-2">{{ c('form.paymentMethods') }}:</h2>
-            <ng-container *ngFor="let methodName of orderedPaymentMethodsNames">
-                <mat-checkbox
-                    *ngIf="control.get(['paymentMethods', methodName]).enabled"
-                    [formControlName]="methodName"
-                >
-                    <span>{{ paymentMethodLabels[methodName] | async }}</span>
-                </mat-checkbox>
-            </ng-container>
-        </ng-container>
-        <mat-divider></mat-divider>
-        <mat-checkbox formControlName="paymentFlowHold">{{
-            c('form.paymentFlowHold')
-        }}</mat-checkbox>
-        <ng-container *ngIf="control.value.paymentFlowHold">
-            <label class="dsh-subheading-1">{{ c('form.paymentFlowHoldPolicy') }}:</label>
-            <mat-radio-group
-                formControlName="holdExpiration"
-                gdColumns="1fr"
-                gdColumns.gt-sm="1fr 1fr 1fr"
-                gdGap="24px"
-            >
-                <mat-radio-button
-                    *ngFor="let holdExpiration of holdExpirations"
-                    [value]="holdExpiration"
-                >
-                    <span>{{ holdExpirationLabels[holdExpiration] }}</span>
-                </mat-radio-button>
-            </mat-radio-group>
-        </ng-container>
 
         <ng-container *ngIf="paymentLink">
             <mat-divider></mat-divider>
@@ -77,5 +57,5 @@
                 </button>
             </div>
         </ng-container>
-    </form>
+    </div>
 </div>

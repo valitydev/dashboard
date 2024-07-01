@@ -13,6 +13,7 @@ import { createControlProviders, FormGroupSuperclass, NotifyLogService } from '@
 import { InvoiceTemplateAndToken, Shop } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
 import moment from 'moment';
+import { take } from 'rxjs';
 
 import { CreateInvoiceTemplateService } from './create-invoice-template.service';
 
@@ -70,7 +71,7 @@ export class CreateInvoiceTemplateComponent extends FormGroupSuperclass<unknown>
             );
         });
         this.invoiceTemplateFormService.nextInvoiceTemplateAndToken$
-            .pipe(untilDestroyed(this))
+            .pipe(take(1), untilDestroyed(this))
             .subscribe((template) => this.next.emit(template));
     }
 

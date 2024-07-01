@@ -7,7 +7,6 @@ import {
     Input,
 } from '@angular/core';
 import { FormControl, UntypedFormBuilder } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { NotifyLogService } from '@vality/ng-core';
@@ -46,7 +45,6 @@ export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
 
     constructor(
         private invoicesService: InvoicesService,
-        private snackBar: MatSnackBar,
         private transloco: TranslocoService,
         private fb: UntypedFormBuilder,
         private log: NotifyLogService,

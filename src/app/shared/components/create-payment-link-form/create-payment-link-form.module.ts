@@ -7,7 +7,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@ngneat/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
@@ -19,6 +21,7 @@ import { LayoutModule } from '@dsh/components/layout';
 import { ConfirmActionDialogModule } from '@dsh/components/popups';
 
 import { CreatePaymentLinkFormComponent } from './create-payment-link-form.component';
+import { LocaleCode } from './locale-code.pipe';
 
 @NgModule({
     imports: [
@@ -39,8 +42,10 @@ import { CreatePaymentLinkFormComponent } from './create-payment-link-form.compo
         MatSnackBarModule,
         MatFormFieldModule,
         MatIconModule,
+        MatSelectModule,
+        MatMenuModule,
     ],
-    declarations: [CreatePaymentLinkFormComponent],
+    declarations: [CreatePaymentLinkFormComponent, LocaleCode],
     exports: [CreatePaymentLinkFormComponent],
 })
 export class CreatePaymentLinkFormModule {}
