@@ -128,11 +128,6 @@ export class AnapiDictionaryService {
             'dictionary',
         ),
         paymentRegistry: this.t.translate('anapi.reportType.paymentRegistry', null, 'dictionary'),
-        paymentRegistryByPayout: this.t.translate(
-            'anapi.reportType.paymentRegistryByPayout',
-            null,
-            'dictionary',
-        ),
     }));
 
     reportStatus$ = this.dictionaryService.create<Report.StatusEnum>(() => ({
