@@ -26,26 +26,6 @@
             "registeredOffice": "Registration postal address",
             "tradingName": "Trade name"
         },
-        "payoutTool": {
-            "currency": "Currency"
-        },
-        "payoutToolDetails": {
-            "internationalBankAccount": {
-                "bankDetails": {
-                    "abartn": "ABA Routing Transit Number",
-                    "address": "Legal entity address",
-                    "bic": "BIC",
-                    "countryCode": "Country of residence",
-                    "name": "Legal entity name"
-                },
-                "correspondentBankAccount": "Corr. account",
-                "iban": "IBAN",
-                "number": "Account number"
-            },
-            "wallet": {
-                "walletName": "Name"
-            }
-        },
         "russianLegalEntity": {
             "actualAddress": "Location postal address",
             "inn": "INN",
@@ -127,10 +107,6 @@
             "tr": "tr - Turkish"
         }
     },
-    "createRussianShopEntity": {
-        "send": "Send for review",
-        "title": "Request to create a shop"
-    },
     "createdExistingSwitch": {
         "created": "Specify new",
         "existing": "Use existing"
@@ -149,13 +125,6 @@
             "failed": "Error when cancelling"
         },
         "status": "Status"
-    },
-    "existingBankAccount": {
-        "errors": {
-            "onlyInternationalShopCanBeSelected": "You can only choose an international shop",
-            "onlyRussianShopCanBeSelected": "You can only choose a Russian shop"
-        },
-        "shopLabel": "Use shop-based props"
     },
     "existingContractForm": {
         "errors": {
@@ -178,13 +147,9 @@
             "label": "Wallet holder"
         }
     },
-    "internationalBankAccountForm": {
-        "correspondentAccount": "Correspondent account"
-    },
     "internationalShopForm": {
         "organization": "Organization details",
-        "paymentInstitution": "Payment organization",
-        "payoutToolTitle": "Withdrawal of funds"
+        "paymentInstitution": "Payment organization"
     },
     "invoiceDetails": {
         "amount": "Amount",
@@ -207,26 +172,12 @@
         "lastUpdate": "Last update",
         "update": "Update"
     },
-    "newContractorForm": {
-        "form": {
-            "actualAddress": "Location postal address",
-            "inn": "INN",
-            "registeredName": "Legal entity name",
-            "registeredNumber": "OGRN/OGRNIP",
-            "representativeDocument": "EEC/representative document",
-            "representativeFullName": "EEC/representative full name",
-            "representativePosition": "Position of EEC/representative"
-        }
-    },
     "newInternationalContractorForm": {
         "actualAddress": "Address of location (if different from the place of registration)",
         "country": "Country of residence",
         "organizationName": "Name",
         "registeredAddress": "Address of the place of registration",
         "tradingName": "Trade name (if applicable)"
-    },
-    "orgDetailsForm": {
-        "title": "Organization details"
     },
     "pageNotFound": {
         "back": "Back"
@@ -239,16 +190,6 @@
     "paymentInstitutionField": {
         "label": "Payment Institution"
     },
-    "payoutToolForm": {
-        "abaRtn": "ABA RTN",
-        "accountNumber": "Account number",
-        "bankAddress": "Address of the legal entity of the banking organization",
-        "bankCountry": "Country of residence of the banking organization",
-        "bankName": "Name of the legal entity of the banking organization",
-        "bic": "BIC",
-        "description": "Either IBAN, BIC, ABA RTN, or the name, country, and address must be filled in",
-        "iban": "IBAN"
-    },
     "refundDetails": {
         "amount": "Amount",
         "createdAt": "Created at",
@@ -258,12 +199,6 @@
     },
     "refundStatusFilter": {
         "label": "Refund status"
-    },
-    "russianBankAccountForm": {
-        "account": "Operating account",
-        "bik": "BIC",
-        "name": "Name",
-        "postAccount": "Correspondent account"
     },
     "select-active-organization-dialog": {
         "confirm": "Confirm",
@@ -289,10 +224,6 @@
         "category": "Shop category",
         "name": "Name of the shop",
         "url": "Shop URL"
-    },
-    "shopForm": {
-        "description": "To receive payouts on accepted payments to your bank account you need to specify the details",
-        "title": "Withdrawal of funds"
     },
     "shopsField": {
         "label": "Shop"

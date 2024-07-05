@@ -336,42 +336,6 @@
             "testEnv": "Test environment"
         }
     },
-    "payouts": {
-        "createPayoutReport": {
-            "cancel": "Cancel",
-            "create": "Generate",
-            "descriptionStep1": "A report with the transactions register will be generated. This will take some time. Downloading the report and tracking the formation status is possible in the \"Reports\" section",
-            "descriptionStep2": "The report was successfully created and is in the process of forming. You can download the report and track its status in the \"Reports\" section",
-            "title": "Forming a report with the register of operations",
-            "toReports": "Go to \"Reports\" section"
-        },
-        "errors": {
-            "createError": "An error occurred while trying to create a payout",
-            "createReportError": "Failed to create report"
-        },
-        "headerRow": {
-            "amount": "Amount",
-            "createdAt": "Created at",
-            "payoutTool": "Payout tool",
-            "shop": "Shop"
-        },
-        "panel": {
-            "actions": "Actions",
-            "createReport": "Generate a register of operations",
-            "payoutID": "Payout #{{num}}",
-            "shop": "Shop"
-        },
-        "payouts": {
-            "amount": "Payout amount",
-            "any": "Any",
-            "createPayout": "Create a payout",
-            "created": "A request for payout has been successfully created",
-            "noPayoutTools": "There are no payout tools available",
-            "payoutTool": "Payout tool",
-            "shop": "Shop",
-            "title": "Creating a payout to a wallet"
-        }
-    },
     "reportTypesFilter": {
         "activeLabel": "Report type",
         "label": "All report types"
@@ -450,10 +414,6 @@
         "shopContract": {
             "error": "Failed to retrieve contract data",
             "title": "Contract details"
-        },
-        "shopPayoutTool": {
-            "error": "Failed to receive the payout tool details",
-            "title": "Payout tool"
         },
         "suspend": {
             "error": "An error occurred while freezing the shop",
