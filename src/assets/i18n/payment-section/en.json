@@ -356,10 +356,7 @@
             "shop": "Shop"
         },
         "panel": {
-            "actions": "Actions",
-            "createReport": "Generate a register of operations",
-            "payoutID": "Payout #{{num}}",
-            "shop": "Shop"
+            "payoutID": "Payout #{{num}}"
         },
         "payouts": {
             "amount": "Payout amount",
@@ -450,10 +447,6 @@
         "shopContract": {
             "error": "Failed to retrieve contract data",
             "title": "Contract details"
-        },
-        "shopPayoutTool": {
-            "error": "Failed to receive the payout tool details",
-            "title": "Payout tool"
         },
         "suspend": {
             "error": "An error occurred while freezing the shop",

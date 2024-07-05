@@ -26,26 +26,6 @@
             "registeredOffice": "Адрес места регистрации",
             "tradingName": "Торговое наименование"
         },
-        "payoutTool": {
-            "currency": "Валюта"
-        },
-        "payoutToolDetails": {
-            "internationalBankAccount": {
-                "bankDetails": {
-                    "abartn": "ABA Routing Transit Number",
-                    "address": "Адрес юр. лица",
-                    "bic": "BIC",
-                    "countryCode": "Страна резиденции",
-                    "name": "Наименование юр. лица"
-                },
-                "correspondentBankAccount": "Корр. счет",
-                "iban": "IBAN",
-                "number": "Номер счета"
-            },
-            "wallet": {
-                "walletName": "Наименование"
-            }
-        },
         "russianLegalEntity": {
             "actualAddress": "Почтовый адрес места нахождения",
             "inn": "ИНН",
@@ -127,10 +107,6 @@
             "tr": "tr - Турецкий"
         }
     },
-    "createRussianShopEntity": {
-        "send": "Отправить на рассмотрение",
-        "title": "Заявка на создание магазина"
-    },
     "createdExistingSwitch": {
         "created": "Указать новые",
         "existing": "Использовать существующие"
@@ -149,13 +125,6 @@
             "failed": "Ошибка при отмене"
         },
         "status": "Статус"
-    },
-    "existingBankAccount": {
-        "errors": {
-            "onlyInternationalShopCanBeSelected": "Можно выбрать только международный магазин",
-            "onlyRussianShopCanBeSelected": "Можно выбрать только российский магазин"
-        },
-        "shopLabel": "Использовать реквизиты на основе магазина"
     },
     "existingContractForm": {
         "errors": {
@@ -178,13 +147,9 @@
             "label": "Владелец кошелька"
         }
     },
-    "internationalBankAccountForm": {
-        "correspondentAccount": "Корреспондентский счет"
-    },
     "internationalShopForm": {
         "organization": "Сведения об организации",
-        "paymentInstitution": "Платежная организация",
-        "payoutToolTitle": "Вывод средств"
+        "paymentInstitution": "Платежная организация"
     },
     "invoiceDetails": {
         "amount": "Стоимость",
@@ -207,26 +172,12 @@
         "lastUpdate": "Последнее обновление",
         "update": "Обновить"
     },
-    "newContractorForm": {
-        "form": {
-            "actualAddress": "Почтовый адрес места нахождения",
-            "inn": "ИНН",
-            "registeredName": "Наименование юр. лица",
-            "registeredNumber": "ОГРН/ОГРНИП",
-            "representativeDocument": "Документ ЕИО/представителя",
-            "representativeFullName": "ФИО ЕИО/представителя",
-            "representativePosition": "Должность ЕИО/представителя"
-        }
-    },
     "newInternationalContractorForm": {
         "actualAddress": "Адрес места нахождения (если отличается от места регистрации)",
         "country": "Страна резиденции",
         "organizationName": "Наименование",
         "registeredAddress": "Адрес места регистрации",
         "tradingName": "Торговое наименование (если применимо)"
-    },
-    "orgDetailsForm": {
-        "title": "Сведения об организации"
     },
     "pageNotFound": {
         "back": "Назад"
@@ -239,16 +190,6 @@
     "paymentInstitutionField": {
         "label": "Платежная организация"
     },
-    "payoutToolForm": {
-        "abaRtn": "ABA RTN",
-        "accountNumber": "Номер счета",
-        "bankAddress": "Адрес юридического лица банковской организации",
-        "bankCountry": "Страна резиденции банковской организации",
-        "bankName": "Наименование юридического лица банковской организации",
-        "bic": "BIC",
-        "description": "Необходимо заполнить либо IBAN, либо BIC, либо ABA RTN, либо наименование, страну и адрес",
-        "iban": "IBAN"
-    },
     "refundDetails": {
         "amount": "Сумма",
         "createdAt": "Совершен",
@@ -258,12 +199,6 @@
     },
     "refundStatusFilter": {
         "label": "Статус возврата"
-    },
-    "russianBankAccountForm": {
-        "account": "Расчетный счет",
-        "bik": "БИК",
-        "name": "Наименование",
-        "postAccount": "Корреспондентский счет"
     },
     "select-active-organization-dialog": {
         "confirm": "Подтвердить",
@@ -289,10 +224,6 @@
         "category": "Категория магазина",
         "name": "Наименование магазина",
         "url": "URL адрес магазина"
-    },
-    "shopForm": {
-        "description": "Для получения выплат по принятым платежам на ваш банковский счет необходимо указать реквизиты",
-        "title": "Вывод средств"
     },
     "shopsField": {
         "label": "Магазин"
