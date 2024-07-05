@@ -13,7 +13,6 @@ import { ButtonModule } from '@dsh/components/buttons';
 
 import { CreateShopDialogComponent } from './components/create-shop-dialog/create-shop-dialog.component';
 import { CreateInternationalShopEntityModule } from './create-international-shop-entity';
-import { CreateRussianShopEntityModule } from './create-russian-shop-entity';
 
 @NgModule({
     imports: [
@@ -23,7 +22,6 @@ import { CreateRussianShopEntityModule } from './create-russian-shop-entity';
         MatDialogModule,
         FlexLayoutModule,
         MatRadioModule,
-        CreateRussianShopEntityModule,
         CreateInternationalShopEntityModule,
         BaseDialogModule,
         ShopContractDetailsModule,
