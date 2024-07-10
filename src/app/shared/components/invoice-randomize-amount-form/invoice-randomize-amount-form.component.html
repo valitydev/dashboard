@@ -21,9 +21,25 @@
             </mat-form-field>
             <mat-form-field fxFlex>
                 <mat-label>{{ d('precision') }}</mat-label>
-                <input autocomplete="off" formControlName="precision" matInput type="number" />
+                <input
+                    autocomplete="off"
+                    formControlName="precision"
+                    matInput
+                    required
+                    type="number"
+                />
                 <mat-hint>{{ d('precisionHint') }}</mat-hint>
             </mat-form-field>
+            <label class="dsh-subheading-1">{{ d('direction') }}:</label>
+            <mat-radio-group formControlName="direction" fxLayout fxLayoutGap="24px">
+                <mat-radio-button
+                    *ngFor="let directionType of directionTypes"
+                    [value]="directionType"
+                    fxFlex="0 1 calc((100% - 24px * 2)/3)"
+                >
+                    {{ directionType }}
+                </mat-radio-button>
+            </mat-radio-group>
             <mat-form-field fxFlex>
                 <mat-label>{{ d('minAmountCondition') }}</mat-label>
                 <dsh-format-input

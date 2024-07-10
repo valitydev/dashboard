@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
 import { TranslocoModule } from '@ngneat/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
@@ -25,6 +26,7 @@ import { InvoiceRandomizeAmountFormComponent } from './invoice-randomize-amount-
         TranslocoModule,
         AmountCurrencyModule,
         MatCheckboxModule,
+        MatRadioModule,
     ],
     declarations: [InvoiceRandomizeAmountFormComponent],
     exports: [InvoiceRandomizeAmountFormComponent],
