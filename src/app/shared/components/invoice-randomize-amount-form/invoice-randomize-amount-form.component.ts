@@ -42,13 +42,16 @@ export class InvoiceRandomizeAmountFormComponent
 
     control = this.fb.group({
         deviation: null,
-        precision: null,
+        precision: 2,
+        direction: 'both',
         minAmountCondition: null,
         maxAmountCondition: null,
         amountMultiplicityCondition: null,
     }) as unknown as FormGroupByValue<Partial<FormData>>;
 
     isRandomizeAmount = this.fb.control(false);
+
+    directionTypes: string[] = ['both', 'upward', 'downward'];
 
     constructor(private fb: FormBuilder) {
         super();
