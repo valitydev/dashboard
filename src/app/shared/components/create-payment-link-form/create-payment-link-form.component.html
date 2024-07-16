@@ -35,6 +35,27 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
+
+            <mat-divider></mat-divider>
+            <mat-checkbox formControlName="paymentFlowHold">{{
+                c('form.paymentFlowHold')
+            }}</mat-checkbox>
+            <ng-container *ngIf="control.value.paymentFlowHold">
+                <label class="dsh-subheading-1">{{ c('form.paymentFlowHoldPolicy') }}:</label>
+                <mat-radio-group
+                    formControlName="onHoldExpiration"
+                    gdColumns="1fr"
+                    gdColumns.gt-sm="1fr 1fr 1fr"
+                    gdGap="24px"
+                >
+                    <mat-radio-button [value]="'cancel'">
+                        <span>{{ c('holdExpiration.cancel') }}</span>
+                    </mat-radio-button>
+                    <mat-radio-button [value]="'capture'">
+                        <span>{{ c('holdExpiration.capture') }}</span>
+                    </mat-radio-button>
+                </mat-radio-group>
+            </ng-container>
         </div>
 
         <ng-container *ngIf="paymentLink">
