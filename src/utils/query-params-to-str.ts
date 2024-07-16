@@ -10,7 +10,7 @@ export function queryParamsToStr(params: Params): string {
             }
             if (typeof value === 'object' && !Array.isArray(value)) {
                 const nestedObjectString = JSON.stringify(value);
-                return [...acc, `${key}=${nestedObjectString}`];
+                return [...acc, `${key}=${encodeURIComponent(nestedObjectString)}`];
             } else {
                 return [...acc, `${key}=${encodeURIComponent(String(value))}`];
             }
