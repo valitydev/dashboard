@@ -93,7 +93,13 @@
             "link": "Payment link",
             "name": "Name (optional)",
             "redirectUrl": "Redirect URL after successful payment completion (optional)",
-            "locale": "Localization (optional)"
+            "locale": "Localization (optional)",
+            "paymentFlowHold": "Preliminarily hold the amount of payment from the payer",
+            "paymentFlowHoldPolicy": "After the retention period"
+        },
+        "holdExpiration": {
+            "cancel": "Return to payer",
+            "capture": "Write off from the payer"
         },
         "localeCodes": {
             "auto": "Automatically determine",

@@ -7,6 +7,8 @@ import { PaymentMethod } from '@vality/swag-payments';
 
 import { PaymentLinkParams } from '@dsh/app/shared/services/create-payment-link/types/payment-link-params';
 
+import { HoldExpiration } from '../../services/create-payment-link/types/hold-expiration';
+
 import { Controls } from './types/controls';
 
 @UntilDestroy()
@@ -29,6 +31,8 @@ export class CreatePaymentLinkFormComponent extends FormGroupSuperclass<
         email: ['', Validators.email],
         redirectUrl: '',
         locale: null,
+        paymentFlowHold: false,
+        onHoldExpiration: HoldExpiration.Cancel,
     });
 
     localeCodes = ['ru', 'en', 'ar', 'az', 'bn', 'ja', 'ko', 'pt', 'tr'];
@@ -49,5 +53,23 @@ export class CreatePaymentLinkFormComponent extends FormGroupSuperclass<
                 this.transloco.selectTranslate('shared.copyFailed', null, 'components'),
             );
         }
+    }
+
+    protected innerToOuterValue(value: Controls): PaymentLinkParams {
+        let paymentFlow = null;
+        if (value.paymentFlowHold) {
+            paymentFlow = {
+                type: 'PaymentFlowHold',
+                onHoldExpiration: value.onHoldExpiration,
+            };
+        }
+        return {
+            name: value.name,
+            description: value.description,
+            email: value.email,
+            redirectUrl: value.redirectUrl,
+            locale: value.locale,
+            paymentFlow,
+        };
     }
 }
