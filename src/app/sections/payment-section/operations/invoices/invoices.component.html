@@ -9,6 +9,7 @@
         <ng-container *ngIf="'CreateInvoice' | isAccessAllowed">
             <button
                 *transloco="let i; scope: 'payment-section'; read: 'paymentSection.invoices'"
+                [disabled]="(shops$ | async).length === 0"
                 color="accent"
                 dsh-button
                 (click)="create()"
