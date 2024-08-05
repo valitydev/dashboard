@@ -16,6 +16,7 @@ export class MainInfoFiltersComponent extends FormGroupSuperclass<MainInfoForm> 
         walletID: null,
         identityID: null,
         destinationID: null,
+        externalID: null,
     });
 
     constructor(private fb: FormBuilder) {

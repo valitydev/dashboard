@@ -3,4 +3,5 @@ export interface MainInfoForm {
     walletID?: string;
     identityID?: string;
     destinationID?: string;
+    externalID?: string;
 }
