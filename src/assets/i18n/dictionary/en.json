@@ -79,7 +79,6 @@
         },
         "reportType": {
             "paymentRegistry": "Operations register",
-            "paymentRegistryByPayout": "Register of reimbursement transactions",
             "provisionOfService": "Certificate of rendered services"
         }
     },

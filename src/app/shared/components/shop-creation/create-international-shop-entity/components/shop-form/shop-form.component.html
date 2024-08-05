@@ -28,20 +28,4 @@
         [label]="t('paymentInstitution')"
         formControlName="paymentInstitution"
     ></dsh-payment-institution-field>
-
-    <mat-divider></mat-divider>
-
-    <h2 class="dsh-title">{{ t('payoutToolTitle') }}</h2>
-
-    <dsh-created-existing-switch [form]="control.controls.bankAccount" formGroupName="bankAccount">
-        <dsh-international-bank-account-form
-            *dshCreatedCase
-            formControlName="created"
-        ></dsh-international-bank-account-form>
-        <dsh-existing-bank-account
-            *dshExistingCase
-            bankAccountType="PayoutToolDetailsInternationalBankAccount"
-            formControlName="existing"
-        ></dsh-existing-bank-account>
-    </dsh-created-existing-switch>
 </form>

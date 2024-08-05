@@ -1,4 +1,5 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { Component } from '@angular/core';
 import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { MatIconRegistry } from '@angular/material/icon';
@@ -34,8 +35,9 @@ describe('CollapseComponent', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [CollapseModule, NoopAnimationsModule, HttpClientTestingModule],
             declarations: [MockCollapseComponent, MockCollapseUpComponent],
+            imports: [CollapseModule, NoopAnimationsModule],
+            providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()],
         }).compileComponents();
     });
 

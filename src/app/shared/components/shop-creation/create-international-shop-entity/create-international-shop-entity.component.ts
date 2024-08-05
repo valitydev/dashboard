@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { progressTo, NotifyLogService } from '@vality/ng-core';
@@ -27,7 +26,6 @@ export class CreateInternationalShopEntityComponent {
         private createShopInternationalLegalEntityService: CreateInternationalShopEntityService,
         private transloco: TranslocoService,
         private log: NotifyLogService,
-        private router: Router,
     ) {}
 
     createShop(): void {

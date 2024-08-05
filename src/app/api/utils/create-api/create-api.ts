@@ -20,11 +20,10 @@ type DeepOnlyMutable<T> = T extends object
 type ApiArgs = [Injector];
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type MethodParams<P extends Record<PropertyKey, any>, K extends PropertyKey> = RequiredKeys<
-    Omit<P, K>
-> extends never
-    ? void | Overwrite<P, { [N in K]?: P[N] }>
-    : Overwrite<P, { [N in K]?: P[N] }>;
+type MethodParams<P extends Record<PropertyKey, any>, K extends PropertyKey> =
+    RequiredKeys<Omit<P, K>> extends never
+        ? void | Overwrite<P, { [N in K]?: P[N] }>
+        : Overwrite<P, { [N in K]?: P[N] }>;
 type Method<M, P extends PropertyKey> = M extends (
     ...args: unknown[]
 ) => Observable<HttpResponse<infer R>>

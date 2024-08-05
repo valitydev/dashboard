@@ -5,7 +5,6 @@ export enum NavbarRouterLink {
     Shops = 'shops',
     Analytics = 'analytics',
     Operations = 'operations',
-    Payouts = 'payouts',
     Reports = 'reports',
     Integrations = 'integrations',
 }
@@ -24,7 +23,7 @@ export const toNavbarItemConfig = ({
     operations,
     reports,
 }: Record<
-    'shops' | 'analytics' | 'integrations' | 'operations' | 'payouts' | 'reports',
+    'shops' | 'analytics' | 'integrations' | 'operations' | 'reports',
     string
 >): NavbarItemConfig[] => [
     {
@@ -49,12 +48,6 @@ export const toNavbarItemConfig = ({
             RoleAccessName.ViewRefunds,
         ],
     },
-    // {
-    //     routerLink: NavbarRouterLink.Payouts,
-    //     icon: BootstrapIconName.ArrowRightCircle,
-    //     label: payouts,
-    //     roles: [RoleAccessName.ViewPayouts],
-    // },
     {
         routerLink: NavbarRouterLink.Reports,
         icon: BootstrapIconName.FileText,

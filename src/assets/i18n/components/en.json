@@ -4,12 +4,10 @@
             "title": "Your organizations"
         },
         "user": {
-            "changePassword": "Change password",
+            "accountSecurity": "Account security",
             "logout": "Logout",
             "orgList": "Organization list",
-            "selectActiveOrg": "Choose an active organization",
-            "sessions": "Session management",
-            "twoFactorAuth": "Two-step authentication"
+            "selectActiveOrg": "Choose an active organization"
         }
     },
     "apiModelDetails": {
@@ -27,26 +25,6 @@
             "registeredNumber": "Registration number",
             "registeredOffice": "Registration postal address",
             "tradingName": "Trade name"
-        },
-        "payoutTool": {
-            "currency": "Currency"
-        },
-        "payoutToolDetails": {
-            "internationalBankAccount": {
-                "bankDetails": {
-                    "abartn": "ABA Routing Transit Number",
-                    "address": "Legal entity address",
-                    "bic": "BIC",
-                    "countryCode": "Country of residence",
-                    "name": "Legal entity name"
-                },
-                "correspondentBankAccount": "Corr. account",
-                "iban": "IBAN",
-                "number": "Account number"
-            },
-            "wallet": {
-                "walletName": "Name"
-            }
         },
         "russianLegalEntity": {
             "actualAddress": "Location postal address",
@@ -84,57 +62,57 @@
         "title": "Request to create a shop"
     },
     "createInvoiceForm": {
-        "addProduct": "Add product or service",
         "form": {
-            "description": "Description of the goods or services offered",
+            "description": "Description of the goods or services offered (optional)",
             "dueDate": "End of validity of the invoice",
             "product": "Name of the offered goods or services",
-            "shop": "Shop"
-        },
-        "productsList": "Products and services list:",
-        "remove": "Delete",
-        "removeFormGroup": {
-            "price": "Cost",
-            "product": "Description",
-            "quantity": "Quantity",
-            "taxMode": "Tax mode",
-            "withoutVAT": "VAT excl."
-        },
-        "totalAmount": "Total goods and services amounting to:"
+            "shop": "Shop",
+            "amount": "Amount"
+        }
+    },
+    "invoiceRandomizeAmountForm": {
+        "isRandomizeAmount": "Randomly modify invoice's cost amount",
+        "deviation": "Deviation",
+        "deviationHint": "Specify the maximum deviation from the original amount.",
+        "precision": "Precision",
+        "precisionHint": "Set the parameter to round generated random amounts to the nearest ten.",
+        "direction": "Direction of deviation from original amount",
+        "minAmountCondition": "Min amount condition (optional)",
+        "minAmountConditionHint": "Set the parameter to specify the minimum generated amount.",
+        "maxAmountCondition": "Max amount condition (optional)",
+        "maxAmountConditionHint": "Set the parameter to specify the maximum generated amount.",
+        "amountMultiplicityCondition": "Amount multiplicity condition (optional)",
+        "amountMultiplicityConditionHint": "Set the parameter so that the generated amount is a multiple of the specified value."
     },
     "createPaymentLinkForm": {
-        "description": "Information to be displayed on the payment page",
+        "description": "Information to display on the payment page",
         "form": {
             "copy": "Copy",
-            "description": "The name of your product or service",
-            "email": "Payer's Email (if known)",
-            "link": "Link to payment",
-            "name": "The name of your company or website",
+            "description": "Description (optional)",
+            "email": "Payer's email (optional)",
+            "link": "Payment link",
+            "name": "Name (optional)",
+            "redirectUrl": "Redirect URL after successful payment completion (optional)",
+            "locale": "Localization (optional)",
             "paymentFlowHold": "Preliminarily hold the amount of payment from the payer",
-            "paymentFlowHoldPolicy": "After the retention period (72 hours)",
-            "paymentMethods": "Payment method",
-            "redirectUrl": "Redirect URL after successful payment completion"
+            "paymentFlowHoldPolicy": "After the retention period"
         },
         "holdExpiration": {
             "cancel": "Return to payer",
             "capture": "Write off from the payer"
         },
-        "paymentMethod": {
-            "applePay": "Apple Pay",
-            "bankCard": "Card",
-            "euroset": "Euroset terminals",
-            "googlePay": "Google Pay",
-            "mobileCommerce": "Phone number",
-            "qps": "Faster payments system (FPS)",
-            "samsungPay": "Samsung Pay",
-            "uzcard": "Uzcard",
-            "wallets": "Wallets",
-            "yandexPay": "Yandex Pay"
+        "localeCodes": {
+            "auto": "Automatically determine",
+            "ru": "ru - Russian",
+            "en": "en - English",
+            "ar": "ar - Arabic",
+            "az": "az - Azerbaijani",
+            "bn": "bn - Bengali",
+            "ja": "ja - Japanese",
+            "ko": "ko - Korean",
+            "pt": "pt - Portuguese",
+            "tr": "tr - Turkish"
         }
-    },
-    "createRussianShopEntity": {
-        "send": "Send for review",
-        "title": "Request to create a shop"
     },
     "createdExistingSwitch": {
         "created": "Specify new",
@@ -154,13 +132,6 @@
             "failed": "Error when cancelling"
         },
         "status": "Status"
-    },
-    "existingBankAccount": {
-        "errors": {
-            "onlyInternationalShopCanBeSelected": "You can only choose an international shop",
-            "onlyRussianShopCanBeSelected": "You can only choose a Russian shop"
-        },
-        "shopLabel": "Use shop-based props"
     },
     "existingContractForm": {
         "errors": {
@@ -183,13 +154,9 @@
             "label": "Wallet holder"
         }
     },
-    "internationalBankAccountForm": {
-        "correspondentAccount": "Correspondent account"
-    },
     "internationalShopForm": {
         "organization": "Organization details",
-        "paymentInstitution": "Payment organization",
-        "payoutToolTitle": "Withdrawal of funds"
+        "paymentInstitution": "Payment organization"
     },
     "invoiceDetails": {
         "amount": "Amount",
@@ -212,26 +179,12 @@
         "lastUpdate": "Last update",
         "update": "Update"
     },
-    "newContractorForm": {
-        "form": {
-            "actualAddress": "Location postal address",
-            "inn": "INN",
-            "registeredName": "Legal entity name",
-            "registeredNumber": "OGRN/OGRNIP",
-            "representativeDocument": "EEC/representative document",
-            "representativeFullName": "EEC/representative full name",
-            "representativePosition": "Position of EEC/representative"
-        }
-    },
     "newInternationalContractorForm": {
         "actualAddress": "Address of location (if different from the place of registration)",
         "country": "Country of residence",
         "organizationName": "Name",
         "registeredAddress": "Address of the place of registration",
         "tradingName": "Trade name (if applicable)"
-    },
-    "orgDetailsForm": {
-        "title": "Organization details"
     },
     "pageNotFound": {
         "back": "Back"
@@ -244,16 +197,6 @@
     "paymentInstitutionField": {
         "label": "Payment Institution"
     },
-    "payoutToolForm": {
-        "abaRtn": "ABA RTN",
-        "accountNumber": "Account number",
-        "bankAddress": "Address of the legal entity of the banking organization",
-        "bankCountry": "Country of residence of the banking organization",
-        "bankName": "Name of the legal entity of the banking organization",
-        "bic": "BIC",
-        "description": "Either IBAN, BIC, ABA RTN, or the name, country, and address must be filled in",
-        "iban": "IBAN"
-    },
     "refundDetails": {
         "amount": "Amount",
         "createdAt": "Created at",
@@ -263,12 +206,6 @@
     },
     "refundStatusFilter": {
         "label": "Refund status"
-    },
-    "russianBankAccountForm": {
-        "account": "Operating account",
-        "bik": "BIC",
-        "name": "Name",
-        "postAccount": "Correspondent account"
     },
     "select-active-organization-dialog": {
         "confirm": "Confirm",
@@ -294,10 +231,6 @@
         "category": "Shop category",
         "name": "Name of the shop",
         "url": "Shop URL"
-    },
-    "shopForm": {
-        "description": "To receive payouts on accepted payments to your bank account you need to specify the details",
-        "title": "Withdrawal of funds"
     },
     "shopsField": {
         "label": "Shop"

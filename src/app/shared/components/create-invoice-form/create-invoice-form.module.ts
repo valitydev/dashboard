@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
@@ -18,6 +19,8 @@ import { ButtonModule } from '@dsh/components/buttons';
 import { FormControlsModule } from '@dsh/components/form-controls';
 import { LayoutModule } from '@dsh/components/layout';
 import { ConfirmActionDialogModule } from '@dsh/components/popups';
+
+import { InvoiceRandomizeAmountModule } from '../invoice-randomize-amount-form';
 
 import { CreateInvoiceFormComponent } from './create-invoice-form.component';
 
@@ -42,6 +45,8 @@ import { CreateInvoiceFormComponent } from './create-invoice-form.component';
         MatDialogModule,
         ConfirmActionDialogModule,
         AmountCurrencyModule,
+        MatCheckboxModule,
+        InvoiceRandomizeAmountModule,
     ],
     declarations: [CreateInvoiceFormComponent],
     exports: [CreateInvoiceFormComponent],

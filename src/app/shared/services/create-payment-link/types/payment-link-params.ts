@@ -1,3 +1,5 @@
+import { PaymentFlow } from '@vality/swag-payments';
+
 export interface PaymentLinkParams {
     invoiceID?: string;
     invoiceAccessToken?: string;
@@ -7,14 +9,6 @@ export interface PaymentLinkParams {
     description?: string;
     email?: string;
     redirectUrl?: string;
-    paymentFlowHold?: boolean;
-    holdExpiration?: string;
-    terminals?: boolean;
-    wallets?: boolean;
-    bankCard?: boolean;
-    mobileCommerce?: boolean;
-    applePay?: boolean;
-    googlePay?: boolean;
-    samsungPay?: boolean;
-    yandexPay?: boolean;
+    locale?: string;
+    paymentFlow?: PaymentFlow;
 }

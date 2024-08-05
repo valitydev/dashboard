@@ -18,7 +18,6 @@ export class ShopFormComponent extends FormGroupSuperclass<
         shopDetails: null,
         orgDetails: createTypeUnionDefaultForm(),
         paymentInstitution: null,
-        bankAccount: createTypeUnionDefaultForm(),
     }) as FormGroup;
 
     constructor(private fb: FormBuilder) {

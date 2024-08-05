@@ -7,7 +7,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@ngneat/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
-import { ContractDetailsModule, PayoutToolModule } from '@dsh/app/shared/components';
+import { ContractDetailsModule } from '@dsh/app/shared/components';
 import { ShopContractDetailsModule } from '@dsh/app/shared/services/shop-contract-details';
 import { ButtonModule } from '@dsh/components/buttons';
 import { DetailsItemModule } from '@dsh/components/layout';
@@ -18,7 +18,6 @@ import { ShopActionsComponent } from './components/shop-actions/shop-actions.com
 import { ShopContractDetailsComponent } from './components/shop-contract-details/shop-contract-details.component';
 import { ShopIdComponent } from './components/shop-id/shop-id.component';
 import { ShopInfoComponent } from './components/shop-info/shop-info.component';
-import { ShopPayoutToolDetailsComponent } from './components/shop-payout-tool-details/shop-payout-tool-details.component';
 import { CategoryService } from './services/category/category.service';
 import { ShopDetailsComponent } from './shop-details.component';
 
@@ -32,7 +31,6 @@ import { ShopDetailsComponent } from './shop-details.component';
         DetailsItemModule,
         ClipboardModule,
         ContractDetailsModule,
-        PayoutToolModule,
         ShopBalanceModule,
         MatSnackBarModule,
         MatDialogModule,
@@ -41,7 +39,6 @@ import { ShopDetailsComponent } from './shop-details.component';
     declarations: [
         ShopDetailsComponent,
         ShopContractDetailsComponent,
-        ShopPayoutToolDetailsComponent,
         ShopActionsComponent,
         ShopIdComponent,
         ShopInfoComponent,

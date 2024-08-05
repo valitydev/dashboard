@@ -4,9 +4,11 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { NotifyLogService, QueryParamsService } from '@vality/ng-core';
 import { take } from 'rxjs/operators';
 
+import { ShopsDataService } from '@dsh/app/shared';
 import { SpinnerType } from '@dsh/components/indicators';
 
 import { RealmMixService, PaymentInstitutionRealmService } from '../../services';
+import { filterShopsByRealm } from '../operators';
 
 import { CreateInvoiceService } from './create-invoice';
 import { Filters, SearchFiltersParams } from './invoices-search-filters';
@@ -29,6 +31,9 @@ export class InvoicesComponent implements OnInit {
     spinnerType = SpinnerType.FulfillingBouncingCircle;
     realm$ = this.paymentInstitutionRealmService.realm$;
     params$ = this.qp.params$;
+    shops$ = this.paymentInstitutionRealmService.realm$.pipe(
+        filterShopsByRealm(this.shopsDataService.shops$),
+    );
 
     constructor(
         private invoicesService: FetchInvoicesService,
@@ -39,6 +44,7 @@ export class InvoicesComponent implements OnInit {
         private paymentInstitutionRealmService: PaymentInstitutionRealmService,
         private qp: QueryParamsService<Filters>,
         private realmMixService: RealmMixService<SearchFiltersParams>,
+        private shopsDataService: ShopsDataService,
     ) {}
 
     ngOnInit(): void {

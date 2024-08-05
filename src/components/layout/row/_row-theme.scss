@@ -6,13 +6,13 @@
     $primary: map-get($theme, primary);
 
     .dsh-row {
-        background-color: mat.get-color-from-palette($background, card);
+        background-color: mat.m2-get-color-from-palette($background, card);
         &.dsh-primary {
-            background-color: mat.get-color-from-palette($primary, 50);
+            background-color: mat.m2-get-color-from-palette($primary, 50);
         }
 
         &-header-label {
-            color: mat.get-color-from-palette($foreground, secondary-text);
+            color: mat.m2-get-color-from-palette($foreground, secondary-text);
         }
     }
 }
@@ -20,10 +20,10 @@
 @mixin dsh-row-typography($config) {
     .dsh-row {
         &-header-label {
-            @include mat.typography-level($config, body-2);
+            @include mat.m2-typography-level($config, body-2);
         }
         &-label {
-            @include mat.typography-level($config, body-1);
+            @include mat.m2-typography-level($config, body-1);
         }
     }
 }

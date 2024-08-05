@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { toMinor, DialogResponseStatus } from '@vality/ng-core';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { toMinor } from '@vality/ng-core';
 import {
     InvoiceLineTaxMode,
     InvoiceLineTaxVAT,
@@ -18,48 +17,21 @@ import {
     Shop,
 } from '@vality/swag-payments';
 import * as moment from 'moment';
-import { combineLatest, merge, Observable, Subject } from 'rxjs';
-import {
-    distinctUntilChanged,
-    filter,
-    map,
-    share,
-    shareReplay,
-    startWith,
-    switchMap,
-    take,
-} from 'rxjs/operators';
+import { merge, Observable, Subject } from 'rxjs';
+import { distinctUntilChanged, share, shareReplay, switchMap, take } from 'rxjs/operators';
 
 import {
     InvoiceTemplatesService,
     InvoiceTemplateType,
     InvoiceTemplateLineCostType,
 } from '@dsh/app/api/payments';
-import {
-    filterError,
-    filterPayload,
-    progress,
-    replaceError,
-    SHARE_REPLAY_CONF,
-} from '@dsh/app/custom-operators';
-import { ConfirmActionDialogComponent } from '@dsh/components/popups';
+import { filterError, filterPayload, progress, replaceError } from '@dsh/app/custom-operators';
 
 export const WITHOUT_VAT = Symbol('without VAT');
 
 @Injectable()
 export class CreateInvoiceTemplateService {
     private nextInvoiceTemplate$ = new Subject<InvoiceTemplateCreateParams>();
-
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    form = this.createForm();
-
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    summary$ = this.cartForm.valueChanges.pipe(
-        // TODO: add form types
-        startWith(this.cartForm.value),
-        map((v) => v.reduce((sum, c) => sum + c.price * c.quantity, 0)),
-        shareReplay(1),
-    );
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     invoiceTemplateAndToken$: Observable<InvoiceTemplateAndToken>;
@@ -71,14 +43,9 @@ export class CreateInvoiceTemplateService {
     // eslint-disable-next-line @typescript-eslint/member-ordering
     nextInvoiceTemplateAndToken$: Observable<InvoiceTemplateAndToken>;
 
-    get cartForm() {
-        return this.form.controls.cart as UntypedFormArray;
-    }
-
     constructor(
         private fb: UntypedFormBuilder,
         private invoiceTemplatesService: InvoiceTemplatesService,
-        private dialog: MatDialog,
     ) {
         const createInvoiceTemplate$ = this.nextInvoiceTemplate$.pipe(
             distinctUntilChanged((x, y) => JSON.stringify(x) === JSON.stringify(y)),
@@ -112,7 +79,6 @@ export class CreateInvoiceTemplateService {
             ),
         ).pipe(share());
 
-        this.subscribeFormChanges();
         merge(
             this.invoiceTemplateAndToken$,
             this.errors$,
@@ -121,76 +87,15 @@ export class CreateInvoiceTemplateService {
         ).subscribe();
     }
 
-    create(shops: Shop[]) {
-        this.nextInvoiceTemplate$.next(this.getInvoiceTemplateCreateParams(shops));
+    create(formValue, shops: Shop[]) {
+        this.nextInvoiceTemplate$.next(this.getInvoiceTemplateCreateParams(formValue, shops));
     }
 
-    clear() {
-        this.dialog
-            .open(ConfirmActionDialogComponent)
-            .afterClosed()
-            .pipe(filter((r) => r.status === DialogResponseStatus.Success))
-            .subscribe(() => {
-                this.cartForm.clear();
-                this.addProduct();
-                this.form.reset(this.createForm().value);
-            });
-    }
-
-    addProduct() {
-        this.cartForm.push(this.createProductFormGroup());
-    }
-
-    removeProduct(idx: number) {
-        this.cartForm.removeAt(idx);
-    }
-
-    private subscribeFormChanges() {
-        const templateType$ = this.form.controls.templateType.valueChanges.pipe(
-            startWith<InvoiceTemplateType>(this.form.value.templateType),
-            shareReplay(SHARE_REPLAY_CONF),
-        );
-        const costType$ = this.form.controls.costType.valueChanges.pipe(
-            startWith(this.form.value.costType),
-        );
-        templateType$.subscribe((templateType) => {
-            const { product } = this.form.controls;
-            if (templateType === InvoiceTemplateType.InvoiceTemplateMultiLine) {
-                this.cartForm.enable();
-                product.disable();
-            } else {
-                this.cartForm.disable();
-                product.enable();
-            }
-        });
-        combineLatest([templateType$, costType$]).subscribe(([templateType, costType]) => {
-            const { amount, range } = this.form.controls;
-            if (
-                templateType === InvoiceTemplateType.InvoiceTemplateMultiLine ||
-                costType === InvoiceTemplateLineCostType.InvoiceTemplateLineCostUnlim
-            ) {
-                range.disable();
-                amount.disable();
-                return;
-            }
-            switch (costType) {
-                case InvoiceTemplateLineCostType.InvoiceTemplateLineCostRange:
-                    range.enable();
-                    amount.disable();
-                    return;
-                case InvoiceTemplateLineCostType.InvoiceTemplateLineCostFixed:
-                    range.disable();
-                    amount.enable();
-                    return;
-            }
-        });
-    }
-
-    private createForm() {
+    createForm(shops: Shop[]): UntypedFormGroup {
         return this.fb.group({
-            shopID: '',
-            lifetime: '',
-            costType: InvoiceTemplateLineCostType.InvoiceTemplateLineCostUnlim,
+            shopID: shops[0].id,
+            lifetime: moment().add('1', 'month').endOf('day'),
+            costType: InvoiceTemplateLineCostType.InvoiceTemplateLineCostFixed,
             templateType: InvoiceTemplateType.InvoiceTemplateSingleLine,
             product: '',
             taxMode: WITHOUT_VAT,
@@ -199,6 +104,7 @@ export class CreateInvoiceTemplateService {
                 lowerBound: null,
                 upperBound: null,
             }),
+            randomizeAmount: null,
             amount: null,
         });
     }
@@ -212,17 +118,17 @@ export class CreateInvoiceTemplateService {
         });
     }
 
-    private getInvoiceTemplateCreateParams(shops: Shop[]): InvoiceTemplateCreateParams {
-        const { value } = this.form;
+    private getInvoiceTemplateCreateParams(formValue, shops: Shop[]): InvoiceTemplateCreateParams {
         return {
-            shopID: value.shopID,
-            lifetime: this.getLifetimeInterval(),
-            details: this.getInvoiceTemplateDetails(shops),
+            shopID: formValue.shopID,
+            lifetime: this.getLifetimeInterval(formValue),
+            details: this.getInvoiceTemplateDetails(formValue, shops),
+            randomizeAmount: formValue.randomizeAmount || undefined,
         };
     }
 
-    private getLifetimeInterval(): LifetimeInterval {
-        const { lifetime } = this.form.value;
+    private getLifetimeInterval(formValue): LifetimeInterval {
+        const { lifetime } = formValue;
         const diff = moment(lifetime).diff(moment().startOf('day'));
         const duration = moment.duration(diff);
         return {
@@ -232,18 +138,16 @@ export class CreateInvoiceTemplateService {
         };
     }
 
-    private getInvoiceTemplateDetails(shops: Shop[]): InvoiceTemplateDetails {
-        const {
-            value,
-            value: { cart, shopID },
-        } = this.form;
+    private getInvoiceTemplateDetails(formValue, shops: Shop[]): InvoiceTemplateDetails {
+        const { cart, shopID } = formValue;
+        const value = formValue;
         const currency = this.getCurrencyByShopID(shopID, shops);
         switch (value.templateType) {
             case InvoiceTemplateType.InvoiceTemplateSingleLine:
                 return {
                     templateType: value.templateType,
                     product: value.product,
-                    price: this.getInvoiceTemplateLineCost(shops),
+                    price: this.getInvoiceTemplateLineCost(formValue, shops),
                     ...this.getInvoiceLineTaxMode(value.taxMode),
                 } as InvoiceTemplateSingleLine;
             case InvoiceTemplateType.InvoiceTemplateMultiLine:
@@ -260,8 +164,8 @@ export class CreateInvoiceTemplateService {
         }
     }
 
-    private getInvoiceTemplateLineCost(shops: Shop[]): InvoiceTemplateLineCost {
-        const { costType, amount, range, shopID } = this.form.value;
+    private getInvoiceTemplateLineCost(formValue, shops: Shop[]): InvoiceTemplateLineCost {
+        const { costType, amount, range, shopID } = formValue;
         const currency = this.getCurrencyByShopID(shopID, shops);
         switch (costType) {
             case InvoiceTemplateLineCostType.InvoiceTemplateLineCostUnlim:

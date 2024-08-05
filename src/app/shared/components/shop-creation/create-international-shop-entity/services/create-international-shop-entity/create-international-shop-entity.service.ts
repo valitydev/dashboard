@@ -10,16 +10,10 @@ import {
     createInternationalLegalEntityModification,
     createShopCreationModification,
     makeShopLocation,
-    createInternationalContractPayoutToolModification,
 } from '@dsh/app/api/claim-management';
 import { IdGeneratorService } from '@dsh/app/shared/services/id-generator';
 
 import { InternationalShopEntityFormValue } from '../../types/international-shop-entity-form-value';
-
-import {
-    payoutToolDetailsInternationalBankAccountToInternationalBankAccount,
-    payoutToolFormToInternationalBankAccount,
-} from './utils';
 
 @Injectable()
 export class CreateInternationalShopEntityService {
@@ -47,7 +41,6 @@ export class CreateInternationalShopEntityService {
         shopDetails,
         orgDetails: { created: newContractor, existing: contract },
         paymentInstitution,
-        bankAccount: { created: newBankAccount, existing: payoutTool },
     }: InternationalShopEntityFormValue): Modification[] {
         const contractorID = this.idGenerator.uuid();
         const contractID = this.idGenerator.uuid();
@@ -80,30 +73,6 @@ export class CreateInternationalShopEntityService {
                 contractorID,
                 paymentInstitution: { id: paymentInstitution?.id ?? 1 },
             }),
-            createInternationalContractPayoutToolModification(
-                contractID,
-                payoutToolID,
-                newBankAccount ? newBankAccount.currency : payoutTool.currency,
-                newBankAccount
-                    ? {
-                          ...payoutToolFormToInternationalBankAccount(newBankAccount.payoutTool),
-                          correspondentAccount: newBankAccount.correspondentPayoutTool
-                              ? payoutToolFormToInternationalBankAccount(
-                                    newBankAccount.correspondentPayoutTool,
-                                )
-                              : null,
-                      }
-                    : {
-                          ...payoutToolDetailsInternationalBankAccountToInternationalBankAccount(
-                              payoutTool.details,
-                          ),
-                          correspondentAccount: payoutTool.details.correspondentBankAccount
-                              ? payoutToolDetailsInternationalBankAccountToInternationalBankAccount(
-                                    payoutTool.details.correspondentBankAccount,
-                                )
-                              : null,
-                      },
-            ),
             createShopCreationModification(shopID, {
                 category: {
                     categoryID: shopDetails.category?.categoryID ?? 1,

@@ -66,40 +66,18 @@
         "types": {
             "personal": "Create a personal payment link to pay for a specific order",
             "reusable": "Create a reusable payment link to pay for multiple customer orders"
-        }
+        },
+        "createInvoiceFailed": "Failed to create invoice. Check the console for details."
     },
     "createInvoiceTemplate": {
         "form": {
-            "cart": {
-                "add": "Add product or service",
-                "amount": "Price",
-                "description": "Description",
-                "quantity": "Quantity",
-                "remove": "Delete",
-                "summary": "Total goods and services amounting to",
-                "title": "Products and services list"
-            },
             "cost": "Cost of the offered goods or services",
-            "invoiceTemplateType": "Template type",
-            "invoiceTemplateTypeCostType": "Type of cost limitation",
             "lifetime": "End of validity of the invoice",
-            "lowerBound": "Lower cost cap",
             "product": "Name of the offered goods or services",
-            "shop": "Shop",
-            "taxMode": "Tax mode",
-            "upperBound": "Upper cost cap",
-            "withoutVAT": "VAT excl"
+            "shop": "Shop"
         },
-        "invoiceTemplateCostType": {
-            "InvoiceTemplateLineCostFixed": "Fixed",
-            "InvoiceTemplateLineCostRange": "Range",
-            "InvoiceTemplateLineCostUnlim": "No restrictions"
-        },
-        "invoiceTemplateType": {
-            "InvoiceTemplateMultiLine": "Shopping cart items",
-            "InvoiceTemplateSingleLine": "Single item"
-        },
-        "title": "Creating an invoice template"
+        "title": "Creating an invoice template",
+        "createInvoiceTemplateFailed": "Failed to create invoice template. Check the console for details."
     },
     "createPaymentLinkDialog": {
         "create": "Create payment link",
@@ -344,7 +322,8 @@
         "errors": {
             "createPaymentLinkError": "Failed to create a payment link"
         },
-        "title": "Creating payment link"
+        "title": "Creating payment link",
+        "noAvailableShops": "No available shops"
     },
     "paymentSection": {
         "nav": {
@@ -355,42 +334,6 @@
             "reports": "Reports",
             "shops": "Shops",
             "testEnv": "Test environment"
-        }
-    },
-    "payouts": {
-        "createPayoutReport": {
-            "cancel": "Cancel",
-            "create": "Generate",
-            "descriptionStep1": "A report with the transactions register will be generated. This will take some time. Downloading the report and tracking the formation status is possible in the \"Reports\" section",
-            "descriptionStep2": "The report was successfully created and is in the process of forming. You can download the report and track its status in the \"Reports\" section",
-            "title": "Forming a report with the register of operations",
-            "toReports": "Go to \"Reports\" section"
-        },
-        "errors": {
-            "createError": "An error occurred while trying to create a payout",
-            "createReportError": "Failed to create report"
-        },
-        "headerRow": {
-            "amount": "Amount",
-            "createdAt": "Created at",
-            "payoutTool": "Payout tool",
-            "shop": "Shop"
-        },
-        "panel": {
-            "actions": "Actions",
-            "createReport": "Generate a register of operations",
-            "payoutID": "Payout #{{num}}",
-            "shop": "Shop"
-        },
-        "payouts": {
-            "amount": "Payout amount",
-            "any": "Any",
-            "createPayout": "Create a payout",
-            "created": "A request for payout has been successfully created",
-            "noPayoutTools": "There are no payout tools available",
-            "payoutTool": "Payout tool",
-            "shop": "Shop",
-            "title": "Creating a payout to a wallet"
         }
     },
     "reportTypesFilter": {
@@ -471,10 +414,6 @@
         "shopContract": {
             "error": "Failed to retrieve contract data",
             "title": "Contract details"
-        },
-        "shopPayoutTool": {
-            "error": "Failed to receive the payout tool details",
-            "title": "Payout tool"
         },
         "suspend": {
             "error": "An error occurred while freezing the shop",
