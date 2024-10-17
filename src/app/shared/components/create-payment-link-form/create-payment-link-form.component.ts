@@ -30,6 +30,7 @@ export class CreatePaymentLinkFormComponent extends FormGroupSuperclass<
         description: '',
         email: ['', Validators.email],
         redirectUrl: '',
+        cancelUrl: '',
         locale: null,
         paymentFlowHold: false,
         onHoldExpiration: HoldExpiration.Cancel,
@@ -68,6 +69,7 @@ export class CreatePaymentLinkFormComponent extends FormGroupSuperclass<
             description: value.description,
             email: value.email,
             redirectUrl: value.redirectUrl,
+            cancelUrl: value.cancelUrl,
             locale: value.locale,
             paymentFlow,
         };
