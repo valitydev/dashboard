@@ -18,16 +18,14 @@ export class LocaleCode implements PipeTransform {
                 return this.t.translate('createPaymentLinkForm.localeCodes.ar', null, 'components');
             case 'az':
                 return this.t.translate('createPaymentLinkForm.localeCodes.az', null, 'components');
-            case 'bn':
-                return this.t.translate('createPaymentLinkForm.localeCodes.bn', null, 'components');
-            case 'ja':
-                return this.t.translate('createPaymentLinkForm.localeCodes.ja', null, 'components');
-            case 'ko':
-                return this.t.translate('createPaymentLinkForm.localeCodes.ko', null, 'components');
             case 'pt':
                 return this.t.translate('createPaymentLinkForm.localeCodes.pt', null, 'components');
+            case 'tj':
+                return this.t.translate('createPaymentLinkForm.localeCodes.tj', null, 'components');
             case 'tr':
                 return this.t.translate('createPaymentLinkForm.localeCodes.tr', null, 'components');
+            case 'uz':
+                return this.t.translate('createPaymentLinkForm.localeCodes.uz', null, 'components');
             default:
                 return localeCode;
         }
