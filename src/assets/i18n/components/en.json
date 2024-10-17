@@ -107,11 +107,10 @@
             "en": "en - English",
             "ar": "ar - Arabic",
             "az": "az - Azerbaijani",
-            "bn": "bn - Bengali",
-            "ja": "ja - Japanese",
-            "ko": "ko - Korean",
             "pt": "pt - Portuguese",
-            "tr": "tr - Turkish"
+            "tj": "tj - Tajik",
+            "tr": "tr - Turkish",
+            "uz": "uz - Uzbek"
         }
     },
     "createdExistingSwitch": {

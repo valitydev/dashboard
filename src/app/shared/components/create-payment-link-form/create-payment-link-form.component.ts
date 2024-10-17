@@ -35,7 +35,7 @@ export class CreatePaymentLinkFormComponent extends FormGroupSuperclass<
         onHoldExpiration: HoldExpiration.Cancel,
     });
 
-    localeCodes = ['ru', 'en', 'ar', 'az', 'bn', 'ja', 'ko', 'pt', 'tr'];
+    localeCodes = ['ru', 'en', 'ar', 'az', 'pt', 'tj', 'tr', 'uz'];
 
     constructor(
         private log: NotifyLogService,
