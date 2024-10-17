@@ -5,6 +5,7 @@ export type Controls = {
     description: string;
     email: string;
     redirectUrl: string;
+    cancelUrl: string;
     locale: null;
     paymentFlowHold: false;
     onHoldExpiration: HoldExpiration.Cancel;
