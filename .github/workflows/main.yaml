@@ -18,10 +18,10 @@ jobs:
           registry-access-token: ${{ secrets.GITHUB_TOKEN }}
       - name: set config
         run: |
-          printf "$APP_ENV_FILE" > dist/assets/appConfig.json
-          printf "$AUTH_ENV_FILE" > dist/assets/authConfig.json
-          echo $FAVICO | base64 -d > dist/favicon.ico
-          printf "$LOGO" > dist/assets/icons/logo.svg
+          printf "$APP_ENV_FILE" > dist/browser/assets/appConfig.json
+          printf "$AUTH_ENV_FILE" > dist/browser/assets/authConfig.json
+          echo $FAVICO | base64 -d > dist/browser/favicon.ico
+          printf "$LOGO" > dist/browser/assets/icons/logo.svg
         env:
           APP_ENV_FILE: ${{secrets.APP_CONFIG_CF}}
           AUTH_ENV_FILE: ${{secrets.AUTH_CONFIG_CF}}

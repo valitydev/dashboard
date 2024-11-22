@@ -47,5 +47,5 @@ You can copy from examples like this one: [`_appConfig.json`](./src/assets/_appC
 
 ```sh
 npm run build -- --prod --stats-json --extraWebpackConfig webpack.extra.js
-npx webpack-bundle-analyzer dist/stats.json
+npx webpack-bundle-analyzer dist/browser/stats.json
 ```
