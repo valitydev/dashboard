@@ -3,16 +3,9 @@ on:
   pull_request:
     branches: ['*']
 jobs:
-  init:
-    name: Initialization
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/actions/init
   format:
     name: Format check
     runs-on: ubuntu-latest
-    needs: [init]
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/init
@@ -21,7 +14,6 @@ jobs:
   lint:
     name: Lint check
     runs-on: ubuntu-latest
-    needs: [init]
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/init
@@ -30,7 +22,6 @@ jobs:
   i18n:
     name: Translation keys check
     runs-on: ubuntu-latest
-    needs: [init]
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/init
@@ -39,7 +30,6 @@ jobs:
   spell:
     name: Spell check
     runs-on: ubuntu-latest
-    needs: [init]
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/init
@@ -48,7 +38,6 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    needs: [init]
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/init
