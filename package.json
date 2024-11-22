@@ -61,7 +61,7 @@
     "short-uuid": "4.2.0",
     "tslib": "^2.4.0",
     "utility-types": "^3.10.0",
-    "zone.js": "~0.14.3"
+    "zone.js": "~0.15.0"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "^18.0.0",
