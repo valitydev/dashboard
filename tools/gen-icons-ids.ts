@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import { glob } from 'glob';
 import * as path from 'path';
-import * as uuid from 'uuid';
+import * as short from 'short-uuid';
 
 const ROOT_DIR = path.join(__dirname, '..');
 const ATTR_REGEXP = /(\S+)=["']?((?:.(?!["']?\s+(?:\S+)=|\s*\/?[>"']))+.)["']?/g;
@@ -19,7 +19,7 @@ async function genIconsIds() {
         if (ids.length) {
             let idx = 0;
             for (const id of ids) {
-                const newId = `ID-${idx}__${uuid()}`;
+                const newId = `ID-${idx}__${short.uuid()}`;
                 idx += 1;
                 data = data.replace(new RegExp(id[1], 'g'), newId);
             }
