@@ -23,7 +23,7 @@
     "ci:test": "npm run test -- --configuration=ci",
     "spell": "cspell --no-progress **",
     "spell:fix": "cspell --no-progress --show-suggestions --show-context **",
-    "check": "npx concurrently --prefix \"[{command}]\" --prefixColors auto --prefixLength 12 \"npm run format\" \"npm run lint\" \"npm run spell\" \"npm run i18n:check\""
+    "check": "npx concurrently --prefix \"[{command}]\" --prefixColors auto --prefixLength 99 \"npm run format\" \"npm run lint\" \"npm run spell\" \"npm run i18n:check\""
   },
   "dependencies": {
     "@angular/animations": "^18.2.12",

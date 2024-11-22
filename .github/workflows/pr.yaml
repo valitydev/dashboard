@@ -3,16 +3,6 @@ on:
   pull_request:
     branches: ['*']
 jobs:
-  check2:
-    name: Check 2
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/actions/init
-      - run: npm run format
-      - run: npm run lint
-      - run: npm run spell
-      - run: npm run i18n:check
   check:
     name: Check
     runs-on: ubuntu-latest
