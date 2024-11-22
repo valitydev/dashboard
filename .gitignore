@@ -50,5 +50,5 @@ Thumbs.db
 
 # Env and configs
 .env*
-src/*Config*.json
-!src/_*Config*.json
+src/assets/*Config*.json
+!src/assets/_*Config*.json

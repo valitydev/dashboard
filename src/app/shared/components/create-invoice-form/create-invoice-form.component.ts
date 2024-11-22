@@ -10,8 +10,7 @@ import {
 } from '@vality/ng-core';
 import { InvoiceParams, Shop } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
-import * as moment from 'moment';
-import { Moment } from 'moment';
+import moment, { Moment } from 'moment';
 
 import { getFormValueChanges } from '@dsh/utils';
 
