@@ -1,5 +1,5 @@
 import { ModificationUnit } from '@vality/swag-claim-management';
-import * as moment from 'moment';
+import moment from 'moment';
 
 export const sortUnitsByCreatedAtAsc = (
     { createdAt: a }: ModificationUnit,
