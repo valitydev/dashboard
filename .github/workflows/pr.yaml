@@ -4,6 +4,16 @@ on:
     branches: ['*']
 jobs:
   check:
+    name: Check 2
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/init
+      - name: npm run format
+      - name: npm run lint
+      - name: npm run spell
+      - name: npm run i18n:check
+  check2:
     name: Check
     runs-on: ubuntu-latest
     steps:
