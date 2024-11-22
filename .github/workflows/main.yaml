@@ -7,7 +7,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/init
       - name: Build
         run: npm run build
@@ -16,7 +16,7 @@ jobs:
         with:
           registry-username: ${{ github.actor }}
           registry-access-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: set config
+      - name: Set config
         run: |
           printf "$APP_ENV_FILE" > dist/browser/assets/appConfig.json
           printf "$AUTH_ENV_FILE" > dist/browser/assets/authConfig.json
@@ -46,9 +46,4 @@ jobs:
         with:
           webhook: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
           channel: 'frontend'
-          username: 'Frontend'
-      - uses: valitydev/action-mattermost-notify@v0.1.4
-        with:
-          webhook: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
-          channel: 'frontend-deployments'
           username: 'Frontend'
