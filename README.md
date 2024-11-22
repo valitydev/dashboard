@@ -16,10 +16,10 @@
 1. Add environment and configurations:
 
     - `src/.env`
-    - `src/assets/appConfig.json`
-    - `src/assets/authConfig.json`
+    - `src/appConfig.json`
+    - `src/authConfig.json`
 
-You can copy from examples like this one: [`_appConfig.json`](./src/assets/_appConfig.json)
+You can copy from examples like this one: [`_appConfig.json`](./src/_appConfig.json)
 
 2. Install packages
     ```sh
@@ -47,5 +47,5 @@ You can copy from examples like this one: [`_appConfig.json`](./src/assets/_appC
 
 ```sh
 npm run build -- --prod --stats-json --extraWebpackConfig webpack.extra.js
-npx webpack-bundle-analyzer dist/browser/stats.json
+npx webpack-bundle-analyzer dist/stats.json
 ```
