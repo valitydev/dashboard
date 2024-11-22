@@ -6,7 +6,7 @@
     "start": "ng serve --proxy-config proxy.conf.js --port 8000",
     "stage": "cross-env NODE_ENV=stage ng serve --proxy-config proxy.conf.js --port 8001 --configuration=stage",
     "fix": "npm run lint:fix && npm run format:fix && npm run spell:fix",
-    "build": "ng build && transloco-optimize dist/browser/assets/i18n",
+    "build": "ng build && transloco-optimize dist/assets/i18n",
     "test": "ng test",
     "i18n:extract": "transloco-keys-manager extract && prettier src/assets/i18n/** --write",
     "i18n:clean": "transloco-keys-manager extract --remove-extra-keys && prettier src/assets/i18n/* --write && prettier src/assets/i18n/** --write",
