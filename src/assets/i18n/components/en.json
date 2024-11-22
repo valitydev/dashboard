@@ -93,7 +93,6 @@
             "link": "Payment link",
             "name": "Name (optional)",
             "redirectUrl": "Redirect URL after successful payment completion (optional)",
-            "cancelUrl": "Checkout will redirect to this page if the payer clicks the back button (optional)",
             "locale": "Localization (optional)",
             "paymentFlowHold": "Preliminarily hold the amount of payment from the payer",
             "paymentFlowHoldPolicy": "After the retention period"

@@ -9,7 +9,6 @@ export interface PaymentLinkParams {
     description?: string;
     email?: string;
     redirectUrl?: string;
-    cancelUrl?: string;
     locale?: string;
     paymentFlow?: PaymentFlow;
 }
