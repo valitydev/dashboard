@@ -16,7 +16,7 @@ import {
     LifetimeInterval,
     Shop,
 } from '@vality/swag-payments';
-import moment from 'moment';
+import * as moment from 'moment';
 import { merge, Observable, Subject } from 'rxjs';
 import { distinctUntilChanged, share, shareReplay, switchMap, take } from 'rxjs/operators';
 

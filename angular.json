@@ -8,6 +8,9 @@
             "schematics": {
                 "@schematics/angular:component": {
                     "style": "scss"
+                },
+                "@schematics/angular:application": {
+                    "strict": true
                 }
             },
             "root": "",
@@ -15,15 +18,38 @@
             "prefix": "app",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:application",
+                    "builder": "@angular-builders/custom-webpack:browser",
                     "options": {
+                        "customWebpackConfig": {
+                            "path": "./extra-webpack.config.ts"
+                        },
+                        "allowedCommonJsDependencies": [
+                            "uuid",
+                            "keycloak-js",
+                            "css-element-queries",
+                            "humanize-duration",
+                            "apexcharts",
+                            "short-uuid",
+                            "moment",
+                            "flat",
+                            "base64-js",
+                            "js-sha256",
+                            "utility-types"
+                        ],
                         "outputPath": "dist",
                         "index": "src/index.html",
-                        "browser": "src/main.ts",
+                        "main": "src/main.ts",
                         "polyfills": ["zone.js"],
                         "tsConfig": "tsconfig.app.json",
                         "inlineStyleLanguage": "scss",
-                        "assets": ["src/favicon.ico", "src/assets"],
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets",
+                            "src/appConfig.json",
+                            "src/authConfig.json",
+                            "src/appConfig.stage.json",
+                            "src/authConfig.stage.json"
+                        ],
                         "styles": [
                             "src/styles/core.scss",
                             {
@@ -54,13 +80,13 @@
                             "budgets": [
                                 {
                                     "type": "initial",
-                                    "maximumWarning": "2MB",
-                                    "maximumError": "5MB"
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
                                 },
                                 {
                                     "type": "anyComponentStyle",
-                                    "maximumWarning": "2kB",
-                                    "maximumError": "4kB"
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
                                 }
                             ],
                             "fileReplacements": [
@@ -69,12 +95,16 @@
                                     "with": "src/environments/environment.prod.ts"
                                 }
                             ],
-                            "outputHashing": "all"
+                            "outputHashing": "all",
+                            "sourceMap": true
                         },
                         "development": {
+                            "buildOptimizer": false,
                             "optimization": false,
+                            "vendorChunk": true,
                             "extractLicenses": false,
-                            "sourceMap": true
+                            "sourceMap": true,
+                            "namedChunks": true
                         },
                         "stage": {
                             "fileReplacements": [
@@ -88,7 +118,7 @@
                     "defaultConfiguration": "production"
                 },
                 "serve": {
-                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "builder": "@angular-builders/custom-webpack:dev-server",
                     "configurations": {
                         "production": {
                             "buildTarget": "dashboard:build:production"
@@ -102,16 +132,22 @@
                     },
                     "defaultConfiguration": "development"
                 },
-                "extract-i18n": {
-                    "builder": "@angular-devkit/build-angular:extract-i18n"
-                },
                 "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
+                    "builder": "@angular-builders/custom-webpack:karma",
                     "options": {
-                        "polyfills": ["zone.js", "zone.js/testing"],
+                        "main": "src/test.ts",
+                        "polyfills": ["zone.js"],
                         "tsConfig": "tsconfig.spec.json",
+                        "karmaConfig": "karma.conf.js",
                         "inlineStyleLanguage": "scss",
-                        "assets": ["src/favicon.ico", "src/assets"],
+                        "assets": [
+                            "src/favicon.ico",
+                            "src/assets",
+                            "src/appConfig.json",
+                            "src/authConfig.json",
+                            "src/appConfig.stage.json",
+                            "src/authConfig.stage.json"
+                        ],
                         "styles": [
                             "src/styles/core.scss",
                             {
@@ -134,8 +170,12 @@
                                 "bundleName": "eastern-theme",
                                 "inject": false
                             }
-                        ],
-                        "scripts": []
+                        ]
+                    },
+                    "configurations": {
+                        "ci": {
+                            "karmaConfig": "karma-ci.conf.js"
+                        }
                     }
                 },
                 "lint": {
@@ -148,7 +188,6 @@
         }
     },
     "cli": {
-        "schematicCollections": ["@angular-eslint/schematics"],
         "analytics": false
     }
 }

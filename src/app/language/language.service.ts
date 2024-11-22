@@ -39,11 +39,8 @@ export class LanguageService {
     async set(language: Language) {
         this.active = language;
         registerLocaleData(ANGULAR_LOCALE_DATA[language], language);
-        switch (language) {
-            case 'ru':
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-expect-error
-                await import('moment/locale/ru');
+        if (language !== 'en') {
+            await import(`moment/locale/${language}`);
         }
         moment.locale(language);
         this.settingsService.setLocalStorageItem(LanguageService.key, language);
