@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslocoService, TranslocoTestingModule } from '@ngneat/transloco';
+import { TranslocoService, TranslocoTestingModule } from '@jsverse/transloco';
 import { deepEqual, instance, mock, verify } from 'ts-mockito';
 
 import { NotificationService } from './notification.service';

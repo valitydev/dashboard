@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { TRANSLOCO_SCOPE } from '@ngneat/transloco';
+import { TRANSLOCO_SCOPE } from '@jsverse/transloco';
 
 @NgModule({
     providers: [{ provide: TRANSLOCO_SCOPE, useValue: 'core-pipes' }],

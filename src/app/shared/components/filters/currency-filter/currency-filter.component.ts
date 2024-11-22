@@ -1,6 +1,6 @@
 import { getCurrencySymbol } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { createControlProviders } from '@vality/ng-core';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';

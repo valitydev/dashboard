@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { TranslocoModule } from '@ngneat/transloco';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { ClaimStatusColorPipe } from './claim-status-color.pipe';
 import { DepositStatusColorPipe } from './deposit-status-color.pipe';

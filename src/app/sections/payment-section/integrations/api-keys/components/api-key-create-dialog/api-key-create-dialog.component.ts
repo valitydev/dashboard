@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, NonNullableFormBuilder } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { DialogSuperclass, progressTo, NotifyLogService } from '@vality/ng-core';
 import { FlexModule } from 'ng-flex-layout';

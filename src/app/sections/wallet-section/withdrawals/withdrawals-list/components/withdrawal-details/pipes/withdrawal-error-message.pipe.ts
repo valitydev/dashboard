@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { AsyncTransform, AsyncTransformParameters } from '@vality/ng-core';
 import { PaymentError } from '@vality/swag-payments';
 import lowerCase from 'lodash-es/lowerCase';

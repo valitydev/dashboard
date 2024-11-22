@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { StatusModificationUnit } from '@vality/swag-claim-management';
 import { Observable, of } from 'rxjs';
 

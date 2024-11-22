@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
 import { DateRange as MatDateRange } from '@angular/material/datepicker';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { createControlProviders, getValueChanges } from '@vality/ng-core';
 import { Moment } from 'moment';

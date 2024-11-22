@@ -1,6 +1,6 @@
 import { Breakpoints } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { DialogService, QueryParamsService } from '@vality/ng-core';
 import { ApiKeyStatus, ApiKey } from '@vality/swag-api-keys-v2';

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { Observable, throwError, switchMap } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 

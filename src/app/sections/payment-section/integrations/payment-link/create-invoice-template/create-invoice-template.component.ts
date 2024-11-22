@@ -7,7 +7,7 @@ import {
     Output,
 } from '@angular/core';
 import { FormBuilder, UntypedFormGroup } from '@angular/forms';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { createControlProviders, FormGroupSuperclass, NotifyLogService } from '@vality/ng-core';
 import { InvoiceTemplateAndToken, Shop } from '@vality/swag-payments';

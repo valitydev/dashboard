@@ -1,6 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { createControlProviders, FormGroupSuperclass, NotifyLogService } from '@vality/ng-core';
 import { PaymentMethod } from '@vality/swag-payments';

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
-import { TranslocoModule } from '@ngneat/transloco';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { RefundStatusFieldModule } from '@dsh/app/shared/components/inputs/refund-status-field/refund-status-field.module';
 import { FilterModule } from '@dsh/components/filter';

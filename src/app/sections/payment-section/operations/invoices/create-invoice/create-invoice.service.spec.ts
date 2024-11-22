@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslocoService, TranslocoTestingModule } from '@ngneat/transloco';
+import { TranslocoService, TranslocoTestingModule } from '@jsverse/transloco';
 import { Shop } from '@vality/swag-payments';
 import { cold } from 'jasmine-marbles';
 import { of } from 'rxjs';

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { FetchSuperclass, NotifyLogService, FetchResult, FetchOptions } from '@vality/ng-core';
 import { ListApiKeysRequestParams, ApiKey } from '@vality/swag-api-keys-v2';
 import { of, Observable } from 'rxjs';

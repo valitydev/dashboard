@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { NotifyLogService, progressTo } from '@vality/ng-core';
 import moment from 'moment/moment';

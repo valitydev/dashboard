@@ -2,7 +2,7 @@ import { Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { QueryParamsService } from '@vality/ng-core';
 import { Report } from '@vality/swag-wallet';

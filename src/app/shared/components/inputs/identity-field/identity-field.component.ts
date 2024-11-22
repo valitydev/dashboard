@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { TranslocoModule } from '@ngneat/transloco';
+import { TranslocoModule } from '@jsverse/transloco';
 import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
 import { Identity } from '@vality/swag-wallet';
 import { FlexModule } from 'ng-flex-layout';

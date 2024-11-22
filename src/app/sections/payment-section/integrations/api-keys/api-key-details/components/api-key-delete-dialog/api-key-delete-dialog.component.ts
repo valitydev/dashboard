@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { DialogSuperclass, NotifyLogService, progressTo } from '@vality/ng-core';
 import { RequestRevokeApiKeyRequestParams } from '@vality/swag-api-keys-v2';
