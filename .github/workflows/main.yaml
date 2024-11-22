@@ -33,7 +33,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: 'dashboard'
-          directory: 'dist'
+          directory: 'dist/browser'
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           branch: main
   notify:
