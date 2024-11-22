@@ -23,7 +23,7 @@
     "ci:test": "npm run test -- --configuration=ci",
     "spell": "cspell --no-progress **",
     "spell:fix": "cspell --no-progress --show-suggestions --show-context **",
-    "check": "npx concurrently --prefix \"[{command}]\" --prefixColors auto --prefixLength 20 \"npm run format\" \"npm run lint\" \"npm run spell\" \"npm run i18n:check\""
+    "check": "concurrently --prefix \"[{command}]\" --prefixColors auto --prefixLength 20 \"npm run format\" \"npm run lint\" \"npm run spell\" \"npm run i18n:check\""
   },
   "dependencies": {
     "@angular/animations": "^18.2.12",
@@ -82,6 +82,7 @@
     "@vality/cspell-config": "^8.0.1-pr-57-482a037.0",
     "@vality/eslint-config-ng": "18.0.1-pr-63-e72dd8e.0",
     "@vality/prettier-config": "3.1.0",
+    "concurrently": "^9.1.0",
     "cross-env": "^7.0.3",
     "cspell": "^8.3.2",
     "dotenv": "^16.0.3",
