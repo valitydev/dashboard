@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService } from '@vality/ng-core';
 import { Deposit } from '@vality/swag-wallet';
 import { ListDepositsRequestParams } from '@vality/swag-wallet/lib/api/deposits.service';

@@ -13,10 +13,10 @@ async function genIconsList(iconsDirPath: string) {
     const icons = fs.readdirSync(iconsDirPath).map((file) => file.slice(0, -4));
     const filePath = await prettier.resolveConfigFile();
     const options = await prettier.resolveConfig(filePath);
-    const formatted = prettier.format(JSON.stringify(icons), { ...options, parser: 'json' });
+    const formatted = await prettier.format(JSON.stringify(icons), { ...options, parser: 'json' });
     fs.writeFileSync(resultPath, formatted);
 
-    // tslint:disable-next-line:no-console
+    // eslint-disable-next-line no-console
     console.log(`Icons list generated: ${resultPath}`);
 }
 

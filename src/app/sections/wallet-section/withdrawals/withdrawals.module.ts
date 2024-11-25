@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { TranslocoModule } from '@ngneat/transloco';
+import { TranslocoModule } from '@jsverse/transloco';
 import { FlexModule } from 'ng-flex-layout';
 
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';

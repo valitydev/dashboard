@@ -1,6 +1,6 @@
 import { Inject, Injectable, LOCALE_ID } from '@angular/core';
 import { DateRange } from '@angular/material/datepicker';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { Moment } from 'moment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';

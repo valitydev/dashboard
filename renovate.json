@@ -1,4 +1,14 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["local>valitydev/.github:renovate-config"]
+    "extends": ["local>valitydev/.github:renovate-config"],
+    "packageRules": [
+        {
+            "groupName": "Minor",
+            "matchUpdateTypes": ["minor", "patch"]
+        },
+        {
+            "groupName": "Major",
+            "matchUpdateTypes": ["major"]
+        }
+    ]
 }

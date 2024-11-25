@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
-import { TranslocoModule } from '@ngneat/transloco';
+import { TranslocoModule } from '@jsverse/transloco';
 import { FlexModule } from 'ng-flex-layout';
 
 import { DialogModule } from '@dsh/app/shared/components/dialog';

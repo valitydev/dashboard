@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { TranslocoTestingModule } from '@ngneat/transloco';
+import { TranslocoTestingModule } from '@jsverse/transloco';
 
 import { LimitedListItemComponent } from './components/limited-list-item/limited-list-item.component';
 import { LimitedListComponent } from './limited-list.component';

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { NotifyLogService, progressTo } from '@vality/ng-core';
 import { ReportFilesInner } from '@vality/swag-wallet';

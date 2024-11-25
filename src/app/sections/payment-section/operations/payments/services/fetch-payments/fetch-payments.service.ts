@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService } from '@vality/ng-core';
 import { PaymentSearchResult, SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 import { isNumber } from 'lodash-es';

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TranslocoTestingModule } from '@ngneat/transloco';
+import { TranslocoTestingModule } from '@jsverse/transloco';
 
 import { PaymentDetailHeaderComponent } from './payment-detail-header.component';
 

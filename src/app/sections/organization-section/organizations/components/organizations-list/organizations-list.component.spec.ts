@@ -1,7 +1,7 @@
 import { Component, DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { TranslocoTestingModule } from '@ngneat/transloco';
+import { TranslocoTestingModule } from '@jsverse/transloco';
 import { instance, mock } from 'ts-mockito';
 
 import { OrganizationsExpandedIdManager } from '../../services/organizations-expanded-id-manager/organizations-expanded-id-manager.service';

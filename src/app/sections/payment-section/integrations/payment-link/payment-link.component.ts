@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService } from '@vality/ng-core';
 import { PaymentMethod } from '@vality/swag-payments';
 import { BehaviorSubject, defer, merge, ReplaySubject, Subject, Subscription, EMPTY } from 'rxjs';

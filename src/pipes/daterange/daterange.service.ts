@@ -1,6 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Inject, Injectable, LOCALE_ID } from '@angular/core';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { Moment } from 'moment';
 import { Observable, of } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';

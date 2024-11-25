@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TranslocoTestingModule } from '@ngneat/transloco';
+import { TranslocoTestingModule } from '@jsverse/transloco';
 import { Category, ShopLocationUrl } from '@vality/swag-payments';
 import { getTestScheduler } from 'jasmine-marbles';
 import { FlexLayoutModule } from 'ng-flex-layout';

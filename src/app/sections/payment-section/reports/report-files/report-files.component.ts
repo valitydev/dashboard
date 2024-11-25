@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { FileMeta } from '@vality/swag-anapi-v2';
 import { Observable, combineLatest } from 'rxjs';

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { Claim } from '@vality/swag-claim-management';
 import { Observable } from 'rxjs';
 import { withLatestFrom } from 'rxjs/operators';

@@ -7,7 +7,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/init
       - name: Build
         run: npm run build
@@ -16,12 +16,12 @@ jobs:
         with:
           registry-username: ${{ github.actor }}
           registry-access-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: set config
+      - name: Set config
         run: |
-          printf "$APP_ENV_FILE" > dist/appConfig.json
-          printf "$AUTH_ENV_FILE" > dist/authConfig.json
-          echo $FAVICO | base64 -d > dist/favicon.ico
-          printf "$LOGO" > dist/assets/icons/logo.svg
+          printf "$APP_ENV_FILE" > dist/browser/assets/appConfig.json
+          printf "$AUTH_ENV_FILE" > dist/browser/assets/authConfig.json
+          echo $FAVICO | base64 -d > dist/browser/favicon.ico
+          printf "$LOGO" > dist/browser/assets/icons/logo.svg
         env:
           APP_ENV_FILE: ${{secrets.APP_CONFIG_CF}}
           AUTH_ENV_FILE: ${{secrets.AUTH_CONFIG_CF}}
@@ -33,7 +33,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: 'dashboard'
-          directory: 'dist'
+          directory: 'dist/browser'
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           branch: main
   notify:
@@ -46,9 +46,4 @@ jobs:
         with:
           webhook: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
           channel: 'frontend'
-          username: 'Frontend'
-      - uses: valitydev/action-mattermost-notify@v0.1.4
-        with:
-          webhook: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
-          channel: 'frontend-deployments'
           username: 'Frontend'

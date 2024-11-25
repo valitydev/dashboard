@@ -18,7 +18,7 @@ import {
 } from '@angular/material-moment-adapter';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslocoModule, provideTransloco, TRANSLOCO_SCOPE } from '@ngneat/transloco';
+import { TranslocoModule, provideTransloco, TRANSLOCO_SCOPE } from '@jsverse/transloco';
 import { QUERY_PARAMS_SERIALIZERS } from '@vality/ng-core';
 import { FlexLayoutModule } from 'ng-flex-layout';
 

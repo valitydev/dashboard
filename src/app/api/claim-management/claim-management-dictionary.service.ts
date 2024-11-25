@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { StatusModificationUnit } from '@vality/swag-claim-management';
 
 import { DictionaryService } from '../utils';

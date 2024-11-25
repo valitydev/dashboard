@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService, QueryParamsService } from '@vality/ng-core';
 
 import { shareReplayRefCount } from '@dsh/app/custom-operators';

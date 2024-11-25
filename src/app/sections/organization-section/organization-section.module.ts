@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { TRANSLOCO_SCOPE } from '@ngneat/transloco';
+import { TRANSLOCO_SCOPE } from '@jsverse/transloco';
 
 import { OrganizationSectionRoutingModule } from './organization-section-routing.module';
 import { OrganizationSectionComponent } from './organization-section.component';

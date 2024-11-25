@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 
 import { RoleAccessName } from '@dsh/app/auth';
 
