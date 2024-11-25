@@ -7,6 +7,5 @@ runs:
       with:
         node-version: 'lts/*'
         cache: 'npm'
-        registry-url: "https://registry.npmjs.org"
     - run: npm ci
       shell: bash
