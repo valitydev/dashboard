@@ -57,7 +57,7 @@
     "ng-apexcharts": "1.7.1",
     "ng-flex-layout": "^18.2.9",
     "rxjs": "^7.8.1",
-    "short-uuid": "4.2.0",
+    "short-uuid": "^5.2.0",
     "tslib": "^2.4.0",
     "utility-types": "^3.10.0",
     "zone.js": "~0.14.10"
