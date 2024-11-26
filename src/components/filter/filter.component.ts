@@ -2,19 +2,19 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import {
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     EventEmitter,
     Input,
     Output,
     TemplateRef,
     booleanAttribute,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { map, pluck } from 'rxjs/operators';
 
 import { FilterDialogComponent } from './components/filter-dialog/filter-dialog.component';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-filter',
     templateUrl: 'filter.component.html',
@@ -39,6 +39,7 @@ export class FilterComponent {
     constructor(
         private breakpointObserver: BreakpointObserver,
         private dialog: MatDialog,
+        private dr: DestroyRef,
     ) {}
 
     open(): void {
@@ -53,7 +54,7 @@ export class FilterComponent {
                     },
                 })
                 .afterClosed()
-                .pipe(untilDestroyed(this))
+                .pipe(takeUntilDestroyed(this.dr))
                 .subscribe((result) => {
                     switch (result) {
                         case 'save':

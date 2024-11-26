@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, DestroyRef, Input, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { WebhookScope } from '@vality/swag-wallet';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -12,7 +12,6 @@ import { getEventsByTopic } from '../get-events-by-topic';
 
 import TopicEnum = WebhookScope.TopicEnum;
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-create-webhook-form',
     templateUrl: 'create-webhook-form.component.html',
@@ -32,10 +31,11 @@ export class CreateWebhookFormComponent implements OnInit {
         private identitiesService: IdentitiesService,
         private fb: UntypedFormBuilder,
         private walletDictionaryService: WalletDictionaryService,
+        private dr: DestroyRef,
     ) {}
 
     ngOnInit(): void {
-        this.activeTopic$.pipe(untilDestroyed(this)).subscribe((activeTopic) => {
+        this.activeTopic$.pipe(takeUntilDestroyed(this.dr)).subscribe((activeTopic) => {
             if (activeTopic === 'WithdrawalsTopic') {
                 this.form.addControl('walletID', this.fb.control(''));
             } else {

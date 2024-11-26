@@ -1,14 +1,21 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+    Component,
+    DestroyRef,
+    EventEmitter,
+    Input,
+    OnDestroy,
+    OnInit,
+    Output,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@jsverse/transloco';
-import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { Report } from '@vality/swag-anapi-v2';
 import { switchMap } from 'rxjs';
 import { first } from 'rxjs/operators';
 
 import { CancelReportService } from '../cancel-report';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-reports-list',
     templateUrl: 'reports-list.component.html',
@@ -24,6 +31,7 @@ export class ReportsListComponent implements OnInit, OnDestroy {
         private cancelReportService: CancelReportService,
         private snackBar: MatSnackBar,
         private transloco: TranslocoService,
+        private dr: DestroyRef,
     ) {}
 
     cancelReport(reportID: number) {
@@ -43,7 +51,7 @@ export class ReportsListComponent implements OnInit, OnDestroy {
                         )
                         .pipe(first()),
                 ),
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
             )
             .subscribe((message) => {
                 this.snackBar.open(message, 'OK', {

@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DialogSuperclass, DEFAULT_DIALOG_CONFIG, progressTo } from '@vality/ng-core';
 import { MemberRole } from '@vality/swag-organizations';
 import { BehaviorSubject, defer, forkJoin, of, Subscription } from 'rxjs';
@@ -10,7 +10,6 @@ import { ErrorService } from '@dsh/app/shared';
 
 import { EditRolesDialogData } from './types/edit-roles-dialog-data';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-edit-roles-dialog',
     templateUrl: 'edit-roles-dialog.component.html',
@@ -31,7 +30,7 @@ export class EditRolesDialogComponent extends DialogSuperclass<
                 })
                 .pipe(map((r) => r.roles)),
         ),
-        untilDestroyed(this),
+        takeUntilDestroyed(this.dr),
         shareReplay(1),
     );
     progress$ = new BehaviorSubject(0);
@@ -41,6 +40,7 @@ export class EditRolesDialogComponent extends DialogSuperclass<
     constructor(
         private membersService: MembersService,
         private errorService: ErrorService,
+        private dr: DestroyRef,
     ) {
         super();
     }

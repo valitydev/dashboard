@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, DestroyRef, Input } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
-import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { NotifyLogService, progressTo } from '@vality/ng-core';
 import { ReportFilesInner } from '@vality/swag-wallet';
 import { forkJoin, EMPTY, BehaviorSubject } from 'rxjs';
@@ -9,7 +9,6 @@ import { catchError } from 'rxjs/operators';
 import { DownloadsService } from '@dsh/app/api/wallet';
 import { multipleDownload } from '@dsh/utils';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-files',
     templateUrl: './files.component.html',
@@ -25,6 +24,7 @@ export class FilesComponent {
         private downloadsService: DownloadsService,
         private transloco: TranslocoService,
         private log: NotifyLogService,
+        private dr: DestroyRef,
     ) {}
 
     download(fileIDs: string[] = this.files.map((f) => f.id)) {
@@ -46,7 +46,7 @@ export class FilesComponent {
                 ),
             ),
         )
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe((files) => {
                 multipleDownload(files.map((f) => f.url));
             });

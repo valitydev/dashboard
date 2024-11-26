@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { NotifyLogService, QueryParamsService } from '@vality/ng-core';
 
 import { RealmMixService, RealmShopsService } from '../../services';
@@ -9,7 +9,6 @@ import { Filters, SearchFiltersParams } from './refunds-search-filters';
 import { FetchRefundsService } from './services/fetch-refunds/fetch-refunds.service';
 import { RefundsExpandedIdManager } from './services/refunds-expanded-id-manager/refunds-expanded-id-manager.service';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-refunds',
     templateUrl: 'refunds.component.html',
@@ -33,6 +32,7 @@ export class RefundsComponent implements OnInit {
         private qp: QueryParamsService<Filters>,
         private realmShopsService: RealmShopsService,
         private realmMixinService: RealmMixService<SearchFiltersParams>,
+        private dr: DestroyRef,
     ) {}
 
     ngOnInit(): void {
@@ -47,7 +47,7 @@ export class RefundsComponent implements OnInit {
             ),
         );
         this.realmMixinService.mixedValue$
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe((v) => this.fetchRefundsService.search(v));
     }
 

@@ -1,12 +1,13 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     EventEmitter,
     Input,
     OnChanges,
     Output,
 } from '@angular/core';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ComponentChanges, DialogService, DialogResponseStatus } from '@vality/ng-core';
 import { Member, Organization } from '@vality/swag-organizations';
 import { filter, switchMap } from 'rxjs/operators';
@@ -19,7 +20,6 @@ import { ignoreBeforeCompletion } from '@dsh/utils';
 
 import { EditRolesDialogComponent } from '../edit-roles-dialog/edit-roles-dialog.component';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-member',
     templateUrl: 'member.component.html',
@@ -37,6 +37,7 @@ export class MemberComponent implements OnChanges {
         private membersService: MembersService,
         private notificationService: NotificationService,
         private errorService: ErrorService,
+        private dr: DestroyRef,
     ) {}
 
     ngOnChanges({ organization }: ComponentChanges<MemberComponent>) {
@@ -58,7 +59,7 @@ export class MemberComponent implements OnChanges {
                         userId: this.member.id,
                     }),
                 ),
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
             )
             .subscribe(
                 () => {
@@ -77,7 +78,7 @@ export class MemberComponent implements OnChanges {
                 userId: this.member.id,
             })
             .afterClosed()
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe(() => this.changed.emit());
     }
 }

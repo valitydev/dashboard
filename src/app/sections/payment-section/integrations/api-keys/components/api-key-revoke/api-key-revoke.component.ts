@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslocoService } from '@jsverse/transloco';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { ApiKeysService } from '@dsh/app/api/api-keys';
 import { ErrorService, NotificationService } from '@dsh/app/shared/services';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-api-key-revoke',
     templateUrl: './api-key-revoke.component.html',
@@ -19,6 +18,7 @@ export class ApiKeyRevokeComponent implements OnInit {
         private notificationService: NotificationService,
         private errorService: ErrorService,
         private translocoService: TranslocoService,
+        private dr: DestroyRef,
     ) {}
 
     ngOnInit(): void {
@@ -28,7 +28,7 @@ export class ApiKeyRevokeComponent implements OnInit {
         >;
         this.apiKeysService
             .revokeApiKey({ apiKeyRevokeToken, apiKeyId })
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe({
                 next: () => {
                     this.notificationService.success(

@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { DestroyRef, Injectable } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Invitation, InvitationStatusName } from '@vality/swag-organizations';
 import { BehaviorSubject, defer, of } from 'rxjs';
 import { catchError, pluck, shareReplay, switchMap, switchMapTo } from 'rxjs/operators';
@@ -9,7 +9,6 @@ import { InvitationsService } from '@dsh/app/api/organizations';
 import { mapToTimestamp, progress } from '@dsh/app/custom-operators';
 import { ErrorService } from '@dsh/app/shared';
 
-@UntilDestroy()
 @Injectable()
 export class FetchInvitationsService {
     invitations$ = defer(() => this.loadInvitations$).pipe(
@@ -25,12 +24,16 @@ export class FetchInvitationsService {
                     }),
                 ),
         ),
-        untilDestroyed(this),
+        takeUntilDestroyed(this.dr),
         shareReplay(1),
     );
-    lastUpdated$ = this.invitations$.pipe(mapToTimestamp, untilDestroyed(this), shareReplay(1));
+    lastUpdated$ = this.invitations$.pipe(
+        mapToTimestamp,
+        takeUntilDestroyed(this.dr),
+        shareReplay(1),
+    );
     isLoading$ = defer(() => progress(this.loadInvitations$, this.invitations$)).pipe(
-        untilDestroyed(this),
+        takeUntilDestroyed(this.dr),
         shareReplay(1),
     );
 
@@ -40,6 +43,7 @@ export class FetchInvitationsService {
         private invitationsService: InvitationsService,
         private errorService: ErrorService,
         private route: ActivatedRoute,
+        private dr: DestroyRef,
     ) {}
 
     load() {

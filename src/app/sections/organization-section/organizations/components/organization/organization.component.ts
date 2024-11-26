@@ -1,13 +1,14 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     EventEmitter,
     Input,
     OnChanges,
     Output,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ComponentChanges, DialogResponseStatus } from '@vality/ng-core';
 import { Organization } from '@vality/swag-organizations';
 import isNil from 'lodash-es/isNil';
@@ -28,7 +29,6 @@ import { ignoreBeforeCompletion } from '@dsh/utils';
 import { RenameOrganizationDialogComponent } from '../rename-organization-dialog/rename-organization-dialog.component';
 import { RenameOrganizationDialogData } from '../rename-organization-dialog/types/rename-organization-dialog-data';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-organization',
     templateUrl: 'organization.component.html',
@@ -53,6 +53,7 @@ export class OrganizationComponent implements OnChanges {
         private errorService: ErrorService,
         private fetchOrganizationsService: FetchOrganizationsService,
         private contextOrganizationService: ContextOrganizationService,
+        private dr: DestroyRef,
     ) {}
 
     ngOnChanges({ organization }: ComponentChanges<OrganizationComponent>) {
@@ -71,7 +72,7 @@ export class OrganizationComponent implements OnChanges {
                 switchMap(() =>
                     this.organizationsService.cancelOrgMembership({ orgId: this.organization.id }),
                 ),
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
             )
             .subscribe(
                 () => {
@@ -93,7 +94,7 @@ export class OrganizationComponent implements OnChanges {
             .afterClosed()
             .pipe(
                 filter((r) => r === BaseDialogResponseStatus.Success),
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
             )
             .subscribe(() => {
                 this.fetchOrganizationsService.refresh();

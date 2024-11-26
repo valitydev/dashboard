@@ -1,7 +1,7 @@
 import { Breakpoints } from '@angular/cdk/layout';
-import { Component } from '@angular/core';
+import { Component, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { DialogService, QueryParamsService } from '@vality/ng-core';
 import { ApiKeyStatus, ApiKey } from '@vality/swag-api-keys-v2';
 import { map } from 'rxjs/operators';
@@ -18,7 +18,6 @@ import { ApiKeyCreateDialogComponent } from './components/api-key-create-dialog/
 import { FetchApiKeysService } from './fetch-api-keys.service';
 import { API_KEY_STATUS_COLOR } from './types/api-key-status-color';
 
-@UntilDestroy()
 @Component({
     templateUrl: 'api-keys.component.html',
     styleUrls: ['api-keys.component.scss'],
@@ -71,6 +70,7 @@ export class ApiKeysComponent {
         private dialogService: DialogService,
         private transloco: TranslocoService,
         private apiKeysDictionaryService: ApiKeysDictionaryService,
+        private dr: DestroyRef,
     ) {
         this.update();
     }
@@ -89,7 +89,7 @@ export class ApiKeysComponent {
         this.dialogService
             .open(ApiKeyCreateDialogComponent)
             .afterClosed()
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe(() => {
                 this.update();
             });

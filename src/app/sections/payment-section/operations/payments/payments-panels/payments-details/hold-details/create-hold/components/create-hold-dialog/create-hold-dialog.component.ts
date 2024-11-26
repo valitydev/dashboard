@@ -1,7 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component, DestroyRef, Inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormGroupByValue, toMajor, toMinor } from '@vality/ng-core';
 import { CaptureParams } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
@@ -15,7 +15,6 @@ import { CreateRefundForm } from '../../../../refunds/create-refund/types/create
 import { MAX_REASON_LENGTH } from '../../../consts';
 import { CreateHoldDialogData } from '../../types/create-hold-dialog-data';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-create-hold-dialog',
     templateUrl: './create-hold-dialog.component.html',
@@ -47,6 +46,7 @@ export class CreateHoldDialogComponent {
         private fb: FormBuilder,
         private paymentsService: PaymentsService,
         private errorService: ErrorService,
+        private dr: DestroyRef,
     ) {}
 
     confirm(): void {
@@ -55,7 +55,7 @@ export class CreateHoldDialogComponent {
 
         this.paymentsService
             .capturePayment({ invoiceID, paymentID, capturePayment })
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe(
                 () => {
                     this.dialogRef.close(BaseDialogResponseStatus.Success);

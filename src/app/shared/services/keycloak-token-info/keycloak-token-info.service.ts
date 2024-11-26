@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { DestroyRef, Injectable } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { KeycloakService } from 'keycloak-angular';
 import { Observable, defer, from } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
-@UntilDestroy()
 @Injectable({
     providedIn: 'root',
 })
@@ -14,9 +13,12 @@ export class KeycloakTokenInfoService {
 
     private decoded$ = from(this.keycloakService.getToken()).pipe(
         map((token) => jwtDecode<JwtPayload>(token)),
-        untilDestroyed(this),
+        takeUntilDestroyed(this.dr),
         shareReplay(1),
     );
 
-    constructor(private keycloakService: KeycloakService) {}
+    constructor(
+        private keycloakService: KeycloakService,
+        private dr: DestroyRef,
+    ) {}
 }

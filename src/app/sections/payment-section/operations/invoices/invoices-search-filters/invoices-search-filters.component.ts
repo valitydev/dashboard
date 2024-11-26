@@ -1,15 +1,16 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     EventEmitter,
     Input,
     OnChanges,
     OnInit,
     Output,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ComponentChanges } from '@vality/ng-core';
 import { PaymentInstitution } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
@@ -43,7 +44,6 @@ export type Filters = MainFilters & AdditionalFilters;
 const MAIN_FILTERS = ['dateRange'];
 const ADDITIONAL_FILTERS = ['invoiceIDs', 'shopIDs', 'invoiceStatus'];
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-invoices-search-filters',
     templateUrl: 'invoices-search-filters.component.html',
@@ -81,6 +81,7 @@ export class InvoicesSearchFiltersComponent implements OnChanges, OnInit {
         private shopsDataService: ShopsDataService,
         private dialog: MatDialog,
         private mediaObserver: MediaObserver,
+        private dr: DestroyRef,
     ) {}
 
     ngOnInit(): void {
@@ -90,7 +91,7 @@ export class InvoicesSearchFiltersComponent implements OnChanges, OnInit {
             ),
             this.additionalFilters$.pipe(map((filters) => omit(filters, this.keys))),
         ])
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe((filters) => this.filtersChanged.next(Object.assign({}, ...filters)));
     }
 
@@ -110,7 +111,7 @@ export class InvoicesSearchFiltersComponent implements OnChanges, OnInit {
                 data: omit(this.initParams, this.keys),
             })
             .afterClosed()
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe((filters) => this.additionalFilters$.next(filters));
     }
 }

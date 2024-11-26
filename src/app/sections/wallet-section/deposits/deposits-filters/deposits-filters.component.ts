@@ -1,7 +1,15 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import {
+    Component,
+    DestroyRef,
+    EventEmitter,
+    Input,
+    OnChanges,
+    OnInit,
+    Output,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ComponentChanges } from '@vality/ng-core';
 import isEmpty from 'lodash-es/isEmpty';
 import isEqual from 'lodash-es/isEqual';
@@ -21,7 +29,6 @@ import { MainFilters } from './types/main-filters';
 
 const MAIN_FILTERS_KEYS = ['dateRange'];
 
-@UntilDestroy()
 @Component({
     templateUrl: 'deposits-filters.component.html',
     selector: 'dsh-deposits-filters',
@@ -42,11 +49,12 @@ export class DepositsFiltersComponent implements OnInit, OnChanges {
     constructor(
         private fb: FormBuilder,
         private dialog: MatDialog,
+        private dr: DestroyRef,
     ) {}
 
     ngOnInit(): void {
         combineLatest([getFormValueChanges(this.form), this.additionalFilters$])
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe((filters) =>
                 this.filtersChanged.next(Object.assign({}, ...filters) as MainFilters),
             );
@@ -66,7 +74,7 @@ export class DepositsFiltersComponent implements OnInit, OnChanges {
             .afterClosed()
             .pipe(
                 filter((v) => !isEqual(v, data)),
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
             )
             .subscribe((filters) => {
                 this.additionalFilters$.next(filters);

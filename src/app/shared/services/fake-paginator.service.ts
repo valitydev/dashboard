@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { UntilDestroy } from '@ngneat/until-destroy';
 import { combineLatest, Observable, ReplaySubject } from 'rxjs';
 import { map, pluck, scan, shareReplay, switchMapTo } from 'rxjs/operators';
 
@@ -7,7 +6,6 @@ import { SHARE_REPLAY_CONF } from '../../custom-operators';
 
 const DEFAULT_PAGINATION_LIMIT = 3;
 
-@UntilDestroy()
 @Injectable()
 export class FakePaginatorService<T> {
     values$: Observable<T[]>;

@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { DestroyRef, Injectable } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RussianLegalEntity } from '@vality/swag-claim-management';
 import { Contract } from '@vality/swag-payments';
 import { BehaviorSubject, defer, Observable, of, ReplaySubject, Subject } from 'rxjs';
@@ -8,7 +8,6 @@ import { Overwrite } from 'utility-types';
 
 import { ContractsService } from '@dsh/app/api/payments';
 
-@UntilDestroy()
 @Injectable()
 export class ShopContractDetailsService {
     shopContract$: Observable<Overwrite<Contract, { contractor: RussianLegalEntity }>> = defer(() =>
@@ -25,7 +24,10 @@ export class ShopContractDetailsService {
     >();
     private _isLoading$ = new BehaviorSubject<boolean>(false);
 
-    constructor(private contractsService: ContractsService) {
+    constructor(
+        private contractsService: ContractsService,
+        private dr: DestroyRef,
+    ) {
         this.contractRequest$
             .pipe(
                 tap(() => this.error$.next(false)),
@@ -44,7 +46,7 @@ export class ShopContractDetailsService {
                 ),
                 tap(() => this._isLoading$.next(false)),
                 filter((result) => result !== 'error'),
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
             )
             .subscribe((contract) =>
                 this.contract$.next(

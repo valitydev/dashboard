@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { DestroyRef, Injectable } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Member } from '@vality/swag-organizations';
 import { BehaviorSubject, defer, of } from 'rxjs';
 import { catchError, pluck, shareReplay, switchMap, switchMapTo } from 'rxjs/operators';
@@ -9,7 +9,6 @@ import { MembersService } from '@dsh/app/api/organizations';
 import { mapToTimestamp, progress } from '@dsh/app/custom-operators';
 import { ErrorService } from '@dsh/app/shared';
 
-@UntilDestroy()
 @Injectable()
 export class FetchMembersService {
     members$ = defer(() => this.loadMembers$).pipe(
@@ -23,12 +22,12 @@ export class FetchMembersService {
                 }),
             ),
         ),
-        untilDestroyed(this),
+        takeUntilDestroyed(this.dr),
         shareReplay(1),
     );
-    lastUpdated$ = this.members$.pipe(mapToTimestamp, untilDestroyed(this), shareReplay(1));
+    lastUpdated$ = this.members$.pipe(mapToTimestamp, takeUntilDestroyed(this.dr), shareReplay(1));
     isLoading$ = defer(() => progress(this.loadMembers$, this.members$)).pipe(
-        untilDestroyed(this),
+        takeUntilDestroyed(this.dr),
         shareReplay(1),
     );
 
@@ -38,6 +37,7 @@ export class FetchMembersService {
         private membersService: MembersService,
         private errorService: ErrorService,
         private route: ActivatedRoute,
+        private dr: DestroyRef,
     ) {}
 
     load() {

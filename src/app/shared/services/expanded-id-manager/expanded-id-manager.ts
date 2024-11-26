@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { DestroyRef, inject, Injectable } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import isNil from 'lodash-es/isNil';
 import { Observable, of, Subject } from 'rxjs';
 import {
@@ -21,12 +21,12 @@ export type Fragment = string;
 
 const DATA_SET_EMIT_LIMIT = 10;
 
-@UntilDestroy()
 @Injectable()
 export abstract class ExpandedIdManager<T extends DatasetItemId> {
     expandedId$: Observable<ExpandedId>;
 
     private expandedIdChange$: Subject<ExpandedId> = new Subject();
+    private dr = inject(DestroyRef);
 
     constructor(
         protected route: ActivatedRoute,
@@ -36,7 +36,7 @@ export abstract class ExpandedIdManager<T extends DatasetItemId> {
             take(1),
             switchMap((fragment) => this.findExpandedId(fragment)),
             distinctUntilChanged(),
-            untilDestroyed(this),
+            takeUntilDestroyed(this.dr),
             shareReplay(1),
         );
 
@@ -44,7 +44,7 @@ export abstract class ExpandedIdManager<T extends DatasetItemId> {
             .pipe(
                 switchMap((expandedId) => this.dataSet$.pipe(pluck(expandedId))),
                 map((dataSetItem) => (dataSetItem ? this.toFragment(dataSetItem) : '')),
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
             )
             .subscribe((fragment) =>
                 this.router.navigate([], { fragment, queryParamsHandling: 'preserve' }),

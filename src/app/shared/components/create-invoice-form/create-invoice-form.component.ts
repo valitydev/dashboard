@@ -1,6 +1,6 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import {
     createControlProviders,
     FormGroupByValue,
@@ -23,7 +23,6 @@ const mapToMinor = (value: number | null, currency: string | null): number | nul
     return toMinor(value, currency);
 };
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-create-invoice-form',
     templateUrl: 'create-invoice-form.component.html',
@@ -46,7 +45,10 @@ export class CreateInvoiceFormComponent
         return moment().add('2', 'day').startOf('day');
     }
 
-    constructor(private fb: FormBuilder) {
+    constructor(
+        private fb: FormBuilder,
+        private dr: DestroyRef,
+    ) {
         super();
     }
 
@@ -67,7 +69,7 @@ export class CreateInvoiceFormComponent
         }) as unknown as FormGroupByValue<Partial<FormData>>;
 
         getFormValueChanges(this.control)
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe((v) => {
                 this.emitOutgoingValue({
                     ...v,

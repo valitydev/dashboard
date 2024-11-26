@@ -1,7 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { TranslocoService } from '@jsverse/transloco';
-import { UntilDestroy } from '@ngneat/until-destroy';
 import { createControlProviders, FormGroupSuperclass, NotifyLogService } from '@vality/ng-core';
 import { PaymentMethod } from '@vality/swag-payments';
 
@@ -11,7 +10,6 @@ import { HoldExpiration } from '../../services/create-payment-link/types/hold-ex
 
 import { Controls } from './types/controls';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-create-payment-link-form',
     templateUrl: 'create-payment-link-form.component.html',

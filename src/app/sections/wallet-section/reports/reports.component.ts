@@ -1,9 +1,9 @@
 import { Breakpoints } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslocoService } from '@jsverse/transloco';
-import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { QueryParamsService } from '@vality/ng-core';
 import { Report } from '@vality/swag-wallet';
 import isEqual from 'lodash-es/isEqual';
@@ -31,7 +31,6 @@ const REPORT_STATUS_COLOR = {
     [Report.StatusEnum.Canceled]: StatusColor.Warn,
 };
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-reports',
     templateUrl: './reports.component.html',
@@ -102,18 +101,23 @@ export class ReportsComponent implements OnInit {
         private transloco: TranslocoService,
         private walletDictionaryService: WalletDictionaryService,
         private identitiesService: IdentitiesService,
+        private dr: DestroyRef,
     ) {}
 
     ngOnInit() {
         this.identitiesService.identities$
-            .pipe(first(), untilDestroyed(this))
+            .pipe(first(), takeUntilDestroyed(this.dr))
             .subscribe((identities) => {
                 if (!this.form.value.identityID && identities.length === 1) {
                     this.form.patchValue({ identityID: identities[0].id });
                 }
             });
         this.form.valueChanges
-            .pipe(startWith(this.form.value), distinctUntilChanged(isEqual), untilDestroyed(this))
+            .pipe(
+                startWith(this.form.value),
+                distinctUntilChanged(isEqual),
+                takeUntilDestroyed(this.dr),
+            )
             .subscribe((value) => {
                 void this.qp.set(value);
                 this.load();
@@ -140,7 +144,7 @@ export class ReportsComponent implements OnInit {
             .afterClosed()
             .pipe(
                 filter((r) => r === BaseDialogResponseStatus.Success),
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
             )
             .subscribe(() => {
                 this.load();

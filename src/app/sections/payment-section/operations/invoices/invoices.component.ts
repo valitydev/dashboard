@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { NotifyLogService, QueryParamsService } from '@vality/ng-core';
 import { take } from 'rxjs/operators';
 
@@ -15,7 +15,6 @@ import { Filters, SearchFiltersParams } from './invoices-search-filters';
 import { FetchInvoicesService } from './services/fetch-invoices/fetch-invoices.service';
 import { InvoicesExpandedIdManager } from './services/invoices-expanded-id-manager/invoices-expanded-id-manager.service';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-invoices',
     templateUrl: 'invoices.component.html',
@@ -45,11 +44,12 @@ export class InvoicesComponent implements OnInit {
         private qp: QueryParamsService<Filters>,
         private realmMixService: RealmMixService<SearchFiltersParams>,
         private shopsDataService: ShopsDataService,
+        private dr: DestroyRef,
     ) {}
 
     ngOnInit(): void {
         this.invoicesService.errors$
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe((err) =>
                 this.log.error(
                     err,
@@ -57,7 +57,7 @@ export class InvoicesComponent implements OnInit {
                 ),
             );
         this.realmMixService.mixedValue$
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe((v) => this.invoicesService.search(v));
     }
 
@@ -88,7 +88,7 @@ export class InvoicesComponent implements OnInit {
         this.paymentInstitutionRealmService.realm$.pipe(take(1)).subscribe((realm) =>
             this.createInvoiceService
                 .createInvoice(realm)
-                .pipe(untilDestroyed(this))
+                .pipe(takeUntilDestroyed(this.dr))
                 .subscribe((invoiceID) => this.refreshAndShowNewInvoice(invoiceID)),
         );
     }

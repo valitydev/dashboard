@@ -5,10 +5,11 @@ import {
     Output,
     ChangeDetectionStrategy,
     Input,
+    DestroyRef,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, UntypedFormBuilder } from '@angular/forms';
 import { TranslocoService } from '@jsverse/transloco';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { NotifyLogService } from '@vality/ng-core';
 import { Invoice, InvoiceTemplateAndToken, Shop } from '@vality/swag-payments';
 import { merge, Subject, throwError } from 'rxjs';
@@ -25,7 +26,6 @@ export type InvoiceOrInvoiceTemplate =
     | { invoiceOrInvoiceTemplate: Invoice; type: Type.Invoice }
     | { invoiceOrInvoiceTemplate: InvoiceTemplateAndToken; type: Type.Template };
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-create-invoice-or-invoice-template',
     templateUrl: 'create-invoice-or-invoice-template.component.html',
@@ -48,6 +48,7 @@ export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
         private transloco: TranslocoService,
         private fb: UntypedFormBuilder,
         private log: NotifyLogService,
+        private dr: DestroyRef,
     ) {}
 
     ngOnInit(): void {
@@ -65,7 +66,7 @@ export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
                             ({ invoiceOrInvoiceTemplate: invoice, type: Type.Invoice }) as const,
                     ),
                 )
-                .pipe(untilDestroyed(this)),
+                .pipe(takeUntilDestroyed(this.dr)),
         ).subscribe((invoiceOrInvoiceTemplate) => this.next.emit(invoiceOrInvoiceTemplate));
     }
 
@@ -76,7 +77,7 @@ export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
                 invoiceParams: this.createInvoiceFormControl.value,
             })
             .pipe(
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
                 catchError((err) => {
                     this.log.error(
                         err,

@@ -4,6 +4,7 @@ import { Platform } from '@angular/cdk/platform';
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import {
     AfterViewInit,
+    DestroyRef,
     Directive,
     DoCheck,
     ElementRef,
@@ -16,6 +17,7 @@ import {
     Self,
     SimpleChanges,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
     ControlValueAccessor,
     UntypedFormControl,
@@ -25,14 +27,13 @@ import {
 } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatFormFieldControl } from '@angular/material/form-field';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Subject } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 
 import { INPUT_MIXIN_BASE } from './input-base';
 
 /* eslint-disable @angular-eslint/no-conflicting-lifecycle */
-@UntilDestroy()
+
 @Directive()
 // eslint-disable-next-line @angular-eslint/directive-class-suffix
 /**
@@ -160,6 +161,7 @@ export class CustomFormControl<I, P = I>
         defaultErrorStateMatcher: ErrorStateMatcher,
         @Optional() parentForm: NgForm,
         @Optional() parentFormGroup: FormGroupDirective,
+        private dr: DestroyRef,
     ) {
         super(defaultErrorStateMatcher, parentForm, parentFormGroup, ngControl, new Subject());
         if (this.ngControl !== null) {
@@ -213,7 +215,7 @@ export class CustomFormControl<I, P = I>
     registerOnChange(onChange: (value: P) => void): void {
         // TODO: иногда передаются public value в toPublicValue и возникают ошибки
         this.formControl.valueChanges
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe((v) => onChange(this.toPublicValue(v)));
     }
 
@@ -265,7 +267,7 @@ export class CustomFormControl<I, P = I>
             if (this.platform.isBrowser) {
                 this.autofillMonitor
                     .monitor(this.inputRef)
-                    .pipe(untilDestroyed(this))
+                    .pipe(takeUntilDestroyed(this.dr))
                     .subscribe((event) => {
                         this.autofilled = event.isAutofilled;
                         this.stateChanges.next();
@@ -273,7 +275,7 @@ export class CustomFormControl<I, P = I>
             }
             this.focusMonitor
                 .monitor(this.elementRef.nativeElement, true)
-                .pipe(untilDestroyed(this))
+                .pipe(takeUntilDestroyed(this.dr))
                 .subscribe((focusOrigin) => {
                     this.focused = !!focusOrigin;
                 });

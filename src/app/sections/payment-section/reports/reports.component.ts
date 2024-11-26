@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@jsverse/transloco';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { QueryParamsService } from '@vality/ng-core';
 import { Subject, combineLatest } from 'rxjs';
 import { filter, first, switchMap } from 'rxjs/operators';
@@ -14,7 +14,6 @@ import { FetchReportsService } from './fetch-reports.service';
 import { ReportsExpandedIdManager } from './reports-expanded-id-manager.service';
 import { Filters, SearchFiltersParams } from './reports-search-filters';
 
-@UntilDestroy()
 @Component({
     templateUrl: 'reports.component.html',
     providers: [FetchReportsService, ReportsExpandedIdManager, RealmMixService],
@@ -40,6 +39,7 @@ export class ReportsComponent implements OnInit {
         private realmService: PaymentInstitutionRealmService,
         private dialog: MatDialog,
         private realmMixinService: RealmMixService<SearchFiltersParams>,
+        private dr: DestroyRef,
     ) {}
 
     ngOnInit(): void {
@@ -47,10 +47,10 @@ export class ReportsComponent implements OnInit {
             this.transloco.selectTranslate('reports.errors.fetchError', null, 'payment-section'),
             this.fetchReportsService.errors$,
         ])
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe(([message]) => this.snackBar.open(message, 'OK'));
         this.realmMixinService.mixedValue$
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe((v) => this.fetchReportsService.search(v));
         this.createReport$
             .pipe(
@@ -68,7 +68,7 @@ export class ReportsComponent implements OnInit {
                         'payment-section',
                     ),
                 ),
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
             )
             .subscribe((message) => {
                 this.snackBar.open(message, 'OK', { duration: 2000 });

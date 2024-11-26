@@ -1,5 +1,4 @@
 import { Component, Input, OnChanges, booleanAttribute } from '@angular/core';
-import { UntilDestroy } from '@ngneat/until-destroy';
 import { FormControlSuperclass, createControlProviders, ComponentChanges } from '@vality/ng-core';
 import isNil from 'lodash-es/isNil';
 
@@ -13,7 +12,6 @@ interface OptionScore<T> {
     score: number;
 }
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-multi-select-field',
     templateUrl: 'multi-select-field.component.html',

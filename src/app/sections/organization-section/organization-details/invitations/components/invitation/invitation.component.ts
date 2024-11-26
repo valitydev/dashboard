@@ -1,6 +1,13 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    DestroyRef,
+    EventEmitter,
+    Input,
+    Output,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { DialogResponseStatus, DialogResponse } from '@vality/ng-core';
 import { Invitation, Organization, RevokeInvitationRequest } from '@vality/swag-organizations';
 import { filter, switchMap } from 'rxjs/operators';
@@ -10,7 +17,6 @@ import { ErrorService, NotificationService } from '@dsh/app/shared';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 import { ignoreBeforeCompletion } from '@dsh/utils';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-invitation',
     templateUrl: 'invitation.component.html',
@@ -27,6 +33,7 @@ export class InvitationComponent {
         private invitationsService: InvitationsService,
         private notificationService: NotificationService,
         private errorService: ErrorService,
+        private dr: DestroyRef,
     ) {}
 
     @ignoreBeforeCompletion
@@ -45,7 +52,7 @@ export class InvitationComponent {
                         },
                     }),
                 ),
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
             )
             .subscribe(
                 () => {

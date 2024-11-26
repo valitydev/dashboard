@@ -1,13 +1,12 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, Input, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@jsverse/transloco';
-import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { FileMeta } from '@vality/swag-anapi-v2';
 import { Observable, combineLatest } from 'rxjs';
 
 import { ReportFilesService } from './report-files.service';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-report-files',
     templateUrl: 'report-files.component.html',
@@ -24,6 +23,7 @@ export class ReportFilesComponent implements OnInit {
         private reportFilesService: ReportFilesService,
         private snackBar: MatSnackBar,
         private transloco: TranslocoService,
+        private dr: DestroyRef,
     ) {}
 
     ngOnInit() {
@@ -35,7 +35,7 @@ export class ReportFilesComponent implements OnInit {
             ),
             this.reportFilesService.errorOccurred$,
         ])
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe(([message]) =>
                 this.snackBar.open(message, 'OK', {
                     duration: 2000,

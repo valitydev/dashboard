@@ -5,7 +5,9 @@ import {
     Input,
     OnChanges,
     booleanAttribute,
+    DestroyRef,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
     ControlValueAccessor,
     NG_VALUE_ACCESSOR,
@@ -13,7 +15,6 @@ import {
     ValidatorFn,
     FormControl,
 } from '@angular/forms';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ComponentChanges } from '@vality/ng-core';
 import isNil from 'lodash-es/isNil';
 import isObject from 'lodash-es/isObject';
@@ -21,7 +22,7 @@ import { skip } from 'rxjs/operators';
 
 import { ComponentInputError } from '@dsh/app/shared/services/error/models/component-input-error';
 import { ErrorMatcher } from '@dsh/app/shared/utils';
-@UntilDestroy()
+
 @Component({
     selector: 'dsh-max-length-input',
     templateUrl: './max-length-input.component.html',
@@ -63,6 +64,8 @@ export class MaxLengthInputComponent implements OnChanges, ControlValueAccessor 
         return `${value.length} / ${this.maxLength}`;
     }
 
+    constructor(private dr: DestroyRef) {}
+
     ngOnChanges(changes: ComponentChanges<MaxLengthInputComponent>): void {
         if (isObject(changes.maxLength) || isObject(changes.required)) {
             this.updateValidators();
@@ -79,7 +82,7 @@ export class MaxLengthInputComponent implements OnChanges, ControlValueAccessor 
 
     registerOnChange(onChange: (value: unknown) => void): void {
         this.formControl.valueChanges
-            .pipe(skip(1), untilDestroyed(this))
+            .pipe(skip(1), takeUntilDestroyed(this.dr))
             .subscribe((value: string) => {
                 onChange(value);
             });
