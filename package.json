@@ -70,7 +70,6 @@
     "@angular/language-service": "^18.2.12",
     "@jsverse/transloco-keys-manager": "^6.0.0",
     "@jsverse/transloco-optimize": "^7.0.1",
-    "@types/d3": "^5.7.0",
     "@types/humanize-duration": "^3.18.0",
     "@types/jasmine": "~5.1.4",
     "@types/lodash-es": "^4.17.12",
