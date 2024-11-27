@@ -8,7 +8,6 @@ import { BehaviorSubject, defer, merge, ReplaySubject, Subject, Subscription, EM
 import { mapTo, shareReplay, switchMap, catchError, map } from 'rxjs/operators';
 
 import { InvoicesService, InvoiceTemplatesService } from '@dsh/app/api/payments';
-
 import { ShopsDataService } from '@dsh/app/shared';
 import { CreatePaymentLinkService } from '@dsh/app/shared/services/create-payment-link';
 import { progressTo } from '@dsh/utils';
