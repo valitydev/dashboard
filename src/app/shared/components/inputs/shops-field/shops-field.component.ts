@@ -2,9 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { FormControlSuperclass, createControlProviders, ComponentChanges } from '@vality/ng-core';
 import { Shop } from '@vality/swag-payments';
 import { defer, ReplaySubject } from 'rxjs';
-import { map } from 'rxjs/operators';
-
-import { shareReplayRefCount } from '@dsh/app/custom-operators';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
     selector: 'dsh-shops-field',
@@ -16,7 +14,7 @@ export class ShopsFieldComponent extends FormControlSuperclass<Shop['id'][]> imp
 
     options$ = defer(() => this.shops$).pipe(
         map((shops) => shops.map((shop) => ({ value: shop.id, label: shop.details.name }))),
-        shareReplayRefCount(),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
 
     private shops$ = new ReplaySubject<Shop[]>();

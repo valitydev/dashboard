@@ -8,7 +8,7 @@ import { BehaviorSubject, defer, merge, ReplaySubject, Subject, Subscription, EM
 import { mapTo, shareReplay, switchMap, catchError, map } from 'rxjs/operators';
 
 import { InvoicesService, InvoiceTemplatesService } from '@dsh/app/api/payments';
-import { shareReplayRefCount } from '@dsh/app/custom-operators';
+
 import { ShopsDataService } from '@dsh/app/shared';
 import { CreatePaymentLinkService } from '@dsh/app/shared/services/create-payment-link';
 import { progressTo } from '@dsh/utils';
@@ -69,7 +69,7 @@ export class PaymentLinkComponent {
     shops$ = this.route.params.pipe(
         map((params) => params?.realm),
         filterShopsByRealm(this.shopsDataService.shops$),
-        shareReplayRefCount(),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
 
     private create$ = new Subject<void>();

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService, QueryParamsService } from '@vality/ng-core';
-
-import { shareReplayRefCount } from '@dsh/app/custom-operators';
+import { shareReplay } from 'rxjs';
 
 import { FetchWithdrawalsService, WithdrawalsExpandedIdManager } from './services';
 import { WithdrawalsFilters } from './withdrawals-filters';
@@ -15,7 +14,7 @@ export class WithdrawalsComponent implements OnInit {
     withdrawals$ = this.fetchWithdrawalsService.searchResult$;
     hasMore$ = this.fetchWithdrawalsService.hasMore$;
     doAction$ = this.fetchWithdrawalsService.doAction$;
-    isLoading$ = this.doAction$.pipe(shareReplayRefCount());
+    isLoading$ = this.doAction$.pipe(shareReplay({ refCount: true, bufferSize: 1 }));
     lastUpdated$ = this.fetchWithdrawalsService.lastUpdated$;
     expandedId$ = this.withdrawalsExpandedIdManager.expandedId$;
     initParams$ = this.qp.params$;

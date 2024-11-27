@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CategoriesService as ApiCategoriesService } from '@vality/swag-payments';
 import { BehaviorSubject, defer } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-
-import { shareReplayRefCount } from '@dsh/app/custom-operators';
+import { shareReplay, switchMap } from 'rxjs/operators';
 
 import { createApi } from '../utils';
 
@@ -13,7 +11,7 @@ import { createApi } from '../utils';
 export class CategoriesService extends createApi(ApiCategoriesService) {
     categories$ = defer(() => this.reloadCategories$).pipe(
         switchMap(() => this.getCategories()),
-        shareReplayRefCount(),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
 
     private reloadCategories$ = new BehaviorSubject<void>(undefined);

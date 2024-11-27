@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
 import { catchError, filter, map, shareReplay, switchMap } from 'rxjs/operators';
 
 import { WebhooksService } from '@dsh/app/api/payments';
-import { mapToTimestamp, SHARE_REPLAY_CONF, progress } from '@dsh/app/custom-operators';
+import { mapToTimestamp, progress } from '@dsh/app/custom-operators';
 
 @Injectable()
 export class ReceiveWebhooksService {
@@ -18,12 +18,12 @@ export class ReceiveWebhooksService {
     webhooks$: Observable<Webhook[]> = this.webhooksState$.pipe(
         filter((s) => !!s),
         map((w) => sortBy(w, (i) => !i.active)),
-        shareReplay(SHARE_REPLAY_CONF),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     isLoading$: Observable<boolean> = progress(this.receiveWebhooks$, this.webhooks$).pipe(
-        shareReplay(SHARE_REPLAY_CONF),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
 
     // eslint-disable-next-line @typescript-eslint/member-ordering

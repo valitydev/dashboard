@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { IdentitiesService as ApiIdentitiesService, Identity } from '@vality/swag-wallet';
 import { Subject, defer, switchMap } from 'rxjs';
-import { startWith, map } from 'rxjs/operators';
+import { startWith, map, shareReplay } from 'rxjs/operators';
 
 import { PartyIdExtension } from '@dsh/app/api/utils/extensions';
-import { shareReplayRefCount } from '@dsh/app/custom-operators';
 
 import { createApi } from '../utils';
 
@@ -16,7 +15,7 @@ export class IdentitiesService extends createApi(ApiIdentitiesService, [PartyIdE
         startWith<void>(undefined),
         switchMap(() => this.listIdentities()),
         map((r) => r.result as Identity[]),
-        shareReplayRefCount(),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
 
     private reloadIdentities$ = new Subject<void>();

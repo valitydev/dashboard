@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-
-import { shareReplayRefCount } from '@dsh/app/custom-operators';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root',
@@ -18,7 +16,7 @@ export class DictionaryService {
     ): Observable<Record<T, string>> {
         return this.init$.pipe(
             map(() => getTranslations()),
-            shareReplayRefCount(),
+            shareReplay({ refCount: true, bufferSize: 1 }),
         );
     }
 }

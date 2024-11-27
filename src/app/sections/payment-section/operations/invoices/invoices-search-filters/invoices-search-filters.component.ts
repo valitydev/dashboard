@@ -19,9 +19,8 @@ import omit from 'lodash-es/omit';
 import pick from 'lodash-es/pick';
 import { MediaObserver } from 'ng-flex-layout';
 import { defer, ReplaySubject, BehaviorSubject, combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 
-import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { ShopsDataService } from '@dsh/app/shared';
 import {
     createDateRangeWithPreset,
@@ -63,7 +62,7 @@ export class InvoicesSearchFiltersComponent implements OnChanges, OnInit {
     });
     shops$ = defer(() => this.realm$).pipe(
         filterShopsByRealm(this.shopsDataService.shops$),
-        shareReplayRefCount(),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
     isAdditionalFilterApplied$ = defer(() => this.additionalFilters$).pipe(map(negate(isEmpty)));
 

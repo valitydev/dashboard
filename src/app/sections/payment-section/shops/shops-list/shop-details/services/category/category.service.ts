@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Category } from '@vality/swag-payments';
 import { combineLatest, defer, ReplaySubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 
 import { CategoriesService } from '@dsh/app/api/payments';
-import { shareReplayRefCount } from '@dsh/app/custom-operators';
 
 @Injectable()
 export class CategoryService {
@@ -15,7 +14,7 @@ export class CategoryService {
         map(([categoryID, categories]) =>
             categories.find((c: Category) => c.categoryID === categoryID),
         ),
-        shareReplayRefCount(),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
 
     private categoryID$ = new ReplaySubject<number>();

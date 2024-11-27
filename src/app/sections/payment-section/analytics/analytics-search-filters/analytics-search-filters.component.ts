@@ -13,9 +13,8 @@ import { FormBuilder } from '@angular/forms';
 import { ComponentChanges } from '@vality/ng-core';
 import { Shop } from '@vality/swag-payments';
 import { combineLatest, defer, Observable } from 'rxjs';
-import { first, map, pluck } from 'rxjs/operators';
+import { first, map, pluck, shareReplay } from 'rxjs/operators';
 
-import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import {
     createDateRangeWithPreset,
     DateRangeWithPreset,
@@ -53,7 +52,7 @@ export class AnalyticsSearchFiltersComponent implements OnInit, OnChanges {
         combineLatest([getFormValueChanges(this.form).pipe(pluck('currency')), this.shops$]),
     ).pipe(
         map(([currency, shops]) => shops.filter((shop) => shop.currency === currency)),
-        shareReplayRefCount(),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
 
     private shops$ = this.realmShopsService.shops$;

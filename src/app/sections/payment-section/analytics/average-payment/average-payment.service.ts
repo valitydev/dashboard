@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { forkJoin, defer, ReplaySubject, BehaviorSubject, combineLatest } from 'rxjs';
-import { map, switchMap, distinctUntilChanged } from 'rxjs/operators';
+import { map, switchMap, distinctUntilChanged, shareReplay } from 'rxjs/operators';
 
 import { AnalyticsService } from '@dsh/app/api/anapi';
-import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { distinctUntilChangedDeep, inProgressFrom, attach, errorTo, progressTo } from '@dsh/utils';
 
 import { SearchParams } from '../search-params';
@@ -40,7 +39,7 @@ export class AveragePaymentService {
         ),
     ]).pipe(
         map(([result, currency]) => result.find((r) => r.currency === currency)),
-        shareReplayRefCount(),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
     isLoading$ = inProgressFrom(() => this.progress$, this.averagePayment$);
     error$ = attach(() => this.errorSub$, this.averagePayment$);

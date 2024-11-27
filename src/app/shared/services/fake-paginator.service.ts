@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { combineLatest, Observable, ReplaySubject } from 'rxjs';
 import { map, pluck, scan, shareReplay, switchMapTo } from 'rxjs/operators';
 
-import { SHARE_REPLAY_CONF } from '../../custom-operators';
-
 const DEFAULT_PAGINATION_LIMIT = 3;
 
 @Injectable()
@@ -17,17 +15,17 @@ export class FakePaginatorService<T> {
     private offset$ = this.showMore$.pipe(
         switchMapTo(this.paginationLimit$),
         scan((offset, limit) => offset + limit, 0),
-        shareReplay(SHARE_REPLAY_CONF),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
 
     constructor() {
         this.values$ = combineLatest([this.allValues$, this.offset$]).pipe(
             map(([values, showedCount]) => values.slice(0, showedCount)),
-            shareReplay(SHARE_REPLAY_CONF),
+            shareReplay({ refCount: true, bufferSize: 1 }),
         );
         this.hasMore$ = combineLatest([this.allValues$.pipe(pluck('length')), this.offset$]).pipe(
             map(([count, showedCount]) => count > showedCount),
-            shareReplay(SHARE_REPLAY_CONF),
+            shareReplay({ refCount: true, bufferSize: 1 }),
         );
     }
 
