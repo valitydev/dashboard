@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { forkJoin, of, defer, ReplaySubject, BehaviorSubject, combineLatest } from 'rxjs';
-import { map, switchMap, withLatestFrom, distinctUntilChanged } from 'rxjs/operators';
+import { map, switchMap, withLatestFrom, distinctUntilChanged, shareReplay } from 'rxjs/operators';
 
 import { AnalyticsService, AnapiDictionaryService } from '@dsh/app/api/anapi';
-import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { errorTo, progressTo, distinctUntilChangedDeep, inProgressFrom, attach } from '@dsh/utils';
 
 import { SearchParams } from '../search-params';
@@ -43,7 +42,7 @@ export class PaymentSplitCountService {
         ),
     ]).pipe(
         map(([result, currency]) => result.find((r) => r.currency === currency)),
-        shareReplayRefCount(),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
     isLoading$ = inProgressFrom(() => this.progress$, this.splitCount$);
     error$ = attach(() => this.errorSub$, this.splitCount$);

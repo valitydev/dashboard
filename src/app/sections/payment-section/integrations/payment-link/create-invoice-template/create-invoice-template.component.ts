@@ -1,14 +1,15 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     EventEmitter,
     Input,
     OnInit,
     Output,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, UntypedFormGroup } from '@angular/forms';
 import { TranslocoService } from '@jsverse/transloco';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { createControlProviders, FormGroupSuperclass, NotifyLogService } from '@vality/ng-core';
 import { InvoiceTemplateAndToken, Shop } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
@@ -17,7 +18,6 @@ import { take } from 'rxjs';
 
 import { CreateInvoiceTemplateService } from './create-invoice-template.service';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-create-invoice-template',
     templateUrl: 'create-invoice-template.component.html',
@@ -46,6 +46,7 @@ export class CreateInvoiceTemplateComponent extends FormGroupSuperclass<unknown>
         private log: NotifyLogService,
         private transloco: TranslocoService,
         private fb: FormBuilder,
+        private dr: DestroyRef,
     ) {
         super();
     }
@@ -59,19 +60,21 @@ export class CreateInvoiceTemplateComponent extends FormGroupSuperclass<unknown>
 
         this.control = this.invoiceTemplateFormService.createForm(this.shops);
 
-        this.invoiceTemplateFormService.errors$.pipe(untilDestroyed(this)).subscribe((err) => {
-            this.control.enable();
-            this.log.error(
-                err,
-                this.transloco.selectTranslate(
-                    'createInvoiceTemplate.createInvoiceTemplateFailed',
-                    null,
-                    'payment-section',
-                ),
-            );
-        });
+        this.invoiceTemplateFormService.errors$
+            .pipe(takeUntilDestroyed(this.dr))
+            .subscribe((err) => {
+                this.control.enable();
+                this.log.error(
+                    err,
+                    this.transloco.selectTranslate(
+                        'createInvoiceTemplate.createInvoiceTemplateFailed',
+                        null,
+                        'payment-section',
+                    ),
+                );
+            });
         this.invoiceTemplateFormService.nextInvoiceTemplateAndToken$
-            .pipe(take(1), untilDestroyed(this))
+            .pipe(take(1), takeUntilDestroyed(this.dr))
             .subscribe((template) => this.next.emit(template));
     }
 

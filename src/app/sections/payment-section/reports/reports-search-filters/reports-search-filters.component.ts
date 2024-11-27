@@ -1,14 +1,15 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     EventEmitter,
     Input,
     OnChanges,
     OnInit,
     Output,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ComponentChanges } from '@vality/ng-core';
 import { Report } from '@vality/swag-anapi-v2';
 
@@ -24,7 +25,6 @@ export interface Filters {
     dateRange: DateRangeWithPreset;
 }
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-reports-search-filters',
     templateUrl: 'reports-search-filters.component.html',
@@ -37,11 +37,14 @@ export class ReportsSearchFiltersComponent implements OnInit, OnChanges {
     defaultDateRange = createDateRangeWithPreset(Preset.Last90days);
     form = this.fb.group<Filters>({ reportTypes: null, dateRange: this.defaultDateRange });
 
-    constructor(private fb: FormBuilder) {}
+    constructor(
+        private fb: FormBuilder,
+        private dr: DestroyRef,
+    ) {}
 
     ngOnInit(): void {
         getFormValueChanges(this.form)
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe((filters) => this.searchParamsChanges.next(filters as unknown as Filters));
     }
 

@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, Inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormGroupByValue } from '@vality/ng-core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -12,7 +12,6 @@ import { inProgressTo } from '@dsh/utils';
 
 import { RenameOrganizationDialogData } from './types/rename-organization-dialog-data';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-rename-organization-dialog',
     templateUrl: 'rename-organization-dialog.component.html',
@@ -32,6 +31,7 @@ export class RenameOrganizationDialogComponent {
         private errorService: ErrorService,
         private fb: FormBuilder,
         @Inject(MAT_DIALOG_DATA) private data: RenameOrganizationDialogData,
+        private dr: DestroyRef,
     ) {
         this.form = this.fb.group<{ name: string }>({ name: data.organization.name });
     }
@@ -45,7 +45,7 @@ export class RenameOrganizationDialogComponent {
                     name: this.form.value.name,
                 },
             })
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe(
                 () => {
                     this.notificationService.success();

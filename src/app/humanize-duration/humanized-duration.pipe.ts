@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
-import { UntilDestroy } from '@ngneat/until-destroy';
 import { interval, Subscription, switchMap } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 
@@ -9,7 +8,6 @@ export interface HumanizeDurationConfig extends HumanizeConfig {
     interval?: number;
 }
 
-@UntilDestroy()
 @Pipe({ name: 'humanizedDuration', pure: false })
 export class HumanizedDurationPipe implements OnDestroy, PipeTransform {
     private latestValue: string = '';

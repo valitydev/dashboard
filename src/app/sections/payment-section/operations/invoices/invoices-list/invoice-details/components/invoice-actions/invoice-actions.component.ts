@@ -1,13 +1,14 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     EventEmitter,
     Inject,
     Input,
     Output,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Invoice } from '@vality/swag-payments';
 
 import { DIALOG_CONFIG, DialogConfig } from '@dsh/app/sections/tokens';
@@ -20,7 +21,6 @@ import {
 } from '../../create-payment-link-dialog';
 import { FulfillInvoiceService } from '../../fulfill-invoice';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-invoice-actions',
     templateUrl: 'invoice-actions.component.html',
@@ -36,6 +36,7 @@ export class InvoiceActionsComponent {
         private cancelInvoiceService: CancelInvoiceService,
         private dialog: MatDialog,
         @Inject(DIALOG_CONFIG) private dialogConfig: DialogConfig,
+        private dr: DestroyRef,
     ) {}
 
     createPaymentLink(): void {
@@ -52,14 +53,14 @@ export class InvoiceActionsComponent {
     cancelInvoice(): void {
         this.cancelInvoiceService
             .cancelInvoice(this.invoice.id)
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe(() => this.refreshData.emit());
     }
 
     fulfillInvoice(): void {
         this.fulfillInvoiceService
             .fulfillInvoice(this.invoice.id)
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe(() => this.refreshData.emit());
     }
 }

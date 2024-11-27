@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PaymentInstitutionsService as ApiPaymentInstitutionsService } from '@vality/swag-payments';
 import { BehaviorSubject, defer } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-
-import { shareReplayRefCount } from '@dsh/app/custom-operators';
+import { shareReplay, switchMap } from 'rxjs/operators';
 
 import { createApi } from '../utils';
 
@@ -13,7 +11,7 @@ import { createApi } from '../utils';
 export class PaymentInstitutionsService extends createApi(ApiPaymentInstitutionsService) {
     paymentInstitutions$ = defer(() => this.reload$).pipe(
         switchMap(() => this.getPaymentInstitutions()),
-        shareReplayRefCount(),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
 
     private reload$ = new BehaviorSubject<void>(undefined);

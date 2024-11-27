@@ -1,7 +1,15 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import {
+    Component,
+    DestroyRef,
+    EventEmitter,
+    Input,
+    OnChanges,
+    OnInit,
+    Output,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AbstractControl, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ComponentChanges } from '@vality/ng-core';
 import { Shop, PaymentInstitution } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
@@ -35,7 +43,6 @@ export type Filters = MainFilters & AdditionalFilters & FloatingFilters;
 const MAIN_FILTERS = ['dateRange'];
 const FLOATING_FILTERS = ['invoiceIDs', 'shopIDs', 'binPan'];
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-payments-filters',
     templateUrl: 'payments-filters.component.html',
@@ -72,6 +79,7 @@ export class PaymentsFiltersComponent implements OnInit, OnChanges {
         private fb: FormBuilder,
         private dialog: MatDialog,
         private mediaObserver: MediaObserver,
+        private dr: DestroyRef,
     ) {}
 
     ngOnInit(): void {
@@ -81,7 +89,7 @@ export class PaymentsFiltersComponent implements OnInit, OnChanges {
             ),
             this.additionalFilters$.pipe(map((filters) => omit(filters, this.keys))),
         ])
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe((filters) => this.filtersChanged.next(Object.assign({}, ...filters)));
     }
 
@@ -101,7 +109,7 @@ export class PaymentsFiltersComponent implements OnInit, OnChanges {
                 data: omit(this.initParams, this.keys),
             })
             .afterClosed()
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe((filters) => this.additionalFilters$.next(filters));
     }
 }

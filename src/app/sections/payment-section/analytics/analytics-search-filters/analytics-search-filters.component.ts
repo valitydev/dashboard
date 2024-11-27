@@ -6,15 +6,15 @@ import {
     Output,
     OnInit,
     OnChanges,
+    DestroyRef,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ComponentChanges } from '@vality/ng-core';
 import { Shop } from '@vality/swag-payments';
 import { combineLatest, defer, Observable } from 'rxjs';
-import { first, map, pluck } from 'rxjs/operators';
+import { first, map, pluck, shareReplay } from 'rxjs/operators';
 
-import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import {
     createDateRangeWithPreset,
     DateRangeWithPreset,
@@ -32,7 +32,6 @@ export interface Filters {
     currency: string;
 }
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-analytics-search-filters',
     templateUrl: 'analytics-search-filters.component.html',
@@ -53,7 +52,7 @@ export class AnalyticsSearchFiltersComponent implements OnInit, OnChanges {
         combineLatest([getFormValueChanges(this.form).pipe(pluck('currency')), this.shops$]),
     ).pipe(
         map(([currency, shops]) => shops.filter((shop) => shop.currency === currency)),
-        shareReplayRefCount(),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
 
     private shops$ = this.realmShopsService.shops$;
@@ -61,13 +60,14 @@ export class AnalyticsSearchFiltersComponent implements OnInit, OnChanges {
     constructor(
         private fb: FormBuilder,
         private realmShopsService: RealmShopsService,
+        private dr: DestroyRef,
     ) {}
 
     ngOnInit(): void {
         getFormValueChanges(this.form)
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe((filters) => this.filterValuesChanged.next(filters as unknown as Filters));
-        this.currencies$.pipe(first(), untilDestroyed(this)).subscribe((currencies) => {
+        this.currencies$.pipe(first(), takeUntilDestroyed(this.dr)).subscribe((currencies) => {
             if (!this.form.value.currency) {
                 this.form.patchValue({
                     currency: currencies.includes('RUB') ? 'RUB' : currencies[0],

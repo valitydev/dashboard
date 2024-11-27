@@ -2,10 +2,9 @@ import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@an
 import { FormControlSuperclass, Option, createControlProviders } from '@vality/ng-core';
 import { Category } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 
 import { CategoriesService } from '@dsh/app/api/payments';
-import { shareReplayRefCount } from '@dsh/app/custom-operators';
 
 @Component({
     selector: 'dsh-category-autocomplete-field',
@@ -24,7 +23,7 @@ export class CategoryAutocompleteFieldComponent extends FormControlSuperclass<Ca
                 value: category,
             })),
         ),
-        shareReplayRefCount(),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
 
     constructor(private categoriesService: CategoriesService) {

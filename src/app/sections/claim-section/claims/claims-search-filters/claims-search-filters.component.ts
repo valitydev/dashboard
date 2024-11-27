@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ComponentChanges } from '@vality/ng-core';
 import { Claim } from '@vality/swag-claim-management';
 
@@ -12,7 +11,6 @@ export interface Filters {
     claimStatuses?: ClaimStatusesEnum[];
 }
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-claims-search-filters',
     templateUrl: 'claims-search-filters.component.html',
@@ -27,7 +25,7 @@ export class ClaimsSearchFiltersComponent implements OnInit, OnChanges {
 
     ngOnInit(): void {
         getFormValueChanges(this.form)
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe((filters) => this.searchParamsChanges.next(filters as unknown as Filters));
     }
 

@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { UntilDestroy } from '@ngneat/until-destroy';
 import { createControlProviders, FormGroupSuperclass } from '@vality/ng-core';
 
 export interface NewContractorForm {
@@ -11,7 +10,6 @@ export interface NewContractorForm {
     country: string;
 }
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-new-contractor-form',
     templateUrl: 'new-contractor-form.component.html',

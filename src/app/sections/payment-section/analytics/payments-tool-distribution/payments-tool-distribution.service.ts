@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ReplaySubject, BehaviorSubject, defer } from 'rxjs';
-import { map, switchMap, withLatestFrom } from 'rxjs/operators';
+import { map, shareReplay, switchMap, withLatestFrom } from 'rxjs/operators';
 
 import { AnalyticsService, AnapiDictionaryService } from '@dsh/app/api/anapi';
-import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { errorTo, progressTo, distinctUntilChangedDeep, inProgressFrom, attach } from '@dsh/utils';
 
 import { SearchParams } from '../search-params';
@@ -30,7 +29,7 @@ export class PaymentsToolDistributionService {
         map(([{ result }, paymentToolDict]) =>
             paymentsToolDistributionToChartData(result, paymentToolDict),
         ),
-        shareReplayRefCount(),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
     isLoading$ = inProgressFrom(() => this.progress$, this.toolDistribution$);
     error$ = attach(() => this.errorSub$, this.toolDistribution$);

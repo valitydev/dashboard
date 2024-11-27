@@ -4,8 +4,6 @@ import sortBy from 'lodash-es/sortBy';
 import { Observable, of } from 'rxjs';
 import { catchError, map, shareReplay } from 'rxjs/operators';
 
-import { SHARE_REPLAY_CONF } from '@dsh/app/custom-operators';
-
 import { createApi } from '../utils';
 
 @Injectable({
@@ -17,7 +15,7 @@ export class CountriesService extends createApi(ApiCountriesService) {
             console.error(error);
             return of([]);
         }),
-        shareReplay(SHARE_REPLAY_CONF),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
 
     constructor(injector: Injector) {

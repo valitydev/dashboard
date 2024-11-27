@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { shareReplay, switchMap } from 'rxjs/operators';
 
 import { OrgsService } from '@dsh/app/api/organizations';
@@ -8,7 +8,6 @@ import { OrgsService } from '@dsh/app/api/organizations';
 import { FetchMembersService } from './services/fetch-members/fetch-members.service';
 import { MembersExpandedIdManager } from './services/members-expanded-id-manager/members-expanded-id-manager.service';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-members',
     templateUrl: 'members.component.html',
@@ -18,7 +17,7 @@ import { MembersExpandedIdManager } from './services/members-expanded-id-manager
 export class MembersComponent {
     organization$ = this.route.params.pipe(
         switchMap(({ orgId }) => this.organizationsService.getOrg({ orgId })),
-        untilDestroyed(this),
+        takeUntilDestroyed(this.dr),
         shareReplay(1),
     );
     members$ = this.fetchMembersService.members$;
@@ -29,6 +28,7 @@ export class MembersComponent {
         private organizationsService: OrgsService,
         private fetchMembersService: FetchMembersService,
         private route: ActivatedRoute,
+        private dr: DestroyRef,
     ) {}
 
     refresh() {

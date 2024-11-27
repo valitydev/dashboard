@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { Organization } from '@vality/swag-organizations';
 import { combineLatest } from 'rxjs';
 import { first, map } from 'rxjs/operators';
@@ -13,7 +13,6 @@ import { FetchOrganizationsService } from '@dsh/app/shared/services/fetch-organi
 
 const DISPLAYED_COUNT = 5;
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-select-active-organization-dialog',
     templateUrl: 'select-active-organization-dialog.component.html',
@@ -35,6 +34,7 @@ export class SelectActiveOrganizationDialogComponent implements OnInit {
         private fetchOrganizationsService: FetchOrganizationsService,
         private router: Router,
         private contextOrganizationService: ContextOrganizationService,
+        private dr: DestroyRef,
     ) {}
 
     ngOnInit(): void {
@@ -43,7 +43,7 @@ export class SelectActiveOrganizationDialogComponent implements OnInit {
             .pipe(
                 first(),
                 map(([orgs, activeOrg]) => orgs.find((org) => org.id === activeOrg.id)),
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
             )
             .subscribe((organization) => (this.selectedOrganization = organization));
     }

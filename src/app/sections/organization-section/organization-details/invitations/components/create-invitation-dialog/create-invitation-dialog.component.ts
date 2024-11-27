@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, Inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { InviteeContact, MemberRole } from '@vality/swag-organizations';
 import { BehaviorSubject } from 'rxjs';
 
@@ -13,7 +13,6 @@ import { inProgressTo } from '@dsh/utils';
 
 import { CreateInvitationDialogData } from './types/create-invitation-dialog-data';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-create-invitation-dialog',
     templateUrl: 'create-invitation-dialog.component.html',
@@ -31,6 +30,7 @@ export class CreateInvitationDialogComponent {
         private errorService: ErrorService,
         private notificationService: NotificationService,
         private fb: FormBuilder,
+        private dr: DestroyRef,
     ) {}
 
     @inProgressTo('inProgress$')
@@ -48,7 +48,7 @@ export class CreateInvitationDialogComponent {
                     },
                 },
             })
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe(
                 () => {
                     this.notificationService.success();

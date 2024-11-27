@@ -1,7 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component, DestroyRef, Inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { filter, first, shareReplay, switchMap } from 'rxjs/operators';
 
 import { OrgsService } from '@dsh/app/api/organizations';
@@ -14,7 +14,6 @@ import { CreateInvitationDialogData } from './components/create-invitation-dialo
 import { FetchInvitationsService } from './services/fetch-invitations/fetch-invitations.service';
 import { InvitationsExpandedIdManager } from './services/invitations-expanded-id-manager/invitations-expanded-id-manager.service';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-invitations',
     templateUrl: './invitations.component.html',
@@ -23,7 +22,7 @@ import { InvitationsExpandedIdManager } from './services/invitations-expanded-id
 export class InvitationsComponent {
     organization$ = this.route.params.pipe(
         switchMap(({ orgId }) => this.organizationsService.getOrg({ orgId })),
-        untilDestroyed(this),
+        takeUntilDestroyed(this.dr),
         shareReplay(1),
     );
     invitations$ = this.fetchInvitationsService.invitations$;
@@ -36,6 +35,7 @@ export class InvitationsComponent {
         private organizationsService: OrgsService,
         private route: ActivatedRoute,
         private fetchInvitationsService: FetchInvitationsService,
+        private dr: DestroyRef,
     ) {}
 
     @ignoreBeforeCompletion
@@ -56,7 +56,7 @@ export class InvitationsComponent {
                         .afterClosed(),
                 ),
                 filter((r) => r === BaseDialogResponseStatus.Success),
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
             )
             .subscribe(() => this.refresh());
     }

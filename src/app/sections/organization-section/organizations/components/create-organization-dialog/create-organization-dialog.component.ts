@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject, switchMap } from 'rxjs';
 import { first } from 'rxjs/operators';
 
@@ -12,7 +12,6 @@ import { ErrorService } from '@dsh/app/shared/services/error';
 import { NotificationService } from '@dsh/app/shared/services/notification';
 import { inProgressTo } from '@dsh/utils';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-create-organization-dialog',
     templateUrl: 'create-organization-dialog.component.html',
@@ -32,6 +31,7 @@ export class CreateOrganizationDialogComponent {
         private errorService: ErrorService,
         private fb: FormBuilder,
         private keycloakTokenInfoService: KeycloakTokenInfoService,
+        private dr: DestroyRef,
     ) {}
 
     @inProgressTo('inProgress$')
@@ -47,7 +47,7 @@ export class CreateOrganizationDialogComponent {
                         },
                     }),
                 ),
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
             )
             .subscribe(
                 () => {

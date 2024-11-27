@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Component, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { QueryParamsService } from '@vality/ng-core';
 
 import { ErrorService } from '@dsh/app/shared';
@@ -9,7 +9,6 @@ import { DepositsExpandedIdManagerService } from './services/deposits-expanded-i
 import { FetchDepositsService } from './services/fetch-deposits/fetch-deposits.service';
 import { filtersToSearchParams } from './utils/filters-to-search-params';
 
-@UntilDestroy()
 @Component({
     templateUrl: 'deposits.component.html',
     providers: [FetchDepositsService, DepositsExpandedIdManagerService],
@@ -27,10 +26,13 @@ export class DepositsComponent {
         private depositsExpandedIdManagerService: DepositsExpandedIdManagerService,
         private errorsService: ErrorService,
         private qp: QueryParamsService<DepositsFilters>,
+        private dr: DestroyRef,
     ) {
-        this.fetchDepositsService.errors$.pipe(untilDestroyed(this)).subscribe((error: Error) => {
-            this.errorsService.error(error);
-        });
+        this.fetchDepositsService.errors$
+            .pipe(takeUntilDestroyed(this.dr))
+            .subscribe((error: Error) => {
+                this.errorsService.error(error);
+            });
     }
 
     refreshList(): void {

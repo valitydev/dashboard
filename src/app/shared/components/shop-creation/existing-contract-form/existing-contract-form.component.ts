@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
-import { UntilDestroy } from '@ngneat/until-destroy';
 import { createControlProviders, FormControlSuperclass } from '@vality/ng-core';
 import {
     Shop,
@@ -28,7 +27,6 @@ export type ExistingContractForm<T extends EntityTypeEnum = EntityTypeEnum> = Ov
     }
 >;
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-existing-contract-form',
     templateUrl: 'existing-contract-form.component.html',

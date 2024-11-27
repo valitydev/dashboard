@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Shop } from '@vality/swag-payments';
 import { Observable, Subject, of, repeat, merge, defer, first } from 'rxjs';
-import { switchMap, filter, catchError, map } from 'rxjs/operators';
+import { switchMap, filter, catchError, map, shareReplay } from 'rxjs/operators';
 
 import { createTestShopClaimChangeset, ClaimsService } from '@dsh/app/api/claim-management';
 import { ShopsService } from '@dsh/app/api/payments';
-import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { ContextOrganizationService } from '@dsh/app/shared';
 
 import { IdGeneratorService } from '../id-generator';
@@ -16,9 +15,12 @@ import { IdGeneratorService } from '../id-generator';
 export class ShopsDataService {
     shops$: Observable<Shop[]> = defer(() => this.shopsData$).pipe(
         map((s) => (s ? s : [])),
-        shareReplayRefCount(),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
-    shopsAllowed$ = defer(() => this.shopsData$).pipe(map(Boolean), shareReplayRefCount());
+    shopsAllowed$ = defer(() => this.shopsData$).pipe(
+        map(Boolean),
+        shareReplay({ refCount: true, bufferSize: 1 }),
+    );
 
     private reloadShops$ = new Subject<void>();
     private shopsData$: Observable<Shop[] | null> = merge(
@@ -38,7 +40,7 @@ export class ShopsDataService {
         switchMap((shops) =>
             shops ? (shops.length ? of(shops) : this.createTestShop()) : of(null),
         ),
-        shareReplayRefCount(),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
 
     constructor(

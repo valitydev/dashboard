@@ -2,10 +2,9 @@ import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BehaviorSubject, defer, merge, Subject } from 'rxjs';
-import { mapTo, switchMap } from 'rxjs/operators';
+import { mapTo, shareReplay, switchMap } from 'rxjs/operators';
 
 import { InvoicesService } from '@dsh/app/api/payments';
-import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { CreatePaymentLinkService } from '@dsh/app/shared/services/create-payment-link/create-payment-link.service';
 
 import { CreatePaymentLinkDialogData } from './types/create-payment-link-dialog-data';
@@ -18,7 +17,7 @@ import { CreatePaymentLinkDialogData } from './types/create-payment-link-dialog-
 export class CreatePaymentLinkDialogComponent {
     paymentMethods$ = this.invoicesService
         .getInvoicePaymentMethods({ invoiceID: this.data.invoice.id })
-        .pipe(shareReplayRefCount());
+        .pipe(shareReplay({ refCount: true, bufferSize: 1 }));
 
     formControl = new FormControl();
     paymentLink$ = merge(

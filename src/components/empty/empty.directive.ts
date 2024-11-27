@@ -6,14 +6,14 @@ import {
     ViewContainerRef,
     OnInit,
     ChangeDetectorRef,
+    DestroyRef,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ComponentChanges } from '@vality/ng-core';
 
 import { TextComponent } from './components/text/text.component';
 
-@UntilDestroy()
 @Directive({
     selector: '[dsh-empty],[dshEmpty]',
 })
@@ -28,12 +28,13 @@ export class EmptyDirective implements OnChanges, OnInit {
         private viewContainer: ViewContainerRef,
         private translocoService: TranslocoService,
         private cdr: ChangeDetectorRef,
+        private dr: DestroyRef,
     ) {}
 
     ngOnInit() {
         this.translocoService
             .selectTranslate<string>('empty.emptyData', null, 'core-components')
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe((text) => {
                 this.defaultEmptyText = text;
                 this.update();

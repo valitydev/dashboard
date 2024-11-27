@@ -1,6 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import {
     createControlProviders,
     FormGroupByValue,
@@ -27,7 +27,6 @@ export interface FormData {
     amountMultiplicityCondition?: number;
 }
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-invoice-randomize-amount-form',
     templateUrl: 'invoice-randomize-amount-form.component.html',
@@ -53,14 +52,17 @@ export class InvoiceRandomizeAmountFormComponent
 
     directionTypes: string[] = ['both', 'upward', 'downward'];
 
-    constructor(private fb: FormBuilder) {
+    constructor(
+        private fb: FormBuilder,
+        private dr: DestroyRef,
+    ) {
         super();
     }
 
     override ngOnInit(): void {
         super.ngOnInit();
         getFormValueChanges(this.control)
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe((v) => {
                 this.emitOutgoingValue({
                     ...v,

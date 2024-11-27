@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Shop } from '@vality/swag-payments';
 import { combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 
-import { shareReplayRefCount } from '@dsh/app/custom-operators';
 import { ShopsDataService } from '@dsh/app/shared';
 
 import { getShopsByRealm } from '../operations/operators';
@@ -17,7 +16,7 @@ export class RealmShopsService {
         this.realmService.realm$,
     ]).pipe(
         map(([shops, realm]) => (realm ? getShopsByRealm(shops, realm) : [])),
-        shareReplayRefCount(),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
 
     constructor(

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
-import { BootstrapIconModule, ResizedModule } from '@dsh/components/indicators';
+import { BootstrapIconModule } from '@dsh/components/indicators';
 
 import { ButtonModule } from '../../buttons';
 
@@ -21,14 +21,7 @@ const EXPORTED_DECLARATIONS = [
 ];
 
 @NgModule({
-    imports: [
-        CommonModule,
-        ResizedModule,
-        FlexLayoutModule,
-        ButtonModule,
-        MatDividerModule,
-        BootstrapIconModule,
-    ],
+    imports: [CommonModule, FlexLayoutModule, ButtonModule, MatDividerModule, BootstrapIconModule],
     declarations: [EXPORTED_DECLARATIONS],
     exports: [EXPORTED_DECLARATIONS],
 })

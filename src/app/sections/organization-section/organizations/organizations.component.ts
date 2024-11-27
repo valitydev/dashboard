@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { filter } from 'rxjs/operators';
 
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
@@ -9,7 +9,6 @@ import { ignoreBeforeCompletion } from '@dsh/utils';
 
 import { CreateOrganizationDialogComponent } from './components/create-organization-dialog/create-organization-dialog.component';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-organizations',
     templateUrl: 'organizations.component.html',
@@ -25,6 +24,7 @@ export class OrganizationsComponent implements OnInit {
     constructor(
         private fetchOrganizationsService: FetchOrganizationsService,
         private dialog: MatDialog,
+        private dr: DestroyRef,
     ) {}
 
     ngOnInit() {
@@ -40,7 +40,7 @@ export class OrganizationsComponent implements OnInit {
             .afterClosed()
             .pipe(
                 filter((r) => r === BaseDialogResponseStatus.Success),
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
             )
             .subscribe(() => this.refresh());
     }

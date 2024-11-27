@@ -1,14 +1,19 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    DestroyRef,
+    EventEmitter,
+    Output,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl } from '@angular/forms';
 import { TranslocoService } from '@jsverse/transloco';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { progressTo, NotifyLogService } from '@vality/ng-core';
 import { BehaviorSubject, first } from 'rxjs';
 
 import { CreateInternationalShopEntityService } from './services/create-international-shop-entity/create-international-shop-entity.service';
 import { InternationalShopEntityFormValue } from './types/international-shop-entity-form-value';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-create-international-shop-entity',
     templateUrl: 'create-international-shop-entity.component.html',
@@ -26,12 +31,13 @@ export class CreateInternationalShopEntityComponent {
         private createShopInternationalLegalEntityService: CreateInternationalShopEntityService,
         private transloco: TranslocoService,
         private log: NotifyLogService,
+        private dr: DestroyRef,
     ) {}
 
     createShop(): void {
         this.createShopInternationalLegalEntityService
             .createShop(this.form.value)
-            .pipe(progressTo(this.progress$), first(), untilDestroyed(this))
+            .pipe(progressTo(this.progress$), first(), takeUntilDestroyed(this.dr))
             .subscribe({
                 next: () => {
                     this.send.emit();

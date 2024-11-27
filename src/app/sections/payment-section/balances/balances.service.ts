@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { of, timer } from 'rxjs';
-import { catchError, pluck, switchMap } from 'rxjs/operators';
+import { catchError, pluck, shareReplay, switchMap } from 'rxjs/operators';
 
 import { AnalyticsService } from '@dsh/app/api/anapi';
-import { shareReplayRefCount } from '@dsh/app/custom-operators';
 
 import { PaymentInstitutionRealmService } from '../services';
 
@@ -20,7 +19,7 @@ export class BalancesService {
             ),
         ),
         pluck('result'),
-        shareReplayRefCount(),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
     balancesCount$ = this.balances$.pipe(pluck('length'));
 

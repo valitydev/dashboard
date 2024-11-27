@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { DestroyRef, Injectable } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Invoice } from '@vality/swag-anapi-v2';
 import moment from 'moment';
 import { Observable, ReplaySubject } from 'rxjs';
@@ -10,7 +10,6 @@ import { ErrorService } from '@dsh/app/shared/services';
 
 import { PaymentInstitutionRealmService } from '../../../../../../services';
 
-@UntilDestroy()
 @Injectable()
 export class InvoiceDetailsService {
     invoice$: Observable<Invoice | null>;
@@ -24,6 +23,7 @@ export class InvoiceDetailsService {
         private searchService: SearchService,
         private errorService: ErrorService,
         private paymentInstitutionRealmService: PaymentInstitutionRealmService,
+        private dr: DestroyRef,
     ) {
         this.invoice$ = this.invoiceData$.asObservable();
         this.error$ = this.innerErrors$.asObservable();
@@ -53,7 +53,7 @@ export class InvoiceDetailsService {
                     });
                 }),
                 map(({ result }) => result?.[0] ?? null),
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
             )
             .subscribe({
                 next: (invoice) => {

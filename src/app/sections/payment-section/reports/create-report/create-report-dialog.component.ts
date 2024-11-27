@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, Inject, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@jsverse/transloco';
-import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import moment from 'moment';
 import { of, switchMap } from 'rxjs';
 import { first } from 'rxjs/operators';
@@ -16,7 +16,6 @@ import { CreateReportDialogService } from './create-report-dialog.service';
 
 const TIME_PATTERN = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
 
-@UntilDestroy()
 @Component({
     templateUrl: 'create-report-dialog.component.html',
     styleUrls: ['create-report-dialog.component.scss'],
@@ -45,6 +44,7 @@ export class CreateReportDialogComponent implements OnInit {
         private transloco: TranslocoService,
         private snackBar: MatSnackBar,
         @Inject(MAT_DIALOG_DATA) private data: { realm: string },
+        private dr: DestroyRef,
     ) {}
 
     ngOnInit() {
@@ -58,7 +58,7 @@ export class CreateReportDialogComponent implements OnInit {
                         .selectTranslate('reports.errors.createError', null, 'payment-section')
                         .pipe(first()),
                 ),
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
             )
             .subscribe((message) => this.snackBar.open(message, 'OK'));
     }

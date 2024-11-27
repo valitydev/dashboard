@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
-import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
 import { DialogSuperclass, NotifyLogService, progressTo } from '@vality/ng-core';
 import { RequestRevokeApiKeyRequestParams } from '@vality/swag-api-keys-v2';
 import { FlexModule } from 'ng-flex-layout';
@@ -12,7 +12,6 @@ import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog'
 import { ButtonModule } from '@dsh/components/buttons';
 import { SpinnerModule } from '@dsh/components/indicators';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-api-key-delete-dialog',
     standalone: true,
@@ -37,6 +36,7 @@ export class ApiKeyDeleteDialogComponent extends DialogSuperclass<
         private apiKeysService: ApiKeysService,
         private log: NotifyLogService,
         private translocoService: TranslocoService,
+        private dr: DestroyRef,
     ) {
         super();
     }
@@ -44,7 +44,7 @@ export class ApiKeyDeleteDialogComponent extends DialogSuperclass<
     confirm() {
         this.apiKeysService
             .requestRevokeApiKey({ ...this.dialogData, requestRevoke: { status: 'revoked' } })
-            .pipe(progressTo(this.progress$), untilDestroyed(this))
+            .pipe(progressTo(this.progress$), takeUntilDestroyed(this.dr))
             .subscribe({
                 next: () => {
                     this.log.success(

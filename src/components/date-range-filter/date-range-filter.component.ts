@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
 import { DateRange as MatDateRange } from '@angular/material/datepicker';
 import { TranslocoService } from '@jsverse/transloco';
-import { UntilDestroy } from '@ngneat/until-destroy';
 import { createControlProviders, getValueChanges } from '@vality/ng-core';
 import { Moment } from 'moment';
 import { switchMap, map, shareReplay } from 'rxjs/operators';
@@ -21,7 +20,6 @@ type InnerDateRange = {
     preset?: Preset;
 };
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-date-range-filter',
     templateUrl: 'date-range-filter.component.html',

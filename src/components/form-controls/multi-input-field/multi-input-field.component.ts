@@ -1,11 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, DestroyRef, Input, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormArray, FormControl } from '@angular/forms';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
 import isEqual from 'lodash-es/isEqual';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-multi-input-field',
     templateUrl: 'multi-input-field.component.html',
@@ -17,12 +16,16 @@ export class MultiInputFieldComponent extends FormControlSuperclass<string[]> im
 
     formControl = new FormArray([new FormControl('')]);
 
+    constructor(private dr: DestroyRef) {
+        super();
+    }
+
     ngOnInit(): void {
         this.formControl.valueChanges
             .pipe(
                 map((value) => value.filter(Boolean)),
                 distinctUntilChanged(isEqual),
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
             )
             .subscribe((value) => this.emitOutgoingValue(value));
     }

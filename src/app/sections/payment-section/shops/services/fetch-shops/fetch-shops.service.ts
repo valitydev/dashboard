@@ -13,7 +13,7 @@ import {
     withLatestFrom,
 } from 'rxjs/operators';
 
-import { mapToTimestamp, shareReplayRefCount } from '@dsh/app/custom-operators';
+import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { ShopsDataService } from '@dsh/app/shared';
 
 import { getShopsByRealm } from '../../../operations/operators';
@@ -36,7 +36,7 @@ export const SHOPS_LIST_PAGINATION_OFFSET = new InjectionToken('shops-list-pagin
 export class FetchShopsService {
     allShops$ = defer(() => combineLatest([this.realmData$, this.shopsDataService.shops$])).pipe(
         map(([realm, shops]) => getShopsByRealm(shops, realm)),
-        shareReplayRefCount(),
+        shareReplay({ refCount: true, bufferSize: 1 }),
     );
     shownShops$: Observable<ShopItem[]>;
     lastUpdated$: Observable<string>;
@@ -114,7 +114,7 @@ export class FetchShopsService {
             withLatestFrom(this.selectedIndex$),
             map(([curOffset]: [number, number]) => curOffset),
             scan((offset: number, limit: number) => offset + limit, 0),
-            shareReplayRefCount(),
+            shareReplay({ refCount: true, bufferSize: 1 }),
         );
     }
 
@@ -138,7 +138,7 @@ export class FetchShopsService {
                     .pipe(map((balances: ShopBalance[]) => combineShopItem(shops, balances)));
             }),
             tap(() => this.stopLoading()),
-            shareReplayRefCount(),
+            shareReplay({ refCount: true, bufferSize: 1 }),
         );
     }
 
@@ -151,7 +151,7 @@ export class FetchShopsService {
             this.shownShops$.pipe(pluck('length')),
         ]).pipe(
             map(([count, showedCount]: [number, number]) => count > showedCount),
-            shareReplayRefCount(),
+            shareReplay({ refCount: true, bufferSize: 1 }),
         );
     }
 

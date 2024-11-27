@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslocoService } from '@jsverse/transloco';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { PaymentInstitution } from '@vality/swag-payments';
 import { combineLatest, Observable, Subject, defer, ReplaySubject } from 'rxjs';
 import { filter, map, switchMapTo, first } from 'rxjs/operators';
@@ -11,7 +11,6 @@ import { SHOPS } from '@dsh/app/shared/components/inputs/shop-field';
 import { PaymentInstitutionRealmService, RealmShopsService } from './services';
 import { NavbarItemConfig, toNavbarItemConfig } from './utils';
 
-@UntilDestroy()
 @Component({
     templateUrl: 'payment-section.component.html',
     providers: [
@@ -45,13 +44,14 @@ export class PaymentSectionComponent implements OnInit {
         private route: ActivatedRoute,
         private transloco: TranslocoService,
         private realmShopsService: RealmShopsService,
+        private dr: DestroyRef,
     ) {}
 
     ngOnInit(): void {
         this.realmService.realm$
             .pipe(
                 filter((realm) => !realm),
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
             )
             .subscribe(
                 () =>
@@ -61,7 +61,7 @@ export class PaymentSectionComponent implements OnInit {
             );
 
         combineLatest([this.activeSectionChange$, this.realmChange$])
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.dr))
             .subscribe(
                 ([{ routerLink }, realm]) =>
                     void this.router.navigate(['../../', 'realm', realm, routerLink], {

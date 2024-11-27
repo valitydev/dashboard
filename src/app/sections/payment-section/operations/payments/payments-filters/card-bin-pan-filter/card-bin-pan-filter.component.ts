@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { UntilDestroy } from '@ngneat/until-destroy';
 import { createControlProviders } from '@vality/ng-core';
 
 import { FilterSuperclass } from '@dsh/components/filter';
@@ -8,7 +7,6 @@ import { binValidator, lastDigitsValidator } from '@dsh/components/form-controls
 
 import { CardBinPan } from './types/card-bin-pan';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-card-bin-pan-filter',
     templateUrl: './card-bin-pan-filter.component.html',

@@ -1,13 +1,12 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { first, pluck, switchMap } from 'rxjs/operators';
 
 import { OrgsService } from '@dsh/app/api/organizations';
 import { inProgressTo } from '@dsh/utils';
 
-@UntilDestroy()
 @Component({
     selector: 'dsh-accept-invitation',
     templateUrl: 'accept-invitation.component.html',
@@ -22,6 +21,7 @@ export class AcceptInvitationComponent {
     constructor(
         private route: ActivatedRoute,
         private organizationsService: OrgsService,
+        private dr: DestroyRef,
     ) {}
 
     @inProgressTo('isLoading$')
@@ -33,7 +33,7 @@ export class AcceptInvitationComponent {
                 switchMap((invitation: string) =>
                     this.organizationsService.joinOrg({ organizationJoinRequest: { invitation } }),
                 ),
-                untilDestroyed(this),
+                takeUntilDestroyed(this.dr),
             )
             .subscribe({
                 error: (err) => {
