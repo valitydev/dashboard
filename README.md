@@ -40,12 +40,3 @@ You can copy from examples like this one: [`_appConfig.json`](./src/assets/_appC
 ## Tests
 
 -   Run `npm run test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Utils
-
-### Analyze bundle size
-
-```sh
-npm run build -- --prod --stats-json --extraWebpackConfig webpack.extra.js
-npx webpack-bundle-analyzer dist/browser/stats.json
-```
