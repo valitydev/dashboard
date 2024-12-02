@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '@angular/material' as mat;
 @use '@vality/ng-core' as v;
 
@@ -5,10 +6,9 @@
 
 @import '../dsh/theme';
 @import '../mat/theme';
-@import '../mat/typography';
 @import '../dsh/typography';
 
-@mixin theme($config, $background, $foreground) {
+@mixin theme($_palettes, $config, $background, $foreground) {
     $basic-theme: v.create-light-theme(
         map-merge(
             $config,
@@ -54,14 +54,37 @@
     $typography: map-get($theme, typography);
 
     body.#{map-get($theme, name)} {
-        @include v.all-component-themes($theme);
+        @include v.select-theme($theme);
         @include v.typography-hierarchy($theme);
-        @include v.app($theme);
 
-        @include mat-override-typography($typography);
         @include dsh-typography($typography);
 
-        @include mat-override-theme($theme);
         @include dsh-theme($theme);
+
+        // Material 3 theme
+        $_rest: (
+            secondary: map.get($_palettes, secondary),
+            neutral: map.get($_palettes, neutral),
+            neutral-variant: map.get($_palettes, neutral-variant),
+            error: map.get($_palettes, error),
+        );
+        $_primary: map.merge(map.get($_palettes, primary), $_rest);
+        $_tertiary: map.merge(map.get($_palettes, tertiary), $_rest);
+
+        $light-theme: mat.define-theme(
+            (
+                color: (
+                    theme-type: light,
+                    primary: $_primary,
+                    tertiary: $_tertiary,
+                ),
+            )
+        );
+
+        @include mat.all-component-themes($light-theme);
+        @include mat.typography-hierarchy($light-theme);
+
+        // Overrides
+        @include mat-override-theme($light-theme);
     }
 }
