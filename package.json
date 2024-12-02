@@ -37,7 +37,7 @@
     "@angular/platform-browser-dynamic": "^18.2.12",
     "@angular/router": "^18.2.12",
     "@jsverse/transloco": "^7.5.0",
-    "@vality/ng-core": "^18.4.1-pr-83-53211ea.0",
+    "@vality/ng-core": "18.4.1-pr-83-53211ea.0",
     "@vality/swag-anapi-v2": "2.0.1-0f6d0dc.0",
     "@vality/swag-api-keys-v2": "0.1.2-321124b.0",
     "@vality/swag-claim-management": "0.1.1-b5248eb.0",
