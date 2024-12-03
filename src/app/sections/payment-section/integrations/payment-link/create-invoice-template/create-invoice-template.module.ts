@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -14,7 +15,6 @@ import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { InvoiceRandomizeAmountModule } from '@dsh/app/shared/components/invoice-randomize-amount-form';
 import { ApiModelTypesModule } from '@dsh/app/shared/pipes';
-import { ButtonModule } from '@dsh/components/buttons';
 import { FormControlsModule } from '@dsh/components/form-controls';
 import { LayoutModule } from '@dsh/components/layout';
 import { ConfirmActionDialogModule } from '@dsh/components/popups';
@@ -34,7 +34,7 @@ const EXPORTED_DECLARATIONS = [CreateInvoiceTemplateComponent];
         CommonModule,
         MatInputModule,
         MatRadioModule,
-        ButtonModule,
+        MatButtonModule,
         MatSelectModule,
         MatCheckboxModule,
         MatDividerModule,

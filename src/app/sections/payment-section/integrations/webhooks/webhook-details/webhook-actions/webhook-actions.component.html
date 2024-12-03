@@ -5,7 +5,7 @@
 >
     <div class="dsh-title">{{ t('title') }}</div>
     <div>
-        <button color="warn" dsh-text-button (click)="deleteWebhook.emit(webhookID)">
+        <button class="matv-error" mat-flat-button (click)="deleteWebhook.emit(webhookID)">
             {{ t('delete.buttonTitle') }}
         </button>
     </div>

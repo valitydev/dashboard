@@ -10,7 +10,7 @@
         fxLayoutAlign.lt-md="center stretch"
         fxLayoutGap="24px"
     >
-        <button color="accent" dsh-button (click)="createWebhook()">{{ t('create') }}</button>
+        <button mat-flat-button (click)="createWebhook()">{{ t('create') }}</button>
     </div>
 
     <ng-container *ngIf="(isLoading$ | async) || !(webhooks$ | async); else webhooksList">
