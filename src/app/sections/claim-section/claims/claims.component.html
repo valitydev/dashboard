@@ -16,7 +16,7 @@
             [initParams]="params$ | async"
             (searchParamsChanges)="search($event)"
         ></dsh-claims-search-filters>
-        <button color="accent" mat-flat-button (click)="createShop()">
+        <button mat-flat-button (click)="createShop()">
             {{ t('createClaim') }}
         </button>
     </div>
