@@ -73,8 +73,7 @@
                 </mat-form-field>
                 <button
                     [cdkCopyToClipboard]="paymentLink"
-                    color="accent"
-                    dsh-button
+                    mat-flat-button
                     (cdkCopyToClipboardCopied)="copied($event)"
                 >
                     {{ c('form.copy') }}
