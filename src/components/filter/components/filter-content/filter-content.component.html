@@ -6,10 +6,10 @@
     <mat-divider></mat-divider>
 
     <dsh-actions *transloco="let t; scope: 'components'; read: 'components.shared'" class="actions">
-        <button *ngIf="!noClearButton" color="accent" dsh-text-button (click)="clear.emit($event)">
+        <button *ngIf="!noClearButton" mat-button (click)="clear.emit($event)">
             {{ t('clear') }}
         </button>
-        <button color="accent" dsh-button (click)="save.emit($event)">
+        <button mat-flat-button (click)="save.emit($event)">
             {{ t('save') }}
         </button>
     </dsh-actions>

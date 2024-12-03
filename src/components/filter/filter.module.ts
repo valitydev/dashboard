@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { ActionsModule } from '@dsh/app/shared/components/actions';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
-import { ButtonModule } from '@dsh/components/buttons';
 import { FilterDialogComponent } from '@dsh/components/filter/components/filter-dialog/filter-dialog.component';
 import { DropdownModule } from '@dsh/components/layout';
 
@@ -22,7 +22,7 @@ import { ListLabelPipe } from './pipes/list-label/list-label.pipe';
         FlexLayoutModule,
         MatDividerModule,
         TranslocoModule,
-        ButtonModule,
+        MatButtonModule,
         ActionsModule,
         BaseDialogModule,
     ],
