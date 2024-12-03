@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,7 +13,6 @@ import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
-import { ButtonModule } from '@dsh/components/buttons';
 import { BootstrapIconModule } from '@dsh/components/indicators';
 
 import { CreateReportDialogComponent } from './create-report-dialog.component';
@@ -26,7 +26,7 @@ import { FormatTimeInputDirective } from './create-report-form/format-time-input
         MatSnackBarModule,
         MatDialogModule,
         FlexLayoutModule,
-        ButtonModule,
+        MatButtonModule,
         MatFormFieldModule,
         MatDatepickerModule,
         MatMomentDateModule,

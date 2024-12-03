@@ -5,12 +5,7 @@
 >
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="8px">
         <div class="dsh-title">{{ t('title') }}</div>
-        <button
-            [disabled]="isLoading$ | async"
-            color="accent"
-            dsh-text-button
-            (click)="downloadAll()"
-        >
+        <button [disabled]="isLoading$ | async" mat-button (click)="downloadAll()">
             {{ t('downloadAll') }}
         </button>
     </div>

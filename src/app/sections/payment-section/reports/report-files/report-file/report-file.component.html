@@ -5,7 +5,7 @@
     gdColumns="auto auto"
 >
     <div class="dsh-body-1 dsh-report-file-name">{{ file.filename }}</div>
-    <button [disabled]="isLoading$ | async" dsh-icon-button (click)="download(file.id)">
+    <button [disabled]="isLoading$ | async" mat-icon-button (click)="download(file.id)">
         <dsh-bi icon="save"></dsh-bi>
     </button>
 </div>
