@@ -40,7 +40,7 @@ export class WithdrawalErrorMessagePipe
     }
 
     transform(...params: AsyncTransformParameters) {
-        return super.asyncTransform(params);
+        return super.asyncTransform(params as never);
     }
 
     private formatErrors(error: PaymentError): Observable<string> {

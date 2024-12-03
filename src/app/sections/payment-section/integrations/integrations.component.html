@@ -3,7 +3,7 @@
     fxLayout="column"
     fxLayoutGap="32px"
 >
-    <nav [tabPanel]="tabPanel" mat-tab-nav-bar>
+    <nav [tabPanel]="tabPanel" fitInkBarToContent mat-tab-nav-bar style="width: fit-content">
         <ng-container *ngFor="let link of links">
             <a
                 #rla="routerLinkActive"

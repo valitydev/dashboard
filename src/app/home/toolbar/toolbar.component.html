@@ -1,7 +1,7 @@
 <div class="dsh-toolbar" fxLayout fxLayoutAlign="center center" fxLayoutGap="24px">
     <dsh-brand fxFlex fxLayoutAlign="start"></dsh-brand>
     <div fxFlex fxLayoutAlign="center">
-        <nav [tabPanel]="tabPanel" class="dsh-top-tab-nav-bar" mat-tab-nav-bar>
+        <nav [tabPanel]="tabPanel" class="dsh-top-tab-nav-bar" fitInkBarToContent mat-tab-nav-bar>
             <a
                 #rla="routerLinkActive"
                 *ngFor="let link of sectionLinks$ | async"

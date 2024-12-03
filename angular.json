@@ -27,21 +27,6 @@
                         "styles": [
                             "src/styles/core.scss",
                             {
-                                "input": "src/styles/themes/main.scss",
-                                "bundleName": "main-theme",
-                                "inject": false
-                            },
-                            {
-                                "input": "src/styles/themes/persian-green.scss",
-                                "bundleName": "persian-green-theme",
-                                "inject": false
-                            },
-                            {
-                                "input": "src/styles/themes/solitude.scss",
-                                "bundleName": "solitude-theme",
-                                "inject": false
-                            },
-                            {
                                 "input": "src/styles/themes/eastern.scss",
                                 "bundleName": "eastern-theme",
                                 "inject": false

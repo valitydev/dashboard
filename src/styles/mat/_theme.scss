@@ -1,15 +1,37 @@
-@import 'styles/mat-menu';
-@import 'styles/mat-autocomplete-panel';
-@import 'styles/mat-select-panel';
-@import 'styles/mat-datepicker';
-@import 'styles/mat-divider';
-@import 'styles/mat-tabs';
+@use '@angular/material' as mat;
 
 @mixin mat-override-theme($theme) {
-    @include mat-menu-override-theme($theme);
-    @include mat-autocomplete-panel-override-theme($theme);
-    @include mat-select-panel-override-theme($theme);
-    @include mat-datepicker-override-theme($theme);
-    @include mat-divider-override-theme($theme);
-    @include mat-tabs-override-theme($theme);
+    @include mat.divider-overrides(
+        (
+            color: mat.get-theme-color($theme, neutral, 90),
+        )
+    );
+
+    @include mat.tabs-overrides(
+        (
+            active-label-text-color: mat.get-theme-color($theme, primary),
+            active-focus-label-text-color: mat.get-theme-color($theme, primary),
+            active-hover-label-text-color: mat.get-theme-color($theme, primary),
+            active-ripple-color: none,
+            inactive-ripple-color: none,
+            divider-color: transparent,
+            label-text-weight: 400,
+            label-text-size: mat.get-theme-typography($theme, title-medium, font-size),
+        )
+    );
+    .mdc-tab {
+        padding-left: 0;
+    }
+
+    .mat-mdc-radio-button * {
+        cursor: pointer;
+    }
+    .mdc-radio {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        padding-left: 0 !important;
+    }
+    .mat-mdc-radio-label {
+        white-space: normal !important;
+    }
 }
