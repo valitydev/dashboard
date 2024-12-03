@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { BalanceModule } from '@dsh/app/shared/components/balance/balance.module';
 import { PaymentStatusComponent } from '@dsh/app/shared/components/payment-status';
 import { ApiModelRefsModule } from '@dsh/app/shared/pipes';
-import { ButtonModule } from '@dsh/components/buttons';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { SpinnerModule } from '@dsh/components/indicators';
 import { AccordionModule, CardModule, RowModule } from '@dsh/components/layout';
@@ -33,7 +33,7 @@ import { PaymentsPanelsComponent } from './payments-panels.component';
         PaymentsDetailsModule,
         BalanceModule,
         ApiModelRefsModule,
-        ButtonModule,
+        MatButtonModule,
         PaymentStatusComponent,
     ],
     declarations: [PaymentsPanelsComponent, PaymentsRowHeaderComponent, PaymentsRowComponent],

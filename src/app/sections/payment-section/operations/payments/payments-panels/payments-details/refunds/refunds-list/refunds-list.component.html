@@ -20,8 +20,8 @@
         <div *ngIf="hasMore">
             <button
                 *transloco="let c; scope: 'components'; read: 'components.shared'"
-                dsh-button
                 fxFlex
+                mat-flat-button
                 (click)="showMoreElements()"
             >
                 {{ c('showMore') }}

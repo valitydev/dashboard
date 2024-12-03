@@ -39,10 +39,16 @@
             fxLayoutAlign="space-between stretch"
             fxLayoutGap="16px"
         >
-            <button color="warn" dsh-button fxFlex fxFlex.gt-sm="180px" (click)="cancelHold()">
+            <button
+                class="matv-error"
+                fxFlex
+                fxFlex.gt-sm="180px"
+                mat-flat-button
+                (click)="cancelHold()"
+            >
                 {{ t('actions.deny') }}
             </button>
-            <button color="accent" dsh-button fxFlex fxFlex.gt-sm="180px" (click)="confirmHold()">
+            <button fxFlex fxFlex.gt-sm="180px" mat-flat-button (click)="confirmHold()">
                 {{ t('actions.accept') }}
             </button>
         </div>

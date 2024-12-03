@@ -10,10 +10,10 @@
             <dsh-refund-status-filter formControlName="refundStatus"></dsh-refund-status-filter>
         </div>
         <ng-container dshBaseDialogActions>
-            <button color="accent" dsh-text-button (click)="clear()">
+            <button mat-button (click)="clear()">
                 {{ t('clearParams') }}
             </button>
-            <button color="accent" dsh-button (click)="confirm()">
+            <button mat-flat-button (click)="confirm()">
                 {{ t('save') }}
             </button>
         </ng-container>

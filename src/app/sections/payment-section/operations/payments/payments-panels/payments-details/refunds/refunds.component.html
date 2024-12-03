@@ -10,8 +10,7 @@
         <button
             *ngIf="'CreateRefund' | isAccessAllowed"
             [disabled]="!isRefundAvailable"
-            color="accent"
-            dsh-button
+            mat-flat-button
             (click)="createRefund()"
         >
             {{ t('createRefund.title') }}
