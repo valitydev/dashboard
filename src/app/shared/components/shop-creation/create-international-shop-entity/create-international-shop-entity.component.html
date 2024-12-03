@@ -6,8 +6,7 @@
         <ng-container dshBaseDialogActions>
             <button
                 [disabled]="form.invalid || !!(progress$ | async)"
-                color="accent"
-                dsh-button
+                mat-flat-button
                 (click)="createShop()"
             >
                 {{ t('send') }}
