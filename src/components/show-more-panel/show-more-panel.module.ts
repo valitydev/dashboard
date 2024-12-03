@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { TranslocoModule } from '@jsverse/transloco';
-
-import { ButtonModule } from '@dsh/components/buttons';
 
 import { ShowMorePanelComponent } from './show-more-panel.component';
 
 @NgModule({
     declarations: [ShowMorePanelComponent],
-    imports: [ButtonModule, TranslocoModule],
+    imports: [MatButtonModule, TranslocoModule],
     exports: [ShowMorePanelComponent],
 })
 export class ShowMorePanelModule {}
