@@ -1,13 +1,13 @@
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexModule } from 'ng-flex-layout';
 
 import { AccordionTableModule } from '@dsh/app/shared/components/accordion-table';
-import { ButtonModule } from '@dsh/components/buttons';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { SpinnerModule } from '@dsh/components/indicators';
 import { CardModule } from '@dsh/components/layout';
@@ -28,7 +28,7 @@ import { ApiKeyRevokeComponent } from './components/api-key-revoke/api-key-revok
         CardModule,
         MatInputModule,
         CommonModule,
-        ButtonModule,
+        MatButtonModule,
         ClipboardModule,
         EmptySearchResultModule,
         SpinnerModule,

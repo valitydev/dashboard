@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatButtonModule } from '@angular/material/button';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { DialogSuperclass, NotifyLogService, progressTo } from '@vality/ng-core';
 import { RequestRevokeApiKeyRequestParams } from '@vality/swag-api-keys-v2';
@@ -9,7 +10,6 @@ import { BehaviorSubject } from 'rxjs';
 
 import { ApiKeysService } from '@dsh/app/api/api-keys';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
-import { ButtonModule } from '@dsh/components/buttons';
 import { SpinnerModule } from '@dsh/components/indicators';
 
 @Component({
@@ -21,7 +21,7 @@ import { SpinnerModule } from '@dsh/components/indicators';
         BaseDialogModule,
         SpinnerModule,
         FlexModule,
-        ButtonModule,
+        MatButtonModule,
         TranslocoModule,
         CommonModule,
     ],

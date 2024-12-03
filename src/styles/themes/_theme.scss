@@ -7,6 +7,7 @@
 @import '../dsh/theme';
 @import '../mat/theme';
 @import '../dsh/typography';
+@import '../utils/mat-component-variants';
 
 @mixin theme($_palettes, $config, $background, $foreground) {
     $basic-theme: v.create-light-theme(
@@ -83,6 +84,7 @@
 
         @include mat.all-component-themes($light-theme);
         @include mat.typography-hierarchy($light-theme);
+        @include mat-component-variants($light-theme);
 
         // Overrides
         @include mat-override-theme($light-theme);
