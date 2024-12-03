@@ -10,8 +10,7 @@
             <button
                 *transloco="let i; scope: 'payment-section'; read: 'paymentSection.invoices'"
                 [disabled]="(shops$ | async).length === 0"
-                color="accent"
-                dsh-button
+                mat-flat-button
                 (click)="create()"
             >
                 {{ i('createButton') }}

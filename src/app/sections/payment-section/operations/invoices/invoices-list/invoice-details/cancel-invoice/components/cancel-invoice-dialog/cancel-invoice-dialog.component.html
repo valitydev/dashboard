@@ -14,14 +14,10 @@
             />
         </mat-form-field>
         <div dshBaseDialogActions fxLayout="row" fxLayoutAlign="space-between center">
-            <button color="warn" dsh-text-button fxFlex="126px" (click)="cancel()">
-                {{ t('cancel') }}
-            </button>
             <button
                 [disabled]="!reason.valid"
                 class="action-button"
-                color="accent"
-                dsh-button
+                mat-flat-button
                 (click)="accept()"
             >
                 {{ t('confirm') }}

@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { TranslocoModule } from '@jsverse/transloco';
 
 import { CreatePaymentLinkFormModule } from '@dsh/app/shared/components/create-payment-link-form';
 import { DialogModule } from '@dsh/app/shared/components/dialog';
 import { CreatePaymentLinkModule } from '@dsh/app/shared/services/create-payment-link';
-import { ButtonModule } from '@dsh/components/buttons';
 
 import { CreatePaymentLinkDialogComponent } from './create-payment-link-dialog.component';
 
@@ -16,7 +16,7 @@ import { CreatePaymentLinkDialogComponent } from './create-payment-link-dialog.c
         TranslocoModule,
         CreatePaymentLinkFormModule,
         DialogModule,
-        ButtonModule,
+        MatButtonModule,
         ReactiveFormsModule,
         CreatePaymentLinkModule,
     ],

@@ -25,6 +25,6 @@
         <mat-divider *ngIf="i < payments.length - 1"></mat-divider>
     </div>
     <div *ngIf="hasMore$ | async">
-        <button dsh-button fxFlex (click)="showMore()">{{ t('showMore') }}</button>
+        <button fxFlex mat-flat-button (click)="showMore()">{{ t('showMore') }}</button>
     </div>
 </div>

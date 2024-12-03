@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { CreateInvoiceFormModule } from '@dsh/app/shared/components/create-invoice-form';
 import { DialogModule } from '@dsh/app/shared/components/dialog';
-import { ButtonModule } from '@dsh/components/buttons';
 
 import { CreateInvoiceDialogComponent } from './components/create-invoice-dialog/create-invoice-dialog.component';
 import { CreateInvoiceService } from './create-invoice.service';
@@ -18,7 +18,7 @@ import { CreateInvoiceService } from './create-invoice.service';
         CreateInvoiceFormModule,
         DialogModule,
         FlexLayoutModule,
-        ButtonModule,
+        MatButtonModule,
         ReactiveFormsModule,
     ],
     declarations: [CreateInvoiceDialogComponent],

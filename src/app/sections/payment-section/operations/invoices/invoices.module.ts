@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
@@ -16,7 +17,6 @@ import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { AuthModule } from '@dsh/app/auth';
 import { InvoiceDetailsModule } from '@dsh/app/shared/components';
-import { ButtonModule } from '@dsh/components/buttons';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { FormControlsModule } from '@dsh/components/form-controls';
 import { IndicatorsModule } from '@dsh/components/indicators';
@@ -36,7 +36,7 @@ import { InvoicesComponent } from './invoices.component';
         InvoicesRoutingModule,
         LayoutModule,
         FlexLayoutModule,
-        ButtonModule,
+        MatButtonModule,
         MatFormFieldModule,
         MatInputModule,
         MatIconModule,
