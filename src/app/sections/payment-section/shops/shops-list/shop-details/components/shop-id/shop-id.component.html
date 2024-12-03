@@ -2,7 +2,11 @@
     <div class="mat-h2">{{ p('id') }}</div>
     <div class="mat-h3">{{ id }}</div>
     <div>
-        <button [cdkCopyToClipboard]="id" dsh-button (cdkCopyToClipboardCopied)="copied($event)">
+        <button
+            [cdkCopyToClipboard]="id"
+            mat-flat-button
+            (cdkCopyToClipboardCopied)="copied($event)"
+        >
             {{ p('copy') }}
         </button>
     </div>
