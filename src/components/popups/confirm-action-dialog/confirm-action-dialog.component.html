@@ -5,10 +5,10 @@
     (cancel)="cancel()"
 >
     <ng-container dshBaseDialogActions>
-        <button color="accent" dsh-text-button (click)="cancel()">
+        <button mat-button (click)="cancel()">
             {{ t('cancel') }}
         </button>
-        <button color="accent" dsh-button (click)="confirm()">
+        <button mat-flat-button (click)="confirm()">
             {{ t('confirm') }}
         </button>
     </ng-container>
