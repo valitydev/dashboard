@@ -5,12 +5,7 @@
 >
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="8px">
         <div class="dsh-title">{{ t('title') }}</div>
-        <button
-            [disabled]="!!(progress$ | async)"
-            color="accent"
-            dsh-text-button
-            (click)="download()"
-        >
+        <button [disabled]="!!(progress$ | async)" mat-button (click)="download()">
             {{ t('downloadAll') }}
         </button>
     </div>
@@ -21,7 +16,7 @@
         gdColumns="auto auto"
     >
         <div class="dsh-body-1">{{ file.id }}</div>
-        <button [disabled]="!!(progress$ | async)" dsh-icon-button (click)="download([file.id])">
+        <button [disabled]="!!(progress$ | async)" mat-icon-button (click)="download([file.id])">
             <dsh-bi icon="save"></dsh-bi>
         </button>
     </div>
