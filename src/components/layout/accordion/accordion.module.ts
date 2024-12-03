@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { BootstrapIconModule } from '@dsh/components/indicators';
-
-import { ButtonModule } from '../../buttons';
 
 import { AccordionItemComponent, LazyPanelContentDirective } from './accordion-item';
 import { AccordionItemContentComponent } from './accordion-item-content';
@@ -21,7 +20,13 @@ const EXPORTED_DECLARATIONS = [
 ];
 
 @NgModule({
-    imports: [CommonModule, FlexLayoutModule, ButtonModule, MatDividerModule, BootstrapIconModule],
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        MatButtonModule,
+        MatDividerModule,
+        BootstrapIconModule,
+    ],
     declarations: [EXPORTED_DECLARATIONS],
     exports: [EXPORTED_DECLARATIONS],
 })
