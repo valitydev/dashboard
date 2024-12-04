@@ -10,7 +10,6 @@ import { TranslocoModule } from '@jsverse/transloco';
 import { FlexModule } from 'ng-flex-layout';
 
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
-import { ButtonModule } from '@dsh/components/buttons';
 import { BootstrapIconModule } from '@dsh/components/indicators';
 import { SelectionModule } from '@dsh/components/indicators/selection';
 import { NestedTableModule } from '@dsh/components/nested-table';
@@ -23,14 +22,13 @@ import { SelectRoleDialogComponent } from './components/select-role-dialog/selec
         NestedTableModule,
         MatCheckboxModule,
         CommonModule,
-        ButtonModule,
+        MatButtonModule,
         FlexModule,
         BaseDialogModule,
         TranslocoModule,
         MatRadioModule,
         ReactiveFormsModule,
         SelectionModule,
-        MatButtonModule,
         MatTableModule,
         BootstrapIconModule,
         FormsModule,
