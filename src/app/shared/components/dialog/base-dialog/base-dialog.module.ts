@@ -7,7 +7,6 @@ import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { ActionsModule } from '@dsh/app/shared/components/actions';
 import { NoContentModule } from '@dsh/app/shared/directives';
-import { ButtonModule } from '@dsh/components/buttons';
 import { BootstrapIconModule } from '@dsh/components/indicators';
 
 import { BaseDialogComponent } from './base-dialog.component';
@@ -24,12 +23,11 @@ const SHARED_DECLARATIONS = [
     imports: [
         CommonModule,
         FlexLayoutModule,
-        ButtonModule,
+        MatButtonModule,
         NoContentModule,
         TranslocoModule,
         MatDividerModule,
         BootstrapIconModule,
-        MatButtonModule,
         ActionsModule,
     ],
     declarations: SHARED_DECLARATIONS,

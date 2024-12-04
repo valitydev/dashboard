@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexModule } from 'ng-flex-layout';
 
 import { ErrorModule } from '@dsh/app/shared';
-import { ButtonModule } from '@dsh/components/buttons';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LinkModule } from '@dsh/components/link';
 
@@ -17,7 +17,7 @@ import { AcceptInvitationComponent } from './accept-invitation.component';
         AcceptInvitationRoutingModule,
         ErrorModule,
         TranslocoModule,
-        ButtonModule,
+        MatButtonModule,
         FlexModule,
         IndicatorsModule,
         LinkModule,

@@ -4,20 +4,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { TranslocoModule } from '@jsverse/transloco';
 
-import { ButtonModule } from '@dsh/components/buttons';
 import { BootstrapIconModule } from '@dsh/components/indicators';
 
 import { NestedTableComponent } from './nested-table.component';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        TranslocoModule,
-        MatButtonModule,
-        MatTableModule,
-        ButtonModule,
-        BootstrapIconModule,
-    ],
+    imports: [CommonModule, TranslocoModule, MatButtonModule, MatTableModule, BootstrapIconModule],
     declarations: [NestedTableComponent],
     exports: [NestedTableComponent],
 })

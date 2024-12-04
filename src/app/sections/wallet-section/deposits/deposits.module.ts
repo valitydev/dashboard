@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -8,7 +9,6 @@ import { TranslocoModule } from '@jsverse/transloco';
 import { FlexModule } from 'ng-flex-layout';
 
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
-import { ButtonModule } from '@dsh/components/buttons';
 import { IndicatorsModule, SpinnerModule } from '@dsh/components/indicators';
 import { ScrollUpModule } from '@dsh/components/navigation';
 import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
@@ -31,7 +31,7 @@ import { DepositsComponent } from './deposits.component';
         MatFormFieldModule,
         ReactiveFormsModule,
         MatSelectModule,
-        ButtonModule,
+        MatButtonModule,
         MatInputModule,
         IndicatorsModule,
         DepositsFiltersModule,

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,7 +15,6 @@ import { ErrorModule, NotificationModule } from '@dsh/app/shared';
 import { DialogModule } from '@dsh/app/shared/components/dialog';
 import { OrganizationRolesModule } from '@dsh/app/shared/components/organization-roles';
 import { FetchOrganizationsModule } from '@dsh/app/shared/services/fetch-organizations';
-import { ButtonModule } from '@dsh/components/buttons';
 import { EmptyModule } from '@dsh/components/empty';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { IndicatorsModule, SpinnerModule } from '@dsh/components/indicators';
@@ -41,7 +41,7 @@ import { OrganizationsComponent } from './organizations.component';
         ShowMorePanelModule,
         EmptySearchResultModule,
         SpinnerModule,
-        ButtonModule,
+        MatButtonModule,
         AccordionModule,
         OrganizationsAPIModule,
         MatDividerModule,

@@ -21,10 +21,15 @@
     <mat-divider></mat-divider>
     <div class="dsh-title">{{ t('titles.actions') }}</div>
     <div fxLayout fxLayoutGap="24px">
-        <button *ngIf="hasAdminAccess$ | async" color="accent" dsh-button (click)="rename()">
+        <button *ngIf="hasAdminAccess$ | async" mat-flat-button (click)="rename()">
             {{ t('actions.rename') }}
         </button>
-        <button *ngIf="(isOwner$ | async) === false" color="warn" dsh-button (click)="leave()">
+        <button
+            *ngIf="(isOwner$ | async) === false"
+            class="matv-error"
+            mat-flat-button
+            (click)="leave()"
+        >
             {{ t('actions.leave') }}
         </button>
     </div>

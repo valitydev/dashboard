@@ -16,8 +16,7 @@
     <ng-container dshBaseDialogActions>
         <button
             [disabled]="form.invalid || (inProgress$ | async)"
-            color="accent"
-            dsh-button
+            mat-flat-button
             (click)="update()"
         >
             {{ t('save') }}

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -15,7 +16,6 @@ import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { AmountCurrencyModule } from '@dsh/app/shared';
-import { ButtonModule } from '@dsh/components/buttons';
 import { FormControlsModule } from '@dsh/components/form-controls';
 import { LayoutModule } from '@dsh/components/layout';
 import { ConfirmActionDialogModule } from '@dsh/components/popups';
@@ -29,7 +29,7 @@ import { CreateInvoiceFormComponent } from './create-invoice-form.component';
         CommonModule,
         LayoutModule,
         FlexLayoutModule,
-        ButtonModule,
+        MatButtonModule,
         MatFormFieldModule,
         MatInputModule,
         ReactiveFormsModule,
