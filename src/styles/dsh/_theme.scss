@@ -1,4 +1,3 @@
-@import '../../components/buttons/button/button-theme';
 @import '../../components/layout/card/card-theme';
 @import '../../components/layout/panel/panel-theme';
 @import '../../components/layout/dropdown/dropdown-theme';
@@ -36,7 +35,6 @@
     @include dsh-state-nav-theme($theme);
     @include dsh-navbar-item-theme($theme);
     @include dsh-mobile-grid-theme($theme);
-    @include dsh-button-theme($theme);
     @include dsh-status-theme($theme);
     @include dsh-details-item-theme($theme);
     @include dsh-panel-theme($theme);
