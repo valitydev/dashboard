@@ -10,7 +10,7 @@
         fxLayoutAlign="end"
         fxLayoutGap="16px"
     >
-        <button color="accent" dsh-button (click)="createShop()">{{ t('createShop') }}</button>
+        <button mat-flat-button (click)="createShop()">{{ t('createShop') }}</button>
     </div>
     <dsh-shops-list
         [hasMore]="hasMore$ | async"

@@ -26,8 +26,7 @@
     <ng-container dshBaseDialogActions>
         <button
             [disabled]="emailControl.invalid || !selectedRoles.length || (inProgress$ | async)"
-            color="accent"
-            dsh-button
+            mat-flat-button
             (click)="create()"
         >
             {{ t('send') }}

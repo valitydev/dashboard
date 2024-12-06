@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatOptionModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -16,7 +17,6 @@ import { AccordionTableModule } from '@dsh/app/shared/components/accordion-table
 import { DialogModule } from '@dsh/app/shared/components/dialog';
 import { ClaimFieldModule } from '@dsh/app/shared/components/inputs/claim-field';
 import { IdentityFieldComponent } from '@dsh/app/shared/components/inputs/identity-field';
-import { ButtonModule } from '@dsh/components/buttons';
 import { DateRangeFilterModule } from '@dsh/components/date-range-filter';
 import { FilterModule } from '@dsh/components/filter';
 import { FiltersGroupModule } from '@dsh/components/filters-group';
@@ -45,7 +45,7 @@ import { ReportsComponent } from './reports.component';
         FilterModule,
         TranslocoModule,
         IdentityFilterModule,
-        ButtonModule,
+        MatButtonModule,
         GridModule,
         ExtendedModule,
         DialogModule,

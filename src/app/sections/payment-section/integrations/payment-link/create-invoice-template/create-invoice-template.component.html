@@ -53,8 +53,7 @@
     >
         <button
             [disabled]="control.invalid || (isLoading$ | async)"
-            color="accent"
-            dsh-button
+            mat-flat-button
             (click)="nextStep()"
         >
             {{ t('next') }}

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDividerModule } from '@angular/material/divider';
@@ -12,7 +13,6 @@ import { FlexModule, GridModule } from 'ng-flex-layout';
 
 import { DialogModule } from '@dsh/app/shared/components/dialog';
 import { OrganizationRolesModule } from '@dsh/app/shared/components/organization-roles';
-import { ButtonModule } from '@dsh/components/buttons';
 import { EmptyModule } from '@dsh/components/empty';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { IndicatorsModule, SpinnerModule } from '@dsh/components/indicators';
@@ -38,7 +38,7 @@ import { InvitationsComponent } from './invitations.component';
         ShowMorePanelModule,
         TranslocoModule,
         FlexModule,
-        ButtonModule,
+        MatButtonModule,
         MatInputModule,
         ReactiveFormsModule,
         MatDatepickerModule,

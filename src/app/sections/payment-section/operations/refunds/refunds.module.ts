@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,7 +12,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
-import { ButtonModule } from '@dsh/components/buttons';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { FormControlsModule } from '@dsh/components/form-controls';
 import { IndicatorsModule } from '@dsh/components/indicators';
@@ -30,7 +30,7 @@ import { RefundsComponent } from './refunds.component';
         RefundsRoutingModule,
         LayoutModule,
         FlexLayoutModule,
-        ButtonModule,
+        MatButtonModule,
         MatFormFieldModule,
         MatInputModule,
         MatIconModule,

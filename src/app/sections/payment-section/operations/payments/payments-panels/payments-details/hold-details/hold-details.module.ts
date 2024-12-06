@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
-
-import { ButtonModule } from '@dsh/components/buttons';
 
 import { HumanizeDurationModule } from '../../../../../../../humanize-duration';
 
@@ -19,7 +18,7 @@ import { HoldActivePipe } from './pipes/hold-active/hold-active.pipe';
         HumanizeDurationModule,
         CreateHoldModule,
         CancelHoldModule,
-        ButtonModule,
+        MatButtonModule,
         TranslocoModule,
     ],
     declarations: [HoldDetailsComponent, HoldActivePipe],

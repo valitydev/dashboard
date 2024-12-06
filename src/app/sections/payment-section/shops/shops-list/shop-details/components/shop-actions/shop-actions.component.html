@@ -10,7 +10,7 @@
 
     <ng-template #activateButton>
         <ng-container>
-            <button color="accent" dsh-button (click)="activate(shop.id)">
+            <button mat-flat-button (click)="activate(shop.id)">
                 {{ p('activate') }}
             </button>
         </ng-container>
@@ -18,7 +18,7 @@
 
     <ng-template #suspendButton>
         <ng-container>
-            <button color="warn" dsh-button (click)="suspend(shop.id)">
+            <button class="matv-error" mat-flat-button (click)="suspend(shop.id)">
                 {{ p('suspend') }}
             </button>
         </ng-container>

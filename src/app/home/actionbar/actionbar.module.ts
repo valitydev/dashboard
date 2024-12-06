@@ -2,6 +2,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
@@ -12,7 +13,6 @@ import { FlexLayoutModule } from 'ng-flex-layout';
 import { ClaimsService } from '@dsh/app/api/claim-management';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { FetchOrganizationsModule } from '@dsh/app/shared/services/fetch-organizations';
-import { ButtonModule } from '@dsh/components/buttons';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { DropdownModule } from '@dsh/components/layout';
 import { LimitedPanelComponent } from '@dsh/components/layout/limited-panel/limited-panel.component';
@@ -29,7 +29,6 @@ import { UserDropdownComponent } from './components/user-dropdown/user-dropdown.
         FlexLayoutModule,
         DropdownModule,
         OverlayModule,
-        ButtonModule,
         IndicatorsModule,
         MatMenuModule,
         RouterModule,
@@ -41,6 +40,7 @@ import { UserDropdownComponent } from './components/user-dropdown/user-dropdown.
         FormsModule,
         BaseDialogModule,
         LimitedPanelComponent,
+        MatButtonModule,
     ],
     declarations: [
         ActionbarComponent,

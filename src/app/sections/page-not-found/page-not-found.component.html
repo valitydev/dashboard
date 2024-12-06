@@ -2,8 +2,7 @@
     <div class="dsh-display-1">404</div>
     <button
         *transloco="let t; scope: 'components'; read: 'components.pageNotFound'"
-        color="primary"
-        dsh-button
+        mat-flat-button
         (click)="back()"
     >
         {{ t('back') }}

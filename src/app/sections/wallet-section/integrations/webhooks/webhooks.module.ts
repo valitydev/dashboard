@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexModule } from 'ng-flex-layout';
 
-import { ButtonModule } from '@dsh/components/buttons';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { SpinnerModule } from '@dsh/components/indicators';
 
@@ -16,7 +16,7 @@ import { WebhooksComponent } from './webhooks.component';
 @NgModule({
     imports: [
         WebhooksRoutingModule,
-        ButtonModule,
+        MatButtonModule,
         CommonModule,
         FlexModule,
         TranslocoModule,

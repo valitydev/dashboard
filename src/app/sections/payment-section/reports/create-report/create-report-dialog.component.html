@@ -17,9 +17,8 @@
     <ng-container dshBaseDialogActions>
         <button
             [disabled]="!form.valid || (isLoading$ | async)"
-            color="accent"
-            dsh-button
             fxFlex.gt-sm="160px"
+            mat-flat-button
             (click)="create(form.value)"
         >
             {{ t('create') }}

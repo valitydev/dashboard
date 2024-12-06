@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -14,7 +15,6 @@ import {
     RefundDetailsModule as ApiRefundDetailsModule,
 } from '@dsh/app/shared/components';
 import { ApiModelRefsModule, AmountCurrencyModule } from '@dsh/app/shared/pipes';
-import { ButtonModule } from '@dsh/components/buttons';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
 
@@ -33,7 +33,7 @@ import { TaxModeToTaxRatePipe } from './pipes/tax-mode-to-tax-rate/tax-mode-to-t
     imports: [
         TranslocoModule,
         LayoutModule,
-        ButtonModule,
+        MatButtonModule,
         FlexLayoutModule,
         CommonModule,
         MatSnackBarModule,

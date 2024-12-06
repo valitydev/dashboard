@@ -21,19 +21,13 @@
         </div>
     </ng-template>
     <ng-container dshBaseDialogActions>
-        <button
-            *ngIf="accessToken; else confirmActions"
-            color="primary"
-            dsh-button
-            (click)="copy()"
-        >
+        <button *ngIf="accessToken; else confirmActions" mat-flat-button (click)="copy()">
             {{ t('copy') }}
         </button>
         <ng-template #confirmActions>
             <button
                 [disabled]="form.invalid || !!(progress$ | async)"
-                color="primary"
-                dsh-button
+                mat-flat-button
                 (click)="confirm()"
             >
                 {{ t('confirm') }}

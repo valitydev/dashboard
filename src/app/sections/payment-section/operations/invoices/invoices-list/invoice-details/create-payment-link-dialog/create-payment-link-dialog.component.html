@@ -13,17 +13,8 @@
         dshBaseDialogActions
     >
         <button
-            [disabled]="inProgress$ | async"
-            color="accent"
-            dsh-text-button
-            (click)="formControl.reset()"
-        >
-            {{ t('clearForm') }}
-        </button>
-        <button
             [disabled]="formControl.invalid || (inProgress$ | async)"
-            color="accent"
-            dsh-button
+            mat-flat-button
             (click)="create()"
         >
             {{ c('create') }}

@@ -27,8 +27,7 @@
                 <dsh-actions>
                     <button
                         [disabled]="!!(progress$ | async)"
-                        color="accent"
-                        dsh-text-button
+                        mat-button
                         (click)="currentStep$.next(step.InvoiceTemplate)"
                     >
                         {{ t('back') }}
@@ -39,8 +38,7 @@
                     >
                         <button
                             [disabled]="!!(progress$ | async)"
-                            color="accent"
-                            dsh-button
+                            mat-flat-button
                             (click)="create()"
                         >
                             {{ t('create') }}
@@ -49,8 +47,7 @@
                     <ng-template #clearButton>
                         <button
                             [disabled]="!!(progress$ | async)"
-                            color="accent"
-                            dsh-text-button
+                            mat-button
                             (click)="formControl.reset()"
                         >
                             {{ t('clearForm') }}

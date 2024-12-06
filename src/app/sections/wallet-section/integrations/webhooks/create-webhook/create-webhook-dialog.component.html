@@ -2,14 +2,10 @@
     <dsh-base-dialog [title]="t('createWebhook.title')" (cancel)="cancel()">
         <dsh-create-webhook-form [form]="form"></dsh-create-webhook-form>
         <div dshBaseDialogActions fxLayout="row" fxLayoutAlign="space-between center">
-            <button color="warn" dsh-text-button fxFlex="126px" (click)="cancel()">
-                {{ t('cancel') }}
-            </button>
             <button
                 [disabled]="(isLoading$ | async) || !form.valid"
                 class="action-button"
-                color="accent"
-                dsh-button
+                mat-flat-button
                 (click)="save()"
             >
                 {{ t('createWebhook.create') }}

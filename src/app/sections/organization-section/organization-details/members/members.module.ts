@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,7 +13,6 @@ import { FlexLayoutModule } from 'ng-flex-layout';
 import { OrganizationsModule as OrganizationsAPIModule } from '@dsh/app/api/organizations';
 import { ErrorModule, NotificationModule } from '@dsh/app/shared';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
-import { ButtonModule } from '@dsh/components/buttons';
 import { EmptyModule } from '@dsh/components/empty';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { IndicatorsModule, SpinnerModule } from '@dsh/components/indicators';
@@ -41,7 +41,7 @@ import { MembersComponent } from './members.component';
         ShowMorePanelModule,
         EmptySearchResultModule,
         SpinnerModule,
-        ButtonModule,
+        MatButtonModule,
         AccordionModule,
         OrganizationsAPIModule,
         MatDividerModule,

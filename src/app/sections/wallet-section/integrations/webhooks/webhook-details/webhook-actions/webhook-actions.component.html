@@ -6,8 +6,8 @@
     <div class="dsh-title">{{ t('title') }}</div>
     <div>
         <button
-            color="warn"
-            dsh-text-button
+            class="matv-error"
+            mat-flat-button
             (click)="deleteWebhook.emit({ webhookID: webhookID, identityID: identityID })"
         >
             {{ t('buttons.delete') }}

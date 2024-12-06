@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,7 +18,6 @@ import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog'
 import { MaxLengthInputModule } from '@dsh/app/shared/components/inputs/max-length-input/max-length-input.module';
 import { CommonError, ErrorService, NotificationService } from '@dsh/app/shared/services';
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
-import { ButtonModule } from '@dsh/components/buttons';
 
 import { AccountsService } from '../../services/accounts/accounts.service';
 import { RefundsService } from '../../services/refunds/refunds.service';
@@ -56,7 +56,7 @@ describe('CreateRefundDialogComponent', () => {
                 MatCheckboxModule,
                 MatFormFieldModule,
                 MatInputModule,
-                ButtonModule,
+                MatButtonModule,
                 FlexLayoutModule,
                 BaseDialogModule,
                 MaxLengthInputModule,

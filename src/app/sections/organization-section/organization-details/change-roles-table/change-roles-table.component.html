@@ -16,7 +16,7 @@
         [headersTemplates]="{ add: headerTpl }"
     >
         <ng-template #headerTpl let-column="column">
-            <button color="accent" dsh-button (click)="add()">{{ t('add') }}</button>
+            <button mat-flat-button (click)="add()">{{ t('add') }}</button>
         </ng-template>
         <ng-template #roleCellTpl let-column="column" let-value="value">
             <mat-checkbox
@@ -45,8 +45,8 @@
         <ng-template #footerCellTpl let-column="column" let-value="value">
             <button
                 [disabled]="!(isAllowRemove(column?.field) | async) || inProgress"
-                color="warn"
-                dsh-button
+                class="matv-error"
+                mat-flat-button
                 (click)="remove(column.field)"
             >
                 {{ t('remove') }}

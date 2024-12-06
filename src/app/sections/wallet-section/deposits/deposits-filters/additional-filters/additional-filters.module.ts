@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexModule } from 'ng-flex-layout';
 
 import { DialogModule } from '@dsh/app/shared/components/dialog';
-import { ButtonModule } from '@dsh/components/buttons';
 
 import { DialogFiltersComponent } from './components/dialog-filters/dialog-filters.component';
 import { DepositStatusFilterModule } from './deposit-status-filter';
@@ -18,7 +18,7 @@ import { MainInfoFiltersModule } from './main-info-filters';
         DialogModule,
         FlexModule,
         MatDividerModule,
-        ButtonModule,
+        MatButtonModule,
         TranslocoModule,
         MainInfoFiltersModule,
         DepositStatusFilterModule,

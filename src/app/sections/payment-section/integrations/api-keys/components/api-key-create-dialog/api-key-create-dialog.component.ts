@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Component, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ReactiveFormsModule, NonNullableFormBuilder } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { DialogSuperclass, progressTo, NotifyLogService } from '@vality/ng-core';
@@ -12,7 +13,6 @@ import { BehaviorSubject } from 'rxjs';
 import { ApiKeysService } from '@dsh/app/api/api-keys';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services';
-import { ButtonModule } from '@dsh/components/buttons';
 import { SpinnerModule } from '@dsh/components/indicators';
 
 @Component({
@@ -24,7 +24,7 @@ import { SpinnerModule } from '@dsh/components/indicators';
         BaseDialogModule,
         SpinnerModule,
         FlexModule,
-        ButtonModule,
+        MatButtonModule,
         TranslocoModule,
         MatInputModule,
         ReactiveFormsModule,

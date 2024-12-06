@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -11,7 +12,6 @@ import { TranslocoModule } from '@jsverse/transloco';
 import { FlexModule } from 'ng-flex-layout';
 
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
-import { ButtonModule } from '@dsh/components/buttons';
 
 import { CreateWebhookDialogComponent } from './create-webhook-dialog.component';
 import { CreateWebhookFormComponent } from './create-webhook-form';
@@ -21,7 +21,7 @@ import { CreateWebhookService } from './create-webhook.service';
     imports: [
         CommonModule,
         FlexModule,
-        ButtonModule,
+        MatButtonModule,
         TranslocoModule,
         MatFormFieldModule,
         MatSelectModule,

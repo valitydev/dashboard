@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { ApiModelRefsModule } from '@dsh/app/shared/pipes';
-import { ButtonModule } from '@dsh/components/buttons';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
 
@@ -21,7 +21,7 @@ import { ReportMainInfoComponent } from './report-main-info';
     imports: [
         TranslocoModule,
         LayoutModule,
-        ButtonModule,
+        MatButtonModule,
         FlexLayoutModule,
         CommonModule,
         MatSnackBarModule,

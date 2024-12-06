@@ -11,10 +11,9 @@
             <button
                 [disabled]="(isLoading$ | async) || !form.valid"
                 class="action-button"
-                color="accent"
-                dsh-button
                 fxFlex
                 fxFlex.gt-sm="none"
+                mat-flat-button
                 (click)="save()"
             >
                 {{ t('createWebhook.create') }}

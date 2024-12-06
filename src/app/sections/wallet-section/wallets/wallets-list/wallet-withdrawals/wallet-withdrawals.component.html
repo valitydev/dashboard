@@ -20,7 +20,7 @@
     </div>
     <button
         *ngIf="(hasMore$ | async) && (isLoading$ | async) === false && !(errors$ | async)"
-        dsh-button
+        mat-flat-button
         (click)="fetchMore()"
     >
         <ng-container *transloco="let c; scope: 'components'; read: 'components.shared'">

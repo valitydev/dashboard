@@ -10,18 +10,17 @@
         <ng-container *ngIf="invoice.status === 'unpaid'">
             <button
                 *ngIf="'PaymentLinks' | isAccessAllowed"
-                color="accent"
-                dsh-button
+                mat-flat-button
                 (click)="createPaymentLink()"
             >
                 {{ t('createPaymentLink') }}
             </button>
-            <button color="warn" dsh-button (click)="cancelInvoice()">
+            <button class="matv-error" mat-flat-button (click)="cancelInvoice()">
                 {{ t('cancelInvoice') }}
             </button>
         </ng-container>
         <ng-container *ngIf="invoice.status === 'paid'">
-            <button color="accent" dsh-button (click)="fulfillInvoice()">
+            <button mat-flat-button (click)="fulfillInvoice()">
                 {{ t('fulfillInvoice') }}
             </button>
         </ng-container>

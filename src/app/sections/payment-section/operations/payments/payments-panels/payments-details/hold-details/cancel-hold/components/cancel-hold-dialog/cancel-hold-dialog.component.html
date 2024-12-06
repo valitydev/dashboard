@@ -12,12 +12,7 @@
             ></dsh-max-length-input>
         </form>
         <ng-container dshBaseDialogActions>
-            <button
-                [disabled]="form.pristine || form.invalid"
-                color="accent"
-                dsh-button
-                (click)="confirm()"
-            >
+            <button [disabled]="form.pristine || form.invalid" mat-flat-button (click)="confirm()">
                 {{ t('confirm') }}
             </button>
         </ng-container>

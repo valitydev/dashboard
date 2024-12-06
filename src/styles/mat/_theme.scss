@@ -7,6 +7,12 @@
         )
     );
 
+    @include mat.icon-button-overrides(
+        (
+            state-layer-color: none,
+        )
+    );
+
     @include mat.tabs-overrides(
         (
             active-label-text-color: mat.get-theme-color($theme, primary),

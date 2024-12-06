@@ -12,7 +12,7 @@
     <mat-divider></mat-divider>
     <div fxLayout fxLayoutAlign="space-between">
         <div class="dsh-title">{{ t('titles.roles') }}</div>
-        <button color="accent" dsh-button (click)="editRoles()">
+        <button mat-flat-button (click)="editRoles()">
             {{ t('actions.editRoles') }}
         </button>
     </div>
@@ -21,7 +21,7 @@
     <mat-divider></mat-divider>
     <div class="dsh-title">{{ t('titles.actions') }}</div>
     <div>
-        <button color="warn" dsh-button (click)="removeFromOrganization()">
+        <button class="matv-error" mat-flat-button (click)="removeFromOrganization()">
             {{ t('actions.removeFromOrganization') }}
         </button>
     </div>

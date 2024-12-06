@@ -19,4 +19,12 @@ module.exports = {
         logLevel: 'debug',
         headers: { Origin: `https://dashboard.${PROXY_TARGET}` },
     },
+    '/__shrt': {
+        target: `https://shrt.${PROXY_TARGET}`,
+        secure: false,
+        changeOrigin: true,
+        pathRewrite: { '^/__shrt': '' },
+        logLevel: 'debug',
+        headers: { Origin: `https://dashboard.${PROXY_TARGET}` },
+    },
 };

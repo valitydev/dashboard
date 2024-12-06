@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { AuthModule } from '@dsh/app/auth';
 import { ShopCreationModule } from '@dsh/app/shared/components/shop-creation';
-import { ButtonModule } from '@dsh/components/buttons';
 
 import { FetchShopsService } from './services/fetch-shops/fetch-shops.service';
 import { ShopsBalanceService } from './services/shops-balance/shops-balance.service';
@@ -25,7 +25,7 @@ import { ShopsComponent } from './shops.component';
         RouterModule,
         ShopListModule,
         ShopCreationModule,
-        ButtonModule,
+        MatButtonModule,
         TranslocoModule,
         AuthModule,
     ],

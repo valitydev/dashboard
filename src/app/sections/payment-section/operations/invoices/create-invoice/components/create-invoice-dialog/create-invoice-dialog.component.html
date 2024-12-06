@@ -8,15 +8,7 @@
         *transloco="let t; scope: 'components'; read: 'components.shared'"
         dshBaseDialogActions
     >
-        <button
-            [disabled]="formControl.pristine"
-            color="accent"
-            dsh-text-button
-            (click)="formControl.reset()"
-        >
-            {{ t('clearForm') }}
-        </button>
-        <button [disabled]="formControl.invalid" color="accent" dsh-button (click)="create()">
+        <button [disabled]="formControl.invalid" mat-flat-button (click)="create()">
             {{ t('create') }}
         </button>
     </ng-container>

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,7 +12,6 @@ import { FlexModule } from 'ng-flex-layout';
 
 import { ClaimsService } from '@dsh/app/api/claim-management';
 import { ShopCreationModule } from '@dsh/app/shared/components/shop-creation';
-import { ButtonModule } from '@dsh/components/buttons';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule, SectionHeaderModule } from '@dsh/components/layout';
 import { StateNavModule } from '@dsh/components/navigation';
@@ -36,7 +36,7 @@ import { ClaimsComponent } from './claims.component';
         IndicatorsModule,
         MatIconModule,
         StateNavModule,
-        ButtonModule,
+        MatButtonModule,
         ClaimsListModule,
         ClaimsSearchFiltersModule,
         ShopCreationModule,

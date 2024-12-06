@@ -2,8 +2,7 @@
     *transloco="let t; scope: 'components'; read: 'components.shared'"
     [disabled]="isLoading"
     class="dsh-show-more-btn"
-    color="accent"
-    dsh-text-button
+    mat-button
     (click)="getMore()"
 >
     {{ isLoading ? t('loading') : t('showMore') }}

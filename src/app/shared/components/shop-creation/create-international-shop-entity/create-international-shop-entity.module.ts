@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,7 +21,6 @@ import { CreatedExistingSwitchModule } from '@dsh/app/shared/components/shop-cre
 import { ExistingContractFormModule } from '@dsh/app/shared/components/shop-creation/existing-contract-form/existing-contract-form.module';
 import { ShopDetailsFormModule } from '@dsh/app/shared/components/shop-creation/shop-details-form';
 import { CountryCodesModule } from '@dsh/app/shared/services';
-import { ButtonModule } from '@dsh/components/buttons';
 
 import { CurrencyAutocompleteFieldModule } from '../../inputs/currency-autocomplete-field';
 
@@ -38,7 +38,7 @@ import { CreateInternationalShopEntityService } from './services/create-internat
         MatInputModule,
         MatDividerModule,
         MatCheckboxModule,
-        ButtonModule,
+        MatButtonModule,
         CountryCodesModule,
         BaseDialogModule,
         CountryAutocompleteFieldModule,

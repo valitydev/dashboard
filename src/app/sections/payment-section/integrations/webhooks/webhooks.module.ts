@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
@@ -10,7 +11,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexModule } from 'ng-flex-layout';
 
-import { ButtonModule } from '@dsh/components/buttons';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { SpinnerModule } from '@dsh/components/indicators';
 import { ConfirmActionDialogModule } from '@dsh/components/popups';
@@ -24,7 +24,7 @@ import { WebhooksComponent } from './webhooks.component';
 @NgModule({
     imports: [
         WebhooksRoutingModule,
-        ButtonModule,
+        MatButtonModule,
         MatDialogModule,
         CommonModule,
         FlexModule,

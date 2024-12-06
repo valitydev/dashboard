@@ -10,7 +10,7 @@
         <div>
             <button
                 [cdkCopyToClipboard]="key"
-                dsh-button
+                mat-button
                 (cdkCopyToClipboardCopied)="copied($event)"
             >
                 {{ t('buttons.copy') }}

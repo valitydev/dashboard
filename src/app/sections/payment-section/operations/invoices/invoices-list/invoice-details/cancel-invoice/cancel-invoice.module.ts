@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexModule } from 'ng-flex-layout';
 
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
-import { ButtonModule } from '@dsh/components/buttons';
 
 import { CancelInvoiceDialogComponent } from './components/cancel-invoice-dialog/cancel-invoice-dialog.component';
 
@@ -19,7 +19,7 @@ import { CancelInvoiceDialogComponent } from './components/cancel-invoice-dialog
         ReactiveFormsModule,
         MatFormFieldModule,
         MatInputModule,
-        ButtonModule,
+        MatButtonModule,
         BaseDialogModule,
     ],
     declarations: [CancelInvoiceDialogComponent],
