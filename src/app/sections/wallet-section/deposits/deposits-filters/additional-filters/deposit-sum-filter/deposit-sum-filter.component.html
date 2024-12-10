@@ -4,11 +4,11 @@
         <form [formGroup]="form" fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="24px">
             <mat-form-field fxFlex>
                 <mat-label>{{ t('depositAmountFrom') }}</mat-label>
-                <dsh-format-input format="amount" formControlName="min"></dsh-format-input>
+                <input formControlName="min" matInput type="number" />
             </mat-form-field>
             <mat-form-field fxFlex>
                 <mat-label>{{ t('depositAmountTo') }}</mat-label>
-                <dsh-format-input format="amount" formControlName="max"></dsh-format-input>
+                <input formControlName="max" matInput type="number" />
             </mat-form-field>
         </form>
     </div>
