@@ -35,7 +35,7 @@
 
         <mat-form-field>
             <mat-label>{{ c('form.cost') }}</mat-label>
-            <dsh-format-input format="amount" formControlName="amount" required></dsh-format-input>
+            <input formControlName="amount" matInput required type="number" />
             <span matTextPrefix>{{ currency }}&nbsp;</span>
         </mat-form-field>
 
