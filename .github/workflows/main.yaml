@@ -36,6 +36,20 @@ jobs:
           directory: 'dist/browser'
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           branch: main
+      - name: Set pcigate config
+        run: |
+          printf "$APP2_ENV_FILE" > dist/browser/assets/appConfig.json
+        env:
+          APP2_ENV_FILE: ${{secrets.APP2_ENV_FILE}}
+      - name: Publish pcigate to CF Pages
+        uses: cloudflare/pages-action@1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: 'dashboard-pgate'
+          directory: 'dist/browser'
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
   notify:
     name: Notify
     runs-on: ubuntu-latest
