@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
@@ -26,6 +27,7 @@ import { CreateHoldService } from './create-hold.service';
         MatFormFieldModule,
         FormatInputModule,
         MatButtonModule,
+        MatInputModule,
     ],
     declarations: [CreateHoldDialogComponent],
     providers: [CreateHoldService],
