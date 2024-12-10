@@ -11,6 +11,11 @@ import { CardFilterForm } from './types';
     templateUrl: './card-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => CardFilterComponent),
+    styles: `
+        .bin ::ng-deep.mat-mdc-form-field-infix {
+            max-width: calc(1ch * 7);
+        }
+    `,
 })
 export class CardFilterComponent extends FormGroupSuperclass<CardFilterForm> {
     control = this.fb.group({

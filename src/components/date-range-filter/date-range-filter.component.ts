@@ -147,7 +147,7 @@ export class DateRangeFilterComponent extends FilterSuperclass<
         const { start, end } =
             dateRange?.preset && dateRange.preset !== Preset.Custom
                 ? createDateRangeByPreset(dateRange.preset)
-                : dateRange ?? {};
+                : (dateRange ?? {});
         return start && end
             ? {
                   dateRange: new MatDateRange(start, end),

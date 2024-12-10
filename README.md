@@ -2,14 +2,14 @@
 
 ## Libraries
 
--   [Angular CLI](https://github.com/angular/angular-cli)
--   [Angular Material](https://material.angular.io/)
--   [Prettier](https://prettier.io/)
+- [Angular CLI](https://github.com/angular/angular-cli)
+- [Angular Material](https://material.angular.io/)
+- [Prettier](https://prettier.io/)
 
 ## Guides
 
--   [Using typography](https://material.angular.io/guide/typography)
--   [Theming your components](https://material.angular.io/guide/theming-your-components)
+- [Using typography](https://material.angular.io/guide/typography)
+- [Theming your components](https://material.angular.io/guide/theming-your-components)
 
 ## Installation
 
@@ -39,4 +39,4 @@ You can copy from examples like this one: [`_appConfig.json`](./src/assets/_appC
 
 ## Tests
 
--   Run `npm run test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Run `npm run test` to execute the unit tests via [Karma](https://karma-runner.github.io).
