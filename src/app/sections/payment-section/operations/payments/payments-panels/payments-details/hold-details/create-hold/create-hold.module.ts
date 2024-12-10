@@ -10,7 +10,6 @@ import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { MaxLengthInputModule } from '@dsh/app/shared/components/inputs/max-length-input/max-length-input.module';
-import { FormatInputModule } from '@dsh/components/form-controls';
 
 import { CreateHoldDialogComponent } from './components/create-hold-dialog/create-hold-dialog.component';
 import { CreateHoldService } from './create-hold.service';
@@ -25,7 +24,6 @@ import { CreateHoldService } from './create-hold.service';
         MatCheckboxModule,
         MaxLengthInputModule,
         MatFormFieldModule,
-        FormatInputModule,
         MatButtonModule,
         MatInputModule,
     ],

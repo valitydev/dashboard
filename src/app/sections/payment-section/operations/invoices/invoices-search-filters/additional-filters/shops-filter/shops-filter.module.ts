@@ -6,7 +6,6 @@ import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { ShopsFieldModule } from '@dsh/app/shared/components/inputs/shops-field';
-import { FormatInputModule } from '@dsh/components/form-controls';
 
 import { ShopsFilterComponent } from './shops-filter.component';
 
@@ -14,7 +13,6 @@ import { ShopsFilterComponent } from './shops-filter.component';
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        FormatInputModule,
         FlexLayoutModule,
         TranslocoModule,
         MatFormFieldModule,

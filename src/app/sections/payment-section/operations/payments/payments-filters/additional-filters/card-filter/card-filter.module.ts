@@ -6,8 +6,6 @@ import { MatInputModule } from '@angular/material/input';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
-import { FormatInputModule } from '@dsh/components/form-controls';
-
 import { CardBinPanFilterModule } from '../../card-bin-pan-filter';
 
 import { CardFilterComponent } from './card-filter.component';
@@ -20,7 +18,6 @@ import { CardFilterComponent } from './card-filter.component';
         TranslocoModule,
         CardBinPanFilterModule,
         MatFormFieldModule,
-        FormatInputModule,
         MatInputModule,
     ],
     declarations: [CardFilterComponent],

@@ -6,15 +6,12 @@ import { MatInputModule } from '@angular/material/input';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
-import { FormatInputModule } from '@dsh/components/form-controls';
-
 import { DepositSumFilterComponent } from './deposit-sum-filter.component';
 
 @NgModule({
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        FormatInputModule,
         FlexLayoutModule,
         TranslocoModule,
         MatFormFieldModule,
