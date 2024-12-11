@@ -60,24 +60,24 @@
         "title": "Creating an invoice"
     },
     "createInvoiceOrInvoiceTemplate": {
+        "createInvoiceFailed": "Failed to create invoice. Check the console for details.",
         "description": "Payment link is a tool for accepting payments according to a set invoice template. Here you can generate an invoice template with the required parameters and then generate a payment link for the payment. The link can be placed both on the website and in social networks and allows you to make multiple payments, each time creating a unique invoice for the client. This tool is designed to pay for a single item or service.",
         "invoiceTitle": "Creating an invoice",
         "title": "Payment link",
         "types": {
             "personal": "Create a personal payment link to pay for a specific order",
             "reusable": "Create a reusable payment link to pay for multiple customer orders"
-        },
-        "createInvoiceFailed": "Failed to create invoice. Check the console for details."
+        }
     },
     "createInvoiceTemplate": {
+        "createInvoiceTemplateFailed": "Failed to create invoice template. Check the console for details.",
         "form": {
             "cost": "Cost of the offered goods or services",
             "lifetime": "End of validity of the invoice",
             "product": "Name of the offered goods or services",
             "shop": "Shop"
         },
-        "title": "Creating an invoice template",
-        "createInvoiceTemplateFailed": "Failed to create invoice template. Check the console for details."
+        "title": "Creating an invoice template"
     },
     "createPaymentLinkDialog": {
         "create": "Create payment link",
@@ -103,7 +103,6 @@
     "operations": {
         "invoices": {
             "actions": {
-                "cancel": "Cancel",
                 "cancelInvoice": "Cancel invoice",
                 "confirm": "Confirm",
                 "createPaymentLink": "Create payment link",
@@ -322,8 +321,8 @@
         "errors": {
             "createPaymentLinkError": "Failed to create a payment link"
         },
-        "title": "Creating payment link",
-        "noAvailableShops": "No available shops"
+        "noAvailableShops": "No available shops",
+        "title": "Creating payment link"
     },
     "paymentSection": {
         "nav": {
