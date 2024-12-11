@@ -13,7 +13,6 @@ import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
-import { FormControlsModule } from '@dsh/components/form-controls';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
 import { StateNavModule } from '@dsh/components/navigation';
@@ -36,7 +35,6 @@ import { RefundsComponent } from './refunds.component';
         MatIconModule,
         ReactiveFormsModule,
         MatSelectModule,
-        FormControlsModule,
         IndicatorsModule,
         MatSnackBarModule,
         TranslocoModule,

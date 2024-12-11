@@ -11,7 +11,6 @@ import { FlexLayoutModule } from 'ng-flex-layout';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { MaxLengthInputModule } from '@dsh/app/shared/components/inputs/max-length-input/max-length-input.module';
 import { AmountCurrencyModule } from '@dsh/app/shared/pipes';
-import { FormatInputModule } from '@dsh/components/form-controls';
 
 import { CreateRefundDialogComponent } from './components/create-refund-dialog/create-refund-dialog.component';
 import { CreateRefundService } from './create-refund.service';
@@ -26,8 +25,6 @@ import { CreateRefundService } from './create-refund.service';
         MatCheckboxModule,
         MatButtonModule,
         TranslocoModule,
-
-        FormatInputModule,
         MaxLengthInputModule,
         BaseDialogModule,
         AmountCurrencyModule,

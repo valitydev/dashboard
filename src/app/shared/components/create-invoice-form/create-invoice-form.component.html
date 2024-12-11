@@ -36,12 +36,7 @@
         <ng-container *ngIf="currency">
             <mat-form-field fxFlex>
                 <mat-label>{{ d('form.amount') }}</mat-label>
-                <dsh-format-input
-                    autocomplete="off"
-                    format="amount"
-                    formControlName="amount"
-                    required
-                ></dsh-format-input>
+                <input formControlName="amount" matInput required type="number" />
                 <span matTextPrefix>{{ currency }}&nbsp;</span>
             </mat-form-field>
             <dsh-invoice-randomize-amount-form

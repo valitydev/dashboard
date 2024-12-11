@@ -63,52 +63,38 @@
     },
     "createInvoiceForm": {
         "form": {
+            "amount": "Стоимость",
             "description": "Описание предлагаемых товаров или услуг (опционально)",
             "dueDate": "Окончание срока действия инвойса",
             "product": "Наименование предлагаемых товаров или услуг",
-            "shop": "Магазин",
-            "amount": "Стоимость"
+            "shop": "Магазин"
         }
-    },
-    "invoiceRandomizeAmountForm": {
-        "isRandomizeAmount": "Случайным образом изменить сумму инвойса",
-        "deviation": "Отклонение",
-        "deviationHint": "Укажите максимальное отклонение от оригинальной суммы.",
-        "precision": "Точность",
-        "precisionHint": "Установите параметр для округления генерируемых случайных сумм до ближайшего десятка.",
-        "direction": "Направление отклонения от оригинальной суммы",
-        "minAmountCondition": "Min amount condition (опционально)",
-        "minAmountConditionHint": "Установите параметр для указания минимальной генерируемой суммы.",
-        "maxAmountCondition": "Max amount condition (опционально)",
-        "maxAmountConditionHint": "Установите параметр для указания максимальной генерируемой суммы.",
-        "amountMultiplicityCondition": "Amount multiplicity condition (опционально)",
-        "amountMultiplicityConditionHint": "Установите параметр, чтобы генерируемая сумма была кратна заданному значению."
     },
     "createPaymentLinkForm": {
         "description": "Информация для отображения на платежной странице",
         "form": {
+            "cancelUrl": "Checkout перенаправит на эту страницу, если плательщик нажмет кнопку назад (опционально)",
             "copy": "Скопировать",
             "description": "Описание (опционально)",
             "email": "Email плательщика (опционально)",
             "link": "Ссылка на оплату",
-            "name": "Наименование (опционально)",
-            "redirectUrl": "Redirect URL после успешного завершения платежа (опционально)",
-            "cancelUrl": "Checkout перенаправит на эту страницу, если плательщик нажмет кнопку назад (опционально)",
             "locale": "Локализация (опционально)",
+            "name": "Наименование (опционально)",
             "paymentFlowHold": "Предварительно заблокировать сумму платежа у покупателя",
-            "paymentFlowHoldPolicy": "По истечении срока удержания"
+            "paymentFlowHoldPolicy": "По истечении срока удержания",
+            "redirectUrl": "Redirect URL после успешного завершения платежа (опционально)"
         },
         "holdExpiration": {
             "cancel": "Вернуть покупателю",
             "capture": "Списать с покупателя"
         },
         "localeCodes": {
-            "auto": "Определить автоматически",
-            "ru": "ru - Русский",
-            "en": "en - Английский",
             "ar": "ar - Арабский",
+            "auto": "Определить автоматически",
             "az": "az - Азербайджанский",
+            "en": "en - Английский",
             "pt": "pt - Португальский",
+            "ru": "ru - Русский",
             "tj": "tj - Таджикский",
             "tr": "tr - Турецкий",
             "uz": "uz - Узбекский"
@@ -165,6 +151,20 @@
         "name": "Наименование",
         "status": "Статус"
     },
+    "invoiceRandomizeAmountForm": {
+        "amountMultiplicityCondition": "Amount multiplicity condition (опционально)",
+        "amountMultiplicityConditionHint": "Установите параметр, чтобы генерируемая сумма была кратна заданному значению.",
+        "deviation": "Отклонение",
+        "deviationHint": "Укажите максимальное отклонение от оригинальной суммы.",
+        "direction": "Направление отклонения от оригинальной суммы",
+        "isRandomizeAmount": "Случайным образом изменить сумму инвойса",
+        "maxAmountCondition": "Max amount condition (опционально)",
+        "maxAmountConditionHint": "Установите параметр для указания максимальной генерируемой суммы.",
+        "minAmountCondition": "Min amount condition (опционально)",
+        "minAmountConditionHint": "Установите параметр для указания минимальной генерируемой суммы.",
+        "precision": "Точность",
+        "precisionHint": "Установите параметр для округления генерируемых случайных сумм до ближайшего десятка."
+    },
     "invoiceStatusFilter": {
         "label": "Статус инвойса"
     },
@@ -213,7 +213,6 @@
     },
     "shared": {
         "clear": "Очистить",
-        "clearForm": "Очистить форму",
         "commonError": "Что-то пошло не так",
         "copied": "Скопировано",
         "copyFailed": "Ошибка копирования",

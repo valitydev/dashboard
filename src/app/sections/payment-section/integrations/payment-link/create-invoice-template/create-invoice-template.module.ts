@@ -15,7 +15,6 @@ import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { InvoiceRandomizeAmountModule } from '@dsh/app/shared/components/invoice-randomize-amount-form';
 import { ApiModelTypesModule } from '@dsh/app/shared/pipes';
-import { FormControlsModule } from '@dsh/components/form-controls';
 import { LayoutModule } from '@dsh/components/layout';
 import { ConfirmActionDialogModule } from '@dsh/components/popups';
 
@@ -29,7 +28,6 @@ const EXPORTED_DECLARATIONS = [CreateInvoiceTemplateComponent];
         LayoutModule,
         TranslocoModule,
         FlexLayoutModule,
-        FormControlsModule,
         ReactiveFormsModule,
         CommonModule,
         MatInputModule,

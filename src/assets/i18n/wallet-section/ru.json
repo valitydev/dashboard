@@ -132,7 +132,6 @@
             "title": "Действия",
             "webhookDeleted": "Webhook спешно удален"
         },
-        "cancel": "Отмена",
         "create": "Установить webhook",
         "createWebhook": {
             "create": "Установить",

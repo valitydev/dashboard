@@ -17,11 +17,7 @@
             }}</mat-checkbox>
             <mat-form-field *ngIf="isPartial">
                 <mat-label>{{ t('amount') }}</mat-label>
-                <dsh-format-input
-                    [formControl]="amountControl"
-                    format="amount"
-                    required
-                ></dsh-format-input>
+                <input [formControl]="amountControl" matInput required type="number" />
                 <mat-hint
                     >{{ t('availableAmount') }}
                     {{ maxAllowedAmount | currency: currency }}</mat-hint

@@ -3,7 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { createControlProviders } from '@vality/ng-core';
 
 import { FilterSuperclass } from '@dsh/components/filter';
-import { binValidator, lastDigitsValidator } from '@dsh/components/form-controls';
+import { binValidator, panValidator } from '@dsh/components/form-controls';
 
 import { CardBinPan } from './types/card-bin-pan';
 
@@ -17,7 +17,7 @@ import { CardBinPan } from './types/card-bin-pan';
 export class CardBinPanFilterComponent extends FilterSuperclass<CardBinPan> {
     control = this.fb.group({
         bin: ['', binValidator],
-        pan: ['', lastDigitsValidator],
+        pan: ['', panValidator],
     });
 
     get empty(): CardBinPan {

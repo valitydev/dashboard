@@ -5,7 +5,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { getTranslocoModule } from '@dsh/app/shared/tests/get-transloco-module';
-import { FormatInputModule } from '@dsh/components/form-controls';
 
 import { PaymentSumFilterComponent } from './payment-sum-filter.component';
 import { PaymentSumFilterForm } from './types/payment-sum-filter-form';
@@ -21,7 +20,6 @@ describe('PaymentSumComponent', () => {
                 getTranslocoModule(),
                 MatFormFieldModule,
                 ReactiveFormsModule,
-                FormatInputModule,
                 FlexLayoutModule,
             ],
             declarations: [PaymentSumFilterComponent],

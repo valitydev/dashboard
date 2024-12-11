@@ -16,7 +16,6 @@ import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { UrlShortenerModule } from '@dsh/app/api/url-shortener';
-import { FormControlsModule } from '@dsh/components/form-controls';
 import { LayoutModule } from '@dsh/components/layout';
 import { ConfirmActionDialogModule } from '@dsh/components/popups';
 
@@ -28,7 +27,6 @@ import { LocaleCode } from './locale-code.pipe';
         LayoutModule,
         TranslocoModule,
         FlexLayoutModule,
-        FormControlsModule,
         ReactiveFormsModule,
         CommonModule,
         MatInputModule,

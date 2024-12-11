@@ -9,7 +9,6 @@ import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { AmountCurrencyModule } from '@dsh/app/shared';
-import { FormControlsModule } from '@dsh/components/form-controls';
 import { LayoutModule } from '@dsh/components/layout';
 
 import { InvoiceRandomizeAmountFormComponent } from './invoice-randomize-amount-form.component';
@@ -22,7 +21,6 @@ import { InvoiceRandomizeAmountFormComponent } from './invoice-randomize-amount-
         MatFormFieldModule,
         MatInputModule,
         ReactiveFormsModule,
-        FormControlsModule,
         TranslocoModule,
         AmountCurrencyModule,
         MatCheckboxModule,
