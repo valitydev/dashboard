@@ -5,12 +5,12 @@
   "scripts": {
     "start": "ng serve --proxy-config proxy.conf.js --port 8000",
     "stage": "cross-env NODE_ENV=stage ng serve --proxy-config proxy.conf.js --port 8001 --configuration=stage",
-    "fix": "npm run lint:fix && npm run format:fix && npm run spell:fix",
+    "fix": "npm run i18n:extract && npm run spell:fix && npm run lint:fix && npm run format:fix && npm run spell:fix",
     "build": "ng build && transloco-optimize dist/browser/assets/i18n",
     "test": "ng test",
-    "i18n:extract": "transloco-keys-manager extract && prettier src/assets/i18n/** --write",
-    "i18n:clean": "transloco-keys-manager extract --remove-extra-keys && prettier src/assets/i18n/* --write && prettier src/assets/i18n/** --write",
-    "i18n:check": "transloco-keys-manager find --emit-error-on-extra-keys",
+    "i18n": "transloco-keys-manager find --emit-error-on-extra-keys",
+    "i18n:extract": "transloco-keys-manager extract --remove-extra-keys",
+    "i18n:fix": "npm run i18n:extract && prettier src/assets/i18n/** --write",
     "coverage": "npx http-server -c-1 -o -p 9875 ./coverage",
     "lint": "ng lint --max-warnings=0",
     "lint:fix": "ng lint --fix",
@@ -22,7 +22,7 @@
     "icons-ids-gen": "npm run tools-cmd -- tools/gen-icons-ids.ts",
     "spell": "cspell --no-progress **",
     "spell:fix": "cspell --no-progress --show-suggestions --show-context **",
-    "check": "concurrently --prefix \"[{command}]\" --prefixColors auto --prefixLength 20 \"npm run format\" \"npm run lint\" \"npm run spell\" \"npm run i18n:check\""
+    "check": "concurrently --prefix \"[{command}]\" --prefixColors auto --prefixLength 20 \"npm run format\" \"npm run lint\" \"npm run spell\" \"npm run i18n\""
   },
   "dependencies": {
     "@angular/animations": "^18.2.12",
@@ -74,7 +74,7 @@
     "@types/lodash-es": "^4.17.12",
     "@vality/cspell-config": "^8.0.1-pr-57-482a037.0",
     "@vality/eslint-config-ng": "18.0.1-pr-63-e72dd8e.0",
-    "@vality/prettier-config": "3.1.0",
+    "@vality/prettier-config": "3.1.1-b428289.0",
     "concurrently": "^9.1.0",
     "cross-env": "^7.0.3",
     "cspell": "^8.3.2",

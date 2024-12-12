@@ -16,7 +16,6 @@ import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { AmountCurrencyModule } from '@dsh/app/shared';
-import { FormControlsModule } from '@dsh/components/form-controls';
 import { LayoutModule } from '@dsh/components/layout';
 import { ConfirmActionDialogModule } from '@dsh/components/popups';
 
@@ -34,7 +33,6 @@ import { CreateInvoiceFormComponent } from './create-invoice-form.component';
         MatInputModule,
         ReactiveFormsModule,
         MatSelectModule,
-        FormControlsModule,
         MatSnackBarModule,
         TranslocoModule,
         MatMenuModule,

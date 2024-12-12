@@ -12,13 +12,33 @@
     </dsh-filter>
     <ng-template #content>
         <form [formGroup]="control" fxLayout="column">
-            <mat-form-field>
+            <mat-form-field class="bin">
                 <mat-label>{{ t('first6') }}</mat-label>
-                <dsh-format-input format="bin" formControlName="bin"></dsh-format-input>
+                <input
+                    #binInput="matInput"
+                    [maxLength]="6"
+                    formControlName="bin"
+                    matInput
+                    placeholder="0000 00"
+                    type="text"
+                />
+                <span *ngIf="binInput.focused || control.value.bin?.length" matTextSuffix
+                    >**&nbsp;****&nbsp;****</span
+                >
             </mat-form-field>
             <mat-form-field>
                 <mat-label>{{ t('last4') }}</mat-label>
-                <dsh-format-input format="lastDigits" formControlName="pan"></dsh-format-input>
+                <input
+                    #panInput="matInput"
+                    [maxLength]="4"
+                    formControlName="pan"
+                    matInput
+                    placeholder="0000"
+                    type="text"
+                />
+                <span *ngIf="panInput.focused || control.value.pan?.length" matTextPrefix
+                    >****&nbsp;****&nbsp;****&nbsp;</span
+                >
             </mat-form-field>
         </form>
     </ng-template>

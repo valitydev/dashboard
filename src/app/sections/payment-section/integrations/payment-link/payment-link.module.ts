@@ -15,7 +15,6 @@ import { ActionsModule } from '@dsh/app/shared/components/actions';
 import { CreateInvoiceFormModule } from '@dsh/app/shared/components/create-invoice-form';
 import { CreatePaymentLinkFormModule } from '@dsh/app/shared/components/create-payment-link-form';
 import { CreatePaymentLinkModule } from '@dsh/app/shared/services/create-payment-link';
-import { FormControlsModule } from '@dsh/components/form-controls';
 import { LayoutModule } from '@dsh/components/layout';
 import { ConfirmActionDialogModule } from '@dsh/components/popups';
 
@@ -30,7 +29,6 @@ import { PaymentLinkComponent } from './payment-link.component';
         LayoutModule,
         TranslocoModule,
         FlexLayoutModule,
-        FormControlsModule,
         ReactiveFormsModule,
         CommonModule,
         MatInputModule,

@@ -132,7 +132,6 @@
             "title": "Actions",
             "webhookDeleted": "Webhook deleted successfully"
         },
-        "cancel": "Cancel",
         "create": "Set up a webhook",
         "createWebhook": {
             "create": "Create",

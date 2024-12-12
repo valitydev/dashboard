@@ -18,7 +18,6 @@ import { FlexLayoutModule } from 'ng-flex-layout';
 import { AuthModule } from '@dsh/app/auth';
 import { InvoiceDetailsModule } from '@dsh/app/shared/components';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
-import { FormControlsModule } from '@dsh/components/form-controls';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
 import { StateNavModule } from '@dsh/components/navigation';
@@ -42,9 +41,7 @@ import { InvoicesComponent } from './invoices.component';
         MatIconModule,
         ReactiveFormsModule,
         MatSelectModule,
-        FormControlsModule,
         IndicatorsModule,
-
         MatSnackBarModule,
         StateNavModule,
         TranslocoModule,

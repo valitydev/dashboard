@@ -63,52 +63,38 @@
     },
     "createInvoiceForm": {
         "form": {
+            "amount": "Amount",
             "description": "Description of the goods or services offered (optional)",
             "dueDate": "End of validity of the invoice",
             "product": "Name of the offered goods or services",
-            "shop": "Shop",
-            "amount": "Amount"
+            "shop": "Shop"
         }
-    },
-    "invoiceRandomizeAmountForm": {
-        "isRandomizeAmount": "Randomly modify invoice's cost amount",
-        "deviation": "Deviation",
-        "deviationHint": "Specify the maximum deviation from the original amount.",
-        "precision": "Precision",
-        "precisionHint": "Set the parameter to round generated random amounts to the nearest ten.",
-        "direction": "Direction of deviation from original amount",
-        "minAmountCondition": "Min amount condition (optional)",
-        "minAmountConditionHint": "Set the parameter to specify the minimum generated amount.",
-        "maxAmountCondition": "Max amount condition (optional)",
-        "maxAmountConditionHint": "Set the parameter to specify the maximum generated amount.",
-        "amountMultiplicityCondition": "Amount multiplicity condition (optional)",
-        "amountMultiplicityConditionHint": "Set the parameter so that the generated amount is a multiple of the specified value."
     },
     "createPaymentLinkForm": {
         "description": "Information to display on the payment page",
         "form": {
+            "cancelUrl": "Checkout will redirect to this page if the payer clicks the back button (optional)",
             "copy": "Copy",
             "description": "Description (optional)",
             "email": "Payer's email (optional)",
             "link": "Payment link",
-            "name": "Name (optional)",
-            "redirectUrl": "Redirect URL after successful payment completion (optional)",
-            "cancelUrl": "Checkout will redirect to this page if the payer clicks the back button (optional)",
             "locale": "Localization (optional)",
+            "name": "Name (optional)",
             "paymentFlowHold": "Preliminarily hold the amount of payment from the payer",
-            "paymentFlowHoldPolicy": "After the retention period"
+            "paymentFlowHoldPolicy": "After the retention period",
+            "redirectUrl": "Redirect URL after successful payment completion (optional)"
         },
         "holdExpiration": {
             "cancel": "Return to payer",
             "capture": "Write off from the payer"
         },
         "localeCodes": {
-            "auto": "Automatically determine",
-            "ru": "ru - Russian",
-            "en": "en - English",
             "ar": "ar - Arabic",
+            "auto": "Automatically determine",
             "az": "az - Azerbaijani",
+            "en": "en - English",
             "pt": "pt - Portuguese",
+            "ru": "ru - Russian",
             "tj": "tj - Tajik",
             "tr": "tr - Turkish",
             "uz": "uz - Uzbek"
@@ -165,6 +151,20 @@
         "name": "Name",
         "status": "Status"
     },
+    "invoiceRandomizeAmountForm": {
+        "amountMultiplicityCondition": "Amount multiplicity condition (optional)",
+        "amountMultiplicityConditionHint": "Set the parameter so that the generated amount is a multiple of the specified value.",
+        "deviation": "Deviation",
+        "deviationHint": "Specify the maximum deviation from the original amount.",
+        "direction": "Direction of deviation from original amount",
+        "isRandomizeAmount": "Randomly modify invoice's cost amount",
+        "maxAmountCondition": "Max amount condition (optional)",
+        "maxAmountConditionHint": "Set the parameter to specify the maximum generated amount.",
+        "minAmountCondition": "Min amount condition (optional)",
+        "minAmountConditionHint": "Set the parameter to specify the minimum generated amount.",
+        "precision": "Precision",
+        "precisionHint": "Set the parameter to round generated random amounts to the nearest ten."
+    },
     "invoiceStatusFilter": {
         "label": "Invoice status"
     },
@@ -213,7 +213,6 @@
     },
     "shared": {
         "clear": "Clear",
-        "clearForm": "Clear",
         "commonError": "Something went wrong",
         "copied": "Copied",
         "copyFailed": "Error copying",
