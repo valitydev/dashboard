@@ -41,6 +41,3 @@ export const DEFAULT_CHARTS_THEME: ChartsThemeProvider = {
         '#9E9E9E',
     ],
 };
-
-export const BRAND_NAME = new InjectionToken<string>('brandName');
-export const DEFAULT_BRAND_NAME = 'Dashboard';

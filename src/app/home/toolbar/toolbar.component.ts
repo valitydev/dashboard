@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { BRAND_NAME } from '@dsh/app/sections/tokens';
 import { SectionsLinksService } from '@dsh/app/shared/services/sections-links';
 
 @Component({
@@ -12,8 +11,5 @@ import { SectionsLinksService } from '@dsh/app/shared/services/sections-links';
 export class ToolbarComponent {
     sectionLinks$ = this.sectionsLinksService.sectionLinks$;
 
-    constructor(
-        private sectionsLinksService: SectionsLinksService,
-        @Inject(BRAND_NAME) public brandName: string,
-    ) {}
+    constructor(private sectionsLinksService: SectionsLinksService) {}
 }

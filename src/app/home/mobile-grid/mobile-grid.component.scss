@@ -26,13 +26,6 @@
     &-content {
         padding: 16px;
         min-height: 100%;
-
-        &-actions {
-            display: flex;
-            place-content: center flex-start;
-            align-items: center;
-            gap: 24px;
-        }
     }
 
     &-toggle-button {

@@ -14,17 +14,12 @@
     </mat-drawer>
     <mat-drawer-content>
         <div class="dsh-mobile-grid-content" fxLayout="column" fxLayoutGap="24px">
-            <div class="dsh-mobile-grid-content-actions">
-                <dsh-bi
-                    class="dsh-mobile-grid-toggle-button"
-                    icon="list"
-                    size="lg"
-                    (click)="openSideNav()"
-                ></dsh-bi>
-                <h1 class="mat-display-small" style="margin: 0; font-weight: bold">
-                    {{ brandName }}
-                </h1>
-            </div>
+            <dsh-bi
+                class="dsh-mobile-grid-toggle-button"
+                icon="list"
+                size="lg"
+                (click)="openSideNav()"
+            ></dsh-bi>
             <ng-content></ng-content>
         </div>
     </mat-drawer-content>

@@ -10,8 +10,6 @@ import { CHARTS_THEME } from './payment-section/analytics/charts-theme';
 import { SectionsRoutingModule } from './sections-routing.module';
 import { SectionsComponent } from './sections.component';
 import {
-    BRAND_NAME,
-    DEFAULT_BRAND_NAME,
     DEFAULT_CHARTS_THEME,
     DEFAULT_DIALOG_CONFIG,
     DEFAULT_SEARCH_LIMIT,
@@ -29,7 +27,6 @@ import {
         { provide: DIALOG_CONFIG, useValue: DEFAULT_DIALOG_CONFIG },
         { provide: DEBOUNCE_FETCHER_ACTION_TIME, useValue: DEFAULT_FETCHER_DEBOUNCE_ACTION_TIME },
         { provide: CHARTS_THEME, useValue: DEFAULT_CHARTS_THEME },
-        { provide: BRAND_NAME, useValue: DEFAULT_BRAND_NAME },
     ],
 })
 export class SectionsModule {}

@@ -1,7 +1,5 @@
-import { Component, Inject, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatDrawer, MatDrawerToggleResult } from '@angular/material/sidenav';
-
-import { BRAND_NAME } from '@dsh/app/sections/tokens';
 
 @Component({
     selector: 'dsh-mobile-grid',
@@ -10,8 +8,6 @@ import { BRAND_NAME } from '@dsh/app/sections/tokens';
 })
 export class MobileGridComponent {
     @ViewChild(MatDrawer) drawer: MatDrawer;
-
-    constructor(@Inject(BRAND_NAME) public brandName: string) {}
 
     openSideNav(): Promise<MatDrawerToggleResult> {
         return this.drawer.open('program');
