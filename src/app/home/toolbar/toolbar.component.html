@@ -1,6 +1,5 @@
-<div class="dsh-toolbar" fxLayout fxLayoutAlign="center center" fxLayoutGap="24px">
-    <dsh-brand fxFlex fxLayoutAlign="start"></dsh-brand>
-    <div fxFlex fxLayoutAlign="center">
+<div class="dsh-toolbar">
+    <div fxLayoutAlign="center">
         <nav [tabPanel]="tabPanel" class="dsh-top-tab-nav-bar" fitInkBarToContent mat-tab-nav-bar>
             <a
                 #rla="routerLinkActive"
@@ -16,5 +15,5 @@
         </nav>
         <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
     </div>
-    <dsh-actionbar fxFlex fxLayoutAlign="end"></dsh-actionbar>
+    <dsh-actionbar fxLayoutAlign="end"></dsh-actionbar>
 </div>

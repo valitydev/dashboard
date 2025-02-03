@@ -5,8 +5,6 @@ import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { BootstrapIconModule } from '@dsh/components/indicators';
 
-import { BrandModule } from '../brand';
-
 import { MobileGridComponent } from './mobile-grid.component';
 import { MobileMenuModule } from './mobile-menu';
 
@@ -14,7 +12,6 @@ import { MobileMenuModule } from './mobile-menu';
     imports: [
         CommonModule,
         MatSidenavModule,
-        BrandModule,
         FlexLayoutModule,
         MobileMenuModule,
         BootstrapIconModule,

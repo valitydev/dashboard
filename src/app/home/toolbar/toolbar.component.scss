@@ -2,9 +2,14 @@ $dsh-toolbar-height: 48px;
 
 :host {
     display: block;
+    padding-left: 16px;
 }
 
 .dsh-toolbar {
     user-select: none;
     height: $dsh-toolbar-height;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
 }

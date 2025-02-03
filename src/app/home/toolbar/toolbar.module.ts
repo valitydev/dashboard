@@ -7,7 +7,6 @@ import { FlexLayoutModule } from 'ng-flex-layout';
 import { SectionsLinksModule } from '@dsh/app/shared/services/sections-links';
 
 import { ActionbarModule } from '../actionbar';
-import { BrandModule } from '../brand';
 
 import { ToolbarComponent } from './toolbar.component';
 
@@ -15,7 +14,6 @@ import { ToolbarComponent } from './toolbar.component';
     imports: [
         CommonModule,
         FlexLayoutModule,
-        BrandModule,
         ActionbarModule,
         RouterModule,
         MatTabsModule,

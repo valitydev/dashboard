@@ -20,13 +20,9 @@ jobs:
         run: |
           printf "$APP_ENV_FILE" > dist/browser/assets/appConfig.json
           printf "$AUTH_ENV_FILE" > dist/browser/assets/authConfig.json
-          echo $FAVICO | base64 -d > dist/browser/favicon.ico
-          printf "$LOGO" > dist/browser/assets/icons/logo.svg
         env:
           APP_ENV_FILE: ${{secrets.APP_CONFIG_CF}}
           AUTH_ENV_FILE: ${{secrets.AUTH_CONFIG_CF}}
-          FAVICO: ${{secrets.FAVICON_BASE}}
-          LOGO: ${{secrets.LOGO_SVG}}
       - name: Publish to CF Pages
         uses: cloudflare/pages-action@1
         with:
