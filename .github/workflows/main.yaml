@@ -46,6 +46,34 @@ jobs:
           directory: 'dist/browser'
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           branch: main
+      - name: Set globalgatein config
+        run: |
+          printf "$APP3_ENV_FILE" > dist/browser/assets/appConfig.json
+        env:
+          APP2_ENV_FILE: ${{secrets.APP3_ENV_FILE}}
+      - name: Publish globalgatein to CF Pages
+        uses: cloudflare/pages-action@1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: 'dashboard-globalgatein'
+          directory: 'dist/browser'
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+      - name: Set flow3dtunnel config
+        run: |
+          printf "$APP4_ENV_FILE" > dist/browser/assets/appConfig.json
+        env:
+          APP2_ENV_FILE: ${{secrets.APP3_ENV_FILE}}
+      - name: Publish flow3dtunnel to CF Pages
+        uses: cloudflare/pages-action@1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: 'dashboard-flow3dtunnel'
+          directory: 'dist/browser'
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
   notify:
     name: Notify
     runs-on: ubuntu-latest
