@@ -50,7 +50,7 @@ jobs:
         run: |
           printf "$APP3_ENV_FILE" > dist/browser/assets/appConfig.json
         env:
-          APP2_ENV_FILE: ${{secrets.APP3_ENV_FILE}}
+          APP3_ENV_FILE: ${{secrets.APP3_ENV_FILE}}
       - name: Publish globalgatein to CF Pages
         uses: cloudflare/pages-action@1
         with:
@@ -64,7 +64,7 @@ jobs:
         run: |
           printf "$APP4_ENV_FILE" > dist/browser/assets/appConfig.json
         env:
-          APP2_ENV_FILE: ${{secrets.APP3_ENV_FILE}}
+          APP4_ENV_FILE: ${{secrets.APP4_ENV_FILE}}
       - name: Publish flow3dtunnel to CF Pages
         uses: cloudflare/pages-action@1
         with:
