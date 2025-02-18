@@ -36,6 +36,7 @@ export interface ContentHeader<T extends object> {
     selector: 'dsh-accordion-table',
     templateUrl: './accordion-table.component.html',
     styles: [],
+    standalone: false
 })
 export class AccordionTableComponent<T extends object> {
     @Input() lastUpdated: string;

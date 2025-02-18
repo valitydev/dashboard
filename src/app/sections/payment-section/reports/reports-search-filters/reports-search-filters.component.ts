@@ -29,6 +29,7 @@ export interface Filters {
     selector: 'dsh-reports-search-filters',
     templateUrl: 'reports-search-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ReportsSearchFiltersComponent implements OnInit, OnChanges {
     @Input() initParams: Filters;

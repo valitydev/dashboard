@@ -25,6 +25,7 @@ function getErrorLabel(error: PaymentError) {
 @Pipe({
     name: 'withdrawalErrorMessage',
     pure: false,
+    standalone: false
 })
 export class WithdrawalErrorMessagePipe
     extends AsyncTransform<PaymentError>

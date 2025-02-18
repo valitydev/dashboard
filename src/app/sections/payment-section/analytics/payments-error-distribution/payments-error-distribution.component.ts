@@ -19,6 +19,7 @@ import { PaymentsErrorDistributionService } from './payments-error-distribution.
     templateUrl: 'payments-error-distribution.component.html',
     providers: [PaymentsErrorDistributionService],
     encapsulation: ViewEncapsulation.Emulated,
+    standalone: false
 })
 export class PaymentsErrorDistributionComponent implements OnChanges {
     @Input() spinnerType: SpinnerType;

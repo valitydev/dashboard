@@ -10,6 +10,7 @@ import { CreateWebhookDialogService } from './create-webhook-dialog.service';
     templateUrl: 'create-webhook-dialog.component.html',
     styleUrls: ['create-webhook-dialog.component.scss'],
     providers: [CreateWebhookDialogService],
+    standalone: false
 })
 export class CreateWebhookDialogComponent implements OnInit {
     form = this.createWebhookDialogService.form;

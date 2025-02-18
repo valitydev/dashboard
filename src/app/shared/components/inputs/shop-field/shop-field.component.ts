@@ -14,6 +14,7 @@ import { shopToOption } from './utils/shops-to-options';
     selector: 'dsh-shop-field',
     templateUrl: 'shop-field.component.html',
     providers: createControlProviders(() => ShopFieldComponent),
+    standalone: false
 })
 export class ShopFieldComponent extends FormControlSuperclass<Shop> {
     @Input() label: string;

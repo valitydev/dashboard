@@ -12,6 +12,7 @@ import { PaymentSplitCountService } from './payment-split-count.service';
     selector: 'dsh-payment-split-count',
     templateUrl: 'payment-split-count.component.html',
     providers: [PaymentSplitCountService],
+    standalone: false
 })
 export class PaymentSplitCountComponent implements OnChanges {
     @Input() spinnerType: SpinnerType;

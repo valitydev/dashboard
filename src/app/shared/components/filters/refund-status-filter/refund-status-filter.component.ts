@@ -9,6 +9,7 @@ import { FilterSuperclass } from '@dsh/components/filter';
     templateUrl: 'refund-status-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => RefundStatusFilterComponent),
+    standalone: false
 })
 export class RefundStatusFilterComponent extends FilterSuperclass<RefundStatus.StatusEnum> {
     constructor(injector: Injector) {

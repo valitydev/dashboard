@@ -8,7 +8,10 @@ export interface HumanizeDurationConfig extends HumanizeConfig {
     interval?: number;
 }
 
-@Pipe({ name: 'humanizedDuration', pure: false })
+@Pipe({
+    name: 'humanizedDuration', pure: false,
+    standalone: false
+})
 export class HumanizedDurationPipe implements OnDestroy, PipeTransform {
     private latestValue: string = '';
     private subscription: Subscription;

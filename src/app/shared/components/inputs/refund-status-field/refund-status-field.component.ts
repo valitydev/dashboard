@@ -14,6 +14,7 @@ import StatusEnum = RefundStatus.StatusEnum;
     templateUrl: 'refund-status-field.component.html',
     providers: [...createControlProviders(() => RefundStatusFieldComponent), RefundStatusLabelPipe],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class RefundStatusFieldComponent extends FormControlSuperclass<StatusEnum> {
     options$: Observable<Option<string>[]> = combineLatest(

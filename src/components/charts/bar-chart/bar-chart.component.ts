@@ -8,6 +8,7 @@ import { DEFAULT_CONFIG } from './default-config';
     selector: 'dsh-bar-chart',
     templateUrl: 'bar-chart.component.html',
     styleUrls: ['bar-chart.component.scss'],
+    standalone: false
 })
 export class BarChartComponent implements OnChanges {
     @Input()

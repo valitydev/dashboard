@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     templateUrl: 'empty-search-result.component.html',
     styleUrls: ['empty-search-result.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EmptySearchResultComponent {
     @Input()

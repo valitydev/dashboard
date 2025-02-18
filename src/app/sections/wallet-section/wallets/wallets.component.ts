@@ -7,6 +7,7 @@ import { FetchWalletsService, WalletsExpandedIdManager } from './services';
     styleUrls: ['wallets.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [FetchWalletsService, WalletsExpandedIdManager],
+    standalone: false
 })
 export class WalletsComponent implements OnInit {
     wallets$ = this.receiveWalletsService.searchResult$;

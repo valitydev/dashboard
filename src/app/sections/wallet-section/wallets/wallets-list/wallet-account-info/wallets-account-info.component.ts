@@ -8,6 +8,7 @@ import { FetchWalletAccountService } from './services';
     templateUrl: 'wallets-account-info.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [FetchWalletAccountService],
+    standalone: false
 })
 export class WalletsAccountInfoComponent implements OnChanges {
     @Input() walletID: string;

@@ -30,6 +30,7 @@ export type InvoiceOrInvoiceTemplate =
     selector: 'dsh-create-invoice-or-invoice-template',
     templateUrl: 'create-invoice-or-invoice-template.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CreateInvoiceOrInvoiceTemplateComponent implements OnInit {
     @Input() shops: Shop[];

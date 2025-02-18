@@ -7,6 +7,7 @@ import { AnapiDictionaryService } from '@dsh/app/api/anapi';
     selector: 'dsh-report-main-info',
     templateUrl: 'report-main-info.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ReportMainInfoComponent {
     @Input() report: Report;

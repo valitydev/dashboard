@@ -13,6 +13,7 @@ import { ROTATE } from './utils/rotate-animation';
     styleUrls: ['user-dropdown.component.scss'],
     animations: [ROTATE],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class UserDropdownComponent {
     @Input({ transform: booleanAttribute }) expanded = false;

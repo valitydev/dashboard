@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     templateUrl: 'mobile-menu-nav-item.component.html',
     styleUrls: ['mobile-menu-nav-item.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class NavItemComponent {
     @Input() active = false;

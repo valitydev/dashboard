@@ -9,6 +9,7 @@ import { WithdrawalAmountForm } from './types';
     templateUrl: './withdrawal-sum-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => WithdrawalSumFilterComponent),
+    standalone: false
 })
 export class WithdrawalSumFilterComponent extends FormGroupSuperclass<WithdrawalAmountForm> {
     control = this.fb.group<WithdrawalAmountForm>({

@@ -10,6 +10,7 @@ import { groupRoles } from './utils/group-roles';
     selector: 'dsh-organization-roles',
     templateUrl: 'organization-roles.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class OrganizationRolesComponent {
     @Input({ transform: booleanAttribute }) isOwner: boolean;

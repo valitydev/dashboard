@@ -19,6 +19,7 @@ import { RoleAccessesDictionaryService } from './services/role-accesses-dictiona
     selector: 'dsh-select-role-dialog',
     templateUrl: 'select-role-dialog.component.html',
     styleUrls: ['select-role-dialog.component.scss'],
+    standalone: false
 })
 export class SelectRoleDialogComponent extends DialogSuperclass<
     SelectRoleDialogComponent,

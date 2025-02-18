@@ -4,6 +4,7 @@ import { DialogSuperclass } from '@vality/ng-core';
 @Component({
     templateUrl: 'confirm-action-dialog.component.html',
     styleUrls: ['confirm-action-dialog.component.scss'],
+    standalone: false
 })
 export class ConfirmActionDialogComponent extends DialogSuperclass<ConfirmActionDialogComponent> {
     cancel() {

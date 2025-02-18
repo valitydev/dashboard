@@ -13,6 +13,7 @@ interface BankCardIconConfig {
     selector: 'dsh-bank-card',
     templateUrl: 'bank-card.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class BankCardComponent {
     @Input() bankCard: BankCardDetails;

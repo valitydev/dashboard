@@ -9,6 +9,7 @@ import { AnapiDictionaryService } from '@dsh/app/api/anapi';
     templateUrl: './refund-status-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => RefundStatusFilterComponent),
+    standalone: false
 })
 export class RefundStatusFilterComponent extends FormControlSuperclass<RefundStatus.StatusEnum> {
     statuses = Object.values(RefundStatus.StatusEnum);

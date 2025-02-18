@@ -14,6 +14,7 @@ import { CreateHoldService } from './create-hold';
     selector: 'dsh-hold-details',
     templateUrl: './hold-details.component.html',
     styleUrls: ['./hold-details.component.scss'],
+    standalone: false
 })
 export class HoldDetailsComponent {
     @Input() payment: PaymentSearchResult;

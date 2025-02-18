@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { APP_INITIALIZER, LOCALE_ID, NgModule, isDevMode } from '@angular/core';
+import { LOCALE_ID, NgModule, isDevMode, inject, provideAppInitializer } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {
     DateAdapter,
@@ -76,12 +76,16 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
     ],
     providers: [
         LanguageService,
-        {
-            provide: APP_INITIALIZER,
-            useFactory: initializer,
-            deps: [ConfigService, KeycloakService, LanguageService, ThemeManager, IconsService],
-            multi: true,
-        },
+        provideAppInitializer(() => {
+            const initializerFn = initializer(
+                inject(ConfigService),
+                inject(KeycloakService),
+                inject(LanguageService),
+                inject(ThemeManager),
+                inject(IconsService),
+            );
+            return initializerFn();
+        }),
         {
             provide: LOCALE_ID,
             deps: [LanguageService],

@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@an
     templateUrl: 'selection.component.html',
     styleUrls: ['selection.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SelectionComponent {
     @Input({ transform: booleanAttribute }) selected: boolean;

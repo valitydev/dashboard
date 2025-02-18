@@ -7,6 +7,7 @@ import { WalletDictionaryService } from '@dsh/app/api/wallet';
     selector: 'dsh-deposit-revert-details',
     templateUrl: 'deposit-revert-details.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DepositRevertDetailsComponent {
     @Input() revert: DepositRevert;

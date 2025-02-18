@@ -5,6 +5,7 @@ import { DigitalWalletDetails } from '@vality/swag-payments';
     selector: 'dsh-digital-wallet',
     templateUrl: 'digital-wallet.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DigitalWalletComponent {
     @Input() digitalWallet: DigitalWalletDetails;

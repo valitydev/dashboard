@@ -13,6 +13,7 @@ import { multipleDownload } from '@dsh/utils';
     selector: 'dsh-files',
     templateUrl: './files.component.html',
     styles: [],
+    standalone: false
 })
 export class FilesComponent {
     @Input() id: number;

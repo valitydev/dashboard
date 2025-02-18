@@ -9,6 +9,7 @@ import { getShopIdFromScope } from '../get-shop-id-from-scope';
 @Component({
     selector: 'dsh-webhooks-list',
     templateUrl: 'webhook-list.component.html',
+    standalone: false
 })
 export class WebhookListComponent implements OnInit, OnDestroy {
     @Input() webhooks: Webhook[];

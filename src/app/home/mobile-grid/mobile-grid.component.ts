@@ -5,6 +5,7 @@ import { MatDrawer, MatDrawerToggleResult } from '@angular/material/sidenav';
     selector: 'dsh-mobile-grid',
     templateUrl: './mobile-grid.component.html',
     styleUrls: ['./mobile-grid.component.scss'],
+    standalone: false
 })
 export class MobileGridComponent {
     @ViewChild(MatDrawer) drawer: MatDrawer;

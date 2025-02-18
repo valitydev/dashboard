@@ -3,6 +3,7 @@ import { NgControl } from '@angular/forms';
 
 @Directive({
     selector: '[formControlName][dshFormatTimeInput]',
+    standalone: false
 })
 export class FormatTimeInputDirective {
     constructor(public ngControl: NgControl) {}

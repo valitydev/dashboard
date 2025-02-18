@@ -13,6 +13,7 @@ import { CardBinPan } from './types/card-bin-pan';
     styleUrls: ['./card-bin-pan-filter.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => CardBinPanFilterComponent),
+    standalone: false
 })
 export class CardBinPanFilterComponent extends FilterSuperclass<CardBinPan> {
     control = this.fb.group({

@@ -10,6 +10,7 @@ import { AdditionalFilters } from '../../types';
     templateUrl: 'dialog-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => DialogFiltersComponent),
+    standalone: false
 })
 export class DialogFiltersComponent
     extends FormGroupSuperclass<Partial<AdditionalFilters>>

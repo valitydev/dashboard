@@ -18,6 +18,7 @@ import { LimitedListModule } from './limited-list.module';
             <dsh-limited-list-item>item 6</dsh-limited-list-item>
         </dsh-limited-list>
     `,
+    standalone: false
 })
 class MockLimitedListComponent {}
 

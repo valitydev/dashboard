@@ -10,6 +10,7 @@ import { TokenProvider } from '@dsh/app/api/payments';
     templateUrl: './token-provider-filter.component.html',
     styleUrls: ['./token-provider-filter.component.scss'],
     providers: createControlProviders(() => TokenProviderFilterComponent),
+    standalone: false
 })
 export class TokenProviderFilterComponent extends FormControlSuperclass<
     SearchPaymentsRequestParams['bankCardTokenProvider']

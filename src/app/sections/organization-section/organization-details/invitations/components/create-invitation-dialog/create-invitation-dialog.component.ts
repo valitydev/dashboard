@@ -17,6 +17,7 @@ import { CreateInvitationDialogData } from './types/create-invitation-dialog-dat
     selector: 'dsh-create-invitation-dialog',
     templateUrl: 'create-invitation-dialog.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CreateInvitationDialogComponent {
     emailControl = this.fb.control<string>('', Validators.email);

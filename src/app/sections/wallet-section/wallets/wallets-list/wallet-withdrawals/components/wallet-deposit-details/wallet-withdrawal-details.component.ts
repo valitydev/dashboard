@@ -7,6 +7,7 @@ import { WalletDictionaryService } from '@dsh/app/api/wallet';
     selector: 'dsh-wallet-withdrawal-details',
     templateUrl: 'wallet-withdrawal-details.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class WalletWithdrawalDetailsComponent {
     @Input() withdrawal: Withdrawal;

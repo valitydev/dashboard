@@ -15,6 +15,7 @@ export interface NewContractorForm {
     templateUrl: 'new-contractor-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => NewContractorFormComponent),
+    standalone: false
 })
 export class NewContractorFormComponent extends FormGroupSuperclass<Partial<NewContractorForm>> {
     control = this.fb.group<NewContractorForm>({

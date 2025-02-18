@@ -23,6 +23,7 @@ export interface CreateShopDialogData {
             useFactory: ({ shops$ }: CreateShopDialogData = {}) => shops$,
         },
     ],
+    standalone: false
 })
 export class CreateShopDialogComponent {
     selectedShopType: ShopType;

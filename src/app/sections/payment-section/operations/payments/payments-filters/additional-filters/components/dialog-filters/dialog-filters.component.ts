@@ -12,6 +12,7 @@ import { formToFilters, filtersToForm } from '../../utils';
     templateUrl: 'dialog-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => DialogFiltersComponent),
+    standalone: false
 })
 export class DialogFiltersComponent
     extends FormGroupSuperclass<AdditionalFiltersForm>

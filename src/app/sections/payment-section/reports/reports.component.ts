@@ -18,6 +18,7 @@ import { Filters, SearchFiltersParams } from './reports-search-filters';
     templateUrl: 'reports.component.html',
     providers: [FetchReportsService, ReportsExpandedIdManager, RealmMixService],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ReportsComponent implements OnInit {
     reports$ = this.fetchReportsService.searchResult$;

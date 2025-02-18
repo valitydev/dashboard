@@ -29,6 +29,7 @@ type InnerDateRange = {
         ...createControlProviders(() => DateRangeFilterComponent),
         DateRangeLocalizationService,
     ],
+    standalone: false
 })
 export class DateRangeFilterComponent extends FilterSuperclass<
     InnerDateRange,

@@ -6,6 +6,7 @@ import { Invoice } from '@vality/swag-payments';
     templateUrl: 'payment-invoice-info.component.html',
     styleUrls: ['payment-invoice-info.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 // TODO: implement dump component for this + shared one for operations
 export class PaymentInvoiceInfoComponent {

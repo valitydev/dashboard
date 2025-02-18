@@ -10,6 +10,7 @@ import { distinctUntilChanged, map } from 'rxjs/operators';
     templateUrl: 'multi-input-field.component.html',
     styleUrls: ['multi-input-field.component.scss'],
     providers: createControlProviders(() => MultiInputFieldComponent),
+    standalone: false
 })
 export class MultiInputFieldComponent extends FormControlSuperclass<string[]> implements OnInit {
     @Input() label: string;

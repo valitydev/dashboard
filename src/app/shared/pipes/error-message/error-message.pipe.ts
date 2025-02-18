@@ -4,7 +4,10 @@ import { Observable, of } from 'rxjs';
 
 import { CommonError } from '@dsh/app/shared';
 
-@Pipe({ name: 'errorMessage' })
+@Pipe({
+    name: 'errorMessage',
+    standalone: false
+})
 /**
  * @deprecated
  */

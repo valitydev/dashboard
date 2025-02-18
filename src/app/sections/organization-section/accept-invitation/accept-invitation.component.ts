@@ -12,6 +12,7 @@ import { inProgressTo } from '@dsh/utils';
     templateUrl: 'accept-invitation.component.html',
     styleUrls: ['accept-invitation.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AcceptInvitationComponent {
     hasError = false;

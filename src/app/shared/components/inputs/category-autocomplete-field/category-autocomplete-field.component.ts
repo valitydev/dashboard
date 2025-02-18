@@ -11,6 +11,7 @@ import { CategoriesService } from '@dsh/app/api/payments';
     templateUrl: 'category-autocomplete-field.component.html',
     providers: createControlProviders(() => CategoryAutocompleteFieldComponent),
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CategoryAutocompleteFieldComponent extends FormControlSuperclass<Category> {
     @Input() label: string;

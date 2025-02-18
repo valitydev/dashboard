@@ -24,6 +24,7 @@ function getErrorLabel(error: PaymentError) {
 
 @Pipe({
     name: 'paymentErrorMessage',
+    standalone: false
 })
 export class PaymentErrorMessagePipe implements PipeTransform {
     constructor(private t: TranslocoService) {}

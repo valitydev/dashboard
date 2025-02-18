@@ -12,6 +12,7 @@ import ReportTypeEnum = Report.ReportTypeEnum;
     selector: 'dsh-report-types-field',
     templateUrl: 'report-types-field.component.html',
     providers: [...createControlProviders(() => ReportTypesFieldComponent), ReportTypesLabelPipe],
+    standalone: false
 })
 export class ReportTypesFieldComponent
     extends FormControlSuperclass<ReportTypeEnum[]>

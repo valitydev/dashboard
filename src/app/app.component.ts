@@ -8,6 +8,7 @@ import { BootstrapService } from './bootstrap.service';
     selector: 'dsh-root',
     templateUrl: 'app.component.html',
     providers: [BootstrapService],
+    standalone: false
 })
 export class AppComponent {
     bootstrapped$ = this.bootstrapService.bootstrapped$;

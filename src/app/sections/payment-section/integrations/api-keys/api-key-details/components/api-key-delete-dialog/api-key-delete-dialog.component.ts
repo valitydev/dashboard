@@ -14,7 +14,6 @@ import { SpinnerModule } from '@dsh/components/indicators';
 
 @Component({
     selector: 'dsh-api-key-delete-dialog',
-    standalone: true,
     templateUrl: './api-key-delete-dialog.component.html',
     styles: [],
     imports: [
@@ -24,7 +23,7 @@ import { SpinnerModule } from '@dsh/components/indicators';
         MatButtonModule,
         TranslocoModule,
         CommonModule,
-    ],
+    ]
 })
 export class ApiKeyDeleteDialogComponent extends DialogSuperclass<
     ApiKeyDeleteDialogComponent,

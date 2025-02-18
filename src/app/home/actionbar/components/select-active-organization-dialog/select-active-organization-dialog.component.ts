@@ -18,6 +18,7 @@ const DISPLAYED_COUNT = 5;
     templateUrl: 'select-active-organization-dialog.component.html',
     changeDetection: ChangeDetectionStrategy.Default,
     providers: [FetchOrganizationsService, { provide: SEARCH_LIMIT, useValue: DISPLAYED_COUNT }],
+    standalone: false
 })
 export class SelectActiveOrganizationDialogComponent implements OnInit {
     organizations$ = this.fetchOrganizationsService.searchResult$;

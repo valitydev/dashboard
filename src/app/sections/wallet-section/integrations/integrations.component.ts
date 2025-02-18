@@ -3,6 +3,7 @@ import { TranslocoService } from '@jsverse/transloco';
 
 @Component({
     templateUrl: 'integrations.component.html',
+    standalone: false
 })
 export class IntegrationsComponent {
     links = [

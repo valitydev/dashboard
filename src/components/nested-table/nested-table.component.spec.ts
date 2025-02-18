@@ -27,6 +27,7 @@ import { NestedTableComponent } from './nested-table.component';
             </dsh-nested-table-row>
         </dsh-nested-table>
     `,
+    standalone: false
 })
 class HostComponent {
     rowsGridTemplateColumns;

@@ -9,6 +9,7 @@ import { WithdrawalsFilters } from './withdrawals-filters';
 @Component({
     templateUrl: 'withdrawals.component.html',
     providers: [FetchWithdrawalsService, WithdrawalsExpandedIdManager],
+    standalone: false
 })
 export class WithdrawalsComponent implements OnInit {
     withdrawals$ = this.fetchWithdrawalsService.searchResult$;

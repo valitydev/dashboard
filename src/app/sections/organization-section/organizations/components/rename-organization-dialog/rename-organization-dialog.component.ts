@@ -16,6 +16,7 @@ import { RenameOrganizationDialogData } from './types/rename-organization-dialog
     selector: 'dsh-rename-organization-dialog',
     templateUrl: 'rename-organization-dialog.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class RenameOrganizationDialogComponent {
     form: FormGroupByValue<{ name: string }>;

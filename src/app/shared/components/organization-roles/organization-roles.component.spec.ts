@@ -7,6 +7,7 @@ import { OrganizationRolesComponent } from './organization-roles.component';
 @Component({
     selector: 'dsh-host',
     template: `<dsh-organization-roles></dsh-organization-roles>`,
+    standalone: false
 })
 class HostComponent {}
 

@@ -24,6 +24,7 @@ import { EditRolesDialogComponent } from '../edit-roles-dialog/edit-roles-dialog
     selector: 'dsh-member',
     templateUrl: 'member.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class MemberComponent implements OnChanges {
     @Input() organization: Organization;

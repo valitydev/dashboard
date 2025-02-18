@@ -12,6 +12,7 @@ import { FilterSuperclass } from '@dsh/components/filter';
     templateUrl: 'currency-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => CurrencyFilterComponent),
+    standalone: false
 })
 export class CurrencyFilterComponent extends FilterSuperclass<string> {
     @Input() currencies: string[] = [];

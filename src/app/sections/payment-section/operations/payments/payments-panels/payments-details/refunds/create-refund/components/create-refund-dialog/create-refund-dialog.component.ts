@@ -27,6 +27,7 @@ const MAX_REASON_LENGTH = 100;
     templateUrl: 'create-refund-dialog.component.html',
     styleUrls: ['create-refund-dialog.component.scss'],
     providers: [RefundsService],
+    standalone: false
 })
 export class CreateRefundDialogComponent implements OnInit {
     maxReasonLength: number = MAX_REASON_LENGTH;

@@ -5,5 +5,6 @@ import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
     selector: 'dsh-invoices-field',
     templateUrl: 'invoices-field.component.html',
     providers: createControlProviders(() => InvoicesFieldComponent),
+    standalone: false
 })
 export class InvoicesFieldComponent extends FormControlSuperclass<string[]> {}

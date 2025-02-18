@@ -10,6 +10,7 @@ import { RefundsAmountService } from './refunds-amount.service';
     selector: 'dsh-refunds-amount',
     templateUrl: 'refunds-amount.component.html',
     providers: [RefundsAmountService],
+    standalone: false
 })
 export class RefundsAmountComponent implements OnChanges {
     @Input() spinnerType: SpinnerType;

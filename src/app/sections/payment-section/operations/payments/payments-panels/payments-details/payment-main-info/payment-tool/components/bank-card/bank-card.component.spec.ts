@@ -9,6 +9,7 @@ import { BankCardComponent } from './bank-card.component';
 
 @Pipe({
     name: 'bankCard',
+    standalone: false
 })
 class MockBankCardPipe implements PipeTransform {
     transform(value: string): string {

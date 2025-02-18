@@ -7,6 +7,7 @@ import { ShopsDataService } from '@dsh/app/shared';
 @Pipe({
     name: 'shopDetails',
     pure: false,
+    standalone: false
 })
 export class ShopDetailsPipe implements PipeTransform, OnDestroy {
     private shopName$: BehaviorSubject<string> = new BehaviorSubject('');

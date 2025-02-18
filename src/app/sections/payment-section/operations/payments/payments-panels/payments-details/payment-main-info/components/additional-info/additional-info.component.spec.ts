@@ -13,6 +13,7 @@ import { AdditionalInfoComponent } from './additional-info.component';
 @Component({
     selector: 'dsh-collapse',
     template: '<ng-content></ng-content>',
+    standalone: false
 })
 class MockCollapseComponent {
     @Input() title: string;

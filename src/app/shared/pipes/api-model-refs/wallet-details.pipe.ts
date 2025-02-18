@@ -7,6 +7,7 @@ import { WalletsService } from '@dsh/app/api/wallet';
 @Pipe({
     name: 'walletDetails',
     pure: false,
+    standalone: false
 })
 export class WalletDetailsPipe implements PipeTransform, OnDestroy {
     private walletName$: BehaviorSubject<string> = new BehaviorSubject('');

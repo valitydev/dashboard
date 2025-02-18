@@ -3,6 +3,7 @@ import { TranslocoService } from '@jsverse/transloco';
 
 @Pipe({
     name: 'localeCode',
+    standalone: false
 })
 export class LocaleCode implements PipeTransform {
     constructor(private t: TranslocoService) {}

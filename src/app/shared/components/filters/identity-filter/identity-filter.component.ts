@@ -12,6 +12,7 @@ import { FilterSuperclass } from '@dsh/components/filter';
     templateUrl: 'identity-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => IdentityFilterComponent),
+    standalone: false
 })
 export class IdentityFilterComponent extends FilterSuperclass<Identity['id']> {
     identity$ = combineLatest([this.identitiesService.identities$, this.savedValue$]).pipe(

@@ -28,6 +28,7 @@ const mapToMinor = (value: number | null, currency: string | null): number | nul
     templateUrl: 'create-invoice-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => CreateInvoiceFormComponent),
+    standalone: false
 })
 export class CreateInvoiceFormComponent
     extends FormComponentSuperclass<Partial<FormData>>

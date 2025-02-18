@@ -7,6 +7,7 @@ import { BalancesService } from './balances.service';
     templateUrl: 'balances.component.html',
     providers: [BalancesService],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class BalancesComponent {
     balances$ = this.balancesService.balances$;

@@ -32,6 +32,7 @@ const MAIN_FILTERS_KEYS = ['dateRange'];
 @Component({
     templateUrl: 'deposits-filters.component.html',
     selector: 'dsh-deposits-filters',
+    standalone: false
 })
 export class DepositsFiltersComponent implements OnInit, OnChanges {
     @Input() initParams: DepositsFilters;

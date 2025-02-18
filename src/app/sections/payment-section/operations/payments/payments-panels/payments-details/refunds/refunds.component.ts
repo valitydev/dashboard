@@ -33,6 +33,7 @@ import { FetchRefundsService } from './services/fetch-refunds/fetch-refunds.serv
             useValue: 3,
         },
     ],
+    standalone: false
 })
 export class RefundsComponent implements OnInit {
     @Input() invoiceID: string;

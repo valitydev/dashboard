@@ -5,6 +5,7 @@ import isEmpty from 'lodash-es/isEmpty';
 @Component({
     selector: 'dsh-deposit-panels',
     templateUrl: 'deposit-panels.component.html',
+    standalone: false
 })
 export class DepositPanelsComponent {
     @Input() list: Deposit[];

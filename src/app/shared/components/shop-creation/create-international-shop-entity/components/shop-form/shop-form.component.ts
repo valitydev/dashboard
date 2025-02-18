@@ -10,6 +10,7 @@ import { InternationalShopEntityFormValue } from '../../types/international-shop
     templateUrl: 'shop-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => ShopFormComponent),
+    standalone: false
 })
 export class ShopFormComponent extends FormGroupSuperclass<
     Partial<InternationalShopEntityFormValue>

@@ -17,7 +17,6 @@ import { SpinnerModule } from '@dsh/components/indicators';
 
 @Component({
     selector: 'dsh-api-key-create-dialog',
-    standalone: true,
     templateUrl: './api-key-create-dialog.component.html',
     styles: [],
     imports: [
@@ -30,7 +29,7 @@ import { SpinnerModule } from '@dsh/components/indicators';
         ReactiveFormsModule,
         CommonModule,
         ClipboardModule,
-    ],
+    ]
 })
 export class ApiKeyCreateDialogComponent extends DialogSuperclass<ApiKeyCreateDialogComponent> {
     form = this.fb.group({ name: '' });

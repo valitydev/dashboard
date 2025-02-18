@@ -9,6 +9,7 @@ import { DeleteWebhookParams } from '../webhook-details/webhook-actions';
 @Component({
     selector: 'dsh-webhooks-list',
     templateUrl: 'webhook-list.component.html',
+    standalone: false
 })
 export class WebhookListComponent implements OnInit, OnDestroy {
     @Input() webhooks: Webhook[];

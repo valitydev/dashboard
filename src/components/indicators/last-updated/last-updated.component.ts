@@ -4,6 +4,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     selector: 'dsh-last-updated',
     templateUrl: 'last-updated.component.html',
     styleUrls: ['last-updated.component.scss'],
+    standalone: false
 })
 export class LastUpdatedComponent {
     @Input() lastUpdated: string;

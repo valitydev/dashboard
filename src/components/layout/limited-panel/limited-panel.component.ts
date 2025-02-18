@@ -4,12 +4,11 @@ import { TranslocoModule } from '@jsverse/transloco';
 import { FlexModule } from 'ng-flex-layout';
 
 @Component({
-    standalone: true,
     selector: 'dsh-limited-panel',
     templateUrl: 'limited-panel.component.html',
     styleUrls: ['limited-panel.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [FlexModule, TranslocoModule, CommonModule],
+    imports: [FlexModule, TranslocoModule, CommonModule]
 })
 export class LimitedPanelComponent {
     @Output() showMore = new EventEmitter<void>();

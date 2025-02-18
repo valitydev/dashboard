@@ -8,6 +8,7 @@ import { getPaymentId } from '../utils/get-payment-id';
     selector: 'dsh-payments-panels',
     templateUrl: 'payments-panels.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PaymentsPanelsComponent {
     @Input() list: PaymentSearchResult[];

@@ -17,6 +17,7 @@ const TIME_PATTERN = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
     selector: 'dsh-create-report-dialog',
     templateUrl: 'create-report-dialog.component.html',
     styles: [],
+    standalone: false
 })
 export class CreateReportDialogComponent {
     form = this.fb.group({

@@ -13,6 +13,7 @@ import StatusEnum = WithdrawalStatus.StatusEnum;
     templateUrl: './withdrawal-status-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => WithdrawalStatusFilterComponent),
+    standalone: false
 })
 export class WithdrawalStatusFilterComponent extends FormControlSuperclass<StatusEnum> {
     options$: Observable<Option<string>[]> = this.walletDictionaryService.withdrawalStatus$.pipe(

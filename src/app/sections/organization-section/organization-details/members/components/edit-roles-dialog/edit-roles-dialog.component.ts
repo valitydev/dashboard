@@ -14,6 +14,7 @@ import { EditRolesDialogData } from './types/edit-roles-dialog-data';
     selector: 'dsh-edit-roles-dialog',
     templateUrl: 'edit-roles-dialog.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EditRolesDialogComponent extends DialogSuperclass<
     EditRolesDialogData,

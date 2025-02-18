@@ -5,6 +5,7 @@ import { Report } from '@vality/swag-anapi-v2';
     selector: 'dsh-report-details',
     templateUrl: 'report-details.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ReportDetailsComponent {
     @Input() report: Report;

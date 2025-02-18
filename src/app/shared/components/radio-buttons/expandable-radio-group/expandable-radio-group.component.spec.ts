@@ -175,7 +175,7 @@ describe('ExpandableRadioGroupComponent', () => {
 
         it('should render template item if it was provided for id', async () => {
             @Component({
-                template: `
+    template: `
                     <dsh-expandable-radio-group [choices]="choices" [control]="control">
                         <ng-container *ngFor="let choice of choices">
                             <ng-template [dshExpandableRadioGroupItem]="choice">
@@ -184,7 +184,8 @@ describe('ExpandableRadioGroupComponent', () => {
                         </ng-container>
                     </dsh-expandable-radio-group>
                 `,
-            })
+    standalone: false
+})
             class HostComponent extends BaseHostComponent {
                 choices = ['mine', 'another_mine', 'alternative'];
 
@@ -210,7 +211,7 @@ describe('ExpandableRadioGroupComponent', () => {
 
         it('should render item label instead of custom template using id', async () => {
             @Component({
-                template: `
+    template: `
                     <dsh-expandable-radio-group [choices]="choices" [control]="control">
                         <ng-container *ngFor="let choice of choices; let i = index">
                             <ng-template [dshExpandableRadioGroupItem]="i === 1 ? 'never' : choice">
@@ -219,7 +220,8 @@ describe('ExpandableRadioGroupComponent', () => {
                         </ng-container>
                     </dsh-expandable-radio-group>
                 `,
-            })
+    standalone: false
+})
             class HostComponent extends BaseHostComponent {
                 choices = ['mine', 'another_mine', 'alternative'];
 

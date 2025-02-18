@@ -17,6 +17,7 @@ import { SelectActiveOrganizationDialogComponent } from '../select-active-organi
     selector: 'dsh-user',
     templateUrl: 'user.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class UserComponent {
     @Output() selected = new EventEmitter<void>();

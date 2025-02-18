@@ -5,7 +5,11 @@ import { distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Daterange } from './daterange';
 import { DaterangeService } from './daterange.service';
 
-@Pipe({ name: 'daterange', pure: false })
+@Pipe({
+    name: 'daterange',
+    pure: false,
+    standalone: false,
+})
 /**
  * @deprecated remove after remove deprecated range-datepicker
  */

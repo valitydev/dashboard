@@ -10,6 +10,7 @@ import { CategoryService } from '../../services/category/category.service';
     selector: 'dsh-shop-info',
     templateUrl: 'shop-info.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ShopInfoComponent {
     @Input()

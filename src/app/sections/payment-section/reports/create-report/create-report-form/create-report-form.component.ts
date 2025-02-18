@@ -9,6 +9,7 @@ import { ShopInfo } from '../../../operations/operators';
     selector: 'dsh-create-report-form',
     templateUrl: 'create-report-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CreateReportFormComponent {
     @Input() form: UntypedFormGroup;

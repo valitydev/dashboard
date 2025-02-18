@@ -9,6 +9,7 @@ import { EmptyDirective } from './empty.directive';
 @Component({
     selector: 'dsh-host',
     template: `<div *dshEmpty="true"></div>`,
+    standalone: false
 })
 class HostComponent {}
 

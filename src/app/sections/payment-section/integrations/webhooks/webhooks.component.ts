@@ -9,6 +9,7 @@ import { WebhooksExpandedIdManager } from './webhooks-expanded-id-manager.servic
 @Component({
     templateUrl: 'webhooks.component.html',
     providers: [ReceiveWebhooksService, WebhooksExpandedIdManager],
+    standalone: false
 })
 export class WebhooksComponent implements OnInit, OnDestroy {
     webhooks$ = this.receiveWebhooksService.webhooks$;

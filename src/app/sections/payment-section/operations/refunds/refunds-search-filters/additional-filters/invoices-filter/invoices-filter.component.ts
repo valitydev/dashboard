@@ -6,5 +6,6 @@ import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
     templateUrl: './invoices-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => InvoicesFilterComponent),
+    standalone: false
 })
 export class InvoicesFilterComponent extends FormControlSuperclass<string[]> {}

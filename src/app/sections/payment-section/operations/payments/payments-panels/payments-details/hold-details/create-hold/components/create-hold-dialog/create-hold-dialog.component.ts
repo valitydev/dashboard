@@ -19,6 +19,7 @@ import { CreateHoldDialogData } from '../../types/create-hold-dialog-data';
     selector: 'dsh-create-hold-dialog',
     templateUrl: './create-hold-dialog.component.html',
     styleUrls: ['./create-hold-dialog.component.scss'],
+    standalone: false
 })
 export class CreateHoldDialogComponent {
     maxReasonLength: number = MAX_REASON_LENGTH;

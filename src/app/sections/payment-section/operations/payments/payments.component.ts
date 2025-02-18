@@ -14,6 +14,7 @@ import { PaymentsExpandedIdManager, FetchPaymentsService } from './services';
     selector: 'dsh-payments',
     templateUrl: 'payments.component.html',
     providers: [FetchPaymentsService, PaymentsExpandedIdManager, PaymentInstitutionRealmService],
+    standalone: false
 })
 export class PaymentsComponent implements OnInit {
     realm$ = this.paymentInstitutionRealmService.realm$;

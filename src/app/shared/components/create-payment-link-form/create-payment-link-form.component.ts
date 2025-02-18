@@ -15,6 +15,7 @@ import { Controls } from './types/controls';
     templateUrl: 'create-payment-link-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => CreatePaymentLinkFormComponent),
+    standalone: false
 })
 export class CreatePaymentLinkFormComponent extends FormGroupSuperclass<
     Partial<PaymentLinkParams>,

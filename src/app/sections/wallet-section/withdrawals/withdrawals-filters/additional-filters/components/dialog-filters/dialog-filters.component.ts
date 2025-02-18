@@ -11,6 +11,7 @@ import { filtersToForm, formToFilters } from '../../utils';
     selector: 'dsh-dialog-filters',
     templateUrl: 'dialog-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DialogFiltersComponent
     extends FormGroupSuperclass<ListWithdrawalsRequestParams, AdditionalFiltersForm>

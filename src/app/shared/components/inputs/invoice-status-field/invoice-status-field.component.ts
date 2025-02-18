@@ -17,6 +17,7 @@ import StatusEnum = InvoiceStatus.StatusEnum;
         InvoiceStatusLabelPipe,
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class InvoiceStatusFieldComponent extends FormControlSuperclass<StatusEnum> {
     options$: Observable<Option<string>[]> = combineLatest(

@@ -13,6 +13,7 @@ import { MembersExpandedIdManager } from './services/members-expanded-id-manager
     templateUrl: 'members.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [FetchMembersService, MembersExpandedIdManager],
+    standalone: false
 })
 export class MembersComponent {
     organization$ = this.route.params.pipe(

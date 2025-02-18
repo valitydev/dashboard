@@ -5,7 +5,10 @@ import { map } from 'rxjs/operators';
 
 import { AnapiDictionaryService } from '@dsh/app/api/anapi';
 
-@Pipe({ name: 'invoiceStatusLabel' })
+@Pipe({
+    name: 'invoiceStatusLabel',
+    standalone: false
+})
 export class InvoiceStatusLabelPipe implements PipeTransform {
     constructor(private anapiDictionaryService: AnapiDictionaryService) {}
 

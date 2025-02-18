@@ -7,6 +7,7 @@ import { SectionsLinksService } from '@dsh/app/shared/services/sections-links';
     templateUrl: 'toolbar.component.html',
     styleUrls: ['./toolbar.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ToolbarComponent {
     sectionLinks$ = this.sectionsLinksService.sectionLinks$;

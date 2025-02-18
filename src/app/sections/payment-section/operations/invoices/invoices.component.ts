@@ -19,6 +19,7 @@ import { InvoicesExpandedIdManager } from './services/invoices-expanded-id-manag
     selector: 'dsh-invoices',
     templateUrl: 'invoices.component.html',
     providers: [FetchInvoicesService, InvoicesExpandedIdManager, RealmMixService],
+    standalone: false
 })
 export class InvoicesComponent implements OnInit {
     invoices$ = this.invoicesService.searchResult$;

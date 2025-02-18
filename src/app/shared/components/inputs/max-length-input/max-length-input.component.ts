@@ -35,6 +35,7 @@ import { ErrorMatcher } from '@dsh/app/shared/utils';
             multi: true,
         },
     ],
+    standalone: false
 })
 export class MaxLengthInputComponent implements OnChanges, ControlValueAccessor {
     @Input() label: string;

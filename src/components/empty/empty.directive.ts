@@ -16,6 +16,7 @@ import { TextComponent } from './components/text/text.component';
 
 @Directive({
     selector: '[dsh-empty],[dshEmpty]',
+    standalone: false
 })
 export class EmptyDirective implements OnChanges, OnInit {
     @Input() dshEmpty: boolean;

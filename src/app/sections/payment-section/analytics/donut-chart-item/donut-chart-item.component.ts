@@ -8,6 +8,7 @@ import { DistributionChartData } from '../utils';
     selector: 'dsh-donut-chart-item',
     templateUrl: 'donut-chart-item.component.html',
     styleUrls: ['donut-chart-item.component.scss'],
+    standalone: false
 })
 export class DonutChartItemComponent implements OnChanges {
     @Input() spinnerType: SpinnerType;

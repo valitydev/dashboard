@@ -8,10 +8,9 @@ import { StatusModule } from '@dsh/components/indicators';
 import { PAYMENT_STATUS_COLOR } from './payment-status-color';
 
 @Component({
-    standalone: true,
     selector: 'dsh-payment-status',
     templateUrl: './payment-status.component.html',
-    imports: [CommonModule, StatusModule],
+    imports: [CommonModule, StatusModule]
 })
 export class PaymentStatusComponent {
     @Input() status: PaymentSearchResult.StatusEnum;
