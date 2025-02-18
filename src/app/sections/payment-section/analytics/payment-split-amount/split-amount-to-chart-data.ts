@@ -1,4 +1,4 @@
-import { toMajor } from '@vality/ng-core';
+import { toMajor } from '@vality/matez';
 import { OffsetAmount, SplitAmountResult, SplitUnit } from '@vality/swag-anapi-v2';
 import moment from 'moment';
 

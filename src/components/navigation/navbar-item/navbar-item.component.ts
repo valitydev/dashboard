@@ -9,7 +9,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import { MatSlideToggle, MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { ComponentChanges } from '@vality/ng-core';
+import { ComponentChanges } from '@vality/matez';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 

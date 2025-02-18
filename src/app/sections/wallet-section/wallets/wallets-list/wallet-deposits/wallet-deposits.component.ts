@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
-import { ComponentChanges } from '@vality/ng-core';
+import { ComponentChanges } from '@vality/matez';
 
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 

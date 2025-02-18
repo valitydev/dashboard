@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
-import { FormGroupSuperclass, createControlProviders } from '@vality/ng-core';
+import { FormGroupSuperclass, createControlProviders } from '@vality/matez';
 
 import { MainFiltersForm } from './types/main-filters-form';
 

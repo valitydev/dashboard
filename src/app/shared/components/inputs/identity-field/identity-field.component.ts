@@ -5,7 +5,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@jsverse/transloco';
-import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
+import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 import { Identity } from '@vality/swag-wallet';
 import { FlexModule } from 'ng-flex-layout';
 

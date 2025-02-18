@@ -1,6 +1,6 @@
 import { formatCurrency, getCurrencySymbol } from '@angular/common';
 import { Pipe, PipeTransform, Inject, LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
-import { toMajor } from '@vality/ng-core';
+import { toMajor } from '@vality/matez';
 
 @Pipe({
     name: 'amountCurrency',

@@ -1,5 +1,5 @@
 import { AbstractControl } from '@angular/forms';
-import { getValue } from '@vality/ng-core';
+import { getValue } from '@vality/matez';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 

@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService } from '@vality/ng-core';
+import { NotifyLogService } from '@vality/matez';
 import { PaymentSearchResult, SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 import { isNumber } from 'lodash-es';
 import { Observable, of } from 'rxjs';

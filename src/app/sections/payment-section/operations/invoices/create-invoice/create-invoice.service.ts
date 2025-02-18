@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService } from '@vality/ng-core';
+import { NotifyLogService } from '@vality/matez';
 import { PaymentInstitution, Shop } from '@vality/swag-payments';
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { filter, pluck, switchMap, take } from 'rxjs/operators';

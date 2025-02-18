@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService, QueryParamsService } from '@vality/ng-core';
+import { NotifyLogService, QueryParamsService } from '@vality/matez';
 import { shareReplay } from 'rxjs';
 
 import { FetchWithdrawalsService, WithdrawalsExpandedIdManager } from './services';

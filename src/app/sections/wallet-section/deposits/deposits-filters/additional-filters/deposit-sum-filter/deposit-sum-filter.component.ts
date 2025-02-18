@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormGroupByValue } from '@vality/ng-core';
+import { FormGroupByValue } from '@vality/matez';
 
 import { DepositSumFilter } from './types/deposit-sum-filter';
 

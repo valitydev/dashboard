@@ -4,7 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslocoService } from '@jsverse/transloco';
-import { QueryParamsService } from '@vality/ng-core';
+import { QueryParamsService } from '@vality/matez';
 import { Report } from '@vality/swag-wallet';
 import isEqual from 'lodash-es/isEqual';
 import moment from 'moment';

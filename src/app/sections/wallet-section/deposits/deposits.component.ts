@@ -1,6 +1,6 @@
 import { Component, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { QueryParamsService } from '@vality/ng-core';
+import { QueryParamsService } from '@vality/matez';
 
 import { ErrorService } from '@dsh/app/shared';
 

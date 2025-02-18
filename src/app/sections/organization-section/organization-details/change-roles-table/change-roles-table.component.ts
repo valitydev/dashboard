@@ -20,7 +20,7 @@ import {
     getEnumValues,
     DialogService,
     DialogResponseStatus,
-} from '@vality/ng-core';
+} from '@vality/matez';
 import { ResourceScopeId, Organization } from '@vality/swag-organizations';
 import { Shop } from '@vality/swag-payments';
 import { uniqBy } from 'lodash-es';

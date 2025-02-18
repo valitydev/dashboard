@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControlSuperclass, Option, createControlProviders } from '@vality/ng-core';
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
 import { WithdrawalStatus } from '@vality/swag-wallet';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';

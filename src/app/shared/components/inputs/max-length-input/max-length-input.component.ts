@@ -15,7 +15,7 @@ import {
     ValidatorFn,
     FormControl,
 } from '@angular/forms';
-import { ComponentChanges } from '@vality/ng-core';
+import { ComponentChanges } from '@vality/matez';
 import isNil from 'lodash-es/isNil';
 import isObject from 'lodash-es/isObject';
 import { skip } from 'rxjs/operators';

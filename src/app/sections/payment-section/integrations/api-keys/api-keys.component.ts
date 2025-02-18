@@ -2,7 +2,7 @@ import { Breakpoints } from '@angular/cdk/layout';
 import { Component, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
-import { DialogService, QueryParamsService } from '@vality/ng-core';
+import { DialogService, QueryParamsService } from '@vality/matez';
 import { ApiKeyStatus, ApiKey } from '@vality/swag-api-keys-v2';
 import { map } from 'rxjs/operators';
 

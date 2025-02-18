@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService } from '@vality/ng-core';
+import { NotifyLogService } from '@vality/matez';
 import { Webhook } from '@vality/swag-payments';
 import sortBy from 'lodash-es/sortBy';
 import { BehaviorSubject, Observable, Subject, of } from 'rxjs';

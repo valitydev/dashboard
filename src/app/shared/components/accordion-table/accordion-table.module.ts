@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { PipesModule } from '@vality/ng-core';
+import { PipesModule } from '@vality/matez';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';

@@ -10,7 +10,7 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, UntypedFormBuilder } from '@angular/forms';
 import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService } from '@vality/ng-core';
+import { NotifyLogService } from '@vality/matez';
 import { Invoice, InvoiceTemplateAndToken, Shop } from '@vality/swag-payments';
 import { merge, Subject, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';

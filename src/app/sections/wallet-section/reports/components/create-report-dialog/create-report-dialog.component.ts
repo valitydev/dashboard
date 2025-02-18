@@ -3,7 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService, progressTo } from '@vality/ng-core';
+import { NotifyLogService, progressTo } from '@vality/matez';
 import moment from 'moment/moment';
 import { BehaviorSubject } from 'rxjs';
 

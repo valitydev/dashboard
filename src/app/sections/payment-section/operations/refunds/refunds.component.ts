@@ -1,7 +1,7 @@
 import { Component, DestroyRef, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService, QueryParamsService } from '@vality/ng-core';
+import { NotifyLogService, QueryParamsService } from '@vality/matez';
 
 import { RealmMixService, RealmShopsService } from '../../services';
 

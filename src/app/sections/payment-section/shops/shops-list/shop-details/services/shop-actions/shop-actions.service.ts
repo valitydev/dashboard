@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService, DialogResponseStatus } from '@vality/ng-core';
+import { NotifyLogService, DialogResponseStatus } from '@vality/matez';
 import { Observable, of } from 'rxjs';
 import { catchError, filter, map, switchMap } from 'rxjs/operators';
 

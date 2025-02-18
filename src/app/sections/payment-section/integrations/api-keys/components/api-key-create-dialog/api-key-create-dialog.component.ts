@@ -6,7 +6,7 @@ import { ReactiveFormsModule, NonNullableFormBuilder } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
-import { DialogSuperclass, progressTo, NotifyLogService } from '@vality/ng-core';
+import { DialogSuperclass, progressTo, NotifyLogService } from '@vality/matez';
 import { FlexModule } from 'ng-flex-layout';
 import { BehaviorSubject } from 'rxjs';
 

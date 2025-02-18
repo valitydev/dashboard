@@ -3,7 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@jsverse/transloco';
-import { QueryParamsService } from '@vality/ng-core';
+import { QueryParamsService } from '@vality/matez';
 import { Subject, combineLatest } from 'rxjs';
 import { filter, first, switchMap } from 'rxjs/operators';
 

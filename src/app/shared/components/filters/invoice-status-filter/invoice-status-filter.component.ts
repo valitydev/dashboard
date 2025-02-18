@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
-import { createControlProviders } from '@vality/ng-core';
+import { createControlProviders } from '@vality/matez';
 import { InvoiceStatus } from '@vality/swag-anapi-v2';
 
 import { FilterSuperclass } from '@dsh/components/filter';

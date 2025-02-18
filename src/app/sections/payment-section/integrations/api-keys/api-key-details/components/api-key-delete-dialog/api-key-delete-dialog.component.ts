@@ -3,7 +3,7 @@ import { Component, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
-import { DialogSuperclass, NotifyLogService, progressTo } from '@vality/ng-core';
+import { DialogSuperclass, NotifyLogService, progressTo } from '@vality/matez';
 import { RequestRevokeApiKeyRequestParams } from '@vality/swag-api-keys-v2';
 import { FlexModule } from 'ng-flex-layout';
 import { BehaviorSubject } from 'rxjs';

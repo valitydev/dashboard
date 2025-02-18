@@ -7,7 +7,7 @@ import {
     FormComponentSuperclass,
     getErrorsTree,
     toMinor,
-} from '@vality/ng-core';
+} from '@vality/matez';
 import isNil from 'lodash-es/isNil';
 
 import { getFormValueChanges } from '@dsh/utils';

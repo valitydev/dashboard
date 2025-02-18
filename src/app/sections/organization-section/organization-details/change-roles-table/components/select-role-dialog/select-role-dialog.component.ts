@@ -1,6 +1,6 @@
 import { Component, ViewChild, TemplateRef, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { DialogSuperclass, DEFAULT_DIALOG_CONFIG, getEnumValues } from '@vality/ng-core';
+import { DialogSuperclass, DEFAULT_DIALOG_CONFIG, getEnumValues } from '@vality/matez';
 import { combineLatest, Observable, ReplaySubject } from 'rxjs';
 import { map, first } from 'rxjs/operators';
 

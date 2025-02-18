@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { QueryParamsService } from '@vality/ng-core';
+import { QueryParamsService } from '@vality/matez';
 import { combineLatest, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 

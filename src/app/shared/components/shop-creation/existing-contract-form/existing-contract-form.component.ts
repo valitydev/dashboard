@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
-import { createControlProviders, FormControlSuperclass } from '@vality/ng-core';
+import { createControlProviders, FormControlSuperclass } from '@vality/matez';
 import {
     Shop,
     Contract,

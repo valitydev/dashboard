@@ -1,7 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { TranslocoService } from '@jsverse/transloco';
-import { createControlProviders, FormGroupSuperclass, NotifyLogService } from '@vality/ng-core';
+import { createControlProviders, FormGroupSuperclass, NotifyLogService } from '@vality/matez';
 import { PaymentMethod } from '@vality/swag-payments';
 
 import { PaymentLinkParams } from '@dsh/app/shared/services/create-payment-link/types/payment-link-params';

@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { FormGroupSuperclass, createControlProviders } from '@vality/ng-core';
+import { FormGroupSuperclass, createControlProviders } from '@vality/matez';
 
 import { binValidator, panValidator } from '@dsh/components/form-controls';
 

@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { FormGroupSuperclass, createControlProviders } from '@vality/ng-core';
+import { FormGroupSuperclass, createControlProviders } from '@vality/matez';
 
 import { ShopsDataService } from '@dsh/app/shared';
 

@@ -8,7 +8,7 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl } from '@angular/forms';
 import { TranslocoService } from '@jsverse/transloco';
-import { progressTo, NotifyLogService } from '@vality/ng-core';
+import { progressTo, NotifyLogService } from '@vality/matez';
 import { BehaviorSubject, first } from 'rxjs';
 
 import { CreateInternationalShopEntityService } from './services/create-international-shop-entity/create-international-shop-entity.service';

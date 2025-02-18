@@ -1,5 +1,5 @@
 import { Component, Inject, Input, OnChanges } from '@angular/core';
-import { ComponentChanges } from '@vality/ng-core';
+import { ComponentChanges } from '@vality/matez';
 
 import { SpinnerType } from '@dsh/components/indicators';
 

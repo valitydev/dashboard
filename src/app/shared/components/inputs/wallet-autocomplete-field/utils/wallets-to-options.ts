@@ -1,4 +1,4 @@
-import { Option } from '@vality/ng-core';
+import { Option } from '@vality/matez';
 import { Wallet } from '@vality/swag-wallet';
 
 const walletToOption = (wallet: Wallet): Option<string> => ({

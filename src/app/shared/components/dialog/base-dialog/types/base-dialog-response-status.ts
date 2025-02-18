@@ -1,3 +1,3 @@
-import { DialogResponseStatus as BaseDialogResponseStatus } from '@vality/ng-core';
+import { DialogResponseStatus as BaseDialogResponseStatus } from '@vality/matez';
 
 export { BaseDialogResponseStatus };

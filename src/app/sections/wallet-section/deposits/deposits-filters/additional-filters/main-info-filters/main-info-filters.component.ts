@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { FormGroupByValue } from '@vality/ng-core';
+import { FormGroupByValue } from '@vality/matez';
 
 import { MainInfoFilters } from './types/main-info-filters';
 

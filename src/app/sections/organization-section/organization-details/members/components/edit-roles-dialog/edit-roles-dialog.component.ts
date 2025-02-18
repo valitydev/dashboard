@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { DialogSuperclass, DEFAULT_DIALOG_CONFIG, progressTo } from '@vality/ng-core';
+import { DialogSuperclass, DEFAULT_DIALOG_CONFIG, progressTo } from '@vality/matez';
 import { MemberRole } from '@vality/swag-organizations';
 import { BehaviorSubject, defer, forkJoin, of, Subscription } from 'rxjs';
 import { catchError, shareReplay, switchMap, map } from 'rxjs/operators';

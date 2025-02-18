@@ -1,5 +1,5 @@
 import { AbstractControl, FormControl } from '@angular/forms';
-import { FormComponentSuperclass } from '@vality/ng-core';
+import { FormComponentSuperclass } from '@vality/matez';
 import isEqual from 'lodash-es/isEqual';
 import { BehaviorSubject, defer, Observable } from 'rxjs';
 

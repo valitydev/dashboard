@@ -1,7 +1,7 @@
 import { Component, DestroyRef, Input } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService, progressTo } from '@vality/ng-core';
+import { NotifyLogService, progressTo } from '@vality/matez';
 import { ReportFilesInner } from '@vality/swag-wallet';
 import { forkJoin, EMPTY, BehaviorSubject } from 'rxjs';
 import { catchError } from 'rxjs/operators';

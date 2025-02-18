@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
-import { FormControlSuperclass, Option, createControlProviders } from '@vality/ng-core';
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
 import { Category } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';

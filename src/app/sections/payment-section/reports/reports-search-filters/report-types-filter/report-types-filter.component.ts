@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
-import { createControlProviders } from '@vality/ng-core';
+import { createControlProviders } from '@vality/matez';
 import { Report } from '@vality/swag-anapi-v2';
 import { combineLatest } from 'rxjs';
 import { share, switchMap } from 'rxjs/operators';

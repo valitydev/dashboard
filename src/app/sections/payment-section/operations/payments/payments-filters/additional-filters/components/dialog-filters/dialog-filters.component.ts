@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroupSuperclass, createControlProviders } from '@vality/ng-core';
+import { FormGroupSuperclass, createControlProviders } from '@vality/matez';
 
 import { paymentStatusValidator } from '../../payment-status-filter';
 import { AdditionalFilters, AdditionalFiltersForm } from '../../types';

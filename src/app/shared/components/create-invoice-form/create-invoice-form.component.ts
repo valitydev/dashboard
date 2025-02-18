@@ -7,7 +7,7 @@ import {
     FormComponentSuperclass,
     getErrorsTree,
     toMinor,
-} from '@vality/ng-core';
+} from '@vality/matez';
 import { InvoiceParams, Shop } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
 import moment, { Moment } from 'moment';

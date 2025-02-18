@@ -1,6 +1,6 @@
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Component, Input, Output, EventEmitter, TemplateRef, ContentChild } from '@angular/core';
-import { PossiblyAsync } from '@vality/ng-core';
+import { PossiblyAsync } from '@vality/matez';
 import { of, Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 

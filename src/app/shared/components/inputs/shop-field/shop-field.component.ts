@@ -1,5 +1,5 @@
 import { Component, Inject, Input, Optional, booleanAttribute } from '@angular/core';
-import { createControlProviders, FormControlSuperclass, Option } from '@vality/ng-core';
+import { createControlProviders, FormControlSuperclass, Option } from '@vality/matez';
 import { Shop } from '@vality/swag-payments';
 import { defer, Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';

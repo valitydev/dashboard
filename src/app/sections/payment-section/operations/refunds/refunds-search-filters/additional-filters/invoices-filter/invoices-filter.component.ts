@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
+import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 
 @Component({
     selector: 'dsh-invoices-filter',

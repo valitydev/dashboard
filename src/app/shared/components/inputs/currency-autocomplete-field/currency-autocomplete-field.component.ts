@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
-import { Option, createControlProviders, FormControlSuperclass } from '@vality/ng-core';
+import { Option, createControlProviders, FormControlSuperclass } from '@vality/matez';
 
 import { ConfigService } from '@dsh/app/config';
 

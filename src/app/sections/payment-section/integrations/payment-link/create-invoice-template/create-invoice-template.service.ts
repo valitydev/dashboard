@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { toMinor } from '@vality/ng-core';
+import { toMinor } from '@vality/matez';
 import {
     InvoiceLineTaxMode,
     InvoiceLineTaxVAT,

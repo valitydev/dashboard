@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, DestroyRef, Inject } from '@angular
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroupByValue } from '@vality/ng-core';
+import { FormGroupByValue } from '@vality/matez';
 import { BehaviorSubject } from 'rxjs';
 
 import { OrgsService } from '@dsh/app/api/organizations';

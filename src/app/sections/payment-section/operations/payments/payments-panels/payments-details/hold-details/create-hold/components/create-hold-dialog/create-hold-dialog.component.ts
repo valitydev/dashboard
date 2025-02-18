@@ -2,7 +2,7 @@ import { Component, DestroyRef, Inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroupByValue, toMajor, toMinor } from '@vality/ng-core';
+import { FormGroupByValue, toMajor, toMinor } from '@vality/matez';
 import { CaptureParams } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
 

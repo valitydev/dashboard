@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { FormControlSuperclass, Option, createControlProviders } from '@vality/ng-core';
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
 
 @Component({
     selector: 'dsh-currency-field',

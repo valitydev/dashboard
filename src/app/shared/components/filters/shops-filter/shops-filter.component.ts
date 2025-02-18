@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
-import { createControlProviders } from '@vality/ng-core';
+import { createControlProviders } from '@vality/matez';
 import { Shop } from '@vality/swag-payments';
 import { combineLatest } from 'rxjs';
 import { map, share } from 'rxjs/operators';
