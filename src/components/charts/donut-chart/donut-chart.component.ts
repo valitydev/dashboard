@@ -8,7 +8,7 @@ import { DEFAULT_CONFIG } from './default-config';
     selector: 'dsh-donut-chart',
     templateUrl: 'donut-chart.component.html',
     styleUrls: ['donut-chart.component.scss'],
-    standalone: false
+    standalone: false,
 })
 export class DonutChartComponent implements OnInit {
     @Input()

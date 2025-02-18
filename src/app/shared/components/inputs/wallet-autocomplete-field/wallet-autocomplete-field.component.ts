@@ -12,7 +12,7 @@ import { walletsToOptions } from './utils';
     templateUrl: 'wallet-autocomplete-field.component.html',
     providers: createControlProviders(() => WalletAutocompleteFieldComponent),
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class WalletAutocompleteFieldComponent extends FormControlSuperclass<WalletId> {
     @Input() label: string;

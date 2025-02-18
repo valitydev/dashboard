@@ -7,7 +7,7 @@ import { MainInfoFilters } from './types/main-info-filters';
     selector: 'dsh-main-filters',
     templateUrl: './main-info-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class MainInfoFiltersComponent {
     @Input() form: FormGroupByValue<MainInfoFilters>;

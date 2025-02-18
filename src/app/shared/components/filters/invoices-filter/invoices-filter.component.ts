@@ -8,7 +8,7 @@ import { FilterSuperclass } from '@dsh/components/filter';
     templateUrl: 'invoices-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => InvoicesFilterComponent),
-    standalone: false
+    standalone: false,
 })
 export class InvoicesFilterComponent extends FilterSuperclass<string[]> {
     constructor(injector: Injector) {

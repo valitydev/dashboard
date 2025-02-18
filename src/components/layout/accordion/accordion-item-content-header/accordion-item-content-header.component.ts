@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
     selector: 'dsh-accordion-item-content-header',
     templateUrl: 'accordion-item-content-header.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class AccordionItemContentHeaderComponent {
     @Output() collapse: EventEmitter<MouseEvent> = new EventEmitter();

@@ -4,7 +4,7 @@ import { toMajor } from '@vality/ng-core';
 
 @Pipe({
     name: 'amountCurrency',
-    standalone: false
+    standalone: false,
 })
 export class AmountCurrencyPipe implements PipeTransform {
     constructor(

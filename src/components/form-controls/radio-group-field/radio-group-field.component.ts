@@ -8,7 +8,7 @@ import { Overwrite } from 'utility-types';
     templateUrl: 'radio-group-field.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => RadioGroupFieldComponent),
-    standalone: false
+    standalone: false,
 })
 export class RadioGroupFieldComponent<T> extends FormControlSuperclass<T> {
     @Input() options: Option<T>[];

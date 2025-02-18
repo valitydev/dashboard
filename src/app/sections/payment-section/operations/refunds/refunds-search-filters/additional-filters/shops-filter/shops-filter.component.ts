@@ -9,7 +9,7 @@ import { ShopsDataService } from '@dsh/app/shared';
     templateUrl: './shops-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => ShopsFilterComponent),
-    standalone: false
+    standalone: false,
 })
 export class ShopsFilterComponent extends FormControlSuperclass<string[]> {
     shops$ = this.shopsDataService.shops$;

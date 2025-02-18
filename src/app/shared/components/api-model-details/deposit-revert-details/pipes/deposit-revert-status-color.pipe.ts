@@ -5,7 +5,7 @@ import { StatusColor } from '../../../../../theme-manager';
 
 @Pipe({
     name: 'depositRevertStatusColor',
-    standalone: false
+    standalone: false,
 })
 export class DepositRevertStatusColorPipe implements PipeTransform {
     transform(status: DepositRevert.StatusEnum): StatusColor {

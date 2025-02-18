@@ -25,7 +25,7 @@ enum Step {
     selector: 'dsh-payment-link',
     templateUrl: 'payment-link.component.html',
     styleUrls: ['payment-link.component.scss'],
-    standalone: false
+    standalone: false,
 })
 export class PaymentLinkComponent {
     step = Step;

@@ -9,8 +9,9 @@ export interface HumanizeDurationConfig extends HumanizeConfig {
 }
 
 @Pipe({
-    name: 'humanizedDuration', pure: false,
-    standalone: false
+    name: 'humanizedDuration',
+    pure: false,
+    standalone: false,
 })
 export class HumanizedDurationPipe implements OnDestroy, PipeTransform {
     private latestValue: string = '';

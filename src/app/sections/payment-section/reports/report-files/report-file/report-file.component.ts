@@ -8,7 +8,7 @@ import { ReportFilesService } from '../report-files.service';
     templateUrl: 'report-file.component.html',
     styleUrls: ['report-file.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class ReportFileComponent {
     @Input() reportID: number;

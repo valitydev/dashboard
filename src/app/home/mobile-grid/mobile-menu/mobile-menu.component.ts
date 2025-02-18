@@ -7,7 +7,7 @@ import { SectionsLinksService, SectionLink } from '@dsh/app/shared/services/sect
     selector: 'dsh-mobile-menu',
     templateUrl: './mobile-menu.component.html',
     styleUrls: ['./mobile-menu.component.scss'],
-    standalone: false
+    standalone: false,
 })
 export class MobileMenuComponent {
     @Output() menuItemSelected: EventEmitter<void> = new EventEmitter<void>();

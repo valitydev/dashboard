@@ -14,7 +14,7 @@ import { NoContentDirective } from '@dsh/app/shared/directives/no-content/no-con
             <div>my template value</div>
         </ng-template>
     `,
-    standalone: false
+    standalone: false,
 })
 class TestContentContainerComponent {}
 
@@ -25,14 +25,14 @@ class TestContentContainerComponent {}
             <div>my own content</div>
         </dsh-content-container>
     `,
-    standalone: false
+    standalone: false,
 })
 class TestContentComponent {}
 
 @Component({
     selector: 'dsh-test-no-content',
     template: ` <dsh-content-container></dsh-content-container> `,
-    standalone: false
+    standalone: false,
 })
 class TestNoContentComponent {}
 

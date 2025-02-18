@@ -21,7 +21,7 @@ import { isPaymentFlowHold } from './types/is-payment-flow-hold';
     templateUrl: 'payment-details.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [InvoiceDetailsService],
-    standalone: false
+    standalone: false,
 })
 export class PaymentDetailsComponent implements OnChanges {
     @Input() payment: PaymentSearchResult;

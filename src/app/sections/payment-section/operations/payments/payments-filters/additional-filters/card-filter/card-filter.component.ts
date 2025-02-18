@@ -16,7 +16,7 @@ import { CardFilterForm } from './types';
             max-width: calc(1ch * 7);
         }
     `,
-    standalone: false
+    standalone: false,
 })
 export class CardFilterComponent extends FormGroupSuperclass<CardFilterForm> {
     control = this.fb.group({

@@ -11,7 +11,7 @@ import { DepositStatusFilterValue } from './types/deposit-status-filter-value';
     selector: 'dsh-deposit-status-filter',
     templateUrl: './deposit-status-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class DepositStatusFilterComponent {
     @Input() control: FormControl<DepositStatusFilterValue>;

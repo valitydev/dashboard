@@ -12,7 +12,7 @@ import { filtersToSearchParams } from './utils/filters-to-search-params';
 @Component({
     templateUrl: 'deposits.component.html',
     providers: [FetchDepositsService, DepositsExpandedIdManagerService],
-    standalone: false
+    standalone: false,
 })
 export class DepositsComponent {
     deposits$ = this.fetchDepositsService.searchResult$;

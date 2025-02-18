@@ -12,7 +12,7 @@ import { CreateInvoiceDialogResponse } from '../../types/create-invoice-dialog-r
     selector: 'dsh-create-invoice-dialog',
     templateUrl: 'create-invoice-dialog.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class CreateInvoiceDialogComponent {
     formControl = new FormControl();

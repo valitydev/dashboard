@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     templateUrl: 'route-navbar-layout.component.html',
     styleUrls: ['route-navbar-layout.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class RouteNavbarLayoutComponent {
     @Input() routeName: string;

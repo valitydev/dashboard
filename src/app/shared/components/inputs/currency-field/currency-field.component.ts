@@ -6,7 +6,7 @@ import { FormControlSuperclass, Option, createControlProviders } from '@vality/n
     templateUrl: 'currency-field.component.html',
     providers: createControlProviders(() => CurrencyFieldComponent),
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class CurrencyFieldComponent extends FormControlSuperclass<string> {
     @Input() set currencies(currencies: string[]) {

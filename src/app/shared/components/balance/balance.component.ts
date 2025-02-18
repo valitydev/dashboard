@@ -6,7 +6,7 @@ import isEmpty from 'lodash-es/isEmpty';
     selector: 'dsh-balance',
     templateUrl: 'balance.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class BalanceComponent {
     @Input() amount: number;

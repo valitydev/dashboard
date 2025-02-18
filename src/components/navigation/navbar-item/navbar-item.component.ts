@@ -20,7 +20,7 @@ import { BootstrapIconSize } from '@dsh/components/indicators/bootstrap-icon';
     templateUrl: 'navbar-item.component.html',
     styleUrls: ['navbar-item.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class NavbarItemComponent implements OnChanges {
     @Input() icon: string;

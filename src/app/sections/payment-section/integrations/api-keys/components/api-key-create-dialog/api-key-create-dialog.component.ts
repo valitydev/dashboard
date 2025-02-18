@@ -29,7 +29,7 @@ import { SpinnerModule } from '@dsh/components/indicators';
         ReactiveFormsModule,
         CommonModule,
         ClipboardModule,
-    ]
+    ],
 })
 export class ApiKeyCreateDialogComponent extends DialogSuperclass<ApiKeyCreateDialogComponent> {
     form = this.fb.group({ name: '' });

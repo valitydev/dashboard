@@ -5,7 +5,7 @@ import { MobileCommerceDetails } from '@vality/swag-anapi-v2';
     selector: 'dsh-mobile-commerce',
     templateUrl: 'mobile-commerce.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class MobileCommerceComponent {
     @Input() details: MobileCommerceDetails;

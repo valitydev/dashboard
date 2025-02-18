@@ -8,7 +8,7 @@ import { FlexModule } from 'ng-flex-layout';
     templateUrl: 'limited-panel.component.html',
     styleUrls: ['limited-panel.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [FlexModule, TranslocoModule, CommonModule]
+    imports: [FlexModule, TranslocoModule, CommonModule],
 })
 export class LimitedPanelComponent {
     @Output() showMore = new EventEmitter<void>();

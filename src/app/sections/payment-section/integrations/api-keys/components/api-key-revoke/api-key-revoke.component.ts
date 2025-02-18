@@ -9,7 +9,7 @@ import { ErrorService, NotificationService } from '@dsh/app/shared/services';
 @Component({
     selector: 'dsh-api-key-revoke',
     templateUrl: './api-key-revoke.component.html',
-    standalone: false
+    standalone: false,
 })
 export class ApiKeyRevokeComponent implements OnInit {
     constructor(

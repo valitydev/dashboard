@@ -19,7 +19,7 @@ import { AdditionalFiltersForm } from '../../types/additional-filters-form';
     templateUrl: 'dialog-filters.component.html',
     styleUrls: ['dialog-filters.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class DialogFiltersComponent implements OnInit {
     form = this.fb.group({

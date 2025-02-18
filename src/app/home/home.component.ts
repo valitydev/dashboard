@@ -10,7 +10,7 @@ import { ThemeManager } from '../theme-manager';
 @Component({
     selector: 'dsh-home',
     templateUrl: 'home.component.html',
-    standalone: false
+    standalone: false,
 })
 export class HomeComponent implements OnInit {
     routerNavigationEnd$: Observable<boolean>;

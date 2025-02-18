@@ -7,7 +7,7 @@ import { AnapiDictionaryService } from '@dsh/app/api/anapi';
 
 @Pipe({
     name: 'reportTypesLabelPipe',
-    standalone: false
+    standalone: false,
 })
 export class ReportTypesLabelPipe implements PipeTransform {
     constructor(private anapiDictionaryService: AnapiDictionaryService) {}

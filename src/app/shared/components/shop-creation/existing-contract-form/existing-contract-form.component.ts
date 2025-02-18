@@ -31,7 +31,7 @@ export type ExistingContractForm<T extends EntityTypeEnum = EntityTypeEnum> = Ov
     selector: 'dsh-existing-contract-form',
     templateUrl: 'existing-contract-form.component.html',
     providers: createControlProviders(() => ExistingContractFormComponent),
-    standalone: false
+    standalone: false,
 })
 export class ExistingContractFormComponent extends FormControlSuperclass<
     ExistingContractForm,

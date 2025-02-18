@@ -12,7 +12,7 @@ import { ReportFilesService } from './report-files.service';
     templateUrl: 'report-files.component.html',
     providers: [ReportFilesService],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class ReportFilesComponent implements OnInit {
     @Input() reportID: number;

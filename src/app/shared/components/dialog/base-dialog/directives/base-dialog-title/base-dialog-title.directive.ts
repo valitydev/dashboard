@@ -2,6 +2,6 @@ import { Directive } from '@angular/core';
 
 @Directive({
     selector: '[dshBaseDialogTitle]',
-    standalone: false
+    standalone: false,
 })
 export class BaseDialogTitleDirective {}

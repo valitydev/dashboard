@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
     name: 'shopDetails',
-    standalone: false
+    standalone: false,
 })
 export class MockShopDetailsPipe implements PipeTransform {
     transform(shopID: string): string {

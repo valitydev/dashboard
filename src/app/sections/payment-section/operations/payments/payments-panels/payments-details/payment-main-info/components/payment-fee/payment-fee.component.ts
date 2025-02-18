@@ -6,7 +6,7 @@ import isNil from 'lodash-es/isNil';
     selector: 'dsh-payment-fee',
     templateUrl: 'payment-fee.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class PaymentFeeComponent {
     @Input()

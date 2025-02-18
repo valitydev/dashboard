@@ -2,6 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
     template: `<router-outlet></router-outlet>`,
-    standalone: false
+    standalone: false,
 })
 export class OrganizationSectionComponent {}

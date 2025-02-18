@@ -23,7 +23,7 @@ import { IdentitiesService } from '@dsh/app/api/wallet';
         TranslocoModule,
     ],
     templateUrl: './identity-field.component.html',
-    providers: createControlProviders(() => IdentityFieldComponent)
+    providers: createControlProviders(() => IdentityFieldComponent),
 })
 export class IdentityFieldComponent extends FormControlSuperclass<Identity['id']> {
     @Input() required = false;

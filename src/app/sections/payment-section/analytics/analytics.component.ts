@@ -15,7 +15,7 @@ import {
 
 @Component({
     templateUrl: 'analytics.component.html',
-    standalone: false
+    standalone: false,
 })
 export class AnalyticsComponent {
     spinnerType = SpinnerType.FulfillingBouncingCircle;

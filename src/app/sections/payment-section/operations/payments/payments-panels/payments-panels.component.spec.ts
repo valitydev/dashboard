@@ -19,14 +19,14 @@ import { PaymentsPanelsComponent } from './payments-panels.component';
 @Component({
     selector: 'dsh-payments-row-header',
     template: '',
-    standalone: false
+    standalone: false,
 })
 class MockRowHeaderComponent {}
 
 @Component({
     selector: 'dsh-payments-row',
     template: '',
-    standalone: false
+    standalone: false,
 })
 class MockRowComponent {
     @Input() payment: PaymentSearchResult;

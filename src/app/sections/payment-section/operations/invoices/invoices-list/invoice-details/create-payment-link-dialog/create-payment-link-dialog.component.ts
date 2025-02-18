@@ -13,7 +13,7 @@ import { CreatePaymentLinkDialogData } from './types/create-payment-link-dialog-
     selector: 'dsh-create-payment-link-dialog',
     templateUrl: 'create-payment-link-dialog.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class CreatePaymentLinkDialogComponent {
     paymentMethods$ = this.invoicesService

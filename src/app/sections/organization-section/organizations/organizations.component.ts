@@ -14,7 +14,7 @@ import { CreateOrganizationDialogComponent } from './components/create-organizat
     templateUrl: 'organizations.component.html',
     styleUrls: ['organizations.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class OrganizationsComponent implements OnInit {
     organizations$ = this.fetchOrganizationsService.searchResult$;

@@ -14,7 +14,7 @@ import { PaletteColor } from '../../../app/theme-manager';
     styleUrls: ['row.component.scss'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class RowComponent {
     @Input() color: PaletteColor;
@@ -30,7 +30,7 @@ export class RowComponent {
 @Component({
     selector: 'dsh-row-header-label',
     template: `<ng-content></ng-content>`,
-    standalone: false
+    standalone: false,
 })
 export class RowHeaderLabelComponent {
     @HostBinding('class.dsh-row-header-label') class = true;
@@ -39,7 +39,7 @@ export class RowHeaderLabelComponent {
 @Component({
     selector: 'dsh-row-label',
     template: `<ng-content></ng-content>`,
-    standalone: false
+    standalone: false,
 })
 export class RowLabelComponent {
     @HostBinding('class.dsh-row-label') class = true;

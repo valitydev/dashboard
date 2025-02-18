@@ -23,7 +23,7 @@ import { CreateInvoiceTemplateService } from './create-invoice-template.service'
     templateUrl: 'create-invoice-template.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => CreateInvoiceTemplateComponent),
-    standalone: false
+    standalone: false,
 })
 export class CreateInvoiceTemplateComponent extends FormGroupSuperclass<unknown> implements OnInit {
     @Output()

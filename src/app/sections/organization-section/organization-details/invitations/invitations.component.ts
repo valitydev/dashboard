@@ -18,7 +18,7 @@ import { InvitationsExpandedIdManager } from './services/invitations-expanded-id
     selector: 'dsh-invitations',
     templateUrl: './invitations.component.html',
     providers: [FetchInvitationsService, InvitationsExpandedIdManager],
-    standalone: false
+    standalone: false,
 })
 export class InvitationsComponent {
     organization$ = this.route.params.pipe(

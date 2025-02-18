@@ -14,7 +14,7 @@ import { StateNavModule } from './state-nav.module';
             <dsh-state-nav-item>last</dsh-state-nav-item>
         </dsh-state-nav>
     `,
-    standalone: false
+    standalone: false,
 })
 class SimpleStateNavComponent {
     idx: number;

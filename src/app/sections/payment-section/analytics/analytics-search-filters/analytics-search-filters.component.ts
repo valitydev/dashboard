@@ -36,7 +36,7 @@ export interface Filters {
     selector: 'dsh-analytics-search-filters',
     templateUrl: 'analytics-search-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class AnalyticsSearchFiltersComponent implements OnInit, OnChanges {
     @Input() initParams: Filters;

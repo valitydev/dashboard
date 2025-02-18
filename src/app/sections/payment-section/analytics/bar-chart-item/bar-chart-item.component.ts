@@ -7,7 +7,7 @@ import { ChartData } from '../utils';
 @Component({
     selector: 'dsh-bar-chart-item',
     templateUrl: 'bar-chart-item.component.html',
-    standalone: false
+    standalone: false,
 })
 export class BarChartItemComponent implements OnChanges {
     @Input() spinnerType: SpinnerType;

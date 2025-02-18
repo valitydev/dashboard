@@ -8,7 +8,7 @@ import { NavbarItemConfig, toNavbarItemConfig } from './utils';
 @Component({
     templateUrl: 'wallet-section.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class WalletSectionComponent implements OnInit {
     navbarItemConfig$: Observable<NavbarItemConfig[]> = this.transloco

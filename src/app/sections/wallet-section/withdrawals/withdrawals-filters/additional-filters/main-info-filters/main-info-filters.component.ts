@@ -9,7 +9,7 @@ import { MainInfoForm } from './types';
     templateUrl: './main-info-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => MainInfoFiltersComponent),
-    standalone: false
+    standalone: false,
 })
 export class MainInfoFiltersComponent extends FormGroupSuperclass<MainInfoForm> {
     control = this.fb.group<MainInfoForm>({

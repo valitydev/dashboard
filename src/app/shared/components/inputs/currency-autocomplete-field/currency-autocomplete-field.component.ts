@@ -8,7 +8,7 @@ import { ConfigService } from '@dsh/app/config';
     templateUrl: 'currency-autocomplete-field.component.html',
     providers: createControlProviders(() => CurrencyAutocompleteFieldComponent),
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class CurrencyAutocompleteFieldComponent extends FormControlSuperclass<string> {
     @Input() label: string;

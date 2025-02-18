@@ -5,7 +5,7 @@ import { InternationalLegalEntity } from '@vality/swag-payments';
     selector: 'dsh-international-legal-entity',
     templateUrl: 'international-legal-entity.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class InternationalLegalEntityComponent {
     @Input() internationalLegalEntity: InternationalLegalEntity;

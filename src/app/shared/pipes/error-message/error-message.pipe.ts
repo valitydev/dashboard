@@ -6,7 +6,7 @@ import { CommonError } from '@dsh/app/shared';
 
 @Pipe({
     name: 'errorMessage',
-    standalone: false
+    standalone: false,
 })
 /**
  * @deprecated

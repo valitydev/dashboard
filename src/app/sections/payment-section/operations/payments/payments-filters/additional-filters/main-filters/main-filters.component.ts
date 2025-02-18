@@ -9,7 +9,7 @@ import { MainFiltersForm } from './types/main-filters-form';
     templateUrl: './main-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => MainFiltersComponent),
-    standalone: false
+    standalone: false,
 })
 export class MainFiltersComponent extends FormGroupSuperclass<Partial<MainFiltersForm>> {
     control = this.fb.group({

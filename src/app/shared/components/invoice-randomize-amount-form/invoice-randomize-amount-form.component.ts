@@ -32,7 +32,7 @@ export interface FormData {
     templateUrl: 'invoice-randomize-amount-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => InvoiceRandomizeAmountFormComponent),
-    standalone: false
+    standalone: false,
 })
 export class InvoiceRandomizeAmountFormComponent
     extends FormComponentSuperclass<Partial<FormData>>

@@ -4,7 +4,7 @@ import { Component, HostBinding } from '@angular/core';
     selector: 'dsh-limited-list-item',
     templateUrl: 'limited-list-item.component.html',
     styleUrls: ['./limited-list-item.component.scss'],
-    standalone: false
+    standalone: false,
 })
 export class LimitedListItemComponent {
     @HostBinding('class.dsh-limited-list-item-hidden') hidden = true;

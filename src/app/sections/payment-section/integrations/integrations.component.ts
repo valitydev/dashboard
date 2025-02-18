@@ -5,7 +5,7 @@ import { RoleAccessName } from '@dsh/app/auth';
 
 @Component({
     templateUrl: 'integrations.component.html',
-    standalone: false
+    standalone: false,
 })
 export class IntegrationsComponent {
     links = [

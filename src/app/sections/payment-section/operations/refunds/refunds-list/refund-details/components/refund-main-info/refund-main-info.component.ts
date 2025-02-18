@@ -5,7 +5,7 @@ import { RefundSearchResult } from '@vality/swag-anapi-v2';
     selector: 'dsh-refund-main-info',
     templateUrl: 'refund-main-info.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class RefundMainInfoComponent {
     @Input() refund: RefundSearchResult;

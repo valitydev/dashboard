@@ -10,7 +10,7 @@ import { PaymentSystem } from '@dsh/app/api/payments';
     templateUrl: './payment-system-filter.component.html',
     styleUrls: ['./payment-system-filter.component.scss'],
     providers: createControlProviders(() => PaymentSystemFilterComponent),
-    standalone: false
+    standalone: false,
 })
 export class PaymentSystemFilterComponent extends FormControlSuperclass<
     SearchPaymentsRequestParams['bankCardPaymentSystem']

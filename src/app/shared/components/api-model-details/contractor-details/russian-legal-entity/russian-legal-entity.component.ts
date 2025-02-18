@@ -5,7 +5,7 @@ import { RussianLegalEntity } from '@vality/swag-payments';
     selector: 'dsh-russian-legal-entity',
     templateUrl: 'russian-legal-entity.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class RussianLegalEntityComponent {
     @Input() russianLegalEntity: RussianLegalEntity;

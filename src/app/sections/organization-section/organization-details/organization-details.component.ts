@@ -11,7 +11,7 @@ import { OrgsService } from '@dsh/app/api/organizations';
     templateUrl: 'organization-details.component.html',
     styleUrls: ['organization-details.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class OrganizationDetailsComponent {
     organization$ = this.route.params.pipe(

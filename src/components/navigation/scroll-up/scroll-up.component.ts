@@ -17,7 +17,7 @@ const SIZE = 36;
     styleUrls: ['scroll-up.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [HIDE_ANIMATION],
-    standalone: false
+    standalone: false,
 })
 export class ScrollUpComponent implements OnInit, OnDestroy {
     /**

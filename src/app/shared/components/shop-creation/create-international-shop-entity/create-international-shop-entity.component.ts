@@ -19,7 +19,7 @@ import { InternationalShopEntityFormValue } from './types/international-shop-ent
     templateUrl: 'create-international-shop-entity.component.html',
     styleUrls: ['create-international-shop-entity.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class CreateInternationalShopEntityComponent {
     @Output() send = new EventEmitter<void>();

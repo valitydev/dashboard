@@ -4,6 +4,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     selector: 'dsh-invoice-row-header',
     templateUrl: 'invoice-row-header.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class InvoiceRowHeaderComponent {}

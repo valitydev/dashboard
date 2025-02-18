@@ -7,7 +7,7 @@ import { AnapiDictionaryService } from '@dsh/app/api/anapi';
     selector: 'dsh-report-row',
     templateUrl: 'report-row.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class ReportRowComponent {
     @Input() report: Report;

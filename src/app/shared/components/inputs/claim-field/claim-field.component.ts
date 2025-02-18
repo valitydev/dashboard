@@ -8,6 +8,6 @@ import { Claim } from '@vality/swag-claim-management';
     styleUrls: ['claim-field.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => ClaimFieldComponent),
-    standalone: false
+    standalone: false,
 })
 export class ClaimFieldComponent extends FormControlSuperclass<Claim['id']> {}

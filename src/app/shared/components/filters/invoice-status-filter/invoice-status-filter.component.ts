@@ -9,7 +9,7 @@ import { FilterSuperclass } from '@dsh/components/filter';
     templateUrl: 'invoice-status-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => InvoiceStatusFilterComponent),
-    standalone: false
+    standalone: false,
 })
 export class InvoiceStatusFilterComponent extends FilterSuperclass<InvoiceStatus.StatusEnum> {
     constructor(injector: Injector) {

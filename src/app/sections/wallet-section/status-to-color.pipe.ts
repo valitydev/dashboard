@@ -7,7 +7,7 @@ type Status = DepositStatus.StatusEnum | WithdrawalStatus.StatusEnum;
 
 @Pipe({
     name: 'statusToColor',
-    standalone: false
+    standalone: false,
 })
 export class StatusToColorPipe implements PipeTransform {
     transform(status: Status): Color {

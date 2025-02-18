@@ -26,7 +26,7 @@ import { FulfillInvoiceService } from '../../fulfill-invoice';
     templateUrl: 'invoice-actions.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [CancelInvoiceService, FulfillInvoiceService],
-    standalone: false
+    standalone: false,
 })
 export class InvoiceActionsComponent {
     @Input() invoice: Invoice;

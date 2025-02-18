@@ -11,7 +11,7 @@ import { PaymentsToolDistributionService } from './payments-tool-distribution.se
     selector: 'dsh-payments-tool-distribution',
     templateUrl: 'payments-tool-distribution.component.html',
     providers: [PaymentsToolDistributionService],
-    standalone: false
+    standalone: false,
 })
 export class PaymentsToolDistributionComponent implements OnChanges {
     @Input() spinnerType: SpinnerType;

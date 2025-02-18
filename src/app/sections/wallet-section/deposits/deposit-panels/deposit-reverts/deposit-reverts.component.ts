@@ -15,7 +15,7 @@ import { FetchDepositRevertsService } from './services/fetch-deposit-reverts.ser
             useValue: 3,
         },
     ],
-    standalone: false
+    standalone: false,
 })
 export class DepositRevertsComponent implements OnInit {
     @Input() depositID: string;

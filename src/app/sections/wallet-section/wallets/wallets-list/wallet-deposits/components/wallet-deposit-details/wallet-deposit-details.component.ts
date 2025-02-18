@@ -7,7 +7,7 @@ import { WalletDictionaryService } from '@dsh/app/api/wallet';
     selector: 'dsh-wallet-deposit-details',
     templateUrl: 'wallet-deposit-details.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class WalletDepositDetailsComponent {
     @Input() deposit: Deposit;

@@ -7,7 +7,7 @@ import { BootstrapIconName, BootstrapIconSize } from './model';
     templateUrl: 'bootstrap-icon.component.html',
     styleUrls: ['bootstrap-icon.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class BootstrapIconComponent {
     @Input() icon: BootstrapIconName;

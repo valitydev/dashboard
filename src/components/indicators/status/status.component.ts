@@ -6,7 +6,7 @@ import { StatusColor } from '@dsh/app/theme-manager';
     selector: 'dsh-status',
     templateUrl: 'status.component.html',
     styleUrls: ['status.component.scss'],
-    standalone: false
+    standalone: false,
 })
 export class StatusComponent {
     @Input() color: StatusColor;

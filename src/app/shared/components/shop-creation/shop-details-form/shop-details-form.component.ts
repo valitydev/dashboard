@@ -14,7 +14,7 @@ export interface ShopDetailsForm {
     templateUrl: 'shop-details-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => ShopDetailsFormComponent),
-    standalone: false
+    standalone: false,
 })
 export class ShopDetailsFormComponent extends FormGroupSuperclass<Partial<ShopDetailsForm>> {
     control = this.fb.group<ShopDetailsForm>({

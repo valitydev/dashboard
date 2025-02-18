@@ -23,7 +23,7 @@ import { NavbarItemConfig, toNavbarItemConfig } from './utils';
         },
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class PaymentSectionComponent implements OnInit {
     isTestRealm$ = this.realmService.realm$.pipe(

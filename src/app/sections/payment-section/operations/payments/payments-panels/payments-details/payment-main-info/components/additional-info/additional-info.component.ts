@@ -6,7 +6,7 @@ import { PaymentAdditionalInfo } from '../../types/payment-additional-info';
     selector: 'dsh-additional-info',
     templateUrl: 'additional-info.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class AdditionalInfoComponent {
     @Input() info: PaymentAdditionalInfo;

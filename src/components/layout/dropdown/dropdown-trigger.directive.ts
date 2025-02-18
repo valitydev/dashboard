@@ -39,7 +39,7 @@ const POSITION_LEFT: ConnectedPosition = {
 @Directive({
     selector: '[dshDropdownTriggerFor]',
     exportAs: 'dshDropdownTrigger',
-    standalone: false
+    standalone: false,
 })
 export class DropdownTriggerDirective implements OnDestroy {
     @Input('dshDropdownTriggerFor')

@@ -47,7 +47,7 @@ const ADDITIONAL_FILTERS = ['invoiceIDs', 'shopIDs', 'invoiceStatus'];
     selector: 'dsh-invoices-search-filters',
     templateUrl: 'invoices-search-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class InvoicesSearchFiltersComponent implements OnChanges, OnInit {
     @Input() initParams: Filters;

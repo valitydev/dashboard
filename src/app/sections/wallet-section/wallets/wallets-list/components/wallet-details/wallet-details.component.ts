@@ -5,7 +5,7 @@ import { Wallet } from '@vality/swag-wallet';
     selector: 'dsh-wallet-details',
     templateUrl: 'wallet-details.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class WalletDetailsComponent {
     @Input() wallet: Wallet;

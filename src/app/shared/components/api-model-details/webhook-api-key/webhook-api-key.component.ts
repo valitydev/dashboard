@@ -6,7 +6,7 @@ import { NotifyLogService } from '@vality/ng-core';
     selector: 'dsh-webhook-api-key',
     templateUrl: 'webhook-api-key.component.html',
     styleUrls: ['webhook-api-key.component.scss'],
-    standalone: false
+    standalone: false,
 })
 export class WebhookApiKeyComponent {
     @Input()

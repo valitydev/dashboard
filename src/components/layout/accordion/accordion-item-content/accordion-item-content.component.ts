@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, TemplateRef, ViewChild } from '@ang
     selector: 'dsh-accordion-item-content',
     templateUrl: 'accordion-item-content.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class AccordionItemContentComponent {
     @ViewChild(TemplateRef, { static: true }) templateRef: TemplateRef<unknown>;

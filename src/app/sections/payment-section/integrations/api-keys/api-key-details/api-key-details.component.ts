@@ -11,7 +11,7 @@ import { ApiKeyDeleteDialogComponent } from './components/api-key-delete-dialog/
 @Component({
     selector: 'dsh-api-key-details',
     templateUrl: 'api-key-details.component.html',
-    standalone: false
+    standalone: false,
 })
 export class ApiKeyDetailsComponent {
     @Input() apiKey: ApiKey;

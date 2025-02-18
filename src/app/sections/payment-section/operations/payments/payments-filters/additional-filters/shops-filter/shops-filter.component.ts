@@ -11,7 +11,7 @@ import { ShopsFilterForm } from './types';
     templateUrl: './shops-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => ShopsFilterComponent),
-    standalone: false
+    standalone: false,
 })
 export class ShopsFilterComponent extends FormGroupSuperclass<ShopsFilterForm> {
     control = this.fb.group({

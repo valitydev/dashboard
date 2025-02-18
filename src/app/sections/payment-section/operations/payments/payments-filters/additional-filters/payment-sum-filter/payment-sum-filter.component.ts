@@ -8,7 +8,7 @@ import { PaymentSumFilterForm } from './types/payment-sum-filter-form';
     selector: 'dsh-payment-sum-filter',
     templateUrl: './payment-sum-filter.component.html',
     providers: createControlProviders(() => PaymentSumFilterComponent),
-    standalone: false
+    standalone: false,
 })
 export class PaymentSumFilterComponent extends FormGroupSuperclass<Partial<PaymentSumFilterForm>> {
     control = this.fb.group<PaymentSumFilterForm>({

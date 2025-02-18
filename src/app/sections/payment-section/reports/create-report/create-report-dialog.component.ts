@@ -21,7 +21,7 @@ const TIME_PATTERN = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
     styleUrls: ['create-report-dialog.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [CreateReportDialogService],
-    standalone: false
+    standalone: false,
 })
 export class CreateReportDialogComponent implements OnInit {
     isLoading$ = this.createReportDialogService.isLoading$;

@@ -12,7 +12,7 @@ import {
     templateUrl: 'filter-content.component.html',
     styleUrls: ['filter-content.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class FilterContentComponent {
     @Input({ transform: booleanAttribute }) noClearButton = false;

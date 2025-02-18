@@ -4,7 +4,7 @@ import { Invoice } from '@vality/swag-anapi-v2';
 @Component({
     selector: 'dsh-invoices-list',
     templateUrl: 'invoices-list.component.html',
-    standalone: false
+    standalone: false,
 })
 export class InvoicesListComponent {
     @Input() invoices: Invoice[];

@@ -19,7 +19,7 @@ import { CancelReportService } from '../cancel-report';
 @Component({
     selector: 'dsh-reports-list',
     templateUrl: 'reports-list.component.html',
-    standalone: false
+    standalone: false,
 })
 export class ReportsListComponent implements OnInit, OnDestroy {
     @Input() reports: Report[];

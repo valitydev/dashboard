@@ -10,7 +10,7 @@ import { WalletDictionaryService } from '@dsh/app/api/wallet';
     templateUrl: 'webhook-events.component.html',
     styleUrls: ['webhook-events.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class WebhookEventsComponent {
     @Input()

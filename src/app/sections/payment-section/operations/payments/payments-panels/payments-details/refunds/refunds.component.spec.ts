@@ -15,7 +15,7 @@ import { FetchRefundsService } from './services/fetch-refunds/fetch-refunds.serv
 @Component({
     selector: 'dsh-refunds-list',
     template: '',
-    standalone: false
+    standalone: false,
 })
 class MockRefundsListComponent {
     @Input() list: RefundSearchResult[];

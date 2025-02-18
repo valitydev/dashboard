@@ -23,7 +23,7 @@ import { DropdownModule } from './dropdown.module';
             ><ng-template>Text</ng-template></dsh-dropdown
         >
     `,
-    standalone: false
+    standalone: false,
 })
 class SimpleDropdownComponent {
     @ViewChild(DropdownTriggerDirective) trigger: DropdownTriggerDirective;

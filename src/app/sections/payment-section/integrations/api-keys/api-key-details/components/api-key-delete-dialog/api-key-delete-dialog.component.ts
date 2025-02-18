@@ -23,7 +23,7 @@ import { SpinnerModule } from '@dsh/components/indicators';
         MatButtonModule,
         TranslocoModule,
         CommonModule,
-    ]
+    ],
 })
 export class ApiKeyDeleteDialogComponent extends DialogSuperclass<
     ApiKeyDeleteDialogComponent,

@@ -7,7 +7,7 @@ import { FetchOrganizationsService } from '@dsh/app/shared/services/fetch-organi
     selector: 'dsh-organizations-list',
     templateUrl: 'organizations-list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class OrganizationsListComponent implements OnInit {
     @Output() selected = new EventEmitter<void>();

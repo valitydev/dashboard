@@ -20,7 +20,7 @@ import { LazyPanelContentDirective } from './lazy-panel-content.directive';
     styleUrls: ['accordion-item.component.scss'],
     animations: [EXPAND_ANIMATION],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class AccordionItemComponent implements OnChanges {
     @Output() expandedChange = new EventEmitter<boolean>();

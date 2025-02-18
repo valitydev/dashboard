@@ -46,7 +46,7 @@ const FLOATING_FILTERS = ['invoiceIDs', 'shopIDs', 'binPan'];
 @Component({
     selector: 'dsh-payments-filters',
     templateUrl: 'payments-filters.component.html',
-    standalone: false
+    standalone: false,
 })
 export class PaymentsFiltersComponent implements OnInit, OnChanges {
     @Input() realm: RealmEnum;

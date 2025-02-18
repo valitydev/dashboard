@@ -15,7 +15,7 @@ import { CancelHoldDialogData } from '../../types/cancel-hold-dialog-data';
     selector: 'dsh-cancel-hold-dialog',
     templateUrl: './cancel-hold-dialog.component.html',
     styleUrls: ['./cancel-hold-dialog.component.scss'],
-    standalone: false
+    standalone: false,
 })
 export class CancelHoldDialogComponent {
     maxReasonLength: number = MAX_REASON_LENGTH;

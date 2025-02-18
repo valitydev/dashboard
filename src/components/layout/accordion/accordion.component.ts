@@ -32,7 +32,7 @@ const SCROLL_TIME_MS = 500;
     selector: 'dsh-accordion',
     template: `<ng-content></ng-content>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class AccordionComponent implements AfterViewInit {
     @Input()

@@ -51,7 +51,7 @@ const TREE_FLATTENER = new MatTreeFlattener<NestedTableNode, NestedTableFlatNode
     selector: 'dsh-nested-table',
     templateUrl: 'nested-table.component.html',
     styleUrls: ['nested-table.component.scss'],
-    standalone: false
+    standalone: false,
 })
 export class NestedTableComponent implements OnChanges {
     @Input() data!: NestedTableNode[];

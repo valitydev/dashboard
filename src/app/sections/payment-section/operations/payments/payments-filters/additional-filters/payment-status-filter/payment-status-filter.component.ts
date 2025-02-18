@@ -9,7 +9,7 @@ import { AnapiDictionaryService } from '@dsh/app/api/anapi';
     templateUrl: './payment-status-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => PaymentStatusFilterComponent),
-    standalone: false
+    standalone: false,
 })
 export class PaymentStatusFilterComponent extends FormControlSuperclass<PaymentStatus.StatusEnum> {
     statuses = Object.values(PaymentStatus.StatusEnum);

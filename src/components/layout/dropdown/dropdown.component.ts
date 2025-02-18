@@ -26,7 +26,7 @@ const FULL_WIDTH = '99.99%';
     styleUrls: ['dropdown.component.scss'],
     animations: [OPEN_CLOSE_ANIMATION],
     exportAs: 'dshDropdown',
-    standalone: false
+    standalone: false,
 })
 export class DropdownComponent implements OnInit, OnDestroy {
     /**

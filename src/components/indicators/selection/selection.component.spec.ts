@@ -7,7 +7,7 @@ import { SelectionComponent } from './selection.component';
 @Component({
     selector: 'dsh-host',
     template: `<dsh-selection></dsh-selection>`,
-    standalone: false
+    standalone: false,
 })
 class HostComponent {}
 

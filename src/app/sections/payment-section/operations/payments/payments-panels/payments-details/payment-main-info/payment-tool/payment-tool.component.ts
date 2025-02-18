@@ -6,7 +6,7 @@ import { PaymentToolDetailsType } from '@dsh/app/api/payments';
 @Component({
     selector: 'dsh-payment-tool',
     templateUrl: 'payment-tool.component.html',
-    standalone: false
+    standalone: false,
 })
 export class PaymentToolComponent {
     @Input() paymentToolDetails: PaymentToolDetails;

@@ -12,7 +12,7 @@ import { FilterSuperclass } from '@dsh/components/filter';
     templateUrl: 'report-types-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [...createControlProviders(() => ReportTypesFilterComponent), ReportTypesLabelPipe],
-    standalone: false
+    standalone: false,
 })
 export class ReportTypesFilterComponent extends FilterSuperclass<Report.ReportTypeEnum[]> {
     labels$ = this.savedValue$.pipe(

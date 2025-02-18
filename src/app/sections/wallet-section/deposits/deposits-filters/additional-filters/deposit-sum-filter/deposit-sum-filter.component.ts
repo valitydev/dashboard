@@ -7,7 +7,7 @@ import { DepositSumFilter } from './types/deposit-sum-filter';
     selector: 'dsh-deposit-sum-filter',
     templateUrl: './deposit-sum-filter.component.html',
     styleUrls: ['./deposit-sum-filter.component.scss'],
-    standalone: false
+    standalone: false,
 })
 export class DepositSumFilterComponent {
     @Input() form: FormGroupByValue<DepositSumFilter>;

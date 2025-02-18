@@ -11,7 +11,7 @@ import { InvitationsListComponent } from './invitations-list.component';
 @Component({
     selector: 'dsh-host',
     template: `<dsh-invitations-list></dsh-invitations-list>`,
-    standalone: false
+    standalone: false,
 })
 class HostComponent {}
 

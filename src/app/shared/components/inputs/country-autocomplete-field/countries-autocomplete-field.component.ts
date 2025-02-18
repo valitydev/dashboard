@@ -12,7 +12,7 @@ import { countriesToOptions } from './utils';
     templateUrl: 'country-autocomplete-field.component.html',
     providers: createControlProviders(() => CountryAutocompleteFieldComponent),
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class CountryAutocompleteFieldComponent extends FormControlSuperclass<CountryId> {
     @Input() label: string;

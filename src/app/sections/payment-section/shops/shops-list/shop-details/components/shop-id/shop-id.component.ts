@@ -6,7 +6,7 @@ import { NotifyLogService } from '@vality/ng-core';
     selector: 'dsh-shop-id',
     templateUrl: 'shop-id.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class ShopIdComponent {
     @Input() id: string;

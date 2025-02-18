@@ -3,6 +3,6 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'dsh-sections',
     template: `<router-outlet></router-outlet>`,
-    standalone: false
+    standalone: false,
 })
 export class SectionsComponent {}

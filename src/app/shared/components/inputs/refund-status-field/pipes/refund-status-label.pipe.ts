@@ -7,7 +7,7 @@ import { AnapiDictionaryService } from '@dsh/app/api/anapi';
 
 @Pipe({
     name: 'refundStatusLabel',
-    standalone: false
+    standalone: false,
 })
 export class RefundStatusLabelPipe implements PipeTransform {
     constructor(private anapiDictionaryService: AnapiDictionaryService) {}

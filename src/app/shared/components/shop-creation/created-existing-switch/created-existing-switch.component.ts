@@ -29,7 +29,7 @@ export function createTypeUnionDefaultForm<C, E>(optional = false) {
     selector: 'dsh-created-existing-switch',
     templateUrl: 'created-existing-switch.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class CreatedExistingSwitchComponent<N, E> implements OnChanges {
     @Input() form: FormGroup<{

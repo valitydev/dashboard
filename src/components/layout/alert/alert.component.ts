@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } fr
     template: `<ng-content></ng-content>`,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class AlertComponent {
     @HostBinding('class.dsh-alert') class = true;

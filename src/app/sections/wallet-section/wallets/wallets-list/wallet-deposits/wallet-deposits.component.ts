@@ -10,7 +10,7 @@ import { FetchWalletDepositsService } from './services';
     templateUrl: 'wallet-deposits.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [{ provide: SEARCH_LIMIT, useValue: 3 }, FetchWalletDepositsService],
-    standalone: false
+    standalone: false,
 })
 export class WalletDepositsComponent implements OnChanges {
     @Input() walletID: string;

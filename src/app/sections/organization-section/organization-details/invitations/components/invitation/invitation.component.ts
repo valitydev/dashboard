@@ -21,7 +21,7 @@ import { ignoreBeforeCompletion } from '@dsh/utils';
     selector: 'dsh-invitation',
     templateUrl: 'invitation.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class InvitationComponent {
     @Input() orgId: Organization['id'];

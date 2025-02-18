@@ -11,13 +11,13 @@ import { CollapseModule } from './collapse.module';
 
 @Component({
     template: '<dsh-collapse title="Title">Test</dsh-collapse>',
-    standalone: false
+    standalone: false,
 })
 class MockCollapseComponent {}
 
 @Component({
     template: '<dsh-collapse title="Title Up" expandDirection="up">Test Up</dsh-collapse>',
-    standalone: false
+    standalone: false,
 })
 class MockCollapseUpComponent {}
 

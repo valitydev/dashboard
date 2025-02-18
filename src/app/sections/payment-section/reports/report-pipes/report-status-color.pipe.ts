@@ -5,7 +5,7 @@ import { StatusColor } from '../../../../theme-manager';
 
 @Pipe({
     name: 'reportStatusColor',
-    standalone: false
+    standalone: false,
 })
 export class ReportStatusColorPipe implements PipeTransform {
     transform(status: Report.StatusEnum): StatusColor {

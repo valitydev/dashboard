@@ -5,7 +5,7 @@ import { PaymentSearchResult } from '@vality/swag-anapi-v2';
     selector: 'dsh-payments-row',
     templateUrl: 'payments-row.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class PaymentsRowComponent {
     @Input() payment: PaymentSearchResult;

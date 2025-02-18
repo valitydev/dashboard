@@ -20,7 +20,7 @@ import { FilterDialogComponent } from './components/filter-dialog/filter-dialog.
     templateUrl: 'filter.component.html',
     styleUrls: ['filter.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class FilterComponent {
     @Input() label: string;

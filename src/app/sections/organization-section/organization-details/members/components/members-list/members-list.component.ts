@@ -7,7 +7,7 @@ import { MembersExpandedIdManager } from '../../services/members-expanded-id-man
     selector: 'dsh-members-list',
     templateUrl: 'members-list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class MembersListComponent {
     @Input() organization: Organization;

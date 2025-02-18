@@ -7,7 +7,7 @@ import { AnapiDictionaryService } from '@dsh/app/api/anapi';
     selector: 'dsh-refund-row',
     templateUrl: 'refund-row.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class RefundRowComponent {
     @Input() refund: RefundSearchResult;

@@ -8,7 +8,7 @@ import { FulfillInvoiceDialogResponse } from '../../types/fulfill-invoice-dialog
     templateUrl: 'fulfill-invoice-dialog.component.html',
     styleUrls: ['fulfill-invoice-dialog.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class FulfillInvoiceDialogComponent {
     reason = new FormControl();

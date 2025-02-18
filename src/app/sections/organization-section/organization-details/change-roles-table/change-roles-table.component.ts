@@ -49,7 +49,7 @@ type DataItem = { shop?: Pick<Shop, 'id' | 'details'>; scope?: ResourceScopeIdIn
     selector: 'dsh-change-roles-table',
     templateUrl: 'change-roles-table.component.html',
     styleUrls: ['change-roles-table.component.scss'],
-    standalone: false
+    standalone: false,
 })
 export class ChangeRolesTableComponent implements OnInit, OnChanges {
     @Input() set roles(roles: MemberRoleOptionalId[]) {

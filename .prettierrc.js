@@ -1,1 +1,1 @@
-module.exports = require('@vality/ng-configs/src/lib/prettier-config');
+module.exports = require('@vality/ng-configs').prettierConfig;

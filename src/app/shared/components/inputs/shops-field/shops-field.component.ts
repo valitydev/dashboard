@@ -8,7 +8,7 @@ import { map, shareReplay } from 'rxjs/operators';
     selector: 'dsh-shops-field',
     templateUrl: 'shops-field.component.html',
     providers: createControlProviders(() => ShopsFieldComponent),
-    standalone: false
+    standalone: false,
 })
 export class ShopsFieldComponent extends FormControlSuperclass<Shop['id'][]> implements OnChanges {
     @Input() shops: Shop[];

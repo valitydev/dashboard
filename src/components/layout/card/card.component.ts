@@ -12,7 +12,7 @@ import {
     template: `<ng-content></ng-content>`,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class CardComponent {
     @HostBinding('class.dsh-card') class = true;
@@ -25,7 +25,7 @@ export class CardComponent {
     `,
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class CardHeaderComponent {
     @HostBinding('class.dsh-card-header') class = true;
@@ -34,7 +34,7 @@ export class CardHeaderComponent {
 @Component({
     selector: 'dsh-card-content',
     template: `<ng-content></ng-content>`,
-    standalone: false
+    standalone: false,
 })
 export class CardContentComponent {
     @HostBinding('class.dsh-card-content') class = true;
@@ -44,7 +44,7 @@ export class CardContentComponent {
     selector: 'dsh-card-actions',
     exportAs: 'dshCardActions',
     template: `<ng-content></ng-content>`,
-    standalone: false
+    standalone: false,
 })
 export class CardActionsComponent {
     @HostBinding('class.dsh-card-actions') class = true;
@@ -52,7 +52,7 @@ export class CardActionsComponent {
 
 @Directive({
     selector: `dsh-card-title, [dsh-card-title], [dshCardTitle]`,
-    standalone: false
+    standalone: false,
 })
 export class CardTitleDirective {
     @HostBinding('class.dsh-card-title') class = true;

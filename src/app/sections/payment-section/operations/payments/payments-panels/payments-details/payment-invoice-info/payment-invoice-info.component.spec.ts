@@ -14,7 +14,7 @@ import StatusEnum = InvoiceStatusChanged.StatusEnum;
 @Component({
     selector: 'dsh-invoice-details',
     template: '',
-    standalone: false
+    standalone: false,
 })
 class MockInvoiceDetailsComponent {
     @Input() invoice: Invoice;

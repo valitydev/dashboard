@@ -16,7 +16,7 @@ import { inProgressTo } from '@dsh/utils';
     selector: 'dsh-create-organization-dialog',
     templateUrl: 'create-organization-dialog.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class CreateOrganizationDialogComponent {
     form = this.fb.group<{ name: string }>({ name: '' });

@@ -34,7 +34,7 @@ import { RenameOrganizationDialogData } from '../rename-organization-dialog/type
     templateUrl: 'organization.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [OrganizationManagementService],
-    standalone: false
+    standalone: false,
 })
 export class OrganizationComponent implements OnChanges {
     @Input() organization: Organization;

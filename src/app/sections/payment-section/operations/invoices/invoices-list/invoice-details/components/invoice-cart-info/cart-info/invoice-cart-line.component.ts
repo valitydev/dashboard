@@ -8,7 +8,7 @@ import { ReceiveInvoiceService } from '../../../services/receive-invoice/receive
     templateUrl: 'invoice-cart-line.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ReceiveInvoiceService],
-    standalone: false
+    standalone: false,
 })
 export class InvoiceCartLineComponent {
     @Input() line: InvoiceLine;

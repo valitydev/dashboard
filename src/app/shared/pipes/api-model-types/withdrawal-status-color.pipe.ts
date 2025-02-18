@@ -5,7 +5,7 @@ import { StatusColor } from '../../../theme-manager';
 
 @Pipe({
     name: 'withdrawalStatusColor',
-    standalone: false
+    standalone: false,
 })
 export class WithdrawalStatusColorPipe implements PipeTransform {
     transform(status: Withdrawal.StatusEnum): StatusColor {

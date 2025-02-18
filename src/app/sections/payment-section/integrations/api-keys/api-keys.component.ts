@@ -22,7 +22,7 @@ import { API_KEY_STATUS_COLOR } from './types/api-key-status-color';
     templateUrl: 'api-keys.component.html',
     styleUrls: ['api-keys.component.scss'],
     providers: [FetchApiKeysService],
-    standalone: false
+    standalone: false,
 })
 export class ApiKeysComponent {
     showInactive = this.qp.params.showInactive;

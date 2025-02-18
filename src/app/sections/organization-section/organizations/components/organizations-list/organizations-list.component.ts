@@ -8,7 +8,7 @@ import { OrganizationsExpandedIdManager } from '../../services/organizations-exp
     templateUrl: 'organizations-list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [OrganizationsExpandedIdManager],
-    standalone: false
+    standalone: false,
 })
 export class OrganizationsListComponent {
     @Input() organizations: Organization[];

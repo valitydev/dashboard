@@ -10,7 +10,7 @@ import { AveragePaymentService } from './average-payment.service';
     selector: 'dsh-average-payment',
     templateUrl: 'average-payment.component.html',
     providers: [AveragePaymentService],
-    standalone: false
+    standalone: false,
 })
 export class AveragePaymentComponent implements OnChanges {
     @Input() spinnerType: SpinnerType;

@@ -13,7 +13,7 @@ import { InvoiceDetailsService } from './services/invoice-details/invoice-detail
 @Component({
     selector: 'dsh-payment-main-info',
     template: '',
-    standalone: false
+    standalone: false,
 })
 class MockPaymentMainInfoComponent {
     @Input() payment: PaymentSearchResult;
@@ -22,7 +22,7 @@ class MockPaymentMainInfoComponent {
 @Component({
     selector: 'dsh-payment-invoice-info',
     template: '',
-    standalone: false
+    standalone: false,
 })
 class MockPaymentInvoiceInfoComponent {
     @Input() invoice: Invoice;
@@ -31,7 +31,7 @@ class MockPaymentInvoiceInfoComponent {
 @Component({
     selector: 'dsh-refunds',
     template: '',
-    standalone: false
+    standalone: false,
 })
 class MockRefundsComponent {
     @Input() invoiceID: string;
@@ -47,7 +47,7 @@ class MockRefundsComponent {
 @Component({
     selector: 'dsh-hold-details',
     template: '',
-    standalone: false
+    standalone: false,
 })
 class MockHoldDetailsComponent {
     @Input() payment: PaymentSearchResult;

@@ -9,7 +9,7 @@ import { InvoicesFilterForm } from './types';
     templateUrl: './invoices-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => InvoicesFilterComponent),
-    standalone: false
+    standalone: false,
 })
 export class InvoicesFilterComponent extends FormGroupSuperclass<InvoicesFilterForm> {
     control = this.fb.group({

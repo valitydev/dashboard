@@ -11,7 +11,7 @@ import { PaymentInstitutionsService } from '@dsh/app/api/payments';
     templateUrl: 'payment-institution-field.component.html',
     providers: createControlProviders(() => PaymentInstitutionFieldComponent),
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class PaymentInstitutionFieldComponent extends FormControlSuperclass<PaymentInstitution> {
     @Input() label: string;

@@ -25,7 +25,7 @@ import { ExpandableRadioChoiceId } from './types/expandable-radio-choice-id';
     selector: 'dsh-expandable-radio-group',
     templateUrl: './expandable-radio-group.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class ExpandableRadioGroupComponent implements OnInit, AfterContentInit {
     @Input() control: FormControl;

@@ -12,7 +12,7 @@ import { FilterSuperclass } from '@dsh/components/filter';
     templateUrl: 'shops-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => ShopsFilterComponent),
-    standalone: false
+    standalone: false,
 })
 export class ShopsFilterComponent extends FilterSuperclass<Shop['id'][]> {
     @Input() shops: Shop[];

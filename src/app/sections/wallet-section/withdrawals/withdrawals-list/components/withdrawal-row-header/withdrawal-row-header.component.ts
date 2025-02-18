@@ -4,6 +4,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     selector: 'dsh-withdrawal-row-header',
     templateUrl: 'withdrawal-row-header.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class WithdrawalRowHeaderComponent {}

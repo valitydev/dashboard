@@ -11,7 +11,7 @@ import { MembersListComponent } from './members-list.component';
 @Component({
     selector: 'dsh-host',
     template: `<dsh-members-list></dsh-members-list>`,
-    standalone: false
+    standalone: false,
 })
 class HostComponent {}
 

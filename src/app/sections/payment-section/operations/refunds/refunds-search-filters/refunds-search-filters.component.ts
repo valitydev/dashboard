@@ -42,7 +42,7 @@ const ADDITIONAL_FILTERS = ['invoiceIDs', 'shopIDs', 'refundStatus'];
     selector: 'dsh-refunds-search-filters',
     templateUrl: 'refunds-search-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class RefundsSearchFiltersComponent implements OnInit, OnChanges {
     @Input() initParams: Filters;

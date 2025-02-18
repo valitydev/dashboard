@@ -5,7 +5,7 @@ import { PaymentResourcePayer } from '@vality/swag-anapi-v2';
     selector: 'dsh-resource-payer',
     templateUrl: './resource-payer.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    standalone: false,
 })
 export class ResourcePayerComponent {
     @Input() payer: PaymentResourcePayer;

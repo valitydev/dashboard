@@ -6,7 +6,7 @@ import { CardBinPan } from '../types/card-bin-pan';
 
 @Pipe({
     name: 'cardBinPanLabel',
-    standalone: false
+    standalone: false,
 })
 export class CardBinPanLabelPipe implements PipeTransform {
     transform(value: CardBinPan): string {
