@@ -8,7 +8,6 @@ import { PaymentAdditionalInfo } from './types/payment-additional-info';
 @Component({
     selector: 'dsh-payment-main-info',
     templateUrl: './payment-main-info.component.html',
-    styleUrls: ['./payment-main-info.component.scss'],
     standalone: false,
 })
 export class PaymentMainInfoComponent {

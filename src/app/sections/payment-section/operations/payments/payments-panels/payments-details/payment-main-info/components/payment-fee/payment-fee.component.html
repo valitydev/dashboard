@@ -2,7 +2,7 @@
     *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentDetails.details'"
 >
     <dsh-details-item [title]="t('fee')">
-        <div class="mat-body-1">
+        <div class="mat-body-medium">
             {{ fee | amountCurrency: currency }}
             ({{ feePercent | percent: '1.0-2' : 'en' }})
         </div>

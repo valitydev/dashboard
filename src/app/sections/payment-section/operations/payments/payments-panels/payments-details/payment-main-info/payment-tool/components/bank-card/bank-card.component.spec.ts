@@ -59,7 +59,7 @@ describe('BankCardComponent', () => {
 
             fixture.detectChanges();
 
-            const element = fixture.debugElement.query(By.css('.mat-body-1'));
+            const element = fixture.debugElement.query(By.css('.mat-body-medium'));
 
             expect(element).toBeTruthy();
             expect(getTextContent(element.nativeElement)).toBe('55** **** **** **22');

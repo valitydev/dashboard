@@ -1,5 +1,5 @@
 <div fxLayout="row wrap" fxLayoutAlign="none center" fxLayoutGap="8px">
-    <div class="mat-body-1">{{ bankCard.cardNumberMask | bankCard }}</div>
+    <div class="mat-body-medium">{{ bankCard.cardNumberMask | bankCard }}</div>
     <mat-icon
         *ngIf="getPaymentSystemIconConfig(bankCard?.paymentSystem) as iconConfig"
         [style.height]="iconConfig.height"
