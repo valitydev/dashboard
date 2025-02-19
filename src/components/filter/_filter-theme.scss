@@ -1,9 +1,9 @@
-@import './components/filter-button/filter-button-theme';
+@use 'components/filter-button/filter-button-theme';
 
 @mixin dsh-filter-theme($theme) {
-    @include dsh-filter-button-theme($theme);
+    @include filter-button-theme.dsh-filter-button-theme($theme);
 }
 
 @mixin dsh-filter-typography($config) {
-    @include dsh-filter-button-typography($config);
+    @include filter-button-theme.dsh-filter-button-typography($config);
 }

@@ -1,13 +1,14 @@
+@use "sass:map";
 @use '@angular/material' as mat;
 
 @mixin dsh-filter-button-theme($theme) {
-    $foreground: map-get($theme, foreground);
-    $primary: map-get($theme, primary);
+    $foreground: map.get($theme, foreground);
+    $primary: map.get($theme, primary);
 
     .dsh-filter-button {
         background-color: transparent;
-        border-color: map-get($foreground, dividers);
-        color: map-get($foreground, text);
+        border-color: map.get($foreground, dividers);
+        color: map.get($foreground, text);
 
         &:hover:enabled {
             border-color: mat.m2-get-color-from-palette($primary, default);

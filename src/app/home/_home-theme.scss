@@ -1,7 +1,9 @@
-@mixin dsh-home-theme($theme) {
-    $background: map-get($theme, background);
-    $foreground: map-get($theme, foreground);
+@use 'sass:map';
 
-    background-color: map-get($background, background);
-    color: map-get($foreground, text);
+@mixin dsh-home-theme($theme) {
+    $background: map.get($theme, background);
+    $foreground: map.get($theme, foreground);
+
+    background-color: map.get($background, background);
+    color: map.get($foreground, text);
 }

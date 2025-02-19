@@ -1,9 +1,10 @@
 @use '@angular/material' as mat;
-@import '../../styles/utils/shadow';
+@use "sass:map";
+@use '../../styles/utils/shadow';
 
 @mixin dsh-charts-theme($theme) {
-    $foreground: map-get($theme, foreground);
-    $background: map-get($theme, background);
+    $foreground: map.get($theme, foreground);
+    $background: map.get($theme, background);
 
     .apexcharts {
         &-text {
@@ -15,7 +16,7 @@
         }
 
         &-tooltip {
-            @include dsh-shadow($theme);
+            @include shadow.dsh-shadow($theme);
             background-color: mat.m2-get-color-from-palette($background, card);
         }
     }

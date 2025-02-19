@@ -1,7 +1,8 @@
+@use "sass:map";
 @use '@angular/material' as mat;
 
 @mixin dsh-accordion-item-content-header-theme($theme) {
-    $foreground: map-get($theme, foreground);
+    $foreground: map.get($theme, foreground);
 
     .dsh-accordion-item-content-header-label {
         color: mat.m2-get-color-from-palette($foreground, secondary-text);

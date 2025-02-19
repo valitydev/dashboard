@@ -1,14 +1,15 @@
-@import '../../../styles/utils/shadow';
-@import '../charts-theme';
+@use "sass:map";
+@use '../../../styles/utils/shadow';
+@use '../charts-theme';
 
 @mixin dsh-bar-chart-theme($theme) {
-    $foreground: map-get($theme, foreground);
+    $foreground: map.get($theme, foreground);
 
-    @include dsh-charts-theme($theme);
+    @include charts-theme.dsh-charts-theme($theme);
 
     .dsh-bar-chart-tooltip {
         &-title {
-            color: map-get($foreground, light-text);
+            color: map.get($foreground, light-text);
         }
     }
 }

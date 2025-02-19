@@ -2,8 +2,9 @@
 // Proceed with caution if making changes to this file.
 
 @use '@angular/material' as mat;
-@import 'palette';
-@import 'theme';
+@use 'sass:map';
+@use 'palette';
+@use 'theme';
 
 // Note: Color palettes are generated from primary: #2597a1
 $primary-color: (
@@ -99,31 +100,31 @@ $background: (
     // Overrides
     background: #f0f7f7,
     // Custom
-    hover: map-get(mat.$m2-grey-palette, 200),
-    selected-button: map-get(mat.$m2-grey-palette, 100)
+    hover: map.get(mat.$m2-grey-palette, 200),
+    selected-button: map.get(mat.$m2-grey-palette, 100)
 );
 
 $foreground: (
     // Overrides
     // Custom
-    contrast-text: $light-text,
+    contrast-text: palette.$light-text,
     light-text: mat.m2-get-color-from-palette(mat.m2-define-palette(mat.$m2-grey-palette), 500),
-    border: map-get(mat.$m2-grey-palette, 200)
+    border: map.get(mat.$m2-grey-palette, 200)
 );
 
 $config: (
     // Overrides
     color: (
-            primary: mat.m2-define-palette($dsh-eastern, 700),
-            accent: mat.m2-define-palette($dsh-eastern, 700),
-            warn: mat.m2-define-palette($dsh-warn, 300),
+            primary: mat.m2-define-palette(palette.$dsh-eastern, 700),
+            accent: mat.m2-define-palette(palette.$dsh-eastern, 700),
+            warn: mat.m2-define-palette(palette.$dsh-warn, 300),
         ),
     is-dark: false,
     // Custom
     name: 'eastern',
-    success-base: mat.m2-get-color-from-palette(mat.m2-define-palette($dsh-success), 400),
-    pending-base: mat.m2-get-color-from-palette(mat.m2-define-palette($dsh-pending), 800),
-    warn-base: mat.m2-get-color-from-palette(mat.m2-define-palette($dsh-warn), 300)
+    success-base: mat.m2-get-color-from-palette(mat.m2-define-palette(palette.$dsh-success), 400),
+    pending-base: mat.m2-get-color-from-palette(mat.m2-define-palette(palette.$dsh-pending), 800),
+    warn-base: mat.m2-get-color-from-palette(mat.m2-define-palette(palette.$dsh-warn), 300)
 );
 
-@include theme($_palettes, $config, $background, $foreground);
+@include theme.theme($_palettes, $config, $background, $foreground);
