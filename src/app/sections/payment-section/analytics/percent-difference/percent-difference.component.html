@@ -2,7 +2,7 @@
     *ngIf="percents !== undefined; else noPercents"
     [class.negative-percent-difference]="percents < 0"
     [class.positive-percent-difference]="percents > 0"
-    class="mat-caption"
+    class="mat-body-small"
 >
     {{ percents >= 0 ? '+' : '' }}{{ percents | percent: '1.0-2' : 'en' }}
 </div>

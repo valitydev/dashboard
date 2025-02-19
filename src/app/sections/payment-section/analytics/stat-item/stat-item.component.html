@@ -26,12 +26,14 @@
             </div>
             <dsh-spinner *ngIf="isLoading" [type]="spinnerType" size="28"></dsh-spinner>
         </div>
-        <div class="mat-caption dsh-stat-item-title">{{ subtitle }}</div>
-        <dsh-percent-difference
-            *ngIf="!isLoading"
-            [current]="statData?.current"
-            [previous]="statData?.previous"
-        ></dsh-percent-difference>
+        <div style="display: flex; flex-direction: column; gap: 4px">
+            <div class="mat-body-small dsh-stat-item-title">{{ subtitle }}</div>
+            <dsh-percent-difference
+                *ngIf="!isLoading"
+                [current]="statData?.current"
+                [previous]="statData?.previous"
+            ></dsh-percent-difference>
+        </div>
     </div>
     <ng-template #onError>
         {{ c('httpError') }}
