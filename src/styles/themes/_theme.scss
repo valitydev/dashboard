@@ -10,12 +10,29 @@
 @import '../utils/mat-component-variants';
 
 @mixin theme($_palettes, $config, $background, $foreground) {
-    $basic-theme: v.create-light-theme(
+    $basic-theme: mat.m2-define-light-theme(
         map-merge(
-            $config,
             (
-                typography: dsh-typography-config(),
-            )
+                color:
+                    map-merge(
+                        (
+                            // Define the palettes for your theme using the Material Design palettes available in palette.scss
+                            // (imported above). For each palette, you can optionally specify a default, lighter, and darker
+                            // hue. Available color palettes: https://material.io/design/color/
+                            primary: mat.m2-define-palette(mat.$m2-indigo-palette),
+                            accent: mat.m2-define-palette(mat.$m2-pink-palette),
+                            // The warn palette is optional (defaults to red).
+                            warn: mat.m2-define-palette(mat.$m2-red-palette)
+                        ),
+                        map-get($config, color)
+                    ),
+                    typography: dsh-typography-config(),
+                // Custom palettes
+                success: mat.m2-define-palette(mat.$m2-green-palette),
+                pending: mat.m2-define-palette(mat.$m2-yellow-palette),
+                neutral: mat.m2-define-palette(mat.$m2-gray-palette),
+            ),
+            map-remove($config, color)
         )
     );
 
@@ -56,7 +73,6 @@
 
     body.#{map-get($theme, name)} {
         @include v.select-theme($theme);
-        @include v.typography-hierarchy($theme);
 
         @include dsh-typography($typography);
 
@@ -84,6 +100,7 @@
 
         @include mat.all-component-themes($light-theme);
         @include mat.typography-hierarchy($light-theme);
+        @include v.typography-hierarchy($light-theme);
         @include mat-component-variants($light-theme);
 
         // Overrides

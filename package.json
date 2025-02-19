@@ -37,7 +37,7 @@
     "@angular/platform-browser-dynamic": "^19.1.6",
     "@angular/router": "^19.1.6",
     "@jsverse/transloco": "^7.5.0",
-    "@vality/matez": "19.0.1-pr-423-667df70.0",
+    "@vality/matez": "19.0.1-pr-423-eca1120.0",
     "@vality/swag-anapi-v2": "2.0.1-0f6d0dc.0",
     "@vality/swag-api-keys-v2": "0.1.2-321124b.0",
     "@vality/swag-claim-management": "0.1.1-ca3b5c4.0",
