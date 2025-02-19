@@ -19,11 +19,11 @@
     </div>
 
     <mat-divider></mat-divider>
-    <div class="dsh-title">{{ t('titles.roles') }}</div>
+    <div class="mat-title-large">{{ t('titles.roles') }}</div>
     <dsh-organization-roles [roles]="invitation.invitee.roles"></dsh-organization-roles>
 
     <mat-divider></mat-divider>
-    <div class="dsh-title">{{ t('titles.actions') }}</div>
+    <div class="mat-title-large">{{ t('titles.actions') }}</div>
     <div>
         <button class="matv-error" mat-flat-button (click)="cancel()">
             {{ t('actions.cancel') }}

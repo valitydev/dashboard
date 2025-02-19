@@ -2,7 +2,7 @@
     *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.invoices'"
 >
     <div fxLayout="column" fxLayoutGap="24px">
-        <div class="dsh-title" fxFlex>{{ t('invoiceStatus') }}</div>
+        <div class="mat-title-large" fxFlex>{{ t('invoiceStatus') }}</div>
         <dsh-expandable-radio-group [choices]="statuses" [control]="control" anyResponse fxFlex>
             <ng-container *ngFor="let status of statuses">
                 <ng-template [dshExpandableRadioGroupItem]="status">

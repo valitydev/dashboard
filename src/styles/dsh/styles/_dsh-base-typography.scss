@@ -76,12 +76,6 @@
         margin: 0;
     }
 
-    .dsh-title,
-    #{$selector} h2 {
-        @include mat.m2-typography-level($config, title);
-        margin: 0;
-    }
-
     .dsh-subheading-2,
     #{$selector} h3 {
         @include mat.m2-typography-level($config, subheading-2);

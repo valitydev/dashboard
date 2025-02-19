@@ -4,7 +4,7 @@
     gdGap="24px"
 >
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="8px">
-        <div class="dsh-title">{{ t('title') }}</div>
+        <div class="mat-title-large">{{ t('title') }}</div>
         <button [disabled]="isLoading$ | async" mat-button (click)="downloadAll()">
             {{ t('downloadAll') }}
         </button>

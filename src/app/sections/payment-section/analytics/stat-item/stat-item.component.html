@@ -1,12 +1,17 @@
 <dsh-card *transloco="let c; scope: 'components'; read: 'components.shared'" class="stat-item">
-    <div *ngIf="!error; else onError" fxLayout="column" fxLayoutGap="5px">
+    <div
+        *ngIf="!error; else onError"
+        fxLayout="column"
+        fxLayoutGap="5px"
+        style="display: flex; flex-direction: column; gap: 16px"
+    >
         <div
             *transloco="let t; scope: 'payment-section'; read: 'paymentSection.analytics'"
             fxLayout
             fxLayoutAlign="space-between"
             fxLayoutGap="10px"
         >
-            <h2 *ngIf="!isLoading" class="mat-h2 stat-item-title">
+            <div *ngIf="!isLoading" class="mat-title-large stat-item-title">
                 <div *ngIf="statData?.current; else noData">
                     <div *ngIf="hideCurrency; else showCurrency">
                         {{ statData.current | number }}
@@ -18,8 +23,8 @@
                 <ng-template #noData>
                     {{ t('noData') }}
                 </ng-template>
-            </h2>
-            <dsh-spinner *ngIf="isLoading" [type]="spinnerType" size="32"></dsh-spinner>
+            </div>
+            <dsh-spinner *ngIf="isLoading" [type]="spinnerType" size="28"></dsh-spinner>
         </div>
         <div class="mat-caption dsh-stat-item-title">{{ subtitle }}</div>
         <dsh-percent-difference

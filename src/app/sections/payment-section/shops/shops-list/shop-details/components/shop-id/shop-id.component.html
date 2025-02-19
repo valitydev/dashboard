@@ -1,6 +1,10 @@
-<ng-container *transloco="let p; scope: 'payment-section'; read: 'paymentSection.shops.panel'">
-    <div class="mat-h2">{{ p('id') }}</div>
-    <div class="mat-h3">{{ id }}</div>
+<div
+    *transloco="let p; scope: 'payment-section'; read: 'paymentSection.shops.panel'"
+    fxLayout="column"
+    fxLayoutGap="24px"
+>
+    <div class="mat-title-large">{{ p('id') }}</div>
+    <div class="mat-body-large">{{ id }}</div>
     <div>
         <button
             [cdkCopyToClipboard]="id"
@@ -10,4 +14,4 @@
             {{ p('copy') }}
         </button>
     </div>
-</ng-container>
+</div>

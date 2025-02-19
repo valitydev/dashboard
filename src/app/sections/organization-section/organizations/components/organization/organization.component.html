@@ -11,7 +11,7 @@
 
     <ng-container *ngIf="member$ | async as member">
         <mat-divider></mat-divider>
-        <div class="dsh-title">{{ t('titles.roles') }}</div>
+        <div class="mat-title-large">{{ t('titles.roles') }}</div>
         <dsh-organization-roles
             [isOwner]="isOwner$ | async"
             [roles]="member.roles"
@@ -19,7 +19,7 @@
     </ng-container>
 
     <mat-divider></mat-divider>
-    <div class="dsh-title">{{ t('titles.actions') }}</div>
+    <div class="mat-title-large">{{ t('titles.actions') }}</div>
     <div fxLayout fxLayoutGap="24px">
         <button *ngIf="hasAdminAccess$ | async" mat-flat-button (click)="rename()">
             {{ t('actions.rename') }}
