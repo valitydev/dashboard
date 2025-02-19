@@ -1,3 +1,9 @@
 <div ngClass.gt-sm="dsh-section-header-spacing">
-    <h3 ngClass.gt-sm="mat-display-medium" ngClass.lt-md="mat-display-small">{{ label }}</h3>
+    <h3 ngClass.gt-sm="mat-display-medium" ngClass.lt-md="mat-display-small">
+        @if (label) {
+            {{ label }}
+        } @else {
+            <v-content-loading textSize="16"></v-content-loading>
+        }
+    </h3>
 </div>
