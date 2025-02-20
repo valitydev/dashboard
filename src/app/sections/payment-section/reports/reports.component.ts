@@ -7,7 +7,7 @@ import { QueryParamsService } from '@vality/matez';
 import { Subject, combineLatest } from 'rxjs';
 import { filter, first, switchMap } from 'rxjs/operators';
 
-import { RealmMixService, PaymentInstitutionRealmService } from '../services';
+import { PaymentInstitutionRealmService, RealmMixService } from '../services';
 
 import { CreateReportDialogComponent } from './create-report/create-report-dialog.component';
 import { FetchReportsService } from './fetch-reports.service';

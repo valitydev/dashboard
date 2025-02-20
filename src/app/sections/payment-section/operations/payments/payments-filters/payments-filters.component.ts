@@ -11,13 +11,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AbstractControl, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ComponentChanges } from '@vality/matez';
-import { Shop, PaymentInstitution } from '@vality/swag-payments';
+import { PaymentInstitution, Shop } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
 import negate from 'lodash-es/negate';
 import omit from 'lodash-es/omit';
 import pick from 'lodash-es/pick';
 import { MediaObserver } from 'ng-flex-layout';
-import { defer, ReplaySubject, BehaviorSubject, combineLatest } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, combineLatest, defer } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
 import { ShopsDataService } from '@dsh/app/shared';

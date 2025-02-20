@@ -18,14 +18,14 @@ import negate from 'lodash-es/negate';
 import omit from 'lodash-es/omit';
 import pick from 'lodash-es/pick';
 import { MediaObserver } from 'ng-flex-layout';
-import { defer, ReplaySubject, BehaviorSubject, combineLatest } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, combineLatest, defer } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
 import { ShopsDataService } from '@dsh/app/shared';
 import {
-    createDateRangeWithPreset,
-    Preset,
     DateRangeWithPreset,
+    Preset,
+    createDateRangeWithPreset,
 } from '@dsh/components/date-range-filter';
 import { getFormValueChanges } from '@dsh/utils';
 

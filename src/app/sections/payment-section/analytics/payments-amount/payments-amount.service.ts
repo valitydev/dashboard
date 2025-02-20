@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { forkJoin, BehaviorSubject, defer, ReplaySubject, combineLatest } from 'rxjs';
-import { map, switchMap, distinctUntilChanged, shareReplay } from 'rxjs/operators';
+import { BehaviorSubject, ReplaySubject, combineLatest, defer, forkJoin } from 'rxjs';
+import { distinctUntilChanged, map, shareReplay, switchMap } from 'rxjs/operators';
 
 import { AnalyticsService } from '@dsh/app/api/anapi';
-import { errorTo, progressTo, inProgressFrom, attach, distinctUntilChangedDeep } from '@dsh/utils';
+import { attach, distinctUntilChangedDeep, errorTo, inProgressFrom, progressTo } from '@dsh/utils';
 
 import { SearchParams } from '../search-params';
 import { amountResultToStatData, searchParamsToStatSearchParams } from '../utils';

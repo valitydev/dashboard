@@ -11,6 +11,5 @@ import { PaymentToolDetailsType } from '@dsh/app/api/payments';
 export class PaymentToolComponent {
     @Input() paymentToolDetails: PaymentToolDetails;
 
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     Type = PaymentToolDetailsType;
 }

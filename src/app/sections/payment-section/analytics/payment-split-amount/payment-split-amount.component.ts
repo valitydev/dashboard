@@ -2,7 +2,7 @@ import { Component, Inject, Input, OnChanges, SimpleChanges } from '@angular/cor
 
 import { SpinnerType } from '@dsh/components/indicators';
 
-import { ChartsThemeProvider, CHARTS_THEME } from '../charts-theme';
+import { CHARTS_THEME, ChartsThemeProvider } from '../charts-theme';
 import { SearchParams } from '../search-params';
 
 import { PaymentSplitAmountService } from './payment-split-amount.service';

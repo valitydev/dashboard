@@ -15,9 +15,9 @@ import { DIALOG_CONFIG, DialogConfig } from '@dsh/app/sections/tokens';
 
 import { CancelInvoiceService } from '../../cancel-invoice';
 import {
+    CreatePaymentLinkDialogComponent,
     CreatePaymentLinkDialogData,
     CreatePaymentLinkDialogResponse,
-    CreatePaymentLinkDialogComponent,
 } from '../../create-payment-link-dialog';
 import { FulfillInvoiceService } from '../../fulfill-invoice';
 

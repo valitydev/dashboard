@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, booleanAttribute } from '@angular/core';
-import { FormControlSuperclass, createControlProviders, ComponentChanges } from '@vality/matez';
+import { ComponentChanges, FormControlSuperclass, createControlProviders } from '@vality/matez';
 import isNil from 'lodash-es/isNil';
 
 export interface Option<T> {

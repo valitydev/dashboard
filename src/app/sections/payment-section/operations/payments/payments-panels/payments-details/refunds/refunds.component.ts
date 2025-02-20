@@ -6,7 +6,7 @@ import {
     OnInit,
     Output,
 } from '@angular/core';
-import { RefundSearchResult, PaymentSearchResult } from '@vality/swag-anapi-v2';
+import { PaymentSearchResult, RefundSearchResult } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 

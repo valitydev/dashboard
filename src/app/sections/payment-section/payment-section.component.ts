@@ -3,8 +3,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslocoService } from '@jsverse/transloco';
 import { PaymentInstitution } from '@vality/swag-payments';
-import { combineLatest, Observable, Subject, defer, ReplaySubject } from 'rxjs';
-import { filter, map, switchMapTo, first } from 'rxjs/operators';
+import { Observable, ReplaySubject, Subject, combineLatest, defer } from 'rxjs';
+import { filter, first, map, switchMapTo } from 'rxjs/operators';
 
 import { SHOPS } from '@dsh/app/shared/components/inputs/shop-field';
 

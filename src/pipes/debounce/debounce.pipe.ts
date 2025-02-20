@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, NgZone, Pipe, PipeTransform, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, NgZone, OnDestroy, Pipe, PipeTransform } from '@angular/core';
 
 const INIT_VALUE = Symbol();
 

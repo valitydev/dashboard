@@ -5,5 +5,7 @@
 }
 
 @mixin dsh-accordion-typography($config) {
-    @include accordion-item-content-header-theme.dsh-accordion-item-content-header-typography($config);
+    @include accordion-item-content-header-theme.dsh-accordion-item-content-header-typography(
+        $config
+    );
 }

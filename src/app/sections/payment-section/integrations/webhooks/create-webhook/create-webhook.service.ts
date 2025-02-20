@@ -11,7 +11,6 @@ export class CreateWebhookService {
     private created$: Subject<void> = new Subject();
     private destroy$: Subject<void> = new Subject();
 
-    // eslint-disable-next-line @typescript-eslint/member-ordering
     webhookCreated$: Observable<void> = this.created$.asObservable();
 
     constructor(private dialog: MatDialog) {}

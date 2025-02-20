@@ -4,8 +4,8 @@ import {
     ContentChild,
     EventEmitter,
     Input,
-    Output,
     OnChanges,
+    Output,
 } from '@angular/core';
 import { ComponentChanges } from '@vality/matez';
 

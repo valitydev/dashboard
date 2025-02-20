@@ -1,24 +1,24 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     EventEmitter,
     Input,
-    Output,
-    OnInit,
     OnChanges,
-    DestroyRef,
+    OnInit,
+    Output,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
 import { ComponentChanges } from '@vality/matez';
 import { Shop } from '@vality/swag-payments';
-import { combineLatest, defer, Observable } from 'rxjs';
+import { Observable, combineLatest, defer } from 'rxjs';
 import { first, map, pluck, shareReplay } from 'rxjs/operators';
 
 import {
-    createDateRangeWithPreset,
     DateRangeWithPreset,
     Preset,
+    createDateRangeWithPreset,
 } from '@dsh/components/date-range-filter';
 import { getFormValueChanges } from '@dsh/utils';
 

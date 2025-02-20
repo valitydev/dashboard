@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { BehaviorSubject, of, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, of } from 'rxjs';
 import { catchError, filter, map, switchMap } from 'rxjs/operators';
 
 import { WebhooksService } from '@dsh/app/api/payments';
@@ -17,14 +17,12 @@ export class CreateWebhookDialogService {
     private error$ = new Subject<void>();
     private created$ = new Subject();
 
-    // eslint-disable-next-line @typescript-eslint/member-ordering
     form = this.initForm();
 
-    // eslint-disable-next-line @typescript-eslint/member-ordering
     isLoading$ = this.loading$.asObservable();
-    // eslint-disable-next-line @typescript-eslint/member-ordering
+
     errorOccurred$ = this.error$.asObservable();
-    // eslint-disable-next-line @typescript-eslint/member-ordering
+
     webhookCreated$ = this.created$.asObservable();
 
     constructor(

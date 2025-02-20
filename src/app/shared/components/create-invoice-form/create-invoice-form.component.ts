@@ -1,10 +1,10 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy, DestroyRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, Input, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
 import {
-    createControlProviders,
-    FormGroupByValue,
     FormComponentSuperclass,
+    FormGroupByValue,
+    createControlProviders,
     getErrorsTree,
     toMinor,
 } from '@vality/matez';

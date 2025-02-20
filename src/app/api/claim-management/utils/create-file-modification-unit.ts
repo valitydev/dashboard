@@ -2,7 +2,6 @@ import { FileModification, FileModificationUnit } from '@vality/swag-claim-manag
 
 import { SpecificClaimModificationUnit } from './specific-claim-modification-unit';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 const FileModificationType = FileModification.FileModificationTypeEnum;
 type FileModificationType = FileModification.FileModificationTypeEnum;
 

@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Pipe, PipeTransform, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, Pipe, PipeTransform } from '@angular/core';
 import { Identity } from '@vality/swag-wallet';
 import { map } from 'rxjs/operators';
 

@@ -3,7 +3,7 @@ import { Category } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
 import { Observable } from 'rxjs';
 
-import { isShopLocationUrl, ShopItem } from '../../../../types/shop-item';
+import { ShopItem, isShopLocationUrl } from '../../../../types/shop-item';
 import { CategoryService } from '../../services/category/category.service';
 
 @Component({

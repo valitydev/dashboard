@@ -10,7 +10,7 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, UntypedFormGroup } from '@angular/forms';
 import { TranslocoService } from '@jsverse/transloco';
-import { createControlProviders, FormGroupSuperclass, NotifyLogService } from '@vality/matez';
+import { FormGroupSuperclass, NotifyLogService, createControlProviders } from '@vality/matez';
 import { InvoiceTemplateAndToken, Shop } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
 import moment from 'moment';

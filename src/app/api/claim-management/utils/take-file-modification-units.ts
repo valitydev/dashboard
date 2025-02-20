@@ -1,7 +1,7 @@
 import {
-    ModificationUnit,
     FileModification,
     FileModificationUnit,
+    ModificationUnit,
 } from '@vality/swag-claim-management';
 
 import { sortUnitsByCreatedAtAsc } from './sort-units';

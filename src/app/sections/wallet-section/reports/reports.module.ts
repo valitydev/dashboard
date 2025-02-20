@@ -10,9 +10,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@jsverse/transloco';
-import { FlexModule, GridModule, ExtendedModule } from 'ng-flex-layout';
+import { ExtendedModule, FlexModule, GridModule } from 'ng-flex-layout';
 
-import { IdentityFilterModule, ApiModelRefsModule } from '@dsh/app/shared';
+import { ApiModelRefsModule, IdentityFilterModule } from '@dsh/app/shared';
 import { AccordionTableModule } from '@dsh/app/shared/components/accordion-table';
 import { DialogModule } from '@dsh/app/shared/components/dialog';
 import { ClaimFieldModule } from '@dsh/app/shared/components/inputs/claim-field';

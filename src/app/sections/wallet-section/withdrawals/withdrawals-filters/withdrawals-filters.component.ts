@@ -16,14 +16,14 @@ import isEqual from 'lodash-es/isEqual';
 import negate from 'lodash-es/negate';
 import omit from 'lodash-es/omit';
 import pick from 'lodash-es/pick';
-import { combineLatest, defer, ReplaySubject } from 'rxjs';
+import { ReplaySubject, combineLatest, defer } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
 import { Preset, createDateRangeWithPreset } from '@dsh/components/date-range-filter';
 import { getFormValueChanges } from '@dsh/utils';
 
 import { AdditionalFilters, DialogFiltersComponent } from './additional-filters';
-import { WithdrawalsFilters, MainFilters } from './types';
+import { MainFilters, WithdrawalsFilters } from './types';
 
 const MAIN_FILTERS_KEYS = ['dateRange'];
 

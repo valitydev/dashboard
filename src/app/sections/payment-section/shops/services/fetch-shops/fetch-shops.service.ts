@@ -1,7 +1,7 @@
 import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
-import { PaymentInstitution, Shop as ApiShop } from '@vality/swag-payments';
+import { Shop as ApiShop, PaymentInstitution } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
-import { BehaviorSubject, combineLatest, Observable, ReplaySubject, defer } from 'rxjs';
+import { BehaviorSubject, Observable, ReplaySubject, combineLatest, defer } from 'rxjs';
 import {
     map,
     mapTo,

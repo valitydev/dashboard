@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Output, EventEmitter, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexModule } from 'ng-flex-layout';
 

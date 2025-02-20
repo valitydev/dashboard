@@ -25,7 +25,6 @@ export class ThemeManager {
         this.set(name);
     }
 
-    // eslint-disable-next-line @typescript-eslint/require-await
     async init(): Promise<void> {
         const theme = this.configService?.theme;
         const correctedName = this.getCorrectName(theme.name);

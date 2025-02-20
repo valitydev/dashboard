@@ -1,7 +1,7 @@
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { Component, Input, Output, EventEmitter, TemplateRef, ContentChild } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
 import { PossiblyAsync } from '@vality/matez';
-import { of, Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 import { StatusColor } from '@dsh/app/theme-manager';

@@ -17,9 +17,9 @@ import { filter, pluck, switchMap } from 'rxjs/operators';
 import { OrgsService } from '@dsh/app/api/organizations';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import {
+    ContextOrganizationService,
     ErrorService,
     NotificationService,
-    ContextOrganizationService,
 } from '@dsh/app/shared/services';
 import { FetchOrganizationsService } from '@dsh/app/shared/services/fetch-organizations';
 import { OrganizationManagementService } from '@dsh/app/shared/services/organization-management/organization-management.service';

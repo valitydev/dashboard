@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatRadioChange } from '@angular/material/radio';
-import { Option, FormControlSuperclass, createControlProviders } from '@vality/matez';
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
 import { Overwrite } from 'utility-types';
 
 @Component({

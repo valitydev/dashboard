@@ -16,10 +16,10 @@ import isEqual from 'lodash-es/isEqual';
 import negate from 'lodash-es/negate';
 import omit from 'lodash-es/omit';
 import pick from 'lodash-es/pick';
-import { combineLatest, defer, ReplaySubject } from 'rxjs';
+import { ReplaySubject, combineLatest, defer } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
-import { createDateRangeWithPreset, Preset } from '@dsh/components/date-range-filter';
+import { Preset, createDateRangeWithPreset } from '@dsh/components/date-range-filter';
 import { getFormValueChanges } from '@dsh/utils';
 
 import { DialogFiltersComponent } from './additional-filters/components/dialog-filters/dialog-filters.component';

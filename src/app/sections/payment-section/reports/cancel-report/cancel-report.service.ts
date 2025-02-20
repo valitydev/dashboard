@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@jsverse/transloco';
 import { DialogResponseStatus } from '@vality/matez';
-import { combineLatest, Observable, of, Subject } from 'rxjs';
-import { catchError, filter, switchMap, takeUntil, tap, map, first } from 'rxjs/operators';
+import { Observable, Subject, combineLatest, of } from 'rxjs';
+import { catchError, filter, first, map, switchMap, takeUntil, tap } from 'rxjs/operators';
 
 import { ReportsService } from '@dsh/app/api/anapi';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
@@ -15,7 +15,6 @@ export class CancelReportService {
     private cancelReport$: Subject<number> = new Subject();
     private cancelled$: Subject<void> = new Subject();
 
-    // eslint-disable-next-line @typescript-eslint/member-ordering
     reportCancelled$: Observable<void> = this.cancelled$.asObservable();
 
     constructor(

@@ -2,7 +2,7 @@ import { SplitCountResult, SplitUnit, StatusOffsetCount } from '@vality/swag-ana
 import sortBy from 'lodash-es/sortBy';
 import moment from 'moment';
 
-import { ChartData, splitUnitToTimeFormat, Series } from '../utils';
+import { ChartData, Series, splitUnitToTimeFormat } from '../utils';
 
 const prepareOffsetCounts = (statusOffsetCounts: StatusOffsetCount[]): StatusOffsetCount[] =>
     statusOffsetCounts.map((statusOffsetCount): StatusOffsetCount => {

@@ -1,16 +1,16 @@
-import { inject, DestroyRef } from '@angular/core';
+import { DestroyRef, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import isNil from 'lodash-es/isNil';
-import { Observable, BehaviorSubject, defer, of } from 'rxjs';
+import { BehaviorSubject, Observable, defer, of } from 'rxjs';
 import {
-    take,
-    switchMap,
-    shareReplay,
+    distinctUntilChanged,
     map,
+    shareReplay,
+    switchMap,
+    take,
     tap,
     withLatestFrom,
-    distinctUntilChanged,
 } from 'rxjs/operators';
 
 import { Fragment } from '@dsh/app/shared';

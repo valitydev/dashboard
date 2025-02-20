@@ -1,7 +1,7 @@
 import { DestroyRef, Injectable } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { WalletAccount } from '@vality/swag-wallet';
-import { BehaviorSubject, defer, EMPTY, Observable, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, EMPTY, Observable, ReplaySubject, defer } from 'rxjs';
 import { catchError, map, shareReplay, switchMap } from 'rxjs/operators';
 
 import { WalletsService } from '@dsh/app/api/wallet';

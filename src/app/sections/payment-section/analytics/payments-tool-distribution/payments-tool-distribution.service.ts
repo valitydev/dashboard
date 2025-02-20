@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject, BehaviorSubject, defer } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, defer } from 'rxjs';
 import { map, shareReplay, switchMap, withLatestFrom } from 'rxjs/operators';
 
 import { AnalyticsService, AnapiDictionaryService } from '@dsh/app/api/anapi';
-import { errorTo, progressTo, distinctUntilChangedDeep, inProgressFrom, attach } from '@dsh/utils';
+import { attach, distinctUntilChangedDeep, errorTo, inProgressFrom, progressTo } from '@dsh/utils';
 
 import { SearchParams } from '../search-params';
 import { searchParamsToDistributionSearchParams } from '../utils';

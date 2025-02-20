@@ -7,7 +7,7 @@ import { take } from 'rxjs/operators';
 import { ShopsDataService } from '@dsh/app/shared';
 import { SpinnerType } from '@dsh/components/indicators';
 
-import { RealmMixService, PaymentInstitutionRealmService } from '../../services';
+import { PaymentInstitutionRealmService, RealmMixService } from '../../services';
 import { filterShopsByRealm } from '../operators';
 
 import { CreateInvoiceService } from './create-invoice';

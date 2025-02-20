@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { LOCALE_ID, NgModule, isDevMode, inject, provideAppInitializer } from '@angular/core';
+import { LOCALE_ID, NgModule, inject, isDevMode, provideAppInitializer } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {
     DateAdapter,
@@ -18,7 +18,7 @@ import {
 } from '@angular/material-moment-adapter';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslocoModule, provideTransloco, TRANSLOCO_SCOPE } from '@jsverse/transloco';
+import { TRANSLOCO_SCOPE, TranslocoModule, provideTransloco } from '@jsverse/transloco';
 import { QUERY_PARAMS_SERIALIZERS } from '@vality/matez';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
@@ -29,7 +29,7 @@ import { UrlShortenerModule } from '@dsh/app/api/url-shortener';
 import { WalletModule } from '@dsh/app/api/wallet';
 import { ErrorModule } from '@dsh/app/shared/services';
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
-import { SpinnerModule, BootstrapIconModule } from '@dsh/components/indicators';
+import { BootstrapIconModule, SpinnerModule } from '@dsh/components/indicators';
 
 import { ENV, environment } from '../environments';
 

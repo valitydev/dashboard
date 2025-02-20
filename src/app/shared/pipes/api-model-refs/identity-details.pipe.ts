@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
-import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, combineLatest } from 'rxjs';
 import { distinctUntilChanged, map, pluck, takeUntil } from 'rxjs/operators';
 
 import { IdentitiesService } from '@dsh/app/api/wallet';

@@ -1,4 +1,4 @@
-@use "sass:map";
+@use 'sass:map';
 @mixin dsh-text-color-theme($theme) {
     $foreground: map.get($theme, foreground);
 

@@ -1,11 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Organization, Member } from '@vality/swag-organizations';
+import { Member, Organization } from '@vality/swag-organizations';
 import isNil from 'lodash-es/isNil';
-import { Observable, ReplaySubject, EMPTY, concat, defer, combineLatest, of } from 'rxjs';
-import { switchMap, shareReplay, catchError, map, tap, filter } from 'rxjs/operators';
+import { EMPTY, Observable, ReplaySubject, combineLatest, concat, defer, of } from 'rxjs';
+import { catchError, filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 
-import { OrgsService, MembersService, DEFAULT_ORGANIZATION_NAME } from '@dsh/app/api/organizations';
+import { DEFAULT_ORGANIZATION_NAME, MembersService, OrgsService } from '@dsh/app/api/organizations';
 import { RoleId } from '@dsh/app/auth/types/role-id';
 import { KeycloakTokenInfoService } from '@dsh/app/shared/services/keycloak-token-info';
 

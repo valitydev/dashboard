@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { FormGroupSuperclass, createControlProviders } from '@vality/matez';
 
 import { createTypeUnionDefaultForm } from '../../../created-existing-switch/created-existing-switch.component';

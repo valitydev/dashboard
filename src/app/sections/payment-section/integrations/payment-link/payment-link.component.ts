@@ -4,10 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService } from '@vality/matez';
 import { PaymentMethod } from '@vality/swag-payments';
-import { BehaviorSubject, defer, merge, ReplaySubject, Subject, Subscription, EMPTY } from 'rxjs';
-import { mapTo, shareReplay, switchMap, catchError, map } from 'rxjs/operators';
+import { BehaviorSubject, EMPTY, ReplaySubject, Subject, Subscription, defer, merge } from 'rxjs';
+import { catchError, map, mapTo, shareReplay, switchMap } from 'rxjs/operators';
 
-import { InvoicesService, InvoiceTemplatesService } from '@dsh/app/api/payments';
+import { InvoiceTemplatesService, InvoicesService } from '@dsh/app/api/payments';
 import { ShopsDataService } from '@dsh/app/shared';
 import { CreatePaymentLinkService } from '@dsh/app/shared/services/create-payment-link';
 import { progressTo } from '@dsh/utils';

@@ -6,7 +6,7 @@ import { FlexModule } from 'ng-flex-layout';
 import { StatusModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
 
-import { ApiModelRefsModule, AmountCurrencyModule } from '../../../pipes';
+import { AmountCurrencyModule, ApiModelRefsModule } from '../../../pipes';
 
 import { DepositRevertDetailsComponent } from './deposit-revert-details.component';
 import { DepositRevertStatusColorPipe } from './pipes';

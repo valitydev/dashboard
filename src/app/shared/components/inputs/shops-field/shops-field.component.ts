@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { FormControlSuperclass, createControlProviders, ComponentChanges } from '@vality/matez';
+import { ComponentChanges, FormControlSuperclass, createControlProviders } from '@vality/matez';
 import { Shop } from '@vality/swag-payments';
-import { defer, ReplaySubject } from 'rxjs';
+import { ReplaySubject, defer } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, isDevMode } from '@angular/core';
 
-import { LanguageService, Language } from '@dsh/app/language';
+import { Language, LanguageService } from '@dsh/app/language';
 
 import { BootstrapService } from './bootstrap.service';
 

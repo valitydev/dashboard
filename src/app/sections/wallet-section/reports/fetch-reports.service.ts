@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { FetchSuperclass, FetchResult, NotifyLogService } from '@vality/matez';
+import { FetchResult, FetchSuperclass, NotifyLogService } from '@vality/matez';
 import { GetReportsRequestParams, Report } from '@vality/swag-wallet';
 import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 import { ReportsService } from '@dsh/app/api/wallet';
 

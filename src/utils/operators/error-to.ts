@@ -1,4 +1,4 @@
-import { Subject, throwError, MonoTypeOperatorFunction, EMPTY } from 'rxjs';
+import { EMPTY, MonoTypeOperatorFunction, Subject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 export function errorTo<T>(

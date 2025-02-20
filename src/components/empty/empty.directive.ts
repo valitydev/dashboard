@@ -1,12 +1,12 @@
 import {
+    ChangeDetectorRef,
+    DestroyRef,
     Directive,
     Input,
     OnChanges,
+    OnInit,
     TemplateRef,
     ViewContainerRef,
-    OnInit,
-    ChangeDetectorRef,
-    DestroyRef,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { SectionsLinksService, SectionLink } from '@dsh/app/shared/services/sections-links';
+import { SectionLink, SectionsLinksService } from '@dsh/app/shared/services/sections-links';
 
 @Component({
     selector: 'dsh-mobile-menu',

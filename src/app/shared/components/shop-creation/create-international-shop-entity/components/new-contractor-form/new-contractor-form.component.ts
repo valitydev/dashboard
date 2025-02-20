@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { createControlProviders, FormGroupSuperclass } from '@vality/matez';
+import { FormGroupSuperclass, createControlProviders } from '@vality/matez';
 
 export interface NewContractorForm {
     organizationName: string;

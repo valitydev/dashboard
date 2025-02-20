@@ -8,7 +8,7 @@ import {
     Output,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ComponentChanges, DialogService, DialogResponseStatus } from '@vality/matez';
+import { ComponentChanges, DialogResponseStatus, DialogService } from '@vality/matez';
 import { Member, Organization } from '@vality/swag-organizations';
 import { filter, switchMap } from 'rxjs/operators';
 

@@ -1,10 +1,10 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import {
-    OnChanges,
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
     Input,
+    OnChanges,
     Output,
     ViewChild,
 } from '@angular/core';

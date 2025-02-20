@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IdentitiesService as ApiIdentitiesService, Identity } from '@vality/swag-wallet';
 import { Subject, defer, switchMap } from 'rxjs';
-import { startWith, map, shareReplay } from 'rxjs/operators';
+import { map, shareReplay, startWith } from 'rxjs/operators';
 
 import { PartyIdExtension } from '@dsh/app/api/utils/extensions';
 

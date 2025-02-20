@@ -7,7 +7,7 @@ import { FlexModule } from 'ng-flex-layout';
 import { LastUpdatedModule } from '@dsh/components/indicators/last-updated/last-updated.module';
 import { AccordionModule, CardModule, RowModule } from '@dsh/components/layout';
 
-import { WalletRowComponent, WalletRowHeaderComponent, WalletDetailsComponent } from './components';
+import { WalletDetailsComponent, WalletRowComponent, WalletRowHeaderComponent } from './components';
 import { WalletsAccountInfoModule } from './wallet-account-info';
 import { WalletDepositsModule } from './wallet-deposits';
 import { WalletsMainInfoModule } from './wallet-main-info';

@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Pipe, PipeTransform, ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
 
 import { RoleAccessService } from './role-access.service';
 import { RoleAccessName } from './types/role-access-name';

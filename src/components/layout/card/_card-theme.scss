@@ -1,5 +1,5 @@
 @use '@angular/material' as mat;
-@use "sass:map";
+@use 'sass:map';
 @use '../../../styles/utils/shadow';
 
 @mixin dsh-card-theme($theme) {

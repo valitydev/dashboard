@@ -10,24 +10,6 @@ module.exports = [
     },
     {
         files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-        rules: {
-            '@nx/enforce-module-boundaries': [
-                'error',
-                {
-                    enforceBuildableLibDependency: true,
-                    allow: ['^.*/eslint(\\.base)?\\.config\\.[cm]?js$'],
-                    depConstraints: [
-                        {
-                            sourceTag: '*',
-                            onlyDependOnLibsWithTags: ['*'],
-                        },
-                    ],
-                },
-            ],
-        },
-    },
-    {
-        files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
         // Override or add rules here
         rules: {},
     },
@@ -78,7 +60,7 @@ module.exports = [
         // Override or add rules here
         rules: {},
     },
-    ...configs.appEslintConfig(),
+    ...configs.appEslintConfig({ internalPatterns: ['@dsh/**'] }),
     {
         files: ['**/*.ts'],
         rules: {

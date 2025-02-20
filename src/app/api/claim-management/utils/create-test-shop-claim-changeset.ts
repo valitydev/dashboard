@@ -1,17 +1,17 @@
 import {
-    Modification,
-    ShopModification,
-    ShopAccountCreationModification,
-    PayoutToolInfo,
     InternationalBankAccount,
+    Modification,
+    PayoutToolInfo,
+    ShopAccountCreationModification,
+    ShopModification,
 } from '@vality/swag-claim-management';
 
 import {
     createContractCreationModification,
+    createContractPayoutToolCreationModification,
+    createInternationalLegalEntityModification,
     createShopCreationModification,
     makeShopLocation,
-    createInternationalLegalEntityModification,
-    createContractPayoutToolCreationModification,
 } from './claim-party-modification';
 import { createBaseShopModification } from './claim-party-modification/claim-shop-modification/create-base-shop-modification';
 

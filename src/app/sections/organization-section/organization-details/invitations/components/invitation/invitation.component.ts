@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogResponseStatus, DialogResponse } from '@vality/matez';
+import { DialogResponse, DialogResponseStatus } from '@vality/matez';
 import { Invitation, Organization, RevokeInvitationRequest } from '@vality/swag-organizations';
 import { filter, switchMap } from 'rxjs/operators';
 

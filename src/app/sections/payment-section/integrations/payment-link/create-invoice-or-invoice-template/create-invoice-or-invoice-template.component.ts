@@ -1,18 +1,18 @@
 import {
+    ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     EventEmitter,
+    Input,
     OnInit,
     Output,
-    ChangeDetectionStrategy,
-    Input,
-    DestroyRef,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, UntypedFormBuilder } from '@angular/forms';
 import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService } from '@vality/matez';
 import { Invoice, InvoiceTemplateAndToken, Shop } from '@vality/swag-payments';
-import { merge, Subject, throwError } from 'rxjs';
+import { Subject, merge, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 import { InvoicesService } from '@dsh/app/api/payments';

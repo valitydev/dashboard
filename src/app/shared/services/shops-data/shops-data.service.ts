@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Shop } from '@vality/swag-payments';
-import { Observable, Subject, of, repeat, merge, defer, first } from 'rxjs';
-import { switchMap, filter, catchError, map, shareReplay } from 'rxjs/operators';
+import { Observable, Subject, defer, first, merge, of, repeat } from 'rxjs';
+import { catchError, filter, map, shareReplay, switchMap } from 'rxjs/operators';
 
-import { createTestShopClaimChangeset, ClaimsService } from '@dsh/app/api/claim-management';
+import { ClaimsService, createTestShopClaimChangeset } from '@dsh/app/api/claim-management';
 import { ShopsService } from '@dsh/app/api/payments';
 import { ContextOrganizationService } from '@dsh/app/shared';
 

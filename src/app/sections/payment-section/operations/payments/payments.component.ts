@@ -3,12 +3,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { QueryParamsService } from '@vality/matez';
 import { PaymentSearchResult, SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';
-import { take, skip } from 'rxjs/operators';
+import { skip, take } from 'rxjs/operators';
 
 import { PaymentInstitutionRealmService } from '../../services/payment-institution-realm.service';
 
 import { Filters } from './payments-filters';
-import { PaymentsExpandedIdManager, FetchPaymentsService } from './services';
+import { FetchPaymentsService, PaymentsExpandedIdManager } from './services';
 
 @Component({
     selector: 'dsh-payments',

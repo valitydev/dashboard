@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, forkJoin, of, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, forkJoin, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 
 import { ReportsService } from '@dsh/app/api/anapi';
@@ -11,9 +11,8 @@ export class ReportFilesService {
     private loading$ = new BehaviorSubject(false);
     private error$ = new Subject<void>();
 
-    // eslint-disable-next-line @typescript-eslint/member-ordering
     isLoading$ = this.loading$.asObservable();
-    // eslint-disable-next-line @typescript-eslint/member-ordering
+
     errorOccurred$ = this.error$.asObservable();
 
     constructor(private reportsApiService: ReportsService) {

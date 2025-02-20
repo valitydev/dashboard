@@ -4,7 +4,7 @@ import { AsyncTransform, AsyncTransformParameters } from '@vality/matez';
 import { PaymentError } from '@vality/swag-payments';
 import lowerCase from 'lodash-es/lowerCase';
 import upperFirst from 'lodash-es/upperFirst';
-import { isObservable, Observable, of, switchMap } from 'rxjs';
+import { Observable, isObservable, of, switchMap } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
 function renderSubErrorMessage(error?: string, sub?: string) {
