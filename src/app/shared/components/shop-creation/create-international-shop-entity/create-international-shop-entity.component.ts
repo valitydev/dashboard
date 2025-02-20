@@ -23,6 +23,7 @@ import { InternationalShopEntityFormValue } from './types/international-shop-ent
 })
 export class CreateInternationalShopEntityComponent {
     @Output() send = new EventEmitter<void>();
+    // eslint-disable-next-line @angular-eslint/no-output-native
     @Output() cancel = new EventEmitter<void>();
 
     progress$ = new BehaviorSubject(0);

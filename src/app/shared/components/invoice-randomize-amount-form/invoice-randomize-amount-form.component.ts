@@ -82,5 +82,6 @@ export class InvoiceRandomizeAmountFormComponent
         return getErrorsTree(this.control);
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     handleIncomingValue(_value: FormData): void {}
 }

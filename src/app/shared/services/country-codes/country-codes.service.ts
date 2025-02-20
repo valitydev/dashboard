@@ -25,7 +25,7 @@ export class CountryCodesService {
         try {
             this.getCountryByCode(code);
             return true;
-        } catch (e) {
+        } catch {
             return false;
         }
     }
@@ -34,7 +34,7 @@ export class CountryCodesService {
         try {
             this.getCountryCode(country);
             return true;
-        } catch (e) {
+        } catch {
             return false;
         }
     }

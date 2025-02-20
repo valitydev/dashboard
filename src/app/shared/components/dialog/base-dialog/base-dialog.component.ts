@@ -14,6 +14,7 @@ export class BaseDialogComponent {
     @Input({ transform: booleanAttribute }) hasDivider = true;
     @Input({ transform: booleanAttribute }) noActions = false;
 
+    // eslint-disable-next-line @angular-eslint/no-output-native
     @Output() cancel = new EventEmitter<void>();
 
     cancelDialog(): void {

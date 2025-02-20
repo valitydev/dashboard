@@ -46,7 +46,7 @@
                 c('form.paymentFlowHold')
             }}</mat-checkbox>
             <ng-container *ngIf="control.value.paymentFlowHold">
-                <label class="dsh-subheading-1">{{ c('form.paymentFlowHoldPolicy') }}:</label>
+                <div class="dsh-subheading-1">{{ c('form.paymentFlowHoldPolicy') }}:</div>
                 <mat-radio-group
                     formControlName="onHoldExpiration"
                     gdColumns="1fr"
