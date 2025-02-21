@@ -8,6 +8,7 @@ import { FakePaginatorService } from '@dsh/app/shared/services';
     templateUrl: 'invoice-payments.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [FakePaginatorService],
+    standalone: false,
 })
 export class InvoicePaymentsComponent implements OnInit {
     @Input() payments: Payment[];

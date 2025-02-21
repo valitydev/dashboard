@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
+import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 import { Claim } from '@vality/swag-claim-management';
 
 @Component({
@@ -8,5 +8,6 @@ import { Claim } from '@vality/swag-claim-management';
     styleUrls: ['claim-field.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => ClaimFieldComponent),
+    standalone: false,
 })
 export class ClaimFieldComponent extends FormControlSuperclass<Claim['id']> {}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService, QueryParamsService } from '@vality/ng-core';
+import { NotifyLogService, QueryParamsService } from '@vality/matez';
 import { shareReplay } from 'rxjs';
 
 import { FetchWithdrawalsService, WithdrawalsExpandedIdManager } from './services';
@@ -9,6 +9,7 @@ import { WithdrawalsFilters } from './withdrawals-filters';
 @Component({
     templateUrl: 'withdrawals.component.html',
     providers: [FetchWithdrawalsService, WithdrawalsExpandedIdManager],
+    standalone: false,
 })
 export class WithdrawalsComponent implements OnInit {
     withdrawals$ = this.fetchWithdrawalsService.searchResult$;

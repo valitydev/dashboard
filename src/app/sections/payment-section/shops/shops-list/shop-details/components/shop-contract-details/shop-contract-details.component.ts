@@ -6,6 +6,7 @@ import { ShopContractDetailsService } from '@dsh/app/shared/services/shop-contra
     selector: 'dsh-shop-contract-details',
     templateUrl: 'shop-contract-details.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class ShopContractDetailsComponent {
     @Input()

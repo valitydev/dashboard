@@ -1,4 +1,4 @@
-import { combineLatest, Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Option } from '@dsh/components/form-controls/types/option';

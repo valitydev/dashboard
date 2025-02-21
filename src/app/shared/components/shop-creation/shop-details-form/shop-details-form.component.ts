@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { createControlProviders, FormGroupSuperclass } from '@vality/ng-core';
+import { FormGroupSuperclass, createControlProviders } from '@vality/matez';
 import { Category } from '@vality/swag-payments';
 
 export interface ShopDetailsForm {
@@ -14,6 +14,7 @@ export interface ShopDetailsForm {
     templateUrl: 'shop-details-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => ShopDetailsFormComponent),
+    standalone: false,
 })
 export class ShopDetailsFormComponent extends FormGroupSuperclass<Partial<ShopDetailsForm>> {
     control = this.fb.group<ShopDetailsForm>({

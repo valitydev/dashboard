@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
-import { SearchRefundsRequestParams, RefundSearchResult } from '@vality/swag-anapi-v2';
+import { RefundSearchResult, SearchRefundsRequestParams } from '@vality/swag-anapi-v2';
 import moment from 'moment';
 import { Observable, switchMap } from 'rxjs';
-import { shareReplay, first } from 'rxjs/operators';
+import { first, shareReplay } from 'rxjs/operators';
 
 import { SearchService } from '@dsh/app/api/anapi';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';

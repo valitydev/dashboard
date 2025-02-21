@@ -4,7 +4,7 @@
     fxLayout="column"
     fxLayoutGap="24px"
 >
-    <div class="dsh-title">{{ t('title') }}</div>
+    <div class="mat-title-large">{{ t('title') }}</div>
     <ul class="dsh-webhooks-event-list" fxLayout="column" fxLayoutGap="24px">
         <li *ngFor="let event of events" class="dsh-body-1">
             <span>{{ (eventType$ | async)?.[event] }}</span>

@@ -1,7 +1,8 @@
+@use 'sass:map';
 @use '@angular/material' as mat;
 
 @mixin dsh-navbar-item-theme($theme) {
-    $primary: map-get($theme, primary);
+    $primary: map.get($theme, primary);
 
     .dsh-navbar-item-active {
         background: mat.m2-get-color-from-palette($primary, default, 0.12);

@@ -20,10 +20,12 @@ $dsh-panel-border-radius: 4px !default;
 
 .dsh-panel-header {
     @extend %dsh-panel-section-base;
+
+    min-height: $dsh-panel-header-height;
+
     &-content {
         padding: $dsh-panel-padding;
     }
-    min-height: $dsh-panel-header-height;
 }
 
 .dsh-panel {

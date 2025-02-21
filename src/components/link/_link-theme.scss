@@ -1,8 +1,9 @@
+@use 'sass:map';
 @use '@angular/material' as mat;
 
 @mixin dsh-link-theme($theme) {
     .dsh-link {
-        color: map-get($theme, primary, default);
+        color: map.get($theme, primary, default);
     }
 }
 

@@ -1,9 +1,11 @@
-@import './accordion-item-content-header/accordion-item-content-header-theme';
+@use 'accordion-item-content-header/accordion-item-content-header-theme';
 
 @mixin dsh-accordion-theme($theme) {
-    @include dsh-accordion-item-content-header-theme($theme);
+    @include accordion-item-content-header-theme.dsh-accordion-item-content-header-theme($theme);
 }
 
 @mixin dsh-accordion-typography($config) {
-    @include dsh-accordion-item-content-header-typography($config);
+    @include accordion-item-content-header-theme.dsh-accordion-item-content-header-typography(
+        $config
+    );
 }

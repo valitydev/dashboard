@@ -3,11 +3,11 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@jsverse/transloco';
-import { QueryParamsService } from '@vality/ng-core';
+import { QueryParamsService } from '@vality/matez';
 import { Subject, combineLatest } from 'rxjs';
 import { filter, first, switchMap } from 'rxjs/operators';
 
-import { RealmMixService, PaymentInstitutionRealmService } from '../services';
+import { PaymentInstitutionRealmService, RealmMixService } from '../services';
 
 import { CreateReportDialogComponent } from './create-report/create-report-dialog.component';
 import { FetchReportsService } from './fetch-reports.service';
@@ -18,6 +18,7 @@ import { Filters, SearchFiltersParams } from './reports-search-filters';
     templateUrl: 'reports.component.html',
     providers: [FetchReportsService, ReportsExpandedIdManager, RealmMixService],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class ReportsComponent implements OnInit {
     reports$ = this.fetchReportsService.searchResult$;

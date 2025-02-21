@@ -4,7 +4,7 @@ import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { PaymentStatusComponent } from '@dsh/app/shared/components/payment-status';
-import { ApiModelRefsModule, AmountCurrencyModule } from '@dsh/app/shared/pipes';
+import { AmountCurrencyModule, ApiModelRefsModule } from '@dsh/app/shared/pipes';
 import { StatusModule } from '@dsh/components/indicators';
 import { DetailsItemModule } from '@dsh/components/layout';
 import { CollapseModule } from '@dsh/components/layout/collapse';

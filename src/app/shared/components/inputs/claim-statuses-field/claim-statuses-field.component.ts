@@ -1,5 +1,5 @@
 import { Component, OnChanges } from '@angular/core';
-import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
+import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 
 import { valuesToOptions } from '@dsh/components/form-controls/utils/values-to-options';
 

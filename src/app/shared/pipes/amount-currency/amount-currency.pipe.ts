@@ -1,9 +1,10 @@
 import { formatCurrency, getCurrencySymbol } from '@angular/common';
-import { Pipe, PipeTransform, Inject, LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
-import { toMajor } from '@vality/ng-core';
+import { DEFAULT_CURRENCY_CODE, Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
+import { toMajor } from '@vality/matez';
 
 @Pipe({
     name: 'amountCurrency',
+    standalone: false,
 })
 export class AmountCurrencyPipe implements PipeTransform {
     constructor(

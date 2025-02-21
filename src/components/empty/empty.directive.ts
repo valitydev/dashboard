@@ -1,21 +1,22 @@
 import {
+    ChangeDetectorRef,
+    DestroyRef,
     Directive,
     Input,
     OnChanges,
+    OnInit,
     TemplateRef,
     ViewContainerRef,
-    OnInit,
-    ChangeDetectorRef,
-    DestroyRef,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
-import { ComponentChanges } from '@vality/ng-core';
+import { ComponentChanges } from '@vality/matez';
 
 import { TextComponent } from './components/text/text.component';
 
 @Directive({
     selector: '[dsh-empty],[dshEmpty]',
+    standalone: false,
 })
 export class EmptyDirective implements OnChanges, OnInit {
     @Input() dshEmpty: boolean;

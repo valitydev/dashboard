@@ -1,6 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { FormGroupSuperclass, createControlProviders } from '@vality/ng-core';
+import { FormGroupSuperclass, createControlProviders } from '@vality/matez';
 
 import { ShopsDataService } from '@dsh/app/shared';
 
@@ -11,6 +11,7 @@ import { ShopsFilterForm } from './types';
     templateUrl: './shops-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => ShopsFilterComponent),
+    standalone: false,
 })
 export class ShopsFilterComponent extends FormGroupSuperclass<ShopsFilterForm> {
     control = this.fb.group({

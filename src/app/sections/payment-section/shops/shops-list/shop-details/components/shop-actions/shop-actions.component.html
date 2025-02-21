@@ -1,6 +1,9 @@
-<ng-container *transloco="let p; scope: 'payment-section'; read: 'paymentSection.shops.panel'">
+<div
+    *transloco="let p; scope: 'payment-section'; read: 'paymentSection.shops.panel'"
+    style="display: flex; flex-direction: column; gap: 24px"
+>
     <ng-container>
-        <div class="mat-h2">{{ p('actions') }}</div>
+        <div class="mat-title-large">{{ p('actions') }}</div>
         <div>
             <ng-container
                 *ngTemplateOutlet="shop.isSuspended ? activateButton : suspendButton"
@@ -9,18 +12,14 @@
     </ng-container>
 
     <ng-template #activateButton>
-        <ng-container>
-            <button mat-flat-button (click)="activate(shop.id)">
-                {{ p('activate') }}
-            </button>
-        </ng-container>
+        <button mat-flat-button (click)="activate(shop.id)">
+            {{ p('activate') }}
+        </button>
     </ng-template>
 
     <ng-template #suspendButton>
-        <ng-container>
-            <button class="matv-error" mat-flat-button (click)="suspend(shop.id)">
-                {{ p('suspend') }}
-            </button>
-        </ng-container>
+        <button class="matv-error" mat-flat-button (click)="suspend(shop.id)">
+            {{ p('suspend') }}
+        </button>
     </ng-template>
-</ng-container>
+</div>

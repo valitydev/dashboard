@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
-import { createControlProviders } from '@vality/ng-core';
+import { createControlProviders } from '@vality/matez';
 import { RefundStatus } from '@vality/swag-anapi-v2';
 
 import { FilterSuperclass } from '@dsh/components/filter';
@@ -9,6 +9,7 @@ import { FilterSuperclass } from '@dsh/components/filter';
     templateUrl: 'refund-status-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => RefundStatusFilterComponent),
+    standalone: false,
 })
 export class RefundStatusFilterComponent extends FilterSuperclass<RefundStatus.StatusEnum> {
     constructor(injector: Injector) {

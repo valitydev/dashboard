@@ -1,7 +1,7 @@
-import { Injectable, DestroyRef } from '@angular/core';
+import { DestroyRef, Injectable } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
-import { combineLatest, switchMap, EMPTY, of } from 'rxjs';
+import { EMPTY, combineLatest, of, switchMap } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
 import { WalletsService } from '@dsh/app/api/wallet';

@@ -1,5 +1,4 @@
 export enum CountryCodes {
-    /* eslint-disable @typescript-eslint/naming-convention */
     ABH = 0 /*Abkhazia*/,
     AUS = 1 /*Australia*/,
     AUT = 2 /*Austria*/,
@@ -251,5 +250,4 @@ export enum CountryCodes {
     SSD = 248 /*South Sudan*/,
     JAM = 249 /*Jamaica*/,
     JPN = 250 /*Japan*/,
-    /* eslint-enable @typescript-eslint/naming-convention */
 }

@@ -16,6 +16,7 @@ const DISPLAYED_COUNT = 5;
     templateUrl: 'limited-list.component.html',
     styleUrls: ['limited-list.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class LimitedListComponent implements AfterContentInit {
     @Input() title: string;

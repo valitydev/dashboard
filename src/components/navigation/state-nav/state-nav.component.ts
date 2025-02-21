@@ -18,6 +18,7 @@ import { StateNavItemComponent } from './state-nav-item';
     templateUrl: 'state-nav.component.html',
     styleUrls: ['state-nav.component.scss'],
     encapsulation: ViewEncapsulation.None,
+    standalone: false,
 })
 export class StateNavComponent {
     @HostBinding('class.dsh-state-nav-flat')

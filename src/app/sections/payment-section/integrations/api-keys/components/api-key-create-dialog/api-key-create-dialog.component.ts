@@ -1,12 +1,12 @@
-import { ClipboardModule, Clipboard } from '@angular/cdk/clipboard';
+import { Clipboard, ClipboardModule } from '@angular/cdk/clipboard';
 import { CommonModule } from '@angular/common';
 import { Component, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ReactiveFormsModule, NonNullableFormBuilder } from '@angular/forms';
+import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
-import { DialogSuperclass, progressTo, NotifyLogService } from '@vality/ng-core';
+import { DialogSuperclass, NotifyLogService, progressTo } from '@vality/matez';
 import { FlexModule } from 'ng-flex-layout';
 import { BehaviorSubject } from 'rxjs';
 
@@ -17,7 +17,6 @@ import { SpinnerModule } from '@dsh/components/indicators';
 
 @Component({
     selector: 'dsh-api-key-create-dialog',
-    standalone: true,
     templateUrl: './api-key-create-dialog.component.html',
     styles: [],
     imports: [

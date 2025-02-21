@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroupByValue, FormGroupSuperclass, createControlProviders } from '@vality/ng-core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormGroupByValue, FormGroupSuperclass, createControlProviders } from '@vality/matez';
 
 import { AdditionalFilters } from '../../types';
 
@@ -10,6 +10,7 @@ import { AdditionalFilters } from '../../types';
     templateUrl: 'dialog-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => DialogFiltersComponent),
+    standalone: false,
 })
 export class DialogFiltersComponent
     extends FormGroupSuperclass<Partial<AdditionalFilters>>

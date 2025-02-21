@@ -5,6 +5,7 @@ import { StatusColor } from '../../../../theme-manager';
 
 @Pipe({
     name: 'refundStatusColor',
+    standalone: false,
 })
 export class RefundStatusColorPipe implements PipeTransform {
     transform(status: RefundSearchResult.StatusEnum): StatusColor {

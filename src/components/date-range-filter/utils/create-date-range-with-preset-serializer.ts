@@ -1,4 +1,4 @@
-import { Serializer } from '@vality/ng-core';
+import { Serializer } from '@vality/matez';
 import isNil from 'lodash-es/isNil';
 import moment from 'moment';
 

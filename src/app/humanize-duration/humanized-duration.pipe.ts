@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
-import { interval, Subscription, switchMap } from 'rxjs';
+import { Subscription, interval, switchMap } from 'rxjs';
 import { startWith } from 'rxjs/operators';
 
 import { HumanizeConfig, HumanizeDurationService, Value } from './humanize-duration.service';
@@ -8,7 +8,11 @@ export interface HumanizeDurationConfig extends HumanizeConfig {
     interval?: number;
 }
 
-@Pipe({ name: 'humanizedDuration', pure: false })
+@Pipe({
+    name: 'humanizedDuration',
+    pure: false,
+    standalone: false,
+})
 export class HumanizedDurationPipe implements OnDestroy, PipeTransform {
     private latestValue: string = '';
     private subscription: Subscription;

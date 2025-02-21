@@ -11,20 +11,20 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ComponentChanges } from '@vality/ng-core';
+import { ComponentChanges } from '@vality/matez';
 import { Shop } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
 import negate from 'lodash-es/negate';
 import omit from 'lodash-es/omit';
 import pick from 'lodash-es/pick';
 import { MediaObserver } from 'ng-flex-layout';
-import { combineLatest, defer, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, combineLatest, defer } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import {
-    createDateRangeWithPreset,
-    Preset,
     DateRangeWithPreset,
+    Preset,
+    createDateRangeWithPreset,
 } from '@dsh/components/date-range-filter';
 import { getFormValueChanges } from '@dsh/utils';
 
@@ -42,6 +42,7 @@ const ADDITIONAL_FILTERS = ['invoiceIDs', 'shopIDs', 'refundStatus'];
     selector: 'dsh-refunds-search-filters',
     templateUrl: 'refunds-search-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class RefundsSearchFiltersComponent implements OnInit, OnChanges {
     @Input() initParams: Filters;

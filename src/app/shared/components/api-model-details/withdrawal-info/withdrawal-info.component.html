@@ -7,21 +7,21 @@
         <dsh-details-item [title]="t('status')" fxFlex>
             {{ withdrawal.status }}
         </dsh-details-item>
-        <dsh-details-item [title]="t('createdAt')" class="mat-body-1" fxFlex>{{
+        <dsh-details-item [title]="t('createdAt')" class="mat-body-medium" fxFlex>{{
             withdrawal.createdAt | date: 'dd MMMM yyyy, HH:mm'
         }}</dsh-details-item>
         <div fxFlex></div>
     </div>
     <div fxLayout fxLayout.sm="column" fxLayoutGap="10px">
-        <dsh-details-item [title]="t('amount')" class="mat-body-1" fxFlex>{{
+        <dsh-details-item [title]="t('amount')" class="mat-body-medium" fxFlex>{{
             withdrawal.body.amount | amountCurrency: withdrawal.body.currency
         }}</dsh-details-item>
-        <dsh-details-item [title]="t('fee')" class="mat-body-1" fxFlex
+        <dsh-details-item [title]="t('fee')" class="mat-body-medium" fxFlex
             >{{ withdrawal.fee.amount | amountCurrency: withdrawal.fee.currency }} ({{
                 withdrawal.fee.amount / withdrawal.body.amount | percent: '1.0-2' : 'en'
             }})</dsh-details-item
         >
-        <dsh-details-item [title]="t('total')" class="mat-body-1" fxFlex>{{
+        <dsh-details-item [title]="t('total')" class="mat-body-medium" fxFlex>{{
             withdrawal.body.amount + withdrawal.fee.amount
                 | amountCurrency: withdrawal.body.currency
         }}</dsh-details-item>
@@ -29,7 +29,7 @@
     <dsh-details-item *ngIf="withdrawal.failure" [title]="t('error')" fxFlex>
         <div
             *transloco="let errors; scope: 'components'; read: 'components.withdrawalInfo.errors'"
-            class="mat-body-1"
+            class="mat-body-medium"
         >
             <!-- t(failed) -->
             {{ errors(withdrawal.failure.code) }}

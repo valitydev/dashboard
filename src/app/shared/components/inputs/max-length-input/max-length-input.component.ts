@@ -1,21 +1,21 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    forwardRef,
+    DestroyRef,
     Input,
     OnChanges,
     booleanAttribute,
-    DestroyRef,
+    forwardRef,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
     ControlValueAccessor,
-    NG_VALUE_ACCESSOR,
-    Validators,
-    ValidatorFn,
     FormControl,
+    NG_VALUE_ACCESSOR,
+    ValidatorFn,
+    Validators,
 } from '@angular/forms';
-import { ComponentChanges } from '@vality/ng-core';
+import { ComponentChanges } from '@vality/matez';
 import isNil from 'lodash-es/isNil';
 import isObject from 'lodash-es/isObject';
 import { skip } from 'rxjs/operators';
@@ -35,6 +35,7 @@ import { ErrorMatcher } from '@dsh/app/shared/utils';
             multi: true,
         },
     ],
+    standalone: false,
 })
 export class MaxLengthInputComponent implements OnChanges, ControlValueAccessor {
     @Input() label: string;

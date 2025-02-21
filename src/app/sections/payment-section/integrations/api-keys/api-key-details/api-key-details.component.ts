@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { DialogService } from '@vality/ng-core';
+import { DialogService } from '@vality/matez';
 import { ApiKey } from '@vality/swag-api-keys-v2';
 
 import { ApiKeysDictionaryService } from '@dsh/app/api/api-keys';
@@ -11,6 +11,7 @@ import { ApiKeyDeleteDialogComponent } from './components/api-key-delete-dialog/
 @Component({
     selector: 'dsh-api-key-details',
     templateUrl: 'api-key-details.component.html',
+    standalone: false,
 })
 export class ApiKeyDetailsComponent {
     @Input() apiKey: ApiKey;

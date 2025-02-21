@@ -1,12 +1,13 @@
+@use 'sass:map';
 @use '@angular/material' as mat;
 @use '../../../styles/utils/shadow';
 
 @mixin dsh-dropdown-theme($theme) {
-    $background: map-get($theme, background);
-    $primary: map-get($theme, primary);
+    $background: map.get($theme, background);
+    $primary: map.get($theme, primary);
 
     .dsh-dropdown {
-        @include dsh-shadow($theme);
+        @include shadow.dsh-shadow($theme);
 
         &,
         &-triangle {

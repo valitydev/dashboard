@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { clean } from '@vality/ng-core';
+import { clean } from '@vality/matez';
 import { Claim, Modification } from '@vality/swag-claim-management';
 import { Observable } from 'rxjs';
 import { mapTo, switchMap } from 'rxjs/operators';

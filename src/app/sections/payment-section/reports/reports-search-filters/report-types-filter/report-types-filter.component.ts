@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
-import { createControlProviders } from '@vality/ng-core';
+import { createControlProviders } from '@vality/matez';
 import { Report } from '@vality/swag-anapi-v2';
 import { combineLatest } from 'rxjs';
 import { share, switchMap } from 'rxjs/operators';
@@ -12,6 +12,7 @@ import { FilterSuperclass } from '@dsh/components/filter';
     templateUrl: 'report-types-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [...createControlProviders(() => ReportTypesFilterComponent), ReportTypesLabelPipe],
+    standalone: false,
 })
 export class ReportTypesFilterComponent extends FilterSuperclass<Report.ReportTypeEnum[]> {
     labels$ = this.savedValue$.pipe(

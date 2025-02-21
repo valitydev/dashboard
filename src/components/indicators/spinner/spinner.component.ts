@@ -6,6 +6,7 @@ import { ThemeManager, ThemeName } from '@dsh/app/theme-manager';
     selector: 'dsh-spinner',
     templateUrl: 'spinner.component.html',
     styleUrls: ['./spinner.component.scss'],
+    standalone: false,
 })
 export class SpinnerComponent {
     @Input() size = 50;

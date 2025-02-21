@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Shop } from '@vality/swag-payments';
-import { combineLatest, Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
 import { ShopsDataService } from '@dsh/app/shared';

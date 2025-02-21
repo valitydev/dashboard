@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { TranslocoModule, TRANSLOCO_SCOPE } from '@jsverse/transloco';
+import { TRANSLOCO_SCOPE, TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { RouteNavbarLayoutModule } from '@dsh/app/shared/components/route-navbar-layout';

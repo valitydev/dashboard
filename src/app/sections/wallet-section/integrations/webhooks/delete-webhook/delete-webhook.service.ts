@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService, DialogResponseStatus } from '@vality/ng-core';
-import { combineLatest, Observable, of, Subject } from 'rxjs';
+import { DialogResponseStatus, NotifyLogService } from '@vality/matez';
+import { Observable, Subject, combineLatest, of } from 'rxjs';
 import { catchError, filter, switchMap, takeUntil } from 'rxjs/operators';
 
 import { WebhooksService } from '@dsh/app/api/wallet';
@@ -16,7 +16,6 @@ export class DeleteWebhookService {
     private deleteWebhook$: Subject<DeleteWebhookParams> = new Subject();
     private deleted$: Subject<void> = new Subject();
 
-    // eslint-disable-next-line @typescript-eslint/member-ordering
     webhookDeleted$: Observable<void> = this.deleted$.asObservable();
 
     constructor(

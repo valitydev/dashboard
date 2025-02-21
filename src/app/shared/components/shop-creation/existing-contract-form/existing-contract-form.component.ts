@@ -1,20 +1,20 @@
 import { Component, Input } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
-import { createControlProviders, FormControlSuperclass } from '@vality/ng-core';
+import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 import {
-    Shop,
     Contract,
     InternationalLegalEntity,
-    RussianLegalEntity,
     LegalEntityAllOf,
+    RussianLegalEntity,
+    Shop,
 } from '@vality/swag-payments';
-import { BehaviorSubject, EMPTY, of, Observable, throwError } from 'rxjs';
-import { switchMap, catchError, share, tap } from 'rxjs/operators';
+import { BehaviorSubject, EMPTY, Observable, of, throwError } from 'rxjs';
+import { catchError, share, switchMap, tap } from 'rxjs/operators';
 import { Overwrite } from 'utility-types';
 
 import { ContractsService } from '@dsh/app/api/payments';
 import { CommonError } from '@dsh/app/shared';
-import { progressTo, errorTo } from '@dsh/utils';
+import { errorTo, progressTo } from '@dsh/utils';
 
 import EntityTypeEnum = LegalEntityAllOf.EntityTypeEnum;
 
@@ -31,6 +31,7 @@ export type ExistingContractForm<T extends EntityTypeEnum = EntityTypeEnum> = Ov
     selector: 'dsh-existing-contract-form',
     templateUrl: 'existing-contract-form.component.html',
     providers: createControlProviders(() => ExistingContractFormComponent),
+    standalone: false,
 })
 export class ExistingContractFormComponent extends FormControlSuperclass<
     ExistingContractForm,

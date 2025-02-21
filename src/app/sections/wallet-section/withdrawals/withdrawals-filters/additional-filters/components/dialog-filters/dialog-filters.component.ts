@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroupSuperclass } from '@vality/ng-core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormGroupSuperclass } from '@vality/matez';
 import { ListWithdrawalsRequestParams } from '@vality/swag-wallet';
 
 import { AdditionalFilters, AdditionalFiltersForm } from '../../types';
@@ -11,6 +11,7 @@ import { filtersToForm, formToFilters } from '../../utils';
     selector: 'dsh-dialog-filters',
     templateUrl: 'dialog-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class DialogFiltersComponent
     extends FormGroupSuperclass<ListWithdrawalsRequestParams, AdditionalFiltersForm>

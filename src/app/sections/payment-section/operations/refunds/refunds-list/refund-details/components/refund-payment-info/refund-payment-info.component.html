@@ -8,7 +8,7 @@
     fxLayoutGap="24px"
 >
     <div fxLayout fxLayoutAlign="space-between" fxLayoutGap="16px">
-        <div class="mat-h2">{{ t('title') }}</div>
+        <div class="mat-title-large">{{ t('title') }}</div>
     </div>
     <ng-container *ngIf="isLoading$ | async; else afterLoading">
         <div *transloco="let c; scope: 'components'; read: 'components.shared'" class="dsh-body-1">

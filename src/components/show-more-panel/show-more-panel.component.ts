@@ -4,6 +4,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     selector: 'dsh-show-more-panel',
     templateUrl: 'show-more-panel.component.html',
     styleUrls: ['show-more-panel.component.scss'],
+    standalone: false,
 })
 export class ShowMorePanelComponent {
     @Input() isLoading = false;

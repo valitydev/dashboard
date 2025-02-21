@@ -1,4 +1,4 @@
-import { FormControl, AsyncValidatorFn } from '@angular/forms';
+import { AsyncValidatorFn, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 

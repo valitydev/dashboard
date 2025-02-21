@@ -15,6 +15,7 @@ import { ReceivePaymentsService } from './services/receive-payments/receive-paym
     templateUrl: 'invoice-details.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ReceivePaymentsService],
+    standalone: false,
 })
 export class InvoiceDetailsComponent implements OnInit {
     @Input() invoice: Invoice;

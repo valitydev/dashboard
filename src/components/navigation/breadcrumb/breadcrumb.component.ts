@@ -8,6 +8,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } fr
     styleUrls: ['breadcrumb.component.scss'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class BreadcrumbComponent {
     @HostBinding('class.dsh-breadcrumb') breadcrumbClass = true;

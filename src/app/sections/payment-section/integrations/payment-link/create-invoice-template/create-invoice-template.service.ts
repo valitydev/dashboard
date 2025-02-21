@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { toMinor } from '@vality/ng-core';
+import { toMinor } from '@vality/matez';
 import {
     InvoiceLineTaxMode,
     InvoiceLineTaxVAT,
@@ -17,13 +17,13 @@ import {
     Shop,
 } from '@vality/swag-payments';
 import moment from 'moment';
-import { merge, Observable, Subject } from 'rxjs';
+import { Observable, Subject, merge } from 'rxjs';
 import { distinctUntilChanged, share, shareReplay, switchMap, take } from 'rxjs/operators';
 
 import {
-    InvoiceTemplatesService,
-    InvoiceTemplateType,
     InvoiceTemplateLineCostType,
+    InvoiceTemplateType,
+    InvoiceTemplatesService,
 } from '@dsh/app/api/payments';
 import { filterError, filterPayload, progress, replaceError } from '@dsh/app/custom-operators';
 
@@ -33,14 +33,12 @@ export const WITHOUT_VAT = Symbol('without VAT');
 export class CreateInvoiceTemplateService {
     private nextInvoiceTemplate$ = new Subject<InvoiceTemplateCreateParams>();
 
-    // eslint-disable-next-line @typescript-eslint/member-ordering
     invoiceTemplateAndToken$: Observable<InvoiceTemplateAndToken>;
-    // eslint-disable-next-line @typescript-eslint/member-ordering
+
     errors$: Observable<unknown>;
-    // eslint-disable-next-line @typescript-eslint/member-ordering
+
     isLoading$: Observable<boolean>;
 
-    // eslint-disable-next-line @typescript-eslint/member-ordering
     nextInvoiceTemplateAndToken$: Observable<InvoiceTemplateAndToken>;
 
     constructor(

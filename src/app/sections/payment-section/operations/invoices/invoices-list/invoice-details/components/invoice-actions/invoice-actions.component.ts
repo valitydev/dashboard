@@ -15,9 +15,9 @@ import { DIALOG_CONFIG, DialogConfig } from '@dsh/app/sections/tokens';
 
 import { CancelInvoiceService } from '../../cancel-invoice';
 import {
+    CreatePaymentLinkDialogComponent,
     CreatePaymentLinkDialogData,
     CreatePaymentLinkDialogResponse,
-    CreatePaymentLinkDialogComponent,
 } from '../../create-payment-link-dialog';
 import { FulfillInvoiceService } from '../../fulfill-invoice';
 
@@ -26,6 +26,7 @@ import { FulfillInvoiceService } from '../../fulfill-invoice';
     templateUrl: 'invoice-actions.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [CancelInvoiceService, FulfillInvoiceService],
+    standalone: false,
 })
 export class InvoiceActionsComponent {
     @Input() invoice: Invoice;

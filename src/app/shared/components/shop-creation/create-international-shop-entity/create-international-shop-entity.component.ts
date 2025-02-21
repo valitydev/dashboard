@@ -8,7 +8,7 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl } from '@angular/forms';
 import { TranslocoService } from '@jsverse/transloco';
-import { progressTo, NotifyLogService } from '@vality/ng-core';
+import { NotifyLogService, progressTo } from '@vality/matez';
 import { BehaviorSubject, first } from 'rxjs';
 
 import { CreateInternationalShopEntityService } from './services/create-international-shop-entity/create-international-shop-entity.service';
@@ -19,9 +19,11 @@ import { InternationalShopEntityFormValue } from './types/international-shop-ent
     templateUrl: 'create-international-shop-entity.component.html',
     styleUrls: ['create-international-shop-entity.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class CreateInternationalShopEntityComponent {
     @Output() send = new EventEmitter<void>();
+    // eslint-disable-next-line @angular-eslint/no-output-native
     @Output() cancel = new EventEmitter<void>();
 
     progress$ = new BehaviorSubject(0);

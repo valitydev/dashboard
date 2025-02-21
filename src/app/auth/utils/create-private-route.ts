@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 
-import { RoleAccessName, AppAuthGuardService } from '@dsh/app/auth';
+import { AppAuthGuardService, RoleAccessName } from '@dsh/app/auth';
 
 export function createPrivateRoute(route: Route, roles: RoleAccessName[]) {
     return {

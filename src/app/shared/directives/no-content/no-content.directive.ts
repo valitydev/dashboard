@@ -10,6 +10,7 @@ import {
 
 @Directive({
     selector: '[dshNoContent]',
+    standalone: false,
 })
 /**
  * @deprecated

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
-import { PaymentStatus, CustomersTopic, InvoicesTopic } from '@vality/swag-payments';
+import { CustomersTopic, InvoicesTopic, PaymentStatus } from '@vality/swag-payments';
 
 import { DictionaryService } from '../utils';
 
@@ -9,7 +9,6 @@ import { DictionaryService } from '../utils';
 })
 export class PaymentsDictionaryService {
     invoicesTopicEventType$ = this.dictionaryService.create<InvoicesTopic.EventTypesEnum>(() => ({
-        /* eslint-disable @typescript-eslint/naming-convention */
         InvoiceCreated: this.t.translate(
             'payments.invoicesTopicEventType.InvoiceCreated',
             null,
@@ -85,11 +84,9 @@ export class PaymentsDictionaryService {
             null,
             'dictionary',
         ),
-        /* eslint-enable @typescript-eslint/naming-convention */
     }));
 
     customersTopicEventType$ = this.dictionaryService.create<CustomersTopic.EventTypesEnum>(() => ({
-        /* eslint-disable @typescript-eslint/naming-convention */
         CustomerCreated: this.t.translate(
             'payments.customersTopicEventType.CustomerCreated',
             null,
@@ -120,7 +117,6 @@ export class PaymentsDictionaryService {
             null,
             'dictionary',
         ),
-        /* eslint-enable @typescript-eslint/naming-convention */
     }));
 
     paymentStatus$ = this.dictionaryService.create<PaymentStatus.StatusEnum>(() => ({

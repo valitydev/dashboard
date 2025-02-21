@@ -6,6 +6,7 @@ import { Withdrawal } from '@vality/swag-wallet';
     templateUrl: 'withdrawals-list.component.html',
     styleUrls: ['withdrawals-list.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class WithdrawalsListComponent {
     @Input() withdrawals: Withdrawal[];

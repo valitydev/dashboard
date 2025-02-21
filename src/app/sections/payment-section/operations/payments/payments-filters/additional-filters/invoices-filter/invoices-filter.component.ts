@@ -1,6 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { FormGroupSuperclass, createControlProviders } from '@vality/ng-core';
+import { FormGroupSuperclass, createControlProviders } from '@vality/matez';
 
 import { InvoicesFilterForm } from './types';
 
@@ -9,6 +9,7 @@ import { InvoicesFilterForm } from './types';
     templateUrl: './invoices-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => InvoicesFilterComponent),
+    standalone: false,
 })
 export class InvoicesFilterComponent extends FormGroupSuperclass<InvoicesFilterForm> {
     control = this.fb.group({

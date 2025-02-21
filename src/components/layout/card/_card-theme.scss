@@ -1,11 +1,12 @@
 @use '@angular/material' as mat;
-@import '../../../styles/utils/shadow';
+@use 'sass:map';
+@use '../../../styles/utils/shadow';
 
 @mixin dsh-card-theme($theme) {
-    $background: map-get($theme, background);
+    $background: map.get($theme, background);
 
     .dsh-card {
-        @include dsh-shadow($theme);
+        @include shadow.dsh-shadow($theme);
         background-color: mat.m2-get-color-from-palette($background, card);
     }
 }

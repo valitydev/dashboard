@@ -10,6 +10,7 @@ import { PaymentsAmountService } from './payments-amount.service';
     selector: 'dsh-payments-amount',
     templateUrl: 'payments-amount.component.html',
     providers: [PaymentsAmountService],
+    standalone: false,
 })
 export class PaymentsAmountComponent {
     @Input() spinnerType: SpinnerType;

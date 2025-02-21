@@ -1,7 +1,7 @@
 import { getCurrencySymbol } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
-import { createControlProviders } from '@vality/ng-core';
+import { createControlProviders } from '@vality/matez';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -12,6 +12,7 @@ import { FilterSuperclass } from '@dsh/components/filter';
     templateUrl: 'currency-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => CurrencyFilterComponent),
+    standalone: false,
 })
 export class CurrencyFilterComponent extends FilterSuperclass<string> {
     @Input() currencies: string[] = [];

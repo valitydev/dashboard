@@ -9,6 +9,7 @@ import {
 @Component({
     selector: 'dsh-panel-content',
     template: `<ng-content></ng-content>`,
+    standalone: false,
 })
 export class PanelContentComponent {
     @HostBinding('class.dsh-panel-content') class = true;
@@ -17,6 +18,7 @@ export class PanelContentComponent {
 @Component({
     selector: 'dsh-panel-header-icon',
     template: ` <dsh-bi [icon]="icon" class="dsh-panel-header-icon"></dsh-bi> `,
+    standalone: false,
 })
 export class PanelHeaderIconComponent {
     @Input() icon: string;
@@ -29,6 +31,7 @@ export class PanelHeaderIconComponent {
             <ng-content></ng-content>
         </div>
     `,
+    standalone: false,
 })
 export class PanelHeaderComponent {
     @HostBinding('class.dsh-panel-header') class = true;
@@ -40,6 +43,7 @@ export class PanelHeaderComponent {
     styleUrls: ['panel.component.scss'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class PanelComponent {
     @Input() color: 'primary' | 'accent';

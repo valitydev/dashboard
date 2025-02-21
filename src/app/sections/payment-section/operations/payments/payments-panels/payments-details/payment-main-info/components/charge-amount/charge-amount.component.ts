@@ -6,6 +6,7 @@ import isNil from 'lodash-es/isNil';
     selector: 'dsh-charge-amount',
     templateUrl: 'charge-amount.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class ChargeAmountComponent {
     @Input()

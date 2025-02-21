@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { APP_INITIALIZER, LOCALE_ID, NgModule, isDevMode } from '@angular/core';
+import { LOCALE_ID, NgModule, inject, isDevMode, provideAppInitializer } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {
     DateAdapter,
@@ -18,8 +18,8 @@ import {
 } from '@angular/material-moment-adapter';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslocoModule, provideTransloco, TRANSLOCO_SCOPE } from '@jsverse/transloco';
-import { QUERY_PARAMS_SERIALIZERS } from '@vality/ng-core';
+import { TRANSLOCO_SCOPE, TranslocoModule, provideTransloco } from '@jsverse/transloco';
+import { QUERY_PARAMS_SERIALIZERS } from '@vality/matez';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { AnapiModule } from '@dsh/app/api/anapi';
@@ -29,7 +29,7 @@ import { UrlShortenerModule } from '@dsh/app/api/url-shortener';
 import { WalletModule } from '@dsh/app/api/wallet';
 import { ErrorModule } from '@dsh/app/shared/services';
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
-import { SpinnerModule, BootstrapIconModule } from '@dsh/components/indicators';
+import { BootstrapIconModule, SpinnerModule } from '@dsh/components/indicators';
 
 import { ENV, environment } from '../environments';
 
@@ -76,12 +76,16 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
     ],
     providers: [
         LanguageService,
-        {
-            provide: APP_INITIALIZER,
-            useFactory: initializer,
-            deps: [ConfigService, KeycloakService, LanguageService, ThemeManager, IconsService],
-            multi: true,
-        },
+        provideAppInitializer(() => {
+            const initializerFn = initializer(
+                inject(ConfigService),
+                inject(KeycloakService),
+                inject(LanguageService),
+                inject(ThemeManager),
+                inject(IconsService),
+            );
+            return initializerFn();
+        }),
         {
             provide: LOCALE_ID,
             deps: [LanguageService],

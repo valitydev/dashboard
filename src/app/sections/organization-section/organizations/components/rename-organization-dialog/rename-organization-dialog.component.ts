@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, Inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroupByValue } from '@vality/ng-core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormGroupByValue } from '@vality/matez';
 import { BehaviorSubject } from 'rxjs';
 
 import { OrgsService } from '@dsh/app/api/organizations';
@@ -16,6 +16,7 @@ import { RenameOrganizationDialogData } from './types/rename-organization-dialog
     selector: 'dsh-rename-organization-dialog',
     templateUrl: 'rename-organization-dialog.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class RenameOrganizationDialogComponent {
     form: FormGroupByValue<{ name: string }>;

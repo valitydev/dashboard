@@ -1,7 +1,10 @@
-<div *transloco="let t; scope: 'payment-section'; read: 'paymentSection.webhook.key'">
-    <div class="mat-h2">{{ t('title') }}</div>
+<div
+    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.webhook.key'"
+    style="display: flex; flex-direction: column; gap: 24px"
+>
+    <div class="mat-title-large">{{ t('title') }}</div>
     <div class="ym-hide-content" fxLayout="column" fxLayoutGap="20px">
-        <div class="mat-caption">
+        <div class="mat-body-small">
             {{ t('publicKey') }}
         </div>
         <div class="dsh-body-1 wrap-key">

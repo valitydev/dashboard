@@ -3,7 +3,7 @@
     fxLayout="column"
     fxLayoutGap="24px"
 >
-    <div class="dsh-title">{{ t('title') }}</div>
+    <div class="mat-title-large">{{ t('title') }}</div>
     <ng-container *ngFor="let deposit of deposits$ | async as deposits; index as i">
         <dsh-wallet-deposit-details [deposit]="deposit"></dsh-wallet-deposit-details>
         <mat-divider *ngIf="i < deposits.length - 1"></mat-divider>

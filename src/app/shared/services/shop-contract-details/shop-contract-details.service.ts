@@ -2,7 +2,7 @@ import { DestroyRef, Injectable } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RussianLegalEntity } from '@vality/swag-claim-management';
 import { Contract } from '@vality/swag-payments';
-import { BehaviorSubject, defer, Observable, of, ReplaySubject, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, ReplaySubject, Subject, defer, of } from 'rxjs';
 import { catchError, distinctUntilChanged, filter, switchMap, tap } from 'rxjs/operators';
 import { Overwrite } from 'utility-types';
 

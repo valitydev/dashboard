@@ -4,10 +4,10 @@ import {
     ContentChild,
     EventEmitter,
     Input,
-    Output,
     OnChanges,
+    Output,
 } from '@angular/core';
-import { ComponentChanges } from '@vality/ng-core';
+import { ComponentChanges } from '@vality/matez';
 
 import { AccordionItemContentComponent } from '../accordion-item-content';
 
@@ -20,6 +20,7 @@ import { LazyPanelContentDirective } from './lazy-panel-content.directive';
     styleUrls: ['accordion-item.component.scss'],
     animations: [EXPAND_ANIMATION],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class AccordionItemComponent implements OnChanges {
     @Output() expandedChange = new EventEmitter<boolean>();

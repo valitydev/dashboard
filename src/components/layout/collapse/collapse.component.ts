@@ -15,6 +15,7 @@ const EXPANDED = false;
     styleUrls: ['collapse.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     animations: [BODY_EXPANSION, INDICATOR_ROTATE],
+    standalone: false,
 })
 export class CollapseComponent {
     @Input() title: string;

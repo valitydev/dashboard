@@ -10,7 +10,7 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, UntypedFormGroup } from '@angular/forms';
 import { TranslocoService } from '@jsverse/transloco';
-import { createControlProviders, FormGroupSuperclass, NotifyLogService } from '@vality/ng-core';
+import { FormGroupSuperclass, NotifyLogService, createControlProviders } from '@vality/matez';
 import { InvoiceTemplateAndToken, Shop } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
 import moment from 'moment';
@@ -23,6 +23,7 @@ import { CreateInvoiceTemplateService } from './create-invoice-template.service'
     templateUrl: 'create-invoice-template.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => CreateInvoiceTemplateComponent),
+    standalone: false,
 })
 export class CreateInvoiceTemplateComponent extends FormGroupSuperclass<unknown> implements OnInit {
     @Output()

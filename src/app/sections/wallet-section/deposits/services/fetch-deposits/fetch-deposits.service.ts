@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService } from '@vality/ng-core';
+import { NotifyLogService } from '@vality/matez';
 import { Deposit } from '@vality/swag-wallet';
 import { ListDepositsRequestParams } from '@vality/swag-wallet/lib/api/deposits.service';
 import { isNumber } from 'lodash-es';

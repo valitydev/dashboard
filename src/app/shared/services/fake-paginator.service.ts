@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { combineLatest, Observable, ReplaySubject } from 'rxjs';
+import { Observable, ReplaySubject, combineLatest } from 'rxjs';
 import { map, pluck, scan, shareReplay, switchMapTo } from 'rxjs/operators';
 
 const DEFAULT_PAGINATION_LIMIT = 3;

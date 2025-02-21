@@ -1,8 +1,8 @@
 import { Component, DestroyRef, Inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Validators, FormBuilder } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroupByValue, toMajor, toMinor } from '@vality/ng-core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormGroupByValue, toMajor, toMinor } from '@vality/matez';
 import { CaptureParams } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
 
@@ -19,6 +19,7 @@ import { CreateHoldDialogData } from '../../types/create-hold-dialog-data';
     selector: 'dsh-create-hold-dialog',
     templateUrl: './create-hold-dialog.component.html',
     styleUrls: ['./create-hold-dialog.component.scss'],
+    standalone: false,
 })
 export class CreateHoldDialogComponent {
     maxReasonLength: number = MAX_REASON_LENGTH;

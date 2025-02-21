@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogResponseStatus, DialogResponse } from '@vality/ng-core';
+import { DialogResponse, DialogResponseStatus } from '@vality/matez';
 import { Invitation, Organization, RevokeInvitationRequest } from '@vality/swag-organizations';
 import { filter, switchMap } from 'rxjs/operators';
 
@@ -21,6 +21,7 @@ import { ignoreBeforeCompletion } from '@dsh/utils';
     selector: 'dsh-invitation',
     templateUrl: 'invitation.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class InvitationComponent {
     @Input() orgId: Organization['id'];

@@ -4,6 +4,7 @@ import { RefundSearchResult } from '@vality/swag-anapi-v2';
 @Component({
     selector: 'dsh-refunds-list',
     templateUrl: 'refunds-list.component.html',
+    standalone: false,
 })
 export class RefundsListComponent {
     @Input() refunds: RefundSearchResult[];

@@ -1,36 +1,36 @@
 import {
     Component,
+    DestroyRef,
     EventEmitter,
+    Injector,
     Input,
+    OnChanges,
     OnInit,
     Output,
-    OnChanges,
-    booleanAttribute,
-    ViewChild,
     TemplateRef,
-    signal,
+    ViewChild,
+    booleanAttribute,
     computed,
-    Injector,
-    DestroyRef,
+    signal,
 } from '@angular/core';
-import { toObservable, takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
 import {
     ComponentChanges,
-    getEnumValues,
-    DialogService,
     DialogResponseStatus,
-} from '@vality/ng-core';
-import { ResourceScopeId, Organization } from '@vality/swag-organizations';
+    DialogService,
+    getEnumValues,
+} from '@vality/matez';
+import { Organization, ResourceScopeId } from '@vality/swag-organizations';
 import { Shop } from '@vality/swag-payments';
 import { uniqBy } from 'lodash-es';
 import isNil from 'lodash-es/isNil';
-import { BehaviorSubject, combineLatest, Observable, of, ReplaySubject, filter, defer } from 'rxjs';
-import { first, map, switchMap, tap, shareReplay } from 'rxjs/operators';
+import { BehaviorSubject, Observable, ReplaySubject, combineLatest, defer, filter, of } from 'rxjs';
+import { first, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 
 import {
-    OrganizationsDictionaryService,
     MemberRoleOptionalId,
+    OrganizationsDictionaryService,
     ResourceScopeIdInternal,
 } from '@dsh/app/api/organizations';
 import { ShopsService, toLiveShops } from '@dsh/app/api/payments';
@@ -49,6 +49,7 @@ type DataItem = { shop?: Pick<Shop, 'id' | 'details'>; scope?: ResourceScopeIdIn
     selector: 'dsh-change-roles-table',
     templateUrl: 'change-roles-table.component.html',
     styleUrls: ['change-roles-table.component.scss'],
+    standalone: false,
 })
 export class ChangeRolesTableComponent implements OnInit, OnChanges {
     @Input() set roles(roles: MemberRoleOptionalId[]) {

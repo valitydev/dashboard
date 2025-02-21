@@ -7,6 +7,7 @@ import { ReceiveInvoiceService } from '../../services/receive-invoice/receive-in
     templateUrl: 'refund-invoice-info.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ReceiveInvoiceService],
+    standalone: false,
 })
 export class RefundInvoiceInfoComponent implements OnInit {
     @Input() invoiceID: string;

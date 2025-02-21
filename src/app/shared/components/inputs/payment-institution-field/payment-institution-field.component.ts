@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
-import { FormControlSuperclass, Option, createControlProviders } from '@vality/ng-core';
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
 import { PaymentInstitution } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 import { map, share } from 'rxjs/operators';
@@ -11,6 +11,7 @@ import { PaymentInstitutionsService } from '@dsh/app/api/payments';
     templateUrl: 'payment-institution-field.component.html',
     providers: createControlProviders(() => PaymentInstitutionFieldComponent),
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class PaymentInstitutionFieldComponent extends FormControlSuperclass<PaymentInstitution> {
     @Input() label: string;

@@ -4,6 +4,7 @@ import moment from 'moment';
 
 @Pipe({
     name: 'holdActive',
+    standalone: false,
 })
 export class HoldActivePipe implements PipeTransform {
     transform(date: string | Date, status: PaymentStatus.StatusEnum): boolean {

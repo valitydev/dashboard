@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
-import { ComponentChanges, DialogResponseStatus } from '@vality/ng-core';
+import { ComponentChanges, DialogResponseStatus } from '@vality/matez';
 import { Organization } from '@vality/swag-organizations';
 import isNil from 'lodash-es/isNil';
 import { filter, pluck, switchMap } from 'rxjs/operators';
@@ -17,9 +17,9 @@ import { filter, pluck, switchMap } from 'rxjs/operators';
 import { OrgsService } from '@dsh/app/api/organizations';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import {
+    ContextOrganizationService,
     ErrorService,
     NotificationService,
-    ContextOrganizationService,
 } from '@dsh/app/shared/services';
 import { FetchOrganizationsService } from '@dsh/app/shared/services/fetch-organizations';
 import { OrganizationManagementService } from '@dsh/app/shared/services/organization-management/organization-management.service';
@@ -34,6 +34,7 @@ import { RenameOrganizationDialogData } from '../rename-organization-dialog/type
     templateUrl: 'organization.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [OrganizationManagementService],
+    standalone: false,
 })
 export class OrganizationComponent implements OnChanges {
     @Input() organization: Organization;

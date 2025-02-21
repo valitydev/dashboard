@@ -6,6 +6,7 @@ import { DeleteWebhookParams } from './delete-webhook-params';
     selector: 'dsh-webhook-actions',
     templateUrl: 'webhook-actions.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class WebhookActionsComponent {
     @Input() webhookID: string;

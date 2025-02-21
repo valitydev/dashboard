@@ -1,66 +1,82 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
-@use '@vality/ng-core' as v;
+@use '@vality/matez' as v;
 
-@import '../utils/map-get-strict';
+@use '../utils/map-get-strict';
 
-@import '../dsh/theme';
-@import '../mat/theme';
-@import '../dsh/typography';
-@import '../utils/mat-component-variants';
+@use '../dsh/theme' as dsh-theme;
+@use '../mat/theme' as mat-theme;
+@use '../dsh/typography';
+@use '../utils/mat-component-variants';
+@use '../dsh/styles/dsh-base-typography';
 
 @mixin theme($_palettes, $config, $background, $foreground) {
-    $basic-theme: v.create-light-theme(
-        map-merge(
-            $config,
+    $basic-theme: mat.m2-define-light-theme(
+        map.merge(
             (
-                typography: dsh-typography-config(),
-            )
+                color: map.merge(
+                        (
+                            // Define the palettes for your theme using the Material Design palettes available in palette.scss
+                            // (imported above). For each palette, you can optionally specify a default, lighter, and darker
+                            // hue. Available color palettes: https://material.io/design/color/
+                            primary: mat.m2-define-palette(mat.$m2-indigo-palette),
+                            accent: mat.m2-define-palette(mat.$m2-pink-palette),
+                            // The warn palette is optional (defaults to red).
+                            warn: mat.m2-define-palette(mat.$m2-red-palette)
+                        ),
+                        map.get($config, color)
+                    ),
+                typography: dsh-base-typography.dsh-typography-config(),
+                // Custom palettes
+                success: mat.m2-define-palette(mat.$m2-green-palette),
+                pending: mat.m2-define-palette(mat.$m2-yellow-palette),
+                neutral: mat.m2-define-palette(mat.$m2-gray-palette),
+            ),
+            map.remove($config, color)
         )
     );
 
-    $background: map-merge(
-        map-merge(map-get($basic-theme, background), $background),
+    $background: map.merge(
+        map.merge(map.get($basic-theme, background), $background),
         (
             // --- Custom ---
-            hover: map-get-strict($background, hover),
-            selected-button: map-get-strict($background, selected-button)
+            hover: map-get-strict.map-get-strict($background, hover),
+            selected-button: map-get-strict.map-get-strict($background, selected-button)
         )
     );
 
-    $foreground: map-merge(
-        map-merge(map-get($basic-theme, foreground), $foreground),
+    $foreground: map.merge(
+        map.merge(map.get($basic-theme, foreground), $foreground),
         (
             // --- Custom ---
-            contrast-text: map-get-strict($foreground, contrast-text),
-            light-text: map-get-strict($foreground, light-text),
-            border: map-get-strict($foreground, border)
+            contrast-text: map-get-strict.map-get-strict($foreground, contrast-text),
+            light-text: map-get-strict.map-get-strict($foreground, light-text),
+            border: map-get-strict.map-get-strict($foreground, border)
         )
     );
 
-    $theme: map-merge(
+    $theme: map.merge(
         $basic-theme,
         (
             foreground: $foreground,
             background: $background,
             // --- Custom ---
             // Theme name (for CSS class name)
-            name: map-get-strict($config, name),
+            name: map-get-strict.map-get-strict($config, name),
             // If you need other colors, then replace with a palette
-            success-base: map-get-strict($config, success-base),
-            pending-base: map-get-strict($config, pending-base),
-            warn-base: map-get-strict($config, warn-base),
+            success-base: map-get-strict.map-get-strict($config, success-base),
+            pending-base: map-get-strict.map-get-strict($config, pending-base),
+            warn-base: map-get-strict.map-get-strict($config, warn-base),
         )
     );
-    $typography: map-get($theme, typography);
+    $typography: map.get($theme, typography);
 
-    body.#{map-get($theme, name)} {
+    body.#{map.get($theme, name)} {
         @include v.select-theme($theme);
-        @include v.typography-hierarchy($theme);
 
-        @include dsh-typography($typography);
+        @include typography.dsh-typography($typography);
 
-        @include dsh-theme($theme);
+        @include dsh-theme.dsh-theme($theme);
 
         // Material 3 theme
         $_rest: (
@@ -84,9 +100,10 @@
 
         @include mat.all-component-themes($light-theme);
         @include mat.typography-hierarchy($light-theme);
-        @include mat-component-variants($light-theme);
+        @include v.typography-hierarchy($light-theme);
+        @include mat-component-variants.mat-component-variants($light-theme);
 
         // Overrides
-        @include mat-override-theme($light-theme);
+        @include mat-theme.mat-override-theme($light-theme);
     }
 }

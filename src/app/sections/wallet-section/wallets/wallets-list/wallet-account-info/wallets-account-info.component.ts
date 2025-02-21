@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
-import { ComponentChanges } from '@vality/ng-core';
+import { ComponentChanges } from '@vality/matez';
 
 import { FetchWalletAccountService } from './services';
 
@@ -8,6 +8,7 @@ import { FetchWalletAccountService } from './services';
     templateUrl: 'wallets-account-info.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [FetchWalletAccountService],
+    standalone: false,
 })
 export class WalletsAccountInfoComponent implements OnChanges {
     @Input() walletID: string;

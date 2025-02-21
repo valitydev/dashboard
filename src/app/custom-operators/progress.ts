@@ -1,4 +1,4 @@
-import { merge, Observable, of } from 'rxjs';
+import { Observable, merge, of } from 'rxjs';
 import { catchError, distinctUntilChanged, map, startWith } from 'rxjs/operators';
 
 /**

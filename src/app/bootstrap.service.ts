@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
-import { Observable, throwError, switchMap } from 'rxjs';
-import { map, catchError, tap } from 'rxjs/operators';
+import { Observable, switchMap, throwError } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
-import { ShopsDataService, ErrorService, CommonError } from '@dsh/app/shared';
+import { CommonError, ErrorService, ShopsDataService } from '@dsh/app/shared';
 
 @Injectable()
 export class BootstrapService {

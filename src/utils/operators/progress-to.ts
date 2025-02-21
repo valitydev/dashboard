@@ -1,4 +1,4 @@
-import { BehaviorSubject, defer, MonoTypeOperatorFunction } from 'rxjs';
+import { BehaviorSubject, MonoTypeOperatorFunction, defer } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 
 function updateValue<V>(

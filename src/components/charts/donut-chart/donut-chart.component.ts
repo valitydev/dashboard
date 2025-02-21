@@ -8,6 +8,7 @@ import { DEFAULT_CONFIG } from './default-config';
     selector: 'dsh-donut-chart',
     templateUrl: 'donut-chart.component.html',
     styleUrls: ['donut-chart.component.scss'],
+    standalone: false,
 })
 export class DonutChartComponent implements OnInit {
     @Input()
@@ -28,7 +29,6 @@ export class DonutChartComponent implements OnInit {
         this.config.chart.events.dataPointSelection = this.updateDataPointSelection;
     }
 
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     updateDataPointSelection = (_: unknown, __: unknown, options?: { dataPointIndex?: number }) =>
         this.dataSelect.emit(options.dataPointIndex);
 }

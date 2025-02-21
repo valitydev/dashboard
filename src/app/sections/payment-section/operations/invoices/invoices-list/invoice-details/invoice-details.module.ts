@@ -10,11 +10,11 @@ import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { AuthModule } from '@dsh/app/auth';
 import {
+    RefundDetailsModule as ApiRefundDetailsModule,
     InvoiceDetailsModule as InvoiceInvoiceDetailsModule,
     PaymentDetailsModule,
-    RefundDetailsModule as ApiRefundDetailsModule,
 } from '@dsh/app/shared/components';
-import { ApiModelRefsModule, AmountCurrencyModule } from '@dsh/app/shared/pipes';
+import { AmountCurrencyModule, ApiModelRefsModule } from '@dsh/app/shared/pipes';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
 

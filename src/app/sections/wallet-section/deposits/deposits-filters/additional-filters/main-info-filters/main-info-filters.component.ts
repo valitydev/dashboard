@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { FormGroupByValue } from '@vality/ng-core';
+import { FormGroupByValue } from '@vality/matez';
 
 import { MainInfoFilters } from './types/main-info-filters';
 
@@ -7,6 +7,7 @@ import { MainInfoFilters } from './types/main-info-filters';
     selector: 'dsh-main-filters',
     templateUrl: './main-info-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class MainInfoFiltersComponent {
     @Input() form: FormGroupByValue<MainInfoFilters>;

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { createControlProviders } from '@vality/ng-core';
+import { createControlProviders } from '@vality/matez';
 import { Identity } from '@vality/swag-wallet';
 import { combineLatest } from 'rxjs';
 import { map, share } from 'rxjs/operators';
@@ -12,6 +12,7 @@ import { FilterSuperclass } from '@dsh/components/filter';
     templateUrl: 'identity-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => IdentityFilterComponent),
+    standalone: false,
 })
 export class IdentityFilterComponent extends FilterSuperclass<Identity['id']> {
     identity$ = combineLatest([this.identitiesService.identities$, this.savedValue$]).pipe(

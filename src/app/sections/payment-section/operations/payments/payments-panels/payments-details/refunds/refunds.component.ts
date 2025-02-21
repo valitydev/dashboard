@@ -6,7 +6,7 @@ import {
     OnInit,
     Output,
 } from '@angular/core';
-import { RefundSearchResult, PaymentSearchResult } from '@vality/swag-anapi-v2';
+import { PaymentSearchResult, RefundSearchResult } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';
 import { filter, take } from 'rxjs/operators';
 
@@ -33,6 +33,7 @@ import { FetchRefundsService } from './services/fetch-refunds/fetch-refunds.serv
             useValue: 3,
         },
     ],
+    standalone: false,
 })
 export class RefundsComponent implements OnInit {
     @Input() invoiceID: string;

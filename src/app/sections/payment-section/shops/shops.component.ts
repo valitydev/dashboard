@@ -14,6 +14,7 @@ import { ShopsExpandedIdManagerService } from './shops-list/services/shops-expan
     templateUrl: 'shops.component.html',
     styleUrls: ['shops.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class ShopsComponent implements OnInit {
     shops$ = this.shopsService.shownShops$;

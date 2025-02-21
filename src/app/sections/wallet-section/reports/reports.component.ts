@@ -4,18 +4,18 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslocoService } from '@jsverse/transloco';
-import { QueryParamsService } from '@vality/ng-core';
+import { QueryParamsService } from '@vality/matez';
 import { Report } from '@vality/swag-wallet';
 import isEqual from 'lodash-es/isEqual';
 import moment from 'moment';
-import { startWith, distinctUntilChanged, filter, first, map } from 'rxjs/operators';
+import { distinctUntilChanged, filter, first, map, startWith } from 'rxjs/operators';
 
-import { WalletDictionaryService, IdentitiesService } from '@dsh/app/api/wallet';
+import { IdentitiesService, WalletDictionaryService } from '@dsh/app/api/wallet';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { Column, ExpandedFragment } from '@dsh/app/shared/components/accordion-table';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { StatusColor } from '@dsh/app/theme-manager';
-import { createDateRangeWithPreset, Preset, DateRange } from '@dsh/components/date-range-filter';
+import { DateRange, Preset, createDateRangeWithPreset } from '@dsh/components/date-range-filter';
 
 import { CreateReportDialogComponent } from './components/create-report-dialog/create-report-dialog.component';
 import { FetchReportsService } from './fetch-reports.service';
@@ -35,6 +35,7 @@ const REPORT_STATUS_COLOR = {
     selector: 'dsh-reports',
     templateUrl: './reports.component.html',
     providers: [FetchReportsService],
+    standalone: false,
 })
 export class ReportsComponent implements OnInit {
     reports$ = this.fetchReportsService.result$;

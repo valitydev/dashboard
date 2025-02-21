@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService } from '@vality/ng-core';
+import { NotifyLogService } from '@vality/matez';
 import { Webhook } from '@vality/swag-wallet';
 import sortBy from 'lodash-es/sortBy';
-import { BehaviorSubject, forkJoin, Observable, of, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, forkJoin, of } from 'rxjs';
 import { catchError, filter, map, shareReplay, switchMap } from 'rxjs/operators';
 
 import { IdentitiesService, WebhooksService } from '@dsh/app/api/wallet';
@@ -15,19 +15,16 @@ export class ReceiveWebhooksService {
     private webhooksState$: BehaviorSubject<Webhook[]> = new BehaviorSubject(null);
     private receiveWebhooks$: Subject<void> = new Subject();
 
-    // eslint-disable-next-line @typescript-eslint/member-ordering
     webhooks$: Observable<Webhook[]> = this.webhooksState$.pipe(
         filter((s) => !!s),
         map((w) => sortBy(w, (i) => !i.active)),
         shareReplay({ refCount: true, bufferSize: 1 }),
     );
 
-    // eslint-disable-next-line @typescript-eslint/member-ordering
     isLoading$: Observable<boolean> = progress(this.receiveWebhooks$, this.webhooks$).pipe(
         shareReplay({ refCount: true, bufferSize: 1 }),
     );
 
-    // eslint-disable-next-line @typescript-eslint/member-ordering
     lastUpdated$: Observable<string> = this.webhooks$.pipe(mapToTimestamp, shareReplay(1));
 
     constructor(

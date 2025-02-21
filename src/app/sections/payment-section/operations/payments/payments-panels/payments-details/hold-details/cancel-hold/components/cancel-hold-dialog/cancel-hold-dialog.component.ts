@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroupByValue } from '@vality/ng-core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormGroupByValue } from '@vality/matez';
 
 import { PaymentsService } from '@dsh/app/api/payments';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
@@ -15,6 +15,7 @@ import { CancelHoldDialogData } from '../../types/cancel-hold-dialog-data';
     selector: 'dsh-cancel-hold-dialog',
     templateUrl: './cancel-hold-dialog.component.html',
     styleUrls: ['./cancel-hold-dialog.component.scss'],
+    standalone: false,
 })
 export class CancelHoldDialogComponent {
     maxReasonLength: number = MAX_REASON_LENGTH;

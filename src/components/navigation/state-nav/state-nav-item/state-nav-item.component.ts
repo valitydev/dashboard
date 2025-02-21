@@ -12,6 +12,7 @@ const HOST_ATTRIBUTES = ['withIcon'];
     selector: 'dsh-state-nav-item, dsh-state-nav-item[withIcon]',
     templateUrl: 'state-nav-item.component.html',
     styleUrls: ['state-nav-item.component.scss'],
+    standalone: false,
 })
 export class StateNavItemComponent {
     @Input({ transform: booleanAttribute })

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { createControlProviders } from '@vality/ng-core';
+import { createControlProviders } from '@vality/matez';
 
 import { FilterSuperclass } from '@dsh/components/filter';
 import { binValidator, panValidator } from '@dsh/components/form-controls';
@@ -13,6 +13,7 @@ import { CardBinPan } from './types/card-bin-pan';
     styleUrls: ['./card-bin-pan-filter.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => CardBinPanFilterComponent),
+    standalone: false,
 })
 export class CardBinPanFilterComponent extends FilterSuperclass<CardBinPan> {
     control = this.fb.group({

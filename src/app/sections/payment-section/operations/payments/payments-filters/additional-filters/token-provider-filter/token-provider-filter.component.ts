@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
+import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 import { SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 
 import { AnapiDictionaryService } from '@dsh/app/api/anapi';
@@ -10,6 +10,7 @@ import { TokenProvider } from '@dsh/app/api/payments';
     templateUrl: './token-provider-filter.component.html',
     styleUrls: ['./token-provider-filter.component.scss'],
     providers: createControlProviders(() => TokenProviderFilterComponent),
+    standalone: false,
 })
 export class TokenProviderFilterComponent extends FormControlSuperclass<
     SearchPaymentsRequestParams['bankCardTokenProvider']

@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TranslocoService } from '@jsverse/transloco';
 import { Organization } from '@vality/swag-organizations';
-import { map, filter } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 import { DIALOG_CONFIG, DialogConfig } from '@dsh/app/sections/tokens';
 import { ContextOrganizationService } from '@dsh/app/shared';
@@ -17,6 +17,7 @@ import { SelectActiveOrganizationDialogComponent } from '../select-active-organi
     selector: 'dsh-user',
     templateUrl: 'user.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class UserComponent {
     @Output() selected = new EventEmitter<void>();

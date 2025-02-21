@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, booleanAttribute } from '@angular/core';
-import { FormControlSuperclass, createControlProviders, ComponentChanges } from '@vality/ng-core';
+import { ComponentChanges, FormControlSuperclass, createControlProviders } from '@vality/matez';
 import isNil from 'lodash-es/isNil';
 
 export interface Option<T> {
@@ -17,6 +17,7 @@ interface OptionScore<T> {
     templateUrl: 'multi-select-field.component.html',
     styleUrls: ['multi-select-field.component.scss'],
     providers: createControlProviders(() => MultiSelectFieldComponent),
+    standalone: false,
 })
 export class MultiSelectFieldComponent<T> extends FormControlSuperclass<T[]> implements OnChanges {
     @Input() options: Option<T>[];

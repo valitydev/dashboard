@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
-import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, combineLatest } from 'rxjs';
 import { distinctUntilChanged, map, takeUntil } from 'rxjs/operators';
 
 import { ShopsDataService } from '@dsh/app/shared';
@@ -7,6 +7,7 @@ import { ShopsDataService } from '@dsh/app/shared';
 @Pipe({
     name: 'shopDetails',
     pure: false,
+    standalone: false,
 })
 export class ShopDetailsPipe implements PipeTransform, OnDestroy {
     private shopName$: BehaviorSubject<string> = new BehaviorSubject('');

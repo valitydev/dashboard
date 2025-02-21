@@ -7,6 +7,7 @@ import { getShopIdFromScope } from '../get-shop-id-from-scope';
     selector: 'dsh-webhook-details',
     templateUrl: 'webhook-details.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class WebhookDetailsComponent {
     @Input() webhook: Webhook;

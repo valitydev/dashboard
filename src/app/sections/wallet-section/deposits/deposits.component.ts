@@ -1,6 +1,6 @@
 import { Component, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { QueryParamsService } from '@vality/ng-core';
+import { QueryParamsService } from '@vality/matez';
 
 import { ErrorService } from '@dsh/app/shared';
 
@@ -12,6 +12,7 @@ import { filtersToSearchParams } from './utils/filters-to-search-params';
 @Component({
     templateUrl: 'deposits.component.html',
     providers: [FetchDepositsService, DepositsExpandedIdManagerService],
+    standalone: false,
 })
 export class DepositsComponent {
     deposits$ = this.fetchDepositsService.searchResult$;

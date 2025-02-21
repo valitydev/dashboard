@@ -7,6 +7,7 @@ import isEmpty from 'lodash-es/isEmpty';
     templateUrl: './refunds-list.component.html',
     styleUrls: ['./refunds-list.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class RefundsListComponent {
     @Input() list: RefundSearchResult[];

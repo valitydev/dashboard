@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControlSuperclass, Option, createControlProviders } from '@vality/ng-core';
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
 import { RefundStatus } from '@vality/swag-anapi-v2';
-import { combineLatest, Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { RefundStatusLabelPipe } from './pipes/refund-status-label.pipe';
@@ -14,6 +14,7 @@ import StatusEnum = RefundStatus.StatusEnum;
     templateUrl: 'refund-status-field.component.html',
     providers: [...createControlProviders(() => RefundStatusFieldComponent), RefundStatusLabelPipe],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class RefundStatusFieldComponent extends FormControlSuperclass<StatusEnum> {
     options$: Observable<Option<string>[]> = combineLatest(

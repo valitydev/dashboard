@@ -2,7 +2,7 @@
     *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.payments.filter'"
 >
     <div fxLayout="column" fxLayoutGap="24px">
-        <div class="dsh-title" fxFlex>{{ t('invoices') }}</div>
+        <div class="mat-title-large" fxFlex>{{ t('invoices') }}</div>
         <form [formGroup]="control">
             <dsh-invoices-field formControlName="invoiceIDs"></dsh-invoices-field>
         </form>

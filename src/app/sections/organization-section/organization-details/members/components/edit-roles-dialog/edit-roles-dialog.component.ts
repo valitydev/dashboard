@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { DialogSuperclass, DEFAULT_DIALOG_CONFIG, progressTo } from '@vality/ng-core';
+import { DEFAULT_DIALOG_CONFIG, DialogSuperclass, progressTo } from '@vality/matez';
 import { MemberRole } from '@vality/swag-organizations';
-import { BehaviorSubject, defer, forkJoin, of, Subscription } from 'rxjs';
-import { catchError, shareReplay, switchMap, map } from 'rxjs/operators';
+import { BehaviorSubject, Subscription, defer, forkJoin, of } from 'rxjs';
+import { catchError, map, shareReplay, switchMap } from 'rxjs/operators';
 
 import { MembersService } from '@dsh/app/api/organizations';
 import { ErrorService } from '@dsh/app/shared';
@@ -14,6 +14,7 @@ import { EditRolesDialogData } from './types/edit-roles-dialog-data';
     selector: 'dsh-edit-roles-dialog',
     templateUrl: 'edit-roles-dialog.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class EditRolesDialogComponent extends DialogSuperclass<
     EditRolesDialogData,

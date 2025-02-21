@@ -1,13 +1,13 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, DestroyRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, Input, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
 import {
-    createControlProviders,
-    FormGroupByValue,
     FormComponentSuperclass,
+    FormGroupByValue,
+    createControlProviders,
     getErrorsTree,
     toMinor,
-} from '@vality/ng-core';
+} from '@vality/matez';
 import isNil from 'lodash-es/isNil';
 
 import { getFormValueChanges } from '@dsh/utils';
@@ -32,6 +32,7 @@ export interface FormData {
     templateUrl: 'invoice-randomize-amount-form.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => InvoiceRandomizeAmountFormComponent),
+    standalone: false,
 })
 export class InvoiceRandomizeAmountFormComponent
     extends FormComponentSuperclass<Partial<FormData>>
@@ -81,5 +82,6 @@ export class InvoiceRandomizeAmountFormComponent
         return getErrorsTree(this.control);
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     handleIncomingValue(_value: FormData): void {}
 }

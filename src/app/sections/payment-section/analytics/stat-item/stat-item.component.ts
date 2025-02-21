@@ -8,6 +8,7 @@ import { StatData } from '../utils';
     selector: 'dsh-stat-item',
     templateUrl: 'stat-item.component.html',
     styleUrls: ['./stat-item.component.scss'],
+    standalone: false,
 })
 export class StatItemComponent implements OnChanges {
     @Input() spinnerType: SpinnerType;

@@ -3,7 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Invoice } from '@vality/swag-anapi-v2';
 import moment from 'moment';
 import { Observable, ReplaySubject } from 'rxjs';
-import { distinctUntilChanged, switchMap, tap, map, withLatestFrom } from 'rxjs/operators';
+import { distinctUntilChanged, map, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 
 import { SearchService } from '@dsh/app/api/anapi';
 import { ErrorService } from '@dsh/app/shared/services';

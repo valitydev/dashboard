@@ -1,17 +1,18 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroupSuperclass, createControlProviders } from '@vality/ng-core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormGroupSuperclass, createControlProviders } from '@vality/matez';
 
 import { paymentStatusValidator } from '../../payment-status-filter';
 import { AdditionalFilters, AdditionalFiltersForm } from '../../types';
-import { formToFilters, filtersToForm } from '../../utils';
+import { filtersToForm, formToFilters } from '../../utils';
 
 @Component({
     selector: 'dsh-dialog-filters',
     templateUrl: 'dialog-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => DialogFiltersComponent),
+    standalone: false,
 })
 export class DialogFiltersComponent
     extends FormGroupSuperclass<AdditionalFiltersForm>

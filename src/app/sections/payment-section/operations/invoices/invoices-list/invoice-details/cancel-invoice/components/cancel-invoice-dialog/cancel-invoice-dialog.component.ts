@@ -8,6 +8,7 @@ import { CancelInvoiceDialogResponse } from '../../types/cancel-invoice-dialog-r
     templateUrl: 'cancel-invoice-dialog.component.html',
     styleUrls: ['cancel-invoice-dialog.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class CancelInvoiceDialogComponent {
     reason = new FormControl();

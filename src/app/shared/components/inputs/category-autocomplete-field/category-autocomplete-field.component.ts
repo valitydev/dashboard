@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
-import { FormControlSuperclass, Option, createControlProviders } from '@vality/ng-core';
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
 import { Category } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -11,6 +11,7 @@ import { CategoriesService } from '@dsh/app/api/payments';
     templateUrl: 'category-autocomplete-field.component.html',
     providers: createControlProviders(() => CategoryAutocompleteFieldComponent),
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class CategoryAutocompleteFieldComponent extends FormControlSuperclass<Category> {
     @Input() label: string;

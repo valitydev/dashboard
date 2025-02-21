@@ -7,6 +7,7 @@ import { AnapiDictionaryService } from '@dsh/app/api/anapi';
     selector: 'dsh-invoice-row',
     templateUrl: 'invoice-row.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class InvoiceRowComponent {
     @Input() invoice: Invoice;

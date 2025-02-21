@@ -1,9 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormBuilder, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TranslocoService } from '@jsverse/transloco';
-import { FormGroupByValue, NotifyLogService, toMajor, toMinor } from '@vality/ng-core';
+import { FormGroupByValue, NotifyLogService, toMajor, toMinor } from '@vality/matez';
 import { Refund, RefundParams } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
 import isNil from 'lodash-es/isNil';
@@ -27,6 +27,7 @@ const MAX_REASON_LENGTH = 100;
     templateUrl: 'create-refund-dialog.component.html',
     styleUrls: ['create-refund-dialog.component.scss'],
     providers: [RefundsService],
+    standalone: false,
 })
 export class CreateRefundDialogComponent implements OnInit {
     maxReasonLength: number = MAX_REASON_LENGTH;

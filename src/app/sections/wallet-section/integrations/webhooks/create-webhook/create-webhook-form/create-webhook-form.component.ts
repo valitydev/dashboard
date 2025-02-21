@@ -15,6 +15,7 @@ import TopicEnum = WebhookScope.TopicEnum;
 @Component({
     selector: 'dsh-create-webhook-form',
     templateUrl: 'create-webhook-form.component.html',
+    standalone: false,
 })
 export class CreateWebhookFormComponent implements OnInit {
     @Input() form: UntypedFormGroup;

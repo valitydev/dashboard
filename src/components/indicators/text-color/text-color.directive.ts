@@ -6,6 +6,7 @@ const PREFIX = 'dsh-text-color';
 
 @Directive({
     selector: '[dshTextColor]',
+    standalone: false,
 })
 export class TextColorDirective {
     @Input() dshTextColor: keyof Color | Color;

@@ -5,7 +5,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexModule, GridModule } from 'ng-flex-layout';
 
-import { ApiModelTypesModule, AmountCurrencyModule } from '@dsh/app/shared';
+import { AmountCurrencyModule, ApiModelTypesModule } from '@dsh/app/shared';
 import { StatusModule, TextColorModule } from '@dsh/components/indicators';
 import {
     AccordionModule,

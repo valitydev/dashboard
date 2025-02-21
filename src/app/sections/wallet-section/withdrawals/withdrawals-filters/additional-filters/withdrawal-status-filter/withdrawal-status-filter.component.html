@@ -2,7 +2,7 @@
     *transloco="let t; scope: 'wallet-section'; read: 'walletSection.withdrawals.filters'"
 >
     <div fxLayout="column" fxLayoutGap="16px">
-        <div class="dsh-title" fxFlex>{{ t('status') }}</div>
+        <div class="mat-title-large" fxFlex>{{ t('status') }}</div>
         <dsh-expandable-radio-group [choices]="statuses" [control]="control" anyResponse fxFlex>
             <ng-container *ngFor="let status of statuses">
                 <ng-template [dshExpandableRadioGroupItem]="status">

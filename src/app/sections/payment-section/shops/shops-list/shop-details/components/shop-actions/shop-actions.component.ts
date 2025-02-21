@@ -10,6 +10,7 @@ import { ShopActionsService } from '../../services/shop-actions/shop-actions.ser
     templateUrl: 'shop-actions.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ShopActionsService],
+    standalone: false,
 })
 export class ShopActionsComponent {
     @Input() shop: ShopItem;

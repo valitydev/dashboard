@@ -1,15 +1,15 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import {
-    OnChanges,
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
     Input,
+    OnChanges,
     Output,
     ViewChild,
 } from '@angular/core';
 import { MatSlideToggle, MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { ComponentChanges } from '@vality/ng-core';
+import { ComponentChanges } from '@vality/matez';
 import { Observable } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
 
@@ -20,6 +20,7 @@ import { BootstrapIconSize } from '@dsh/components/indicators/bootstrap-icon';
     templateUrl: 'navbar-item.component.html',
     styleUrls: ['navbar-item.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class NavbarItemComponent implements OnChanges {
     @Input() icon: string;

@@ -5,6 +5,7 @@ import { Component, EventEmitter, Input, Output, booleanAttribute } from '@angul
     selector: 'dsh-base-dialog',
     templateUrl: 'base-dialog.component.html',
     styleUrls: ['base-dialog.component.scss'],
+    standalone: false,
 })
 export class BaseDialogComponent {
     @Input() title: string;
@@ -13,6 +14,7 @@ export class BaseDialogComponent {
     @Input({ transform: booleanAttribute }) hasDivider = true;
     @Input({ transform: booleanAttribute }) noActions = false;
 
+    // eslint-disable-next-line @angular-eslint/no-output-native
     @Output() cancel = new EventEmitter<void>();
 
     cancelDialog(): void {

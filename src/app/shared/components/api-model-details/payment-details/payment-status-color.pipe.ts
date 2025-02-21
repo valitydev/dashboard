@@ -5,6 +5,7 @@ import { StatusColor } from '../../../../theme-manager';
 
 @Pipe({
     name: 'paymentStatusColor',
+    standalone: false,
 })
 export class PaymentStatusColorPipe implements PipeTransform {
     transform(status: PaymentSearchResult.StatusEnum): StatusColor {

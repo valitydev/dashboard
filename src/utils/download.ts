@@ -17,7 +17,6 @@ export async function download(url: string, name?: string): Promise<void> {
 }
 
 export function multipleDownload(urls: string[]): void {
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     urls.forEach(async (url, i) => {
         await delay(i * 1000);
         download(url);

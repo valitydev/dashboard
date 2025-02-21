@@ -8,6 +8,7 @@ import { ReceiveInvoiceService } from '../../services/receive-invoice/receive-in
     templateUrl: 'invoice-cart-info.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ReceiveInvoiceService],
+    standalone: false,
 })
 export class InvoiceCartInfoComponent {
     @Input() cart: InvoiceLine[];

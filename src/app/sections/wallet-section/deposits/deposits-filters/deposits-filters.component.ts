@@ -10,16 +10,16 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ComponentChanges } from '@vality/ng-core';
+import { ComponentChanges } from '@vality/matez';
 import isEmpty from 'lodash-es/isEmpty';
 import isEqual from 'lodash-es/isEqual';
 import negate from 'lodash-es/negate';
 import omit from 'lodash-es/omit';
 import pick from 'lodash-es/pick';
-import { combineLatest, defer, ReplaySubject } from 'rxjs';
+import { ReplaySubject, combineLatest, defer } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
-import { createDateRangeWithPreset, Preset } from '@dsh/components/date-range-filter';
+import { Preset, createDateRangeWithPreset } from '@dsh/components/date-range-filter';
 import { getFormValueChanges } from '@dsh/utils';
 
 import { DialogFiltersComponent } from './additional-filters/components/dialog-filters/dialog-filters.component';
@@ -32,6 +32,7 @@ const MAIN_FILTERS_KEYS = ['dateRange'];
 @Component({
     templateUrl: 'deposits-filters.component.html',
     selector: 'dsh-deposits-filters',
+    standalone: false,
 })
 export class DepositsFiltersComponent implements OnInit, OnChanges {
     @Input() initParams: DepositsFilters;

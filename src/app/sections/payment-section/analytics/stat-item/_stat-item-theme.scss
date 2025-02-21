@@ -1,7 +1,9 @@
+@use 'sass:map';
+
 @mixin dsh-stat-item-theme($theme) {
-    $foreground: map-get($theme, foreground);
+    $foreground: map.get($theme, foreground);
 
     .dsh-stat-item-title {
-        color: map-get($foreground, light-text);
+        color: map.get($foreground, light-text);
     }
 }

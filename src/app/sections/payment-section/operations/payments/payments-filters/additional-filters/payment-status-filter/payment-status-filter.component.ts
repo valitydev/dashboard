@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
+import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 import { PaymentStatus } from '@vality/swag-anapi-v2';
 
 import { AnapiDictionaryService } from '@dsh/app/api/anapi';
@@ -9,6 +9,7 @@ import { AnapiDictionaryService } from '@dsh/app/api/anapi';
     templateUrl: './payment-status-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => PaymentStatusFilterComponent),
+    standalone: false,
 })
 export class PaymentStatusFilterComponent extends FormControlSuperclass<PaymentStatus.StatusEnum> {
     statuses = Object.values(PaymentStatus.StatusEnum);

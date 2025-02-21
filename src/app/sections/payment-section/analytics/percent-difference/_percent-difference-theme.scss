@@ -1,8 +1,9 @@
+@use 'sass:map';
 @use '@angular/material' as mat;
 
 @mixin dsh-percent-difference-theme($theme) {
-    $accent: map-get($theme, accent);
-    $warn: map-get($theme, warn);
+    $accent: map.get($theme, accent);
+    $warn: map.get($theme, warn);
 
     .positive-percent-difference {
         color: mat.m2-get-color-from-palette($accent, default);

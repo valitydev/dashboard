@@ -1,7 +1,10 @@
-<dsh-card *transloco="let c; scope: 'components'; read: 'components.shared'">
+<dsh-card
+    *transloco="let c; scope: 'components'; read: 'components.shared'"
+    style="display: flex; flex-direction: column; gap: 16px"
+>
     <dsh-card-title fxLayoutAlign="space-between">
-        <h1 class="mat-h2">{{ title }}</h1>
-        <dsh-spinner *ngIf="isLoading" [type]="spinnerType" size="30"></dsh-spinner>
+        <div class="mat-title-large">{{ title }}</div>
+        <dsh-spinner *ngIf="isLoading" [type]="spinnerType" size="28"></dsh-spinner>
     </dsh-card-title>
     <dsh-card-content
         *transloco="let t; scope: 'payment-section'; read: 'paymentSection.analytics'"
@@ -21,7 +24,7 @@
                         size="sm"
                         (click)="goBackDataSelection()"
                     ></dsh-bi>
-                    <div class="mat-caption">{{ selectedErrorTitle }}</div>
+                    <div class="mat-body-small">{{ selectedErrorTitle }}</div>
                 </div>
                 <div *ngIf="selectedErrorTitle && chartData?.series?.length === 0; else usualData">
                     <dsh-donut-chart

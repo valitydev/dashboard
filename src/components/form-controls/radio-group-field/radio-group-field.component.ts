@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatRadioChange } from '@angular/material/radio';
-import { Option, FormControlSuperclass, createControlProviders } from '@vality/ng-core';
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
 import { Overwrite } from 'utility-types';
 
 @Component({
@@ -8,6 +8,7 @@ import { Overwrite } from 'utility-types';
     templateUrl: 'radio-group-field.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => RadioGroupFieldComponent),
+    standalone: false,
 })
 export class RadioGroupFieldComponent<T> extends FormControlSuperclass<T> {
     @Input() options: Option<T>[];

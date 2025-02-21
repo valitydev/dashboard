@@ -1,7 +1,7 @@
 import { Component, DestroyRef, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService, QueryParamsService } from '@vality/ng-core';
+import { NotifyLogService, QueryParamsService } from '@vality/matez';
 
 import { RealmMixService, RealmShopsService } from '../../services';
 
@@ -13,6 +13,7 @@ import { RefundsExpandedIdManager } from './services/refunds-expanded-id-manager
     selector: 'dsh-refunds',
     templateUrl: 'refunds.component.html',
     providers: [FetchRefundsService, RefundsExpandedIdManager, RealmMixService],
+    standalone: false,
 })
 export class RefundsComponent implements OnInit {
     refunds$ = this.fetchRefundsService.searchResult$;

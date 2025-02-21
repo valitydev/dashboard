@@ -1,4 +1,4 @@
-import { ModificationUnit, DocumentModificationUnit } from '@vality/swag-claim-management';
+import { DocumentModificationUnit, ModificationUnit } from '@vality/swag-claim-management';
 
 import { isClaimModification, isDocumentModificationUnit } from './type-guards';
 

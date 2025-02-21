@@ -10,6 +10,7 @@ import { PaymentsCountService } from './payments-count.service';
     selector: 'dsh-payments-count',
     templateUrl: 'payments-count.component.html',
     providers: [PaymentsCountService],
+    standalone: false,
 })
 export class PaymentsCountComponent implements OnChanges {
     @Input() spinnerType: SpinnerType;

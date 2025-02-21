@@ -10,13 +10,13 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
-import { ComponentChanges } from '@vality/ng-core';
+import { ComponentChanges } from '@vality/matez';
 import { Report } from '@vality/swag-anapi-v2';
 
 import {
-    createDateRangeWithPreset,
     DateRangeWithPreset,
     Preset,
+    createDateRangeWithPreset,
 } from '@dsh/components/date-range-filter';
 import { getFormValueChanges } from '@dsh/utils';
 
@@ -29,6 +29,7 @@ export interface Filters {
     selector: 'dsh-reports-search-filters',
     templateUrl: 'reports-search-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class ReportsSearchFiltersComponent implements OnInit, OnChanges {
     @Input() initParams: Filters;

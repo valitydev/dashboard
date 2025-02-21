@@ -4,15 +4,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
-import { ApiModelRefsModule, ApiModelTypesModule, AmountCurrencyModule } from '@dsh/app/shared';
+import { AmountCurrencyModule, ApiModelRefsModule, ApiModelTypesModule } from '@dsh/app/shared';
 import { StatusModule } from '@dsh/components/indicators';
 import { LastUpdatedModule } from '@dsh/components/indicators/last-updated/last-updated.module';
 import { LayoutModule } from '@dsh/components/layout';
 
 import {
     WithdrawalDetailsComponent,
-    WithdrawalRowHeaderComponent,
     WithdrawalRowComponent,
+    WithdrawalRowHeaderComponent,
 } from './components';
 import { WithdrawalErrorMessagePipe } from './components/withdrawal-details/pipes/withdrawal-error-message.pipe';
 import { WithdrawalsListComponent } from './withdrawals-list.component';

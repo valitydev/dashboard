@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
-import { FormControlSuperclass, createControlProviders } from '@vality/ng-core';
+import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 import { map } from 'rxjs/operators';
 
 import { CountriesService } from '@dsh/app/api/payments';
@@ -12,6 +12,7 @@ import { countriesToOptions } from './utils';
     templateUrl: 'country-autocomplete-field.component.html',
     providers: createControlProviders(() => CountryAutocompleteFieldComponent),
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class CountryAutocompleteFieldComponent extends FormControlSuperclass<CountryId> {
     @Input() label: string;

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormGroupByValue } from '@vality/ng-core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormGroupByValue } from '@vality/matez';
 
 import { getAbstractControl } from '@dsh/app/shared/utils';
 import { formatMajorAmountToStr, getAmountNum } from '@dsh/app/shared/utils/amount-formatters';
@@ -19,6 +19,7 @@ import { AdditionalFiltersForm } from '../../types/additional-filters-form';
     templateUrl: 'dialog-filters.component.html',
     styleUrls: ['dialog-filters.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class DialogFiltersComponent implements OnInit {
     form = this.fb.group({

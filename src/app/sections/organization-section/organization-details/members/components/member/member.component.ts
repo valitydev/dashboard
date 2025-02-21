@@ -8,7 +8,7 @@ import {
     Output,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ComponentChanges, DialogService, DialogResponseStatus } from '@vality/ng-core';
+import { ComponentChanges, DialogResponseStatus, DialogService } from '@vality/matez';
 import { Member, Organization } from '@vality/swag-organizations';
 import { filter, switchMap } from 'rxjs/operators';
 
@@ -24,6 +24,7 @@ import { EditRolesDialogComponent } from '../edit-roles-dialog/edit-roles-dialog
     selector: 'dsh-member',
     templateUrl: 'member.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class MemberComponent implements OnChanges {
     @Input() organization: Organization;

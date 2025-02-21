@@ -5,5 +5,4 @@ export const oneMustBeSelected: ValidatorFn = (
 ): ValidationErrors | null =>
     control.value.map((c) => c.selected).includes(true)
         ? null
-        : // eslint-disable-next-line @typescript-eslint/naming-convention
-          { Error: 'At least one of checkboxes select needed' };
+        : { Error: 'At least one of checkboxes select needed' };

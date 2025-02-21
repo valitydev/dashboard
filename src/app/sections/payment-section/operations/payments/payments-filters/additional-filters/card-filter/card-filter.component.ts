@@ -1,6 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { FormGroupSuperclass, createControlProviders } from '@vality/ng-core';
+import { FormGroupSuperclass, createControlProviders } from '@vality/matez';
 
 import { binValidator, panValidator } from '@dsh/components/form-controls';
 
@@ -16,6 +16,7 @@ import { CardFilterForm } from './types';
             max-width: calc(1ch * 7);
         }
     `,
+    standalone: false,
 })
 export class CardFilterComponent extends FormGroupSuperclass<CardFilterForm> {
     control = this.fb.group({

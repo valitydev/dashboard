@@ -7,6 +7,7 @@ import { InvitationsExpandedIdManager } from '../../services/invitations-expande
     selector: 'dsh-invitations-list',
     templateUrl: 'invitations-list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class InvitationsListComponent {
     @Input() invitations: Invitation[];

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
-import { createControlProviders } from '@vality/ng-core';
+import { createControlProviders } from '@vality/matez';
 import { Shop } from '@vality/swag-payments';
 import { combineLatest } from 'rxjs';
 import { map, share } from 'rxjs/operators';
@@ -12,6 +12,7 @@ import { FilterSuperclass } from '@dsh/components/filter';
     templateUrl: 'shops-filter.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => ShopsFilterComponent),
+    standalone: false,
 })
 export class ShopsFilterComponent extends FilterSuperclass<Shop['id'][]> {
     @Input() shops: Shop[];

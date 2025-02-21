@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, Output, EventEmitter } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Organization } from '@vality/swag-organizations';
 
 import { OrganizationsExpandedIdManager } from '../../services/organizations-expanded-id-manager/organizations-expanded-id-manager.service';
@@ -8,6 +8,7 @@ import { OrganizationsExpandedIdManager } from '../../services/organizations-exp
     templateUrl: 'organizations-list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [OrganizationsExpandedIdManager],
+    standalone: false,
 })
 export class OrganizationsListComponent {
     @Input() organizations: Organization[];

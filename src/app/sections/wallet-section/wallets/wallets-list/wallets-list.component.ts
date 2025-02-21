@@ -5,6 +5,7 @@ import { Wallet } from '@vality/swag-wallet';
     selector: 'dsh-wallets-list',
     templateUrl: 'wallets-list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class WalletsListComponent {
     @Input() wallets: Wallet[];

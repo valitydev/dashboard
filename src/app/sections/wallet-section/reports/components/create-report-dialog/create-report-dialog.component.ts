@@ -1,9 +1,9 @@
 import { Component, DestroyRef, Inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService, progressTo } from '@vality/ng-core';
+import { NotifyLogService, progressTo } from '@vality/matez';
 import moment from 'moment/moment';
 import { BehaviorSubject } from 'rxjs';
 
@@ -17,6 +17,7 @@ const TIME_PATTERN = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
     selector: 'dsh-create-report-dialog',
     templateUrl: 'create-report-dialog.component.html',
     styles: [],
+    standalone: false,
 })
 export class CreateReportDialogComponent {
     form = this.fb.group({

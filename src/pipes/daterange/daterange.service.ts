@@ -9,6 +9,7 @@ import { Daterange, isDaterange } from './daterange';
 import { isCurrentWeek, isCurrentYear, isToday } from './daterange-current-type';
 import { isMonth, isMonthsRange, isYearsRange } from './daterange-type';
 
+// eslint-disable-next-line unused-imports/no-unused-vars
 const WORDS = ['from', 'fromStartWith2', 'to', 'today', 'currentWeek', 'year'] as const;
 
 @Injectable()

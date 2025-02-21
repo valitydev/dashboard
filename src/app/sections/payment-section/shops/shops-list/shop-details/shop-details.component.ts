@@ -6,6 +6,7 @@ import { ShopItem } from '../../types/shop-item';
     selector: 'dsh-shop-details',
     templateUrl: 'shop-details.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class ShopDetailsComponent {
     @Input() shop: ShopItem;

@@ -1,7 +1,11 @@
-<dsh-card *transloco="let c; scope: 'components'; read: 'components.shared'" class="bar-chart">
+<dsh-card
+    *transloco="let c; scope: 'components'; read: 'components.shared'"
+    class="bar-chart"
+    style="display: flex; flex-direction: column; gap: 16px"
+>
     <dsh-card-title fxLayoutAlign="space-between">
-        <h1 class="mat-h2">{{ title }}</h1>
-        <dsh-spinner *ngIf="isLoading" [type]="spinnerType" size="30"></dsh-spinner>
+        <div class="mat-title-large">{{ title }}</div>
+        <dsh-spinner *ngIf="isLoading" [type]="spinnerType" size="28"></dsh-spinner>
     </dsh-card-title>
     <dsh-card-content
         *transloco="let t; scope: 'payment-section'; read: 'paymentSection.analytics'"

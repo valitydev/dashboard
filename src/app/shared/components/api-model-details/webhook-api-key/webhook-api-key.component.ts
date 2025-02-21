@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService } from '@vality/ng-core';
+import { NotifyLogService } from '@vality/matez';
 
 @Component({
     selector: 'dsh-webhook-api-key',
     templateUrl: 'webhook-api-key.component.html',
     styleUrls: ['webhook-api-key.component.scss'],
+    standalone: false,
 })
 export class WebhookApiKeyComponent {
     @Input()

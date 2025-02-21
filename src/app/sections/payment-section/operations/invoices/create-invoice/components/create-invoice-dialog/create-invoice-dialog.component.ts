@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, Inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Shop } from '@vality/swag-payments';
 
 import { InvoicesService } from '@dsh/app/api/payments';
@@ -12,6 +12,7 @@ import { CreateInvoiceDialogResponse } from '../../types/create-invoice-dialog-r
     selector: 'dsh-create-invoice-dialog',
     templateUrl: 'create-invoice-dialog.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false,
 })
 export class CreateInvoiceDialogComponent {
     formControl = new FormControl();

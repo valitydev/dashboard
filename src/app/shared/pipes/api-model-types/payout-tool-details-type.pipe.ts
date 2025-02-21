@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 
 @Pipe({
     name: 'payoutToolDetailsType',
+    standalone: false,
 })
 export class PayoutToolDetailsTypePipe implements PipeTransform {
     constructor(private transloco: TranslocoService) {}

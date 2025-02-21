@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Member, Organization } from '@vality/swag-organizations';
-import { combineLatest, defer, Observable, ReplaySubject } from 'rxjs';
+import { Observable, ReplaySubject, combineLatest, defer } from 'rxjs';
 import { map, pluck, shareReplay, switchMap } from 'rxjs/operators';
 
 import { MembersService } from '@dsh/app/api/organizations';

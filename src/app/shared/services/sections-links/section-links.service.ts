@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
-import { combineLatest, Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
-import { SectionsService, AppSection } from '@dsh/app/sections/sections.service';
+import { AppSection, SectionsService } from '@dsh/app/sections/sections.service';
 
 import { SectionLink } from './types';
 

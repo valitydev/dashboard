@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
-import { ComponentChanges } from '@vality/ng-core';
+import { ComponentChanges } from '@vality/matez';
 
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 
@@ -10,6 +10,7 @@ import { FetchWalletWithdrawalsService } from './services';
     templateUrl: 'wallet-withdrawals.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [{ provide: SEARCH_LIMIT, useValue: 3 }, FetchWalletWithdrawalsService],
+    standalone: false,
 })
 export class WalletWithdrawalsComponent implements OnChanges {
     @Input() walletID: string;

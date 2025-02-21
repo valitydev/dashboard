@@ -52,3 +52,6 @@ Thumbs.db
 .env*
 src/assets/*Config*.json
 !src/assets/_*Config*.json
+
+.nx/cache
+.nx/workspace-data

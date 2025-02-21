@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
 import { DateRange as MatDateRange } from '@angular/material/datepicker';
 import { TranslocoService } from '@jsverse/transloco';
-import { createControlProviders, getValueChanges } from '@vality/ng-core';
+import { createControlProviders, getValueChanges } from '@vality/matez';
 import { Moment } from 'moment';
-import { switchMap, map, shareReplay } from 'rxjs/operators';
+import { map, shareReplay, switchMap } from 'rxjs/operators';
 
 import { FilterSuperclass } from '@dsh/components/filter';
 
@@ -29,6 +29,7 @@ type InnerDateRange = {
         ...createControlProviders(() => DateRangeFilterComponent),
         DateRangeLocalizationService,
     ],
+    standalone: false,
 })
 export class DateRangeFilterComponent extends FilterSuperclass<
     InnerDateRange,

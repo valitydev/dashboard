@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { createPrivateRoute, RoleAccessName } from '@dsh/app/auth';
+import { RoleAccessName, createPrivateRoute } from '@dsh/app/auth';
 
 import { IntegrationsComponent } from './integrations.component';
 

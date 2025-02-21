@@ -7,7 +7,6 @@ import {
     platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 declare const require: {
     context(
         path: string,

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { createControlProviders, FormGroupSuperclass } from '@vality/ng-core';
+import { FormGroupSuperclass, createControlProviders } from '@vality/matez';
 
 import { MainInfoForm } from './types';
 
@@ -9,6 +9,7 @@ import { MainInfoForm } from './types';
     templateUrl: './main-info-filters.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: createControlProviders(() => MainInfoFiltersComponent),
+    standalone: false,
 })
 export class MainInfoFiltersComponent extends FormGroupSuperclass<MainInfoForm> {
     control = this.fb.group<MainInfoForm>({

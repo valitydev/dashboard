@@ -9,9 +9,9 @@ import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import {
+    RefundDetailsModule as ApiRefundDetailsModule,
     InvoiceDetailsModule,
     PaymentDetailsModule,
-    RefundDetailsModule as ApiRefundDetailsModule,
 } from '@dsh/app/shared/components';
 import { ApiModelRefsModule } from '@dsh/app/shared/pipes';
 import { IndicatorsModule } from '@dsh/components/indicators';
