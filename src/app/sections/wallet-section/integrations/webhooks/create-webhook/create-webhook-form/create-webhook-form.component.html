@@ -48,7 +48,7 @@
     <mat-divider></mat-divider>
     <div fxLayout="column" fxLayoutGap="8px">
         <div class="mat-title-large">{{ t('createWebhook.events') }}</div>
-        <div class="dsh-caption">{{ t('createWebhook.types') }}</div>
+        <div class="mat-body-small">{{ t('createWebhook.types') }}</div>
     </div>
     <div formArrayName="eventTypes" fxLayout="column" fxLayoutGap="16px">
         <div *ngFor="let eventType of eventTypes.controls; let i = index" [formGroupName]="i">

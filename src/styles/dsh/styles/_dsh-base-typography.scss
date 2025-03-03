@@ -61,17 +61,3 @@
         )
     );
 }
-
-@mixin typo-truncate($width, $max-width) {
-    width: $width;
-    max-width: $max-width;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-@mixin dsh-base-typography($config, $selector: '.dsh-typography') {
-    .dsh-caption {
-        @include mat.m2-typography-level($config, caption);
-    }
-}
