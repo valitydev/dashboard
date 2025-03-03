@@ -9,17 +9,17 @@
     <ng-template #loaded>
         <ng-container *ngIf="isCompleted; else confirm">
             <ng-container *ngIf="hasError; else success">
-                <div class="dsh-headline">{{ t('error.title') }}</div>
+                <div class="mat-headline-small">{{ t('error.title') }}</div>
             </ng-container>
             <ng-template #success>
-                <div class="dsh-headline">{{ t('success.title') }}</div>
+                <div class="mat-headline-small">{{ t('success.title') }}</div>
                 <a dshLink routerLink="/organization-section/organizations">{{
                     t('success.goToOrganizationsList')
                 }}</a>
             </ng-template>
         </ng-container>
         <ng-template #confirm>
-            <div class="dsh-headline">{{ t('confirm.title') }}</div>
+            <div class="mat-headline-small">{{ t('confirm.title') }}</div>
             <button class="accept-button" mat-flat-button (click)="accept()">
                 {{ t('confirm.button') }}
             </button>

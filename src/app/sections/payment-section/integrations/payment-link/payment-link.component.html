@@ -11,11 +11,11 @@
         ></dsh-create-invoice-or-invoice-template>
     </ng-container>
     <ng-container *ngIf="(shops$ | async).length === 0">
-        <div class="dsh-headline">{{ t('noAvailableShops') }}</div>
+        <div class="mat-headline-small">{{ t('noAvailableShops') }}</div>
     </ng-container>
     <div *ngIf="(currentStep$ | async) === step.PaymentLink" fxLayout="column" fxLayoutGap="32px">
         <ng-container>
-            <h1 class="dsh-headline">
+            <h1 class="mat-headline-small">
                 {{ t('title') }}
             </h1>
             <div fxLayout="column" fxLayoutGap="24px">

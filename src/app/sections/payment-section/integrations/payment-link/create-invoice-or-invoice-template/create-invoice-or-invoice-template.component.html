@@ -8,7 +8,7 @@
     fxLayoutGap="24px"
 >
     <div fxLayout="column" fxLayoutGap="32px">
-        <h1 class="dsh-headline">{{ c('title') }}</h1>
+        <h1 class="mat-headline-small">{{ c('title') }}</h1>
         <form [formGroup]="form" fxLayout="column" fxLayoutGap="24px">
             <div class="dsh-body-1">
                 {{ c('description') }}
@@ -28,7 +28,7 @@
         <mat-divider></mat-divider>
         <ng-container *ngIf="form.value.type === type.Invoice">
             <div fxLayout="column" fxLayoutGap="24px">
-                <h1 class="dsh-headline">{{ c('invoiceTitle') }}</h1>
+                <h1 class="mat-headline-small">{{ c('invoiceTitle') }}</h1>
                 <dsh-create-invoice-form
                     [formControl]="createInvoiceFormControl"
                     [shops]="shops"

@@ -11,7 +11,7 @@
                 walletAccount$ | async as account;
                 else (isLoading$ | async) ? loading : error ? error : null
             "
-            class="dsh-headline"
+            class="mat-headline-small"
         >
             {{ account.available.amount | amountCurrency: account.available.currency }}
         </div>
