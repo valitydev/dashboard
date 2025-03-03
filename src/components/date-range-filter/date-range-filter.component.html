@@ -14,7 +14,7 @@
             <div
                 *ngFor="let preset of presets"
                 [ngClass]="{ 'dsh-date-range-filter-preset-active': preset === value.preset }"
-                class="dsh-subheading-2 preset"
+                class="mat-body-large preset"
                 (click)="selectPreset(preset)"
             >
                 {{ (presetLabels$ | async)?.[preset] }}
