@@ -8,5 +8,5 @@
         *ngIf="contract$ | async as contract"
         [contract]="contract"
     ></dsh-contract-details>
-    <div *ngIf="errorOccurred$ | async" class="dsh-body-1">{{ t('error') }}</div>
+    <div *ngIf="errorOccurred$ | async" class="mat-body-medium">{{ t('error') }}</div>
 </div>

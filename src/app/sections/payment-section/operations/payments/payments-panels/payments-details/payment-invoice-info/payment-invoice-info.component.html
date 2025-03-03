@@ -17,12 +17,12 @@
             </div>
         </div>
         <ng-container *ngIf="!invoice; else details">
-            <div *ngIf="!isLoading; else loading" class="dsh-body-1">
+            <div *ngIf="!isLoading; else loading" class="mat-body-medium">
                 {{ t('notFound') }}
             </div>
             <ng-template #loading>
                 <div *transloco="let c; scope: 'components'; read: 'components.shared'">
-                    <div class="dsh-body-1">{{ c('loading') }}</div>
+                    <div class="mat-body-medium">{{ c('loading') }}</div>
                 </div>
             </ng-template>
         </ng-container>

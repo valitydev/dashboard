@@ -15,7 +15,7 @@
         gdAlignRows="space-between"
         gdColumns="auto auto"
     >
-        <div class="dsh-body-1">{{ file.id }}</div>
+        <div class="mat-body-medium">{{ file.id }}</div>
         <button [disabled]="!!(progress$ | async)" mat-icon-button (click)="download([file.id])">
             <dsh-bi icon="save"></dsh-bi>
         </button>

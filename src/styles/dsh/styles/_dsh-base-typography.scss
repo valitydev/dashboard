@@ -71,14 +71,6 @@
 }
 
 @mixin dsh-base-typography($config, $selector: '.dsh-typography') {
-    .dsh-body-1,
-    #{$selector} {
-        @include mat.m2-typography-level($config, body-1);
-        p {
-            margin: 0;
-        }
-    }
-
     .dsh-caption {
         @include mat.m2-typography-level($config, caption);
     }
