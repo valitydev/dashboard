@@ -40,7 +40,7 @@
                 ></dsh-bi>
             </div>
             <ng-template #cellTpl>
-                <div [class.dsh-body-2]="item.level === 0">
+                <div [class.mat-title-small]="item.level === 0">
                     <ng-container *ngIf="cellsTemplates[column.field]; else defaultCellTpl">
                         <ng-container
                             *ngTemplateOutlet="

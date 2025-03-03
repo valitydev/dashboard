@@ -6,7 +6,7 @@
     <ng-container>
         <dsh-menu-item
             *ngIf="activeOrg$ | async as activeOrg"
-            class="dsh-body-2"
+            class="mat-title-small"
             (click)="toActiveOrg(activeOrg.id)"
             >{{ activeOrg.name }}</dsh-menu-item
         >
@@ -14,7 +14,7 @@
         <dsh-menu-item (click)="openOrgList()">{{ t('orgList') }}</dsh-menu-item>
     </ng-container>
     <mat-divider></mat-divider>
-    <span class="dsh-body-2">{{ username }}</span>
+    <span class="mat-title-small">{{ username }}</span>
     <dsh-menu-item
         *ngFor="let linkConfig of userLinksConfig$ | async"
         (click)="openBlank(linkConfig.href)"
