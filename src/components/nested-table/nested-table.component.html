@@ -18,7 +18,7 @@
             *matCellDef="let item; let itemIndex = index"
             [style.width.px]="0"
             [style]="column.style"
-            class="dsh-body-1"
+            class="mat-body-medium"
             mat-cell
         >
             <div
@@ -40,7 +40,7 @@
                 ></dsh-bi>
             </div>
             <ng-template #cellTpl>
-                <div [class.dsh-body-2]="item.level === 0">
+                <div [class.mat-title-small]="item.level === 0">
                     <ng-container *ngIf="cellsTemplates[column.field]; else defaultCellTpl">
                         <ng-container
                             *ngTemplateOutlet="

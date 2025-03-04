@@ -6,7 +6,7 @@ import { Component, HostBinding } from '@angular/core';
     standalone: false,
 })
 export class TextComponent {
-    @HostBinding('class.dsh-headline') dshHeadlineClass = true;
+    @HostBinding('class.mat-headline-small') dshHeadlineClass = true;
 
     text: string;
 }

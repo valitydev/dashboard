@@ -1,7 +1,7 @@
 <ng-container
     *transloco="let t; scope: 'organization-section'; read: 'organizationSection.organizationRoles'"
 >
-    <div *ngIf="isOwner; else notOwner" class="dsh-body-1">{{ t('owner') }}</div>
+    <div *ngIf="isOwner; else notOwner" class="mat-body-medium">{{ t('owner') }}</div>
 
     <ng-template #notOwner>
         <div
@@ -24,10 +24,10 @@
                     </dsh-limited-list>
                 </dsh-collapse>
                 <ng-template #roleWithoutScopes>
-                    <div class="dsh-body-1">{{ (roleIdDict$ | async)?.[role.id] }}</div>
+                    <div class="mat-body-medium">{{ (roleIdDict$ | async)?.[role.id] }}</div>
                 </ng-template>
             </ng-container>
         </div>
-        <ng-template #noRoles><div class="dsh-body-1">-</div></ng-template>
+        <ng-template #noRoles><div class="mat-body-medium">-</div></ng-template>
     </ng-template>
 </ng-container>

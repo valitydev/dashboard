@@ -11,12 +11,17 @@
         <div class="mat-title-large">{{ t('title') }}</div>
     </div>
     <ng-container *ngIf="isLoading$ | async; else afterLoading">
-        <div *transloco="let c; scope: 'components'; read: 'components.shared'" class="dsh-body-1">
+        <div
+            *transloco="let c; scope: 'components'; read: 'components.shared'"
+            class="mat-body-medium"
+        >
             {{ c('loading') }}
         </div>
     </ng-container>
     <ng-template #afterLoading>
-        <div *ngIf="errorOccurred$ | async; else content" class="dsh-body-1">{{ t('error') }}</div>
+        <div *ngIf="errorOccurred$ | async; else content" class="mat-body-medium">
+            {{ t('error') }}
+        </div>
     </ng-template>
     <ng-template #content>
         <dsh-payment-details

@@ -3,11 +3,11 @@
     fxLayout="column"
     fxLayoutGap="8px"
 >
-    <div class="dsh-body-2 dsh-limited-list-title">{{ title }}</div>
+    <div class="mat-title-small dsh-limited-list-title">{{ title }}</div>
     <ng-content></ng-content>
     <div
         *ngIf="!displayedAll && contentChildren?.length > displayedCount"
-        class="dsh-limited-list-show-more dsh-caption"
+        class="dsh-limited-list-show-more mat-body-small"
         (click)="showMore()"
     >
         {{ t('showMore') }}

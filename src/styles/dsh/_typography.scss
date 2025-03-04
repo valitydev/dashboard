@@ -1,5 +1,3 @@
-@use 'styles/dsh-base-typography';
-
 @use '../../components/layout/card/card-theme';
 @use '../../components/layout/panel/panel-theme';
 @use '../../components/layout/dropdown/dropdown-theme';
@@ -24,7 +22,6 @@
 @use '../../components/charts/charts-theme';
 
 @mixin dsh-typography($config) {
-    @include dsh-base-typography.dsh-base-typography($config);
     @include state-nav-theme.dsh-state-nav-typography($config);
     @include card-theme.dsh-card-typography($config);
     @include dropdown-theme.dsh-dropdown-typography($config);

@@ -1,7 +1,7 @@
 <dsh-row fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="24px">
     <dsh-row-label fxFlex>{{ payment.invoiceID }}.{{ payment.id }}</dsh-row-label>
     <dsh-row-label fxFlex>
-        <div class="dsh-body-2">
+        <div class="mat-title-small">
             <dsh-balance [amount]="payment.amount" [currency]="payment.currency"></dsh-balance>
         </div>
     </dsh-row-label>

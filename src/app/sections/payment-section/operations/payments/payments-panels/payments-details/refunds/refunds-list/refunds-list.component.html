@@ -15,7 +15,7 @@
     </div>
     <ng-container *ngIf="!loading; else loader">
         <div *ngIf="isEmptyList">
-            <div class="dsh-body-1">{{ t('emptyRefunds') }}</div>
+            <div class="mat-body-medium">{{ t('emptyRefunds') }}</div>
         </div>
         <div *ngIf="hasMore">
             <button
@@ -32,6 +32,6 @@
 
 <ng-template #loader>
     <div *transloco="let c; scope: 'components'; read: 'components.shared'">
-        <div class="dsh-body-1">{{ c('loading') }}</div>
+        <div class="mat-body-medium">{{ c('loading') }}</div>
     </div>
 </ng-template>

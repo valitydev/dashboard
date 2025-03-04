@@ -3,7 +3,7 @@
         {{ invoice.product }}
     </dsh-row-label>
     <dsh-row-label fxFlex.gt-md="10">
-        <span class="dsh-body-2">{{ invoice.amount | amountCurrency: invoice.currency }}</span>
+        <span class="mat-title-small">{{ invoice.amount | amountCurrency: invoice.currency }}</span>
     </dsh-row-label>
     <dsh-row-label fxFlex.gt-md="10" fxHide.lt-md>
         <dsh-status [color]="invoice.status | invoiceStatusColor">{{

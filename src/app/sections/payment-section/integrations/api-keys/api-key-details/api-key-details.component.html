@@ -6,7 +6,7 @@
     <div fxLayout="column" fxLayoutGap="24px">
         <div fxLayout="column" gdColumns="1fr 1fr 1fr" gdColumns.lt-md="1fr" gdGap="24px">
             <dsh-details-item [title]="t('name')">
-                <div class="dsh-body-1">
+                <div class="mat-body-medium">
                     {{ apiKey.name }}
                 </div>
             </dsh-details-item>
@@ -16,7 +16,9 @@
                 }}</dsh-status>
             </dsh-details-item>
             <dsh-details-item [title]="t('createdAt')">
-                <div class="dsh-body-1">{{ apiKey.createdAt | date: 'dd MMMM yyyy, HH:mm' }}</div>
+                <div class="mat-body-medium">
+                    {{ apiKey.createdAt | date: 'dd MMMM yyyy, HH:mm' }}
+                </div>
             </dsh-details-item>
         </div>
         <mat-divider></mat-divider>

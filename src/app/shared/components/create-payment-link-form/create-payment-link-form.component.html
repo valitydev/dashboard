@@ -3,7 +3,7 @@
     fxLayout="column"
     fxLayoutGap="32px"
 >
-    <div class="dsh-body-1">{{ c('description') }}</div>
+    <div class="mat-body-medium">{{ c('description') }}</div>
     <div [formGroup]="control" fxLayout="column" fxLayoutGap="24px">
         <div fxLayout="column" fxLayoutGap="16px">
             <mat-form-field>
@@ -46,7 +46,7 @@
                 c('form.paymentFlowHold')
             }}</mat-checkbox>
             <ng-container *ngIf="control.value.paymentFlowHold">
-                <div class="dsh-subheading-1">{{ c('form.paymentFlowHoldPolicy') }}:</div>
+                <div class="mat-body-medium">{{ c('form.paymentFlowHoldPolicy') }}:</div>
                 <mat-radio-group
                     formControlName="onHoldExpiration"
                     gdColumns="1fr"

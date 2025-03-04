@@ -3,7 +3,7 @@
     fxLayout="column"
     fxLayoutGap="24px"
 >
-    <div class="dsh-headline">{{ organization?.name }}</div>
+    <div class="mat-headline-small">{{ organization?.name }}</div>
 
     <dsh-details-item [title]="t('numberOfEmployees')">
         {{ membersCount$ | async }}
