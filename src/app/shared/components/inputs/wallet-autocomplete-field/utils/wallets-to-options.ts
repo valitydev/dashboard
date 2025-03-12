@@ -1,5 +1,5 @@
 import { Option } from '@vality/matez';
-import { Wallet } from '@vality/swag-wallet';
+import { Wallet } from '@vality/swag-wallets';
 
 const walletToOption = (wallet: Wallet): Option<string> => ({
     label: `${wallet?.id} - ${wallet?.name}`,

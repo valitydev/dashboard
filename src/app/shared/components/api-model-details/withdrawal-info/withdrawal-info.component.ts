@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Withdrawal } from '@vality/swag-wallet';
+import { Withdrawal } from '@vality/swag-wallets';
 
 @Component({
     selector: 'dsh-withdrawal-info',

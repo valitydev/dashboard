@@ -1,4 +1,4 @@
-import { DestinationsTopic, WebhookScope, WithdrawalsTopic } from '@vality/swag-wallet';
+import { DestinationsTopic, WebhookScope, WithdrawalsTopic } from '@vality/swag-wallets';
 
 import TopicEnum = WebhookScope.TopicEnum;
 

@@ -1,4 +1,4 @@
-import { WithdrawalStatus } from '@vality/swag-wallet';
+import { WithdrawalStatus } from '@vality/swag-wallets';
 
 import { MainInfoForm } from '../main-info-filters';
 import { WithdrawalAmountForm } from '../withdrawal-sum-filter';

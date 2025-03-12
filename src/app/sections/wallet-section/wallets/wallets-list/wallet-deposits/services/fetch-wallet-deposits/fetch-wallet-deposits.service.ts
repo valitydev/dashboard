@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { Deposit } from '@vality/swag-wallet';
+import { Deposit } from '@vality/swag-wallets';
 
 import { DepositsService } from '@dsh/app/api/wallet';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';

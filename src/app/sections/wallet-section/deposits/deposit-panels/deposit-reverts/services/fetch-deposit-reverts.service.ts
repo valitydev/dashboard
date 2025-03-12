@@ -1,8 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService } from '@vality/matez';
-import { DepositRevert } from '@vality/swag-wallet';
-import { ListDepositRevertsRequestParams } from '@vality/swag-wallet/lib/api/deposits.service';
+import { DepositRevert, ListDepositRevertsRequestParams } from '@vality/swag-wallets';
 import { Observable, of } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';
 

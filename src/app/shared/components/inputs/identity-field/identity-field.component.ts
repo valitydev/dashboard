@@ -6,7 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FormControlSuperclass, createControlProviders } from '@vality/matez';
-import { Identity } from '@vality/swag-wallet';
+import { Identity } from '@vality/swag-wallets';
 import { FlexModule } from 'ng-flex-layout';
 
 import { IdentitiesService } from '@dsh/app/api/wallet';

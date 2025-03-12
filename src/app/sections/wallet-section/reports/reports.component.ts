@@ -5,7 +5,7 @@ import { NonNullableFormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslocoService } from '@jsverse/transloco';
 import { QueryParamsService } from '@vality/matez';
-import { Report } from '@vality/swag-wallet';
+import { Report } from '@vality/swag-wallets';
 import isEqual from 'lodash-es/isEqual';
 import moment from 'moment';
 import { distinctUntilChanged, filter, first, map, startWith } from 'rxjs/operators';

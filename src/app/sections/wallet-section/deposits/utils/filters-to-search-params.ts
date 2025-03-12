@@ -1,4 +1,4 @@
-import { ListDepositsRequestParams } from '@vality/swag-wallet/lib/api/deposits.service';
+import { ListDepositsRequestParams } from '@vality/swag-wallets';
 
 import { DepositsFilters } from '../deposits-filters/types/deposits-filters';
 

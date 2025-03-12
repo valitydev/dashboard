@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Deposit } from '@vality/swag-wallet';
+import { Deposit } from '@vality/swag-wallets';
 import { Observable } from 'rxjs';
 
 import { ExpandedIdManager, Fragment } from '@dsh/app/shared/services';

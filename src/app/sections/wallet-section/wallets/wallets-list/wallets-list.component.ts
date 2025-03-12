@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { Wallet } from '@vality/swag-wallet';
+import { Wallet } from '@vality/swag-wallets';
 
 @Component({
     selector: 'dsh-wallets-list',

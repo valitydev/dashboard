@@ -1,8 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService } from '@vality/matez';
-import { Deposit } from '@vality/swag-wallet';
-import { ListDepositsRequestParams } from '@vality/swag-wallet/lib/api/deposits.service';
+import { Deposit, ListDepositsRequestParams } from '@vality/swag-wallets';
 import { isNumber } from 'lodash-es';
 import { Observable, of } from 'rxjs';
 import { catchError, shareReplay } from 'rxjs/operators';

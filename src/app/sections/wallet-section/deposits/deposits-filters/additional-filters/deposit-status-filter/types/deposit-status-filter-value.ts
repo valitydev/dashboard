@@ -1,3 +1,3 @@
-import { DepositStatus } from '@vality/swag-wallet';
+import { DepositStatus } from '@vality/swag-wallets';
 
 export type DepositStatusFilterValue = DepositStatus.StatusEnum | null;

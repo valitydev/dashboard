@@ -1,7 +1,6 @@
 import { DestroyRef, Inject, Injectable } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Wallet } from '@vality/swag-wallet';
-import { ListWalletsRequestParams } from '@vality/swag-wallet/lib/api/wallets.service';
+import { ListWalletsRequestParams, Wallet } from '@vality/swag-wallets';
 import { Observable, shareReplay } from 'rxjs';
 
 import { WalletsService } from '@dsh/app/api/wallet';

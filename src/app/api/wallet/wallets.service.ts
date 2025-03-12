@@ -1,5 +1,5 @@
 import { Injectable, Injector } from '@angular/core';
-import { WalletsService as ApiWalletsService, Wallet } from '@vality/swag-wallet';
+import { WalletsService as ApiWalletsService, Wallet } from '@vality/swag-wallets';
 import { Observable, of, switchMap } from 'rxjs';
 import { catchError, map, shareReplay } from 'rxjs/operators';
 

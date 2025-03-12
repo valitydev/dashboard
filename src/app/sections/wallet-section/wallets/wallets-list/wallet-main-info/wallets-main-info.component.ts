@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
 import { ComponentChanges } from '@vality/matez';
-import { Wallet } from '@vality/swag-wallet';
+import { Wallet } from '@vality/swag-wallets';
 
 import { FetchWalletAccountService } from '../wallet-account-info/services';
 

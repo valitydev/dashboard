@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/cor
 import { FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormGroupSuperclass } from '@vality/matez';
-import { ListWithdrawalsRequestParams } from '@vality/swag-wallet';
+import { ListWithdrawalsRequestParams } from '@vality/swag-wallets';
 
 import { AdditionalFilters, AdditionalFiltersForm } from '../../types';
 import { filtersToForm, formToFilters } from '../../utils';
