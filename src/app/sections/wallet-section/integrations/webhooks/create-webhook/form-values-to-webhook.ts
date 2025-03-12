@@ -1,4 +1,4 @@
-import { Webhook } from '@vality/swag-wallet';
+import { Webhook } from '@vality/swag-wallets';
 
 import { FormParams } from './form-params';
 

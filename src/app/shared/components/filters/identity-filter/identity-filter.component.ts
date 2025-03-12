@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { createControlProviders } from '@vality/matez';
-import { Identity } from '@vality/swag-wallet';
+import { Identity } from '@vality/swag-wallets';
 import { combineLatest } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 

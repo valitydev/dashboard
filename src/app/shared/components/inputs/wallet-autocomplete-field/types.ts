@@ -1,4 +1,4 @@
-import { Wallet } from '@vality/swag-wallet';
+import { Wallet } from '@vality/swag-wallets';
 
 export type WalletId = Wallet['id'];
 export type WalletName = Wallet['name'];

@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { Withdrawal } from '@vality/swag-wallet';
+import { Withdrawal } from '@vality/swag-wallets';
 import { Observable } from 'rxjs';
 
 import { WithdrawalsService } from '@dsh/app/api/wallet';

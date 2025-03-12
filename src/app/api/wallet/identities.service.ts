@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IdentitiesService as ApiIdentitiesService, Identity } from '@vality/swag-wallet';
+import { IdentitiesService as ApiIdentitiesService, Identity } from '@vality/swag-wallets';
 import { Subject, defer, switchMap } from 'rxjs';
 import { map, shareReplay, startWith } from 'rxjs/operators';
 

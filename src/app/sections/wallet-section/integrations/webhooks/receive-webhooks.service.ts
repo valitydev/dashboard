@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService } from '@vality/matez';
-import { Webhook } from '@vality/swag-wallet';
+import { Webhook } from '@vality/swag-wallets';
 import sortBy from 'lodash-es/sortBy';
 import { BehaviorSubject, Observable, Subject, forkJoin, of } from 'rxjs';
 import { catchError, filter, map, shareReplay, switchMap } from 'rxjs/operators';

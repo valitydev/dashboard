@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { DepositStatus } from '@vality/swag-wallet';
+import { DepositStatus } from '@vality/swag-wallets';
 
 import { WalletDictionaryService } from '@dsh/app/api/wallet';
 

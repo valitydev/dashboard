@@ -1,4 +1,4 @@
-import { DepositStatus } from '@vality/swag-wallet';
+import { DepositStatus } from '@vality/swag-wallets';
 
 import { MainInfoFilters } from '../main-info-filters';
 

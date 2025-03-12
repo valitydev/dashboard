@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { DepositRevert } from '@vality/swag-wallet';
+import { DepositRevert } from '@vality/swag-wallets';
 
 import { WalletDictionaryService } from '@dsh/app/api/wallet';
 

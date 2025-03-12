@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DepositRevert } from '@vality/swag-wallet';
+import { DepositRevert } from '@vality/swag-wallets';
 
 import { StatusColor } from '../../../../../theme-manager';
 

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { Webhook, WebhookScope, WithdrawalsTopic } from '@vality/swag-wallet';
+import { Webhook, WebhookScope, WithdrawalsTopic } from '@vality/swag-wallets';
 
 import { DeleteWebhookParams } from './webhook-actions';
 

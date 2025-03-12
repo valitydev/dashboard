@@ -4,7 +4,7 @@ import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 import {
     Contract,
     InternationalLegalEntity,
-    LegalEntityAllOf,
+    LegalEntity,
     RussianLegalEntity,
     Shop,
 } from '@vality/swag-payments';
@@ -16,7 +16,7 @@ import { ContractsService } from '@dsh/app/api/payments';
 import { CommonError } from '@dsh/app/shared';
 import { errorTo, progressTo } from '@dsh/utils';
 
-import EntityTypeEnum = LegalEntityAllOf.EntityTypeEnum;
+import EntityTypeEnum = LegalEntity.EntityTypeEnum;
 
 export type ExistingContractForm<T extends EntityTypeEnum = EntityTypeEnum> = Overwrite<
     Contract,

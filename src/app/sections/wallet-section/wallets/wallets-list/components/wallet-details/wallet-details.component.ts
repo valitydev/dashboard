@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Wallet } from '@vality/swag-wallet';
+import { Wallet } from '@vality/swag-wallets';
 
 @Component({
     selector: 'dsh-wallet-details',

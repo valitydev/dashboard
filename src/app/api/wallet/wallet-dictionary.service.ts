@@ -7,7 +7,7 @@ import {
     Report,
     Withdrawal,
     WithdrawalsTopic,
-} from '@vality/swag-wallet';
+} from '@vality/swag-wallets';
 
 import { DictionaryService } from '../utils';
 

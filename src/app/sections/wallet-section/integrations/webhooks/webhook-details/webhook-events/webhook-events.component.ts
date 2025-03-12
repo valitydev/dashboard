@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { DestinationsTopic, WebhookScope, WithdrawalsTopic } from '@vality/swag-wallet';
+import { DestinationsTopic, WebhookScope, WithdrawalsTopic } from '@vality/swag-wallets';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService } from '@vality/matez';
-import { Webhook } from '@vality/swag-wallet';
+import { Webhook } from '@vality/swag-wallets';
 
 import { DeleteWebhookService } from '../delete-webhook';
 import { DeleteWebhookParams } from '../webhook-details/webhook-actions';
