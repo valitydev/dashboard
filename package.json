@@ -40,7 +40,6 @@
     "@vality/matez": "19.0.1-pr-423-eca1120.0",
     "@vality/swag-anapi-v2": "2.0.1-dc90399.0",
     "@vality/swag-api-keys-v2": "0.1.2",
-    "@vality/swag-claim-management": "0.1.1-d151b50.0",
     "@vality/swag-organizations": "1.0.1-67dcada.0",
     "@vality/swag-payments": "0.1.3-fd6802c.0",
     "@vality/swag-url-shortener": "0.1.1-17b1e98.0",
