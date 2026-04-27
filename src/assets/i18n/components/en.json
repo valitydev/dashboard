@@ -41,26 +41,6 @@
             "bootstrapAppFailed": "Initialization error"
         }
     },
-    "claimField": {
-        "label": "Claim identifier"
-    },
-    "claimFilter": {
-        "label": "Claim"
-    },
-    "claimStatusesField": {
-        "statuses": {
-            "accepted": "Accepted",
-            "denied": "Denied",
-            "pending": "Pending",
-            "pendingAcceptance": "Waiting for approval",
-            "review": "On review",
-            "revoked": "Revoked"
-        }
-    },
-    "createInternationalShopEntity": {
-        "send": "Send for review",
-        "title": "Request to create a shop"
-    },
     "createInvoiceForm": {
         "form": {
             "amount": "Amount",
@@ -100,10 +80,6 @@
             "uz": "uz - Uzbek"
         }
     },
-    "createdExistingSwitch": {
-        "created": "Specify new",
-        "existing": "Use existing"
-    },
     "currencyAutocompleteField": {
         "label": "Currency"
     },
@@ -119,13 +95,6 @@
         },
         "status": "Status"
     },
-    "existingContractForm": {
-        "errors": {
-            "onlyInternationalShopCanBeSelected": "You can only choose an international shop",
-            "onlyRussianShopCanBeSelected": "You can only choose a Russian shop"
-        },
-        "useShop": "Use a shop-based contract"
-    },
     "expandableRadioGroup": {
         "any": "Any",
         "hideAllStatuses": "Hide all statuses",
@@ -139,10 +108,6 @@
         "identityField": {
             "label": "Wallet holder"
         }
-    },
-    "internationalShopForm": {
-        "organization": "Organization details",
-        "paymentInstitution": "Payment organization"
     },
     "invoiceDetails": {
         "amount": "Amount",
@@ -178,13 +143,6 @@
     "lastUpdated": {
         "lastUpdate": "Last update",
         "update": "Update"
-    },
-    "newInternationalContractorForm": {
-        "actualAddress": "Address of location (if different from the place of registration)",
-        "country": "Country of residence",
-        "organizationName": "Name",
-        "registeredAddress": "Address of the place of registration",
-        "tradingName": "Trade name (if applicable)"
     },
     "pageNotFound": {
         "back": "Back"
@@ -222,14 +180,6 @@
         "next": "Next",
         "save": "Save",
         "showMore": "Show more"
-    },
-    "shopCreation": {
-        "created": "The claim for the creation of the shop has been successfully created"
-    },
-    "shopDetailsForm": {
-        "category": "Shop category",
-        "name": "Name of the shop",
-        "url": "Shop URL"
     },
     "shopsField": {
         "label": "Shop"

@@ -41,26 +41,6 @@
             "bootstrapAppFailed": "Ошибка инициализации"
         }
     },
-    "claimField": {
-        "label": "Идентификатор заявки"
-    },
-    "claimFilter": {
-        "label": "Заявка"
-    },
-    "claimStatusesField": {
-        "statuses": {
-            "accepted": "Одобрена",
-            "denied": "Отклонена",
-            "pending": "В ожидании",
-            "pendingAcceptance": "В ожидании одобрения",
-            "review": "На рассмотрении",
-            "revoked": "Отозвана"
-        }
-    },
-    "createInternationalShopEntity": {
-        "send": "Отправить на рассмотрение",
-        "title": "Заявка на создание магазина"
-    },
     "createInvoiceForm": {
         "form": {
             "amount": "Стоимость",
@@ -100,10 +80,6 @@
             "uz": "uz - Узбекский"
         }
     },
-    "createdExistingSwitch": {
-        "created": "Указать новые",
-        "existing": "Использовать существующие"
-    },
     "currencyAutocompleteField": {
         "label": "Валюта"
     },
@@ -119,13 +95,6 @@
         },
         "status": "Статус"
     },
-    "existingContractForm": {
-        "errors": {
-            "onlyInternationalShopCanBeSelected": "Можно выбрать только международный магазин",
-            "onlyRussianShopCanBeSelected": "Можно выбрать только российский магазин"
-        },
-        "useShop": "Использовать контракт на основе магазина"
-    },
     "expandableRadioGroup": {
         "any": "Любой",
         "hideAllStatuses": "Скрыть все статусы",
@@ -139,10 +108,6 @@
         "identityField": {
             "label": "Владелец кошелька"
         }
-    },
-    "internationalShopForm": {
-        "organization": "Сведения об организации",
-        "paymentInstitution": "Платежная организация"
     },
     "invoiceDetails": {
         "amount": "Стоимость",
@@ -178,13 +143,6 @@
     "lastUpdated": {
         "lastUpdate": "Последнее обновление",
         "update": "Обновить"
-    },
-    "newInternationalContractorForm": {
-        "actualAddress": "Адрес места нахождения (если отличается от места регистрации)",
-        "country": "Страна резиденции",
-        "organizationName": "Наименование",
-        "registeredAddress": "Адрес места регистрации",
-        "tradingName": "Торговое наименование (если применимо)"
     },
     "pageNotFound": {
         "back": "Назад"
@@ -222,14 +180,6 @@
         "next": "Далее",
         "save": "Сохранить",
         "showMore": "Показать еще"
-    },
-    "shopCreation": {
-        "created": "Заявка на создание магазина успешно создана"
-    },
-    "shopDetailsForm": {
-        "category": "Категория магазина",
-        "name": "Наименование магазина",
-        "url": "URL адрес магазина"
     },
     "shopsField": {
         "label": "Магазин"

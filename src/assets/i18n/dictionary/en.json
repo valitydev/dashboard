@@ -88,16 +88,6 @@
             "revoked": "Revoked"
         }
     },
-    "claimManagement": {
-        "claimStatus": {
-            "accepted": "Accepted",
-            "denied": "Denied",
-            "pending": "Pending",
-            "pendingAcceptance": "Waiting for approval",
-            "review": "In review",
-            "revoked": "Revoked"
-        }
-    },
     "organizations": {
         "resourceScopeId": {
             "Shop": "Shops"
