@@ -6,7 +6,6 @@ import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { AuthModule } from '@dsh/app/auth';
-import { ShopCreationModule } from '@dsh/app/shared/components/shop-creation';
 
 import { FetchShopsService } from './services/fetch-shops/fetch-shops.service';
 import { ShopsBalanceService } from './services/shops-balance/shops-balance.service';
@@ -24,7 +23,6 @@ import { ShopsComponent } from './shops.component';
         CommonModule,
         RouterModule,
         ShopListModule,
-        ShopCreationModule,
         MatButtonModule,
         TranslocoModule,
         AuthModule,

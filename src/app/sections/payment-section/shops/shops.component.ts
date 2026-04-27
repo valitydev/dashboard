@@ -2,8 +2,6 @@ import { ChangeDetectionStrategy, Component, DestroyRef, OnInit } from '@angular
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { take } from 'rxjs/operators';
 
-import { ShopCreationService } from '@dsh/app/shared/components/shop-creation';
-
 import { PaymentInstitutionRealmService, RealmShopsService } from '../services';
 
 import { FetchShopsService } from './services/fetch-shops/fetch-shops.service';
@@ -25,7 +23,6 @@ export class ShopsComponent implements OnInit {
     constructor(
         private shopsService: FetchShopsService,
         private expandedIdManager: ShopsExpandedIdManagerService,
-        private createShopService: ShopCreationService,
         private realmShopsService: RealmShopsService,
         private realmService: PaymentInstitutionRealmService,
         private dr: DestroyRef,
@@ -38,10 +35,6 @@ export class ShopsComponent implements OnInit {
         this.expandedIdManager.expandedId$.pipe(take(1)).subscribe((offsetIndex: number) => {
             this.shopsService.initOffsetIndex(offsetIndex);
         });
-    }
-
-    createShop(): void {
-        this.createShopService.createShop({ shops$: this.realmShopsService.shops$ });
     }
 
     refreshData(): void {

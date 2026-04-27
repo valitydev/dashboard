@@ -396,7 +396,6 @@
             "error": "Error during shop activation",
             "success": "The shop is activated"
         },
-        "createShop": "Create a shop",
         "emptySearchResult": "There are no shops yet",
         "panel": {
             "actions": "Actions",
