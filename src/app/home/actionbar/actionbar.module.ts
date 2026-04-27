@@ -10,7 +10,6 @@ import { RouterModule } from '@angular/router';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
-import { ClaimsService } from '@dsh/app/api/claim-management';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { FetchOrganizationsModule } from '@dsh/app/shared/services/fetch-organizations';
 import { IndicatorsModule } from '@dsh/components/indicators';
@@ -50,7 +49,6 @@ import { UserDropdownComponent } from './components/user-dropdown/user-dropdown.
         SelectActiveOrganizationDialogComponent,
         UserDropdownComponent,
     ],
-    providers: [ClaimsService],
     exports: [ActionbarComponent],
 })
 export class ActionbarModule {}

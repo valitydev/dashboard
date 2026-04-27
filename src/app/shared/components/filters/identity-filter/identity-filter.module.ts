@@ -10,8 +10,6 @@ import { FlexModule } from 'ng-flex-layout';
 import { IdentityFieldComponent } from '@dsh/app/shared/components/inputs/identity-field';
 import { FilterModule } from '@dsh/components/filter';
 
-import { ClaimFieldModule } from '../../inputs/claim-field';
-
 import { IdentityFilterComponent } from './identity-filter.component';
 
 @NgModule({
@@ -20,7 +18,6 @@ import { IdentityFilterComponent } from './identity-filter.component';
         TranslocoModule,
         ReactiveFormsModule,
         FilterModule,
-        ClaimFieldModule,
         FlexModule,
         MatFormFieldModule,
         MatOptionModule,

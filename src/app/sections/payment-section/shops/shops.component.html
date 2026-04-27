@@ -3,15 +3,6 @@
     fxLayout="column"
     fxLayoutGap="32px"
 >
-    <div
-        *ngIf="'Claims' | isAccessAllowed"
-        fxLayout="column"
-        fxLayout.gt-sm="row"
-        fxLayoutAlign="end"
-        fxLayoutGap="16px"
-    >
-        <button mat-flat-button (click)="createShop()">{{ t('createShop') }}</button>
-    </div>
     <dsh-shops-list
         [hasMore]="hasMore$ | async"
         [isLoading]="isLoading$ | async"

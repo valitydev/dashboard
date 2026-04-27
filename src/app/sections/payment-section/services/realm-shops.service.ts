@@ -23,4 +23,8 @@ export class RealmShopsService {
         private shopsDataService: ShopsDataService,
         private realmService: PaymentInstitutionRealmService,
     ) {}
+
+    reloadShops(): void {
+        this.shopsDataService.reloadShops();
+    }
 }

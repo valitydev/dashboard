@@ -15,7 +15,6 @@ import { ExtendedModule, FlexModule, GridModule } from 'ng-flex-layout';
 import { ApiModelRefsModule, IdentityFilterModule } from '@dsh/app/shared';
 import { AccordionTableModule } from '@dsh/app/shared/components/accordion-table';
 import { DialogModule } from '@dsh/app/shared/components/dialog';
-import { ClaimFieldModule } from '@dsh/app/shared/components/inputs/claim-field';
 import { IdentityFieldComponent } from '@dsh/app/shared/components/inputs/identity-field';
 import { DateRangeFilterModule } from '@dsh/components/date-range-filter';
 import { FilterModule } from '@dsh/components/filter';
@@ -41,7 +40,6 @@ import { ReportsComponent } from './reports.component';
         MatFormFieldModule,
         MatOptionModule,
         MatSelectModule,
-        ClaimFieldModule,
         FilterModule,
         TranslocoModule,
         IdentityFilterModule,

@@ -23,7 +23,6 @@ import { QUERY_PARAMS_SERIALIZERS } from '@vality/matez';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { AnapiModule } from '@dsh/app/api/anapi';
-import { ClaimManagementModule } from '@dsh/app/api/claim-management';
 import { PaymentsModule } from '@dsh/app/api/payments';
 import { UrlShortenerModule } from '@dsh/app/api/url-shortener';
 import { WalletModule } from '@dsh/app/api/wallet';
@@ -62,7 +61,6 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         IconsModule,
         FlexLayoutModule,
         MatDialogModule,
-        ClaimManagementModule,
         AnapiModule,
         PaymentsModule,
         OrganizationsModule,

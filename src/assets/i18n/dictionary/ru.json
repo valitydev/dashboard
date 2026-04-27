@@ -88,16 +88,6 @@
             "revoked": "Отозван"
         }
     },
-    "claimManagement": {
-        "claimStatus": {
-            "accepted": "Одобрена",
-            "denied": "Отклонена",
-            "pending": "В ожидании",
-            "pendingAcceptance": "В ожидании одобрения",
-            "review": "На рассмотрении",
-            "revoked": "Отозвана"
-        }
-    },
     "organizations": {
         "resourceScopeId": {
             "Shop": "Магазины"

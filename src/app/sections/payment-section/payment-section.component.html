@@ -1,5 +1,5 @@
 <div fxLayout="column" fxLayoutGap="32px">
-    <dsh-no-shops-alert *ngIf="noShops$ | async" (action)="navigateToShops()"></dsh-no-shops-alert>
+    <dsh-no-shops-alert *ngIf="noShops$ | async" (action)="reloadShops()"></dsh-no-shops-alert>
     <dsh-route-navbar-layout [routeName]="activeSection$ | async">
         <div fxLayout="row" fxLayout.gt-sm="column">
             <ng-container *ngFor="let item of navbarItemConfig$ | async">
