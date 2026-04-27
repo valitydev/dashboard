@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslocoService } from '@jsverse/transloco';
 import { PaymentInstitution } from '@vality/swag-payments';
 import { Observable, ReplaySubject, Subject, combineLatest, defer } from 'rxjs';
-import { filter, first, map, switchMapTo } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 import { SHOPS } from '@dsh/app/shared/components/inputs/shop-field';
 
@@ -37,7 +37,6 @@ export class PaymentSectionComponent implements OnInit {
 
     private activeSectionChange$ = new ReplaySubject<NavbarItemConfig>();
     private realmChange$ = new Subject<PaymentInstitution.RealmEnum>();
-    private navigateToShops$ = new Subject<void>();
 
     constructor(
         private realmService: PaymentInstitutionRealmService,
@@ -70,13 +69,6 @@ export class PaymentSectionComponent implements OnInit {
                         queryParamsHandling: 'preserve',
                     }),
             );
-
-        this.navigateToShops$.pipe(switchMapTo(this.realmService.realm$.pipe(first()))).subscribe(
-            (realm) =>
-                void this.router.navigate(['../../', 'realm', realm, 'shops'], {
-                    relativeTo: this.route,
-                }),
-        );
     }
 
     setActiveSection(isActive: boolean, config: NavbarItemConfig): void {
@@ -93,8 +85,8 @@ export class PaymentSectionComponent implements OnInit {
         this.realmChange$.next(realm);
     }
 
-    navigateToShops(): void {
-        this.navigateToShops$.next();
+    reloadShops(): void {
+        this.realmShopsService.reloadShops();
     }
 
     private getNavbarItemLabels() {

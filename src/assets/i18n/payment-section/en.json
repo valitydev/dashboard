@@ -97,8 +97,8 @@
         "createButton": "Create invoice"
     },
     "noShopsAlert": {
-        "action": "Jump to section",
-        "description": "There are no shops yet. You can create a new shop in the \"Shops\" section."
+        "action": "Refresh",
+        "description": "There are no shops yet. Please contact support to create a shop."
     },
     "operations": {
         "invoices": {
