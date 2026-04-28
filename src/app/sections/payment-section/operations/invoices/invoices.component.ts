@@ -1,4 +1,4 @@
-import { Component, DestroyRef, OnInit } from '@angular/core';
+import { Component, DestroyRef, OnInit, isDevMode } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService, QueryParamsService } from '@vality/matez';
@@ -34,6 +34,7 @@ export class InvoicesComponent implements OnInit {
     shops$ = this.paymentInstitutionRealmService.realm$.pipe(
         filterShopsByRealm(this.shopsDataService.shops$),
     );
+    isDev = isDevMode();
 
     constructor(
         private invoicesService: FetchInvoicesService,

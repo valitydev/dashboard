@@ -6,14 +6,14 @@
         gdColumns.gt-sm="repeat(2, auto)"
         gdGap="32px"
     >
-        <ng-container *ngIf="'CreateInvoice' | isAccessAllowed">
+        <ng-container *ngIf="('CreateInvoice' | isAccessAllowed) && isDev">
             <button
                 *transloco="let i; scope: 'payment-section'; read: 'paymentSection.invoices'"
                 [disabled]="(shops$ | async).length === 0"
                 mat-flat-button
                 (click)="create()"
             >
-                {{ i('createButton') }}
+                {{ i('createButton') }} (dev)
             </button>
         </ng-container>
         <dsh-invoices-search-filters
