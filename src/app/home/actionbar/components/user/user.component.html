@@ -3,17 +3,19 @@
     fxLayout="column"
     fxLayoutGap="24px"
 >
-    <ng-container>
-        <dsh-menu-item
-            *ngIf="activeOrg$ | async as activeOrg"
-            class="mat-title-small"
-            (click)="toActiveOrg(activeOrg.id)"
-            >{{ activeOrg.name }}</dsh-menu-item
-        >
-        <dsh-menu-item (click)="selectActiveOrg()">{{ t('selectActiveOrg') }}</dsh-menu-item>
-        <dsh-menu-item (click)="openOrgList()">{{ t('orgList') }}</dsh-menu-item>
-    </ng-container>
-    <mat-divider></mat-divider>
+    @if (organization$ | async) {
+        <ng-container>
+            <dsh-menu-item
+                *ngIf="activeOrg$ | async as activeOrg"
+                class="mat-title-small"
+                (click)="toActiveOrg(activeOrg.id)"
+                >{{ activeOrg.name }}</dsh-menu-item
+            >
+            <dsh-menu-item (click)="selectActiveOrg()">{{ t('selectActiveOrg') }}</dsh-menu-item>
+            <dsh-menu-item (click)="openOrgList()">{{ t('orgList') }}</dsh-menu-item>
+        </ng-container>
+        <mat-divider></mat-divider>
+    }
     <span class="mat-title-small">{{ username }}</span>
     <dsh-menu-item
         *ngFor="let linkConfig of userLinksConfig$ | async"
