@@ -2,10 +2,18 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Member, Organization } from '@vality/swag-organizations';
 import isNil from 'lodash-es/isNil';
-import { EMPTY, Observable, ReplaySubject, combineLatest, concat, defer, of } from 'rxjs';
-import { catchError, filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
+import { Observable, ReplaySubject, combineLatest, concat, defer, of } from 'rxjs';
+import {
+    catchError,
+    distinctUntilChanged,
+    filter,
+    map,
+    shareReplay,
+    switchMap,
+    tap,
+} from 'rxjs/operators';
 
-import { DEFAULT_ORGANIZATION_NAME, MembersService, OrgsService } from '@dsh/app/api/organizations';
+import { MembersService, OrgsService } from '@dsh/app/api/organizations';
 import { RoleId } from '@dsh/app/auth/types/role-id';
 import { KeycloakTokenInfoService } from '@dsh/app/shared/services/keycloak-token-info';
 
@@ -15,15 +23,15 @@ import { ErrorService } from '../error';
     providedIn: 'root',
 })
 export class ContextOrganizationService {
-    organization$: Observable<Organization> = concat(
+    organization$: Observable<Organization | null> = concat(
         this.organizationsService.getContext().pipe(
             map(({ organizationId }) => organizationId),
             catchError((err) => {
                 if (err instanceof HttpErrorResponse && err.status === 404) {
-                    return this.switchToFirstOrCreateOrganization();
+                    return this.switchToFirstOrganization();
                 }
                 console.error(err);
-                return EMPTY;
+                return of(null);
             }),
         ),
         defer(() => this.switchOrganization$).pipe(
@@ -34,16 +42,19 @@ export class ContextOrganizationService {
             ),
         ),
     ).pipe(
+        distinctUntilChanged(),
         switchMap((orgId) =>
-            this.organizationsService.getOrg({ orgId }).pipe(
-                catchError((err) => {
-                    if (err.status === 403) {
-                        return this.switchToFirstOrCreateOrganization();
-                    }
-                    console.error(err);
-                    throw err;
-                }),
-            ),
+            orgId
+                ? this.organizationsService.getOrg({ orgId }).pipe(
+                      catchError((err) => {
+                          if (err.status === 403) {
+                              return this.switchToFirstOrganization().pipe(map(() => null));
+                          }
+                          console.error(err);
+                          return of(null);
+                      }),
+                  )
+                : of(null),
         ),
         shareReplay(1),
     );
@@ -77,20 +88,13 @@ export class ContextOrganizationService {
     ) {}
 
     switchOrganization(organizationId: string): void {
-        this.switchOrganization$.next(organizationId);
+        if (organizationId) this.switchOrganization$.next(organizationId);
     }
 
-    private createOrganization(): Observable<Organization> {
-        return this.organizationsService.createOrg({
-            organization: { name: DEFAULT_ORGANIZATION_NAME } as Organization,
-        });
-    }
-
-    private switchToFirstOrCreateOrganization() {
+    private switchToFirstOrganization() {
         return this.organizationsService.listOrgMembership({ limit: 1 }).pipe(
-            switchMap(({ result }) => (result[0] ? of(result[0]) : this.createOrganization())),
-            tap(({ id }) => this.switchOrganization(id)),
-            switchMap(() => EMPTY),
+            map(({ result }) => result[0]?.id),
+            tap((id) => this.switchOrganization(id)),
         );
     }
 }

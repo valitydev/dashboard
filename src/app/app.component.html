@@ -10,12 +10,35 @@
         "
     >
         <div>
-            <dsh-sections *ngIf="bootstrapped$ | async; else spinner"></dsh-sections>
-            <ng-template #spinner>
-                <div fxFlexAlign="center" fxLayout="row">
-                    <dsh-spinner style="margin: auto"></dsh-spinner>
-                </div>
-            </ng-template>
+            <div
+                *ngIf="noOrganization$ | async"
+                style="
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100%;
+                    padding: 24px;
+                "
+            >
+                <mat-card style="max-width: 500px; text-align: center">
+                    <mat-card-content style="padding: 48px 32px">
+                        <h2 class="mat-headline-medium" style="margin: 0 0 16px 0">
+                            {{ t('noOrganization') }}
+                        </h2>
+                        <p class="mat-body-medium" style="margin: 0; color: rgba(0, 0, 0, 0.6)">
+                            {{ t('contactSupport') }}
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <ng-container *ngIf="!(noOrganization$ | async)">
+                <dsh-sections *ngIf="bootstrapped$ | async; else spinner"></dsh-sections>
+                <ng-template #spinner>
+                    <div fxFlexAlign="center" fxLayout="row">
+                        <dsh-spinner style="margin: auto"></dsh-spinner>
+                    </div>
+                </ng-template>
+            </ng-container>
         </div>
         <div *ngIf="isDev" style="display: flex; justify-content: center">
             <div

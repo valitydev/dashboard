@@ -33,7 +33,7 @@ const ROUTES: Routes = [
             ),
             {
                 path: '',
-                redirectTo: 'payment-link',
+                redirectTo: 'api-keys',
                 pathMatch: 'full',
             },
         ],

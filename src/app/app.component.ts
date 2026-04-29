@@ -1,8 +1,10 @@
-import { Component, isDevMode } from '@angular/core';
+import { Component, inject, isDevMode } from '@angular/core';
+import { map } from 'rxjs';
 
 import { Language, LanguageService } from '@dsh/app/language';
 
 import { BootstrapService } from './bootstrap.service';
+import { ContextOrganizationService } from './shared';
 
 @Component({
     selector: 'dsh-root',
@@ -11,7 +13,12 @@ import { BootstrapService } from './bootstrap.service';
     standalone: false,
 })
 export class AppComponent {
+    private contextOrganizationService = inject(ContextOrganizationService);
+
     bootstrapped$ = this.bootstrapService.bootstrapped$;
+    noOrganization$ = this.contextOrganizationService.organization$.pipe(
+        map((org) => org === null),
+    );
     isDev = isDevMode();
 
     get languages() {

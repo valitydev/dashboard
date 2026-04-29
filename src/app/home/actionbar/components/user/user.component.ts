@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Inject, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Inject,
+    Output,
+    inject,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TranslocoService } from '@jsverse/transloco';
@@ -20,8 +27,11 @@ import { SelectActiveOrganizationDialogComponent } from '../select-active-organi
     standalone: false,
 })
 export class UserComponent {
+    protected contextOrganizationService = inject(ContextOrganizationService);
+
     @Output() selected = new EventEmitter<void>();
 
+    organization$ = this.contextOrganizationService.organization$;
     username = this.keycloakService.getUsername();
     activeOrg$ = this.contextOrganizationService.organization$;
     keycloakAccountEndpoint = `${this.config.keycloakEndpoint}/auth/realms/external/account/#`;
@@ -37,7 +47,6 @@ export class UserComponent {
     constructor(
         private keycloakService: KeycloakService,
         private config: ConfigService,
-        private contextOrganizationService: ContextOrganizationService,
         private router: Router,
         private dialog: MatDialog,
         private transloco: TranslocoService,
