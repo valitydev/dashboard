@@ -2,5 +2,7 @@
     "language": {
         "en": "English",
         "ru": "Russian (Русский)"
-    }
+    },
+    "noOrganization": "No Organization Found",
+    "contactSupport": "Please contact support to set up your organization. After the setup is complete, reload the page."
 }
