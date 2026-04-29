@@ -5,7 +5,7 @@ import isNil from 'lodash-es/isNil';
 import { EMPTY, Observable, ReplaySubject, combineLatest, concat, defer, of } from 'rxjs';
 import { catchError, filter, map, shareReplay, switchMap, tap } from 'rxjs/operators';
 
-import { DEFAULT_ORGANIZATION_NAME, MembersService, OrgsService } from '@dsh/app/api/organizations';
+import { MembersService, OrgsService } from '@dsh/app/api/organizations';
 import { RoleId } from '@dsh/app/auth/types/role-id';
 import { KeycloakTokenInfoService } from '@dsh/app/shared/services/keycloak-token-info';
 
@@ -20,7 +20,7 @@ export class ContextOrganizationService {
             map(({ organizationId }) => organizationId),
             catchError((err) => {
                 if (err instanceof HttpErrorResponse && err.status === 404) {
-                    return this.switchToFirstOrCreateOrganization();
+                    return this.switchToFirstOrganization();
                 }
                 console.error(err);
                 return EMPTY;
@@ -38,7 +38,7 @@ export class ContextOrganizationService {
             this.organizationsService.getOrg({ orgId }).pipe(
                 catchError((err) => {
                     if (err.status === 403) {
-                        return this.switchToFirstOrCreateOrganization();
+                        return this.switchToFirstOrganization();
                     }
                     console.error(err);
                     throw err;
@@ -77,18 +77,12 @@ export class ContextOrganizationService {
     ) {}
 
     switchOrganization(organizationId: string): void {
-        this.switchOrganization$.next(organizationId);
+        if (organizationId) this.switchOrganization$.next(organizationId);
     }
 
-    private createOrganization(): Observable<Organization> {
-        return this.organizationsService.createOrg({
-            organization: { name: DEFAULT_ORGANIZATION_NAME } as Organization,
-        });
-    }
-
-    private switchToFirstOrCreateOrganization() {
+    private switchToFirstOrganization() {
         return this.organizationsService.listOrgMembership({ limit: 1 }).pipe(
-            switchMap(({ result }) => (result[0] ? of(result[0]) : this.createOrganization())),
+            map(({ result }) => result[0]),
             tap(({ id }) => this.switchOrganization(id)),
             switchMap(() => EMPTY),
         );
