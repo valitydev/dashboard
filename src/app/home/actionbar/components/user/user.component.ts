@@ -34,7 +34,7 @@ export class UserComponent {
     organization$ = this.contextOrganizationService.organization$;
     username = this.keycloakService.getUsername();
     activeOrg$ = this.contextOrganizationService.organization$;
-    keycloakAccountEndpoint = `${this.config.keycloakEndpoint}/auth/realms/external/account/#`;
+    keycloakAccountEndpoint = `${this.config.keycloakEndpoint}/realms/external/account/#`;
     userLinksConfig$ = this.transloco.selectTranslation('components').pipe(
         map(() => [
             {
