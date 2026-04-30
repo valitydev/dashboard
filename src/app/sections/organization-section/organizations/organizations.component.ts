@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, isDevMode } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
 import { filter } from 'rxjs/operators';
@@ -21,6 +21,7 @@ export class OrganizationsComponent implements OnInit {
     hasMore$ = this.fetchOrganizationsService.hasMore$;
     isLoading$ = this.fetchOrganizationsService.doSearchAction$;
     lastUpdated$ = this.fetchOrganizationsService.lastUpdated$;
+    isDev = isDevMode();
 
     constructor(
         private fetchOrganizationsService: FetchOrganizationsService,
