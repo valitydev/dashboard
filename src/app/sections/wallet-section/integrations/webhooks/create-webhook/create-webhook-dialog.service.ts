@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, Subject, of } from 'rxjs';
-import { catchError, filter, map, switchMap } from 'rxjs/operators';
+import { catchError, filter, map, switchMap, withLatestFrom } from 'rxjs/operators';
 
 import { WebhooksService } from '@dsh/app/api/wallet';
+import { ContextOrganizationService } from '@dsh/app/shared';
 import { oneMustBeSelected } from '@dsh/components/form-controls';
 
 import { FormParams } from './form-params';
@@ -28,10 +29,14 @@ export class CreateWebhookDialogService {
     constructor(
         private fb: UntypedFormBuilder,
         private walletWebhooksService: WebhooksService,
+        private contextOrganizationService: ContextOrganizationService,
     ) {
         this.create$
             .pipe(
-                map(formValuesToWebhook),
+                withLatestFrom(this.contextOrganizationService.organization$),
+                map(([formValues, organization]) =>
+                    formValuesToWebhook(formValues, organization.party),
+                ),
                 switchMap((webhookParams) =>
                     this.walletWebhooksService.createWebhook({ webhookParams }).pipe(
                         catchError((e) => {
@@ -53,7 +58,6 @@ export class CreateWebhookDialogService {
 
     private initForm(): UntypedFormGroup {
         return this.fb.group({
-            identityID: ['', Validators.required],
             url: ['', Validators.required],
             eventType: ['WithdrawalsTopic', Validators.required],
             walletID: null,

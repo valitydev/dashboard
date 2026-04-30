@@ -8,7 +8,6 @@ interface EventType {
 }
 
 export interface FormParams {
-    identityID: string;
     url: string;
     walletID?: string;
     eventType: TopicEnum;

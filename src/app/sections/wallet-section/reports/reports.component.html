@@ -17,7 +17,6 @@
                 [maxDate]="defaultDateRange.end"
                 formControlName="dateRange"
             ></dsh-date-range-filter>
-            <dsh-identity-filter formControlName="identityID"></dsh-identity-filter>
         </dsh-filters-group>
         <button mat-flat-button (click)="create()">
             {{ t('openCreateReport') }}
@@ -28,7 +27,6 @@
         [columns]="columns"
         [contentHeader]="contentHeader"
         [data]="reports$ | async"
-        [error]="form.value.identityID ? undefined : t('errors.identityNotSpecified')"
         [expanded]="expanded"
         [hasMore]="hasMore$ | async"
         [inProgress]="isLoading$ | async"

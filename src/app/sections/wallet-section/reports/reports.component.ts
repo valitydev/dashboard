@@ -8,9 +8,9 @@ import { QueryParamsService } from '@vality/matez';
 import { Report } from '@vality/swag-wallets';
 import isEqual from 'lodash-es/isEqual';
 import moment from 'moment';
-import { distinctUntilChanged, filter, first, map, startWith } from 'rxjs/operators';
+import { distinctUntilChanged, filter, map, startWith } from 'rxjs/operators';
 
-import { IdentitiesService, WalletDictionaryService } from '@dsh/app/api/wallet';
+import { WalletDictionaryService } from '@dsh/app/api/wallet';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { Column, ExpandedFragment } from '@dsh/app/shared/components/accordion-table';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
@@ -22,7 +22,6 @@ import { FetchReportsService } from './fetch-reports.service';
 
 interface Form {
     dateRange: DateRange;
-    identityID: string;
 }
 
 const REPORT_STATUS_COLOR = {
@@ -82,7 +81,6 @@ export class ReportsComponent implements OnInit {
     defaultDateRange = createDateRangeWithPreset(Preset.Last90days);
     form = this.fb.group<Form>({
         dateRange: this.defaultDateRange,
-        identityID: undefined,
         ...this.qp.params,
     });
     lastUpdated$ = this.fetchReportsService.result$.pipe(mapToTimestamp);
@@ -101,18 +99,10 @@ export class ReportsComponent implements OnInit {
         private dialog: MatDialog,
         private transloco: TranslocoService,
         private walletDictionaryService: WalletDictionaryService,
-        private identitiesService: IdentitiesService,
         private dr: DestroyRef,
     ) {}
 
     ngOnInit() {
-        this.identitiesService.identities$
-            .pipe(first(), takeUntilDestroyed(this.dr))
-            .subscribe((identities) => {
-                if (!this.form.value.identityID && identities.length === 1) {
-                    this.form.patchValue({ identityID: identities[0].id });
-                }
-            });
         this.form.valueChanges
             .pipe(
                 startWith(this.form.value),
@@ -126,11 +116,10 @@ export class ReportsComponent implements OnInit {
     }
 
     load() {
-        const { dateRange, identityID } = this.form.value;
+        const { dateRange } = this.form.value;
         this.fetchReportsService.load({
             fromTime: dateRange.start.clone().utc().format(),
             toTime: dateRange.end.clone().utc().format(),
-            identityID,
             type: 'withdrawalRegistry',
         });
     }
@@ -141,7 +130,7 @@ export class ReportsComponent implements OnInit {
 
     create() {
         this.dialog
-            .open(CreateReportDialogComponent, { data: { identityID: this.form.value.identityID } })
+            .open(CreateReportDialogComponent)
             .afterClosed()
             .pipe(
                 filter((r) => r === BaseDialogResponseStatus.Success),

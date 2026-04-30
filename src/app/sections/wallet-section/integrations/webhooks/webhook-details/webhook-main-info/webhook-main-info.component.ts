@@ -11,11 +11,5 @@ export class WebhookMainInfoComponent {
     url: string;
 
     @Input()
-    identityID: string;
-
-    @Input()
-    identityName: string;
-
-    @Input()
     walletName: string;
 }

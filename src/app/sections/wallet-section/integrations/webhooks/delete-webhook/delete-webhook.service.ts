@@ -42,8 +42,8 @@ export class DeleteWebhookService {
                             .pipe(filter((r) => r.status === DialogResponseStatus.Success)),
                     ]),
                 ),
-                switchMap(([{ webhookID, identityID }]) =>
-                    this.walletWebhooksService.deleteWebhookByID({ webhookID, identityID }).pipe(
+                switchMap(([{ webhookID }]) =>
+                    this.walletWebhooksService.deleteWebhookByID({ webhookID }).pipe(
                         catchError((e) => {
                             this.log.error(
                                 e,

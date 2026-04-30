@@ -1,7 +1,5 @@
 <div fxLayout="column" fxLayoutGap="24px">
     <dsh-webhook-main-info
-        [identityID]="webhook.identityID"
-        [identityName]="webhook.identityID | identityDetails"
         [url]="webhook.url"
         [walletName]="
             getWalletID(webhook.scope) ? (getWalletID(webhook.scope) | walletDetails) : null
@@ -13,7 +11,6 @@
     <dsh-webhook-api-key [key]="webhook.publicKey"></dsh-webhook-api-key>
     <mat-divider></mat-divider>
     <dsh-webhook-actions
-        [identityID]="webhook.identityID"
         [webhookID]="webhook.id"
         (deleteWebhook)="deleteWebhook.emit($event)"
     ></dsh-webhook-actions>

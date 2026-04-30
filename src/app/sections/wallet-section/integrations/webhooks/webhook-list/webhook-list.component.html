@@ -8,10 +8,7 @@
         (expandedChange)="expandedIdChange.emit($event)"
     >
         <dsh-accordion-item #accordionItem *ngFor="let webhook of webhooks">
-            <dsh-webhook-row
-                [identityID]="webhook.identityID"
-                [url]="webhook.url"
-            ></dsh-webhook-row>
+            <dsh-webhook-row [url]="webhook.url"></dsh-webhook-row>
             <dsh-accordion-item-content>
                 <dsh-card fxLayout="column" fxLayoutGap="32px">
                     <dsh-accordion-item-content-header

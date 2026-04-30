@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
 import {
     Deposit,
-    DepositRevert,
     DestinationsTopic,
     Report,
     Withdrawal,
@@ -54,12 +53,6 @@ export class WalletDictionaryService {
             ),
         }),
     );
-
-    depositRevertStatus$ = this.dictionaryService.create<DepositRevert.StatusEnum>(() => ({
-        Pending: this.t.translate('wallet.depositRevertStatus.Pending', null, 'dictionary'),
-        Succeeded: this.t.translate('wallet.depositRevertStatus.Succeeded', null, 'dictionary'),
-        Failed: this.t.translate('wallet.depositRevertStatus.Failed', null, 'dictionary'),
-    }));
 
     depositStatus$ = this.dictionaryService.create<Deposit.StatusEnum>(() => ({
         Pending: this.t.translate('wallet.depositStatus.Pending', null, 'dictionary'),
