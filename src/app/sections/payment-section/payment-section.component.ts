@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, isDevMode } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslocoService } from '@jsverse/transloco';
@@ -34,6 +34,8 @@ export class PaymentSectionComponent implements OnInit {
         .pipe(map(() => toNavbarItemConfig(this.getNavbarItemLabels())));
     activeSection$ = defer(() => this.activeSectionChange$).pipe(map((s) => s.label));
     noShops$: Observable<boolean> = this.realmShopsService.shops$.pipe(map((s) => s.length === 0));
+    hasTestShops$ = this.realmShopsService.hasTestShops$;
+    isDev = isDevMode();
 
     private activeSectionChange$ = new ReplaySubject<NavbarItemConfig>();
     private realmChange$ = new Subject<PaymentInstitution.RealmEnum>();
