@@ -58,10 +58,6 @@ export const ROLE_ACCESS_GROUPS: RoleAccessGroup[] = [
                 availableRoles: [RoleId.Administrator, RoleId.Manager],
             },
             {
-                name: RoleAccessName.PaymentLinks,
-                availableRoles: [RoleId.Administrator, RoleId.Manager],
-            },
-            {
                 name: RoleAccessName.CreateRefund,
                 availableRoles: [RoleId.Administrator, RoleId.Accountant],
             },

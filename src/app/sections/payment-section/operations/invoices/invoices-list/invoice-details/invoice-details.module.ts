@@ -24,7 +24,6 @@ import { InvoiceCartLineComponent } from './components/invoice-cart-info/cart-in
 import { InvoiceCartInfoComponent } from './components/invoice-cart-info/invoice-cart-info.component';
 import { InvoiceMainInfoComponent } from './components/invoice-main-info/invoice-main-info.component';
 import { InvoicePaymentsComponent } from './components/invoice-payments/invoice-payments.component';
-import { CreatePaymentLinkDialogModule } from './create-payment-link-dialog';
 import { FulfillInvoiceModule } from './fulfill-invoice';
 import { InvoiceDetailsComponent } from './invoice-details.component';
 import { TaxModeToTaxRatePipe } from './pipes/tax-mode-to-tax-rate/tax-mode-to-tax-rate.pipe';
@@ -43,8 +42,6 @@ import { TaxModeToTaxRatePipe } from './pipes/tax-mode-to-tax-rate/tax-mode-to-t
         ApiRefundDetailsModule,
         PaymentDetailsModule,
         InvoiceInvoiceDetailsModule,
-
-        CreatePaymentLinkDialogModule,
         CancelInvoiceModule,
         FulfillInvoiceModule,
         RouterModule,

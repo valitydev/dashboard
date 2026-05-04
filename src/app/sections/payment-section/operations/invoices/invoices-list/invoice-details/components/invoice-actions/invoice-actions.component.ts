@@ -3,22 +3,13 @@ import {
     Component,
     DestroyRef,
     EventEmitter,
-    Inject,
     Input,
     Output,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MatDialog } from '@angular/material/dialog';
 import { Invoice } from '@vality/swag-payments';
 
-import { DIALOG_CONFIG, DialogConfig } from '@dsh/app/sections/tokens';
-
 import { CancelInvoiceService } from '../../cancel-invoice';
-import {
-    CreatePaymentLinkDialogComponent,
-    CreatePaymentLinkDialogData,
-    CreatePaymentLinkDialogResponse,
-} from '../../create-payment-link-dialog';
 import { FulfillInvoiceService } from '../../fulfill-invoice';
 
 @Component({
@@ -35,21 +26,8 @@ export class InvoiceActionsComponent {
     constructor(
         private fulfillInvoiceService: FulfillInvoiceService,
         private cancelInvoiceService: CancelInvoiceService,
-        private dialog: MatDialog,
-        @Inject(DIALOG_CONFIG) private dialogConfig: DialogConfig,
         private dr: DestroyRef,
     ) {}
-
-    createPaymentLink(): void {
-        this.dialog.open<
-            CreatePaymentLinkDialogComponent,
-            CreatePaymentLinkDialogData,
-            CreatePaymentLinkDialogResponse
-        >(CreatePaymentLinkDialogComponent, {
-            ...this.dialogConfig.large,
-            data: { invoice: this.invoice },
-        });
-    }
 
     cancelInvoice(): void {
         this.cancelInvoiceService

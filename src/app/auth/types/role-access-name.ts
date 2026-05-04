@@ -4,7 +4,6 @@ export enum RoleAccessName {
     Reports,
     Webhooks,
     ApiKeys,
-    PaymentLinks,
 
     ViewAnalytics,
     ViewPayments,
