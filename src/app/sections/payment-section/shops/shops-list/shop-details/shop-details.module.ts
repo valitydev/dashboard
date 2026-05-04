@@ -12,7 +12,6 @@ import { DetailsItemModule } from '@dsh/components/layout';
 
 import { ShopBalanceModule } from '../shop-balance';
 
-import { ShopActionsComponent } from './components/shop-actions/shop-actions.component';
 import { ShopIdComponent } from './components/shop-id/shop-id.component';
 import { ShopInfoComponent } from './components/shop-info/shop-info.component';
 import { CategoryService } from './services/category/category.service';
@@ -31,7 +30,7 @@ import { ShopDetailsComponent } from './shop-details.component';
         MatSnackBarModule,
         MatDialogModule,
     ],
-    declarations: [ShopDetailsComponent, ShopActionsComponent, ShopIdComponent, ShopInfoComponent],
+    declarations: [ShopDetailsComponent, ShopIdComponent, ShopInfoComponent],
     exports: [ShopDetailsComponent],
     providers: [CategoryService],
 })

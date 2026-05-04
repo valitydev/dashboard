@@ -2,9 +2,4 @@
     <dsh-shop-info [shop]="shop"></dsh-shop-info>
     <mat-divider></mat-divider>
     <dsh-shop-id [id]="shop.id"></dsh-shop-id>
-    <mat-divider></mat-divider>
-    <ng-container *ngIf="!shop.isBlocked">
-        <mat-divider></mat-divider>
-        <dsh-shop-actions [shop]="shop" (updateData)="requestUpdateData()"></dsh-shop-actions>
-    </ng-container>
 </div>

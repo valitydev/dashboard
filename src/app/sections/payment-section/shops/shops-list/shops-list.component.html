@@ -29,10 +29,7 @@
                             (collapse)="accordionItem.collapse($event)"
                             >{{ s('panel.details') }}</dsh-accordion-item-content-header
                         >
-                        <dsh-shop-details
-                            [shop]="shop"
-                            (updateData)="refreshList()"
-                        ></dsh-shop-details>
+                        <dsh-shop-details [shop]="shop"></dsh-shop-details>
                     </dsh-card>
                 </ng-template>
             </dsh-accordion-item>
