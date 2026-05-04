@@ -16,6 +16,8 @@ jobs:
         with:
           registry-username: ${{ github.actor }}
           registry-access-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install Wrangler globally
+        run: npm install -g wrangler
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
