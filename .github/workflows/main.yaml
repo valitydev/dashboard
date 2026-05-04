@@ -16,6 +16,14 @@ jobs:
         with:
           registry-username: ${{ github.actor }}
           registry-access-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+            apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+            accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+            command: pages deploy ./dist/browser --project-name=dashboard
+            gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+            packageManager: npm
       # - name: Set config
       #   run: |
       #     printf "$APP_ENV_FILE" > dist/browser/assets/appConfig.json
@@ -23,15 +31,15 @@ jobs:
       #   env:
       #     APP_ENV_FILE: ${{secrets.APP_CONFIG_CF}}
       #     AUTH_ENV_FILE: ${{secrets.AUTH_CONFIG_CF}}
-      - name: Publish to CF Pages
-        uses: cloudflare/pages-action@1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: 'dashboard'
-          directory: 'dist/browser'
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+      # - name: Publish to CF Pages
+      #   uses: cloudflare/pages-action@1
+      #   with:
+      #     apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      #     accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      #     projectName: 'dashboard'
+      #     directory: 'dist/browser'
+      #     gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+      #     branch: main
       # - name: Set pcigate config
       #   run: |
       #     printf "$APP2_ENV_FILE" > dist/browser/assets/appConfig.json
