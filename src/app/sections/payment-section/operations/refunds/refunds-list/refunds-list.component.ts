@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { RefundSearchResult } from '@vality/swag-anapi-v2';
+import { Refund } from '@vality/swag-anapi-v2';
 
 @Component({
     selector: 'dsh-refunds-list',
@@ -7,7 +7,7 @@ import { RefundSearchResult } from '@vality/swag-anapi-v2';
     standalone: false,
 })
 export class RefundsListComponent {
-    @Input() refunds: RefundSearchResult[];
+    @Input() refunds: Refund[];
     @Input() expandedId: number;
     @Input() lastUpdated: string;
     @Output() expandedIdChange = new EventEmitter<number>();

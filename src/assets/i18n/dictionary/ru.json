@@ -105,14 +105,6 @@
         }
     },
     "payments": {
-        "customersTopicEventType": {
-            "CustomerBindingFailed": "CustomerBindingFailed (привязка к плательщику завершена с неудачей)",
-            "CustomerBindingStarted": "CustomerBindingStarted (привязка к плательщику запущена)",
-            "CustomerBindingSucceeded": "CustomerBindingSucceeded (привязка к плательщику успешно завершена)",
-            "CustomerCreated": "CustomerCreated (плательщик создан)",
-            "CustomerDeleted": "CustomerDeleted (плательщик удален)",
-            "CustomerReady": "CustomerReady (плательщик готов)"
-        },
         "invoicesTopicEventType": {
             "InvoiceCancelled": "InvoiceCancelled (инвойс отменен по истечению срока давности)",
             "InvoiceCreated": "InvoiceCreated (создан новый инвойс)",
@@ -140,11 +132,6 @@
         }
     },
     "wallet": {
-        "depositRevertStatus": {
-            "Failed": "Неуспешно",
-            "Pending": "В процессе",
-            "Succeeded": "Успешно"
-        },
         "depositStatus": {
             "Failed": "Неуспешно",
             "Pending": "В процессе",

@@ -10,5 +10,4 @@ export * from './shops.service';
 export * from './webhooks.service';
 export * from './payments.service';
 export * from './invoices.service';
-export * from './contracts.service';
 export * from './payments-dictionary.service';

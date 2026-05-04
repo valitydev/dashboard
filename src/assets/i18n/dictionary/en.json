@@ -105,14 +105,6 @@
         }
     },
     "payments": {
-        "customersTopicEventType": {
-            "CustomerBindingFailed": "CustomerBindingFailed (customer binding failed)",
-            "CustomerBindingStarted": "CustomerBindingStarted (customer binding started)",
-            "CustomerBindingSucceeded": "CustomerBindingSucceeded (customer binding successfully completed)",
-            "CustomerCreated": "CustomerCreated (customer created)",
-            "CustomerDeleted": "CustomerDeleted (customer deleted)",
-            "CustomerReady": "CustomerReady (customer ready)"
-        },
         "invoicesTopicEventType": {
             "InvoiceCancelled": "InvoiceCancelled (invoice cancelled upon expiration of validity period)",
             "InvoiceCreated": "InvoiceCreated (new invoice created)",
@@ -140,11 +132,6 @@
         }
     },
     "wallet": {
-        "depositRevertStatus": {
-            "Failed": "Failed",
-            "Pending": "Pending",
-            "Succeeded": "Succeeded"
-        },
         "depositStatus": {
             "Failed": "Failed",
             "Pending": "Pending",

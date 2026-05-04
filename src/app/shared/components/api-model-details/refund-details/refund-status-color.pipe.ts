@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { RefundSearchResult } from '@vality/swag-payments';
+import { Refund } from '@vality/swag-payments';
 
 import { StatusColor } from '../../../../theme-manager';
 
@@ -8,8 +8,8 @@ import { StatusColor } from '../../../../theme-manager';
     standalone: false,
 })
 export class RefundStatusColorPipe implements PipeTransform {
-    transform(status: RefundSearchResult.StatusEnum): StatusColor {
-        const statuses = RefundSearchResult.StatusEnum;
+    transform(status: Refund.StatusEnum): StatusColor {
+        const statuses = Refund.StatusEnum;
         switch (status) {
             case statuses.Succeeded:
                 return StatusColor.Success;

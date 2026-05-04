@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { PaymentSearchResult } from '@vality/swag-payments';
+import { Payment } from '@vality/swag-payments';
 
 import { StatusColor } from '../../../../theme-manager';
 
@@ -8,8 +8,8 @@ import { StatusColor } from '../../../../theme-manager';
     standalone: false,
 })
 export class PaymentStatusColorPipe implements PipeTransform {
-    transform(status: PaymentSearchResult.StatusEnum): StatusColor {
-        const statuses = PaymentSearchResult.StatusEnum;
+    transform(status: Payment.StatusEnum): StatusColor {
+        const statuses = Payment.StatusEnum;
         switch (status) {
             case statuses.Processed:
             case statuses.Captured:

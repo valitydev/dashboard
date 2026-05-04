@@ -108,7 +108,6 @@
     "roleAccessesDictionary": {
         "claims": "Заявки",
         "createInvoice": "Создать инвойс",
-        "createPaymentLink": "Создать платежную ссылку",
         "createRefund": "Совершить возврат",
         "manageOrganizations": "Управление организациями и сотрудниками",
         "manageReports": "Управление отчетами",

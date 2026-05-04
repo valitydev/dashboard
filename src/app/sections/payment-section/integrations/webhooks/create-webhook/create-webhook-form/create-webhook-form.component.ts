@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { WebhookScope } from '@vality/swag-payments';
-import { BehaviorSubject, combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 import { PaymentsDictionaryService } from '@dsh/app/api/payments';
 import { ShopsDataService } from '@dsh/app/shared';
@@ -25,10 +24,7 @@ export class CreateWebhookFormComponent implements OnInit {
 
     activeTopic$ = new BehaviorSubject<TopicEnum>('InvoicesTopic');
 
-    eventType$ = combineLatest([
-        this.paymentsDictionaryService.invoicesTopicEventType$,
-        this.paymentsDictionaryService.customersTopicEventType$,
-    ]).pipe(map(([i, c]) => ({ ...i, ...c })));
+    eventType$ = this.paymentsDictionaryService.invoicesTopicEventType$;
 
     constructor(
         private shopsDataService: ShopsDataService,
@@ -42,7 +38,7 @@ export class CreateWebhookFormComponent implements OnInit {
             this.form.addControl(
                 'eventTypes',
                 this.fb.array(
-                    getEventsByTopic(activeTopic).map((eventName) =>
+                    (getEventsByTopic(activeTopic) || []).map((eventName) =>
                         this.fb.group({
                             eventName,
                             selected: false,

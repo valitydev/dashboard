@@ -1,4 +1,4 @@
-import { PaymentInstitution, RefundSearchResult } from '@vality/swag-payments';
+import { PaymentInstitution, Refund } from '@vality/swag-payments';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 
@@ -8,5 +8,5 @@ export interface SearchFiltersParams {
     toTime: string;
     invoiceIDs?: string[];
     shopIDs?: string[];
-    refundStatus?: RefundSearchResult.StatusEnum;
+    refundStatus?: Refund.StatusEnum;
 }

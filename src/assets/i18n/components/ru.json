@@ -10,32 +10,6 @@
             "selectActiveOrg": "Выбрать активную организацию"
         }
     },
-    "apiModelDetails": {
-        "bankAccount": {
-            "account": "Расчетный счет",
-            "bankBik": "БИК",
-            "bankName": "Наименование банка",
-            "bankPostAccount": "Корр. счет"
-        },
-        "contract": {
-            "createdAt": "Дата и время создания"
-        },
-        "internationalLegalEntity": {
-            "legalName": "Наименование",
-            "registeredNumber": "Регистрационный номер",
-            "registeredOffice": "Адрес места регистрации",
-            "tradingName": "Торговое наименование"
-        },
-        "russianLegalEntity": {
-            "actualAddress": "Почтовый адрес места нахождения",
-            "inn": "ИНН",
-            "registeredName": "Наименование юр. лица",
-            "registeredNumber": "ОГРН/ОГРНИП",
-            "representativeDocument": "Документ ЕИО/представителя",
-            "representativeFullName": "ФИО ЕИО/представителя",
-            "representativePosition": "Должность ЕИО/представителя"
-        }
-    },
     "app": {
         "errors": {
             "bootstrapAppFailed": "Ошибка инициализации"
@@ -50,64 +24,16 @@
             "shop": "Магазин"
         }
     },
-    "createPaymentLinkForm": {
-        "description": "Информация для отображения на платежной странице",
-        "form": {
-            "cancelUrl": "Checkout перенаправит на эту страницу, если плательщик нажмет кнопку назад (опционально)",
-            "copy": "Скопировать",
-            "description": "Описание (опционально)",
-            "email": "Email плательщика (опционально)",
-            "link": "Ссылка на оплату",
-            "locale": "Локализация (опционально)",
-            "name": "Наименование (опционально)",
-            "paymentFlowHold": "Предварительно заблокировать сумму платежа у покупателя",
-            "paymentFlowHoldPolicy": "По истечении срока удержания",
-            "redirectUrl": "Redirect URL после успешного завершения платежа (опционально)"
-        },
-        "holdExpiration": {
-            "cancel": "Вернуть покупателю",
-            "capture": "Списать с покупателя"
-        },
-        "localeCodes": {
-            "ar": "ar - Арабский",
-            "auto": "Определить автоматически",
-            "az": "az - Азербайджанский",
-            "en": "en - Английский",
-            "pt": "pt - Португальский",
-            "ru": "ru - Русский",
-            "tj": "tj - Таджикский",
-            "tr": "tr - Турецкий",
-            "uz": "uz - Узбекский"
-        }
-    },
     "currencyAutocompleteField": {
         "label": "Валюта"
     },
     "currencyFilter": {
         "label": "Валюта"
     },
-    "depositRevertDetails": {
-        "amount": "Сумма отмены",
-        "createdAt": "Дата",
-        "error": "Ошибка",
-        "errors": {
-            "failed": "Ошибка при отмене"
-        },
-        "status": "Статус"
-    },
     "expandableRadioGroup": {
         "any": "Любой",
         "hideAllStatuses": "Скрыть все статусы",
         "showAllStatuses": "Показать все статусы"
-    },
-    "identityFilter": {
-        "activeLabel": "Владелец кошелька: {{name}}",
-        "label": "Владелец кошелька"
-    },
-    "inputs": {
-        "identityField": {
-            "label": "Владелец кошелька"
-        }
     },
     "invoiceDetails": {
         "amount": "Стоимость",
@@ -177,7 +103,6 @@
         "create": "Создать",
         "httpError": "Произошла ошибка в процессе передачи / получения данных",
         "loading": "Загрузка...",
-        "next": "Далее",
         "save": "Сохранить",
         "showMore": "Показать еще"
     },

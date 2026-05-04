@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { RefundSearchResult } from '@vality/swag-payments';
+import { Refund } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
 
 @Component({
@@ -10,7 +10,7 @@ import isEmpty from 'lodash-es/isEmpty';
     standalone: false,
 })
 export class RefundsListComponent {
-    @Input() list: RefundSearchResult[];
+    @Input() list: Refund[];
     @Input() loading: boolean;
     @Input() hasMore: boolean;
 
