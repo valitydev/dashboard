@@ -362,15 +362,11 @@
         },
         "emptySearchResult": "There are no shops yet",
         "panel": {
-            "actions": "Actions",
-            "activate": "Activate the shop",
             "category": "Shop category",
             "copy": "Copy",
-            "createdAt": "Created at",
             "details": "Shop details",
             "id": "Shop ID",
             "name": "Shop name",
-            "suspend": "Suspend the shop",
             "url": "Website URL"
         },
         "shopContract": {
@@ -428,6 +424,6 @@
             "publicKey": "Content of the public key used to check the authoritativeness of\nnotifications coming to `url`",
             "title": "Public key"
         },
-        "webhook": "Missing value for 'paymentSection.webhook.webhook'"
+        "webhook": "Webhook"
     }
 }
