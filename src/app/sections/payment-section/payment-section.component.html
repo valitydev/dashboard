@@ -15,18 +15,20 @@
                     {{ item.label }}
                 </dsh-navbar-item>
             </ng-container>
-            <dsh-navbar-item
-                *transloco="
-                    let t;
-                    scope: 'payment-section';
-                    read: 'paymentSection.paymentSection.nav'
-                "
-                [toggleChecked]="isTestRealm$ | async"
-                icon="toggles"
-                withToggle="true"
-                (toggleChange)="testEnvToggle($event)"
-                >{{ t('testEnv') }}</dsh-navbar-item
-            >
+            @if ((hasTestShops$ | async) || (isTestRealm$ | async) || isDev) {
+                <dsh-navbar-item
+                    *transloco="
+                        let t;
+                        scope: 'payment-section';
+                        read: 'paymentSection.paymentSection.nav'
+                    "
+                    [toggleChecked]="isTestRealm$ | async"
+                    icon="toggles"
+                    withToggle="true"
+                    (toggleChange)="testEnvToggle($event)"
+                    >{{ t('testEnv') }}</dsh-navbar-item
+                >
+            }
         </div>
     </dsh-route-navbar-layout>
 </div>

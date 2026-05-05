@@ -9,5 +9,4 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class WebhookRowComponent {
     @Input() url: string;
-    @Input() identityID: string;
 }

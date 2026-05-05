@@ -51,13 +51,6 @@ const PAYMENT_SECTION_ROUTES: Routes = [
                 },
                 [RoleAccessName.Reports],
             ),
-            // createPrivateRoute(
-            //     {
-            //         path: 'payouts',
-            //         loadChildren: () => import('./payouts/payouts.module').then((m) => m.PayoutsModule),
-            //     },
-            //     [RoleAccessName.ViewPayouts]
-            // ),
             createPrivateRoute(
                 {
                     path: 'integrations',
@@ -66,7 +59,7 @@ const PAYMENT_SECTION_ROUTES: Routes = [
                             (m) => m.IntegrationsModule,
                         ),
                 },
-                [RoleAccessName.PaymentLinks, RoleAccessName.ApiKeys, RoleAccessName.Webhooks],
+                [RoleAccessName.ApiKeys, RoleAccessName.Webhooks],
             ),
         ],
     },

@@ -21,11 +21,6 @@ export class RoleAccessesDictionaryService {
                     null,
                     'organization-section',
                 ),
-                [RoleAccessName.PaymentLinks]: this.t.translate(
-                    'roleAccessesDictionary.createPaymentLink',
-                    null,
-                    'organization-section',
-                ),
                 [RoleAccessName.CreateRefund]: this.t.translate(
                     'roleAccessesDictionary.createRefund',
                     null,

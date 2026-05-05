@@ -6,11 +6,13 @@
 >
     <h1 class="mat-display-medium">{{ t('header') }}</h1>
 
-    <div fxLayout fxLayoutAlign="end">
-        <button mat-flat-button (click)="createOrganization()">
-            {{ t('createOrganization') }}
-        </button>
-    </div>
+    @if (isDev) {
+        <div fxLayout fxLayoutAlign="end">
+            <button mat-flat-button (click)="createOrganization()">
+                {{ t('createOrganization') }} (dev)
+            </button>
+        </div>
+    }
 
     <div fxLayout="column" fxLayoutGap="16px">
         <dsh-spinner *ngIf="isLoading$ | async; else loaded" fxFlexAlign="center"></dsh-spinner>

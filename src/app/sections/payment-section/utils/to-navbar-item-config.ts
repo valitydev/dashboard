@@ -58,6 +58,6 @@ export const toNavbarItemConfig = ({
         routerLink: NavbarRouterLink.Integrations,
         icon: BootstrapIconName.Plug,
         label: integrations,
-        roles: [RoleAccessName.PaymentLinks, RoleAccessName.ApiKeys, RoleAccessName.Webhooks],
+        roles: [RoleAccessName.ApiKeys, RoleAccessName.Webhooks],
     },
 ];

@@ -10,32 +10,6 @@
             "selectActiveOrg": "Choose an active organization"
         }
     },
-    "apiModelDetails": {
-        "bankAccount": {
-            "account": "Operating account",
-            "bankBik": "BIC",
-            "bankName": "Bank name",
-            "bankPostAccount": "Corr. account"
-        },
-        "contract": {
-            "createdAt": "Created at"
-        },
-        "internationalLegalEntity": {
-            "legalName": "Name",
-            "registeredNumber": "Registration number",
-            "registeredOffice": "Registration postal address",
-            "tradingName": "Trade name"
-        },
-        "russianLegalEntity": {
-            "actualAddress": "Location postal address",
-            "inn": "INN",
-            "registeredName": "Legal entity name",
-            "registeredNumber": "OGRN/OGRNIP",
-            "representativeDocument": "EEC/representative document",
-            "representativeFullName": "EEC/representative full name",
-            "representativePosition": "Position of EEC/representative"
-        }
-    },
     "app": {
         "errors": {
             "bootstrapAppFailed": "Initialization error"
@@ -50,64 +24,16 @@
             "shop": "Shop"
         }
     },
-    "createPaymentLinkForm": {
-        "description": "Information to display on the payment page",
-        "form": {
-            "cancelUrl": "Checkout will redirect to this page if the payer clicks the back button (optional)",
-            "copy": "Copy",
-            "description": "Description (optional)",
-            "email": "Payer's email (optional)",
-            "link": "Payment link",
-            "locale": "Localization (optional)",
-            "name": "Name (optional)",
-            "paymentFlowHold": "Preliminarily hold the amount of payment from the payer",
-            "paymentFlowHoldPolicy": "After the retention period",
-            "redirectUrl": "Redirect URL after successful payment completion (optional)"
-        },
-        "holdExpiration": {
-            "cancel": "Return to payer",
-            "capture": "Write off from the payer"
-        },
-        "localeCodes": {
-            "ar": "ar - Arabic",
-            "auto": "Automatically determine",
-            "az": "az - Azerbaijani",
-            "en": "en - English",
-            "pt": "pt - Portuguese",
-            "ru": "ru - Russian",
-            "tj": "tj - Tajik",
-            "tr": "tr - Turkish",
-            "uz": "uz - Uzbek"
-        }
-    },
     "currencyAutocompleteField": {
         "label": "Currency"
     },
     "currencyFilter": {
         "label": "Currency"
     },
-    "depositRevertDetails": {
-        "amount": "Cancellation amount",
-        "createdAt": "Created at",
-        "error": "Error",
-        "errors": {
-            "failed": "Error when cancelling"
-        },
-        "status": "Status"
-    },
     "expandableRadioGroup": {
         "any": "Any",
         "hideAllStatuses": "Hide all statuses",
         "showAllStatuses": "Show all statuses"
-    },
-    "identityFilter": {
-        "activeLabel": "Wallet holder: {{name}}",
-        "label": "Wallet holder"
-    },
-    "inputs": {
-        "identityField": {
-            "label": "Wallet holder"
-        }
     },
     "invoiceDetails": {
         "amount": "Amount",
@@ -177,7 +103,6 @@
         "create": "Create",
         "httpError": "An error occurred in the process of transmitting/receiving data",
         "loading": "Loading...",
-        "next": "Next",
         "save": "Save",
         "showMore": "Show more"
     },

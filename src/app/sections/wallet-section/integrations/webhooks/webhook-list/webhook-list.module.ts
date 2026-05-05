@@ -4,7 +4,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
-import { IdentityNamePipe } from '@dsh/app/shared/pipes/identity-name.pipe';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
 
@@ -25,7 +24,6 @@ import { WebhookRowHeaderComponent } from './webhook-row-header';
         IndicatorsModule,
         WebhookDetailsModule,
         DeleteWebhookModule,
-        IdentityNamePipe,
     ],
     declarations: [WebhookListComponent, WebhookRowHeaderComponent, WebhookRowComponent],
     exports: [WebhookListComponent],

@@ -12,12 +12,6 @@
     "depositPanels": {
         "header": "Пополнение"
     },
-    "depositReverts": {
-        "loading": "Загрузка...",
-        "noReverts": "Отмены отсутствуют",
-        "revert": "Отмена",
-        "reverts": "Отмены"
-    },
     "depositRowHeader": {
         "amount": "Сумма",
         "createdAt": "Дата",
@@ -39,7 +33,6 @@
     },
     "mainInfoFilters": {
         "depositID": "Идентификатор пополнения",
-        "identityID": "Идентификатор владельца",
         "sourceID": "Идентификатор источника",
         "walletID": "Кошелек"
     },
@@ -57,8 +50,7 @@
         "createdAt": "Дата и время создания",
         "dateRangeDescription": "Период создания отчетов",
         "errors": {
-            "downloadReportError": "Не удалось загрузить документы",
-            "identityNotSpecified": "Владелец кошелька не указан"
+            "downloadReportError": "Не удалось загрузить документы"
         },
         "openCreateReport": "Создать отчет",
         "period": "Период отчетности",
@@ -96,7 +88,6 @@
             "name": "Название"
         },
         "mainInfo": {
-            "createdAt": "Дата и время создания",
             "fetchWalletAccountError": "Ошибка загрузки баланса",
             "name": "Название"
         },
@@ -141,7 +132,6 @@
                 "withdrawal": "События выплаты"
             },
             "events": "События",
-            "identity": "Владелец кошелька",
             "successfullyCreated": "Webhook успешно создан",
             "title": "Установить новый webhook",
             "types": "Набор типов событий, о которых следует оповещать",
@@ -149,7 +139,6 @@
             "wallet": "Кошелек (не обязательно)"
         },
         "details": {
-            "identity": "Владелец кошелька",
             "url": "URL, на который будут поступать оповещения о произошедших событиях",
             "wallet": "Кошелек"
         },
@@ -161,7 +150,6 @@
             "title": "Набор событий"
         },
         "headerRow": {
-            "identity": "Владелец кошелька",
             "url": "URL"
         },
         "webhook": "Webhook"
@@ -187,7 +175,6 @@
             "amountTo": "Макс. сумма",
             "destinationID": "Идентификатор приёмника средств",
             "externalID": "Внешний идентификатор",
-            "identityID": "Идентификатор владельца",
             "status": "Статус вывода",
             "walletID": "Кошелек",
             "withdrawalID": "Идентификатор вывода"

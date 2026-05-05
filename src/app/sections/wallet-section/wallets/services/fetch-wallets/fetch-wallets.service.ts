@@ -11,7 +11,7 @@ import { ContextOrganizationService, FetchResult, PartialFetcher } from '@dsh/ap
 @Injectable()
 export class FetchWalletsService extends PartialFetcher<
     Wallet,
-    Pick<ListWalletsRequestParams, 'identityID' | 'currencyID'>
+    Pick<ListWalletsRequestParams, 'currencyID'>
 > {
     lastUpdated$: Observable<string> = this.searchResult$.pipe(
         mapToTimestamp,
@@ -33,7 +33,7 @@ export class FetchWalletsService extends PartialFetcher<
     }
 
     protected fetch(
-        params: Pick<ListWalletsRequestParams, 'identityID' | 'currencyID'>,
+        params: Pick<ListWalletsRequestParams, 'currencyID'>,
         continuationToken: string,
     ): Observable<FetchResult<Wallet>> {
         return this.walletService.listWallets({

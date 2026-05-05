@@ -59,37 +59,12 @@
     "createInvoiceDialog": {
         "title": "Creating an invoice"
     },
-    "createInvoiceOrInvoiceTemplate": {
-        "createInvoiceFailed": "Failed to create invoice. Check the console for details.",
-        "description": "Payment link is a tool for accepting payments according to a set invoice template. Here you can generate an invoice template with the required parameters and then generate a payment link for the payment. The link can be placed both on the website and in social networks and allows you to make multiple payments, each time creating a unique invoice for the client. This tool is designed to pay for a single item or service.",
-        "invoiceTitle": "Creating an invoice",
-        "title": "Payment link",
-        "types": {
-            "personal": "Create a personal payment link to pay for a specific order",
-            "reusable": "Create a reusable payment link to pay for multiple customer orders"
-        }
-    },
-    "createInvoiceTemplate": {
-        "createInvoiceTemplateFailed": "Failed to create invoice template. Check the console for details.",
-        "form": {
-            "cost": "Cost of the offered goods or services",
-            "lifetime": "End of validity of the invoice",
-            "product": "Name of the offered goods or services",
-            "shop": "Shop"
-        },
-        "title": "Creating an invoice template"
-    },
-    "createPaymentLinkDialog": {
-        "create": "Create payment link",
-        "title": "Creating payment link"
-    },
     "digitalWallet": {
         "DigitalWalletDetailsQIWI": "QIWI"
     },
     "integrations": {
         "tabs": {
             "api-keys": "API KEYS",
-            "payment-link": "PAYMENT LINK",
             "webhooks": "WEBHOOKS"
         }
     },
@@ -105,7 +80,6 @@
             "actions": {
                 "cancelInvoice": "Cancel invoice",
                 "confirm": "Confirm",
-                "createPaymentLink": "Create payment link",
                 "fulfillInvoice": "Redeem the invoice",
                 "invoiceCancelled": "Invoice was cancelled successfully",
                 "invoiceCreated": "Invoice was created successfully",
@@ -314,16 +288,6 @@
         "timeout": "Exceeded timeout",
         "unknownError": "Unknown error"
     },
-    "paymentLink": {
-        "back": "Back",
-        "clearForm": "Clear",
-        "create": "Create payment link",
-        "errors": {
-            "createPaymentLinkError": "Failed to create a payment link"
-        },
-        "noAvailableShops": "No available shops",
-        "title": "Creating payment link"
-    },
     "paymentSection": {
         "nav": {
             "analytics": "Analytics",
@@ -398,15 +362,11 @@
         },
         "emptySearchResult": "There are no shops yet",
         "panel": {
-            "actions": "Actions",
-            "activate": "Activate the shop",
             "category": "Shop category",
             "copy": "Copy",
-            "createdAt": "Created at",
             "details": "Shop details",
             "id": "Shop ID",
             "name": "Shop name",
-            "suspend": "Suspend the shop",
             "url": "Website URL"
         },
         "shopContract": {
@@ -464,6 +424,6 @@
             "publicKey": "Content of the public key used to check the authoritativeness of\nnotifications coming to `url`",
             "title": "Public key"
         },
-        "webhook": "Missing value for 'paymentSection.webhook.webhook'"
+        "webhook": "Webhook"
     }
 }

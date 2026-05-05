@@ -3,10 +3,10 @@ import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService } from '@vality/matez';
 import { Webhook } from '@vality/swag-wallets';
 import sortBy from 'lodash-es/sortBy';
-import { BehaviorSubject, Observable, Subject, forkJoin, of } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
 import { catchError, filter, map, shareReplay, switchMap } from 'rxjs/operators';
 
-import { IdentitiesService, WebhooksService } from '@dsh/app/api/wallet';
+import { WebhooksService } from '@dsh/app/api/wallet';
 
 import { mapToTimestamp, progress } from '../../../../custom-operators';
 
@@ -29,20 +29,13 @@ export class ReceiveWebhooksService {
 
     constructor(
         private walletWebhooksService: WebhooksService,
-        private identitiesService: IdentitiesService,
         private log: NotifyLogService,
         private transloco: TranslocoService,
     ) {
         this.receiveWebhooks$
             .pipe(
-                switchMap(() => this.identitiesService.identities$),
-                map((identities) => identities.map((identity) => identity.id)),
-                switchMap((ids) =>
-                    forkJoin(
-                        ids.map((identityID) =>
-                            this.walletWebhooksService.getWebhooks({ identityID }),
-                        ),
-                    ).pipe(
+                switchMap(() =>
+                    this.walletWebhooksService.getWebhooks().pipe(
                         catchError((err) => {
                             this.log.error(
                                 err,
@@ -56,7 +49,6 @@ export class ReceiveWebhooksService {
                         }),
                     ),
                 ),
-                map((webhooks) => webhooks.flat()),
             )
             .subscribe((webhooks) => {
                 this.webhooksState$.next(webhooks);

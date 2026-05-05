@@ -26,7 +26,6 @@ export class DialogFiltersComponent implements OnInit {
         main: this.fb.group({
             depositID: [''],
             walletID: [null],
-            identityID: [''],
             sourceID: [''],
         }),
         depositStatus: [null, depositStatusValidator],
@@ -78,7 +77,6 @@ export class DialogFiltersComponent implements OnInit {
         const {
             depositID = '',
             walletID = null,
-            identityID = '',
             sourceID = '',
             depositStatus = null,
             depositAmountFrom = null,
@@ -88,7 +86,6 @@ export class DialogFiltersComponent implements OnInit {
             main: {
                 depositID,
                 walletID,
-                identityID,
                 sourceID,
             },
             depositStatus,

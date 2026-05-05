@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { PaymentSearchResult } from '@vality/swag-payments';
+import { Payment } from '@vality/swag-payments';
 
 @Component({
     selector: 'dsh-payment-details',
@@ -8,5 +8,5 @@ import { PaymentSearchResult } from '@vality/swag-payments';
     standalone: false,
 })
 export class PaymentDetailsComponent {
-    @Input() payment: PaymentSearchResult;
+    @Input() payment: Payment;
 }

@@ -1,9 +1,9 @@
-import { CustomersTopic, InvoicesTopic, WebhookScope } from '@vality/swag-payments';
+import { InvoicesTopic, WebhookScope } from '@vality/swag-payments';
 
 import TopicEnum = WebhookScope.TopicEnum;
 
 interface EventType {
-    eventName: InvoicesTopic.EventTypesEnum | CustomersTopic.EventTypesEnum;
+    eventName: InvoicesTopic.EventTypesEnum;
     selected: boolean;
 }
 

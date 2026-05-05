@@ -10,6 +10,5 @@ import { DeleteWebhookParams } from './delete-webhook-params';
 })
 export class WebhookActionsComponent {
     @Input() webhookID: string;
-    @Input() identityID: string;
     @Output() deleteWebhook = new EventEmitter<DeleteWebhookParams>();
 }

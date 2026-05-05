@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
-import { CustomersTopic, InvoicesTopic, PaymentStatus } from '@vality/swag-payments';
+import { InvoicesTopic, PaymentStatus } from '@vality/swag-payments';
 
 import { DictionaryService } from '../utils';
 
@@ -81,39 +81,6 @@ export class PaymentsDictionaryService {
         ),
         PaymentUserInteractionCompleted: this.t.translate(
             'payments.invoicesTopicEventType.PaymentUserInteractionCompleted',
-            null,
-            'dictionary',
-        ),
-    }));
-
-    customersTopicEventType$ = this.dictionaryService.create<CustomersTopic.EventTypesEnum>(() => ({
-        CustomerCreated: this.t.translate(
-            'payments.customersTopicEventType.CustomerCreated',
-            null,
-            'dictionary',
-        ),
-        CustomerDeleted: this.t.translate(
-            'payments.customersTopicEventType.CustomerDeleted',
-            null,
-            'dictionary',
-        ),
-        CustomerReady: this.t.translate(
-            'payments.customersTopicEventType.CustomerReady',
-            null,
-            'dictionary',
-        ),
-        CustomerBindingStarted: this.t.translate(
-            'payments.customersTopicEventType.CustomerBindingStarted',
-            null,
-            'dictionary',
-        ),
-        CustomerBindingSucceeded: this.t.translate(
-            'payments.customersTopicEventType.CustomerBindingSucceeded',
-            null,
-            'dictionary',
-        ),
-        CustomerBindingFailed: this.t.translate(
-            'payments.customersTopicEventType.CustomerBindingFailed',
             null,
             'dictionary',
         ),

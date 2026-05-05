@@ -15,7 +15,6 @@ export class MainInfoFiltersComponent extends FormGroupSuperclass<MainInfoForm> 
     control = this.fb.group<MainInfoForm>({
         withdrawalID: null,
         walletID: null,
-        identityID: null,
         destinationID: null,
         externalID: null,
     });

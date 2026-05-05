@@ -5,7 +5,7 @@ import { WebhookScope } from '@vality/swag-wallets';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { IdentitiesService, WalletDictionaryService } from '@dsh/app/api/wallet';
+import { WalletDictionaryService } from '@dsh/app/api/wallet';
 import { oneMustBeSelected } from '@dsh/components/form-controls';
 
 import { getEventsByTopic } from '../get-events-by-topic';
@@ -20,7 +20,6 @@ import TopicEnum = WebhookScope.TopicEnum;
 export class CreateWebhookFormComponent implements OnInit {
     @Input() form: UntypedFormGroup;
 
-    identities$ = this.identitiesService.identities$;
     activeTopic$ = new BehaviorSubject<TopicEnum>('WithdrawalsTopic');
 
     eventType$ = combineLatest([
@@ -29,7 +28,6 @@ export class CreateWebhookFormComponent implements OnInit {
     ]).pipe(map(([w, d]) => ({ ...w, ...d })));
 
     constructor(
-        private identitiesService: IdentitiesService,
         private fb: UntypedFormBuilder,
         private walletDictionaryService: WalletDictionaryService,
         private dr: DestroyRef,

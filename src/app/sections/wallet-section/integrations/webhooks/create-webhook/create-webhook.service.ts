@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subject } from 'rxjs';
-import { filter, switchMap, take, takeUntil } from 'rxjs/operators';
-
-import { IdentitiesService } from '@dsh/app/api/wallet';
+import { filter, switchMap, takeUntil } from 'rxjs/operators';
 
 import { CreateWebhookDialogComponent } from './create-webhook-dialog.component';
 
@@ -15,21 +13,15 @@ export class CreateWebhookService {
 
     webhookCreated$: Observable<void> = this.created$.asObservable();
 
-    constructor(
-        private dialog: MatDialog,
-        private identitiesService: IdentitiesService,
-    ) {}
+    constructor(private dialog: MatDialog) {}
 
     init() {
         this.createWebhook$
             .pipe(
                 takeUntil(this.destroy$),
-                switchMap(() => this.identitiesService.identities$.pipe(take(1))),
-                switchMap((identities) =>
+                switchMap(() =>
                     this.dialog
-                        .open(CreateWebhookDialogComponent, {
-                            data: identities,
-                        })
+                        .open(CreateWebhookDialogComponent)
                         .afterClosed()
                         .pipe(filter((r) => r === 'created')),
                 ),

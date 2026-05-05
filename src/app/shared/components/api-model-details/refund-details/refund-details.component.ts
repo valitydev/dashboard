@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { RefundSearchResult } from '@vality/swag-payments';
+import { Refund } from '@vality/swag-payments';
 
 import { AnapiDictionaryService } from '@dsh/app/api/anapi';
 
@@ -10,7 +10,7 @@ import { AnapiDictionaryService } from '@dsh/app/api/anapi';
     standalone: false,
 })
 export class RefundDetailsComponent {
-    @Input() refund: RefundSearchResult;
+    @Input() refund: Refund;
     refundStatusDict$ = this.anapiDictionaryService.refundStatus$;
 
     constructor(private anapiDictionaryService: AnapiDictionaryService) {}

@@ -12,10 +12,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { TranslocoModule } from '@jsverse/transloco';
 import { ExtendedModule, FlexModule, GridModule } from 'ng-flex-layout';
 
-import { ApiModelRefsModule, IdentityFilterModule } from '@dsh/app/shared';
+import { ApiModelRefsModule } from '@dsh/app/shared';
 import { AccordionTableModule } from '@dsh/app/shared/components/accordion-table';
 import { DialogModule } from '@dsh/app/shared/components/dialog';
-import { IdentityFieldComponent } from '@dsh/app/shared/components/inputs/identity-field';
 import { DateRangeFilterModule } from '@dsh/components/date-range-filter';
 import { FilterModule } from '@dsh/components/filter';
 import { FiltersGroupModule } from '@dsh/components/filters-group';
@@ -42,7 +41,6 @@ import { ReportsComponent } from './reports.component';
         MatSelectModule,
         FilterModule,
         TranslocoModule,
-        IdentityFilterModule,
         MatButtonModule,
         GridModule,
         ExtendedModule,
@@ -50,7 +48,6 @@ import { ReportsComponent } from './reports.component';
         MatInputModule,
         MatDatepickerModule,
         MatDialogModule,
-        IdentityFieldComponent,
         BootstrapIconModule,
         MatDividerModule,
         ApiModelRefsModule,

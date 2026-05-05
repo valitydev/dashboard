@@ -4,20 +4,10 @@
     fxLayout="column"
     fxLayoutGap="24px"
 >
-    <div fxLayout="column" fxLayoutGap="16px">
-        <mat-form-field fxFlex>
-            <mat-label>{{ t('createWebhook.identity') }}</mat-label>
-            <mat-select formControlName="identityID" required>
-                <mat-option *ngFor="let identity of identities$ | async" [value]="identity.id">
-                    {{ identity.id }} {{ identity.name }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field fxFlex>
-            <mat-label>{{ t('createWebhook.url') }}</mat-label>
-            <input autocomplete="off" formControlName="url" matInput required type="text" />
-        </mat-form-field>
-    </div>
+    <mat-form-field>
+        <mat-label>{{ t('createWebhook.url') }}</mat-label>
+        <input autocomplete="off" formControlName="url" matInput required type="text" />
+    </mat-form-field>
     <mat-divider></mat-divider>
     <div class="mat-title-large">{{ t('createWebhook.eventType') }}</div>
     <mat-radio-group

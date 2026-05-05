@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { PaymentSearchResult } from '@vality/swag-payments';
+import { Payment } from '@vality/swag-payments';
 import { BehaviorSubject, Observable, ReplaySubject, Subject, of } from 'rxjs';
-import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
+import { catchError, filter, switchMap, tap } from 'rxjs/operators';
 
 import { PaymentsService } from '@dsh/app/api/payments';
 
@@ -14,12 +14,12 @@ export interface ReceivePaymentParams {
 export class ReceivePaymentService {
     isLoading$: Observable<boolean>;
     errorOccurred$: Observable<boolean>;
-    payment$: Observable<PaymentSearchResult>;
+    payment$: Observable<Payment>;
 
     private receivePayment$ = new Subject<ReceivePaymentParams>();
     private loading$ = new BehaviorSubject(false);
     private error$ = new Subject<boolean>();
-    private receivedPayment$ = new ReplaySubject<PaymentSearchResult>();
+    private receivedPayment$ = new ReplaySubject<Payment>();
 
     constructor(private paymentsService: PaymentsService) {
         this.isLoading$ = this.loading$.asObservable();
@@ -39,9 +39,8 @@ export class ReceivePaymentService {
                     ),
                 ),
                 filter((result) => result !== 'error'),
-                map((r) => r as PaymentSearchResult),
             )
-            .subscribe((payment: PaymentSearchResult) => {
+            .subscribe((payment: Payment) => {
                 this.loading$.next(false);
                 this.receivedPayment$.next(payment);
             });

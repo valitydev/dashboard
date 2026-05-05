@@ -24,7 +24,6 @@ import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { AnapiModule } from '@dsh/app/api/anapi';
 import { PaymentsModule } from '@dsh/app/api/payments';
-import { UrlShortenerModule } from '@dsh/app/api/url-shortener';
 import { WalletModule } from '@dsh/app/api/wallet';
 import { ErrorModule } from '@dsh/app/shared/services';
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
@@ -64,7 +63,6 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
         AnapiModule,
         PaymentsModule,
         OrganizationsModule,
-        UrlShortenerModule,
         WalletModule,
         SpinnerModule,
         ApiKeysModule,

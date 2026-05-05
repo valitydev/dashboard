@@ -5,7 +5,6 @@ import { AdditionalFilters, AdditionalFiltersForm } from '../types';
 export const filtersToForm = ({
     withdrawalID = null,
     walletID = null,
-    identityID = null,
     destinationID = null,
     status = null,
     amountFrom = null,
@@ -14,7 +13,6 @@ export const filtersToForm = ({
     mainInfo: {
         withdrawalID,
         walletID,
-        identityID,
         destinationID,
     },
     status,

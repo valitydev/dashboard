@@ -108,7 +108,6 @@
     "roleAccessesDictionary": {
         "claims": "Claims",
         "createInvoice": "Create invoice",
-        "createPaymentLink": "Create a payment link",
         "createRefund": "Make a refund",
         "manageOrganizations": "Managing organizations and members",
         "manageReports": "Manage reports",

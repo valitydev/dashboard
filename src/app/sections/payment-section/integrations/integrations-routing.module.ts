@@ -19,13 +19,6 @@ const ROUTES: Routes = [
             ),
             createPrivateRoute(
                 {
-                    path: 'payment-link',
-                    loadChildren: () => import('./payment-link').then((m) => m.PaymentLinkModule),
-                },
-                [RoleAccessName.PaymentLinks],
-            ),
-            createPrivateRoute(
-                {
                     path: 'api-keys',
                     loadChildren: () => import('./api-keys').then((m) => m.ApiKeysModule),
                 },
