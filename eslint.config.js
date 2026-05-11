@@ -2,28 +2,14 @@ const tseslint = require('typescript-eslint');
 const angular = require('angular-eslint');
 const configs = require('@vality/ng-configs');
 
-module.exports = [
-    ...tseslint.configs.recommended,
-    {
-        ignores: ['**/dist'],
-    },
-    {
-        files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-        rules: {},
-    },
-    ...configs.baseEslintConfig,
+module.exports = tseslint.config(
+    { ignores: ['**/dist'] },
     {
         files: ['**/*.ts'],
+        extends: [...tseslint.configs.recommended, ...angular.configs.tsRecommended],
+        processor: angular.processInlineTemplates,
         rules: {
             '@angular-eslint/prefer-standalone': 'off',
-        },
-    },
-    ...angular.configs.tsRecommended,
-    ...angular.configs.templateRecommended,
-    ...angular.configs.templateAccessibility,
-    {
-        files: ['**/*.ts'],
-        rules: {
             '@angular-eslint/directive-selector': [
                 'error',
                 {
@@ -44,14 +30,9 @@ module.exports = [
     },
     {
         files: ['**/*.html'],
-        // Override or add rules here
+        extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
         rules: {},
     },
+    ...configs.baseEslintConfig,
     ...configs.appEslintConfig({ internalPatterns: ['@dsh/**'] }),
-    {
-        files: ['**/*.ts'],
-        rules: {
-            '@angular-eslint/prefer-standalone': 'off',
-        },
-    },
-];
+);

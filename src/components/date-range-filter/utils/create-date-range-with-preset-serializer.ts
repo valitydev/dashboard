@@ -33,9 +33,7 @@ export function createDateRangeWithPresetSerializer(id = 'dr'): Serializer<DateR
         },
         recognize: (v) =>
             typeof v === 'object' &&
-            // eslint-disable-next-line no-prototype-builtins
             v.hasOwnProperty('start') &&
-            // eslint-disable-next-line no-prototype-builtins
             v.hasOwnProperty('end') &&
             (isNil(v.start) || moment.isMoment(v.start)) &&
             (isNil(v.end) || moment.isMoment(v.end)),
