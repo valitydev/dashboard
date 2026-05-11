@@ -1,30 +1,16 @@
-const nx = require('@nx/eslint-plugin');
+const tseslint = require('typescript-eslint');
+const angular = require('angular-eslint');
 const configs = require('@vality/ng-configs');
 
 module.exports = [
-    ...nx.configs['flat/base'],
-    ...nx.configs['flat/typescript'],
-    ...nx.configs['flat/javascript'],
+    ...tseslint.configs.recommended,
     {
         ignores: ['**/dist'],
     },
     {
         files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-        // Override or add rules here
         rules: {},
     },
-    // {
-    //     files: ['**/*.json'],
-    //     rules: {
-    //         '@nx/dependency-checks': [
-    //             'error',
-    //             {
-    //                 ignoredFiles: ['{projectRoot}/eslint.config.{js,cjs,mjs}'],
-    //             },
-    //         ],
-    //     },
-    //     languageOptions: { parser: require('jsonc-eslint-parser') },
-    // },
     ...configs.baseEslintConfig,
     {
         files: ['**/*.ts'],
@@ -32,8 +18,9 @@ module.exports = [
             '@angular-eslint/prefer-standalone': 'off',
         },
     },
-    ...nx.configs['flat/angular'],
-    ...nx.configs['flat/angular-template'],
+    ...angular.configs.tsRecommended,
+    ...angular.configs.templateRecommended,
+    ...angular.configs.templateAccessibility,
     {
         files: ['**/*.ts'],
         rules: {
