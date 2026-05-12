@@ -1,5 +1,5 @@
 <dsh-bar-chart-item
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.analytics'"
+    *transloco="let t; scope: 'payment-section'; prefix: 'paymentSection.analytics'"
     [chartData]="splitCount$ | async"
     [colors]="colors"
     [error]="error$ | async"

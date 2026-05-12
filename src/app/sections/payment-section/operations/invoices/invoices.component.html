@@ -8,7 +8,7 @@
     >
         <ng-container *ngIf="('CreateInvoice' | isAccessAllowed) && isDev">
             <button
-                *transloco="let i; scope: 'payment-section'; read: 'paymentSection.invoices'"
+                *transloco="let i; scope: 'payment-section'; prefix: 'paymentSection.invoices'"
                 [disabled]="(shops$ | async).length === 0"
                 mat-flat-button
                 (click)="create()"

@@ -1,5 +1,9 @@
 <ng-container
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.invoices.actions'"
+    *transloco="
+        let t;
+        scope: 'payment-section';
+        prefix: 'paymentSection.operations.invoices.actions'
+    "
 >
     <dsh-base-dialog [title]="t('fulfillInvoice')" (cancel)="cancel()">
         <mat-form-field fxFlex>

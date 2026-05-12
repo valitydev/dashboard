@@ -1,5 +1,5 @@
 <dsh-donut-chart-item
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.analytics'"
+    *transloco="let t; scope: 'payment-section'; prefix: 'paymentSection.analytics'"
     [chartData]="errorDistribution$ | async"
     [colors]="colors"
     [error]="error$ | async"
