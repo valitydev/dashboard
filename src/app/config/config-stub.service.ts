@@ -12,6 +12,5 @@ export class ConfigStubService extends BASE_CONFIG {
         }
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     async init() {}
 }

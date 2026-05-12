@@ -1,5 +1,9 @@
 <ng-container
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.payments.filter'"
+    *transloco="
+        let t;
+        scope: 'payment-section';
+        prefix: 'paymentSection.operations.payments.filter'
+    "
 >
     <form [formGroup]="control" gdColumns="1fr" gdColumns.gt-sm="1fr 1fr" gdGap="0 24px">
         <mat-form-field>

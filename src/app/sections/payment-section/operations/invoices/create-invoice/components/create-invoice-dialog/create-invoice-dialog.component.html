@@ -1,11 +1,11 @@
 <dsh-base-dialog
-    *transloco="let d; scope: 'payment-section'; read: 'paymentSection.createInvoiceDialog'"
+    *transloco="let d; scope: 'payment-section'; prefix: 'paymentSection.createInvoiceDialog'"
     [title]="d('title')"
     (cancel)="cancel()"
 >
     <dsh-create-invoice-form [formControl]="formControl" [shops]="shops"></dsh-create-invoice-form>
     <ng-container
-        *transloco="let t; scope: 'components'; read: 'components.shared'"
+        *transloco="let t; scope: 'components'; prefix: 'components.shared'"
         dshBaseDialogActions
     >
         <button [disabled]="formControl.invalid" mat-flat-button (click)="create()">

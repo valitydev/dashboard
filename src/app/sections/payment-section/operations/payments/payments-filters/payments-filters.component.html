@@ -12,7 +12,7 @@
     ></dsh-shops-filter>
     <dsh-card-bin-pan-filter formControlName="binPan" fxHide.lt-md></dsh-card-bin-pan-filter>
     <ng-container
-        *transloco="let t; scope: 'core-components'; read: 'coreComponents.additionalFilters'"
+        *transloco="let t; scope: 'core-components'; prefix: 'coreComponents.additionalFilters'"
     >
         <dsh-filter-button
             [active]="isAdditionalFilterApplied$ | async"
