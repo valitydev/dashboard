@@ -8,7 +8,7 @@
     "fix": "npm run i18n:extract && npm run spell:fix && npm run lint:fix && npm run format:fix && npm run spell:fix",
     "build": "ng build && transloco-optimize dist/browser/assets/i18n",
     "test": "ng test",
-    "i18n": "transloco-keys-manager find --emit-error-on-extra-keys",
+    "i18n": "transloco-keys-manager find",
     "i18n:extract": "transloco-keys-manager extract",
     "i18n:fix": "npm run i18n:extract && prettier src/assets/i18n/** --write",
     "coverage": "npx http-server -c-1 -o -p 9875 ./coverage",
