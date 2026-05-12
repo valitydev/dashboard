@@ -1,5 +1,9 @@
 <dsh-base-dialog
-    *transloco="let t; scope: 'organization-section'; read: 'organizationSection.selectRoleDialog'"
+    *transloco="
+        let t;
+        scope: 'organization-section';
+        prefix: 'organizationSection.selectRoleDialog'
+    "
     [noActions]="dialogData.isShow"
     [title]="t('title')"
     (cancel)="cancel()"

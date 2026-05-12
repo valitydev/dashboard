@@ -2,7 +2,7 @@
     *transloco="
         let t;
         scope: 'payment-section';
-        read: 'paymentSection.operations.refunds.paymentInfo'
+        prefix: 'paymentSection.operations.refunds.paymentInfo'
     "
     fxLayout="column"
     fxLayoutGap="24px"
@@ -12,7 +12,7 @@
     </div>
     <ng-container *ngIf="isLoading$ | async; else afterLoading">
         <div
-            *transloco="let c; scope: 'components'; read: 'components.shared'"
+            *transloco="let c; scope: 'components'; prefix: 'components.shared'"
             class="mat-body-medium"
         >
             {{ c('loading') }}

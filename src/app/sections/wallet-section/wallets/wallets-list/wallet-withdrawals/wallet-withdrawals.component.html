@@ -1,5 +1,5 @@
 <div
-    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.wallets.walletWithdrawals'"
+    *transloco="let t; scope: 'wallet-section'; prefix: 'walletSection.wallets.walletWithdrawals'"
     fxLayout="column"
     fxLayoutGap="24px"
 >
@@ -9,12 +9,12 @@
         <mat-divider *ngIf="i < withdrawals.length - 1"></mat-divider>
     </ng-container>
     <div *ngIf="isLoading$ | async">
-        <ng-container *transloco="let c; scope: 'components'; read: 'components.shared'">
+        <ng-container *transloco="let c; scope: 'components'; prefix: 'components.shared'">
             {{ c('loading') }}
         </ng-container>
     </div>
     <div *ngIf="errors$ | async">
-        <ng-container *transloco="let c; scope: 'components'; read: 'components.shared'">
+        <ng-container *transloco="let c; scope: 'components'; prefix: 'components.shared'">
             {{ t('fetchError') }}
         </ng-container>
     </div>
@@ -23,7 +23,7 @@
         mat-flat-button
         (click)="fetchMore()"
     >
-        <ng-container *transloco="let c; scope: 'components'; read: 'components.shared'">
+        <ng-container *transloco="let c; scope: 'components'; prefix: 'components.shared'">
             {{ c('showMore') }}
         </ng-container>
     </button>

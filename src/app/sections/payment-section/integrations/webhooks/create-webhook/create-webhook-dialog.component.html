@@ -1,8 +1,8 @@
-<ng-container *transloco="let t; scope: 'payment-section'; read: 'paymentSection.webhook'">
+<ng-container *transloco="let t; scope: 'payment-section'; prefix: 'paymentSection.webhook'">
     <dsh-base-dialog [title]="t('createWebhook.title')" (cancel)="cancel()">
         <dsh-create-webhook-form [form]="form"></dsh-create-webhook-form>
         <div
-            *transloco="let c; scope: 'components'; read: 'components.shared'"
+            *transloco="let c; scope: 'components'; prefix: 'components.shared'"
             dshBaseDialogActions
             fxLayout="row"
             fxLayoutAlign="stretch"

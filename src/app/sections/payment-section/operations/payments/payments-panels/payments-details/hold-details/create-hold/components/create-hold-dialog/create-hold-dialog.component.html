@@ -1,5 +1,9 @@
 <dsh-base-dialog
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.paymentDetails.holdDetails'"
+    *transloco="
+        let t;
+        scope: 'payment-section';
+        prefix: 'paymentSection.paymentDetails.holdDetails'
+    "
     [title]="t('acceptTitle')"
     (cancel)="decline()"
 >

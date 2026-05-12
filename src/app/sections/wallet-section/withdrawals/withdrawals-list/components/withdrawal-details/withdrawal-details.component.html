@@ -1,5 +1,5 @@
 <div
-    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.withdrawals.details'"
+    *transloco="let t; scope: 'wallet-section'; prefix: 'walletSection.withdrawals.details'"
     gdColumns="1fr"
     gdColumns.gt-md="1fr 1fr 1fr 1fr"
     gdColumns.gt-sm="1fr 1fr"
@@ -29,7 +29,7 @@
             *transloco="
                 let errors;
                 scope: 'wallet-section';
-                read: 'walletSection.withdrawals.details.errors'
+                prefix: 'walletSection.withdrawals.details.errors'
             "
             class="mat-body-medium"
         >

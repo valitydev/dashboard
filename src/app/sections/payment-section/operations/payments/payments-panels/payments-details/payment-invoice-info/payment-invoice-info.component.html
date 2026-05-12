@@ -2,7 +2,7 @@
     *transloco="
         let t;
         scope: 'payment-section';
-        read: 'paymentSection.paymentDetails.invoiceDetails'
+        prefix: 'paymentSection.paymentDetails.invoiceDetails'
     "
 >
     <div fxLayout="column" fxLayoutGap="24px">
@@ -21,7 +21,7 @@
                 {{ t('notFound') }}
             </div>
             <ng-template #loading>
-                <div *transloco="let c; scope: 'components'; read: 'components.shared'">
+                <div *transloco="let c; scope: 'components'; prefix: 'components.shared'">
                     <div class="mat-body-medium">{{ c('loading') }}</div>
                 </div>
             </ng-template>

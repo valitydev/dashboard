@@ -1,5 +1,5 @@
 <dsh-filter
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.reportTypesFilter'"
+    *transloco="let t; scope: 'payment-section'; prefix: 'paymentSection.reportTypesFilter'"
     [active]="isActive"
     [activeLabel]="t('activeLabel') | listLabel: (labels$ | async)"
     [content]="content"
