@@ -5,7 +5,10 @@
 
     <mat-divider></mat-divider>
 
-    <dsh-actions *transloco="let t; scope: 'components'; read: 'components.shared'" class="actions">
+    <dsh-actions
+        *transloco="let t; scope: 'components'; prefix: 'components.shared'"
+        class="actions"
+    >
         <button *ngIf="!noClearButton" mat-button (click)="clear.emit($event)">
             {{ t('clear') }}
         </button>

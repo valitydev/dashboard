@@ -1,5 +1,5 @@
 <div
-    *transloco="let t; scope: 'wallet-section'; read: 'walletSection.wallets.accountInfo'"
+    *transloco="let t; scope: 'wallet-section'; prefix: 'walletSection.wallets.accountInfo'"
     fxLayout="column"
     fxLayoutGap="24px"
 >
@@ -23,7 +23,7 @@
     </div>
     <ng-template #loading>
         <div
-            *transloco="let c; scope: 'components'; read: 'components.shared'"
+            *transloco="let c; scope: 'components'; prefix: 'components.shared'"
             class="mat-body-medium"
         >
             {{ c('loading') }}

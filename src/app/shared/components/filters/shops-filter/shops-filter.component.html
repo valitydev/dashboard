@@ -1,5 +1,5 @@
 <dsh-filter
-    *transloco="let t; scope: 'components'; read: 'components.shopsFilter'"
+    *transloco="let t; scope: 'components'; prefix: 'components.shopsFilter'"
     [active]="isActive"
     [activeLabel]="t('activeLabel') | listLabel: (labels$ | async)"
     [content]="content"

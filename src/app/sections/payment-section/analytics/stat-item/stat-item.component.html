@@ -1,4 +1,4 @@
-<dsh-card *transloco="let c; scope: 'components'; read: 'components.shared'" class="stat-item">
+<dsh-card *transloco="let c; scope: 'components'; prefix: 'components.shared'" class="stat-item">
     <div
         *ngIf="!error; else onError"
         fxLayout="column"
@@ -6,7 +6,7 @@
         style="display: flex; flex-direction: column; gap: 16px"
     >
         <div
-            *transloco="let t; scope: 'payment-section'; read: 'paymentSection.analytics'"
+            *transloco="let t; scope: 'payment-section'; prefix: 'paymentSection.analytics'"
             fxLayout
             fxLayoutAlign="space-between"
             fxLayoutGap="10px"

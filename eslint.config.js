@@ -1,42 +1,15 @@
-const nx = require('@nx/eslint-plugin');
+const tseslint = require('typescript-eslint');
+const angular = require('angular-eslint');
 const configs = require('@vality/ng-configs');
 
-module.exports = [
-    ...nx.configs['flat/base'],
-    ...nx.configs['flat/typescript'],
-    ...nx.configs['flat/javascript'],
-    {
-        ignores: ['**/dist'],
-    },
-    {
-        files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-        // Override or add rules here
-        rules: {},
-    },
-    // {
-    //     files: ['**/*.json'],
-    //     rules: {
-    //         '@nx/dependency-checks': [
-    //             'error',
-    //             {
-    //                 ignoredFiles: ['{projectRoot}/eslint.config.{js,cjs,mjs}'],
-    //             },
-    //         ],
-    //     },
-    //     languageOptions: { parser: require('jsonc-eslint-parser') },
-    // },
-    ...configs.baseEslintConfig,
+module.exports = tseslint.config(
+    { ignores: ['**/dist'] },
     {
         files: ['**/*.ts'],
+        extends: [...tseslint.configs.recommended, ...angular.configs.tsRecommended],
+        processor: angular.processInlineTemplates,
         rules: {
             '@angular-eslint/prefer-standalone': 'off',
-        },
-    },
-    ...nx.configs['flat/angular'],
-    ...nx.configs['flat/angular-template'],
-    {
-        files: ['**/*.ts'],
-        rules: {
             '@angular-eslint/directive-selector': [
                 'error',
                 {
@@ -53,18 +26,14 @@ module.exports = [
                     style: 'kebab-case',
                 },
             ],
+            '@angular-eslint/prefer-inject': 'off',
         },
     },
     {
         files: ['**/*.html'],
-        // Override or add rules here
+        extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
         rules: {},
     },
+    ...configs.baseEslintConfig,
     ...configs.appEslintConfig({ internalPatterns: ['@dsh/**'] }),
-    {
-        files: ['**/*.ts'],
-        rules: {
-            '@angular-eslint/prefer-standalone': 'off',
-        },
-    },
-];
+);

@@ -1,5 +1,5 @@
 <div
-    *transloco="let t; scope: 'payment-section'; read: 'paymentSection.operations.refunds'"
+    *transloco="let t; scope: 'payment-section'; prefix: 'paymentSection.operations.refunds'"
     fxLayout="column"
     fxLayoutGap="24px"
 >
@@ -19,7 +19,7 @@
         </div>
         <div *ngIf="hasMore">
             <button
-                *transloco="let c; scope: 'components'; read: 'components.shared'"
+                *transloco="let c; scope: 'components'; prefix: 'components.shared'"
                 fxFlex
                 mat-flat-button
                 (click)="showMoreElements()"
@@ -31,7 +31,7 @@
 </div>
 
 <ng-template #loader>
-    <div *transloco="let c; scope: 'components'; read: 'components.shared'">
+    <div *transloco="let c; scope: 'components'; prefix: 'components.shared'">
         <div class="mat-body-medium">{{ c('loading') }}</div>
     </div>
 </ng-template>

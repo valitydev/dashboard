@@ -97,7 +97,6 @@ export class MaxLengthInputComponent implements OnChanges, ControlValueAccessor 
         this.formControl.setValue(value);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     private innerOnTouched = () => {};
 
     private updateValidators(): void {

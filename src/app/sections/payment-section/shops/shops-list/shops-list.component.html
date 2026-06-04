@@ -1,4 +1,4 @@
-<ng-container *transloco="let s; scope: 'payment-section'; read: 'paymentSection.shops'">
+<ng-container *transloco="let s; scope: 'payment-section'; prefix: 'paymentSection.shops'">
     <div fxLayout="column" fxLayoutGap="16px">
         <dsh-last-updated [lastUpdated]="lastUpdated" (update)="refreshList()"></dsh-last-updated>
         <dsh-shop-row-header></dsh-shop-row-header>
@@ -24,7 +24,7 @@
                             *transloco="
                                 let s;
                                 scope: 'payment-section';
-                                read: 'paymentSection.shops'
+                                prefix: 'paymentSection.shops'
                             "
                             (collapse)="accordionItem.collapse($event)"
                             >{{ s('panel.details') }}</dsh-accordion-item-content-header

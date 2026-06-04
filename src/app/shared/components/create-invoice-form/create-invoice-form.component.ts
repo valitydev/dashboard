@@ -87,6 +87,5 @@ export class CreateInvoiceFormComponent
         return getErrorsTree(this.control);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     handleIncomingValue(_value: FormData): void {}
 }

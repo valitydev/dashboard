@@ -1,5 +1,5 @@
 <div *ngIf="organization$ | async as organization" fxLayout="column" fxLayoutGap="16px">
-    <ng-container *transloco="let t; scope: 'organization-section'; read: 'organizationSection'">
+    <ng-container *transloco="let t; scope: 'organization-section'; prefix: 'organizationSection'">
         <dsh-spinner *ngIf="isLoading$ | async; else loaded" fxFlexAlign="center"></dsh-spinner>
         <ng-template #loaded>
             <dsh-last-updated

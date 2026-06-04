@@ -1,5 +1,5 @@
 <dsh-card
-    *transloco="let c; scope: 'components'; read: 'components.shared'"
+    *transloco="let c; scope: 'components'; prefix: 'components.shared'"
     style="display: flex; flex-direction: column; gap: 16px"
 >
     <dsh-card-title fxLayoutAlign="space-between">
@@ -7,7 +7,7 @@
         <dsh-spinner *ngIf="isLoading" [type]="spinnerType" size="28"></dsh-spinner>
     </dsh-card-title>
     <dsh-card-content
-        *transloco="let t; scope: 'payment-section'; read: 'paymentSection.analytics'"
+        *transloco="let t; scope: 'payment-section'; prefix: 'paymentSection.analytics'"
         fxFlexFill
     >
         <div *ngIf="!error; else onError" fxFlex fxFlexFill>

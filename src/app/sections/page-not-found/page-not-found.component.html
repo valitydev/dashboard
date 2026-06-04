@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="16px">
     <div class="mat-display-medium">404</div>
     <button
-        *transloco="let t; scope: 'components'; read: 'components.pageNotFound'"
+        *transloco="let t; scope: 'components'; prefix: 'components.pageNotFound'"
         mat-flat-button
         (click)="back()"
     >

@@ -1,5 +1,5 @@
 <div
-    *transloco="let t; scope: 'components'; read: 'components.withdrawalInfo'"
+    *transloco="let t; scope: 'components'; prefix: 'components.withdrawalInfo'"
     fxLayout="column"
     fxLayoutGap="20px"
 >
@@ -28,7 +28,7 @@
     </div>
     <dsh-details-item *ngIf="withdrawal.failure" [title]="t('error')" fxFlex>
         <div
-            *transloco="let errors; scope: 'components'; read: 'components.withdrawalInfo.errors'"
+            *transloco="let errors; scope: 'components'; prefix: 'components.withdrawalInfo.errors'"
             class="mat-body-medium"
         >
             <!-- t(failed) -->

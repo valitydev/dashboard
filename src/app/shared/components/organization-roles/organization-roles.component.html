@@ -1,5 +1,9 @@
 <ng-container
-    *transloco="let t; scope: 'organization-section'; read: 'organizationSection.organizationRoles'"
+    *transloco="
+        let t;
+        scope: 'organization-section';
+        prefix: 'organizationSection.organizationRoles'
+    "
 >
     <div *ngIf="isOwner; else notOwner" class="mat-body-medium">{{ t('owner') }}</div>
 
