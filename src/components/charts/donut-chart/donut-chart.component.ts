@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import cloneDeep from 'lodash-es/cloneDeep';
-import { ApexAxisChartSeries } from 'ng-apexcharts/lib/model/apex-types';
+import { ApexAxisChartSeries } from 'ng-apexcharts';
 
 import { DEFAULT_CONFIG } from './default-config';
 

@@ -1,4 +1,4 @@
-import { ApexOptions } from 'ng-apexcharts/lib/model/apex-types';
+import { ApexOptions } from 'ng-apexcharts';
 
 import { DEFAULT_ANIMATION } from '@dsh/components/charts/default-animation';
 import { formatAmount } from '@dsh/components/charts/format-amount';
