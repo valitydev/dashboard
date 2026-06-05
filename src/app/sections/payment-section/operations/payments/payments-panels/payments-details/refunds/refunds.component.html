@@ -7,14 +7,11 @@
         <div>
             {{ t('title') }}
         </div>
-        <button
-            *ngIf="'CreateRefund' | isAccessAllowed"
-            [disabled]="!isRefundAvailable"
-            mat-flat-button
-            (click)="createRefund()"
-        >
-            {{ t('createRefund.title') }}
-        </button>
+        @if ('CreateRefund' | isAccessAllowed) {
+            <button [disabled]="!isRefundAvailable" mat-flat-button (click)="createRefund()">
+                {{ t('createRefund.title') }}
+            </button>
+        }
     </div>
     <dsh-refunds-list
         [hasMore]="hasMore$ | async"

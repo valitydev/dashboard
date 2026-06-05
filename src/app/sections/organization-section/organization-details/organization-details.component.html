@@ -1,43 +1,40 @@
-<div
-    *ngIf="organization$ | async as organization"
-    class="dsh-organization-details"
-    fxLayout="column"
-    fxLayoutGap="32px"
->
-    <div fxLayout="column" fxLayoutGap="8px">
-        <h2 class="mat-display-medium">{{ organization.name }}</h2>
-        <ol
-            *transloco="
-                let b;
-                scope: 'organization-section';
-                prefix: 'organizationSection.organizationDetails.breadcrumb'
-            "
-            dsh-breadcrumb
-        >
-            <li dsh-breadcrumb-item>
-                <a dshTextColor="secondary" routerLink="/organization-section/organizations">{{
-                    b('organizations')
-                }}</a>
-            </li>
-            <li dsh-breadcrumb-item>{{ organization.name }}</li>
-        </ol>
-    </div>
-
-    <div fxLayout="column" fxLayoutGap="32px">
-        <nav fitInkBarToContent mat-tab-nav-bar style="width: fit-content">
-            <a
-                #rla="routerLinkActive"
-                *ngFor="let link of links"
-                [active]="rla.isActive"
-                [routerLink]="link.path"
-                mat-tab-link
-                routerLinkActive
+@if (organization$ | async; as organization) {
+    <div class="dsh-organization-details" fxLayout="column" fxLayoutGap="32px">
+        <div fxLayout="column" fxLayoutGap="8px">
+            <h2 class="mat-display-medium">{{ organization.name }}</h2>
+            <ol
+                *transloco="
+                    let b;
+                    scope: 'organization-section';
+                    prefix: 'organizationSection.organizationDetails.breadcrumb'
+                "
+                dsh-breadcrumb
             >
-                <ng-container>{{ link.label$ | async }}</ng-container>
-            </a>
-        </nav>
-        <div>
-            <router-outlet></router-outlet>
+                <li dsh-breadcrumb-item>
+                    <a dshTextColor="secondary" routerLink="/organization-section/organizations">{{
+                        b('organizations')
+                    }}</a>
+                </li>
+                <li dsh-breadcrumb-item>{{ organization.name }}</li>
+            </ol>
+        </div>
+        <div fxLayout="column" fxLayoutGap="32px">
+            <nav fitInkBarToContent mat-tab-nav-bar style="width: fit-content">
+                @for (link of links; track link) {
+                    <a
+                        #rla="routerLinkActive"
+                        [active]="rla.isActive"
+                        [routerLink]="link.path"
+                        mat-tab-link
+                        routerLinkActive
+                    >
+                        <ng-container>{{ link.label$ | async }}</ng-container>
+                    </a>
+                }
+            </nav>
+            <div>
+                <router-outlet></router-outlet>
+            </div>
         </div>
     </div>
-</div>
+}

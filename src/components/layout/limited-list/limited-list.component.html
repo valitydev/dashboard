@@ -5,11 +5,9 @@
 >
     <div class="mat-title-small dsh-limited-list-title">{{ title }}</div>
     <ng-content></ng-content>
-    <div
-        *ngIf="!displayedAll && contentChildren?.length > displayedCount"
-        class="dsh-limited-list-show-more mat-body-small"
-        (click)="showMore()"
-    >
-        {{ t('showMore') }}
-    </div>
+    @if (!displayedAll && contentChildren?.length > displayedCount) {
+        <div class="dsh-limited-list-show-more mat-body-small" (click)="showMore()">
+            {{ t('showMore') }}
+        </div>
+    }
 </div>

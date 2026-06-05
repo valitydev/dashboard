@@ -9,9 +9,11 @@
             {{ url }}
         </div>
     </dsh-details-item>
-    <dsh-details-item *ngIf="walletName" [title]="t('wallet')">
-        <div class="mat-body-medium">
-            {{ walletName }}
-        </div>
-    </dsh-details-item>
+    @if (walletName) {
+        <dsh-details-item [title]="t('wallet')">
+            <div class="mat-body-medium">
+                {{ walletName }}
+            </div>
+        </dsh-details-item>
+    }
 </div>

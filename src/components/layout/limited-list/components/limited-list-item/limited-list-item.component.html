@@ -1,3 +1,5 @@
 <div class="mat-body-small">
-    <ng-container *ngIf="!hidden"><ng-content></ng-content></ng-container>
+    @if (!hidden) {
+        <ng-content></ng-content>
+    }
 </div>

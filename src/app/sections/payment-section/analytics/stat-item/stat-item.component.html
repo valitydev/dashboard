@@ -1,41 +1,51 @@
 <dsh-card *transloco="let c; scope: 'components'; prefix: 'components.shared'" class="stat-item">
-    <div
-        *ngIf="!error; else onError"
-        fxLayout="column"
-        fxLayoutGap="5px"
-        style="display: flex; flex-direction: column; gap: 16px"
-    >
+    @if (!error) {
         <div
-            *transloco="let t; scope: 'payment-section'; prefix: 'paymentSection.analytics'"
-            fxLayout
-            fxLayoutAlign="space-between"
-            fxLayoutGap="10px"
+            fxLayout="column"
+            fxLayoutGap="5px"
+            style="display: flex; flex-direction: column; gap: 16px"
         >
-            <div *ngIf="!isLoading" class="mat-title-large stat-item-title">
-                <div *ngIf="statData?.current; else noData">
-                    <div *ngIf="hideCurrency; else showCurrency">
-                        {{ statData.current | number }}
+            <div
+                *transloco="let t; scope: 'payment-section'; prefix: 'paymentSection.analytics'"
+                fxLayout
+                fxLayoutAlign="space-between"
+                fxLayoutGap="10px"
+            >
+                @if (!isLoading) {
+                    <div class="mat-title-large stat-item-title">
+                        @if (statData?.current) {
+                            <div>
+                                @if (hideCurrency) {
+                                    <div>
+                                        {{ statData.current | number }}
+                                    </div>
+                                } @else {
+                                    {{
+                                        statData.current
+                                            | amountCurrency: statData.currency : 'short'
+                                    }}
+                                }
+                            </div>
+                        } @else {
+                            {{ t('noData') }}
+                        }
                     </div>
-                    <ng-template #showCurrency>
-                        {{ statData.current | amountCurrency: statData.currency : 'short' }}
-                    </ng-template>
-                </div>
-                <ng-template #noData>
-                    {{ t('noData') }}
-                </ng-template>
+                }
+                @if (isLoading) {
+                    <dsh-spinner [type]="spinnerType" size="28"></dsh-spinner>
+                }
             </div>
-            <dsh-spinner *ngIf="isLoading" [type]="spinnerType" size="28"></dsh-spinner>
+            <div style="display: flex; flex-direction: column; gap: 4px">
+                <div class="mat-body-small dsh-stat-item-title">{{ subtitle }}</div>
+                @if (!isLoading) {
+                    <dsh-percent-difference
+                        [current]="statData?.current"
+                        [previous]="statData?.previous"
+                    ></dsh-percent-difference>
+                }
+            </div>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 4px">
-            <div class="mat-body-small dsh-stat-item-title">{{ subtitle }}</div>
-            <dsh-percent-difference
-                *ngIf="!isLoading"
-                [current]="statData?.current"
-                [previous]="statData?.previous"
-            ></dsh-percent-difference>
-        </div>
-    </div>
-    <ng-template #onError>
+    } @else {
         {{ c('httpError') }}
-    </ng-template>
+    }
 </dsh-card>

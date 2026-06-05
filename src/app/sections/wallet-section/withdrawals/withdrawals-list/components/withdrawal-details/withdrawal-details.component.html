@@ -21,19 +21,23 @@
     <dsh-details-item [title]="t('wallet')">
         {{ withdrawal.wallet | walletDetails }}
     </dsh-details-item>
-    <dsh-details-item *ngIf="withdrawal.externalID" [title]="t('externalId')">
-        {{ withdrawal.externalID }}
-    </dsh-details-item>
-    <dsh-details-item *ngIf="withdrawal.failure" [title]="t('error')">
-        <div
-            *transloco="
-                let errors;
-                scope: 'wallet-section';
-                prefix: 'walletSection.withdrawals.details.errors'
-            "
-            class="mat-body-medium"
-        >
-            {{ withdrawal.failure | withdrawalErrorMessage }}
-        </div>
-    </dsh-details-item>
+    @if (withdrawal.externalID) {
+        <dsh-details-item [title]="t('externalId')">
+            {{ withdrawal.externalID }}
+        </dsh-details-item>
+    }
+    @if (withdrawal.failure) {
+        <dsh-details-item [title]="t('error')">
+            <div
+                *transloco="
+                    let errors;
+                    scope: 'wallet-section';
+                    prefix: 'walletSection.withdrawals.details.errors'
+                "
+                class="mat-body-medium"
+            >
+                {{ withdrawal.failure | withdrawalErrorMessage }}
+            </div>
+        </dsh-details-item>
+    }
 </div>

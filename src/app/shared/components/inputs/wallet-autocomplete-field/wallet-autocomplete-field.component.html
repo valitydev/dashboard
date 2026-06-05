@@ -1,8 +1,9 @@
-<v-select-field
-    *ngIf="wallets$ | async"
-    [formControl]="control"
-    [label]="label"
-    [options]="options$ | async"
-    [required]="required"
-    appearance="outline"
-></v-select-field>
+@if (wallets$ | async) {
+    <v-select-field
+        [formControl]="control"
+        [label]="label"
+        [options]="options$ | async"
+        [required]="required"
+        appearance="outline"
+    ></v-select-field>
+}

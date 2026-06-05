@@ -7,26 +7,28 @@
         fxLayoutGap="16px"
         (expandedChange)="expandedIdChange.emit($event)"
     >
-        <dsh-accordion-item #accordionItem *ngFor="let withdrawal of withdrawals">
-            <dsh-withdrawal-row [withdrawal]="withdrawal"></dsh-withdrawal-row>
-            <ng-template dshLazyPanelContent>
-                <dsh-card fxFlexFill fxLayout="column" fxLayoutGap="32px">
-                    <dsh-accordion-item-content-header
-                        *transloco="
-                            let t;
-                            scope: 'wallet-section';
-                            prefix: 'walletSection.withdrawals'
-                        "
-                        (collapse)="accordionItem.collapse($event)"
-                    >
-                        <div fxLayout fxLayoutAlign="space-between">
-                            <div>{{ t('withdrawal') }} #{{ withdrawal.id }}</div>
-                            <div>{{ withdrawal.createdAt | date: 'dd MMMM yyyy, HH:mm' }}</div>
-                        </div>
-                    </dsh-accordion-item-content-header>
-                    <dsh-withdrawal-details [withdrawal]="withdrawal"></dsh-withdrawal-details>
-                </dsh-card>
-            </ng-template>
-        </dsh-accordion-item>
+        @for (withdrawal of withdrawals; track withdrawal) {
+            <dsh-accordion-item #accordionItem>
+                <dsh-withdrawal-row [withdrawal]="withdrawal"></dsh-withdrawal-row>
+                <ng-template dshLazyPanelContent>
+                    <dsh-card fxFlexFill fxLayout="column" fxLayoutGap="32px">
+                        <dsh-accordion-item-content-header
+                            *transloco="
+                                let t;
+                                scope: 'wallet-section';
+                                prefix: 'walletSection.withdrawals'
+                            "
+                            (collapse)="accordionItem.collapse($event)"
+                        >
+                            <div fxLayout fxLayoutAlign="space-between">
+                                <div>{{ t('withdrawal') }} #{{ withdrawal.id }}</div>
+                                <div>{{ withdrawal.createdAt | date: 'dd MMMM yyyy, HH:mm' }}</div>
+                            </div>
+                        </dsh-accordion-item-content-header>
+                        <dsh-withdrawal-details [withdrawal]="withdrawal"></dsh-withdrawal-details>
+                    </dsh-card>
+                </ng-template>
+            </dsh-accordion-item>
+        }
     </dsh-accordion>
 </div>

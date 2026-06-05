@@ -6,7 +6,7 @@
 >
     <div fxLayout="column" fxLayoutGap="24px">
         <mat-checkbox [formControl]="isRandomizeAmount">{{ d('isRandomizeAmount') }}</mat-checkbox>
-        <ng-container *ngIf="isRandomizeAmount.value">
+        @if (isRandomizeAmount.value) {
             <mat-form-field fxFlex>
                 <mat-label>{{ d('deviation') }}</mat-label>
                 <input
@@ -32,13 +32,14 @@
             </mat-form-field>
             <div class="mat-body-medium">{{ d('direction') }}:</div>
             <mat-radio-group formControlName="direction" fxLayout fxLayoutGap="24px">
-                <mat-radio-button
-                    *ngFor="let directionType of directionTypes"
-                    [value]="directionType"
-                    fxFlex="0 1 calc((100% - 24px * 2)/3)"
-                >
-                    {{ directionType }}
-                </mat-radio-button>
+                @for (directionType of directionTypes; track directionType) {
+                    <mat-radio-button
+                        [value]="directionType"
+                        fxFlex="0 1 calc((100% - 24px * 2)/3)"
+                    >
+                        {{ directionType }}
+                    </mat-radio-button>
+                }
             </mat-radio-group>
             <mat-form-field fxFlex>
                 <mat-label>{{ d('minAmountCondition') }}</mat-label>
@@ -73,6 +74,6 @@
                 <span matTextPrefix>{{ currency }}&nbsp;</span>
                 <mat-hint>{{ d('amountMultiplicityConditionHint') }}</mat-hint>
             </mat-form-field>
-        </ng-container>
+        }
     </div>
 </div>

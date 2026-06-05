@@ -1,10 +1,11 @@
-<div
-    *ngIf="isShow$ | async"
-    @hide
-    [ngStyle]="{ bottom: bottomOffset + 'px', right: (rightOffset$ | async) + 'px' }"
-    class="dsh-scroll-up"
->
-    <button mat-icon-button (click)="scrollToTop()">
-        <dsh-bi icon="chevron-up" size="sm"></dsh-bi>
-    </button>
-</div>
+@if (isShow$ | async) {
+    <div
+        @hide
+        [ngStyle]="{ bottom: bottomOffset + 'px', right: (rightOffset$ | async) + 'px' }"
+        class="dsh-scroll-up"
+    >
+        <button mat-icon-button (click)="scrollToTop()">
+            <dsh-bi icon="chevron-up" size="sm"></dsh-bi>
+        </button>
+    </div>
+}

@@ -5,23 +5,21 @@
 >
     @if (organization$ | async) {
         <ng-container>
-            <dsh-menu-item
-                *ngIf="activeOrg$ | async as activeOrg"
-                class="mat-title-small"
-                (click)="toActiveOrg(activeOrg.id)"
-                >{{ activeOrg.name }}</dsh-menu-item
-            >
+            @if (activeOrg$ | async; as activeOrg) {
+                <dsh-menu-item class="mat-title-small" (click)="toActiveOrg(activeOrg.id)">{{
+                    activeOrg.name
+                }}</dsh-menu-item>
+            }
             <dsh-menu-item (click)="selectActiveOrg()">{{ t('selectActiveOrg') }}</dsh-menu-item>
             <dsh-menu-item (click)="openOrgList()">{{ t('orgList') }}</dsh-menu-item>
         </ng-container>
         <mat-divider></mat-divider>
     }
     <span class="mat-title-small">{{ username }}</span>
-    <dsh-menu-item
-        *ngFor="let linkConfig of userLinksConfig$ | async"
-        (click)="openBlank(linkConfig.href)"
-    >
-        {{ linkConfig.title }}
-    </dsh-menu-item>
+    @for (linkConfig of userLinksConfig$ | async; track linkConfig) {
+        <dsh-menu-item (click)="openBlank(linkConfig.href)">
+            {{ linkConfig.title }}
+        </dsh-menu-item>
+    }
     <dsh-menu-item (click)="logout()">{{ t('logout') }}</dsh-menu-item>
 </dsh-dropdown-actions>

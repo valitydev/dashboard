@@ -6,9 +6,13 @@
     fxLayoutGap="8px"
     (click)="clickHandler()"
 >
-    <div *ngIf="icon" class="dsh-icon-container" fxFlex="24px">
-        <dsh-bi *ngIf="iconVisible" [icon]="icon"></dsh-bi>
-    </div>
+    @if (icon) {
+        <div class="dsh-icon-container" fxFlex="24px">
+            @if (iconVisible) {
+                <dsh-bi [icon]="icon"></dsh-bi>
+            }
+        </div>
+    }
     <div class="dsh-state-nav-content">
         <ng-content></ng-content>
     </div>

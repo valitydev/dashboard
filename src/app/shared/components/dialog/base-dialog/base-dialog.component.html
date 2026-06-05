@@ -9,17 +9,19 @@
     <div [dshNoContent]="noContent" class="base-dialog-content">
         <ng-content></ng-content>
     </div>
-    <ng-container *ngIf="!noActions">
+    @if (!noActions) {
         <ng-container *ngTemplateOutlet="contentDividerContent"></ng-container>
         <dsh-actions>
             <ng-content select="dshBaseDialogActions"></ng-content>
             <ng-content select="[dshBaseDialogActions]"></ng-content>
         </dsh-actions>
-    </ng-container>
+    }
 </div>
 
 <ng-template #contentDividerContent>
-    <mat-divider *ngIf="hasDivider"></mat-divider>
+    @if (hasDivider) {
+        <mat-divider></mat-divider>
+    }
 </ng-template>
 
 <ng-template #noContent></ng-template>
@@ -28,7 +30,9 @@
     <div fxLayout="row" fxLayoutAlign="space-between">
         <div fxLayout="column" fxLayoutGap="16px">
             <div class="mat-headline-small">{{ title }}</div>
-            <div *ngIf="subtitle" class="mat-body-medium">{{ subtitle }}</div>
+            @if (subtitle) {
+                <div class="mat-body-medium">{{ subtitle }}</div>
+            }
         </div>
         <dsh-bi
             class="base-dialog-title-close"

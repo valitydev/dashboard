@@ -9,20 +9,19 @@
     fxLayoutAlign=" center"
     fxLayoutGap="48px"
 >
-    <dsh-spinner *ngIf="isLoading$ | async; else loaded"></dsh-spinner>
-    <ng-template #loaded>
-        <ng-container *ngIf="isCompleted; else confirm">
-            <ng-container *ngIf="hasError; else success">
+    @if (isLoading$ | async) {
+        <dsh-spinner></dsh-spinner>
+    } @else {
+        @if (isCompleted) {
+            @if (hasError) {
                 <div class="mat-headline-small">{{ t('error.title') }}</div>
-            </ng-container>
-            <ng-template #success>
+            } @else {
                 <div class="mat-headline-small">{{ t('success.title') }}</div>
                 <a dshLink routerLink="/organization-section/organizations">{{
                     t('success.goToOrganizationsList')
                 }}</a>
-            </ng-template>
-        </ng-container>
-        <ng-template #confirm>
+            }
+        } @else {
             <div class="mat-headline-small">{{ t('confirm.title') }}</div>
             <button class="accept-button" mat-flat-button (click)="accept()">
                 {{ t('confirm.button') }}
@@ -30,6 +29,6 @@
             <div class="mat-body-small" dshTextColor="secondary">
                 {{ t('confirm.refuseDescription') }}
             </div>
-        </ng-template>
-    </ng-template>
+        }
+    }
 </div>

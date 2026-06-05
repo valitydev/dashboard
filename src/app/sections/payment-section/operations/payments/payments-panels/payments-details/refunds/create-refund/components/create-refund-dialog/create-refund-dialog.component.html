@@ -20,32 +20,27 @@
                 (change)="togglePartialRefund(!isPartialRefund)"
                 >{{ t('partialRefund') }}</mat-checkbox
             >
-            <mat-form-field
-                *ngIf="isPartialRefund && amountControl"
-                class="create-refund-dialog-amount"
-            >
-                <mat-label>{{ t('amount') }}</mat-label>
-                <input [formControl]="amountControl" matInput required type="number" />
-                <mat-hint
-                    *ngIf="
-                        availableRefundAmount$ | async as availableRefundAmount;
-                        else loadingBalanceHint
-                    "
-                >
-                    {{ t('availableRefund') }}
-                    :
-                    {{
-                        availableRefundAmount.amount
-                            | amountCurrency: availableRefundAmount.currency
-                    }}
-                    <!--                        <br />-->
-                    <!--                        {{ t('balance') }}-->
-                    <!--                        : {{ balance.accountBalance.amount | amountCurrency: balance.accountBalance.currency }}-->
-                </mat-hint>
-                <ng-template #loadingBalanceHint>
-                    {{ t('balanceLoading') }}
-                </ng-template>
-            </mat-form-field>
+            @if (isPartialRefund && amountControl) {
+                <mat-form-field class="create-refund-dialog-amount">
+                    <mat-label>{{ t('amount') }}</mat-label>
+                    <input [formControl]="amountControl" matInput required type="number" />
+                    @if (availableRefundAmount$ | async; as availableRefundAmount) {
+                        <mat-hint>
+                            {{ t('availableRefund') }}
+                            :
+                            {{
+                                availableRefundAmount.amount
+                                    | amountCurrency: availableRefundAmount.currency
+                            }}
+                            <!--                        <br />-->
+                            <!--                        {{ t('balance') }}-->
+                            <!--                        : {{ balance.accountBalance.amount | amountCurrency: balance.accountBalance.currency }}-->
+                        </mat-hint>
+                    } @else {
+                        {{ t('balanceLoading') }}
+                    }
+                </mat-form-field>
+            }
         </div>
     </form>
     <ng-container dshBaseDialogActions>

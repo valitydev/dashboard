@@ -15,10 +15,14 @@
     <dsh-details-item [title]="t('createdAt')">{{
         refund.createdAt | date: 'dd MMMM yyyy, HH:mm'
     }}</dsh-details-item>
-    <dsh-details-item *ngIf="refund?.reason" [title]="t('reason')" gdColumn="1/-1">{{
-        refund.reason
-    }}</dsh-details-item>
-    <dsh-details-item *ngIf="refund?.error" [title]="t('error')" gdColumn="1/-1">{{
-        refund.error.message
-    }}</dsh-details-item>
+    @if (refund?.reason) {
+        <dsh-details-item [title]="t('reason')" gdColumn="1/-1">{{
+            refund.reason
+        }}</dsh-details-item>
+    }
+    @if (refund?.error) {
+        <dsh-details-item [title]="t('error')" gdColumn="1/-1">{{
+            refund.error.message
+        }}</dsh-details-item>
+    }
 </div>

@@ -13,21 +13,23 @@
         >
             <div>
                 {{ t('title') }}
-                <span *ngIf="invoice">#{{ invoice.id }}</span>
+                @if (invoice) {
+                    <span>#{{ invoice.id }}</span>
+                }
             </div>
         </div>
-        <ng-container *ngIf="!invoice; else details">
-            <div *ngIf="!isLoading; else loading" class="mat-body-medium">
-                {{ t('notFound') }}
-            </div>
-            <ng-template #loading>
+        @if (!invoice) {
+            @if (!isLoading) {
+                <div class="mat-body-medium">
+                    {{ t('notFound') }}
+                </div>
+            } @else {
                 <div *transloco="let c; scope: 'components'; prefix: 'components.shared'">
                     <div class="mat-body-medium">{{ c('loading') }}</div>
                 </div>
-            </ng-template>
-        </ng-container>
-        <ng-template #details>
+            }
+        } @else {
             <dsh-invoice-details [invoice]="invoice"></dsh-invoice-details>
-        </ng-template>
+        }
     </div>
 </ng-container>

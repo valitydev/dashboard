@@ -11,18 +11,17 @@
         (expandedIdChange)="expandedIdChange($event)"
         (refreshData)="refresh()"
     ></dsh-wallets-list>
-    <dsh-empty-search-result
-        *ngIf="!(wallets$ | async)?.length && (isLoading$ | async) === false"
-        [text]="t('emptyResult')"
-    ></dsh-empty-search-result>
-    <dsh-show-more-panel
-        *ngIf="hasMore$ | async"
-        [isLoading]="isLoading$ | async"
-        (showMore)="fetchMore()"
-    >
-    </dsh-show-more-panel>
-    <div *ngIf="isLoading$ | async" fxFlexAlign="center" fxLayout>
-        <dsh-spinner></dsh-spinner>
-    </div>
+    @if (!(wallets$ | async)?.length && (isLoading$ | async) === false) {
+        <dsh-empty-search-result [text]="t('emptyResult')"></dsh-empty-search-result>
+    }
+    @if (hasMore$ | async) {
+        <dsh-show-more-panel [isLoading]="isLoading$ | async" (showMore)="fetchMore()">
+        </dsh-show-more-panel>
+    }
+    @if (isLoading$ | async) {
+        <div fxFlexAlign="center" fxLayout>
+            <dsh-spinner></dsh-spinner>
+        </div>
+    }
 </div>
 <dsh-scroll-up></dsh-scroll-up>

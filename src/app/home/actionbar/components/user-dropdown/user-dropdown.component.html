@@ -7,5 +7,7 @@
             size="sm"
         ></dsh-bi>
     </div>
-    <div *ngIf="orgName$ | async" class="mat-body-small organization">{{ orgName$ | async }}</div>
+    @if (orgName$ | async) {
+        <div class="mat-body-small organization">{{ orgName$ | async }}</div>
+    }
 </div>

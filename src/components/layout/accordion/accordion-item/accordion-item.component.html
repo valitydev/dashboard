@@ -3,17 +3,15 @@
     class="dsh-accordion-item"
     (click)="expand()"
 >
-    <div *ngIf="expandedChange | async; then content; else panelBase"></div>
-    <ng-template #content>
+    @if (expandedChange | async) {
         <div @expand class="dsh-accordion-item-content">
             <ng-container
                 *ngTemplateOutlet="accordionItemContent?.templateRef || lazyContent?._template"
             ></ng-container>
         </div>
-    </ng-template>
-    <ng-template #panelBase>
+    } @else {
         <div @expand>
             <ng-content></ng-content>
         </div>
-    </ng-template>
+    }
 </div>

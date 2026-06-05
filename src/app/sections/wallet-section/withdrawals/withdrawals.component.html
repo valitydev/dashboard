@@ -11,18 +11,18 @@
             (expandedIdChange)="expandedIdChange($event)"
             (refreshData)="refresh()"
         ></dsh-withdrawals-list>
-        <dsh-show-more-panel
-            *ngIf="hasMore$ | async"
-            [isLoading]="isLoading$ | async"
-            (showMore)="fetchMore()"
-        >
-        </dsh-show-more-panel>
-        <dsh-empty-search-result
-            *ngIf="!(withdrawals$ | async)?.length && !(doAction$ | async)"
-        ></dsh-empty-search-result>
-        <div *ngIf="isLoading$ | async" fxFlexAlign="center" fxLayout>
-            <dsh-spinner></dsh-spinner>
-        </div>
+        @if (hasMore$ | async) {
+            <dsh-show-more-panel [isLoading]="isLoading$ | async" (showMore)="fetchMore()">
+            </dsh-show-more-panel>
+        }
+        @if (!(withdrawals$ | async)?.length && !(doAction$ | async)) {
+            <dsh-empty-search-result></dsh-empty-search-result>
+        }
+        @if (isLoading$ | async) {
+            <div fxFlexAlign="center" fxLayout>
+                <dsh-spinner></dsh-spinner>
+            </div>
+        }
     </div>
 </div>
 <dsh-scroll-up></dsh-scroll-up>

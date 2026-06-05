@@ -2,10 +2,11 @@
     <span class="mat-body-medium">
         <ng-content></ng-content>
     </span>
-    <div *ngIf="opened; else elseBlock">
-        <dsh-bi icon="chevron-up" size="sm"></dsh-bi>
-    </div>
-    <ng-template #elseBlock>
+    @if (opened) {
+        <div>
+            <dsh-bi icon="chevron-up" size="sm"></dsh-bi>
+        </div>
+    } @else {
         <dsh-bi icon="chevron-down" size="sm"></dsh-bi>
-    </ng-template>
+    }
 </div>

@@ -1,18 +1,19 @@
 <ng-template #body>
-    <div
-        *ngIf="expanded"
-        [@bodyExpansion]="animationState"
-        [ngClass]="{ 'dsh-collapse-body-up': expandDirection === 'up' }"
-        class="dsh-collapse-body"
-    >
-        <ng-content></ng-content>
-    </div>
+    @if (expanded) {
+        <div
+            [@bodyExpansion]="animationState"
+            [ngClass]="{ 'dsh-collapse-body-up': expandDirection === 'up' }"
+            class="dsh-collapse-body"
+        >
+            <ng-content></ng-content>
+        </div>
+    }
 </ng-template>
 
 <div class="dsh-collapse" fxLayout="column">
-    <ng-container *ngIf="expandDirection === 'up'">
+    @if (expandDirection === 'up') {
         <ng-container *ngTemplateOutlet="body"></ng-container>
-    </ng-container>
+    }
     <!-- Header wrapper for limiting the clickable area with the title and indicator -->
     <div fxLayout>
         <div class="dsh-collapse-header" fxLayout fxLayoutGap="4px" (click)="toggle()">
@@ -20,7 +21,7 @@
             <dsh-bi [@indicatorRotate]="animationState" icon="chevron-up" size="sm"></dsh-bi>
         </div>
     </div>
-    <ng-container *ngIf="expandDirection === 'down'">
+    @if (expandDirection === 'down') {
         <ng-container *ngTemplateOutlet="body"></ng-container>
-    </ng-container>
+    }
 </div>

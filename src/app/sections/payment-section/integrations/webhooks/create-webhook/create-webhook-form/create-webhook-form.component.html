@@ -8,9 +8,11 @@
         <mat-form-field fxFlex>
             <mat-label>{{ t('createWebhook.shop') }}</mat-label>
             <mat-select formControlName="shopID" required>
-                <mat-option *ngFor="let shop of shops$ | async" [value]="shop.id">
-                    {{ shop.details.name }}
-                </mat-option>
+                @for (shop of shops$ | async; track shop) {
+                    <mat-option [value]="shop.id">
+                        {{ shop.details.name }}
+                    </mat-option>
+                }
             </mat-select>
         </mat-form-field>
         <mat-form-field fxFlex>
@@ -47,13 +49,15 @@
             <div class="mat-body-small">{{ t('createWebhook.types') }}</div>
         </div>
         <div formArrayName="eventTypes" fxLayout="column" fxLayoutGap="16px">
-            <div *ngFor="let eventType of eventTypes.controls; let i = index" [formGroupName]="i">
-                <mat-checkbox class="mat-body-medium" formControlName="selected"
-                    ><span>{{
-                        (eventType$ | async)?.[eventType.controls.eventName.value]
-                    }}</span></mat-checkbox
-                >
-            </div>
+            @for (eventType of eventTypes.controls; track eventType; let i = $index) {
+                <div [formGroupName]="i">
+                    <mat-checkbox class="mat-body-medium" formControlName="selected"
+                        ><span>{{
+                            (eventType$ | async)?.[eventType.controls.eventName.value]
+                        }}</span></mat-checkbox
+                    >
+                </div>
+            }
         </div>
     }
 </form>

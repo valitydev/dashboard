@@ -1,17 +1,19 @@
 <div fxLayout="column" fxLayoutGap="16px">
     <dsh-payments-row-header></dsh-payments-row-header>
     <ng-container *ngTemplateOutlet="panelsList"></ng-container>
-    <ng-container *ngIf="!isLoading; else loading">
-        <dsh-empty-search-result *ngIf="isEmptyList"></dsh-empty-search-result>
-        <dsh-show-more-panel *ngIf="hasMore" (showMore)="showMoreElements()"> </dsh-show-more-panel>
-    </ng-container>
+    @if (!isLoading) {
+        @if (isEmptyList) {
+            <dsh-empty-search-result></dsh-empty-search-result>
+        }
+        @if (hasMore) {
+            <dsh-show-more-panel (showMore)="showMoreElements()"> </dsh-show-more-panel>
+        }
+    } @else {
+        <div fxFlexAlign="center" fxLayout>
+            <dsh-spinner></dsh-spinner>
+        </div>
+    }
 </div>
-
-<ng-template #loading>
-    <div fxFlexAlign="center" fxLayout>
-        <dsh-spinner></dsh-spinner>
-    </div>
-</ng-template>
 
 <ng-template #panelsList>
     <dsh-accordion
@@ -20,22 +22,23 @@
         fxLayoutGap="16px"
         (expandedChange)="expandedIndexChange($event)"
     >
-        <dsh-accordion-item
-            #accordionItem
-            *ngFor="let item of list; index as i; trackBy: trackPayment"
-        >
-            <dsh-payments-row [payment]="item"></dsh-payments-row>
-            <ng-template dshLazyPanelContent>
-                <dsh-card fxFlexFill fxLayout="column" fxLayoutGap="32px">
-                    <dsh-accordion-item-content-header (collapse)="accordionItem.collapse($event)">
-                        <dsh-payment-detail-header
-                            [changedDate]="item.statusChangedAt"
-                            id="{{ item.invoiceID }}.{{ item.id }}"
-                        ></dsh-payment-detail-header>
-                    </dsh-accordion-item-content-header>
-                    <dsh-payment-details [payment]="item"></dsh-payment-details>
-                </dsh-card>
-            </ng-template>
-        </dsh-accordion-item>
+        @for (item of list; track trackPayment(i, item); let i = $index) {
+            <dsh-accordion-item #accordionItem>
+                <dsh-payments-row [payment]="item"></dsh-payments-row>
+                <ng-template dshLazyPanelContent>
+                    <dsh-card fxFlexFill fxLayout="column" fxLayoutGap="32px">
+                        <dsh-accordion-item-content-header
+                            (collapse)="accordionItem.collapse($event)"
+                        >
+                            <dsh-payment-detail-header
+                                [changedDate]="item.statusChangedAt"
+                                id="{{ item.invoiceID }}.{{ item.id }}"
+                            ></dsh-payment-detail-header>
+                        </dsh-accordion-item-content-header>
+                        <dsh-payment-details [payment]="item"></dsh-payment-details>
+                    </dsh-card>
+                </ng-template>
+            </dsh-accordion-item>
+        }
     </dsh-accordion>
 </ng-template>

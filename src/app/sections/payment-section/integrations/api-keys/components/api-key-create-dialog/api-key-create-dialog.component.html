@@ -3,13 +3,14 @@
     [title]="t('title')"
     (cancel)="closeWithCancellation()"
 >
-    <div *ngIf="accessToken; else releaseApiKey">
-        <mat-form-field style="width: 100%">
-            <mat-label>{{ t('apiKey') }}</mat-label>
-            <textarea [value]="accessToken" matInput readonly rows="5"></textarea>
-        </mat-form-field>
-    </div>
-    <ng-template #releaseApiKey>
+    @if (accessToken) {
+        <div>
+            <mat-form-field style="width: 100%">
+                <mat-label>{{ t('apiKey') }}</mat-label>
+                <textarea [value]="accessToken" matInput readonly rows="5"></textarea>
+            </mat-form-field>
+        </div>
+    } @else {
         <div [formGroup]="form" fxLayout="column" fxLayoutGap="24px">
             <mat-form-field style="width: 100%">
                 <mat-label>{{ t('keyName') }}</mat-label>
@@ -19,12 +20,13 @@
                 {{ t('desc') }}
             </div>
         </div>
-    </ng-template>
+    }
     <ng-container dshBaseDialogActions>
-        <button *ngIf="accessToken; else confirmActions" mat-flat-button (click)="copy()">
-            {{ t('copy') }}
-        </button>
-        <ng-template #confirmActions>
+        @if (accessToken) {
+            <button mat-flat-button (click)="copy()">
+                {{ t('copy') }}
+            </button>
+        } @else {
             <button
                 [disabled]="form.invalid || !!(progress$ | async)"
                 mat-flat-button
@@ -32,6 +34,6 @@
             >
                 {{ t('confirm') }}
             </button>
-        </ng-template>
+        }
     </ng-container>
 </dsh-base-dialog>

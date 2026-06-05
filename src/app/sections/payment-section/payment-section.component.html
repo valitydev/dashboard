@@ -1,20 +1,23 @@
 <div fxLayout="column" fxLayoutGap="32px">
-    <dsh-no-shops-alert *ngIf="noShops$ | async" (action)="reloadShops()"></dsh-no-shops-alert>
+    @if (noShops$ | async) {
+        <dsh-no-shops-alert (action)="reloadShops()"></dsh-no-shops-alert>
+    }
     <dsh-route-navbar-layout [routeName]="activeSection$ | async">
         <div fxLayout="row" fxLayout.gt-sm="column">
-            <ng-container *ngFor="let item of navbarItemConfig$ | async">
-                <dsh-navbar-item
-                    #rla="routerLinkActive"
-                    *ngIf="item.roles | isAccessAllowed"
-                    [active]="rla.isActive"
-                    [icon]="item.icon"
-                    [routerLink]="item.routerLink"
-                    routerLinkActive
-                    (activeChange)="setActiveSection($event, item)"
-                >
-                    {{ item.label }}
-                </dsh-navbar-item>
-            </ng-container>
+            @for (item of navbarItemConfig$ | async; track item) {
+                @if (item.roles | isAccessAllowed) {
+                    <dsh-navbar-item
+                        #rla="routerLinkActive"
+                        [active]="rla.isActive"
+                        [icon]="item.icon"
+                        [routerLink]="item.routerLink"
+                        routerLinkActive
+                        (activeChange)="setActiveSection($event, item)"
+                    >
+                        {{ item.label }}
+                    </dsh-navbar-item>
+                }
+            }
             @if ((hasTestShops$ | async) || (isTestRealm$ | async) || isDev) {
                 <dsh-navbar-item
                     *transloco="

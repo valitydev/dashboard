@@ -6,15 +6,15 @@
     gdGap="24px"
 >
     <div gdColumn.md="1/4">
-        <div
-            *ngIf="
-                walletAccount$ | async as account;
-                else (isLoading$ | async) ? loading : error ? error : null
-            "
-            class="mat-headline-small"
-        >
-            {{ account.available.amount | amountCurrency: account.available.currency }}
-        </div>
+        @if (walletAccount$ | async; as account) {
+            <div class="mat-headline-small">
+                {{ account.available.amount | amountCurrency: account.available.currency }}
+            </div>
+        } @else {
+            <ng-template
+                [ngTemplateOutlet]="(isLoading$ | async) ? loading : error ? error : null"
+            ></ng-template>
+        }
     </div>
     <ng-template #loading>
         <dsh-spinner size="30"></dsh-spinner>

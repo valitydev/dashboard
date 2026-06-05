@@ -12,9 +12,10 @@
             {{ t('createInvitation') }}
         </button>
     </div>
-    <ng-container *ngIf="organization$ | async as organization">
-        <dsh-spinner *ngIf="isLoading$ | async; else loaded" fxFlexAlign="center"></dsh-spinner>
-        <ng-template #loaded>
+    @if (organization$ | async; as organization) {
+        @if (isLoading$ | async) {
+            <dsh-spinner fxFlexAlign="center"></dsh-spinner>
+        } @else {
             <div fxLayout="column" fxLayoutGap="16px">
                 <dsh-last-updated
                     [lastUpdated]="lastUpdated$ | async"
@@ -26,7 +27,7 @@
                     (changed)="refresh()"
                 ></dsh-invitations-list>
             </div>
-        </ng-template>
-    </ng-container>
+        }
+    }
 </div>
 <dsh-scroll-up></dsh-scroll-up>

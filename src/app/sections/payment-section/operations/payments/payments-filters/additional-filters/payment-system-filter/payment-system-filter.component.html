@@ -14,11 +14,11 @@
             anyResponse
             fxFlex
         >
-            <ng-container *ngFor="let system of paymentSystems">
+            @for (system of paymentSystems; track system) {
                 <ng-template [dshExpandableRadioGroupItem]="system">
                     <span>{{ (bankCardPaymentSystemDict$ | async)?.[system] }}</span>
                 </ng-template>
-            </ng-container>
+            }
         </dsh-expandable-radio-group>
     </div>
 </ng-container>

@@ -5,33 +5,33 @@
         prefix: 'organizationSection.organizationRoles'
     "
 >
-    <div *ngIf="isOwner; else notOwner" class="mat-body-medium">{{ t('owner') }}</div>
-
-    <ng-template #notOwner>
-        <div
-            *ngIf="!rolesByGroup || rolesByGroup.length; else noRoles"
-            gdColumns="1fr 1fr"
-            gdGap="24px"
-        >
-            <ng-container *ngFor="let role of rolesByGroup">
-                <dsh-collapse
-                    *ngIf="role?.scopes?.length; else roleWithoutScopes"
-                    [title]="(roleIdDict$ | async)?.[role.id]"
-                >
-                    <dsh-limited-list
-                        *ngFor="let scope of role.scopes"
-                        [title]="(resourceScopeIdDict$ | async)?.[scope.id] || '-'"
-                    >
-                        <dsh-limited-list-item *ngFor="let resourceId of scope.resourcesIds">
-                            {{ resourceId | shopDetails }}
-                        </dsh-limited-list-item>
-                    </dsh-limited-list>
-                </dsh-collapse>
-                <ng-template #roleWithoutScopes>
-                    <div class="mat-body-medium">{{ (roleIdDict$ | async)?.[role.id] }}</div>
-                </ng-template>
-            </ng-container>
-        </div>
-        <ng-template #noRoles><div class="mat-body-medium">-</div></ng-template>
-    </ng-template>
+    @if (isOwner) {
+        <div class="mat-body-medium">{{ t('owner') }}</div>
+    } @else {
+        @if (!rolesByGroup || rolesByGroup.length) {
+            <div gdColumns="1fr 1fr" gdGap="24px">
+                @for (role of rolesByGroup; track role) {
+                    @if (role?.scopes?.length) {
+                        <dsh-collapse [title]="(roleIdDict$ | async)?.[role.id]">
+                            @for (scope of role.scopes; track scope) {
+                                <dsh-limited-list
+                                    [title]="(resourceScopeIdDict$ | async)?.[scope.id] || '-'"
+                                >
+                                    @for (resourceId of scope.resourcesIds; track resourceId) {
+                                        <dsh-limited-list-item>
+                                            {{ resourceId | shopDetails }}
+                                        </dsh-limited-list-item>
+                                    }
+                                </dsh-limited-list>
+                            }
+                        </dsh-collapse>
+                    } @else {
+                        <div class="mat-body-medium">{{ (roleIdDict$ | async)?.[role.id] }}</div>
+                    }
+                }
+            </div>
+        } @else {
+            <div class="mat-body-medium">-</div>
+        }
+    }
 </ng-container>

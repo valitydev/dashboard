@@ -1,9 +1,7 @@
 <div [ngClass]="{ 'button-wrapper-disabled': disabled }" class="button-wrapper">
-    <div
-        *ngIf="(isMobile$ | async) === false"
-        [dshDropdownTriggerFor]="dropdown"
-        class="dropdown-trigger"
-    ></div>
+    @if ((isMobile$ | async) === false) {
+        <div [dshDropdownTriggerFor]="dropdown" class="dropdown-trigger"></div>
+    }
     <dsh-filter-button [active]="active" [disabled]="disabled" (click)="open()">
         {{ active ? activeLabel : label }}
     </dsh-filter-button>

@@ -12,23 +12,22 @@
             {{ t('title') }} <span>#{{ (invoice$ | async)?.id }}</span>
         </div>
     </div>
-    <ng-container *ngIf="isLoading$ | async; else afterLoading">
+    @if (isLoading$ | async) {
         <div
             *transloco="let c; scope: 'components'; prefix: 'components.shared'"
             class="mat-body-medium"
         >
             {{ c('loading') }}
         </div>
-    </ng-container>
-    <ng-template #afterLoading>
-        <div *ngIf="errorOccurred$ | async; else content" class="mat-body-medium">
-            {{ t('error') }}
-        </div>
-    </ng-template>
-    <ng-template #content>
-        <dsh-invoice-details
-            *ngIf="invoice$ | async as invoice"
-            [invoice]="invoice"
-        ></dsh-invoice-details>
-    </ng-template>
+    } @else {
+        @if (errorOccurred$ | async) {
+            <div class="mat-body-medium">
+                {{ t('error') }}
+            </div>
+        } @else {
+            @if (invoice$ | async; as invoice) {
+                <dsh-invoice-details [invoice]="invoice"></dsh-invoice-details>
+            }
+        }
+    }
 </div>

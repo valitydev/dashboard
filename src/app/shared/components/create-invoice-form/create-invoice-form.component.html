@@ -8,9 +8,11 @@
         <mat-form-field>
             <mat-label>{{ d('form.shop') }}</mat-label>
             <mat-select formControlName="shopID" required>
-                <mat-option *ngFor="let shop of shops" [value]="shop.id">
-                    {{ shop.details.name }}
-                </mat-option>
+                @for (shop of shops; track shop) {
+                    <mat-option [value]="shop.id">
+                        {{ shop.details.name }}
+                    </mat-option>
+                }
             </mat-select>
         </mat-form-field>
         <mat-form-field>
@@ -33,7 +35,7 @@
             <mat-label>{{ d('form.description') }}</mat-label>
             <input autocomplete="off" formControlName="description" matInput />
         </mat-form-field>
-        <ng-container *ngIf="currency">
+        @if (currency) {
             <mat-form-field fxFlex>
                 <mat-label>{{ d('form.amount') }}</mat-label>
                 <input formControlName="amount" matInput required type="number" />
@@ -43,6 +45,6 @@
                 [currency]="currency"
                 formControlName="randomizeAmount"
             ></dsh-invoice-randomize-amount-form>
-        </ng-container>
+        }
     </div>
 </div>

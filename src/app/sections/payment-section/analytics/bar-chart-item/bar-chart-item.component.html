@@ -5,23 +5,23 @@
 >
     <dsh-card-title fxLayoutAlign="space-between">
         <div class="mat-title-large">{{ title }}</div>
-        <dsh-spinner *ngIf="isLoading" [type]="spinnerType" size="28"></dsh-spinner>
+        @if (isLoading) {
+            <dsh-spinner [type]="spinnerType" size="28"></dsh-spinner>
+        }
     </dsh-card-title>
     <dsh-card-content
         *transloco="let t; scope: 'payment-section'; prefix: 'paymentSection.analytics'"
     >
-        <div *ngIf="!error; else onError">
-            <dsh-bar-chart
-                *ngIf="chartData; else noData"
-                [colors]="colors"
-                [series]="chartData.series"
-            ></dsh-bar-chart>
-            <ng-template #noData>
-                {{ t('noData') }}
-            </ng-template>
-        </div>
-        <ng-template #onError>
+        @if (!error) {
+            <div>
+                @if (chartData) {
+                    <dsh-bar-chart [colors]="colors" [series]="chartData.series"></dsh-bar-chart>
+                } @else {
+                    {{ t('noData') }}
+                }
+            </div>
+        } @else {
             {{ c('httpError') }}
-        </ng-template>
+        }
     </dsh-card-content>
 </dsh-card>

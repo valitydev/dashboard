@@ -1,2 +1,4 @@
-<ng-container *ngIf="mark"><span class="dsh-status-icon"></span></ng-container>
+@if (mark) {
+    <span class="dsh-status-icon"></span>
+}
 <span class="dsh-status-label"><ng-content></ng-content></span>

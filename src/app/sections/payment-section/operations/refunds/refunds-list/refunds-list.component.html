@@ -7,22 +7,24 @@
         fxLayoutGap="16px"
         (expandedChange)="expandedIdChange.emit($event)"
     >
-        <dsh-accordion-item #accordionItem *ngFor="let refund of refunds">
-            <dsh-refund-row [refund]="refund"></dsh-refund-row>
-            <ng-template dshLazyPanelContent>
-                <dsh-card fxFlexFill fxLayout="column" fxLayoutGap="32px">
-                    <dsh-accordion-item-content-header
-                        *transloco="
-                            let t;
-                            scope: 'payment-section';
-                            prefix: 'paymentSection.operations.refunds'
-                        "
-                        (collapse)="accordionItem.collapse($event)"
-                        >{{ t('header') }} #{{ refund.id }}</dsh-accordion-item-content-header
-                    >
-                    <dsh-refund-refund-details [refund]="refund"></dsh-refund-refund-details>
-                </dsh-card>
-            </ng-template>
-        </dsh-accordion-item>
+        @for (refund of refunds; track refund) {
+            <dsh-accordion-item #accordionItem>
+                <dsh-refund-row [refund]="refund"></dsh-refund-row>
+                <ng-template dshLazyPanelContent>
+                    <dsh-card fxFlexFill fxLayout="column" fxLayoutGap="32px">
+                        <dsh-accordion-item-content-header
+                            *transloco="
+                                let t;
+                                scope: 'payment-section';
+                                prefix: 'paymentSection.operations.refunds'
+                            "
+                            (collapse)="accordionItem.collapse($event)"
+                            >{{ t('header') }} #{{ refund.id }}</dsh-accordion-item-content-header
+                        >
+                        <dsh-refund-refund-details [refund]="refund"></dsh-refund-refund-details>
+                    </dsh-card>
+                </ng-template>
+            </dsh-accordion-item>
+        }
     </dsh-accordion>
 </div>

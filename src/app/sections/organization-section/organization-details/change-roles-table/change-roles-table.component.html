@@ -23,22 +23,26 @@
             <button mat-flat-button (click)="add()">{{ t('add') }}</button>
         </ng-template>
         <ng-template #roleCellTpl let-column="column" let-value="value">
-            <mat-checkbox
-                *ngIf="
-                    value?.scope !== 'Wallet' && column.field !== 'WalletManager';
-                    else selectedTpl
-                "
-                [checked]="checked(column.field, value?.shop?.id, value?.scope) | async"
-                [disabled]="
-                    (disabled(column.field, value?.shop?.id, value?.scope) | async) || inProgress
-                "
-                [indeterminate]="
-                    value?.shop || value?.scope === 'Wallet'
-                        ? false
-                        : (isIntermediate(column.field) | async)
-                "
-                (change)="toggle(column.field, value?.shop?.id, $event.checked)"
-            ></mat-checkbox>
+            @if (value?.scope !== 'Wallet' && column.field !== 'WalletManager') {
+                <mat-checkbox
+                    [checked]="checked(column.field, value?.shop?.id, value?.scope) | async"
+                    [disabled]="
+                        (disabled(column.field, value?.shop?.id, value?.scope) | async) ||
+                        inProgress
+                    "
+                    [indeterminate]="
+                        value?.shop || value?.scope === 'Wallet'
+                            ? false
+                            : (isIntermediate(column.field) | async)
+                    "
+                    (change)="toggle(column.field, value?.shop?.id, $event.checked)"
+                ></mat-checkbox>
+            } @else {
+                <dsh-selection
+                    [selected]="checked(column.field, value?.shop?.id, value?.scope) | async"
+                    class="selection"
+                ></dsh-selection>
+            }
             <ng-template #selectedTpl>
                 <dsh-selection
                     [selected]="checked(column.field, value?.shop?.id, value?.scope) | async"

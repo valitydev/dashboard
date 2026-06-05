@@ -5,22 +5,20 @@
 >
     <div class="mat-title-large">{{ t('title') }}</div>
     <div class="mat-body-medium">{{ t('description') }}</div>
-    <div
-        *ngIf="
-            walletAccount$ | async as account;
-            else (isLoading$ | async) ? loading : (error$ | async) ? error : null
-        "
-        gdColumns="1fr"
-        gdColumns.gt-sm="1fr 1fr 1fr"
-        gdGap="24px"
-    >
-        <dsh-details-item [title]="t('own')">{{
-            account.own.amount | amountCurrency: account.own.currency
-        }}</dsh-details-item>
-        <dsh-details-item [title]="t('amount')">{{
-            account.available.amount | amountCurrency: account.available.currency
-        }}</dsh-details-item>
-    </div>
+    @if (walletAccount$ | async; as account) {
+        <div gdColumns="1fr" gdColumns.gt-sm="1fr 1fr 1fr" gdGap="24px">
+            <dsh-details-item [title]="t('own')">{{
+                account.own.amount | amountCurrency: account.own.currency
+            }}</dsh-details-item>
+            <dsh-details-item [title]="t('amount')">{{
+                account.available.amount | amountCurrency: account.available.currency
+            }}</dsh-details-item>
+        </div>
+    } @else {
+        <ng-template
+            [ngTemplateOutlet]="(isLoading$ | async) ? loading : (error$ | async) ? error : null"
+        ></ng-template>
+    }
     <ng-template #loading>
         <div
             *transloco="let c; scope: 'components'; prefix: 'components.shared'"

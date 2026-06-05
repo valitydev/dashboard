@@ -15,8 +15,9 @@
     }
 
     <div fxLayout="column" fxLayoutGap="16px">
-        <dsh-spinner *ngIf="isLoading$ | async; else loaded" fxFlexAlign="center"></dsh-spinner>
-        <ng-template #loaded>
+        @if (isLoading$ | async) {
+            <dsh-spinner fxFlexAlign="center"></dsh-spinner>
+        } @else {
             <div fxLayout="column" fxLayoutGap="16px">
                 <dsh-last-updated
                     [lastUpdated]="lastUpdated$ | async"
@@ -26,12 +27,11 @@
                     [organizations]="organizations$ | async"
                     (changed)="refresh()"
                 ></dsh-organizations-list>
-                <dsh-show-more-panel
-                    *ngIf="hasMore$ | async"
-                    (showMore)="showMore()"
-                ></dsh-show-more-panel>
+                @if (hasMore$ | async) {
+                    <dsh-show-more-panel (showMore)="showMore()"></dsh-show-more-panel>
+                }
             </div>
-        </ng-template>
+        }
     </div>
 </div>
 <dsh-scroll-up></dsh-scroll-up>
