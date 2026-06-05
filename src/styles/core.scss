@@ -1,8 +1,6 @@
 @use '@angular/material' as mat;
-@use '@vality/matez' as v;
 @use 'dsh/style' as dsh-style;
 @use 'mat/style' as mat-style;
 
-@include v.core();
 @include mat-style.mat-style();
 @include dsh-style.dsh-style();
