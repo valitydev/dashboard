@@ -4,12 +4,14 @@
     fxLayoutGap="24px"
 >
     <div class="mat-title-large">{{ t('title') }}</div>
-    <ng-container *ngFor="let withdrawal of withdrawals$ | async as withdrawals; index as i">
+
+    @let withdrawals = withdrawals$ | async;
+    @for (withdrawal of withdrawals; track withdrawal.id; let i = $index) {
         <dsh-wallet-withdrawal-details [withdrawal]="withdrawal"></dsh-wallet-withdrawal-details>
         @if (i < withdrawals.length - 1) {
             <mat-divider></mat-divider>
         }
-    </ng-container>
+    }
     @if (isLoading$ | async) {
         <div>
             <ng-container *transloco="let c; scope: 'components'; prefix: 'components.shared'">

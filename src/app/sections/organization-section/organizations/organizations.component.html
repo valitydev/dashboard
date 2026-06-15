@@ -6,14 +6,6 @@
 >
     <h1 class="mat-display-medium">{{ t('header') }}</h1>
 
-    @if (isDev) {
-        <div fxLayout fxLayoutAlign="end">
-            <button mat-flat-button (click)="createOrganization()">
-                {{ t('createOrganization') }} (dev)
-            </button>
-        </div>
-    }
-
     <div fxLayout="column" fxLayoutGap="16px">
         @if (isLoading$ | async) {
             <dsh-spinner fxFlexAlign="center"></dsh-spinner>
