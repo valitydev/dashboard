@@ -1,8 +1,9 @@
-<v-select-field
-    *ngIf="countries$ | async"
-    [formControl]="control"
-    [label]="label"
-    [options]="options$ | async"
-    [required]="required"
-    appearance="outline"
-></v-select-field>
+@if (countries$ | async) {
+    <v-select-field
+        [formControl]="control"
+        [label]="label"
+        [options]="options$ | async"
+        [required]="required"
+        appearance="outline"
+    ></v-select-field>
+}

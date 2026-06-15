@@ -4,9 +4,12 @@
     fxLayoutGap="24px"
 >
     <div class="mat-title-large">{{ t('title') }}</div>
-    <dsh-contract-details
-        *ngIf="contract$ | async as contract"
-        [contract]="contract"
-    ></dsh-contract-details>
-    <div *ngIf="errorOccurred$ | async" class="mat-body-medium">{{ t('error') }}</div>
+
+    @let contract = contract$ | async;
+    @if (contract) {
+        <dsh-contract-details [contract]="contract"></dsh-contract-details>
+    }
+    @if (errorOccurred$ | async) {
+        <div class="mat-body-medium">{{ t('error') }}</div>
+    }
 </div>
