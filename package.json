@@ -5,7 +5,7 @@
   "scripts": {
     "start": "ng serve --proxy-config proxy.conf.js --port 8000",
     "stage": "cross-env NODE_ENV=stage ng serve --proxy-config proxy.conf.js --port 8001 --configuration=stage",
-    "fix": "npm run i18n:extract && npm run spell:fix && npm run lint:fix && npm run format:fix && npm run spell:fix",
+    "fix": "npm run i18n:extract && npm run spell:fix && npm run lint:fix && npm run format:fix",
     "build": "ng build && transloco-optimize dist/browser/assets/i18n",
     "test": "ng test",
     "i18n": "transloco-keys-manager find",
