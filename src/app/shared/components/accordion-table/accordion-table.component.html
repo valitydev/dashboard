@@ -34,14 +34,14 @@
                                 >
                                     @if (column.field(item, column); as value) {
                                         @switch (column.type) {
-                                            @case (daterange) {
+                                            @case ('daterange') {
                                                 {{ value.start | date: 'dd MMMM yyyy' }} -
                                                 {{ value.end | date: 'dd MMMM yyyy' }}
                                             }
-                                            @case (datetime) {
+                                            @case ('datetime') {
                                                 {{ value | date: 'dd MMMM yyyy, HH:mm' }}
                                             }
-                                            @case (tag) {
+                                            @case ('tag') {
                                                 @if (
                                                     column.typeParameters.label | async;
                                                     as tagLabel
