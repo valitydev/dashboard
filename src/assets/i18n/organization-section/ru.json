@@ -26,12 +26,6 @@
         "send": "Отправить приглашение",
         "title": "Сформировать приглашение"
     },
-    "createOrganization": "Создать организацию",
-    "createOrganizationDialog": {
-        "create": "Создать",
-        "name": "Название организации",
-        "title": "Создание организации"
-    },
     "editRolesDialog": {
         "title": "Редактирование ролей"
     },

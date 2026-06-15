@@ -26,12 +26,6 @@
         "send": "Send an invitation",
         "title": "Create an invitation"
     },
-    "createOrganization": "Create organization",
-    "createOrganizationDialog": {
-        "create": "Create",
-        "name": "Organization name",
-        "title": "Organization creation"
-    },
     "editRolesDialog": {
         "title": "Edit roles"
     },
