@@ -4,11 +4,12 @@
         [maxDate]="defaultDateRange.end"
         formControlName="dateRange"
     ></dsh-date-range-filter>
-    <dsh-currency-filter
-        *ngIf="(currencies$ | async)?.length > 1"
-        [currencies]="currencies$ | async"
-        formControlName="currency"
-    ></dsh-currency-filter>
+    @if ((currencies$ | async)?.length > 1) {
+        <dsh-currency-filter
+            [currencies]="currencies$ | async"
+            formControlName="currency"
+        ></dsh-currency-filter>
+    }
     <dsh-shops-filter
         [shops]="shopsByCurrency$ | async"
         formControlName="shopIDs"

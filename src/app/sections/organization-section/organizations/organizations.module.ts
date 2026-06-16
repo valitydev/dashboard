@@ -23,7 +23,6 @@ import { ScrollUpModule } from '@dsh/components/navigation';
 import { NavigationLinkModule } from '@dsh/components/navigation-link';
 import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
 
-import { CreateOrganizationDialogComponent } from './components/create-organization-dialog/create-organization-dialog.component';
 import { OrganizationComponent } from './components/organization/organization.component';
 import { OrganizationsListComponent } from './components/organizations-list/organizations-list.component';
 import { RenameOrganizationDialogComponent } from './components/rename-organization-dialog/rename-organization-dialog.component';
@@ -65,7 +64,6 @@ import { OrganizationsComponent } from './organizations.component';
         OrganizationsComponent,
         OrganizationsListComponent,
         OrganizationComponent,
-        CreateOrganizationDialogComponent,
         RenameOrganizationDialogComponent,
     ],
 })

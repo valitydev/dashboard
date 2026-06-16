@@ -9,9 +9,11 @@
         *transloco="let t; scope: 'components'; prefix: 'components.shared'"
         class="actions"
     >
-        <button *ngIf="!noClearButton" mat-button (click)="clear.emit($event)">
-            {{ t('clear') }}
-        </button>
+        @if (!noClearButton) {
+            <button mat-button (click)="clear.emit($event)">
+                {{ t('clear') }}
+            </button>
+        }
         <button mat-flat-button (click)="save.emit($event)">
             {{ t('save') }}
         </button>

@@ -13,29 +13,32 @@
         fxLayoutGap="16px"
         (expandedChange)="expandedIdChange($event)"
     >
-        <dsh-accordion-item
-            #accordionItem
-            *ngFor="let organization of organizations; trackBy: trackOrganization"
-        >
-            <dsh-row fxLayout fxLayoutAlign=" center" fxLayoutGap="24px">
-                <dsh-row-label>
-                    {{ organization.name }}
-                </dsh-row-label>
-            </dsh-row>
-            <ng-template dshLazyPanelContent>
-                <dsh-card fxLayout="column" fxLayoutGap="32px">
-                    <dsh-accordion-item-content-header (collapse)="accordionItem.collapse($event)">
-                        <div fxLayout fxLayoutAlign="space-between">
-                            <div>{{ organization.id }}</div>
-                            <div>{{ organization.createdAt | date: 'dd MMMM yyyy, HH:mm' }}</div>
-                        </div>
-                    </dsh-accordion-item-content-header>
-                    <dsh-organization
-                        [organization]="organization"
-                        (changed)="changed.emit()"
-                    ></dsh-organization>
-                </dsh-card>
-            </ng-template>
-        </dsh-accordion-item>
+        @for (organization of organizations; track trackOrganization($index, organization)) {
+            <dsh-accordion-item #accordionItem>
+                <dsh-row fxLayout fxLayoutAlign=" center" fxLayoutGap="24px">
+                    <dsh-row-label>
+                        {{ organization.name }}
+                    </dsh-row-label>
+                </dsh-row>
+                <ng-template dshLazyPanelContent>
+                    <dsh-card fxLayout="column" fxLayoutGap="32px">
+                        <dsh-accordion-item-content-header
+                            (collapse)="accordionItem.collapse($event)"
+                        >
+                            <div fxLayout fxLayoutAlign="space-between">
+                                <div>{{ organization.id }}</div>
+                                <div>
+                                    {{ organization.createdAt | date: 'dd MMMM yyyy, HH:mm' }}
+                                </div>
+                            </div>
+                        </dsh-accordion-item-content-header>
+                        <dsh-organization
+                            [organization]="organization"
+                            (changed)="changed.emit()"
+                        ></dsh-organization>
+                    </dsh-card>
+                </ng-template>
+            </dsh-accordion-item>
+        }
     </dsh-accordion>
 </div>

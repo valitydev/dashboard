@@ -7,28 +7,30 @@
         fxLayoutGap="16px"
         (expandedChange)="expandedIdChange.emit($event)"
     >
-        <dsh-accordion-item #accordionItem *ngFor="let webhook of webhooks">
-            <dsh-webhook-row
-                [shopID]="getShopID(webhook.scope)"
-                [url]="webhook.url"
-            ></dsh-webhook-row>
-            <dsh-accordion-item-content>
-                <dsh-card fxLayout="column" fxLayoutGap="32px">
-                    <dsh-accordion-item-content-header
-                        *transloco="
-                            let t;
-                            scope: 'payment-section';
-                            prefix: 'paymentSection.webhook'
-                        "
-                        (collapse)="accordionItem.collapse($event)"
-                        >{{ t('webhook') }} #{{ webhook.id }}</dsh-accordion-item-content-header
-                    >
-                    <dsh-webhook-details
-                        [webhook]="webhook"
-                        (deleteWebhook)="deleteWebhook($event)"
-                    ></dsh-webhook-details>
-                </dsh-card>
-            </dsh-accordion-item-content>
-        </dsh-accordion-item>
+        @for (webhook of webhooks; track webhook) {
+            <dsh-accordion-item #accordionItem>
+                <dsh-webhook-row
+                    [shopID]="getShopID(webhook.scope)"
+                    [url]="webhook.url"
+                ></dsh-webhook-row>
+                <dsh-accordion-item-content>
+                    <dsh-card fxLayout="column" fxLayoutGap="32px">
+                        <dsh-accordion-item-content-header
+                            *transloco="
+                                let t;
+                                scope: 'payment-section';
+                                prefix: 'paymentSection.webhook'
+                            "
+                            (collapse)="accordionItem.collapse($event)"
+                            >{{ t('webhook') }} #{{ webhook.id }}</dsh-accordion-item-content-header
+                        >
+                        <dsh-webhook-details
+                            [webhook]="webhook"
+                            (deleteWebhook)="deleteWebhook($event)"
+                        ></dsh-webhook-details>
+                    </dsh-card>
+                </dsh-accordion-item-content>
+            </dsh-accordion-item>
+        }
     </dsh-accordion>
 </div>

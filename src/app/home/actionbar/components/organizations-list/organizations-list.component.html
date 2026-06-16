@@ -10,20 +10,19 @@
     >
         {{ t('title') }}
     </dsh-menu-item>
-    <dsh-menu-item
-        *ngFor="let org of orgs$ | async"
-        [fragment]="org.id"
-        class="dsh-user-link"
-        routerLink="/organization-section/organizations"
-        (click)="selected.emit()"
-    >
-        {{ org.name }}
-    </dsh-menu-item>
-    <dsh-menu-item
-        *ngIf="!(orgs$ | async)?.length && (isLoading$ | async)"
-        class="dsh-user-link"
-        fxLayoutAlign="center"
-    >
-        <dsh-spinner size="24"></dsh-spinner>
-    </dsh-menu-item>
+    @for (org of orgs$ | async; track org) {
+        <dsh-menu-item
+            [fragment]="org.id"
+            class="dsh-user-link"
+            routerLink="/organization-section/organizations"
+            (click)="selected.emit()"
+        >
+            {{ org.name }}
+        </dsh-menu-item>
+    }
+    @if (!(orgs$ | async)?.length && (isLoading$ | async)) {
+        <dsh-menu-item class="dsh-user-link" fxLayoutAlign="center">
+            <dsh-spinner size="24"></dsh-spinner>
+        </dsh-menu-item>
+    }
 </div>

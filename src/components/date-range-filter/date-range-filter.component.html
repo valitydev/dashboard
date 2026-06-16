@@ -12,21 +12,27 @@
     >
     </dsh-filter>
     <ng-template #content>
-        <div *ngIf="step === stepEnum.Presets" fxLayout="column" fxLayoutGap="24px">
-            <div
-                *ngFor="let preset of presets"
-                [ngClass]="{ 'dsh-date-range-filter-preset-active': preset === value.preset }"
-                class="mat-body-large preset"
-                (click)="selectPreset(preset)"
-            >
-                {{ (presetLabels$ | async)?.[preset] }}
+        @if (step === stepEnum.Presets) {
+            <div fxLayout="column" fxLayoutGap="24px">
+                @for (preset of presets; track preset) {
+                    <div
+                        [ngClass]="{
+                            'dsh-date-range-filter-preset-active': preset === value.preset,
+                        }"
+                        class="mat-body-large preset"
+                        (click)="selectPreset(preset)"
+                    >
+                        {{ (presetLabels$ | async)?.[preset] }}
+                    </div>
+                }
             </div>
-        </div>
-        <mat-calendar
-            *ngIf="step === stepEnum.Calendar"
-            [maxDate]="maxDate"
-            [selected]="selectedCalendar$ | async"
-            (selectedChange)="selectedChange($event)"
-        ></mat-calendar>
+        }
+        @if (step === stepEnum.Calendar) {
+            <mat-calendar
+                [maxDate]="maxDate"
+                [selected]="selectedCalendar$ | async"
+                (selectedChange)="selectedChange($event)"
+            ></mat-calendar>
+        }
     </ng-template>
 </ng-container>

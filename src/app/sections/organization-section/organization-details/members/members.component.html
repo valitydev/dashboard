@@ -1,17 +1,22 @@
-<div *ngIf="organization$ | async as organization" fxLayout="column" fxLayoutGap="16px">
-    <ng-container *transloco="let t; scope: 'organization-section'; prefix: 'organizationSection'">
-        <dsh-spinner *ngIf="isLoading$ | async; else loaded" fxFlexAlign="center"></dsh-spinner>
-        <ng-template #loaded>
-            <dsh-last-updated
-                [lastUpdated]="lastUpdated$ | async"
-                (update)="refresh()"
-            ></dsh-last-updated>
-            <dsh-members-list
-                [members]="members$ | async"
-                [organization]="organization"
-                (changed)="refresh()"
-            ></dsh-members-list>
-        </ng-template>
-    </ng-container>
-</div>
+@if (organization$ | async; as organization) {
+    <div fxLayout="column" fxLayoutGap="16px">
+        <ng-container
+            *transloco="let t; scope: 'organization-section'; prefix: 'organizationSection'"
+        >
+            @if (isLoading$ | async) {
+                <dsh-spinner fxFlexAlign="center"></dsh-spinner>
+            } @else {
+                <dsh-last-updated
+                    [lastUpdated]="lastUpdated$ | async"
+                    (update)="refresh()"
+                ></dsh-last-updated>
+                <dsh-members-list
+                    [members]="members$ | async"
+                    [organization]="organization"
+                    (changed)="refresh()"
+                ></dsh-members-list>
+            }
+        </ng-container>
+    </div>
+}
 <dsh-scroll-up></dsh-scroll-up>

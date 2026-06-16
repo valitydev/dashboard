@@ -7,25 +7,27 @@
         fxLayoutGap="16px"
         (expandedChange)="expandedIdChange.emit($event)"
     >
-        <dsh-accordion-item #accordionItem *ngFor="let report of reports">
-            <dsh-report-row [report]="report"></dsh-report-row>
-            <dsh-accordion-item-content>
-                <dsh-card fxLayout="column" fxLayoutGap="32px">
-                    <dsh-accordion-item-content-header
-                        *transloco="
-                            let t;
-                            scope: 'payment-section';
-                            prefix: 'paymentSection.reports.reportContent'
-                        "
-                        (collapse)="accordionItem.collapse($event)"
-                        >{{ t('header') }} #{{ report.id }}</dsh-accordion-item-content-header
-                    >
-                    <dsh-report-details
-                        [report]="report"
-                        (cancelReport)="cancelReport($event)"
-                    ></dsh-report-details>
-                </dsh-card>
-            </dsh-accordion-item-content>
-        </dsh-accordion-item>
+        @for (report of reports; track report) {
+            <dsh-accordion-item #accordionItem>
+                <dsh-report-row [report]="report"></dsh-report-row>
+                <dsh-accordion-item-content>
+                    <dsh-card fxLayout="column" fxLayoutGap="32px">
+                        <dsh-accordion-item-content-header
+                            *transloco="
+                                let t;
+                                scope: 'payment-section';
+                                prefix: 'paymentSection.reports.reportContent'
+                            "
+                            (collapse)="accordionItem.collapse($event)"
+                            >{{ t('header') }} #{{ report.id }}</dsh-accordion-item-content-header
+                        >
+                        <dsh-report-details
+                            [report]="report"
+                            (cancelReport)="cancelReport($event)"
+                        ></dsh-report-details>
+                    </dsh-card>
+                </dsh-accordion-item-content>
+            </dsh-accordion-item>
+        }
     </dsh-accordion>
 </div>

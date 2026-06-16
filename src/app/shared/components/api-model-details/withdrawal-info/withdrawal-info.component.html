@@ -26,13 +26,19 @@
                 | amountCurrency: withdrawal.body.currency
         }}</dsh-details-item>
     </div>
-    <dsh-details-item *ngIf="withdrawal.failure" [title]="t('error')" fxFlex>
-        <div
-            *transloco="let errors; scope: 'components'; prefix: 'components.withdrawalInfo.errors'"
-            class="mat-body-medium"
-        >
-            <!-- t(failed) -->
-            {{ errors(withdrawal.failure.code) }}
-        </div>
-    </dsh-details-item>
+    @if (withdrawal.failure) {
+        <dsh-details-item [title]="t('error')" fxFlex>
+            <div
+                *transloco="
+                    let errors;
+                    scope: 'components';
+                    prefix: 'components.withdrawalInfo.errors'
+                "
+                class="mat-body-medium"
+            >
+                <!-- t(failed) -->
+                {{ errors(withdrawal.failure.code) }}
+            </div>
+        </dsh-details-item>
+    }
 </div>

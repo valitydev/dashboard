@@ -9,9 +9,7 @@
             {{ t('downloadAll') }}
         </button>
     </div>
-    <dsh-report-file
-        *ngFor="let file of files"
-        [file]="file"
-        [reportID]="reportID"
-    ></dsh-report-file>
+    @for (file of files; track file) {
+        <dsh-report-file [file]="file" [reportID]="reportID"></dsh-report-file>
+    }
 </div>

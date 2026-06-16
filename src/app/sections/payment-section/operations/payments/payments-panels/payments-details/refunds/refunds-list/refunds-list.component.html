@@ -3,35 +3,41 @@
     fxLayout="column"
     fxLayoutGap="24px"
 >
-    <div *ngFor="let item of list; index as i" fxLayout="column" fxLayoutGap="24px">
-        <div fxLayout fxLayoutAlign="space-between" fxLayoutGap="16px">
-            <div>
-                {{ t('header') }}
-                <span>#{{ item.id }}</span>
+    @for (item of list; track item; let i = $index) {
+        <div fxLayout="column" fxLayoutGap="24px">
+            <div fxLayout fxLayoutAlign="space-between" fxLayoutGap="16px">
+                <div>
+                    {{ t('header') }}
+                    <span>#{{ item.id }}</span>
+                </div>
             </div>
+            <dsh-refund-details [refund]="item"></dsh-refund-details>
+            @if (i < list.length - 1) {
+                <mat-divider></mat-divider>
+            }
         </div>
-        <dsh-refund-details [refund]="item"></dsh-refund-details>
-        <mat-divider *ngIf="i < list.length - 1"></mat-divider>
-    </div>
-    <ng-container *ngIf="!loading; else loader">
-        <div *ngIf="isEmptyList">
-            <div class="mat-body-medium">{{ t('emptyRefunds') }}</div>
+    }
+    @if (!loading) {
+        @if (isEmptyList) {
+            <div>
+                <div class="mat-body-medium">{{ t('emptyRefunds') }}</div>
+            </div>
+        }
+        @if (hasMore) {
+            <div>
+                <button
+                    *transloco="let c; scope: 'components'; prefix: 'components.shared'"
+                    fxFlex
+                    mat-flat-button
+                    (click)="showMoreElements()"
+                >
+                    {{ c('showMore') }}
+                </button>
+            </div>
+        }
+    } @else {
+        <div *transloco="let c; scope: 'components'; prefix: 'components.shared'">
+            <div class="mat-body-medium">{{ c('loading') }}</div>
         </div>
-        <div *ngIf="hasMore">
-            <button
-                *transloco="let c; scope: 'components'; prefix: 'components.shared'"
-                fxFlex
-                mat-flat-button
-                (click)="showMoreElements()"
-            >
-                {{ c('showMore') }}
-            </button>
-        </div>
-    </ng-container>
+    }
 </div>
-
-<ng-template #loader>
-    <div *transloco="let c; scope: 'components'; prefix: 'components.shared'">
-        <div class="mat-body-medium">{{ c('loading') }}</div>
-    </div>
-</ng-template>

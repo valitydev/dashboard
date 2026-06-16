@@ -4,52 +4,53 @@
 >
     <dsh-card-title fxLayoutAlign="space-between">
         <div class="mat-title-large">{{ title }}</div>
-        <dsh-spinner *ngIf="isLoading" [type]="spinnerType" size="28"></dsh-spinner>
+        @if (isLoading) {
+            <dsh-spinner [type]="spinnerType" size="28"></dsh-spinner>
+        }
     </dsh-card-title>
     <dsh-card-content
         *transloco="let t; scope: 'payment-section'; prefix: 'paymentSection.analytics'"
         fxFlexFill
     >
-        <div *ngIf="!error; else onError" fxFlex fxFlexFill>
-            <div fxFlexFill>
-                <div
-                    *ngIf="selectedErrorTitle"
-                    fxLayout
-                    fxLayoutAlign="start center"
-                    fxLayoutGap="10px"
-                >
-                    <dsh-bi
-                        class="back-selection-icon"
-                        icon="arrow-left"
-                        size="sm"
-                        (click)="goBackDataSelection()"
-                    ></dsh-bi>
-                    <div class="mat-body-small">{{ selectedErrorTitle }}</div>
+        @if (!error) {
+            <div fxFlex fxFlexFill>
+                <div fxFlexFill>
+                    @if (selectedErrorTitle) {
+                        <div fxLayout fxLayoutAlign="start center" fxLayoutGap="10px">
+                            <dsh-bi
+                                class="back-selection-icon"
+                                icon="arrow-left"
+                                size="sm"
+                                (click)="goBackDataSelection()"
+                            ></dsh-bi>
+                            <div class="mat-body-small">{{ selectedErrorTitle }}</div>
+                        </div>
+                    }
+                    @if (selectedErrorTitle && chartData?.series?.length === 0) {
+                        <div>
+                            <dsh-donut-chart
+                                [colors]="colors"
+                                [labels]="[selectedErrorTitle]"
+                                [series]="[100]"
+                            ></dsh-donut-chart>
+                        </div>
+                    } @else {
+                        @if (chartData?.series?.length) {
+                            <dsh-donut-chart
+                                [colors]="colors"
+                                [labels]="chartData.labels"
+                                [series]="chartData.series"
+                                class="interactive-errors-chart"
+                                (dataSelect)="updateDataSelection($event)"
+                            ></dsh-donut-chart>
+                        } @else {
+                            <div fxFlexFill fxLayoutAlign="center center">{{ t('noData') }}</div>
+                        }
+                    }
                 </div>
-                <div *ngIf="selectedErrorTitle && chartData?.series?.length === 0; else usualData">
-                    <dsh-donut-chart
-                        [colors]="colors"
-                        [labels]="[selectedErrorTitle]"
-                        [series]="[100]"
-                    ></dsh-donut-chart>
-                </div>
-                <ng-template #usualData>
-                    <dsh-donut-chart
-                        *ngIf="chartData?.series?.length; else noData"
-                        [colors]="colors"
-                        [labels]="chartData.labels"
-                        [series]="chartData.series"
-                        class="interactive-errors-chart"
-                        (dataSelect)="updateDataSelection($event)"
-                    ></dsh-donut-chart>
-                    <ng-template #noData>
-                        <div fxFlexFill fxLayoutAlign="center center">{{ t('noData') }}</div>
-                    </ng-template>
-                </ng-template>
             </div>
-        </div>
-        <ng-template #onError>
+        } @else {
             <div fxFlexFill fxLayoutAlign="center center">{{ c('httpError') }}</div>
-        </ng-template>
+        }
     </dsh-card-content>
 </dsh-card>

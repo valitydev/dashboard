@@ -13,12 +13,11 @@
         <button mat-flat-button (click)="createWebhook()">{{ t('create') }}</button>
     </div>
 
-    <ng-container *ngIf="(isLoading$ | async) || !(webhooks$ | async); else webhooksList">
+    @if ((isLoading$ | async) || !(webhooks$ | async)) {
         <div fxFlexAlign="center" fxLayout>
             <dsh-spinner></dsh-spinner>
         </div>
-    </ng-container>
-    <ng-template #webhooksList>
+    } @else {
         <dsh-webhooks-list
             [expandedId]="expandedId$ | async"
             [lastUpdated]="lastUpdated$ | async"
@@ -26,9 +25,8 @@
             (expandedIdChange)="expandedIdChange($event)"
             (refreshData)="receiveWebhooks()"
         ></dsh-webhooks-list>
-        <dsh-empty-search-result
-            *ngIf="(webhooks$ | async)?.length === 0"
-            [text]="t('emptyResult')"
-        ></dsh-empty-search-result>
-    </ng-template>
+        @if ((webhooks$ | async)?.length === 0) {
+            <dsh-empty-search-result [text]="t('emptyResult')"></dsh-empty-search-result>
+        }
+    }
 </div>

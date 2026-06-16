@@ -26,9 +26,9 @@
                     placeholder="0000 00"
                     type="text"
                 />
-                <span *ngIf="binInput.focused || control.value.bin?.length" matTextSuffix
-                    >**&nbsp;****&nbsp;****</span
-                >
+                @if (binInput.focused || control.value.bin?.length) {
+                    <span matTextSuffix>**&nbsp;****&nbsp;****</span>
+                }
             </mat-form-field>
             <mat-form-field>
                 <mat-label>{{ t('last4') }}</mat-label>
@@ -40,9 +40,9 @@
                     placeholder="0000"
                     type="text"
                 />
-                <span *ngIf="panInput.focused || control.value.pan?.length" matTextPrefix
-                    >****&nbsp;****&nbsp;****&nbsp;</span
-                >
+                @if (panInput.focused || control.value.pan?.length) {
+                    <span matTextPrefix>****&nbsp;****&nbsp;****&nbsp;</span>
+                }
             </mat-form-field>
         </form>
     </ng-template>

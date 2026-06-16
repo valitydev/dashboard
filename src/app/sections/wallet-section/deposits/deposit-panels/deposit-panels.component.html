@@ -1,17 +1,19 @@
 <div fxLayout="column" fxLayoutGap="16px">
     <dsh-deposit-row-header></dsh-deposit-row-header>
     <ng-container *ngTemplateOutlet="depositsList"></ng-container>
-    <ng-container *ngIf="!isLoading; else loading">
-        <dsh-empty-search-result *ngIf="isEmptyList"></dsh-empty-search-result>
-        <dsh-show-more-panel *ngIf="hasMore" (showMore)="showMoreElements()"> </dsh-show-more-panel>
-    </ng-container>
+    @if (!isLoading) {
+        @if (isEmptyList) {
+            <dsh-empty-search-result></dsh-empty-search-result>
+        }
+        @if (hasMore) {
+            <dsh-show-more-panel (showMore)="showMoreElements()"> </dsh-show-more-panel>
+        }
+    } @else {
+        <div fxFlexAlign="center" fxLayout>
+            <dsh-spinner></dsh-spinner>
+        </div>
+    }
 </div>
-
-<ng-template #loading>
-    <div fxFlexAlign="center" fxLayout>
-        <dsh-spinner></dsh-spinner>
-    </div>
-</ng-template>
 
 <ng-template #depositsList>
     <dsh-accordion
@@ -20,30 +22,32 @@
         fxLayoutGap="16px"
         (expandedChange)="expandedIndexChange($event)"
     >
-        <dsh-accordion-item #accordionItem *ngFor="let item of list; index as i; trackBy: track">
-            <dsh-deposit-row [deposit]="item"></dsh-deposit-row>
-            <ng-template dshLazyPanelContent>
-                <dsh-card fxFlexFill fxLayout="column" fxLayoutGap="16px">
-                    <dsh-accordion-item-content-header
-                        *transloco="
-                            let t;
-                            scope: 'wallet-section';
-                            prefix: 'walletSection.depositPanels'
-                        "
-                        (collapse)="accordionItem.collapse($event)"
-                    >
-                        <div fxFlex="100" fxLayoutAlign="space-between center">
-                            <span>{{ t('header') }} #{{ item.id }}</span>
-                            <span>{{ item.createdAt | date: 'dd MMMM yyyy, HH:mm' }}</span>
-                        </div></dsh-accordion-item-content-header
-                    >
-                    <div fxLayout="column" fxLayoutGap="24px">
-                        <dsh-deposit-details [deposit]="item"></dsh-deposit-details>
-                        <mat-divider></mat-divider>
-                        <dsh-deposit-reverts [depositID]="item.id"></dsh-deposit-reverts>
-                    </div>
-                </dsh-card>
-            </ng-template>
-        </dsh-accordion-item>
+        @for (item of list; track track(i, item); let i = $index) {
+            <dsh-accordion-item #accordionItem>
+                <dsh-deposit-row [deposit]="item"></dsh-deposit-row>
+                <ng-template dshLazyPanelContent>
+                    <dsh-card fxFlexFill fxLayout="column" fxLayoutGap="16px">
+                        <dsh-accordion-item-content-header
+                            *transloco="
+                                let t;
+                                scope: 'wallet-section';
+                                prefix: 'walletSection.depositPanels'
+                            "
+                            (collapse)="accordionItem.collapse($event)"
+                        >
+                            <div fxFlex="100" fxLayoutAlign="space-between center">
+                                <span>{{ t('header') }} #{{ item.id }}</span>
+                                <span>{{ item.createdAt | date: 'dd MMMM yyyy, HH:mm' }}</span>
+                            </div></dsh-accordion-item-content-header
+                        >
+                        <div fxLayout="column" fxLayoutGap="24px">
+                            <dsh-deposit-details [deposit]="item"></dsh-deposit-details>
+                            <mat-divider></mat-divider>
+                            <dsh-deposit-reverts [depositID]="item.id"></dsh-deposit-reverts>
+                        </div>
+                    </dsh-card>
+                </ng-template>
+            </dsh-accordion-item>
+        }
     </dsh-accordion>
 </ng-template>

@@ -10,8 +10,10 @@
     <div class="mat-title-large">
         {{ t('title') }}
     </div>
-    <ng-container *ngFor="let line of cart; index as i">
+    @for (line of cart; track line; let i = $index) {
         <dsh-invoice-cart-line [currency]="currency" [line]="line"></dsh-invoice-cart-line>
-        <mat-divider *ngIf="i < cart.length - 1"></mat-divider>
-    </ng-container>
+        @if (i < cart.length - 1) {
+            <mat-divider></mat-divider>
+        }
+    }
 </div>

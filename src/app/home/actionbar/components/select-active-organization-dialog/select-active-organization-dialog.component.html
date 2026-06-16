@@ -13,15 +13,16 @@
                 fxLayout="column"
                 fxLayoutGap="24px"
             >
-                <mat-radio-button
-                    *ngFor="let organization of organizations$ | async"
-                    [value]="organization"
-                >
-                    {{ organization.name }}
-                </mat-radio-button>
+                @for (organization of organizations$ | async; track organization) {
+                    <mat-radio-button [value]="organization">
+                        {{ organization.name }}
+                    </mat-radio-button>
+                }
             </mat-radio-group>
         </dsh-limited-panel>
-        <dsh-spinner *ngIf="isLoading$ | async" fxFlexAlign="center"></dsh-spinner>
+        @if (isLoading$ | async) {
+            <dsh-spinner fxFlexAlign="center"></dsh-spinner>
+        }
     </div>
     <ng-container dshBaseDialogActions>
         <button

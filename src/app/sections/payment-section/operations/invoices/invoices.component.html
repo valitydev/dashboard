@@ -6,7 +6,7 @@
         gdColumns.gt-sm="repeat(2, auto)"
         gdGap="32px"
     >
-        <ng-container *ngIf="('CreateInvoice' | isAccessAllowed) && isDev">
+        @if (('CreateInvoice' | isAccessAllowed) && isDev) {
             <button
                 *transloco="let i; scope: 'payment-section'; prefix: 'paymentSection.invoices'"
                 [disabled]="(shops$ | async).length === 0"
@@ -15,7 +15,7 @@
             >
                 {{ i('createButton') }} (dev)
             </button>
-        </ng-container>
+        }
         <dsh-invoices-search-filters
             [initParams]="params$ | async"
             [realm]="realm$ | async"
@@ -31,14 +31,17 @@
             (expandedIdChange)="expandedIdChange($event)"
             (refreshData)="refresh()"
         ></dsh-invoices-list>
-        <dsh-show-more-panel
-            *ngIf="hasMore$ | async"
-            [isLoading]="isLoading$ | async"
-            (showMore)="fetchMore()"
-        ></dsh-show-more-panel>
+        @if (hasMore$ | async) {
+            <dsh-show-more-panel
+                [isLoading]="isLoading$ | async"
+                (showMore)="fetchMore()"
+            ></dsh-show-more-panel>
+        }
     </div>
-    <dsh-empty-search-result
-        *ngIf="!(fetchErrors$ | async) && (invoices$ | async)?.length === 0"
-    ></dsh-empty-search-result>
-    <dsh-spinner *ngIf="isLoading$ | async" fxLayoutAlign="center"></dsh-spinner>
+    @if (!(fetchErrors$ | async) && (invoices$ | async)?.length === 0) {
+        <dsh-empty-search-result></dsh-empty-search-result>
+    }
+    @if (isLoading$ | async) {
+        <dsh-spinner fxLayoutAlign="center"></dsh-spinner>
+    }
 </div>

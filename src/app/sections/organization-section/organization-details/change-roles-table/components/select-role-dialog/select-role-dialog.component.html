@@ -15,26 +15,31 @@
             [data]="data"
         >
             <ng-template #accessCellTpl let-column="column" let-index="index" let-value="value">
-                <dsh-selection
-                    *ngIf="value && value?.availableRoles !== undefined"
-                    [selected]="value?.availableRoles?.includes?.(column.field)"
-                    class="selection"
-                ></dsh-selection>
-                <div *ngIf="!value && index === 0" class="selection">
-                    <mat-radio-group
-                        [disabled]="!dialogData.availableRoles.includes(column?.field)"
-                        [ngModel]="selectedRole$ | async"
-                        (ngModelChange)="selectedRole$.next(column.field)"
-                    >
-                        <mat-radio-button [value]="column.field"></mat-radio-button>
-                    </mat-radio-group>
-                </div>
+                @if (value && value?.availableRoles !== undefined) {
+                    <dsh-selection
+                        [selected]="value?.availableRoles?.includes?.(column.field)"
+                        class="selection"
+                    ></dsh-selection>
+                }
+                @if (!value && index === 0) {
+                    <div class="selection">
+                        <mat-radio-group
+                            [disabled]="!dialogData.availableRoles.includes(column?.field)"
+                            [ngModel]="selectedRole$ | async"
+                            (ngModelChange)="selectedRole$.next(column.field)"
+                        >
+                            <mat-radio-button [value]="column.field"></mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                }
             </ng-template>
         </dsh-nested-table>
     </div>
-    <ng-container *ngIf="!dialogData.isShow" dshBaseDialogActions>
-        <button [disabled]="!(selectedRole$ | async)" mat-flat-button (click)="select()">
-            {{ t('select') }}
-        </button>
-    </ng-container>
+    @if (!dialogData.isShow) {
+        <ng-container dshBaseDialogActions>
+            <button [disabled]="!(selectedRole$ | async)" mat-flat-button (click)="select()">
+                {{ t('select') }}
+            </button>
+        </ng-container>
+    }
 </dsh-base-dialog>

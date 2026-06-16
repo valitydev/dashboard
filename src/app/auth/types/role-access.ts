@@ -8,7 +8,9 @@ export interface RoleAccess {
     availableRoles: RoleId[];
 }
 
-export interface RoleAccessGroup
-    extends Overwrite<RoleAccess, Partial<Pick<RoleAccess, 'availableRoles'>>> {
+export interface RoleAccessGroup extends Overwrite<
+    RoleAccess,
+    Partial<Pick<RoleAccess, 'availableRoles'>>
+> {
     children?: RoleAccess[];
 }

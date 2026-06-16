@@ -4,9 +4,11 @@
         *transloco="let t; scope: 'components'; prefix: 'components.shared'"
         dshBaseDialogActions
     >
-        <button *ngIf="!data.noClearButton" mat-button (click)="clear()">
-            {{ t('clear') }}
-        </button>
+        @if (!data.noClearButton) {
+            <button mat-button (click)="clear()">
+                {{ t('clear') }}
+            </button>
+        }
         <button mat-flat-button (click)="save()">
             {{ t('save') }}
         </button>

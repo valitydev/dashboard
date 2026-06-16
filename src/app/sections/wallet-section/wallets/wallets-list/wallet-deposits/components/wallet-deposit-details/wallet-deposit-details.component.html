@@ -24,8 +24,10 @@
         <dsh-details-item [title]="t('createdAt')">{{
             deposit.createdAt | date: 'dd MMMM yyyy, HH:mm'
         }}</dsh-details-item>
-        <dsh-details-item *ngIf="deposit.failure" [title]="t('error')" gdColumn.gt-sm="1/-1">{{
-            deposit.failure.code
-        }}</dsh-details-item>
+        @if (deposit.failure) {
+            <dsh-details-item [title]="t('error')" gdColumn.gt-sm="1/-1">{{
+                deposit.failure.code
+            }}</dsh-details-item>
+        }
     </div>
 </div>

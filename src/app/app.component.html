@@ -10,56 +10,58 @@
         "
     >
         <div>
-            <div
-                *ngIf="noOrganization$ | async"
-                style="
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    height: 100%;
-                    padding: 24px;
-                "
-            >
-                <mat-card style="max-width: 500px; text-align: center">
-                    <mat-card-content style="padding: 48px 32px">
-                        <h2 class="mat-headline-medium" style="margin: 0 0 16px 0">
-                            {{ t('noOrganization') }}
-                        </h2>
-                        <p class="mat-body-medium" style="margin: 0; color: rgba(0, 0, 0, 0.6)">
-                            {{ t('contactSupport') }}
-                        </p>
-                    </mat-card-content>
-                </mat-card>
-            </div>
-            <ng-container *ngIf="!(noOrganization$ | async)">
-                <dsh-sections *ngIf="bootstrapped$ | async; else spinner"></dsh-sections>
-                <ng-template #spinner>
+            @if (noOrganization$ | async) {
+                <div
+                    style="
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 100%;
+                        padding: 24px;
+                    "
+                >
+                    <mat-card style="max-width: 500px; text-align: center">
+                        <mat-card-content style="padding: 48px 32px">
+                            <h2 class="mat-headline-medium" style="margin: 0 0 16px 0">
+                                {{ t('noOrganization') }}
+                            </h2>
+                            <p class="mat-body-medium" style="margin: 0; color: rgba(0, 0, 0, 0.6)">
+                                {{ t('contactSupport') }}
+                            </p>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            }
+            @if (!(noOrganization$ | async)) {
+                @if (bootstrapped$ | async) {
+                    <dsh-sections></dsh-sections>
+                } @else {
                     <div fxFlexAlign="center" fxLayout="row">
                         <dsh-spinner style="margin: auto"></dsh-spinner>
                     </div>
-                </ng-template>
-            </ng-container>
+                }
+            }
         </div>
-        <div *ngIf="isDev" style="display: flex; justify-content: center">
-            <div
-                [matMenuTriggerFor]="menu"
-                class="mat-title-small"
-                style="cursor: pointer; display: flex; gap: 8px; align-items: center"
-            >
-                <dsh-bi icon="globe" size="sm"></dsh-bi>
-                <!-- t(language.en) -->
-                <!-- t(language.ru) -->
-                {{ t('language.' + languageService.active) }}
-            </div>
-            <mat-menu #menu="matMenu">
-                <button
-                    *ngFor="let language of languages"
-                    mat-menu-item
-                    (click)="setLanguage(language)"
+        @if (isDev) {
+            <div style="display: flex; justify-content: center">
+                <div
+                    [matMenuTriggerFor]="menu"
+                    class="mat-title-small"
+                    style="cursor: pointer; display: flex; gap: 8px; align-items: center"
                 >
-                    {{ t('language.' + language) }}
-                </button>
-            </mat-menu>
-        </div>
+                    <dsh-bi icon="globe" size="sm"></dsh-bi>
+                    <!-- t(language.en) -->
+                    <!-- t(language.ru) -->
+                    {{ t('language.' + languageService.active) }}
+                </div>
+                <mat-menu #menu="matMenu">
+                    @for (language of languages; track language) {
+                        <button mat-menu-item (click)="setLanguage(language)">
+                            {{ t('language.' + language) }}
+                        </button>
+                    }
+                </mat-menu>
+            </div>
+        }
     </div>
 </dsh-home>

@@ -1,22 +1,23 @@
 <div fxLayout="column" fxLayoutGap="32px">
     <nav fitInkBarToContent mat-tab-nav-bar style="width: fit-content">
-        <a
-            #rla="routerLinkActive"
-            *ngFor="let link of links"
-            [active]="rla.isActive"
-            [routerLink]="link.path"
-            mat-tab-link
-            routerLinkActive
-        >
-            <span
-                *transloco="
-                    let tabs;
-                    scope: 'wallet-section';
-                    prefix: 'walletSection.integrations.tabs'
-                "
-                >{{ link.label$ | async }}</span
+        @for (link of links; track link) {
+            <a
+                #rla="routerLinkActive"
+                [active]="rla.isActive"
+                [routerLink]="link.path"
+                mat-tab-link
+                routerLinkActive
             >
-        </a>
+                <span
+                    *transloco="
+                        let tabs;
+                        scope: 'wallet-section';
+                        prefix: 'walletSection.integrations.tabs'
+                    "
+                    >{{ link.label$ | async }}</span
+                >
+            </a>
+        }
     </nav>
     <div>
         <router-outlet></router-outlet>

@@ -14,11 +14,11 @@
             anyResponse
             fxFlex
         >
-            <ng-container *ngFor="let status of statuses">
+            @for (status of statuses; track status) {
                 <ng-template [dshExpandableRadioGroupItem]="status">
                     <span>{{ (paymentStatusDict$ | async)?.[status] }}</span>
                 </ng-template>
-            </ng-container>
+            }
         </dsh-expandable-radio-group>
     </div>
 </ng-container>

@@ -5,11 +5,11 @@
     fxLayout
     fxLayoutAlign="space-between center"
 >
-    <ng-container *ngIf="lastUpdated">
+    @if (lastUpdated) {
         <a class="dsh-last-updated-update-link" (click)="update.emit()">{{ t('update') }}</a>
         <span>
             {{ t('lastUpdate') }}:
             {{ lastUpdated | humanizedDuration: { largest: 1, hasAgoEnding: true } }}
         </span>
-    </ng-container>
+    }
 </div>

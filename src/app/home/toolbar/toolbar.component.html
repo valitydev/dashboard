@@ -1,17 +1,18 @@
 <div class="dsh-toolbar">
     <div fxLayoutAlign="center">
         <nav [tabPanel]="tabPanel" class="dsh-top-tab-nav-bar" fitInkBarToContent mat-tab-nav-bar>
-            <a
-                #rla="routerLinkActive"
-                *ngFor="let link of sectionLinks$ | async"
-                [active]="rla.isActive"
-                [routerLink]="link.path"
-                [routerLinkActiveOptions]="{ exact: link?.exact }"
-                mat-tab-link
-                routerLinkActive
-            >
-                {{ link.label }}
-            </a>
+            @for (link of sectionLinks$ | async; track link) {
+                <a
+                    #rla="routerLinkActive"
+                    [active]="rla.isActive"
+                    [routerLink]="link.path"
+                    [routerLinkActiveOptions]="{ exact: link?.exact }"
+                    mat-tab-link
+                    routerLinkActive
+                >
+                    {{ link.label }}
+                </a>
+            }
         </nav>
         <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
     </div>

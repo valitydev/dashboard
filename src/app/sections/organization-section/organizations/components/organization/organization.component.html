@@ -9,37 +9,36 @@
         {{ membersCount$ | async }}
     </dsh-details-item>
 
-    <ng-container *ngIf="member$ | async as member">
+    @if (member$ | async; as member) {
         <mat-divider></mat-divider>
         <div class="mat-title-large">{{ t('titles.roles') }}</div>
         <dsh-organization-roles
             [isOwner]="isOwner$ | async"
             [roles]="member.roles"
         ></dsh-organization-roles>
-    </ng-container>
+    }
 
     <mat-divider></mat-divider>
     <div class="mat-title-large">{{ t('titles.actions') }}</div>
     <div fxLayout fxLayoutGap="24px">
-        <button *ngIf="hasAdminAccess$ | async" mat-flat-button (click)="rename()">
-            {{ t('actions.rename') }}
-        </button>
-        <button
-            *ngIf="(isOwner$ | async) === false"
-            class="matv-error"
-            mat-flat-button
-            (click)="leave()"
-        >
-            {{ t('actions.leave') }}
-        </button>
+        @if (hasAdminAccess$ | async) {
+            <button mat-flat-button (click)="rename()">
+                {{ t('actions.rename') }}
+            </button>
+        }
+        @if ((isOwner$ | async) === false) {
+            <button class="matv-error" mat-flat-button (click)="leave()">
+                {{ t('actions.leave') }}
+            </button>
+        }
     </div>
 
-    <ng-container *ngIf="hasAdminAccess$ | async">
+    @if (hasAdminAccess$ | async) {
         <mat-divider></mat-divider>
         <dsh-navigation-link
             [routerLink]="['/', 'organization-section', 'organizations', organization.id]"
             [text]="t('management')"
             fxFlexAlign="end"
         ></dsh-navigation-link>
-    </ng-container>
+    }
 </div>

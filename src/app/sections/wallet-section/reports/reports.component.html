@@ -51,10 +51,10 @@
                     >
                 </div>
 
-                <ng-container *ngIf="report.status === 'created'">
+                @if (report.status === 'created') {
                     <mat-divider></mat-divider>
                     <dsh-files [files]="report.files" [id]="report.id"></dsh-files>
-                </ng-container>
+                }
             </div>
         </ng-template>
     </dsh-accordion-table>

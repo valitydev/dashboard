@@ -11,11 +11,12 @@
                 <ng-content></ng-content>
             </div>
         </div>
-        <mat-slide-toggle
-            *ngIf="withToggle"
-            [checked]="toggleChecked"
-            fxHide.lt-md
-            (change)="slideToggleChange($event)"
-        ></mat-slide-toggle>
+        @if (withToggle) {
+            <mat-slide-toggle
+                [checked]="toggleChecked"
+                fxHide.lt-md
+                (change)="slideToggleChange($event)"
+            ></mat-slide-toggle>
+        }
     </div>
 </div>

@@ -17,27 +17,28 @@
         fxLayoutGap="16px"
         (expandedChange)="expandedIdChange($event)"
     >
-        <dsh-accordion-item
-            #accordionItem
-            *ngFor="let invitation of invitations; trackBy: trackInvitations"
-        >
-            <dsh-row fxLayout fxLayoutAlign=" center" fxLayoutGap="24px">
-                <dsh-row-label>
-                    {{ invitation.invitee?.contact?.email }}
-                </dsh-row-label>
-            </dsh-row>
-            <dsh-accordion-item-content>
-                <dsh-card fxLayout="column" fxLayoutGap="32px">
-                    <dsh-accordion-item-content-header (collapse)="accordionItem.collapse($event)">
-                        {{ invitation.id }}
-                    </dsh-accordion-item-content-header>
-                    <dsh-invitation
-                        [invitation]="invitation"
-                        [orgId]="orgId"
-                        (changed)="changed.emit()"
-                    ></dsh-invitation>
-                </dsh-card>
-            </dsh-accordion-item-content>
-        </dsh-accordion-item>
+        @for (invitation of invitations; track trackInvitations($index, invitation)) {
+            <dsh-accordion-item #accordionItem>
+                <dsh-row fxLayout fxLayoutAlign=" center" fxLayoutGap="24px">
+                    <dsh-row-label>
+                        {{ invitation.invitee?.contact?.email }}
+                    </dsh-row-label>
+                </dsh-row>
+                <dsh-accordion-item-content>
+                    <dsh-card fxLayout="column" fxLayoutGap="32px">
+                        <dsh-accordion-item-content-header
+                            (collapse)="accordionItem.collapse($event)"
+                        >
+                            {{ invitation.id }}
+                        </dsh-accordion-item-content-header>
+                        <dsh-invitation
+                            [invitation]="invitation"
+                            [orgId]="orgId"
+                            (changed)="changed.emit()"
+                        ></dsh-invitation>
+                    </dsh-card>
+                </dsh-accordion-item-content>
+            </dsh-accordion-item>
+        }
     </dsh-accordion>
 </div>

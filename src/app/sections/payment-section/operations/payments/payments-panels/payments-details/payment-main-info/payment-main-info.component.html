@@ -6,18 +6,22 @@
             {{ payment.amount | amountCurrency: payment.currency }}
         </div>
         <dsh-charge-amount [payment]="payment"></dsh-charge-amount>
-        <dsh-payment-fee *ngIf="payment.fee" [payment]="payment"></dsh-payment-fee>
+        @if (payment.fee) {
+            <dsh-payment-fee [payment]="payment"></dsh-payment-fee>
+        }
         <dsh-payment-status [status]="payment.status"></dsh-payment-status>
         <dsh-payment-tool [paymentToolDetails]="payer.paymentToolDetails"></dsh-payment-tool>
-        <dsh-resource-payer *ngIf="resourcePayer" [payer]="resourcePayer"></dsh-resource-payer>
+        @if (resourcePayer) {
+            <dsh-resource-payer [payer]="resourcePayer"></dsh-resource-payer>
+        }
         <dsh-shop-name [shopName]="payment.shopID | shopDetails" gdColumn="1/-1"></dsh-shop-name>
-        <dsh-details-item *ngIf="payment.error?.code" [title]="t('error')" gdColumn="1/-1">
-            <div class="mat-body-medium">{{ payment.error | paymentErrorMessage | async }}</div>
-        </dsh-details-item>
-        <dsh-additional-info
-            *ngIf="additionalInfo as info"
-            [info]="info"
-            gdColumn="1/-1"
-        ></dsh-additional-info>
+        @if (payment.error?.code) {
+            <dsh-details-item [title]="t('error')" gdColumn="1/-1">
+                <div class="mat-body-medium">{{ payment.error | paymentErrorMessage | async }}</div>
+            </dsh-details-item>
+        }
+        @if (additionalInfo; as info) {
+            <dsh-additional-info [info]="info" gdColumn="1/-1"></dsh-additional-info>
+        }
     </div>
 </ng-container>

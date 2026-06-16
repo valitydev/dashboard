@@ -10,21 +10,23 @@
     <div class="mat-title-large">
         {{ t('title') }}
     </div>
-    <div
-        *ngFor="let payment of payments$ | async as payments; index as i"
-        fxLayout="column"
-        fxLayoutGap="24px"
-    >
-        <!--        TODO: refactor payments display -->
-        <div fxLayout fxLayoutAlign="space-between" fxLayoutGap="16px">
-            <div class="mat-body-large">
-                {{ t('payment') }} <span dshTextColor="secondary">#{{ payment.id }}</span>
+    @for (payment of payments$ | async; track payment.id; let i = $index) {
+        <div fxLayout="column" fxLayoutGap="24px">
+            <!-- TODO: refactor payments display -->
+            <div fxLayout fxLayoutAlign="space-between" fxLayoutGap="16px">
+                <div class="mat-body-large">
+                    {{ t('payment') }} <span dshTextColor="secondary">#{{ payment.id }}</span>
+                </div>
             </div>
+            <dsh-payment-details [payment]="payment"></dsh-payment-details>
+            @if (i < payments.length - 1) {
+                <mat-divider></mat-divider>
+            }
         </div>
-        <dsh-payment-details [payment]="payment"></dsh-payment-details>
-        <mat-divider *ngIf="i < payments.length - 1"></mat-divider>
-    </div>
-    <div *ngIf="hasMore$ | async">
-        <button fxFlex mat-flat-button (click)="showMore()">{{ t('showMore') }}</button>
-    </div>
+    }
+    @if (hasMore$ | async) {
+        <div>
+            <button fxFlex mat-flat-button (click)="showMore()">{{ t('showMore') }}</button>
+        </div>
+    }
 </div>

@@ -10,23 +10,22 @@
     <div fxLayout fxLayoutAlign="space-between" fxLayoutGap="16px">
         <div class="mat-title-large">{{ t('title') }}</div>
     </div>
-    <ng-container *ngIf="isLoading$ | async; else afterLoading">
+    @if (isLoading$ | async) {
         <div
             *transloco="let c; scope: 'components'; prefix: 'components.shared'"
             class="mat-body-medium"
         >
             {{ c('loading') }}
         </div>
-    </ng-container>
-    <ng-template #afterLoading>
-        <div *ngIf="errorOccurred$ | async; else content" class="mat-body-medium">
-            {{ t('error') }}
-        </div>
-    </ng-template>
-    <ng-template #content>
-        <dsh-payment-details
-            *ngIf="payment$ | async as payment"
-            [payment]="payment"
-        ></dsh-payment-details>
-    </ng-template>
+    } @else {
+        @if (errorOccurred$ | async) {
+            <div class="mat-body-medium">
+                {{ t('error') }}
+            </div>
+        } @else {
+            @if (payment$ | async; as payment) {
+                <dsh-payment-details [payment]="payment"></dsh-payment-details>
+            }
+        }
+    }
 </div>

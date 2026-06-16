@@ -14,7 +14,6 @@
 ## Installation
 
 1. Add environment and configurations:
-
     - `src/.env`
     - `src/assets/appConfig.json`
     - `src/assets/authConfig.json`

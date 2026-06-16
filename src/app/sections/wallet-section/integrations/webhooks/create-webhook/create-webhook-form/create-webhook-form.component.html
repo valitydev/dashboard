@@ -29,24 +29,27 @@
             >{{ t('createWebhook.eventTypes.destination') }}</mat-radio-button
         >
     </mat-radio-group>
-    <dsh-wallet-autocomplete-field
-        *ngIf="(activeTopic$ | async) === 'WithdrawalsTopic'"
-        [label]="t('createWebhook.wallet')"
-        formControlName="walletID"
-    >
-    </dsh-wallet-autocomplete-field>
+    @if ((activeTopic$ | async) === 'WithdrawalsTopic') {
+        <dsh-wallet-autocomplete-field
+            [label]="t('createWebhook.wallet')"
+            formControlName="walletID"
+        >
+        </dsh-wallet-autocomplete-field>
+    }
     <mat-divider></mat-divider>
     <div fxLayout="column" fxLayoutGap="8px">
         <div class="mat-title-large">{{ t('createWebhook.events') }}</div>
         <div class="mat-body-small">{{ t('createWebhook.types') }}</div>
     </div>
     <div formArrayName="eventTypes" fxLayout="column" fxLayoutGap="16px">
-        <div *ngFor="let eventType of eventTypes.controls; let i = index" [formGroupName]="i">
-            <mat-checkbox class="mat-body-medium" formControlName="selected"
-                ><span>{{
-                    (eventType$ | async)?.[eventType.controls.eventName.value]
-                }}</span></mat-checkbox
-            >
-        </div>
+        @for (eventType of eventTypes.controls; track eventType; let i = $index) {
+            <div [formGroupName]="i">
+                <mat-checkbox class="mat-body-medium" formControlName="selected"
+                    ><span>{{
+                        (eventType$ | async)?.[eventType.controls.eventName.value]
+                    }}</span></mat-checkbox
+                >
+            </div>
+        }
     </div>
 </form>

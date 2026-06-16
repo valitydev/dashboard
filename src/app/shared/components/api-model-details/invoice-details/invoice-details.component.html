@@ -16,7 +16,9 @@
         invoice.createdAt | date: 'dd MMMM yyyy, HH:mm'
     }}</dsh-details-item>
     <dsh-details-item [title]="t('name')" gdColumn="1/-1">{{ invoice.product }}</dsh-details-item>
-    <dsh-details-item *ngIf="invoice.description" [title]="t('description')" gdColumn="1/-1">{{
-        invoice.description
-    }}</dsh-details-item>
+    @if (invoice.description) {
+        <dsh-details-item [title]="t('description')" gdColumn="1/-1">{{
+            invoice.description
+        }}</dsh-details-item>
+    }
 </div>

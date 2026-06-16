@@ -9,15 +9,16 @@
             {{ t('downloadAll') }}
         </button>
     </div>
-    <div
-        *ngFor="let file of files"
-        gdAlignColumns="center center"
-        gdAlignRows="space-between"
-        gdColumns="auto auto"
-    >
-        <div class="mat-body-medium">{{ file.id }}</div>
-        <button [disabled]="!!(progress$ | async)" mat-icon-button (click)="download([file.id])">
-            <dsh-bi icon="save"></dsh-bi>
-        </button>
-    </div>
+    @for (file of files; track file) {
+        <div gdAlignColumns="center center" gdAlignRows="space-between" gdColumns="auto auto">
+            <div class="mat-body-medium">{{ file.id }}</div>
+            <button
+                [disabled]="!!(progress$ | async)"
+                mat-icon-button
+                (click)="download([file.id])"
+            >
+                <dsh-bi icon="save"></dsh-bi>
+            </button>
+        </div>
+    }
 </div>

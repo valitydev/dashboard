@@ -3,10 +3,10 @@
     <mat-divider></mat-divider>
     <dsh-payment-invoice-info [invoice]="invoiceInfo$ | async"></dsh-payment-invoice-info>
     <mat-divider></mat-divider>
-    <ng-container *ngIf="isHoldShown">
+    @if (isHoldShown) {
         <dsh-hold-details [payment]="payment" (statusChanged)="refresh($event)"></dsh-hold-details>
         <mat-divider></mat-divider>
-    </ng-container>
+    }
     <dsh-refunds
         [currency]="payment.currency"
         [invoiceID]="payment.invoiceID"

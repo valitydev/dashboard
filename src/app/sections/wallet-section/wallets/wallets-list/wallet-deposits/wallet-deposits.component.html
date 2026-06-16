@@ -4,27 +4,33 @@
     fxLayoutGap="24px"
 >
     <div class="mat-title-large">{{ t('title') }}</div>
-    <ng-container *ngFor="let deposit of deposits$ | async as deposits; index as i">
+
+    @let deposits = deposits$ | async;
+    @for (deposit of deposits; track deposit.id; let i = $index) {
         <dsh-wallet-deposit-details [deposit]="deposit"></dsh-wallet-deposit-details>
-        <mat-divider *ngIf="i < deposits.length - 1"></mat-divider>
-    </ng-container>
-    <div *ngIf="isLoading$ | async">
-        <ng-container *transloco="let c; scope: 'components'; prefix: 'components.shared'">
-            {{ c('loading') }}
-        </ng-container>
-    </div>
-    <div *ngIf="errors$ | async">
-        <ng-container *transloco="let c; scope: 'components'; prefix: 'components.shared'">
-            {{ t('fetchError') }}
-        </ng-container>
-    </div>
-    <button
-        *ngIf="(hasMore$ | async) && (isLoading$ | async) === false && !(errors$ | async)"
-        mat-flat-button
-        (click)="fetchMore()"
-    >
-        <ng-container *transloco="let c; scope: 'components'; prefix: 'components.shared'">
-            {{ c('showMore') }}
-        </ng-container>
-    </button>
+        @if (i < deposits.length - 1) {
+            <mat-divider></mat-divider>
+        }
+    }
+    @if (isLoading$ | async) {
+        <div>
+            <ng-container *transloco="let c; scope: 'components'; prefix: 'components.shared'">
+                {{ c('loading') }}
+            </ng-container>
+        </div>
+    }
+    @if (errors$ | async) {
+        <div>
+            <ng-container *transloco="let c; scope: 'components'; prefix: 'components.shared'">
+                {{ t('fetchError') }}
+            </ng-container>
+        </div>
+    }
+    @if ((hasMore$ | async) && (isLoading$ | async) === false && !(errors$ | async)) {
+        <button mat-flat-button (click)="fetchMore()">
+            <ng-container *transloco="let c; scope: 'components'; prefix: 'components.shared'">
+                {{ c('showMore') }}
+            </ng-container>
+        </button>
+    }
 </div>

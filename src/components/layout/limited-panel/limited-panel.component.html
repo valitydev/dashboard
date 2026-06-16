@@ -4,11 +4,9 @@
     fxLayoutGap="24px"
 >
     <ng-content></ng-content>
-    <div
-        *ngIf="hasMore"
-        class="dsh-limited-panel-show-more mat-body-medium"
-        (click)="showMoreItems()"
-    >
-        {{ t('showMore') }}
-    </div>
+    @if (hasMore) {
+        <div class="dsh-limited-panel-show-more mat-body-medium" (click)="showMoreItems()">
+            {{ t('showMore') }}
+        </div>
+    }
 </div>

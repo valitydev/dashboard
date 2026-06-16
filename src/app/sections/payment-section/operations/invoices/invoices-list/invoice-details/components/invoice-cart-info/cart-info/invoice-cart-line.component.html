@@ -17,7 +17,9 @@
     <dsh-details-item [title]="t('quantity')">
         {{ line.quantity }}
     </dsh-details-item>
-    <dsh-details-item *ngIf="line.taxMode" [title]="t('tax')">
-        {{ line.taxMode | taxModeToTaxRate }}
-    </dsh-details-item>
+    @if (line.taxMode) {
+        <dsh-details-item [title]="t('tax')">
+            {{ line.taxMode | taxModeToTaxRate }}
+        </dsh-details-item>
+    }
 </div>

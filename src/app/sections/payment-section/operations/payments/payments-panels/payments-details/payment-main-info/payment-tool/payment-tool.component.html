@@ -7,22 +7,18 @@
     "
     [title]="t('title')"
 >
-    <ng-container [ngSwitch]="paymentToolDetails.detailsType">
-        <dsh-bank-card
-            *ngSwitchCase="Type.BankCard"
-            [bankCard]="paymentToolDetails"
-        ></dsh-bank-card>
-        <dsh-digital-wallet
-            *ngSwitchCase="Type.Wallet"
-            [digitalWallet]="paymentToolDetails"
-        ></dsh-digital-wallet>
-        <dsh-payment-terminal
-            *ngSwitchCase="Type.Terminal"
-            [paymentTerminal]="paymentToolDetails"
-        ></dsh-payment-terminal>
-        <dsh-mobile-commerce
-            *ngSwitchCase="Type.MobileCommerce"
-            [details]="paymentToolDetails"
-        ></dsh-mobile-commerce>
-    </ng-container>
+    @switch (paymentToolDetails.detailsType) {
+        @case (Type.BankCard) {
+            <dsh-bank-card [bankCard]="paymentToolDetails"></dsh-bank-card>
+        }
+        @case (Type.Wallet) {
+            <dsh-digital-wallet [digitalWallet]="paymentToolDetails"></dsh-digital-wallet>
+        }
+        @case (Type.Terminal) {
+            <dsh-payment-terminal [paymentTerminal]="paymentToolDetails"></dsh-payment-terminal>
+        }
+        @case (Type.MobileCommerce) {
+            <dsh-mobile-commerce [details]="paymentToolDetails"></dsh-mobile-commerce>
+        }
+    }
 </dsh-details-item>
