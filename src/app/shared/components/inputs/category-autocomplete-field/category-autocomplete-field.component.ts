@@ -7,7 +7,6 @@ import { CategoriesService } from '@dsh/app/api/payments';
 import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
 import { Category } from '@vality/swag-payments';
 
-
 @Component({
     selector: 'dsh-category-autocomplete-field',
     templateUrl: 'category-autocomplete-field.component.html',

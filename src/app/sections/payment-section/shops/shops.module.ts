@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AuthModule } from '@dsh/app/auth';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { FetchShopsService } from './services/fetch-shops/fetch-shops.service';
 import { ShopsBalanceService } from './services/shops-balance/shops-balance.service';
 import { ShopsFiltersService } from './services/shops-filters/shops-filters.service';

@@ -6,7 +6,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { ErrorModule } from '@dsh/app/shared/services';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { HoldDetailsModule } from './hold-details';
 import { PaymentDetailsComponent } from './payment-details.component';
 import { PaymentInvoiceInfoModule } from './payment-invoice-info';

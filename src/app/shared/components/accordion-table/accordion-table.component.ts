@@ -15,7 +15,6 @@ import { StatusColor } from '@dsh/app/theme-manager';
 
 import { PossiblyAsync } from '@vality/matez';
 
-
 import { ExpandedFragment } from './expanded-fragment';
 
 const HIDED_BREAKPOINTS = [

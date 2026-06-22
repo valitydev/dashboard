@@ -3,7 +3,6 @@ import { WalletDictionaryService } from '@dsh/app/api/wallet';
 
 import { Withdrawal } from '@vality/swag-wallets';
 
-
 @Component({
     selector: 'dsh-withdrawal-details',
     templateUrl: 'withdrawal-details.component.html',

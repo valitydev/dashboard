@@ -9,7 +9,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { DialogFiltersComponent } from './components';
 import { InvoiceStatusFilterModule } from './invoice-status-filter';
 import { InvoicesFilterModule } from './invoices-filter';

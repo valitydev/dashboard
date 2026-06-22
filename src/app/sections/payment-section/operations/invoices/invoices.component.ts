@@ -8,7 +8,6 @@ import { TranslocoService } from '@jsverse/transloco';
 
 import { NotifyLogService, QueryParamsService } from '@vality/matez';
 
-
 import { PaymentInstitutionRealmService, RealmMixService } from '../../services';
 import { filterShopsByRealm } from '../operators';
 

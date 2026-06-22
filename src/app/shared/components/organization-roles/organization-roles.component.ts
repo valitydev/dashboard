@@ -3,7 +3,6 @@ import { OrganizationsDictionaryService } from '@dsh/app/api/organizations';
 
 import { MemberRole } from '@vality/swag-organizations';
 
-
 import { RoleGroup } from './types/role-group';
 import { groupRoles } from './utils/group-roles';
 

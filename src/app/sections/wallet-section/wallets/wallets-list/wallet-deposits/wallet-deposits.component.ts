@@ -3,7 +3,6 @@ import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 
 import { ComponentChanges } from '@vality/matez';
 
-
 import { FetchWalletDepositsService } from './services';
 
 @Component({

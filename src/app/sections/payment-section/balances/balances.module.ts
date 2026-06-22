@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 import { AmountCurrencyModule } from '@dsh/app/shared/pipes';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { BalancesComponent } from './balances.component';
 
 @NgModule({

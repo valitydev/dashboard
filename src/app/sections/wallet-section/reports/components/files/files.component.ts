@@ -10,7 +10,6 @@ import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService, progressTo } from '@vality/matez';
 import { ReportFilesInner } from '@vality/swag-wallets';
 
-
 @Component({
     selector: 'dsh-files',
     templateUrl: './files.component.html',

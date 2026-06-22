@@ -6,7 +6,6 @@ import { ExpandedIdManager } from '@dsh/app/shared/services';
 
 import { Invitation } from '@vality/swag-organizations';
 
-
 import { FetchInvitationsService } from '../fetch-invitations/fetch-invitations.service';
 
 @Injectable()

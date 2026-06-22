@@ -6,7 +6,6 @@ import { ExpandedIdManager } from '@dsh/app/shared/services';
 
 import { Webhook } from '@vality/swag-wallets';
 
-
 import { ReceiveWebhooksService } from './receive-webhooks.service';
 
 @Injectable()

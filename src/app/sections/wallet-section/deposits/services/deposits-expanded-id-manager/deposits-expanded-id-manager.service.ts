@@ -6,7 +6,6 @@ import { ExpandedIdManager, Fragment } from '@dsh/app/shared/services';
 
 import { Deposit } from '@vality/swag-wallets';
 
-
 import { FetchDepositsService } from '../fetch-deposits/fetch-deposits.service';
 
 @Injectable()

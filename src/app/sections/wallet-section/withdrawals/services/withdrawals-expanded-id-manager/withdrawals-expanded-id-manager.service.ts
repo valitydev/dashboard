@@ -6,7 +6,6 @@ import { ExpandedIdManager } from '@dsh/app/shared/services';
 
 import { Withdrawal } from '@vality/swag-wallets';
 
-
 import { FetchWithdrawalsService } from '../fetch-withdrawals';
 
 @Injectable()

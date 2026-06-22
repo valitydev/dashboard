@@ -9,7 +9,6 @@ import { TranslocoService } from '@jsverse/transloco';
 
 import { DialogResponseStatus, NotifyLogService } from '@vality/matez';
 
-
 @Injectable()
 export class DeleteWebhookService {
     private destroy$ = new Subject<void>();

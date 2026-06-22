@@ -6,7 +6,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InvoicesFieldModule } from '@dsh/app/shared/components/inputs/invoices-field';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { InvoicesFilterComponent } from './invoices-filter.component';
 
 @NgModule({

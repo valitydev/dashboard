@@ -24,9 +24,7 @@ const offsetAmountsToSeries = (
     },
 ];
 
-export const splitAmountToChartData = (
-    paymentsSplitAmount: SplitAmountResult[],
-): ChartData[] =>
+export const splitAmountToChartData = (paymentsSplitAmount: SplitAmountResult[]): ChartData[] =>
     paymentsSplitAmount.map(({ currency, offsetAmounts, splitUnit }) => ({
         currency,
         series: offsetAmountsToSeries(offsetAmounts, currency, splitUnit),

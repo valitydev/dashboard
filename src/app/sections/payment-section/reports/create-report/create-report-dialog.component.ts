@@ -10,7 +10,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ShopsDataService } from '@dsh/app/shared';
 import { TranslocoService } from '@jsverse/transloco';
 
-
 import { filterShopsByRealm, mapToShopInfo } from '../../operations/operators';
 
 import { CreateReportDialogService } from './create-report-dialog.service';

@@ -3,7 +3,6 @@ import { AnapiDictionaryService } from '@dsh/app/api/anapi';
 
 import { Report } from '@vality/swag-anapi-v2';
 
-
 @Component({
     selector: 'dsh-report-main-info',
     templateUrl: 'report-main-info.component.html',

@@ -13,7 +13,6 @@ import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base
 
 import { PaymentFlowHold, PaymentSearchResult } from '@vality/swag-anapi-v2';
 
-
 import { PaymentIds } from '../../../types/payment-ids';
 
 import { CancelHoldService } from './cancel-hold';

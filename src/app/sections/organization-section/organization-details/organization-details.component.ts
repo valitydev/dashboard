@@ -6,7 +6,6 @@ import { ActivatedRoute } from '@angular/router';
 import { OrgsService } from '@dsh/app/api/organizations';
 import { TranslocoService } from '@jsverse/transloco';
 
-
 @Component({
     selector: 'dsh-organization-details',
     templateUrl: 'organization-details.component.html',

@@ -20,7 +20,6 @@ import { getFormValueChanges } from '@dsh/utils';
 import { ComponentChanges } from '@vality/matez';
 import { Report } from '@vality/swag-anapi-v2';
 
-
 export interface Filters {
     reportTypes: Report.ReportTypeEnum[];
     dateRange: DateRangeWithPreset;

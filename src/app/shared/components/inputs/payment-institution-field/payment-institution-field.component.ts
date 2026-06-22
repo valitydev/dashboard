@@ -7,7 +7,6 @@ import { PaymentInstitutionsService } from '@dsh/app/api/payments';
 import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
 import { PaymentInstitution } from '@vality/swag-payments';
 
-
 @Component({
     selector: 'dsh-payment-institution-field',
     templateUrl: 'payment-institution-field.component.html',

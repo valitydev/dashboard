@@ -2,7 +2,6 @@ import { RoleId } from '@dsh/app/auth/types/role-id';
 
 import { MemberRole } from '@vality/swag-organizations';
 
-
 import { RoleGroup, RoleGroupScope } from '../types/role-group';
 
 import { sortRoleIds } from './sort-role-ids';

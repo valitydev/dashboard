@@ -8,7 +8,6 @@ import { MatInputModule } from '@angular/material/input';
 import { FilterModule } from '@dsh/components/filter';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { CardBinPanFilterComponent } from './card-bin-pan-filter.component';
 import { CardBinPanLabelPipe } from './pipes/card-bin-pan-label.pipe';
 

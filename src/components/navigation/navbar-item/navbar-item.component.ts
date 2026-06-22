@@ -16,7 +16,6 @@ import { BootstrapIconSize } from '@dsh/components/indicators/bootstrap-icon';
 
 import { ComponentChanges } from '@vality/matez';
 
-
 @Component({
     selector: 'dsh-navbar-item',
     templateUrl: 'navbar-item.component.html',

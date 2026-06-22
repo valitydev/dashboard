@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FilterModule } from '@dsh/components/filter';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { CurrencyFieldModule } from '../../inputs/currency-field';
 
 import { CurrencyFilterComponent } from './currency-filter.component';

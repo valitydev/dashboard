@@ -5,7 +5,6 @@ import { WalletsService } from '@dsh/app/api/wallet';
 
 import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 
-
 import { WalletId } from './types';
 import { walletsToOptions } from './utils';
 

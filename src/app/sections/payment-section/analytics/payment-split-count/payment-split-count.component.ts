@@ -3,7 +3,6 @@ import { SpinnerType } from '@dsh/components/indicators';
 
 import { ComponentChanges } from '@vality/matez';
 
-
 import { CHARTS_THEME, ChartsThemeProvider } from '../charts-theme';
 import { SearchParams } from '../search-params';
 

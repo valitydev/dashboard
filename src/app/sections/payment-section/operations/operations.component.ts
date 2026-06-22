@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RoleAccessName } from '@dsh/app/auth';
 import { TranslocoService } from '@jsverse/transloco';
 
-
 @Component({
     templateUrl: 'operations.component.html',
     changeDetection: ChangeDetectionStrategy.Eager,

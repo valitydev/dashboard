@@ -7,7 +7,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ShopsFieldModule } from '@dsh/app/shared/components/inputs/shops-field';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { ShopsFilterComponent } from './shops-filter.component';
 
 @NgModule({

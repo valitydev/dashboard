@@ -5,7 +5,6 @@ import { PaymentSystem } from '@dsh/app/api/payments';
 import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 import { SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 
-
 @Component({
     selector: 'dsh-payment-system-filter',
     templateUrl: './payment-system-filter.component.html',

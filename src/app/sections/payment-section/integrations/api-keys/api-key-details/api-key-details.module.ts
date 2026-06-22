@@ -11,7 +11,6 @@ import { TranslocoModule } from '@jsverse/transloco';
 
 import { DialogModule } from '@vality/matez';
 
-
 import { ApiKeyDetailsComponent } from './api-key-details.component';
 import { ApiKeyDeleteDialogComponent } from './components/api-key-delete-dialog/api-key-delete-dialog.component';
 

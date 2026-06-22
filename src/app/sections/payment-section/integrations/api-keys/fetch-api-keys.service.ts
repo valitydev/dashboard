@@ -8,7 +8,6 @@ import { TranslocoService } from '@jsverse/transloco';
 import { FetchOptions, FetchResult, FetchSuperclass, NotifyLogService } from '@vality/matez';
 import { ApiKey, ListApiKeysRequestParams } from '@vality/swag-api-keys-v2';
 
-
 @Injectable()
 export class FetchApiKeysService extends FetchSuperclass<
     ApiKey,

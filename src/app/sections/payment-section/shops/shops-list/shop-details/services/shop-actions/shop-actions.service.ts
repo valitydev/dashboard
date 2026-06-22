@@ -9,7 +9,6 @@ import { TranslocoService } from '@jsverse/transloco';
 
 import { DialogResponseStatus, NotifyLogService } from '@vality/matez';
 
-
 import { ShopActionResult } from '../../types/shop-action-result';
 
 @Injectable()

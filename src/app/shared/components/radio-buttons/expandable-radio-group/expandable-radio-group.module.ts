@@ -7,7 +7,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { InlineShowAllToggleModule } from '@dsh/app/shared/components/buttons/inline-show-all-toggle';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { ExpandableRadioGroupItemDirective } from './directives/expandable-radio-group-item/expandable-radio-group-item.directive';
 import { ExpandableRadioGroupComponent } from './expandable-radio-group.component';
 

@@ -9,7 +9,6 @@ import { TranslocoService } from '@jsverse/transloco';
 
 import { PaymentInstitution } from '@vality/swag-payments';
 
-
 import { PaymentInstitutionRealmService, RealmShopsService } from './services';
 import { NavbarItemConfig, toNavbarItemConfig } from './utils';
 

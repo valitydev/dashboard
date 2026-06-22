@@ -3,7 +3,6 @@ import { PartyIdPatchMethodService } from '@dsh/app/api/utils/extensions';
 
 import { InvoicesService as ApiInvoicesService } from '@vality/swag-payments';
 
-
 import { createApi } from '../utils';
 
 @Injectable({

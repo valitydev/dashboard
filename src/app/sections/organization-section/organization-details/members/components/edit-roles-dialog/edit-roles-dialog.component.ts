@@ -9,7 +9,6 @@ import { ErrorService } from '@dsh/app/shared';
 import { DEFAULT_DIALOG_CONFIG, DialogSuperclass, progressTo } from '@vality/matez';
 import { MemberRole } from '@vality/swag-organizations';
 
-
 import { EditRolesDialogData } from './types/edit-roles-dialog-data';
 
 @Component({

@@ -3,7 +3,6 @@ import { WalletDictionaryService } from '@dsh/app/api/wallet';
 
 import { Deposit } from '@vality/swag-wallets';
 
-
 @Component({
     selector: 'dsh-deposit-details',
     templateUrl: 'deposit-details.component.html',

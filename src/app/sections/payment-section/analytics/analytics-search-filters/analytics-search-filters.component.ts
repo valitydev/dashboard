@@ -23,7 +23,6 @@ import { getFormValueChanges } from '@dsh/utils';
 import { ComponentChanges } from '@vality/matez';
 import { Shop } from '@vality/swag-payments';
 
-
 import { RealmShopsService } from '../../services';
 
 import { shopsToCurrencies } from './shops-to-currencies';

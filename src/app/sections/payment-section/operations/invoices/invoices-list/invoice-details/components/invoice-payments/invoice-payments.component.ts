@@ -3,7 +3,6 @@ import { FakePaginatorService } from '@dsh/app/shared/services';
 
 import { Payment } from '@vality/swag-payments';
 
-
 @Component({
     selector: 'dsh-invoice-payments',
     templateUrl: 'invoice-payments.component.html',

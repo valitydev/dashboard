@@ -4,7 +4,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { CommonError } from '@dsh/app/shared';
 import { TranslocoService } from '@jsverse/transloco';
 
-
 @Pipe({
     name: 'errorMessage',
     standalone: false,

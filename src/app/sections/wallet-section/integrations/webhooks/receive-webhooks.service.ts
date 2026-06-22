@@ -9,7 +9,6 @@ import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService } from '@vality/matez';
 import { Webhook } from '@vality/swag-wallets';
 
-
 import { mapToTimestamp, progress } from '../../../../custom-operators';
 
 @Injectable()

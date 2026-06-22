@@ -10,7 +10,6 @@ import { TranslocoService } from '@jsverse/transloco';
 
 import { DialogResponseStatus } from '@vality/matez';
 
-
 @Injectable()
 export class CancelReportService {
     private destroy$ = new Subject<void>();

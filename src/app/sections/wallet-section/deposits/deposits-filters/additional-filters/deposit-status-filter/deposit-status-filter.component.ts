@@ -4,7 +4,6 @@ import { WalletDictionaryService } from '@dsh/app/api/wallet';
 
 import { DepositStatus } from '@vality/swag-wallets';
 
-
 import { DEPOSIT_STATUSES_LIST } from './consts';
 import { DepositStatusFilterValue } from './types/deposit-status-filter-value';
 

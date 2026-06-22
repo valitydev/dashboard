@@ -8,7 +8,6 @@ import { TranslocoService } from '@jsverse/transloco';
 
 import { NotifyLogService } from '@vality/matez';
 
-
 import { FulfillInvoiceDialogComponent } from './components/cancel-invoice-dialog/fulfill-invoice-dialog.component';
 
 @Injectable()

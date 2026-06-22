@@ -4,7 +4,6 @@ import { FilterSuperclass } from '@dsh/components/filter';
 import { createControlProviders } from '@vality/matez';
 import { RefundStatus } from '@vality/swag-anapi-v2';
 
-
 @Component({
     selector: 'dsh-refund-status-filter',
     templateUrl: 'refund-status-filter.component.html',

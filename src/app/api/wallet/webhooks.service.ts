@@ -3,7 +3,6 @@ import { PartyIdExtension } from '@dsh/app/api/utils/extensions';
 
 import { WebhooksService as ApiWebhooksService } from '@vality/swag-wallets';
 
-
 import { createApi } from '../utils';
 
 @Injectable({

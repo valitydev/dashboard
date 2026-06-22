@@ -7,7 +7,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BootstrapIconModule } from '@dsh/components/indicators';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { ReportFileComponent } from './report-file';
 import { ReportFilesComponent } from './report-files.component';
 

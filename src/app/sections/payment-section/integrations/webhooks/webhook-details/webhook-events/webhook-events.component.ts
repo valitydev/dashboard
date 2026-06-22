@@ -5,7 +5,6 @@ import { PaymentsDictionaryService } from '@dsh/app/api/payments';
 
 import { InvoicesTopic, WebhookScope } from '@vality/swag-payments';
 
-
 @Component({
     selector: 'dsh-webhook-events',
     templateUrl: 'webhook-events.component.html',

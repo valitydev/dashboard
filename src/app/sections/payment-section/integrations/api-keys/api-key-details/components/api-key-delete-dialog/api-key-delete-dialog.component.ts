@@ -13,7 +13,6 @@ import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { DialogSuperclass, NotifyLogService, progressTo } from '@vality/matez';
 import { RequestRevokeApiKeyRequestParams } from '@vality/swag-api-keys-v2';
 
-
 @Component({
     selector: 'dsh-api-key-delete-dialog',
     templateUrl: './api-key-delete-dialog.component.html',

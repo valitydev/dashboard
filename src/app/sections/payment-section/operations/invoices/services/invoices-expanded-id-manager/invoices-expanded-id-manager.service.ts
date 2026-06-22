@@ -6,7 +6,6 @@ import { ExpandedIdManager } from '@dsh/app/shared/services';
 
 import { Invoice } from '@vality/swag-anapi-v2';
 
-
 import { FetchInvoicesService } from '../fetch-invoices/fetch-invoices.service';
 
 @Injectable()

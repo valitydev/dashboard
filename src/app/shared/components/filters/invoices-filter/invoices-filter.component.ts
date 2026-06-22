@@ -3,7 +3,6 @@ import { FilterSuperclass } from '@dsh/components/filter';
 
 import { createControlProviders } from '@vality/matez';
 
-
 @Component({
     selector: 'dsh-invoices-filter',
     templateUrl: 'invoices-filter.component.html',

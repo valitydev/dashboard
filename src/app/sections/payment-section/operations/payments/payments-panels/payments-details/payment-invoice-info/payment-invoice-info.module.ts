@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { InvoiceDetailsModule } from '@dsh/app/shared/components';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { PaymentInvoiceInfoComponent } from './payment-invoice-info.component';
 
 @NgModule({

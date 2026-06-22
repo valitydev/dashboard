@@ -6,7 +6,6 @@ import { ExpandedIdManager } from '@dsh/app/shared/services';
 
 import { Shop } from '@vality/swag-payments';
 
-
 import { FetchShopsService } from '../../../services/fetch-shops/fetch-shops.service';
 
 @Injectable()

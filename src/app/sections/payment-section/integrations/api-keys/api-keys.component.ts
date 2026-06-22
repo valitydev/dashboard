@@ -15,7 +15,6 @@ import { TranslocoService } from '@jsverse/transloco';
 import { DialogService, QueryParamsService } from '@vality/matez';
 import { ApiKey, ApiKeyStatus } from '@vality/swag-api-keys-v2';
 
-
 import { ApiKeyCreateDialogComponent } from './components/api-key-create-dialog/api-key-create-dialog.component';
 import { FetchApiKeysService } from './fetch-api-keys.service';
 import { API_KEY_STATUS_COLOR } from './types/api-key-status-color';

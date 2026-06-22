@@ -5,7 +5,6 @@ import { MatTableModule } from '@angular/material/table';
 import { BootstrapIconModule } from '@dsh/components/indicators';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { NestedTableComponent } from './nested-table.component';
 
 @NgModule({

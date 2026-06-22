@@ -4,7 +4,6 @@ import { binValidator, panValidator } from '@dsh/components/form-controls';
 
 import { FormGroupSuperclass, createControlProviders } from '@vality/matez';
 
-
 import { CardFilterForm } from './types';
 
 @Component({

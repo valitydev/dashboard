@@ -5,7 +5,6 @@ import { TokenProvider } from '@dsh/app/api/payments';
 import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 import { SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 
-
 @Component({
     selector: 'dsh-token-provider-filter',
     templateUrl: './token-provider-filter.component.html',

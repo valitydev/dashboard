@@ -6,7 +6,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { DetailsItemModule } from '@dsh/components/layout';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { BankCardComponent } from './components/bank-card/bank-card.component';
 import { DigitalWalletComponent } from './components/digital-wallet/digital-wallet.component';
 import { MobileCommerceComponent } from './components/mobile-commerce/mobile-commerce.component';

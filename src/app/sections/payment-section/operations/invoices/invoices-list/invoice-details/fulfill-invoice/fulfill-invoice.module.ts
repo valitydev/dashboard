@@ -9,7 +9,6 @@ import { MatInputModule } from '@angular/material/input';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { FulfillInvoiceDialogComponent } from './components/cancel-invoice-dialog/fulfill-invoice-dialog.component';
 
 @NgModule({

@@ -10,7 +10,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DetailsItemModule } from '@dsh/components/layout';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { ShopBalanceModule } from '../shop-balance';
 
 import { ShopIdComponent } from './components/shop-id/shop-id.component';

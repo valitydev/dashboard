@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
 import { RoleAccessName } from '@dsh/app/auth';
 import { TranslocoService } from '@jsverse/transloco';
 
-
 @Injectable({
     providedIn: 'root',
 })

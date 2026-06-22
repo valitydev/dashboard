@@ -8,7 +8,6 @@ import { TranslocoService } from '@jsverse/transloco';
 
 import { createControlProviders } from '@vality/matez';
 
-
 @Component({
     selector: 'dsh-currency-filter',
     templateUrl: 'currency-filter.component.html',

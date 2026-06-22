@@ -3,7 +3,6 @@ import { ConfigService } from '@dsh/app/config';
 
 import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
 
-
 @Component({
     selector: 'dsh-currency-autocomplete-field',
     templateUrl: 'currency-autocomplete-field.component.html',

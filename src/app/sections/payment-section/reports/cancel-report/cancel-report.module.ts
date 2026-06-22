@@ -4,7 +4,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ConfirmActionDialogModule } from '@dsh/components/popups';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { CancelReportService } from './cancel-report.service';
 
 @NgModule({

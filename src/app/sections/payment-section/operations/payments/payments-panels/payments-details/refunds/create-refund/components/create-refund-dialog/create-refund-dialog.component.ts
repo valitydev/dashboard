@@ -13,7 +13,6 @@ import { TranslocoService } from '@jsverse/transloco';
 import { FormGroupByValue, NotifyLogService, toMajor, toMinor } from '@vality/matez';
 import { Refund, RefundParams } from '@vality/swag-payments';
 
-
 import { RefundsService } from '../../services/refunds/refunds.service';
 import { Balance } from '../../types/balance';
 import { CreateRefundDialogData } from '../../types/create-refund-dialog-data';

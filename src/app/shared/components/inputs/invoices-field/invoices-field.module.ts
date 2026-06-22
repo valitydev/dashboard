@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MultiInputFieldModule } from '@dsh/components/form-controls/multi-input-field';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { InvoicesFieldComponent } from './invoices-field.component';
 
 @NgModule({

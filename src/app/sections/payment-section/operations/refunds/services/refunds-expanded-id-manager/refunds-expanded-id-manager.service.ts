@@ -6,7 +6,6 @@ import { ExpandedIdManager, Fragment } from '@dsh/app/shared/services';
 
 import { RefundSearchResult } from '@vality/swag-anapi-v2';
 
-
 import { FetchRefundsService } from '../fetch-refunds/fetch-refunds.service';
 
 @Injectable()

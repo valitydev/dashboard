@@ -4,7 +4,6 @@ import { valuesToOptions } from '@dsh/components/form-controls/utils/values-to-o
 import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 import { Report } from '@vality/swag-anapi-v2';
 
-
 import { ReportTypesLabelPipe } from './pipes/report-types-label.pipe';
 
 import ReportTypeEnum = Report.ReportTypeEnum;

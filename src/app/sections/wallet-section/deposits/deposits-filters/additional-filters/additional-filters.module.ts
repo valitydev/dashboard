@@ -7,7 +7,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { DialogModule } from '@dsh/app/shared/components/dialog';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { DialogFiltersComponent } from './components/dialog-filters/dialog-filters.component';
 import { DepositStatusFilterModule } from './deposit-status-filter';
 import { DepositSumFilterModule } from './deposit-sum-filter';

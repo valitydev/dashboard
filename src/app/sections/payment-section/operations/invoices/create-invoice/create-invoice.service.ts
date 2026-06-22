@@ -9,7 +9,6 @@ import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService } from '@vality/matez';
 import { PaymentInstitution, Shop } from '@vality/swag-payments';
 
-
 import { filterShopsByRealm } from '../../operators';
 
 import { CreateInvoiceDialogComponent } from './components/create-invoice-dialog/create-invoice-dialog.component';

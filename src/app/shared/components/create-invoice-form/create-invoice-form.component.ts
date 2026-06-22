@@ -15,7 +15,6 @@ import {
 } from '@vality/matez';
 import { InvoiceParams, Shop } from '@vality/swag-payments';
 
-
 type FormData = InvoiceParams;
 
 const mapToMinor = (value: number | null, currency: string | null): number | null => {

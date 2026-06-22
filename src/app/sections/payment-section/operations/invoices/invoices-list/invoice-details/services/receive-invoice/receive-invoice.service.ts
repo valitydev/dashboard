@@ -7,7 +7,6 @@ import { InvoicesService } from '@dsh/app/api/payments';
 
 import { Invoice } from '@vality/swag-payments';
 
-
 @Injectable()
 export class ReceiveInvoiceService {
     isLoading$: Observable<boolean>;

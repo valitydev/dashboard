@@ -4,7 +4,6 @@ import { ShopsDataService } from '@dsh/app/shared';
 
 import { FormGroupSuperclass, createControlProviders } from '@vality/matez';
 
-
 import { ShopsFilterForm } from './types';
 
 @Component({

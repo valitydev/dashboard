@@ -6,7 +6,6 @@ import { ExpandedIdManager, Fragment } from '@dsh/app/shared/services';
 
 import { PaymentSearchResult } from '@vality/swag-anapi-v2';
 
-
 import { getPaymentId } from '../../utils/get-payment-id';
 import { FetchPaymentsService } from '../fetch-payments/fetch-payments.service';
 

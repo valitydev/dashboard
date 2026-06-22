@@ -3,7 +3,6 @@ import { PartyIdExtension, PartyIdPatchMethodService } from '@dsh/app/api/utils/
 
 import { WebhooksService as ApiWebhooksService } from '@vality/swag-payments';
 
-
 import { createApi } from '../utils';
 
 @Injectable({

@@ -6,7 +6,6 @@ import { InvoicesService } from '@dsh/app/api/payments';
 
 import { Shop } from '@vality/swag-payments';
 
-
 import { CreateInvoiceDialogResponse } from '../../types/create-invoice-dialog-response';
 
 @Component({

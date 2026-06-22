@@ -3,7 +3,6 @@ import { AnapiDictionaryService } from '@dsh/app/api/anapi';
 
 import { Refund } from '@vality/swag-payments';
 
-
 @Component({
     selector: 'dsh-refund-details',
     templateUrl: 'refund-details.component.html',

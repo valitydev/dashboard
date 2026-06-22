@@ -3,7 +3,6 @@ import { PaymentSystem, TokenProvider } from '@dsh/app/api/payments';
 
 import { BankCardDetails } from '@vality/swag-payments';
 
-
 interface BankCardIconConfig {
     iconName: string;
     width: string;

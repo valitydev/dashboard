@@ -8,7 +8,6 @@ import { TranslocoService } from '@jsverse/transloco';
 
 import { createControlProviders, getValueChanges } from '@vality/matez';
 
-
 import { DateRangeLocalizationService } from './services/date-range-localization/date-range-localization.service';
 import { DateRangeWithPreset } from './types/date-range-with-preset';
 import { Preset } from './types/preset';

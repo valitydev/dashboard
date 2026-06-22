@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 import { ExpandableRadioGroupModule } from '@dsh/app/shared/components/radio-buttons/expandable-radio-group';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { TokenProviderFilterComponent } from './token-provider-filter.component';
 
 @NgModule({

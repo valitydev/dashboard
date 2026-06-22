@@ -3,7 +3,6 @@ import { AnapiDictionaryService } from '@dsh/app/api/anapi';
 
 import { Invoice } from '@vality/swag-anapi-v2';
 
-
 @Component({
     selector: 'dsh-invoice-row',
     templateUrl: 'invoice-row.component.html',

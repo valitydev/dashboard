@@ -8,7 +8,6 @@ import { MatInputModule } from '@angular/material/input';
 import { WalletAutocompleteFieldModule } from '@dsh/app/shared/components/inputs/wallet-autocomplete-field';
 import { TranslocoModule } from '@jsverse/transloco';
 
-
 import { MainInfoFiltersComponent } from './main-info-filters.component';
 
 @NgModule({

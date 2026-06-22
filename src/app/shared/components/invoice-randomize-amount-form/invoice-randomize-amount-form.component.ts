@@ -13,7 +13,6 @@ import {
     toMinor,
 } from '@vality/matez';
 
-
 const mapToMinor = (value: number | null, currency: string | null): number | undefined => {
     if (isNil(value) || isNil(currency)) {
         return undefined;

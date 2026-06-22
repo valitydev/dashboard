@@ -6,7 +6,6 @@ import { ExpandedIdManager } from '@dsh/app/shared/services';
 
 import { Report } from '@vality/swag-anapi-v2';
 
-
 import { FetchReportsService } from './fetch-reports.service';
 
 @Injectable()
