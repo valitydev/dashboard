@@ -13,7 +13,7 @@ import { getEventsByTopic } from './get-events-by-topic';
 
 @Injectable()
 export class CreateWebhookDialogService {
-    private create$: Subject<FormParams> = new Subject();
+    private create$ = new Subject<FormParams>();
     private loading$ = new BehaviorSubject(false);
     private error$ = new Subject<void>();
     private created$ = new Subject();

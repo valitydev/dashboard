@@ -10,9 +10,9 @@ import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 
 @Injectable()
 export class DeleteWebhookService {
-    private destroy$: Subject<void> = new Subject();
-    private deleteWebhook$: Subject<string> = new Subject();
-    private deleted$: Subject<void> = new Subject();
+    private destroy$ = new Subject<void>();
+    private deleteWebhook$ = new Subject<string>();
+    private deleted$ = new Subject<void>();
 
     webhookDeleted$: Observable<void> = this.deleted$.asObservable();
 

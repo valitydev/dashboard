@@ -8,5 +8,5 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 })
 export class ReportActionsComponent {
     @Input() reportID: number;
-    @Output() cancelReport: EventEmitter<number> = new EventEmitter();
+    @Output() cancelReport = new EventEmitter<number>();
 }

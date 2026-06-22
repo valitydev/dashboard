@@ -33,12 +33,12 @@ import { CardBinPan } from './card-bin-pan-filter';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 
-type MainFilters = {
+interface MainFilters {
     dateRange: DateRange;
     invoiceIDs?: string[];
     shopIDs?: Shop['id'][];
     binPan?: CardBinPan;
-};
+}
 export type Filters = MainFilters & AdditionalFilters & FloatingFilters;
 
 const MAIN_FILTERS = ['dateRange'];

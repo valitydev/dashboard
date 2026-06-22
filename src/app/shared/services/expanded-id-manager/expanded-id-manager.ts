@@ -25,7 +25,7 @@ const DATA_SET_EMIT_LIMIT = 10;
 export abstract class ExpandedIdManager<T extends DatasetItemId> {
     expandedId$: Observable<ExpandedId>;
 
-    private expandedIdChange$: Subject<ExpandedId> = new Subject();
+    private expandedIdChange$ = new Subject<ExpandedId>();
     private dr = inject(DestroyRef);
 
     constructor(

@@ -15,10 +15,10 @@ import { createDateRangeByPreset } from './utils/create-date-range-by-preset';
 
 type MatMomentDateRange = MatDateRange<Moment>;
 
-type InnerDateRange = {
+interface InnerDateRange {
     dateRange: MatMomentDateRange;
     preset?: Preset;
-};
+}
 
 @Component({
     selector: 'dsh-date-range-filter',

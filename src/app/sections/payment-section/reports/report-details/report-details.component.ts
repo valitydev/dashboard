@@ -9,5 +9,5 @@ import { Report } from '@vality/swag-anapi-v2';
 })
 export class ReportDetailsComponent {
     @Input() report: Report;
-    @Output() cancelReport: EventEmitter<number> = new EventEmitter();
+    @Output() cancelReport = new EventEmitter<number>();
 }

@@ -7,7 +7,7 @@ import { multipleDownload } from '@dsh/utils';
 
 @Injectable()
 export class ReportFilesService {
-    private download$: Subject<{ reportID: number; fileIDs: string[] }> = new Subject();
+    private download$ = new Subject<{ reportID: number; fileIDs: string[] }>();
     private loading$ = new BehaviorSubject(false);
     private error$ = new Subject<void>();
 

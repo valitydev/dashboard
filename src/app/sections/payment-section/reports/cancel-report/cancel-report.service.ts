@@ -11,9 +11,9 @@ import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 
 @Injectable()
 export class CancelReportService {
-    private destroy$: Subject<void> = new Subject();
-    private cancelReport$: Subject<number> = new Subject();
-    private cancelled$: Subject<void> = new Subject();
+    private destroy$ = new Subject<void>();
+    private cancelReport$ = new Subject<number>();
+    private cancelled$ = new Subject<void>();
 
     reportCancelled$: Observable<void> = this.cancelled$.asObservable();
 

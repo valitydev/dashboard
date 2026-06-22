@@ -12,9 +12,9 @@ import { DeleteWebhookParams } from '../webhook-details/webhook-actions';
 
 @Injectable()
 export class DeleteWebhookService {
-    private destroy$: Subject<void> = new Subject();
-    private deleteWebhook$: Subject<DeleteWebhookParams> = new Subject();
-    private deleted$: Subject<void> = new Subject();
+    private destroy$ = new Subject<void>();
+    private deleteWebhook$ = new Subject<DeleteWebhookParams>();
+    private deleted$ = new Subject<void>();
 
     webhookDeleted$: Observable<void> = this.deleted$.asObservable();
 

@@ -12,8 +12,8 @@ import { mapToTimestamp, progress } from '../../../../custom-operators';
 
 @Injectable()
 export class ReceiveWebhooksService {
-    private webhooksState$: BehaviorSubject<Webhook[]> = new BehaviorSubject(null);
-    private receiveWebhooks$: Subject<void> = new Subject();
+    private webhooksState$ = new BehaviorSubject<Webhook[]>(null);
+    private receiveWebhooks$ = new Subject<void>();
 
     webhooks$: Observable<Webhook[]> = this.webhooksState$.pipe(
         filter((s) => !!s),

@@ -4,7 +4,7 @@ import { BODY_EXPANSION, INDICATOR_ROTATE } from './collapse-animation';
 import { CollapseAnimationState } from './types/collapse-animation-state';
 
 type ExpandDirection = 'up' | 'down';
-type AnimationState = { value: CollapseAnimationState; params: { rotateDeg: number } };
+interface AnimationState { value: CollapseAnimationState; params: { rotateDeg: number } }
 
 const EXPAND_DIRECTION: ExpandDirection = 'down';
 const EXPANDED = false;

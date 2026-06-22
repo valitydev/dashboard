@@ -30,9 +30,9 @@ import { getFormValueChanges } from '@dsh/utils';
 
 import { AdditionalFilters, DialogFiltersComponent } from './additional-filters';
 
-type MainFilters = {
+interface MainFilters {
     dateRange: DateRangeWithPreset;
-};
+}
 export type Filters = MainFilters & AdditionalFilters;
 
 const MAIN_FILTERS = ['dateRange'];

@@ -8,8 +8,8 @@ import { CreateWebhookDialogComponent } from './create-webhook-dialog.component'
 @Injectable()
 export class CreateWebhookService {
     private createWebhook$ = new Subject<void>();
-    private created$: Subject<void> = new Subject();
-    private destroy$: Subject<void> = new Subject();
+    private created$ = new Subject<void>();
+    private destroy$ = new Subject<void>();
 
     webhookCreated$: Observable<void> = this.created$.asObservable();
 

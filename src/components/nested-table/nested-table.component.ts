@@ -13,18 +13,18 @@ import { ComponentChanges } from '@vality/matez';
 import { of } from 'rxjs';
 import { first } from 'rxjs/operators';
 
-export type NestedTableNode<T = unknown> = {
+export interface NestedTableNode<T = unknown> {
     value: T;
     children?: NestedTableNode<T>[];
     expanded?: boolean;
-};
+}
 
-export type NestedTableFlatNode<T = unknown> = {
+export interface NestedTableFlatNode<T = unknown> {
     value: T;
     expandable: boolean;
     level: number;
     initExpanded: boolean;
-};
+}
 
 export interface NestedTableColumn<T = unknown> {
     field: string;

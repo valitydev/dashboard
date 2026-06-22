@@ -10,9 +10,9 @@ import { ShopsDataService } from '@dsh/app/shared';
     standalone: false,
 })
 export class ShopDetailsPipe implements PipeTransform, OnDestroy {
-    private shopName$: BehaviorSubject<string> = new BehaviorSubject('');
-    private shopIDChange$: Subject<string> = new Subject();
-    private destroy$: Subject<void> = new Subject();
+    private shopName$ = new BehaviorSubject<string>('');
+    private shopIDChange$ = new Subject<string>();
+    private destroy$ = new Subject<void>();
 
     constructor(
         private shopsDataService: ShopsDataService,

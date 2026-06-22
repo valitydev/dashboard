@@ -27,8 +27,8 @@ export class ReportsListComponent implements OnInit, OnDestroy {
     @Input() reports: Report[];
     @Input() expandedId: number;
     @Input() lastUpdated: string;
-    @Output() expandedIdChange: EventEmitter<number> = new EventEmitter();
-    @Output() refreshData: EventEmitter<void> = new EventEmitter();
+    @Output() expandedIdChange = new EventEmitter<number>();
+    @Output() refreshData = new EventEmitter<void>();
 
     constructor(
         private cancelReportService: CancelReportService,

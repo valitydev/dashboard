@@ -1,5 +1,5 @@
 import { Organization } from '@vality/swag-organizations';
 
-export type RenameOrganizationDialogData = {
+export interface RenameOrganizationDialogData {
     organization: Organization;
-};
+}

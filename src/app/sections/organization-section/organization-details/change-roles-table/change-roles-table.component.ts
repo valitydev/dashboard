@@ -44,7 +44,7 @@ import { equalRoles } from '../members/components/edit-roles-dialog/utils/equal-
 
 import { SelectRoleDialogComponent } from './components/select-role-dialog/select-role-dialog.component';
 
-type DataItem = { shop?: Pick<Shop, 'id' | 'details'>; scope?: ResourceScopeIdInternal };
+interface DataItem { shop?: Pick<Shop, 'id' | 'details'>; scope?: ResourceScopeIdInternal }
 
 @Component({
     selector: 'dsh-change-roles-table',
