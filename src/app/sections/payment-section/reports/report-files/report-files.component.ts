@@ -1,9 +1,11 @@
+import { Observable, combineLatest } from 'rxjs';
+
 import { ChangeDetectionStrategy, Component, DestroyRef, Input, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@jsverse/transloco';
+
 import { FileMeta } from '@vality/swag-anapi-v2';
-import { Observable, combineLatest } from 'rxjs';
 
 import { ReportFilesService } from './report-files.service';
 

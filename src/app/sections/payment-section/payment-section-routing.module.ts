@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { RoleAccessName, createPrivateRoute } from '@dsh/app/auth';
 
 import { PaymentSectionComponent } from './payment-section.component';

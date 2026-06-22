@@ -1,3 +1,8 @@
+import { uniqBy } from 'lodash-es';
+import isNil from 'lodash-es/isNil';
+import { BehaviorSubject, Observable, ReplaySubject, combineLatest, defer, filter, of } from 'rxjs';
+import { first, map, shareReplay, switchMap, tap } from 'rxjs/operators';
+
 import {
     ChangeDetectionStrategy,
     Component,
@@ -17,19 +22,6 @@ import {
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
 import {
-    ComponentChanges,
-    DialogResponseStatus,
-    DialogService,
-    getEnumValues,
-} from '@vality/matez';
-import { Organization, ResourceScopeId } from '@vality/swag-organizations';
-import { Shop } from '@vality/swag-payments';
-import { uniqBy } from 'lodash-es';
-import isNil from 'lodash-es/isNil';
-import { BehaviorSubject, Observable, ReplaySubject, combineLatest, defer, filter, of } from 'rxjs';
-import { first, map, shareReplay, switchMap, tap } from 'rxjs/operators';
-
-import {
     MemberRoleOptionalId,
     OrganizationsDictionaryService,
     ResourceScopeIdInternal,
@@ -39,6 +31,15 @@ import { RoleId } from '@dsh/app/auth/types/role-id';
 import { sortRoleIds } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
 import { NestedTableColumn, NestedTableNode } from '@dsh/components/nested-table';
 import { addDialogsClass } from '@dsh/utils/add-dialogs-class';
+
+import {
+    ComponentChanges,
+    DialogResponseStatus,
+    DialogService,
+    getEnumValues,
+} from '@vality/matez';
+import { Organization, ResourceScopeId } from '@vality/swag-organizations';
+import { Shop } from '@vality/swag-payments';
 
 import { equalRoles } from '../members/components/edit-roles-dialog/utils/equal-roles';
 

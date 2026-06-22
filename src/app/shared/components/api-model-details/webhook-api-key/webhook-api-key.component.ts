@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
+
 import { NotifyLogService } from '@vality/matez';
 
 @Component({

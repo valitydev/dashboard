@@ -1,11 +1,13 @@
+import { Subject, combineLatest } from 'rxjs';
+import { filter, first, switchMap } from 'rxjs/operators';
+
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@jsverse/transloco';
+
 import { QueryParamsService } from '@vality/matez';
-import { Subject, combineLatest } from 'rxjs';
-import { filter, first, switchMap } from 'rxjs/operators';
 
 import { PaymentInstitutionRealmService, RealmMixService } from '../services';
 

@@ -1,8 +1,8 @@
+import { shareReplay, switchMap } from 'rxjs/operators';
+
 import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
-import { shareReplay, switchMap } from 'rxjs/operators';
-
 import { OrgsService } from '@dsh/app/api/organizations';
 
 import { FetchMembersService } from './services/fetch-members/fetch-members.service';

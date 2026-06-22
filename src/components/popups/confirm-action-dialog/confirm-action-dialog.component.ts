@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 import { DialogSuperclass } from '@vality/matez';
 
 @Component({

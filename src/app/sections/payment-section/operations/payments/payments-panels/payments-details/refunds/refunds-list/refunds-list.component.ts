@@ -1,6 +1,8 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { Refund } from '@vality/swag-payments';
 import isEmpty from 'lodash-es/isEmpty';
+
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { Refund } from '@vality/swag-payments';
 
 @Component({
     selector: 'dsh-refunds-list',

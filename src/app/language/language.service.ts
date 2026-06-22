@@ -1,7 +1,8 @@
+import * as moment from 'moment';
+
 import { registerLocaleData } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
-import * as moment from 'moment';
 
 import { SettingsService } from '../settings';
 

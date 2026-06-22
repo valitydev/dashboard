@@ -7,7 +7,6 @@ import {
     Output,
     SimpleChanges,
 } from '@angular/core';
-
 import { SpinnerType } from '@dsh/components/indicators';
 
 import { DistributionChartData } from '../utils';

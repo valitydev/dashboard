@@ -1,18 +1,19 @@
+import { Observable, of } from 'rxjs';
+import { catchError, shareReplay } from 'rxjs/operators';
+
 import { Inject, Injectable } from '@angular/core';
+import { WithdrawalsService } from '@dsh/app/api/wallet';
+import { mapToTimestamp } from '@dsh/app/custom-operators';
+import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
+import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
 import { TranslocoService } from '@jsverse/transloco';
+
 import { NotifyLogService } from '@vality/matez';
 import {
     ListWithdrawals200Response,
     ListWithdrawalsRequestParams,
     Withdrawal,
 } from '@vality/swag-wallets';
-import { Observable, of } from 'rxjs';
-import { catchError, shareReplay } from 'rxjs/operators';
-
-import { WithdrawalsService } from '@dsh/app/api/wallet';
-import { mapToTimestamp } from '@dsh/app/custom-operators';
-import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
-import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
 
 @Injectable()
 export class FetchWithdrawalsService extends PartialFetcher<

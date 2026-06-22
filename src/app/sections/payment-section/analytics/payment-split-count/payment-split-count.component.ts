@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, Inject, Input, OnChanges } from '@angular/core';
+import { SpinnerType } from '@dsh/components/indicators';
+
 import { ComponentChanges } from '@vality/matez';
 
-import { SpinnerType } from '@dsh/components/indicators';
 
 import { CHARTS_THEME, ChartsThemeProvider } from '../charts-theme';
 import { SearchParams } from '../search-params';

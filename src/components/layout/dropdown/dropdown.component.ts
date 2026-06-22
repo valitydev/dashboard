@@ -1,3 +1,6 @@
+import { BehaviorSubject, Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
+
 import {
     ChangeDetectionStrategy,
     Component,
@@ -11,8 +14,6 @@ import {
     ViewChild,
     booleanAttribute,
 } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
 
 import { OPEN_CLOSE_ANIMATION, State } from './open-close-animation';
 

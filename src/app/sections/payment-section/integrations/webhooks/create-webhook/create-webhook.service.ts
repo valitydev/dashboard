@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subject } from 'rxjs';
 import { filter, switchMap, takeUntil } from 'rxjs/operators';
+
+import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 import { CreateWebhookDialogComponent } from './create-webhook-dialog.component';
 

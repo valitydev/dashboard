@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, inject, isDevMode } from '@angular/core';
 import { map } from 'rxjs';
 
+import { ChangeDetectionStrategy, Component, inject, isDevMode } from '@angular/core';
 import { Language, LanguageService } from '@dsh/app/language';
 
 import { BootstrapService } from './bootstrap.service';

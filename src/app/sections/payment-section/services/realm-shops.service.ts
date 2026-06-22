@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
-import { PaymentInstitution, Shop } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 import { map, shareReplay, switchMap } from 'rxjs/operators';
 
+import { Injectable } from '@angular/core';
 import { ShopsDataService } from '@dsh/app/shared';
+
+import { PaymentInstitution, Shop } from '@vality/swag-payments';
 
 import { getShopsByRealm } from '../operations/operators';
 

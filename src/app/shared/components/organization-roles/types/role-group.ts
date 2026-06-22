@@ -1,6 +1,7 @@
+import { RoleId } from '@dsh/app/auth/types/role-id';
+
 import { ResourceScopeId } from '@vality/swag-organizations';
 
-import { RoleId } from '@dsh/app/auth/types/role-id';
 
 export type ResourceId = string;
 

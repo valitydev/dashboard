@@ -1,6 +1,7 @@
+import { firstValueFrom } from 'rxjs';
+
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, UrlTree } from '@angular/router';
-import { firstValueFrom } from 'rxjs';
 
 import { KeycloakAuthGuard, KeycloakService } from './keycloak';
 import { RoleAccessService } from './role-access.service';

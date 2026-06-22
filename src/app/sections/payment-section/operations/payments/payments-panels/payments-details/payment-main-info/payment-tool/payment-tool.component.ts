@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { PaymentToolDetailsType } from '@dsh/app/api/payments';
+
 import { PaymentToolDetails } from '@vality/swag-payments';
 
-import { PaymentToolDetailsType } from '@dsh/app/api/payments';
 
 @Component({
     selector: 'dsh-payment-tool',

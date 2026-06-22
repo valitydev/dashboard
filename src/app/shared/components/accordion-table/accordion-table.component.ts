@@ -1,3 +1,6 @@
+import { Observable, of } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import {
     ChangeDetectionStrategy,
@@ -8,11 +11,10 @@ import {
     Output,
     TemplateRef,
 } from '@angular/core';
-import { PossiblyAsync } from '@vality/matez';
-import { Observable, of } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
-
 import { StatusColor } from '@dsh/app/theme-manager';
+
+import { PossiblyAsync } from '@vality/matez';
+
 
 import { ExpandedFragment } from './expanded-fragment';
 

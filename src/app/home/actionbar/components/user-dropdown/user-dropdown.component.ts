@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
 import { map } from 'rxjs/operators';
 
+import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
 import { ContextOrganizationService } from '@dsh/app/shared/services';
 
 import { KeycloakService } from '../../../../auth';

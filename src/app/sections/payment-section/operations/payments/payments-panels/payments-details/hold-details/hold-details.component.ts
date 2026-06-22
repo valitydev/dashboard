@@ -1,3 +1,5 @@
+import { filter } from 'rxjs/operators';
+
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,10 +9,10 @@ import {
     Output,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { PaymentFlowHold, PaymentSearchResult } from '@vality/swag-anapi-v2';
-import { filter } from 'rxjs/operators';
-
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
+
+import { PaymentFlowHold, PaymentSearchResult } from '@vality/swag-anapi-v2';
+
 
 import { PaymentIds } from '../../../types/payment-ids';
 

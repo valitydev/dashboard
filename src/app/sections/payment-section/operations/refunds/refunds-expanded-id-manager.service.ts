@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Refund } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 
+import { Injectable } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ExpandedIdManager, Fragment } from '@dsh/app/shared/services';
+
+import { Refund } from '@vality/swag-payments';
+
 
 import { FetchRefundsService } from './services/fetch-refunds/fetch-refunds.service';
 

@@ -1,3 +1,6 @@
+import { switchMap } from 'rxjs';
+import { first } from 'rxjs/operators';
+
 import {
     ChangeDetectionStrategy,
     Component,
@@ -11,9 +14,8 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@jsverse/transloco';
+
 import { Report } from '@vality/swag-anapi-v2';
-import { switchMap } from 'rxjs';
-import { first } from 'rxjs/operators';
 
 import { CancelReportService } from '../cancel-report';
 

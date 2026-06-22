@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
+import { FilterSuperclass } from '@dsh/components/filter';
+
 import { createControlProviders } from '@vality/matez';
 import { InvoiceStatus } from '@vality/swag-anapi-v2';
 
-import { FilterSuperclass } from '@dsh/components/filter';
 
 @Component({
     selector: 'dsh-invoice-status-filter',

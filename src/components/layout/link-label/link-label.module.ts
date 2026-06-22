@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
+import { NgModule } from '@angular/core';
 import { BootstrapIconModule } from '@dsh/components/indicators';
 
 import { LinkLabelComponent } from './link-label.component';

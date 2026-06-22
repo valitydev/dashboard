@@ -1,10 +1,11 @@
-import { Inject, Injectable } from '@angular/core';
-import { Withdrawal } from '@vality/swag-wallets';
 import { Observable } from 'rxjs';
 
+import { Inject, Injectable } from '@angular/core';
 import { WithdrawalsService } from '@dsh/app/api/wallet';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { PartialFetcher } from '@dsh/app/shared';
+
+import { Withdrawal } from '@vality/swag-wallets';
 
 @Injectable()
 export class FetchWalletWithdrawalsService extends PartialFetcher<Withdrawal, string> {

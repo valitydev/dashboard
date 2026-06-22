@@ -1,3 +1,5 @@
+import { FlexLayoutModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -7,9 +9,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { TranslocoModule } from '@jsverse/transloco';
-import { FlexLayoutModule } from 'ng-flex-layout';
-
 import { OrganizationsModule as OrganizationsAPIModule } from '@dsh/app/api/organizations';
 import { ErrorModule, NotificationModule } from '@dsh/app/shared';
 import { DialogModule } from '@dsh/app/shared/components/dialog';
@@ -22,6 +21,7 @@ import { AccordionModule, DetailsItemModule, LayoutModule } from '@dsh/component
 import { ScrollUpModule } from '@dsh/components/navigation';
 import { NavigationLinkModule } from '@dsh/components/navigation-link';
 import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { OrganizationComponent } from './components/organization/organization.component';
 import { OrganizationsListComponent } from './components/organizations-list/organizations-list.component';

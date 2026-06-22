@@ -1,6 +1,7 @@
+import { take } from 'rxjs/operators';
+
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { take } from 'rxjs/operators';
 
 import { PaymentInstitutionRealmService, RealmShopsService } from '../services';
 

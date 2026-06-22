@@ -1,7 +1,8 @@
+import { pluck } from 'rxjs/operators';
+
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
-import { pluck } from 'rxjs/operators';
 
 import { ShopInfo } from '../../../operations/operators';
 

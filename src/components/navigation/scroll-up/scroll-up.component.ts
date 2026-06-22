@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 import { smoothChangeTo } from '../../../utils';
 

@@ -1,11 +1,13 @@
-import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
-import { DateRange as MatDateRange } from '@angular/material/datepicker';
-import { TranslocoService } from '@jsverse/transloco';
-import { createControlProviders, getValueChanges } from '@vality/matez';
 import { Moment } from 'moment';
 import { map, shareReplay, switchMap } from 'rxjs/operators';
 
+import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
+import { DateRange as MatDateRange } from '@angular/material/datepicker';
 import { FilterSuperclass } from '@dsh/components/filter';
+import { TranslocoService } from '@jsverse/transloco';
+
+import { createControlProviders, getValueChanges } from '@vality/matez';
+
 
 import { DateRangeLocalizationService } from './services/date-range-localization/date-range-localization.service';
 import { DateRangeWithPreset } from './types/date-range-with-preset';

@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { WalletDictionaryService } from '@dsh/app/api/wallet';
+
 import { DepositStatus } from '@vality/swag-wallets';
 
-import { WalletDictionaryService } from '@dsh/app/api/wallet';
 
 import { DEPOSIT_STATUSES_LIST } from './consts';
 import { DepositStatusFilterValue } from './types/deposit-status-filter-value';

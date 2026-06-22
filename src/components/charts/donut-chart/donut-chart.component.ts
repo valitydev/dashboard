@@ -1,3 +1,6 @@
+import cloneDeep from 'lodash-es/cloneDeep';
+import { ApexAxisChartSeries } from 'ng-apexcharts';
+
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,8 +9,6 @@ import {
     OnInit,
     Output,
 } from '@angular/core';
-import cloneDeep from 'lodash-es/cloneDeep';
-import { ApexAxisChartSeries } from 'ng-apexcharts';
 
 import { DEFAULT_CONFIG } from './default-config';
 

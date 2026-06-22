@@ -1,9 +1,9 @@
 import { Inject, Injectable } from '@angular/core';
-import { Deposit } from '@vality/swag-wallets';
-
 import { DepositsService } from '@dsh/app/api/wallet';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { PartialFetcher } from '@dsh/app/shared';
+
+import { Deposit } from '@vality/swag-wallets';
 
 @Injectable()
 export class FetchWalletDepositsService extends PartialFetcher<Deposit, string> {

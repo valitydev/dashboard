@@ -1,3 +1,5 @@
+import isNil from 'lodash-es/isNil';
+
 import {
     ChangeDetectionStrategy,
     Component,
@@ -5,8 +7,8 @@ import {
     OnChanges,
     booleanAttribute,
 } from '@angular/core';
+
 import { ComponentChanges, FormControlSuperclass, createControlProviders } from '@vality/matez';
-import isNil from 'lodash-es/isNil';
 
 export interface Option<T> {
     value: T;

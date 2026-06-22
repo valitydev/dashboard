@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
 import { PaymentTerminalDetails } from '@vality/swag-payments';
 
 @Component({

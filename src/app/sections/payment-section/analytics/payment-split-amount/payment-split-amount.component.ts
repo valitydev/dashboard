@@ -6,7 +6,6 @@ import {
     OnChanges,
     SimpleChanges,
 } from '@angular/core';
-
 import { SpinnerType } from '@dsh/components/indicators';
 
 import { CHARTS_THEME, ChartsThemeProvider } from '../charts-theme';

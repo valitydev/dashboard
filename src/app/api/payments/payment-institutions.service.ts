@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core';
-import { PaymentInstitutionsService as ApiPaymentInstitutionsService } from '@vality/swag-payments';
 import { BehaviorSubject, defer } from 'rxjs';
 import { shareReplay, switchMap } from 'rxjs/operators';
+
+import { Injectable } from '@angular/core';
+
+import { PaymentInstitutionsService as ApiPaymentInstitutionsService } from '@vality/swag-payments';
 
 import { createApi } from '../utils';
 

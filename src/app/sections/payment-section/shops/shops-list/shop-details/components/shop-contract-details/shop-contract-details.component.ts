@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
 import { ShopContractDetailsService } from '@dsh/app/shared/services/shop-contract-details';
 
 @Component({

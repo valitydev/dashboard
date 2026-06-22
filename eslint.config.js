@@ -2,7 +2,7 @@
 const eslint = require('@eslint/js');
 const tseslint = require('typescript-eslint');
 const angular = require('angular-eslint');
-const importPlugin = require('eslint-plugin-import');
+const importPlugin = require('eslint-plugin-import-x');
 const unusedImportsPlugin = require('eslint-plugin-unused-imports');
 const pathsPlugin = require('eslint-plugin-paths');
 
@@ -20,43 +20,41 @@ function getImportOrderConfig(internalPatterns = ['~/**']) {
                     ignoreDeclarationSort: true,
                 },
             ],
-            // Disabled due to incompatibility with ESLint 10
-            // TODO: Update eslint-plugin-import or find alternative
-            // 'import/order': [
-            //     'error',
-            //     {
-            //         groups: [
-            //             ['builtin', 'external'],
-            //             'type',
-            //             'internal',
-            //             'parent',
-            //             ['index', 'sibling'],
-            //             'object',
-            //         ],
-            //         pathGroups: [
-            //             {
-            //                 pattern: '@vality/**',
-            //                 group: 'type',
-            //                 position: 'before',
-            //             },
-            //             {
-            //                 pattern: '@*/**',
-            //                 group: 'external',
-            //                 position: 'after',
-            //             },
-            //             ...internalPatterns.map((pattern) => ({
-            //                 pattern,
-            //                 group: 'internal',
-            //             })),
-            //         ],
-            //         pathGroupsExcludedImportTypes: ['builtin'],
-            //         'newlines-between': 'always',
-            //         alphabetize: {
-            //             order: 'asc',
-            //             caseInsensitive: true,
-            //         },
-            //     },
-            // ],
+            'import/order': [
+                'error',
+                {
+                    groups: [
+                        ['builtin', 'external'],
+                        'type',
+                        'internal',
+                        'parent',
+                        ['index', 'sibling'],
+                        'object',
+                    ],
+                    pathGroups: [
+                        {
+                            pattern: '@vality/**',
+                            group: 'type',
+                            position: 'before',
+                        },
+                        {
+                            pattern: '@*/**',
+                            group: 'external',
+                            position: 'after',
+                        },
+                        ...internalPatterns.map((pattern) => ({
+                            pattern,
+                            group: 'internal',
+                        })),
+                    ],
+                    pathGroupsExcludedImportTypes: ['builtin'],
+                    'newlines-between': 'always',
+                    alphabetize: {
+                        order: 'asc',
+                        caseInsensitive: true,
+                    },
+                },
+            ],
             'paths/alias': 'error',
             'no-restricted-imports': [
                 'error',

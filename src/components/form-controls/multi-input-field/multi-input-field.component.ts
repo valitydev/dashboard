@@ -1,9 +1,11 @@
+import isEqual from 'lodash-es/isEqual';
+import { distinctUntilChanged, map } from 'rxjs/operators';
+
 import { ChangeDetectionStrategy, Component, DestroyRef, Input, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormArray, FormControl } from '@angular/forms';
+
 import { FormControlSuperclass, createControlProviders } from '@vality/matez';
-import isEqual from 'lodash-es/isEqual';
-import { distinctUntilChanged, map } from 'rxjs/operators';
 
 @Component({
     selector: 'dsh-multi-input-field',

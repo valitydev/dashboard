@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ConfirmActionDialogModule } from '@dsh/components/popups';
 import { TranslocoModule } from '@jsverse/transloco';
 
-import { ConfirmActionDialogModule } from '@dsh/components/popups';
 
 import { CancelReportService } from './cancel-report.service';
 

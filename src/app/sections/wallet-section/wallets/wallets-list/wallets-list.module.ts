@@ -1,11 +1,11 @@
+import { FlexModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
-import { TranslocoModule } from '@jsverse/transloco';
-import { FlexModule } from 'ng-flex-layout';
-
 import { LastUpdatedModule } from '@dsh/components/indicators/last-updated/last-updated.module';
 import { AccordionModule, CardModule, RowModule } from '@dsh/components/layout';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { WalletDetailsComponent, WalletRowComponent, WalletRowHeaderComponent } from './components';
 import { WalletsAccountInfoModule } from './wallet-account-info';

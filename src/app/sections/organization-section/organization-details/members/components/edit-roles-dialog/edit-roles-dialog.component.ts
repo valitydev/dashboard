@@ -1,12 +1,14 @@
-import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { DEFAULT_DIALOG_CONFIG, DialogSuperclass, progressTo } from '@vality/matez';
-import { MemberRole } from '@vality/swag-organizations';
 import { BehaviorSubject, Subscription, defer, forkJoin, of } from 'rxjs';
 import { catchError, map, shareReplay, switchMap } from 'rxjs/operators';
 
+import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MembersService } from '@dsh/app/api/organizations';
 import { ErrorService } from '@dsh/app/shared';
+
+import { DEFAULT_DIALOG_CONFIG, DialogSuperclass, progressTo } from '@vality/matez';
+import { MemberRole } from '@vality/swag-organizations';
+
 
 import { EditRolesDialogData } from './types/edit-roles-dialog-data';
 

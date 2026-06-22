@@ -1,9 +1,10 @@
-import { Inject, Injectable, LOCALE_ID } from '@angular/core';
-import { DateRange } from '@angular/material/datepicker';
-import { TranslocoService } from '@jsverse/transloco';
 import { Moment } from 'moment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { Inject, Injectable, LOCALE_ID } from '@angular/core';
+import { DateRange } from '@angular/material/datepicker';
+import { TranslocoService } from '@jsverse/transloco';
 
 import { DATE_RANGE_WORDS } from './types/translations';
 import { getLocalizedDateRange } from './utils/get-localized-date-range';

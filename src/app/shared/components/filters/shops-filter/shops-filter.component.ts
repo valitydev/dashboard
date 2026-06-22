@@ -1,11 +1,12 @@
-import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
-import { createControlProviders } from '@vality/matez';
-import { Shop } from '@vality/swag-payments';
 import { combineLatest } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 
+import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
 import { ShopsDataService } from '@dsh/app/shared';
 import { FilterSuperclass } from '@dsh/components/filter';
+
+import { createControlProviders } from '@vality/matez';
+import { Shop } from '@vality/swag-payments';
 
 @Component({
     selector: 'dsh-shops-filter',

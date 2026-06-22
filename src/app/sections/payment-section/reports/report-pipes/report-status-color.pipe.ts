@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+
 import { Report } from '@vality/swag-anapi-v2';
 
 import { StatusColor } from '../../../../theme-manager';

@@ -1,6 +1,7 @@
+import { BehaviorSubject } from 'rxjs';
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 
 import { BASE_CONFIG, Config } from './config';
 

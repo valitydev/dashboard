@@ -1,8 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
-import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 import { map } from 'rxjs/operators';
 
+import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
 import { CountriesService } from '@dsh/app/api/payments';
+
+import { FormControlSuperclass, createControlProviders } from '@vality/matez';
+
 
 import { CountryId } from './types';
 import { countriesToOptions } from './utils';

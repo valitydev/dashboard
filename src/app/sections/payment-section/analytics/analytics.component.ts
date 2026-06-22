@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { QueryParamsService } from '@vality/matez';
 import { ReplaySubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { SpinnerType } from '@dsh/components/indicators';
+
+import { QueryParamsService } from '@vality/matez';
 
 import { PaymentInstitutionRealmService } from '../services';
 

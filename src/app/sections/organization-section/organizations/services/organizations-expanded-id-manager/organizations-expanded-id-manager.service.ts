@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Organization } from '@vality/swag-organizations';
 import { Observable } from 'rxjs';
 
+import { Injectable } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ExpandedIdManager } from '@dsh/app/shared/services';
 import { FetchOrganizationsService } from '@dsh/app/shared/services/fetch-organizations';
+
+import { Organization } from '@vality/swag-organizations';
 
 @Injectable()
 export class OrganizationsExpandedIdManager extends ExpandedIdManager<Organization> {

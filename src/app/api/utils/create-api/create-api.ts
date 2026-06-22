@@ -1,8 +1,9 @@
-import { HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Injectable, Injector } from '@angular/core';
 import { Observable, combineLatest, isObservable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Overwrite, ReadonlyKeys, RequiredKeys, UnionToIntersection } from 'utility-types';
+
+import { HttpHeaders, HttpResponse } from '@angular/common/http';
+import { Injectable, Injector } from '@angular/core';
 
 import { ApiExtension } from './utils/api-extension';
 import { getMethods } from './utils/get-methods';

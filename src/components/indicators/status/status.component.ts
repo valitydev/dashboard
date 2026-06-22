@@ -5,7 +5,6 @@ import {
     Input,
     booleanAttribute,
 } from '@angular/core';
-
 import { StatusColor } from '@dsh/app/theme-manager';
 
 @Component({

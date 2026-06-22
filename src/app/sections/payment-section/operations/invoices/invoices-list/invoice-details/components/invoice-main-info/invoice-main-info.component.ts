@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
 import { Invoice } from '@vality/swag-anapi-v2';
 
 @Component({

@@ -1,21 +1,22 @@
+import isEqual from 'lodash-es/isEqual';
+import moment from 'moment';
+import { distinctUntilChanged, filter, map, startWith } from 'rxjs/operators';
+
 import { Breakpoints } from '@angular/cdk/layout';
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { TranslocoService } from '@jsverse/transloco';
-import { QueryParamsService } from '@vality/matez';
-import { Report } from '@vality/swag-wallets';
-import isEqual from 'lodash-es/isEqual';
-import moment from 'moment';
-import { distinctUntilChanged, filter, map, startWith } from 'rxjs/operators';
-
 import { WalletDictionaryService } from '@dsh/app/api/wallet';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { Column, ExpandedFragment } from '@dsh/app/shared/components/accordion-table';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { StatusColor } from '@dsh/app/theme-manager';
 import { DateRange, Preset, createDateRangeWithPreset } from '@dsh/components/date-range-filter';
+import { TranslocoService } from '@jsverse/transloco';
+
+import { QueryParamsService } from '@vality/matez';
+import { Report } from '@vality/swag-wallets';
 
 import { CreateReportDialogComponent } from './components/create-report-dialog/create-report-dialog.component';
 import { FetchReportsService } from './fetch-reports.service';

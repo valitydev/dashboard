@@ -1,7 +1,9 @@
+import { Overwrite } from 'utility-types';
+
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatRadioChange } from '@angular/material/radio';
+
 import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
-import { Overwrite } from 'utility-types';
 
 @Component({
     selector: 'dsh-radio-group-field',

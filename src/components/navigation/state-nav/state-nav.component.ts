@@ -1,3 +1,5 @@
+import { Subscription } from 'rxjs';
+
 import {
     ChangeDetectionStrategy,
     Component,
@@ -10,7 +12,6 @@ import {
     ViewEncapsulation,
     booleanAttribute,
 } from '@angular/core';
-import { Subscription } from 'rxjs';
 
 import { StateNavItemComponent } from './state-nav-item';
 

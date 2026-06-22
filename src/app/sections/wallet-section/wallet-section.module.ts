@@ -1,11 +1,11 @@
+import { FlexLayoutModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { TRANSLOCO_SCOPE, TranslocoModule } from '@jsverse/transloco';
-import { FlexLayoutModule } from 'ng-flex-layout';
-
 import { RouteNavbarLayoutModule } from '@dsh/app/shared/components/route-navbar-layout';
 import { NavbarItemModule } from '@dsh/components/navigation';
+import { TRANSLOCO_SCOPE, TranslocoModule } from '@jsverse/transloco';
 
 import { StatusToColorPipe } from './status-to-color.pipe';
 import { WalletSectionRoutingModule } from './wallet-section-routing.module';

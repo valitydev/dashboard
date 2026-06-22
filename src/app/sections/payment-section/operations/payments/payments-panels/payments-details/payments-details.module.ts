@@ -1,10 +1,11 @@
+import { FlexModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
-import { TranslocoModule } from '@jsverse/transloco';
-import { FlexModule } from 'ng-flex-layout';
-
 import { ErrorModule } from '@dsh/app/shared/services';
+import { TranslocoModule } from '@jsverse/transloco';
+
 
 import { HoldDetailsModule } from './hold-details';
 import { PaymentDetailsComponent } from './payment-details.component';

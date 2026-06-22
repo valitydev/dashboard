@@ -1,5 +1,3 @@
-import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
-import { Shop as ApiShop, PaymentInstitution } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
 import { BehaviorSubject, Observable, ReplaySubject, combineLatest, defer } from 'rxjs';
 import {
@@ -13,8 +11,11 @@ import {
     withLatestFrom,
 } from 'rxjs/operators';
 
+import { Inject, Injectable, InjectionToken, Optional } from '@angular/core';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { ShopsDataService } from '@dsh/app/shared';
+
+import { Shop as ApiShop, PaymentInstitution } from '@vality/swag-payments';
 
 import { getShopsByRealm } from '../../../operations/operators';
 import { ShopBalance } from '../../types/shop-balance';

@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Member } from '@vality/swag-organizations';
 import { Observable } from 'rxjs';
 
+import { Injectable } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ExpandedIdManager } from '@dsh/app/shared/services';
+
+import { Member } from '@vality/swag-organizations';
+
 
 import { FetchMembersService } from '../fetch-members/fetch-members.service';
 

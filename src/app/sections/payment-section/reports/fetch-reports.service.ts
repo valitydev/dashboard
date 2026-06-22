@@ -1,13 +1,14 @@
-import { Inject, Injectable } from '@angular/core';
-import { Report } from '@vality/swag-anapi-v2';
 import isEmpty from 'lodash-es/isEmpty';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 
+import { Inject, Injectable } from '@angular/core';
 import { ReportsService as ReportsApiService } from '@dsh/app/api/anapi';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { PartialFetcher } from '@dsh/app/shared';
+
+import { Report } from '@vality/swag-anapi-v2';
 
 import { SearchFiltersParams } from './reports-search-filters';
 

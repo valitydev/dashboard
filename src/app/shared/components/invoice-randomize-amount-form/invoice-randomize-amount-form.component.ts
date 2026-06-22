@@ -1,6 +1,10 @@
+import isNil from 'lodash-es/isNil';
+
 import { ChangeDetectionStrategy, Component, DestroyRef, Input, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
+import { getFormValueChanges } from '@dsh/utils';
+
 import {
     FormComponentSuperclass,
     FormGroupByValue,
@@ -8,9 +12,7 @@ import {
     getErrorsTree,
     toMinor,
 } from '@vality/matez';
-import isNil from 'lodash-es/isNil';
 
-import { getFormValueChanges } from '@dsh/utils';
 
 const mapToMinor = (value: number | null, currency: string | null): number | undefined => {
     if (isNil(value) || isNil(currency)) {

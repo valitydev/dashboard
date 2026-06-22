@@ -1,5 +1,3 @@
-import { DestroyRef, inject } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { EMPTY, Observable, Subject, merge, of } from 'rxjs';
 import {
     debounceTime,
@@ -13,6 +11,9 @@ import {
     switchMap,
     tap,
 } from 'rxjs/operators';
+
+import { DestroyRef, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { progress } from '../../../custom-operators';
 

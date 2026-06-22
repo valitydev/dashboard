@@ -1,9 +1,11 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, signal } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { QueryParamsService } from '@vality/matez';
-import { PaymentSearchResult, SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';
 import { skip, take } from 'rxjs/operators';
+
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+import { QueryParamsService } from '@vality/matez';
+import { PaymentSearchResult, SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 
 import { PaymentInstitutionRealmService } from '../../services/payment-institution-realm.service';
 

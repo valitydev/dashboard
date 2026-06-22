@@ -1,6 +1,8 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { PaymentStatus } from '@vality/swag-payments';
 import moment from 'moment';
+
+import { Pipe, PipeTransform } from '@angular/core';
+
+import { PaymentStatus } from '@vality/swag-payments';
 
 @Pipe({
     name: 'holdActive',

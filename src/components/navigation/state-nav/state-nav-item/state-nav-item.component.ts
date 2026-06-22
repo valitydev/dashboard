@@ -1,3 +1,5 @@
+import { Subject } from 'rxjs';
+
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,7 +8,6 @@ import {
     Renderer2,
     booleanAttribute,
 } from '@angular/core';
-import { Subject } from 'rxjs';
 
 export enum Color {
     Success = 'success',

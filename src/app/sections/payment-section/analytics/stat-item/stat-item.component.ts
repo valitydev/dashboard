@@ -6,7 +6,6 @@ import {
     SimpleChanges,
     booleanAttribute,
 } from '@angular/core';
-
 import { SpinnerType } from '@dsh/components/indicators';
 
 import { StatData } from '../utils';

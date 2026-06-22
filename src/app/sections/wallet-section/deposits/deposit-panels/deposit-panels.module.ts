@@ -1,14 +1,14 @@
+import { FlexLayoutModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
-import { TranslocoModule } from '@jsverse/transloco';
-import { FlexLayoutModule } from 'ng-flex-layout';
-
 import { AmountCurrencyModule, ApiModelRefsModule, ApiModelTypesModule } from '@dsh/app/shared';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
 import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { DepositRowComponent } from './components/deposit-row/deposit-row.component';
 import { DepositRowHeaderComponent } from './components/deposit-row-header/deposit-row-header.component';

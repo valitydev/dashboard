@@ -1,3 +1,5 @@
+import { FlexModule, GridModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -8,9 +10,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { TranslocoModule } from '@jsverse/transloco';
-import { FlexModule, GridModule } from 'ng-flex-layout';
-
 import { DialogModule } from '@dsh/app/shared/components/dialog';
 import { OrganizationRolesModule } from '@dsh/app/shared/components/organization-roles';
 import { EmptyModule } from '@dsh/components/empty';
@@ -20,6 +19,7 @@ import { AccordionModule, CardModule, DetailsItemModule, RowModule } from '@dsh/
 import { ScrollUpModule } from '@dsh/components/navigation';
 import { NestedTableModule } from '@dsh/components/nested-table';
 import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { ChangeRolesTableModule } from '../change-roles-table';
 

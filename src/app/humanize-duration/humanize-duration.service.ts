@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
-import { TranslocoService } from '@jsverse/transloco';
 import * as humanizeDuration from 'humanize-duration';
 import { UnitTranslationOptions } from 'humanize-duration';
 import moment from 'moment';
 import { Observable, of, switchMap } from 'rxjs';
 import { first, map, withLatestFrom } from 'rxjs/operators';
+
+import { Injectable } from '@angular/core';
+import { TranslocoService } from '@jsverse/transloco';
 
 import { LanguageService } from '../language';
 

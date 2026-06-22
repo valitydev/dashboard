@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { AnapiDictionaryService } from '@dsh/app/api/anapi';
+import { PaymentSystem } from '@dsh/app/api/payments';
+
 import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 import { SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 
-import { AnapiDictionaryService } from '@dsh/app/api/anapi';
-import { PaymentSystem } from '@dsh/app/api/payments';
 
 @Component({
     selector: 'dsh-payment-system-filter',

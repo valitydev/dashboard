@@ -1,13 +1,15 @@
-import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslocoService } from '@jsverse/transloco';
-import { DialogResponseStatus } from '@vality/matez';
 import { Observable, Subject, combineLatest, of } from 'rxjs';
 import { catchError, filter, first, map, switchMap, takeUntil, tap } from 'rxjs/operators';
 
+import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReportsService } from '@dsh/app/api/anapi';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
+import { TranslocoService } from '@jsverse/transloco';
+
+import { DialogResponseStatus } from '@vality/matez';
+
 
 @Injectable()
 export class CancelReportService {

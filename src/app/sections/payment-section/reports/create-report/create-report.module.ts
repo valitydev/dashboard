@@ -1,3 +1,5 @@
+import { FlexLayoutModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -9,11 +11,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { TranslocoModule } from '@jsverse/transloco';
-import { FlexLayoutModule } from 'ng-flex-layout';
-
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { BootstrapIconModule } from '@dsh/components/indicators';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { CreateReportDialogComponent } from './create-report-dialog.component';
 import { CreateReportFormComponent } from './create-report-form';

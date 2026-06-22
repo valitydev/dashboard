@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-
 import { SpinnerType } from '@dsh/components/indicators';
 
 import { ChartData } from '../utils';

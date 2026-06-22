@@ -1,12 +1,13 @@
-import { DestroyRef, Inject, Injectable } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ListWalletsRequestParams, Wallet } from '@vality/swag-wallets';
 import { Observable, shareReplay } from 'rxjs';
 
+import { DestroyRef, Inject, Injectable } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { WalletsService } from '@dsh/app/api/wallet';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { ContextOrganizationService, FetchResult, PartialFetcher } from '@dsh/app/shared';
+
+import { ListWalletsRequestParams, Wallet } from '@vality/swag-wallets';
 
 @Injectable()
 export class FetchWalletsService extends PartialFetcher<

@@ -1,3 +1,5 @@
+import { filter, switchMap } from 'rxjs/operators';
+
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,15 +10,14 @@ import {
     Output,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ComponentChanges, DialogResponseStatus, DialogService } from '@vality/matez';
-import { Member, Organization } from '@vality/swag-organizations';
-import { filter, switchMap } from 'rxjs/operators';
-
 import { MembersService } from '@dsh/app/api/organizations';
 import { ErrorService, NotificationService } from '@dsh/app/shared';
 import { OrganizationManagementService } from '@dsh/app/shared/services/organization-management/organization-management.service';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 import { ignoreBeforeCompletion } from '@dsh/utils';
+
+import { ComponentChanges, DialogResponseStatus, DialogService } from '@vality/matez';
+import { Member, Organization } from '@vality/swag-organizations';
 
 import { EditRolesDialogComponent } from '../edit-roles-dialog/edit-roles-dialog.component';
 

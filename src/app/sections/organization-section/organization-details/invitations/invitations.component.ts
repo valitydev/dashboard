@@ -1,9 +1,9 @@
+import { filter, first, shareReplay, switchMap } from 'rxjs/operators';
+
 import { ChangeDetectionStrategy, Component, DestroyRef, Inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { filter, first, shareReplay, switchMap } from 'rxjs/operators';
-
 import { OrgsService } from '@dsh/app/api/organizations';
 import { DIALOG_CONFIG, DialogConfig } from '@dsh/app/sections/tokens';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';

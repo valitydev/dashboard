@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+
 import { DepositStatus, WithdrawalStatus } from '@vality/swag-wallets';
 
 import { StatusColor as Color } from '../../theme-manager';

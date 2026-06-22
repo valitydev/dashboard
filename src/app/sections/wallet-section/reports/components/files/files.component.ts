@@ -1,13 +1,15 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, Input } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService, progressTo } from '@vality/matez';
-import { ReportFilesInner } from '@vality/swag-wallets';
 import { BehaviorSubject, EMPTY, forkJoin } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { ChangeDetectionStrategy, Component, DestroyRef, Input } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DownloadsService } from '@dsh/app/api/wallet';
 import { multipleDownload } from '@dsh/utils';
+import { TranslocoService } from '@jsverse/transloco';
+
+import { NotifyLogService, progressTo } from '@vality/matez';
+import { ReportFilesInner } from '@vality/swag-wallets';
+
 
 @Component({
     selector: 'dsh-files',

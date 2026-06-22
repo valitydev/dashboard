@@ -1,9 +1,10 @@
-import { AbstractControl, FormControl } from '@angular/forms';
-import { FormComponentSuperclass } from '@vality/matez';
 import isEqual from 'lodash-es/isEqual';
 import { BehaviorSubject, Observable, defer } from 'rxjs';
 
+import { AbstractControl, FormControl } from '@angular/forms';
 import { isEmptyValue } from '@dsh/utils';
+
+import { FormComponentSuperclass } from '@vality/matez';
 
 export abstract class FilterSuperclass<
     Inner,

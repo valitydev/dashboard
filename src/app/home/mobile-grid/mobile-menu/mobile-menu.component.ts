@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { SectionLink, SectionsLinksService } from '@dsh/app/shared/services/sections-links';
 
 @Component({

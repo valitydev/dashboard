@@ -1,11 +1,12 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { WebhookScope } from '@vality/swag-payments';
 import { BehaviorSubject } from 'rxjs';
 
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { PaymentsDictionaryService } from '@dsh/app/api/payments';
 import { ShopsDataService } from '@dsh/app/shared';
 import { oneMustBeSelected } from '@dsh/components/form-controls';
+
+import { WebhookScope } from '@vality/swag-payments';
 
 import { getEventsByTopic } from '../get-events-by-topic';
 

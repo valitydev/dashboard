@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TranslocoService } from '@jsverse/transloco';
-
 import { ApiKeysService } from '@dsh/app/api/api-keys';
 import { ErrorService, NotificationService } from '@dsh/app/shared/services';
+import { TranslocoService } from '@jsverse/transloco';
 
 @Component({
     selector: 'dsh-api-key-revoke',

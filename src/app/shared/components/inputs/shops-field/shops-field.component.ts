@@ -1,8 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
-import { ComponentChanges, FormControlSuperclass, createControlProviders } from '@vality/matez';
-import { Shop } from '@vality/swag-payments';
 import { ReplaySubject, defer } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+
+import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
+
+import { ComponentChanges, FormControlSuperclass, createControlProviders } from '@vality/matez';
+import { Shop } from '@vality/swag-payments';
 
 @Component({
     selector: 'dsh-shops-field',

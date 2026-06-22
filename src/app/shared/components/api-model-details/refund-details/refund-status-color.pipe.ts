@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+
 import { Refund } from '@vality/swag-payments';
 
 import { StatusColor } from '../../../../theme-manager';

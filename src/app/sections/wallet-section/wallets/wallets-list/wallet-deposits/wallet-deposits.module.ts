@@ -1,10 +1,9 @@
+import { FlexModule, GridModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-import { TranslocoModule } from '@jsverse/transloco';
-import { FlexModule, GridModule } from 'ng-flex-layout';
-
 import { AmountCurrencyModule, ApiModelTypesModule } from '@dsh/app/shared';
 import { StatusModule, TextColorModule } from '@dsh/components/indicators';
 import {
@@ -14,6 +13,7 @@ import {
     RowModule,
 } from '@dsh/components/layout';
 import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { WalletDepositDetailsComponent } from './components';
 import { WalletDepositsComponent } from './wallet-deposits.component';

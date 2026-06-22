@@ -1,3 +1,6 @@
+import { Observable, defer } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
+
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,13 +9,11 @@ import {
     Optional,
     booleanAttribute,
 } from '@angular/core';
-import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
-import { Shop } from '@vality/swag-payments';
-import { Observable, defer } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-
 import { toLiveShops } from '@dsh/app/api/payments';
 import { ShopsDataService } from '@dsh/app/shared';
+
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
+import { Shop } from '@vality/swag-payments';
 
 import { SHOPS } from './shops-token';
 import { shopToOption } from './utils/shops-to-options';

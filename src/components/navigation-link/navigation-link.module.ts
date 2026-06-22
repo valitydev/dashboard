@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
 import { FlexModule } from 'ng-flex-layout';
+
+import { NgModule } from '@angular/core';
 
 import { NavigationLinkComponent } from './navigation-link.component';
 

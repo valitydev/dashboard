@@ -8,6 +8,7 @@ import {
     Output,
 } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
+
 import { NotifyLogService } from '@vality/matez';
 import { Webhook } from '@vality/swag-wallets';
 

@@ -1,7 +1,7 @@
-import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { BehaviorSubject, Subject, combineLatest } from 'rxjs';
 import { distinctUntilChanged, map, takeUntil } from 'rxjs/operators';
 
+import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { ShopsDataService } from '@dsh/app/shared';
 
 @Pipe({

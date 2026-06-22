@@ -1,11 +1,13 @@
-import { getCurrencySymbol } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
-import { TranslocoService } from '@jsverse/transloco';
-import { createControlProviders } from '@vality/matez';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { getCurrencySymbol } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Injector, Input } from '@angular/core';
 import { FilterSuperclass } from '@dsh/components/filter';
+import { TranslocoService } from '@jsverse/transloco';
+
+import { createControlProviders } from '@vality/matez';
+
 
 @Component({
     selector: 'dsh-currency-filter',

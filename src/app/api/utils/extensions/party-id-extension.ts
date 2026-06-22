@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
 import { first, map } from 'rxjs/operators';
 
+import { Injectable } from '@angular/core';
 import { ContextOrganizationService } from '@dsh/app/shared/services/context-organization';
 
 import { ApiExtension } from '../create-api';

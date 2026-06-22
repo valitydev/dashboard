@@ -1,15 +1,16 @@
+import isNil from 'lodash-es/isNil';
+
 import { ChangeDetectionStrategy, Component, DestroyRef, Inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormGroupByValue, toMajor, toMinor } from '@vality/matez';
-import { CaptureParams } from '@vality/swag-payments';
-import isNil from 'lodash-es/isNil';
-
 import { PaymentsService } from '@dsh/app/api/payments';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services';
 import { amountValidator } from '@dsh/components/form-controls';
+
+import { FormGroupByValue, toMajor, toMinor } from '@vality/matez';
+import { CaptureParams } from '@vality/swag-payments';
 
 import { CreateRefundForm } from '../../../../refunds/create-refund/types/create-refund-form';
 import { MAX_REASON_LENGTH } from '../../../consts';

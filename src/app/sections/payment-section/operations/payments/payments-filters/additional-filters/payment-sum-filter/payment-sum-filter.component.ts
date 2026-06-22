@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+
 import { FormGroupSuperclass, createControlProviders } from '@vality/matez';
 
 import { PaymentSumFilterForm } from './types/payment-sum-filter-form';

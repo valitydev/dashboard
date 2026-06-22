@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { AnapiDictionaryService } from '@dsh/app/api/anapi';
+
 import { Invoice } from '@vality/swag-anapi-v2';
 
-import { AnapiDictionaryService } from '@dsh/app/api/anapi';
 
 @Component({
     selector: 'dsh-invoice-row',

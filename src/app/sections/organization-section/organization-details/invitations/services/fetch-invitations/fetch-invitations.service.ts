@@ -1,13 +1,14 @@
-import { DestroyRef, Injectable } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute } from '@angular/router';
-import { Invitation, InvitationStatusName } from '@vality/swag-organizations';
 import { BehaviorSubject, defer, of } from 'rxjs';
 import { catchError, pluck, shareReplay, switchMap, switchMapTo } from 'rxjs/operators';
 
+import { DestroyRef, Injectable } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ActivatedRoute } from '@angular/router';
 import { InvitationsService } from '@dsh/app/api/organizations';
 import { mapToTimestamp, progress } from '@dsh/app/custom-operators';
 import { ErrorService } from '@dsh/app/shared';
+
+import { Invitation, InvitationStatusName } from '@vality/swag-organizations';
 
 @Injectable()
 export class FetchInvitationsService {

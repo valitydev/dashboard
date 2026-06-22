@@ -1,6 +1,7 @@
-import { SplitCountResult, SplitUnit, StatusOffsetCount } from '@vality/swag-anapi-v2';
 import sortBy from 'lodash-es/sortBy';
 import moment from 'moment';
+
+import { SplitCountResult, SplitUnit, StatusOffsetCount } from '@vality/swag-anapi-v2';
 
 import { ChartData, Series, splitUnitToTimeFormat } from '../utils';
 

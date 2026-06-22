@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
 import { ThemeManager, ThemeName } from '@dsh/app/theme-manager';
 
 @Component({

@@ -1,7 +1,9 @@
-import { AbstractControl } from '@angular/forms';
-import { FormGroupByValue } from '@vality/matez';
 import isEmpty from 'lodash-es/isEmpty';
 import isNil from 'lodash-es/isNil';
+
+import { AbstractControl } from '@angular/forms';
+
+import { FormGroupByValue } from '@vality/matez';
 
 export function getAbstractControl<Control extends AbstractControl, GroupType = unknown>(
     form: FormGroupByValue<GroupType>,

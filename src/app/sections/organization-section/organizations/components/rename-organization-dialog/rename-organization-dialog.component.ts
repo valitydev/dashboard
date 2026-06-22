@@ -1,14 +1,15 @@
+import { BehaviorSubject } from 'rxjs';
+
 import { ChangeDetectionStrategy, Component, DestroyRef, Inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormGroupByValue } from '@vality/matez';
-import { BehaviorSubject } from 'rxjs';
-
 import { OrgsService } from '@dsh/app/api/organizations';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService, NotificationService } from '@dsh/app/shared/services';
 import { inProgressTo } from '@dsh/utils';
+
+import { FormGroupByValue } from '@vality/matez';
 
 import { RenameOrganizationDialogData } from './types/rename-organization-dialog-data';
 

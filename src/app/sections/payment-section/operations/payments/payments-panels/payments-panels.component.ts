@@ -1,6 +1,8 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { PaymentSearchResult } from '@vality/swag-anapi-v2';
 import isEmpty from 'lodash-es/isEmpty';
+
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { PaymentSearchResult } from '@vality/swag-anapi-v2';
 
 import { getPaymentId } from '../utils/get-payment-id';
 

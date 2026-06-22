@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from 'ng-flex-layout';
+
+import { NgModule } from '@angular/core';
 
 import { ActionsComponent } from './actions.component';
 

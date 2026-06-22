@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-
 import { SectionsLinksService } from '@dsh/app/shared/services/sections-links';
 
 @Component({

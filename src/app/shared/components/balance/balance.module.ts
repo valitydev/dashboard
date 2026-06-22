@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
 import { AmountCurrencyModule } from '@dsh/app/shared/pipes';
 
 import { BalanceComponent } from './balance.component';

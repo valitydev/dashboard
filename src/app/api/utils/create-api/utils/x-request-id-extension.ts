@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { IdGeneratorService } from '@dsh/app/shared/services/id-generator';
 
 import { ApiExtension } from './api-extension';

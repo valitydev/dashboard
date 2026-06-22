@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
 import { splitCardNumber } from '@dsh/app/shared/utils/split-card-number';
 
 import { CardBinPan } from '../types/card-bin-pan';

@@ -1,6 +1,7 @@
-import { Serializer } from '@vality/matez';
 import isNil from 'lodash-es/isNil';
 import moment from 'moment';
+
+import { Serializer } from '@vality/matez';
 
 import { DateRangeWithPreset } from '../types/date-range-with-preset';
 import { Preset } from '../types/preset';

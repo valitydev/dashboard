@@ -1,6 +1,3 @@
-import { DestroyRef, inject } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Router } from '@angular/router';
 import isNil from 'lodash-es/isNil';
 import { BehaviorSubject, Observable, defer, of } from 'rxjs';
 import {
@@ -13,6 +10,9 @@ import {
     withLatestFrom,
 } from 'rxjs/operators';
 
+import { DestroyRef, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Fragment } from '@dsh/app/shared';
 
 const EMIT_LIMIT = 4;

@@ -1,13 +1,13 @@
+import { FlexLayoutModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TranslocoModule } from '@jsverse/transloco';
-import { FlexLayoutModule } from 'ng-flex-layout';
-
 import { ReportTypesFieldModule } from '@dsh/app/shared/components/inputs/report-types-field';
 import { DateRangeFilterModule } from '@dsh/components/date-range-filter';
 import { FilterModule } from '@dsh/components/filter';
 import { FiltersGroupModule } from '@dsh/components/filters-group';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { ReportPipesModule } from '../report-pipes';
 

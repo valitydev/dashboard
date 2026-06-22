@@ -1,3 +1,6 @@
+import { FlexModule } from 'ng-flex-layout';
+import { BehaviorSubject } from 'rxjs';
+
 import { Clipboard, ClipboardModule } from '@angular/cdk/clipboard';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
@@ -5,15 +8,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
-import { DialogSuperclass, NotifyLogService, progressTo } from '@vality/matez';
-import { FlexModule } from 'ng-flex-layout';
-import { BehaviorSubject } from 'rxjs';
-
 import { ApiKeysService } from '@dsh/app/api/api-keys';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services';
 import { SpinnerModule } from '@dsh/components/indicators';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
+
+import { DialogSuperclass, NotifyLogService, progressTo } from '@vality/matez';
 
 @Component({
     selector: 'dsh-api-key-create-dialog',

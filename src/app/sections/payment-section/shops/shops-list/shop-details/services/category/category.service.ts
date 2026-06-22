@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Category } from '@vality/swag-payments';
 import { ReplaySubject, combineLatest, defer } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
+import { Injectable } from '@angular/core';
 import { CategoriesService } from '@dsh/app/api/payments';
+
+import { Category } from '@vality/swag-payments';
 
 @Injectable()
 export class CategoryService {

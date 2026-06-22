@@ -1,11 +1,8 @@
+import { map } from 'rxjs/operators';
+
 import { Breakpoints } from '@angular/cdk/layout';
 import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { TranslocoService } from '@jsverse/transloco';
-import { DialogService, QueryParamsService } from '@vality/matez';
-import { ApiKey, ApiKeyStatus } from '@vality/swag-api-keys-v2';
-import { map } from 'rxjs/operators';
-
 import { ApiKeysDictionaryService } from '@dsh/app/api/api-keys';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
 import {
@@ -13,6 +10,11 @@ import {
     ContentHeader,
     ExpandedFragment,
 } from '@dsh/app/shared/components/accordion-table';
+import { TranslocoService } from '@jsverse/transloco';
+
+import { DialogService, QueryParamsService } from '@vality/matez';
+import { ApiKey, ApiKeyStatus } from '@vality/swag-api-keys-v2';
+
 
 import { ApiKeyCreateDialogComponent } from './components/api-key-create-dialog/api-key-create-dialog.component';
 import { FetchApiKeysService } from './fetch-api-keys.service';

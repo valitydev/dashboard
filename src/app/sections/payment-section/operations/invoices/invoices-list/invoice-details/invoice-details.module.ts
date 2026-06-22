@@ -1,3 +1,5 @@
+import { FlexLayoutModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -5,9 +7,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterModule } from '@angular/router';
-import { TranslocoModule } from '@jsverse/transloco';
-import { FlexLayoutModule } from 'ng-flex-layout';
-
 import { AuthModule } from '@dsh/app/auth';
 import {
     RefundDetailsModule as ApiRefundDetailsModule,
@@ -17,6 +16,7 @@ import {
 import { AmountCurrencyModule, ApiModelRefsModule } from '@dsh/app/shared/pipes';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { CancelInvoiceModule } from './cancel-invoice';
 import { InvoiceActionsComponent } from './components/invoice-actions/invoice-actions.component';

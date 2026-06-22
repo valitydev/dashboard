@@ -1,5 +1,6 @@
-import { formatNumber } from '@angular/common';
 import { locale } from 'moment';
+
+import { formatNumber } from '@angular/common';
 
 export const formatAmount = (num: number): string => {
     for (const amountUnit of AMOUNT_UNITS) {

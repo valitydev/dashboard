@@ -1,11 +1,12 @@
-import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
-import { createControlProviders } from '@vality/matez';
-import { Report } from '@vality/swag-anapi-v2';
 import { combineLatest } from 'rxjs';
 import { share, switchMap } from 'rxjs/operators';
 
+import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
 import { ReportTypesLabelPipe } from '@dsh/app/shared/components/inputs/report-types-field';
 import { FilterSuperclass } from '@dsh/components/filter';
+
+import { createControlProviders } from '@vality/matez';
+import { Report } from '@vality/swag-anapi-v2';
 
 @Component({
     selector: 'dsh-report-types-filter',

@@ -1,5 +1,6 @@
-import { CreateReportRequestParams } from '@vality/swag-anapi-v2';
 import moment from 'moment';
+
+import { CreateReportRequestParams } from '@vality/swag-anapi-v2';
 
 export const formValueToCreateValue = ({
     fromDate,

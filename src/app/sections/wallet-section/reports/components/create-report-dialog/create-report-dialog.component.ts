@@ -1,15 +1,16 @@
+import moment from 'moment/moment';
+import { BehaviorSubject } from 'rxjs';
+
 import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService, progressTo } from '@vality/matez';
-import moment from 'moment/moment';
-import { BehaviorSubject } from 'rxjs';
-
 import { ReportsService } from '@dsh/app/api/wallet';
 import { getDateWithTime } from '@dsh/app/sections/payment-section/reports/create-report/form-value-to-create-value';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
+import { TranslocoService } from '@jsverse/transloco';
+
+import { NotifyLogService, progressTo } from '@vality/matez';
 
 const TIME_PATTERN = /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
 

@@ -1,3 +1,14 @@
+import { combineLatest, merge, of } from 'rxjs';
+import {
+    delay,
+    distinctUntilChanged,
+    filter,
+    map,
+    startWith,
+    switchMap,
+    take,
+} from 'rxjs/operators';
+
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -9,16 +20,6 @@ import {
     QueryList,
     ViewContainerRef,
 } from '@angular/core';
-import { combineLatest, merge, of } from 'rxjs';
-import {
-    delay,
-    distinctUntilChanged,
-    filter,
-    map,
-    startWith,
-    switchMap,
-    take,
-} from 'rxjs/operators';
 
 import { smoothChangeTo } from '../../../utils';
 

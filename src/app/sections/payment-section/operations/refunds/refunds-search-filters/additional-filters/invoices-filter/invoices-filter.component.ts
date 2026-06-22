@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 
 @Component({

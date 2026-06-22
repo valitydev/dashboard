@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { Webhook, WebhookScope } from '@vality/swag-payments';
 
 import { getShopIdFromScope } from '../get-shop-id-from-scope';

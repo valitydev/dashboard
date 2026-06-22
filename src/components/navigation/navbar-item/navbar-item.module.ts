@@ -1,8 +1,9 @@
+import { FlexLayoutModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { BootstrapIconModule } from '../../indicators';
 

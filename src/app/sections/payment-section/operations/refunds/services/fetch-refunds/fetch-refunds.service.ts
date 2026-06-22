@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
-import { RefundSearchResult } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 
+import { Injectable } from '@angular/core';
 import { SearchService } from '@dsh/app/api/anapi';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { PartialFetcher } from '@dsh/app/shared';
+
+import { RefundSearchResult } from '@vality/swag-anapi-v2';
 
 import { SearchFiltersParams } from '../../refunds-search-filters';
 

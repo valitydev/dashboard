@@ -1,3 +1,11 @@
+import isEmpty from 'lodash-es/isEmpty';
+import negate from 'lodash-es/negate';
+import omit from 'lodash-es/omit';
+import pick from 'lodash-es/pick';
+import { MediaObserver } from 'ng-flex-layout';
+import { BehaviorSubject, ReplaySubject, combineLatest, defer } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
+
 import {
     ChangeDetectionStrategy,
     Component,
@@ -11,19 +19,12 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AbstractControl, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ComponentChanges } from '@vality/matez';
-import { PaymentInstitution, Shop } from '@vality/swag-payments';
-import isEmpty from 'lodash-es/isEmpty';
-import negate from 'lodash-es/negate';
-import omit from 'lodash-es/omit';
-import pick from 'lodash-es/pick';
-import { MediaObserver } from 'ng-flex-layout';
-import { BehaviorSubject, ReplaySubject, combineLatest, defer } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-
 import { ShopsDataService } from '@dsh/app/shared';
 import { DateRange, Preset, createDateRangeWithPreset } from '@dsh/components/date-range-filter';
 import { getFormValueChanges } from '@dsh/utils';
+
+import { ComponentChanges } from '@vality/matez';
+import { PaymentInstitution, Shop } from '@vality/swag-payments';
 
 import { filterShopsByRealm } from '../../operators';
 

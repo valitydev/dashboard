@@ -1,11 +1,12 @@
-import { DestroyRef, Injectable } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Payment } from '@vality/swag-payments';
 import moment from 'moment';
 import { BehaviorSubject, Observable, ReplaySubject, Subject, of } from 'rxjs';
 import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
 
+import { DestroyRef, Injectable } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PaymentsService } from '@dsh/app/api/payments';
+
+import { Payment } from '@vality/swag-payments';
 
 @Injectable()
 export class ReceivePaymentsService {

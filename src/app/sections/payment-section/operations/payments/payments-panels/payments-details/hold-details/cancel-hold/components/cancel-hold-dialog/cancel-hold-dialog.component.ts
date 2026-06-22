@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormGroupByValue } from '@vality/matez';
-
 import { PaymentsService } from '@dsh/app/api/payments';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services';
+
+import { FormGroupByValue } from '@vality/matez';
 
 import { CreateRefundForm } from '../../../../refunds/create-refund/types/create-refund-form';
 import { MAX_REASON_LENGTH } from '../../../consts';

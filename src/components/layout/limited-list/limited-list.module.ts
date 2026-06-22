@@ -1,7 +1,8 @@
+import { FlexLayoutModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { TranslocoModule } from '@jsverse/transloco';
-import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { LimitedListItemComponent } from './components/limited-list-item/limited-list-item.component';
 import { LimitedListComponent } from './limited-list.component';

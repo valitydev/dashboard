@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject, combineLatest, defer, forkJoin, of } from 'rxjs';
 import { distinctUntilChanged, map, shareReplay, switchMap, withLatestFrom } from 'rxjs/operators';
 
+import { Injectable } from '@angular/core';
 import { AnalyticsService, AnapiDictionaryService } from '@dsh/app/api/anapi';
 import { attach, distinctUntilChangedDeep, errorTo, inProgressFrom, progressTo } from '@dsh/utils';
 

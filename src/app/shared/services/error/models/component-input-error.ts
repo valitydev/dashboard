@@ -1,5 +1,4 @@
 import { Type } from '@angular/core';
-
 import { CustomError } from '@dsh/app/shared/services/error/models/custom-error';
 
 /**

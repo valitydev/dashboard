@@ -1,7 +1,8 @@
 import { Injectable, Injector } from '@angular/core';
+import { PartyIdExtension, PartyIdPatchMethodService } from '@dsh/app/api/utils/extensions';
+
 import { WebhooksService as ApiWebhooksService } from '@vality/swag-payments';
 
-import { PartyIdExtension, PartyIdPatchMethodService } from '@dsh/app/api/utils/extensions';
 
 import { createApi } from '../utils';
 

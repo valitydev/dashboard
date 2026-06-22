@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { WalletDictionaryService } from '@dsh/app/api/wallet';
+
 import { Withdrawal } from '@vality/swag-wallets';
 
-import { WalletDictionaryService } from '@dsh/app/api/wallet';
 
 @Component({
     selector: 'dsh-wallet-withdrawal-details',

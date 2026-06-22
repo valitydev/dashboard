@@ -1,3 +1,6 @@
+import { Observable } from 'rxjs';
+import { filter, take } from 'rxjs/operators';
+
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,11 +9,9 @@ import {
     OnInit,
     Output,
 } from '@angular/core';
-import { PaymentSearchResult, RefundSearchResult } from '@vality/swag-anapi-v2';
-import { Observable } from 'rxjs';
-import { filter, take } from 'rxjs/operators';
-
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
+
+import { PaymentSearchResult, RefundSearchResult } from '@vality/swag-anapi-v2';
 
 import { PaymentIds } from '../../../types';
 

@@ -1,6 +1,8 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { PaymentResourcePayer, PaymentSearchResult } from '@vality/swag-anapi-v2';
 import isObject from 'lodash-es/isObject';
+
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
+import { PaymentResourcePayer, PaymentSearchResult } from '@vality/swag-anapi-v2';
 
 import { CommonPayer } from './types/common-payer';
 import { PaymentAdditionalInfo } from './types/payment-additional-info';

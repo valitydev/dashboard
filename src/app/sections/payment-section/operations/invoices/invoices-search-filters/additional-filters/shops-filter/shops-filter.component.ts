@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { ShopsDataService } from '@dsh/app/shared';
+
 import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 
-import { ShopsDataService } from '@dsh/app/shared';
 
 @Component({
     selector: 'dsh-shops-filter',

@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { FakePaginatorService } from '@dsh/app/shared/services';
+
 import { Payment } from '@vality/swag-payments';
 
-import { FakePaginatorService } from '@dsh/app/shared/services';
 
 @Component({
     selector: 'dsh-invoice-payments',

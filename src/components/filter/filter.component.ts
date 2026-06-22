@@ -1,3 +1,5 @@
+import { map, pluck } from 'rxjs/operators';
+
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import {
     ChangeDetectionStrategy,
@@ -11,7 +13,6 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
-import { map, pluck } from 'rxjs/operators';
 
 import { FilterDialogComponent } from './components/filter-dialog/filter-dialog.component';
 
