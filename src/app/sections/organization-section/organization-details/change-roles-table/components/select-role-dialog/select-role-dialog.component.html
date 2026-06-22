@@ -15,16 +15,24 @@
             [data]="data"
         >
             <ng-template #accessCellTpl let-column="column" let-index="index" let-value="value">
-                @if (value && value?.availableRoles !== undefined) {
+                @if (value && $safeNavigationMigration(value?.availableRoles) !== undefined) {
                     <dsh-selection
-                        [selected]="value?.availableRoles?.includes?.(column.field)"
+                        [selected]="
+                            $safeNavigationMigration(
+                                value?.availableRoles?.includes?.(column.field)
+                            )
+                        "
                         class="selection"
                     ></dsh-selection>
                 }
                 @if (!value && index === 0) {
                     <div class="selection">
                         <mat-radio-group
-                            [disabled]="!dialogData.availableRoles.includes(column?.field)"
+                            [disabled]="
+                                !dialogData.availableRoles.includes(
+                                    $safeNavigationMigration(column?.field)
+                                )
+                            "
                             [ngModel]="selectedRole$ | async"
                             (ngModelChange)="selectedRole$.next(column.field)"
                         >

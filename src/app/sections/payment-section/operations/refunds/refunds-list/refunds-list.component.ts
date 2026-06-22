@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Refund } from '@vality/swag-anapi-v2';
 
 @Component({
     selector: 'dsh-refunds-list',
     templateUrl: 'refunds-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class RefundsListComponent {

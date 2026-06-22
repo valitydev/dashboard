@@ -1,4 +1,4 @@
-import { Component, DestroyRef, OnInit, isDevMode } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, isDevMode } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService, QueryParamsService } from '@vality/matez';
@@ -19,6 +19,7 @@ import { InvoicesExpandedIdManager } from './services/invoices-expanded-id-manag
     selector: 'dsh-invoices',
     templateUrl: 'invoices.component.html',
     providers: [FetchInvoicesService, InvoicesExpandedIdManager, RealmMixService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class InvoicesComponent implements OnInit {

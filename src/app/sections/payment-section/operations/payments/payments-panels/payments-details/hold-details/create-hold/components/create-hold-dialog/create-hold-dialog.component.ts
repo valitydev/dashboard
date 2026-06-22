@@ -1,4 +1,4 @@
-import { Component, DestroyRef, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, Inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -19,6 +19,7 @@ import { CreateHoldDialogData } from '../../types/create-hold-dialog-data';
     selector: 'dsh-create-hold-dialog',
     templateUrl: './create-hold-dialog.component.html',
     styleUrls: ['./create-hold-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class CreateHoldDialogComponent {

@@ -1,4 +1,4 @@
-import { Component, DestroyRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { QueryParamsService } from '@vality/matez';
 
@@ -12,6 +12,7 @@ import { filtersToSearchParams } from './utils/filters-to-search-params';
 @Component({
     templateUrl: 'deposits.component.html',
     providers: [FetchDepositsService, DepositsExpandedIdManagerService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class DepositsComponent {

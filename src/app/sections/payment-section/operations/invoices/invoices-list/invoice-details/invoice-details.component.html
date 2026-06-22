@@ -7,7 +7,7 @@
             [currency]="invoice.currency"
         ></dsh-invoice-cart-info>
     }
-    @if (isActionsAvailable(invoice?.status)) {
+    @if (isActionsAvailable($safeNavigationMigration(invoice?.status))) {
         <mat-divider></mat-divider>
         <dsh-invoice-actions
             [invoice]="invoice"

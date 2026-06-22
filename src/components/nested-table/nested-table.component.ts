@@ -1,5 +1,12 @@
 import { FlatTreeControl } from '@angular/cdk/tree';
-import { Component, DestroyRef, Input, OnChanges, TemplateRef } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    DestroyRef,
+    Input,
+    OnChanges,
+    TemplateRef,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { ComponentChanges } from '@vality/matez';
@@ -51,6 +58,7 @@ const TREE_FLATTENER = new MatTreeFlattener<NestedTableNode, NestedTableFlatNode
     selector: 'dsh-nested-table',
     templateUrl: 'nested-table.component.html',
     styleUrls: ['nested-table.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class NestedTableComponent implements OnChanges {

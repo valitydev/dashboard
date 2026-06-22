@@ -1,4 +1,4 @@
-import { Component, DestroyRef, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, Input, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormArray, FormControl } from '@angular/forms';
 import { FormControlSuperclass, createControlProviders } from '@vality/matez';
@@ -10,6 +10,7 @@ import { distinctUntilChanged, map } from 'rxjs/operators';
     templateUrl: 'multi-input-field.component.html',
     styleUrls: ['multi-input-field.component.scss'],
     providers: createControlProviders(() => MultiInputFieldComponent),
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class MultiInputFieldComponent extends FormControlSuperclass<string[]> implements OnInit {

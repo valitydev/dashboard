@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnDestroy,
+    OnInit,
+    Output,
+} from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService } from '@vality/matez';
 import { Webhook } from '@vality/swag-wallets';
@@ -9,6 +17,7 @@ import { DeleteWebhookParams } from '../webhook-details/webhook-actions';
 @Component({
     selector: 'dsh-webhooks-list',
     templateUrl: 'webhook-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class WebhookListComponent implements OnInit, OnDestroy {

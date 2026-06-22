@@ -39,8 +39,8 @@
                 <div class="mat-body-small dsh-stat-item-title">{{ subtitle }}</div>
                 @if (!isLoading) {
                     <dsh-percent-difference
-                        [current]="statData?.current"
-                        [previous]="statData?.previous"
+                        [current]="$safeNavigationMigration(statData?.current)"
+                        [previous]="$safeNavigationMigration(statData?.previous)"
                     ></dsh-percent-difference>
                 }
             </div>

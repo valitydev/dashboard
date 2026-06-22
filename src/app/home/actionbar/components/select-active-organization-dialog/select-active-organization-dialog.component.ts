@@ -16,7 +16,7 @@ const DISPLAYED_COUNT = 5;
 @Component({
     selector: 'dsh-select-active-organization-dialog',
     templateUrl: 'select-active-organization-dialog.component.html',
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [FetchOrganizationsService, { provide: SEARCH_LIMIT, useValue: DISPLAYED_COUNT }],
     standalone: false,
 })

@@ -1,4 +1,4 @@
-import { Component, DestroyRef, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslocoService } from '@jsverse/transloco';
@@ -9,6 +9,7 @@ import { ErrorService, NotificationService } from '@dsh/app/shared/services';
 @Component({
     selector: 'dsh-api-key-revoke',
     templateUrl: './api-key-revoke.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class ApiKeyRevokeComponent implements OnInit {

@@ -16,7 +16,9 @@
             {{ t('actions.editRoles') }}
         </button>
     </div>
-    <dsh-organization-roles [roles]="member?.roles"></dsh-organization-roles>
+    <dsh-organization-roles
+        [roles]="$safeNavigationMigration(member?.roles)"
+    ></dsh-organization-roles>
 
     <mat-divider></mat-divider>
     <div class="mat-title-large">{{ t('titles.actions') }}</div>

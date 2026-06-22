@@ -68,6 +68,35 @@
                                     "with": "src/environments/environment.stage.ts"
                                 }
                             ]
+                        },
+                        "testing": {
+                            "aot": false,
+                            "optimization": false,
+                            "extractLicenses": false,
+                            "styles": [
+                                "src/styles/core.scss",
+                                {
+                                    "input": "src/styles/themes/main.scss",
+                                    "bundleName": "main-theme",
+                                    "inject": false
+                                },
+                                {
+                                    "input": "src/styles/themes/persian-green.scss",
+                                    "bundleName": "persian-green-theme",
+                                    "inject": false
+                                },
+                                {
+                                    "input": "src/styles/themes/solitude.scss",
+                                    "bundleName": "solitude-theme",
+                                    "inject": false
+                                },
+                                {
+                                    "input": "src/styles/themes/eastern.scss",
+                                    "bundleName": "eastern-theme",
+                                    "inject": false
+                                }
+                            ],
+                            "polyfills": ["zone.js", "zone.js/testing"]
                         }
                     },
                     "defaultConfiguration": "production"
@@ -91,36 +120,11 @@
                     "builder": "@angular/build:extract-i18n"
                 },
                 "test": {
-                    "builder": "@angular/build:karma",
+                    "builder": "@angular/build:unit-test",
                     "options": {
-                        "polyfills": ["zone.js", "zone.js/testing"],
                         "tsConfig": "tsconfig.spec.json",
-                        "inlineStyleLanguage": "scss",
-                        "assets": ["src/favicon.ico", "src/assets"],
-                        "styles": [
-                            "src/styles/core.scss",
-                            {
-                                "input": "src/styles/themes/main.scss",
-                                "bundleName": "main-theme",
-                                "inject": false
-                            },
-                            {
-                                "input": "src/styles/themes/persian-green.scss",
-                                "bundleName": "persian-green-theme",
-                                "inject": false
-                            },
-                            {
-                                "input": "src/styles/themes/solitude.scss",
-                                "bundleName": "solitude-theme",
-                                "inject": false
-                            },
-                            {
-                                "input": "src/styles/themes/eastern.scss",
-                                "bundleName": "eastern-theme",
-                                "inject": false
-                            }
-                        ],
-                        "scripts": []
+                        "buildTarget": ":build:testing",
+                        "runner": "vitest"
                     }
                 },
                 "lint": {

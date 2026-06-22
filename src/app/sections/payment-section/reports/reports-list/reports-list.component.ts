@@ -1,4 +1,5 @@
 import {
+    ChangeDetectionStrategy,
     Component,
     DestroyRef,
     EventEmitter,
@@ -19,6 +20,7 @@ import { CancelReportService } from '../cancel-report';
 @Component({
     selector: 'dsh-reports-list',
     templateUrl: 'reports-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class ReportsListComponent implements OnInit, OnDestroy {

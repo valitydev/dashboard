@@ -6,7 +6,7 @@
                     #rla="routerLinkActive"
                     [active]="rla.isActive"
                     [routerLink]="link.path"
-                    [routerLinkActiveOptions]="{ exact: link?.exact }"
+                    [routerLinkActiveOptions]="{ exact: $safeNavigationMigration(link?.exact) }"
                     mat-tab-link
                     routerLinkActive
                 >

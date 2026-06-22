@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { LOCALE_ID, NgModule, inject, isDevMode, provideAppInitializer } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {
@@ -117,7 +117,7 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
             useValue: [createDateRangeWithPresetSerializer()],
         },
         { provide: TRANSLOCO_SCOPE, useValue: 'app' },
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
     ],
 })
 export class AppModule {}

@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Deposit } from '@vality/swag-wallets';
 import isEmpty from 'lodash-es/isEmpty';
 
 @Component({
     selector: 'dsh-deposit-panels',
     templateUrl: 'deposit-panels.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class DepositPanelsComponent {

@@ -1,4 +1,5 @@
 import {
+    ChangeDetectionStrategy,
     Component,
     DestroyRef,
     EventEmitter,
@@ -32,6 +33,7 @@ const MAIN_FILTERS_KEYS = ['dateRange'];
 @Component({
     templateUrl: 'deposits-filters.component.html',
     selector: 'dsh-deposits-filters',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class DepositsFiltersComponent implements OnInit, OnChanges {

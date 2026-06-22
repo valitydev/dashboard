@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { PaymentResourcePayer, PaymentSearchResult } from '@vality/swag-anapi-v2';
 import isObject from 'lodash-es/isObject';
 
@@ -8,6 +8,7 @@ import { PaymentAdditionalInfo } from './types/payment-additional-info';
 @Component({
     selector: 'dsh-payment-main-info',
     templateUrl: './payment-main-info.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class PaymentMainInfoComponent {

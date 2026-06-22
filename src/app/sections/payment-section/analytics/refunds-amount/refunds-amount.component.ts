@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { SpinnerType } from '@dsh/components/indicators';
 
@@ -10,6 +10,7 @@ import { RefundsAmountService } from './refunds-amount.service';
     selector: 'dsh-refunds-amount',
     templateUrl: 'refunds-amount.component.html',
     providers: [RefundsAmountService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class RefundsAmountComponent implements OnChanges {

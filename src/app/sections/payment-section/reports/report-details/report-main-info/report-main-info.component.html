@@ -22,7 +22,7 @@
     >
     @if (report?.shopID) {
         <dsh-details-item [title]="t('shop')">
-            {{ report?.shopID | shopDetails }}
+            {{ $safeNavigationMigration(report?.shopID) | shopDetails }}
         </dsh-details-item>
     }
 </div>

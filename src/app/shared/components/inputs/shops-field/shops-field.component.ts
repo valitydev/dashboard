@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
 import { ComponentChanges, FormControlSuperclass, createControlProviders } from '@vality/matez';
 import { Shop } from '@vality/swag-payments';
 import { ReplaySubject, defer } from 'rxjs';
@@ -8,6 +8,7 @@ import { map, shareReplay } from 'rxjs/operators';
     selector: 'dsh-shops-field',
     templateUrl: 'shops-field.component.html',
     providers: createControlProviders(() => ShopsFieldComponent),
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class ShopsFieldComponent extends FormControlSuperclass<Shop['id'][]> implements OnChanges {

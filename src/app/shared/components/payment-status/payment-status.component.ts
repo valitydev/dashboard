@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { PaymentSearchResult } from '@vality/swag-anapi-v2';
 
 import { AnapiDictionaryService } from '@dsh/app/api/anapi';
@@ -10,6 +10,7 @@ import { PAYMENT_STATUS_COLOR } from './payment-status-color';
 @Component({
     selector: 'dsh-payment-status',
     templateUrl: './payment-status.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [CommonModule, StatusModule],
 })
 export class PaymentStatusComponent {

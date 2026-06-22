@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { FormGroupSuperclass, createControlProviders } from '@vality/matez';
 
@@ -8,6 +8,7 @@ import { PaymentSumFilterForm } from './types/payment-sum-filter-form';
     selector: 'dsh-payment-sum-filter',
     templateUrl: './payment-sum-filter.component.html',
     providers: createControlProviders(() => PaymentSumFilterComponent),
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class PaymentSumFilterComponent extends FormGroupSuperclass<Partial<PaymentSumFilterForm>> {

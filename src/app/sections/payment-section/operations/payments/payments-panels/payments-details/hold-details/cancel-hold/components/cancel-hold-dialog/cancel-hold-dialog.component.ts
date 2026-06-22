@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormGroupByValue } from '@vality/matez';
@@ -15,6 +15,7 @@ import { CancelHoldDialogData } from '../../types/cancel-hold-dialog-data';
     selector: 'dsh-cancel-hold-dialog',
     templateUrl: './cancel-hold-dialog.component.html',
     styleUrls: ['./cancel-hold-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class CancelHoldDialogComponent {

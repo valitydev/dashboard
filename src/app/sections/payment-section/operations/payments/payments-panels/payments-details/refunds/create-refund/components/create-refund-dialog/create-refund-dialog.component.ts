@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TranslocoService } from '@jsverse/transloco';
@@ -27,6 +27,7 @@ const MAX_REASON_LENGTH = 100;
     templateUrl: 'create-refund-dialog.component.html',
     styleUrls: ['create-refund-dialog.component.scss'],
     providers: [RefundsService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class CreateRefundDialogComponent implements OnInit {

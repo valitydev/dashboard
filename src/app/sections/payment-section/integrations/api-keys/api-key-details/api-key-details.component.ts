@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { DialogService } from '@vality/matez';
 import { ApiKey } from '@vality/swag-api-keys-v2';
 
@@ -11,6 +11,7 @@ import { ApiKeyDeleteDialogComponent } from './components/api-key-delete-dialog/
 @Component({
     selector: 'dsh-api-key-details',
     templateUrl: 'api-key-details.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class ApiKeyDetailsComponent {

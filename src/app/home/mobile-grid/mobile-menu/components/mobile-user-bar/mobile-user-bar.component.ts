@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
 
 @Component({
     selector: 'dsh-mobile-user-bar',
     templateUrl: './mobile-user-bar.component.html',
     styleUrls: ['./mobile-user-bar.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class MobileUserBarComponent {

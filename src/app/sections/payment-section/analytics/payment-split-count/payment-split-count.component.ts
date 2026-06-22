@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Input, OnChanges } from '@angular/core';
 import { ComponentChanges } from '@vality/matez';
 
 import { SpinnerType } from '@dsh/components/indicators';
@@ -12,6 +12,7 @@ import { PaymentSplitCountService } from './payment-split-count.service';
     selector: 'dsh-payment-split-count',
     templateUrl: 'payment-split-count.component.html',
     providers: [PaymentSplitCountService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class PaymentSplitCountComponent implements OnChanges {

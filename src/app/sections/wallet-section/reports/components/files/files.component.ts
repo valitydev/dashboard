@@ -1,4 +1,4 @@
-import { Component, DestroyRef, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, Input } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService, progressTo } from '@vality/matez';
@@ -13,6 +13,7 @@ import { multipleDownload } from '@dsh/utils';
     selector: 'dsh-files',
     templateUrl: './files.component.html',
     styles: [],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class FilesComponent {

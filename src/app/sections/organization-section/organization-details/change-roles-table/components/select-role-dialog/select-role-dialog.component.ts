@@ -1,4 +1,10 @@
-import { Component, DestroyRef, TemplateRef, ViewChild } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    DestroyRef,
+    TemplateRef,
+    ViewChild,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { DEFAULT_DIALOG_CONFIG, DialogSuperclass, getEnumValues } from '@vality/matez';
 import { Observable, ReplaySubject, combineLatest } from 'rxjs';
@@ -19,6 +25,7 @@ import { RoleAccessesDictionaryService } from './services/role-accesses-dictiona
     selector: 'dsh-select-role-dialog',
     templateUrl: 'select-role-dialog.component.html',
     styleUrls: ['select-role-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class SelectRoleDialogComponent extends DialogSuperclass<

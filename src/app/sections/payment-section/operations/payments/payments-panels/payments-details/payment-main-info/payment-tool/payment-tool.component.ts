@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { PaymentToolDetails } from '@vality/swag-payments';
 
 import { PaymentToolDetailsType } from '@dsh/app/api/payments';
@@ -6,6 +6,7 @@ import { PaymentToolDetailsType } from '@dsh/app/api/payments';
 @Component({
     selector: 'dsh-payment-tool',
     templateUrl: 'payment-tool.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class PaymentToolComponent {

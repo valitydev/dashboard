@@ -1,5 +1,5 @@
 import { Breakpoints } from '@angular/cdk/layout';
-import { Component, DestroyRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
 import { DialogService, QueryParamsService } from '@vality/matez';
@@ -22,6 +22,7 @@ import { API_KEY_STATUS_COLOR } from './types/api-key-status-color';
     templateUrl: 'api-keys.component.html',
     styleUrls: ['api-keys.component.scss'],
     providers: [FetchApiKeysService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class ApiKeysComponent {

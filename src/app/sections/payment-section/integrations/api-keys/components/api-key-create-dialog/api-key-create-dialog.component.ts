@@ -1,6 +1,6 @@
 import { Clipboard, ClipboardModule } from '@angular/cdk/clipboard';
 import { CommonModule } from '@angular/common';
-import { Component, DestroyRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,6 +19,7 @@ import { SpinnerModule } from '@dsh/components/indicators';
     selector: 'dsh-api-key-create-dialog',
     templateUrl: './api-key-create-dialog.component.html',
     styles: [],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         BaseDialogModule,
         SpinnerModule,

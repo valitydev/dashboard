@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { ThemeManager, ThemeName } from '@dsh/app/theme-manager';
 
@@ -6,6 +6,7 @@ import { ThemeManager, ThemeName } from '@dsh/app/theme-manager';
     selector: 'dsh-spinner',
     templateUrl: 'spinner.component.html',
     styleUrls: ['./spinner.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class SpinnerComponent {

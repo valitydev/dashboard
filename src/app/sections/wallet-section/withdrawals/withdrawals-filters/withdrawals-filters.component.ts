@@ -1,4 +1,5 @@
 import {
+    ChangeDetectionStrategy,
     Component,
     DestroyRef,
     EventEmitter,
@@ -30,6 +31,7 @@ const MAIN_FILTERS_KEYS = ['dateRange'];
 @Component({
     selector: 'dsh-withdrawals-filters',
     templateUrl: 'withdrawals-filters.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class WithdrawalsFiltersComponent implements OnInit, OnChanges {

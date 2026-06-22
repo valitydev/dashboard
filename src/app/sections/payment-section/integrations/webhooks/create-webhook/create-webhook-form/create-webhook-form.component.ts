@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { WebhookScope } from '@vality/swag-payments';
 import { BehaviorSubject } from 'rxjs';
@@ -14,6 +14,7 @@ import TopicEnum = WebhookScope.TopicEnum;
 @Component({
     selector: 'dsh-create-webhook-form',
     templateUrl: 'create-webhook-form.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class CreateWebhookFormComponent implements OnInit {

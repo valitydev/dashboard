@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnInit,
+    Output,
+} from '@angular/core';
 import cloneDeep from 'lodash-es/cloneDeep';
 import { ApexAxisChartSeries } from 'ng-apexcharts';
 
@@ -8,6 +15,7 @@ import { DEFAULT_CONFIG } from './default-config';
     selector: 'dsh-donut-chart',
     templateUrl: 'donut-chart.component.html',
     styleUrls: ['donut-chart.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class DonutChartComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { QueryParamsService } from '@vality/matez';
 import { ReplaySubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -15,6 +15,7 @@ import {
 
 @Component({
     templateUrl: 'analytics.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class AnalyticsComponent {

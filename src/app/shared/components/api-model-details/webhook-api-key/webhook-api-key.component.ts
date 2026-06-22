@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService } from '@vality/matez';
 
@@ -6,6 +6,7 @@ import { NotifyLogService } from '@vality/matez';
     selector: 'dsh-webhook-api-key',
     templateUrl: 'webhook-api-key.component.html',
     styleUrls: ['webhook-api-key.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class WebhookApiKeyComponent {

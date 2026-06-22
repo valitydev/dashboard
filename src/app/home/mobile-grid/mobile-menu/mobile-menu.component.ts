@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { SectionLink, SectionsLinksService } from '@dsh/app/shared/services/sections-links';
@@ -7,6 +7,7 @@ import { SectionLink, SectionsLinksService } from '@dsh/app/shared/services/sect
     selector: 'dsh-mobile-menu',
     templateUrl: './mobile-menu.component.html',
     styleUrls: ['./mobile-menu.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class MobileMenuComponent {

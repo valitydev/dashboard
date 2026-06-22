@@ -1,5 +1,5 @@
 import { Breakpoints } from '@angular/cdk/layout';
-import { Component, DestroyRef, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -34,6 +34,7 @@ const REPORT_STATUS_COLOR = {
     selector: 'dsh-reports',
     templateUrl: './reports.component.html',
     providers: [FetchReportsService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class ReportsComponent implements OnInit {

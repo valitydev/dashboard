@@ -1,4 +1,5 @@
 import {
+    ChangeDetectionStrategy,
     Component,
     Inject,
     Input,
@@ -19,6 +20,7 @@ import { PaymentsErrorDistributionService } from './payments-error-distribution.
     templateUrl: 'payments-error-distribution.component.html',
     providers: [PaymentsErrorDistributionService],
     encapsulation: ViewEncapsulation.Emulated,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class PaymentsErrorDistributionComponent implements OnChanges {

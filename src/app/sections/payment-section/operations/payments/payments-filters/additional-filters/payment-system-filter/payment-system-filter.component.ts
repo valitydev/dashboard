@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 import { SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 
@@ -10,6 +10,7 @@ import { PaymentSystem } from '@dsh/app/api/payments';
     templateUrl: './payment-system-filter.component.html',
     styleUrls: ['./payment-system-filter.component.scss'],
     providers: createControlProviders(() => PaymentSystemFilterComponent),
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class PaymentSystemFilterComponent extends FormControlSuperclass<

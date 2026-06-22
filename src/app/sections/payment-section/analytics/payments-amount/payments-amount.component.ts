@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { SpinnerType } from '@dsh/components/indicators';
 
@@ -10,6 +10,7 @@ import { PaymentsAmountService } from './payments-amount.service';
     selector: 'dsh-payments-amount',
     templateUrl: 'payments-amount.component.html',
     providers: [PaymentsAmountService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class PaymentsAmountComponent {

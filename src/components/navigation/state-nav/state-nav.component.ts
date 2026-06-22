@@ -1,4 +1,5 @@
 import {
+    ChangeDetectionStrategy,
     Component,
     ContentChildren,
     EventEmitter,
@@ -18,6 +19,7 @@ import { StateNavItemComponent } from './state-nav-item';
     templateUrl: 'state-nav.component.html',
     styleUrls: ['state-nav.component.scss'],
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class StateNavComponent {

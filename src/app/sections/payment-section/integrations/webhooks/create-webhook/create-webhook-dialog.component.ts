@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { TranslocoService } from '@jsverse/transloco';
 import { NotifyLogService } from '@vality/matez';
@@ -10,6 +10,7 @@ import { CreateWebhookDialogService } from './create-webhook-dialog.service';
     templateUrl: 'create-webhook-dialog.component.html',
     styleUrls: ['create-webhook-dialog.component.scss'],
     providers: [CreateWebhookDialogService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class CreateWebhookDialogComponent implements OnInit {

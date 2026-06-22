@@ -34,6 +34,7 @@ export class CardHeaderComponent {
 @Component({
     selector: 'dsh-card-content',
     template: `<ng-content></ng-content>`,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class CardContentComponent {
@@ -44,6 +45,7 @@ export class CardContentComponent {
     selector: 'dsh-card-actions',
     exportAs: 'dshCardActions',
     template: `<ng-content></ng-content>`,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class CardActionsComponent {

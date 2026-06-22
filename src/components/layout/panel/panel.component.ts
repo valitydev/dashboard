@@ -9,6 +9,7 @@ import {
 @Component({
     selector: 'dsh-panel-content',
     template: `<ng-content></ng-content>`,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class PanelContentComponent {
@@ -18,6 +19,7 @@ export class PanelContentComponent {
 @Component({
     selector: 'dsh-panel-header-icon',
     template: ` <dsh-bi [icon]="icon" class="dsh-panel-header-icon"></dsh-bi> `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class PanelHeaderIconComponent {
@@ -31,6 +33,7 @@ export class PanelHeaderIconComponent {
             <ng-content></ng-content>
         </div>
     `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class PanelHeaderComponent {

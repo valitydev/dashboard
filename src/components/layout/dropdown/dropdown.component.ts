@@ -1,4 +1,5 @@
 import {
+    ChangeDetectionStrategy,
     Component,
     ContentChild,
     EventEmitter,
@@ -26,6 +27,7 @@ const FULL_WIDTH = '99.99%';
     styleUrls: ['dropdown.component.scss'],
     animations: [OPEN_CLOSE_ANIMATION],
     exportAs: 'dshDropdown',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class DropdownComponent implements OnInit, OnDestroy {
