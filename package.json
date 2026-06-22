@@ -71,16 +71,16 @@
     "@angular/language-service": "^22.0.2",
     "@jsverse/transloco-keys-manager": "^8.1.0",
     "@jsverse/transloco-optimize": "^8.3.0",
-    "@schematics/angular": "^21.2.14",
+    "@schematics/angular": "^22.0.3",
     "@types/humanize-duration": "^3.18.0",
     "@types/jasmine": "~5.1.4",
     "@types/lodash-es": "^4.17.12",
     "@vality/ng-configs": "0.1.1-pr-423-667df70.0",
     "angular-eslint": "^22.0.0",
-    "concurrently": "^9.1.0",
-    "cross-env": "^7.0.3",
-    "cspell": "^8.19.4",
-    "dotenv": "^16.6.1",
+    "concurrently": "^10.0.3",
+    "cross-env": "^10.1.0",
+    "cspell": "^10.0.1",
+    "dotenv": "^17.4.2",
     "eslint": "^9.39.4",
     "glob": "^13.0.6",
     "istanbul-lib-instrument": "^6.0.3",
@@ -97,6 +97,6 @@
     "ts-node": "^10.9.2",
     "typescript": "~6.0.3",
     "typescript-eslint": "^8.60.1",
-    "vitest": "^4.0.8"
+    "vitest": "^4.1.9"
   }
 }
