@@ -132,6 +132,7 @@ module.exports = tseslint.config(
             // Temporarily disabled due to issues with standalone components
             '@angular-eslint/prefer-standalone': 'warn',
             '@angular-eslint/prefer-on-push-component-change-detection': 'warn',
+            '@angular-eslint/prefer-inject': 'warn',
         },
     },
     {

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { Configuration } from '@vality/swag-anapi-v2';
 
 import { ConfigService } from '../../config';
