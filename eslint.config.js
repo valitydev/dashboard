@@ -26,7 +26,8 @@ module.exports = tseslint.config(
                     style: 'kebab-case',
                 },
             ],
-            '@angular-eslint/prefer-inject': 'off',
+            '@angular-eslint/prefer-on-push-component-change-detection': 'warn',
+            '@angular-eslint/prefer-inject': 'warn',
         },
     },
     {
