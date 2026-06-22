@@ -28,6 +28,7 @@ export abstract class FilterSuperclass<
         return !this.isEmpty(this._savedValue$.getValue());
     }
 
+    // eslint-disable-next-line @typescript-eslint/class-literal-property-style
     protected get empty(): Inner {
         return null;
     }

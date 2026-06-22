@@ -98,7 +98,9 @@ export class MaxLengthInputComponent implements OnChanges, ControlValueAccessor 
         this.formControl.setValue(value);
     }
 
-    private innerOnTouched = () => {};
+    private innerOnTouched = () => {
+        /* empty */
+    };
 
     private updateValidators(): void {
         const validators: ValidatorFn[] = [];
