@@ -1,12 +1,12 @@
+import { FlexLayoutModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { TRANSLOCO_SCOPE, TranslocoModule } from '@jsverse/transloco';
-import { FlexLayoutModule } from 'ng-flex-layout';
-
 import { AuthModule } from '@dsh/app/auth';
 import { RouteNavbarLayoutModule } from '@dsh/app/shared/components/route-navbar-layout';
 import { NavbarItemModule } from '@dsh/components/navigation';
+import { TRANSLOCO_SCOPE, TranslocoModule } from '@jsverse/transloco';
 
 import { BalancesModule } from './balances';
 import { NoShopsAlertModule } from './no-shops-alert';

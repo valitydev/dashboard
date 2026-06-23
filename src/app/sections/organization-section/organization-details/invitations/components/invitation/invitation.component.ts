@@ -1,3 +1,5 @@
+import { filter, switchMap } from 'rxjs/operators';
+
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,14 +10,13 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogResponse, DialogResponseStatus } from '@vality/matez';
-import { Invitation, Organization, RevokeInvitationRequest } from '@vality/swag-organizations';
-import { filter, switchMap } from 'rxjs/operators';
-
 import { InvitationsService } from '@dsh/app/api/organizations';
 import { ErrorService, NotificationService } from '@dsh/app/shared';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 import { ignoreBeforeCompletion } from '@dsh/utils';
+
+import { DialogResponse, DialogResponseStatus } from '@vality/matez';
+import { Invitation, Organization, RevokeInvitationRequest } from '@vality/swag-organizations';
 
 @Component({
     selector: 'dsh-invitation',

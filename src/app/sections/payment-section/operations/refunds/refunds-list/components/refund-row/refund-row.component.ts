@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { RefundSearchResult } from '@vality/swag-anapi-v2';
-
 import { AnapiDictionaryService } from '@dsh/app/api/anapi';
+
+import { RefundSearchResult } from '@vality/swag-anapi-v2';
 
 @Component({
     selector: 'dsh-refund-row',

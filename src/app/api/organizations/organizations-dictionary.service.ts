@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
+
 import { ResourceScopeId } from '@vality/swag-organizations';
 
 import { RoleId } from '../../auth/types/role-id';

@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
 
 @Component({
     templateUrl: 'integrations.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class IntegrationsComponent {

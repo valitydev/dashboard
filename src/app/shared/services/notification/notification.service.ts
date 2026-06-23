@@ -1,7 +1,9 @@
+import { Observable } from 'rxjs';
+
 import { Injectable } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
+
 import { NotifyLogService } from '@vality/matez';
-import { Observable } from 'rxjs';
 
 @Injectable()
 /**

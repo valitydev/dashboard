@@ -1,12 +1,13 @@
-import { Component, DestroyRef, Input, OnInit } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { WebhookScope } from '@vality/swag-wallets';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { ChangeDetectionStrategy, Component, DestroyRef, Input, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { WalletDictionaryService } from '@dsh/app/api/wallet';
 import { oneMustBeSelected } from '@dsh/components/form-controls';
+
+import { WebhookScope } from '@vality/swag-wallets';
 
 import { getEventsByTopic } from '../get-events-by-topic';
 
@@ -15,6 +16,7 @@ import TopicEnum = WebhookScope.TopicEnum;
 @Component({
     selector: 'dsh-create-webhook-form',
     templateUrl: 'create-webhook-form.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class CreateWebhookFormComponent implements OnInit {

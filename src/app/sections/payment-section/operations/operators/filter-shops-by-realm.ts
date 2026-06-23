@@ -1,8 +1,9 @@
-import { PaymentInstitution, Shop } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 
 import { toLiveShops, toTestShops } from '@dsh/app/api/payments';
+
+import { PaymentInstitution, Shop } from '@vality/swag-payments';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 

@@ -30,6 +30,7 @@ export class RowComponent {
 @Component({
     selector: 'dsh-row-header-label',
     template: `<ng-content></ng-content>`,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class RowHeaderLabelComponent {
@@ -39,6 +40,7 @@ export class RowHeaderLabelComponent {
 @Component({
     selector: 'dsh-row-label',
     template: `<ng-content></ng-content>`,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class RowLabelComponent {

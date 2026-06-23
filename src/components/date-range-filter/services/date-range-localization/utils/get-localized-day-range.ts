@@ -1,5 +1,6 @@
-import { DateRange } from '@angular/material/datepicker';
 import { Moment } from 'moment';
+
+import { DateRange } from '@angular/material/datepicker';
 
 import { capitalizeFirstLetter } from './capitilize-first-letter';
 import { isCurrentYear } from './get-date-range-current-type';

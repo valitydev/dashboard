@@ -1,4 +1,8 @@
+import { BehaviorSubject, Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
+
 import {
+    ChangeDetectionStrategy,
     Component,
     ContentChild,
     EventEmitter,
@@ -10,8 +14,6 @@ import {
     ViewChild,
     booleanAttribute,
 } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
 
 import { OPEN_CLOSE_ANIMATION, State } from './open-close-animation';
 
@@ -26,6 +28,7 @@ const FULL_WIDTH = '99.99%';
     styleUrls: ['dropdown.component.scss'],
     animations: [OPEN_CLOSE_ANIMATION],
     exportAs: 'dshDropdown',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class DropdownComponent implements OnInit, OnDestroy {

@@ -1,11 +1,11 @@
+import { FlexLayoutModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { TranslocoModule } from '@jsverse/transloco';
-import { FlexLayoutModule } from 'ng-flex-layout';
-
 import { BootstrapIconModule } from '@dsh/components/indicators';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { ReportFileComponent } from './report-file';
 import { ReportFilesComponent } from './report-files.component';

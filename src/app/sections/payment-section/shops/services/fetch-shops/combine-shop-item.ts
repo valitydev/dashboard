@@ -1,5 +1,6 @@
-import { Shop as ApiShop } from '@vality/swag-payments';
 import isNil from 'lodash-es/isNil';
+
+import { Shop as ApiShop } from '@vality/swag-payments';
 
 import { ShopBalance } from '../../types/shop-balance';
 import { ShopItem } from '../../types/shop-item';

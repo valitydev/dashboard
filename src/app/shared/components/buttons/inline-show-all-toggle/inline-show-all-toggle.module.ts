@@ -1,7 +1,7 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { BootstrapIconModule } from '@dsh/components/indicators';
 
 import { InlineShowAllToggleComponent } from './inline-show-all-toggle.component';

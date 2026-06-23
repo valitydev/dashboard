@@ -1,3 +1,6 @@
+import { Observable } from 'rxjs';
+import { map, pluck } from 'rxjs/operators';
+
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import {
     ChangeDetectionStrategy,
@@ -9,11 +12,9 @@ import {
     ViewChild,
 } from '@angular/core';
 import { MatSlideToggle, MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { ComponentChanges } from '@vality/matez';
-import { Observable } from 'rxjs';
-import { map, pluck } from 'rxjs/operators';
-
 import { BootstrapIconSize } from '@dsh/components/indicators/bootstrap-icon';
+
+import { ComponentChanges } from '@vality/matez';
 
 @Component({
     selector: 'dsh-navbar-item',

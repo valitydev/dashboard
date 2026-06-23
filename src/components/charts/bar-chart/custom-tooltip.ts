@@ -1,5 +1,6 @@
-import { formatNumber } from '@angular/common';
 import { locale } from 'moment';
+
+import { formatNumber } from '@angular/common';
 
 const getGetTooltipTitle = (x: string | null): string =>
     x.includes('hide') || x.includes('show') ? x.split('#')[0] : x;

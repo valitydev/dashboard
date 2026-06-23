@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { ShopsService as ApiShopsService } from '@vality/swag-payments';
 
 import { createApi } from '../utils';

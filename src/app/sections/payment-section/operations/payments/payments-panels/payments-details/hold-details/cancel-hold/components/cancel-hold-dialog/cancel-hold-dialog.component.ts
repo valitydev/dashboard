@@ -1,11 +1,11 @@
-import { Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormGroupByValue } from '@vality/matez';
-
 import { PaymentsService } from '@dsh/app/api/payments';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services';
+
+import { FormGroupByValue } from '@vality/matez';
 
 import { CreateRefundForm } from '../../../../refunds/create-refund/types/create-refund-form';
 import { MAX_REASON_LENGTH } from '../../../consts';
@@ -15,6 +15,7 @@ import { CancelHoldDialogData } from '../../types/cancel-hold-dialog-data';
     selector: 'dsh-cancel-hold-dialog',
     templateUrl: './cancel-hold-dialog.component.html',
     styleUrls: ['./cancel-hold-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class CancelHoldDialogComponent {

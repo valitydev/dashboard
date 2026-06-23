@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-
 import { BootstrapIconModule } from '@dsh/components/indicators';
 
 import { ScrollUpComponent } from './scroll-up.component';

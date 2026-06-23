@@ -1,13 +1,13 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { SpinnerModule } from '@dsh/components/indicators';
 import { LastUpdatedModule } from '@dsh/components/indicators/last-updated/last-updated.module';
 import { AccordionModule, CardModule, RowModule } from '@dsh/components/layout';
 import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { ShopRowComponent } from './components/shop-row/shop-row.component';
 import { ShopRowHeaderComponent } from './components/shop-row-header/shop-row-header.component';

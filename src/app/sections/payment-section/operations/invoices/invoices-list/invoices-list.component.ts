@@ -1,9 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { Invoice } from '@vality/swag-anapi-v2';
 
 @Component({
     selector: 'dsh-invoices-list',
     templateUrl: 'invoices-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class InvoicesListComponent {

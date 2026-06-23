@@ -1,6 +1,3 @@
-import { DestroyRef, Injectable, inject } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Router } from '@angular/router';
 import isNil from 'lodash-es/isNil';
 import { Observable, Subject, of } from 'rxjs';
 import {
@@ -14,6 +11,10 @@ import {
     withLatestFrom,
 } from 'rxjs/operators';
 
+import { DestroyRef, Injectable, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { DatasetItemId } from './types/dataset-item-id';
 
 export type ExpandedId = number;
@@ -25,7 +26,7 @@ const DATA_SET_EMIT_LIMIT = 10;
 export abstract class ExpandedIdManager<T extends DatasetItemId> {
     expandedId$: Observable<ExpandedId>;
 
-    private expandedIdChange$: Subject<ExpandedId> = new Subject();
+    private expandedIdChange$ = new Subject<ExpandedId>();
     private dr = inject(DestroyRef);
 
     constructor(

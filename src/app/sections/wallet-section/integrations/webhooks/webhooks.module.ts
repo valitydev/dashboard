@@ -1,11 +1,11 @@
+import { FlexModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { TranslocoModule } from '@jsverse/transloco';
-import { FlexModule } from 'ng-flex-layout';
-
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
 import { SpinnerModule } from '@dsh/components/indicators';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { CreateWebhookModule } from './create-webhook';
 import { ReceiveWebhooksService } from './receive-webhooks.service';

@@ -1,3 +1,14 @@
+import { combineLatest, merge, of } from 'rxjs';
+import {
+    delay,
+    distinctUntilChanged,
+    filter,
+    map,
+    startWith,
+    switchMap,
+    take,
+} from 'rxjs/operators';
+
 import {
     AfterViewInit,
     ChangeDetectionStrategy,
@@ -9,16 +20,6 @@ import {
     QueryList,
     ViewContainerRef,
 } from '@angular/core';
-import { combineLatest, merge, of } from 'rxjs';
-import {
-    delay,
-    distinctUntilChanged,
-    filter,
-    map,
-    startWith,
-    switchMap,
-    take,
-} from 'rxjs/operators';
 
 import { smoothChangeTo } from '../../../utils';
 
@@ -108,6 +109,7 @@ export class AccordionComponent implements AfterViewInit {
     }
 
     private toggle(idx: number, isExpand: boolean) {
+        // eslint-disable-next-line no-useless-assignment
         let expanded = idx;
         if (isExpand) {
             this.accordionItems

@@ -1,5 +1,6 @@
-import { FormControl, ValidatorFn } from '@angular/forms';
 import isNil from 'lodash-es/isNil';
+
+import { FormControl, ValidatorFn } from '@angular/forms';
 
 import { DEPOSIT_STATUSES_LIST } from '../consts';
 import { DepositStatusFilterValue } from '../types/deposit-status-filter-value';

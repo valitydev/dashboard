@@ -1,5 +1,11 @@
-import { Component, Inject, Input, OnChanges, SimpleChanges } from '@angular/core';
-
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Inject,
+    Input,
+    OnChanges,
+    SimpleChanges,
+} from '@angular/core';
 import { SpinnerType } from '@dsh/components/indicators';
 
 import { CHARTS_THEME, ChartsThemeProvider } from '../charts-theme';
@@ -11,6 +17,7 @@ import { PaymentSplitAmountService } from './payment-split-amount.service';
     selector: 'dsh-payment-split-amount',
     templateUrl: 'payment-split-amount.component.html',
     providers: [PaymentSplitAmountService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class PaymentSplitAmountComponent implements OnChanges {

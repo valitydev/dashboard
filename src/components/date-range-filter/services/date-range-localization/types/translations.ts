@@ -7,4 +7,4 @@ export const DATE_RANGE_WORDS = [
     'year',
 ] as const;
 
-export type DateRangeTranslations = { [K in (typeof DATE_RANGE_WORDS)[number]]: string };
+export type DateRangeTranslations = Record<(typeof DATE_RANGE_WORDS)[number], string>;

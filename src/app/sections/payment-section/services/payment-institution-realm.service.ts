@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { PaymentInstitution } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+
+import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { PaymentInstitution } from '@vality/swag-payments';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 

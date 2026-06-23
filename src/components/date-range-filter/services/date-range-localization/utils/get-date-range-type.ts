@@ -1,5 +1,6 @@
-import { DateRange } from '@angular/material/datepicker';
 import { Moment } from 'moment';
+
+import { DateRange } from '@angular/material/datepicker';
 
 export const isYearsRange = ({ start, end }: DateRange<Moment>): boolean =>
     start.isSame(start.clone().startOf('year'), 'day') &&

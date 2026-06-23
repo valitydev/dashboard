@@ -1,3 +1,5 @@
+import { filter, map } from 'rxjs/operators';
+
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,13 +10,12 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { TranslocoService } from '@jsverse/transloco';
-import { Organization } from '@vality/swag-organizations';
-import { filter, map } from 'rxjs/operators';
-
 import { DIALOG_CONFIG, DialogConfig } from '@dsh/app/sections/tokens';
 import { ContextOrganizationService } from '@dsh/app/shared';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
+import { TranslocoService } from '@jsverse/transloco';
+
+import { Organization } from '@vality/swag-organizations';
 
 import { KeycloakService } from '../../../../auth';
 import { ConfigService } from '../../../../config';

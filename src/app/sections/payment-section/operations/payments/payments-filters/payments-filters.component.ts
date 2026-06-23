@@ -1,4 +1,13 @@
+import isEmpty from 'lodash-es/isEmpty';
+import negate from 'lodash-es/negate';
+import omit from 'lodash-es/omit';
+import pick from 'lodash-es/pick';
+import { MediaObserver } from 'ng-flex-layout';
+import { BehaviorSubject, ReplaySubject, combineLatest, defer } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
+
 import {
+    ChangeDetectionStrategy,
     Component,
     DestroyRef,
     EventEmitter,
@@ -10,19 +19,12 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AbstractControl, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ComponentChanges } from '@vality/matez';
-import { PaymentInstitution, Shop } from '@vality/swag-payments';
-import isEmpty from 'lodash-es/isEmpty';
-import negate from 'lodash-es/negate';
-import omit from 'lodash-es/omit';
-import pick from 'lodash-es/pick';
-import { MediaObserver } from 'ng-flex-layout';
-import { BehaviorSubject, ReplaySubject, combineLatest, defer } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-
 import { ShopsDataService } from '@dsh/app/shared';
 import { DateRange, Preset, createDateRangeWithPreset } from '@dsh/components/date-range-filter';
 import { getFormValueChanges } from '@dsh/utils';
+
+import { ComponentChanges } from '@vality/matez';
+import { PaymentInstitution, Shop } from '@vality/swag-payments';
 
 import { filterShopsByRealm } from '../../operators';
 
@@ -32,12 +34,12 @@ import { CardBinPan } from './card-bin-pan-filter';
 
 import RealmEnum = PaymentInstitution.RealmEnum;
 
-type MainFilters = {
+interface MainFilters {
     dateRange: DateRange;
     invoiceIDs?: string[];
     shopIDs?: Shop['id'][];
     binPan?: CardBinPan;
-};
+}
 export type Filters = MainFilters & AdditionalFilters & FloatingFilters;
 
 const MAIN_FILTERS = ['dateRange'];
@@ -46,6 +48,7 @@ const FLOATING_FILTERS = ['invoiceIDs', 'shopIDs', 'binPan'];
 @Component({
     selector: 'dsh-payments-filters',
     templateUrl: 'payments-filters.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class PaymentsFiltersComponent implements OnInit, OnChanges {

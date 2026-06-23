@@ -1,4 +1,8 @@
+import { switchMap } from 'rxjs';
+import { first } from 'rxjs/operators';
+
 import {
+    ChangeDetectionStrategy,
     Component,
     DestroyRef,
     EventEmitter,
@@ -10,23 +14,23 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService } from '@jsverse/transloco';
+
 import { Report } from '@vality/swag-anapi-v2';
-import { switchMap } from 'rxjs';
-import { first } from 'rxjs/operators';
 
 import { CancelReportService } from '../cancel-report';
 
 @Component({
     selector: 'dsh-reports-list',
     templateUrl: 'reports-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class ReportsListComponent implements OnInit, OnDestroy {
     @Input() reports: Report[];
     @Input() expandedId: number;
     @Input() lastUpdated: string;
-    @Output() expandedIdChange: EventEmitter<number> = new EventEmitter();
-    @Output() refreshData: EventEmitter<void> = new EventEmitter();
+    @Output() expandedIdChange = new EventEmitter<number>();
+    @Output() refreshData = new EventEmitter<void>();
 
     constructor(
         private cancelReportService: CancelReportService,

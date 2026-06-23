@@ -1,4 +1,13 @@
+import isEmpty from 'lodash-es/isEmpty';
+import isEqual from 'lodash-es/isEqual';
+import negate from 'lodash-es/negate';
+import omit from 'lodash-es/omit';
+import pick from 'lodash-es/pick';
+import { ReplaySubject, combineLatest, defer } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
+
 import {
+    ChangeDetectionStrategy,
     Component,
     DestroyRef,
     EventEmitter,
@@ -10,17 +19,10 @@ import {
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ComponentChanges } from '@vality/matez';
-import isEmpty from 'lodash-es/isEmpty';
-import isEqual from 'lodash-es/isEqual';
-import negate from 'lodash-es/negate';
-import omit from 'lodash-es/omit';
-import pick from 'lodash-es/pick';
-import { ReplaySubject, combineLatest, defer } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
-
 import { Preset, createDateRangeWithPreset } from '@dsh/components/date-range-filter';
 import { getFormValueChanges } from '@dsh/utils';
+
+import { ComponentChanges } from '@vality/matez';
 
 import { AdditionalFilters, DialogFiltersComponent } from './additional-filters';
 import { MainFilters, WithdrawalsFilters } from './types';
@@ -30,6 +32,7 @@ const MAIN_FILTERS_KEYS = ['dateRange'];
 @Component({
     selector: 'dsh-withdrawals-filters',
     templateUrl: 'withdrawals-filters.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class WithdrawalsFiltersComponent implements OnInit, OnChanges {

@@ -1,6 +1,7 @@
-import { Params } from '@angular/router';
 import isEmpty from 'lodash-es/isEmpty';
 import isNil from 'lodash-es/isNil';
+
+import { Params } from '@angular/router';
 
 export function queryParamsToStr(params: Params): string {
     return Object.entries(params)

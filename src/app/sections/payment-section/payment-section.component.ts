@@ -1,12 +1,13 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, isDevMode } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Router } from '@angular/router';
-import { TranslocoService } from '@jsverse/transloco';
-import { PaymentInstitution } from '@vality/swag-payments';
 import { Observable, ReplaySubject, Subject, combineLatest, defer } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, isDevMode } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SHOPS } from '@dsh/app/shared/components/inputs/shop-field';
+import { TranslocoService } from '@jsverse/transloco';
+
+import { PaymentInstitution } from '@vality/swag-payments';
 
 import { PaymentInstitutionRealmService, RealmShopsService } from './services';
 import { NavbarItemConfig, toNavbarItemConfig } from './utils';

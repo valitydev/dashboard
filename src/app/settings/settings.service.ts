@@ -6,7 +6,7 @@ export class SettingsService {
         localStorage.setItem(this.getKeyName(key), value);
     }
 
-    setLocalStorageAllItems(keyValue: { [name: string]: string }) {
+    setLocalStorageAllItems(keyValue: Record<string, string>) {
         for (const [k, v] of Object.entries(keyValue)) {
             this.setLocalStorageItem(k, v);
         }
@@ -20,7 +20,7 @@ export class SettingsService {
         sessionStorage.setItem(this.getKeyName(key), value);
     }
 
-    setSessionStorageAllItems(keyValue: { [name: string]: string }) {
+    setSessionStorageAllItems(keyValue: Record<string, string>) {
         for (const [k, v] of Object.entries(keyValue)) {
             this.setSessionStorageItem(k, v);
         }

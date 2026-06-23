@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Params } from '@angular/router';
-
 import { QueryParamsStore } from '@dsh/app/shared/services';
 
 import { ShopFiltersData } from '../../types/shop-filters-data';

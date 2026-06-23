@@ -1,7 +1,8 @@
-import { PaymentInstitution } from '@vality/swag-payments';
 import moment from 'moment';
 
 import { Preset } from '@dsh/components/date-range-filter';
+
+import { PaymentInstitution } from '@vality/swag-payments';
 
 import { Filters } from '../analytics-search-filters/analytics-search-filters.component';
 import { SearchParams } from '../search-params';

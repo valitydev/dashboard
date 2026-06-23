@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { FormGroupSuperclass, createControlProviders } from '@vality/matez';
-
 import { binValidator, panValidator } from '@dsh/components/form-controls';
+
+import { FormGroupSuperclass, createControlProviders } from '@vality/matez';
 
 import { CardFilterForm } from './types';
 

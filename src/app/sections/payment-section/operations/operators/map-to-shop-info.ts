@@ -1,6 +1,7 @@
-import { Shop } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { Shop } from '@vality/swag-payments';
 
 export interface ShopInfo {
     shopID: string;

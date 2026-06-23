@@ -1,9 +1,9 @@
-import { Component, DestroyRef, Inject } from '@angular/core';
+import { filter, first, shareReplay, switchMap } from 'rxjs/operators';
+
+import { ChangeDetectionStrategy, Component, DestroyRef, Inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { filter, first, shareReplay, switchMap } from 'rxjs/operators';
-
 import { OrgsService } from '@dsh/app/api/organizations';
 import { DIALOG_CONFIG, DialogConfig } from '@dsh/app/sections/tokens';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
@@ -18,6 +18,7 @@ import { InvitationsExpandedIdManager } from './services/invitations-expanded-id
     selector: 'dsh-invitations',
     templateUrl: './invitations.component.html',
     providers: [FetchInvitationsService, InvitationsExpandedIdManager],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class InvitationsComponent {

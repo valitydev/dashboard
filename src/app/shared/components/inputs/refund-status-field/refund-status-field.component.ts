@@ -1,8 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
-import { RefundStatus } from '@vality/swag-anapi-v2';
 import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
+import { RefundStatus } from '@vality/swag-anapi-v2';
 
 import { RefundStatusLabelPipe } from './pipes/refund-status-label.pipe';
 import { OPTION_LABELS } from './types/option-labels';

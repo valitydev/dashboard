@@ -1,3 +1,5 @@
+import { FlexLayoutModule } from 'ng-flex-layout';
+
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -7,14 +9,12 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 import { RouterModule } from '@angular/router';
-import { TranslocoModule } from '@jsverse/transloco';
-import { FlexLayoutModule } from 'ng-flex-layout';
-
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { FetchOrganizationsModule } from '@dsh/app/shared/services/fetch-organizations';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { DropdownModule } from '@dsh/components/layout';
 import { LimitedPanelComponent } from '@dsh/components/layout/limited-panel/limited-panel.component';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { ActionbarComponent } from './actionbar.component';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';

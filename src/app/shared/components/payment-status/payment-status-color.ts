@@ -4,7 +4,7 @@ import { StatusColor } from '../../../theme-manager';
 
 import Status = PaymentSearchResult.StatusEnum;
 
-export const PAYMENT_STATUS_COLOR: { [N in Status]: StatusColor } = {
+export const PAYMENT_STATUS_COLOR: Record<Status, StatusColor> = {
     processed: StatusColor.Success,
     failed: StatusColor.Warn,
     refunded: StatusColor.Neutral,

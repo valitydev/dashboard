@@ -1,6 +1,7 @@
-import { AsyncValidatorFn, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
+
+import { AsyncValidatorFn, FormControl } from '@angular/forms';
 
 export const maxAvailableAmountValidator = (
     availableAmount$: Observable<number>,

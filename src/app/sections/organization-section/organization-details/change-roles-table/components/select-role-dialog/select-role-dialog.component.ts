@@ -1,9 +1,14 @@
-import { Component, DestroyRef, TemplateRef, ViewChild } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { DEFAULT_DIALOG_CONFIG, DialogSuperclass, getEnumValues } from '@vality/matez';
 import { Observable, ReplaySubject, combineLatest } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 
+import {
+    ChangeDetectionStrategy,
+    Component,
+    DestroyRef,
+    TemplateRef,
+    ViewChild,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { OrganizationsDictionaryService } from '@dsh/app/api/organizations';
 import { ROLE_ACCESS_GROUPS, RoleAccessGroup } from '@dsh/app/auth';
 import { RoleId } from '@dsh/app/auth/types/role-id';
@@ -13,12 +18,15 @@ import {
 } from '@dsh/app/shared/components/organization-roles/utils/sort-role-ids';
 import { NestedTableColumn, NestedTableNode } from '@dsh/components/nested-table';
 
+import { DEFAULT_DIALOG_CONFIG, DialogSuperclass, getEnumValues } from '@vality/matez';
+
 import { RoleAccessesDictionaryService } from './services/role-accesses-dictionary.service';
 
 @Component({
     selector: 'dsh-select-role-dialog',
     templateUrl: 'select-role-dialog.component.html',
     styleUrls: ['select-role-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class SelectRoleDialogComponent extends DialogSuperclass<

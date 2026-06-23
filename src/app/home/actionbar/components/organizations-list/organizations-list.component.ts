@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { map } from 'rxjs/operators';
 
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FetchOrganizationsService } from '@dsh/app/shared/services/fetch-organizations';
 
 @Component({

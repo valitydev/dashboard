@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
-import { createControlProviders } from '@vality/matez';
-
 import { FilterSuperclass } from '@dsh/components/filter';
+
+import { createControlProviders } from '@vality/matez';
 
 @Component({
     selector: 'dsh-invoices-filter',

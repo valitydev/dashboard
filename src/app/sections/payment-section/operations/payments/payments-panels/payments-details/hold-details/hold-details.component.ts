@@ -1,9 +1,17 @@
-import { Component, DestroyRef, EventEmitter, Input, Output } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { PaymentFlowHold, PaymentSearchResult } from '@vality/swag-anapi-v2';
 import { filter } from 'rxjs/operators';
 
+import {
+    ChangeDetectionStrategy,
+    Component,
+    DestroyRef,
+    EventEmitter,
+    Input,
+    Output,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
+
+import { PaymentFlowHold, PaymentSearchResult } from '@vality/swag-anapi-v2';
 
 import { PaymentIds } from '../../../types/payment-ids';
 
@@ -14,6 +22,7 @@ import { CreateHoldService } from './create-hold';
     selector: 'dsh-hold-details',
     templateUrl: './hold-details.component.html',
     styleUrls: ['./hold-details.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class HoldDetailsComponent {

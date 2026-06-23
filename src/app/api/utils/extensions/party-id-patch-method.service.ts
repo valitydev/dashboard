@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
 import cloneDeep from 'lodash-es/cloneDeep';
 import { Observable, switchMap } from 'rxjs';
 import { DeepPartial } from 'utility-types';
+
+import { Injectable } from '@angular/core';
 
 import { PartyIdExtension } from './party-id-extension';
 

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { Configuration } from '@vality/swag-wallets';
 
 import { ConfigService } from '../../config';

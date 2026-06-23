@@ -1,6 +1,7 @@
-import { Serializer } from '@vality/matez';
 import isNil from 'lodash-es/isNil';
 import moment from 'moment';
+
+import { Serializer } from '@vality/matez';
 
 import { DateRangeWithPreset } from '../types/date-range-with-preset';
 import { Preset } from '../types/preset';
@@ -33,7 +34,9 @@ export function createDateRangeWithPresetSerializer(id = 'dr'): Serializer<DateR
         },
         recognize: (v) =>
             typeof v === 'object' &&
+            // eslint-disable-next-line no-prototype-builtins
             v.hasOwnProperty('start') &&
+            // eslint-disable-next-line no-prototype-builtins
             v.hasOwnProperty('end') &&
             (isNil(v.start) || moment.isMoment(v.start)) &&
             (isNil(v.end) || moment.isMoment(v.end)),

@@ -1,3 +1,7 @@
+import isNil from 'lodash-es/isNil';
+import isObject from 'lodash-es/isObject';
+import { skip } from 'rxjs/operators';
+
 import {
     ChangeDetectionStrategy,
     Component,
@@ -15,13 +19,10 @@ import {
     ValidatorFn,
     Validators,
 } from '@angular/forms';
-import { ComponentChanges } from '@vality/matez';
-import isNil from 'lodash-es/isNil';
-import isObject from 'lodash-es/isObject';
-import { skip } from 'rxjs/operators';
-
 import { ComponentInputError } from '@dsh/app/shared/services/error/models/component-input-error';
 import { ErrorMatcher } from '@dsh/app/shared/utils';
+
+import { ComponentChanges } from '@vality/matez';
 
 @Component({
     selector: 'dsh-max-length-input',
@@ -97,7 +98,9 @@ export class MaxLengthInputComponent implements OnChanges, ControlValueAccessor 
         this.formControl.setValue(value);
     }
 
-    private innerOnTouched = () => {};
+    private innerOnTouched = () => {
+        /* empty */
+    };
 
     private updateValidators(): void {
         const validators: ValidatorFn[] = [];

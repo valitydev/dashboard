@@ -1,3 +1,5 @@
+import { ExtendedModule, FlexModule, GridModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -9,9 +11,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { TranslocoModule } from '@jsverse/transloco';
-import { ExtendedModule, FlexModule, GridModule } from 'ng-flex-layout';
-
 import { ApiModelRefsModule } from '@dsh/app/shared';
 import { AccordionTableModule } from '@dsh/app/shared/components/accordion-table';
 import { DialogModule } from '@dsh/app/shared/components/dialog';
@@ -20,6 +19,7 @@ import { FilterModule } from '@dsh/components/filter';
 import { FiltersGroupModule } from '@dsh/components/filters-group';
 import { BootstrapIconModule, StatusModule } from '@dsh/components/indicators';
 import { DetailsItemModule } from '@dsh/components/layout';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { CreateReportDialogComponent } from './components/create-report-dialog/create-report-dialog.component';
 import { FilesComponent } from './components/files/files.component';

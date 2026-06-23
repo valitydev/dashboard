@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { TranslocoService } from '@jsverse/transloco';
 import { Observable, Subject } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
+
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { TranslocoService } from '@jsverse/transloco';
 
 import { NavbarItemConfig, toNavbarItemConfig } from './utils';
 

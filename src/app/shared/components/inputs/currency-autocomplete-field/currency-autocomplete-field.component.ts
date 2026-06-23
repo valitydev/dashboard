@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
-import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
-
 import { ConfigService } from '@dsh/app/config';
+
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
 
 @Component({
     selector: 'dsh-currency-autocomplete-field',

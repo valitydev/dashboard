@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, DestroyRef, Inject } from '@angular
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Shop } from '@vality/swag-payments';
-
 import { InvoicesService } from '@dsh/app/api/payments';
+
+import { Shop } from '@vality/swag-payments';
 
 import { CreateInvoiceDialogResponse } from '../../types/create-invoice-dialog-response';
 

@@ -1,4 +1,5 @@
 import {
+    ChangeDetectionStrategy,
     Component,
     Inject,
     Input,
@@ -6,7 +7,6 @@ import {
     SimpleChanges,
     ViewEncapsulation,
 } from '@angular/core';
-
 import { SpinnerType } from '@dsh/components/indicators';
 
 import { CHARTS_THEME, ChartsThemeProvider } from '../charts-theme';
@@ -19,6 +19,7 @@ import { PaymentsErrorDistributionService } from './payments-error-distribution.
     templateUrl: 'payments-error-distribution.component.html',
     providers: [PaymentsErrorDistributionService],
     encapsulation: ViewEncapsulation.Emulated,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class PaymentsErrorDistributionComponent implements OnChanges {

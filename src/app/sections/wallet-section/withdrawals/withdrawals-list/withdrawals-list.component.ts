@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+
 import { Withdrawal } from '@vality/swag-wallets';
 
 @Component({

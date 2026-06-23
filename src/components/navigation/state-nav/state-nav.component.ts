@@ -1,4 +1,7 @@
+import { Subscription } from 'rxjs';
+
 import {
+    ChangeDetectionStrategy,
     Component,
     ContentChildren,
     EventEmitter,
@@ -9,7 +12,6 @@ import {
     ViewEncapsulation,
     booleanAttribute,
 } from '@angular/core';
-import { Subscription } from 'rxjs';
 
 import { StateNavItemComponent } from './state-nav-item';
 
@@ -18,6 +20,7 @@ import { StateNavItemComponent } from './state-nav-item';
     templateUrl: 'state-nav.component.html',
     styleUrls: ['state-nav.component.scss'],
     encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class StateNavComponent {

@@ -1,12 +1,13 @@
-import { Inject, Injectable } from '@angular/core';
-import { RefundSearchResult, SearchRefundsRequestParams } from '@vality/swag-anapi-v2';
 import moment from 'moment';
 import { Observable, switchMap } from 'rxjs';
 import { first, shareReplay } from 'rxjs/operators';
 
+import { Inject, Injectable } from '@angular/core';
 import { SearchService } from '@dsh/app/api/anapi';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME, PartialFetcher } from '@dsh/app/shared';
+
+import { RefundSearchResult, SearchRefundsRequestParams } from '@vality/swag-anapi-v2';
 
 import { PaymentInstitutionRealmService } from '../../../../../../../services';
 

@@ -7,5 +7,5 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
     standalone: false,
 })
 export class AccordionItemContentHeaderComponent {
-    @Output() collapse: EventEmitter<MouseEvent> = new EventEmitter();
+    @Output() collapse = new EventEmitter<MouseEvent>();
 }

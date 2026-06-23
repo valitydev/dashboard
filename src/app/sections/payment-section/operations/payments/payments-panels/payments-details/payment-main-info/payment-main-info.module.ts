@@ -1,13 +1,13 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { PaymentStatusComponent } from '@dsh/app/shared/components/payment-status';
 import { AmountCurrencyModule, ApiModelRefsModule } from '@dsh/app/shared/pipes';
 import { StatusModule } from '@dsh/components/indicators';
 import { DetailsItemModule } from '@dsh/components/layout';
 import { CollapseModule } from '@dsh/components/layout/collapse';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { AdditionalInfoComponent } from './components/additional-info/additional-info.component';
 import { ChargeAmountComponent } from './components/charge-amount/charge-amount.component';

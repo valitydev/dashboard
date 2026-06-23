@@ -1,9 +1,9 @@
-import { DestroyRef, Injectable } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Router } from '@angular/router';
 import { EMPTY, combineLatest, of, switchMap } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
+import { DestroyRef, Injectable } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
 import { WalletsService } from '@dsh/app/api/wallet';
 import { ShopsDataService } from '@dsh/app/shared';
 

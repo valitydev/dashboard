@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { TranslocoService } from '@jsverse/transloco';
-import { InvoiceStatus, PaymentSearchResult, RefundStatus, Report } from '@vality/swag-anapi-v2';
-
 import { PaymentSystem, TokenProvider } from '@dsh/app/api/payments';
+import { TranslocoService } from '@jsverse/transloco';
+
+import { InvoiceStatus, PaymentSearchResult, RefundStatus, Report } from '@vality/swag-anapi-v2';
 
 import { DictionaryService } from '../utils';
 

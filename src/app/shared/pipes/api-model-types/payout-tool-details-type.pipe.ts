@@ -1,6 +1,7 @@
+import { Observable, of } from 'rxjs';
+
 import { Pipe, PipeTransform } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
-import { Observable, of } from 'rxjs';
 
 @Pipe({
     name: 'payoutToolDetailsType',

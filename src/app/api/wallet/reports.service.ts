@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ReportsService as ApiService } from '@vality/swag-wallets';
-
 import { PartyIdExtension } from '@dsh/app/api/utils/extensions';
+
+import { ReportsService as ApiService } from '@vality/swag-wallets';
 
 import { createApi } from '../utils';
 

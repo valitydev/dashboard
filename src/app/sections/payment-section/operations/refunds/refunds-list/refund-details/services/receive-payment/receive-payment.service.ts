@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Payment } from '@vality/swag-payments';
 import { BehaviorSubject, Observable, ReplaySubject, Subject, of } from 'rxjs';
 import { catchError, filter, switchMap, tap } from 'rxjs/operators';
 
+import { Injectable } from '@angular/core';
 import { PaymentsService } from '@dsh/app/api/payments';
+
+import { Payment } from '@vality/swag-payments';
 
 export interface ReceivePaymentParams {
     invoiceID: string;

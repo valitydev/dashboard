@@ -1,5 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-
+import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { SpinnerType } from '@dsh/components/indicators';
 
 import { ChartData } from '../utils';
@@ -7,6 +6,7 @@ import { ChartData } from '../utils';
 @Component({
     selector: 'dsh-bar-chart-item',
     templateUrl: 'bar-chart-item.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class BarChartItemComponent implements OnChanges {

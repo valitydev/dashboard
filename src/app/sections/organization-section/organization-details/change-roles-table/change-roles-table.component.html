@@ -25,34 +25,63 @@
         <ng-template #roleCellTpl let-column="column" let-value="value">
             @if (value?.scope !== 'Wallet' && column.field !== 'WalletManager') {
                 <mat-checkbox
-                    [checked]="checked(column.field, value?.shop?.id, value?.scope) | async"
+                    [checked]="
+                        checked(
+                            column.field,
+                            $safeNavigationMigration(value?.shop?.id),
+                            $safeNavigationMigration(value?.scope)
+                        ) | async
+                    "
                     [disabled]="
-                        (disabled(column.field, value?.shop?.id, value?.scope) | async) ||
-                        inProgress
+                        (disabled(
+                            column.field,
+                            $safeNavigationMigration(value?.shop?.id),
+                            $safeNavigationMigration(value?.scope)
+                        ) | async) || inProgress
                     "
                     [indeterminate]="
                         value?.shop || value?.scope === 'Wallet'
                             ? false
                             : (isIntermediate(column.field) | async)
                     "
-                    (change)="toggle(column.field, value?.shop?.id, $event.checked)"
+                    (change)="
+                        toggle(
+                            column.field,
+                            $safeNavigationMigration(value?.shop?.id),
+                            $event.checked
+                        )
+                    "
                 ></mat-checkbox>
             } @else {
                 <dsh-selection
-                    [selected]="checked(column.field, value?.shop?.id, value?.scope) | async"
+                    [selected]="
+                        checked(
+                            column.field,
+                            $safeNavigationMigration(value?.shop?.id),
+                            $safeNavigationMigration(value?.scope)
+                        ) | async
+                    "
                     class="selection"
                 ></dsh-selection>
             }
             <ng-template #selectedTpl>
                 <dsh-selection
-                    [selected]="checked(column.field, value?.shop?.id, value?.scope) | async"
+                    [selected]="
+                        checked(
+                            column.field,
+                            $safeNavigationMigration(value?.shop?.id),
+                            $safeNavigationMigration(value?.scope)
+                        ) | async
+                    "
                     class="selection"
                 ></dsh-selection>
             </ng-template>
         </ng-template>
         <ng-template #footerCellTpl let-column="column" let-value="value">
             <button
-                [disabled]="!(isAllowRemove(column?.field) | async) || inProgress"
+                [disabled]="
+                    !(isAllowRemove($safeNavigationMigration(column?.field)) | async) || inProgress
+                "
                 class="matv-error"
                 mat-flat-button
                 (click)="remove(column.field)"

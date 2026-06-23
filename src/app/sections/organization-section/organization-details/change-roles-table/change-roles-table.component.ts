@@ -1,4 +1,10 @@
+import { uniqBy } from 'lodash-es';
+import isNil from 'lodash-es/isNil';
+import { BehaviorSubject, Observable, ReplaySubject, combineLatest, defer, filter, of } from 'rxjs';
+import { first, map, shareReplay, switchMap, tap } from 'rxjs/operators';
+
 import {
+    ChangeDetectionStrategy,
     Component,
     DestroyRef,
     EventEmitter,
@@ -16,19 +22,6 @@ import {
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
 import {
-    ComponentChanges,
-    DialogResponseStatus,
-    DialogService,
-    getEnumValues,
-} from '@vality/matez';
-import { Organization, ResourceScopeId } from '@vality/swag-organizations';
-import { Shop } from '@vality/swag-payments';
-import { uniqBy } from 'lodash-es';
-import isNil from 'lodash-es/isNil';
-import { BehaviorSubject, Observable, ReplaySubject, combineLatest, defer, filter, of } from 'rxjs';
-import { first, map, shareReplay, switchMap, tap } from 'rxjs/operators';
-
-import {
     MemberRoleOptionalId,
     OrganizationsDictionaryService,
     ResourceScopeIdInternal,
@@ -39,16 +32,29 @@ import { sortRoleIds } from '@dsh/app/shared/components/organization-roles/utils
 import { NestedTableColumn, NestedTableNode } from '@dsh/components/nested-table';
 import { addDialogsClass } from '@dsh/utils/add-dialogs-class';
 
+import {
+    ComponentChanges,
+    DialogResponseStatus,
+    DialogService,
+    getEnumValues,
+} from '@vality/matez';
+import { Organization, ResourceScopeId } from '@vality/swag-organizations';
+import { Shop } from '@vality/swag-payments';
+
 import { equalRoles } from '../members/components/edit-roles-dialog/utils/equal-roles';
 
 import { SelectRoleDialogComponent } from './components/select-role-dialog/select-role-dialog.component';
 
-type DataItem = { shop?: Pick<Shop, 'id' | 'details'>; scope?: ResourceScopeIdInternal };
+interface DataItem {
+    shop?: Pick<Shop, 'id' | 'details'>;
+    scope?: ResourceScopeIdInternal;
+}
 
 @Component({
     selector: 'dsh-change-roles-table',
     templateUrl: 'change-roles-table.component.html',
     styleUrls: ['change-roles-table.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class ChangeRolesTableComponent implements OnInit, OnChanges {

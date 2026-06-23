@@ -1,6 +1,7 @@
+import { Observable } from 'rxjs';
+
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
 
 import { CreateRefundDialogComponent } from './components/create-refund-dialog/create-refund-dialog.component';
 import { CreateRefundDialogData } from './types/create-refund-dialog-data';

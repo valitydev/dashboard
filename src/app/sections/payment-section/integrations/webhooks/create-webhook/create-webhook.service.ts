@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subject } from 'rxjs';
 import { filter, switchMap, takeUntil } from 'rxjs/operators';
+
+import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 import { CreateWebhookDialogComponent } from './create-webhook-dialog.component';
 
 @Injectable()
 export class CreateWebhookService {
     private createWebhook$ = new Subject<void>();
-    private created$: Subject<void> = new Subject();
-    private destroy$: Subject<void> = new Subject();
+    private created$ = new Subject<void>();
+    private destroy$ = new Subject<void>();
 
     webhookCreated$: Observable<void> = this.created$.asObservable();
 

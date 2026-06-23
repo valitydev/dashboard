@@ -1,13 +1,13 @@
+import { FlexLayoutModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { TranslocoModule } from '@jsverse/transloco';
-import { FlexLayoutModule } from 'ng-flex-layout';
-
 import { AmountCurrencyModule, ApiModelRefsModule, ApiModelTypesModule } from '@dsh/app/shared';
 import { StatusModule } from '@dsh/components/indicators';
 import { LastUpdatedModule } from '@dsh/components/indicators/last-updated/last-updated.module';
 import { LayoutModule } from '@dsh/components/layout';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import {
     WithdrawalDetailsComponent,

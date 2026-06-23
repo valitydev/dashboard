@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, forkJoin, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 
+import { Injectable } from '@angular/core';
 import { ReportsService } from '@dsh/app/api/anapi';
 import { multipleDownload } from '@dsh/utils';
 
 @Injectable()
 export class ReportFilesService {
-    private download$: Subject<{ reportID: number; fileIDs: string[] }> = new Subject();
+    private download$ = new Subject<{ reportID: number; fileIDs: string[] }>();
     private loading$ = new BehaviorSubject(false);
     private error$ = new Subject<void>();
 

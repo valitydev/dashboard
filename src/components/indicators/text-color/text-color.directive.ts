@@ -1,5 +1,4 @@
 import { Directive, HostBinding, Input } from '@angular/core';
-
 import { Color } from '@dsh/components/indicators/text-color/types/color';
 
 const PREFIX = 'dsh-text-color';

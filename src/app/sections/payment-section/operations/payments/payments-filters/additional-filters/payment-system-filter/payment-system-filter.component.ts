@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
-import { FormControlSuperclass, createControlProviders } from '@vality/matez';
-import { SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
-
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AnapiDictionaryService } from '@dsh/app/api/anapi';
 import { PaymentSystem } from '@dsh/app/api/payments';
+
+import { FormControlSuperclass, createControlProviders } from '@vality/matez';
+import { SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 
 @Component({
     selector: 'dsh-payment-system-filter',
     templateUrl: './payment-system-filter.component.html',
     styleUrls: ['./payment-system-filter.component.scss'],
     providers: createControlProviders(() => PaymentSystemFilterComponent),
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class PaymentSystemFilterComponent extends FormControlSuperclass<

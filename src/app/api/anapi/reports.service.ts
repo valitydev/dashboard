@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { ReportsService as ApiReportsService } from '@vality/swag-anapi-v2';
 
 import { createApi } from '../utils';

@@ -1,5 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
+
 import { NotifyLogService } from '@vality/matez';
 
 import { CreateWebhookService } from './create-webhook';
@@ -9,6 +10,7 @@ import { WebhooksExpandedIdManager } from './webhooks-expanded-id-manager.servic
 @Component({
     templateUrl: 'webhooks.component.html',
     providers: [ReceiveWebhooksService, WebhooksExpandedIdManager],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class WebhooksComponent implements OnInit, OnDestroy {

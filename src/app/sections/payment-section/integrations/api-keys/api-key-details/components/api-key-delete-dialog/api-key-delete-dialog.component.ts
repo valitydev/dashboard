@@ -1,21 +1,23 @@
-import { CommonModule } from '@angular/common';
-import { Component, DestroyRef } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MatButtonModule } from '@angular/material/button';
-import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
-import { DialogSuperclass, NotifyLogService, progressTo } from '@vality/matez';
-import { RequestRevokeApiKeyRequestParams } from '@vality/swag-api-keys-v2';
 import { FlexModule } from 'ng-flex-layout';
 import { BehaviorSubject } from 'rxjs';
 
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatButtonModule } from '@angular/material/button';
 import { ApiKeysService } from '@dsh/app/api/api-keys';
 import { BaseDialogModule } from '@dsh/app/shared/components/dialog/base-dialog';
 import { SpinnerModule } from '@dsh/components/indicators';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
+
+import { DialogSuperclass, NotifyLogService, progressTo } from '@vality/matez';
+import { RequestRevokeApiKeyRequestParams } from '@vality/swag-api-keys-v2';
 
 @Component({
     selector: 'dsh-api-key-delete-dialog',
     templateUrl: './api-key-delete-dialog.component.html',
     styles: [],
+    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [
         BaseDialogModule,
         SpinnerModule,

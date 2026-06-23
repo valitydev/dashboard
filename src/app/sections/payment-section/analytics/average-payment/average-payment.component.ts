@@ -1,5 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-
+import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { SpinnerType } from '@dsh/components/indicators';
 
 import { SearchParams } from '../search-params';
@@ -10,6 +9,7 @@ import { AveragePaymentService } from './average-payment.service';
     selector: 'dsh-average-payment',
     templateUrl: 'average-payment.component.html',
     providers: [AveragePaymentService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class AveragePaymentComponent implements OnChanges {

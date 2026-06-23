@@ -1,10 +1,18 @@
-import { Component, EventEmitter, Input, Output, booleanAttribute } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    Output,
+    booleanAttribute,
+} from '@angular/core';
 
 // TODO: add unit test for template with new ng-content
 @Component({
     selector: 'dsh-base-dialog',
     templateUrl: 'base-dialog.component.html',
     styleUrls: ['base-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class BaseDialogComponent {

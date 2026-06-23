@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import isNil from 'lodash-es/isNil';
 import { Observable } from 'rxjs';
+
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { ShopItem } from '../types/shop-item';
 

@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
     selector: 'dsh-no-shops-alert',
     templateUrl: 'no-shops-alert.component.html',
     styleUrls: ['no-shops-alert.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class NoShopsComponent {

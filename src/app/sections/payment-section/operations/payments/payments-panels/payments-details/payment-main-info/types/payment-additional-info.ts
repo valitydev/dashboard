@@ -1,6 +1,6 @@
 import { TransactionInfo } from '@vality/swag-payments';
 
-export type PaymentAdditionalInfo = {
+export interface PaymentAdditionalInfo {
     transactionInfo?: TransactionInfo;
     externalID?: string;
-};
+}

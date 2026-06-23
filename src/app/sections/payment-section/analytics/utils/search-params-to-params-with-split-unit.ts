@@ -1,5 +1,6 @@
-import { GetPaymentsSplitCountRequestParams } from '@vality/swag-anapi-v2';
 import moment from 'moment';
+
+import { GetPaymentsSplitCountRequestParams } from '@vality/swag-anapi-v2';
 
 import { SearchParams } from '../search-params';
 import { SearchParamsWithSplitUnit } from '../search-params-with-split-unit';

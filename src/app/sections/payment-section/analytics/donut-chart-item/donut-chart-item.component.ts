@@ -1,5 +1,12 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnChanges,
+    Output,
+    SimpleChanges,
+} from '@angular/core';
 import { SpinnerType } from '@dsh/components/indicators';
 
 import { DistributionChartData } from '../utils';
@@ -8,6 +15,7 @@ import { DistributionChartData } from '../utils';
     selector: 'dsh-donut-chart-item',
     templateUrl: 'donut-chart-item.component.html',
     styleUrls: ['donut-chart-item.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class DonutChartItemComponent implements OnChanges {

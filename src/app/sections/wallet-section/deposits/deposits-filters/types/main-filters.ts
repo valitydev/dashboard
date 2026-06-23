@@ -1,5 +1,5 @@
 import { DateRangeWithPreset } from '@dsh/components/date-range-filter';
 
-export type MainFilters = {
+export interface MainFilters {
     dateRange: DateRangeWithPreset;
-};
+}

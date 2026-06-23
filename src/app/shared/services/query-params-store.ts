@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
 import identity from 'lodash-es/identity';
 import isEqual from 'lodash-es/isEqual';
 import pickBy from 'lodash-es/pickBy';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, map, shareReplay } from 'rxjs/operators';
+
+import { Injectable } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 const removeEmptyProperties = (s) => pickBy(s, identity);
 

@@ -1,8 +1,8 @@
-import { Component, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnChanges } from '@angular/core';
+import { valuesToOptions } from '@dsh/components/form-controls/utils/values-to-options';
+
 import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 import { Report } from '@vality/swag-anapi-v2';
-
-import { valuesToOptions } from '@dsh/components/form-controls/utils/values-to-options';
 
 import { ReportTypesLabelPipe } from './pipes/report-types-label.pipe';
 
@@ -12,6 +12,7 @@ import ReportTypeEnum = Report.ReportTypeEnum;
     selector: 'dsh-report-types-field',
     templateUrl: 'report-types-field.component.html',
     providers: [...createControlProviders(() => ReportTypesFieldComponent), ReportTypesLabelPipe],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class ReportTypesFieldComponent

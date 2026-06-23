@@ -1,5 +1,11 @@
-import { Component, Input, OnChanges, SimpleChanges, booleanAttribute } from '@angular/core';
-
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Input,
+    OnChanges,
+    SimpleChanges,
+    booleanAttribute,
+} from '@angular/core';
 import { SpinnerType } from '@dsh/components/indicators';
 
 import { StatData } from '../utils';
@@ -8,6 +14,7 @@ import { StatData } from '../utils';
     selector: 'dsh-stat-item',
     templateUrl: 'stat-item.component.html',
     styleUrls: ['./stat-item.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class StatItemComponent implements OnChanges {

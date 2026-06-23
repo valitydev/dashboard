@@ -1,6 +1,6 @@
 import { RefundStatus } from '@vality/swag-anapi-v2';
 
-export const OPTION_LABELS: { [N in RefundStatus.StatusEnum]: string } = {
+export const OPTION_LABELS: Record<RefundStatus.StatusEnum, string> = {
     succeeded: 'succeeded',
     failed: 'failed',
     pending: 'pending',

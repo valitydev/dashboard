@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
-import { TranslocoService } from '@jsverse/transloco';
-import { FetchOptions, FetchResult, FetchSuperclass, NotifyLogService } from '@vality/matez';
-import { ApiKey, ListApiKeysRequestParams } from '@vality/swag-api-keys-v2';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
+import { Injectable } from '@angular/core';
 import { ApiKeysService } from '@dsh/app/api/api-keys';
+import { TranslocoService } from '@jsverse/transloco';
+
+import { FetchOptions, FetchResult, FetchSuperclass, NotifyLogService } from '@vality/matez';
+import { ApiKey, ListApiKeysRequestParams } from '@vality/swag-api-keys-v2';
 
 @Injectable()
 export class FetchApiKeysService extends FetchSuperclass<

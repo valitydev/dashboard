@@ -1,10 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { TranslocoService } from '@jsverse/transloco';
 import { Observable } from 'rxjs';
 import { shareReplay, switchMap } from 'rxjs/operators';
 
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { OrgsService } from '@dsh/app/api/organizations';
+import { TranslocoService } from '@jsverse/transloco';
 
 @Component({
     selector: 'dsh-organization-details',

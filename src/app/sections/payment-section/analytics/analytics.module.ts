@@ -1,14 +1,14 @@
+import { FlexLayoutModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
-import { TranslocoModule } from '@jsverse/transloco';
-import { FlexLayoutModule } from 'ng-flex-layout';
-
 import { BarChartModule, DonutChartModule } from '@dsh/components/charts';
 import { SpinnerModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { AnalyticsRoutingModule } from './analytics-routing.module';
 import { AnalyticsSearchFiltersModule } from './analytics-search-filters';

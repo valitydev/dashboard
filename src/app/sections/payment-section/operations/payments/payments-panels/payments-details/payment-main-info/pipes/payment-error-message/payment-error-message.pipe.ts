@@ -1,11 +1,13 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { TranslocoService } from '@jsverse/transloco';
-import { PaymentError } from '@vality/swag-payments';
 import isObject from 'lodash-es/isObject';
 import lowerCase from 'lodash-es/lowerCase';
 import upperFirst from 'lodash-es/upperFirst';
 import { Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
+
+import { Pipe, PipeTransform } from '@angular/core';
+import { TranslocoService } from '@jsverse/transloco';
+
+import { PaymentError } from '@vality/swag-payments';
 
 function renderSubErrorMessage(error?: string, sub?: string) {
     if (!error) {

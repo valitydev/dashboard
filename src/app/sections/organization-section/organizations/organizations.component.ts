@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, OnInit, isDevMode } from '@angular/core';
-
 import { FetchOrganizationsService } from '@dsh/app/shared/services/fetch-organizations';
 
 @Component({

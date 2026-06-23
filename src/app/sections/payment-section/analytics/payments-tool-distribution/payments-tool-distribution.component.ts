@@ -1,5 +1,11 @@
-import { Component, Inject, Input, OnChanges, SimpleChanges } from '@angular/core';
-
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Inject,
+    Input,
+    OnChanges,
+    SimpleChanges,
+} from '@angular/core';
 import { SpinnerType } from '@dsh/components/indicators';
 
 import { CHARTS_THEME, ChartsThemeProvider } from '../charts-theme';
@@ -11,6 +17,7 @@ import { PaymentsToolDistributionService } from './payments-tool-distribution.se
     selector: 'dsh-payments-tool-distribution',
     templateUrl: 'payments-tool-distribution.component.html',
     providers: [PaymentsToolDistributionService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class PaymentsToolDistributionComponent implements OnChanges {

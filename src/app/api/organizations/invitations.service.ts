@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { InvitationsService as ApiInvitationsService } from '@vality/swag-organizations';
 
 import { createApi } from '../utils';

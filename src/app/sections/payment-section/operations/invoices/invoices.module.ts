@@ -1,3 +1,5 @@
+import { FlexLayoutModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -12,9 +14,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { TranslocoModule } from '@jsverse/transloco';
-import { FlexLayoutModule } from 'ng-flex-layout';
-
 import { AuthModule } from '@dsh/app/auth';
 import { InvoiceDetailsModule } from '@dsh/app/shared/components';
 import { EmptySearchResultModule } from '@dsh/components/empty-search-result';
@@ -22,6 +21,7 @@ import { IndicatorsModule } from '@dsh/components/indicators';
 import { LayoutModule } from '@dsh/components/layout';
 import { StateNavModule } from '@dsh/components/navigation';
 import { ShowMorePanelModule } from '@dsh/components/show-more-panel';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { CreateInvoiceModule } from './create-invoice';
 import { InvoicesListModule } from './invoices-list';

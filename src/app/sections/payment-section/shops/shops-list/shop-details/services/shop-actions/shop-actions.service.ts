@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { TranslocoService } from '@jsverse/transloco';
-import { DialogResponseStatus, NotifyLogService } from '@vality/matez';
 import { Observable, of } from 'rxjs';
 import { catchError, filter, map, switchMap } from 'rxjs/operators';
 
+import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ShopsService } from '@dsh/app/api/payments';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
+import { TranslocoService } from '@jsverse/transloco';
+
+import { DialogResponseStatus, NotifyLogService } from '@vality/matez';
 
 import { ShopActionResult } from '../../types/shop-action-result';
 

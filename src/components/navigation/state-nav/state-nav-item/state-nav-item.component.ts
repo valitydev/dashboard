@@ -1,5 +1,13 @@
-import { Component, ElementRef, Input, Renderer2, booleanAttribute } from '@angular/core';
 import { Subject } from 'rxjs';
+
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ElementRef,
+    Input,
+    Renderer2,
+    booleanAttribute,
+} from '@angular/core';
 
 export enum Color {
     Success = 'success',
@@ -12,6 +20,7 @@ const HOST_ATTRIBUTES = ['withIcon'];
     selector: 'dsh-state-nav-item, dsh-state-nav-item[withIcon]',
     templateUrl: 'state-nav-item.component.html',
     styleUrls: ['state-nav-item.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class StateNavItemComponent {

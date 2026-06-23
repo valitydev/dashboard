@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService } from '@vality/matez';
-import { PaymentInstitution, Shop } from '@vality/swag-payments';
 import { Observable, ReplaySubject, of } from 'rxjs';
 import { filter, pluck, switchMap, take } from 'rxjs/operators';
 
+import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ShopsDataService } from '@dsh/app/shared';
+import { TranslocoService } from '@jsverse/transloco';
+
+import { NotifyLogService } from '@vality/matez';
+import { PaymentInstitution, Shop } from '@vality/swag-payments';
 
 import { filterShopsByRealm } from '../../operators';
 

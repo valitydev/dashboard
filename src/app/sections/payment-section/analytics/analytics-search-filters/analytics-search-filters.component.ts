@@ -1,3 +1,6 @@
+import { Observable, combineLatest, defer } from 'rxjs';
+import { first, map, pluck, shareReplay } from 'rxjs/operators';
+
 import {
     ChangeDetectionStrategy,
     Component,
@@ -10,17 +13,15 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder } from '@angular/forms';
-import { ComponentChanges } from '@vality/matez';
-import { Shop } from '@vality/swag-payments';
-import { Observable, combineLatest, defer } from 'rxjs';
-import { first, map, pluck, shareReplay } from 'rxjs/operators';
-
 import {
     DateRangeWithPreset,
     Preset,
     createDateRangeWithPreset,
 } from '@dsh/components/date-range-filter';
 import { getFormValueChanges } from '@dsh/utils';
+
+import { ComponentChanges } from '@vality/matez';
+import { Shop } from '@vality/swag-payments';
 
 import { RealmShopsService } from '../../services';
 

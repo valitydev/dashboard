@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Report } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';
 
+import { Injectable } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ExpandedIdManager } from '@dsh/app/shared/services';
+
+import { Report } from '@vality/swag-anapi-v2';
 
 import { FetchReportsService } from './fetch-reports.service';
 

@@ -1,9 +1,10 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { Report } from '@vality/swag-anapi-v2';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { Pipe, PipeTransform } from '@angular/core';
 import { AnapiDictionaryService } from '@dsh/app/api/anapi';
+
+import { Report } from '@vality/swag-anapi-v2';
 
 @Pipe({
     name: 'reportTypesLabelPipe',

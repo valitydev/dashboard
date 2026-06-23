@@ -12,11 +12,11 @@
         <div class="hold-details-info">
             {{ t('holdDate') }} {{ holdDate | date: 'd MMMM yyyy, HH:mm'
             }}{{
-                (holdDate | holdActive: payment?.status)
+                (holdDate | holdActive: $safeNavigationMigration(payment?.status))
                     ? ' (' + (holdDate | humanizedDuration: { isShort: true }) + ')'
                     : ''
             }}.
-            @if (holdDate | holdActive: payment?.status) {
+            @if (holdDate | holdActive: $safeNavigationMigration(payment?.status)) {
                 {{
                     flowHold.onHoldExpiration === onHoldExpirationEnum.Capture
                         ? t('holdWithCapture')
@@ -35,7 +35,7 @@
                 }}
             }
         </div>
-        @if (holdDate | holdActive: payment?.status) {
+        @if (holdDate | holdActive: $safeNavigationMigration(payment?.status)) {
             <div
                 fxLayout="column"
                 fxLayout.gt-sm="row"

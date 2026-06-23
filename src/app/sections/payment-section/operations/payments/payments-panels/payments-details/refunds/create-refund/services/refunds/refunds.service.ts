@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Refund, RefundParams } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { Injectable } from '@angular/core';
 import { PaymentsService } from '@dsh/app/api/payments';
+
+import { Refund, RefundParams } from '@vality/swag-payments';
 
 @Injectable()
 export class RefundsService {

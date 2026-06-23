@@ -1,8 +1,9 @@
-import { Component, HostBinding } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
 
 @Component({
     template: '{{text}}',
     styleUrls: ['text.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class TextComponent {

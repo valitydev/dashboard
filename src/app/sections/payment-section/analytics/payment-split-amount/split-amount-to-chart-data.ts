@@ -1,6 +1,7 @@
+import moment from 'moment';
+
 import { toMajor } from '@vality/matez';
 import { OffsetAmount, SplitAmountResult, SplitUnit } from '@vality/swag-anapi-v2';
-import moment from 'moment';
 
 import { ChartData, Series, splitUnitToTimeFormat } from '../utils';
 
@@ -23,9 +24,7 @@ const offsetAmountsToSeries = (
     },
 ];
 
-export const splitAmountToChartData = (
-    paymentsSplitAmount: Array<SplitAmountResult>,
-): ChartData[] =>
+export const splitAmountToChartData = (paymentsSplitAmount: SplitAmountResult[]): ChartData[] =>
     paymentsSplitAmount.map(({ currency, offsetAmounts, splitUnit }) => ({
         currency,
         series: offsetAmountsToSeries(offsetAmounts, currency, splitUnit),

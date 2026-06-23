@@ -1,3 +1,5 @@
+import { isNumber } from 'lodash-es';
+
 import {
     AfterContentInit,
     ChangeDetectionStrategy,
@@ -12,7 +14,6 @@ import {
     booleanAttribute,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { isNumber } from 'lodash-es';
 
 import { ExpandableRadioGroupItemDirective } from './directives/expandable-radio-group-item/expandable-radio-group-item.directive';
 import {

@@ -1,18 +1,19 @@
-import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { TranslocoService } from '@jsverse/transloco';
-import { DialogResponseStatus, NotifyLogService } from '@vality/matez';
 import { Observable, Subject, combineLatest, of } from 'rxjs';
 import { catchError, filter, switchMap, takeUntil } from 'rxjs/operators';
 
+import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { WebhooksService } from '@dsh/app/api/payments';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
+import { TranslocoService } from '@jsverse/transloco';
+
+import { DialogResponseStatus, NotifyLogService } from '@vality/matez';
 
 @Injectable()
 export class DeleteWebhookService {
-    private destroy$: Subject<void> = new Subject();
-    private deleteWebhook$: Subject<string> = new Subject();
-    private deleted$: Subject<void> = new Subject();
+    private destroy$ = new Subject<void>();
+    private deleteWebhook$ = new Subject<string>();
+    private deleted$ = new Subject<void>();
 
     webhookDeleted$: Observable<void> = this.deleted$.asObservable();
 

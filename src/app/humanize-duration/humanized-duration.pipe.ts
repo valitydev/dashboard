@@ -1,6 +1,7 @@
-import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { Subscription, interval, switchMap } from 'rxjs';
 import { startWith } from 'rxjs/operators';
+
+import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
 
 import { HumanizeConfig, HumanizeDurationService, Value } from './humanize-duration.service';
 

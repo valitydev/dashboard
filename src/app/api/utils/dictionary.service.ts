@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
-import { TranslocoService } from '@jsverse/transloco';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+
+import { Injectable } from '@angular/core';
+import { TranslocoService } from '@jsverse/transloco';
 
 @Injectable({
     providedIn: 'root',

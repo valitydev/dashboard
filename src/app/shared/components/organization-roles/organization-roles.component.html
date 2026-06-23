@@ -12,7 +12,9 @@
             <div gdColumns="1fr 1fr" gdGap="24px">
                 @for (role of rolesByGroup; track role) {
                     @if (role?.scopes?.length) {
-                        <dsh-collapse [title]="(roleIdDict$ | async)?.[role.id]">
+                        <dsh-collapse
+                            [title]="$safeNavigationMigration((roleIdDict$ | async)?.[role.id])"
+                        >
                             @for (scope of role.scopes; track scope) {
                                 <dsh-limited-list
                                     [title]="(resourceScopeIdDict$ | async)?.[scope.id] || '-'"

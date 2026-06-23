@@ -1,7 +1,7 @@
-import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { BehaviorSubject, Subject, combineLatest } from 'rxjs';
 import { distinctUntilChanged, map, pluck, takeUntil } from 'rxjs/operators';
 
+import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { WalletsService } from '@dsh/app/api/wallet';
 
 @Pipe({
@@ -10,9 +10,9 @@ import { WalletsService } from '@dsh/app/api/wallet';
     standalone: false,
 })
 export class WalletDetailsPipe implements PipeTransform, OnDestroy {
-    private walletName$: BehaviorSubject<string> = new BehaviorSubject('');
-    private walletIDChange$: Subject<string> = new Subject();
-    private destroy$: Subject<void> = new Subject();
+    private walletName$ = new BehaviorSubject<string>('');
+    private walletIDChange$ = new Subject<string>();
+    private destroy$ = new Subject<void>();
 
     constructor(
         private walletService: WalletsService,

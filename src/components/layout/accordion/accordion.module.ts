@@ -1,9 +1,9 @@
+import { FlexLayoutModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-import { FlexLayoutModule } from 'ng-flex-layout';
-
 import { BootstrapIconModule } from '@dsh/components/indicators';
 
 import { AccordionItemComponent, LazyPanelContentDirective } from './accordion-item';

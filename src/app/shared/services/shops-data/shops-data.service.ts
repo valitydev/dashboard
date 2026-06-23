@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Shop } from '@vality/swag-payments';
 import { Observable, Subject, defer, merge, of } from 'rxjs';
 import { catchError, map, shareReplay, switchMap } from 'rxjs/operators';
 
+import { Injectable } from '@angular/core';
 import { ShopsService } from '@dsh/app/api/payments';
 import { ContextOrganizationService } from '@dsh/app/shared';
+
+import { Shop } from '@vality/swag-payments';
 
 import { IdGeneratorService } from '../id-generator';
 

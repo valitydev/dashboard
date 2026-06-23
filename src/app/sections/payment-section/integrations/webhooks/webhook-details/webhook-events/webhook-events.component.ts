@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { InvoicesTopic, WebhookScope } from '@vality/swag-payments';
 import { combineLatest } from 'rxjs';
 
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { PaymentsDictionaryService } from '@dsh/app/api/payments';
+
+import { InvoicesTopic, WebhookScope } from '@vality/swag-payments';
 
 @Component({
     selector: 'dsh-webhook-events',

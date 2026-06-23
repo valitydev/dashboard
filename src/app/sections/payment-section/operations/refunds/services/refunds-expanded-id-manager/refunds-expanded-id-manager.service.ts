@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { RefundSearchResult } from '@vality/swag-anapi-v2';
 import { Observable } from 'rxjs';
 
+import { Injectable } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ExpandedIdManager, Fragment } from '@dsh/app/shared/services';
+
+import { RefundSearchResult } from '@vality/swag-anapi-v2';
 
 import { FetchRefundsService } from '../fetch-refunds/fetch-refunds.service';
 

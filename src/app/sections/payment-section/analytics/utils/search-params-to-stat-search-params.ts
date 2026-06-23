@@ -1,5 +1,6 @@
-import { PaymentInstitution } from '@vality/swag-payments';
 import moment from 'moment';
+
+import { PaymentInstitution } from '@vality/swag-payments';
 
 import { SearchParams } from '../search-params';
 import { StatSearchParams } from '../stat-search-params';

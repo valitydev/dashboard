@@ -1,8 +1,10 @@
-import { Injectable, Injector } from '@angular/core';
-import { CountriesService as ApiCountriesService, Country } from '@vality/swag-payments';
 import sortBy from 'lodash-es/sortBy';
 import { Observable, of } from 'rxjs';
 import { catchError, map, shareReplay } from 'rxjs/operators';
+
+import { Injectable, Injector } from '@angular/core';
+
+import { CountriesService as ApiCountriesService, Country } from '@vality/swag-payments';
 
 import { createApi } from '../utils';
 

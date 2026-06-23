@@ -1,6 +1,6 @@
-import { Component, inject, isDevMode } from '@angular/core';
 import { map } from 'rxjs';
 
+import { ChangeDetectionStrategy, Component, inject, isDevMode } from '@angular/core';
 import { Language, LanguageService } from '@dsh/app/language';
 
 import { BootstrapService } from './bootstrap.service';
@@ -10,6 +10,7 @@ import { ContextOrganizationService } from './shared';
     selector: 'dsh-root',
     templateUrl: 'app.component.html',
     providers: [BootstrapService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class AppComponent {

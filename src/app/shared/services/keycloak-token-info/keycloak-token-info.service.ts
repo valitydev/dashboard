@@ -1,9 +1,10 @@
-import { DestroyRef, Injectable } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { KeycloakService } from 'keycloak-angular';
 import { Observable, defer, from } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+
+import { DestroyRef, Injectable } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Injectable({
     providedIn: 'root',

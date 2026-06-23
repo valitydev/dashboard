@@ -1,19 +1,20 @@
-import { Injectable } from '@angular/core';
-import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService } from '@vality/matez';
-import { Webhook } from '@vality/swag-wallets';
 import sortBy from 'lodash-es/sortBy';
 import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
 import { catchError, filter, map, shareReplay, switchMap } from 'rxjs/operators';
 
+import { Injectable } from '@angular/core';
 import { WebhooksService } from '@dsh/app/api/wallet';
+import { TranslocoService } from '@jsverse/transloco';
+
+import { NotifyLogService } from '@vality/matez';
+import { Webhook } from '@vality/swag-wallets';
 
 import { mapToTimestamp, progress } from '../../../../custom-operators';
 
 @Injectable()
 export class ReceiveWebhooksService {
-    private webhooksState$: BehaviorSubject<Webhook[]> = new BehaviorSubject(null);
-    private receiveWebhooks$: Subject<void> = new Subject();
+    private webhooksState$ = new BehaviorSubject<Webhook[]>(null);
+    private receiveWebhooks$ = new Subject<void>();
 
     webhooks$: Observable<Webhook[]> = this.webhooksState$.pipe(
         filter((s) => !!s),

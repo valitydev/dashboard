@@ -1,10 +1,10 @@
+import { FlexModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { TranslocoModule } from '@jsverse/transloco';
-import { FlexModule } from 'ng-flex-layout';
-
 import { DetailsItemModule } from '@dsh/components/layout';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { BankCardComponent } from './components/bank-card/bank-card.component';
 import { DigitalWalletComponent } from './components/digital-wallet/digital-wallet.component';

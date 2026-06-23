@@ -1,11 +1,19 @@
-import { Component, Inject, Input, Optional, booleanAttribute } from '@angular/core';
-import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
-import { Shop } from '@vality/swag-payments';
 import { Observable, defer } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Inject,
+    Input,
+    Optional,
+    booleanAttribute,
+} from '@angular/core';
 import { toLiveShops } from '@dsh/app/api/payments';
 import { ShopsDataService } from '@dsh/app/shared';
+
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
+import { Shop } from '@vality/swag-payments';
 
 import { SHOPS } from './shops-token';
 import { shopToOption } from './utils/shops-to-options';
@@ -14,6 +22,7 @@ import { shopToOption } from './utils/shops-to-options';
     selector: 'dsh-shop-field',
     templateUrl: 'shop-field.component.html',
     providers: createControlProviders(() => ShopFieldComponent),
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class ShopFieldComponent extends FormControlSuperclass<Shop> {

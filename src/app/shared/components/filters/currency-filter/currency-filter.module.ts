@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TranslocoModule } from '@jsverse/transloco';
-
 import { FilterModule } from '@dsh/components/filter';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { CurrencyFieldModule } from '../../inputs/currency-field';
 

@@ -1,5 +1,14 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    OnDestroy,
+    OnInit,
+    Output,
+} from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
+
 import { NotifyLogService } from '@vality/matez';
 import { Webhook, WebhookScope } from '@vality/swag-payments';
 
@@ -9,14 +18,15 @@ import { getShopIdFromScope } from '../get-shop-id-from-scope';
 @Component({
     selector: 'dsh-webhooks-list',
     templateUrl: 'webhook-list.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class WebhookListComponent implements OnInit, OnDestroy {
     @Input() webhooks: Webhook[];
     @Input() expandedId: number;
     @Input() lastUpdated: string;
-    @Output() expandedIdChange: EventEmitter<number> = new EventEmitter();
-    @Output() refreshData: EventEmitter<void> = new EventEmitter();
+    @Output() expandedIdChange = new EventEmitter<number>();
+    @Output() refreshData = new EventEmitter<void>();
 
     constructor(
         private deleteWebhookService: DeleteWebhookService,

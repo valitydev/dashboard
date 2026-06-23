@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
+
 import { ComponentChanges } from '@vality/matez';
 
 import { TextComponent } from './components/text/text.component';

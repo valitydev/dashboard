@@ -1,6 +1,7 @@
+import { FlexModule } from 'ng-flex-layout';
+
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { TranslocoModule } from '@jsverse/transloco';
-import { FlexModule } from 'ng-flex-layout';
 
 @Component({
     selector: 'dsh-limited-panel',

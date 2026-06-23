@@ -1,5 +1,6 @@
-import { DateRange } from '@angular/material/datepicker';
 import { Moment } from 'moment';
+
+import { DateRange } from '@angular/material/datepicker';
 
 /**
  * 2020 год

@@ -1,3 +1,5 @@
+import { FlexLayoutModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -12,12 +14,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { TranslocoModule } from '@jsverse/transloco';
-import { FlexLayoutModule } from 'ng-flex-layout';
-
 import { AmountCurrencyModule } from '@dsh/app/shared';
 import { LayoutModule } from '@dsh/components/layout';
 import { ConfirmActionDialogModule } from '@dsh/components/popups';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { InvoiceRandomizeAmountModule } from '../invoice-randomize-amount-form';
 

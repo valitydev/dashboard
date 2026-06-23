@@ -1,3 +1,6 @@
+import isEmpty from 'lodash-es/isEmpty';
+import { Observable } from 'rxjs';
+
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,10 +9,9 @@ import {
     OnChanges,
     Output,
 } from '@angular/core';
+
 import { ComponentChanges } from '@vality/matez';
 import { Invoice, PaymentSearchResult } from '@vality/swag-anapi-v2';
-import isEmpty from 'lodash-es/isEmpty';
-import { Observable } from 'rxjs';
 
 import { PaymentIds } from '../../types';
 

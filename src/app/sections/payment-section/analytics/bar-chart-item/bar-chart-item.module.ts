@@ -1,11 +1,11 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { TranslocoModule } from '@jsverse/transloco';
 import { FlexLayoutModule } from 'ng-flex-layout';
 
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { BarChartModule } from '@dsh/components/charts';
 import { SpinnerModule } from '@dsh/components/indicators';
 import { CardModule } from '@dsh/components/layout';
+import { TranslocoModule } from '@jsverse/transloco';
 
 import { BarChartItemComponent } from './bar-chart-item.component';
 

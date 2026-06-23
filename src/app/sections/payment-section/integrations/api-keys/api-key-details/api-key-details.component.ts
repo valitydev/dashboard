@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ApiKeysDictionaryService } from '@dsh/app/api/api-keys';
+
 import { DialogService } from '@vality/matez';
 import { ApiKey } from '@vality/swag-api-keys-v2';
-
-import { ApiKeysDictionaryService } from '@dsh/app/api/api-keys';
 
 import { API_KEY_STATUS_COLOR } from '../types/api-key-status-color';
 
@@ -11,6 +11,7 @@ import { ApiKeyDeleteDialogComponent } from './components/api-key-delete-dialog/
 @Component({
     selector: 'dsh-api-key-details',
     templateUrl: 'api-key-details.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class ApiKeyDetailsComponent {

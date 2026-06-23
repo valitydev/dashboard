@@ -1,22 +1,23 @@
+import { combineLatest } from 'rxjs';
+import { first, map } from 'rxjs/operators';
+
 import { ChangeDetectionStrategy, Component, DestroyRef, OnInit } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Organization } from '@vality/swag-organizations';
-import { combineLatest } from 'rxjs';
-import { first, map } from 'rxjs/operators';
-
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ContextOrganizationService } from '@dsh/app/shared/services';
 import { FetchOrganizationsService } from '@dsh/app/shared/services/fetch-organizations';
+
+import { Organization } from '@vality/swag-organizations';
 
 const DISPLAYED_COUNT = 5;
 
 @Component({
     selector: 'dsh-select-active-organization-dialog',
     templateUrl: 'select-active-organization-dialog.component.html',
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [FetchOrganizationsService, { provide: SEARCH_LIMIT, useValue: DISPLAYED_COUNT }],
     standalone: false,
 })

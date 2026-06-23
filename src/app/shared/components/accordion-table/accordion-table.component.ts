@@ -1,10 +1,19 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
-import { PossiblyAsync } from '@vality/matez';
 import { Observable, of } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ContentChild,
+    EventEmitter,
+    Input,
+    Output,
+    TemplateRef,
+} from '@angular/core';
 import { StatusColor } from '@dsh/app/theme-manager';
+
+import { PossiblyAsync } from '@vality/matez';
 
 import { ExpandedFragment } from './expanded-fragment';
 
@@ -36,6 +45,7 @@ export interface ContentHeader<T extends object> {
     selector: 'dsh-accordion-table',
     templateUrl: './accordion-table.component.html',
     styles: [],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class AccordionTableComponent<T extends object> {

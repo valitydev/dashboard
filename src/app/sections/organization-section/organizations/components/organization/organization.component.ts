@@ -1,3 +1,6 @@
+import isNil from 'lodash-es/isNil';
+import { filter, pluck, switchMap } from 'rxjs/operators';
+
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,11 +12,6 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
-import { ComponentChanges, DialogResponseStatus } from '@vality/matez';
-import { Organization } from '@vality/swag-organizations';
-import isNil from 'lodash-es/isNil';
-import { filter, pluck, switchMap } from 'rxjs/operators';
-
 import { OrgsService } from '@dsh/app/api/organizations';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import {
@@ -25,6 +23,9 @@ import { FetchOrganizationsService } from '@dsh/app/shared/services/fetch-organi
 import { OrganizationManagementService } from '@dsh/app/shared/services/organization-management/organization-management.service';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 import { ignoreBeforeCompletion } from '@dsh/utils';
+
+import { ComponentChanges, DialogResponseStatus } from '@vality/matez';
+import { Organization } from '@vality/swag-organizations';
 
 import { RenameOrganizationDialogComponent } from '../rename-organization-dialog/rename-organization-dialog.component';
 import { RenameOrganizationDialogData } from '../rename-organization-dialog/types/rename-organization-dialog-data';

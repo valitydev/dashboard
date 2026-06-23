@@ -1,15 +1,16 @@
+import { BehaviorSubject } from 'rxjs';
+
 import { ChangeDetectionStrategy, Component, DestroyRef, Inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { InviteeContact, MemberRole } from '@vality/swag-organizations';
-import { BehaviorSubject } from 'rxjs';
-
 import { InvitationsService } from '@dsh/app/api/organizations';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import { ErrorService } from '@dsh/app/shared/services/error';
 import { NotificationService } from '@dsh/app/shared/services/notification';
 import { inProgressTo } from '@dsh/utils';
+
+import { InviteeContact, MemberRole } from '@vality/swag-organizations';
 
 import { CreateInvitationDialogData } from './types/create-invitation-dialog-data';
 

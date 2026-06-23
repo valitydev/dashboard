@@ -1,5 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-
+import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { SpinnerType } from '@dsh/components/indicators';
 
 import { SearchParams } from '../search-params';
@@ -10,6 +9,7 @@ import { PaymentsCountService } from './payments-count.service';
     selector: 'dsh-payments-count',
     templateUrl: 'payments-count.component.html',
     providers: [PaymentsCountService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class PaymentsCountComponent implements OnChanges {

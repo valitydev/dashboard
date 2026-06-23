@@ -1,9 +1,18 @@
 {
     "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
     "version": "0.2",
-    "import": "./node_modules/@vality/ng-configs/src/lib/cspell-config.json",
-    "ignorePaths": ["**/country-codes.ts"],
+    "files": ["**"],
+    "ignorePaths": ["node_modules", "**/*.svg"],
+    "import": "@cspell/dict-ru_ru/cspell-ext.json",
+    "useGitignore": true,
+    "language": "en,ru",
     "words": [
+        "vality",
+        "valitydev",
+        "matez",
+        "vhosts",
+        "preauthorization",
+
         "transloco",
         "xrequest",
         "klass",

@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
-import { FormControlSuperclass, createControlProviders } from '@vality/matez';
-import { SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
-
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AnapiDictionaryService } from '@dsh/app/api/anapi';
 import { TokenProvider } from '@dsh/app/api/payments';
+
+import { FormControlSuperclass, createControlProviders } from '@vality/matez';
+import { SearchPaymentsRequestParams } from '@vality/swag-anapi-v2';
 
 @Component({
     selector: 'dsh-token-provider-filter',
     templateUrl: './token-provider-filter.component.html',
     styleUrls: ['./token-provider-filter.component.scss'],
     providers: createControlProviders(() => TokenProviderFilterComponent),
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class TokenProviderFilterComponent extends FormControlSuperclass<

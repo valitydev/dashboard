@@ -1,8 +1,9 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
     selector: 'dsh-percent-difference',
     templateUrl: 'percent-difference.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class PercentDifferenceComponent implements OnChanges {

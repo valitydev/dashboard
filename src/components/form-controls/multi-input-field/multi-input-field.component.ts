@@ -1,15 +1,18 @@
-import { Component, DestroyRef, Input, OnInit } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { FormArray, FormControl } from '@angular/forms';
-import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 import isEqual from 'lodash-es/isEqual';
 import { distinctUntilChanged, map } from 'rxjs/operators';
+
+import { ChangeDetectionStrategy, Component, DestroyRef, Input, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { FormArray, FormControl } from '@angular/forms';
+
+import { FormControlSuperclass, createControlProviders } from '@vality/matez';
 
 @Component({
     selector: 'dsh-multi-input-field',
     templateUrl: 'multi-input-field.component.html',
     styleUrls: ['multi-input-field.component.scss'],
     providers: createControlProviders(() => MultiInputFieldComponent),
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class MultiInputFieldComponent extends FormControlSuperclass<string[]> implements OnInit {

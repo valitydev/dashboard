@@ -1,12 +1,13 @@
-import { Inject, Injectable } from '@angular/core';
-import { Organization } from '@vality/swag-organizations';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 
+import { Inject, Injectable } from '@angular/core';
 import { OrgsService } from '@dsh/app/api/organizations';
 import { mapToTimestamp } from '@dsh/app/custom-operators';
 import { SEARCH_LIMIT } from '@dsh/app/sections/tokens';
 import { DEBOUNCE_FETCHER_ACTION_TIME, FetchResult, PartialFetcher } from '@dsh/app/shared';
+
+import { Organization } from '@vality/swag-organizations';
 
 @Injectable()
 export class FetchOrganizationsService extends PartialFetcher<Organization, void> {

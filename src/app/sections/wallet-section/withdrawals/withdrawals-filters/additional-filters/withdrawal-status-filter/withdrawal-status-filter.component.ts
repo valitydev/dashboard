@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
-import { WithdrawalStatus } from '@vality/swag-wallets';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { WalletDictionaryService } from '@dsh/app/api/wallet';
+
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
+import { WithdrawalStatus } from '@vality/swag-wallets';
 
 import StatusEnum = WithdrawalStatus.StatusEnum;
 

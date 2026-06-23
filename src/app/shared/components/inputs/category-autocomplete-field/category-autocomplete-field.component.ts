@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
-import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
-import { Category } from '@vality/swag-payments';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
+import { ChangeDetectionStrategy, Component, Input, booleanAttribute } from '@angular/core';
 import { CategoriesService } from '@dsh/app/api/payments';
+
+import { FormControlSuperclass, Option, createControlProviders } from '@vality/matez';
+import { Category } from '@vality/swag-payments';
 
 @Component({
     selector: 'dsh-category-autocomplete-field',

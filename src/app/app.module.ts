@@ -1,5 +1,7 @@
+import { FlexLayoutModule } from 'ng-flex-layout';
+
 import { CommonModule } from '@angular/common';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { LOCALE_ID, NgModule, inject, isDevMode, provideAppInitializer } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {
@@ -18,16 +20,15 @@ import {
 } from '@angular/material-moment-adapter';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TRANSLOCO_SCOPE, TranslocoModule, provideTransloco } from '@jsverse/transloco';
-import { QUERY_PARAMS_SERIALIZERS } from '@vality/matez';
-import { FlexLayoutModule } from 'ng-flex-layout';
-
 import { AnapiModule } from '@dsh/app/api/anapi';
 import { PaymentsModule } from '@dsh/app/api/payments';
 import { WalletModule } from '@dsh/app/api/wallet';
 import { ErrorModule } from '@dsh/app/shared/services';
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
 import { BootstrapIconModule, SpinnerModule } from '@dsh/components/indicators';
+import { TRANSLOCO_SCOPE, TranslocoModule, provideTransloco } from '@jsverse/transloco';
+
+import { QUERY_PARAMS_SERIALIZERS } from '@vality/matez';
 
 import { ENV, environment } from '../environments';
 
@@ -117,7 +118,7 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
             useValue: [createDateRangeWithPresetSerializer()],
         },
         { provide: TRANSLOCO_SCOPE, useValue: 'app' },
-        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClient(withXhr(), withInterceptorsFromDi()),
     ],
 })
 export class AppModule {}

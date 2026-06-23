@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { TranslocoService } from '@jsverse/transloco';
-import { NotifyLogService, QueryParamsService } from '@vality/matez';
 import { shareReplay } from 'rxjs';
+
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { TranslocoService } from '@jsverse/transloco';
+
+import { NotifyLogService, QueryParamsService } from '@vality/matez';
 
 import { FetchWithdrawalsService, WithdrawalsExpandedIdManager } from './services';
 import { WithdrawalsFilters } from './withdrawals-filters';
@@ -9,6 +11,7 @@ import { WithdrawalsFilters } from './withdrawals-filters';
 @Component({
     templateUrl: 'withdrawals.component.html',
     providers: [FetchWithdrawalsService, WithdrawalsExpandedIdManager],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false,
 })
 export class WithdrawalsComponent implements OnInit {

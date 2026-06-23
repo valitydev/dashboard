@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, Subject, of } from 'rxjs';
 import { catchError, filter, map, switchMap } from 'rxjs/operators';
 
+import { Injectable } from '@angular/core';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { WebhooksService } from '@dsh/app/api/payments';
 import { oneMustBeSelected } from '@dsh/components/form-controls';
 
@@ -12,7 +12,7 @@ import { getEventsByTopic } from './get-events-by-topic';
 
 @Injectable()
 export class CreateWebhookDialogService {
-    private create$: Subject<FormParams> = new Subject();
+    private create$ = new Subject<FormParams>();
     private loading$ = new BehaviorSubject(false);
     private error$ = new Subject<void>();
     private created$ = new Subject();
