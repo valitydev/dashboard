@@ -10,7 +10,17 @@ jobs:
       - uses: actions/checkout@v6
       - uses: valitydev/action-frontend/setup-install@v3
       - name: Build
-        run: npm run build
+        run: npm run build -- --define "SENTRY_DSN='${SENTRY_DSN}'"
+        env:
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+      - name: Optimize i18n
+        run: npm run i18n:optimize
+      - name: Sentry
+        run: npm run sentry:sourcemaps
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ vars.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ vars.SENTRY_PROJECT }}
       - name: Deploy image
         uses: valitydev/action-deploy-docker@v2
         with:
