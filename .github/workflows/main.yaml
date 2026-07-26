@@ -21,6 +21,8 @@ jobs:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: ${{ vars.SENTRY_ORG }}
           SENTRY_PROJECT: ${{ vars.SENTRY_PROJECT }}
+      - name: Remove source maps
+        run: find dist/browser -type f -name '*.map' -delete
       - name: Deploy image
         uses: valitydev/action-deploy-docker@v2
         with:
