@@ -5,17 +5,17 @@ import * as Sentry from '@sentry/angular';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
-Sentry.init({
-    dsn: SENTRY_DSN,
-    integrations: [Sentry.browserTracingIntegration(), Sentry.replayIntegration()],
-    tracesSampleRate: 1,
-    replaysSessionSampleRate: 0.1,
-    replaysOnErrorSampleRate: 1,
-    enableLogs: true,
-});
-
 if (environment.production) {
     enableProdMode();
+
+    Sentry.init({
+        dsn: SENTRY_DSN,
+        integrations: [Sentry.browserTracingIntegration(), Sentry.replayIntegration()],
+        tracesSampleRate: 1,
+        replaysSessionSampleRate: 0.1,
+        replaysOnErrorSampleRate: 1,
+        enableLogs: true,
+    });
 }
 
 platformBrowserDynamic()
