@@ -1,5 +1,3 @@
-const url = require('url');
-
 require('dotenv').config({ path: ['.env', process.env.NODE_ENV].filter(Boolean).join('.') });
 
 const { PROXY_TARGET } = process.env;
