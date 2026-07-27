@@ -12,7 +12,7 @@ if (environment.production) {
         dsn: SENTRY_DSN,
         integrations: [Sentry.browserTracingIntegration(), Sentry.replayIntegration()],
         tracesSampleRate: 1,
-        replaysSessionSampleRate: 0.1,
+        replaysSessionSampleRate: 1,
         replaysOnErrorSampleRate: 1,
         enableLogs: true,
     });
