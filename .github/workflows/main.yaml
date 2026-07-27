@@ -15,12 +15,16 @@ jobs:
           SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
       - name: Optimize i18n
         run: npm run i18n:optimize
-      - name: Sentry
-        run: npm run sentry:sourcemaps
+      - name: Sentry release
+        uses: getsentry/action-release@v3
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          SENTRY_ORG: ${{ vars.SENTRY_ORG }}
-          SENTRY_PROJECT: ${{ vars.SENTRY_PROJECT }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+        with:
+          sourcemaps: ./dist/browser
+          environment: ${{ startsWith(github.ref_name, 'epic/') && 'staging' || 'production' }}
+          set_commits: skip
       - name: Remove source maps
         run: find dist/browser -type f -name '*.map' -delete
       - name: Deploy image
