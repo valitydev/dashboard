@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "ng serve --proxy-config proxy.conf.js --port 8000",
+    "start": ". ./.env && ng serve --proxy-config proxy.conf.js --port 8000 --define \"SENTRY_DSN='${SENTRY_DSN}'\"",
     "stage": "cross-env NODE_ENV=stage ng serve --proxy-config proxy.conf.js --port 8001 --configuration=stage",
     "fix": "npm run i18n:extract && npm run spell:fix && npm run lint:fix && npm run format:fix",
     "build": "ng build",

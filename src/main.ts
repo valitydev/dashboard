@@ -7,9 +7,12 @@ import { environment } from './environments/environment';
 
 if (environment.production) {
     enableProdMode();
+}
 
+if (SENTRY_DSN) {
     Sentry.init({
         dsn: SENTRY_DSN,
+        environment: environment.production ? 'production' : 'development',
         integrations: [Sentry.browserTracingIntegration(), Sentry.replayIntegration()],
         tracesSampleRate: 1,
         replaysSessionSampleRate: 1,

@@ -1,3 +1,5 @@
+import * as Sentry from '@sentry/angular';
+
 import { environment } from '../environments';
 
 import { KeycloakService } from './auth/keycloak';
@@ -19,17 +21,25 @@ export const initializer =
             configService.init({ configUrl: environment.appConfigPath }).then(() =>
                 Promise.all([
                     themeManager.init(),
-                    keycloakService.init({
-                        config: environment.authConfigPath,
-                        initOptions: {
-                            onLoad: 'login-required',
-                            checkLoginIframe: true,
-                        },
-                        loadUserProfileAtStartUp: true,
-                        enableBearerInterceptor: true,
-                        bearerExcludedUrls: ['/assets'],
-                        bearerPrefix: 'Bearer',
-                    }),
+                    keycloakService
+                        .init({
+                            config: environment.authConfigPath,
+                            initOptions: {
+                                onLoad: 'login-required',
+                                checkLoginIframe: true,
+                            },
+                            loadUserProfileAtStartUp: true,
+                            enableBearerInterceptor: true,
+                            bearerExcludedUrls: ['/assets'],
+                            bearerPrefix: 'Bearer',
+                        })
+                        .then(async () => {
+                            if (SENTRY_DSN) {
+                                const { id, username, email } =
+                                    await keycloakService.loadUserProfile();
+                                Sentry.setUser({ id, username, email });
+                            }
+                        }),
                 ]),
             ),
             languageService.init(),
