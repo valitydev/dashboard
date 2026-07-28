@@ -2,7 +2,14 @@ import { FlexLayoutModule } from 'ng-flex-layout';
 
 import { CommonModule } from '@angular/common';
 import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
-import { LOCALE_ID, NgModule, inject, isDevMode, provideAppInitializer } from '@angular/core';
+import {
+    ErrorHandler,
+    LOCALE_ID,
+    NgModule,
+    inject,
+    isDevMode,
+    provideAppInitializer,
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {
     DateAdapter,
@@ -27,6 +34,7 @@ import { ErrorModule } from '@dsh/app/shared/services';
 import { createDateRangeWithPresetSerializer } from '@dsh/components/date-range-filter';
 import { BootstrapIconModule, SpinnerModule } from '@dsh/components/indicators';
 import { TRANSLOCO_SCOPE, TranslocoModule, provideTransloco } from '@jsverse/transloco';
+import * as Sentry from '@sentry/angular';
 
 import { QUERY_PARAMS_SERIALIZERS } from '@vality/matez';
 
@@ -73,6 +81,10 @@ import { TranslocoHttpLoaderService } from './transloco-http-loader.service';
     ],
     providers: [
         LanguageService,
+        {
+            provide: ErrorHandler,
+            useValue: Sentry.createErrorHandler(),
+        },
         provideAppInitializer(() => {
             const initializerFn = initializer(
                 inject(ConfigService),
