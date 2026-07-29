@@ -15,6 +15,7 @@ import { MainFiltersForm } from './types/main-filters-form';
 export class MainFiltersComponent extends FormGroupSuperclass<Partial<MainFiltersForm>> {
     control = this.fb.group({
         payerEmail: ['', Validators.email],
+        payerIP: [''],
         customerID: [''],
         rrn: ['', Validators.pattern(new RegExp(/^\d+$/))],
         externalID: [''],

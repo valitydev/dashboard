@@ -2,6 +2,7 @@ import { AdditionalFilters, AdditionalFiltersForm } from '../types';
 
 export const filtersToForm = ({
     payerEmail = null,
+    payerIP = null,
     customerID = null,
     rrn = null,
     externalID = null,
@@ -16,6 +17,7 @@ export const filtersToForm = ({
 }: AdditionalFilters): AdditionalFiltersForm => ({
     main: {
         payerEmail,
+        payerIP,
         customerID,
         rrn,
         externalID,

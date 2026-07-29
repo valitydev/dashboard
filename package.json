@@ -44,7 +44,7 @@
     "@vality/swag-anapi-v2": "^2.0.1-f5e0f86.0",
     "@vality/swag-api-keys-v2": "^0.1.3-019c9ca.0",
     "@vality/swag-organizations": "^1.0.1-a72830b.0",
-    "@vality/swag-payments": "^0.1.3-92bb7f9.0",
+    "@vality/swag-payments": "^0.1.3-4c090f9.0",
     "@vality/swag-wallets": "^0.1.4-fa83e95.0",
     "apexcharts": "^3.54.1",
     "date-fns": "^4.4.0",

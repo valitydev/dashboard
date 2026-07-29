@@ -125,6 +125,7 @@
                 "invoices": "Инвойсы",
                 "last4": "Последние цифры номера карты",
                 "payerEmail": "Email плательщика",
+                "payerIP": "IP-адрес плательщика",
                 "paymentAmount": "Сумма платежа",
                 "paymentAmountFrom": "Мин. сумма",
                 "paymentAmountTo": "Макс. сумма",

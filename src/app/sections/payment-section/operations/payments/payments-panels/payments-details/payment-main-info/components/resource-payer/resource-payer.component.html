@@ -5,10 +5,16 @@
         prefix: 'paymentSection.paymentDetails.payerDetails'
     "
 >
-    @if (payer.contactInfo.email || payer.contactInfo.phoneNumber) {
+    @if (payer.contactInfo.email || payer.contactInfo.phoneNumber || payer.clientInfo?.ip) {
         <dsh-details-item [title]="payerDetails('title')">
             <div class="mat-body-medium">
                 {{ payer.contactInfo.email || payer.contactInfo.phoneNumber }}
+                @if (payer.clientInfo?.ip; as ip) {
+                    @if (payer.contactInfo.email || payer.contactInfo.phoneNumber) {
+                        ·
+                    }
+                    {{ ip }}
+                }
             </div>
         </dsh-details-item>
     }
