@@ -125,6 +125,7 @@
                 "invoices": "Invoices",
                 "last4": "Card last digits",
                 "payerEmail": "Payer email",
+                "payerIP": "Payer IP address",
                 "paymentAmount": "Payment amount",
                 "paymentAmountFrom": "Min. amount",
                 "paymentAmountTo": "Max. amount",
