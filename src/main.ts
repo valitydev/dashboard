@@ -12,6 +12,7 @@ if (environment.production) {
 if (SENTRY_DSN) {
     Sentry.init({
         dsn: SENTRY_DSN,
+        release: typeof SENTRY_RELEASE === 'undefined' ? undefined : SENTRY_RELEASE,
         environment: environment.production ? 'production' : 'development',
         integrations: [
             Sentry.browserTracingIntegration(),

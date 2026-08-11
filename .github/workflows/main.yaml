@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v6
       - uses: valitydev/action-frontend/setup-install@v3
       - name: Build
-        run: npm run build -- --define "SENTRY_DSN='${SENTRY_DSN}'"
+        run: npm run build -- --define "SENTRY_DSN='${SENTRY_DSN}'" --define "SENTRY_RELEASE='${GITHUB_SHA}'"
         env:
           SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
       - name: Optimize i18n
@@ -22,6 +22,7 @@ jobs:
           SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         with:
+          environment: production
           sourcemaps: ./dist/browser
           set_commits: skip
       - name: Remove source maps
