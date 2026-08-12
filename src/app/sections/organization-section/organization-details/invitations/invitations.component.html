@@ -7,11 +7,11 @@
     fxLayout="column"
     fxLayoutGap="32px"
 >
-    <div fxLayout fxLayoutAlign="end">
+    <!-- <div fxLayout fxLayoutAlign="end">
         <button mat-flat-button (click)="createInvitation()">
             {{ t('createInvitation') }}
         </button>
-    </div>
+    </div> -->
     @if (organization$ | async; as organization) {
         @if (isLoading$ | async) {
             <dsh-spinner fxFlexAlign="center"></dsh-spinner>
