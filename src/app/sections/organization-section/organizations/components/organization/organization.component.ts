@@ -46,6 +46,7 @@ export class OrganizationComponent implements OnChanges {
     membersCount$ = this.organizationManagementService.members$.pipe(pluck('length'));
     hasAdminAccess$ = this.organizationManagementService.hasAdminAccess$;
     isOwner$ = this.organizationManagementService.isOrganizationOwner$;
+    allowedIps: string[] = [];
 
     constructor(
         private organizationManagementService: OrganizationManagementService,
@@ -61,6 +62,7 @@ export class OrganizationComponent implements OnChanges {
     ngOnChanges({ organization }: ComponentChanges<OrganizationComponent>) {
         if (!isNil(organization?.currentValue)) {
             this.organizationManagementService.init(organization.currentValue);
+            this.allowedIps = Array.from(organization.currentValue.allowedIps ?? []);
         }
     }
 

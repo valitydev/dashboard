@@ -1,4 +1,5 @@
-import { filter, map } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { catchError, filter, map, startWith, switchMap, take } from 'rxjs/operators';
 
 import {
     ChangeDetectionStrategy,
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
 import { DIALOG_CONFIG, DialogConfig } from '@dsh/app/sections/tokens';
 import { ContextOrganizationService } from '@dsh/app/shared';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
+import { OrganizationManagementService } from '@dsh/app/shared/services/organization-management/organization-management.service';
 import { TranslocoService } from '@jsverse/transloco';
 
 import { Organization } from '@vality/swag-organizations';
@@ -25,16 +27,29 @@ import { SelectActiveOrganizationDialogComponent } from '../select-active-organi
     selector: 'dsh-user',
     templateUrl: 'user.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [OrganizationManagementService],
     standalone: false,
 })
 export class UserComponent {
     protected contextOrganizationService = inject(ContextOrganizationService);
+    private readonly organizationManagementService = inject(OrganizationManagementService);
 
     @Output() selected = new EventEmitter<void>();
 
     organization$ = this.contextOrganizationService.organization$;
     username = this.keycloakService.getUsername();
     activeOrg$ = this.contextOrganizationService.organization$;
+    hasAdminAccess$ = this.organization$.pipe(
+        switchMap((organization) => {
+            if (!organization) return of(false);
+            this.organizationManagementService.init(organization);
+            return this.organizationManagementService.hasAdminAccess$.pipe(
+                take(1),
+                catchError(() => of(false)),
+                startWith(false),
+            );
+        }),
+    );
     keycloakAccountEndpoint = `${this.config.keycloakEndpoint}/realms/external/account/#`;
     userLinksConfig$ = this.transloco.selectTranslation('components').pipe(
         map(() => [
@@ -86,6 +101,11 @@ export class UserComponent {
 
     openOrgList(): void {
         void this.router.navigate(['organization-section', 'organizations']);
+        this.selected.emit();
+    }
+
+    openAllowedIps(orgId: string): void {
+        void this.router.navigate(['organization-section', 'organizations', orgId, 'allowed-ips']);
         this.selected.emit();
     }
 

@@ -9,6 +9,11 @@
                 <dsh-menu-item class="mat-title-small" (click)="toActiveOrg(activeOrg.id)">{{
                     activeOrg.name
                 }}</dsh-menu-item>
+                @if (hasAdminAccess$ | async) {
+                    <dsh-menu-item (click)="openAllowedIps(activeOrg.id)">
+                        {{ t('allowedIps') }}
+                    </dsh-menu-item>
+                }
             }
             <dsh-menu-item (click)="selectActiveOrg()">{{ t('selectActiveOrg') }}</dsh-menu-item>
             <dsh-menu-item (click)="openOrgList()">{{ t('orgList') }}</dsh-menu-item>

@@ -4,7 +4,7 @@ import { map, pluck, shareReplay, switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { MembersService } from '@dsh/app/api/organizations';
 import { RoleId } from '@dsh/app/auth/types/role-id';
-import { KeycloakTokenInfoService } from '@dsh/app/shared';
+import { KeycloakTokenInfoService } from '@dsh/app/shared/services/keycloak-token-info';
 
 import { Member, Organization } from '@vality/swag-organizations';
 
@@ -26,9 +26,7 @@ export class OrganizationManagementService {
         this.keycloakTokenInfoService.userID$,
     ]).pipe(
         map(([members, userId]) => members.find((m) => m.id === userId)),
-        map(
-            (member) => member?.roles?.findIndex?.((r) => r.roleId === RoleId.Administrator) !== -1,
-        ),
+        map((member) => member?.roles?.some((r) => r.roleId === RoleId.Administrator) ?? false),
         shareReplay({ refCount: true, bufferSize: 1 }),
     );
     hasAdminAccess$: Observable<boolean> = defer(() =>

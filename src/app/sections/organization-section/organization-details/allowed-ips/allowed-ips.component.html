@@ -1,0 +1,85 @@
+<div
+    *transloco="
+        let t;
+        scope: 'organization-section';
+        prefix: 'organizationSection.organizationDetails.allowedIps'
+    "
+    fxLayout="column"
+    fxLayoutGap="32px"
+>
+    @if (loading()) {
+        <dsh-spinner fxFlexAlign="center"></dsh-spinner>
+    } @else if (loadFailed()) {
+        <dsh-card fxLayout="column" fxLayoutGap="24px">
+            <div class="mat-body-medium">{{ t('loadFailed') }}</div>
+            <div>
+                <button mat-flat-button type="button" (click)="refresh()">
+                    {{ t('retry') }}
+                </button>
+            </div>
+        </dsh-card>
+    } @else if (!canManage()) {
+        <dsh-card>
+            <div class="mat-body-medium">{{ t('accessDenied') }}</div>
+        </dsh-card>
+    } @else {
+        <dsh-card fxLayout="column" fxLayoutGap="24px">
+            <div fxLayout="column" fxLayoutGap="8px">
+                <div class="mat-title-large">{{ t('title') }}</div>
+                <div class="mat-body-small" dshTextColor="secondary">
+                    {{ t('description') }}
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <form [formGroup]="form" fxLayout="column" fxLayoutGap="24px" (ngSubmit)="save()">
+                <div fxLayout="column" fxLayoutGap="16px">
+                    @for (
+                        address of addresses.controls;
+                        track address;
+                        let index = $index;
+                        let last = $last
+                    ) {
+                        <div class="address-row">
+                            <mat-form-field [class.draft-address]="last">
+                                <mat-label>{{ t(last ? 'addAddress' : 'address') }}</mat-label>
+                                <input
+                                    [formControl]="address"
+                                    [readonly]="saving()"
+                                    [required]="!last"
+                                    autocomplete="off"
+                                    matInput
+                                    spellcheck="false"
+                                    type="text"
+                                />
+                                <mat-error>{{ t('required') }}</mat-error>
+                            </mat-form-field>
+                            @if (!last) {
+                                <div class="address-action">
+                                    <button
+                                        [attr.aria-label]="t('removeAddress', { index: index + 1 })"
+                                        [disabled]="saving()"
+                                        mat-icon-button
+                                        type="button"
+                                        (click)="removeAddress(index)"
+                                    >
+                                        <span aria-hidden="true" class="remove-icon">−</span>
+                                    </button>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+                <mat-divider></mat-divider>
+                <div fxLayout="row" fxLayoutAlign="end">
+                    <button
+                        [disabled]="form.invalid || form.pristine || saving()"
+                        mat-flat-button
+                        type="submit"
+                    >
+                        {{ saving() ? t('saving') : t('save') }}
+                    </button>
+                </div>
+            </form>
+        </dsh-card>
+    }
+</div>

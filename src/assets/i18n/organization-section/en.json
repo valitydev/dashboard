@@ -36,9 +36,12 @@
     },
     "organization": {
         "actions": {
+            "editAllowedIps": "Edit allowed IP addresses",
             "leave": "Leave the organization",
             "rename": "Rename organization"
         },
+        "allowedIps": "Allowed IP addresses",
+        "emptyAllowedIps": "No IP addresses specified",
         "management": "Employee and organization management",
         "numberOfEmployees": "Members number",
         "titles": {
@@ -47,6 +50,21 @@
         }
     },
     "organizationDetails": {
+        "allowedIps": {
+            "accessDenied": "Only the organization owner and administrators can manage IP addresses.",
+            "addAddress": "Add IP address",
+            "address": "IP address",
+            "description": "Manage the IP addresses allowed for this organization. An empty list removes IP restrictions.",
+            "empty": "No IP addresses specified",
+            "loadFailed": "Could not load IP address settings.",
+            "remove": "Delete",
+            "removeAddress": "Remove IP address {{index}}",
+            "required": "Enter an IP address or remove this field.",
+            "retry": "Retry",
+            "save": "Save",
+            "saving": "Saving…",
+            "title": "Allowed IP addresses"
+        },
         "breadcrumb": {
             "organizations": "Organizations"
         },
@@ -71,6 +89,7 @@
             }
         },
         "links": {
+            "allowedIps": "IP addresses",
             "invitations": "Invitations",
             "members": "Members"
         },
