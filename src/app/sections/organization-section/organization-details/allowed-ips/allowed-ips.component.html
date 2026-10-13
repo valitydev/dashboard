@@ -24,12 +24,7 @@
         </dsh-card>
     } @else {
         <dsh-card fxLayout="column" fxLayoutGap="24px">
-            <div fxLayout="column" fxLayoutGap="8px">
-                <div class="mat-title-large">{{ t('title') }}</div>
-                <div class="mat-body-small" dshTextColor="secondary">
-                    {{ t('description') }}
-                </div>
-            </div>
+            <div class="mat-title-large">{{ t('title') }}</div>
             <mat-divider></mat-divider>
             <form [formGroup]="form" fxLayout="column" fxLayoutGap="24px" (ngSubmit)="save()">
                 <div fxLayout="column" fxLayoutGap="16px">

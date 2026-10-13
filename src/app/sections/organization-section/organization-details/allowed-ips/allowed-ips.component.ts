@@ -26,7 +26,6 @@ import { ErrorService } from '@dsh/app/shared/services/error/error.service';
 import { NotificationService } from '@dsh/app/shared/services/notification/notification.service';
 import { OrganizationManagementService } from '@dsh/app/shared/services/organization-management/organization-management.service';
 import { SpinnerModule } from '@dsh/components/indicators/spinner';
-import { TextColorModule } from '@dsh/components/indicators/text-color';
 import { CardModule } from '@dsh/components/layout/card';
 import { TranslocoModule } from '@jsverse/transloco';
 
@@ -48,7 +47,6 @@ import { Organization } from '@vality/swag-organizations';
         TranslocoModule,
         CardModule,
         SpinnerModule,
-        TextColorModule,
     ],
 })
 export class AllowedIpsComponent {

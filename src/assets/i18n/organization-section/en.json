@@ -54,7 +54,6 @@
             "accessDenied": "Only the organization owner and administrators can manage IP addresses.",
             "addAddress": "Add IP address",
             "address": "IP address",
-            "description": "Manage the IP addresses allowed for this organization. An empty list removes IP restrictions.",
             "empty": "No IP addresses specified",
             "loadFailed": "Could not load IP address settings.",
             "remove": "Delete",
