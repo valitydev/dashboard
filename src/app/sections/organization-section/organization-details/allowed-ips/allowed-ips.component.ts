@@ -9,7 +9,6 @@ import {
     finalize,
     map,
     switchMap,
-    take,
     takeUntil,
 } from 'rxjs';
 
@@ -51,7 +50,6 @@ import { Organization } from '@vality/swag-organizations';
         SpinnerModule,
         TextColorModule,
     ],
-    providers: [OrganizationManagementService],
 })
 export class AllowedIpsComponent {
     private readonly route = inject(ActivatedRoute);
@@ -89,8 +87,7 @@ export class AllowedIpsComponent {
                         switchMap((organization) => {
                             this.organization.set(organization);
                             this.setAddresses(organization);
-                            this.organizationManagementService.init(organization);
-                            return this.organizationManagementService.hasAdminAccess$.pipe(take(1));
+                            return this.organizationManagementService.hasAdminAccess(organization);
                         }),
                         catchError((error) => {
                             this.loadFailed.set(true);

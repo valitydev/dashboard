@@ -1,5 +1,6 @@
 import isNil from 'lodash-es/isNil';
-import { filter, pluck, switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { filter, map, shareReplay, switchMap } from 'rxjs/operators';
 
 import {
     ChangeDetectionStrategy,
@@ -12,7 +13,7 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
-import { OrgsService } from '@dsh/app/api/organizations';
+import { MembersService, OrgsService } from '@dsh/app/api/organizations';
 import { BaseDialogResponseStatus } from '@dsh/app/shared/components/dialog/base-dialog';
 import {
     ContextOrganizationService,
@@ -34,7 +35,6 @@ import { RenameOrganizationDialogData } from '../rename-organization-dialog/type
     selector: 'dsh-organization',
     templateUrl: 'organization.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [OrganizationManagementService],
     standalone: false,
 })
 export class OrganizationComponent implements OnChanges {
@@ -43,14 +43,15 @@ export class OrganizationComponent implements OnChanges {
     @Output() changed = new EventEmitter<void>();
 
     member$ = this.contextOrganizationService.member$;
-    membersCount$ = this.organizationManagementService.members$.pipe(pluck('length'));
-    hasAdminAccess$ = this.organizationManagementService.hasAdminAccess$;
-    isOwner$ = this.organizationManagementService.isOrganizationOwner$;
+    membersCount$: Observable<number>;
+    hasAdminAccess$: Observable<boolean>;
+    isOwner$: Observable<boolean>;
     allowedIps: string[] = [];
 
     constructor(
         private organizationManagementService: OrganizationManagementService,
         private organizationsService: OrgsService,
+        private membersService: MembersService,
         private dialog: MatDialog,
         private notificationService: NotificationService,
         private errorService: ErrorService,
@@ -61,7 +62,16 @@ export class OrganizationComponent implements OnChanges {
 
     ngOnChanges({ organization }: ComponentChanges<OrganizationComponent>) {
         if (!isNil(organization?.currentValue)) {
-            this.organizationManagementService.init(organization.currentValue);
+            const current = organization.currentValue;
+            this.membersCount$ = this.membersService
+                .listOrgMembers({ orgId: current.id })
+                .pipe(map(({ result }) => result.length));
+            this.hasAdminAccess$ = this.organizationManagementService
+                .hasAdminAccess(current)
+                .pipe(shareReplay({ refCount: true, bufferSize: 1 }));
+            this.isOwner$ = this.organizationManagementService
+                .isOrganizationOwner(current)
+                .pipe(shareReplay({ refCount: true, bufferSize: 1 }));
             this.allowedIps = Array.from(organization.currentValue.allowedIps ?? []);
         }
     }

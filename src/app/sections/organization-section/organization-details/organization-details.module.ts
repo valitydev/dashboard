@@ -3,7 +3,6 @@ import { FlexLayoutModule } from 'ng-flex-layout';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
-import { OrganizationManagementModule } from '@dsh/app/shared/services/organization-management/organization-management.module';
 import { IndicatorsModule } from '@dsh/components/indicators';
 import { BreadcrumbModule } from '@dsh/components/navigation';
 import { TranslocoModule } from '@jsverse/transloco';
@@ -19,7 +18,6 @@ import { OrganizationDetailsComponent } from './organization-details.component';
         TranslocoModule,
         BreadcrumbModule,
         IndicatorsModule,
-        OrganizationManagementModule,
         MatTabsModule,
     ],
     declarations: [OrganizationDetailsComponent],

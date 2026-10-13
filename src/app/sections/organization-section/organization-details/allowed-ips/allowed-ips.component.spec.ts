@@ -41,7 +41,7 @@ describe('Organization IP address editing', () => {
                 { provide: NotificationService, useValue: { success } },
                 {
                     provide: OrganizationManagementService,
-                    useValue: { init: vi.fn(), hasAdminAccess$: of(canManage) },
+                    useValue: { hasAdminAccess: () => of(canManage) },
                 },
             ],
         }).overrideComponent(AllowedIpsComponent, {

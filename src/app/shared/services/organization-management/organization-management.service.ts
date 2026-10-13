@@ -1,49 +1,47 @@
-import { Observable, ReplaySubject, combineLatest, defer } from 'rxjs';
-import { map, pluck, shareReplay, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { catchError, map, switchMap, take } from 'rxjs/operators';
 
 import { Injectable } from '@angular/core';
 import { MembersService } from '@dsh/app/api/organizations';
 import { RoleId } from '@dsh/app/auth/types/role-id';
 import { KeycloakTokenInfoService } from '@dsh/app/shared/services/keycloak-token-info';
 
-import { Member, Organization } from '@vality/swag-organizations';
+import { Organization } from '@vality/swag-organizations';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class OrganizationManagementService {
-    members$: Observable<Member[]> = defer(() => this.organization$).pipe(
-        switchMap(({ id }) => this.membersService.listOrgMembers({ orgId: id })),
-        pluck('result'),
-        shareReplay({ refCount: true, bufferSize: 1 }),
-    );
-    isOrganizationOwner$: Observable<boolean> = defer(() =>
-        combineLatest([this.organization$, this.keycloakTokenInfoService.userID$]),
-    ).pipe(
-        map(([{ owner }, id]) => owner === id),
-        shareReplay({ refCount: true, bufferSize: 1 }),
-    );
-    isOrganizationAdmin$: Observable<boolean> = combineLatest([
-        this.members$,
-        this.keycloakTokenInfoService.userID$,
-    ]).pipe(
-        map(([members, userId]) => members.find((m) => m.id === userId)),
-        map((member) => member?.roles?.some((r) => r.roleId === RoleId.Administrator) ?? false),
-        shareReplay({ refCount: true, bufferSize: 1 }),
-    );
-    hasAdminAccess$: Observable<boolean> = defer(() =>
-        combineLatest([this.isOrganizationAdmin$, this.isOrganizationOwner$]),
-    ).pipe(
-        map((hasAdminLikeRoles) => hasAdminLikeRoles.includes(true)),
-        shareReplay({ refCount: true, bufferSize: 1 }),
-    );
-
-    private organization$ = new ReplaySubject<Organization>();
-
     constructor(
         private membersService: MembersService,
         private keycloakTokenInfoService: KeycloakTokenInfoService,
     ) {}
 
-    init(organization: Organization) {
-        this.organization$.next(organization);
+    isOrganizationOwner(organization: Organization) {
+        return this.keycloakTokenInfoService.userID$.pipe(
+            take(1),
+            map((userId) => organization.owner === userId),
+        );
+    }
+
+    hasAdminAccess(organization: Organization | null) {
+        if (!organization) return of(false);
+
+        return this.keycloakTokenInfoService.userID$.pipe(
+            take(1),
+            switchMap((userId) =>
+                organization.owner === userId
+                    ? of(true)
+                    : this.membersService
+                          .getOrgMember({ orgId: organization.id, userId })
+                          .pipe(
+                              map(
+                                  (member) =>
+                                      member.roles?.some(
+                                          (role) => role.roleId === RoleId.Administrator,
+                                      ) ?? false,
+                              ),
+                          ),
+            ),
+            catchError(() => of(false)),
+        );
     }
 }

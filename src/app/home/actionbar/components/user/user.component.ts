@@ -1,5 +1,4 @@
-import { of } from 'rxjs';
-import { catchError, filter, map, startWith, switchMap, take } from 'rxjs/operators';
+import { filter, map, startWith, switchMap } from 'rxjs/operators';
 
 import {
     ChangeDetectionStrategy,
@@ -27,7 +26,6 @@ import { SelectActiveOrganizationDialogComponent } from '../select-active-organi
     selector: 'dsh-user',
     templateUrl: 'user.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [OrganizationManagementService],
     standalone: false,
 })
 export class UserComponent {
@@ -40,15 +38,9 @@ export class UserComponent {
     username = this.keycloakService.getUsername();
     activeOrg$ = this.contextOrganizationService.organization$;
     hasAdminAccess$ = this.organization$.pipe(
-        switchMap((organization) => {
-            if (!organization) return of(false);
-            this.organizationManagementService.init(organization);
-            return this.organizationManagementService.hasAdminAccess$.pipe(
-                take(1),
-                catchError(() => of(false)),
-                startWith(false),
-            );
-        }),
+        switchMap((organization) =>
+            this.organizationManagementService.hasAdminAccess(organization).pipe(startWith(false)),
+        ),
     );
     keycloakAccountEndpoint = `${this.config.keycloakEndpoint}/realms/external/account/#`;
     userLinksConfig$ = this.transloco.selectTranslation('components').pipe(
