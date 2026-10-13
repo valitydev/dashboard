@@ -21,6 +21,13 @@ const ROUTES: Routes = [
                 path: 'invitations',
                 loadChildren: () => import('./invitations').then((m) => m.InvitationsModule),
             },
+            {
+                path: 'allowed-ips',
+                loadComponent: () =>
+                    import('./allowed-ips/allowed-ips.component').then(
+                        (m) => m.AllowedIpsComponent,
+                    ),
+            },
         ],
     },
 ];

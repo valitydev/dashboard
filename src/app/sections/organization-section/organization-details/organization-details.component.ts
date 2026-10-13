@@ -35,6 +35,14 @@ export class OrganizationDetailsComponent {
                 'organization-section',
             ),
         },
+        {
+            path: 'allowed-ips',
+            label$: this.transloco.selectTranslate(
+                'organizationDetails.links.allowedIps',
+                null,
+                'organization-section',
+            ),
+        },
     ];
 
     constructor(

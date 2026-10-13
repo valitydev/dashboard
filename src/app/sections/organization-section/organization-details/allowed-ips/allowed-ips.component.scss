@@ -1,0 +1,34 @@
+@use '@angular/material' as mat;
+
+.address-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 48px;
+    column-gap: 16px;
+}
+
+.address-action {
+    @include mat.icon-button-overrides(
+        (
+            state-layer-color: currentColor,
+            hover-state-layer-opacity: 0.08,
+            focus-state-layer-opacity: 0.12,
+        )
+    );
+
+    display: flex;
+    align-items: center;
+    height: var(--mat-form-field-container-height, 56px);
+}
+
+.draft-address {
+    opacity: 0.6;
+
+    &:focus-within {
+        opacity: 1;
+    }
+}
+
+.remove-icon {
+    font-size: 24px;
+    line-height: 24px;
+}

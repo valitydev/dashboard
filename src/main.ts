@@ -23,8 +23,8 @@ if (SENTRY_DSN) {
             }),
         ],
         tracesSampleRate: 1,
-        replaysSessionSampleRate: 1,
-        replaysOnErrorSampleRate: 1,
+        replaysSessionSampleRate: 0,
+        replaysOnErrorSampleRate: 0,
         enableLogs: true,
     });
 }

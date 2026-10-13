@@ -19,12 +19,35 @@
     }
 
     <mat-divider></mat-divider>
+    <dsh-details-item [title]="t('allowedIps')">
+        @if (allowedIps.length) {
+            <div fxLayout="column" fxLayoutGap="8px">
+                @for (ip of allowedIps; track ip) {
+                    <code>{{ ip }}</code>
+                }
+            </div>
+        } @else {
+            {{ t('emptyAllowedIps') }}
+        }
+    </dsh-details-item>
+
+    <mat-divider></mat-divider>
     <div class="mat-title-large">{{ t('titles.actions') }}</div>
     <div fxLayout fxLayoutGap="24px">
         @if (hasAdminAccess$ | async) {
             <button mat-flat-button (click)="rename()">
                 {{ t('actions.rename') }}
             </button>
+            <a
+                [routerLink]="[
+                    '/organization-section/organizations',
+                    organization.id,
+                    'allowed-ips',
+                ]"
+                mat-flat-button
+            >
+                {{ t('actions.editAllowedIps') }}
+            </a>
         }
         @if ((isOwner$ | async) === false) {
             <button class="matv-error" mat-flat-button (click)="leave()">

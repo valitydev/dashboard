@@ -1,3 +1,4 @@
+import { isDevMode } from '@angular/core';
 import * as Sentry from '@sentry/angular';
 
 import { environment } from '../environments';
@@ -26,7 +27,7 @@ export const initializer =
                             config: environment.authConfigPath,
                             initOptions: {
                                 onLoad: 'login-required',
-                                checkLoginIframe: true,
+                                checkLoginIframe: !isDevMode(),
                             },
                             loadUserProfileAtStartUp: true,
                             enableBearerInterceptor: true,

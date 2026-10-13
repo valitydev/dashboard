@@ -6,17 +6,15 @@ import {
     DestroyRef,
     EventEmitter,
     Input,
-    OnChanges,
     Output,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MembersService } from '@dsh/app/api/organizations';
 import { ErrorService, NotificationService } from '@dsh/app/shared';
-import { OrganizationManagementService } from '@dsh/app/shared/services/organization-management/organization-management.service';
 import { ConfirmActionDialogComponent } from '@dsh/components/popups';
 import { ignoreBeforeCompletion } from '@dsh/utils';
 
-import { ComponentChanges, DialogResponseStatus, DialogService } from '@vality/matez';
+import { DialogResponseStatus, DialogService } from '@vality/matez';
 import { Member, Organization } from '@vality/swag-organizations';
 
 import { EditRolesDialogComponent } from '../edit-roles-dialog/edit-roles-dialog.component';
@@ -27,7 +25,7 @@ import { EditRolesDialogComponent } from '../edit-roles-dialog/edit-roles-dialog
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: false,
 })
-export class MemberComponent implements OnChanges {
+export class MemberComponent {
     @Input() organization: Organization;
     @Input() member: Member;
 
@@ -35,18 +33,11 @@ export class MemberComponent implements OnChanges {
 
     constructor(
         private dialogService: DialogService,
-        private organizationManagementService: OrganizationManagementService,
         private membersService: MembersService,
         private notificationService: NotificationService,
         private errorService: ErrorService,
         private dr: DestroyRef,
     ) {}
-
-    ngOnChanges({ organization }: ComponentChanges<MemberComponent>) {
-        if (organization) {
-            this.organizationManagementService.init(organization.currentValue);
-        }
-    }
 
     @ignoreBeforeCompletion
     removeFromOrganization() {

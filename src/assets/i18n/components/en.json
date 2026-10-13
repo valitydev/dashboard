@@ -5,6 +5,7 @@
         },
         "user": {
             "accountSecurity": "Account security",
+            "allowedIps": "IP address settings",
             "logout": "Logout",
             "orgList": "Organization list",
             "selectActiveOrg": "Choose an active organization"

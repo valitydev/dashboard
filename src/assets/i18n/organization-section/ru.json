@@ -36,9 +36,12 @@
     },
     "organization": {
         "actions": {
+            "editAllowedIps": "Редактировать IP-адреса",
             "leave": "Покинуть организацию",
             "rename": "Переименовать организацию"
         },
+        "allowedIps": "Разрешённые IP-адреса",
+        "emptyAllowedIps": "IP-адреса не указаны",
         "management": "Управление сотрудниками и организациями",
         "numberOfEmployees": "Количество сотрудников",
         "titles": {
@@ -47,6 +50,20 @@
         }
     },
     "organizationDetails": {
+        "allowedIps": {
+            "accessDenied": "Управлять IP-адресами могут только владелец и администраторы организации.",
+            "addAddress": "Добавить IP-адрес",
+            "address": "IP-адрес",
+            "empty": "IP-адреса не указаны",
+            "loadFailed": "Не удалось загрузить настройки IP-адресов.",
+            "remove": "Удалить",
+            "removeAddress": "Удалить IP-адрес {{index}}",
+            "required": "Введите IP-адрес или удалите это поле.",
+            "retry": "Повторить",
+            "save": "Сохранить",
+            "saving": "Сохранение…",
+            "title": "Разрешённые IP-адреса"
+        },
         "breadcrumb": {
             "organizations": "Организации"
         },
@@ -71,6 +88,7 @@
             }
         },
         "links": {
+            "allowedIps": "IP-адреса",
             "invitations": "Приглашения",
             "members": "Сотрудники"
         },
